@@ -1,0 +1,31 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas).",
+  "standart": "RFC 4120 Kerberos v5 & RFC 3962 AES Encryption",
+  "saldiri_vektorleri_ve_savunmalar": {
+    "AS-REP Roasting (T1558.004)": {
+      "zafiyet_nedeni": "Hesapta DONT_REQ_PREAUTH bayrağının açık olması",
+      "etki": "Saldırgan parola bilmeden KDC'den şifreli AS-REP alıp çevrimdışı kırar",
+      "savunma": "Tüm hesaplarda Kerberos Ön Kimlik Doğrulama zorunlu tutulmalıdır"
+    },
+    "Kerberoasting (T1558.003)": {
+      "zafiyet_nedeni": "Ayrıcalıklı hesapta SPN kaydı ve RC4 şifreleme",
+      "etki": "Saldırgan TGS biletini alarak servis hesabının parolasını çevrimdışı kırar",
+      "savunma": "gMSA kullanımı, 25+ karakter parola ve AES256 zorlaması"
+    },
+    "Golden Ticket (T1558.001)": {
+      "zafiyet_nedeni": "krbtgt hesap parolasının/anahtarının sızdırılması",
+      "etki": "Saldırgan sınırsız geçerli sahte TGT üretir ve ormanda tam kalıcılık sağlar",
+      "savunma": "krbtgt parolasının 180 günde bir aralıklı çift sıfırlanması"
+    },
+    "Silver Ticket (T1558.002)": {
+      "zafiyet_nedeni": "Hedef sunucu servis anahtarının sızdırılması",
+      "etki": "KDC'ye gitmeden sahte Servis Bileti üretilerek doğrudan sunucuya erişilir",
+      "savunma": "Servis parolalarının korunması, gMSA ve PAC doğrulama"
+    },
+    "Yeniden Oynatma (T1550)": {
+      "zafiyet_nedeni": "Kanıtlayıcı (Authenticator) zaman ve replay önbellek kontrolü eksikliği",
+      "etki": "Trafikten yakalanan bilet ve kanıtlayıcının tekrar gönderilmesi",
+      "savunma": "Replay Cache zorlaması ve 300s saat sapması (clock skew) sınırı"
+    }
+  }
+}

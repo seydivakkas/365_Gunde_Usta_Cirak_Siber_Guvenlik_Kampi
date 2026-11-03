@@ -1,0 +1,45 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+KERBEROS v5 BİLET TAKAS YAŞAM DÖNGÜSÜ VE SALDIRI/SAVUNMA MİMARİSİ (RFC 4120)
+================================================================================
+
+  +------------------+         KDC (Key Distribution Center)        +-------------------+
+  |                  |    +--------------------------------------+   |                   |
+  |  İSTEMCİ (Client)|    | Authentication Service (AS)          |   |  UYGULAMA SUNUCUSU|
+  |                  |    | [KRBTGT Anahtarı ile TGT İmzalar]    |   |  (Target Service) |
+  +--------+---------+    +------------------+-------------------+   +---------+---------+
+           |                                 |                                 |
+           |  1. AS-REQ (Kullanıcı + PA-ENC) |                                 |
+           |-------------------------------->|                                 |
+           |  2. AS-REP [TGT (krbtgt anahtarlı)|                               |
+           |             + Oturum Anahtarı K_c_t]                              |
+           |<--------------------------------|                                 |
+           |                                                                   |
+           |             +---------------------------------------+             |
+           |             | Ticket Granting Service (TGS)         |             |
+           |             | [Hedef SPN Anahtarı ile ST Şifreler]  |             |
+           |             +-------------------+-------------------+             |
+           |                                 |                                 |
+           |  3. TGS-REQ [TGT + Authenticator|                                 |
+           |             + Hedef SPN]        |                                 |
+           |-------------------------------->|                                 |
+           |  4. TGS-REP [Servis Bileti (ST) |                                 |
+           |             + Oturum Anahtarı K_c_s]                              |
+           |<--------------------------------|                                 |
+           |                                                                   |
+           |  5. AP-REQ [Servis Bileti + Authenticator (K_c_s)]                |
+           |------------------------------------------------------------------>|
+           |  6. AP-REP [Karşılıklı Doğrulama - Mutual Auth]                   |
+           |<------------------------------------------------------------------|
+
+--------------------------------------------------------------------------------
+KRİTİK GÜVENLİK KONTROL NOKTALARI VE SALDIRI VEKTÖRLERİ:
+--------------------------------------------------------------------------------
+ [1] AS-REQ  : DONT_REQ_PREAUTH kontrolü -> AS-REP Roasting Savunması
+ [2] AS-REP  : Güçlü Şifreleme Zorlaması -> AES-256 (RC4/DES Downgrade Engeli)
+ [3] TGS-REQ : TGT Doğrulaması           -> Golden Ticket Tespiti (KRBTGT İmzası)
+ [4] TGS-REQ : Replay Cache Kontrolü     -> Yinelenen Authenticator Tespiti
+ [5] AP-REQ  : Servis Anahtarı Çözümü    -> Silver Ticket Tespiti
+ [6] AP-REQ  : PAC HMAC Bütünlük Denetimi-> Yetki Yükseltme (Privilege Escalation) Engeli
+================================================================================

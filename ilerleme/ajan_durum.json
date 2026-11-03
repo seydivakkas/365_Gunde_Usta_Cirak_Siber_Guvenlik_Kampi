@@ -1,9 +1,9 @@
 {
-  "son_islenen_gun": 143,
-  "son_kapanan_pass_gun": 143,
-  "sonraki_aday_gun": 144,
-  "son_durum": "G143_TAMAMLANDI_PASS",
-  "sonuc_dosyasi": "portfolio/hafta_21/gun_143/sonuc.json",
+  "son_islenen_gun": 144,
+  "son_kapanan_pass_gun": 144,
+  "sonraki_aday_gun": 145,
+  "son_durum": "G144_TAMAMLANDI_PASS",
+  "sonuc_dosyasi": "portfolio/hafta_21/gun_144/sonuc.json",
   "excel_dogrulandi": true,
   "mod": "OTOMATIK_ZINCIR",
   "tamamlanan_gunler": [
@@ -64,12 +64,13 @@
     140,
     141,
     142,
-    143
+    143,
+    144
   ],
-  "guncelleme_tarihi": "2026-11-02T19:13:00.000000",
-  "durum_notu": "Gün 143: Active Directory etki alanı (Hafta 21 / Aşama 6) 100/100 PASS ile tamamlandı. Gün 144: Kerberos ve NTLM temelleri konusuna hazır.",
-  "durum": "G143_TAMAMLANDI_PASS",
-  "son_islem_tarihi": "2026-11-02T19:13:00.000000",
-  "son_guncelleme": "2026-11-02T19:13:00.000000",
-  "guncelleme_zamani": "2026-11-02T19:13:00.000000"
+  "guncelleme_tarihi": "2026-11-03T09:58:30.000000",
+  "durum_notu": "Gün 144: Kerberos temel bilet akışı (Hafta 21 / Aşama 6) 100/100 PASS ile tamamlandı. Gün 145: Group Policy güvenlik etkileri konusuna hazır.",
+  "durum": "G144_TAMAMLANDI_PASS",
+  "son_islem_tarihi": "2026-11-03T09:58:30.000000",
+  "son_guncelleme": "2026-11-03T09:58:30.000000",
+  "guncelleme_zamani": "2026-11-03T09:58:30.000000"
 }

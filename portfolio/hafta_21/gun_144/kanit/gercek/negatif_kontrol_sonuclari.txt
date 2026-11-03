@@ -1,0 +1,68 @@
+======================================================================
+GÜN 144: KERBEROS NEGATİF KONTROL VE ZAFİYET SENARYO DENETİMİ
+Tarih/Saat: 2026-11-03T09:54:40.194658
+======================================================================
+
+Senaryo ID   : NEG-KERB-01
+Başlık        : Aşırı Saat Sapması (Clock Skew > 300s)
+Kategori      : TIME_SYNCHRONIZATION
+Hedef Kural   : CLOCK_SKEW
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE ENGELLENDİ (PASS)
+Açıklama      : Aşırı saat sapması nedeniyle AS-REQ reddedildi.
+----------------------------------------------------------------------
+Senaryo ID   : NEG-KERB-02
+Başlık        : Yeniden Oynatma Saldırısı (Replay Attack)
+Kategori      : AUTHENTICATOR_INTEGRITY
+Hedef Kural   : REPLAY_ATTACK_DETECTED
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE ENGELLENDİ (PASS)
+Açıklama      : Yinelenen kanıtlayıcı Replay Cache tarafından engellendi.
+----------------------------------------------------------------------
+Senaryo ID   : NEG-KERB-03
+Başlık        : Süresi Dolmuş TGT Bilet İsteği (Expired Ticket)
+Kategori      : TICKET_LIFETIME
+Hedef Kural   : TGT_EXPIRED
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE ENGELLENDİ (PASS)
+Açıklama      : Süresi dolmuş TGT ile servis bileti talebi engellendi.
+----------------------------------------------------------------------
+Senaryo ID   : NEG-KERB-04
+Başlık        : Şifreleme Algoritması Düşürme Saldırısı (Cipher Downgrade - RC4)
+Kategori      : CRYPTOGRAPHIC_POLICY
+Hedef Kural   : CIPHER_SUITE_DOWNGRADE
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE ENGELLENDİ (PASS)
+Açıklama      : Eski RC4-HMAC şifreleme talebi düşürme atağı olarak reddedildi.
+----------------------------------------------------------------------
+Senaryo ID   : NEG-KERB-05
+Başlık        : Ön Kimlik Doğrulama Eksikliği (AS-REP Roasting)
+Kategori      : PRE_AUTHENTICATION
+Hedef Kural   : PRE_AUTHENTICATION
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE ENGELLENDİ (PASS)
+Açıklama      : Ön kimlik doğrulama olmadan TGT talebi reddedildi.
+----------------------------------------------------------------------
+Senaryo ID   : NEG-KERB-06
+Başlık        : Sahte TGT Bilet İmzası (Golden Ticket Simülasyonu)
+Kategori      : TICKET_FORGERY
+Hedef Kural   : GOLDEN_TICKET_DETECTED
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE ENGELLENDİ (PASS)
+Açıklama      : KDC anahtarıyla uyuşmayan sahte TGT tespit edildi.
+----------------------------------------------------------------------
+Senaryo ID   : NEG-KERB-07
+Başlık        : Sahte Servis Bileti (Silver Ticket Simülasyonu)
+Kategori      : TICKET_FORGERY
+Hedef Kural   : SILVER_TICKET_DETECTED
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE ENGELLENDİ (PASS)
+Açıklama      : Hedef servis anahtarıyla uyuşmayan sahte servis bileti yakalandı.
+----------------------------------------------------------------------
+Senaryo ID   : NEG-KERB-08
+Başlık        : PAC Sunucu İmzası Tahrifatı (Yetki Yükseltme Girişimi)
+Kategori      : PAC_INTEGRITY
+Hedef Kural   : PAC_SERVER_SIG_TAMPERED
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE ENGELLENDİ (PASS)
+Açıklama      : PAC sunucu imzasındaki tahrifat tespit edildi.
+----------------------------------------------------------------------
+Senaryo ID   : NEG-KERB-09
+Başlık        : Bilinmeyen Servis Asıl Adı (Unregistered SPN)
+Kategori      : SERVICE_RESOLUTION
+Hedef Kural   : SPN_EXISTENCE
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE ENGELLENDİ (PASS)
+Açıklama      : KDC veritabanında olmayan SPN isteği reddedildi.
+----------------------------------------------------------------------

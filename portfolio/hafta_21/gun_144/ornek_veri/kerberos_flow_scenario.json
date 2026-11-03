@@ -1,0 +1,31 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "realm": "KURUM.LOCAL",
+  "aciklama": "Kurumsal Kerberos v5 Bilet Takas Spesifikasyonu (RFC 4120 & RFC 3962 AES256)",
+  "istemci": {
+    "principal": "canan@KURUM.LOCAL",
+    "require_preauth": true,
+    "key_type": "AES256-CTS-HMAC-SHA1-96",
+    "test_key_hex": "4a7b9c1d2e3f405162738495a6b7c8d9e0f1a2b3c4d5e6f708192a3b4c5d6e7f"
+  },
+  "hedef_servis": {
+    "spn": "cifs/fs01.kurum.local",
+    "key_type": "AES256-CTS-HMAC-SHA1-96",
+    "test_key_hex": "112233445566778899aabbccddeeff00112233445566778899aabbccddeeff00"
+  },
+  "kdc_yapilandirma": {
+    "max_clock_skew_seconds": 300,
+    "tgt_lifetime_hours": 10,
+    "tgs_lifetime_hours": 10,
+    "renewal_lifetime_days": 7,
+    "enforce_aes": true,
+    "allow_rc4_downgrade": false
+  },
+  "pac_profili": {
+    "user_sid": "S-1-5-21-3928172910-1092837411-928172819-1105",
+    "group_sids": [
+      "S-1-5-21-3928172910-1092837411-928172819-513",
+      "S-1-5-21-3928172910-1092837411-928172819-545"
+    ]
+  }
+}

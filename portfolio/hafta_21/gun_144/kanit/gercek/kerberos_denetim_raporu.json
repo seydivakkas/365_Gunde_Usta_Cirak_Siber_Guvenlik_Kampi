@@ -1,0 +1,42 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas).",
+  "tarih": "2026-11-03T06:54:40.194664+00:00",
+  "realm": "KURUM.LOCAL",
+  "istemci": "canan@KURUM.LOCAL",
+  "servis": "cifs/fs01.kurum.local",
+  "dogrulama_durumu": "SUCCESS",
+  "guvenlik_skoru": 100,
+  "anomaliler": [],
+  "denetim_adimlari": [
+    {
+      "kural": "SERVICE_TICKET_VALIDITY",
+      "durum": "PASS",
+      "seviye": "INFO",
+      "mesaj": "Servis bileti geçerlilik süresi içinde."
+    },
+    {
+      "kural": "AP_CLOCK_SKEW_OK",
+      "durum": "PASS",
+      "seviye": "INFO",
+      "mesaj": "Saat sapması güvenli aralıkta (0.0s)."
+    },
+    {
+      "kural": "AP_REPLAY_CACHE_OK",
+      "durum": "PASS",
+      "seviye": "INFO",
+      "mesaj": "Kanıtlayıcı özgün ve daha önce görülmemiş."
+    },
+    {
+      "kural": "PAC_SERVER_SIG_OK",
+      "durum": "PASS",
+      "seviye": "INFO",
+      "mesaj": "PAC Sunucu İmzası başarıyla doğrulandı."
+    },
+    {
+      "kural": "PAC_KDC_SIG_OK",
+      "durum": "PASS",
+      "seviye": "INFO",
+      "mesaj": "PAC KDC İmzası başarıyla doğrulandı."
+    }
+  ]
+}

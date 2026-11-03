@@ -1,0 +1,89 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas).",
+  "gun": 144,
+  "hafta": 21,
+  "konu": "Kerberos temel bilet akışı",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "cc346a8bf0cc2761e9092b55ad69f2e3a4c53f7f3bf256b1e7723374914e23ac",
+      "size_bytes": 5038
+    },
+    "ders.md": {
+      "sha256": "57fc9559026bb294e94dac5b0a8b6a76f823c625dbdf0a3316bc34fa17216d59",
+      "size_bytes": 10730
+    },
+    "kanit_uretici.py": {
+      "sha256": "0bb14170054a315f8731a5b67053e1d8498494df58648c88d769398511f3a6ae",
+      "size_bytes": 25195
+    },
+    "rapor.md": {
+      "sha256": "c9ea5ef9ed553a2dd6b533ef245de39542e872d5f6e5ba3f6afea68a1a90b4ab",
+      "size_bytes": 4658
+    },
+    "sonuc.json": {
+      "sha256": "17b685fd9b8d2ee3ff77e2ff32f08bb5bd2fdcb47736b2ee49de8adfd9b979d6",
+      "size_bytes": 1210
+    },
+    "soru_cevap.md": {
+      "sha256": "84fb34c806f2d1de1ad2758dbe9c8a5f5edc9d59b2b4a6bd4b6d1b556d4691c5",
+      "size_bytes": 11361
+    },
+    "kanit\\gercek\\kerberos_denetim_raporu.json": {
+      "sha256": "d7eb1babcb62ab99223e68da28c99afb5ae500ae783c3287b337c144267675df",
+      "size_bytes": 1196
+    },
+    "kanit\\gercek\\kerberos_hardening_matrix.json": {
+      "sha256": "ac6b6df743c979ca5507f501e103486abe0c2b98814a29e43d1b2f0801bcf14a",
+      "size_bytes": 1789
+    },
+    "kanit\\gercek\\kerberos_sertlestirme_betigi.ps1": {
+      "sha256": "0a752403857fa9d602e834fd73fdaa96c6c5d068625d794ce5e45eacac30a46d",
+      "size_bytes": 1346
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "sha256": "1c3d5eebb9b6d0246fb8de7594161f6ec01d38f4174af5b93b6663e730b25e35",
+      "size_bytes": 1718
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "sha256": "1062151ffb5a78933d4eac511f97560b7880667300a9879aa77d616635b3c233",
+      "size_bytes": 3783
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "sha256": "b56e8eb0e51680d7d69411e7959049c6356c52ac93460abfe6a2a26b20a2ceb7",
+      "size_bytes": 3901
+    },
+    "kanit\\temsili\\kerberos_bilet_mimarisi.txt": {
+      "sha256": "7bd024195ef13cf1eacf3f132484885ff3cbd11e8dbd73860a6b823a49e121c0",
+      "size_bytes": 3554
+    },
+    "ornek_veri\\invalid_kerberos_scenarios.json": {
+      "sha256": "629605d612db20df645a6172bd5b2cfa6fd03ffe61b5165f5254a256594425f4",
+      "size_bytes": 3758
+    },
+    "ornek_veri\\kerberos_flow_scenario.json": {
+      "sha256": "52abc5dfdfbb2d06b3bf549a84ce33a6304a9ebae72f949bcca59283ac50baa1",
+      "size_bytes": 1117
+    },
+    "tests\\__init__.py": {
+      "sha256": "47f8c4c1b28f5a04932ba20c8f0df0ae245d1d1c036a76928f457451dfa2af5a",
+      "size_bytes": 592
+    },
+    "tests\\test_kerberos_ticket_flow.py": {
+      "sha256": "4b61ce12bd747bb5df234b5010e6baa952c831281485d965a755fc2d32222542",
+      "size_bytes": 16817
+    },
+    "uygulama\\__init__.py": {
+      "sha256": "afa073acfa2fd5b8c01f48207ec93edde40a4378cf1b5d65f352b29e02465d35",
+      "size_bytes": 1068
+    },
+    "uygulama\\kerberos_flow_cli.py": {
+      "sha256": "7e10559ab00747a4ce26c2668732c7cbcaa513ee0de30330a22da54536941a02",
+      "size_bytes": 11375
+    },
+    "uygulama\\kerberos_ticket_flow_engine.py": {
+      "sha256": "ef945d6ad4301062bc0dca1e46cc4ff0d60316337be0cd31c1e662f307f069f0",
+      "size_bytes": 33270
+    }
+  }
+}

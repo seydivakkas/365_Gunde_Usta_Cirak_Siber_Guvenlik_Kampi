@@ -1,0 +1,44 @@
+======================================================================
+GÜN 144: KERBEROS TEMEL BİLET AKIŞI BİRİM TEST SONUÇLARI
+Tarih/Saat      : 2026-11-03T09:54:40.194221
+Toplam Test     : 15
+Başarılı        : 15
+Hatalı/Kırık    : 0
+Koşum Süresi    : 0.0017 saniye
+======================================================================
+
+test_01_successful_full_lifecycle_exchange (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_01_successful_full_lifecycle_exchange)
+1. Test: Tam Kerberos bilet takasının (AS -> TGS -> AP) AES-256 ile başarıyla tamamlanması. ... ok
+test_02_preauth_required_missing_timestamp (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_02_preauth_required_missing_timestamp)
+2. Test: Ön kimlik doğrulama zorunlu olan kullanıcıda zaman damgası gönderilmezse AS-REQ reddedilmelidir. ... ok
+test_03_as_req_clock_skew_exceeded (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_03_as_req_clock_skew_exceeded)
+3. Test: İstemci zaman damgası izin verilen 300 saniyelik saat sapmasını aşarsa AS-REQ reddedilmelidir. ... ok
+test_04_preauth_disabled_warning (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_04_preauth_disabled_warning)
+4. Test: DONT_REQ_PREAUTH bayrağı aktif kullanıcıda zafiyet uyarısı üretilmelidir. ... ok
+test_05_cipher_downgrade_rc4_rejected (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_05_cipher_downgrade_rc4_rejected)
+5. Test: RC4-HMAC şifreleme süiti talep edildiğinde düşürme (downgrade) saldırısı olarak reddedilmelidir. ... ok
+test_06_cipher_downgrade_des_rejected (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_06_cipher_downgrade_des_rejected)
+6. Test: Kullanımdan kalkan DES-CBC-MD5 şifrelemesi kesinlikle reddedilmelidir. ... ok
+test_07_tgs_unknown_spn_fails (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_07_tgs_unknown_spn_fails)
+7. Test: Kayıtlı olmayan bir SPN için TGS-REQ yapıldığında istek reddedilmelidir. ... ok
+test_08_golden_ticket_detection (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_08_golden_ticket_detection)
+8. Test: Sahte TGT yükü (Golden Ticket) sunulduğunda KDC tarafından anında yakalanmalıdır. ... ok
+test_09_expired_tgt_rejected (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_09_expired_tgt_rejected)
+9. Test: Süresi dolmuş TGT sunulduğunda TGS-REQ reddedilmelidir. ... ok
+test_10_authenticator_client_mismatch (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_10_authenticator_client_mismatch)
+10. Test: Kanıtlayıcıdaki istemci ile TGT içindeki istemci uyuşmazsa TGS-REQ reddedilmelidir. ... ok
+test_11_tgs_replay_attack_prevention (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_11_tgs_replay_attack_prevention)
+11. Test: TGS aşamasında aynı kanıtlayıcı iki kez sunulursa yeniden oynatma (Replay) olarak engellenmelidir. ... ok
+test_12_silver_ticket_detection (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_12_silver_ticket_detection)
+12. Test: Servis anahtarıyla uyuşmayan sahte servis bileti (Silver Ticket) AP-REQ'de tespit edilmelidir. ... ok
+test_13_pac_server_signature_tampering (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_13_pac_server_signature_tampering)
+13. Test: Bilet içindeki PAC sunucu imzası tahrif edilirse AP-REQ'de tespit edilmelidir. ... ok
+test_14_pac_kdc_signature_tampering (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_14_pac_kdc_signature_tampering)
+14. Test: PAC KDC imzası bozulursa sahte KDC bileti tespit edilmelidir. ... ok
+test_15_ap_req_replay_attack_prevention (test_kerberos_ticket_flow.TestKerberosTicketFlow.test_15_ap_req_replay_attack_prevention)
+15. Test: AP-REQ aşamasında aynı kanıtlayıcı tekrar sunulursa sunucu tarafından engellenmelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.002s
+
+OK

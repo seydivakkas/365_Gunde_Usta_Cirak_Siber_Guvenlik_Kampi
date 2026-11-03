@@ -1,0 +1,95 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "senaryolar": [
+    {
+      "senaryo_id": "NEG-KERB-01",
+      "baslik": "Aşırı Saat Sapması (Clock Skew > 300s)",
+      "kategori": "TIME_SYNCHRONIZATION",
+      "beklenen_kural": "CLOCK_SKEW",
+      "aciklama": "İstemci ile KDC arasındaki saat farkının RFC 4120 eşiği olan 300 saniyeyi aşması durumu.",
+      "parametreler": {
+        "clock_skew_seconds": 600
+      }
+    },
+    {
+      "senaryo_id": "NEG-KERB-02",
+      "baslik": "Yeniden Oynatma Saldırısı (Replay Attack)",
+      "kategori": "AUTHENTICATOR_INTEGRITY",
+      "beklenen_kural": "REPLAY_ATTACK_DETECTED",
+      "aciklama": "Aynı istemci adı, zaman damgası ve cusec değerine sahip kanıtlayıcının (Authenticator) iki kez sunulması.",
+      "parametreler": {
+        "replay_duplicate": true
+      }
+    },
+    {
+      "senaryo_id": "NEG-KERB-03",
+      "baslik": "Süresi Dolmuş TGT Bilet İsteği (Expired Ticket)",
+      "kategori": "TICKET_LIFETIME",
+      "beklenen_kural": "TGT_EXPIRED",
+      "aciklama": "10 saatlik geçerlilik süresi (lifetime) sona ermiş bir TGT ile TGS-REQ servis bileti talep edilmesi.",
+      "parametreler": {
+        "ticket_age_hours": 12
+      }
+    },
+    {
+      "senaryo_id": "NEG-KERB-04",
+      "baslik": "Şifreleme Algoritması Düşürme Saldırısı (Cipher Downgrade - RC4)",
+      "kategori": "CRYPTOGRAPHIC_POLICY",
+      "beklenen_kural": "CIPHER_SUITE_DOWNGRADE",
+      "aciklama": "Modern AES yerine güvensiz RC4-HMAC şifreleme süitinin talep edilmesi.",
+      "parametreler": {
+        "requested_cipher": "RC4-HMAC"
+      }
+    },
+    {
+      "senaryo_id": "NEG-KERB-05",
+      "baslik": "Ön Kimlik Doğrulama Eksikliği (AS-REP Roasting)",
+      "kategori": "PRE_AUTHENTICATION",
+      "beklenen_kural": "PRE_AUTHENTICATION",
+      "aciklama": "Ön kimlik doğrulama zorunlu olan kullanıcı için PA-ENC-TIMESTAMP olmadan TGT talep edilmesi.",
+      "parametreler": {
+        "omit_preauth_timestamp": true
+      }
+    },
+    {
+      "senaryo_id": "NEG-KERB-06",
+      "baslik": "Sahte TGT Bilet İmzası (Golden Ticket Simülasyonu)",
+      "kategori": "TICKET_FORGERY",
+      "beklenen_kural": "GOLDEN_TICKET_DETECTED",
+      "aciklama": "KDC'nin krbtgt anahtarıyla imzalanmamış sahte bir TGT yükünün TGS servisine sunulması.",
+      "parametreler": {
+        "tamper_tgt_hash": true
+      }
+    },
+    {
+      "senaryo_id": "NEG-KERB-07",
+      "baslik": "Sahte Servis Bileti (Silver Ticket Simülasyonu)",
+      "kategori": "TICKET_FORGERY",
+      "beklenen_kural": "SILVER_TICKET_DETECTED",
+      "aciklama": "Hedef servisin gerçek parola anahtarıyla imzalanmamış sahte bir TGS biletinin AP-REQ'de sunulması.",
+      "parametreler": {
+        "tamper_service_ticket_hash": true
+      }
+    },
+    {
+      "senaryo_id": "NEG-KERB-08",
+      "baslik": "PAC Sunucu İmzası Tahrifatı (Yetki Yükseltme Girişimi)",
+      "kategori": "PAC_INTEGRITY",
+      "beklenen_kural": "PAC_SERVER_SIG_TAMPERED",
+      "aciklama": "Biletin taşıdığı PAC grubuna izinsiz Domain Admins SID eklenmesi ve imzanın geçersiz kalması.",
+      "parametreler": {
+        "inject_group_sid": "S-1-5-21-3928172910-1092837411-928172819-512"
+      }
+    },
+    {
+      "senaryo_id": "NEG-KERB-09",
+      "baslik": "Bilinmeyen Servis Asıl Adı (Unregistered SPN)",
+      "kategori": "SERVICE_RESOLUTION",
+      "beklenen_kural": "SPN_EXISTENCE",
+      "aciklama": "Active Directory KDC veritabanında kayıtlı olmayan bir SPN için servis bileti istenmesi.",
+      "parametreler": {
+        "target_spn": "http/unknown-web.kurum.local"
+      }
+    }
+  ]
+}
