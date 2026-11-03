@@ -1,0 +1,43 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 148: KURUMSAL EDR, AV VE UÇ NOKTA TELEMETRİ MİMARİSİ
+================================================================================
+
+                                  [İŞLETİM SİSTEMİ ÇEKİRDEĞİ / KERNEL DÜZLEMİ]
+                                  (Kernel Callbacks: PsSetCreateProcessNotifyRoutineEx,
+                                   ObRegisterCallbacks, ETW Threat Intelligence)
+                                                        │
+         +----------------------------------------------+----------------------------------------------+
+         │                                              │                                              │
+         ▼                                              ▼                                              ▼
++--------------------------------+     +--------------------------------+     +--------------------------------+
+|       1. TELEMETRİ TOPLAMA     |     |       2. DAVRANIŞSAL EDR       |     |       3. STATİK AV MOTORU      |
+|       (Sysmon / ETW Sensörü)   |     |       (Anomali ve Korelasyon)  |     |       (İmza / Hash / YARA)     |
+|--------------------------------|     |--------------------------------|     |--------------------------------|
+| - Event 1: Process Creation    |     | - Süreç Soy Ağacı Analizi:     |     | - SHA-256 Bilinen Zararlı      |
+|   (Parent Image, Args, Token)  |     |   Word -> powershell.exe       |     |   Malware Hash Eşleşmesi       |
+| - Event 3: Network Connection  |     | - Bellek Müdahale Tespiti:     |     | - YARA Kural Eşleşmesi:        |
+|   (Dest IP, Port, C2 Beacon)   |     |   lsass.exe bellek okuma       |     |   sekurlsa / Mimikatz string   |
+| - Event 8: CreateRemoteThread  |     | - Process Injection / Hollowing|     | - EICAR Standart Test İmzası   |
+| - Event 12/13: Registry Run Key|     | - C2 Harici Port Bağlantısı    |     |                                |
++--------------------------------+     +--------------------------------+     +--------------------------------+
+         │                                              │                                              │
+         +----------------------------------------------+----------------------------------------------+
+                                                        │
+                                                        ▼
+                                  [OTONOM MÜDAHALE VE TEHDİT SINIRLANDIRMA]
+                                                        │
+                         +------------------------------+------------------------------+
+                         │                                                             │
+                         ▼                                                             ▼
+         +--------------------------------+                             +--------------------------------+
+         |      PROCESS TERMINATION       |                             |         HOST ISOLATION         |
+         |      (Stop-Process -Id <pid>)  |                             |   (Ağdan İzole Etme / Blokaj)  |
+         |  Zararlı süreç ağacı anında    |                             |  C2 ve LSASS saldırılarında    |
+         |  çekirdek seviyesinde öldürülür|                             |  uç nokta karantinaya alınır.  |
+         +--------------------------------+                             +--------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

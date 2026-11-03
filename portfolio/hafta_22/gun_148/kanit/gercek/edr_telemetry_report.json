@@ -1,0 +1,13 @@
+{
+  "modul": "Gün 148: EDR, AV ve Telemetri",
+  "toplam_olay": 5,
+  "av_tespit_sayisi": 0,
+  "edr_tespit_sayisi": 0,
+  "toplam_alarm": 0,
+  "oldurulen_pidler": [],
+  "karantinaya_alinan_dosyalar": [],
+  "ag_izolasyonu": false,
+  "guvenlik_puani": 100.0,
+  "mitre_kapsami": [],
+  "alarmlar": []
+}

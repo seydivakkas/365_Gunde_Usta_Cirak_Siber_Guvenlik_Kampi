@@ -1,0 +1,76 @@
+{
+  "_aciklama": "Gün 148: Temiz Uç Nokta Telemetri ve Güvenli Sistem Olayları Akışı",
+  "_lisans": "Özel Lisans — Tüm Hakları Saklıdır. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "events": [
+    {
+      "event_id": "TEL-CLEAN-01",
+      "timestamp": "2026-11-03T09:00:00Z",
+      "event_type": "PROCESS_CREATE",
+      "pid": 1004,
+      "process_name": "explorer.exe",
+      "parent_pid": 800,
+      "parent_name": "userinit.exe",
+      "command_line": "C:\\Windows\\explorer.exe",
+      "user": "KURUM\\seydi"
+    },
+    {
+      "event_id": "TEL-CLEAN-02",
+      "timestamp": "2026-11-03T09:01:15Z",
+      "event_type": "PROCESS_CREATE",
+      "pid": 2048,
+      "process_name": "chrome.exe",
+      "parent_pid": 1004,
+      "parent_name": "explorer.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\"",
+      "user": "KURUM\\seydi"
+    },
+    {
+      "event_id": "TEL-CLEAN-03",
+      "timestamp": "2026-11-03T09:02:00Z",
+      "event_type": "NETWORK_CONNECT",
+      "pid": 2048,
+      "process_name": "chrome.exe",
+      "parent_pid": 1004,
+      "parent_name": "explorer.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\"",
+      "user": "KURUM\\seydi",
+      "details": {
+        "dest_ip": "142.250.185.206",
+        "dest_port": 443,
+        "protocol": "TCP"
+      }
+    },
+    {
+      "event_id": "TEL-CLEAN-04",
+      "timestamp": "2026-11-03T09:05:30Z",
+      "event_type": "PROCESS_CREATE",
+      "pid": 3110,
+      "process_name": "notepad.exe",
+      "parent_pid": 1004,
+      "parent_name": "explorer.exe",
+      "command_line": "notepad.exe C:\\Users\\seydi\\Documents\\notlar.txt",
+      "user": "KURUM\\seydi"
+    },
+    {
+      "event_id": "TEL-CLEAN-05",
+      "timestamp": "2026-11-03T09:10:00Z",
+      "event_type": "FILE_WRITE",
+      "pid": 3110,
+      "process_name": "notepad.exe",
+      "parent_pid": 1004,
+      "parent_name": "explorer.exe",
+      "command_line": "notepad.exe",
+      "user": "KURUM\\seydi",
+      "details": {
+        "file_path": "C:\\Users\\seydi\\Documents\\notlar.txt",
+        "bytes_written": 256
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "C:\\Windows\\System32\\notepad.exe",
+      "content": "MZ_BENIGN_PE_HEADER_CLEAN_MICROSOFT_BINARY"
+    }
+  ]
+}

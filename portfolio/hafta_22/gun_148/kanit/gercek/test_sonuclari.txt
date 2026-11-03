@@ -1,0 +1,43 @@
+======================================================================
+GÜN 148: EDR, AV VE TELEMETRİ BİRİM TEST SONUÇLARI
+Tarih/Saat      : 2026-11-03T23:47:12.432826
+Toplam Test     : 15
+Başarılı        : 15
+Hatalı/Kırık    : 0
+Koşum Süresi    : 0.0017 saniye
+======================================================================
+test_01_clean_telemetry_batch_pass (test_edr_telemetry.TestEDRTelemetryEngine.test_01_clean_telemetry_batch_pass)
+1. Test: Temiz ve olağan sistem olaylarının 100 tam puan almasını doğrular. ... ok
+test_02_av_eicar_test_signature_detected (test_edr_telemetry.TestEDRTelemetryEngine.test_02_av_eicar_test_signature_detected)
+2. Test: EICAR test dizgisi içeren dosyanın statik AV ile yakalanıp karantinaya alınmasını doğrular. ... ok
+test_03_av_mimikatz_hash_detected (test_edr_telemetry.TestEDRTelemetryEngine.test_03_av_mimikatz_hash_detected)
+3. Test: Bilinen Mimikatz hash veya komut kalıbının CRITICAL AV alarmı üretmesini doğrular. ... ok
+test_04_edr_office_macro_powershell_spawn (test_edr_telemetry.TestEDRTelemetryEngine.test_04_edr_office_macro_powershell_spawn)
+4. Test: Word sürecinin PowerShell başlatmasının (Makro Phishing) EDR tarafından yakalanmasını doğrular. ... ok
+test_05_edr_encoded_powershell_download_cradle (test_edr_telemetry.TestEDRTelemetryEngine.test_05_edr_encoded_powershell_download_cradle)
+5. Test: Base64 kodlu (-enc) veya DownloadString içeren PowerShell'in yakalanmasını doğrular. ... ok
+test_06_edr_lsass_memory_dumping_detected (test_edr_telemetry.TestEDRTelemetryEngine.test_06_edr_lsass_memory_dumping_detected)
+6. Test: lsass.exe bellek okuma girişiminin (T1003.001) tespiti ve Host Isolation tavsiyesini doğrular. ... ok
+test_07_edr_process_injection_virtualalloc_createremotethread (test_edr_telemetry.TestEDRTelemetryEngine.test_07_edr_process_injection_virtualalloc_createremotethread)
+7. Test: CreateRemoteThread çapraz süreç bellek enjeksiyonunun (T1055) yakalanmasını doğrular. ... ok
+test_08_edr_registry_run_key_persistence (test_edr_telemetry.TestEDRTelemetryEngine.test_08_edr_registry_run_key_persistence)
+8. Test: CurrentVersion\Run kalıcılık anahtarı yazımının (T1547.001) tespitini doğrular. ... ok
+test_09_edr_c2_network_beaconing_detected (test_edr_telemetry.TestEDRTelemetryEngine.test_09_edr_c2_network_beaconing_detected)
+9. Test: Şüpheli porta (4444) bağlanan bilinmeyen sürecin C2 olarak yakalanmasını doğrular. ... ok
+test_10_edr_tampering_service_stop_detected (test_edr_telemetry.TestEDRTelemetryEngine.test_10_edr_tampering_service_stop_detected)
+10. Test: WinDefend antivirüs servisini durdurma girişiminin (T1562.001) engellenmesini doğrular. ... ok
+test_11_response_powershell_script_generation (test_edr_telemetry.TestEDRTelemetryEngine.test_11_response_powershell_script_generation)
+11. Test: Otomatik PowerShell müdahale betiğinin Stop-Process ve New-NetFirewallRule içermesini doğrular. ... ok
+test_12_mitre_coverage_mapping (test_edr_telemetry.TestEDRTelemetryEngine.test_12_mitre_coverage_mapping)
+12. Test: Tehdit analizinde MITRE ATT&CK tekniklerinin özet raporda listelenmesini doğrular. ... ok
+test_13_killed_pids_collection (test_edr_telemetry.TestEDRTelemetryEngine.test_13_killed_pids_collection)
+13. Test: Sonlandırılacak PID listesinin tekilleştirildiğini doğrular. ... ok
+test_14_benign_browser_network_traffic_ignored (test_edr_telemetry.TestEDRTelemetryEngine.test_14_benign_browser_network_traffic_ignored)
+14. Test: Meşru tarayıcı süreçlerinin standart portlara erişiminde alarm üretilmemesini doğrular. ... ok
+test_15_mitre_matrix_json_structure (test_edr_telemetry.TestEDRTelemetryEngine.test_15_mitre_matrix_json_structure)
+15. Test: generate_mitre_matrix_json çıktısının ATT&CK taktik ve tekniklerini eksiksiz içermesini doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.002s
+
+OK

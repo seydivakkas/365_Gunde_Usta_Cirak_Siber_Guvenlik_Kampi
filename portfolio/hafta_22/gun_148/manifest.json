@@ -1,0 +1,89 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas).",
+  "gun": 148,
+  "hafta": 22,
+  "konu": "EDR, AV ve telemetri",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "6ba7488797a59aeab718fc0b3477978a885735d4e926237db9a159affd05d892",
+      "size_bytes": 4885
+    },
+    "ders.md": {
+      "sha256": "2305bf11a9ff7434b0b8db843f645fc67ed00aed961a6e3a4422c9cb29d97e88",
+      "size_bytes": 7343
+    },
+    "kanit_uretici.py": {
+      "sha256": "7a8a261bae0a0a02fd7425da7a75d78dbda9f5f6e5c30f1f4125442911691459",
+      "size_bytes": 15656
+    },
+    "rapor.md": {
+      "sha256": "3937505ab6bbb950d0c93948be572bb7a8dbb48a44c78a3b7bb4da23d3b8221b",
+      "size_bytes": 6136
+    },
+    "sonuc.json": {
+      "sha256": "d86aaea98defc306b6f960491f679cc932767e2c39c90289cc33abd9c7892afd",
+      "size_bytes": 1147
+    },
+    "soru_cevap.md": {
+      "sha256": "cf83d52212efee055043160d3a08ecb77244272706b8cc64a8d4ef88034ff421",
+      "size_bytes": 13038
+    },
+    "kanit\\gercek\\edr_mitre_matrix.json": {
+      "sha256": "08829787f17cd99fc122488d80091181412c3f7d39f257167548d114463bddf9",
+      "size_bytes": 2242
+    },
+    "kanit\\gercek\\edr_response_remediation.ps1": {
+      "sha256": "b8d74b20b6e55477c25065f89d08bd3932ecb6172083762c8b65e68eb9674c0f",
+      "size_bytes": 705
+    },
+    "kanit\\gercek\\edr_telemetry_report.json": {
+      "sha256": "fe85553047cc3234dd2da3ef353bcb5f1f26d28eec9192f7667405a9b436a56f",
+      "size_bytes": 308
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "sha256": "080a50eee31fb39e8b2f8752cc2143538667c2cf92714259ce955bf0650bc22d",
+      "size_bytes": 1079
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "sha256": "217ad1bc51f80c0e3b99643b48a841689b892b667dab5c5e42bc7e6a7342cfc3",
+      "size_bytes": 5605
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "sha256": "9a5aaedeba46bdc52fb1e7a2a2586a003af9880abc5504d87f0a1a51d4c84ebe",
+      "size_bytes": 3999
+    },
+    "kanit\\temsili\\edr_av_mimarisi.txt": {
+      "sha256": "d1b218ea5999beee5208358c7dfdee667b841c4027cffef3650b2dea7e3b52be",
+      "size_bytes": 3947
+    },
+    "ornek_veri\\clean_system_telemetry.json": {
+      "sha256": "86cf89506bb3c009202c436aabb7e59fd582142f2d2381321d8cd1261e65c367",
+      "size_bytes": 2324
+    },
+    "ornek_veri\\invalid_telemetry_scenarios.json": {
+      "sha256": "261f106f2536deaab295587a3a89ceb527e8e22356062dbe62698d0e2adc1f58",
+      "size_bytes": 6590
+    },
+    "tests\\__init__.py": {
+      "sha256": "aa5c3e49ab8575dc867c455bf68701511dd5cd4e7d8a1155388ee68e4b2f75be",
+      "size_bytes": 145
+    },
+    "tests\\test_edr_telemetry.py": {
+      "sha256": "b5cfdde0be36682aa991f295fd0e91a3eb9a977dbdb9b2f588d1094b3de1747d",
+      "size_bytes": 13453
+    },
+    "uygulama\\__init__.py": {
+      "sha256": "4b439fb28c7a23df05abfafec0a679278efbeb7de0843d0bee0d2a36e69dec60",
+      "size_bytes": 685
+    },
+    "uygulama\\edr_telemetry_cli.py": {
+      "sha256": "bd4cc47b2cdcfc6675c60ac2953acbd3c812b47fc8ff47d0953aeaa22b95e0ce",
+      "size_bytes": 6322
+    },
+    "uygulama\\edr_telemetry_engine.py": {
+      "sha256": "61ce99bbe8a18393c63e01d6ee02e442feee12035de18d4b4736f67d530a7cf1",
+      "size_bytes": 30866
+    }
+  }
+}

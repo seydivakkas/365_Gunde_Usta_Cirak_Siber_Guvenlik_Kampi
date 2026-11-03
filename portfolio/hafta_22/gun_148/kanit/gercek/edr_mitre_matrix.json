@@ -1,0 +1,62 @@
+{
+  "motor": "Enterprise EDR & AV Telemetry Correlation Engine",
+  "cerceve": "MITRE ATT&CK v14 for Enterprise",
+  "taktik_ve_teknikler": [
+    {
+      "taktik": "Execution",
+      "teknik_id": "T1059.001",
+      "teknik_adi": "Command and Scripting Interpreter: PowerShell",
+      "telemetri_kaynagi": "Sysmon Event ID 1 (Process Creation) / Win 4688",
+      "tespit_turu": "Davranışsal EDR"
+    },
+    {
+      "taktik": "Defense Evasion",
+      "teknik_id": "T1027",
+      "teknik_adi": "Obfuscated Files or Information",
+      "telemetri_kaynagi": "Komut Satırı / Base64 Regex Analizi",
+      "tespit_turu": "Davranışsal EDR"
+    },
+    {
+      "taktik": "Credential Access",
+      "teknik_id": "T1003.001",
+      "teknik_adi": "OS Credential Dumping: LSASS Memory",
+      "telemetri_kaynagi": "Sysmon Event ID 10 (Process Access) / Kernel Callbacks",
+      "tespit_turu": "Davranışsal EDR"
+    },
+    {
+      "taktik": "Privilege Escalation",
+      "teknik_id": "T1055",
+      "teknik_adi": "Process Injection",
+      "telemetri_kaynagi": "Sysmon Event ID 8 (CreateRemoteThread) / ETW",
+      "tespit_turu": "Davranışsal EDR"
+    },
+    {
+      "taktik": "Persistence",
+      "teknik_id": "T1547.001",
+      "teknik_adi": "Boot or Logon Autostart Execution: Registry Run Keys",
+      "telemetri_kaynagi": "Sysmon Event ID 12/13 (Registry Event)",
+      "tespit_turu": "Davranışsal EDR"
+    },
+    {
+      "taktik": "Command and Control",
+      "teknik_id": "T1071",
+      "teknik_adi": "Application Layer Protocol",
+      "telemetri_kaynagi": "Sysmon Event ID 3 (Network Connection)",
+      "tespit_turu": "Davranışsal EDR"
+    },
+    {
+      "taktik": "Defense Evasion",
+      "teknik_id": "T1562.001",
+      "teknik_adi": "Impair Defenses: Disable or Modify Tools",
+      "telemetri_kaynagi": "Servis Yönetim Komutları / Sürücü İzleme",
+      "tespit_turu": "Davranışsal EDR"
+    },
+    {
+      "taktik": "Initial Access",
+      "teknik_id": "T1204",
+      "teknik_adi": "User Execution: Malicious File",
+      "telemetri_kaynagi": "Dosya Giriş / Çıkış ve Statik Hash / YARA Taraması",
+      "tespit_turu": "Geleneksel Antivirüs (AV)"
+    }
+  ]
+}

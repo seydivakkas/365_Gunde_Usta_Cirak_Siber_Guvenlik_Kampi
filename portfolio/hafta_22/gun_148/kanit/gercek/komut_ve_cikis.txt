@@ -1,0 +1,22 @@
+=== GÜN 148: EDR, AV VE TELEMETRİ DENETİMİ: CLI KOMUT YÜRÜTME GÜNLÜĞÜ ===
+Tarih/Saat: 2026-11-03T23:47:12.436230
+
+$ python uygulama/edr_telemetry_cli.py analyze ornek_veri/clean_system_telemetry.json
+======================================================================
+KURUMSAL EDR VE AV TELEMETRİ GÜVENLİK DENETİM RAPORU
+======================================================================
+Toplam Telemetri Olayı   : 5
+Statik AV İmzası Tespiti : 0
+Davranışsal EDR Tespiti  : 0
+Toplam Üretilen Alarm    : 0
+Sonlandırılacak Süreçler : []
+Karantinaya Alınan Dosya : []
+Uç Nokta Ağ İzolasyonu   : HAYIR
+----------------------------------------------------------------------
+Uç Nokta Güvenlik Puanı  : 100.0 / 100
+Sistem Durumu            : TEMİZ VE GÜVENLİ
+======================================================================
+[+] Harika! İncelenen telemetri akışında hiçbir zararlı davranış veya AV imzası bulunamadı.
+
+$ python -m unittest tests/test_edr_telemetry.py -v
+Ran 15 tests in 0.002s - OK (15/15 PASS)

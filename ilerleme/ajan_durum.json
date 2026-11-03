@@ -1,9 +1,9 @@
 {
-  "son_islenen_gun": 147,
-  "son_kapanan_pass_gun": 147,
-  "sonraki_aday_gun": 148,
-  "son_durum": "G147_TAMAMLANDI_PASS",
-  "sonuc_dosyasi": "portfolio/hafta_21/gun_147/sonuc.json",
+  "son_islenen_gun": 148,
+  "son_kapanan_pass_gun": 148,
+  "sonraki_aday_gun": 149,
+  "son_durum": "G148_TAMAMLANDI_PASS",
+  "sonuc_dosyasi": "portfolio/hafta_22/gun_148/sonuc.json",
   "excel_dogrulandi": true,
   "mod": "OTOMATIK_ZINCIR",
   "tamamlanan_gunler": [
@@ -68,12 +68,13 @@
     144,
     145,
     146,
-    147
+    147,
+    148
   ],
-  "guncelleme_tarihi": "2026-11-03T23:32:30.000000",
-  "durum_notu": "Gün 147: Mini proje 20: IAM politika matrisi (Hafta 21 / Aşama 6 Capstone) 100/100 PASS ile tamamlandı. Hafta 22 / Gün 148: EDR, AV ve telemetri konusuna hazır.",
-  "durum": "G147_TAMAMLANDI_PASS",
-  "son_islem_tarihi": "2026-11-03T23:32:30.000000",
-  "son_guncelleme": "2026-11-03T23:32:30.000000",
-  "guncelleme_zamani": "2026-11-03T23:32:30.000000"
+  "guncelleme_tarihi": "2026-11-03T23:50:20.000000",
+  "durum_notu": "Gün 148: EDR, AV ve telemetri (Hafta 22 / Aşama 6) 100/100 PASS ile tamamlandı. Gün 149: Uygulama izinleri ve sandbox konusuna hazır.",
+  "durum": "G148_TAMAMLANDI_PASS",
+  "son_islem_tarihi": "2026-11-03T23:50:20.000000",
+  "son_guncelleme": "2026-11-03T23:50:20.000000",
+  "guncelleme_zamani": "2026-11-03T23:50:20.000000"
 }
