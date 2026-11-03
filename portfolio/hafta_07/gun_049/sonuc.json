@@ -1,0 +1,40 @@
+{
+  "gun": 49,
+  "gun_id": "G049",
+  "asama": "03",
+  "hafta": "07",
+  "baslik": "Mini proje 6: ağ adresleme çalışma kitabı",
+  "tarih": "2026-10-27",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kavramsal_derinlik": 20,
+    "uygulama_gelistirme": 40,
+    "test_kapsami": 25,
+    "savunma_sikilastirma": 15
+  },
+  "test_ozeti": {
+    "toplam": 14,
+    "basarili": 14,
+    "hatali": 0,
+    "sure_saniye": 0.03
+  },
+  "kod_aciklama_satirlari_tamamlandi": true,
+  "kanitlar": {
+    "gercek": [
+      "kanit/gercek/test_sonuclari.txt",
+      "kanit/gercek/komut_ve_cikis.txt",
+      "kanit/gercek/ag_adresleme_calisma_kitabi_raporu.txt",
+      "kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "kanit/temsili/ag_adresleme_ve_segmentasyon_topolojisi.txt"
+    ]
+  },
+  "soru_bankasi_eslesmesi": [
+    "G049-SC1",
+    "G049-SC2",
+    "G049-SC3"
+  ],
+  "notlar": "Haftalık Mini Proje 6 tamamlandı: IPv4/IPv6 CIDR hesaplayıcıları, çoklu VLAN ve cihaz topoloji yönetimi, çakışan alt ağlar, geçersiz gateway, kullanılamaz IP ve EUI-64 sızıntısı denetimleri eksiksiz uygulandı; 14 birim testi PASS oldu."
+}

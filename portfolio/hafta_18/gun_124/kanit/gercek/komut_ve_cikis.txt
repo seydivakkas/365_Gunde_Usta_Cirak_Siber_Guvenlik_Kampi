@@ -1,0 +1,37 @@
+=== GÜN 124 KOMUT VE ÇIKIŞ KANITI ===
+Tarih: 2026-11-03T09:36:04.075985
+
+$ python uygulama/secrets_cli.py vault C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_124\ornek_veri\vault_sample_config.json --action report
+# Atlas Kurumsal Secrets Kasası (Production Vault) — Kurumsal Secrets Yönetimi Raporu
+**Rapor Tarihi:** 2026-11-03 09:36:04
+**Toplam Yönetilen Gizli Anahtar:** 4
+
+## 1. Gizli Anahtarlar Envanteri ve Yaşam Döngüsü
+| Secret ID | Adı | Türü | Sürüm | Durum | Kalan TTL | Yetkili Roller | Erişim Sayısı |
+|---|---|---|---|---|---|---|---|
+| SEC-PROD-DB-01 | Ana PostgreSQL Müşteri Veritabanı Parolası | Veritabanı Parolası (Database Password) | v1 | AKTİF | 23s 59d | dba, backend_prod_service | 0 |
+| SEC-STRIPE-API-01 | Stripe Ödeme Ağ Geçidi Canlı API Anahtarı | API Anahtarı (API Key) | v1 | AKTİF | 719s 59d | payment_service | 0 |
+| SEC-JWT-HMAC-01 | Merkezi Kimlik Doğrulama JWT İmza Sırrı | JWT İmza Sırrı (HMAC Secret) | v1 | AKTİF | 167s 59d | auth_service | 0 |
+| SEC-AWS-S3-01 | Yedekleme S3 Bucket Erişim Anahtarı | API Anahtarı (API Key) | v1 | AKTİF | 23s 59d | backup_worker | 0 |
+
+## 2. Güvenlik Standartları ve Uyumluluk Notu
+> [!NOTE]
+> **CWE-798 & CWE-532 KORUMASI:** Tüm gizli anahtarlar kod depoları ve çevre dosyaları yerine merkezi kasada zarflı şifreleme (Envelope Encryption) ile saklanmaktadır. Log maskeleme filtresi aktiftir.
+
+
+$ python uygulama/secrets_cli.py vault C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_124\ornek_veri\vault_sample_config.json --action get --secret-id SEC-PROD-DB-01 --role backend_prod_service
+=== Gizli Anahtar Değeri (SEC-PROD-DB-01) ===
+Rol: backend_prod_service
+Değer: pg_prod_secure_pass_9921#*!@
+
+$ python uygulama/secrets_cli.py scan "DB_PASSWORD = "pg_prod_secure_pass_9921#*!@"
+STRIPE_SECRET = "sk_test_51NyAbcDefGhiJklMnoPqrStuv""
+[-] TEHLİKE: 4 adet gizli veri / sızıntı tespit edildi!
+  - [Satır 1] REGEX_PATTERN (GENERIC_PASSWORD): PASSWORD...*!@"
+  - [Satır 2] REGEX_PATTERN (STRIPE_SECRET_KEY): sk_test_...qrSt
+  - [Satır 2] REGEX_PATTERN (GENERIC_PASSWORD): SECRET =...tuv"
+  - [Satır 2] HIGH_ENTROPY_TOKEN (Shannon Entropy: 4.71): sk_tes...Stuv
+
+$ python uygulama/secrets_cli.py mask C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_124\ornek_veri\vault_sample_config.json "HATA: Veritabanına pg_prod_secure_pass_9921#*!@ parolası ve sk_test_51NyAbcDefGhiJklMnoPqrStuv anahtarı ile bağlanırken hata oluştu."
+=== Maskelenmiş Log Çıktısı (CWE-532 Koruması) ===
+HATA: Veritabanına [REDACTED_SECRET_SEC-PROD-DB-01] parolası ve [REDACTED_STRIPE_SECRET_KEY]uv anahtarı ile bağlanırken hata oluştu.

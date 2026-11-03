@@ -1,0 +1,49 @@
+==============================================================================
+GÜN 138: LINUX GÜVENLİK DUVARI (NFTABLES/UFW) BİRİM TEST RAPORU
+==============================================================================
+Çalıştırma Tarihi : 2026-11-02 14:43:20
+Toplam Test       : 15
+Başarılı Test     : 15
+Hatalı Test       : 0
+Kritik Hata       : 0
+Çalışma Süresi    : 0.0006 saniye
+Genel Durum       : TAM BAŞARILI (100% PASS)
+------------------------------------------------------------------------------
+DETAYLI TEST ÇIKTILARI:
+test_01_fully_hardened_nftables_score_100 (test_linux_firewall_security.TestLinuxFirewallSecurity.test_01_fully_hardened_nftables_score_100)
+Test 1: Tam sıkılaştırılmış nftables ortamı 100/100 tam puan almalı ve sıfır bulgu üretmelidir. ... ok
+test_02_fully_hardened_ufw_score_100 (test_linux_firewall_security.TestLinuxFirewallSecurity.test_02_fully_hardened_ufw_score_100)
+Test 2: Tam sıkılaştırılmış UFW yapılandırması 100/100 tam puan almalıdır. ... ok
+test_03_inactive_firewall_detection (test_linux_firewall_security.TestLinuxFirewallSecurity.test_03_inactive_firewall_detection)
+Test 3: Güvenlik duvarı durdurulmuşsa (is_active=False) FW-001 (CRITICAL) üretilmelidir. ... ok
+test_04_disabled_on_boot_detection (test_linux_firewall_security.TestLinuxFirewallSecurity.test_04_disabled_on_boot_detection)
+Test 4: Açılışta başlamayan güvenlik duvarında FW-001 üretilmelidir. ... ok
+test_05_input_policy_accept_violation (test_linux_firewall_security.TestLinuxFirewallSecurity.test_05_input_policy_accept_violation)
+Test 5: Varsayılan giriş politikası ACCEPT ise FW-002 (CRITICAL) tespit edilmelidir. ... ok
+test_06_forward_policy_accept_violation (test_linux_firewall_security.TestLinuxFirewallSecurity.test_06_forward_policy_accept_violation)
+Test 6: Varsayılan yönlendirme politikası ACCEPT ise FW-003 (HIGH) üretilmelidir. ... ok
+test_07_missing_stateful_inspection (test_linux_firewall_security.TestLinuxFirewallSecurity.test_07_missing_stateful_inspection)
+Test 7: Durum denetimli (conntrack) paket filtreleme kapalıysa FW-004 üretilmelidir. ... ok
+test_08_missing_loopback_isolation (test_linux_firewall_security.TestLinuxFirewallSecurity.test_08_missing_loopback_isolation)
+Test 8: Loopback kabul edilmiyor veya anti-spoofing eksikse FW-005 üretilmelidir. ... ok
+test_09_open_dangerous_port_telnet (test_linux_firewall_security.TestLinuxFirewallSecurity.test_09_open_dangerous_port_telnet)
+Test 9: Telnet portu (23) tüm ağa açıksa FW-006 (HIGH) tespit edilmelidir. ... ok
+test_10_open_dangerous_port_smb (test_linux_firewall_security.TestLinuxFirewallSecurity.test_10_open_dangerous_port_smb)
+Test 10: SMB portu (445) tüm ağa açıksa FW-006 (HIGH) tespit edilmelidir. ... ok
+test_11_restricted_port_not_flagged (test_linux_firewall_security.TestLinuxFirewallSecurity.test_11_restricted_port_not_flagged)
+Test 11: Port erişimi belirli bir IP alt ağıyla sınırlandırılmışsa tehlikeli port uyarısı verilmemelidir. ... ok
+test_12_logging_disabled_detection (test_linux_firewall_security.TestLinuxFirewallSecurity.test_12_logging_disabled_detection)
+Test 12: Güvenlik duvarı loglaması kapalıysa FW-007 (MEDIUM) üretilmelidir. ... ok
+test_13_loose_config_file_permissions (test_linux_firewall_security.TestLinuxFirewallSecurity.test_13_loose_config_file_permissions)
+Test 13: Güvenlik duvarı dosya izinleri 0666 ise FW-008 (LOW) tespit edilmelidir. ... ok
+test_14_nftables_template_generation (test_linux_firewall_security.TestLinuxFirewallSecurity.test_14_nftables_template_generation)
+Test 14: generate_nftables_hardening_conf fonksiyonu CIS standartlarında kurallar üretmelidir. ... ok
+test_15_ufw_remediation_generation (test_linux_firewall_security.TestLinuxFirewallSecurity.test_15_ufw_remediation_generation)
+Test 15: generate_ufw_hardening_script fonksiyonu geçerli UFW sertleştirme komutları üretmelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+
+==============================================================================

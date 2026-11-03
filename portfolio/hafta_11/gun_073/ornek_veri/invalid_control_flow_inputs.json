@@ -1,0 +1,74 @@
+{
+  "NEG_01_POINTER_CYCLE_DETECTED": {
+    "payload": {
+      "buffer_size": 128,
+      "start_offset": 10,
+      "pointer_map": {
+        "10": 20,
+        "20": 10
+      }
+    },
+    "expected_error": "Döngüsel gösterici (Pointer Cycle) tespit edildi: 10 -> 20 -> 10."
+  },
+  "NEG_02_MAX_ITERATIONS_EXCEEDED": {
+    "payload": {
+      "buffer_size": 256,
+      "start_offset": 0,
+      "pointer_map": {
+        "0": 10,
+        "10": 20,
+        "20": 30,
+        "30": 40
+      }
+    },
+    "max_iterations": 3,
+    "expected_error": "Azami döngü yineleme tavanı aşıldı: 3 adımda sonlandırılamadı (Anti-DoS koruması)."
+  },
+  "NEG_03_INVALID_POLICY_RULE_SCHEMA": {
+    "rule": {
+      "rule_id": 101,
+      "name": "Kusurlu Kural",
+      "priority": 50,
+      "conditions": {"dest_port": 80}
+    },
+    "expected_error": "Kural şema ihlali: 'action' (ALLOW/DENY) alanı eksik."
+  },
+  "NEG_04_UNDEFINED_DEFAULT_ACTION": {
+    "policy": {
+      "policy_id": "POL-BAD",
+      "default_action": "ALLOW_ALL_RISKY",
+      "rules": []
+    },
+    "expected_error": "Geçersiz varsayılan politika eylemi: 'ALLOW_ALL_RISKY' (Yalnızca ALLOW veya DENY kabul edilir)."
+  },
+  "NEG_05_AMBIGUOUS_EVALUATION_NONE_VS_FALSE": {
+    "condition_value": null,
+    "expected_error": "Belirsiz mantıksal değerlendirme: Değer 'None' (Yokluk), kesin True veya False bekleniyor."
+  },
+  "NEG_06_RATE_LIMITER_WINDOW_NEGATIVE": {
+    "window_seconds": -60,
+    "threshold": 5,
+    "expected_error": "Geçersiz kayan pencere süresi: -60 saniye (Sıfırdan büyük olmalıdır)."
+  },
+  "NEG_07_RATE_LIMITER_THRESHOLD_ZERO": {
+    "window_seconds": 60,
+    "threshold": 0,
+    "expected_error": "Geçersiz hız sınırı eşiği: 0 (En az 1 olmalıdır)."
+  },
+  "NEG_08_CORRUPT_POINTER_OFFSET": {
+    "payload": {
+      "buffer_size": 128,
+      "start_offset": 0,
+      "pointer_map": {
+        "0": 500
+      }
+    },
+    "expected_error": "Arabellek sınır aşımı: Gösterici ofseti 500, azami tampon boyutu 128."
+  },
+  "NEG_09_MALFORMED_EVENT_STREAM": {
+    "events": {
+      "invalid_event_key": "not_a_list"
+    },
+    "expected_error": "Olay akışı bir liste (list) olmalıdır, alınan: dict"
+  }
+}

@@ -1,0 +1,19 @@
+================================================================================
+GÜN 090: NEGATİF KONTROL VE ZAMAN GÜVENLİK SINIR TESTLERİ
+Çalıştırma Zamanı (UTC): 2026-11-01T20:20:53Z
+================================================================================
+SENARYO ID | BEKLENEN HATA             | DURUM      | CWE KODU
+--------------------------------------------------------------------------------
+NEG_01     | NaiveTimestampError       | ENGELLENDİ | CWE-613: Insufficient Session Expiration / Ambiguous Timezone
+NEG_02     | InvalidTimeRangeError     | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_03     | InvalidCalendarDateError  | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_04     | InvalidEpochValueError    | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_05     | UnreasonableDateRangeError | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_06     | ClockSkewExceededError    | ENGELLENDİ | CWE-1385: Missing Origin Authentication / Replay Attack Risk
+NEG_07     | MalformedTimestampError   | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_08     | PayloadTooLargeError      | ENGELLENDİ | CWE-400: Uncontrolled Resource Consumption
+NEG_09     | InvalidFileTimeError      | ENGELLENDİ | CWE-20: Improper Input Validation
+================================================================================
+Toplam Negatif Senaryo: 9
+Başarıyla Engellenen / Tespit Edilen: 9
+Negatif Başarı Oranı: %100.0

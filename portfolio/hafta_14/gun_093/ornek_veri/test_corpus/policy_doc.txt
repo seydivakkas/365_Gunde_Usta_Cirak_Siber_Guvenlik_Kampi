@@ -1,0 +1,6 @@
+KURUMSAL BİLGİ GÜVENLİĞİ VE BÜTÜNLÜK POLİTİKASI BELGESİ
+1. Tüm sunucu yapılandırmaları ve ikili dosyalar kriptografik hash ile izlenecektir.
+2. Zayıf özet algoritmaları (MD5 ve SHA-1) bütünlük doğrulamalarında yasaklanmıştır.
+3. Standart algoritma olarak minimum SHA-256 veya BLAKE2b kullanılacaktır.
+4. Dosya değişiklikleri anlık olarak FIM (File Integrity Monitoring) tarafından raporlanacaktır.
+Telif Hakkı (c) 2026 Seydi Eryılmaz.

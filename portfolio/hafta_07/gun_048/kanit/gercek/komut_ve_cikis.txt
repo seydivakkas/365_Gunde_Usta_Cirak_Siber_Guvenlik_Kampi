@@ -1,0 +1,58 @@
+KOMUT: python portfolio/hafta_07/gun_048/uygulama/icmp_diagnostic_analyzer.py
+
+ÇIKIŞ:
+================================================================================
+G048: ICMP AÄŸ TeÅŸhisi, Hata KodlarÄ± ve TÃ¼nelleme GÃ¼venlik LaboratuvarÄ±
+================================================================================
+[*] Paket: ICMP-01  | Type 8:0 (Echo Request)
+    - YÃ¶n    : 192.168.1.50 -> 8.8.8.8 (TTL: 64)
+    - BÃ¼tÃ¼nlÃ¼k: Checksum: 0x4972 [DOÄ�RULANDI]
+    - Veri   : Boyut: 32 bayt | Ä°Ã§erik: abcdefghijklmnopqrstuvwabcdefghi...
+--------------------------------------------------------------------------------
+[*] Paket: ICMP-02  | Type 0:0 (Echo Reply)
+    - YÃ¶n    : 8.8.8.8 -> 192.168.1.50 (TTL: 118)
+    - BÃ¼tÃ¼nlÃ¼k: Checksum: 0x5172 [DOÄ�RULANDI]
+    - Veri   : Boyut: 32 bayt | Ä°Ã§erik: abcdefghijklmnopqrstuvwabcdefghi...
+--------------------------------------------------------------------------------
+[*] Paket: ICMP-03  | Type 3:1 (Host Unreachable)
+    - YÃ¶n    : 192.168.1.1 -> 192.168.1.50 (TTL: 255)
+    - BÃ¼tÃ¼nlÃ¼k: Checksum: 0x118D [DOÄ�RULANDI]
+    - Veri   : Boyut: 31 bayt | Ä°Ã§erik: IP_HDR_ORIGINAL_PACKET_FRAGMENT...
+--------------------------------------------------------------------------------
+[*] Paket: ICMP-04  | Type 3:3 (Port Unreachable)
+    - YÃ¶n    : 192.168.1.10 -> 192.168.1.50 (TTL: 64)
+    - BÃ¼tÃ¼nlÃ¼k: Checksum: 0x1708 [DOÄ�RULANDI]
+    - Veri   : Boyut: 20 bayt | Ä°Ã§erik: UDP_PORT_5353_CLOSED...
+--------------------------------------------------------------------------------
+[*] Paket: ICMP-05  | Type 3:4 (Fragmentation Needed and DF set)
+    - YÃ¶n    : 10.0.0.1 -> 192.168.1.50 (TTL: 254)
+    - BÃ¼tÃ¼nlÃ¼k: Checksum: 0x3407 [DOÄ�RULANDI]
+    - Veri   : Boyut: 26 bayt | Ä°Ã§erik: MTU_DISCOVERY_NEXTHOP_1400...
+--------------------------------------------------------------------------------
+[*] Paket: ICMP-06  | Type 11:0 (Time to Live exceeded in Transit)
+    - YÃ¶n    : 172.16.1.1 -> 192.168.1.50 (TTL: 253)
+    - BÃ¼tÃ¼nlÃ¼k: Checksum: 0xD8E6 [DOÄ�RULANDI]
+    - Veri   : Boyut: 20 bayt | Ä°Ã§erik: TTL_EXPIRED_AT_HOP_2...
+--------------------------------------------------------------------------------
+[*] Paket: ICMP-07  | Type 5:1 (Redirect Datagram for the Host)
+    - YÃ¶n    : 192.168.1.1 -> 192.168.1.50 (TTL: 64)
+    - BÃ¼tÃ¼nlÃ¼k: Checksum: 0x6FCC [DOÄ�RULANDI]
+    - Veri   : Boyut: 33 bayt | Ä°Ã§erik: REDIRECT_TO_GATEWAY_192.168.1.254...
+    [!] GÃœVENLÄ°K ALARMI: ICMP Redirect (Type 5): Rotalama manipÃ¼lasyonu ve MitM saldÄ±rÄ± vektÃ¶rÃ¼ olabilir!
+--------------------------------------------------------------------------------
+[*] Paket: ICMP-08  | Type 8:0 (Echo Request)
+    - YÃ¶n    : 192.168.1.50 -> 203.0.113.88 (TTL: 64)
+    - BÃ¼tÃ¼nlÃ¼k: Checksum: 0x7920 [DOÄ�RULANDI]
+    - Veri   : Boyut: 97 bayt | Ä°Ã§erik: EXFILTRATED_DATA:USER=admin;PASS=S3cr3tP...
+    [!] GÃœVENLÄ°K ALARMI: AÅŸÄ±rÄ± bÃ¼yÃ¼k ICMP Payload (97 bayt > 64 bayt): OlasÄ± veri sÄ±zÄ±ntÄ±sÄ± veya tampon!
+--------------------------------------------------------------------------------
+
+[+] Traceroute TTL SimÃ¼lasyonu:
+    - Hop 1: 192.168.1.1     -> 11 (Time Exceeded) [TTL=1 SÃ¼resi Doldu (Transit)]
+    - Hop 2: 10.0.0.1        -> 11 (Time Exceeded) [TTL=2 SÃ¼resi Doldu (Transit)]
+    - Hop 3: 172.16.1.1      -> 11 (Time Exceeded) [TTL=3 SÃ¼resi Doldu (Transit)]
+    - Hop 4: 8.8.8.8         -> 0 (Echo Reply) [Hedefe UlaÅŸÄ±ldÄ± (Success)]
+
+[+] Toplam Analiz Edilen Paket: 8
+[+] Ã–zet ICMP TeÅŸhis Raporu BaÅŸarÄ±yla OluÅŸturuldu.
+

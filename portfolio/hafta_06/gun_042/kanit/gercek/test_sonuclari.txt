@@ -1,0 +1,33 @@
+test_01_valid_stage2_inventory_loading (test_stage2_os_foundations_auditor.TestStage2OSFoundationsAuditor.test_01_valid_stage2_inventory_loading)
+Geerli kabul envanterinin t³m 6 s³tunu eksiksiz ierdi­ini test eder. ... ok
+test_02_processes_pillar_clean (test_stage2_os_foundations_auditor.TestStage2OSFoundationsAuditor.test_02_processes_pillar_clean)
+S³re hijyeni s³tununun yetkisiz s³re iermedi­inde 100 puan ald²­²n² do­rular. ... ok
+test_03_permissions_pillar_clean (test_stage2_os_foundations_auditor.TestStage2OSFoundationsAuditor.test_03_permissions_pillar_clean)
+Dosya izinleri ve umask s³tununun standartlara tam uyumlu oldu­unu do­rular. ... ok
+test_04_logging_pillar_clean (test_stage2_os_foundations_auditor.TestStage2OSFoundationsAuditor.test_04_logging_pillar_clean)
+Olay g³nl³kleme s³tununda journald, auditd ve SIEM aktar²m²n²n tam puan ald²­²n² test eder. ... ok
+test_05_hashes_pillar_clean (test_stage2_os_foundations_auditor.TestStage2OSFoundationsAuditor.test_05_hashes_pillar_clean)
+Kritik sistem dosyalar²n²n SHA-256 karmalar²n²n ba■ar²yla do­ruland²­²n² test eder. ... ok
+test_06_backups_pillar_clean (test_stage2_os_foundations_auditor.TestStage2OSFoundationsAuditor.test_06_backups_pillar_clean)
+3-2-1 yedekleme kural² ve geri y³kleme testinin ba■ar²yla do­ruland²­²n² s²nar. ... ok
+test_07_services_pillar_clean (test_stage2_os_foundations_auditor.TestStage2OSFoundationsAuditor.test_07_services_pillar_clean)
+Miras servislerin yasakland²­²n² ve SSH s²k²la■t²rmas²n²n tam puan ald²­²n² test eder. ... ok
+test_08_overall_acceptance_pass (test_stage2_os_foundations_auditor.TestStage2OSFoundationsAuditor.test_08_overall_acceptance_pass)
+Genel kabul motorunun envanteri STAGE_02_PASS karar²yla onaylad²­²n² do­rular. ... ok
+test_09_markdown_report_generation (test_stage2_os_foundations_auditor.TestStage2OSFoundationsAuditor.test_09_markdown_report_generation)
+▄retilen Markdown kabul raporunun lisans uyar²s²n² ve t³m 6 s³tunu ierdi­ini test eder. ... ok
+test_10_negative_missing_pillar (test_stage2_os_foundations_auditor.TestStage2OSFoundationsAuditor.test_10_negative_missing_pillar)
+Negatif Kontrol: 6 zorunlu s³tundan biri (÷rn: hashes) eksik oldu­unda hata f²rlat²ld²­²n² do­rular. ... ok
+test_11_negative_invalid_octal_permission (test_stage2_os_foundations_auditor.TestStage2OSFoundationsAuditor.test_11_negative_invalid_octal_permission)
+Negatif Kontrol: Geersiz sekizli izin (÷rn: '0999') verildi­inde hata yakaland²­²n² do­rular. ... ok
+test_12_negative_invalid_sha256_hash (test_stage2_os_foundations_auditor.TestStage2OSFoundationsAuditor.test_12_negative_invalid_sha256_hash)
+Negatif Kontrol: Bozuk veya k²sa SHA-256 karmas²nda sistemin hata f²rlatt²­²n² do­rular. ... ok
+test_13_negative_negative_pid_process (test_stage2_os_foundations_auditor.TestStage2OSFoundationsAuditor.test_13_negative_negative_pid_process)
+Negatif Kontrol: S³re PID de­eri negatif veya s²f²r oldu­unda istisna ³retildi­ini test eder. ... ok
+test_14_negative_corrupted_json_syntax (test_stage2_os_foundations_auditor.TestStage2OSFoundationsAuditor.test_14_negative_corrupted_json_syntax)
+Negatif Kontrol: Bozuk JSON s÷zdizimine sahip dosyan²n g³venli ■ekilde reddedildi­ini do­rular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.009s
+
+OK

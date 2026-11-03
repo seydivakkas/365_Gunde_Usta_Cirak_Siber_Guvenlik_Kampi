@@ -1,0 +1,49 @@
+================================================================================
+G066: DNS VE HTTP ANOMALİ MOTORU NEGATİF KONTROL VE GÜVENLİK İSTİSNA KANITI
+Tarih: 2026-10-31 | Doğrulanan Senaryo Sayısı: 9/9 PASS
+================================================================================
+
+[NEG_01] DGA Algoritmik Alan Adı İstisnası
+  - Beklenen İstisna : DGAAnomalyError
+  - Yakalanan Mesaj  : Algoritmik zararlı alan adı (DGA) tespit edildi: 'qz98xkw7mp201flbv.biz' (Entropi: 4.09, Sessiz Oranı: 1.00)
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_02] DNS Tünelleme Aşırı Uzunluk İstisnası
+  - Beklenen İstisna : DNSTunnelingError
+  - Yakalanan Mesaj  : DNS tünelleme ile veri sızdırma girişimi tespit edildi: 'zxhoawjpdglvbl9zzwnyzxrfzgf0yv9legzpbhryyxrpb24_dg9rzw4.t.tunnel.xyz' (Uzunluk: 68, Tip: TXT)
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_03] DNS Amplification Yüksek Büyütme İstisnası
+  - Beklenen İstisna : DNSAmplificationError
+  - Yakalanan Mesaj  : DNS Amplification DoS saldırı paterni: İstek 40B -> Yanıt 4000B (Büyütme Oranı: 100.0x)
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_04] HTTP Request Smuggling (CL ve TE Birlikte) İstisnası
+  - Beklenen İstisna : HTTPRequestSmugglingError
+  - Yakalanan Mesaj  : HTTP Request Smuggling çatışması: Aynı istekte hem Content-Length (12) hem Transfer-Encoding (chunked) mevcut!
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_05] HTTP Header Injection / CRLF Bölünmesi İstisnası
+  - Beklenen İstisna : HeaderInjectionError
+  - Yakalanan Mesaj  : HTTP Başlık Enjeksiyonu (CRLF / Response Splitting) tespit edildi: URI='/set?theme=dark%0d%0aLocation:%20http://attacker.com'
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_06] HTTP Path Traversal Dizin Geçişi İstisnası
+  - Beklenen İstisna : PathTraversalError
+  - Yakalanan Mesaj  : Dizin Geçişi (Path Traversal / LFI) saldırı denemesi yakalandı: URI='/static/..\..\..\windows\win.ini'
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_07] Otomatik Saldırı Tarayıcısı İmzası İstisnası
+  - Beklenen İstisna : MaliciousScannerError
+  - Yakalanan Mesaj  : Otomatik siber saldırı tarayıcısı tespit edildi: User-Agent='Nikto/2.1.6' (İmza: nikto)
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_08] Bozuk veya Eksik Kayıt Nesnesi İstisnası
+  - Beklenen İstisna : MalformedRecordError
+  - Yakalanan Mesaj  : DNS kayıt verisi geçerli bir sözlük (dict) olmalıdır.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_09] Fast Flux Botnet C2 Mikro-TTL İstisnası
+  - Beklenen İstisna : FastFluxAnomalyError
+  - Yakalanan Mesaj  : Fast Flux Botnet C2 altyapısı tespit edildi: 'c2-relay.dark-mesh.net' (TTL: 10s, Çözülen IP Sayısı: 5)
+  - Kontrol Durumu   : BAŞARILI (PASS)

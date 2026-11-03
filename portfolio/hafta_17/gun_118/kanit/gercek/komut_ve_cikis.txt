@@ -1,0 +1,50 @@
+======================================================================
+GÜN 118: SIFIR GÜVEN & EN AZ AYRICALIK CLI KOMUT GÜNLÜĞÜ
+Tarih: 2026-11-02T05:42:34.127670
+======================================================================
+
+--- KOMUT ÇALIŞTIRILIYOR ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/zero_trust_cli.py eval --user-id lead_admin --segment management_jumpbox --mfa --jit-scope db:maintenance_backup --resource-id res_core_db --target-segment core_banking --step-up --min-trust 75.0
+
+
+[STDERR]
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_17\gun_118\uygulama\zero_trust_cli.py", line 23, in <module>
+    from uygulama.least_privilege_zero_trust_engine import (
+    ...<4 lines>...
+    )
+ModuleNotFoundError: No module named 'uygulama'
+
+[ÇIKIŞ KODU]: 1
+======================================================================
+
+--- KOMUT ÇALIŞTIRILIYOR ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/zero_trust_cli.py eval --user-id intruder --jit-scope *:* --resource-id res_core_db
+
+
+[STDERR]
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_17\gun_118\uygulama\zero_trust_cli.py", line 23, in <module>
+    from uygulama.least_privilege_zero_trust_engine import (
+    ...<4 lines>...
+    )
+ModuleNotFoundError: No module named 'uygulama'
+
+[ÇIKIŞ KODU]: 1
+======================================================================
+
+--- KOMUT ÇALIŞTIRILIYOR ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/zero_trust_cli.py eval --user-id wifi_guest --segment guest_wifi --resource-id res_core_db --target-segment core_banking
+
+
+[STDERR]
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_17\gun_118\uygulama\zero_trust_cli.py", line 23, in <module>
+    from uygulama.least_privilege_zero_trust_engine import (
+    ...<4 lines>...
+    )
+ModuleNotFoundError: No module named 'uygulama'
+
+[ÇIKIŞ KODU]: 1
+======================================================================
+

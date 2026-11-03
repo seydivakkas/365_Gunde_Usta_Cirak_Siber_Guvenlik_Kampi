@@ -1,0 +1,68 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+Bu belge, Linux Sanal Makinesi Güvenlik Taban Çizgisi, SSH Sertleştirmesi,
+Sudoers Yetki İzolasyonu ve Dosya İzinleri Kalkanını gösteren pedagojik şemadır.
+================================================================================
+
+              +--------------------------------------------------------------+
+              |      LINUX GÜVENLİK TABAN ÇİZGİSİ VE SERTLEŞTİRME MİMARİSİ   |
+              |       (SSH Kalkanı, Sudoers İzolasyonu, Shadow ve UFW)       |
+              +--------------------------------------------------------------+
+
+  [ DIŞ AĞ / SALDIRGAN / İNTERNET ]
+                 |
+                 v (Port Taraması & Kaba Kuvvet - Brute Force)
+  +===============================================================================+
+  |              UFW GÜVENLİK DUVARI (GELEN TÜM PAKETLER: DEFAULT DENY)           |
+  |                                                                               |
+  |  [X] Port 22 (Standart SSH)   : KAPALI (Tarama gürültüsü engellendi)          |
+  |  [X] Telnet / FTP / RSH (23,21): YASAK & KALDIRILDI (Şifresiz veri akışı yok) |
+  |  [V] Port 2222 (Sertleşmiş SSH): YALNIZCA İZİNLİ YÖNETİCİ AĞINDAN (192.168.x) |
+  +===============================================================================+
+                 |
+                 v (TCP/2222 - Kriptografik Tünel)
+  +===============================================================================+
+  |                   OPENSSH SUNUCUSU (/etc/ssh/sshd_config)                     |
+  |                                                                               |
+  |  * PermitRootLogin no         : Root kullanıcısı doğrudan bağlanamaz!         |
+  |  * PasswordAuthentication no  : Parola kaba kuvveti (Hydra) ÇALIŞMAZ!        |
+  |  * PubkeyAuthentication yes   : Yalnızca Ed25519 Kriptografik Anahtar Geçerli|
+  |  * MaxAuthTries 3             : 3 başarısız denemede oturum sonlandırılır     |
+  +===============================================================================+
+                 |
+                 v (Başarılı Anahtar Doğrulaması)
+  +-------------------------------------------------------------------------------+
+  |        STANDART KULLANICI ALANI (USER SPACE - UID >= 1000: 'analist')         |
+  |                                                                               |
+  |  * Varsayılan umask: 027 (Oluşturulan dosyalar 640: Diğer kullanıcılar OKUYAMAZ)
+  |  * Ev Dizini: /home/analist (İzinler: 0700 - Sadece analist girebilir)        |
+  +-------------------------------------------------------------------------------+
+                 |
+                 v (Ayrıcalık Yükseltme Talebi - Privilege Escalation)
+  +===============================================================================+
+  |               SUDOERS GÜVENLİK SÜZGECİ (/etc/sudoers.d/hardened)              |
+  |                                                                               |
+  |  [X] NOPASSWD: ALL => KESİNLİKLE YASAK! (GTFOBins anında root açığı önlendi)   |
+  |  [V] %sudo ALL=(ALL:ALL) ALL => Her komutta KENDİ PAROLASI ZORUNLU!           |
+  |  [V] Denetim Kaydı: /var/log/sudo.log (Her komut audit izi bırakır)          |
+  +===============================================================================+
+                 |
+                 v (Parola Doğrulandı ve Audit Kaydedildi)
+  #################################################################################
+  ###     LİNUX ÇEKİRDEĞİ VE KRİTİK SİSTEM DOSYALARI (RING 0 / ROOT ALANI)    ###
+  #################################################################################
+  |                                                                               |
+  |  * /etc/shadow : 0640 (root:shadow) => Standart kullanıcılar HASH ÇALAMAZ!   |
+  |  * /etc/passwd : 0644 (root:root)   => Standart kullanıcılar YENİ ROOT YAZAMAZ|
+  |  * root hesabı : 'passwd -l root'   => Doğrudan parola oturumu KİLİTLİ        |
+  +-------------------------------------------------------------------------------+
+
+--------------------------------------------------------------------------------
+ZİHİNSEL MODEL VE İSTİSMAR MEKANİZMASI:
+1. SSH Parola Kapatma: PasswordAuthentication=no yapıldığında, internetteki milyonlarca
+   botnet'in sözlük saldırısı anında etkisiz kalır. Ed25519 anahtarı kırılamaz.
+2. NOPASSWD Felaketi: Eğer sudoers'a NOPASSWD verilirse, saldırgan kullanıcıyı ele
+   geçirdiği milisaniyede 'sudo find . -exec /bin/sh -p \;' gibi GTFOBins komutlarıyla root olur.
+3. Shadow Kalkanı: /etc/shadow 640 altında tutulduğunda, yerel ayrıcalıksız bir zararlı
+   sistem şifre hash'lerini çekip Hashcat/John ile çevrimdışı kıramaz.
+================================================================================

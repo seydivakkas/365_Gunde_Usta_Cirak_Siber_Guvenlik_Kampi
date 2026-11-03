@@ -1,0 +1,6 @@
+timestamp,indicator_ip,threat_score,malware_family,action_taken
+2026-11-01T00:15:30Z,198.51.100.24,85,Emotet,BLOCK
+2026-11-01T00:22:11Z,203.0.113.88,92,CobaltStrike,BLOCK
+2026-11-01T01:05:44Z,192.0.2.14,45,AdwareGeneric,ALERT
+2026-11-01T02:18:02Z,198.51.100.199,98,LockBit,ISOLATE
+2026-11-01T03:00:19Z,203.0.113.5,20,SuspiciousScan,LOG

@@ -1,0 +1,63 @@
+{
+  "gun": 104,
+  "hafta": 15,
+  "asama": "05",
+  "asama_adi": "Kriptografi Temelleri ve Uygulamaları",
+  "gun_adi": "AEAD ve nonce yeniden kullanımı",
+  "tarih": "2026-11-02",
+  "puan": 100,
+  "durum": "YETERLİ / PASS",
+  "skor_karnesi": {
+    "mimari": 20,
+    "kodlama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "test_istatistikleri": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "negatif_kontrol_senaryo": 9,
+    "negatif_kontrol_basarili": 9
+  },
+  "cwe_kapsami": [
+    "CWE-323: Reusing a Nonce, Key Pair in Encryption",
+    "CWE-326: Inadequate Encryption Strength",
+    "CWE-329: Generation of Predictable IV / Nonce",
+    "CWE-353: Missing Support for Integrity Check",
+    "CWE-345: Insufficient Verification of Data Authenticity",
+    "CWE-208: Observable Timing Discrepancy",
+    "CWE-400: Uncontrolled Resource Consumption",
+    "CWE-158: Improper Neutralization of Null Byte or Special Characters",
+    "CWE-843: Access of Resource Using Incompatible Type"
+  ],
+  "dosyalar": {
+    "kod_dosyalari": [
+      "uygulama/__init__.py",
+      "uygulama/aead_nonce_engine.py",
+      "uygulama/aead_cli.py"
+    ],
+    "test_dosyalari": [
+      "tests/__init__.py",
+      "tests/test_aead_nonce.py"
+    ],
+    "veri_dosyalari": [
+      "ornek_veri/aead_test_vectors.json",
+      "ornek_veri/invalid_aead_inputs.json"
+    ],
+    "dokumanlar": [
+      "README.md",
+      "ders.md",
+      "soru_cevap.md",
+      "rapor.md",
+      "sonuc.json"
+    ],
+    "kanitlar": [
+      "kanit/gercek/test_sonuclari.txt",
+      "kanit/gercek/negatif_kontrol_sonuclari.txt",
+      "kanit/gercek/aead_nonce_analiz_raporu.txt",
+      "kanit/gercek/komut_ve_cikis.txt",
+      "kanit/temsili/aead_nonce_mimarisi.txt"
+    ]
+  }
+}

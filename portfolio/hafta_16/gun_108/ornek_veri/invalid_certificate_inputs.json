@@ -1,0 +1,89 @@
+{
+  "aciklama": "Gün 108 X.509 ve Sertifika Zinciri Negatif Kontrol Test Senaryoları",
+  "negatif_senaryolar": [
+    {
+      "id": "NEG_01_UNTRUSTED_ROOT_CA",
+      "aciklama": "Güvenilen kök deposunda (trust store) bulunmayan sahte/yabancı kök sertifikaya bağlı zincir",
+      "zafiyet_kodu": "CWE-295",
+      "beklenen_hata": "UntrustedRootCAError",
+      "parametreler": {
+        "fake_root_cn": "Attacker Rogue CA"
+      }
+    },
+    {
+      "id": "NEG_02_EXPIRED_CERTIFICATE",
+      "aciklama": "Son geçerlilik tarihi (NotAfter) geçmiş süresi dolmuş sertifika",
+      "zafiyet_kodu": "CWE-298",
+      "beklenen_hata": "CertificateExpiredError",
+      "parametreler": {
+        "simulated_days_after": 400
+      }
+    },
+    {
+      "id": "NEG_03_NOT_YET_VALID_CERTIFICATE",
+      "aciklama": "Başlangıç geçerlilik tarihinden (NotBefore) önce kullanılan sertifika",
+      "zafiyet_kodu": "CWE-298",
+      "beklenen_hata": "CertificateNotYetValidError",
+      "parametreler": {
+        "simulated_days_before": 10
+      }
+    },
+    {
+      "id": "NEG_04_HOSTNAME_MISMATCH",
+      "aciklama": "Sertifikadaki CN ve SAN alanlarının talep edilen alan adı ile eşleşmemesi",
+      "zafiyet_kodu": "CWE-297",
+      "beklenen_hata": "HostnameMismatchError",
+      "parametreler": {
+        "requested_domain": "evil-phishing-bank.com",
+        "cert_domain": "secure.bank.com.tr"
+      }
+    },
+    {
+      "id": "NEG_05_TAMPERED_TBS_SIGNATURE",
+      "aciklama": "Sertifikanın TBS (To-Be-Signed) gövdesinde tek bir bayt tahrifat yapıldığında imza doğrulamasının çökmesi",
+      "zafiyet_kodu": "CWE-295",
+      "beklenen_hata": "CertificateSignatureInvalidError",
+      "parametreler": {
+        "tamper_field": "subject_cn",
+        "tamper_value": "compromised.bank.com.tr"
+      }
+    },
+    {
+      "id": "NEG_06_LEAF_ACTING_AS_CA",
+      "aciklama": "BasicConstraints is_ca=False olan bir uç sertifikanın yetkisiz alt sertifika imzalaması",
+      "zafiyet_kodu": "CWE-295",
+      "beklenen_hata": "NonCACertificateUsedAsCAError",
+      "parametreler": {
+        "illegal_signer": "leaf_certificate"
+      }
+    },
+    {
+      "id": "NEG_07_REVOKED_CERTIFICATE",
+      "aciklama": "İptal listesine (CRL / OCSP) alınmış seri numaralı sertifikanın tespiti",
+      "zafiyet_kodu": "CWE-295",
+      "beklenen_hata": "RevokedCertificateError",
+      "parametreler": {
+        "revoked_serial": "0xDEADBEEF01"
+      }
+    },
+    {
+      "id": "NEG_08_PATH_LENGTH_EXCEEDED",
+      "aciklama": "BasicConstraints pathLenConstraint sınırını aşan zincir derinliği",
+      "zafiyet_kodu": "CWE-295",
+      "beklenen_hata": "PathLengthExceededError",
+      "parametreler": {
+        "allowed_path_len": 0,
+        "actual_chain_depth": 2
+      }
+    },
+    {
+      "id": "NEG_09_CORRUPTED_CERTIFICATE_FORMAT",
+      "aciklama": "Zorunlu alanları (serial, issuer, subject) eksik bozuk sertifika",
+      "zafiyet_kodu": "CWE-20",
+      "beklenen_hata": "MalformedCertificateError",
+      "parametreler": {
+        "raw_json": "{\"version\": 3}"
+      }
+    }
+  ]
+}

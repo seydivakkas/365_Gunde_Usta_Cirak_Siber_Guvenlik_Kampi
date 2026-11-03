@@ -1,0 +1,28 @@
+{
+  "platform": "windows",
+  "hostname": "WIN-SRV-SEC-01",
+  "os_surumu": "Microsoft Windows Server 2022 Datacenter",
+  "zaman_damgasi_utc": "2026-11-01T20:25:00Z",
+  "calisma_suresi_saat": 1080.5,
+  "acik_portlar": [80, 443, 445, 3389],
+  "calisan_servisler": [
+    {"ad": "W3SVC", "durum": "Running", "baslangic_tipi": "Automatic"},
+    {"ad": "TermService", "durum": "Running", "baslangic_tipi": "Automatic"},
+    {"ad": "LanmanServer", "durum": "Running", "baslangic_tipi": "Automatic"},
+    {"ad": "Spooler", "durum": "Running", "baslangic_tipi": "Automatic"},
+    {"ad": "CryptoMinerSvc", "durum": "Running", "baslangic_tipi": "Manual"}
+  ],
+  "guvenlik_duvari": {
+    "DomainProfile": "Enabled",
+    "PrivateProfile": "Enabled",
+    "PublicProfile": "Disabled"
+  },
+  "eksik_guvenlik_yamalari": [
+    {"kb_id": "KB5034441", "onem_derecesi": "Critical", "cve": "CVE-2024-20666"}
+  ],
+  "kullanici_hesaplari": [
+    {"kullanici_adi": "Administrator", "durum": "Active", "sifre_asla_eskimez": true},
+    {"kullanici_adi": "Guest", "durum": "Disabled", "sifre_asla_eskimez": false}
+  ],
+  "stderr_gunlukleri": "Sistem basariyla tarandi. Herhangi bir hata olusmadi."
+}

@@ -1,0 +1,104 @@
+{
+  "aciklama": "Gün 114 MFA ve Phishing Direnci 9 Adet Negatif Kontrol Senaryosu",
+  "versiyon": "1.0.0",
+  "senaryolar": [
+    {
+      "id": "NEG_01",
+      "baslik": "Rastgele veya Hatalı TOTP Kodu Sunulması",
+      "hedef_zafiyet": "CWE-287: Improper Authentication",
+      "beklenen_istisna": "InvalidTOTPCodeError",
+      "girdi": {
+        "kullanici": "seydi_user",
+        "kod": "000000"
+      },
+      "beklenen_davranis": "Kod eşleşmediği için doğrulama reddedilmeli ve InvalidTOTPCodeError fırlatılmalıdır."
+    },
+    {
+      "id": "NEG_02",
+      "baslik": "Aynı Zaman Adımındaki TOTP Kodunun Tekrar Sunulması (Replay Saldırısı)",
+      "hedef_zafiyet": "CWE-294: Authentication Bypass by Capture-replay",
+      "beklenen_istisna": "TOTPReplayError",
+      "girdi": {
+        "kullanici": "seydi_user",
+        "replay_denemesi": true
+      },
+      "beklenen_davranis": "İlk kullanımda onaylanan kod, ikinci denemede TOTPReplayError ile engellenmelidir."
+    },
+    {
+      "id": "NEG_03",
+      "baslik": "Zaman Penceresi Dışındaki Eski TOTP Kodu",
+      "hedef_zafiyet": "CWE-287: Improper Authentication (Time Expiration)",
+      "beklenen_istisna": "InvalidTOTPCodeError",
+      "girdi": {
+        "kullanici": "seydi_user",
+        "zaman_kaymasi_saniye": -120
+      },
+      "beklenen_davranis": "2 dakika öncesine ait TOTP kodu zaman toleransı dışında kalarak reddedilmelidir."
+    },
+    {
+      "id": "NEG_04",
+      "baslik": "FIDO2 Oltalama (Phishing) Sitesinde Üretilen Menşe Uyuşmazlığı",
+      "hedef_zafiyet": "CWE-346: Origin Validation Error",
+      "beklenen_istisna": "PhishingOriginMismatchError",
+      "girdi": {
+        "credential_id": "yubikey_test_cred_01",
+        "phishing_origin": "https://sahte-oltalama-portali.com"
+      },
+      "beklenen_davranis": "Donanım anahtarının imzaladığı menşe sahte olduğu için sunucu PhishingOriginMismatchError vermelidir."
+    },
+    {
+      "id": "NEG_05",
+      "baslik": "Daha Önce Tüketilmiş (Used) WebAuthn Challenge ile Giriş Girişimi",
+      "hedef_zafiyet": "CWE-294: Authentication Bypass by Capture-replay",
+      "beklenen_istisna": "WebAuthnChallengeMismatchError",
+      "girdi": {
+        "credential_id": "yubikey_test_cred_01",
+        "challenge_tekrar_kullanimi": true
+      },
+      "beklenen_davranis": "Tek kullanımlık (nonce) meydan okuma ikinci kez sunulduğunda WebAuthnChallengeMismatchError almalıdır."
+    },
+    {
+      "id": "NEG_06",
+      "baslik": "Süresi Dolan (Expired) WebAuthn Challenge ile Doğrulama",
+      "hedef_zafiyet": "CWE-294: Authentication Bypass by Capture-replay",
+      "beklenen_istisna": "WebAuthnChallengeMismatchError",
+      "girdi": {
+        "credential_id": "yubikey_test_cred_01",
+        "ttl_asimi_saniye": 300
+      },
+      "beklenen_davranis": "Zaman aşımına uğramış challenge ile gelen yanıt derhal reddedilmelidir."
+    },
+    {
+      "id": "NEG_07",
+      "baslik": "Bozulmuş veya Yanlış Anahtarla İmzalanmış FIDO2 Assertion İmzası",
+      "hedef_zafiyet": "CWE-347: Improper Verification of Cryptographic Signature",
+      "beklenen_istisna": "WebAuthnInvalidSignatureError",
+      "girdi": {
+        "credential_id": "yubikey_test_cred_01",
+        "sahte_imza": true
+      },
+      "beklenen_davranis": "Asimetrik imza genel anahtarla çözüldüğünde özet uyuşmadığı için WebAuthnInvalidSignatureError fırlatılmalıdır."
+    },
+    {
+      "id": "NEG_08",
+      "baslik": "Donanım Güvenlik Anahtarı Klon Tespiti (Sayaç Gerilemesi / Tekrarı)",
+      "hedef_zafiyet": "CWE-347: Improper Verification of Cryptographic Signature (Clone Detection)",
+      "beklenen_istisna": "AuthenticatorCloneDetectedError",
+      "girdi": {
+        "credential_id": "yubikey_test_cred_01",
+        "gerileyen_sayac": 45
+      },
+      "beklenen_davranis": "Kayıtlı sayaç 50 iken 45 değeriyle gelen istek AuthenticatorCloneDetectedError ile engellenmelidir."
+    },
+    {
+      "id": "NEG_09",
+      "baslik": "Sistemde Kayıtlı Olmayan Donanım Anahtarı Kimliği",
+      "hedef_zafiyet": "CWE-287: Improper Authentication",
+      "beklenen_istisna": "WebAuthnInvalidSignatureError",
+      "girdi": {
+        "credential_id": "bilinmeyen_sahte_donanim_anahtari_999"
+      },
+      "beklenen_davranis": "Kayıtsız genel anahtar kimliği için gelen assertion anında reddedilmelidir."
+    }
+  ]
+}

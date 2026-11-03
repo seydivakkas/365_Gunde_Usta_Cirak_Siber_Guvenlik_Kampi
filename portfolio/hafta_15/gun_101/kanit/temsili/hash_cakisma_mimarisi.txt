@@ -1,0 +1,48 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+            KRİPTOGRAFİK HASH VE ÇAKIŞMA DİRENCİ (COLLISION RESISTANCE) MİMARİSİ
+========================================================================================
+
++--------------------------------------------------------------------------------------+
+|                     KRİPTOGRAFİK HASH FONKSİYONLARININ ÜÇ DİREĞİ                      |
++--------------------------------------------------------------------------------------+
+|                                                                                      |
+|   [1. PRE-IMAGE RESISTANCE]       [2. SECOND PRE-IMAGE RES.]    [3. COLLISION RESIST.]|
+|   (Tek Yönlülük)                  (Zayıf Çakışma Direnci)       (Güçlü Çakışma Dir.)  |
+|                                                                                      |
+|   Verilen: h                      Verilen: m1                   Verilen: Yok          |
+|   Hedef: H(m) = h olacak m        Hedef: H(m2) = H(m1)          Hedef: H(m1) = H(m2)  |
+|   Zorluk: 2^n işlem               Zorluk: 2^n işlem             Zorluk: 2^(n/2) işlem |
+|   (Geri Döndürülemez)             (Sahtecilik İmkansız)         (Doğum Günü Saldırısı)|
+|                                                                                      |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                        DOĞUM GÜNÜ PARADOKSU (BIRTHDAY PARADOX)                       |
++--------------------------------------------------------------------------------------+
+|   * n-bitlik bir hash alanında rastgele iki girdinin aynı özeti üretme olasılığı      |
+|     2^n değil, karekökü olan 2^(n/2) mertebesindedir!                                |
+|   * MD5 (128-bit): Çakışma direnci sadece 2^64 (2004'te Wang et al. kırdı!).          |
+|   * SHA-1 (160-bit): Çakışma direnci sadece 2^80 (2017 SHAttered saldırısı ile kırdı).|
+|   * SHA-256 (256-bit): Çakışma direnci 2^128 (Matematiksel olarak aşılamaz!).         |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                        ÇIĞ ETKİSİ ANALİZİ (AVALANCHE EFFECT)                         |
++--------------------------------------------------------------------------------------+
+|   Girdi 1: "SiberGuvenlik2026_Kripto_G101_A" ---> SHA-256 (256 bit çıktı)            |
+|   Girdi 2: "SiberGuvenlik2026_Kripto_G101_B" ---> SHA-256 (256 bit çıktı)            |
+|   Fark: Sadece 1 bit (0x41 vs 0x42)          ---> Hamming Mesafesi: ~128 bit          |
+|                                              ---> Değişim Oranı: %49.8 (İDEAL)       |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                        GÜVENLİK FİLTRESİ VE STANDART KARARLARI                       |
++--------------------------------------------------------------------------------------+
+|   * CWE-328: MD5 ve SHA-1 kriptografide YASAKLANMIŞTIR (Kırılmış Hash).              |
+|   * CWE-208: Hash doğrulamalarında hmac.compare_digest ile sabit zamanlı kontrol.    |
+|   * Kabul Edilen Standartlar: NIST FIPS 180-4 SHA-256/512 ve RFC 7693 BLAKE2b.       |
++--------------------------------------------------------------------------------------+

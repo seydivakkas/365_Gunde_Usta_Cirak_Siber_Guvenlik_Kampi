@@ -1,0 +1,78 @@
+{
+  "aciklama": "Gün 077: Mini Proje 10 bağımsız log ayrıştırıcı için 9 adet negatif kontrol senaryosu",
+  "negatif_testler": [
+    {
+      "id": "NEG_01_REDOS_OVERSIZED_LINE_INJECTION",
+      "tanim": "ReDoS felaket geri izleme oluşturmayı hedefleyen 5000 karakterlik aşırı uzun log satırı",
+      "girdi": {
+        "oversized_payload": "192.168.1.1 "
+      },
+      "beklenen_hata_veya_davranis": "Girdi 4096 karakter tavanını aştığı için regex motoruna girmeden reddedilmelidir"
+    },
+    {
+      "id": "NEG_02_NULL_BYTE_LINE_POISONING",
+      "tanim": "Log satırına enjekte edilen Null-Byte (\\x00) ile dize kesme ve ayrıştırıcı yanıltma girişimi",
+      "girdi": {
+        "tainted_log": "192.168.1.1 - - [01/Jan/2026:00:00:00 +0000] \"GET /admin\u0000.png HTTP/1.1\" 200 100 \"-\" \"curl\""
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Null byte enjeksiyonu tespit edilip satır reddedilmelidir"
+    },
+    {
+      "id": "NEG_03_TROJAN_SOURCE_BIDI_IN_USER_FIELD",
+      "tanim": "Kullanıcı adı alanına Unicode Bidi (\\u202E / RLO) enjeksiyonu ile görsel sahtecilik girişimi",
+      "girdi": {
+        "bidi_log": "Oct 31 10:00:10 srv-auth01 sshd[14201]: Failed password for invalid user \u202Eroot from 198.51.100.99 port 52341 ssh2"
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Bidi Trojan Source karakteri tespit edilip satır reddedilmelidir"
+    },
+    {
+      "id": "NEG_04_UNRECOGNIZED_MALFORMED_FORMAT",
+      "tanim": "Tanımlı hiçbir log formatına (Web, SSH, FW) uymayan rastgele bozuk veri satırı",
+      "girdi": {
+        "garbage_line": "THIS_IS_CORRUPTED_BINARY_DATA_WITH_NO_STRUCTURE_#%!&"
+      },
+      "beklenen_hata_veya_davranis": "Ayrıştırıcı çökmeksizin 'UNRECOGNIZED' kategorisine almalı ve hata loguna kaydetmelidir"
+    },
+    {
+      "id": "NEG_05_MALFORMED_IP_IN_LOG_HEADER",
+      "tanim": "Geçersiz oktet (999.999.999.999) içeren malforme IP adresi enjeksiyonu",
+      "girdi": {
+        "bad_ip_line": "999.999.999.999 - - [31/Oct/2026:10:00:01 +0300] \"GET /index.html HTTP/1.1\" 200 1420 \"-\" \"Mozilla\""
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Geçersiz IP adresi tespit edildi ve bloklandı"
+    },
+    {
+      "id": "NEG_06_BRUTE_FORCE_LOCKOUT_BURST",
+      "tanim": "Eşik değeri (5) aşan ardışık başarısız SSH giriş denemeleri ile kilit tetiklenmesi",
+      "girdi": {
+        "ip": "198.51.100.99",
+        "attempt_count": 5
+      },
+      "beklenen_hata_veya_davranis": "Motor IP'yi BRUTE_FORCE_LOCKOUT olarak kilitli işaretlemeli ve alarm üretmelidir"
+    },
+    {
+      "id": "NEG_07_NON_EXISTENT_LOG_FILE_PATH",
+      "tanim": "Var olmayan bir log dosya yolu verildiğinde FileNotFoundError üretilmesi",
+      "girdi": {
+        "path": "non_existent_path_to_log.log"
+      },
+      "beklenen_hata_veya_davranis": "FileNotFoundError düzgün şekilde yakalanmalıdır"
+    },
+    {
+      "id": "NEG_08_WHITELIST_SUPPRESSION_OF_KNOWN_IOC",
+      "tanim": "Bilinen IoC listesinde yer alsa dahi beyaz listedeki IP (8.8.8.8) için blok alarmı üretilmemelidir",
+      "girdi": {
+        "ip": "8.8.8.8"
+      },
+      "beklenen_hata_veya_davranis": "Beyaz liste kümesi IoC'yi bastırmalı ve yanlış alarm (False Positive) engellenmelidir"
+    },
+    {
+      "id": "NEG_09_ANSI_TERMINAL_ESCAPE_LOG_INJECTION",
+      "tanim": "Log satırına terminal temizleme veya renk manipülasyonu sağlayan ANSI kaçış kodu enjeksiyonu",
+      "girdi": {
+        "ansi_tainted": "Oct 31 10:00:10 srv-auth01 sshd[14201]: \u001b[2J\u001b[H Accepted password for root from 10.0.0.1"
+      },
+      "beklenen_hata_veya_davranis": "ANSI kaçış kodları ve yazdırılamayan baytlar tamamen temizlenmelidir"
+    }
+  ]
+}

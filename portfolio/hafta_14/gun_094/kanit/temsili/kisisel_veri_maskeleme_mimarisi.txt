@@ -1,0 +1,72 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+GÜN 094: REGEX İLE KİŞİSEL VERİ MASKELEME VE DLP MİMARİSİ
+========================================================================================
+
++--------------------------------------------------------------------------------------+
+|                     GELEN HAM TELEMETRİ / LOG / METİN AKIŞI                          |
+|         (Web Logları, Veritabanı Dökümleri, SIEM Eventleri, API İstekleri)           |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                      ÖN GÜVENLİK VE GİRDİ SANİTİZASYON KATMANI                       |
+|  - Tip Denetimi (CWE-843 Type Confusion Engeli: str harici tipler reddedilir)        |
+|  - Bellek Tavanı ve DoS Engeli (CWE-400: Girdi <= 1 MB)                              |
+|  - Null-Byte Zehirlemesi Koruması (CWE-158: \x00 tespiti anında işlem kesilir)       |
+|  - ReDoS Ön Algılama Kalkanı (CWE-1333: Katastrofik geri izleme tetikleyicileri red)  |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|             DÜZENLİ İFADE (REGEX) DESEN AYRIŞTIRMA VE ADAY ÇIKARMA MOTORU            |
+|  +--------------------+  +--------------------+  +--------------------+              |
+|  |   TCKN Deseni      |  | Kredi Kartı Deseni |  |   TR IBAN Deseni   |              |
+|  | \b([1-9]\d{10})\b  |  | 13-19 Hane (BIN)   |  | TR\d{2}[\s]?\d{4}..|              |
+|  +--------------------+  +--------------------+  +--------------------+              |
+|  +--------------------+  +--------------------+  +--------------------+              |
+|  |   E-Posta Deseni   |  |   Telefon Deseni   |  | Parola/Token Deseni|              |
+|  | RFC-5322 ReDoS Safe|  | +90/0 5xx ...      |  | secret/token/api_k |              |
+|  +--------------------+  +--------------------+  +--------------------+              |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|             İKİNCİL ALGORİTMİK VE MATEMATİKSEL DOĞRULAMA (SIFIR YANLIŞ POZİTİF)      |
+|                                                                                      |
+|   [TCKN Doğrulayıcı]  ---> 10. ve 11. Basamak Kontrol Formülü:                       |
+|                            c10 = ((Tekler*7) - Çiftler) % 10                         |
+|                            c11 = (İlk 10 Basamak Toplamı) % 10                       |
+|                                                                                      |
+|   [Kart Doğrulayıcı]  ---> ISO/IEC 7812 Luhn (Mod-10) Algoritması:                  |
+|                            Sağdan sola tek indeksler x2 (çarpım > 9 ise -9)          |
+|                            Toplam % 10 == 0 şartı                                    |
+|                                                                                      |
+|   [IBAN Doğrulayıcı]  ---> ISO 7064 MOD-97 Algoritması:                              |
+|                            İlk 4 hane sona, Harfler -> Sayı (A=10..Z=35)             |
+|                            Büyük Sayı % 97 == 1 şartı                                |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                    MASKELEME VE REDAKSİYON STRATEJİ SEÇİCİ                           |
+|                                                                                      |
+|   [MASK Stili]    : Format Koruyucu Kısmi Yıldızlama (Debugging & Audit Safe)         |
+|                     TCKN: 123******50 | CC: 453201******0366 | Email: ah***@corp.com |
+|                                                                                      |
+|   [REDACT Stili]  : Tam Gizleme ve Etiketleme (Zero-Trust Log Export)                |
+|                     [REDACTED_TCKN] | [REDACTED_CARD] | [REDACTED_EMAIL]             |
+|                                                                                      |
+|   [HASH Stili]    : Kriptografik Pseudonymization (Analitik & Güvenli Korelasyon)    |
+|                     TCKN#a8f10c... | CC#b3e811... | EMAIL#44f12a...                  |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                       DLP METRİK VE DENETİM GÜNLÜĞÜ ÇIKTISI                          |
+|  - İstatistik Sayacı: TCKN: 2, CC: 2, Email: 3, IBAN: 2, Phone: 2, Secret: 1         |
+|  - İşlem Süresi: < 5 ms (Yüksek Hızlı Pipeline Desteği)                              |
+|  - Standart POSIX Çıkış Kodları: 0 (Başarılı), 1 (Güvenlik Engeli), 2 (Girdi Hatası) |
++--------------------------------------------------------------------------------------+
+========================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

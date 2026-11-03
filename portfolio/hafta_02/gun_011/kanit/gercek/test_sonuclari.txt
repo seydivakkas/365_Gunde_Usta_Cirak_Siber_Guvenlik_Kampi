@@ -1,0 +1,48 @@
+================================================================================
+GERÇEK YÜRÜTME KANITI — KOMUT VE ÇIKIŞ
+================================================================================
+Tarih/Saat : 2026-10-27T00:08:13.699608
+İşletim Sis: Windows-11-10.0.26300-SP0
+Python     : 3.14.3
+Komut      : C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest portfolio/hafta_02/gun_011/tests/test_lab_network_boundary_auditor.py -v
+Çıkış Kodu : 0
+--------------------------------------------------------------------------------
+STDOUT:
+
+--------------------------------------------------------------------------------
+STDERR:
+test_01_altin_topoloji_pozitif_kontrol (portfolio.hafta_02.gun_011.tests.test_lab_network_boundary_auditor.TestLabNetworkBoundaryAuditor.test_01_altin_topoloji_pozitif_kontrol)
+POZ�T�F KONTROL: 4 b�lgeli, tam izole ve mikro-segmente laboratuvar topolojisi ... ok
+test_02_karantina_internet_cikis_felaket_kontrol (portfolio.hafta_02.gun_011.tests.test_lab_network_boundary_auditor.TestLabNetworkBoundaryAuditor.test_02_karantina_internet_cikis_felaket_kontrol)
+NEGAT�F KONTROL: Karantina / Patlatma b�lgesinde internet ��k���na izin verilirse, ... ok
+test_03_duz_ag_segmentasyon_negatif_kontrol (portfolio.hafta_02.gun_011.tests.test_lab_network_boundary_auditor.TestLabNetworkBoundaryAuditor.test_03_duz_ag_segmentasyon_negatif_kontrol)
+NEGAT�F KONTROL: Topolojide b�lge say�s� 3'ten az ise (d�z a� riski), ... ok
+test_04_cakisan_cidr_negatif_kontrol (portfolio.hafta_02.gun_011.tests.test_lab_network_boundary_auditor.TestLabNetworkBoundaryAuditor.test_04_cakisan_cidr_negatif_kontrol)
+NEGAT�F KONTROL: �ki farkl� b�lgeye ayn� alt a� CIDR blo�u atan�rsa, ... ok
+test_05_harici_dns_engellenmemis_negatif_kontrol (portfolio.hafta_02.gun_011.tests.test_lab_network_boundary_auditor.TestLabNetworkBoundaryAuditor.test_05_harici_dns_engellenmemis_negatif_kontrol)
+NEGAT�F KONTROL: Karantina b�lgesinde harici genel DNS sorgular�na izin verilirse, ... ok
+test_06_dns_sinkhole_eksik_negatif_kontrol (portfolio.hafta_02.gun_011.tests.test_lab_network_boundary_auditor.TestLabNetworkBoundaryAuditor.test_06_dns_sinkhole_eksik_negatif_kontrol)
+NEGAT�F KONTROL: Karantinada DNS sinkhole / sahte yan�tlay�c� tan�mlanmazsa, ... ok
+test_07_varsayilan_forward_accept_negatif_kontrol (portfolio.hafta_02.gun_011.tests.test_lab_network_boundary_auditor.TestLabNetworkBoundaryAuditor.test_07_varsayilan_forward_accept_negatif_kontrol)
+NEGAT�F KONTROL: G�venlik duvar� varsay�lan forward eylemi 'ACCEPT' yap�ld���nda, ... ok
+test_08_statefull_conntrack_kapali_negatif_kontrol (portfolio.hafta_02.gun_011.tests.test_lab_network_boundary_auditor.TestLabNetworkBoundaryAuditor.test_08_statefull_conntrack_kapali_negatif_kontrol)
+NEGAT�F KONTROL: Statefull conntrack (ba�lant� takibi) kapat�ld���nda, ... ok
+test_09_kurbandan_yeni_baglanti_engeli_yok_kontrol (portfolio.hafta_02.gun_011.tests.test_lab_network_boundary_auditor.TestLabNetworkBoundaryAuditor.test_09_kurbandan_yeni_baglanti_engeli_yok_kontrol)
+NEGAT�F KONTROL: Kurbandan d��ar�ya yeni ba�lant� ba�latma engeli kapat�l�rsa, ... ok
+test_10_kurbandan_saldirgana_new_baglanti_tersine_kabuk_kontrol (portfolio.hafta_02.gun_011.tests.test_lab_network_boundary_auditor.TestLabNetworkBoundaryAuditor.test_10_kurbandan_saldirgana_new_baglanti_tersine_kabuk_kontrol)
+NEGAT�F KONTROL: Kural setinde kurbandan sald�rgana 'NEW' durumunda ba�lant�ya ... ok
+test_11_karantinadan_internete_genis_izin_felaket_kontrol (portfolio.hafta_02.gun_011.tests.test_lab_network_boundary_auditor.TestLabNetworkBoundaryAuditor.test_11_karantinadan_internete_genis_izin_felaket_kontrol)
+NEGAT�F KONTROL: Karantina b�lgesinden d�� internete (INTERNET) do�ru ACCEPT kural� ... ok
+test_12_iptables_betik_uretimi_dogrulamasi (portfolio.hafta_02.gun_011.tests.test_lab_network_boundary_auditor.TestLabNetworkBoundaryAuditor.test_12_iptables_betik_uretimi_dogrulamasi)
+��LEVSELL�K KONTROL�: urete_iptables_kurallari metodu ile olu�turulan betikte ... ok
+test_13_gecersiz_sema_ve_alan_eksikligi (portfolio.hafta_02.gun_011.tests.test_lab_network_boundary_auditor.TestLabNetworkBoundaryAuditor.test_13_gecersiz_sema_ve_alan_eksikligi)
+HATA Y�NET�M�: Zorunlu alanlardan biri eksik oldu�unda NetworkBoundaryValidationError f�rlat�lmal�d�r. ... ok
+test_14_olmayan_dosya_hatasi (portfolio.hafta_02.gun_011.tests.test_lab_network_boundary_auditor.TestLabNetworkBoundaryAuditor.test_14_olmayan_dosya_hatasi)
+HATA Y�NET�M�: Olmayan dosya yolu verildi�inde FileNotFoundError f�rlat�lmal�d�r. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.035s
+
+OK
+
+================================================================================

@@ -1,0 +1,43 @@
+======================================================================
+GÜN 118: SIFIR GÜVEN & EN AZ AYRICALIK BİRİM TEST RAPORU
+Tarih / Saat: 2026-11-02T05:42:34.089334
+Standart: NIST SP 800-207 Zero Trust Architecture
+======================================================================
+
+test_01_jit_elevation_grant_success (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_01_jit_elevation_grant_success)
+TEST 01: Onaylı katalogdaki geçerli JIT yetki talebi başarıyla tahsis edilmelidir. ... ok
+test_02_standing_admin_privilege_forbidden (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_02_standing_admin_privilege_forbidden)
+TEST 02: Kalıcı root/admin/sınırsız yetki talepleri derhal engellenmelidir (CWE-250). ... ok
+test_03_excessive_scope_rejection (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_03_excessive_scope_rejection)
+TEST 03: Onaylı JIT kataloğu dışındaki aşırı yetki talepleri reddedilmelidir (CWE-272). ... ok
+test_04_jit_expiration_enforcement (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_04_jit_expiration_enforcement)
+TEST 04: Süresi dolmuş JIT yetkilendirmesi kullanımı JITElevationExpiredError vermelidir (CWE-613). ... ok
+test_05_jit_revocation_enforcement (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_05_jit_revocation_enforcement)
+TEST 05: Manuel iptal edilen JIT yetkisi süresi dolmasa dahi geçersiz sayılmalıdır. ... ok
+test_06_device_posture_healthy_calculation (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_06_device_posture_healthy_calculation)
+TEST 06: Tam uyumlu ve yamalı kurumsal cihaz 100.0 sağlık puanı almalıdır. ... ok
+test_07_device_posture_unmanaged_byod_penalty (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_07_device_posture_unmanaged_byod_penalty)
+TEST 07: Yönetilmeyen (BYOD) ve antivirüsü kapalı cihaz ağır puan cezası almalıdır. ... ok
+test_08_device_posture_rejection_at_pep (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_08_device_posture_rejection_at_pep)
+TEST 08: Güvenilmeyen uç nokta PEP kapısından içeri alınmamalıdır (CWE-284). ... ok
+test_09_microsegmentation_lateral_movement_blocked (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_09_microsegmentation_lateral_movement_blocked)
+TEST 09: İzole segmentten (guest_wifi/dmz) hassas segmente yanal hareket engellenmelidir (CWE-284). ... ok
+test_10_microsegmentation_allowed_transition (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_10_microsegmentation_allowed_transition)
+TEST 10: Yetkili jumpbox segmentinden Core Banking segmentine geçişe izin verilmelidir. ... ok
+test_11_dynamic_trust_score_degradation_on_anomalies (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_11_dynamic_trust_score_degradation_on_anomalies)
+TEST 11: Anomali tespit edilen oturumun güven skoru düşmeli ve erişim kesilmelidir (CWE-284). ... ok
+test_12_step_up_mfa_requirement (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_12_step_up_mfa_requirement)
+TEST 12: Kritik kaynak için Step-Up MFA oturumu olmayan istek engellenmelidir (CWE-308). ... ok
+test_13_step_up_mfa_success (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_13_step_up_mfa_success)
+TEST 13: Step-Up MFA doğrulaması tamamlanmış oturum izin almalıdır. ... ok
+test_14_missing_required_jit_scope (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_14_missing_required_jit_scope)
+TEST 14: İlgili JIT kapsamı bulunmayan oturum JITElevationExpiredError almalıdır (CWE-613). ... ok
+test_15_full_zero_trust_pass_and_audit (test_least_privilege_zero_trust.TestLeastPrivilegeAndZeroTrust.test_15_full_zero_trust_pass_and_audit)
+TEST 15: Tüm NIST SP 800-207 koşullarını sağlayan meşru işlem onaylanmalı ve denetim izi üretmelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+
+Çıkış Kodu: 0

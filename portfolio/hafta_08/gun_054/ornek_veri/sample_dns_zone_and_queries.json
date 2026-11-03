@@ -1,0 +1,77 @@
+{
+  "aciklama": "G054 DNS Sorguları ve Kayıt Türleri — Örnek Bölge Dosyası ve Güvenlik Senaryoları",
+  "lisans": "Özel Lisans — Tüm Hakları Saklıdır (c) 2026 Seydi Eryılmaz",
+  "bolge_kayitlari": [
+    {
+      "id": "RR-A-01",
+      "ad": "example.com",
+      "tur": "A",
+      "ttl": 3600,
+      "deger": "93.184.216.34",
+      "aciklama": "Standart IPv4 adresi eşlemesi"
+    },
+    {
+      "id": "RR-AAAA-01",
+      "ad": "example.com",
+      "tur": "AAAA",
+      "ttl": 3600,
+      "deger": "2606:2800:220:1:248:1893:25c8:1946",
+      "aciklama": "Standart IPv6 adresi eşlemesi"
+    },
+    {
+      "id": "RR-CNAME-01",
+      "ad": "www.example.com",
+      "tur": "CNAME",
+      "ttl": 3600,
+      "deger": "example.com",
+      "aciklama": "Meşru kurumsal web takma adı yönlendirmesi"
+    },
+    {
+      "id": "RR-CNAME-TAKEOVER",
+      "ad": "blog.example.com",
+      "tur": "CNAME",
+      "ttl": 300,
+      "deger": "abandoned-customer-site.s3-website-us-east-1.amazonaws.com",
+      "aciklama": "KRİTİK RİSK: Silinmiş S3 deposuna işaret eden sahipsiz (dangling) CNAME / Subdomain Takeover"
+    },
+    {
+      "id": "RR-MX-01",
+      "ad": "example.com",
+      "tur": "MX",
+      "ttl": 3600,
+      "oncelik": 10,
+      "deger": "mail.example.com",
+      "aciklama": "Öncelik 10 ile kurumsal e-posta sunucusu adresi"
+    },
+    {
+      "id": "RR-TXT-SPF",
+      "ad": "example.com",
+      "tur": "TXT",
+      "ttl": 3600,
+      "deger": "v=spf1 ip4:93.184.216.0/24 -all",
+      "aciklama": "Katı (-all) SPF e-posta sahteciliği önleme kaydı"
+    },
+    {
+      "id": "RR-TXT-DMARC",
+      "ad": "_dmarc.example.com",
+      "tur": "TXT",
+      "ttl": 3600,
+      "deger": "v=DMARC1; p=reject; rua=mailto:dmarc-reports@example.com",
+      "aciklama": "Sahte mailleri reddeden (p=reject) DMARC güvenlik politikası"
+    }
+  ],
+  "supheli_sorgular": [
+    {
+      "id": "QRY-TUNNEL-01",
+      "alan_adi": "48656c6c6f576f726c64457866696c74726174696f6e.c2.attacker.com",
+      "tur": "TXT",
+      "aciklama": "Yüksek entropili ve hex kodlu veri sızdırma (DNS Tunneling) sorgusu"
+    },
+    {
+      "id": "QRY-LEGIT-01",
+      "alan_adi": "api.example.com",
+      "tur": "A",
+      "aciklama": "Meşru standart istemci API çözümleme sorgusu"
+    }
+  ]
+}

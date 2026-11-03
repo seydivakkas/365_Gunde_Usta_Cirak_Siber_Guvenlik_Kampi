@@ -1,0 +1,53 @@
+{
+  "aciklama": "G061 - Proxy, NAT ve Guvenlik Duvari Kural ve Ag Yapilandirma Paketi",
+  "telif_hakki": "Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Tum Haklari Saklidir.",
+  "guvenlik_duvari_yapilandirmasi": {
+    "varsayilan_politika": "DROP",
+    "durum_takibi_aktif": true,
+    "izinli_durumlar": ["ESTABLISHED", "RELATED"],
+    "kurallar": [
+      {
+        "kural_id": "FW_RULE_01",
+        "yon": "EGRESS",
+        "kaynak_ag": "192.168.1.0/24",
+        "hedef_ag": "ANY",
+        "protokol": "TCP",
+        "hedef_portlar": [80, 443],
+        "eylem": "ACCEPT",
+        "aciklama": "Istemcilerin internete dogru HTTP ve HTTPS cikisina izin ver."
+      },
+      {
+        "kural_id": "FW_RULE_02",
+        "yon": "INGRESS",
+        "kaynak_ag": "ANY",
+        "hedef_ag": "192.168.1.100/32",
+        "protokol": "TCP",
+        "hedef_portlar": [443],
+        "eylem": "ACCEPT",
+        "aciklama": "DMZ bolgesindeki web sunucusuna gelen dis HTTPS trafigine izin ver."
+      }
+    ]
+  },
+  "nat_pat_yapilandirmasi": {
+    "genel_ip": "203.0.113.10",
+    "ic_ag": "192.168.1.0/24",
+    "port_araligi_baslangic": 10000,
+    "port_araligi_bitis": 65535,
+    "zaman_asimi_saniye": 300,
+    "aciklama": "Istemcilerin tek bir dis IP uzerinden port donusumuyle (PAT/NAPT) internete cikisi."
+  },
+  "proxy_yapilandirmasi": {
+    "forward_proxy": {
+      "dinleme_ip_port": "192.168.1.1:8080",
+      "connect_izinli_portlar": [443],
+      "yasakli_kategoriler": ["kumarsektoru", "zararli-yazilim-c2"]
+    },
+    "reverse_proxy": {
+      "dinleme_ip_port": "203.0.113.10:443",
+      "arka_uc_sunuculari": ["10.0.0.11:8080", "10.0.0.12:8080"],
+      "yuk_dengeleme_algoritmasi": "ROUND_ROBIN",
+      "guvenilir_vekiller": ["127.0.0.1", "10.0.0.1"],
+      "xff_guvenlik_politikasi": "OVERWRITE_UNTRUSTED"
+    }
+  }
+}

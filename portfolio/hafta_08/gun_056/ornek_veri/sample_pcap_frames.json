@@ -1,0 +1,146 @@
+{
+  "aciklama": "G056 Mini Proje 7: Protokol Haritasi - Cok Katmanli Paket Akisi ve Guvenlik Test Cerceveleri",
+  "versiyon": "1.0.0",
+  "paketler": [
+    {
+      "id": 1,
+      "etiket": "ARP_REQUEST",
+      "katman2": {
+        "src_mac": "00:0c:29:4f:8e:35",
+        "dst_mac": "ff:ff:ff:ff:ff:ff",
+        "ethertype": "0x0806"
+      },
+      "katman3_arp": {
+        "hardware_type": 1,
+        "protocol_type": "0x0800",
+        "opcode": 1,
+        "sender_mac": "00:0c:29:4f:8e:35",
+        "sender_ip": "192.168.1.100",
+        "target_mac": "00:00:00:00:00:00",
+        "target_ip": "192.168.1.1"
+      },
+      "boyut": 42
+    },
+    {
+      "id": 2,
+      "etiket": "TCP_SYN_HANDSHAKE",
+      "katman2": {"src_mac": "00:0c:29:4f:8e:35", "dst_mac": "52:54:00:12:34:56", "ethertype": "0x0800"},
+      "katman3_ip": {"src_ip": "192.168.1.100", "dst_ip": "192.168.1.10", "protocol": 6, "ttl": 64},
+      "katman4_tcp": {"src_port": 54321, "dst_port": 80, "seq": 1000, "ack": 0, "flags": "SYN", "window": 64240},
+      "boyut": 54
+    },
+    {
+      "id": 3,
+      "etiket": "TCP_SYN_ACK_HANDSHAKE",
+      "katman2": {"src_mac": "52:54:00:12:34:56", "dst_mac": "00:0c:29:4f:8e:35", "ethertype": "0x0800"},
+      "katman3_ip": {"src_ip": "192.168.1.10", "dst_ip": "192.168.1.100", "protocol": 6, "ttl": 64},
+      "katman4_tcp": {"src_port": 80, "dst_port": 54321, "seq": 5000, "ack": 1001, "flags": "SYN,ACK", "window": 65535},
+      "boyut": 54
+    },
+    {
+      "id": 4,
+      "etiket": "TCP_ACK_HANDSHAKE",
+      "katman2": {"src_mac": "00:0c:29:4f:8e:35", "dst_mac": "52:54:00:12:34:56", "ethertype": "0x0800"},
+      "katman3_ip": {"src_ip": "192.168.1.100", "dst_ip": "192.168.1.10", "protocol": 6, "ttl": 64},
+      "katman4_tcp": {"src_port": 54321, "dst_port": 80, "seq": 1001, "ack": 5001, "flags": "ACK", "window": 64240},
+      "boyut": 54
+    },
+    {
+      "id": 5,
+      "etiket": "TCP_DATA_HTTP",
+      "katman2": {"src_mac": "00:0c:29:4f:8e:35", "dst_mac": "52:54:00:12:34:56", "ethertype": "0x0800"},
+      "katman3_ip": {"src_ip": "192.168.1.100", "dst_ip": "192.168.1.10", "protocol": 6, "ttl": 64},
+      "katman4_tcp": {"src_port": 54321, "dst_port": 80, "seq": 1001, "ack": 5001, "flags": "PSH,ACK", "window": 64240},
+      "katman7_payload": "GET /index.html HTTP/1.1\r\nHost: 192.168.1.10\r\n\r\n",
+      "boyut": 96
+    },
+    {
+      "id": 6,
+      "etiket": "TCP_RETRANSMISSION",
+      "katman2": {"src_mac": "00:0c:29:4f:8e:35", "dst_mac": "52:54:00:12:34:56", "ethertype": "0x0800"},
+      "katman3_ip": {"src_ip": "192.168.1.100", "dst_ip": "192.168.1.10", "protocol": 6, "ttl": 64},
+      "katman4_tcp": {"src_port": 54321, "dst_port": 80, "seq": 1001, "ack": 5001, "flags": "PSH,ACK", "window": 64240},
+      "katman7_payload": "GET /index.html HTTP/1.1\r\nHost: 192.168.1.10\r\n\r\n",
+      "boyut": 96,
+      "yeniden_iletim": true
+    },
+    {
+      "id": 7,
+      "etiket": "UDP_DNS_QUERY",
+      "katman2": {"src_mac": "00:0c:29:4f:8e:35", "dst_mac": "52:54:00:12:34:56", "ethertype": "0x0800"},
+      "katman3_ip": {"src_ip": "192.168.1.100", "dst_ip": "8.8.8.8", "protocol": 17, "ttl": 64},
+      "katman4_udp": {"src_port": 52111, "dst_port": 53, "length": 38},
+      "katman7_dns": {"tx_id": "0x1a2b", "type": "QUERY", "qname": "example.com", "qtype": "A"},
+      "boyut": 72
+    },
+    {
+      "id": 8,
+      "etiket": "UDP_DNS_RESPONSE",
+      "katman2": {"src_mac": "52:54:00:12:34:56", "dst_mac": "00:0c:29:4f:8e:35", "ethertype": "0x0800"},
+      "katman3_ip": {"src_ip": "8.8.8.8", "dst_ip": "192.168.1.100", "protocol": 17, "ttl": 58},
+      "katman4_udp": {"src_port": 53, "dst_port": 52111, "length": 54},
+      "katman7_dns": {"tx_id": "0x1a2b", "type": "RESPONSE", "qname": "example.com", "answers": ["93.184.216.34"], "rcode": 0},
+      "boyut": 88
+    },
+    {
+      "id": 9,
+      "etiket": "UDP_DHCP_DISCOVER",
+      "katman2": {"src_mac": "00:0c:29:4f:8e:35", "dst_mac": "ff:ff:ff:ff:ff:ff", "ethertype": "0x0800"},
+      "katman3_ip": {"src_ip": "0.0.0.0", "dst_ip": "255.255.255.255", "protocol": 17, "ttl": 128},
+      "katman4_udp": {"src_port": 68, "dst_port": 67, "length": 255},
+      "katman7_dhcp": {"msg_type": "DISCOVER", "xid": "0x3903f326", "chaddr": "00:0c:29:4f:8e:35"},
+      "boyut": 289
+    },
+    {
+      "id": 10,
+      "etiket": "UDP_DHCP_OFFER",
+      "katman2": {"src_mac": "52:54:00:12:34:56", "dst_mac": "00:0c:29:4f:8e:35", "ethertype": "0x0800"},
+      "katman3_ip": {"src_ip": "192.168.1.1", "dst_ip": "192.168.1.100", "protocol": 17, "ttl": 64},
+      "katman4_udp": {"src_port": 67, "dst_port": 68, "length": 308},
+      "katman7_dhcp": {"msg_type": "OFFER", "xid": "0x3903f326", "yiaddr": "192.168.1.100", "server_id": "192.168.1.1", "router": "192.168.1.1"},
+      "boyut": 342
+    },
+    {
+      "id": 11,
+      "etiket": "ANOMALY_PORT_SCAN_SYN",
+      "katman2": {"src_mac": "de:ad:be:ef:00:01", "dst_mac": "52:54:00:12:34:56", "ethertype": "0x0800"},
+      "katman3_ip": {"src_ip": "10.0.0.99", "dst_ip": "192.168.1.10", "protocol": 6, "ttl": 64},
+      "katman4_tcp": {"src_port": 40001, "dst_port": 21, "seq": 100, "ack": 0, "flags": "SYN", "window": 1024},
+      "boyut": 54
+    },
+    {
+      "id": 12,
+      "etiket": "ANOMALY_PORT_SCAN_SYN",
+      "katman2": {"src_mac": "de:ad:be:ef:00:01", "dst_mac": "52:54:00:12:34:56", "ethertype": "0x0800"},
+      "katman3_ip": {"src_ip": "10.0.0.99", "dst_ip": "192.168.1.10", "protocol": 6, "ttl": 64},
+      "katman4_tcp": {"src_port": 40002, "dst_port": 22, "seq": 101, "ack": 0, "flags": "SYN", "window": 1024},
+      "boyut": 54
+    },
+    {
+      "id": 13,
+      "etiket": "ANOMALY_PORT_SCAN_SYN",
+      "katman2": {"src_mac": "de:ad:be:ef:00:01", "dst_mac": "52:54:00:12:34:56", "ethertype": "0x0800"},
+      "katman3_ip": {"src_ip": "10.0.0.99", "dst_ip": "192.168.1.10", "protocol": 6, "ttl": 64},
+      "katman4_tcp": {"src_port": 40003, "dst_port": 23, "seq": 102, "ack": 0, "flags": "SYN", "window": 1024},
+      "boyut": 54
+    },
+    {
+      "id": 14,
+      "etiket": "ANOMALY_DNS_TUNNELING",
+      "katman2": {"src_mac": "00:0c:29:4f:8e:35", "dst_mac": "52:54:00:12:34:56", "ethertype": "0x0800"},
+      "katman3_ip": {"src_ip": "192.168.1.100", "dst_ip": "198.51.100.4", "protocol": 17, "ttl": 64},
+      "katman4_udp": {"src_port": 53000, "dst_port": 53, "length": 68},
+      "katman7_dns": {"tx_id": "0x77aa", "type": "QUERY", "qname": "7a810f44bcde77189a2b001fc3.tunnel.c2server.org", "qtype": "TXT"},
+      "boyut": 102
+    },
+    {
+      "id": 15,
+      "etiket": "ANOMALY_ROGUE_DHCP_OFFER",
+      "katman2": {"src_mac": "00:50:56:c0:00:08", "dst_mac": "00:0c:29:4f:8e:35", "ethertype": "0x0800"},
+      "katman3_ip": {"src_ip": "192.168.1.199", "dst_ip": "192.168.1.100", "protocol": 17, "ttl": 64},
+      "katman4_udp": {"src_port": 67, "dst_port": 68, "length": 308},
+      "katman7_dhcp": {"msg_type": "OFFER", "xid": "0x3903f326", "yiaddr": "192.168.1.222", "server_id": "192.168.1.199", "router": "192.168.1.199"},
+      "boyut": 342
+    }
+  ]
+}

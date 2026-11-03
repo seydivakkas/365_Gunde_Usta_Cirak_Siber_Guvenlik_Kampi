@@ -1,0 +1,10 @@
+================================================================================
+KURUMSAL BİLGİ GÜVENLİĞİ VE BÜTÜNLÜK POLİTİKASI (REV 2026.1)
+================================================================================
+1. Sistem dosyaları ve konfigürasyon parametreleri periyodik olarak SHA-256
+   kriptografik özet doğrulamasından geçirilmelidir.
+2. Yetkisiz dosya değişiklikleri derhal SIEM ve SOC merkezine iletilmelidir.
+3. Taban çizgisi (baseline) dışındaki tüm yeni ikililer karantinaya alınır.
+4. Bütünlük kontrolü başarıyla geçse dahi, kaynağı doğrulanmamış hiçbir dosya
+   güvenli kabul edilemez.
+================================================================================

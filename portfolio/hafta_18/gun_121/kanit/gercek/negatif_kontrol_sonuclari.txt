@@ -1,0 +1,63 @@
+=== GÜN 121 NEGATİF KONTROL VE HATA DOĞRULAMA RAPORU ===
+Tarih: 2026-11-02T06:04:33.503037
+Toplam Senaryo: 9
+
+Senaryo 1: Negatif Varlık Değeri Girişi
+  Açıklama: Varlık değeri sıfırdan küçük (-100000$) tanımlandığında motorun işlemi reddetmesi.
+  Beklenen Hata: InvalidFinancialMetricError
+  Alınan Hata: InvalidFinancialMetricError: Varlık değeri negatif olamaz: -100000.0
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 2: Aşırı Maruz Kalma Faktörü (EF > 1.0)
+  Açıklama: Maruz kalma faktörünün yüzde yüzden büyük (1.80) girilmesi durumunda reddedilmesi.
+  Beklenen Hata: InvalidFinancialMetricError
+  Alınan Hata: InvalidFinancialMetricError: Maruz kalma faktörü (EF) 0.0-1.0 aralığında olmalıdır: 1.8
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 3: Negatif Yıllık Gerçekleşme Oranı (ARO < 0)
+  Açıklama: Olay sıklığı ARO eksi değer (-0.5) girildiğinde matematiksel hatanın engellenmesi.
+  Beklenen Hata: InvalidFinancialMetricError
+  Alınan Hata: InvalidFinancialMetricError: Yıllık gerçekleşme oranı (ARO) negatif olamaz: -0.5
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 4: Sıfır veya Eksi Olasılık Puanı (Likelihood < 1)
+  Açıklama: Risk olasılığı 1-5 skala sınırının altında (0) verildiğinde fırlatılan istisna.
+  Beklenen Hata: InvalidRiskScoreError
+  Alınan Hata: InvalidRiskScoreError: Olasılık puanı 1 ile 5 arasında olmalıdır. Verilen: 0
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 5: Üst Sınırı Aşan Etki Puanı (Impact > 5)
+  Açıklama: Etki derecesi 5'lik skalanın üzerinde (7) verildiğinde sistemin hata fırlatması.
+  Beklenen Hata: InvalidRiskScoreError
+  Alınan Hata: InvalidRiskScoreError: Etki puanı 1 ile 5 arasında olmalıdır. Verilen: 7
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 6: Geçersiz Kontrol Etkinlik Oranı (Effectiveness > 1.0)
+  Açıklama: Kontrol etkinliğinin %100'ü aşan bir değerle (1.20) kataloğa kaydedilmeye çalışılması.
+  Beklenen Hata: InvalidControlSelectionError
+  Alınan Hata: InvalidControlSelectionError: Kontrol etkinlik oranı 0.01 ile 0.99 arasında olmalıdır: 1.2
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 7: Mükerrer Kontrol ID Tanımlama
+  Açıklama: Aynı kimliğe sahip iki farklı kontrolün kataloğa kaydedilmesinin engellenmesi.
+  Beklenen Hata: DuplicateControlError
+  Alınan Hata: DuplicateControlError: Bu ID ile bir kontrol zaten mevcut: NIST-IA-2
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 8: Kontrolsüz Azaltma Stratejisi İhlali
+  Açıklama: Strateji AZALT (MITIGATE) seçilmiş olmasına rağmen hiçbir güvenlik kontrolü atanmaması.
+  Beklenen Hata: RiskAppetiteExceededError
+  Alınan Hata: RiskAppetiteExceededError: Kurumsal Risk Yönetişim İhlali (1 adet):
+ - Risk [R-FAIL1] 'Kontrolsuz': Azaltma stratejisi seçilmiş ancak hiçbir güvenlik kontrolü atanmamış.
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 9: Onaysız Yüksek Risk Kabulü (CWE-1025 İhlali)
+  Açıklama: Risk iştahı (10) üzerinde skora (25) sahip kritik bir riskin yönetim onayı olmaksızın kabul edilmesi.
+  Beklenen Hata: RiskAppetiteExceededError
+  Alınan Hata: RiskAppetiteExceededError: Kurumsal Risk Yönetişim İhlali (3 adet):
+ - Risk [R-FAIL2] 'Kritik Onaysiz': Skor (25) kurum iştahını (10) aşıyor. Üst yönetim (C-Level) resmi onayı olmaksızın kabul edilemez.
+ - Risk [R-FAIL2] 'Kritik Onaysiz': Uygulanan kontroller sonrası artık risk skoru (25), kurum iştahını (10) aşmaya devam ediyor. İlave kontrol veya kaçınma gereklidir.
+ - Risk [R-FAIL2] 'Kritik Onaysiz': Artık yıllık kayıp beklentisi ($320,000.00), kurumsal finansal limit olan $50,000.00 tutarını aşıyor.
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Genel Sonuç: 9/9 senaryo başarıyla doğrulandı.

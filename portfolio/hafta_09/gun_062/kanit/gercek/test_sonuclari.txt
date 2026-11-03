@@ -1,0 +1,33 @@
+test_01_valid_8021q_tag_parsing (portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine.TestVLANSegmentationDMZEngine.test_01_valid_8021q_tag_parsing)
+Pozitif Test 1: Geerli 4 baytl²k IEEE 802.1Q etiketinin do­ru ayr²■t²r²lmas². ... ok
+test_02_negative_vlan_id_range_validation (portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine.TestVLANSegmentationDMZEngine.test_02_negative_vlan_id_range_validation)
+Negatif Test 2: IEEE 802.1Q s²n²r d²■² (0, 4095, 5000) VLAN ID'lerinde hata ³retilmesi. ... ok
+test_03_negative_truncated_8021q_tag (portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine.TestVLANSegmentationDMZEngine.test_03_negative_truncated_8021q_tag)
+Negatif Test 3: 4 bayttan k²sa kesilmi■ etiket ba■l²­²nda MalformedVLANFrameError. ... ok
+test_04_mac_address_validation_positive_and_negative (portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine.TestVLANSegmentationDMZEngine.test_04_mac_address_validation_positive_and_negative)
+Pozitif ve Negatif Test 4: MAC adresi format do­rulamas². ... ok
+test_05_access_port_normal_untagged_frame_forwarding (portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine.TestVLANSegmentationDMZEngine.test_05_access_port_normal_untagged_frame_forwarding)
+Pozitif Test 5: Access porta gelen etiketsiz erevenin port VLAN'²na atanmas². ... ok
+test_06_negative_access_port_vlan_ingress_violation (portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine.TestVLANSegmentationDMZEngine.test_06_negative_access_port_vlan_ingress_violation)
+Negatif Test 6: Access porta yabanc² etiketli paket geldi­inde VLANIngressViolationError. ... ok
+test_07_trunk_port_tagged_frame_forwarding (portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine.TestVLANSegmentationDMZEngine.test_07_trunk_port_tagged_frame_forwarding)
+Pozitif Test 7: Trunk porttan izinli VLAN etiketli erevenin ba■ar²yla gei■i. ... ok
+test_08_negative_trunk_port_disallowed_vlan (portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine.TestVLANSegmentationDMZEngine.test_08_negative_trunk_port_disallowed_vlan)
+Negatif Test 8: Trunk portun izinli listesinde olmayan VLAN'²n reddedilmesi. ... ok
+test_09_negative_double_tagging_vlan_hopping_detection (portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine.TestVLANSegmentationDMZEngine.test_09_negative_double_tagging_vlan_hopping_detection)
+Negatif Test 9: Ãift 802.1Q etiketli VLAN Hopping sald²r²s²n²n tespiti ve engellenmesi. ... ok
+test_10_negative_dtp_switch_spoofing_detection (portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine.TestVLANSegmentationDMZEngine.test_10_negative_dtp_switch_spoofing_detection)
+Negatif Test 10: Access porta DTP g÷nderildi­inde SwitchSpoofingError ve err-disable. ... ok
+test_11_inter_vlan_firewall_permitted_rule (portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine.TestVLANSegmentationDMZEngine.test_11_inter_vlan_firewall_permitted_rule)
+Pozitif Test 11: DMZ'den (VLAN 20) Veritaban²na (VLAN 30) port 5432 eri■iminin kabul³. ... ok
+test_12_negative_dmz_to_internal_lateral_movement_block (portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine.TestVLANSegmentationDMZEngine.test_12_negative_dmz_to_internal_lateral_movement_block)
+Negatif Test 12: DMZ'den (VLAN 20) ¦ Kullan²c² A­²na (VLAN 10) yanal yay²l²m²n engeli. ... ok
+test_13_negative_unauthorized_inter_vlan_port (portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine.TestVLANSegmentationDMZEngine.test_13_negative_unauthorized_inter_vlan_port)
+Negatif Test 13: ¦zin verilmeyen porta (÷r. DMZ'den DB'ye port 22 SSH) eri■imin reddi. ... ok
+test_14_broadcast_domain_isolation_simulation (portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine.TestVLANSegmentationDMZEngine.test_14_broadcast_domain_isolation_simulation)
+Pozitif Test 14: L2 Broadcast paketinin yaln²zca ayn² VLAN'daki portlara yay²lmas². ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK

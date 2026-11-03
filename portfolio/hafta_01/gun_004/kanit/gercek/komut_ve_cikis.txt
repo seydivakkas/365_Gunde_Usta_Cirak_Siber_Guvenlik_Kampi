@@ -1,0 +1,33 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Gerçek Yürütme Kanıtı: NIST CSF 2.0 Matris Değerlendirme
+
+[METADATA]
+Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe portfolio\hafta_01\gun_004\uygulama\nist_csf_evaluator.py --matris portfolio\hafta_01\gun_004\ornek_veri\nist_csf_matrisi.json
+Çalışma Dizini: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Ortam: Windows 11 / Python 3.14.3
+Zaman Damgası: 2026-10-26T17:21:00+03:00
+Çıkış Kodu: 0
+
+[STANDART ÇIKTI (STDOUT)]
+================================================================================
+  NIST CSF 2.0 OLGUNLUK RADARI: Anadolu Finansal Teknolojiler A.Ş.
+  Genel Puan: 79.3 / 100  [Tier 3 - Repeatable (Tekrarlanabilir/Kurumsal)]
+================================================================================
+  GOVERN   [████████████████████████████████░░░░░░░░]  80.00%
+  IDENTIFY [███████████████████████████████░░░░░░░░░]  78.33%
+  PROTECT  [█████████████████████████████████░░░░░░░]  82.50%
+  DETECT   [███████████████████████████████░░░░░░░░░]  77.50%
+  RESPOND  [████████████████████████████████░░░░░░░░]  80.00%
+  RECOVER  [███████████████████████████████░░░░░░░░░]  77.50%
+--------------------------------------------------------------------------------
+  [+] DENGELİ SAVUNMA: Altı işlev arasında kritik bir oransızlık saptanmadı.
+================================================================================
+
+--- ÖNCELİKLİ İYİLEŞTİRME VE EKSİKLİK ANALİZİ (GAP ANALYSIS) ---
+Toplam 1 kategoride gelişim gerekmektedir (Öncelik Sırasıyla):
+  1. [IDENTIFY] ID.IM - İyileştirme (Improvement) -> Puan: 70.0/100
+
+
+[HATA ÇIKTISI (STDERR)]
+(Temiz - Hata Yok)

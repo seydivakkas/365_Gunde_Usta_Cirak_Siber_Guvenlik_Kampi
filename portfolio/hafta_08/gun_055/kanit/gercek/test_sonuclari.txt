@@ -1,0 +1,33 @@
+test_01_dhcp_discover_serialization_and_parsing (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_01_dhcp_discover_serialization_and_parsing)
+Test 1: DHCP Discover paketinin 236B ikili ba■l²k ve TLV olarak serile■tirilip ayr²■t²r²lmas². ... ok
+test_02_dhcp_dora_complete_flow (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_02_dhcp_dora_complete_flow)
+Test 2: Tam DORA (Discover, Offer, Request, ACK) d÷ng³s³n³n ve IP atamas²n²n do­rulanmas². ... ok
+test_03_dhcp_release_cycle (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_03_dhcp_release_cycle)
+Test 3: DHCP Release paketi ile kiralanan IP'nin bo■a ²kmas² ve havuza d÷n³■³. ... ok
+test_04_dhcp_nak_on_invalid_requested_ip (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_04_dhcp_nak_on_invalid_requested_ip)
+Test 4: Havuzda olmayan veya geersiz IP talep edildi­inde sunucunun NAK yan²t² d÷nmesi. ... ok
+test_05_expired_lease_cleanup (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_05_expired_lease_cleanup)
+Test 5: S³resi dolan kiralamalar²n temizlenmesi ve adreslerin havuza iadesi. ... ok
+test_06_rogue_dhcp_detection (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_06_rogue_dhcp_detection)
+Test 6: Yetkisiz Sahte (Rogue) DHCP sunucusu teklifinin tespiti ve g³venlik alarm². ... ok
+test_07_dhcp_starvation_attack_detection (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_07_dhcp_starvation_attack_detection)
+Test 7: Sahte rastgele MAC adresleriyle yap²lan DHCP Starvation sel sald²r²s²n²n yakalanmas². ... ok
+test_08_dhcp_snooping_drops_untrusted_server_offer (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_08_dhcp_snooping_drops_untrusted_server_offer)
+Test 8: DHCP Snooping kural² uyar²nca untrusted porttan gelen Offer paketinin d³■³r³lmesi. ... ok
+test_09_dhcp_snooping_builds_binding_database (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_09_dhcp_snooping_builds_binding_database)
+Test 9: Trusted porttan geen onayl² ACK ile DHCP Snooping Binding Tablosunun g³ncellenmesi. ... ok
+test_10_negative_invalid_op_code (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_10_negative_invalid_op_code)
+Test 10 (Negatif): Geersiz op kodunda (99) DHCPValidationError f²rlat²lmas². ... ok
+test_11_negative_invalid_hardware_fields (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_11_negative_invalid_hardware_fields)
+Test 11 (Negatif): Geersiz donan²m tipi (htype!=1) veya uzunlu­u (hlen!=6) kontrol³. ... ok
+test_12_negative_invalid_magic_cookie (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_12_negative_invalid_magic_cookie)
+Test 12 (Negatif): Geersiz sihirli erez (Magic Cookie) tespitinde hata ³retilmesi. ... ok
+test_13_negative_invalid_mac_format (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_13_negative_invalid_mac_format)
+Test 13 (Negatif): Hatal² veya hex d²■² karakter ieren MAC adreslerinin reddedilmesi. ... ok
+test_14_negative_truncated_raw_packet (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_14_negative_truncated_raw_packet)
+Test 14 (Negatif): 236 bayt BOOTP ba■l²­²ndan k²sa kesik veri ak²■²n²n reddedilmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK

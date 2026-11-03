@@ -1,0 +1,16 @@
+{
+  "gun": 63,
+  "hafta": 9,
+  "asama": "03",
+  "konu": "Mini proje 8: protokol zaman çizelgesi",
+  "puan": 100,
+  "durum": "TAMAMLANDI_YETERLI",
+  "test_toplam": 14,
+  "test_basarili": 14,
+  "negatif_test_toplam": 9,
+  "negatif_test_basarili": 9,
+  "tarih": "2026-10-31T01:08:00Z",
+  "calisma_dizini": "portfolio/hafta_09/gun_063",
+  "kod_aciklama_satirlari_tamamlandi": true,
+  "ozel_lisans_uygulandi": true
+}

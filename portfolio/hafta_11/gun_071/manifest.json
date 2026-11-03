@@ -1,0 +1,19 @@
+{
+  "README.md": "6fa61892cb1fef55628f826cb0fe8a26e6dbd10d6310fdc615c38e4292f70acf",
+  "ders.md": "da12bb158270a4e30aa9eef13ea0614a7db1fb23cb21b097f5e3b58180b52f41",
+  "rapor.md": "75274a7f3b0903fecd08f11e5a75ff7c58b10524984e3fdb504a1322ecc6adf8",
+  "sonuc.json": "d84fc75d0f9535041a72da5ba326ce6c9647a16cbe1755bd28556540b338f61e",
+  "soru_cevap.md": "88f30f39159a38fa3256869365cf390ef7ae4cc784f85ea7f7c31d1398310e28",
+  "kanit/gercek/bagimlilik_guvenlik_raporu.txt": "d268ab59231255405dab5520ba2dad0e7ccba46e3376713158614c11fb78487c",
+  "kanit/gercek/komut_ve_cikis.txt": "6bbda9dea7687193749a47e300644fc953413d355b6d7f923359fef7c05ff62f",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "a1b6784f9ebcec5f5c9ddba117ccce7a789805ea3b45136138ecfdbbc863fb80",
+  "kanit/gercek/test_sonuclari.txt": "8b0e28308456d8f16544c95dae8eebc76d96c654fc92a4af9088590afb915a61",
+  "kanit/temsili/python_env_ve_tedarik_zinciri_mimarisi.txt": "e6eb36bff14c915723c837740d41ee159f753e1caf334930375b7e339ef7d613",
+  "ornek_veri/guvenli_requirements.txt": "074e3cbfb5054440ceeab1e450133239cccd8907ca44a4a9ef07c46908b2e6c5",
+  "ornek_veri/invalid_env_inputs.json": "8731e7a1cbf43901a6ebadd1025cbfb8ce782d3529b3a2240e49066e9b61dde5",
+  "ornek_veri/pyvenv.cfg": "f722efe73f99b3b5aa63dee6b2d95e7b2e7747831a8165e6b8153dfa025ea6f6",
+  "tests/__init__.py": "4e050bd5c1291b9b1e3bd57a79b6bc6371e1daeadee7d54e21594919424b288f",
+  "tests/test_python_env_and_dependency_auditor.py": "fc84f0b1f51fd38efc6d474d17042eabf3ec9e624dc2dadaae5e4e8176f5a0a8",
+  "uygulama/__init__.py": "e7de7ad84377bbf2811fcfde629c1b8c02dbe596da05e80a8bf14e29ee8ffdb9",
+  "uygulama/python_env_and_dependency_auditor.py": "078c2b4e11c37610d3508339d5dfc0b19c2cabc5868b52fb7dc1a0604cf83258"
+}

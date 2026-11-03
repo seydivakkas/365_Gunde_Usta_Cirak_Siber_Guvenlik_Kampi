@@ -1,0 +1,65 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+# ==============================================================================
+# GÜN 074: FONKSİYONLAR VE TEMİZ KOD — GÜVENLİK VE MODÜLER MİMARİ İLLÜSTRASYONU
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# ==============================================================================
+
+                ┌─────────────────────────────────────────────────────────────┐
+                │          GÜVENSİZ VE YAN ETKİLİ (IMPURE) MONOLİTİK KOD      │
+                │        (Anti-Pattern: Mutable Defaults, Hidden State)       │
+                └──────────────────────────────┬──────────────────────────────┘
+                                               │
+                                               ▼
+         def parse_and_process_traffic(log_line, tags=[], cache={}):
+             # ❌ TEHLİKE 1: tags=[] varsayılan argüman tuzağı (CWE-670)
+             #    Farklı kullanıcı/oturum etiketleri birbirine sızar!
+             # ❌ TEHLİKE 2: 250 satırlık monolitik SRP ihlali (Test edilemez)
+             # ❌ TEHLİKE 3: Gelen kural sözlüğünü yerinde (in-place) mutasyona uğratır
+             # ❌ TEHLİKE 4: Tip ipucu yok, sözleşme (pre/post-condition) yok
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+                ┌─────────────────────────────────────────────────────────────┐
+                │         SAVUNMACI VE TEMİZ GÜVENLİK FONKSİYON MİMARİSİ      │
+                │     (Pure Functions, Single Responsibility, Immutability)   │
+                └──────────────────────────────┬──────────────────────────────┘
+                                               │
+               ┌───────────────────────────────┴───────────────────────────────┐
+               ▼                                                               ▼
+┌──────────────────────────────┐                              ┌──────────────────────────────┐
+│  1. DEĞİŞMEZ VE İZOLE DURUM  │                              │     2. TEK SORUMLULUK (SRP)  │
+│  (No Mutable Default Trap)   │                              │     MODÜLER BORU HATTI       │
+├──────────────────────────────┤                              ├──────────────────────────────┤
+│ def validate_log_and_tag(    │                              │ split_and_validate_ioc()     │
+│     raw_entry: str,          │                              │   ├── _extract_ip_token()    │
+│     tags: list[str] | None   │                              │   ├── _validate_ipv4()       │
+│ ) -> dict:                   │                              │   ├── _classify_ip_zone()    │
+│   if tags is None:           │                              │   └── _build_audit_record()  │
+│       tags = []              │                              │                              │
+│   # Tam izolasyon garantisi  │                              │ Her adım tek bir iş yapar,   │
+│   # Veri sızıntısı imkansız! │                              │ %100 birim test kapsamı var! │
+└──────────────────────────────┘                              └──────────────────────────────┘
+               │                                                               │
+               └───────────────────────────────┬───────────────────────────────┘
+                                               │
+               ┌───────────────────────────────┴───────────────────────────────┐
+               ▼                                                               ▼
+┌──────────────────────────────┐                              ┌──────────────────────────────┐
+│    3. SAF FONKSİYONLAR       │                              │   4. SÖZLEŞMEYE DAYALI (DbC) │
+│    (Pure Threat Scoring)     │                              │   ÖN VE SON KOŞUL DENETİMİ   │
+├──────────────────────────────┤                              ├──────────────────────────────┤
+│ pure_threat_score(factors)   │                              │ contract_enforced_lookup()   │
+│   f(x) -> y                  │                              │   [PRECONDITION]:            │
+│   - Global durum yok         │                              │   - algo in {"sha256",...}   │
+│   - I/O yan etkisi yok       │                              │   - len(hash) == 64          │
+│   - Deterministik çıktı      │                              │   - is_hex(hash) == True     │
+│   - Girdi mutasyonu yok      │                              │   [POSTCONDITION]:           │
+│   - Paralelleştirmeye uygun  │                              │   - verdict in VALID_SET     │
+└──────────────────────────────┘                              └──────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────────────
+GÜVENLİK KAZANIMLARI:
+  1. Çok kiracılı (Multi-tenant) sistemlerde veri izolasyonu ve oturum sızıntısı engellemesi.
+  2. Birim testlerde 0.001 saniyelik mikro düzeyde hata yakalama ve kök neden tespiti.
+  3. Kötü niyetli veya malforme parametrelerin sistem çekirdeğine ulaşmadan sınırda reddi.

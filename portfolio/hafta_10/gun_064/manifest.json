@@ -1,0 +1,86 @@
+{
+  "gun": 64,
+  "konu": "Wireshark filtre sozdizimi",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "67481f3b9cfcb218c206ec4a842980d0aec72e24427aad9ae2c4079988ca0141",
+      "boyut": 4562
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "8f6de7c5a7ce7daaf1a4daf6d096c3c48f634e3b1b46c672ab599f0141dbef29",
+      "boyut": 6562
+    },
+    {
+      "dosya": "kanit/gercek/komut_ve_cikis.txt",
+      "sha256": "7f3396cc4f9983d6d0de0ef8cf1aaef6bf1b5753a7c1107adc0eee0d5f07b5e3",
+      "boyut": 4062
+    },
+    {
+      "dosya": "kanit/gercek/negatif_kontrol_sonuclari.txt",
+      "sha256": "e94e4381c8f52c804590a5a776ad89728b455bd9bdf47062998e69093e00a4ed",
+      "boyut": 2730
+    },
+    {
+      "dosya": "kanit/gercek/test_sonuclari.txt",
+      "sha256": "f9e4881439664d26eeaa0e9cb22a5b9d084898c8969254ebe0c1b1379be6b5de",
+      "boyut": 3768
+    },
+    {
+      "dosya": "kanit/gercek/wireshark_filtre_raporu.txt",
+      "sha256": "59e5816914ea6b1df6330b402c683079e7039f09c3f503d535013d7d9c963af9",
+      "boyut": 3200
+    },
+    {
+      "dosya": "kanit/temsili/wireshark_filtre_ast_mimarisi.txt",
+      "sha256": "72e053147c4e7734e2ef73d2bdc3ef54a566bc3ded0bbfa4c260e2cd0b891e77",
+      "boyut": 7461
+    },
+    {
+      "dosya": "ornek_veri/invalid_filter_inputs.json",
+      "sha256": "78163286582f7010ea7ec95d5d1dd6183aed905c742f2e26fbfddd15d9d71739",
+      "boyut": 2416
+    },
+    {
+      "dosya": "ornek_veri/sample_packets.json",
+      "sha256": "a9e7081217043bfa51d5911b0d21fc5f8dc2c3bbde6469934f9146be4a905cb6",
+      "boyut": 4933
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "6e6d80aea2bc200bb1b58be4512f4f3e120fb5ad3c0dd06d195ef673b5e1266e",
+      "boyut": 5890
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "0842381a03aa453ba690f429c7fe266e23ddd57a262b95314eeff9d9d791b9f7",
+      "boyut": 402
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "e0dbe02c2da989ff4dd18b377cb282ca80a4981d674e97d1f1bf18dd1ca28f9e",
+      "boyut": 6878
+    },
+    {
+      "dosya": "tests/__init__.py",
+      "sha256": "d91913d137dc91e2836be9c053745588375ef96e481c035a2311395cca39650d",
+      "boyut": 687
+    },
+    {
+      "dosya": "tests/test_wireshark_filter_engine.py",
+      "sha256": "19561d072f89cb1c7223d1c1db667a6fee7a993fa2cb82958151791abe054de5",
+      "boyut": 14297
+    },
+    {
+      "dosya": "uygulama/__init__.py",
+      "sha256": "a651bc212594e12690508d284666d6dee1ff47f6c5418edd507cbee68267a427",
+      "boyut": 761
+    },
+    {
+      "dosya": "uygulama/wireshark_filter_engine.py",
+      "sha256": "fbf4a464c9679cef2a0dfb4b5841a2f4b84e47c839a67ee70e81e643124815ad",
+      "boyut": 29484
+    }
+  ]
+}

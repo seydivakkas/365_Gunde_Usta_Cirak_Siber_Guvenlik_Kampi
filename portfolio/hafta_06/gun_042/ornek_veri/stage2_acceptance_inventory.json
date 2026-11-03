@@ -1,0 +1,161 @@
+{
+  "meta": {
+    "vm_id": "VM-STAGE02-SEC-01",
+    "hostname": "sec-node-stage02.lab.internal",
+    "os_version": "Ubuntu 22.04.4 LTS (Jammy Jellyfish)",
+    "kernel": "5.15.0-107-generic",
+    "audit_type": "Aşama 2 Kabul Denetimi — İşletim Sistemi Temelleri",
+    "assessment_date": "2026-10-27",
+    "assessor": "Usta Güvenlik Denetçisi & Çırak"
+  },
+  "processes": {
+    "audit_name": "Süreç Hijyeni ve Yetki Dağılımı",
+    "total_process_count": 84,
+    "root_process_count": 22,
+    "unprivileged_service_processes": [
+      {
+        "pid": 642,
+        "user": "systemd-network",
+        "name": "systemd-networkd",
+        "is_sandboxed": true
+      },
+      {
+        "pid": 718,
+        "user": "systemd-resolve",
+        "name": "systemd-resolved",
+        "is_sandboxed": true
+      },
+      {
+        "pid": 890,
+        "user": "syslog",
+        "name": "rsyslogd",
+        "is_sandboxed": true
+      },
+      {
+        "pid": 1024,
+        "user": "chrony",
+        "name": "chronyd",
+        "is_sandboxed": true
+      },
+      {
+        "pid": 1150,
+        "user": "sshd_privsep",
+        "name": "sshd",
+        "is_sandboxed": true
+      }
+    ],
+    "rogue_or_unauthorized_processes": []
+  },
+  "permissions": {
+    "audit_name": "Kritik Dosya İzinleri ve Umask Sağlamlığı",
+    "system_umask": "0027",
+    "monitored_files": [
+      {
+        "path": "/etc/shadow",
+        "owner": "root",
+        "group": "shadow",
+        "permission_octal": "0640",
+        "expected_octal": "0640"
+      },
+      {
+        "path": "/etc/gshadow",
+        "owner": "root",
+        "group": "shadow",
+        "permission_octal": "0640",
+        "expected_octal": "0640"
+      },
+      {
+        "path": "/etc/passwd",
+        "owner": "root",
+        "group": "root",
+        "permission_octal": "0644",
+        "expected_octal": "0644"
+      },
+      {
+        "path": "/etc/group",
+        "owner": "root",
+        "group": "root",
+        "permission_octal": "0644",
+        "expected_octal": "0644"
+      },
+      {
+        "path": "/etc/sudoers",
+        "owner": "root",
+        "group": "root",
+        "permission_octal": "0440",
+        "expected_octal": "0440"
+      },
+      {
+        "path": "/etc/ssh/sshd_config",
+        "owner": "root",
+        "group": "root",
+        "permission_octal": "0600",
+        "expected_octal": "0600"
+      }
+    ]
+  },
+  "logging": {
+    "audit_name": "Güvenlik Günlükleme ve İzlenebilirlik",
+    "journald_persistent": true,
+    "rsyslog_active": true,
+    "auditd_active": true,
+    "remote_forwarding_configured": true,
+    "remote_target": "tls://siem.lab.internal:6514",
+    "log_rotation_days": 90,
+    "audit_rules_count": 48
+  },
+  "hashes": {
+    "audit_name": "Kritik Dosya ve Yapılandırma Bütünlük Karmaları",
+    "hash_algorithm": "SHA-256",
+    "entries": [
+      {
+        "file": "/bin/login",
+        "sha256": "4a5c88b4d8349a17fb86580f4886e088c2262d1c676d05f32cb41c19b0d61ef3"
+      },
+      {
+        "file": "/usr/bin/sudo",
+        "sha256": "8d3e911277a83d73b5cf2e5760ec15f401948a0440d99213192f143717208ff9"
+      },
+      {
+        "file": "/etc/ssh/sshd_config",
+        "sha256": "c88fbe43f49615a1c0d48148e658428c9b31d6835a77cb543666d92f97adce83"
+      },
+      {
+        "file": "/etc/pam.d/common-auth",
+        "sha256": "f2ca1bb6c7e907d06dafe4687e579fce76b37e4e93b7605022da52e6ccc26fd2"
+      }
+    ]
+  },
+  "backups": {
+    "audit_name": "Yedekleme Stratejisi ve 3-2-1 Kuralı Doğrulaması",
+    "total_copies": 3,
+    "distinct_media_types": 2,
+    "offsite_copies": 1,
+    "immutable_storage": true,
+    "last_backup_timestamp": "2026-10-27T03:00:00Z",
+    "last_restore_test_status": "PASS",
+    "last_restore_test_date": "2026-10-26"
+  },
+  "services": {
+    "audit_name": "Servis Yönetimi ve Güvensiz Miras Servis Denetimi",
+    "active_services_count": 28,
+    "insecure_legacy_services_detected": [],
+    "checked_insecure_services": [
+      "telnetd",
+      "rshd",
+      "rlogind",
+      "rexecd",
+      "tftpd",
+      "vsftpd",
+      "nis",
+      "ypbind"
+    ],
+    "ssh_hardening": {
+      "port": 22,
+      "permit_root_login": "no",
+      "password_authentication": "no",
+      "pubkey_authentication": "yes",
+      "x11_forwarding": "no"
+    }
+  }
+}

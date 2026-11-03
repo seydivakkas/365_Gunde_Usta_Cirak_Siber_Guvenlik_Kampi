@@ -1,0 +1,40 @@
+{
+  "gun": 45,
+  "gun_id": "G045",
+  "asama": "03",
+  "hafta": "07",
+  "baslik": "IPv4 adresleme ve CIDR",
+  "tarih": "2026-10-27",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kavramsal_derinlik": 20,
+    "uygulama_gelistirme": 40,
+    "test_kapsami": 25,
+    "savunma_sikilastirma": 15
+  },
+  "test_ozeti": {
+    "toplam": 14,
+    "basarili": 14,
+    "hatali": 0,
+    "sure_saniye": 0.03
+  },
+  "kod_aciklama_satirlari_tamamlandi": true,
+  "kanitlar": {
+    "gercek": [
+      "kanit/gercek/test_sonuclari.txt",
+      "kanit/gercek/komut_ve_cikis.txt",
+      "kanit/gercek/ipv4_subnet_hesaplama_raporu.txt",
+      "kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "kanit/temsili/ipv4_cidr_ve_subnetting_mimarisi.txt"
+    ]
+  },
+  "soru_bankasi_eslesmesi": [
+    "G045-SC1",
+    "G045-SC2",
+    "G045-SC3"
+  ],
+  "notlar": "IPv4 adresleme, bit düzeyinde ağ maskesi ve wildcard hesaplamaları, RFC 3021 (/31) ve /32 uç durumları, RFC 1918/Bogon etiketleme, VLSM alt ağ bölme eksiksiz uygulandı; 14 test PASS oldu."
+}

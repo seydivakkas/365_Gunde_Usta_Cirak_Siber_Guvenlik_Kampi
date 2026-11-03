@@ -1,0 +1,54 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Bu dosya Siber Güvenlik 365 Gün Müfredatı kapsamında üretilmiştir.
+# Gün 021: Mini Proje 2 - İşletim Sistemi Envanteri Birim Test Sonuçları Kanıtı
+
+Test Komutu:
+python -m unittest discover -s portfolio/hafta_03/gun_021/tests -p "test_*.py" -v
+
+Test Çalışma Tarihi: 2026-10-27T01:55:57
+Python Sürümü: Python 3.12.9
+Test Ortamı: Windows 11 (Cross-platform OS Security Inventory Analyzer)
+
+======================================================================
+TEST DETAYLARI:
+======================================================================
+test_01_init_ve_varsayilan_sema_dogrulamasi (test_os_security_inventory_collector.TestOsSecurityInventoryCollector.test_01_init_ve_varsayilan_sema_dogrulamasi)
+Test 01: Sınıf başlatma ve varsayılan şema kurallarının doğrulanması. ... ok
+test_02_canli_envanter_toplama (test_os_security_inventory_collector.TestOsSecurityInventoryCollector.test_02_canli_envanter_toplama)
+Test 02: Canlı sistemden çalışma ortamı güvenlik envanterinin toplanması. ... ok
+test_03_json_yukleme_windows_gecerli (test_os_security_inventory_collector.TestOsSecurityInventoryCollector.test_03_json_yukleme_windows_gecerli)
+Test 03: Proje ornek_veri altındaki Windows envanterinin hatasız yüklenmesi. ... ok
+test_04_json_yukleme_linux_gecerli (test_os_security_inventory_collector.TestOsSecurityInventoryCollector.test_04_json_yukleme_linux_gecerli)
+Test 04: Proje ornek_veri altındaki Linux envanterinin hatasız yüklenmesi. ... ok
+test_05_dosya_bulunamadi_negatif_kontrol (test_os_security_inventory_collector.TestOsSecurityInventoryCollector.test_05_dosya_bulunamadi_negatif_kontrol)
+Test 05: Var olmayan dosya istendiğinde FileNotFoundError fırlatılması (Negatif Test). ... ok
+test_06_bozuk_json_negatif_kontrol (test_os_security_inventory_collector.TestOsSecurityInventoryCollector.test_06_bozuk_json_negatif_kontrol)
+Test 06: Bozuk sözdizimli JSON dosyasında ValueError fırlatılması (Negatif Test). ... ok
+test_07_sema_eksik_kategori_negatif_kontrol (test_os_security_inventory_collector.TestOsSecurityInventoryCollector.test_07_sema_eksik_kategori_negatif_kontrol)
+Test 07: Zorunlu 5 kategoriden biri eksik olduğunda ValueError fırlatılması (Negatif Test). ... ok
+test_08_guvenli_envanter_denetimi_temiz (test_os_security_inventory_collector.TestOsSecurityInventoryCollector.test_08_guvenli_envanter_denetimi_temiz)
+Test 08: Standartlara tam uyumlu envanterin GUVENLI kararı alması. ... ok
+test_09_guvensiz_calisan_servis_zafiyet_tespiti (test_os_security_inventory_collector.TestOsSecurityInventoryCollector.test_09_guvensiz_calisan_servis_zafiyet_tespiti)
+Test 09: Karalistedeki Telnet servisinin çalışması durumunda KRİTİK risk tespiti (Negatif/Zafiyet Testi). ... ok
+test_10_aktif_konuk_hesabi_zafiyet_tespiti (test_os_security_inventory_collector.TestOsSecurityInventoryCollector.test_10_aktif_konuk_hesabi_zafiyet_tespiti)
+Test 10: Guest hesabının aktif bırakılması durumunda YÜKSEK risk tespiti (CIS İhlali). ... ok
+test_11_bekleyen_kritik_yama_zafiyet_tespiti (test_os_security_inventory_collector.TestOsSecurityInventoryCollector.test_11_bekleyen_kritik_yama_zafiyet_tespiti)
+Test 11: Bekleyen kritik güvenlik yaması olduğunda YÜKSEK risk tespiti. ... ok
+test_12_karsilastirmali_csv_olusturma (test_os_security_inventory_collector.TestOsSecurityInventoryCollector.test_12_karsilastirmali_csv_olusturma)
+Test 12: Windows ve Linux için karşılaştırmalı CSV envanter şablonu oluşturma (G021-SC2). ... ok
+test_13_karsilastirmali_csv_kolon_icerik_dogrulamasi (test_os_security_inventory_collector.TestOsSecurityInventoryCollector.test_13_karsilastirmali_csv_kolon_icerik_dogrulamasi)
+Test 13: CSV çıktısındaki 5 zorunlu sütun ve satır içeriklerinin doğrulanması. ... ok
+test_14_cli_alt_surec_yurutme_dogrulamasi (test_os_security_inventory_collector.TestOsSecurityInventoryCollector.test_14_cli_alt_surec_yurutme_dogrulamasi)
+Test 14: Komut satırı (CLI) aracının alt süreç (subprocess) olarak yürütülmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.250s
+
+OK
+
+SONUÇ: 14/14 BAŞARILI (100% PASS)
+Eksik/Hatalı Test: 0
+Negatif Test Sayısı: 4 (test_05, test_06, test_07, test_09)
+Pozitif/Sınır Test Sayısı: 10
+Doğrulama Durumu: TAM GEÇTİ

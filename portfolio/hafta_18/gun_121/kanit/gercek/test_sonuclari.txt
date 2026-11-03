@@ -1,0 +1,38 @@
+=== GÜN 121 BİRİM TEST RAPORU ===
+Tarih: 2026-11-02T06:04:33.502366
+
+test_01_inherent_risk_score_and_level_calculation (test_risk_control.TestRiskControlEngine.test_01_inherent_risk_score_and_level_calculation)
+Doğal risk skoru ve nitel seviye (LOW, MED, HIGH, CRIT) doğrulanır. ... ok
+test_02_sle_and_inherent_ale_calculation (test_risk_control.TestRiskControlEngine.test_02_sle_and_inherent_ale_calculation)
+SLE (Asset*EF) ve Doğal ALE (SLE*ARO) finansal hesaplaması test edilir. ... ok
+test_03_invalid_likelihood_out_of_bounds (test_risk_control.TestRiskControlEngine.test_03_invalid_likelihood_out_of_bounds)
+Olasılık puanı 1-5 aralığı dışında olduğunda InvalidRiskScoreError fırlatılmalıdır. ... ok
+test_04_invalid_impact_out_of_bounds (test_risk_control.TestRiskControlEngine.test_04_invalid_impact_out_of_bounds)
+Etki puanı 1-5 aralığı dışında olduğunda InvalidRiskScoreError fırlatılmalıdır. ... ok
+test_05_invalid_financial_metrics (test_risk_control.TestRiskControlEngine.test_05_invalid_financial_metrics)
+Negatif varlık değeri, 1'den büyük EF veya negatif ARO hata vermelidir. ... ok
+test_06_control_registration_and_duplicate_rejection (test_risk_control.TestRiskControlEngine.test_06_control_registration_and_duplicate_rejection)
+Kontrol kaydı ve aynı ID ile mükerrer kontrol ekleme denemesi engellenmelidir. ... ok
+test_07_invalid_control_effectiveness_bounds (test_risk_control.TestRiskControlEngine.test_07_invalid_control_effectiveness_bounds)
+Etkinlik oranı 0.01 altı veya 0.99 üstü olduğunda kontrol reddedilmelidir. ... ok
+test_08_assign_control_to_risk_and_duplicate_assignment (test_risk_control.TestRiskControlEngine.test_08_assign_control_to_risk_and_duplicate_assignment)
+Riske kontrol atama ve aynı riske aynı kontrolü çift atama testi. ... ok
+test_09_multi_control_combined_effectiveness_calculation (test_risk_control.TestRiskControlEngine.test_09_multi_control_combined_effectiveness_calculation)
+Birden fazla kontrol uygulandığında birleşik etkinlik formülü doğrulanır. ... ok
+test_10_residual_risk_and_residual_ale_reduction (test_risk_control.TestRiskControlEngine.test_10_residual_risk_and_residual_ale_reduction)
+Kontroller uygulandıktan sonra artık olasılık, etki, skor ve ALE düşüşü doğrulanır. ... ok
+test_11_rosi_calculation_accuracy (test_risk_control.TestRiskControlEngine.test_11_rosi_calculation_accuracy)
+ROSI = [(ALE_inh - ALE_res) - Maliyet] / Maliyet * 100 formülü doğrulanır. ... ok
+test_12_risk_avoidance_treatment_strategy (test_risk_control.TestRiskControlEngine.test_12_risk_avoidance_treatment_strategy)
+KAÇIN (AVOID) stratejisinde artık ALE sıfırlanmalı ve skor taban değere inmelidir. ... ok
+test_13_governance_mitigate_without_controls_flagged (test_risk_control.TestRiskControlEngine.test_13_governance_mitigate_without_controls_flagged)
+Strateji AZALT iken kontrol atanmamışsa yönetişim bunu ihlal olarak raporlamalıdır. ... ok
+test_14_governance_unapproved_risk_acceptance_fails (test_risk_control.TestRiskControlEngine.test_14_governance_unapproved_risk_acceptance_fails)
+Risk iştahını aşan risk üst yönetim onaysız KABUL_ET yapılırsa hata fırlatmalıdır (CWE-1025). ... ok
+test_15_governance_executive_sign_off_passes_and_report_generation (test_risk_control.TestRiskControlEngine.test_15_governance_executive_sign_off_passes_and_report_generation)
+Üst yönetim onayı olduğunda yönetişim geçmeli ve Markdown raporu eksiksiz üretilmelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

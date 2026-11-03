@@ -1,0 +1,28 @@
+KOMUT: python portfolio/hafta_07/gun_047/uygulama/arp_neighbor_analyzer.py
+
+ÇIKIŞ:
+================================================================================
+G047: ARP ve Yerel AÄŸ KomÅŸuluÄŸu GÃ¼venlik Analiz LaboratuvarÄ±
+================================================================================
+[*] BaÅŸlangÄ±Ã§ ARP Ã–nbelleÄŸi YÃ¼kleniyor...
+    - 192.168.1.1     -> 00:1A:2B:3C:4D:01 [Dinamik] (VarsayÄ±lan AÄŸ GeÃ§idi (Default Gateway))
+    - 192.168.1.10    -> 00:1A:2B:3C:4D:0A [Statik] (Yerel DNS/LDAP Sunucusu)
+    - 192.168.1.50    -> 52:54:00:12:34:56 [Dinamik] (Ä°stemci Ä°ÅŸ Ä°stasyonu)
+    - 192.168.1.255   -> FF:FF:FF:FF:FF:FF [Statik] (Alt AÄŸ YayÄ±n Adresi (Broadcast))
+    - 224.0.0.1       -> 01:00:5E:00:00:01 [Statik] (TÃ¼m DÃ¼ÄŸÃ¼mler Ã‡ok Noktaya YayÄ±n (Multicast))
+
+[*] AÄŸ TrafiÄŸi ve ARP OlaylarÄ± Ä°ÅŸleniyor...
+    [âœ“] MeÅŸru Paket : EVT-01 (MeÅŸru ARP Ä°stek: AÄŸ geÃ§idinin MAC adresini soruyor)
+    [âœ“] MeÅŸru Paket : EVT-02 (MeÅŸru ARP YanÄ±t: AÄŸ geÃ§idi gerÃ§ek MAC adresini bildiriyor)
+    [!] GÃœVENLÄ°K ALARMI: ALT-001 | DAI_DHCP_SNOOPING_VIOLATION | CRITICAL
+        Hedef IP : 192.168.1.1
+        MeÅŸru MAC: 00:1A:2B:3C:4D:01 -> Sahte MAC: AA:BB:CC:DD:EE:FF
+        Detay    : DAI Ä°HLALÄ°: 192.168.1.1 iÃ§in beklenen MAC 00:1A:2B:3C:4D:01, ancak paket AA:BB:CC:DD:EE:FF taÅŸÄ±yor!
+    [!] GÃœVENLÄ°K ALARMI: ALT-002 | DAI_DHCP_SNOOPING_VIOLATION | CRITICAL
+        Hedef IP : 192.168.1.10
+        MeÅŸru MAC: 00:1A:2B:3C:4D:0A -> Sahte MAC: AA:BB:CC:DD:EE:FF
+        Detay    : DAI Ä°HLALÄ°: 192.168.1.10 iÃ§in beklenen MAC 00:1A:2B:3C:4D:0A, ancak paket AA:BB:CC:DD:EE:FF taÅŸÄ±yor!
+
+[+] Toplam Ãœretilen Alarm SayÄ±sÄ±: 2
+[+] Ã–zet ARP Analiz Raporu BaÅŸarÄ±yla OluÅŸturuldu.
+

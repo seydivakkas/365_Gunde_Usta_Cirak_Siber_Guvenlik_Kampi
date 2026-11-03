@@ -1,0 +1,17 @@
+{
+  "ders.md": "b283f5b73b31b6cca734586ca6899afaf4f58719816747addab3c4f1e0508d2e",
+  "kanit/gercek/hata_yonetimi_guvenlik_raporu.txt": "2fd3b129e42007d6c82990987d49bd4f69cbec4ae7fc5d44ea80157e762097ef",
+  "kanit/gercek/komut_ve_cikis.txt": "b3ace151ccddfcc47136413b2c137ef64dd12f30ded59d33a1486311c523c109",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "7a3147db13b4d0b175887e5ccb7206e5ecda981330401fa06c9bb8fe096f4efd",
+  "kanit/gercek/test_sonuclari.txt": "260c56c87bf4c19e77fe44c4703bd860a7be9332303db0240de1670d9d953eb9",
+  "kanit/temsili/hata_ve_istisna_mimarisi.txt": "1646087f0ef6e0ac3e6362e8d5376a57429b43988663500e1d3b39362bee962a",
+  "ornek_veri/invalid_exception_inputs.json": "fec555b503446c1f405e38f00dae5711f6678e95289b57f4477478e8f49db7e2",
+  "rapor.md": "4817b9f1efc90c989708f6fa8f26a837767cbb452790444b60b7c8efc13b6edf",
+  "README.md": "6cc65e7de4498c4c921fc9b20700c52bd380d1997cf998d394743dd53bc156cb",
+  "sonuc.json": "b3c6bd3e11d46c4143fd673f2c48c7e13b7aca75fabdca9abd5eb73860f2960a",
+  "soru_cevap.md": "d4a2b2c0b9ea10990a1d553422c3c1a68bd6d1a277531d3246e0a30fccb19324",
+  "tests/__init__.py": "cd9d7d6f5ecaebf2b21236480bf9abec1bb81b3525ecde53c1f346969f98797b",
+  "tests/test_secure_exception_and_error_handler.py": "5a98deddea68bda7ead764df2a65aa2d5cc82d7875a7b8ddccd61857e1458852",
+  "uygulama/__init__.py": "49ff73e9a033fae636938e99be0a278ae0e398eda7024c6ea8b83bcc09bad56f",
+  "uygulama/secure_exception_and_error_handler.py": "4e09ed225c70b5226406f10cb119c2d0bf78bf2fe9f5adff3194de2eb640dce8"
+}

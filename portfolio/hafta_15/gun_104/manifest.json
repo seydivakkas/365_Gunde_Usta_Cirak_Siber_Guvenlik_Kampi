@@ -1,0 +1,95 @@
+{
+  "gun": 104,
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "boyut": 4288,
+      "sha256": "bfc512062d895885dd57eff6fe06f57fef0f7db4b49eef548a6500d5abccdcf6"
+    },
+    {
+      "dosya": "ders.md",
+      "boyut": 7704,
+      "sha256": "a1826cdaf0b3e97a5c5aa76c54627ac6dec6b7c6cac48b504caf33165a095fde"
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "boyut": 13474,
+      "sha256": "923c004fea2d07760524bcce96ba69919db0ad70162f3d8b4f10781d9e5ab8f7"
+    },
+    {
+      "dosya": "rapor.md",
+      "boyut": 5989,
+      "sha256": "6465d7b9cad1603428ec668c06cb60848feafa5b2fae004351e3c060035d34d9"
+    },
+    {
+      "dosya": "sonuc.json",
+      "boyut": 1767,
+      "sha256": "b4b7ee13fad3302d3c0830966d7225a3fd376135feae0de212ea29ef6f4e2d61"
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "boyut": 12287,
+      "sha256": "d4dac72be2dbd90bc35eb5d4837e1e7c05a181fc786f75683558c78ae248da5b"
+    },
+    {
+      "dosya": "kanit/gercek/aead_nonce_analiz_raporu.txt",
+      "boyut": 2484,
+      "sha256": "f5257f9fbd1c2d3e15f5d6567db2b91c8e3d8607d263c1166ef9e5759c8c1746"
+    },
+    {
+      "dosya": "kanit/gercek/komut_ve_cikis.txt",
+      "boyut": 2822,
+      "sha256": "005ce675afbadb0f79c1c2fa3b192c17b38ac15e1e0544b75ca9255f6716ed52"
+    },
+    {
+      "dosya": "kanit/gercek/negatif_kontrol_sonuclari.txt",
+      "boyut": 3389,
+      "sha256": "fd410bbc804c489bc8413101cba315e9df55df262ce87d3d8eb2713cfd6e1906"
+    },
+    {
+      "dosya": "kanit/gercek/test_sonuclari.txt",
+      "boyut": 3866,
+      "sha256": "912ec8ee7c7eaa555ea3b077c1a67b9c384a164f24a018e2c233dfbfbe08e29d"
+    },
+    {
+      "dosya": "kanit/temsili/aead_nonce_mimarisi.txt",
+      "boyut": 3283,
+      "sha256": "ae4787e7058ae1783fa08a94d4b91912193b272cef4e1ae90c1b096f65bf394f"
+    },
+    {
+      "dosya": "ornek_veri/aead_test_vectors.json",
+      "boyut": 847,
+      "sha256": "f059a280f127e1ddcaad075bd51c32d34e8d88d6ae98032c6325f4e0c7871627"
+    },
+    {
+      "dosya": "ornek_veri/invalid_aead_inputs.json",
+      "boyut": 2599,
+      "sha256": "e347c3f36aadb314e05e5b6359b6efcfea552c9540499cbbbd9efe430eed2e92"
+    },
+    {
+      "dosya": "tests/__init__.py",
+      "boyut": 594,
+      "sha256": "9be82dde43d53f1233f867707c72fd59ee096309653d8813d4ff96bd209b134b"
+    },
+    {
+      "dosya": "tests/test_aead_nonce.py",
+      "boyut": 12535,
+      "sha256": "82071a7070fc0f274cc75c23cb9266ba20abdfe64f1d79d9d1e2d2f19b9ce4d2"
+    },
+    {
+      "dosya": "uygulama/__init__.py",
+      "boyut": 616,
+      "sha256": "0f893aa77c87db06653e551ac4488fb758891c974c48d92a40c4c02ca94fd4a9"
+    },
+    {
+      "dosya": "uygulama/aead_cli.py",
+      "boyut": 9247,
+      "sha256": "fa07de684db90f1059a7db2bfb6068201da89a849ebdcbff0940ad24f00fd6f2"
+    },
+    {
+      "dosya": "uygulama/aead_nonce_engine.py",
+      "boyut": 22424,
+      "sha256": "d91825a9c28035abcade3a44030313510dd31a4865dd919890018ce23c839fce"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "gun": 89,
+  "baslik": "Argparse ve CLI tasarımı",
+  "hafta": 13,
+  "asama": 4,
+  "durum": "TAMAMLANDI",
+  "puan": 100,
+  "sonuc": "YETERLİ / PASS",
+  "rubrik": {
+    "kod_kalitesi": 20,
+    "guvenlik_ve_mimari": 40,
+    "kanit_ve_test": 25,
+    "dokumantasyon_ve_pedagoji": 15,
+    "toplam": 100
+  },
+  "test_metrikleri": {
+    "birim_testler": {
+      "toplam": 14,
+      "gecen": 14,
+      "kalan": 0,
+      "durum": "14/14 PASS",
+      "sure_saniye": 0.013
+    },
+    "negatif_kontroller": {
+      "toplam": 9,
+      "gecen": 9,
+      "kalan": 0,
+      "durum": "9/9 PASS (%100 Basari)"
+    }
+  },
+  "guvenlik_ve_zafiyet_metrikleri": {
+    "tespit_edilen_cwe_kodlari": [
+      "CWE-20: Improper Input Validation (Port Range [1, 65535] and Target Hostname Boundaries)",
+      "CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal' via '..')",
+      "CWE-88: Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')",
+      "CWE-400: Uncontrolled Resource Consumption (CLI Argument Length and Count Limits for DoS Protection)",
+      "CWE-754: Improper Check for Exceptional Conditions (Exit Code 2 for CLI Syntax/Argument Errors)"
+    ]
+  },
+  "uretilen_dosyalar": [
+    "uygulama/__init__.py",
+    "uygulama/security_cli_engine.py",
+    "uygulama/cli_runner.py",
+    "tests/__init__.py",
+    "tests/test_security_cli_engine.py",
+    "ornek_veri/sample_cli_commands.json",
+    "ornek_veri/invalid_cli_inputs.json",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "kanit/gercek/cli_tasarim_denetim_raporu.txt",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/temsili/argparse_cli_mimarisi.txt",
+    "kanit_uretici.py",
+    "ders.md",
+    "soru_cevap.md",
+    "rapor.md",
+    "README.md",
+    "sonuc.json",
+    "manifest.json"
+  ],
+  "zaman_damgasi_utc": "2026-11-01T20:15:30Z"
+}

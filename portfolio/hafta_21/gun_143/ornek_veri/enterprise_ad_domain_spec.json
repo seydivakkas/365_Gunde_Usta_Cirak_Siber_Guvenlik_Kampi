@@ -1,0 +1,92 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "architecture": {
+    "domain_name": "corp.internal",
+    "forest_name": "corp.internal",
+    "domain_netbios_name": "CORP",
+    "domain_functional_level": "WindowsServer2016Domain",
+    "forest_functional_level": "WindowsServer2016Forest",
+    "domain_controllers": [
+      {
+        "name": "DC01.corp.internal",
+        "ip_address": "10.0.10.10",
+        "is_global_catalog": true,
+        "os_version": "Windows Server 2022 Datacenter"
+      },
+      {
+        "name": "DC02.corp.internal",
+        "ip_address": "10.0.10.11",
+        "is_global_catalog": true,
+        "os_version": "Windows Server 2022 Datacenter"
+      }
+    ],
+    "fsmo_roles": {
+      "pdc_emulator": "DC01.corp.internal",
+      "rid_master": "DC01.corp.internal",
+      "infrastructure_master": "DC02.corp.internal",
+      "schema_master": "DC01.corp.internal",
+      "domain_naming_master": "DC01.corp.internal"
+    }
+  },
+  "kerberos_policy": {
+    "supported_encryption_types": [
+      "AES128-CTS-HMAC-SHA1-96",
+      "AES256-CTS-HMAC-SHA1-96"
+    ],
+    "max_ticket_lifetime_hours": 10,
+    "max_renewal_lifetime_days": 7,
+    "enforce_user_logon_restrictions": true
+  },
+  "krbtgt_account": {
+    "sam_account_name": "krbtgt",
+    "password_last_set": "2026-10-01",
+    "pwd_last_set_days_ago": 32,
+    "sid": "S-1-5-21-1234567890-1234567890-1234567890-502"
+  },
+  "ntlm_policy": {
+    "lm_compatibility_level": 5,
+    "restrict_ntlm_incoming_traffic": "DenyAll",
+    "restrict_ntlm_outgoing_traffic": "RequireNTLMv2"
+  },
+  "ldap_smb_policy": {
+    "ldap_server_integrity": 2,
+    "ldap_enforce_channel_binding": 2,
+    "smb_signing_required": true,
+    "smbv1_disabled": true
+  },
+  "accounts": [
+    {
+      "sam_account_name": "da_superadmin",
+      "is_privileged_admin": true,
+      "service_principal_names": [],
+      "dont_req_preauth": false,
+      "delegation_type": "None",
+      "member_of": ["Domain Admins", "Enterprise Admins"]
+    },
+    {
+      "sam_account_name": "svc_sql_prod",
+      "is_privileged_admin": false,
+      "service_principal_names": ["MSSQLSvc/db01.corp.internal:1433"],
+      "dont_req_preauth": false,
+      "delegation_type": "Constrained",
+      "member_of": ["Service Accounts"]
+    },
+    {
+      "sam_account_name": "app_web_front",
+      "is_privileged_admin": false,
+      "service_principal_names": ["HTTP/portal.corp.internal"],
+      "dont_req_preauth": false,
+      "delegation_type": "ResourceBasedConstrained",
+      "member_of": ["Service Accounts"]
+    }
+  ],
+  "trust_relationships": [
+    {
+      "target_domain": "partner.external",
+      "trust_type": "Forest",
+      "direction": "BiDirectional",
+      "sid_filtering_enabled": true,
+      "transitive": false
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+================================================================================
+G088: KOMUT CIKIS KODU VE STDERR STATIK GU蕪ENLIK DENETIM RAPORU
+Uretim Tarihi: 2026-11-01T20:06:57.006507+00:00
+================================================================================
+
+--- 1. GUVENLI ORNEK BETIK (sample_secure_exit_script.sh) ---
+Toplam Bulgu Sayisi: 0
+Guvenlik Durumu    : TAMAMEN GUVENLI (PASS)
+
+--- 2. ZAAFIYETLI ORNEK BETIK (sample_vulnerable_script.sh) ---
+Toplam Bulgu Sayisi: 3
+Guvenlik Durumu    : KRITIK BULGULAR MEVCUT (FAIL)
+
+DETAYLI BULGULAR (sample_vulnerable_script.sh):
+  [1] Kural  : SILENT_ERROR_SUPPRESSION
+      Satir  : 16
+      Seviye : HIGH
+      CWE    : CWE-390: Detection of Error Condition Without Action
+      Detay  : Satir 16: Hata akisi '2> /dev/null' ile sessizce yutulmus.
+      Tavsiye: Hata akisini tamamen yok etmek yerine guvenli log dosyasina yonlendirin veya cikis kodunu denetleyin.
+      ------------------------------------------------------------
+  [2] Kural  : STDERR_CREDENTIAL_PRINT
+      Satir  : 19
+      Seviye : CRITICAL
+      CWE    : CWE-532: Insertion of Sensitive Information into Log / Error Stream
+      Detay  : Satir 19: stderr akisina (&>2) hassas degisken degeri yazdiriliyor.
+      Tavsiye: Hata akisina asla parola veya gizli anahtar yazdirmayin; genel hata kodlari kullanin.
+      ------------------------------------------------------------
+  [3] Kural  : FRAUDULENT_SUCCESS_EXIT_ZERO
+      Satir  : None
+      Seviye : MEDIUM
+      CWE    : CWE-390: Fraudulent Success Status Code
+      Detay  : Betikte 'set -e' tanimli degilken en sonda 'exit 0' donulmus; onceki basarisiz komutlar gizleniyor.
+      Tavsiye: Betiğe 'set -e' ekleyin veya son satira ulasmadan once adimlarin cikis kodlarini ($?) dogrulayin.
+      ------------------------------------------------------------

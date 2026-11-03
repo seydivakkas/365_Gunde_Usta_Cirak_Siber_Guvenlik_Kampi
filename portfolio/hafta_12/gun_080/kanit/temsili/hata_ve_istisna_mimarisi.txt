@@ -1,0 +1,63 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
+Bu şema, G080 günü kapsamında geliştirilen güvenli hata yönetimi, özel durum
+hiyerarşisi ve fail-closed mimarisinin kavramsal ASCII akış diyagramıdır.
+
+                        +------------------------------------+
+                        |      GELEN İSTEMCİ İSTEĞİ          |
+                        | (Kimlik, Rol, Parametre, IP)       |
+                        +------------------------------------+
+                                          |
+                                          v
+              +------------------------------------------------------+
+              |             DEFENSIVE SECURITY GATEWAY               |
+              |  - Hız Sınırı (Rate Limit / Brute-Force Koruması)    |
+              |  - Kimlik Doğrulama (Authentication Token Sınaması)  |
+              |  - Yetkilendirme (RBAC Rol Eşleşmesi)                |
+              |  - Girdi Temizleme (Sanitization / XSS-SQLi Filtresi)|
+              +------------------------------------------------------+
+                                          |
+                     +--------------------+--------------------+
+                     |                                         |
+                     v                                         v
+       [ BAŞARILI MEŞRU İŞLEM ]                  [ İSTİSNA / GÜVENLİK İHLALİ ]
+  +--------------------------------+       +---------------------------------------+
+  | - İstenen İşlemi Yürüt         |       | - SecurityException Alt Sınıfları     |
+  | - Güvenli Çıktı Üret           |       |   * AuthenticationFailureException    |
+  | - Kaynak Kilidini Kapat        |       |   * AuthorizationDeniedException      |
+  +--------------------------------+       |   * InputSanitizationException        |
+                     |                     |   * RateLimitExceededException        |
+                     |                     |   * SecurityResourceException         |
+                     |                     +---------------------------------------+
+                     |                                         |
+                     |                                         v
+                     |                     +---------------------------------------+
+                     |                     |      SECURE ERROR HANDLER (KALKAN)    |
+                     |                     |  - Fail-Closed: Erişimi Kesin Reddet  |
+                     |                     |  - CWE-209: Yığın İzini (Traceback)   |
+                     |                     |    ve Dosya Yollarını Gizle           |
+                     |                     |  - CWE-117: Log Zehirlenmesini        |
+                     |                     |    (CRLF/ANSI) Temizle                |
+                     |                     |  - Benzersiz Olay Kodu (SEC-ERR-...)  |
+                     |                     +---------------------------------------+
+                     |                                         |
+                     +--------------------+--------------------+
+                                          |
+                                          v
+              +------------------------------------------------------+
+              |           DETERMINISTIC RESOURCE CLEANUP             |
+              |   (with SecureResourceContext / try-finally güvencesi)|
+              |   * Hata olsun veya olmasın kilit ve dosya serbest!  |
+              +------------------------------------------------------+
+                                          |
+                                          v
+                        +------------------------------------+
+                        |       GÜVENLİ İSTEMCİ YANITI       |
+                        | (Temiz Durum Kodu + Olay Referansı)|
+                        +------------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

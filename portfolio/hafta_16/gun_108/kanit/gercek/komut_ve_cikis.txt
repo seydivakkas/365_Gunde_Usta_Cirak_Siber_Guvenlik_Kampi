@@ -1,0 +1,48 @@
+=== GÜN 108 CLI KOMUT VE ÇIKIŞ GÜNLÜĞÜ ===
+Tarih/Saat: 2026-11-02 03:52:46
+================================================================================
+
+--- 1. 3 Kademeli PKI Altyapısının Kurulması ---
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_108\uygulama\x509_cli.py --build-pki --out-dir C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_108\kanit\gercek\temp_pki --domain portal.kurum.gov.tr --json
+Çıkış Kodu: 0
+Çıktı:
+{
+  "status": "SUCCESS",
+  "output_directory": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_16\\gun_108\\kanit\\gercek\\temp_pki",
+  "root_ca": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_16\\gun_108\\kanit\\gercek\\temp_pki\\root_ca.json",
+  "intermediate_ca": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_16\\gun_108\\kanit\\gercek\\temp_pki\\intermediate_ca.json",
+  "leaf_cert": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_16\\gun_108\\kanit\\gercek\\temp_pki\\leaf_cert.json",
+  "trust_store": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_16\\gun_108\\kanit\\gercek\\temp_pki\\trust_store.json",
+  "domain": "portal.kurum.gov.tr"
+}
+
+
+--- 2. Sertifika Güven Zincirinin Doğrulanması (Path Validation) ---
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_108\uygulama\x509_cli.py --verify-chain --leaf C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_108\kanit\gercek\temp_pki\leaf_cert.json --intermediate C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_108\kanit\gercek\temp_pki\intermediate_ca.json --trust-store C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_108\kanit\gercek\temp_pki\trust_store.json --domain portal.kurum.gov.tr --json
+Çıkış Kodu: 0
+Çıktı:
+{
+  "status": "VALID",
+  "leaf_domain": "portal.kurum.gov.tr",
+  "target_domain": "portal.kurum.gov.tr",
+  "chain_length": 3,
+  "validated_chain": [
+    "portal.kurum.gov.tr",
+    "Kurumsal E-Ticaret CA",
+    "Global Guvenlik Root CA"
+  ],
+  "root_trust_anchor": "Global Guvenlik Root CA"
+}
+
+
+--- 3. PKI ve X.509 Zafiyet Savunma Simülasyonu ---
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_108\uygulama\x509_cli.py --demo-flaws --json
+Çıkış Kodu: 0
+Çıktı:
+{
+  "hostname_mismatch_blocked": true,
+  "expired_certificate_blocked": true,
+  "untrusted_root_blocked": true,
+  "illegal_leaf_as_ca_blocked": true
+}
+

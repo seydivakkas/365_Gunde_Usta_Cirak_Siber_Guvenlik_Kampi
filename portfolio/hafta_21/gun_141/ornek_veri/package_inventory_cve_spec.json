@@ -1,0 +1,56 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "system_info": {
+    "hostname": "srv-prod-app01.corp.internal",
+    "os_distribution": "Ubuntu 22.04.4 LTS (Jammy Jellyfish)",
+    "os_family": "debian",
+    "kernel": "5.15.0-107-generic",
+    "architecture": "x86_64",
+    "environment": "production"
+  },
+  "patch_config_spec": {
+    "auto_security_updates": true,
+    "unattended_upgrades_installed": true,
+    "reboot_required": false,
+    "reboot_window": "03:00-05:00 UTC",
+    "last_patch_scan": "2026-11-01T04:00:00Z"
+  },
+  "vulnerabilities": [
+    {
+      "cve_id": "CVE-2024-6387",
+      "package_name": "openssh-server",
+      "installed_version": "1:8.9p1-3ubuntu0.7",
+      "fixed_version": "1:8.9p1-3ubuntu0.10",
+      "cvss_score": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "is_in_cisa_kev": true,
+      "epss_score": 0.45,
+      "published_date": "2026-11-01",
+      "description": "OpenSSH server (sshd) signal handler race condition (regreSSHion) allowing unauthenticated remote code execution as root."
+    },
+    {
+      "cve_id": "CVE-2023-4863",
+      "package_name": "libwebp7",
+      "installed_version": "1.2.2-2ubuntu0.1",
+      "fixed_version": "1.2.2-2ubuntu0.2",
+      "cvss_score": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "is_in_cisa_kev": true,
+      "epss_score": 0.88,
+      "published_date": "2026-11-01",
+      "description": "Heap buffer overflow in WebP lossless decoding allowing remote code execution via malicious WebP images."
+    },
+    {
+      "cve_id": "CVE-2024-21626",
+      "package_name": "runc",
+      "installed_version": "1.1.7-0ubuntu1~22.04.1",
+      "fixed_version": "1.1.7-0ubuntu1~22.04.2",
+      "cvss_score": 8.6,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "is_in_cisa_kev": false,
+      "epss_score": 0.15,
+      "published_date": "2026-10-25",
+      "description": "Container breakout through file descriptor leak (Leaky Vessels) in runc run/exec commands."
+    }
+  ]
+}

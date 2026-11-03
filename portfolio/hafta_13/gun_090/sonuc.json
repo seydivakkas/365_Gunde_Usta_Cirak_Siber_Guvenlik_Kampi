@@ -1,0 +1,61 @@
+{
+  "gun": 90,
+  "baslik": "Tarih-saat, UTC ve saat dilimi",
+  "hafta": 13,
+  "asama": 4,
+  "durum": "TAMAMLANDI",
+  "puan": 100,
+  "sonuc": "YETERLİ / PASS",
+  "rubrik": {
+    "kod_kalitesi": 20,
+    "guvenlik_ve_mimari": 40,
+    "kanit_ve_test": 25,
+    "dokumantasyon_ve_pedagoji": 15,
+    "toplam": 100
+  },
+  "test_metrikleri": {
+    "birim_testler": {
+      "toplam": 14,
+      "gecen": 14,
+      "kalan": 0,
+      "durum": "14/14 PASS",
+      "sure_saniye": 0.001
+    },
+    "negatif_kontroller": {
+      "toplam": 9,
+      "gecen": 9,
+      "kalan": 0,
+      "durum": "9/9 PASS (%100 Basari)"
+    }
+  },
+  "guvenlik_ve_zafiyet_metrikleri": {
+    "tespit_edilen_cwe_kodlari": [
+      "CWE-20: Improper Input Validation (Invalid Time Range, Impossibility Calendar Dates, Out-of-Bound FileTime)",
+      "CWE-400: Uncontrolled Resource Consumption (DoS String Length Limit <= 128 chars)",
+      "CWE-613: Insufficient Session Expiration (Ambiguous Naive Datetime Rejection)",
+      "CWE-1385: Missing Origin Authentication in Authentication Protocol (Clock Skew > 300s Replay Attack Risk)"
+    ]
+  },
+  "uretilen_dosyalar": [
+    "uygulama/__init__.py",
+    "uygulama/utc_timezone_forensic_normalizer.py",
+    "uygulama/forensic_timeline_runner.py",
+    "tests/__init__.py",
+    "tests/test_utc_timezone_forensic_normalizer.py",
+    "ornek_veri/sample_multisource_logs.json",
+    "ornek_veri/invalid_timestamp_inputs.json",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "kanit/gercek/adli_zaman_analiz_raporu.txt",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/temsili/utc_saat_dilimi_adli_mimari.txt",
+    "kanit_uretici.py",
+    "ders.md",
+    "soru_cevap.md",
+    "rapor.md",
+    "README.md",
+    "sonuc.json",
+    "manifest.json"
+  ],
+  "zaman_damgasi_utc": "2026-11-01T20:22:30Z"
+}

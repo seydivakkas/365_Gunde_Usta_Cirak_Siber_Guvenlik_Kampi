@@ -1,0 +1,38 @@
+==============================================================================
+G062: VLAN, SEGMENTASYON VE DMZ — KOMUT VE YURUTME KANITI
+==============================================================================
+Tarih: 2026-10-31 00:29:25 UTC+3
+Calisma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Python Surumu: Python 3.14.0 (Windows x64)
+Test Modulu: portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine
+
+Calistirilan Komut:
+$ python -m unittest portfolio.hafta_09.gun_062.tests.test_vlan_segmentation_dmz_engine -v
+
+Cikis Kodu (Exit Code): 0 (Basarili)
+
+Test Sonuclari Ozeti:
+- Toplam Test: 14
+- Basarili: 14
+- Hatali (Error): 0
+- Basarisiz (Failure): 0
+- Calisma Suresi: 0.001 saniye
+- Durum: OK (PASS)
+
+Yurutulen Testlerin Kapsami:
+1.  test_01_valid_8021q_tag_parsing                         -> OK (Pozitif: 4 bayt TPID 0x8100, PCP 5, VID 20 ayrıştırma)
+2.  test_02_negative_vlan_id_range_validation               -> OK (Negatif: 0, 4095 ve 5000 sınır dışı VID engelleme)
+3.  test_03_negative_truncated_8021q_tag                    -> OK (Negatif: <4 bayt kesik başlıkta MalformedVLANFrameError)
+4.  test_04_mac_address_validation_positive_and_negative    -> OK (Pozitif/Negatif: 48-bit MAC biçimi sınır kontrolleri)
+5.  test_05_access_port_normal_untagged_frame_forwarding    -> OK (Pozitif: Etiketsiz paketin access VLAN 10'a atanması)
+6.  test_06_negative_access_port_vlan_ingress_violation     -> OK (Negatif: Farklı etiketli paketin access portta engeli)
+7.  test_07_trunk_port_tagged_frame_forwarding              -> OK (Pozitif: İzinli VLAN etiketli çerçevenin trunk geçişi)
+8.  test_08_negative_trunk_port_disallowed_vlan             -> OK (Negatif: Trunk izin listesinde olmayan VID 50 engeli)
+9.  test_09_negative_double_tagging_vlan_hopping_detection  -> OK (Negatif: Çift etiketli Double Tagging saldırı engeli)
+10. test_10_negative_dtp_switch_spoofing_detection          -> OK (Negatif: Access portta DTP saldırı engeli ve err-disable)
+11. test_11_inter_vlan_firewall_permitted_rule              -> OK (Pozitif: DMZ -> DB port 5432 PostgreSQL erişim onayı)
+12. test_12_negative_dmz_to_internal_lateral_movement_block -> OK (Negatif: DMZ -> Kullanıcı LAN yanal yayılım engeli)
+13. test_13_negative_unauthorized_inter_vlan_port           -> OK (Negatif: İzinli olmayan porta [22] Inter-VLAN erişim engeli)
+14. test_14_broadcast_domain_isolation_simulation          -> OK (Pozitif: L2 Broadcast domain izolasyonu doğrulama)
+
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Ozel Lisans — Tum Haklari Saklidir.

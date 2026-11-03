@@ -1,0 +1,32 @@
+===============================================================================
+GÜN 105: MİNİ PROJE 14 - KRİPTOGRAFİK BÜTÜNLÜK MANİFESTİ DENETİM RAPORU
+Tarih/Saat: 2026-11-02 02:33:00
+Denetçi: Seydi Eryılmaz (@seydivakkas)
+===============================================================================
+
+1. PROJE MİMARİSİ VE FONKSİYONEL YETENEKLER:
+-------------------------------------------------------------------------------
+- Kapsam: Dosya sistemi seviyesinde yetkisiz dosya değişimlerini (FIM - File Integrity Monitoring)
+  tespit eden kurumsal manifest motoru (Tripwire / AIDE / dm-verity modeli).
+- Akışlı Okuma (Streaming Hash): 64 KB bloklar halinde okuma yapılarak bellek tüketimi (DoS) önlenir.
+- Çift Hash Koruması: SHA-256 ve BLAKE2b özetleri bağımsız olarak hesaplanır.
+- Kurcalanmaz Mühür (HMAC-SHA256 Seal): Manifest içeriği gizli bir anahtar ile imzalanır.
+  Saldırgan dosyaları ve manifestoyu değiştirse bile anahtar olmadan geçerli mühür üretemez (CWE-353).
+
+2. GÜVENLİK BİLEŞENLERİ VE CWE SAVUNMALARI:
+-------------------------------------------------------------------------------
+A. Path Traversal Savunması (CWE-22):
+   - safe_resolve_path fonksiyonu ile her dosya yolu kök dizin sınırları içinde denetlenir.
+   - '../../etc/shadow' veya '..\windows\system32' gibi kaçış denemeleri engellenir.
+B. Sembolik Bağ Kaçış Koruması (CWE-59):
+   - os.islink denetimi ile kök dışına yönlendirilen symlink'ler yakalanır.
+C. Kırılmış Algoritma Engeli (CWE-328):
+   - MD5 ve SHA-1 algoritmaları kesinlikle yasaklanmış ve engellenmiştir.
+D. Sabit Zamanlı Kıyaslama (CWE-208):
+   - hmac.compare_digest ile hem HMAC mührü hem dosya özetleri sabit zamanda karşılaştırılır.
+
+3. HAFTA 15 AŞAMA 05 ENTEGRASYON VE BAŞARI DURUMU:
+-------------------------------------------------------------------------------
+- Hafta 15 boyunca öğrenilen CIA Triad (G99), Entropi (G100), Hash Çakışmaları (G101),
+  Salt/Pepper/KDF (G102), Simetrik AES (G103) ve AEAD (G104) yetkinlikleri bu mini projede
+  bütüncül bir güvenlik yazılımı olarak bir araya getirilmiştir.

@@ -1,0 +1,85 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+G046: IPv6 Adres Yapısı, SLAAC Otomasyonu, NDP ve Rogue RA Savunma Mimarisi
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) - Tüm Hakları Saklıdır
+================================================================================
+
+1. IPv6 128-BİT ADRES YAPISI VE BİLEŞEN AYRIŞTIRMASI
+--------------------------------------------------------------------------------
+Toplam 128 Bit = 8 Hextet x 16 Bit (Onaltılık Gösterim)
+
+|<------------------- 64 Bit Ağ Öneki (Routing Prefix) --------------->|<------------ 64 Bit Arayüz Kimliği (Interface ID) ---------->|
++---------------------+-------------------+-------------------+----------+-------------------+------------------+-------------------+----------+
+| Hextet 1            | Hextet 2          | Hextet 3          | Hextet 4 | Hextet 5          | Hextet 6         | Hextet 7          | Hextet 8 |
+| 2001                | 0db8              | acad              | 0001     | 021a              | 2bff             | fe3c              | 4d5e     |
++---------------------+-------------------+-------------------+----------+-------------------+------------------+-------------------+----------+
+| Küresel Yönlendirme (Global Routing)    | Alt Ağ Kimliği (Subnet ID)   | EUI-64 veya Gizlilik (RFC 4941) Arayüz Kimliği (IID)         |
+
+
+2. EUI-64 DÖNÜŞÜMÜ VE GİZLİLİK RİSKİ (RFC 4941)
+--------------------------------------------------------------------------------
+Fiziksel MAC:     00 : 1A : 2B : 3C : 4D : 5E   (48 Bit IEEE Donanım Kimliği)
+                       |              |
+1. Araya FF:FE:   00 : 1A : 2B : FF : FE : 3C : 4D : 5E  (64 Bit Genişleme)
+2. U/L Bit Flip:  000000[0]0  ->  000000[1]0 (0x00 -> 0x02)
+                       |
+EUI-64 IID:       021a : 2bff : fe3c : 4d5e
+Link-Local IP:    fe80::21a:2bff:fe3c:4d5e/64
+
+[!] TEHDİT: EUI-64 cihazın fiziksel MAC adresini tüm internete ifşa eder (Cihaz Takibi / Tracking).
+[✓] SAVUNMA (RFC 4941): İstemciler geçici, kriptografik rastgele arayüz kimlikleri (Privacy Extensions) kullanmalıdır.
+
+
+3. SLAAC (STATELESS ADDRESS AUTOCONFIGURATION) VE KOMŞU KEŞFİ (NDP) AKIŞI
+--------------------------------------------------------------------------------
+   İstemci (Host)                                                Yönlendirici (Router)
+        |                                                                 |
+        |--- (1) ICMPv6 Type 133: Router Solicitation (RS) -------------->|
+        |    "Ağda yönlendirici var mı? Bana ağ önekini ver!"             |
+        |                                                                 |
+        |<-- (2) ICMPv6 Type 134: Router Advertisement (RA) --------------|
+        |    "Önekim: 2001:db8:acad:1::/64, Varsayılan Ağ Geçidi: fe80::1"|
+        |                                                                 |
+        | [İstemci: Kendi IID'sini ekleyerek IPv6 adresini oluşturur]     |
+        |                                                                 |
+        |--- (3) ICMPv6 Type 135: Neighbor Solicitation (NS / DAD) ------>| (Tüm Ağ)
+        |    "Bu ürettiğim adresi kullanan başka biri var mı?" (DAD)      |
+        |                                                                 |
+        | [Kimse yanıt vermezse (NA gelmezse) adres başarıyla bağlanır]   |
+
+
+4. GÜVENLİK TEHDİDİ: ROGUE RA SALDIRISI VE RA GUARD (RFC 6105) KORUMASI
+--------------------------------------------------------------------------------
+                      +-----------------------------+
+                      | Saldırgan Cihaz (Rogue RA)  |
+                      | "Ben yeni Router'ım!        |
+                      |  Önek: 2001:666::/64        |
+                      |  Default Gateway: fe80::bad"|
+                      +-----------------------------+
+                                     | (Sahte RA Paketi)
+                                     v
+                  +------------------------------------+
+                  | Yönetilebilir Anahtar (Switch)     |
+                  |                                    |
+                  | [RA GUARD Kontrol Noktası]         |
+                  | Port 3 (Kullanıcı Portu):          |
+                  | Gelen paket ICMPv6 Type 134 mü?   |
+                  | -> EVET!                           |
+                  | Port "Trusted" mı?                 |
+                  | -> HAYIR!                          |
+                  | SONUÇ: PAKETİ AT (DROP) VE ALARM   |
+                  +------------------------------------+
+                        |                          \
+           (Paket Atıldı - Korundu)          (Yalnızca Güvenilir Port)
+                        |                              \
+                        v                               v
+             +--------------------+            +--------------------+
+             | Masum İstemciler   |            | Meşru Yönlendirici |
+             | (Trafik Çalınamaz) |            | (Trunk / Router)   |
+             +--------------------+            +--------------------+
+
+================================================================================
+NOT: Bu şema, IPv6 ağlarında SLAAC/NDP protokollerinin çalışmasını ve Rogue RA
+tehdidine karşı katman-2 switch seviyesindeki RA Guard savunmasını modeller.
+================================================================================

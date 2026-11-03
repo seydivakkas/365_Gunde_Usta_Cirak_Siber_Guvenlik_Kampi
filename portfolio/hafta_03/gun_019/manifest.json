@@ -1,0 +1,21 @@
+{
+  "dosyalar": {
+    "README.md": "08b5ec015fb73e01976c804b8af77641b7ad4573195b7353bd0c3d187c5dfc1f",
+    "ders.md": "990dfbde96dc0fd7682d8277d3c8f2958ad305e5d7a55950d601d8a2ea3a8e59",
+    "rapor.md": "eeaaa12232a977aac83767d4ee436729c9d9f99792889dbe6ec7710d461f31e9",
+    "sonuc.json": "dda8a0d5ab2799ca85ca1cbefaa89ef8066187cf269226bda75af3c2ddc8cf6b",
+    "soru_cevap.md": "6bc822f87e5fb00fd23041d9f2ba340d5d6a9d94eea100ca77c051cd5b5f940f",
+    "kanit/gercek/komut_ve_cikis.txt": "a5f01b88eeba9680fa25ba0a0b6aeffdff6c0272fd5847df3155c039f8c769dc",
+    "kanit/gercek/test_sonuclari.txt": "5fe912ca37f5e0e68186271a4b19616c6670e47bc6986b680efa6dc137902c63",
+    "kanit/temsili/ntfs_ve_acl_mimarisi.txt": "1424ffbb7a2f13a3706a5ebdddc359ff4215f4e8b791dc8a729a9fb4ec501a25",
+    "ornek_veri/ntfs_file_samples.json": "7a7e8025c3fd50bdc64a27337747e62d06a206d421c6fd719a840de99b4df0ac",
+    "ornek_veri/ntfs_security_baseline.json": "4de210bad024f5831c0dd03d1f75b3cddb8a0fdda9dfe1c10399092d7fc83f61",
+    "tests/test_ntfs_security_and_acl_analyzer.py": "137a8eb11c1d3d99cc166d719c011466ccc35b7d48f3e4e20f0ddbdb283af1e1",
+    "uygulama/ntfs_security_and_acl_analyzer.py": "6f1a5f27fb9f3f06573d8eb6ec4542a2282765a2d764dc81d2c0d5a749fdc1af"
+  },
+  "ozet": {
+    "toplam_dosya": 12,
+    "gun": 19,
+    "durum": "DOGRULANDI_PASS"
+  }
+}

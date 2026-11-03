@@ -1,0 +1,29 @@
+===============================================================================
+ ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz.
+ HAFTA 20: LINUX SERTLEŞTİRME HIZLI KOMUT BAŞVURU KARTI
+===============================================================================
+
+1. SUDO:
+   visudo -c               # Sudoers sözdizimi doğrula
+   chmod 0440 /etc/sudoers # İzinleri sınırla
+
+2. PAM:
+   faillock --user <kullanici> --reset # Kilitlenen hesabı aç
+   authselect current                  # Aktif PAM profilini listele
+
+3. SYSTEMD:
+   systemd-analyze security <servis>   # İzolasyon skoru (0.0-10.0)
+   systemctl mask <servis>             # Servisin başlatılmasını kalıcı engelle
+
+4. SSH:
+   sshd -t                             # sshd_config test et
+   ssh-keygen -t ed25519 -a 100        # Güçlü Ed25519 anahtarı üret
+
+5. FIREWALL:
+   nft list ruleset                    # Aktif nftables kural kümesini dök
+   ufw status verbose                  # UFW kurallarını doğrula
+
+6. AUDIT & JOURNAL:
+   auditctl -s                         # Çekirdek audit durumunu (-e 2) kontrol et
+   journalctl --verify                 # FSS mühür bütünlüğünü doğrula
+===============================================================================

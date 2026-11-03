@@ -1,0 +1,50 @@
+# ==============================================================================
+# TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+# ==============================================================================
+# Gün 091: Mini Proje 12 — Çok Platformlu Sistem Raporu Mimari Görselleştirmesi
+# Konu: Hafta 13 Capstone: PowerShell, Bash, Argparse, Exit Code ve UTC Entegrasyonu
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) - Tüm Hakları Saklıdır.
+# ==============================================================================
+
++--------------------------------------------------------------------------------------------------+
+|                    ÇOK PLATFORMLU SİSTEM GÜVENLİK VE UYUMLULUK DENETİM MİMARİSİ                  |
++--------------------------------------------------------------------------------------------------+
+
+   [ Windows Sunucu Altyapısı ]                         [ Linux Sunucu Altyapısı ]
+   - windows_collector.ps1                              - linux_collector.sh
+   - [CmdletBinding()] & Sıkı Parametreler               - set -euo pipefail & Safe IFS
+   - WMI/CIM, Event Log, Firewall Profile, Ports        - POSIX /proc, /etc/shadow, systemctl, Ports
+              |                                                    |
+              | (PSCustomObject JSON)                              | (POSIX JSON)
+              \                                                   /
+               \                                                 /
+                v                                               v
++--------------------------------------------------------------------------------------------------+
+|                        CrossPlatformSecurityReporter ANALİZ VE GÜVENLİK MOTORU                   |
++--------------------------------------------------------------------------------------------------+
+                                                 |
+                   +-----------------------------+-----------------------------+
+                   |                                                           |
+                   v                                                           v
+   [ Telemetri Güvenlik Kalkanı ]                              [ CWE & Zafiyet Analiz Motoru ]
+   - DoS Sınırı <= 1 MB (CWE-400)                               - Açık Portlar: SMB 445, RDP 3389, Redis 6379
+   - Naive Zaman Reddi / UTC Zulu (CWE-613)                     - Windows: Public FW Off, CryptoMiner (CWE-506)
+   - Stderr Sızıntı Maskeleme (CWE-532/209)                     - Linux: /etc/shadow 0644 (CWE-732), Sudo NOPASSWD
+                   |                                                           |
+                   +-----------------------------+-----------------------------+
+                                                 |
+                                                 v
++--------------------------------------------------------------------------------------------------+
+|                                  reporter_cli.py CLI BORU HATTI                                  |
+|   - Argparse Ortak Ebeveyn Ayrıştırıcı (parents=[common_parent])                                 |
+|   - Karşılıklı Dışlayan Seçenekler: --fast VS --deep                                             |
+|   - Dizin Atlama (Path Traversal) Koruması (CWE-22)                                               |
+|   - Standart POSIX Çıkış Kodları: 0 (Başarı), 1 (Sistem Hatası), 2 (Argüman/Güvenlik Hatası)     |
++--------------------------------------------------------------------------------------------------+
+                                                 |
+                                                 v
++--------------------------------------------------------------------------------------------------+
+|                                ÇOKLU FORMAT ÇIKTI VE SKORLAMA                                    |
+|   - Güvenlik Skoru Hesabı: [100 - Kesintiler] -> GÜVENLİ (>=85), RİSKLİ (50-84), KRİTİK (<50)    |
+|   - Formatlar: Yapısal Konsol Metni (Text) | JSON (SIEM / SOAR) | Görselleştirilmiş HTML         |
++--------------------------------------------------------------------------------------------------+

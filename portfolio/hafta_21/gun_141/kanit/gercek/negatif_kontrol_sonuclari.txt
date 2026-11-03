@@ -1,0 +1,58 @@
+=== GÜN 141 / YAMA YÖNETİMİ VE CVE: 9 NEGATİF KONTROL VE ZAFİYET SENARYOSU ===
+Tarih: 2026-11-02T15:20:56.310900
+Standartlar: NIST SP 800-40 Rev. 4, CISA KEV, FIRST CVSS v3.1
+
+Senaryo ID   : SCENARIO-CVE-01
+Başlık        : Geçersiz CVE Kimliği Sözdizimi Biçimi
+Beklenen Tür  : ValueError
+Test Sonucu   : BAŞARILI — HATA/ZAFİYET YAKALANDI VE İŞLENDİ (PASS)
+Açıklama      : Doğru hata yakalandı: Geçersiz CVE kimliği biçimi tespit edildi: VULN-2024-9999
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVE-02
+Başlık        : CVSS Taban Skoru Geçersiz Aralıkta (> 10.0)
+Beklenen Tür  : ValueError
+Test Sonucu   : BAŞARILI — HATA/ZAFİYET YAKALANDI VE İŞLENDİ (PASS)
+Açıklama      : Doğru hata yakalandı: Geçersiz CVSS skoru (15.5) CVE: CVE-2024-9999
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVE-03
+Başlık        : EPSS Olasılık Skoru Geçersiz Aralıkta (> 1.0)
+Beklenen Tür  : ValueError
+Test Sonucu   : BAŞARILI — HATA/ZAFİYET YAKALANDI VE İŞLENDİ (PASS)
+Açıklama      : Doğru hata yakalandı: Geçersiz EPSS skoru (2.5) CVE: CVE-2024-8888
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVE-04
+Başlık        : CISA KEV Listesindeki Zafiyette SLA İhlali (Süre Aşımı > 3 Gün)
+Beklenen Tür  : SLA_BREACH
+Test Sonucu   : BAŞARILI — HATA/ZAFİYET YAKALANDI VE İŞLENDİ (PASS)
+Açıklama      : SLA ihlali başarıyla tespit edildi (1 adet).
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVE-05
+Başlık        : Otomatik Güvenlik Güncellemeleri Devre Dışı
+Beklenen Tür  : CONFIG_DEFECT
+Test Sonucu   : BAŞARILI — HATA/ZAFİYET YAKALANDI VE İŞLENDİ (PASS)
+Açıklama      : Otomatik güncellemelerin devre dışı olduğu yakalandı.
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVE-06
+Başlık        : Yeniden Başlatma Bekleyen Çekirdek Güncellemesi (Reboot Pending)
+Beklenen Tür  : CONFIG_DEFECT
+Test Sonucu   : BAŞARILI — HATA/ZAFİYET YAKALANDI VE İŞLENDİ (PASS)
+Açıklama      : Yeniden başlatma gereksinimi yakalandı.
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVE-07
+Başlık        : Kritik CVSS 9.8 Zafiyeti (Log4Shell Benzeri) Tespit Edildi
+Beklenen Tür  : CRITICAL_TRIAGE
+Test Sonucu   : BAŞARILI — HATA/ZAFİYET YAKALANDI VE İŞLENDİ (PASS)
+Açıklama      : Acil müdahale gerektiren kritik zafiyet tespit edildi (1 adet).
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVE-08
+Başlık        : Çok Sayıda İhmal Edilmiş Zafiyet ve NON_COMPLIANT Düzeyi
+Beklenen Tür  : COMPLIANCE_FAILURE
+Test Sonucu   : BAŞARILI — HATA/ZAFİYET YAKALANDI VE İŞLENDİ (PASS)
+Açıklama      : NON_COMPLIANT durumu doğrulandı (Hijyen Puanı: 5.0).
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVE-09
+Başlık        : Negatif CVSS Taban Skoru Kontrolü (< 0.0)
+Beklenen Tür  : ValueError
+Test Sonucu   : BAŞARILI — HATA/ZAFİYET YAKALANDI VE İŞLENDİ (PASS)
+Açıklama      : Doğru hata yakalandı: Geçersiz CVSS skoru (-1.5) CVE: CVE-2024-1111
+---------------------------------------------------------------------------

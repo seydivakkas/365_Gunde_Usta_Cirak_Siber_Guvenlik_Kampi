@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "sample_name": "Standart HTTPS İsteği Katman Kapsülleme Modeli",
+    "description": "Bir istemciden kurumsal web sunucusuna giden şifreli HTTP/TLS paketinin 7 katmanlı OSI ve 4 katmanlı TCP/IP karşılıkları",
+    "capture_context": "İstemci (192.168.1.105) -> Güvenli Web Ağ Geçidi (104.21.35.88:443)",
+    "timestamp": "2026-10-27T12:00:00Z"
+  },
+  "encapsulation": {
+    "layer_7_application": {
+      "layer_name": "Application (Uygulama)",
+      "tcp_ip_layer": "Application",
+      "protocol": "HTTP/2",
+      "method": "GET",
+      "uri": "/api/v1/auth/session",
+      "headers": {
+        "Host": "api.kurum.internal",
+        "User-Agent": "Mozilla/5.0 (Security-Agent-Audit/1.0)",
+        "Accept": "application/json"
+      },
+      "payload_length_bytes": 128
+    },
+    "layer_6_presentation": {
+      "layer_name": "Presentation (Sunum)",
+      "tcp_ip_layer": "Application",
+      "protocol": "TLSv1.3",
+      "cipher_suite": "TLS_AES_256_GCM_SHA384",
+      "record_type": "ApplicationData (23)",
+      "encryption_status": "ENCRYPTED"
+    },
+    "layer_5_session": {
+      "layer_name": "Session (Oturum)",
+      "tcp_ip_layer": "Application",
+      "protocol": "TLS Session Management",
+      "session_id": "a849fbc21008d7e9b01542f77e201b44",
+      "state": "ESTABLISHED"
+    },
+    "layer_4_transport": {
+      "layer_name": "Transport (Taşıma)",
+      "tcp_ip_layer": "Transport",
+      "protocol": "TCP",
+      "source_port": 52144,
+      "destination_port": 443,
+      "sequence_number": 1042589001,
+      "acknowledgment_number": 2841029311,
+      "flags": ["ACK", "PSH"],
+      "window_size": 64240,
+      "checksum": "0x8fa1"
+    },
+    "layer_3_network": {
+      "layer_name": "Network (Ağ)",
+      "tcp_ip_layer": "Internet",
+      "protocol": "IPv4",
+      "source_ip": "192.168.1.105",
+      "destination_ip": "104.21.35.88",
+      "ttl": 64,
+      "protocol_number": 6,
+      "header_checksum": "0x4a12",
+      "packet_length_bytes": 224
+    },
+    "layer_2_data_link": {
+      "layer_name": "Data Link (Veri Bağlantısı)",
+      "tcp_ip_layer": "Network Access",
+      "protocol": "Ethernet II",
+      "source_mac": "00:1A:2B:3C:4D:5E",
+      "destination_mac": "A4:B2:39:C8:D1:F0",
+      "ethertype": "0x0800",
+      "fcs_crc32": "0x9F41B20A",
+      "frame_length_bytes": 238
+    },
+    "layer_1_physical": {
+      "layer_name": "Physical (Fiziksel)",
+      "tcp_ip_layer": "Network Access",
+      "medium": "1000BASE-T Twisted Pair",
+      "signal_encoding": "4D-PAM5",
+      "bitrate_mbps": 1000
+    }
+  }
+}

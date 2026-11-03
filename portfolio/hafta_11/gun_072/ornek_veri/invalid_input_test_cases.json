@@ -1,0 +1,48 @@
+{
+  "NEG_01_TYPE_CONFUSION_BOOLEAN_AS_INT": {
+    "field": "target_port",
+    "val": true,
+    "expected_error": "Tip karmaşası (Type Confusion): Boolean tipi port/tamsayı olarak kabul edilemez."
+  },
+  "NEG_02_PORT_OUT_OF_BOUNDS": {
+    "field": "target_port",
+    "val": 70000,
+    "expected_error": "Port sınır aşımı: 70000 (Geçerli aralık: 1-65535)"
+  },
+  "NEG_03_COMMAND_INJECTION_IN_HOSTNAME": {
+    "field": "hostname",
+    "val": "gateway.local; cat /etc/passwd",
+    "expected_error": "Komut enjeksiyonu riski: Ana makine adında yasaklı karakter ';' tespit edildi."
+  },
+  "NEG_04_PATH_TRAVERSAL_ATTACK": {
+    "field": "log_filename",
+    "val": "../../../../etc/shadow",
+    "expected_error": "Dizin atlatma (Path Traversal) tespiti: Yol temel dizin dışına çıkamaz."
+  },
+  "NEG_05_INVALID_IPV4_OCTET": {
+    "field": "target_ip",
+    "val": "192.168.1.300",
+    "expected_error": "Geçersiz IPv4 adresi: '192.168.1.300' (Oktet 0-255 aralığında olmalıdır)."
+  },
+  "NEG_06_AMBIGUOUS_BOOLEAN_VALUE": {
+    "field": "verbose",
+    "val": "maybe",
+    "expected_error": "Belirsiz mantıksal değer (Boolean): 'maybe' geçerli bir bool (true/false/1/0) değildir."
+  },
+  "NEG_07_NULL_BYTE_INJECTION": {
+    "field": "log_filename",
+    "val": "test.log\u0000.evil.exe",
+    "expected_error": "Null byte enjeksiyonu (\\x00) tespit edildi."
+  },
+  "NEG_08_STRING_OVERSIZED_DOS": {
+    "field": "hostname",
+    "val": "a_very_long_hostname_that_exceeds_maximum_rfc_buffer_limit_and_tries_to_cause_buffer_overflow_or_denial_of_service_in_string_allocation_and_memory_buffers_abcdefghijklmnopqrstuvwxyz_abcdefghijklmnopqrstuvwxyz_abcdefghijklmnopqrstuvwxyz_abcdefghijklmnopqrstuvwxyz_abcdefghijklmnopqrstuvwxyz.com",
+    "expected_error": "Dize uzunluk sınırı aşıldı: 290 karakter (Azami: 253)"
+  },
+  "NEG_09_MALFORMED_PAYLOAD_SCHEMA": {
+    "payload": [
+      {"target_ip": "192.168.1.1"}
+    ],
+    "expected_error": "Girdi yükü bir JSON sözlüğü (dict) olmalıdır."
+  }
+}

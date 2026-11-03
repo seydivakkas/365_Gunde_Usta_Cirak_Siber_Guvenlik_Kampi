@@ -1,0 +1,25 @@
+{
+  "guvenlik_skoru": 85.0,
+  "durum": "GÜVENLİ (STANDARTLARA UYGUN)",
+  "firewall_turu": "nftables",
+  "aktiflik": true,
+  "toplam_kural": 4,
+  "toplam_bulgu": 1,
+  "kritik_bulgu_sayisi": 0,
+  "yuksek_bulgu_sayisi": 1,
+  "orta_bulgu_sayisi": 0,
+  "dusuk_bulgu_sayisi": 0,
+  "bulgular": [
+    {
+      "rule_id": "FW-006",
+      "target": "Port 23 (Telnet şifrelenmemiş metin protokolü)",
+      "cwe": "CWE-250",
+      "mitre_attack": "T1046",
+      "severity": "HIGH",
+      "title": "Tehlikeli Servis Portu Tüm Ağlara Açık (Port 23)",
+      "description": "Port 23 (Telnet şifrelenmemiş metin protokolü) herhangi bir IP kısıtlaması olmaksızın herkese açıktır.",
+      "remediation_advice": "Port 23 kuralını kaldırın veya yalnızca yetkili yönetim IP bloğu ile sınırlandırın.",
+      "deduction_points": 15.0
+    }
+  ]
+}

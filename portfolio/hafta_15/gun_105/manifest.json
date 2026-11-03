@@ -1,0 +1,116 @@
+{
+  "gun": 105,
+  "baslik": "Mini proje 14: hash bütünlük manifesti",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "2d2808e146c2fef447a2b1d56fde993f3b5df7c9d789efe47973ec5596db30ba",
+      "boyut": 5336
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "94811ee8ec3dc0a40e5c4e416e47af907c02bea4ba8020413dd81a17229e3030",
+      "boyut": 7399
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "a2b41cef12b63d17cdd11b7795ed7082a5abd8e23b80f414e1cce685f627cece",
+      "boyut": 12092
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "a89368b08ea25e828b4309ddc0e7ede98da965d3170833b8df1506d82296c86e",
+      "boyut": 5188
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "f45f175aa4f070ade1d68ddcf9665b55f194e5c6a73d059853fef5b6c6692b1a",
+      "boyut": 784
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "868ff927d864f830ec462e6a27b1b92ccd357c66aba8b2ca282ef50df845024d",
+      "boyut": 9251
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "4131e620e8d1312c90f27f6ffacb48f4a9cb9d0525990396dc32d981d576d2b7",
+      "boyut": 2934
+    },
+    {
+      "dosya": "kanit\\gercek\\manifest_denetim_raporu.txt",
+      "sha256": "e71ae41a06102bcf78fe558c62d11d6e5e0c287d5302c56c86f6338ab85844e5",
+      "boyut": 2193
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "f7279e923681e45697cd488e03608ae265723c04e7b6b0e91bc3ee1a8a9f3b5f",
+      "boyut": 3335
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "7e915972a3866d71930161c7c19ddd52089759625a0eedf02e219fbddbca0a6a",
+      "boyut": 3785
+    },
+    {
+      "dosya": "kanit\\temsili\\hash_manifest_mimarisi.txt",
+      "sha256": "06e21bac14e586ee679b03138a921e5fb4fc251720337c0a071d14d53b026655",
+      "boyut": 3265
+    },
+    {
+      "dosya": "ornek_veri\\invalid_manifest_inputs.json",
+      "sha256": "3a2b1c74a6dd9a9fe4647ed5fd262c7d1f9264350418e688282da3fccb7837b9",
+      "boyut": 2641
+    },
+    {
+      "dosya": "ornek_veri\\manifest_samples.json",
+      "sha256": "32f3b61167a75a022eebc545799c1998f70c4d1495c7f80c76aeba8349941a20",
+      "boyut": 839
+    },
+    {
+      "dosya": "ornek_veri\\sample_project_manifest.json",
+      "sha256": "fcac600496fc21375197e155abebf7d521834d737dbc8c834da360c7685139f9",
+      "boyut": 1205
+    },
+    {
+      "dosya": "ornek_veri\\sample_project_tree\\app.py",
+      "sha256": "2a8c49d5743fac4f7ac4420abef0f384740ccef08830ca3730f862d283725df2",
+      "boyut": 24
+    },
+    {
+      "dosya": "ornek_veri\\sample_project_tree\\config.json",
+      "sha256": "3248ceb9685722b836e451b9c2ae5f788b0c1b307b71c1ad7175f73db32be906",
+      "boyut": 41
+    },
+    {
+      "dosya": "ornek_veri\\sample_project_tree\\docs\\guide.md",
+      "sha256": "e8cafbbb1ad1d79c3dc5335b33c59cb6f2d837d5a744b1788b4c655f2d11d52a",
+      "boyut": 31
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "dbc2c9e029fd87b9bd1e2b3a5096ad9f2a27bf894620244d25cc9016f4c423f1",
+      "boyut": 574
+    },
+    {
+      "dosya": "tests\\test_hash_manifest.py",
+      "sha256": "7951ce4c968bb37ac11f936703dd0c4d22f6f050767aa7d2bd9b3592fb2cb617",
+      "boyut": 11399
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "b5b2c24fa9c1159a67235834118e6d94e3833d7566791ddf6c731b66189ee601",
+      "boyut": 607
+    },
+    {
+      "dosya": "uygulama\\hash_manifest_engine.py",
+      "sha256": "a91e2d332d1e44ad1cdf39d9196c4aa74f96df320199fe15557ba75182f42155",
+      "boyut": 15954
+    },
+    {
+      "dosya": "uygulama\\manifest_cli.py",
+      "sha256": "05914971901529f543b557f636e68452aac44aa5b6cd7688a614dbe158eaf405",
+      "boyut": 8994
+    }
+  ]
+}

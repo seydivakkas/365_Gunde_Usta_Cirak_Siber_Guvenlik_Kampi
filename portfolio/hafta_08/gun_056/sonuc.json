@@ -1,0 +1,40 @@
+{
+  "gun": 56,
+  "gun_id": "G056",
+  "asama": "03",
+  "hafta": "08",
+  "baslik": "Mini proje 7: protokol haritası",
+  "tarih": "2026-10-29",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kavramsal_derinlik": 20,
+    "uygulama_gelistirme": 40,
+    "test_kapsami": 25,
+    "savunma_sikilastirma": 15
+  },
+  "test_ozeti": {
+    "toplam": 14,
+    "basarili": 14,
+    "hatali": 0,
+    "sure_saniye": 0.004
+  },
+  "kod_aciklama_satirlari_tamamlandi": true,
+  "kanitlar": {
+    "gercek": [
+      "kanit/gercek/test_sonuclari.txt",
+      "kanit/gercek/komut_ve_cikis.txt",
+      "kanit/gercek/protokol_haritasi_ve_analiz_raporu.txt",
+      "kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "kanit/temsili/protokol_hiyerarsisi_ve_is_akisi.txt"
+    ]
+  },
+  "soru_bankasi_eslesmesi": [
+    "G056-SC1",
+    "G056-SC2",
+    "G056-SC3"
+  ],
+  "notlar": "Hafta 08 kapanış projesi olarak çok katmanlı paket çözümleme motoru (L2 Ethernet II, L3 IPv4, L4 TCP/UDP, L7 DNS/DHCP/HTTP), protokol dağılım hiyerarşisi haritası, 5'li demet (5-tuple) iletişim akış matrisi, TCP oturum durum takibi ve yeniden iletim (retransmission) dedektörü, SYN port taraması, Shannon Entropisi tabanlı DNS Tünelleme ve Sahte DHCP sunucusu tespit motoru başarıyla geliştirildi; 14 birim ve güvenlik testi 0.004 saniyede %100 PASS oldu."
+}

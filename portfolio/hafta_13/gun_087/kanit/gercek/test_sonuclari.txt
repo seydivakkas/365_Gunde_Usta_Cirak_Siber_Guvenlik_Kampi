@@ -1,0 +1,11 @@
+================================================================================
+G087: BASH BETIK ISKELETI VE QUOTING GU蕪ENLIK MOTORU TEST RAPORU
+Zaman Damgasi (UTC): 2026-11-01T20:00:43.863326+00:00
+================================================================================
+
+Toplam Test Kosumu : 14
+Basarisizlik (Fail): 0
+Hata (Error)        : 0
+Sonuc Durumu        : 14/14 PASS
+
+[+] Tum 14 birim test basariyla tamamlandi (PASS).

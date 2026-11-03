@@ -1,0 +1,12 @@
+=== GÜN 134: LINUX SUDO VE AYRICALIK DEVRİ BİRİM TEST SONUÇLARI ===
+Tarih / Saat : 2026-11-02T10:11:57.877667+00:00
+Komut        : C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest discover tests/
+Çıkış Kodu   : 0
+---------------------------------------------------------------------------
+
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+

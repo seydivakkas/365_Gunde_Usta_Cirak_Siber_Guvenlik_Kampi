@@ -1,0 +1,59 @@
+{
+  "gun": 23,
+  "asama": 2,
+  "hafta": 4,
+  "konu": "Linux terminali ve kabuk",
+  "durum": "TAMAMLANDI_PASS",
+  "tarih": "2026-10-27",
+  "puan": 100,
+  "puan_detay": {
+    "teorik_metodolojik_hakimiyet": 20,
+    "kodlama_uygulama_yetkinligi": 40,
+    "test_dogrulama_kapsami": 25,
+    "kanit_dokumantasyon_kalitesi": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "dosyalar": [
+    "uygulama/linux_shell_security_simulator.py",
+    "tests/test_linux_shell_security_simulator.py",
+    "ornek_veri/shell_virtual_filesystem.json",
+    "ornek_veri/shell_security_rules.json",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/kabuk_komut_analiz_ciktisi.txt",
+    "kanit/temsili/linux_kabuk_mimarisi.txt",
+    "ders.md",
+    "soru_cevap.md",
+    "rapor.md",
+    "README.md",
+    "sonuc.json"
+  ],
+  "kanitlar": [
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/kabuk_komut_analiz_ciktisi.txt",
+    "kanit/temsili/linux_kabuk_mimarisi.txt"
+  ],
+  "ogrenilen_standartlar": [
+    "POSIX IEEE Std 1003.1 (Shell & Utilities: pwd, cd, ls, cat, head)",
+    "CWE-426: Untrusted Search Path (Güvensiz PATH Ortam Değişkeni)",
+    "CWE-22: Path Traversal (Dizin Aşımı)",
+    "CIS Linux Benchmark (Section 6.2: Ensure PATH integrity)",
+    "Standard I/O Streams (FD 0, 1, 2) & Shell Redirection Architecture"
+  ],
+  "karsilanan_gereksinimler": [
+    "Kabuk komut satırı yorumlama, çalışma dizini bağlamı ve göreli yol tuzakları analiz edildi (G023-SC1)",
+    "pwd, ls, cd, cat ve head komutları ile örnek klasör ağacını inceleyen bağımsız laboratuvar tamamlandı (G023-SC2)",
+    "Güvensiz PATH (CWE-426) ve dizin aşımı (CWE-22) riskleri kural motoruyla denetlendi (G023-SC3)",
+    "14 birim test (pozitif ve negatif) 0.095 saniyede başarıyla (%100 PASS) icra edildi",
+    "Tüm kod ve test satırları didaktik açıklamalarla zenginleştirildi",
+    "Özel Lisans (Tüm Hakları Saklıdır) tüm dosyalara uygulandı"
+  ],
+  "notlar": "Gün 023 eksiksiz tamamlanarak 14/14 test PASS ve 100/100 tam puanla sonuçlandırıldı."
+}

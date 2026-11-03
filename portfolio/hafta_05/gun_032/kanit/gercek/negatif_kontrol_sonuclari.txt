@@ -1,0 +1,27 @@
+================================================================================
+G032: NEGATİF KONTROL VE BOZUK VERİ ŞEMA DOĞRULAMA TEST RAPORU
+================================================================================
+İncelenen Bozuk Veri Kaydı Sayısı: 7
+Beklenen Davranış: Bütün bozuk kayıtlar güvenle reddedilmeli, sistem çökmemelidir.
+--------------------------------------------------------------------------------
+Envantere Kabul Edilen Kayıt Sayısı: 0 (Beklenen: 0)
+Reddedilen Hatalı Kayıt Sayısı    : 7 (Beklenen: 7)
+--------------------------------------------------------------------------------
+AYRINTILI REDDETME GEREKÇELERİ:
+[01] Reddetme Nedeni: EKSIK_ZORUNLU_ALAN: 'name' alanı tanımlanmalıdır.
+     Gelen Ham Veri : {'id': 'ERR-001', 'display_name': 'Missing Name Service', 'entry_type': 'service', 'start_mode': 'Automatic', 'binary_path': 'C:\\Windows\\System32\\valid.exe'}
+[02] Reddetme Nedeni: EKSIK_ZORUNLU_ALAN: 'binary_path' alanı tanımlanmalıdır.
+     Gelen Ham Veri : {'id': 'ERR-002', 'name': 'MissingPathService', 'display_name': 'Service without Binary Path', 'entry_type': 'service', 'start_mode': 'Automatic'}
+[03] Reddetme Nedeni: GECERSIZ_ISIM: Servis/girdi adı boş veya salt boşluk olamaz.
+     Gelen Ham Veri : {'id': 'ERR-003', 'name': '   ', 'display_name': 'Whitespace Name Service', 'entry_type': 'service', 'start_mode': 'Automatic', 'binary_path': 'C:\\Windows\\System32\\valid.exe'}
+[04] Reddetme Nedeni: GECERSIZ_YOL: İkili dosya yolu boş veya salt boşluk olamaz.
+     Gelen Ham Veri : {'id': 'ERR-004', 'name': 'EmptyPathRun', 'display_name': 'Run Key with Empty Path', 'entry_type': 'registry_run', 'binary_path': '    '}
+[05] Reddetme Nedeni: GECERSIZ_TUR: 'unknown_hook_type_999' geçerli bir başlangıç türü değildir.
+     Gelen Ham Veri : {'id': 'ERR-005', 'name': 'InvalidTypeEntry', 'display_name': 'Unknown Type Entity', 'entry_type': 'unknown_hook_type_999', 'binary_path': 'C:\\test\\bin.exe'}
+[06] Reddetme Nedeni: GECERSIZ_BASLANGIC_MODU: 'HyperDriveMode' geçerli bir başlatma modu değildir.
+     Gelen Ham Veri : {'id': 'ERR-006', 'name': 'InvalidStartModeService', 'display_name': 'Service with Unrecognized Start Mode', 'entry_type': 'service', 'start_mode': 'HyperDriveMode', 'binary_path': 'C:\\Windows\\System32\\valid.exe'}
+[07] Reddetme Nedeni: KAYIT_SOZLUK_DEGIL: Girdi bir JSON objesi/sözlük olmalıdır.
+     Gelen Ham Veri : invalid_string_item_not_a_dictionary
+--------------------------------------------------------------------------------
+SONUÇ: Bütün negatif kontrol senaryoları %100 başarıyla doğrulanmıştır.
+================================================================================

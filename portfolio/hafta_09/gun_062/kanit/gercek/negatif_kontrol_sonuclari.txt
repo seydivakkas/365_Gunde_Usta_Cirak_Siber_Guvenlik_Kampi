@@ -1,0 +1,62 @@
+==============================================================================
+G062: VLAN, SEGMENTASYON VE DMZ — NEGATIF VE SINIR DEGER TEST RAPORU
+==============================================================================
+Toplam Negatif Test Senaryosu: 9
+
+[1/9] NEG_01_INVALID_VLAN_ID_RANGE
+  Tanim: IEEE 802.1Q 12-bit sinirini asan (ornek: VID 5000) veya rezerve 0/4095 VLAN ID kullanimi.
+  Beklenen Hata: VLANValidationError
+  Alinan Hata  : VLANValidationError: Gecersiz VLAN ID: 5000. IEEE 802.1Q standardina gore VLAN ID 1 ile 4094 arasinda olmalidir.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[2/9] NEG_02_DOUBLE_TAGGING_VLAN_HOPPING
+  Tanim: Cift 802.1Q etiketli paketle (Outer VID=Native, Inner VID=Target) yapilan VLAN Hopping saldirisi.
+  Beklenen Hata: VLANHoppingAttackError
+  Alinan Hata  : VLANHoppingAttackError: Cift 802.1Q etiketleme (Double Tagging / QinQ) ile VLAN Hopping saldirisi tespit edildi ve engellendi! Dis VID: 99, Ic Hedef VID: 30.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[3/9] NEG_03_SWITCH_SPOOFING_DTP_ON_ACCESS_PORT
+  Tanim: Access porta DTP (Dynamic Trunking Protocol) paketi gonderilerek portun trunk yapilmaya zorlanmasi.
+  Beklenen Hata: SwitchSpoofingError
+  Alinan Hata  : SwitchSpoofingError: Access port (Fa0/1) uzerinde DTP muzakere paketi tespit edildi (Switch Spoofing Saldirisi). Port derhal err-disabled yapildi.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[4/9] NEG_04_UNAUTHORIZED_DMZ_LATERAL_MOVEMENT
+  Tanim: DMZ bolgesinden (VLAN 20) ic kullanici agina (VLAN 10) dogru izinsiz yanal gecis (Lateral Movement) paketi.
+  Beklenen Hata: InterVLANPolicyViolationError
+  Alinan Hata  : InterVLANPolicyViolationError: Inter-VLAN guvenlik duvari kurali ihlali: DMZ'den (VLAN 20) ic kullanici agina (VLAN 10) erisim engellendi (Default Deny - Yanal Yayilim Korunmasi).
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[5/9] NEG_05_TRUNCATED_8021Q_TAG
+  Tanim: 4 bayttan kisa kesilmis 802.1Q basligi (TPID + TCI alaninda eksik bayt).
+  Beklenen Hata: MalformedVLANFrameError
+  Alinan Hata  : MalformedVLANFrameError: IEEE 802.1Q VLAN basligi tam 4 bayt olmalidir. Alinan: 2 bayt.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[6/9] NEG_06_NATIVE_VLAN_LEAKAGE
+  Tanim: Access porta ait olmayan etiketli bir paketin access port uzerinden enjekte edilmeye calisilmasi.
+  Beklenen Hata: VLANIngressViolationError
+  Alinan Hata  : VLANIngressViolationError: Access port (Fa0/1 - VLAN 10) uzerine farkli bir VLAN ID (20) tasiyan etiketli paket kabul edilemez.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[7/9] NEG_07_DISALLOWED_VLAN_ON_TRUNK
+  Tanim: Trunk portun izinli VLAN listesinde (Allowed VLANs: 10, 20, 30) yer almayan VLAN 50 paketi.
+  Beklenen Hata: TrunkVLANNotAllowedError
+  Alinan Hata  : TrunkVLANNotAllowedError: VLAN 50, trunk portun (Gi0/1) izinli VLAN listesinde (Allowed VLANs) bulunmuyor. Paket dusuruldu.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[8/9] NEG_08_INVALID_MAC_ADDRESS_FORMAT
+  Tanim: Gecersiz veya hatali MAC adresi formati tasiyan Ethernet cercevesi.
+  Beklenen Hata: VLANValidationError
+  Alinan Hata  : VLANValidationError: Gecersiz MAC adresi formati: '00:11:22:33:GG:ZZ'.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[9/9] NEG_09_BROADCAST_STORM_ACROSS_VLAN_BARRIER
+  Tanim: VLAN 10 icindeki L2 yayin (Broadcast / FF:FF:FF:FF:FF:FF) paketinin diger VLAN'lara sizdirilmaya calisilmasi.
+  Beklenen Hata: VLANLeakageError
+  Alinan Hata  : VLANLeakageError: L2 Yayilim Kurali: Broadcast paketleri VLAN sinirini asamaz! Farkli VLAN'lara sizdirilamaz.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+==============================================================================
+Negatif Kontrol Ozeti: 9/9 Test Basariyla Engellendi.
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Ozel Lisans — Tum Haklari Saklidir.

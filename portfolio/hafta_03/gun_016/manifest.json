@@ -1,0 +1,21 @@
+{
+  "dosyalar": {
+    "README.md": "f60de6463dedc6c35a4a98f0c0f88ba6b1e27cc9170e8b40dfd38f127bf6e8da",
+    "ders.md": "a1374146166ead760ea9ff826f6337964e2559d5cd86a946525b2c5dd3600b69",
+    "rapor.md": "357f559341e9372673d73d80843f0dd1a5b6d5c5b304ccd68bf2d115b92f200c",
+    "sonuc.json": "2405fe354e88a3c3429e69931e1f26474591d368ed3839e3f52952685c4fca0d",
+    "soru_cevap.md": "b08136faf2a60b99a8e30515a74f11638f097f1749673e81a6f5e9d5a45f588a",
+    "kanit/gercek/komut_ve_cikis.txt": "da8b153680f7a66bfdb99754e4ca56adf97c1200abccc9ff56f80303716f77df",
+    "kanit/gercek/test_sonuclari.txt": "02a16d67bc8eb0a68c43513490ed9823c63a462816ac8aec6266a330c3b62a72",
+    "kanit/temsili/cpu_ram_depolama_mimarisi.txt": "f31e0ef52bca7b58688b959d2369945557f2593a01c8c23dfdfb30bb6c48d16d",
+    "ornek_veri/hardware_boundary_sample.json": "ff33c08b3932bead34be716e42f7343408e7ba4655d491a3e6b036eadf32bc6f",
+    "ornek_veri/hardware_security_baseline.json": "8f2f62b31980dc8318e24c84ecd0c6bf4b7f3b748a404c29d79e73a5df884c39",
+    "tests/test_system_hardware_boundary_auditor.py": "de457e33e8f864309931acfa4cea28ec6268aef06840258f57dd2f8f7e806e94",
+    "uygulama/system_hardware_boundary_auditor.py": "618cae1f53bdc91736f8ae7329f373edc0463d3ccbc75a7f3d540ae92c3b426e"
+  },
+  "ozet": {
+    "toplam_dosya": 12,
+    "gun": 16,
+    "durum": "DOGRULANDI_PASS"
+  }
+}

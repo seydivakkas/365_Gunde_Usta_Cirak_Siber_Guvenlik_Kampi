@@ -1,0 +1,112 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+==============================================================================
+VLAN, AĞ SEGMENTASYONU VE DMZ GÜVENLİK MİMARİSİ İLLÜSTRASYONU
+==============================================================================
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Tüm Hakları Saklıdır.
+ÖZEL LİSANS — Yalnızca görüntüleme ve eğitim amaçlıdır. Ticari kullanılamaz.
+
++----------------------------------------------------------------------------+
+| 1. BÖLÜM: KURUMSAL ÜÇ KATMANLI AĞ SEGMENTASYONU VE DMZ DÜZENİ              |
++----------------------------------------------------------------------------+
+
+  ========================== [ KAMUSAL İNTERNET ] ============================
+                                  |
+                                  v (Yalnızca Port 443 / HTTPS)
+                   +------------------------------+
+                   |  DIŞ GÜVENLİK DUVARI (EDGE)  |
+                   +--------------+---------------+
+                                  |
+                   +--------------v---------------+
+                   |       DMZ (VLAN 20)          |
+                   | Kamuya Açık Web / Proxy      |
+                   | Alt Ağ: 192.168.20.0/24      |
+                   +--------------+---------------+
+                                  |
+                   +--------------v---------------+
+                   | İÇ GÜVENLİK DUVARI (CORE)    |
+                   | (Stateful Inspection / L3)   |
+                   +--------------+---------------+
+                                  |
+        +-------------------------+-------------------------+
+        |                                                   |
+        v                                                   v
++-------------------------------+   +-------------------------------+
+|     KULLANICI AĞI (VLAN 10)   |   |    VERİTABANI AĞI (VLAN 30)   |
+| Çalışan İş İstasyonları       |   | Kritik Finans / Müşteri DB    |
+| Alt Ağ: 192.168.10.0/24       |   | Alt Ağ: 192.168.30.0/24       |
+| DMZ'den Gelen Erişim: YASAK!  |   | DMZ'den Erişim: YALNIZCA 5432 |
++-------------------------------+   +-------------------------------+
+
++----------------------------------------------------------------------------+
+| 2. BÖLÜM: IEEE 802.1Q ETERNET ÇERÇEVE YAPISI VE 4 BAYTLIK ETİKET           |
++----------------------------------------------------------------------------+
+
+  Standart Ethernet II Çerçevesi (Etiketsiz):
+  +--------------+--------------+---------------+-------------------+-----+
+  | Hedef MAC    | Kaynak MAC   | EtherType     | Yük (Payload)     | FCS |
+  | (6 Bayt)     | (6 Bayt)     | 0x0800 (IPv4) | (46 - 1500 Bayt)  | (4B)|
+  +--------------+--------------+---------------+-------------------+-----+
+
+  IEEE 802.1Q Etiketli Çerçeve (Trunk Portta Taşınan):
+  +--------------+--------------+--------+--------+-----------+-------+-----+
+  | Hedef MAC    | Kaynak MAC   | TPID   | TCI    | EtherType | Yük   | FCS |
+  | (6 Bayt)     | (6 Bayt)     | 0x8100 | 16-bit | 0x0800    | (Veri)| (4B)|
+  +--------------+--------------+--------+--------+-----------+-------+-----+
+                                 |<- 802.1Q (4B)->|
+
+  TCI (Tag Control Information - 16-bit) Ayrıntısı:
+  +-------------------------+----------------------+-----------------------+
+  | PCP (Priority Code Point)| DEI (Drop Eligible)  | VID (VLAN Identifier) |
+  | 3-bit (0-7 QoS)         | 1-bit (0 veya 1)     | 12-bit (1 - 4094)     |
+  +-------------------------+----------------------+-----------------------+
+
++----------------------------------------------------------------------------+
+| 3. BÖLÜM: VLAN HOPPING (ÇİFT ETİKETLEME / DOUBLE TAGGING) SALDIRISI        |
++----------------------------------------------------------------------------+
+
+  Saldırgan (VLAN 10'da)            Anahtar 1 (Switch 1)              Anahtar 2 (Switch 2)
+         |                                   |                                   |
+         | --- 1. Çift Etiketli Paket -----> |                                   |
+         |    [Dış: VID 1 (Native)]          |                                   |
+         |    [İç : VID 30 (Hedef DB)]       |                                   |
+         |                                   | Anahtar 1: "Dış etiket            |
+         |                                   | Native VLAN ile aynı! O halde     |
+         |                                   | trunk'a basarken dış etiketi      |
+         |                                   | soyup etiketsiz göndermeliyim!"   |
+         |                                   |                                   |
+         |                                   | --- 2. İç Etiketli Paket (VID 30)->
+         |                                   |                                   |
+         |                                   |                                   | Anahtar 2 bakar:
+         |                                   |                                   | "Bu pakette VID 30 var!"
+         |                                   |                                   | Ve paketi doğrudan
+         |                                   |                                   | VLAN 30'a teslim eder!
+         |                                   |                                   |
+         | ========================= SALDIRI BAŞARILI OLDU! ==================== |
+         | Saldırgan yönlendiriciyi ve güvenlik duvarını atlayarak L2'de zıpladı!|
+
+  ÇÖZÜM VE SAVUNMA:
+  1. Native VLAN ASLA kullanıcı VLAN'ı (VLAN 1) yapılmamalı; kullanılmayan bir
+     VLAN'a (örneğin VLAN 99) atanmalıdır!
+  2. Trunk portlarda Native VLAN etiketlenmesi zorunlu kılınmalıdır:
+     "vlan dot1q tag native"
+  3. Tüm erişim portlarında DTP kapatılmalıdır: "switchport nonegotiate".
+
++----------------------------------------------------------------------------+
+| 4. BÖLÜM: ZERO TRUST MİKROSEGMENTASYON VE YANAL YAYILIM BLOKAJI            |
++----------------------------------------------------------------------------+
+
+  [Geleneksel Düz Ağ Hatası (Flat Network)]:
+  İnternet ---> [Web Sunucusu Hacklendi] ---> [Doğrudan İç Ağa Sızdı] ---> [Veritabanı Çalındı]
+
+  [Zero Trust DMZ Segmentasyonu]:
+  İnternet ---> [Web Sunucusu Hacklendi]
+                       |
+                       x ---> (VLAN 10 Kullanıcı Ağı: BLOKLANDI! Sıfır Erişim)
+                       x ---> (VLAN 30 DB SSH Port 22: BLOKLANDI!)
+                       |
+                       +-----> Yalnızca Port 5432 (Stateful SQL Sorgusu İzinli)
+
+==============================================================================
+BU BELGE BİR EĞİTİM İLLÜSTRASYONUDUR. GERÇEK ÇALIŞTIRMA KANITI DEĞİLDİR.
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Tüm Hakları Saklıdır.

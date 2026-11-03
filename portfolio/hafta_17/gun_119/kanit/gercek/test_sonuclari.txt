@@ -1,0 +1,43 @@
+======================================================================
+GÜN 119: MİNİ PROJE 16 — RBAC SİMÜLATÖRÜ BİRİM TEST RAPORU
+Tarih / Saat: 2026-11-02T05:48:26.747940
+Standart: NIST ANSI/INCITS 359-2004 RBAC Standardı
+======================================================================
+
+test_01_role_definition_and_direct_permission (test_rbac_simulator.TestEnterpriseRBACSimulator.test_01_role_definition_and_direct_permission)
+TEST 01: Doğrudan tanımlı rol izni simülasyonda başarıyla onaylanmalıdır. ... ok
+test_02_hierarchical_inheritance_chain (test_rbac_simulator.TestEnterpriseRBACSimulator.test_02_hierarchical_inheritance_chain)
+TEST 02: Hiyerarşik mirasta üst rol (finance_director) en alt rolün (employee) yetkisini almalıdır. ... ok
+test_03_wildcard_permission_match (test_rbac_simulator.TestEnterpriseRBACSimulator.test_03_wildcard_permission_match)
+TEST 03: Wildcard (*:*) iznine sahip admin rolü her işlemi başarıyla yürütmelidir. ... ok
+test_04_permission_denied_cwe_862 (test_rbac_simulator.TestEnterpriseRBACSimulator.test_04_permission_denied_cwe_862)
+TEST 04: Yetkisi bulunmayan işlem ACCESS_DENIED_CWE_862 ile reddedilmelidir. ... ok
+test_05_static_sod_violation_prevention (test_rbac_simulator.TestEnterpriseRBACSimulator.test_05_static_sod_violation_prevention)
+TEST 05: Statik SoD çakışması olan roller aynı kullanıcıya atanamaz (CWE-863). ... ok
+test_06_dynamic_sod_violation_session (test_rbac_simulator.TestEnterpriseRBACSimulator.test_06_dynamic_sod_violation_session)
+TEST 06: Dinamik SoD çakışması olan roller aynı oturumda açılamaz (CWE-863). ... ok
+test_07_unassigned_role_activation_blocked (test_rbac_simulator.TestEnterpriseRBACSimulator.test_07_unassigned_role_activation_blocked)
+TEST 07: Kullanıcı sahip olmadığı bir rolü oturumda etkinleştiremez (CWE-285). ... ok
+test_08_hierarchy_cycle_detection (test_rbac_simulator.TestEnterpriseRBACSimulator.test_08_hierarchy_cycle_detection)
+TEST 08: Hiyerarşik döngü oluşturan miras ilişkisi engellenmelidir (CWE-674). ... ok
+test_09_privilege_creep_threshold_exceeded (test_rbac_simulator.TestEnterpriseRBACSimulator.test_09_privilege_creep_threshold_exceeded)
+TEST 09: Azami rol sayısını aşan yetki birikimi engellenmelidir (CWE-250). ... ok
+test_10_role_revocation_effect (test_rbac_simulator.TestEnterpriseRBACSimulator.test_10_role_revocation_effect)
+TEST 10: Geri alınan rolün sağladığı izinler derhal hükümsüz kalmalıdır. ... ok
+test_11_session_scoped_access_evaluation (test_rbac_simulator.TestEnterpriseRBACSimulator.test_11_session_scoped_access_evaluation)
+TEST 11: Oturum düzeyinde sadece seçilen rol aktifleşmeli, diğer roller kapsam dışı kalmalıdır. ... ok
+test_12_invalid_session_id_rejection (test_rbac_simulator.TestEnterpriseRBACSimulator.test_12_invalid_session_id_rejection)
+TEST 12: Geçersiz veya sahte oturum kimliği SessionInvalidOrExpiredError vermelidir (CWE-613). ... ok
+test_13_batch_simulation_processing (test_rbac_simulator.TestEnterpriseRBACSimulator.test_13_batch_simulation_processing)
+TEST 13: Toplu simülasyon paketi her bir istek için doğru karar üretmelidir. ... ok
+test_14_user_not_found_safety (test_rbac_simulator.TestEnterpriseRBACSimulator.test_14_user_not_found_safety)
+TEST 14: Tanımsız kullanıcı sorgusu çökmeksizin USER_NOT_FOUND dönmelidir. ... ok
+test_15_audit_trail_and_export (test_rbac_simulator.TestEnterpriseRBACSimulator.test_15_audit_trail_and_export)
+TEST 15: Simülatör tüm işlemleri denetim kütüğüne yazmalı ve JSON olarak dışa aktarabilmelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+
+Çıkış Kodu: 0

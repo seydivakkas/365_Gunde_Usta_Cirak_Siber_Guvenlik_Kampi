@@ -1,0 +1,33 @@
+==============================================================================
+GÜN 136: LINUX SYSTEMD SERVİS GÜVENLİK KOMUT SATIRI VE ÇIKTI KANITI
+==============================================================================
+Tarih: 2026-11-02 14:26:47
+
+$ python uygulama/systemd_security_cli.py audit -i ornek_veri/systemd_inventory_spec.json
+------------------------------------------------------------------------------
+============================================================================
+        LINUX SYSTEMD SERVİS GÜVENLİK DENETİM VE MARUZİYET RAPORU        
+============================================================================
+Toplam Denetlenen Servis : 5
+Genel Sistem Puanı       : 0.0 / 100.0
+Sistem Güvenlik Durumu   : KRİTİK RİSK (ACİL MÜDAHALE GEREKLİ)
+Tespit Edilen Bulgu      : 19 adet
+  - Kritik Derece        : 3
+  - Yüksek Derece        : 7
+  - Orta Derece          : 4
+  - Düşük Derece         : 5
+----------------------------------------------------------------------------
+SERVİS BAZLI EXPOSURE (MARUZİYET) PUANLARI:
+  • nginx.service            Exposure: 0.0/10.0 [OK (DÜŞÜK RİSK)] - 0 bulgu
+  • api-backend.service      Exposure: 0.0/10.0 [OK (DÜŞÜK RİSK)] - 0 bulgu
+  • telnet.socket            Exposure: 9.0/10.0 [UNSAFE (ÇOK TEHLİKELİ)] - 7 bulgu
+  • legacy-worker.service    Exposure: 10.0/10.0 [UNSAFE (ÇOK TEHLİKELİ)] - 8 bulgu
+  • debug-monitor.service    Exposure: 7.0/10.0 [HIGH (YÜKSEK RİSK)] - 4 bulgu
+============================================================================
+
+$ python uygulama/systemd_security_cli.py remediate -i ornek_veri/systemd_inventory_spec.json -o kanit/gercek/otomatik_sikilastirma.sh
+[+] Otomatik Bash sertleştirme betiği üretildi: kanit/gercek/otomatik_sikilastirma.sh
+
+$ python uygulama/systemd_security_cli.py template -n api-backend.service -e /opt/app/bin/api-server -u apiuser -o kanit/gercek/ornek_guvenli_servis.service
+[+] Güvenli systemd servis şablonu oluşturuldu: kanit/gercek/ornek_guvenli_servis.service
+==============================================================================

@@ -1,0 +1,33 @@
+=== GÜN 107 NEGATİF KONTROL VE ZAFİYET ENGELLEME RAPORU ===
+Tarih/Saat: 2026-11-02 03:32:55
+Hedef Standart: RFC 8017 (PKCS#1 v2.2) & FIPS 186-4
+--------------------------------------------------------------------------------
+[ENGELENDİ (PASS)] NEG_01_TAMPERED_DOCUMENT (CWE-347): İmzalanmış belgenin metninde tek bir karakter veya bayt değiştirildiğinde imza doğrulamasının başarısız olması
+    Fırlatılan Hata: SignatureVerificationError | Beklenen: SignatureVerificationError
+
+[ENGELENDİ (PASS)] NEG_02_CORRUPTED_SIGNATURE_BYTES (CWE-347): İmza bloğunun baytlarında tahrifat yapıldığında doğrulamanın reddedilmesi
+    Fırlatılan Hata: SignatureVerificationError | Beklenen: SignatureVerificationError
+
+[ENGELENDİ (PASS)] NEG_03_WRONG_PUBLIC_KEY (CWE-347): Geçerli bir imzanın sahte veya farklı bir genel anahtarla doğrulanmaya çalışılması
+    Fırlatılan Hata: SignatureVerificationError | Beklenen: SignatureVerificationError
+
+[ENGELENDİ (PASS)] NEG_04_BLEICHENBACHER_FORGERY_ATTACK (CWE-347): e=3 durumunda gevşek ASN.1 ayrıştırıcılarına karşı Bleichenbacher imza sahteciliği saldırısı tespiti
+    Fırlatılan Hata: BleichenbacherVulnerabilityDetected | Beklenen: BleichenbacherVulnerabilityDetected
+
+[ENGELENDİ (PASS)] NEG_05_ECDSA_NONCE_REUSE (CWE-323): ECDSA imzasında aynı rastgele nonce k değerinin iki farklı mesaj için kullanılmasıyla özel anahtarın ifşa olması
+    Fırlatılan Hata: ECDSANonceReuseDetected | Beklenen: ECDSANonceReuseDetected
+
+[ENGELENDİ (PASS)] NEG_06_WEAK_RSA_KEY_SIZE (CWE-326): 512 bit ve altı zayıf anahtarlarla imza üretilmesinin engellenmesi
+    Fırlatılan Hata: WeakKeySizeError | Beklenen: WeakKeySizeError
+
+[ENGELENDİ (PASS)] NEG_07_TEXTBOOK_EXISTENTIAL_FORGERY (CWE-327): Düz (Textbook) RSA imzasında rastgele s seçilip m = s^e mod n ile imza uydurma saldırısı tespiti
+    Fırlatılan Hata: TextbookSignatureForgeryDetected | Beklenen: TextbookSignatureForgeryDetected
+
+[ENGELENDİ (PASS)] NEG_08_INVALID_PSS_SALT_LENGTH (CWE-347): RSA-PSS doğrulamasında sahte veya geçersiz tuz (salt) uzunluğu kullanımı
+    Fırlatılan Hata: SignatureVerificationError | Beklenen: SignatureVerificationError
+
+[ENGELENDİ (PASS)] NEG_09_MALFORMED_SIGNATURE_ENCODING (CWE-20): Modül uzunluğuna uymayan eksik veya kırpılmış imza baytı sunulması
+    Fırlatılan Hata: InvalidSignatureFormatError | Beklenen: InvalidSignatureFormatError
+
+--------------------------------------------------------------------------------
+SONUÇ: 9/9 Negatif Senaryo Başarıyla Engellendi.

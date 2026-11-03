@@ -1,0 +1,58 @@
+================================================================================
+GERÇEK KANIT — KOMUT ÇALIŞTIRMA VE SİSTEM ÇIKTILARI
+Tarih: 2026-10-27
+Aşama 02: Sistem, Bellek ve Düşük Seviyeli Güvenlik
+Hafta 03, Gün 017: İşletim Sistemi Çekirdeği ve Kullanıcı Modu
+================================================================================
+
+[ORTAM BİLGİSİ]
+Python Sürümü : Python 3.14.0a2
+İşletim Sistemi: Windows 11 Enterprise (10.0.26300 AMD64)
+Süreç PID      : 49084
+Çalışma Halkası: Ring 3 (User Mode - Medium Integrity)
+
+--------------------------------------------------------------------------------
+1. KOMUT 1: Canlı Süreç Yetki ve Bütünlük Bağlamı Sorgulaması (--live)
+--------------------------------------------------------------------------------
+Komut:
+python portfolio/hafta_03/gun_017/uygulama/kernel_user_mode_boundary_analyzer.py --live
+
+Çıktı:
+{
+  "pid": 49084,
+  "isletim_sistemi": "Windows",
+  "mimari": "AMD64",
+  "yonetici_yetkisi_var_mi": false,
+  "butunluk_seviyesi": "Medium (Standart Kullanıcı)",
+  "calisma_halkasi": "Ring 3 (Kullanıcı Kipi - User Mode)",
+  "aciklama": "Yönetici olsa dahi kullanıcı süreci Ring 3'te çalışır; donanıma doğrudan erişemez."
+}
+
+--------------------------------------------------------------------------------
+2. KOMUT 2: Çekirdek/Kullanıcı Modu Sınır, BYOVD ve Syscall İşaretçi Denetimi
+--------------------------------------------------------------------------------
+Komut:
+python portfolio/hafta_03/gun_017/uygulama/kernel_user_mode_boundary_analyzer.py --matrix portfolio/hafta_03/gun_017/ornek_veri/kernel_user_privilege_matrix.json --baseline portfolio/hafta_03/gun_017/ornek_veri/kernel_security_baseline.json
+
+Çıktı:
+========================================================================
+GÜN 017: ÇEKİRDEK (KERNEL) VE KULLANICI MODU GÜVENLİK DENETİMİ
+========================================================================
+Denetim Zamanı : 2026-10-27T01:41:23.835349
+Genel Sonuç    : IHLAL_VAR
+Süreç Bütünlüğü: Medium (Standart Kullanıcı)
+BYOVD Engeli   : 2 adet tehlikeli sürücü saptandı!
+Çekirdek Uyumu : %75.0
+------------------------------------------------------------------------
+BYOVD TEHDİT ANALİZİ:
+  [KRITIK] RTCore64.sys (Micro-Star International (MSI)): Keyfi Fiziksel/Sanal Bellek Okuma/Yazma (Arbitrary Kernel Read/Write)
+  [KRITIK] gdrv.sys (Giga-Byte Technology): Doğrulanmamış IOCTL ile Çekirdek Bellek Ezme
+------------------------------------------------------------------------
+SİSTEM ÇAĞRISI (SYSCALL) İŞARETÇİ KORUMA DENETİMLERİ:
+  [SYSCALL-PTR-001] GECERLI_KULLANICI_ISARETCISI: Kullanıcı alanında geçerli tampon göstericisi (ProbeForRead başarılı)
+  [SYSCALL-PTR-002] ENGEL_CEKIRDEK_ALANI_IHLALI: Çekirdek adres alanına sızmaya çalışan sahte kullanıcı göstericisi (SMEP/SMAP ihlali)
+  [SYSCALL-PTR-003] ENGEL_NULL_POINTER: NULL Pointer dereference tetiklemeye çalışan gösterici (0x0)
+------------------------------------------------------------------------
+ÇEKİRDEK TABAN ÇİZGİSİ İHLALLERİ:
+  [YUKSEK] RULE-KERN-002: Microsoft Önerilen Savunmasız Sürücü Engelleme Listesi kapalı; BYOVD saldırılarına açık!
+========================================================================

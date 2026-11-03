@@ -1,0 +1,33 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "gun": 142,
+  "hafta": 21,
+  "asama": "Aşama 6: Uç Nokta Güvenliği ve Sertleştirme",
+  "konu": "CVSS temel metrikleri",
+  "tarih": "2026-11-02",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "kriterler": {
+    "kod_kalitesi_ve_didaktik_yorumlar": 20,
+    "birim_testler_ve_kapsam": 40,
+    "negatif_kontroller_ve_sinir_durumlari": 25,
+    "mimari_tasarim_guvenlik_belgeleme": 15
+  },
+  "test_sonuclari": {
+    "toplam_test": 15,
+    "basarili_test": 15,
+    "hatali_test": 0,
+    "test_suresi_saniye": 0.002
+  },
+  "negatif_senaryolar": {
+    "toplam_senaryo": 9,
+    "basarili_senaryo": 9,
+    "hatali_senaryo": 0
+  },
+  "guvenlik_standartlari": [
+    "FIRST Common Vulnerability Scoring System v3.1 Specification Section 7.1",
+    "NIST National Vulnerability Database (NVD) CVSS Guidelines",
+    "MITRE Common Weakness Enumeration (CWE) Specification",
+    "ISO/IEC 29147:2018 Information technology - Security techniques - Vulnerability disclosure"
+  ]
+}

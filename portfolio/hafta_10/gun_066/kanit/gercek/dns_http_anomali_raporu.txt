@@ -1,0 +1,58 @@
+================================================================================
+G066: DNS VE HTTP PROTOKOL ANOMALİLERİ VE TEHDİT ANALİZİ ADLİ RAPORU
+Tarih: 2026-10-31 | Analiz Motoru: DNSHTTPAnomalyDetector v1.0
+================================================================================
+
+GENEL ÖZET METRİKLERİ:
+  - İncelenen Toplam DNS Kaydı   : 5
+  - İncelenen Toplam HTTP Kaydı  : 5
+  - Tespit Edilen Anomali Sayısı : 8
+  - Genel Güvenlik Durumu        : TEHDITLER_TESPIT_EDILDI
+
+ÖNEM DERECESİ DAĞILIMI:
+  - KRİTİK : 4 adet (DGA, Tünelleme, Fast Flux, Smuggling)
+  - YÜKSEK : 3 adet (DNS Amplification, CRLF Enjeksiyonu, Path Traversal)
+  - ORTA   : 1 adet (Otomatik Saldırı Tarayıcı İmzası)
+  - DÜŞÜK  : 0 adet
+
+AYRINTILI ANOMALİ BULGULARI:
+--------------------------------------------------------------------------------
+[1] Kayıt Kimliği: DNS-DGA-01 | Kategori: DNS | Seviye: KRITIK
+    Anomali Kodu : DGA_ALAN_ADI_TESPITI
+    Açıklama     : Algoritmik zararlı alan adı (DGA) tespit edildi: 'xkf92mqp7vla81zk.top' (Entropi: 3.88, Sessiz Oranı: 0.91)
+    Teknik Kanıt : {"alan_adi": "xkf92mqp7vla81zk.top", "entropi": 3.875, "sessiz_orani": 0.909}
+
+[2] Kayıt Kimliği: DNS-TUNNEL-01 | Kategori: DNS | Seviye: KRITIK
+    Anomali Kodu : DNS_TUNELLEME_SIZINTISI
+    Açıklama     : DNS tünelleme ile veri sızdırma girişimi tespit edildi: 'dghpcybpcybhihnhbxbszsbzzwnyzxq.t.exfil.org' (Uzunluk: 43, Tip: TXT)
+    Teknik Kanıt : {"alan_adi": "dghpcybpcybhihnhbxbszsbzzwnyzxq.t.exfil.org", "toplam_uzunluk": 43, "sorgu_tipi": "TXT"}
+
+[3] Kayıt Kimliği: DNS-AMP-01 | Kategori: DNS | Seviye: YUKSEK
+    Anomali Kodu : DNS_AMPLIFICATION_SALDIRISI
+    Açıklama     : DNS Amplification DoS saldırı paterni: İstek 45B -> Yanıt 3200B (Büyütme Oranı: 71.1x)
+    Teknik Kanıt : {"istek_bayt": 45, "yanit_bayt": 3200, "buyutme_orani": 71.1}
+
+[4] Kayıt Kimliği: DNS-FLUX-01 | Kategori: DNS | Seviye: KRITIK
+    Anomali Kodu : FAST_FLUX_BOTNET_C2
+    Açıklama     : Fast Flux Botnet C2 altyapısı tespit edildi: 'c2.botnet-mesh.cc' (TTL: 15s, Çözülen IP Sayısı: 5)
+    Teknik Kanıt : {"alan_adi": "c2.botnet-mesh.cc", "ttl": 15, "ip_sayisi": 5, "ipler": ["45.12.34.1", "91.200.12.3", "103.45.67.8", "185.190.22.1", "194.26.29.5"]}
+
+[5] Kayıt Kimliği: HTTP-SMUGGLE-01 | Kategori: HTTP | Seviye: KRITIK
+    Anomali Kodu : HTTP_REQUEST_SMUGGLING
+    Açıklama     : HTTP Request Smuggling çatışması: Aynı istekte hem Content-Length (6) hem Transfer-Encoding (chunked) mevcut!
+    Teknik Kanıt : {"content_length": "6", "transfer_encoding": null}
+
+[6] Kayıt Kimliği: HTTP-CRLF-01 | Kategori: HTTP | Seviye: YUKSEK
+    Anomali Kodu : HTTP_CRLF_ENJEKSIYONU
+    Açıklama     : HTTP Başlık Enjeksiyonu (CRLF / Response Splitting) tespit edildi: URI='/redirect?url=http://site.com%0d%0aSet-Cookie:%20session=evil_injected'
+    Teknik Kanıt : {"ham_uri": "/redirect?url=http://site.com%0d%0aSet-Cookie:%20session=evil_injected", "cozulmus_uri": "/redirect?url=http://site.com\r\nSet-Cookie: session=evil_injected"}
+
+[7] Kayıt Kimliği: HTTP-TRAVERSAL-01 | Kategori: HTTP | Seviye: YUKSEK
+    Anomali Kodu : PATH_TRAVERSAL_DIZIN_GECISI
+    Açıklama     : Dizin Geçişi (Path Traversal / LFI) saldırı denemesi yakalandı: URI='/download?file=../../../../etc/passwd'
+    Teknik Kanıt : {"uri": "/download?file=../../../../etc/passwd", "tespit_edilen_desen": "Dizin dışına çıkış veya sistem dosyası erişimi"}
+
+[8] Kayıt Kimliği: HTTP-SCANNER-01 | Kategori: HTTP | Seviye: ORTA
+    Anomali Kodu : OTOMATIK_TARAMA_TESPITI
+    Açıklama     : Otomatik siber saldırı tarayıcısı tespit edildi: User-Agent='sqlmap/1.7.11#stable (https://sqlmap.org)' (İmza: sqlmap)
+    Teknik Kanıt : {"user_agent": "sqlmap/1.7.11#stable (https://sqlmap.org)", "eslesen_imza": "sqlmap"}

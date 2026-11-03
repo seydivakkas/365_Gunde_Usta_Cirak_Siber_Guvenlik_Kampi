@@ -1,0 +1,281 @@
+[
+  {
+    "id": "NEG_01",
+    "baslik": "RBAC Rol Yetki Eksikliği İhlali",
+    "cwe": "CWE-862",
+    "beklenen_hata": "RBACPermissionDeniedError",
+    "ozne": {
+      "user_id": "user_basic_01",
+      "roles": ["user"],
+      "department": "sales",
+      "clearance_level": 1,
+      "tenant_id": "tenant_corp",
+      "mfa_authenticated": false,
+      "ip_address": "10.0.1.10"
+    },
+    "kaynak": {
+      "resource_id": "fin_balance_sheet",
+      "resource_type": "financial_report",
+      "department_owner": "finance",
+      "classification": 2,
+      "tenant_id": "tenant_corp",
+      "is_locked": false
+    },
+    "eylem": {
+      "name": "write"
+    },
+    "cevre": {
+      "is_business_hours": true,
+      "is_corporate_network": true,
+      "risk_score": 10
+    }
+  },
+  {
+    "id": "NEG_02",
+    "baslik": "SoD Görevler Ayrılığı Toksik Rol Kombinasyonu",
+    "cwe": "CWE-863",
+    "beklenen_hata": "RBACSoDRuleConflictError",
+    "ozne": {
+      "user_id": "fraud_staff",
+      "roles": ["purchaser", "approver"],
+      "department": "procurement",
+      "clearance_level": 2,
+      "tenant_id": "tenant_corp",
+      "mfa_authenticated": true,
+      "ip_address": "10.0.1.20"
+    },
+    "kaynak": {
+      "resource_id": "purchase_order_998",
+      "resource_type": "purchase_order",
+      "department_owner": "procurement",
+      "classification": 1,
+      "tenant_id": "tenant_corp",
+      "is_locked": false
+    },
+    "eylem": {
+      "name": "approve"
+    },
+    "cevre": {
+      "is_business_hours": true,
+      "is_corporate_network": true,
+      "risk_score": 10
+    }
+  },
+  {
+    "id": "NEG_03",
+    "baslik": "Çok Kiracılı Mimari (Multi-Tenant) İzolasyon Sınırı İhlali",
+    "cwe": "CWE-284",
+    "beklenen_hata": "MultiTenantIsolationBreachError",
+    "ozne": {
+      "user_id": "tenant_alpha_admin",
+      "roles": ["admin"],
+      "department": "it",
+      "clearance_level": 4,
+      "tenant_id": "tenant_alpha",
+      "mfa_authenticated": true,
+      "ip_address": "10.0.1.30"
+    },
+    "kaynak": {
+      "resource_id": "tenant_beta_customers",
+      "resource_type": "customer_data",
+      "department_owner": "sales",
+      "classification": 3,
+      "tenant_id": "tenant_beta",
+      "is_locked": false
+    },
+    "eylem": {
+      "name": "read"
+    },
+    "cevre": {
+      "is_business_hours": true,
+      "is_corporate_network": true,
+      "risk_score": 10
+    }
+  },
+  {
+    "id": "NEG_04",
+    "baslik": "Yetersiz Güvenlik Yetki Derecesi (Classification vs Clearance)",
+    "cwe": "CWE-285",
+    "beklenen_hata": "ClassificationClearanceInsufficientError",
+    "ozne": {
+      "user_id": "junior_manager",
+      "roles": ["manager"],
+      "department": "finance",
+      "clearance_level": 1,
+      "tenant_id": "tenant_corp",
+      "mfa_authenticated": true,
+      "ip_address": "10.0.1.40"
+    },
+    "kaynak": {
+      "resource_id": "top_secret_merger",
+      "resource_type": "financial_report",
+      "department_owner": "finance",
+      "classification": 4,
+      "tenant_id": "tenant_corp",
+      "is_locked": false
+    },
+    "eylem": {
+      "name": "read"
+    },
+    "cevre": {
+      "is_business_hours": true,
+      "is_corporate_network": true,
+      "risk_score": 10
+    }
+  },
+  {
+    "id": "NEG_05",
+    "baslik": "Departman İzolasyonu ve IDOR Veri Sızıntısı Engeli",
+    "cwe": "CWE-639",
+    "beklenen_hata": "ABACPolicyDeniedError",
+    "ozne": {
+      "user_id": "sales_lead",
+      "roles": ["staff"],
+      "department": "sales",
+      "clearance_level": 3,
+      "tenant_id": "tenant_corp",
+      "mfa_authenticated": true,
+      "ip_address": "10.0.1.50"
+    },
+    "kaynak": {
+      "resource_id": "hr_executive_salaries",
+      "resource_type": "project_doc",
+      "department_owner": "hr",
+      "classification": 2,
+      "tenant_id": "tenant_corp",
+      "is_locked": false
+    },
+    "eylem": {
+      "name": "read"
+    },
+    "cevre": {
+      "is_business_hours": true,
+      "is_corporate_network": true,
+      "risk_score": 10
+    }
+  },
+  {
+    "id": "NEG_06",
+    "baslik": "Kilitli veya Arşivlenmiş Kaynağı Değiştirme Engeli",
+    "cwe": "CWE-863",
+    "beklenen_hata": "ABACPolicyDeniedError",
+    "ozne": {
+      "user_id": "fin_director",
+      "roles": ["manager"],
+      "department": "finance",
+      "clearance_level": 3,
+      "tenant_id": "tenant_corp",
+      "mfa_authenticated": true,
+      "ip_address": "10.0.1.60"
+    },
+    "kaynak": {
+      "resource_id": "audited_2025_tax_report",
+      "resource_type": "financial_report",
+      "department_owner": "finance",
+      "classification": 2,
+      "tenant_id": "tenant_corp",
+      "is_locked": true
+    },
+    "eylem": {
+      "name": "write"
+    },
+    "cevre": {
+      "is_business_hours": true,
+      "is_corporate_network": true,
+      "risk_score": 10
+    }
+  },
+  {
+    "id": "NEG_07",
+    "baslik": "Kritik Kaynak Silme İşleminde MFA Eksikliği",
+    "cwe": "CWE-308",
+    "beklenen_hata": "ABACPolicyDeniedError",
+    "ozne": {
+      "user_id": "it_lead",
+      "roles": ["manager"],
+      "department": "it",
+      "clearance_level": 3,
+      "tenant_id": "tenant_corp",
+      "mfa_authenticated": false,
+      "ip_address": "10.0.1.70"
+    },
+    "kaynak": {
+      "resource_id": "archived_repo",
+      "resource_type": "project_doc",
+      "department_owner": "it",
+      "classification": 2,
+      "tenant_id": "tenant_corp",
+      "is_locked": false
+    },
+    "eylem": {
+      "name": "delete"
+    },
+    "cevre": {
+      "is_business_hours": true,
+      "is_corporate_network": true,
+      "risk_score": 10
+    }
+  },
+  {
+    "id": "NEG_08",
+    "baslik": "Mesai Saatleri Dışında Finansal Defter Yazma Engeli",
+    "cwe": "CWE-284",
+    "beklenen_hata": "EnvironmentalConstraintError",
+    "ozne": {
+      "user_id": "night_cfo",
+      "roles": ["manager"],
+      "department": "finance",
+      "clearance_level": 3,
+      "tenant_id": "tenant_corp",
+      "mfa_authenticated": true,
+      "ip_address": "10.0.1.80"
+    },
+    "kaynak": {
+      "resource_id": "main_ledger",
+      "resource_type": "financial_ledger",
+      "department_owner": "finance",
+      "classification": 2,
+      "tenant_id": "tenant_corp",
+      "is_locked": false
+    },
+    "eylem": {
+      "name": "write"
+    },
+    "cevre": {
+      "is_business_hours": false,
+      "is_corporate_network": true,
+      "risk_score": 25
+    }
+  },
+  {
+    "id": "NEG_09",
+    "baslik": "Dış Ağdan Yüksek Risk Puanlı Yetkisiz Erişim",
+    "cwe": "CWE-284",
+    "beklenen_hata": "EnvironmentalConstraintError",
+    "ozne": {
+      "user_id": "traveling_worker",
+      "roles": ["staff"],
+      "department": "it",
+      "clearance_level": 2,
+      "tenant_id": "tenant_corp",
+      "mfa_authenticated": true,
+      "ip_address": "198.51.100.44"
+    },
+    "kaynak": {
+      "resource_id": "internal_wiki",
+      "resource_type": "project_doc",
+      "department_owner": "it",
+      "classification": 1,
+      "tenant_id": "tenant_corp",
+      "is_locked": false
+    },
+    "eylem": {
+      "name": "read"
+    },
+    "cevre": {
+      "is_business_hours": true,
+      "is_corporate_network": false,
+      "risk_score": 80
+    }
+  }
+]

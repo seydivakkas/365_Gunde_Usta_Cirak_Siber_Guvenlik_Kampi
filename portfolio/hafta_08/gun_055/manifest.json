@@ -1,0 +1,18 @@
+{
+  "README.md": "f4df11dae58f9b96ee0fd9acd9090120d626e1143d3964f782619f8e4d867b58",
+  "ders.md": "230f9d55b928f19d1dc1b5dc39d87ce9c7741ef16b91c624fbfddc224a25bfdf",
+  "rapor.md": "34f2d257cd9fd0b5b35ef7f9e12501e88b074f4c8f0749df56a0e20e5347327e",
+  "sonuc.json": "6156da0b29144a89a30c8236c221e78bca5eb4cda75691616dac713623962002",
+  "soru_cevap.md": "37ea890efe7cd3f72d451b0114b3ab86c380d267afcc9080486a714007b97f40",
+  "kanit/gercek/dhcp_protokol_ve_guvenlik_raporu.txt": "19ea46ba37c478acee6ef58cacac946835acf99b04d83e66bfd3bb2baea41725",
+  "kanit/gercek/komut_ve_cikis.txt": "404b60f26d5055c47da3955db9fc776b4c703a5583fc7dfa976d8771c00a6354",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "84604fc3ec8303d7fd2082f298d3813f3fccc53aab4c6ccf25e19aa6fbce663f",
+  "kanit/gercek/test_sonuclari.txt": "324fc94e8022908ba5cf1703de72918f2073005b0262bbf22b4e8a6babd590b6",
+  "kanit/temsili/dhcp_dora_ve_saldiri_savunma_mimarisi.txt": "2d58e859627e5f3191d9894a7333ac712771a1f361e01febf58c89bbad12cb4b",
+  "ornek_veri/invalid_dhcp_inputs.json": "4aba4ea58bf26789b305ea48f403941da951d5c1805e22c7ec2746ed5b5d7b1f",
+  "ornek_veri/sample_dhcp_packets.json": "83856bcec26e72e96d00a2fb3f6922785d0b2427c4b0135e19f2810da188c457",
+  "tests/__init__.py": "25f42c4530e56a3060635259c629783096ab5f41031a4e5c3b194ce96b082438",
+  "tests/test_dhcp_protocol_allocator.py": "7807c30bb984b00b6d57ee4bbb5ee735cf3597243a139f1a3696aa0464730268",
+  "uygulama/__init__.py": "80ec28d2ec012d136a94f0d1878ffe34429ffb4861adbac685c14156af001eb7",
+  "uygulama/dhcp_protocol_allocator.py": "9862216546afefa7c6bf7dde679ce318db524cd2b45cc9e79910038e339600d6"
+}

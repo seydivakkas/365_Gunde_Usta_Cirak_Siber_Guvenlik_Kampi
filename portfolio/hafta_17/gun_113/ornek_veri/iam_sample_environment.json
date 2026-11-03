@@ -1,0 +1,86 @@
+{
+  "aciklama": "Gün 113 Kimlik Doğrulama ve Yetkilendirme Örnek Kurumsal IAM Ortamı",
+  "versiyon": "1.0.0",
+  "kiracilar": [
+    {
+      "tenant_id": "TENANT_ALPHA",
+      "tenant_adi": "Alfa Finansal Teknolojiler A.Ş."
+    },
+    {
+      "tenant_id": "TENANT_BETA",
+      "tenant_adi": "Beta Lojistik ve Dağıtım Ltd."
+    }
+  ],
+  "roller_ve_izinler": {
+    "admin": [
+      "READ_DOCUMENT",
+      "WRITE_DOCUMENT",
+      "DELETE_DOCUMENT",
+      "VIEW_AUDIT_LOG",
+      "MANAGE_USERS",
+      "SYSTEM_CONFIG"
+    ],
+    "operator": [
+      "READ_DOCUMENT",
+      "WRITE_DOCUMENT",
+      "VIEW_AUDIT_LOG"
+    ],
+    "analyst": [
+      "READ_DOCUMENT",
+      "VIEW_AUDIT_LOG"
+    ],
+    "guest": [
+      "READ_PUBLIC"
+    ]
+  },
+  "ornek_kullanicilar": [
+    {
+      "username": "alice",
+      "tenant_id": "TENANT_ALPHA",
+      "roller": ["analyst"],
+      "unvan": "Kıdemli Finans Analisti"
+    },
+    {
+      "username": "bob",
+      "tenant_id": "TENANT_ALPHA",
+      "roller": ["operator"],
+      "unvan": "Veri Merkezi Operatörü"
+    },
+    {
+      "username": "charlie_admin",
+      "tenant_id": "TENANT_ALPHA",
+      "roller": ["admin"],
+      "unvan": "Baş Sistem Mimarı & CISO"
+    },
+    {
+      "username": "eve_attacker",
+      "tenant_id": "TENANT_BETA",
+      "roller": ["analyst"],
+      "unvan": "Harici Kiracı Kullanıcısı"
+    }
+  ],
+  "ornek_kaynaklar": [
+    {
+      "resource_id": "finans_raporu_2026",
+      "resource_type": "report",
+      "owner_username": "alice",
+      "tenant_id": "TENANT_ALPHA",
+      "classification": "CONFIDENTIAL",
+      "required_permissions": {
+        "read": "READ_DOCUMENT",
+        "delete": "DELETE_DOCUMENT"
+      }
+    },
+    {
+      "resource_id": "sys_config_01",
+      "resource_type": "config",
+      "owner_username": "charlie_admin",
+      "tenant_id": "TENANT_ALPHA",
+      "classification": "RESTRICTED",
+      "required_permissions": {
+        "read": "READ_DOCUMENT",
+        "write": "SYSTEM_CONFIG"
+      }
+    }
+  ]
+}

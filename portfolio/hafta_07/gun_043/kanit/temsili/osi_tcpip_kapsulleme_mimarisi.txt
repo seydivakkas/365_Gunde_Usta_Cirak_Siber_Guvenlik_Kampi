@@ -1,0 +1,51 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Bu mimari illüstrasyon yalnızca eğitim ve kavramsal modelleme amaçlıdır.
+
+================================================================================
+G043: 7 KATMANLI OSI VE 4 KATMANLI TCP/IP KAPSÜLLEME (ENCAPSULATION) MİMARİSİ
+================================================================================
+
+ [OSI REFERANS MODELİ]                    [TCP/IP MODELİ]               [HTTPS İSTEĞİ ÖRNEĞİ]
++--------------------------+             +------------------+          +-------------------------+
+| Katman 7: Uygulama (App) |             |                  |          | HTTP/2: GET /api/v1/... |
++--------------------------+             |                  |          +-------------------------+
+| Katman 6: Sunum (Pres)   | ----------> | Uygulama (App)   | -------> | TLSv1.3: AES-256-GCM    |
++--------------------------+             |                  |          +-------------------------+
+| Katman 5: Oturum (Sess)  |             |                  |          | TLS Session ID / State  |
++--------------------------+             +------------------+          +-------------------------+
+             |                                    |                                 |
+             v                                    v                                 v
++--------------------------+             +------------------+          +-------------------------+
+| Katman 4: Taşıma (Trans) | ----------> | Taşıma (Trans)   | -------> | TCP: Port 52144 -> 443  |
+| [PDU: TCP Segment]       |             | [PDU: Segment]   |          | Bayraklar: [ACK, PSH]   |
++--------------------------+             +------------------+          +-------------------------+
+             |                                    |                                 |
+             v                                    v                                 v
++--------------------------+             +------------------+          +-------------------------+
+| Katman 3: Ağ (Network)   | ----------> | İnternet         | -------> | IPv4: 192.168.1.105 ->  |
+| [PDU: IP Packet]         |             | [PDU: Packet]    |          |       104.21.35.88      |
++--------------------------+             +------------------+          +-------------------------+
+             |                                    |                                 |
+             v                                    v                                 v
++--------------------------+             +------------------+          +-------------------------+
+| Katman 2: Veri Bağlantısı|             |                  |          | Ethernet II Frame:      |
+| [PDU: Ethernet Frame]    | ----------> | Ağ Erişimi       | -------> | MAC -> Gateway MAC      |
++--------------------------+             | (Network Access) |          | EtherType: 0x0800       |
+| Katman 1: Fiziksel (Phys)|             |                  |          | FCS: CRC32 Doğrulaması  |
+| [PDU: Bits / Signals]    |             |                  |          | 1000BASE-T Bakır Kablo  |
++--------------------------+             +------------------+          +-------------------------+
+
+================================================================================
+KAPSÜLLEME (ENCAPSULATION) AKIŞI:
+1. Veri uygulama katmanında üretilir (HTTP).
+2. Sunum katmanında TLS ile şifrelenir (Şifreli Veri).
+3. Taşıma katmanında TCP başlığı (Header) eklenir -> Segment oluşur.
+4. Ağ katmanında IP başlığı eklenir -> Paket oluşur.
+5. Veri bağlantısı katmanında Ethernet başlığı + FCS kuyruğu eklenir -> Çerçeve oluşur.
+6. Fiziksel katmanda bit akışı elektriksel/optik sinyallere dönüştürülür.
+================================================================================

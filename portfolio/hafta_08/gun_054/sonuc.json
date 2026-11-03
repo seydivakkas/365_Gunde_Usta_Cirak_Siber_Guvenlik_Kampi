@@ -1,0 +1,40 @@
+{
+  "gun": 54,
+  "gun_id": "G054",
+  "asama": "03",
+  "hafta": "08",
+  "baslik": "DNS sorguları ve kayıt türleri",
+  "tarih": "2026-10-29",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kavramsal_derinlik": 20,
+    "uygulama_gelistirme": 40,
+    "test_kapsami": 25,
+    "savunma_sikilastirma": 15
+  },
+  "test_ozeti": {
+    "toplam": 14,
+    "basarili": 14,
+    "hatali": 0,
+    "sure_saniye": 0.001
+  },
+  "kod_aciklama_satirlari_tamamlandi": true,
+  "kanitlar": {
+    "gercek": [
+      "kanit/gercek/test_sonuclari.txt",
+      "kanit/gercek/komut_ve_cikis.txt",
+      "kanit/gercek/dns_sorgu_ve_kayit_raporu.txt",
+      "kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "kanit/temsili/dns_hiyerarsi_ve_kayit_guvenlik_mimarisi.txt"
+    ]
+  },
+  "soru_bankasi_eslesmesi": [
+    "G054-SC1",
+    "G054-SC2",
+    "G054-SC3"
+  ],
+  "notlar": "RFC 1034/1035 ikili 12 baytlık DNS başlığı ve etiket kodlama, A, AAAA, CNAME, MX ve TXT kaynak kayıtlarının doğrulanması, 'DNS Yanıtı Doğrulanmış Kimlik Değildir' ilkesi doğrultusunda SPF/DMARC e-posta güvenliği denetimi, Sahipsiz CNAME (Subdomain Takeover) tespiti ve Shannon Entropisi tabanlı DNS Tünelleme (Veri Sızıntısı) analizi eksiksiz tamamlandı; 14 birim testi ve 8 negatif kontrol testi %100 PASS oldu."
+}

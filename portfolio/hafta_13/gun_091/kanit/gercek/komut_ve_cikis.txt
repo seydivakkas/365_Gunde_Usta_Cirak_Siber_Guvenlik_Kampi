@@ -1,0 +1,97 @@
+=====================================================================================
+GÜN 091: MİNİ PROJE 12 — CLI KOMUT ÇALIŞTIRMA VE ÇIKIŞ KANITLARI
+Kayıt Zamanı (UTC): 2026-11-01T20:27:18Z
+=====================================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_13\gun_091\uygulama\reporter_cli.py --telemetry-file C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_13\gun_091\ornek_veri\sample_windows_telemetry.json --fast
+[Çıkış Kodu: 0]
+[STDOUT]:
+=====================================================================================
+SİSTEM GÜVENLİK VE UYUMLULUK DENETİM RAPORU (WINDOWS)
+=====================================================================================
+Rapor Kimliği:        REP-WINDOWS-1793564838
+Ana Makine (Host):    WIN-SRV-SEC-01
+İşletim Sistemi:      Microsoft Windows Server 2022 Datacenter
+Rapor Zamanı (UTC):   2026-11-01T20:25:00Z
+Çalışma Süresi:       1080.5 saat
+Denetim Modu:         FAST
+Güvenlik Skoru:       20 / 100
+Güvenlik Durumu:      KRİTİK
+-------------------------------------------------------------------------------------
+TESPİT EDİLEN GÜVENLİK BULGULARI (4 Adet):
+-------------------------------------------------------------------------------------
+[1] SMB Portu (445) Dış Dünyaya Açık (Önem: HIGH | Kesinti: -15)
+    CWE:        CWE-276: Incorrect Default Permissions / Risky Exposure
+    Açıklama:   Port 445 ağ üzerinde dinleme durumunda; fidye yazılımları (Ransomware) ve EternalBlue benzeri saldırılar için açık hedef oluşturabilir.
+    Çözüm:      SMB erişimini güvenlik duvarı kuralları ile yalnızca güvenli yönetim alt ağına sınırlayın.
+
+[2] Uzak Masaüstü (RDP - Port 3389) Dinlemede (Önem: MEDIUM | Kesinti: -10)
+    CWE:        CWE-306: Missing Authentication for Critical Function
+    Açıklama:   RDP servisinin açık olması kaba kuvvet (Brute Force) saldırılarına maruz kalma riskini artırır.
+    Çözüm:      RDP erişimini VPN veya Network Level Authentication (NLA) arkasına alın.
+
+[3] Windows Ortak Ağ Güvenlik Duvarı Devre Dışı (Önem: HIGH | Kesinti: -20)
+    CWE:        CWE-276: Incorrect Default Permissions
+    Açıklama:   PublicProfile kapalı olduğunda makine ortak ağlarda doğrudan gelen tüm bağlantılara savunmasız kalır.
+    Çözüm:      Set-NetFirewallProfile -Profile Public -Enabled True komutunu çalıştırın.
+
+[4] Zararlı / İstenmeyen Servis Tespit Edildi: CryptoMinerSvc (Önem: CRITICAL | Kesinti: -35)
+    CWE:        CWE-506: Embedded Malicious Code
+    Açıklama:   Sistemde kripto madencilik veya şüpheli arka kapı servisi çalışıyor.
+    Çözüm:      İlgili servisi derhal durdurun ve sistemde adli analiz başlatın.
+
+=====================================================================================
+-------------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_13\gun_091\uygulama\reporter_cli.py --telemetry-file C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_13\gun_091\ornek_veri\sample_linux_telemetry.json --deep --format json
+[Çıkış Kodu: 0]
+[STDOUT]:
+{
+  "rapor_id": "REP-LINUX-1793564838",
+  "platform": "linux",
+  "hostname": "LNX-PROD-WEB-02",
+  "os_surumu": "Ubuntu 24.04 LTS (Linux 6.8.0-generic)",
+  "rapor_zamani_utc": "2026-11-01T20:25:30Z",
+  "calisma_suresi_saat": 288.0,
+  "denetim_modu": "DEEP",
+  "bulgular": [
+    {
+      "bulgu_id": "SEC_PORT_6379",
+      "cwe_kodu": "CWE-306: Missing Authentication for Critical Function",
+      "onem_derecesi": "HIGH",
+      "baslik": "Redis Önbellek Sunucusu (Port 6379) Erişilebilir",
+      "aciklama": "Varsayılan yapılandırmada şifresiz çalışan Redis, uzaktan yetkisiz komut çalıştırma (RCE) riski taşır.",
+      "cozum_onerisi": "Redis bind ayarını 127.0.0.1 yapın ve requirepass parolasını etkinleştirin.",
+      "puan_kesintisi": 15
+    },
+    {
+      "bulgu_id": "LNX_PERM_SHADOW",
+      "cwe_kodu": "CWE-732: Incorrect Permission Assignment for Critical Resource",
+      "onem_derecesi": "CRITICAL",
+      "baslik": "/etc/shadow Dosyası Herkese Açık Okunabilir (World-Readable)",
+      "aciklama": "/etc/shadow izinleri 0644 olarak ayarlanmış. Yetkisiz kullanıcılar parola özetlerini (hashes) okuyabilir.",
+      "cozum_onerisi": "chmod 0640 /etc/shadow veya chmod 0000 /etc/shadow uygulayın.",
+      "puan_kesintisi": 40
+    },
+    {
+      "bulgu_id": "LNX_SUDO_NOPASSWD",
+      "cwe_kodu": "CWE-250: Execution with Unnecessary Privileges",
+      "onem_derecesi": "HIGH",
+      "baslik": "Parolasız Sudo Yetkisi Verilmiş: guest_temp",
+      "aciklama": "Parola girmeden root yetkisi çalıştırabilen kullanıcılar ele geçirildiğinde saldırgan anında tam sistem kontrolü sağlar.",
+      "cozum_onerisi": "/etc/sudoers dosyasından NOPASSWD yönergesini kaldırın.",
+      "puan_kesintisi": 20
+    }
+  ],
+  "guvenlik_skoru": 25,
+  "guvenlik_durumu": "KRİTİK"
+}
+-------------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_13\gun_091\uygulama\reporter_cli.py --telemetry-file C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_13\gun_091\ornek_veri\sample_windows_telemetry.json --fast --deep
+[Çıkış Kodu: 2]
+[STDERR]:
+usage: sec-reporter [-h] --telemetry-file TELEMETRY_FILE
+                    [--platform {windows,linux,auto}]
+                    [--format {text,json,html}] [--fast | --deep]
+                    [--output-file OUTPUT_FILE]
+sec-reporter: error: argument --deep: not allowed with argument --fast
+-------------------------------------------------------------------------------------

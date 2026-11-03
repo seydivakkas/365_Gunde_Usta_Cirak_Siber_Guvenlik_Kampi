@@ -1,0 +1,63 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Bu mimari illüstrasyon yalnızca eğitim ve kavramsal modelleme amaçlıdır.
+
+================================================================================
+G042: AŞAMA 2 KALİTE ÖZETİ — İŞLETİM SİSTEMİ TEMELLERİ (6 KABUL SÜTUNU)
+================================================================================
+
+               +---------------------------------------------+
+               |        AŞAMA 2 KABUL VE KALİTE KAPISI       |
+               |      (İşletim Sistemi Temelleri - 14 Gün)   |
+               +---------------------------------------------+
+                                      |
+         +----------------------------+----------------------------+
+         |                                                         |
+         v                                                         v
++-------------------------------+                         +-------------------------------+
+|     SÜTUN 1: SÜREÇ HİJYENİ    |                         |    SÜTUN 2: DOSYA İZİNLERİ    |
+| - Unprivileged Daemons        |                         | - Umask 0027 Zorlaması        |
+| - systemd Kum Havuzlama       |                         | - /etc/shadow: 0640 (root:sh) |
+| - Sıfır Rogue/Yetkisiz Süreç  |                         | - /etc/sudoers: 0440 (root)   |
++-------------------------------+                         +-------------------------------+
+         |                                                         |
+         +----------------------------+----------------------------+
+                                      |
+         +----------------------------+----------------------------+
+         |                                                         |
+         v                                                         v
++-------------------------------+                         +-------------------------------+
+|     SÜTUN 3: GÜNLÜKLEME       |                         |   SÜTUN 4: BÜTÜNLÜK KARMALARI |
+| - journald Kalıcılığı         |                         | - SHA-256 Kriptografik Taban  |
+| - auditd Çekirdek Syscall     |                         | - /bin/login & /usr/bin/sudo  |
+| - TLS ile Merkezi SIEM        |                         | - AIDE / Tripwire Otomasyonu  |
++-------------------------------+                         +-------------------------------+
+         |                                                         |
+         +----------------------------+----------------------------+
+                                      |
+         +----------------------------+----------------------------+
+         |                                                         |
+         v                                                         v
++-------------------------------+                         +-------------------------------+
+|    SÜTUN 5: YEDEKLEME (3-2-1) |                         |    SÜTUN 6: SERVİS HARDENING  |
+| - 3 Kopya / 2 Farklı Ortam    |                         | - Telnet, RSH, Rlogin YASAK   |
+| - 1 Dış Lokasyon (Offsite)    |                         | - SSH Ed25519 & No-Root Login |
+| - Periyodik Restore PASS      |                         | - Minimum Açık Port Prensibi  |
++-------------------------------+                         +-------------------------------+
+                                      |
+                                      v
+               +---------------------------------------------+
+               |         AŞAMA 2 GENEL KALİTE KABULÜ         |
+               |    [ 100/100 PUAN — KARAR: STAGE_02_PASS ]  |
+               |    Aşama 03 (Ağ Temelleri) Geçiş Onayı!     |
+               +---------------------------------------------+
+
+================================================================================
+AÇIKLAMA:
+Bu şema, 14 gün boyunca işlenen Linux/Windows işletim sistemi güvenlik temellerinin
+6 ana sütun altında nasıl bir bütüncül kabul standardına bağlandığını modeller.
+================================================================================

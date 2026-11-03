@@ -1,0 +1,66 @@
+======================================================================
+GÜN 127: CLI ETKİLEŞİM VE YÖNETİM KOMUTLARI KANITI
+Tarih/Saat: 2026-11-02T09:30:46.224686
+======================================================================
+
+--- KOMUT: python endpoint_threat_cli.py quick-check --name Quick-Safe-PC --os WINDOWS --role WORKSTATION --edr --tamper-protection --credential-guard --disk-encryption (Hızlı Uç Nokta Denetimi (Güvenli PC)) ---
+=== Hızlı Uç Nokta Tehdit Taraması ===
+Cihaz: Quick-Safe-PC (Windows - Kullanıcı İş İstasyonu)
+Tehdit Endeksi: 16.0 / 100
+Duruş Seviyesi: GÜVENLİ / SIKILAŞTIRILMIŞ (PASS)
+Bulgu Sayısı: 2
+  - [Orta] Gelişmiş Uç Nokta Telemetrisi (Sysmon / Auditd) Eksik (CWE-778 / T1070 (Indicator Removal))
+  - [Orta] PowerShell Kısıtlı Dil Modu (CLM) Etkin Değil (CWE-284 / T1059.001 (Command and Scripting Interpreter: PowerShell))
+
+----------------------------------------------------------------------
+
+--- KOMUT: python endpoint_threat_cli.py quick-check --name Vulnerable-DC --os WINDOWS --role DOMAIN_CONTROLLER --unquoted-paths 2 (Hızlı Uç Nokta Denetimi (Savunmasız Sunucu)) ---
+=== Hızlı Uç Nokta Tehdit Taraması ===
+Cihaz: Vulnerable-DC (Windows - Etki Alanı Denetleyicisi (DC))
+Tehdit Endeksi: 100.0 / 100
+Duruş Seviyesi: KRİTİK_RİSK (ACİL MÜDAHALE GEREKLİ)
+Bulgu Sayısı: 6
+  - [Kritik] LSA Koruması (RunAsPPL / Credential Guard) Devre Dışı (CWE-311 / T1003.001 (OS Credential Dumping: LSASS Memory))
+  - [Yüksek] Tırnaksız Servis Yolu Zafiyeti (2 Adet) (CWE-428 / T1574.009 (Hijack Execution Flow: Path Interception by Unquoted Path))
+  - [Kritik] Aktif Uç Nokta Tespit ve Yanıt (EDR) Ajanı Yok (CWE-693 / T1562.001 (Impair Defenses: Disable or Modify Tools))
+  - [Orta] Gelişmiş Uç Nokta Telemetrisi (Sysmon / Auditd) Eksik (CWE-778 / T1070 (Indicator Removal))
+  - [Orta] PowerShell Kısıtlı Dil Modu (CLM) Etkin Değil (CWE-284 / T1059.001 (Command and Scripting Interpreter: PowerShell))
+  - [Orta] Tam Disk Şifreleme (BitLocker / LUKS) Devre Dışı (CWE-311 / T1005 (Data from Local System))
+
+----------------------------------------------------------------------
+
+--- KOMUT: python endpoint_threat_cli.py model C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_19\gun_127\ornek_veri\endpoint_baseline_spec.json --format markdown (Tam Şartname Modellemesi ve Markdown Rapor) ---
+# UÇ NOKTA TEHDİT MODELİ RAPORU: CORP-W11-FINANCE-04
+**Rapor Kimliği:** `REP-EP-5EA55FC0`  
+**Tarih / Saat:** `2026-11-02T09:30:46.246697`  
+**İşletim Sistemi:** `Windows`  
+**Uç Nokta Rolü:** `Kullanıcı İş İstasyonu`  
+
+---
+
+## 1. Yönetici Özeti ve Tehdit Endeksi
+
+- **Uç Nokta Tehdit Endeksi:** `0.0 / 100` *(Düşük = Daha Güvenli)*
+- **Güvenlik Duruşu:** **GÜVENLİ / SIKILAŞTIRILMIŞ (PASS)**
+- **Tespit Edilen Tehdit Sayısı:** `0`
+
+---
+
+## 2. Tespit Edilen Tehditler ve Saldırı Yüzeyi Analizi
+
+| No | Ciddiyet | Tehdit Başlığı | Saldırı Yüzeyi | CWE | MITRE ATT&CK |
+|---|---|---|---|---|---|
+| - | - | Temiz (Herhangi bir tehdit tespit edilmedi) | - | - | - |
+
+---
+
+## 3. Öncelikli Sıkılaştırma (Hardening) Yol Haritası
+
+- Sistem CIS Benchmark ve Microsoft Security Baseline standartlarına tam uygundur; ek acil sıkılaştırma adımı gerekmemektedir.
+
+---
+
+> [!NOTE]
+> Bu tehdit modeli **Microsoft Security Baselines**, **CIS Benchmarks** ve **MITRE ATT&CK for Enterprise** standartlarına dayalı olarak üretilmiştir.
+
+----------------------------------------------------------------------

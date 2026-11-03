@@ -1,0 +1,40 @@
+=== GÜN 078: BİRİM TEST SONUÇLARI ===
+Toplam Test: 14
+Başarılı: 14
+Başarısız: 0
+Hata: 0
+Durum: OK / PASS
+
+test_01_resolve_safe_path_valid_file (test_secure_file_and_path_manager.TestSecureFileAndPathManager.test_01_resolve_safe_path_valid_file)
+Test 01: Sandbox içindeki meşru bir dosyanın (config.json) başarıyla çözümlendiğini doğrular. ... ok
+test_02_resolve_safe_path_path_traversal_relative_raises (test_secure_file_and_path_manager.TestSecureFileAndPathManager.test_02_resolve_safe_path_path_traversal_relative_raises)
+Test 02: Göreceli dizin atlama (../../) ile sandbox dışına çıkma denemesinde PermissionError fırlatıldığını doğrular. ... ok
+test_03_resolve_safe_path_absolute_windows_raises (test_secure_file_and_path_manager.TestSecureFileAndPathManager.test_03_resolve_safe_path_absolute_windows_raises)
+Test 03: Windows mutlak yol enjeksiyonunun (C:\Windows...) PermissionError ile engellendiğini test eder. ... ok
+test_04_resolve_safe_path_null_byte_raises (test_secure_file_and_path_manager.TestSecureFileAndPathManager.test_04_resolve_safe_path_null_byte_raises)
+Test 04: Dosya yoluna enjekte edilen Null-Byte (\x00) karakterinin ValueError ürettiğini doğrular. ... ok
+test_05_resolve_safe_path_forbidden_extension_raises (test_secure_file_and_path_manager.TestSecureFileAndPathManager.test_05_resolve_safe_path_forbidden_extension_raises)
+Test 05: İzin verilmeyen dosya uzantısının (.sh) ValueError ile reddedildiğini test eder. ... ok
+test_06_safe_read_text_valid_content (test_secure_file_and_path_manager.TestSecureFileAndPathManager.test_06_safe_read_text_valid_content)
+Test 06: Güvenli dosya okuyucunun dosya içeriğini hatasız şekilde okuduğunu doğrular. ... ok
+test_07_safe_read_text_non_existent_raises (test_secure_file_and_path_manager.TestSecureFileAndPathManager.test_07_safe_read_text_non_existent_raises)
+Test 07: Var olmayan dosya talep edildiğinde FileNotFoundError fırlatıldığını doğrular. ... ok
+test_08_safe_read_text_directory_as_file_raises (test_secure_file_and_path_manager.TestSecureFileAndPathManager.test_08_safe_read_text_directory_as_file_raises)
+Test 08: Dizin yolunun dosya gibi açılmaya çalışılmasında IsADirectoryError fırlatıldığını test eder. ... ok
+test_09_safe_read_text_size_exceeded_raises (test_secure_file_and_path_manager.TestSecureFileAndPathManager.test_09_safe_read_text_size_exceeded_raises)
+Test 09: Dosya boyutu tavanı aşıldığında (CWE-400) ValueError üretildiğini doğrular. ... ok
+test_10_safe_stream_lines_yields_all_lines (test_secure_file_and_path_manager.TestSecureFileAndPathManager.test_10_safe_stream_lines_yields_all_lines)
+Test 10: Satır satır akış üretecinin (generator) bellek tüketmeden satırları doğru akıttığını doğrular. ... ok
+test_11_atomic_write_text_creates_file (test_secure_file_and_path_manager.TestSecureFileAndPathManager.test_11_atomic_write_text_creates_file)
+Test 11: Atomik yazma fonksiyonunun geçici dosya (.tmp) üzerinden hedef dosyayı güvenle oluşturduğunu doğrular. ... ok
+test_12_atomic_write_text_traversal_raises (test_secure_file_and_path_manager.TestSecureFileAndPathManager.test_12_atomic_write_text_traversal_raises)
+Test 12: Atomik yazma işleminde sandbox dışına dosya yazma girişiminin PermissionError ile engellendiğini doğrular. ... ok
+test_13_inspect_sandbox_status_hashes (test_secure_file_and_path_manager.TestSecureFileAndPathManager.test_13_inspect_sandbox_status_hashes)
+Test 13: Sandbox denetim fonksiyonunun SHA-256 özetlerini ve dosya listesini doğru raporladığını doğrular. ... ok
+test_14_invalid_sandbox_dir_init_raises (test_secure_file_and_path_manager.TestSecureFileAndPathManager.test_14_invalid_sandbox_dir_init_raises)
+Test 14: Var olmayan bir sandbox dizini ile başlatma denemesinde FileNotFoundError üretildiğini doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.031s
+
+OK

@@ -1,0 +1,65 @@
+{
+  "_aciklama": "Kurumsal Linux Sunucusu Güvenlik Duvarı Yapılandırma Envanteri (Örnek Veri)",
+  "tarih": "2026-11-02",
+  "sunucu_adi": "edge-proxy01.kurumsal.yerel",
+  "firewall_type": "nftables",
+  "is_active": true,
+  "is_enabled_on_boot": true,
+  "input_policy": "drop",
+  "forward_policy": "drop",
+  "output_policy": "accept",
+  "logging_enabled": true,
+  "loopback_accepted": true,
+  "loopback_spoof_drop": true,
+  "stateful_established_accepted": true,
+  "stateful_invalid_dropped": true,
+  "config_file_path": "/etc/nftables.conf",
+  "config_file_mode": "0600",
+  "config_file_owner": "root",
+  "rules": [
+    {
+      "chain": "input",
+      "action": "accept",
+      "protocol": "tcp",
+      "source_ip": "10.0.10.0/24",
+      "dest_ip": "any",
+      "dest_port": "22",
+      "interface": "eth0",
+      "state": ["new"],
+      "comment": "Yönetim alt ağından SSH erişimi"
+    },
+    {
+      "chain": "input",
+      "action": "accept",
+      "protocol": "tcp",
+      "source_ip": "any",
+      "dest_ip": "any",
+      "dest_port": "80",
+      "interface": "eth0",
+      "state": ["new"],
+      "comment": "HTTP Web trafiği"
+    },
+    {
+      "chain": "input",
+      "action": "accept",
+      "protocol": "tcp",
+      "source_ip": "any",
+      "dest_ip": "any",
+      "dest_port": "443",
+      "interface": "eth0",
+      "state": ["new"],
+      "comment": "HTTPS Güvenli Web trafiği"
+    },
+    {
+      "chain": "input",
+      "action": "accept",
+      "protocol": "tcp",
+      "source_ip": "any",
+      "dest_ip": "any",
+      "dest_port": "23",
+      "interface": "eth0",
+      "state": ["new"],
+      "comment": "Eski Telnet Servisi (Hatalı/Zafiyetli Kural)"
+    }
+  ]
+}

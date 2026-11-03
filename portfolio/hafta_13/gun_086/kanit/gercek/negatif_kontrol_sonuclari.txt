@@ -1,0 +1,61 @@
+================================================================================
+G086: 9 ADET NEGATIF KONTROL VE ENJEKSIYON ENGELLEME TESTLERI
+Zaman Damgasi (UTC): 2026-11-01T19:51:58.079959+00:00
+================================================================================
+
+[PASS] NEG_01_ARGUMENT_INJECTION_FLAG
+  Baslik          : Alt Komut Parametresine Bayrak Enjeksiyonu (Argument Injection)
+  Zafiyet Sinifi  : CWE-88: Improper Neutralization of Argument Delimiters in a Command
+  Beklenen Istisna: ArgumentInjectionDetectedException
+  Yakalanan Hata  : ArgumentInjectionDetectedException
+--------------------------------------------------------------------------------
+[PASS] NEG_02_PLAINTEXT_PASSWORD_PARAM
+  Baslik          : Acik Metin [string] Parola Parametresi Bildirimi
+  Zafiyet Sinifi  : CWE-312: Cleartext Storage of Sensitive Information in Script Parameters
+  Beklenen Istisna: PlaintextCredentialParameterException
+  Yakalanan Hata  : PlaintextCredentialParameterException
+--------------------------------------------------------------------------------
+[PASS] NEG_03_PATH_TRAVERSAL_PARAM
+  Baslik          : Dosya Parametresinde Dizin Atlama (Path Traversal) Denemesi
+  Zafiyet Sinifi  : CWE-22: Improper Limitation of a Pathname to a Restricted Directory
+  Beklenen Istisna: ParameterPathTraversalException
+  Yakalanan Hata  : ParameterPathTraversalException
+--------------------------------------------------------------------------------
+[PASS] NEG_04_UNVALIDATED_SET_INJECTION
+  Baslik          : ValidateSet Disinda Yetkisiz Parametre Degeri Girisi
+  Zafiyet Sinifi  : CWE-20: Improper Input Validation for Parameter Set
+  Beklenen Istisna: InvalidParameterSetException
+  Yakalanan Hata  : InvalidParameterSetException
+--------------------------------------------------------------------------------
+[PASS] NEG_05_OUT_OF_RANGE_PORT_PARAM
+  Baslik          : Aralik Disi (1-65535 Disinda) Port Parametresi Girisi
+  Zafiyet Sinifi  : CWE-20: Parameter Out of Bounds (ValidateRange Violation)
+  Beklenen Istisna: ParameterOutOfRangeException
+  Yakalanan Hata  : ParameterOutOfRangeException
+--------------------------------------------------------------------------------
+[PASS] NEG_06_NULL_BYTE_PARAM_INJECTION
+  Baslik          : Parametre Degerinde Null-Byte (0x00) Enjeksiyonu
+  Zafiyet Sinifi  : CWE-158: Improper Neutralization of Null Byte or Special Characters
+  Beklenen Istisna: NullByteForbiddenException
+  Yakalanan Hata  : NullByteForbiddenException
+--------------------------------------------------------------------------------
+[PASS] NEG_07_REGEX_PATTERN_VIOLATION
+  Baslik          : ValidatePattern Kurallarini Ihlal Eden Ozel Karakter Enjeksiyonu
+  Zafiyet Sinifi  : CWE-20: Parameter Pattern Mismatch
+  Beklenen Istisna: ParameterPatternMismatchException
+  Yakalanan Hata  : ParameterPatternMismatchException
+--------------------------------------------------------------------------------
+[PASS] NEG_08_OVERSIZED_PARAMETER_PAYLOAD_DOS
+  Baslik          : Asiri Boyutlu Parametre Degeri ile Bellek Tukenmesi (DoS)
+  Zafiyet Sinifi  : CWE-400: Uncontrolled Resource Consumption in Parameter Binding
+  Beklenen Istisna: ParameterSizeLimitExceededException
+  Yakalanan Hata  : ParameterSizeLimitExceededException
+--------------------------------------------------------------------------------
+[PASS] NEG_09_MALFORMED_PARAM_BLOCK_SYNTAX
+  Baslik          : Bozuk veya Kapanmamis Parametre Blogu Sozdizimi
+  Zafiyet Sinifi  : CWE-20: Improper Input Validation in Script Parameter Block
+  Beklenen Istisna: MalformedParameterBlockException
+  Yakalanan Hata  : MalformedParameterBlockException
+--------------------------------------------------------------------------------
+
+TOPLAM NEGATIF TEST SONUCU: 9/9 PASS (100% Basari)

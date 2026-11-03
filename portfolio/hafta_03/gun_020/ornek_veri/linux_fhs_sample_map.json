@@ -1,0 +1,102 @@
+{
+  "aciklama": "GÜN 020 - Linux Dosya Ağacı ve FHS (Filesystem Hierarchy Standard) Örnek Veri Seti",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "surum": "1.0.0",
+  "tarih": "2026-10-27",
+  "fhs_dizinleri": [
+    {
+      "dizin_adi": "/etc",
+      "amac": "Sistem genelindeki statik yapılandırma dosyaları (/etc/passwd, /etc/shadow, /etc/sudoers)",
+      "izin_oktal": "0755",
+      "sahip_kullanici": "root",
+      "sahip_grup": "root",
+      "mount_ayri_bolum": false,
+      "guvenlik_onemi": "Yalnızca root yazabilmelidir; yapılandırma bozulursa sistem veya servisler çöker.",
+      "kritik_dosyalar": [
+        {"yol": "/etc/shadow", "izin_oktal": "0640", "sahip": "root:shadow", "guvenli_mi": true},
+        {"yol": "/etc/passwd", "izin_oktal": "0644", "sahip": "root:root", "guvenli_mi": true},
+        {"yol": "/etc/sudoers", "izin_oktal": "0440", "sahip": "root:root", "guvenli_mi": true}
+      ]
+    },
+    {
+      "dizin_adi": "/var",
+      "amac": "Değişken çalışma verileri, loglar (/var/log), posta kuyrukları (/var/spool) ve web kökü (/var/www)",
+      "izin_oktal": "0755",
+      "sahip_kullanici": "root",
+      "sahip_grup": "root",
+      "mount_ayri_bolum": true,
+      "mount_secenekleri": ["nodev", "nosuid"],
+      "guvenlik_onemi": "Log taşkınları (Log Injection / Disk Exhaustion) ile kök dizinin dolmasını engellemek için ayrı bölüme bağlanmalıdır."
+    },
+    {
+      "dizin_adi": "/home",
+      "amac": "Kullanıcıların kişisel ev dizinleri, belgeleri ve kabuk yapılandırmaları (~/.ssh, ~/.bashrc)",
+      "izin_oktal": "0755",
+      "sahip_kullanici": "root",
+      "sahip_grup": "root",
+      "mount_ayri_bolum": true,
+      "mount_secenekleri": ["nodev", "nosuid"],
+      "guvenlik_onemi": "Kullanıcıların ev dizinlerinde SUID ikilileri oluşturup yetki yükseltmesini engellemek için nosuid zorunludur."
+    },
+    {
+      "dizin_adi": "/tmp",
+      "amac": "Tüm kullanıcıların ve süreçlerin geçici dosya yazabildiği ortak tampon alanı",
+      "izin_oktal": "1777",
+      "sahip_kullanici": "root",
+      "sahip_grup": "root",
+      "sticky_bit_etkin": true,
+      "mount_ayri_bolum": true,
+      "mount_secenekleri": ["nodev", "nosuid", "noexec"],
+      "guvenlik_onemi": "Sticky bit (+t / 1000) sayesinde sadece dosya sahibi kendi dosyasını silebilir; noexec ile zararlı betik yürütmesi engellenir."
+    },
+    {
+      "dizin_adi": "/dev",
+      "amac": "Donanım ve sanal aygıt özel düğümleri (/dev/sda disk, /dev/urandom rastgele sayı, /dev/null)",
+      "izin_oktal": "0755",
+      "sahip_kullanici": "root",
+      "sahip_grup": "root",
+      "mount_tipi": "devtmpfs",
+      "mount_secenekleri": ["nosuid", "noexec"],
+      "guvenlik_onemi": "Fiziksel depolamaya doğrudan ham blok erişimi riskini taşır; standart kullanıcılara yazma/okuma kapalı olmalıdır."
+    },
+    {
+      "dizin_adi": "/proc",
+      "amac": "Çekirdek durumunu, donanım ayarlarını ve çalışan süreç belleklerini sunan sözde dosya sistemi (procfs)",
+      "izin_oktal": "0555",
+      "sahip_kullanici": "root",
+      "sahip_grup": "root",
+      "mount_tipi": "proc",
+      "mount_secenekleri": ["nosuid", "nodev", "noexec", "hidepid=2"],
+      "guvenlik_onemi": "hidepid=2 seçeneği ile kullanıcıların diğer kullanıcıların süreçlerini ve komut satırı parolalarını görmesi engellenir."
+    }
+  ],
+  "zafiyet_test_senaryolari": [
+    {
+      "senaryo_id": "VULN-FHS-001",
+      "dizin_adi": "/tmp",
+      "mevcut_izin_oktal": "0777",
+      "beklenen_izin_oktal": "1777",
+      "zafiyet": "Sticky Bit Eksik (Missing Sticky Bit)",
+      "risk_seviyesi": "YUKSEK",
+      "aciklama": "Standart kullanıcılar diğer kullanıcıların geçici dosyalarını silebilir veya sembolik link (Symlink Attack) oluşturabilir."
+    },
+    {
+      "senaryo_id": "VULN-FHS-002",
+      "dosya_adi": "/etc/shadow",
+      "mevcut_izin_oktal": "0644",
+      "beklenen_izin_oktal": "0640",
+      "zafiyet": "Herkese Açık Parola Karmaları (World-Readable Shadow File)",
+      "risk_seviyesi": "KRITIK",
+      "aciklama": "Tüm kullanıcılar parola özetlerini okuyabilir ve John the Ripper / Hashcat ile çevrimdışı kırabilir (CWE-732)."
+    },
+    {
+      "senaryo_id": "VULN-FHS-003",
+      "dizin_adi": "/tmp",
+      "mount_secenekleri": ["rw", "relatime"],
+      "eksik_mount_secenekleri": ["noexec", "nosuid", "nodev"],
+      "zafiyet": "Korumasız Geçici Alan Mount Ayarı (Unrestricted Mount Options)",
+      "risk_seviyesi": "YUKSEK",
+      "aciklama": "/tmp üzerinde noexec olmadığı için saldırganlar derlenmiş ELF zararlılarını burada çalıştırabilir."
+    }
+  ]
+}

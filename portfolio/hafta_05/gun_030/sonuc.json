@@ -1,0 +1,52 @@
+{
+  "gun": 30,
+  "tarih": "2026-10-27",
+  "baslik": "Linux journalctl ve günlük dizinleri",
+  "asama": "Aşama 02 — Sistem ve Ağ Güvenliği Temelleri",
+  "hafta": 5,
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "puan_detay": {
+    "kriter_1": 20,
+    "kriter_2": 40,
+    "kriter_3": 25,
+    "kriter_4": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "kanitlar": {
+    "gercek": [
+      "portfolio/hafta_05/gun_030/kanit/gercek/test_sonuclari.txt",
+      "portfolio/hafta_05/gun_030/kanit/gercek/komut_ve_cikis.txt",
+      "portfolio/hafta_05/gun_030/kanit/gercek/journal_filtreleme_ve_zaman_kaydi.txt",
+      "portfolio/hafta_05/gun_030/kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "portfolio/hafta_05/gun_030/kanit/temsili/linux_journald_ve_log_mimarisi.txt"
+    ]
+  },
+  "kod_dosyalari": [
+    "portfolio/hafta_05/gun_030/uygulama/linux_journalctl_log_auditor.py",
+    "portfolio/hafta_05/gun_030/tests/test_linux_journalctl_log_auditor.py"
+  ],
+  "dokumanlar": [
+    "portfolio/hafta_05/gun_030/ders.md",
+    "portfolio/hafta_05/gun_030/soru_cevap.md",
+    "portfolio/hafta_05/gun_030/rapor.md",
+    "portfolio/hafta_05/gun_030/README.md"
+  ],
+  "kazanimlar": [
+    "systemd-journald mimarisi ve /var/log günlük dizini yapısı derinlemesine incelendi.",
+    "G030-SC1 gereğince kalıcı (persistent) ve geçici (volatile) depolama farkı ve saat dilimi korelasyonu kodlandı.",
+    "G030-SC2 gereğince sistem günlüğünde birim (sshd) ve öncelik filtrelemesi yapılıp UTC/Yerel saatler not edildi.",
+    "Her journal girdisi için 64 karakterlik SHA-256 kriptografik bütünlük mühürlemesi uygulandı.",
+    "Negatif kontrolde 4 bozuk kayıt ve geçici bellek kullanımı (VOLATILE_STORAGE_RISK) %100 başarıyla reddedildi.",
+    "14 birim test %100 başarıyla tamamlandı, 100/100 tam puan tescillendi."
+  ],
+  "ozel_not": "G030-SC1, SC2 ve SC3 isterleri doğrulanmış journal kayıtları, saat dilimi korelasyonu ve negatif kontrol ile başarıyla tamamlandı."
+}

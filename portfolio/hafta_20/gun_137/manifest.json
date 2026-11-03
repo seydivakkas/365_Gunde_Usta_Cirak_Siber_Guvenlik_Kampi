@@ -1,0 +1,88 @@
+{
+  "gun": 137,
+  "hafta": 20,
+  "konu": "SSH anahtar güvenliği",
+  "toplam_dosya": 21,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "d06f54205a4861e679adc861ae4c8b45423788c28000f979c821e926d172dadc",
+      "size": 5289
+    },
+    "ders.md": {
+      "sha256": "466586cc3c54167df9fca3c6bdf59ab9e502e5ecca0807b308f511df69de9880",
+      "size": 9311
+    },
+    "kanit_uretici.py": {
+      "sha256": "1056646f2fd292dec865936ca39974d4eb8d67b8f31dcdc16d09e3110c55d7fa",
+      "size": 11590
+    },
+    "rapor.md": {
+      "sha256": "77452295236ba26b4dade69cead8f21ca67be53d2a9ef019546114a456738eda",
+      "size": 6488
+    },
+    "sonuc.json": {
+      "sha256": "cfc1cf90a86ac7b576348fface1463abfb779561fc1ab2a500a2226038e5d7f1",
+      "size": 1243
+    },
+    "soru_cevap.md": {
+      "sha256": "f03c804cfe77cf6aeb8de083693a94b2cb884e0b5629e421a2b81ef1db5972de",
+      "size": 13274
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "sha256": "9733f41c098182d6839567c334f7ae5d3720e4b22541908413226efdbd812696",
+      "size": 2862
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "sha256": "6860ae66a4ffe640dd2370cd2c69294d3aa1769eb4253fce90783c98359f5e0d",
+      "size": 3992
+    },
+    "kanit\\gercek\\ornek_guvenli_sshd_config": {
+      "sha256": "02325b706a7427f4f324914d20e2b50a888547fec3ff77847e271fa2aba0cd12",
+      "size": 1229
+    },
+    "kanit\\gercek\\otomatik_sikilastirma.sh": {
+      "sha256": "3b4432fa7417896842128789880157cb8c2c5f6610f3adf5ed0b126c7032a9de",
+      "size": 2456
+    },
+    "kanit\\gercek\\ssh_guvenlik_analiz_raporu.json": {
+      "sha256": "01c25a3a5d82813b3885599c97ccadf7ff6ebbb44019179ec47d8dc6b10b0494",
+      "size": 5915
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "sha256": "83034a842a04e3008e3dc68e8887353cb930d1be0cbca87b0ac6738332e9c740",
+      "size": 3934
+    },
+    "kanit\\temsili\\ssh_mimarisi.txt": {
+      "sha256": "c7bb36e330f13f33e607e8d966080e9de967224ae577279393419d1833a51d9a",
+      "size": 3345
+    },
+    "ornek_veri\\invalid_ssh_scenarios.json": {
+      "sha256": "f4ef7410b3d3854604296cbd4570500aff8b8921f96016d8e96eafa83f8a523b",
+      "size": 4979
+    },
+    "ornek_veri\\ssh_inventory_spec.json": {
+      "sha256": "2655833145666bfc4107bf7f25d38ad645727dd340a454efce5f1642cb499ce4",
+      "size": 2156
+    },
+    "tests\\__init__.py": {
+      "sha256": "fc4c5de4d5f45dd64d709a0bbbbd02f340f0c146a9694b275ed2f77d13ab3ddb",
+      "size": 791
+    },
+    "tests\\test_linux_ssh_security.py": {
+      "sha256": "75d7c4dc48137daec9475853c73e2d026cff10f6d7172f2be3944c33f82e5570",
+      "size": 11349
+    },
+    "uygulama\\__init__.py": {
+      "sha256": "b454e476a55b4798ac194c72d393ad8fae113a87892f38d2292f35c70f02a0af",
+      "size": 881
+    },
+    "uygulama\\linux_ssh_engine.py": {
+      "sha256": "09bfdc53250042b7b5599c44543e4384e6d970d603d82397e289e70db3822ace",
+      "size": 28764
+    },
+    "uygulama\\ssh_security_cli.py": {
+      "sha256": "6dae8108347966f9ebe82e5e15ea1710c514d0dc473f35e5eb441d6c06f530a5",
+      "size": 6790
+    }
+  }
+}

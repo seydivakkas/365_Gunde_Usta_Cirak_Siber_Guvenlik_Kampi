@@ -1,0 +1,33 @@
+=== GÜN 106 NEGATİF KONTROL VE ZAFİYET ENGELLEME RAPORU ===
+Tarih/Saat: 2026-11-02 02:40:54
+Hedef Standart: FIPS 186-4 & PKCS#1 v2.2 (RFC 8017)
+--------------------------------------------------------------------------------
+[ENGELENDİ (PASS)] NEG_01_INSUFFICIENT_KEY_LENGTH (CWE-326): 512 bit ve altı güvensiz anahtar boyutu tespiti
+    Fırlatılan Hata: WeakKeySizeError | Beklenen: WeakKeySizeError
+
+[ENGELENDİ (PASS)] NEG_02_CORRUPTED_CIPHERTEXT (CWE-780): Şifreli metin baytlarında tahrifat yapıldığında OAEP doğrulamasının başarısız olması
+    Fırlatılan Hata: OAEPPaddingError | Beklenen: OAEPPaddingError
+
+[ENGELENDİ (PASS)] NEG_03_INVALID_PUBLIC_EXPONENT (CWE-327): Çift sayı veya phi ile aralarında asal olmayan geçersiz genel üs (e)
+    Fırlatılan Hata: InvalidExponentError | Beklenen: InvalidExponentError
+
+[ENGELENDİ (PASS)] NEG_04_MESSAGE_EXCEEDS_MODULUS (CWE-780): Modül kapasitesini veya OAEP blok sınırını aşan devasa mesaj
+    Fırlatılan Hata: MessageTooLargeError | Beklenen: MessageTooLargeError
+
+[ENGELENDİ (PASS)] NEG_05_NON_PRIME_INPUT (CWE-327): Asal olmayan bileşik sayının p veya q olarak sunulması
+    Fırlatılan Hata: CompositeNumberError | Beklenen: CompositeNumberError
+
+[ENGELENDİ (PASS)] NEG_06_MALFORMED_KEY_JSON (CWE-20): Eksik alan veya bozuk JSON formatında sunulan RSA anahtarı
+    Fırlatılan Hata: MalformedKeyError | Beklenen: MalformedKeyError
+
+[ENGELENDİ (PASS)] NEG_07_TEXTBOOK_RSA_MALLEABILITY (CWE-327): Düz (Textbook) RSA şifrelemesinde çarpımsal homomorfik manipülasyon (Malleability) tespiti
+    Fırlatılan Hata: TextbookRSAMalleabilityDetected | Beklenen: TextbookRSAMalleabilityDetected
+
+[ENGELENDİ (PASS)] NEG_08_INVALID_PADDING_LABEL (CWE-780): Şifreleme sırasında kullanılan etiket (label) ile çözme sırasındaki etiketin uyuşmaması
+    Fırlatılan Hata: OAEPPaddingError | Beklenen: OAEPPaddingError
+
+[ENGELENDİ (PASS)] NEG_09_COMMON_MODULUS_EXPOSURE (CWE-327): Aynı n modülünün farklı üslerle paylaşılması durumunda mesajın özel anahtarsız kurtarılması
+    Fırlatılan Hata: CommonModulusExploitVulnerability | Beklenen: CommonModulusExploitVulnerability
+
+--------------------------------------------------------------------------------
+SONUÇ: 9/9 Negatif Senaryo Başarıyla Engellendi.

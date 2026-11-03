@@ -1,0 +1,23 @@
+{
+  "dosyalar": {
+    "README.md": "d60cf21350a1d4ac48c713c1b8bed3aba10fe078b3a5680e5d27605f876f4a98",
+    "ders.md": "6c37f141e55c07616d5e6dbe36f9e6ddbffafb10060875f98a679390c1aae8fe",
+    "kanit_uretici.py": "f84961269e7eba6c84832bbcfc7d441bbc1d3580c3f85d3736c795100db863cf",
+    "rapor.md": "0f1b1c57ca203d92399fb33710f9f22028834bc37e5a9199bc4708d9d2315ba2",
+    "sonuc.json": "0654f5aa75d285a45ef31328ef05aedce00480c52fa63a158149a09891974ab1",
+    "soru_cevap.md": "021428248f374c00cecabea3daad99b4c040a1ab6ceede3889913517e40bde58",
+    "kanit/gercek/komut_ve_cikis.txt": "cd96ee468048225dee31f8d5b7ac25036b3f47bd29b52f1efae154fffe315811",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": "0140834bd3ec17ca0108e927c21dbaa979fac445894eb74b3fecd4d9cb71984f",
+    "kanit/gercek/parametre_guvenlik_denetim_raporu.txt": "b2ff9aa23b470e89d117fd070d04ecfb595d2763c1d8b3f9d7a4a074b0ce5f5b",
+    "kanit/gercek/test_sonuclari.txt": "ddfa58dd49d073432a438a61e65b2e843e9dba04ae182964d9be4356d6e447da",
+    "kanit/temsili/powershell_parametre_guvenlik_mimarisi.txt": "328afb73e1976d42a8dbf0fe15f8b9de711fc1d069d9b9b4184c238b72a36be3",
+    "ornek_veri/invalid_powershell_param_inputs.json": "fd7b47a4214567110aa9409acd3e617abd2e3dfdb53ff2cf34a720bc8c3b185e",
+    "ornek_veri/sample_secure_script.ps1": "ba64ca1b6f17859ac6aaa0a67d8669f826dcb6021d9932c6a67ca6921263619e",
+    "ornek_veri/sample_vulnerable_script.ps1": "a16613dd0b6709430604b426940678de7026cb8fc43b787bafc3a050d3f92344",
+    "tests/__init__.py": "6cf52c661ec4398a55cb2604da45b798ea8c35ada0945b9ce10cd8ed33b114db",
+    "tests/test_powershell_parameter_security_auditor.py": "12a3c7a4eddd0a8ade4a65f46d568ac846bb3959935451501f54fcb6ecd15d04",
+    "uygulama/SecureParameterModule.ps1": "39a89b50cb18178e36462bad5742bb9e3f4645cc32a092201535105b2cc300d5",
+    "uygulama/__init__.py": "4c462fcd8edee4e310342090c3661f00a8e45ca96357bc096277d6885b3f7a8c",
+    "uygulama/powershell_parameter_security_auditor.py": "e1d919483496a2c9c6a35c23ac83c0ce38f2826a6f2368d9c59878d8bd9c4939"
+  }
+}

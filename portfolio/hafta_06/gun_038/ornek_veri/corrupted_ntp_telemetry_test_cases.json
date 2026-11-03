@@ -1,0 +1,52 @@
+{
+  "test_cases": [
+    {
+      "test_name": "corrupted_negative_stratum",
+      "expected_error": "ValidationError",
+      "payload": {
+        "systems": [
+          {
+            "hostname": "bad-stratum-host",
+            "is_synchronized": true,
+            "stratum": -2,
+            "offset_ms": 10.0,
+            "jitter_ms": 1.0,
+            "upstream_servers": ["pool.ntp.org"]
+          }
+        ]
+      }
+    },
+    {
+      "test_name": "corrupted_non_numeric_offset",
+      "expected_error": "ValidationError",
+      "payload": {
+        "systems": [
+          {
+            "hostname": "bad-offset-host",
+            "is_synchronized": true,
+            "stratum": 2,
+            "offset_ms": "bes_yuz_milisaniye",
+            "jitter_ms": 1.0,
+            "upstream_servers": ["pool.ntp.org"]
+          }
+        ]
+      }
+    },
+    {
+      "test_name": "corrupted_missing_systems_key",
+      "expected_error": "ValidationError",
+      "payload": {
+        "audit_metadata": {"org": "No Systems Corp"}
+      }
+    },
+    {
+      "test_name": "corrupted_system_entry_non_dict",
+      "expected_error": "ValidationError",
+      "payload": {
+        "systems": [
+          "invalid_string_entry_instead_of_object"
+        ]
+      }
+    }
+  ]
+}

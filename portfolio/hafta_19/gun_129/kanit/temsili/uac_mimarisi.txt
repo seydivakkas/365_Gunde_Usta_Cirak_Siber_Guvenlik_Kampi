@@ -1,0 +1,44 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+WINDOWS KULLANICI HESABI DENETİMİ (UAC) VE YEREL HESAP GÜVENLİK MİMARİSİ
+========================================================================================
+
+                             [ KULLANICI OTURUMU AÇILIŞI ]
+                                           │
+                                           ▼
+             ┌─────────────────────────────────────────────────────────────┐
+             │       1. TOKEN AYRIŞTIRMA (SPLIT-TOKEN MİMARİSİ)            │
+             │ - Standart Kullanıcı Token'ı (Restricted Token - Medium IL) │
+             │ - Yönetici Tam Yetki Token'ı (Full Token - High IL)         │
+             │ * FilterAdministratorToken=1 (Yönetici Onay Modu Aktif)     │
+             └─────────────────────────────┬───────────────────────────────┘
+                                           │
+                        Yükseltme Gerektiren İşlem (UAC)
+                                           │
+                                           ▼
+             ┌─────────────────────────────────────────────────────────────┐
+             │       2. GÜVENLİ MASAÜSTÜ (SECURE DESKTOP İZOLASYONU)       │
+             │ - Winlogon Oturumu (Desktop switch)                         │
+             │ - Yazılımsal Tuş Gönderimi Engeli (SendKeys / Clickjacking) │
+             │ * PromptOnSecureDesktop=1                                   │
+             └─────────────────────────────┬───────────────────────────────┘
+                                           │
+                                           ▼
+             ┌─────────────────────────────────────────────────────────────┐
+             │       3. ONAY DAVRANIŞI POLİTİKASI (CONSENT POLICY)         │
+             │ - Yöneticiler: ConsentPromptBehaviorAdmin=2 (Güvenli Onay)  │
+             │ - Standart Kullanıcılar: ConsentPromptBehaviorUser=0 (Red)  │
+             └─────────────────────────────┬───────────────────────────────┘
+                                           │
+                                           ▼
+             ┌─────────────────────────────────────────────────────────────┐
+             │       4. YEREL HESAP VE GRUP SERTLEŞTİRMESİ                 │
+             │ - Guest Hesabı: Devre Dışı (Disabled)                       │
+             │ - Administrator (SID 500): Yeniden Adlandırılmış & Kilitli  │
+             │ - Windows LAPS: Her Uç Noktada Benzersiz Parola             │
+             │ - Administrators Grubu: Sadece Yetkili Yönetici Hesapları   │
+             └─────────────────────────────────────────────────────────────┘
+
+========================================================================================
+NOT: Bu diyagram konsept ve mimari akışı görselleştiren temsili bir şemadır.
+========================================================================================

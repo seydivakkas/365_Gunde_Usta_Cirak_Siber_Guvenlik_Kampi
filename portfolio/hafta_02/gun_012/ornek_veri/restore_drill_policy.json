@@ -1,0 +1,36 @@
+{
+  "versiyon": "2026.1",
+  "politika_adi": "Siber Guvenlik Laboratuvari Geri Donus Tatbikati ve Yedekleme Standarti",
+  "lisans": "OZEL LISANS - TUM HAKLARI SAKLIDIR. Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas)",
+  "temel_parametreler": {
+    "maksimum_snapshot_omru_saat": 72.0,
+    "maksimum_snapshot_zincir_derinligi": 3,
+    "zorunlu_yedek_kurali": "3-2-1-1-0",
+    "kriptografik_butunluk_algoritmasi": "SHA-256",
+    "degismezlik_kilidi_worm_gun": 30,
+    "rpo_kritik_saat": 4,
+    "rto_kritik_dakika": 30
+  },
+  "tatbikat_senaryolari": [
+    {
+      "senaryo_id": "DRILL-01",
+      "senaryo_adi": "Ransomware Sonrasi Hizli Rollback ve Izole Restore",
+      "hedef": "Zararlı bulaşan laboratuvar VM'inin snapshot ile anında temiz duruma çekilmesi ve değişmez yedekten adli inceleme kopyasının çıkarılması",
+      "basari_kriterleri": [
+        "Snapshot delta diskinin başarıyla silinip ana diskin temiz duruma dönmesi",
+        "WORM değişmezlik kilidinin ihlal edilmediğinin teyit edilmesi",
+        "SHA-256 özet değerinin ana altın imajla birebir eşleşmesi",
+        "Geri dönüş süresinin 15 dakikanın altında tamamlanması"
+      ]
+    },
+    {
+      "senaryo_id": "DRILL-02",
+      "senaryo_adi": "Snapshot Disk Sismesi ve I-O Kilitlenme Onleme",
+      "hedef": "72 saati aşmış ve 50 GB'ı geçmiş delta disklerin tespit edilip ana diske birleştirilmesi (merge/commit) veya temizlenmesi",
+      "basari_kriterleri": [
+        "Hypervisor veri deposu doluluk oranının %80 altında tutulması",
+        "Zincirdeki tüm snapshot'ların konsolide edilmesi"
+      ]
+    }
+  ]
+}

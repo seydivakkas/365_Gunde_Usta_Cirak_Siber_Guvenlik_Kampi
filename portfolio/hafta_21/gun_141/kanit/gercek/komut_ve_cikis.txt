@@ -1,0 +1,32 @@
+=== GÜN 141 / YAMA YÖNETİMİ VE CVE: CLI KOMUT YÜRÜTME GÜNLÜĞÜ ===
+Tarih/Saat: 2026-11-02T15:20:56.313146
+
+$ python uygulama/cve_patch_cli.py scan ornek_veri/package_inventory_cve_spec.json
+==============================================================================
+ KURUMSAL YAMA YÖNETİMİ VE CVE ANALİZ RAPORU — srv-prod-app01.corp.internal
+==============================================================================
+İşletim Sistemi       : Ubuntu 22.04.4 LTS (Jammy Jellyfish)
+Yama Hijyen Puanı     : 50.0 / 100
+Uyumluluk Durumu      : AT_RISK
+Toplam Zafiyet (CVE)  : 3
+Acil Müdahale (KEV)   : 2
+SLA Süresi Aşılmış    : 0
+Otomatik Güncelleme   : Açık
+Reboot Gerekli mi?    : Hayır
+------------------------------------------------------------------------------
+CVE TRİYAJ VE SLA TABLOSU:
+CVE ID             | ŞİDDET    | ACİLİYET   | SLA (GÜN)  | GEÇEN  | DURUM     
+------------------------------------------------------------------------------
+CVE-2024-6387      | HIGH      | EMERGENCY  | 3          | 1      | OK        
+CVE-2023-4863      | HIGH      | EMERGENCY  | 3          | 1      | OK        
+CVE-2024-21626     | HIGH      | HIGH       | 14         | 8      | OK        
+------------------------------------------------------------------------------
+
+$ python uygulama/cve_patch_cli.py plan ornek_veri/package_inventory_cve_spec.json --output kanit/gercek/otomatik_yama_plani.sh
+[+] Yama uygulama planı oluşturuldu: kanit/gercek/otomatik_yama_plani.sh (1840 bayt)
+
+$ python uygulama/cve_patch_cli.py rollback-plan ornek_veri/package_inventory_cve_spec.json --output kanit/gercek/acil_geri_alma.sh
+[+] Acil durum geri alma planı oluşturuldu: kanit/gercek/acil_geri_alma.sh (1120 bayt)
+
+$ python uygulama/cve_patch_cli.py verify ornek_veri/package_inventory_cve_spec.json
+[FAIL] Sistem güvensiz veya SLA ihlali var! Hijyen Puanı: 50.0/100 (Durum: AT_RISK)

@@ -1,0 +1,49 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+MICROSOFT DEFENDER VE GÜVENLİK MERKEZİ CIS SERTLEŞTİRME VE SAVUNMA MİMARİSİ
+========================================================================================
+
+                                 [ TEHDİT VE SALDIRI GİRİŞİ ]
+                                              │
+                                              ▼
+               ┌─────────────────────────────────────────────────────────────┐
+               │         1. AĞ VE İNDİRME GÜVENLİĞİ KATMANI                  │
+               │  - SmartScreen & IOAV (İnternet Ekleri Taraması - T1566)   │
+               │  - Ağ Koruması (Network Protection / C2 Filtreleme - T1071) │
+               └──────────────────────────────┬──────────────────────────────┘
+                                              │
+                                              ▼
+               ┌─────────────────────────────────────────────────────────────┐
+               │         2. SALDIRI YÜZEYİ AZALTMA (ASR) KURALLARI           │
+               │  - Office Alt Süreç Engelleme (D4F940AB...)                 │
+               │  - LSASS Bellek Çalma Engelleme (9E6C4E1F... - T1003.001)   │
+               │  - Obfuscated Script Engelleme (5BEB8E28...)                │
+               │  - PSExec / WMI Süreç Engelleme (3B576C88...)               │
+               └──────────────────────────────┬──────────────────────────────┘
+                                              │
+                                              ▼
+               ┌─────────────────────────────────────────────────────────────┐
+               │         3. ÇEKİRDEK ANTİVİRÜS & DAVRANIŞSAL MOTOR           │
+               │  - Gerçek Zamanlı İzleme (Real-Time Protection - RTP)       │
+               │  - Davranışsal Analiz Motoru (Behavior Monitoring)          │
+               │  - Fidye Yazılımı Koruması (Controlled Folder Access - CFA) │
+               │  - Potansiyel İstenmeyen Uygulama Koruması (PUA Protection) │
+               └──────────────────────────────┬──────────────────────────────┘
+                                              │
+                                              ▼
+               ┌─────────────────────────────────────────────────────────────┐
+               │         4. BULUT İSTİHBARATI & DERİN ÖRNEK ANALİZİ          │
+               │  - Microsoft MAPS CloudBlockLevel: HighPlus                 │
+               │  - Sıfır-Gün Tehditlerine Karşı Anlık Bulut Bloklaması      │
+               └──────────────────────────────┬──────────────────────────────┘
+                                              │
+                                              ▼
+               ┌─────────────────────────────────────────────────────────────┐
+               │         5. KURCALAMA KORUMASI (TAMPER PROTECTION)           │
+               │  - Yerel Yönetici / Zararlı Yazılımın Defender'ı Kapatması  │
+               │    Kesin Olarak Engellenir (CWE-693 / MITRE T1562.001)      │
+               └─────────────────────────────────────────────────────────────┘
+
+========================================================================================
+NOT: Bu diyagram konsept ve mimari akışı görselleştiren temsili bir şemadır.
+========================================================================================

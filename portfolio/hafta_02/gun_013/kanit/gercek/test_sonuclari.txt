@@ -1,0 +1,42 @@
+================================================================================
+BİRİM TEST SONUÇLARI KANIT DOSYASI — GÜN 013
+Komut: python -m unittest portfolio/hafta_02/gun_013/tests/test_security_source_validator.py -v
+Çıkış Kodu: 0
+Tarih: 2026-10-27
+Lisans: ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+
+
+test_01_resmi_birincil_kaynak_yuksek_puan (portfolio.hafta_02.gun_013.tests.test_security_source_validator.TestSecuritySourceValidator.test_01_resmi_birincil_kaynak_yuksek_puan)
+POZ�T�F TEST: Resm� NVD ve �retici MSRC b�lteni en az 90 CRAAP puan� almal� ve GUVENILIR_ONAYLI olmal�d�r. ... ok
+test_02_cis_benchmark_kurumsal_standart_onay (portfolio.hafta_02.gun_013.tests.test_security_source_validator.TestSecuritySourceValidator.test_02_cis_benchmark_kurumsal_standart_onay)
+POZ�T�F TEST: CIS Benchmark belgesi en az 90 puan almal� ve tam otorite onay�na sahip olmal�d�r. ... ok
+test_03_capraz_kaynak_karsilastirma_vaka_01_onay (portfolio.hafta_02.gun_013.tests.test_security_source_validator.TestSecuritySourceValidator.test_03_capraz_kaynak_karsilastirma_vaka_01_onay)
+POZ�T�F TEST: VAKA-01 i�in �apraz kar��la�t�rmada NVD onaylanmal�, sahte GitHub PoC reddedilmelidir. ... ok
+test_04_capraz_kaynak_karsilastirma_vaka_02_onay (portfolio.hafta_02.gun_013.tests.test_security_source_validator.TestSecuritySourceValidator.test_04_capraz_kaynak_karsilastirma_vaka_02_onay)
+POZ�T�F TEST: VAKA-02 i�in �apraz kar��la�t�rmada CIS Benchmark onaylanmal�, forum yaz�s� reddedilmelidir. ... ok
+test_05_zehirli_poc_truva_ati_tespiti (portfolio.hafta_02.gun_013.tests.test_security_source_validator.TestSecuritySourceValidator.test_05_zehirli_poc_truva_ati_tespiti)
+NEGAT�F TEST: Anonim GitHub deposundaki zararl� y�k (curl | sh) FLAG-04 ile FELAKET olarak yakalanmal�d�r. ... ok
+test_06_yikici_guvenlik_tavsiyesi_chmod777_tespiti (portfolio.hafta_02.gun_013.tests.test_security_source_validator.TestSecuritySourceValidator.test_06_yikici_guvenlik_tavsiyesi_chmod777_tespiti)
+NEGAT�F TEST: Eski forumdaki 'chmod 777' tavsiyesi FLAG-05 ile FELAKET seviyesinde yakalanmal�d�r. ... ok
+test_07_eski_kaynak_tarih_asimi_tespiti (portfolio.hafta_02.gun_013.tests.test_security_source_validator.TestSecuritySourceValidator.test_07_eski_kaynak_tarih_asimi_tespiti)
+NEGAT�F TEST: 5 y�ldan eski (2011 tarihli) i�erikte FLAG-01-ESKI-KAYNAK bayra�� a��lmal�d�r. ... ok
+test_08_kriptografik_butunluk_eksikligi_tespiti (portfolio.hafta_02.gun_013.tests.test_security_source_validator.TestSecuritySourceValidator.test_08_kriptografik_butunluk_eksikligi_tespiti)
+NEGAT�F TEST: GPG veya SHA-256 do�rulamas� olmayan kaynakta FLAG-03 bayra�� tetiklenmelidir. ... ok
+test_09_otoritesiz_anonim_kaynak_tespiti (portfolio.hafta_02.gun_013.tests.test_security_source_validator.TestSecuritySourceValidator.test_09_otoritesiz_anonim_kaynak_tespiti)
+NEGAT�F TEST: Anonim profilli kaynakta FLAG-02-OTORITESIZ-KAYNAK bayra�� yakalanmal�d�r. ... ok
+test_10_tek_kaynak_ile_capraz_teyit_hatasi (portfolio.hafta_02.gun_013.tests.test_security_source_validator.TestSecuritySourceValidator.test_10_tek_kaynak_ile_capraz_teyit_hatasi)
+HATA Y�NET�M�: Tek bir kayna�a sahip vaka ile �apraz teyit denenirse IncompatibleTriangulationError verilmelidir. ... ok
+test_11_tanimsiz_vaka_hata_yonetimi (portfolio.hafta_02.gun_013.tests.test_security_source_validator.TestSecuritySourceValidator.test_11_tanimsiz_vaka_hata_yonetimi)
+HATA Y�NET�M�: Tan�ms�z vaka kimli�i sorguland���nda SourceValidatorError f�rlat�lmal�d�r. ... ok
+test_12_tarihi_belirsiz_kaynak_puan_kirilmasi (portfolio.hafta_02.gun_013.tests.test_security_source_validator.TestSecuritySourceValidator.test_12_tarihi_belirsiz_kaynak_puan_kirilmasi)
+HATA Y�NET�M�: Yay�n tarihi olmayan sentetik kaynakta FLAG-01-TARIH-YOK cezas� kesilmelidir. ... ok
+test_13_tum_vakalar_icin_karsilastirma_dongusu (portfolio.hafta_02.gun_013.tests.test_security_source_validator.TestSecuritySourceValidator.test_13_tum_vakalar_icin_karsilastirma_dongusu)
+��LEVSELL�K: Veri taban�ndaki t�m vakalar ba�ar�yla i�lenmeli ve liste d�nmelidir. ... ok
+test_14_olmayan_veri_tabani_dosya_hatasi (portfolio.hafta_02.gun_013.tests.test_security_source_validator.TestSecuritySourceValidator.test_14_olmayan_veri_tabani_dosya_hatasi)
+��LEVSELL�K & HATA Y�NET�M�: Olmayan dosya yolunda FileNotFoundError f�rlat�lmal�d�r. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.004s
+
+OK

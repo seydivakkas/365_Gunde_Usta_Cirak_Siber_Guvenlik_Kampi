@@ -1,0 +1,27 @@
+{
+  "versiyon": "2026.1",
+  "standart_adi": "Asama 1 Kalite ve Guvenlik Temelleri Kabul Rubrigi (NIST CSF 2.0 & RoE)",
+  "lisans": "OZEL LISANS - TUM HAKLARI SAKLIDIR. Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas)",
+  "agirliklar": {
+    "etik_roe_ve_kapsam": 20,
+    "varlik_ve_veri_siniflandirma": 15,
+    "nist_csf_alti_islevi": 40,
+    "sanallastirma_ve_ag_izolasyonu": 15,
+    "kaynak_dogrulama_ve_craap": 10
+  },
+  "nist_csf_islev_puanlari": {
+    "govern_yonetisim": 6.66,
+    "identify_tanimlama": 6.66,
+    "protect_koruma": 6.66,
+    "detect_tespit": 6.66,
+    "respond_mudahale": 6.66,
+    "recover_kurtarma": 6.70
+  },
+  "kabul_esigi": 80.0,
+  "otomatik_durdurma_ve_red_kosullari": [
+    "Yazılı etik izin (RoE) olmaksızın üretim sistemlerine veya dış IP aralıklarına temas edilmesi (Etik İhlal = STOP)",
+    "Kurtarma (Recover) ve geri dönüş (Rollback) planı bulunmayan laboratuvar kurulumları (Veri Kaybı Riski)",
+    "Varlık envanteri tutulmadan yalnızca çevre güvenlik duvarına güvenilmesi ('Bir önlemi tek başına eksiksiz savunma sanma' yanılgısı)",
+    "Zehirli/doğrulanmamış kaynakların (CRAAP < 50) kurumsal sisteme uygulanması"
+  ]
+}

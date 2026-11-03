@@ -1,0 +1,59 @@
+=====================================================================================
+G▄N 36: BELLEK, SANAL BELLEK VE SWAP G▄VENL¦K DENET¦M RAPORU
+=====================================================================================
+Hedef Makine       : PROD-APP-SRV01
+Fiziksel RAM       : 14120 MB / 16384 MB (%86.2 Dolu)
+Takas Alan² (Swap) : 3200 MB / 4096 MB (%78.1 Dolu)
+Swap Ìifrelenmi■ mi: HAYIR (R¦SK!)
+ASLR Korumas²      : AÃIK
+DEP / NX Korumas²  : AÃIK
+-------------------------------------------------------------------------------------
+BELLEK R¦SK PUANI  : 100 / 100
+G▄VENL¦K DURUÌU    : CRITICAL_MEMORY_EXPOSURE
+Toplam Risk Bulgusu: 7
+Ciddiyet Da­²l²m²  : CRITICAL=2 | HIGH=2 | MEDIUM=2
+=====================================================================================
+AYRINTILI G▄VENL¦K BULGULARI VE ¦Y¦LEÌT¦RME KILAVUZU:
+
+[01] [HIGH] [SWAP_SECURITY] Swap Space / Pagefile
+     Zafiyet T³r³ : UNENCRYPTED_SWAP
+     MITRE Kodu   : T1005 (Data from Local System / Data Remanence)
+     A²klama     : Sistem takas alan² (4096 MB) ■ifrelenmemi■tir! RAM ³zerindeki sayfalar diske ta■²nd²­²nda ■ifresiz olarak kal²c² depoya yaz²l²r. Ãevrimd²■² disk analizi veya adli bellek incelemesiyle hassas veriler (parolalar, anahtarlar) okunabilir.
+     Aksiyon      : Linux'ta dm-crypt/cryptswap, Windows'ta ise BitLocker ve Pagefile ■ifrelemeyi devreye al²n²z.
+
+[02] [MEDIUM] [SWAP_SECURITY] ClearPageFileAtShutdown
+     Zafiyet T³r³ : PAGEFILE_NOT_SANITIZED
+     MITRE Kodu   : T1005 (Data Remanence)
+     A²klama     : ¦■letim sistemi kapat²l²rken sayfa dosyas²n² s²f²rlama (ClearPageFileAtShutdown) devre d²■²d²r. Makine kapal²yken diskten bellek kal²nt²lar² elde edilebilir.
+     Aksiyon      : Kay²t defterinde 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\ClearPageFileAtShutdown' de­erini 1 yap²n²z.
+
+[03] [MEDIUM] [SWAP_SECURITY] Swap Utilization
+     Zafiyet T³r³ : HIGH_SWAP_USAGE
+     MITRE Kodu   : T1499 (Endpoint Denial of Service)
+     A²klama     : Swap kullan²m oran² kritik seviyededir (3200/4096 MB - %78.1). Sistem bellek bask²s² alt²nda olup disk I/O kilitlenmelerine ve performans ÷k³■³ne (Thrashing) a²kt²r.
+     Aksiyon      : Fiziksel RAM kapasitesini art²r²n veya bellek s²z²nt²s² (memory leak) yapan s³releri izole ediniz.
+
+[04] [HIGH] [PROCESS_MEMORY] PID 3310 (crypto_wallet_daemon)
+     Zafiyet T³r³ : UNLOCKED_SENSITIVE_MEMORY
+     MITRE Kodu   : T1005 (Data from Local System)
+     A²klama     : Kriptografik ÷zel anahtar i■leyen 'crypto_wallet_daemon' s³reci bellek sayfalar²n² kilitlememi■tir (mlock / VirtualLock = False). Bu anahtarlar swap dosyas²na yaz²larak kal²c² diske s²zabilir.
+     Aksiyon      : Yaz²l²m kodunda mlock() veya VirtualLock() API'sini kullanarak hassas bellek sayfalar²n² swap d²■² b²rak²n²z.
+
+[05] [CRITICAL] [PROCESS_MEMORY] PID 6640 (mem_scraper.exe)
+     Zafiyet T³r³ : MEMORY_SCRAPING_ATTEMPT
+     MITRE Kodu   : T1003.001 (OS Credential Dumping: LSASS Memory)
+     A²klama     : Kritik sald²r² tespiti: S³re komut sat²r²nda LSASS bellek d÷k³m³ ve kimlik bilgisi alma kal²plar² saptand²! Komut: 'C:\Users\StandardUser\AppData\Local\Temp\mem_scraper.exe --dump-lsass --target-pid 850'.
+     Aksiyon      : S³reci derhal sonland²r²n, LSASS iin RunAsPPL ve Credential Guard korumas²n² devreye al²n²z.
+
+[06] [LOW] [PROCESS_MEMORY] PID 6640 (mem_scraper.exe)
+     Zafiyet T³r³ : HIGH_PAGE_FAULTS
+     MITRE Kodu   : T1057 (Process Discovery)
+     A²klama     : S³re ola­an d²■² say²da (98500) sayfa hatas² (Page Fault) ³retmektedir. Bu durum bellek tarama faaliyeti ya da bellek s²z²nt²s²na i■aret edebilir.
+     Aksiyon      : S³recin bellek eri■im modellerini profil ²kar²c² (profiler) aralarla analiz ediniz.
+
+[07] [CRITICAL] [DATA_REMANENCE] /var/swapfile
+     Zafiyet T³r³ : CREDENTIAL_REMANENCE_LEAK
+     MITRE Kodu   : T1552.001 (Unsecured Credentials: Credentials In Files)
+     A²klama     : Takas dosyas²nda 4 adet ■ifresiz hassas kimlik bilgisi (API anahtar², JWT Token, Veritaban² Parolas²) kal²nt²s² saptand²! Írnekler: AUTH_TOKEN=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.s3cr3t, PRIVATE_KEY_BEGIN=-----BEGIN RSA PRIVATE KEY-----...
+     Aksiyon      : Takas dosyas²n² g³venli ■ekilde s²f²rlay²n (shred/sfill), s²zan t³m anahtarlar² ve parolalar² derhal geersiz k²l²p d÷nd³r³n³z (rotate).
+=====================================================================================

@@ -1,0 +1,96 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+================================================================================
+G057 - HTTP/1.1 ISTEK-YANIT ANATOMISI, GUVENLIK BASLIKLARI VE SALDIRI MODELLERI
+(Temsili Kavramsal Mimari ve Protokol Akis Semasi)
+================================================================================
+
+1. RFC 7230 STANDART HTTP/1.1 MESAJ ANATOMISI (TEL FORMATI)
+================================================================================
+  [ ISTEMCI (Client) ]                                        [ SUNUCU (Server) ]
+          |                                                            |
+          |  ====== 1. HTTP ISTEK MESAJI (REQUEST) ================>   |
+          |  +------------------------------------------------------+  |
+          |  | ISTEK SATIRI: GET /api/v1/data HTTP/1.1\r\n          |  |
+          |  +------------------------------------------------------+  |
+          |  | BASLIKLAR (Headers):                                 |  |
+          |  | Host: api.kurum.local\r\n                            |  |
+          |  | User-Agent: Mozilla/5.0...\r\n                       |  |
+          |  | Content-Type: application/json\r\n                   |  |
+          |  | Content-Length: 32\r\n                               |  |
+          |  +------------------------------------------------------+  |
+          |  | BOS SATIR (CRLF): \r\n                               |  |
+          |  +------------------------------------------------------+  |
+          |  | GOVDE (Body): {"role": "analyst", "action": 1}       |  |
+          |  +------------------------------------------------------+  |
+          |                                                            |
+          |  <====== 2. HTTP YANIT MESAJI (RESPONSE) ===============   |
+          |  +------------------------------------------------------+  |
+          |  | DURUM SATIRI: HTTP/1.1 200 OK\r\n                    |  |
+          |  +------------------------------------------------------+  |
+          |  | BASLIKLAR (Headers):                                 |  |
+          |  | Date: Thu, 29 Oct 2026 19:30:00 GMT\r\n              |  |
+          |  | Content-Type: application/json\r\n                   |  |
+          |  | Strict-Transport-Security: max-age=31536000\r\n     |  |
+          |  | Content-Security-Policy: default-src 'self'\r\n      |  |
+          |  | X-Frame-Options: DENY\r\n                            |  |
+          |  | X-Content-Type-Options: nosniff\r\n                  |  |
+          |  +------------------------------------------------------+  |
+          |  | BOS SATIR (CRLF): \r\n                               |  |
+          |  +------------------------------------------------------+  |
+          |  | GOVDE (Body): {"status": "success", "records": 42}   |  |
+          |  +------------------------------------------------------+  |
+
+2. HTTP METOTLARI SEMANTIK MATRISI (RFC 7231)
+================================================================================
+  Metot    | Guvenli (Safe)?  | Esguklu (Idempotent)? | Tipik Kullanim
+  ---------+------------------+-----------------------+-------------------------
+  GET      | EVET (Durum 0)   | EVET                  | Kaynak okuma/listeleme
+  HEAD     | EVET (Gövdesiz)  | EVET                  | Baslik ve meta kontrolu
+  POST     | HAYIR            | HAYIR                 | Yeni kaynak yaratma
+  PUT      | HAYIR            | EVET                  | Kaynagi tamamen guncelleme
+  DELETE   | HAYIR            | EVET                  | Kaynak silme
+  OPTIONS  | EVET             | EVET                  | CORS / Izinli metot sorgusu
+  TRACE    | EVET (Tehlikeli) | EVET                  | Echo / XST Saldiri Riski!
+
+3. SALDIRI SENARYOLARI VE ENGELLEME MEKANIZMALARI
+================================================================================
+
+[A] CRLF ENJEKSIYONU VE HTTP RESPONSE SPLITTING
+--------------------------------------------------------------------------------
+   Saldirgan Girdisi: /redirect?url=http://site.com%0d%0aSet-Cookie:%20session=fake
+   Sunucu Yorumu:
+   HTTP/1.1 302 Found\r\n
+   Location: http://site.com\r\n
+   Set-Cookie: session=fake\r\n  <--- [SALDIRGANIN ENJEKTE ETTIGI BASLIK!]
+   \r\n
+   <html>...</html>
+   SAVUNMA: Tum kullanici girdilerinde %0d, %0a (\r, \n) baytlari filtrelenir!
+
+[B] HTTP REQUEST SMUGGLING (CL.TE / TE.CL DESENKRONIZASYONU)
+--------------------------------------------------------------------------------
+   On-Uc (Front-End Proxy)           Arka-Uc (Back-End Web Server)
+   Content-Length'e Oncelik Verir    Transfer-Encoding: chunked'a Oncelik Verir
+             \                                    /
+              \                                  /
+         +--------------------------------------------+
+         | Ayni HTTP Isteğinde Hem CL Hem TE Varsa:   |
+         | Sınır Belirsizliği Olusur (Desync)!        |
+         | Saldirgan Sonraki Kullanicinin Istegine    |
+         | Kendi Gizli Komutunu Yapistirir (Smuggle)  |
+         +--------------------------------------------+
+   SAVUNMA: RFC 7230 §3.3.3 kurali uyarinca hem CL hem TE iceren istekler
+            derhal 400 Bad Request ile dusurulur!
+
+4. OWASP GUVENLIK BASLIKLARI ZIRHI (DEFENSE IN DEPTH)
+================================================================================
+   +------------------------------------+--------------------------------------+
+   | Guvenlik Basligi                   | Engelledigi Saldiri Turu             |
+   +------------------------------------+--------------------------------------+
+   | Strict-Transport-Security (HSTS)   | SSL Stripping, Man-in-the-Middle     |
+   | Content-Security-Policy (CSP)      | Cross-Site Scripting (XSS), Data Exf |
+   | X-Frame-Options: DENY              | Clickjacking (UI Redress Attack)     |
+   | X-Content-Type-Options: nosniff    | MIME Sniffing, Sahte Resim XSS       |
+   | Referrer-Policy                    | Hassas Token ve URL Parametre Sizmasi|
+   | Permissions-Policy                 | Kamera, Mikrofon, Konum Yetkisiz Eris|
+   +------------------------------------+--------------------------------------+

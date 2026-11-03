@@ -1,0 +1,41 @@
+================================================================================
+GERÇEK KANIT — UNITTEST TEST SONUÇLARI
+Tarih: 2026-10-27
+Aşama 02: Sistem, Bellek ve Düşük Seviyeli Güvenlik
+Hafta 03, Gün 019: Windows Dosya Sistemi ve NTFS
+Komut: python -m unittest portfolio/hafta_03/gun_019/tests/test_ntfs_security_and_acl_analyzer.py -v
+================================================================================
+
+test_01_init_ve_surum_kontrolu (portfolio.hafta_03.gun_019.tests.test_ntfs_security_and_acl_analyzer.TestNtfsSecurityAndAclAnalyzer.test_01_init_ve_surum_kontrolu)
+Test 01: Sınıf başlatma ve sürüm numarası doğrulaması. ... ok
+test_02_canli_dizin_izinleri_icacls_sorgusu (portfolio.hafta_03.gun_019.tests.test_ntfs_security_and_acl_analyzer.TestNtfsSecurityAndAclAnalyzer.test_02_canli_dizin_izinleri_icacls_sorgusu)
+Test 02: Canlı sistemden yerel dizinin NTFS izinlerinin başarıyla okunması. ... ok
+test_03_dosya_yukleme_gecerli_json (portfolio.hafta_03.gun_019.tests.test_ntfs_security_and_acl_analyzer.TestNtfsSecurityAndAclAnalyzer.test_03_dosya_yukleme_gecerli_json)
+Test 03: Geçerli JSON dosyasının UTF-8 ile hatasız yüklenmesi. ... ok
+test_04_dosya_yukleme_bulunamadi_negatif_kontrol (portfolio.hafta_03.gun_019.tests.test_ntfs_security_and_acl_analyzer.TestNtfsSecurityAndAclAnalyzer.test_04_dosya_yukleme_bulunamadi_negatif_kontrol)
+Test 04: Var olmayan dosya istendiğinde FileNotFoundError fırlatılması (Negatif Test). ... ok
+test_05_magic_bytes_eslesmesi_gecerli_pdf (portfolio.hafta_03.gun_019.tests.test_ntfs_security_and_acl_analyzer.TestNtfsSecurityAndAclAnalyzer.test_05_magic_bytes_eslesmesi_gecerli_pdf)
+Test 05: PDF uzantılı ve %PDF sihirli baytlarına sahip dosyanın geçerli bulunması. ... ok
+test_06_magic_bytes_spoofing_pe_executable_as_pdf (portfolio.hafta_03.gun_019.tests.test_ntfs_security_and_acl_analyzer.TestNtfsSecurityAndAclAnalyzer.test_06_magic_bytes_spoofing_pe_executable_as_pdf)
+Test 06: PDF gibi gösterilen ancak MZ PE çalıştırılabilir başlığı taşıyan zararlı tespiti (G019-SC1). ... ok
+test_07_magic_bytes_jpeg_ve_png_dogrulamasi (portfolio.hafta_03.gun_019.tests.test_ntfs_security_and_acl_analyzer.TestNtfsSecurityAndAclAnalyzer.test_07_magic_bytes_jpeg_ve_png_dogrulamasi)
+Test 07: PNG ve JPEG sihirli baytlarının başarıyla tanınması. ... ok
+test_08_ads_zone_identifier_meşru_etiket_tespiti (portfolio.hafta_03.gun_019.tests.test_ntfs_security_and_acl_analyzer.TestNtfsSecurityAndAclAnalyzer.test_08_ads_zone_identifier_meşru_etiket_tespiti)
+Test 08: Mark-of-the-Web (Zone.Identifier) ADS akışının meşru olarak raporlanması. ... ok
+test_09_ads_gizli_powershell_tehlikeli_akis_tespiti (portfolio.hafta_03.gun_019.tests.test_ntfs_security_and_acl_analyzer.TestNtfsSecurityAndAclAnalyzer.test_09_ads_gizli_powershell_tehlikeli_akis_tespiti)
+Test 09: Dosya içine gizlenmiş tehlikeli PowerShell ADS akışı tespiti (MITRE T1564.004). ... ok
+test_10_acl_once_sonra_diff_everyone_kaldirilmasi (portfolio.hafta_03.gun_019.tests.test_ntfs_security_and_acl_analyzer.TestNtfsSecurityAndAclAnalyzer.test_10_acl_once_sonra_diff_everyone_kaldirilmasi)
+Test 10: Klasör ACL fark analizinde Everyone FullControl izninin kaldırılmasının tespiti (G019-SC2). ... ok
+test_11_acl_once_sonra_diff_explicit_deny_eklenmesi (portfolio.hafta_03.gun_019.tests.test_ntfs_security_and_acl_analyzer.TestNtfsSecurityAndAclAnalyzer.test_11_acl_once_sonra_diff_explicit_deny_eklenmesi)
+Test 11: Klasör ACL fark analizinde Explicit Deny kuralı eklenmesinin tespiti. ... ok
+test_12_dacl_everyone_full_control_kritik_risk_tespiti (portfolio.hafta_03.gun_019.tests.test_ntfs_security_and_acl_analyzer.TestNtfsSecurityAndAclAnalyzer.test_12_dacl_everyone_full_control_kritik_risk_tespiti)
+Test 12: Bir dosyanın DACL'inde Everyone FullControl olduğunda KRİTİK risk üretilmesi. ... ok
+test_13_tam_denetim_raporu_olusturma (portfolio.hafta_03.gun_019.tests.test_ntfs_security_and_acl_analyzer.TestNtfsSecurityAndAclAnalyzer.test_13_tam_denetim_raporu_olusturma)
+Test 13: Bütünleştirilmiş tam denetim raporunun eksiksiz veri üretmesi. ... ok
+test_14_cli_alt_surec_yurutme_dogrulamasi (portfolio.hafta_03.gun_019.tests.test_ntfs_security_and_acl_analyzer.TestNtfsSecurityAndAclAnalyzer.test_14_cli_alt_surec_yurutme_dogrulamasi)
+Test 14: Komut satırı (CLI) aracının harici alt süreç (subprocess) olarak yürütülmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.426s
+
+OK (14/14 PASS — %100 Başarı)

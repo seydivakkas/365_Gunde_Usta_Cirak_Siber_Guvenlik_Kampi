@@ -1,0 +1,24 @@
+# Atlas Finans ve Odeme Teknolojileri A.S. — Kurumsal Risk Skorlama ve Kontrol Seçimi Raporu
+**Rapor Tarihi:** 2026-11-02 06:04:33
+**Risk İştahı Eşik Skoru:** 10 / 25
+**Maksimum Finansal Tolerans:** $50,000.00 Yıllık Kayıp
+
+## 1. Risk ve Kontrol Genel Matrisi
+| Risk ID | Risk Başlığı | Varlık | Doğal Skor | Doğal ALE | Strateji | Kontrol Sayısı | Artık Skor | Artık ALE | Yıllık Maliyet | ROSI (%) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| RSK-001 | Kritik Müşteri Veritabanına Yetkisiz Erişim ve Veri Sızıntısı | Birincil PostgreSQL Müşteri Veritabanı | 20 (KRİTİK) | $240,000 | AZALT | 3 | 2 (DÜŞÜK) | $4,800 | $83,333 | %182.2 |
+| RSK-002 | Sunuculara Ransomware Bulaşması ve İş Durması | Ana Veri Merkezi Sanal Sunucu Çiftliği | 20 (KRİTİK) | $122,500 | AZALT | 2 | 2 (DÜŞÜK) | $2,450 | $61,667 | %94.7 |
+| RSK-003 | Eski Muhasebe Yazılımı Destek Süresinin Dolması | Legacy ERP Muhasebe Sunucusu | 6 (ORTA) | $4,800 | KABUL_ET | 0 | 6 (ORTA) | $4,800 | $0 | %0.0 |
+| RSK-004 | Üçüncü Taraf Bulut Altyapısı Kesintisi | AWS Prod E-Ticaret Uygulama Katmanı | 12 (YÜKSEK) | $30,000 | DEVRET | 0 | 12 (YÜKSEK) | $6,000 | $0 | %0.0 |
+
+## 2. Finansal Etki ve Siber Yatırım Getirisi (ROSI) Özeti
+- **Toplam Doğal Kayıp Beklentisi (Inherent ALE):** $397,300.00
+- **Kontroller Sonrası Artık Kayıp (Residual ALE):** $18,050.00
+- **Önlenen Yıllık Finansal Kayıp:** $379,250.00
+- **Yıllık Toplam Güvenlik Kontrol Harcaması:** $145,000.00
+- **Net Yıllık Finansal Tasarruf / Değer:** $234,250.00
+- **Kurumsal Güvenlik Yatırımı Getirisi (ROSI):** %161.55
+
+## 3. Kurumsal Yönetişim ve Risk İştahı Uyumluluğu
+> [!NOTE]
+> **UYUMLU:** Tüm riskler ve artık risk seviyeleri kurumsal risk iştahı ve finansal tolerans sınırları dahilindedir.

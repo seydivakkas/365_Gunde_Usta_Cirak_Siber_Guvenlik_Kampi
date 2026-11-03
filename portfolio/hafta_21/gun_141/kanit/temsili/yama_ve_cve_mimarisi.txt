@@ -1,0 +1,50 @@
+===============================================================================
+ TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+===============================================================================
+ GÜN 141: KURUMSAL YAMA YAŞAM DÖNGÜSÜ VE CVE TRİYAJ MİMARİSİ
+===============================================================================
+
+                     [ TEHDİT İSTİHBARATI & ZAFİYET KAYNAKLARI ]
+                     │  - NVD (CVE Sözlüğü & CVSS v3.1)
+                     │  - CISA KEV (Known Exploited Vulnerabilities)
+                     │  - EPSS (İstismar Tahmin Olasılığı)
+                     ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ AŞAMA 1: KEŞİF VE SİSTEM ENVANTER TARAMASI                              │
+  │  - Kurulu Paketler vs Üretici Güvenlik Güncellemeleri                   │
+  │  - dpkg / rpm / wsus paket versiyonlarının haritalanması                │
+  └────────────────────────────────────┬────────────────────────────────────┘
+                                       │ Tespit Edilen CVE'ler
+                                       ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ AŞAMA 2: RİSK DEĞERLENDİRME VE TRİYAJ MOTORU (PatchCveEngine)           │
+  │  - KEV Kontrolü: Aktif istismarda mı? -> EMERGENCY (SLA: 72 Saat)      │
+  │  - CVSS Skoru: >= 9.0 CRITICAL (7 Gün), 7.0-8.9 HIGH (14 Gün)          │
+  │  - SLA İhlal Denetimi: Geçen süre > Maksimum SLA -> ALARM               │
+  └────────────────────────────────────┬────────────────────────────────────┘
+                                       │ Triyaj Sonuçları ve SLA Önceliği
+                                       ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ AŞAMA 3: TEST VE DOĞRULAMA (STAGING & CANARY SANDBOX)                   │
+  │  - İzole Test Ortamında Paketin Uygulanması                             │
+  │  - Regresyon ve Bağımlılık Çatışması Testi                              │
+  │  - Otomatik Geri Alma (Rollback) Betiğinin Hazırlanması                 │
+  └────────────────────────────────────┬────────────────────────────────────┘
+                                       │ Test Onayı (CAB Approval)
+                                       ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ AŞAMA 4: ÜRETİM DAĞITIMI VE AŞAMALI YÜRÜTME (PRODUCTION ROLLOUT)        │
+  │  - Aşama 1: Acil & KEV yamaları (apt-get --only-upgrade / dnf update)   │
+  │  - Aşama 2: Standart güvenlik güncellemeleri                            │
+  │  - Aşama 3: unattended-upgrades periyodik yapılandırma doğrulaması      │
+  └────────────────────────────────────┬────────────────────────────────────┘
+                                       │ Dağıtım Sonrası Kontrol
+                                       ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ AŞAMA 5: YENİDEN BAŞLATMA VE ADLİ DENETİM (POST-PATCH VERIFICATION)     │
+  │  - /var/run/reboot-required kontrolü -> Planlı bakım penceresi          │
+  │  - SIEM / Denetim Raporu: Yama Hijyen Puanı ve Kapanan CVE Kayıtları    │
+  └─────────────────────────────────────────────────────────────────────────┘
+===============================================================================
+ TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+===============================================================================

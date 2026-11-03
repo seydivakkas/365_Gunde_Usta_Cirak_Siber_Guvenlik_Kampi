@@ -1,0 +1,59 @@
+================================================================================
+G056 - MINI PROJE 7: PROTOKOL HARITASI NEGATIF VE SINIR KONTROL SONUCLARI
+Tarih: 2026-10-29 18:15:40
+Toplam Negatif Test Senaryosu: 9
+================================================================================
+
+[NEG-01-SHORT-ETHERNET] KirpikliEthernetCercevesi:
+    Girdi: 10 bayt ham veri akisi (< 14 bayt Ethernet basligi)
+    Beklenen Istisna: PacketParsingError
+    Hata Mesaji: "Ethernet cercevesi cok kisa: 10 bayt. Minimum baslik uzunlugu 14 bayttir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-02-INVALID-ETHERTYPE] BilinmeyenEtherType:
+    Girdi: EtherType = 0xFFFF (Desteklenmeyen veya gecersiz tip)
+    Beklenen Istisna: PacketParsingError
+    Hata Mesaji: "Desteklenmeyen veya gecersiz EtherType: 0xffff."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-03-BAD-IP-VERSION] GecersizIpVersiyonu:
+    Girdi: Sürüm 2 (Version != 4)
+    Beklenen Istisna: PacketParsingError
+    Hata Mesaji: "Gecersiz IP versiyonu: 2. IPv4 icin versiyon 4 olmalidir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-04-SHORT-IP-HEADER] KirpikliIpBasligi:
+    Girdi: 16 bayt ham veri akisi (< 20 bayt minimum IPv4 basligi)
+    Beklenen Istisna: PacketParsingError
+    Hata Mesaji: "IPv4 basligi yetersiz: 16 bayt. Minimum uzunluk 20 bayt olmalidir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-05-INVALID-L4-PROTOCOL] BilinmeyenKatman4Protokolu:
+    Girdi: Protocol = 99 (TCP 6, UDP 17, ICMP 1 disi tanimsiz protokol)
+    Beklenen Istisna: PacketParsingError
+    Hata Mesaji: "Desteklenmeyen L4 protokol kodu: 99. Yalnizca TCP, UDP, ICMP desteklenir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-06-SHORT-TCP-HEADER] KirpikliTcpBasligi:
+    Girdi: 12 bayt ham veri akisi (< 20 bayt minimum TCP basligi)
+    Beklenen Istisna: PacketParsingError
+    Hata Mesaji: "TCP basligi yetersiz: 12 bayt. Minimum TCP basligi 20 bayttir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-07-SHORT-UDP-HEADER] KirpikliUdpBasligi:
+    Girdi: 4 bayt ham veri akisi (< 8 bayt minimum UDP basligi)
+    Beklenen Istisna: PacketParsingError
+    Hata Mesaji: "UDP basligi yetersiz: 4 bayt. Minimum UDP basligi 8 bayttir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-08-MALFORMED-MAC] BozukMacAdresi:
+    Girdi: "00:11:ZZ:44:55:66" (Hex disi karakterler) ve "00:11:22" (Yetersiz uzunluk)
+    Beklenen Istisna: PacketParsingError
+    Hata Mesaji: "Bozuk MAC adresi formati: '00:11:ZZ:44:55:66'. 6 baytlik hex olmalidir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-09-MALFORMED-IPV4] GecersizIpv4Adresi:
+    Girdi: "999.1.1.1" ve "192.168.1" (Gecersiz noktalı ondalık IP formatı)
+    Beklenen Istisna: PacketParsingError
+    Hata Mesaji: "Gecersiz IPv4 adresi: '999.1.1.1'. Oktet degerleri 0-255 araliginda olmalidir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)

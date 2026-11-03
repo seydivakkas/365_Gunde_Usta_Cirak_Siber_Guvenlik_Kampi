@@ -1,0 +1,155 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ.",
+  "uygulama_adi": "KriptoNot Yerel Not ve Senkronizasyon Uygulaması",
+  "gun_no": 6,
+  "gun_kimligi": "G006",
+  "versiyon": "1.0.0",
+  "bilesenler": [
+    {
+      "id": "E1",
+      "ad": "Kullanıcı (İnsan / İstemci Oturumu)",
+      "tur": "DIS_VARLIK",
+      "aciklama": "Klavye ve fare ile not metinlerini giren ve okuyan son kullanıcı."
+    },
+    {
+      "id": "P1",
+      "ad": "Not Defteri İstemci Süreci (Masaüstü Uygulaması)",
+      "tur": "SUREC",
+      "aciklama": "Bellekte çalışan, kullanıcı arayüzünü yöneten, şifreleme ve çözme işlemlerini yürüten ana süreç."
+    },
+    {
+      "id": "DS1",
+      "ad": "Şifreli Not Kasası (SQLite / Yerel Disk)",
+      "tur": "VERI_DEPOSU",
+      "aciklama": "Diskte saklanan, kullanıcı notlarının şifreli olarak tutulduğu yerel veritabanı."
+    },
+    {
+      "id": "P2",
+      "ad": "Bulut Senkronizasyon API Sunucusu",
+      "tur": "SUREC_UZAK",
+      "aciklama": "Farklı cihazlar arasında notların senkronize edilmesini sağlayan uzak bulut servisi."
+    }
+  ],
+  "guven_sinirlari": [
+    {
+      "id": "TB1",
+      "ad": "Kullanıcı Girdi Sınırı",
+      "aciklama": "Güvenilmeyen insan girdisi ile uygulama çalışma belleği arasındaki sınır.",
+      "risk_seviyesi": "ORTA"
+    },
+    {
+      "id": "TB2",
+      "ad": "Disk ve Kalıcı Depolama Sınırı",
+      "aciklama": "Uygulama bellek alanı ile işletim sistemi disk dosya sistemi arasındaki sınır.",
+      "risk_seviyesi": "YUKSEK"
+    },
+    {
+      "id": "TB3",
+      "ad": "İnternet ve Uzak Ağ Sınırı",
+      "aciklama": "Yerel istemci bilgisayar ile kontrolümüzde olmayan dış internet hattı arasındaki sınır.",
+      "risk_seviyesi": "KRITIK"
+    }
+  ],
+  "veri_akislari": [
+    {
+      "id": "DF1",
+      "ad": "Not Girişi ve Arayüz İşlemleri",
+      "kaynak": "E1",
+      "hedef": "P1",
+      "gecilen_sinir": "TB1",
+      "veri_tipi": "Düz Metin Kullanıcı Notu",
+      "kontroller": [
+        "Girdi Doğrulama ve Boyut Sınırlaması (Max 10MB)",
+        "Karakter Kaçırma (Input Sanitization)",
+        "XSS ve Bellek Taşması Koruması"
+      ]
+    },
+    {
+      "id": "DF2",
+      "ad": "Şifreli Not Kaydetme (Save to Vault)",
+      "kaynak": "P1",
+      "hedef": "DS1",
+      "gecilen_sinir": "TB2",
+      "veri_tipi": "AES-GCM Şifreli İkili Blok",
+      "kontroller": [
+        "AES-256-GCM Kriptografik Şifreleme",
+        "PBKDF2 ile Anahtar Türetme (100.000 İterasyon)",
+        "GCM Kimlik Doğrulama Etiketi (Auth Tag) ile Bütünlük Koruması"
+      ]
+    },
+    {
+      "id": "DF3",
+      "ad": "Not Okuma ve Anahtar Çözme (Load from Vault)",
+      "kaynak": "DS1",
+      "hedef": "P1",
+      "gecilen_sinir": "TB2",
+      "veri_tipi": "Şifreli Veri Okuma Talebi",
+      "kontroller": [
+        "AES-256-GCM Şifre Çözme ve Bütünlük Doğrulaması",
+        "Bellek Temizliği (Secure Zero Memory)",
+        "Yalnızca Okuma (Read-Only) Dosya İzinleri"
+      ]
+    },
+    {
+      "id": "DF4",
+      "ad": "Uçtan Uca Şifreli Bulut Senkronizasyonu",
+      "kaynak": "P1",
+      "hedef": "P2",
+      "gecilen_sinir": "TB3",
+      "veri_tipi": "Sıfır Bilgi Şifreli JSON Paketi",
+      "kontroller": [
+        "TLS 1.3 Taşıma Katmanı Güvenliği",
+        "Sıfır Bilgi Mimarisi (Zero-Knowledge E2EE)",
+        "TLS Sertifika Sabitleme (Certificate Pinning)",
+        "JWT Tabanlı Karşılıklı Kimlik Doğrulama"
+      ]
+    }
+  ],
+  "tehditler": [
+    {
+      "id": "TH-01",
+      "kategori": "TAMPERING",
+      "hedef_bilesen": "DS1",
+      "tehdit_tanimi": "Zararlı bir yazılımın diskteki SQLite dosyasını doğrudan değiştirerek not verisini tahrif etmesi.",
+      "kontrol_id": "DF2-C3",
+      "kontrol_aciklama": "AES-GCM Authentication Tag doğrulaması tahrifatı anında tespit eder ve okumayı durdurur.",
+      "durum": "ENGEL_ALTI"
+    },
+    {
+      "id": "TH-02",
+      "kategori": "INFORMATION_DISCLOSURE",
+      "hedef_bilesen": "DS1",
+      "tehdit_tanimi": "Fiziksel disk hırsızlığı veya dosya kopyalama ile notların düz metin olarak okunması.",
+      "kontrol_id": "DF2-C1",
+      "kontrol_aciklama": "Disk verisi AES-256-GCM ile şifrelidir; anahtar işletim sistemi Keyring'inde saklanır.",
+      "durum": "ENGEL_ALTI"
+    },
+    {
+      "id": "TH-03",
+      "kategori": "INFORMATION_DISCLOSURE",
+      "hedef_bilesen": "DF4",
+      "tehdit_tanimi": "İnternet hattını dinleyen (MitM) saldırganın not senkronizasyon verilerini ele geçirmesi.",
+      "kontrol_id": "DF4-C1",
+      "kontrol_aciklama": "TLS 1.3 şifreleme ve Sıfır Bilgi mimarisi sayesinde hat üzerindeki veri okunamaz.",
+      "durum": "ENGEL_ALTI"
+    },
+    {
+      "id": "TH-04",
+      "kategori": "SPOOFING",
+      "hedef_bilesen": "P2",
+      "tehdit_tanimi": "Sahte bir DNS ile istemcinin sahte bir bulut sunucusuna yönlendirilmesi.",
+      "kontrol_id": "DF4-C3",
+      "kontrol_aciklama": "TLS Certificate Pinning sahte sunucu sertifikalarını reddeder.",
+      "durum": "ENGEL_ALTI"
+    },
+    {
+      "id": "TH-05",
+      "kategori": "DENIAL_OF_SERVICE",
+      "hedef_bilesen": "P1",
+      "tehdit_tanimi": "Kullanıcının devasa bir dosya yapıştırarak uygulamanın bellek taşması yaşamasına yol açması.",
+      "kontrol_id": "DF1-C1",
+      "kontrol_aciklama": "10 MB girdi sınırı ve bellek akış denetleyicisi aşırı yükü engeller.",
+      "durum": "ENGEL_ALTI"
+    }
+  ]
+}

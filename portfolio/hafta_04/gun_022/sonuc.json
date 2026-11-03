@@ -1,0 +1,61 @@
+{
+  "gun": 22,
+  "asama": 2,
+  "hafta": 4,
+  "konu": "Komut satırı: PowerShell temelleri",
+  "durum": "TAMAMLANDI_PASS",
+  "tarih": "2026-10-27",
+  "puan": 100,
+  "puan_detay": {
+    "teorik_metodolojik_hakimiyet": 20,
+    "kodlama_uygulama_yetkinligi": 40,
+    "test_dogrulama_kapsami": 25,
+    "kanit_dokumantasyon_kalitesi": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "dosyalar": [
+    "uygulama/powershell_security_pipeline_auditor.py",
+    "tests/test_powershell_security_pipeline_auditor.py",
+    "ornek_veri/ps_process_samples.json",
+    "ornek_veri/ps_service_samples.json",
+    "ornek_veri/ps_audit_rules.json",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/filtrelenmis_surec_ve_servisler.csv",
+    "kanit/temsili/powershell_pipeline_mimarisi.txt",
+    "ders.md",
+    "soru_cevap.md",
+    "rapor.md",
+    "README.md",
+    "sonuc.json"
+  ],
+  "kanitlar": [
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/filtrelenmis_surec_ve_servisler.csv",
+    "kanit/temsili/powershell_pipeline_mimarisi.txt"
+  ],
+  "ogrenilen_standartlar": [
+    "PowerShell Object Pipeline (.NET PSObject)",
+    "MITRE ATT&CK T1059.001 (Command and Scripting Interpreter: PowerShell)",
+    "CWE-428: Unquoted Search Path or Element",
+    "CIS Microsoft Windows Server Benchmark (Section 5: System Services)",
+    "Windows Event ID 4104 (Script Block Logging) & AMSI Architecture"
+  ],
+  "karsilanan_gereksinimler": [
+    "PowerShell komutlarının metin yerine .NET nesnesi taşıma mantığı ve salt-okunur komut felsefesi modellendi (G022-SC1)",
+    "Get-Process ve Get-Service çıktıları filtrelenerek 6 kolonlu güvenlik CSV raporuna aktarıldı (G022-SC2)",
+    "Gereksiz servis, tırnaksız servis yolu (CWE-428) ve şüpheli komut parametreleri analiz edildi (G022-SC3)",
+    "Canlı sistemden güvenli cmdlet'lerle telemetri toplayabilen ve bağımsız JSON haritalarını denetleyen CLI yazıldı",
+    "14 birim test (pozitif ve negatif) 0.903 saniyede başarıyla (%100 PASS) icra edildi",
+    "Tüm kod ve test satırları didaktik açıklamalarla zenginleştirildi",
+    "Özel Lisans (Tüm Hakları Saklıdır) tüm dosyalara uygulandı"
+  ],
+  "notlar": "Hafta 04 Gün 022 eksiksiz tamamlanarak 14/14 test PASS ve 100/100 tam puanla sonuçlandırıldı."
+}

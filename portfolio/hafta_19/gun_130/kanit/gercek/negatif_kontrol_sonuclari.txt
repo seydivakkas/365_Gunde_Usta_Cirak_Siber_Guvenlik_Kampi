@@ -1,0 +1,54 @@
+================================================================================
+GÜN 130: NTFS ERİŞİM KONTROL LİSTELERİ NEGATİF KONTROL VE ENGELLENEN SENARYOLAR
+Tarih: 2026-11-02T10:12:34.602376
+================================================================================
+
+Senaryo [NEG-NTFS-01]: Kritik Sistem İkilisinde Everyone Tam Yetkisi (FullControl)
+  - Beklenen CWE: CWE-732 | Beklenen MITRE: T1574.009
+  - Skor: 75.0/100 | Duruş: ORTA_RİSK (İYİLEŞTİRME GEREKLİ)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-NTFS-02]: Program Files Klasöründe Standart Kullanıcı Değiştirme (Modify) Hakkı
+  - Beklenen CWE: CWE-732 | Beklenen MITRE: T1574.009
+  - Skor: 75.0/100 | Duruş: ORTA_RİSK (İYİLEŞTİRME GEREKLİ)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-NTFS-03]: Tırnak İçine Alınmamış Boşluklu Servis Yolu (Unquoted Service Path)
+  - Beklenen CWE: CWE-428 | Beklenen MITRE: T1574.009
+  - Skor: 55.0/100 | Duruş: ORTA_RİSK (İYİLEŞTİRME GEREKLİ)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-NTFS-04]: Sistem Sürücüsünde Yetkisiz Kullanıcı Sahipliği (Guest Owner)
+  - Beklenen CWE: CWE-284 | Beklenen MITRE: T1078.003
+  - Skor: 85.0/100 | Duruş: SIKILAŞTIRILMIŞ / CIS UYUMLU (PASS)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-NTFS-05]: Kanonik Olmayan Bozuk ACE Sıralaması
+  - Beklenen CWE: CWE-284 | Beklenen MITRE: T1548
+  - Skor: 90.0/100 | Duruş: SIKILAŞTIRILMIŞ / CIS UYUMLU (PASS)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-NTFS-06]: ProgramData İçinde Authenticated Users Yazma İzni
+  - Beklenen CWE: CWE-732 | Beklenen MITRE: T1574.009
+  - Skor: 75.0/100 | Duruş: ORTA_RİSK (İYİLEŞTİRME GEREKLİ)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-NTFS-07]: Genel Veri Yolunda Güvensiz İzin (CWE-276)
+  - Beklenen CWE: CWE-276 | Beklenen MITRE: T1068
+  - Skor: 85.0/100 | Duruş: SIKILAŞTIRILMIŞ / CIS UYUMLU (PASS)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-NTFS-08]: Hassas Servis Klasöründe Kümülatif İzin Zaafı
+  - Beklenen CWE: CWE-732 | Beklenen MITRE: T1574.009
+  - Skor: 75.0/100 | Duruş: ORTA_RİSK (İYİLEŞTİRME GEREKLİ)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-NTFS-09]: Kritik Sistem DLL Dosyasında Standart Kullanıcı Sahipliği
+  - Beklenen CWE: CWE-284 | Beklenen MITRE: T1078.003
+  - Skor: 85.0/100 | Duruş: SIKILAŞTIRILMIŞ / CIS UYUMLU (PASS)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+--------------------------------------------------------------------------------
+Toplam Negatif Senaryo: 9 | Başarılı Tespit: 9 / 9
+Genel Negatif Kontrol Değerlendirmesi: TAM UYUMLU (PASS)
+--------------------------------------------------------------------------------

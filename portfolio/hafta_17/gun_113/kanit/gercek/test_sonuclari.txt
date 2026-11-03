@@ -1,0 +1,35 @@
+test_01_successful_user_registration_and_hash_format (test_authn_authz.TestAuthNAuthZSecurityEngine.test_01_successful_user_registration_and_hash_format)
+Test 1: Kullanıcı kaydının tuzlu PBKDF2 özeti ve 64-karakter hex çıktısı üretmesi denetlenir. ... ok
+test_02_successful_authentication_and_session_creation (test_authn_authz.TestAuthNAuthZSecurityEngine.test_02_successful_authentication_and_session_creation)
+Test 2: Doğru kimlik bilgileriyle giriş yapılabilmesi ve aktif oturum üretilmesi denetlenir. ... ok
+test_03_invalid_password_raises_invalid_credentials_error (test_authn_authz.TestAuthNAuthZSecurityEngine.test_03_invalid_password_raises_invalid_credentials_error)
+Test 3: Hatalı parola girişinde InvalidCredentialsError (CWE-287) fırlatıldığı doğrulanır. ... ok
+test_04_constant_time_digest_comparison_cwe_208 (test_authn_authz.TestAuthNAuthZSecurityEngine.test_04_constant_time_digest_comparison_cwe_208)
+Test 4: Parola doğrulamasında zamanlama yan kanalına (CWE-208) karşı sabit zamanlı özet denetlenir. ... ok
+test_05_brute_force_lockout_cwe_307 (test_authn_authz.TestAuthNAuthZSecurityEngine.test_05_brute_force_lockout_cwe_307)
+Test 5: Eşik değerine (3 deneme) ulaşıldığında hesabın kilitlenmesi (CWE-307) denetlenir. ... ok
+test_06_account_lockout_expiration_unlock (test_authn_authz.TestAuthNAuthZSecurityEngine.test_06_account_lockout_expiration_unlock)
+Test 6: Kilit süresi dolduğunda hesabın otomatik olarak açıldığı simüle edilir. ... ok
+test_07_session_fixation_defense_cwe_384 (test_authn_authz.TestAuthNAuthZSecurityEngine.test_07_session_fixation_defense_cwe_384)
+Test 7: Yeni giriş yapıldığında önceki oturum belirtecinin iptal edilmesi (CWE-384) denetlenir. ... ok
+test_08_session_expiration_ttl_cwe_613 (test_authn_authz.TestAuthNAuthZSecurityEngine.test_08_session_expiration_ttl_cwe_613)
+Test 8: Oturum geçerlilik süresi (TTL) dolduğunda SessionExpiredError (CWE-613) denetlenir. ... ok
+test_09_revoked_session_rejection (test_authn_authz.TestAuthNAuthZSecurityEngine.test_09_revoked_session_rejection)
+Test 9: Kullanıcı çıkış yaptığında (revoke) oturum belirtecinin derhal geçersiz kılınması denetlenir. ... ok
+test_10_missing_session_token_raises_missing_authentication_cwe_306 (test_authn_authz.TestAuthNAuthZSecurityEngine.test_10_missing_session_token_raises_missing_authentication_cwe_306)
+Test 10: Oturum belirteci olmadan korumalı kaynağa erişimde MissingAuthenticationError denetlenir. ... ok
+test_11_role_based_access_allowed_for_authorized_role (test_authn_authz.TestAuthNAuthZSecurityEngine.test_11_role_based_access_allowed_for_authorized_role)
+Test 11: Rol tabanlı yetki kontrolünde yetkili analistin okuma yapabilmesi denetlenir. ... ok
+test_12_role_based_access_denied_for_unauthorized_action_cwe_862 (test_authn_authz.TestAuthNAuthZSecurityEngine.test_12_role_based_access_denied_for_unauthorized_action_cwe_862)
+Test 12: Rol tabanlı kontrolde analistin silme yetkisine sahip olmaması (CWE-862) denetlenir. ... ok
+test_13_idor_protection_cwe_639 (test_authn_authz.TestAuthNAuthZSecurityEngine.test_13_idor_protection_cwe_639)
+Test 13: Aynı roldeki başka bir kullanıcının nesnesine erişimin engellenmesi (IDOR - CWE-639) denetlenir. ... ok
+test_14_admin_bypass_for_idor_with_audit_trail (test_authn_authz.TestAuthNAuthZSecurityEngine.test_14_admin_bypass_for_idor_with_audit_trail)
+Test 14: Yönetici (admin) rolünün nesne sahipliği sınırını meşru olarak aşabilmesi denetlenir. ... ok
+test_15_tenant_isolation_violation_cwe_284 (test_authn_authz.TestAuthNAuthZSecurityEngine.test_15_tenant_isolation_violation_cwe_284)
+Test 15: Farklı kiracıya (TENANT_BETA) ait kullanıcının diğer kiracı verisine erişememesi denetlenir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.068s
+
+OK

@@ -1,0 +1,55 @@
+[
+  {
+    "description": "Corrupted Snapshot: Negative RAM value",
+    "invalid_data": {
+      "system_memory": {
+        "total_ram_mb": -16384,
+        "used_ram_mb": 1024,
+        "free_ram_mb": 15360,
+        "total_swap_mb": 2048,
+        "used_swap_mb": 512,
+        "free_swap_mb": 1536
+      },
+      "processes": []
+    }
+  },
+  {
+    "description": "Corrupted Snapshot: Missing system_memory section",
+    "invalid_data": {
+      "processes": []
+    }
+  },
+  {
+    "description": "Corrupted Snapshot: Processes is not a list",
+    "invalid_data": {
+      "system_memory": {
+        "total_ram_mb": 16384,
+        "used_ram_mb": 8192,
+        "free_ram_mb": 8192,
+        "total_swap_mb": 2048,
+        "used_swap_mb": 512,
+        "free_swap_mb": 1536
+      },
+      "processes": "not_a_valid_list"
+    }
+  },
+  {
+    "description": "Corrupted Snapshot: Non-numeric RAM metric",
+    "invalid_data": {
+      "system_memory": {
+        "total_ram_mb": "sixteen_gigabytes",
+        "used_ram_mb": 8192,
+        "free_ram_mb": 8192,
+        "total_swap_mb": 2048,
+        "used_swap_mb": 512,
+        "free_swap_mb": 1536
+      },
+      "processes": []
+    }
+  },
+  {
+    "description": "Corrupted Snapshot: Null data object",
+    "invalid_data": null
+  },
+  "invalid_non_dict_string_entry"
+]

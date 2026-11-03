@@ -1,0 +1,72 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 107: DİJİTAL İMZA MİMARİSİ, RSASSA-PSS, PKCS#1 v1.5 VE İNKAR EDİLEMEZLİK
+================================================================================
+
+[ 1. DİJİTAL İMZA VS SİMETRİK MAC (HMAC) MİMARİ FARKI ]
+
+  A) SİMETRİK HMAC (Paylaşılan Ortak Sır):
+     Alice (Anahtar K) ───[ Veri || HMAC ]───► Bob (Anahtar K)
+     * Bütünlük: Var (Veri değişmedi)
+     * Kimlik Doğrulama: Var (Yalnızca Alice veya Bob üretebilir)
+     * İNKAR EDİLEMEZLİK (Non-Repudiation): YOK!
+       (Bob da anahtara sahip olduğundan sahte mesaj üretip Alice'e iftira atabilir!)
+
+  B) ASİMETRİK DİJİTAL İMZA (Genel / Özel Anahtar):
+     Alice (ÖZEL d) ──────[ Belge || İmza: s ]───► Bob & Tüm Dünya (GENEL e, n)
+     * Bütünlük: Var (Tek bir bit tahrifatı imza doğrulamasını bozar)
+     * Kimlik Doğrulama: Var (Yalnızca Alice'in d anahtarı üretebilir)
+     * İNKAR EDİLEMEZLİK: KESİN (Alice imzayı kendisinin atmadığını iddia edemez!)
+
+
+--------------------------------------------------------------------------------
+[ 2. RSASSA-PSS İMZA VE DOĞRULAMA AKIŞI (RFC 8017 / PKCS#1 v2.2) ]
+
+     İmzalanacak Belge (M)
+              │
+              ▼
+        SHA-256 (mHash) ───────────┐
+              │                    │
+              ▼                    ▼
+     Rastgele Tuz (Salt) ──► M' = 0x00*8 || mHash || Salt
+                                   │
+                                   ▼
+                             SHA-256 (H)
+                                   │
+       ┌───────────────────────────┴───────────────────────────┐
+       ▼                                                       ▼
+      dbMask = MGF1(H)                                         │
+       │                                                       │
+       ▼                                                       │
+     [ XOR ] ◄── DB = PS || 0x01 || Salt                       │
+       │                                                       │
+       ▼                                                       ▼
+    maskedDB ──────────────────────────────────────────────► [ EM ] = maskedDB || H || 0xbc
+                                                               │
+                                                               ▼
+                                                  s = EM^d mod n (ÖZEL ANAHTAR)
+                                                               │
+                                                               ▼
+                                                      [ DİJİTAL İMZA (Hex) ]
+                                                    (Olasılıksal & Provably Secure)
+
+--------------------------------------------------------------------------------
+[ 3. ÖNLENEN ZAFİYETLER VE KRİPTOGRAFİK TEHLİKELER ]
+
+  * CWE-327 (Düz / Textbook RSA İmza Zafiyetleri):
+    - Varoluşsal Sahtecilik: m = s^e mod n ile rastgele s'den meşru (m, s) üretimi.
+    - Çarpımsal Manipülasyon: s1 * s2 = (m1 * m2) için geçerli imza olur.
+    => PSS ve PKCS#1 v1.5 dolguları cebirsel homomorfizmi tamamen imkansız kılar.
+
+  * CWE-347 / CVE-2006-4339 (Bleichenbacher e=3 İmza Sahteciliği):
+    - Gevşek ayrıştırıcılar trailing garbage denetimi yapmadığında sahte küp kök ile
+      imza üretilebiliyordu. Katı (strict) sabit zamanlı doğrulama ile engellendi.
+
+  * CWE-323 / CVE-2010-4444 (ECDSA Nonce Yeniden Kullanımı - Sony PS3):
+    - Aynı k nonce değeriyle 2 mesaj imzalandığında k ve kök özel anahtar d
+      lise matematiğiyle saniyeler içinde çözülür. RFC 6979 deterministik k şarttır!
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

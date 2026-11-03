@@ -1,0 +1,12 @@
+======================================================================
+NEGATİF KONTROL VE BOZUK VERİ DOĞRULAMA TESTİ (G029-SC2)
+======================================================================
+Toplam Test Edilen Hatalı Olay : 4
+Başarıyla Reddedilen Olay     : 4
+Sonuç                          : TAM BAŞARILI (PASS)
+----------------------------------------------------------------------
+[REJECTED_AS_EXPECTED] CORRUPT-01 -> Olay Sağlayıcı Adı (ProviderName) boş veya eksik!
+[REJECTED_AS_EXPECTED] CORRUPT-02 -> Olay Kimliği (EventID) tamsayı olmalıdır, gelen değer: 'INVALID_ID_7045'.
+[REJECTED_AS_EXPECTED] CORRUPT-03 -> Zaman Damgası (TimeCreated) geçerli ISO 8601 formatında değil: 'NOT_A_VALID_DATE_STRING'.
+[REJECTED_AS_EXPECTED] CORRUPT-04 -> Kanal (channel) veya Bilgisayar (computer) üstverisi boş olamaz!
+======================================================================

@@ -1,0 +1,98 @@
+{
+  "aciklama": "G059 - HTTPS ve TLS El Sikismasi Ornek Veri Paketi",
+  "telif_hakki": "Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Tum Haklari Saklidir.",
+  "senaryolar": {
+    "tls13_modern_handshake": {
+      "senaryo_adi": "Modern TLS 1.3 Guvenli El Sikismasi (1-RTT, PFS, ECH/SNI)",
+      "protokol_surumu": "TLS 1.3",
+      "record_content_type": 22,
+      "record_version": "0x0303",
+      "handshake_type": 1,
+      "handshake_name": "ClientHello",
+      "sni_hostname": "guvenli-banka.internal",
+      "alpn_protocols": ["h2", "http/1.1"],
+      "cipher_suites": [
+        "TLS_AES_256_GCM_SHA384",
+        "TLS_CHACHA20_POLY1305_SHA256",
+        "TLS_AES_128_GCM_SHA256"
+      ],
+      "supported_groups": ["x25519", "secp256r1"],
+      "key_share_group": "x25519",
+      "compression_methods": [0],
+      "session_resumption_0rtt": false,
+      "guvenlik_seviyesi": "YUKSEK_GUVENLI"
+    },
+    "tls12_standard_handshake": {
+      "senaryo_adi": "Geleneksel TLS 1.2 El Sikismasi (2-RTT, ECDHE, PFS)",
+      "protokol_surumu": "TLS 1.2",
+      "record_content_type": 22,
+      "record_version": "0x0303",
+      "handshake_type": 1,
+      "handshake_name": "ClientHello",
+      "sni_hostname": "api.kurumsal-hizmet.local",
+      "alpn_protocols": ["http/1.1"],
+      "cipher_suites": [
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+      ],
+      "supported_groups": ["secp256r1", "secp384r1"],
+      "key_share_group": null,
+      "compression_methods": [0],
+      "session_resumption_0rtt": false,
+      "guvenlik_seviyesi": "STANDART_KABUL_EDILEBILIR"
+    },
+    "tls12_insecure_static_rsa": {
+      "senaryo_adi": "Guvenli Olmayan TLS 1.2 (Static RSA - PFS Yok, CBC Modu)",
+      "protokol_surumu": "TLS 1.2",
+      "record_content_type": 22,
+      "record_version": "0x0303",
+      "handshake_type": 1,
+      "handshake_name": "ClientHello",
+      "sni_hostname": "legacy-portal.eski-sistem.local",
+      "alpn_protocols": ["http/1.1"],
+      "cipher_suites": [
+        "TLS_RSA_WITH_AES_128_CBC_SHA",
+        "TLS_RSA_WITH_3DES_EDE_CBC_SHA",
+        "TLS_RSA_WITH_RC4_128_SHA"
+      ],
+      "supported_groups": [],
+      "key_share_group": null,
+      "compression_methods": [0, 1],
+      "session_resumption_0rtt": false,
+      "guvenlik_seviyesi": "TEHLIKELI_GUVENSIZ"
+    },
+    "tls13_with_0rtt_early_data": {
+      "senaryo_adi": "TLS 1.3 0-RTT Erken Veri El Sikismasi (Replay Saldirisi Riski)",
+      "protokol_surumu": "TLS 1.3",
+      "record_content_type": 22,
+      "record_version": "0x0303",
+      "handshake_type": 1,
+      "handshake_name": "ClientHello",
+      "sni_hostname": "odeme.eticaret.internal",
+      "alpn_protocols": ["h2"],
+      "cipher_suites": [
+        "TLS_AES_256_GCM_SHA384",
+        "TLS_AES_128_GCM_SHA256"
+      ],
+      "supported_groups": ["x25519"],
+      "key_share_group": "x25519",
+      "compression_methods": [0],
+      "session_resumption_0rtt": true,
+      "guvenlik_seviyesi": "KOSULLU_DIKKAT_GEREKTIRIR"
+    },
+    "tls_downgrade_mitm_attempt": {
+      "senaryo_adi": "TLS Surum Dusurme (Downgrade MitM) Saldiri Tespiti",
+      "protokol_surumu": "TLS 1.2",
+      "record_content_type": 22,
+      "record_version": "0x0303",
+      "handshake_type": 2,
+      "handshake_name": "ServerHello",
+      "sni_hostname": "auth.kritik-altyapi.gov.tr",
+      "selected_cipher_suite": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+      "server_random_hex": "544c5331335f444f574e4752440111223344556677889900aabbccddeeff001122",
+      "has_downgrade_sentinel": true,
+      "client_supported_max_version": "TLS 1.3",
+      "guvenlik_seviyesi": "KRITIK_SALDIRI_TESPIT_EDILDI"
+    }
+  }
+}

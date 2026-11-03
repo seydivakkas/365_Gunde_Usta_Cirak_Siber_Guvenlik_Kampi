@@ -1,0 +1,50 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas).",
+  "standard": "FIRST CVSS v3.1 Specification Section 7.1",
+  "weights": {
+    "attack_vector": {
+      "N": 0.85,
+      "A": 0.62,
+      "L": 0.55,
+      "P": 0.2
+    },
+    "attack_complexity": {
+      "L": 0.77,
+      "H": 0.44
+    },
+    "privileges_required_unchanged": {
+      "N": 0.85,
+      "L": 0.62,
+      "H": 0.27
+    },
+    "privileges_required_changed": {
+      "N": 0.85,
+      "L": 0.68,
+      "H": 0.5
+    },
+    "user_interaction": {
+      "N": 0.85,
+      "R": 0.62
+    },
+    "cia_impact": {
+      "H": 0.56,
+      "L": 0.22,
+      "N": 0.0
+    }
+  },
+  "formulas": {
+    "iss": "1 - [(1 - C) * (1 - I) * (1 - A)]",
+    "impact_unchanged": "6.42 * ISS",
+    "impact_changed": "7.52 * (ISS - 0.029) - 3.25 * (ISS - 0.02)^15",
+    "exploitability": "8.22 * AV * AC * PR * UI",
+    "base_score_unchanged": "Roundup(min(Impact + Exploitability, 10.0))",
+    "base_score_changed": "Roundup(min(1.08 * (Impact + Exploitability), 10.0))"
+  },
+  "severity_scale": {
+    "NONE": "0.0",
+    "LOW": "0.1 - 3.9",
+    "MEDIUM": "4.0 - 6.9",
+    "HIGH": "7.0 - 8.9",
+    "CRITICAL": "9.0 - 10.0"
+  }
+}

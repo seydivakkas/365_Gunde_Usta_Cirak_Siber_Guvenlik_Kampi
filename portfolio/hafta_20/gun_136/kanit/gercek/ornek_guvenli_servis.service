@@ -1,0 +1,51 @@
+# ==============================================================================
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# CIS Uyumlu Güvenli Systemd Servis Şablonu: api-backend.service
+# ==============================================================================
+[Unit]
+Description=api-backend.service Sıkılaştırılmış ve Yalıtılmış Servis Birimi
+After=network.target
+Documentation=man:systemd.exec(5)
+
+[Service]
+Type=simple
+User=apiuser
+Group=apiuser
+ExecStart=/opt/app/bin/api-server
+Restart=on-failure
+RestartSec=5s
+
+# --- Sandboxing ve Güvenlik Direktifleri (CIS & NIST SP 800-123) ---
+# SUID/SGID ile yeni yetki kazanımını engeller (prctl PR_SET_NO_NEW_PRIVS)
+NoNewPrivileges=yes
+
+# Dosya sistemini (/usr, /boot, /etc) salt-okunur bağlar
+ProtectSystem=strict
+
+# Kullanıcıların /home ve /root dizinlerine erişimi tamamen gizler
+ProtectHome=yes
+
+# Sürece özel yalıtılmış /tmp ve /var/tmp namespace'i tahsis eder
+PrivateTmp=yes
+
+# Fiziksel donanım aygıtlarına (/dev) doğrudan erişimi engeller
+PrivateDevices=yes
+
+# Çekirdek parametrelerinin (/proc/sys, /sys) değiştirilmesini kilitler
+ProtectKernelTunables=yes
+
+# Çekirdek kontrol gruplarını (/sys/fs/cgroup) salt-okunur yapar
+ProtectControlGroups=yes
+
+# Gerçek zamanlı işlem önceliği (realtime scheduling) almasını engeller
+RestrictRealtime=yes
+
+# Yalnızca standart IPv4/IPv6 ve UNIX soketlerine izin verir
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+# Çekirdek yeteneklerini (capabilities) minimum seviyeye indirir
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

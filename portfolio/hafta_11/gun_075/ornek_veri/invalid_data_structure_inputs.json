@@ -1,0 +1,85 @@
+{
+  "aciklama": "Gün 075: Listeler, sözlükler ve kümeler için 9 adet negatif kontrol ve sınır durumu test senaryosu",
+  "negatif_testler": [
+    {
+      "id": "NEG_01_IN_PLACE_LIST_MUTATION_DURING_ITERATION",
+      "tanim": "İterasyon sırasında liste üzerinde silme (remove/pop) işlemi yapılarak eleman atlama hatası üretme girişimi",
+      "girdi": {
+        "orijinal_liste": ["MAL_01", "MAL_02", "CLEAN_01", "MAL_03"],
+        "hatali_kod_deseni": "for x in list: if condition: list.remove(x)"
+      },
+      "beklenen_hata_veya_davranis": "Savunmacı motor listeyi klonlayarak veya filtreleme (list comprehension) ile güvenli işlemeli, eleman atlamamalıdır"
+    },
+    {
+      "id": "NEG_02_DIRECT_KEY_ACCESS_KEYERROR_DOS",
+      "tanim": "Sözlükte bulunmayan bir anahtara doğrudan köşeli parantez dict[key] ile erişilerek KeyError DoS oluşturma denemesi",
+      "girdi": {
+        "sozluk": { "sensor_id": "SN-01" },
+        "istenen_anahtar": "non_existent_policy_key"
+      },
+      "beklenen_hata_veya_davranis": "Doğrudan erişim yerine safe_dict_get veya varsayılan değer döndürülerek çökme engellenmelidir"
+    },
+    {
+      "id": "NEG_03_UNHASHABLE_TYPE_IN_SET",
+      "tanim": "Kümeye değiştirilebilir ve hashlenemeyen (unhashable) veri yapısı (list veya dict) ekleme girişimi",
+      "girdi": {
+        "unhashable_item": ["192.168.1.1", "192.168.1.2"]
+      },
+      "beklenen_hata_veya_davranis": "TypeError: unhashable type: 'list' hatası güvenli yakalanmalı veya tuple'a çevrilmelidir"
+    },
+    {
+      "id": "NEG_04_MALFORMED_IP_IN_THREAT_FEED",
+      "tanim": "Tehdit beslemesine (feed) geçersiz/malforme IP dizesi enjeksiyonu",
+      "girdi": {
+        "malformed_ip": "999.999.999.999"
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Geçersiz IPv4 adresi küme içine alınmadan sınırda reddedilmelidir"
+    },
+    {
+      "id": "NEG_05_DEEP_NESTED_PATH_ON_NONE_NODE",
+      "tanim": "İç içe sözlükte ara düğümlerden biri None olduğunda derin yol erişimi (AttributeError / TypeError) oluşturma girişimi",
+      "girdi": {
+        "sozluk": { "network": null },
+        "arana_yol": ["network", "filters", "bpf"]
+      },
+      "beklenen_hata_veya_davranis": "Güvenli derin gezinti None düğümde çökmek yerine güvenli varsayılan değer döndürmelidir"
+    },
+    {
+      "id": "NEG_06_FEED_CORRELATION_NULL_OR_INVALID_INPUT",
+      "tanim": "Küme korelasyon fonksiyonuna küme veya liste yerine None veya integer gönderme denemesi",
+      "girdi": {
+        "feed_a": null,
+        "feed_b": 12345
+      },
+      "beklenen_hata_veya_davranis": "TypeError: Tehdit beslemesi küme veya iterable bir koleksiyon olmalıdır"
+    },
+    {
+      "id": "NEG_07_DUPLICATE_KEY_DATA_COLLISION",
+      "tanim": "Sözlük oluşturulurken aynı kural anahtarı ile veri ezilmesi (shadowing / collision) oluşturulması",
+      "girdi": {
+        "kural_ciftleri": [
+          ["RULE_01", {"action": "DENY"}],
+          ["RULE_01", {"action": "ALLOW"}]
+        ]
+      },
+      "beklenen_hata_veya_davranis": "Kural çakışması tespit edilip alarm üretilmeli veya katı kural motoru çakışmayı bildirmelidir"
+    },
+    {
+      "id": "NEG_08_INVALID_SET_DIFFERENCE_OPERAND",
+      "tanim": "Küme farkı (difference) işleminde sağ tarafa küme olmayan ve dönüştürülemeyen geçersiz tip aktarılması",
+      "girdi": {
+        "target_set": ["1.1.1.1"],
+        "invalid_operand": 99999
+      },
+      "beklenen_hata_veya_davranis": "TypeError: Küme cebri işlemleri yalnızca doğrulanmış koleksiyonlar üzerinde işletilmelidir"
+    },
+    {
+      "id": "NEG_09_EXCESSIVE_COLLECTION_SIZE_MEMORY_EXHAUSTION",
+      "tanim": "Bellek tüketimi saldırısı — koleksiyon boyutu izin verilen güvenlik tavanını (örn. 50.000 eleman) aştığında engelleme",
+      "girdi": {
+        "talep_edilen_adet": 100000
+      },
+      "beklenen_hata_veya_davranis": "OverflowError veya ValueError: Koleksiyon eleman sınırı aşıldı; bellek koruması devrede"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+[
+  {
+    "id": "NEG_01",
+    "baslik": "Kalıcı / Sınırsız Yönetici Ayrıcalığı Talebi",
+    "cwe": "CWE-250",
+    "beklenen_hata": "StandingPrivilegeForbiddenError",
+    "kullanici": "attacker_ops",
+    "talep_edilen_kapsam": "*:*",
+    "sure_saniye": 3600
+  },
+  {
+    "id": "NEG_02",
+    "baslik": "Katalog Dışı Aşırı Yetki Kapsamı Talebi",
+    "cwe": "CWE-272",
+    "beklenen_hata": "ExcessiveScopeRequestedError",
+    "kullanici": "rogue_dev",
+    "talep_edilen_kapsam": "kernel:raw_memory_access",
+    "sure_saniye": 1800
+  },
+  {
+    "id": "NEG_03",
+    "baslik": "Süresi Dolmuş Geçici JIT Belirteci ile Erişim",
+    "cwe": "CWE-613",
+    "beklenen_hata": "JITElevationExpiredError",
+    "kullanici": "dba_stale",
+    "talep_edilen_kapsam": "log:forensics_export",
+    "simule_gecikme_dakika": 25,
+    "sure_saniye": 600
+  },
+  {
+    "id": "NEG_04",
+    "baslik": "Yönetilmeyen (BYOD) Güvensiz Cihaz ile PEP İhlali",
+    "cwe": "CWE-284",
+    "beklenen_hata": "DevicePostureUntrustedError",
+    "cihaz": {
+      "device_id": "BYOD-UNMANAGED-01",
+      "is_managed": false,
+      "antivirus_active": false,
+      "disk_encrypted": false,
+      "patch_lag_days": 45
+    },
+    "segment": "management_jumpbox"
+  },
+  {
+    "id": "NEG_05",
+    "baslik": "Ağ Mikro-Segmentasyon Yanal Hareket İhlali",
+    "cwe": "CWE-284",
+    "beklenen_hata": "NetworkMicroSegmentationViolationError",
+    "cihaz": {
+      "device_id": "DEV-WIFI-009",
+      "is_managed": true,
+      "antivirus_active": true,
+      "disk_encrypted": true,
+      "patch_lag_days": 1
+    },
+    "segment": "guest_wifi",
+    "hedef_segment": "core_banking"
+  },
+  {
+    "id": "NEG_06",
+    "baslik": "Anomali Sonucu Dinamik Güven Skoru Düşüşü",
+    "cwe": "CWE-284",
+    "beklenen_hata": "DynamicTrustScoreDegradedError",
+    "cihaz": {
+      "device_id": "DEV-CORP-VALID",
+      "is_managed": true,
+      "antivirus_active": true,
+      "disk_encrypted": true,
+      "patch_lag_days": 1
+    },
+    "segment": "management_jumpbox",
+    "anomali_sayisi": 3,
+    "jit_kapsam": "db:maintenance_backup"
+  },
+  {
+    "id": "NEG_07",
+    "baslik": "Kritik Kaynakta Step-Up MFA Eksikliği",
+    "cwe": "CWE-308",
+    "beklenen_hata": "StepUpAuthenticationRequiredError",
+    "cihaz": {
+      "device_id": "DEV-CORP-VALID",
+      "is_managed": true,
+      "antivirus_active": true,
+      "disk_encrypted": true,
+      "patch_lag_days": 1
+    },
+    "mfa_aktif": false,
+    "segment": "management_jumpbox",
+    "jit_kapsam": "db:maintenance_backup"
+  },
+  {
+    "id": "NEG_08",
+    "baslik": "Gerekli JIT Belirteci Olmaksızın Yetkili Kaynağa Erişim",
+    "cwe": "CWE-613",
+    "beklenen_hata": "JITElevationExpiredError",
+    "cihaz": {
+      "device_id": "DEV-CORP-VALID",
+      "is_managed": true,
+      "antivirus_active": true,
+      "disk_encrypted": true,
+      "patch_lag_days": 1
+    },
+    "mfa_aktif": true,
+    "segment": "management_jumpbox",
+    "jit_kapsam": null
+  },
+  {
+    "id": "NEG_09",
+    "baslik": "Şifrelenmemiş Disk ve Kapalı Antivirüs Cihaz Engeli",
+    "cwe": "CWE-284",
+    "beklenen_hata": "DevicePostureUntrustedError",
+    "cihaz": {
+      "device_id": "DEV-CORP-INSECURE",
+      "is_managed": true,
+      "antivirus_active": false,
+      "disk_encrypted": false,
+      "patch_lag_days": 20
+    },
+    "segment": "management_jumpbox"
+  }
+]

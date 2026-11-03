@@ -1,0 +1,49 @@
+================================================================================
+G067: AĞ PERFORMANS VE QoS MOTORU NEGATİF KONTROL VE İSTİSNA KANITI
+Tarih: 2026-10-31 | Doğrulanan Senaryo Sayısı: 9/9 PASS
+================================================================================
+
+[NEG_01] Boş Paket Akışı İstisnası
+  - Beklenen İstisna : EmptyPacketStreamError
+  - Yakalanan Mesaj  : Analiz edilecek paket listesi boş olamaz.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_02] Negatif veya Zamanda Geriye Giden Zaman Damgası İstisnası
+  - Beklenen İstisna : InvalidTimestampOrderError
+  - Yakalanan Mesaj  : Zaman damgası zamanda geriye gitti: 95.0 < 100.0
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_03] Negatif Gecikme (Varış Zamanı Gönderimden Önce) İstisnası
+  - Beklenen İstisna : NegativeDelayError
+  - Yakalanan Mesaj  : Varış zamanı (100.01) gönderim zamanından (100.05) önce olamaz.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_04] Kritik QoS SLA Eşik Aşımı (Yüksek Jitter İhlali)
+  - Beklenen İstisna : QoSSLAThresholdViolationError
+  - Yakalanan Mesaj  : Ortalama jitter (113.33ms) SLA limitini (20.0ms) aştı.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_05] Aşırı Paket Kaybı DoS Seviyesi İhlali
+  - Beklenen İstisna : ExcessivePacketLossError
+  - Yakalanan Mesaj  : Kritik paket kaybı (%80.0) tespit edildi! Olası DoS/Ağ Tıkanıklığı!
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_06] Bozuk Sıra Numarası (Negatif Sıra No)
+  - Beklenen İstisna : MalformedSequenceError
+  - Yakalanan Mesaj  : Geçersiz veya negatif sıra numarası: -5
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_07] Geçersiz Telemetri Veri Tipi
+  - Beklenen İstisna : InvalidTelemetryFormatError
+  - Yakalanan Mesaj  : Akış telemetrisi geçerli bir sözlük (dict) olmalıdır.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_08] Aşırı Saat Kayması (Clock Skew) Anomalisi
+  - Beklenen İstisna : ClockSkewAnomalyError
+  - Yakalanan Mesaj  : Aşırı saat kayması veya senkronizasyon anomalisi tespit edildi: 8999.00s
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_09] Eksik Paket Alanları İstisnası
+  - Beklenen İstisna : InvalidTelemetryFormatError
+  - Yakalanan Mesaj  : Paket nesnesinde 'gonderim_zamani' alanı zorunludur.
+  - Kontrol Durumu   : BAŞARILI (PASS)

@@ -1,0 +1,81 @@
+{
+  "_aciklama": "Kurumsal Linux Sunucusu SSH Anahtar ve Sunucu Yapılandırma Envanteri (Örnek Veri)",
+  "tarih": "2026-11-02",
+  "sunucu_adi": "bastion-ssh01.kurumsal.yerel",
+  "ssh_keys": [
+    {
+      "name": "id_ed25519",
+      "path": "/home/deploy/.ssh/id_ed25519",
+      "key_type": "ed25519",
+      "key_bits": 256,
+      "is_private": true,
+      "is_passphrase_protected": true,
+      "file_owner": "deploy",
+      "file_group": "deploy",
+      "file_mode": "0600",
+      "associated_user": "deploy"
+    },
+    {
+      "name": "id_rsa",
+      "path": "/home/admin/.ssh/id_rsa",
+      "key_type": "rsa",
+      "key_bits": 4096,
+      "is_private": true,
+      "is_passphrase_protected": true,
+      "file_owner": "admin",
+      "file_group": "admin",
+      "file_mode": "0600",
+      "associated_user": "admin"
+    },
+    {
+      "name": "id_dsa",
+      "path": "/home/legacy_user/.ssh/id_dsa",
+      "key_type": "dsa",
+      "key_bits": 1024,
+      "is_private": true,
+      "is_passphrase_protected": false,
+      "file_owner": "legacy_user",
+      "file_group": "legacy_user",
+      "file_mode": "0644",
+      "associated_user": "legacy_user"
+    }
+  ],
+  "authorized_keys": [
+    {
+      "user": "deploy",
+      "key_type": "ssh-ed25519",
+      "key_bits": 256,
+      "comment": "deploy@ci-cd-runner",
+      "options": [
+        "from=\"10.0.10.0/24\"",
+        "no-pty"
+      ],
+      "file_path": "/home/deploy/.ssh/authorized_keys",
+      "file_mode": "0600",
+      "file_owner": "deploy"
+    },
+    {
+      "user": "legacy_user",
+      "key_type": "ssh-dss",
+      "key_bits": 1024,
+      "comment": "old-backup-cron",
+      "options": [],
+      "file_path": "/home/legacy_user/.ssh/authorized_keys",
+      "file_mode": "0666",
+      "file_owner": "legacy_user"
+    }
+  ],
+  "sshd_config": {
+    "permit_root_login": "yes",
+    "password_authentication": true,
+    "pubkey_authentication": true,
+    "permit_empty_passwords": false,
+    "x11_forwarding": true,
+    "max_auth_tries": 6,
+    "client_alive_interval": 0,
+    "client_alive_count_max": 3,
+    "port": 22,
+    "config_file_mode": "0644",
+    "config_file_owner": "root"
+  }
+}

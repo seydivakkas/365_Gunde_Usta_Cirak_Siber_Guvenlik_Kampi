@@ -1,0 +1,21 @@
+KULLANIM: log_sanitizer_tool [SEÇENEKLER]
+
+TANIM:
+  Kurumsal SIEM ve SOC sistemlerine iletilen loglardaki hassas kişisel verileri (TCKN, Kredi Kartı, Parola) filtreleyip güvenli şekilde depolamak.
+
+SEÇENEKLER:
+  -i, --input-file             İncelenecek ham log dosyasının tam veya bağıl dosya yolu.
+  -o, --output-file            Filtrelenmiş ve maskelenmiş logların yazılacağı hedef dosya.
+  --mask-mode                  Kişisel veriler için maskeleme modu.
+  --purge-original             İşlem sonrası kaynak ham log dosyasını kalıcı olarak siler.
+
+ÇIKIŞ KODLARI:
+  0    BAŞARILI: Log dosyası incelendi ve hassas veriler temizlendi.
+  1    UYARI / GÜVENLİK ENGELİ: Hassas veri sızıntısı tespit edildi veya kural ihlali oluştu.
+  2    KULLANIM / GİRDİ HATASI: Belirtilen dosya bulunamadı veya parametreler geçersiz.
+
+YETKİ SEVİYESİ:
+  Kullanıcı (Standart User) / Log dosyası okuma yetkisi
+
+YAZAR:
+  Seydi Eryılmaz (@seydivakkas)

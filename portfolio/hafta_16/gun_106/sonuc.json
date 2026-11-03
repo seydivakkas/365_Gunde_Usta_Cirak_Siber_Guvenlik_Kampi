@@ -1,0 +1,35 @@
+{
+  "gun": 106,
+  "hafta": 16,
+  "konu": "Asimetrik kriptografi",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "tamamlanma_tarihi": "2026-11-02",
+  "kategori": "Asimetrik Kriptografi ve RSA",
+  "puan_detaylari": {
+    "mimari": 20,
+    "kodlama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "zafiyet_savunmalari": [
+    "CWE-326",
+    "CWE-327",
+    "CWE-780",
+    "CWE-208",
+    "CWE-20"
+  ],
+  "test_ozeti": {
+    "toplam_birim_test": 15,
+    "basarili_birim_test": 15,
+    "basarisiz_birim_test": 0,
+    "negatif_senaryolar": 9,
+    "basarili_negatif_senaryolar": 9
+  },
+  "yurutulen_araclar": [
+    "uygulama/asymmetric_crypto_engine.py",
+    "uygulama/asymmetric_cli.py",
+    "tests/test_asymmetric_crypto.py",
+    "kanit_uretici.py"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ.",
+  "gun": "G006",
+  "algoritma": "sha256",
+  "dosyalar": {
+    "README.md": "02d5686ceb127ccb41d200a3108dcf2d3fe9dc096ebad83ae8118426e69f6829",
+    "ders.md": "43f0c7da28661e1c1b2a2af78f89ea72b76203348623a950b7dd144d3f13000d",
+    "rapor.md": "5d5190faf51a6d8b10ec4ec0c9a122ebd2b65fa6acafcfad11459a81db481a92",
+    "sonuc.json": "627156d5a37137c29a2743ef5661fdecb42acbd5e3237777de36846d459caa60",
+    "soru_cevap.md": "726927e1d95ba18a9cd5103c277ed854586440219e0dbd739cbaab3c20301a00",
+    "kanit/gercek/komut_ve_cikis.txt": "2f3f8e17a31a4df7bb8848329ae311ea7b57581202a5d4bb4fc8cd1de6b6e68b",
+    "kanit/gercek/test_sonuclari.txt": "361888c05475db5891b6282e25fe5e1ed938e3a7af5af8bb90aec69781f89793",
+    "kanit/temsili/veri_akis_diyagrami.txt": "d0985c60387642ee53b6cdbd0b27ff7d3a4a082ba403895606eb5d26437b49e1",
+    "ornek_veri/not_uygulamasi_dfd.json": "00fa6a9a32a917383916d0474cc3edd6cfa93d0980053e8650d84278649b3b84",
+    "tests/test_threat_modeler.py": "b5c605c7098729d44bc4ef0c88da8016ab40bf59a6ce8c057c0e0b434ec87f19",
+    "uygulama/threat_modeler.py": "0048ab20e18a05b820737beee343eb711c43482bdac2053bcf17c3951c913405"
+  }
+}

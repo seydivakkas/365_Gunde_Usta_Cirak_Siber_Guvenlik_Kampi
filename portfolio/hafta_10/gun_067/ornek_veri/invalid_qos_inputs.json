@@ -1,0 +1,110 @@
+{
+  "aciklama": "G067 Paket Kaybı, Gecikme ve Jitter Negatif Sınır ve İstisna Test Senaryoları",
+  "test_senaryolari": [
+    {
+      "test_kodu": "NEG_01",
+      "senaryo_adi": "Boş Paket Akışı İstisnası",
+      "beklenen_hata": "EmptyPacketStreamError",
+      "akis_verisi": {
+        "akis_id": "NEG-EMPTY-01",
+        "paketler": []
+      }
+    },
+    {
+      "test_kodu": "NEG_02",
+      "senaryo_adi": "Negatif veya Zamanda Geriye Giden Zaman Damgası İstisnası",
+      "beklenen_hata": "InvalidTimestampOrderError",
+      "akis_verisi": {
+        "akis_id": "NEG-TIME-ORDER-01",
+        "paketler": [
+          {"sira_no": 1, "gonderim_zamani": 100.0, "varis_zamani": 100.02},
+          {"sira_no": 2, "gonderim_zamani": 95.0, "varis_zamani": 100.04}
+        ]
+      }
+    },
+    {
+      "test_kodu": "NEG_03",
+      "senaryo_adi": "Negatif Gecikme (Varış Zamanı Gönderimden Önce) İstisnası",
+      "beklenen_hata": "NegativeDelayError",
+      "akis_verisi": {
+        "akis_id": "NEG-NEG-DELAY-01",
+        "paketler": [
+          {"sira_no": 1, "gonderim_zamani": 100.050, "varis_zamani": 100.010}
+        ]
+      }
+    },
+    {
+      "test_kodu": "NEG_04",
+      "senaryo_adi": "Kritik QoS SLA Eşik Aşımı (Yüksek Jitter İhlali)",
+      "beklenen_hata": "QoSSLAThresholdViolationError",
+      "sla_limitleri": {
+        "max_ortalama_gecikme_ms": 100.0,
+        "max_jitter_ms": 20.0,
+        "max_kayip_orani_yuzde": 3.0
+      },
+      "akis_verisi": {
+        "akis_id": "NEG-SLA-JITTER-01",
+        "paketler": [
+          {"sira_no": 1, "gonderim_zamani": 1000.000, "varis_zamani": 1000.010},
+          {"sira_no": 2, "gonderim_zamani": 1000.020, "varis_zamani": 1000.120},
+          {"sira_no": 3, "gonderim_zamani": 1000.040, "varis_zamani": 1000.060},
+          {"sira_no": 4, "gonderim_zamani": 1000.060, "varis_zamani": 1000.250}
+        ]
+      }
+    },
+    {
+      "test_kodu": "NEG_05",
+      "senaryo_adi": "Aşırı Paket Kaybı DoS Seviyesi İhlali",
+      "beklenen_hata": "ExcessivePacketLossError",
+      "sla_limitleri": {
+        "max_kayip_orani_yuzde": 40.0
+      },
+      "akis_verisi": {
+        "akis_id": "NEG-DOS-LOSS-01",
+        "paketler": [
+          {"sira_no": 1, "gonderim_zamani": 2000.000, "varis_zamani": 2000.020},
+          {"sira_no": 10, "gonderim_zamani": 2000.180, "varis_zamani": 2000.220}
+        ]
+      }
+    },
+    {
+      "test_kodu": "NEG_06",
+      "senaryo_adi": "Bozuk Sıra Numarası (Negatif Sıra No)",
+      "beklenen_hata": "MalformedSequenceError",
+      "akis_verisi": {
+        "akis_id": "NEG-BAD-SEQ-01",
+        "paketler": [
+          {"sira_no": -5, "gonderim_zamani": 1000.000, "varis_zamani": 1000.020}
+        ]
+      }
+    },
+    {
+      "test_kodu": "NEG_07",
+      "senaryo_adi": "Geçersiz Telemetri Veri Tipi",
+      "beklenen_hata": "InvalidTelemetryFormatError",
+      "akis_verisi": "gecersiz_string_veri_tipi"
+    },
+    {
+      "test_kodu": "NEG_08",
+      "senaryo_adi": "Aşırı Saat Kayması (Clock Skew) Anomalisi",
+      "beklenen_hata": "ClockSkewAnomalyError",
+      "akis_verisi": {
+        "akis_id": "NEG-SKEW-01",
+        "paketler": [
+          {"sira_no": 1, "gonderim_zamani": 1000.000, "varis_zamani": 9999.000}
+        ]
+      }
+    },
+    {
+      "test_kodu": "NEG_09",
+      "senaryo_adi": "Eksik Paket Alanları İstisnası",
+      "beklenen_hata": "InvalidTelemetryFormatError",
+      "akis_verisi": {
+        "akis_id": "NEG-MISSING-FIELDS-01",
+        "paketler": [
+          {"sira_no": 1}
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+==============================================================================
+GÜN 139: LINUX AUDIT VE JOURNAL GÜVENLİĞİ BİRİM TEST RAPORU
+==============================================================================
+Çalıştırma Tarihi : 2026-11-02 14:52:59
+Toplam Test       : 15
+Başarılı Test     : 15
+Hatalı Test       : 0
+Kritik Hata       : 0
+Çalışma Süresi    : 0.0007 saniye
+Genel Durum       : TAM BAŞARILI (100% PASS)
+------------------------------------------------------------------------------
+DETAYLI TEST ÇIKTILARI:
+test_01_fully_hardened_audit_journal_score_100 (test_linux_audit_security.TestLinuxAuditSecurity.test_01_fully_hardened_audit_journal_score_100)
+Test 1: Tam sıkılaştırılmış auditd ve journald ortamı 100/100 tam puan almalıdır. ... ok
+test_02_inactive_auditd_detection (test_linux_audit_security.TestLinuxAuditSecurity.test_02_inactive_auditd_detection)
+Test 2: auditd kapalıysa AUD-001 (CRITICAL / CWE-778) üretilmelidir. ... ok
+test_03_disabled_on_boot_auditd (test_linux_audit_security.TestLinuxAuditSecurity.test_03_disabled_on_boot_auditd)
+Test 3: auditd açılışta başlamıyorsa AUD-001 üretilmelidir. ... ok
+test_04_missing_shadow_watch (test_linux_audit_security.TestLinuxAuditSecurity.test_04_missing_shadow_watch)
+Test 4: /etc/shadow izlenmiyorsa AUD-002 (CRITICAL) tespit edilmelidir. ... ok
+test_05_missing_passwd_watch (test_linux_audit_security.TestLinuxAuditSecurity.test_05_missing_passwd_watch)
+Test 5: /etc/passwd izlenmiyorsa AUD-002 tespit edilmelidir. ... ok
+test_06_missing_sudoers_watch (test_linux_audit_security.TestLinuxAuditSecurity.test_06_missing_sudoers_watch)
+Test 6: /etc/sudoers izlenmiyorsa AUD-003 (HIGH) üretilmelidir. ... ok
+test_07_missing_kernel_module_syscalls (test_linux_audit_security.TestLinuxAuditSecurity.test_07_missing_kernel_module_syscalls)
+Test 7: init_module / delete_module sistem çağrıları izlenmiyorsa AUD-004 üretilmelidir. ... ok
+test_08_journald_storage_volatile_or_auto (test_linux_audit_security.TestLinuxAuditSecurity.test_08_journald_storage_volatile_or_auto)
+Test 8: journald storage='volatile' ise AUD-005 (HIGH) tespit edilmelidir. ... ok
+test_09_journald_storage_none (test_linux_audit_security.TestLinuxAuditSecurity.test_09_journald_storage_none)
+Test 9: journald storage='none' ise AUD-005 üretilmelidir. ... ok
+test_10_missing_immutable_flag (test_linux_audit_security.TestLinuxAuditSecurity.test_10_missing_immutable_flag)
+Test 10: -e 2 değiştirilemezlik kilidi kapalıysa AUD-006 (MEDIUM) tespit edilmelidir. ... ok
+test_11_disk_full_action_ignore (test_linux_audit_security.TestLinuxAuditSecurity.test_11_disk_full_action_ignore)
+Test 11: disk_full_action='ignore' ise AUD-007 (MEDIUM) üretilmelidir. ... ok
+test_12_loose_audit_log_permissions (test_linux_audit_security.TestLinuxAuditSecurity.test_12_loose_audit_log_permissions)
+Test 12: log_file_mode='0666' ise AUD-008 (LOW) tespit edilmelidir. ... ok
+test_13_audit_rules_template_generation (test_linux_audit_security.TestLinuxAuditSecurity.test_13_audit_rules_template_generation)
+Test 13: generate_audit_rules_conf fonksiyonu CIS standartlarında kurallar üretmelidir. ... ok
+test_14_journald_conf_template_generation (test_linux_audit_security.TestLinuxAuditSecurity.test_14_journald_conf_template_generation)
+Test 14: generate_journald_conf fonksiyonu CIS uyumlu kalıcı ve mühürlü loglama şablonu üretmelidir. ... ok
+test_15_remediation_script_generation (test_linux_audit_security.TestLinuxAuditSecurity.test_15_remediation_script_generation)
+Test 15: generate_remediation_script fonksiyonu geçerli Bash sertleştirme direktifleri üretmelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+
+==============================================================================

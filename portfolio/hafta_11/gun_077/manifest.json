@@ -1,0 +1,23 @@
+{
+  "README.md": "c0db47b210b5d1ff9901e8a4507cdd451327cf447d2bf4b2ef99d80d7569d078",
+  "ders.md": "ab85d4eb44150651faea4b8142639b78f782c0c4143e358018c1c7964b2c6241",
+  "rapor.md": "71b5ba41eaf3819cd4c0d7f328a09e41a5b5fb24af78791756f43aaf26319374",
+  "sonuc.json": "5387d957012413b3d6fa3a340c661bfd160e77f45a5609168009d95563749547",
+  "soru_cevap.md": "4c15dc662008919bdfdd29f791a849a80a4f2322270f8583393436119da4adac",
+  "kanit\\gercek\\komut_ve_cikis.txt": "f2be41356b6de89ea401a883be3233bf55be4b61f7073ddbcde19aa4b4395b61",
+  "kanit\\gercek\\mini_proje_10_adli_ozet_raporu.txt": "fe63a8c961b6e4a32fae06aa4de0f56512f3aad35f9709845565ee0325dcfe45",
+  "kanit\\gercek\\mini_proje_10_ayristirma_raporu.json": "d35e4192be59a5517cc0b46e373040efcd8d54d088843263b96e3cf4a7ec3be7",
+  "kanit\\gercek\\negatif_kontrol_sonuclari.txt": "5584f1a5ec6b68c2128340f84faf66f27d9b8a8ba9b85831902bb46b44f8db2f",
+  "kanit\\gercek\\test_sonuclari.txt": "ef7b13803f19340aae53a5f99d8d48a760b3f7d20bf8b3adc6b3fe5a3e41d07f",
+  "kanit\\temsili\\bagimsiz_log_ayristirici_mimarisi.txt": "691c44421b09fee7dd376bfe6ab9a88b2eb81094b038dfa5a4ef99face34ca52",
+  "ornek_veri\\invalid_log_parser_inputs.json": "e15ca3eeffa71134c1696ae5e561ab8f8f7572f72dc4b6bdf0d428293a723ae0",
+  "ornek_veri\\mixed_security_event_stream.log": "5a15ee3e3494e42f8e3ed4c9489aa68841b250f4cc4f1ef778cba9744cb0b084",
+  "ornek_veri\\threat_intel_and_whitelist_rules.json": "518e82df3dcce92e0c9cc5e231164f41cf81b14136d084d092f4a998c3c8b72c",
+  "tests\\__init__.py": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+  "tests\\test_standalone_security_log_parser.py": "dd553cad8a292c39e757f7a25e74c63ff4e34f7d281a0be163dae59f4e96690f",
+  "tests\\__pycache__\\__init__.cpython-314.pyc": "30e86b14923d6abaa2131bafb7eb1ca8b084949220bc93ee4fb2440a8e8e5042",
+  "tests\\__pycache__\\test_standalone_security_log_parser.cpython-314.pyc": "54e313f90b5b63f216dbdef412dee49a4bbdcf3ca1bd5a6e1e52f7f8d5999a0e",
+  "uygulama\\__init__.py": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+  "uygulama\\standalone_security_log_parser.py": "bd1a9892ed024f54f755af8c32f5681b49da867a85d655934fb5783aa8bccce9",
+  "uygulama\\__pycache__\\standalone_security_log_parser.cpython-314.pyc": "8e7a90f800157c0cd4ed4f7c1918992d21380c5336fabcab20499e219c21345a"
+}

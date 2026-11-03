@@ -1,0 +1,77 @@
+{
+  "system_name": "Atlas Kurumsal Kimlik ve Yetki Altyapısı (Secure by Default)",
+  "failure_mode": "FAIL_SECURE",
+  "safety_override_token": null,
+  "resources": [
+    {
+      "resource_id": "RES-AUTH-API",
+      "name": "Merkezi Kimlik Doğrulama API Ağ Geçidi",
+      "default_access": "DENY",
+      "debug_mode": false,
+      "enforce_tls": true,
+      "is_default_credential_changed": true,
+      "cors_allow_all": false,
+      "storage_encrypted": true
+    },
+    {
+      "resource_id": "RES-PAYMENT-SVC",
+      "name": "Çekirdek Ödeme ve EFT Mikroservisi",
+      "default_access": "DENY",
+      "debug_mode": false,
+      "enforce_tls": true,
+      "is_default_credential_changed": true,
+      "cors_allow_all": false,
+      "storage_encrypted": true
+    },
+    {
+      "resource_id": "RES-CUSTOMER-DB",
+      "name": "PostgreSQL Müşteri Veritabanı Kümesi",
+      "default_access": "DENY",
+      "debug_mode": false,
+      "enforce_tls": true,
+      "is_default_credential_changed": true,
+      "cors_allow_all": false,
+      "storage_encrypted": true
+    },
+    {
+      "resource_id": "RES-AUDIT-LOG",
+      "name": "Değiştirilemez WORM Denetim Günlüğü Deposu",
+      "default_access": "DENY",
+      "debug_mode": false,
+      "enforce_tls": true,
+      "is_default_credential_changed": true,
+      "cors_allow_all": false,
+      "storage_encrypted": true
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "RULE-ADMIN-FULL",
+      "subject_role": "admin",
+      "resource_id": "RES-AUTH-API",
+      "action": "manage",
+      "effect": "PERMIT"
+    },
+    {
+      "rule_id": "RULE-PAYMENT-EXEC",
+      "subject_role": "payment_service",
+      "resource_id": "RES-PAYMENT-SVC",
+      "action": "execute_transfer",
+      "effect": "PERMIT"
+    },
+    {
+      "rule_id": "RULE-CUSTOMER-READ",
+      "subject_role": "support_agent",
+      "resource_id": "RES-CUSTOMER-DB",
+      "action": "read_profile",
+      "effect": "PERMIT"
+    },
+    {
+      "rule_id": "RULE-AUDIT-APPEND",
+      "subject_role": "security_logger",
+      "resource_id": "RES-AUDIT-LOG",
+      "action": "append",
+      "effect": "PERMIT"
+    }
+  ]
+}

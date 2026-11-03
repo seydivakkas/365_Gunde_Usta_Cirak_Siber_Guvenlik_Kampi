@@ -1,0 +1,41 @@
+======================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+======================================================================
+GÜN 127: UÇ NOKTA TEHDİT MODELİ VE SALDIRI YÜZEYİ MİMARİSİ
+Standartlar: MITRE ATT&CK for Enterprise, CIS Benchmarks, Microsoft Security Baselines
+----------------------------------------------------------------------
+
+   +-----------------------------------------------------------------+
+   |                     UÇ NOKTA SALDIRGAN GİRDİSİ                  |
+   |      [Phishing]      [Malicious USB]      [Network Exploit]     |
+   +-----------------------------------------------------------------+
+                                    |
+                                    v
+   +-----------------------------------------------------------------+
+   |                 UÇ NOKTA SALDIRI YÜZEYLERİ (SURFACES)           |
+   +-----------------------------------------------------------------+
+        |                    |                    |                |
+        | 1. Kimlik Belleği  | 2. Süreç/Servis    | 3. Kalıcılık   | 4. Ağ/Port
+        v                    v                    v                v
+   +------------+       +------------+       +------------+   +------------+
+   | LSASS / SAM|       | Unquoted   |       | Registry   |   | SMBv1, RDP |
+   | Memory Dump|       | Path, SUID |       | Run, Task  |   | Açık Port  |
+   | (T1003.001)|       | (T1574.009)|       | (T1547.001)|   | (T1021)    |
+   +------------+       +------------+       +------------+   +------------+
+        |                    |                    |                |
+        +--------------------+--------------------+----------------+
+                                    |
+                                    v
+   +-----------------------------------------------------------------+
+   |             UÇ NOKTA KORUMA VE TESPİT KATMANI (EDR / PPL)       |
+   |   - Credential Guard (RunAsPPL)  - Tamper Protection            |
+   |   - AppLocker / WDAC             - Sysmon / Auditd Telemetrisi  |
+   |   - BitLocker / LUKS Şifreleme   - PowerShell CLM (Constrained) |
+   +-----------------------------------------------------------------+
+                                    |
+                                    v
+   +-----------------------------------------------------------------+
+   |                TEHDİT ENDEKSİ VE HARDENING PLANI                |
+   |   - Tehdit Skoru (0-100)        - CIS Benchmark Eylem Planı     |
+   |   - Duruş Seviyesi (PASS/HOLD)  - Öncelikli Sıkılaştırma        |
+   +-----------------------------------------------------------------+

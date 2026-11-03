@@ -1,0 +1,38 @@
+==============================================================================
+G061: PROXY, NAT VE GUVENLIK DUVARI — KOMUT VE YURUTME KANITI
+==============================================================================
+Tarih: 2026-10-30 01:06:06 UTC+3
+Calisma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Python Surumu: Python 3.14.0 (Windows x64)
+Test Modulu: portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine
+
+Calistirilan Komut:
+$ python -m unittest portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine -v
+
+Cikis Kodu (Exit Code): 0 (Basarili)
+
+Test Sonuclari Ozeti:
+- Toplam Test: 14
+- Basarili: 14
+- Hatali (Error): 0
+- Basarisiz (Failure): 0
+- Calisma Suresi: 0.002 saniye
+- Durum: OK (PASS)
+
+Yurutulen Testlerin Kapsami:
+1.  test_01_ipv4_validation_positive_and_negative           -> OK (Pozitif/Negatif: IPv4 biçimi ve sınır kontrolleri)
+2.  test_02_valid_tcp_flags_acceptance                      -> OK (Pozitif: SYN, ACK, SYN-ACK, FIN-ACK, RST onayı)
+3.  test_03_negative_null_scan_detection                    -> OK (Negatif: Flags=0 Null Scan taraması engeli)
+4.  test_04_negative_syn_fin_scan_detection                 -> OK (Negatif: RFC 793 aykırı SYN+FIN taraması engeli)
+5.  test_05_negative_xmas_scan_detection                    -> OK (Negatif: FIN+PSH+URG Xmas Scan taraması engeli)
+6.  test_06_stateful_firewall_new_connection                -> OK (Pozitif: İzinli porta ilk SYN için NEW oturumu açılması)
+7.  test_07_stateful_firewall_return_traffic_established     -> OK (Pozitif: Sunucu SYN-ACK yanıtında ESTABLISHED teyidi)
+8.  test_08_stateful_firewall_established_data_stream       -> OK (Pozitif: Oturum içi ACK veri akışı onayı)
+9.  test_09_negative_unsolicited_out_of_state_packet        -> OK (Negatif: Durum tablosunda olmayan sahte ACK engeli)
+10. test_10_negative_blocked_inbound_port                   -> OK (Negatif: Yasaklı porta [23] gelen SYN düşürme)
+11. test_11_negative_conntrack_table_overflow               -> OK (Negatif: Conntrack durum tablosu taşma savunması)
+12. test_12_pat_outbound_and_inbound_translation            -> OK (Pozitif: PAT ile SNAT ve ters DNAT dönüşümü)
+13. test_13_negative_nat_port_exhaustion                    -> OK (Negatif: PAT port havuzu tükenme tespiti)
+14. test_14_proxy_xff_spoofing_defense_and_connect_tunnel   -> OK (Pozitif/Negatif: XFF sahtecilik engeli, CONNECT tünel denetimi)
+
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Ozel Lisans — Tum Haklari Saklidir.

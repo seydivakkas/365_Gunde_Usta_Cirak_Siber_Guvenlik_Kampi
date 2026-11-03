@@ -1,0 +1,43 @@
+{
+  "gun_no": 13,
+  "gun_kimligi": "G013",
+  "asama": "01",
+  "hafta": 2,
+  "konu": "Güvenli araştırma ve kaynak doğrulama",
+  "tarih": "2026-10-27",
+  "durum": "PASS",
+  "puan": 100,
+  "degerlendirme_detayi": {
+    "teori": 20,
+    "uygulama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "kanit_durumu": "TAM",
+  "tamamlanan_gorevler": [
+    "Güvenli araştırma ve kaynak doğrulama disiplini (İstihbarat Piramidi, CRAAP Çerçevesi ve Çapraz Teyit) Usta-Çırak derinliğinde açıklandı.",
+    "Tıp fakültesi kütüphanesi vs anonim forum bitkisel kürü analojisi ile doğrulanmamış kaynakların getireceği felaketlerin zihinsel modeli kuruldu.",
+    "Kuzey Koreli Lazarus APT grubunun araştırmacıları hedef alan sahte zafiyet PoC'ları ve tedarik zinciri tuzakları somutlaştırıldı.",
+    "CRAAP modeli (Currency, Relevance, Authority, Accuracy, Purpose) ile kaynak puanlama motoru geliştirildi.",
+    "Zehirli Truva Atı (Trojanized PoC: curl | sh) ve yıkıcı yetki kaldırma (chmod 777) tuzaklarını otomatik yakalayan kırmızı bayrak kuralları kodlandı.",
+    "Aynı güvenlik konusunu iki kaynaktan inceleyip güvenilirlik gerekçelerini üreten çapraz teyit (triangulation) mekanizması kodlandı.",
+    "Her kod satırı eğitsel açıklamalarla donatılmış security_source_validator.py CLI aracı geliştirildi.",
+    "14 birim test ile pozitif resmî kaynaklar, negatif güvenlik sınırları ve hata durumları 0.003 saniyede %100 başarıyla doğrulandı.",
+    "Gerçek CLI yürütme, unittest çıktısı ve temsilî ASCII istihbarat piramidi şeması kanıt olarak üretildi.",
+    "Soru bankasındaki 3 soru (G013-SC1, G013-SC2, G013-SC3) katı 4 bölümlü formatta cevaplandı."
+  ],
+  "pozitif_negatif_kontrol_sonuclari": {
+    "pozitif_kontrol_nvd": "Resmî NVD ve MSRC bülteni 100/100 tam puan alarak GUVENILIR_ONAYLI statüsünde onaylandı",
+    "pozitif_kontrol_cis": "CIS Benchmark belgesi uluslararası standart otoritesiyle 100/100 tam puan aldı",
+    "pozitif_kontrol_vaka01_teyit": "VAKA-01 çapraz teyidinde NVD onaylandı, sahte GitHub PoC deposu reddedildi",
+    "pozitif_kontrol_vaka02_teyit": "VAKA-02 çapraz teyidinde CIS Benchmark onaylandı, 2011 tarihli forum gönderisi reddedildi",
+    "negatif_kontrol_zehirli_poc": "Anonim GitHub PoC'undaki gizli curl | sh yükü FLAG-04-ZEHIRLI-POC-TRUVA-ATI ile FELAKET olarak yakalandı",
+    "negatif_kontrol_chmod777": "Eski forumdaki chmod 777 tavsiyesi FLAG-05-YIKICI-GUVENLIK-TAVSIYESI ile FELAKET olarak yakalandı",
+    "negatif_kontrol_eski_kaynak": "5 yılı aşmış (2011) içerik FLAG-01-ESKI-KAYNAK bayrağıyla cezalandırıldı",
+    "negatif_kontrol_imza_yoklugu": "GPG veya SHA-256 imzası olmayan kaynaklar FLAG-03-KRIPTO-BUTUNLUK-YOK ile yakalandı",
+    "negatif_kontrol_anonim_yazar": "Anonim açık kullanıcı profilleri FLAG-02-OTORITESIZ-KAYNAK ile cezalandırıldı",
+    "hata_yonetimi_tek_kaynak": "Tek kaynaklı vakada çapraz teyit IncompatibleTriangulationError ile engellendi"
+  },
+  "onceki_gun_bagimliligi": "YOK (Tamamen bağımsız)",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ."
+}

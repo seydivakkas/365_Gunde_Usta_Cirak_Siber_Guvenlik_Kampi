@@ -1,0 +1,47 @@
+================================================================================
+G055 - DHCP VE IP ATAMASI: KOMUT VE CIKIS KAYDI
+Calistirilma Zamani: 2026-10-29 17:57:30
+Isletim Sistemi: Windows (pwsh / Python 3.12)
+Calisma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+================================================================================
+
+KOMUT:
+python -m unittest portfolio/hafta_08/gun_055/tests/test_dhcp_protocol_allocator.py -v
+
+CIKIS:
+test_01_dhcp_discover_serialization_and_parsing (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_01_dhcp_discover_serialization_and_parsing)
+Test 1: DHCP Discover paketinin 236B ikili baslik ve TLV olarak serilestirilip ayrilmasi. ... ok
+test_02_dhcp_dora_complete_flow (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_02_dhcp_dora_complete_flow)
+Test 2: Tam DORA (Discover, Offer, Request, ACK) dongusunun ve IP atamasinin dogrulanmasi. ... ok
+test_03_dhcp_release_cycle (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_03_dhcp_release_cycle)
+Test 3: DHCP Release paketi ile kiralanan IP'nin bosa cikmasi ve havuza donusu. ... ok
+test_04_dhcp_nak_on_invalid_requested_ip (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_04_dhcp_nak_on_invalid_requested_ip)
+Test 4: Havuzda olmayan veya gecersiz IP talep edildiginde sunucunun NAK yaniti donmesi. ... ok
+test_05_expired_lease_cleanup (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_05_expired_lease_cleanup)
+Test 5: Suresi dolan kiralamalarin temizlenmesi ve adreslerin havuza iadesi. ... ok
+test_06_rogue_dhcp_detection (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_06_rogue_dhcp_detection)
+Test 6: Yetkisiz Sahte (Rogue) DHCP sunucusu teklifinin tespiti ve guvenlik alarmi. ... ok
+test_07_dhcp_starvation_attack_detection (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_07_dhcp_starvation_attack_detection)
+Test 7: Sahte rastgele MAC adresleriyle yapilan DHCP Starvation sel saldirisinin yakalanmasi. ... ok
+test_08_dhcp_snooping_drops_untrusted_server_offer (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_08_dhcp_snooping_drops_untrusted_server_offer)
+Test 8: DHCP Snooping kurali uyarinca untrusted porttan gelen Offer paketinin dusurulmesi. ... ok
+test_09_dhcp_snooping_builds_binding_database (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_09_dhcp_snooping_builds_binding_database)
+Test 9: Trusted porttan gecen onayli ACK ile DHCP Snooping Binding Tablosunun guncellenmesi. ... ok
+test_10_negative_invalid_op_code (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_10_negative_invalid_op_code)
+Test 10 (Negatif): Gecersiz op kodunda (99) DHCPValidationError firlatilmasi. ... ok
+test_11_negative_invalid_hardware_fields (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_11_negative_invalid_hardware_fields)
+Test 11 (Negatif): Gecersiz donanim tipi (htype!=1) veya uzunlugu (hlen!=6) kontrolu. ... ok
+test_12_negative_invalid_magic_cookie (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_12_negative_invalid_magic_cookie)
+Test 12 (Negatif): Gecersiz sihirli cerez (Magic Cookie) tespitinde hata uretilmesi. ... ok
+test_13_negative_invalid_mac_format (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_13_negative_invalid_mac_format)
+Test 13 (Negatif): Hatali veya hex disi karakter iceren MAC adreslerinin reddedilmesi. ... ok
+test_14_negative_truncated_raw_packet (portfolio.hafta_08.gun_055.tests.test_dhcp_protocol_allocator.TestDHCPProtocolAllocator.test_14_negative_truncated_raw_packet)
+Test 14 (Negatif): 236 bayt BOOTP basligindan kisa kesik veri akisinin reddedilmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK
+
+EXIT CODE: 0
+DURUM: 14/14 TEST BASARILI (PASS)

@@ -1,0 +1,98 @@
+{
+  "gun": 121,
+  "konu": "Risk skorlama ve kontrol seçimi",
+  "uretildi": "2026-11-02T06:06:20.694229",
+  "toplam_dosya": 18,
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "08f94f518043598822571b002be789d19c6ee52bab93998849596a145c0f2f06",
+      "boyut_byte": 3977
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "78e0c74ec383811909823d1ec3fc34f34b79f2eeebf447454dfae10a77f7c52a",
+      "boyut_byte": 5674
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "c3e079056e6418a73ba5189ea4b34197a58743760546df5062c4fd1ac6d7a684",
+      "boyut_byte": 15395
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "edc453938dc7da119b974860ca59f710800bb8c71e4df2bb0a1e30594e7cb1c5",
+      "boyut_byte": 5331
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "42b165fbd5c16f62da0207a7dc7f2620780221ede993cc9ec86a48559b1d7cf1",
+      "boyut_byte": 668
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "59b1cc17315e4bb562605f0edd09d477dd899ebab41fe3cb64b50a6526439d81",
+      "boyut_byte": 10060
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "e2cfebba739b7099745c7c6de0f001a337d4476139da32b5197ba72eb972e8f4",
+      "boyut_byte": 1453
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "2d3b8222e50e4fb70e3a0c529fa268b22f317ee199193863b57559ddfc26c89c",
+      "boyut_byte": 3879
+    },
+    {
+      "dosya": "kanit\\gercek\\risk_analiz_raporu.txt",
+      "sha256": "2e3410bff90a47458b4027f8de656e8664e294d7527920c85afe596263fc74c7",
+      "boyut_byte": 1857
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "eec9c34ab7082c5ebeefeb9ad142b6fdb0763fc7c03cdb40e07a89030cae776b",
+      "boyut_byte": 3647
+    },
+    {
+      "dosya": "kanit\\temsili\\risk_mimarisi.txt",
+      "sha256": "4602064f6beaf722eb3808f3a38b17034c0c3401f10a9db216bf00f880f148f4",
+      "boyut_byte": 3182
+    },
+    {
+      "dosya": "ornek_veri\\invalid_risk_scenarios.json",
+      "sha256": "d17e7ea6baf9cbf8521303ac32c522cc77a8c08a50607e3443e92859c741c4ed",
+      "boyut_byte": 4374
+    },
+    {
+      "dosya": "ornek_veri\\risk_assessment_config.json",
+      "sha256": "bcbb5fb56752d969bb1c55abb3b68a80e2a7e82991cc18e6251530940b95d5e9",
+      "boyut_byte": 4163
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "348bb464d5631a955bf9cbe33b81ed8d2202ca1bc98ceb71ddb9a1ab49b681b4",
+      "boyut_byte": 573
+    },
+    {
+      "dosya": "tests\\test_risk_control.py",
+      "sha256": "3519eb574f57a855cc75bf16630f5fa961b91766866107af1c71b0db9996c798",
+      "boyut_byte": 14367
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "22e2d089e37e44bf3b9e196ce43118fa1cd16aa0a1ab74fc160a389e009479a5",
+      "boyut_byte": 699
+    },
+    {
+      "dosya": "uygulama\\risk_cli.py",
+      "sha256": "b5984740bca3ae491f9f7b943c57647b6bf4fccbf12e68b2b13f5dfd190c26b2",
+      "boyut_byte": 9997
+    },
+    {
+      "dosya": "uygulama\\risk_control_engine.py",
+      "sha256": "59992a1776f45a4a0636d0b36e090f120d0e2267d5c2246e28e0b9da73da2455",
+      "boyut_byte": 30253
+    }
+  ]
+}

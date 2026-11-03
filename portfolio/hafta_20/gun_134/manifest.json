@@ -1,0 +1,89 @@
+{
+  "gun": 134,
+  "hafta": 20,
+  "konu": "Linux sudo ve ayrıcalık devri",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR (c) 2026 Seydi Eryılmaz",
+  "dosyalar": {
+    "README.md": {
+      "sha256": "575de294554509d78a7eefd4b415d3809c40032b0ef7dd56394746bb1b2d3882",
+      "boyut_byte": 4708
+    },
+    "ders.md": {
+      "sha256": "e88a74b29cc7e848d33b1daa40ea95a2284af4323305ce7e28e5904b3126a5ce",
+      "boyut_byte": 8415
+    },
+    "kanit_uretici.py": {
+      "sha256": "90d3234104aaa21fad1bf6ddca47db388828e6d87fc133baea552aede0937941",
+      "boyut_byte": 12062
+    },
+    "rapor.md": {
+      "sha256": "1a9ca563da8174436516dc112ad327189ab5e3bfa083737fdcaf9574c13ed57c",
+      "boyut_byte": 4881
+    },
+    "sonuc.json": {
+      "sha256": "c12e5f9d7a8afec173e7fd4f778fc57569898704616ae2b928dbbdb9ac52ec26",
+      "boyut_byte": 1098
+    },
+    "soru_cevap.md": {
+      "sha256": "8027b13d9160eb4afded33ab2b00a7cfec49a1f677d22b561c3d978ea842aa2a",
+      "boyut_byte": 11414
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "sha256": "6dc8133d474253f6584e9e36d7c7ced997fb03a3417382877af7aeb3a8bbba3b",
+      "boyut_byte": 9176
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "sha256": "b0eded3d91f5047f20d0c1f48e505371535ca5dea117c63eab757d33b1f1fd5a",
+      "boyut_byte": 2681
+    },
+    "kanit/gercek/ornek_guvenli_sudoers.conf": {
+      "sha256": "4fc0cd7366b7e119575f541e5531680f2e78e11cbdf98e2036722ced186f44bf",
+      "boyut_byte": 976
+    },
+    "kanit/gercek/otomatik_sikilastirma.sh": {
+      "sha256": "8d2d36960605d0e293ba60d1458eb932009e5eec4e79003fcda08e97b3d51ee6",
+      "boyut_byte": 2833
+    },
+    "kanit/gercek/sudo_guvenlik_analiz_raporu.json": {
+      "sha256": "65cca8749779f53edf7e774310668e3c32688e79834a92cd2c7159e1142f4161",
+      "boyut_byte": 5790
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "sha256": "89573c2b97d936bde57d072d29b60a0eb0ef9753c3de747b75e9e7b2bf4ac7f3",
+      "boyut_byte": 465
+    },
+    "kanit/temsili/sudo_mimarisi.txt": {
+      "sha256": "52d063412487cebf3a9090d5814a013269d94328a8a2c0cf5ed0ee7f53a18fe0",
+      "boyut_byte": 3674
+    },
+    "ornek_veri/invalid_sudoers_scenarios.json": {
+      "sha256": "47b2fc07dfa9e175db1dfec6026060f73fa36eef6ba5fe81b4b3a49f5807034f",
+      "boyut_byte": 4669
+    },
+    "ornek_veri/sudoers_inventory_spec.json": {
+      "sha256": "c61ff264bc862266165f2bdca2ae53397ed27190222faf2c4e4d8b7fae242335",
+      "boyut_byte": 1889
+    },
+    "tests/__init__.py": {
+      "sha256": "92b596a343b79a77696c7a86a2fe81533eb7e6c382099d15bb24bd6f6b1aae66",
+      "boyut_byte": 579
+    },
+    "tests/test_linux_sudo_security.py": {
+      "sha256": "07162f28a19836b9cfb7580c68c685474e134c0b0e6b0f977ecef7bd6d14f434",
+      "boyut_byte": 10833
+    },
+    "uygulama/__init__.py": {
+      "sha256": "8b6e22b0d45e53a4fd66b235b2eb2ef5d2ea4667d0673894ec14ddfcf01a3d2d",
+      "boyut_byte": 768
+    },
+    "uygulama/linux_sudo_engine.py": {
+      "sha256": "6156b1358398d7a2aceb84a1731b9d5bd46efadc270aa89acd53d7208711c45b",
+      "boyut_byte": 26946
+    },
+    "uygulama/sudo_security_cli.py": {
+      "sha256": "eb51b166ffe50fc0ba79fb8fbf22462a9b691014e23f0dab9cb3563f96486c96",
+      "boyut_byte": 8056
+    }
+  },
+  "toplam_dosya_sayisi": 20
+}

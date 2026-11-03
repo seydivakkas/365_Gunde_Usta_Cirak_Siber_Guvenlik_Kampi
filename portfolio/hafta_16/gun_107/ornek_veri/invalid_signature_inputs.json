@@ -1,0 +1,89 @@
+{
+  "aciklama": "Gün 107 Dijital İmza ve Doğrulama Negatif Kontrol Test Senaryoları",
+  "negatif_senaryolar": [
+    {
+      "id": "NEG_01_TAMPERED_DOCUMENT",
+      "aciklama": "İmzalanmış belgenin metninde tek bir karakter veya bayt değiştirildiğinde imza doğrulamasının başarısız olması",
+      "zafiyet_kodu": "CWE-347",
+      "beklenen_hata": "SignatureVerificationError",
+      "parametreler": {
+        "tamper_suffix": " (Manipule Edilmis Ek Metin)"
+      }
+    },
+    {
+      "id": "NEG_02_CORRUPTED_SIGNATURE_BYTES",
+      "aciklama": "İmza bloğunun baytlarında tahrifat yapıldığında doğrulamanın reddedilmesi",
+      "zafiyet_kodu": "CWE-347",
+      "beklenen_hata": "SignatureVerificationError",
+      "parametreler": {
+        "tamper_byte_index": 8
+      }
+    },
+    {
+      "id": "NEG_03_WRONG_PUBLIC_KEY",
+      "aciklama": "Geçerli bir imzanın sahte veya farklı bir genel anahtarla doğrulanmaya çalışılması",
+      "zafiyet_kodu": "CWE-347",
+      "beklenen_hata": "SignatureVerificationError",
+      "parametreler": {
+        "use_attacker_key": true
+      }
+    },
+    {
+      "id": "NEG_04_BLEICHENBACHER_FORGERY_ATTACK",
+      "aciklama": "e=3 durumunda gevşek ASN.1 ayrıştırıcılarına karşı Bleichenbacher imza sahteciliği saldırısı tespiti",
+      "zafiyet_kodu": "CWE-347",
+      "beklenen_hata": "BleichenbacherVulnerabilityDetected",
+      "parametreler": {
+        "e": 3,
+        "exploit_type": "low_exponent_signature_forgery"
+      }
+    },
+    {
+      "id": "NEG_05_ECDSA_NONCE_REUSE",
+      "aciklama": "ECDSA imzasında aynı rastgele nonce k değerinin iki farklı mesaj için kullanılmasıyla özel anahtarın ifşa olması",
+      "zafiyet_kodu": "CWE-323",
+      "beklenen_hata": "ECDSANonceReuseDetected",
+      "parametreler": {
+        "reused_nonce_k": 133742,
+        "m1": "Mesaj Bir",
+        "m2": "Mesaj Iki"
+      }
+    },
+    {
+      "id": "NEG_06_WEAK_RSA_KEY_SIZE",
+      "aciklama": "512 bit ve altı zayıf anahtarlarla imza üretilmesinin engellenmesi",
+      "zafiyet_kodu": "CWE-326",
+      "beklenen_hata": "WeakKeySizeError",
+      "parametreler": {
+        "bit_length": 256
+      }
+    },
+    {
+      "id": "NEG_07_TEXTBOOK_EXISTENTIAL_FORGERY",
+      "aciklama": "Düz (Textbook) RSA imzasında rastgele s seçilip m = s^e mod n ile imza uydurma saldırısı tespiti",
+      "zafiyet_kodu": "CWE-327",
+      "beklenen_hata": "TextbookSignatureForgeryDetected",
+      "parametreler": {
+        "arbitrary_signature_s": 424242
+      }
+    },
+    {
+      "id": "NEG_08_INVALID_PSS_SALT_LENGTH",
+      "aciklama": "RSA-PSS doğrulamasında sahte veya geçersiz tuz (salt) uzunluğu kullanımı",
+      "zafiyet_kodu": "CWE-347",
+      "beklenen_hata": "SignatureVerificationError",
+      "parametreler": {
+        "invalid_salt_len": 64
+      }
+    },
+    {
+      "id": "NEG_09_MALFORMED_SIGNATURE_ENCODING",
+      "aciklama": "Modül uzunluğuna uymayan eksik veya kırpılmış imza baytı sunulması",
+      "zafiyet_kodu": "CWE-20",
+      "beklenen_hata": "InvalidSignatureFormatError",
+      "parametreler": {
+        "truncated_bytes": 16
+      }
+    }
+  ]
+}

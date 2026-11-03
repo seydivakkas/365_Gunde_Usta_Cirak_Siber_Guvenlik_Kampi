@@ -1,0 +1,61 @@
+================================================================================
+G064: WIRESHARK GORUNTULEME FILTRESI VE SIBER TEHDIT AVI ANALIZ RAPORU
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas) - Tum Haklari Saklidir
+================================================================================
+
+Toplam Analiz Edilen Paket : 10
+Uretilen Tehdit Uyarisi   : 5
+
+1. GUVELIK PROFILLERI VE ESLESEN BULGULAR:
+  * Kural Adi           : SYN_FLOOD_VEYA_TARAMA
+    Wireshark Filtresi  : tcp.flags.syn == 1 && tcp.flags.ack == 0
+    Eslesen Paket Sayisi: 1
+    Paket Numaralari    : [3]
+------------------------------------------------------------
+  * Kural Adi           : PORT_TARAMA_RST_YANITI
+    Wireshark Filtresi  : tcp.flags.reset == 1
+    Eslesen Paket Sayisi: 1
+    Paket Numaralari    : [4]
+------------------------------------------------------------
+  * Kural Adi           : ACIK_METIN_KIMLIK_BILGISI
+    Wireshark Filtresi  : http.request.method == "POST" && (http contains "password" || http contains "auth")
+    Eslesen Paket Sayisi: 1
+    Paket Numaralari    : [2]
+------------------------------------------------------------
+  * Kural Adi           : DNS_TUNELLEME_SIZINTISI
+    Wireshark Filtresi  : dns.qry.name.len > 40 && dns.flags.response == 0
+    Eslesen Paket Sayisi: 1
+    Paket Numaralari    : [5]
+------------------------------------------------------------
+  * Kural Adi           : SIFIR_PENCERE_KILITLENMESI
+    Wireshark Filtresi  : tcp.window_size == 0 && tcp.flags.reset == 0
+    Eslesen Paket Sayisi: 1
+    Paket Numaralari    : [7]
+------------------------------------------------------------
+
+2. AKTIF TEHDIT UYARILARI:
+  [!] TEHDİT TESPİTİ [SYN_FLOOD_VEYA_TARAMA]: 1 paket yakalandı! Filtre: tcp.flags.syn == 1 && tcp.flags.ack == 0
+  [!] TEHDİT TESPİTİ [PORT_TARAMA_RST_YANITI]: 1 paket yakalandı! Filtre: tcp.flags.reset == 1
+  [!] TEHDİT TESPİTİ [ACIK_METIN_KIMLIK_BILGISI]: 1 paket yakalandı! Filtre: http.request.method == "POST" && (http contains "password" || http contains "auth")
+  [!] TEHDİT TESPİTİ [DNS_TUNELLEME_SIZINTISI]: 1 paket yakalandı! Filtre: dns.qry.name.len > 40 && dns.flags.response == 0
+  [!] TEHDİT TESPİTİ [SIFIR_PENCERE_KILITLENMESI]: 1 paket yakalandı! Filtre: tcp.window_size == 0 && tcp.flags.reset == 0
+
+3. TEMEL GORUNTULEME FILTRESI TESTLERI:
+  - Filtre   : ip.src == "192.168.1.100"
+    Amac     : Kaynak IP 192.168.1.100 olan paketler
+    Eslesme  : 5 paket -> [1, 2, 6, 9, 10]
+  - Filtre   : tcp.port == 80
+    Amac     : TCP portu (kaynak veya hedef) 80 olan paketler
+    Eslesme  : 2 paket -> [1, 2]
+  - Filtre   : (tcp.dstport == 80 || tcp.dstport == 443) && ip.proto == 6
+    Amac     : Web portlari (HTTP/HTTPS)
+    Eslesme  : 4 paket -> [1, 2, 3, 9]
+  - Filtre   : http.body contains "password"
+    Amac     : Govdesinde acik metin parola gecen HTTP istekleri
+    Eslesme  : 1 paket -> [2]
+  - Filtre   : tcp.payload_hex[0:4] == "4745"
+    Amac     : Bayt dilimleme ile 'GET' HTTP baslangici
+    Eslesme  : 1 paket -> [1]
+  - Filtre   : ! (ip.proto == 6)
+    Amac     : TCP disi (UDP ve ICMP) trafigi
+    Eslesme  : 3 paket -> [5, 6, 10]

@@ -1,0 +1,38 @@
+==============================================================================
+GÜN 139: LINUX AUDIT VE JOURNAL GÜVENLİK KOMUT SATIRI VE ÇIKTI KANITI
+==============================================================================
+Tarih: 2026-11-02 14:52:59
+
+$ python uygulama/audit_security_cli.py audit -i ornek_veri/audit_inventory_spec.json
+------------------------------------------------------------------------------
+============================================================================
+      LINUX AUDIT VE JOURNAL GÜVENLİK DENETİM VE RİSK RAPORU           
+============================================================================
+auditd Servis Durumu     : AKTİF
+journald Depolama Türü   : VOLATILE
+İzlenen Dosya Kuralı     : 2
+İzlenen Syscall Kuralı   : 1
+Genel Güvenlik Skoru     : 50.0 / 100.0
+Sistem Değerlendirmesi   : KRİTİK RİSK (ACİL MÜDAHALE GEREKLİ)
+Tespit Edilen Zafiyet    : 4 adet
+  • Kritik Derece        : 0
+  • Yüksek Derece        : 2
+  • Orta Derece          : 2
+  • Düşük Derece         : 0
+----------------------------------------------------------------------------
+ÖNE ÇIKAN GÜVENLİK BULGULARI:
+  [HIGH] AUD-003: Sudoers Dosyalarında Audit İzleme Kuralı Eksik -> /etc/sudoers
+  [HIGH] AUD-005: Journald Günlükleri Kalıcı Olarak Saklanmıyor (Storage!=persistent) -> journald:Storage
+  [MEDIUM] AUD-006: Audit Kurallarında Değiştirilemezlik Kilidi (-e 2) Eksik -> audit.rules:immutable_flag
+  [MEDIUM] AUD-007: Audit Disk Dolum Aksiyonu Yetersiz veya Tanımsız -> auditd.conf:disk_full_action
+============================================================================
+
+$ python uygulama/audit_security_cli.py remediate -i ornek_veri/audit_inventory_spec.json -o kanit/gercek/otomatik_sikilastirma.sh
+[+] Otomatik Bash sertleştirme betiği üretildi: kanit/gercek/otomatik_sikilastirma.sh
+
+$ python uygulama/audit_security_cli.py audit-rules -o kanit/gercek/ornek_guvenli_audit.rules
+[+] CIS uyumlu audit.rules şablonu üretildi: kanit/gercek/ornek_guvenli_audit.rules
+
+$ python uygulama/audit_security_cli.py journald-conf -o kanit/gercek/ornek_guvenli_journald.conf
+[+] CIS uyumlu journald.conf şablonu üretildi: kanit/gercek/ornek_guvenli_journald.conf
+==============================================================================

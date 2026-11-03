@@ -1,0 +1,23 @@
+{
+  "yuksek_entropi_ornegi": {
+    "tanim": "Kriptografik güvenli CSPRNG (os.urandom / secrets) ile üretilmiş 256 baytlık veri",
+    "beklenen_shannon_entropi_min": 7.5,
+    "tip": "CSPRNG_URANDOM"
+  },
+  "dusuk_entropi_tekrarlanan": {
+    "tanim": "Tekrarlanan sabit karakterlerden oluşan aşırı düşük entropili veri (Örn: 'AAAA...')",
+    "veri": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "beklenen_shannon_entropi": 0.0,
+    "tip": "REPEATED_BYTE"
+  },
+  "sirali_baytlar": {
+    "tanim": "Sıralı 0-255 sayılarından oluşan tahmin edilebilir deterministik dizi",
+    "veri_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+    "tip": "SEQUENTIAL"
+  },
+  "zayif_prng_ornegi": {
+    "tanim": "random modülü (Mersenne Twister) ile sabit tohumla (seed=42) üretilmiş tahmin edilebilir akış",
+    "tohum": 42,
+    "tip": "WEAK_PRNG_MT19937"
+  }
+}

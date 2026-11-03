@@ -1,0 +1,67 @@
+{
+  "belge_adi": "Sızma Testi Angajman Kuralları ve Yasal Kapsam Belgesi (Rules of Engagement - RoE)",
+  "kurum_adi": "Acme Finans ve Teknoloji A.Ş.",
+  "proje_kodu": "ROE-2026-G003",
+  "yasal_dayanak": "TCK Madde 243 ve 244 Kapsamında Çift Taraflı Islak/Dijital İmzalı Yetkilendirme Sözleşmesi",
+  "test_turu": "Beyaz Kutu (White-Box) Güvenlik Değerlendirmesi",
+  "yetkili_test_ekibi": [
+    "Kıdemli Güvenlik Analisti",
+    "Siber Güvenlik 365 Çırağı"
+  ],
+  "izin_verilen_tarih_araligi": {
+    "baslangic": "2026-10-26",
+    "bitis": "2026-10-30",
+    "saat_araligi": "09:00 - 18:00"
+  },
+  "kapsam_ici_hedefler": {
+    "ip_listesi": [
+      "192.168.10.50",
+      "192.168.10.51",
+      "192.168.10.52"
+    ],
+    "cidr_bloklari": [
+      "192.168.10.48/28"
+    ],
+    "alan_adlari": [
+      "dev-portal.acme-finans.local",
+      "test-api.acme-finans.local"
+    ]
+  },
+  "kesinlikle_kapsam_disi_hedefler": {
+    "ip_listesi": [
+      "192.168.10.1",
+      "192.168.10.254",
+      "8.8.8.8",
+      "1.1.1.1"
+    ],
+    "alan_adlari": [
+      "canli-odeme.acme-finans.com",
+      "musteri-giris.acme-finans.com",
+      "google.com"
+    ],
+    "aciklama": "Canlı üretim (production) sistemleri, üçüncü taraf harici servisler ve ağ altyapı cihazları kesinlikle test edilemez!"
+  },
+  "izin_verilen_faaliyetler": [
+    "RECONNAISSANCE",
+    "PASSIVE_INFO_GATHERING",
+    "PORT_SCAN",
+    "SERVICE_BANNER_GRABBING",
+    "WEB_VULN_SCAN",
+    "CONFIGURATION_AUDIT"
+  ],
+  "kesinlikle_yasaklanan_faaliyetler": [
+    "DOS_ATTACK",
+    "DDOS",
+    "DATA_DELETION",
+    "DATA_EXFILTRATION",
+    "SOCIAL_ENGINEERING",
+    "PHISHING",
+    "BRUTE_FORCE_LOCKOUT",
+    "PHYSICAL_INTRUSION"
+  ],
+  "acil_durum_kontaklari": {
+    "sistem_yoneticisi": "admin@acme-finans.local",
+    "guvenlik_operasyon_merkezi": "soc@acme-finans.local",
+    "acil_telefon": "+90 212 555 0100"
+  }
+}

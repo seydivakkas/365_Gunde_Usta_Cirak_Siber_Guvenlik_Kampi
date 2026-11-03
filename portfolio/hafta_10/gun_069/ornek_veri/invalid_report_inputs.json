@@ -1,0 +1,88 @@
+{
+  "aciklama": "G069 Wireshark Analiz Raporu Negatif Sınır ve İstisna Test Senaryoları",
+  "test_senaryolari": [
+    {
+      "test_kodu": "NEG_01",
+      "senaryo_adi": "Boş PCAP Paket Ayrıştırma Listesi İstisnası",
+      "beklenen_hata": "EmptyPCAPStreamError",
+      "pcap_verisi": {
+        "yakalama_metaverisi": {"dosya_adi": "empty.pcap"},
+        "paketler": []
+      }
+    },
+    {
+      "test_kodu": "NEG_02",
+      "senaryo_adi": "Geçersiz PCAP Telemetri Veri Biçimi İstisnası",
+      "beklenen_hata": "InvalidPCAPDataError",
+      "pcap_verisi": "bu_bir_sozluk_degil_hatali_pcap_metni"
+    },
+    {
+      "test_kodu": "NEG_03",
+      "senaryo_adi": "Bozuk veya Eksik Paket Başlığı İstisnası",
+      "beklenen_hata": "MalformedPacketHeaderError",
+      "pcap_verisi": {
+        "yakalama_metaverisi": {"dosya_adi": "malformed.pcap"},
+        "paketler": [
+          {"zaman_damgasi": 1730345000.0, "protokol": "TCP"}
+        ]
+      }
+    },
+    {
+      "test_kodu": "NEG_04",
+      "senaryo_adi": "Desteklenmeyen veya Boş Protokol Tanımı İstisnası",
+      "beklenen_hata": "UnsupportedProtocolError",
+      "pcap_verisi": {
+        "yakalama_metaverisi": {"dosya_adi": "bad_proto.pcap"},
+        "paketler": [
+          {"paket_no": 1, "zaman_damgasi": 1730345000.0, "boyut_bayt": 60, "protokol": ""}
+        ]
+      }
+    },
+    {
+      "test_kodu": "NEG_05",
+      "senaryo_adi": "Aşırı Yüksek Paket Boyutu (MTU Sınırı Aşımı) İstisnası",
+      "beklenen_hata": "OversizedPacketLengthError",
+      "pcap_verisi": {
+        "yakalama_metaverisi": {"dosya_adi": "jumbo_overflow.pcap"},
+        "paketler": [
+          {"paket_no": 1, "zaman_damgasi": 1730345000.0, "boyut_bayt": 999999, "protokol": "TCP", "kaynak_ip": "1.1.1.1", "hedef_ip": "2.2.2.2"}
+        ]
+      }
+    },
+    {
+      "test_kodu": "NEG_06",
+      "senaryo_adi": "Bozuk Konuşma Demeti (IP veya Port Bilgisi Eksik)",
+      "beklenen_hata": "MalformedConversationTupleError",
+      "pcap_verisi": {
+        "yakalama_metaverisi": {"dosya_adi": "bad_conv.pcap"},
+        "paketler": [
+          {"paket_no": 1, "zaman_damgasi": 1730345000.0, "boyut_bayt": 100, "protokol": "TCP", "kaynak_ip": "192.168.1.1"}
+        ]
+      }
+    },
+    {
+      "test_kodu": "NEG_07",
+      "senaryo_adi": "Geçersiz Rapor Biçimi Parametresi İstisnası",
+      "beklenen_hata": "InvalidReportFormatError",
+      "istenilen_format": "PDF_GEÇERSİZ"
+    },
+    {
+      "test_kodu": "NEG_08",
+      "senaryo_adi": "Zamanda Geriye Giden Paket Zaman Damgası İstisnası",
+      "beklenen_hata": "InconsistentCaptureTimestampError",
+      "pcap_verisi": {
+        "yakalama_metaverisi": {"dosya_adi": "time_warp.pcap"},
+        "paketler": [
+          {"paket_no": 1, "zaman_damgasi": 1730345005.0, "boyut_bayt": 60, "protokol": "ICMP", "kaynak_ip": "1.1.1.1", "hedef_ip": "2.2.2.2"},
+          {"paket_no": 2, "zaman_damgasi": 1730345001.0, "boyut_bayt": 60, "protokol": "ICMP", "kaynak_ip": "1.1.1.1", "hedef_ip": "2.2.2.2"}
+        ]
+      }
+    },
+    {
+      "test_kodu": "NEG_09",
+      "senaryo_adi": "Geçersiz Önem Seviyesi (Severity) Filtresi İstisnası",
+      "beklenen_hata": "InvalidSeverityThresholdError",
+      "filtre_seviyesi": "SEVERITY_SUPER_HIGH_INVALID"
+    }
+  ]
+}

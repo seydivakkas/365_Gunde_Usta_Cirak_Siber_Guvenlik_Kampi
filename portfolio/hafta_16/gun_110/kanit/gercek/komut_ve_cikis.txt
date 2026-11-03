@@ -1,0 +1,47 @@
+========================================================================
+  GÜN 110: TLS CLI YÜRÜTME KOMUTU VE ÇIKTI KANITI
+  Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_110\uygulama\tls_cli.py
+========================================================================
+
+========================================================================
+  TLS G�VENL�K SINIRLARI VE PROTOKOL ANAL�Z ARACI
+  RFC 5246 (TLS 1.2) / RFC 8446 (TLS 1.3) / RFC 7507 (Fallback-SCSV)
+========================================================================
+
+[*] 1. ADIM: �stemci ve Sunucu TLS Motorlar� Ba�lat�l�yor...
+[+] ClientHello G�nderildi:
+    - S�r�mler: ['TLSv1.3', 'TLSv1.2']
+    - �ifre Paketleri: ['TLS_AES_256_GCM_SHA384', 'TLS_AES_128_GCM_SHA256']
+[+] ServerHello Al�nd�:
+    - Pazarl�k Edilen S�r�m: TLSv1.3
+    - Se�ilen �ifre Paketi: TLS_AES_256_GCM_SHA384
+[+] Finished Mesaj� (Transcript-Hash): d54785a4fb8cc9f6... (Do�ruland�: True)
+[+] Record Katman� AEAD �ifreleme:
+    - �ifreli Veri: 1feff21ca3fce55b3e6ca82d9abd2f53...
+    - Auth Tag: 3f7d29f526ffe4ad06cd434df09a91b7
+    - ��z�len Veri: GET /api/v1/guvenli-veri HTTP/1.1
+Host: guvenli.kurum.local
+
+========================================================================
+  TLS G�VENL�K SINIRI VE ZAF�YET SALDIRI SENARYOLARI (CWE ANAL�Z�)
+========================================================================
+
+[!] 1. Test: TLS_FALLBACK_SCSV Downgrade Sald�r�s� (CWE-757)...
+    -> Savunma Ba�ar�l�: CWE-757: TLS_FALLBACK_SCSV uyar�nca downgrade sald�r�s� tespit edildi! Sunucu TLSv1.3 desteklerken istemci TLSv1.2 teklif etti.
+
+[!] 2. Test: K�r�lm�� �ifre Paketi Talebi (RC4/DES) (CWE-327)...
+    -> Savunma Ba�ar�l�: CWE-327 / CWE-757: �stemcinin sundu�u paketlerin hi�biri g�venlik politikas�n� sa�lam�yor (RC4/DES/Statik RSA reddedildi)!
+
+[!] 3. Test: El S�k��ma Transkript Tahrifat� (CWE-353)...
+    -> Savunma Ba�ar�l�: CWE-353: Finished mesaj� do�rulanamad�! El s�k��ma transkripti aradaki sald�rgan taraf�ndan de�i�tirilmi�tir.
+
+[!] 4. Test: Record AEAD Auth Tag Tahrifat� (CWE-353)...
+    -> Savunma Ba�ar�l�: CWE-353: Record katman� AEAD kimlik do�rulama etiketi (MAC) uyu�muyor!
+
+[!] 5. Test: TLS 1.3 0-RTT Erken Veri Replay Sald�r�s� (CWE-294)...
+    -> Savunma Ba�ar�l�: CWE-294: 0-RTT Erken Veri Replay sald�r�s� engellendi! Bilet ID (ticket_finans_998877) zaten kullan�ld�.
+
+========================================================================
+  T�M TLS G�VENL�K SINIRI ��LEMLER� VE TESTLER� BA�ARIYLA TAMAMLANDI
+========================================================================
+

@@ -1,0 +1,89 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+====================================================================================================
+G064: WIRESHARK GORUNTULEME FILTRESI VE SOZDIZIM AGACI (AST) MIMARISI
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR | Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+====================================================================================================
+
+Bu şema, Wireshark görüntüleme filtresi dizgelerinin sözcüksel analize (tokenization) nasıl
+tabi tutulduğunu, özyinelemeli sözdizim ağacının (AST) nasıl inşa edildiğini ve ayrıştırılmış
+ağ paketleri üzerinde nasıl işletildiğini gösteren kavramsal bir mimari çizimdir.
+
++--------------------------------------------------------------------------------------------------+
+|                  1. BPF (YAKALAMA FILTRESI) vs GORUNTULEME FILTRESI KARSILASTIRMASI              |
++--------------------------------------------------------------------------------------------------+
+
+   Özellik                  BPF (Berkeley Packet Filter)           Wireshark Görüntüleme Filtresi
+   -----------------------  ------------------------------------   --------------------------------
+   Çalıştığı Katman         Çekirdek (Kernel - libpcap/Npcap)      Kullanıcı Alanı (Wireshark GUI / TShark)
+   İşlem Zamanı             Paket diske yazılmadan önce            Paket diske yazıldıktan sonra
+   Performans Etkisi        Çok yüksek (istemeyen paket atılır)    Orta/Düşük (görsel filtreleme)
+   Protokol Derinliği       Sadece L2/L3/L4 başlıkları             L2'den L7'ye kadar tam rekonstrüksiyon
+   Örnek Sözdizimi          tcp port 80 and src 10.0.0.1           tcp.port == 80 && ip.src == 10.0.0.1
+   Uygulama Alanı           tcpdump -i eth0 'tcp port 443'         wireshark -r capture.pcap -Y 'http'
+
++--------------------------------------------------------------------------------------------------+
+|                  2. SOZCUKSAL ANALIZ (LEXER) VE TOKENIZASYON BORU HATTI                          |
++--------------------------------------------------------------------------------------------------+
+
+   Filtre Dizgesi:  '(ip.src == "192.168.1.100" && tcp.dstport == 80) || http.body contains "admin"'
+          │
+          ▼
+   +───────────────────────────────────────────────────────────────────────────────────────────────+
+   |  Sözcüksel Ayrıştırıcı (Lexer / Tokenizer)                                                    |
+   +───────────────────────────────────────────────────────────────────────────────────────────────+
+   |  Tokens: ['(', 'ip.src', '==', '"192.168.1.100"', '&&', 'tcp.dstport', '==', '80', ')',     |
+   |           '||', 'http.body', 'contains', '"admin"']                                           |
+   +───────────────────────────────────────────────────────────────────────────────────────────────+
+          │
+          ▼
+   [ Parantez Doğrulama (validate_parentheses) ] ──> Dengesiz ise: FilterSyntaxError
+
++--------------------------------------------------------------------------------------------------+
+|                  3. SOYUT SOZDIZIM AGACI (AST) HIYERARSISI                                       |
++--------------------------------------------------------------------------------------------------+
+
+                                     [ LogicalBinaryNode: || (OR) ]
+                                            /              \
+                                           /                \
+                [ LogicalBinaryNode: && (AND) ]         [ ComparisonNode: contains ]
+                     /                    \                    /             \
+                    /                      \             Field: http.body   Target: "admin"
+        [ ComparisonNode: == ]    [ ComparisonNode: == ]
+             /          \              /          \
+     Field: ip.src  Target: IP    Field: port  Target: 80
+
++--------------------------------------------------------------------------------------------------+
+|                  4. PAKET AYRISTIRMA VE DEGERLENDIRME MATRISI                                    |
++--------------------------------------------------------------------------------------------------+
+
+   Ham Paket -> [ Protokol Ayrıştırıcı (Dissector) ] -> { frame.len, ip.src, tcp.dstport, ... }
+                                                                 │
+                                                                 ▼
+                                                  +─────────────────────────────+
+                                                  | AST evaluate(packet) Metodu |
+                                                  +─────────────────────────────+
+                                                                 │
+                                       ┌─────────────────────────┴─────────────────────────┐
+                                       ▼                                                   ▼
+                                [ EŞLEŞTİ (TRUE) ]                                [ EŞLEŞMEDİ (FALSE) ]
+                                - Listeye Dahil Edilir                            - Gösterimden Elenir
+                                - Tehdit Avı Alarmı Tetikler                      - İşlem Yapılmaz
+
++--------------------------------------------------------------------------------------------------+
+|                  5. KRITIK TEHDIT AVI FILTRE IMZALARI                                            |
++--------------------------------------------------------------------------------------------------+
+
+   Saldırı Tipi                      Wireshark Görüntüleme Filtresi İmzası
+   --------------------------------  --------------------------------------------------------------
+   SYN Flood / Tarama                tcp.flags.syn == 1 && tcp.flags.ack == 0
+   Port Taraması Reset Yanıtı        tcp.flags.reset == 1
+   Açık Metin Kimlik Bilgisi         http.request.method == "POST" && (http contains "password")
+   DNS Veri Sızdırma (Tunneling)     dns.qry.name.len > 40 && dns.flags.response == 0
+   Sıfır Pencere Kilitlenmesi        tcp.window_size == 0 && tcp.flags.reset == 0
+   Bayt Dilimleme ile HTTP GET       tcp.payload_hex[0:4] == "4745"
+
+====================================================================================================
+SONUÇ: Wireshark filtre motorunun AST tabanlı ayrıştırma mekanizması, karmaşık mantıksal sorguları
+yüksek hızda ve tip güvenli olarak işletmeye olanak tanır.
+====================================================================================================

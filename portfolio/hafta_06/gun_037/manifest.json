@@ -1,0 +1,22 @@
+{
+  "gun": 37,
+  "gun_id": "G037",
+  "dosyalar": {
+    "README.md": "1d5a9df79fcb1fe06c9ec8a67600930ed2b89ec02a2c290506e85430432f6c6d",
+    "ders.md": "5c284ad1826655f053a1e215c970a4e58a9a90ed98a6dbceb8cd6e4e5ed7162a",
+    "rapor.md": "f80b2ced85f9fc4bc6e401ddd7d129b83d1a7065470f316b5695102e5ac08a82",
+    "sonuc.json": "e30626e3c1c0be2b553f72f44bccc526f291c8b3f5abe779bc09c6db95ce431c",
+    "soru_cevap.md": "87d0e50df3be145ae7f1707c788567cfbdc8b223bbbb9d22b34077e562546b2d",
+    "kanit/gercek/disk_ve_dosya_sistemi_denetim_raporu.txt": "921e0948d0002a13ded5b940be312d5784029efc37ae677a675b7f8c66bed6b0",
+    "kanit/gercek/komut_ve_cikis.txt": "4fd964e07ae53e22fb56b72866c67c2aa0048d079494a215418895979bfa9a6a",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": "eee6c483e49450d1997a5e7beb5adc6c859b55ecc79c7f1541a30a1baa163f41",
+    "kanit/gercek/test_sonuclari.txt": "2955745575f903638d2a1734261e333250bd3ef32dcabdb0fd76db0950e9fd5c",
+    "kanit/temsili/disk_bolumleri_ve_dosya_sistemi_mimarisi.txt": "36903e42ba31be06e42d5b62934c070811871ecb275800d8c46c20de00821508",
+    "ornek_veri/corrupted_disk_telemetry_test_cases.json": "edf4a2a8d3dce86af87b792c1504ea35334de14e0404e15adeff14c0db5d4b5b",
+    "ornek_veri/sample_disk_telemetry.json": "d8adcc68c4f2eb24e2f57ff85578a8321f7d37d1e5ccce90388ab8c94e261454",
+    "tests/__init__.py": "12b62ddc2b3a3414dfc5a3d142adbd725288b349cc2451a0e218e4694864b3b1",
+    "tests/test_disk_partition_fs_auditor.py": "11c6c9bb782cb88f9b38f7ff1e9cec87f9ddbe45a77d2884263017faee0a89f5",
+    "uygulama/__init__.py": "a01ed110cab172777c49d07d8b8caa9480d8ca07979d700d2c36fe5ca71bf86e",
+    "uygulama/disk_partition_fs_auditor.py": "0b0841558a73f83b1d39cd2cd1547a159468397087f0097dcd1d107dc991a009"
+  }
+}

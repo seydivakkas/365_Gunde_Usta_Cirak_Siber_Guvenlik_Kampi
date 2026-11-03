@@ -1,0 +1,46 @@
+================================================================================
+G084: MINI PROJE 11: GU剝ENLIK LOG ARACI - GERCEK DENETIM VE METRIK CIKTISI
+Tarih: 2026-11-01T04:31:00+03:00
+Girdi Dosyasi: ornek_veri/raw_access_logs.jsonl
+================================================================================
+
+1. ISLEME ISTATISTIKLERI:
+  Toplam Islenen Satir  : 8
+  Toplam Gecerli Kayit  : 8
+  Toplam Reddedilen     : 0
+  Toplam Uretilen Alarm : 4
+
+2. ISTEMCI IP DAGILIMI:
+  - IP: 10.0.0.15            -> 4 istek
+  - IP: 192.168.1.100        -> 1 istek
+  - IP: 192.168.1.105        -> 1 istek
+  - IP: 192.168.1.200        -> 1 istek
+  - IP: 192.168.1.50         -> 1 istek
+
+3. HTTP DURUM KODU DAGILIMI:
+  - HTTP 200 -> 2 adet
+  - HTTP 201 -> 1 adet
+  - HTTP 400 -> 1 adet
+  - HTTP 401 -> 4 adet
+
+4. TESPIT EDILEN GUVENLIK ALARMLARI:
+  - [CRITICAL] ALT-BRUTE-0001 | AUTHENTICATION_BRUTE_FORCE | CWE: CWE-307: Excessive Authentication Attempts
+    Istemci IP: 10.0.0.15 | Detay: IP '10.0.0.15' tarafindan 3 basarisiz giris denemesi (Esik: 3)
+  - [CRITICAL] ALT-BRUTE-0002 | AUTHENTICATION_BRUTE_FORCE | CWE: CWE-307: Excessive Authentication Attempts
+    Istemci IP: 10.0.0.15 | Detay: IP '10.0.0.15' tarafindan 4 basarisiz giris denemesi (Esik: 3)
+  - [CRITICAL] ALT-SQLI-0003 | SQL_INJECTION_ATTEMPT | CWE: CWE-89: SQL Injection
+    Istemci IP: 192.168.1.100 | Detay: Istek icerisinde SQL Injection kaliplari yakalandi: /api/v1/users?id=1' UNION SELECT credit_card, password FROM users-- SQL syntax e
+  - [HIGH] ALT-SCANNER-0004 | MALICIOUS_SCANNER_DETECTED | CWE: CWE-200: Exposure of Sensitive Information to Unauthorized Actor
+    Istemci IP: 192.168.1.100 | Detay: Zararli Guvenlik Tarayicisi Tespit Edildi: sqlmap/1.5
+
+5. HASSAS VERI MASKELEME ORNEKLERI (REDACTION EXAMPLES):
+  Kayit #7 (/api/v1/comments):
+    Ham Metin : Comment submitted with token Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dozS_sample_signature
+    Maskeli   : Comment submitted with token Bearer [REDACTED_JWT]
+  Kayit #8 (/api/v1/payment):
+    Ham Metin : Payment processed for card 4532-1122-3344-5566 with api_key AKIAIOSFODNN7EXAMPLE
+    Maskeli   : Payment processed for card ****-****-****-5566 with api_key AKIA***REDACTED***
+
+================================================================================
+SONUC: Guvenlik log araci tum analiz ve maskeleme hedeflerini 100% karsilamistir.
+================================================================================

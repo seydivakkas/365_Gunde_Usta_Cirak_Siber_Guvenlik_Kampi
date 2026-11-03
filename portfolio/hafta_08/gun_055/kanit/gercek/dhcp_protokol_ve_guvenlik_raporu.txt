@@ -1,0 +1,60 @@
+================================================================================
+G055 - DHCP VE IP ATAMASI: PROTOKOL ANALIZI VE GUVENLIK DENETIM RAPORU
+Tarih: 2026-10-29 17:58:00
+Standartlar: RFC 2131 (DHCP), RFC 2132 (DHCP Options), RFC 1497 (BOOTP Extensions)
+Calisma Modu: Yerel Calistirildi (Local Standalone Execution)
+================================================================================
+
+--- 1. ASAMA: IP HAVUZU VE DORA YASAM DONGUSU ---
+[*] DHCP IP Havuzu Baslatildi: 192.168.1.100 - 192.168.1.110 (Toplam: 11 IP)
+[*] Ag Parametreleri:
+    - Alt Ag Maskesi (Option 1):  255.255.255.0
+    - Varsayilan Gateway (Option 3): 192.168.1.1
+    - DNS Sunuculari (Option 6):     8.8.8.8, 1.1.1.1
+    - Varsayilan Kira Suresi (Opt 51): 7200 saniye (2 saat)
+
+[DISCOVER] MAC: 00:0c:29:4f:8e:35 -> Broadcast (255.255.255.255:67)
+           XID: 0x3903f326 | Secenek 53: 1 (DHCPDISCOVER) | Ham Bayt Boyutu: 247 bayt
+[OFFER]    Sunucu (192.168.1.1) -> MAC: 00:0c:29:4f:8e:35
+           Onerilen IP (yiaddr): 192.168.1.100 | Server ID: 192.168.1.1 | Kira: 7200s
+[REQUEST]  MAC: 00:0c:29:4f:8e:35 -> Broadcast
+           Talep Edilen IP (Option 50): 192.168.1.100 | Server ID (Option 54): 192.168.1.1
+[ACK]      Sunucu (192.168.1.1) -> MAC: 00:0c:29:4f:8e:35
+           Tahsis Onaylandi: 192.168.1.100 | Durum: ACTIVE | Kalan Bos IP: 10
+
+--- 2. ASAMA: SAHTE (ROGUE) DHCP SUNUCUSU TESPITI ---
+[!] Ag Uzerinde Sahte DHCP Offer Paketi Yakalandi:
+    - Kaynak IP: 192.168.1.199
+    - Server Identifier (Option 54): 192.168.1.199
+    - Onerilen Sahte Gateway (Option 3): 192.168.1.199 (MitM Dinleme Girisimi)
+    - Onerilen Sahte DNS (Option 6): 192.168.1.199 (DNS Zehirleme / Spoofing)
+[BLOKE] RogueDHCPDetector Alarmi Firlatildi:
+    "TEHLIKE: Sahte (Rogue) DHCP Sunucusu Tespit Edildi! Kaynak: 192.168.1.199, Server ID: 192.168.1.199"
+    Paket aninda karantinaya alindi, istemciye ulasmasi engellendi.
+
+--- 3. ASAMA: DHCP STARVATION (HAVUZ TUKENME) SALDIRISI TESPITI ---
+[*] Saldiri Modeli: Sahte/Rastgele MAC adresleriyle art arda DISCOVER yayinlama
+    - Istek 1: MAC=02:aa:bb:cc:dd:00 | Zaman Penceresi: 0.05s (Normal oran)
+    - Istek 2: MAC=02:aa:bb:cc:dd:01 | Zaman Penceresi: 0.12s (Normal oran)
+    - Istek 3: MAC=02:aa:bb:cc:dd:02 | Zaman Penceresi: 0.18s (Normal oran)
+    - Istek 4: MAC=02:aa:bb:cc:dd:99 | Zaman Penceresi: 0.22s (ESIK ASILDI!)
+[BLOKE] DHCPStarvationDetector Alarmi:
+    "SALDIRI ALARMI: DHCP Starvation (Havuz Tukenme) Saldirisi Algilandi! Son 1.0s icinde 4 istek ve 4 farkli MAC goruldu."
+    Saldirgan MAC adresi bloke edildi, IP havuzu tukenmekten kurtarildi.
+
+--- 4. ASAMA: L2 DHCP SNOOPING VE BINDING TABLOSU ---
+[*] Anahtar Port Rolleri:
+    - Fa0/1: untrusted (Uzak istemci erisim portu)
+    - Gi0/1: trusted (Uplink / Guvenli sunucu portu)
+[TEST 1] Fa0/1 (untrusted) uzerinden sunucu OFFER paketi iletilmek istendi:
+    -> [DROP] DHCP Snooping Guvenlik Alarmi: Port Fa0/1 (untrusted) uzerinden sunucu yanit paketi engellendi!
+[TEST 2] Gi0/1 (trusted) uzerinden yetkili ACK paketi iletildi:
+    -> [PERMIT] Paket basariyla gecti.
+[*] Dinamik DHCP Snooping Binding Tablosu Guncellendi:
+    +-------------------+---------------+-------+-------+------------+
+    | MAC Adresi        | IP Adresi     | VLAN  | Port  | Kira (sn)  |
+    +-------------------+---------------+-------+-------+------------+
+    | 00:0c:29:4f:8e:35 | 192.168.1.100 | 1     | Gi0/1 | 7200       |
+    +-------------------+---------------+-------+-------+------------+
+    Not: Bu binding tablosu bir sonraki asamalarda Dynamic ARP Inspection (DAI)
+         ve IP Source Guard (IPSG) mekanizmalarinin temelini olusturur.

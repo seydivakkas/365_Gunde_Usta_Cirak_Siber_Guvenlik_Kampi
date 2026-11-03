@@ -1,0 +1,47 @@
+================================================================================
+G057 - HTTP ISTEK VE YANIT YAPISI: KOMUT VE CIKIS KAYDI
+Calistirilma Zamani: 2026-10-29 19:30:31
+Isletim Sistemi: Windows (pwsh / Python 3.12)
+Calisma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+================================================================================
+
+KOMUT:
+python -m unittest portfolio/hafta_09/gun_057/tests/test_http_protocol_analyzer.py -v
+
+CIKIS:
+test_01_valid_get_request_parsing_and_serialization (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_01_valid_get_request_parsing_and_serialization)
+Test 1: Standart HTTP/1.1 GET isteginin ayrilmasi ve geri kablo formatina serilestirilmesi. ... ok
+test_02_valid_post_request_with_body (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_02_valid_post_request_with_body)
+Test 2: JSON yuku iceren POST isteginin ayrilmasi ve govde uzunlugunun dogrulanmasi. ... ok
+test_03_http_methods_properties (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_03_http_methods_properties)
+Test 3: HTTP metotlarinin Guvenli (Safe) ve Esguklu (Idempotent) ozelliklerinin RFC 7231 denetimi. ... ok
+test_04_valid_response_200_ok (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_04_valid_response_200_ok)
+Test 4: 200 OK yanit mesajinin ayrilmasi ve durum kodunun dogrulanmasi. ... ok
+test_05_valid_response_status_codes (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_05_valid_response_status_codes)
+Test 5: Farkli HTTP durum kodlarinin (201, 301, 404, 500) yanit modellerinde dogrulanmasi. ... ok
+test_06_crlf_injection_detection (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_06_crlf_injection_detection)
+Test 6: Istemci istegindeki CRLF enjeksiyonu ve yanit bolme girisiminin engellenmesi. ... ok
+test_07_request_smuggling_cl_te_detection (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_07_request_smuggling_cl_te_detection)
+Test 7: Content-Length ve Transfer-Encoding catismasiyla HTTP Request Smuggling saldirisinin tespiti. ... ok
+test_08_hardened_response_security_headers_audit (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_08_hardened_response_security_headers_audit)
+Test 8: Sikilastirilmis ve OWASP guvenlik basliklari tam olan sunucu yanitinin 100 puan almasi. ... ok
+test_09_vulnerable_response_banner_leak_audit (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_09_vulnerable_response_banner_leak_audit)
+Test 9: Guvensiz sunucu yanitinda eksik basliklar ve afis bilgi sizintisinin (Server banner) tespiti. ... ok
+test_10_risky_http_method_detection (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_10_risky_http_method_detection)
+Test 10: XST riskine yol acan TRACE ve dosya manipulasyonu saglayan PUT metotlarinin tespiti. ... ok
+test_11_negative_empty_or_malformed_request_line (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_11_negative_empty_or_malformed_request_line)
+Test 11 (Negatif): Bos mesaj ve 3 parcadan olusmayan bozuk istek satirinda HTTPParsingError firlatilmasi. ... ok
+test_12_negative_unsupported_method_and_version (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_12_negative_unsupported_method_and_version)
+Test 12 (Negatif): Standart disi HTTP metodu ve desteklenmeyen HTTP versiyonunun reddedilmesi. ... ok
+test_13_negative_missing_host_header_in_http11 (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_13_negative_missing_host_header_in_http11)
+Test 13 (Negatif): RFC 7230 geregi HTTP/1.1 isteklerinde Host basligi yoksa 400 Bad Request hatasi. ... ok
+test_14_negative_invalid_status_code_and_negative_content_length (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_14_negative_invalid_status_code_and_negative_content_length)
+Test 14 (Negatif): 100-599 disindaki gecersiz durum kodu ve negatif Content-Length denetimi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.003s
+
+OK
+
+EXIT CODE: 0
+DURUM: 14/14 TEST BASARILI (PASS)

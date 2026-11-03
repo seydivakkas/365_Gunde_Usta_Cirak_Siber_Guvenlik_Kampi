@@ -1,0 +1,33 @@
+=== G044: ETHERNET VE MAC ÇERÇEVE ANALİZİ — NEGATİF KONTROL VE HATA DOĞRULAMA GÜNLÜĞÜ ===
+Tarih: 2026-10-27
+Mekanizma: Standart dışı, bozuk ve kural ihlali içeren çerçeve senaryolarının yakalanması.
+
+[*] Senaryo: multicast_source_mac_violation
+    Açıklama: Kaynak MAC adresinde I/G (Individual/Group) bitinin 1 olması; IEEE 802.3 standardında kaynak MAC asla multicast olamaz
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Protokol İhlali: Kaynak MAC adresi (01:00:5E:00:01:02) Multicast veya Broadcast olamaz! (I/G biti = 1)
+
+[*] Senaryo: invalid_mac_hex_format
+    Açıklama: MAC adresinde onaltılık sayı tabanı dışı karakter bulunması (Örn: 00:1A:2B:3C:4D:ZZ)
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Çerçeve #1 hedef MAC adresi geçersiz: '00:1A:2B:3C:4D:ZZ'
+
+[*] Senaryo: invalid_ethertype_format
+    Açıklama: EtherType alanının standart 16-bit hex (0x0000-0xFFFF) formatına uymaması
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Çerçeve #1 geçersiz EtherType formatı: '0x08'. Beklenen: 0xXXXX
+
+[*] Senaryo: undersized_runt_frame
+    Açıklama: Toplam çerçeve boyutunun Ethernet asgari sınırı olan 64 baytın altında kalması (Runt Frame)
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Çerçeve #1 boyutu (38 bayt) Ethernet asgari sınırı olan 64 baytın altındadır (Runt Frame)!
+
+[*] Senaryo: missing_destination_mac
+    Açıklama: Çerçeve başlığında zorunlu destination_mac alanının bulunmaması
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Çerçeve #1 içinde zorunlu 'destination_mac' alanı eksik.
+
+[*] Senaryo: non_dict_frame_entry
+    Açıklama: Çerçeveler listesinde sözlük yerine geçersiz dize bulunması
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Çerçeve #1 bir JSON sözlüğü olmalıdır, alınan: str

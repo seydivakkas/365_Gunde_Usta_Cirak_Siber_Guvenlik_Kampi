@@ -1,0 +1,67 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+Donanım Katmanları, Veri Uçuculuğu (Volatility) ve Kalıntı (Remanence) Sınırları
+================================================================================
+
++------------------------------------------------------------------------------+
+|                          1. CPU KATMANI (İŞLEMCİ)                            |
+|  - Durum: Ultra-Uçucu (Ultra-Volatile), Nanosecond hız                       |
+|  - Bileşenler: Yazmaçlar (RAX, RBX, RIP, RSP), L1/L2/L3 Cache                |
+|  - Ayrıcalık Seviyeleri: Ring 0 (Kernel) <---> Ring 3 (User Space)           |
+|                                                                              |
+|  +---------------------+   +---------------------+   +--------------------+  |
+|  | Yazmaçlar (Regs)    |   | L1/L2 Önbellek      |   | L3 Önbellek        |  |
+|  | [Anahtar / Parola]  |-->| [Açık Metin Hattı]  |-->| [Paylaşılan Cache] |  |
+|  +---------------------+   +---------------------+   +--------------------+  |
+|         |                                                      |             |
+|         v                                                      v             |
+|   [GÜVENLİK RİSKİ: Çökme / Core Dump]            [GÜVENLİK RİSKİ: Spectre /  |
+|   [Yazmaç içeriği kaza raporuna akar]             Meltdown / MDS Yan Kanal]  |
++------------------------------------------------------------------------------+
+                                       |
+                   Veri Yolu (Front Side Bus / Memory Bus)
+                                       v
++------------------------------------------------------------------------------+
+|                          2. RAM KATMANI (ANA BELLEK)                         |
+|  - Durum: Uçucu (Volatile), Microsecond hız, DRAM                             |
+|  - İşlem Sanal Bellek Alanı (Virtual Address Space - VAS):                   |
+|                                                                              |
+|    [0x7ffd...] Yığıt (Stack)    : Yerel değişkenler, Fonksiyon çerçeveleri  |
+|    [0x55a0...] Öbek (Heap)      : malloc/new dinamik nesneler, Session Token|
+|    [0x4006...] BSS / Data       : Genel & Statik Değişkenler                 |
+|    [0x4000...] Text (Code)      : Salt-okunur yürütülebilir kod (R-X)        |
+|                                                                              |
+|  GÜVENLİK TEHDİTLERİ:                                                        |
+|  1. Plain Free: free(ptr) sonrası tampon sıfırlanmazsa veri bellekte kalır.  |
+|  2. Un-zeroed Heap: Mimikatz / Procdump ile açık metin parola sızdırılır.    |
+|  3. Paging / Swap: mlock() yoksa işletim sistemi RAM bloğunu diske yazar!     |
+|                                                                              |
+|  SAVUNMA MEKANİZMALARI:                                                      |
+|  - DEP / NX (Data Execution Prevention)                                      |
+|  - ASLR (Address Space Layout Randomization)                                 |
+|  - VirtualLock / mlock + SecureZeroMemory()                                  |
++------------------------------------------------------------------------------+
+                                       |
+                       I/O Kontrolcüsü (NVMe / SATA / PCIe)
+                                       v
++------------------------------------------------------------------------------+
+|                    3. DEPOLAMA KATMANI (KALICI HAFIZA)                       |
+|  - Durum: Kalıcı (Non-Volatile), Millisecond hız, NAND Flash / Manyetik      |
+|  - Dosya Sistemleri: NTFS, ext4, APFS, FAT32                                 |
+|                                                                              |
+|  +---------------------------+   +---------------------------------------+   |
+|  | Sayfalama / Takas         |   | Dosya Sistemi & Ayrılmamış Alan       |   |
+|  | pagefile.sys, swapfile    |   | Dosya Silindiğinde: Yalnızca Gösterici|   |
+|  | hiberfil.sys (Hazırda Bek)|   | (Inode/MFT) silinir; Sektördeki Veri  |   |
+|  | [Açık RAM Klonu Kalır!]   |   | Kalıcı Kalır! (Slack & Unallocated)   |   |
+|  +---------------------------+   +---------------------------------------+   |
+|                                                                              |
+|  GÜVENLİK RİSKİ:                                                             |
+|  - Adli Bilişim (Carving / TestDisk / EnCase) ile silinen veriler kurtarılır.|
+|  - Şifrelenmemiş disk çalınırsa fiziksel erişimle tüm veri sızar.            |
+|                                                                              |
+|  SAVUNMA MEKANİZMALARI:                                                      |
+|  - Tam Disk Şifreleme (FDE): BitLocker (XTS-AES-256) / LUKS                  |
+|  - ClearPageFileAtShutdown = 1 (Kapanışta takas alanı sıfırlama)             |
+|  - NIST SP 800-88 Medya İmhası (Kriptografik Silme / Fiziksel İmha)          |
++------------------------------------------------------------------------------+

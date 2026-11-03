@@ -1,0 +1,23 @@
+{
+  "versiyon": "2026.1",
+  "standart_adi": "Siber Guvenlik Kaynak Dogrulama ve CRAAP Guvenilirlik Modeli",
+  "lisans": "OZEL LISANS - TUM HAKLARI SAKLIDIR. Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas)",
+  "kriter_agirliklari": {
+    "currency_guncellik": 20,
+    "relevance_ilgililik": 20,
+    "authority_otorite": 25,
+    "accuracy_dogruluk_ve_kanit": 25,
+    "purpose_amac_ve_tarafsizlik": 10
+  },
+  "seviye_esikleri": {
+    "guvenilir_onayli": 80,
+    "supheli_ikincil_kaynak": 50,
+    "guvensiz_veya_zararli": 0
+  },
+  "otomatik_red_kosullari": [
+    "Resmî olmayan depolardan indirilen ve kaynak kodu gizlenmiş (obfuscated/base64) istismar betikleri",
+    "GPG veya SHA-256 bütünlük doğrulaması bulunmayan üçüncü taraf yama/araç önerileri",
+    "İzin ve yetki modellerini tamamen kaldıran (chmod 777, disable firewall, verify=false) çözümler",
+    "Yayın tarihi 5 yıldan eski ve güncellenmemiş güvenlik önerileri"
+  ]
+}

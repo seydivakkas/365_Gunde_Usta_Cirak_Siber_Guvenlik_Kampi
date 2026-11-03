@@ -1,0 +1,19 @@
+=====================================================================================
+GÜN 093: NEGATİF KONTROL VE KRİPTOGRAFİK BÜTÜNLÜK ZAFİYET ENGELLEME KANITLARI
+Çalıştırma Zamanı (UTC): 2026-11-01T20:40:37Z
+=====================================================================================
+SENARYO ID | BEKLENEN HATA                | DURUM      | CWE KODU
+-------------------------------------------------------------------------------------
+NEG_01     | WeakHashAlgorithmError       | ENGELLENDİ | CWE-328: Use of Weak Hash
+NEG_02     | UnsupportedAlgorithmError    | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_03     | TargetFileNotFoundError      | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_04     | PathTraversalError           | ENGELLENDİ | CWE-22: Improper Limitation of a Pathname to a Restricted Directory
+NEG_05     | InvalidChecksumFormatError   | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_06     | InvalidChecksumFormatError   | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_07     | IntegrityMismatchError       | ENGELLENDİ | CWE-353: Missing Support for Integrity Check / Data Tampering
+NEG_08     | NullBytePathError            | ENGELLENDİ | CWE-158: Improper Neutralization of Null Byte or Special Characters
+NEG_09     | PathTooLongError             | ENGELLENDİ | CWE-400: Uncontrolled Resource Consumption
+=====================================================================================
+Toplam Negatif Senaryo: 9
+Başarıyla Engellenen / Tespit Edilen: 9
+Negatif Başarı Oranı: %100.0

@@ -1,0 +1,39 @@
+================================================================================
+G050: TCP ÜÇLÜ EL SIKIŞMA - NEGATİF KONTROL VE HATA DOĞRULAMA KANITI
+================================================================================
+
+[1/8] [ENGELLENDİ / BLOCKED] ERR_INVALID_PORT_RANGE
+     Açıklama      : Geçersiz hedef port numarası (70000 > 65535)
+     Yakalanan Hata: Geçersiz hedef port numarası (1-65535 olmalıdır): 70000
+--------------------------------------------------------------------------------
+[2/8] [ENGELLENDİ / BLOCKED] ERR_PORT_ZERO
+     Açıklama      : Geçersiz port numarası (Port 0)
+     Yakalanan Hata: Geçersiz kaynak port numarası (1-65535 olmalıdır): 0
+--------------------------------------------------------------------------------
+[3/8] [ENGELLENDİ / BLOCKED] ERR_INVALID_DATA_OFFSET
+     Açıklama      : Geçersiz veri ofseti (4 < 5, 20 bayttan az TCP başlığı olamaz)
+     Yakalanan Hata: TCP veri ofseti 5 ile 15 arasında olmalıdır: 4
+--------------------------------------------------------------------------------
+[4/8] [ENGELLENDİ / BLOCKED] ERR_MALFORMED_HEADER_BYTES
+     Açıklama      : İkili başlık boyutu 20 bayttan küçük (eksik bayt)
+     Yakalanan Hata: TCP başlığı en az 20 bayt olmalıdır, gelen: 14 bayt
+--------------------------------------------------------------------------------
+[5/8] [ENGELLENDİ / BLOCKED] ERR_NEGATIVE_SEQUENCE_NUMBER
+     Açıklama      : Sıra numarası negatif olamaz (-100)
+     Yakalanan Hata: Sıra numarası (seq_no) 0-4294967295 aralığında olmalıdır: -100
+--------------------------------------------------------------------------------
+[6/8] [ENGELLENDİ / BLOCKED] ERR_INVALID_FLAG_TYPE
+     Açıklama      : TCP bayrakları sözlük veya tamsayı yerine metin verilmiş
+     Yakalanan Hata: TCP bayrakları 0-255 aralığında bir tamsayı olmalıdır: SYN_ONLY
+--------------------------------------------------------------------------------
+[7/8] [ENGELLENDİ / BLOCKED] ERR_EMPTY_PACKET_DATA
+     Açıklama      : Boş ikili paket verisi (0 bayt)
+     Yakalanan Hata: TCP başlığı en az 20 bayt olmalıdır, gelen: 0 bayt
+--------------------------------------------------------------------------------
+[8/8] [ENGELLENDİ / BLOCKED] ERR_NON_INTEGER_PORT
+     Açıklama      : Port numarası tamsayı yerine float tipi verilmiş
+     Yakalanan Hata: Geçersiz kaynak port numarası (1-65535 olmalıdır): 80.5
+--------------------------------------------------------------------------------
+
+ÖZET: Toplam 8 negatif kontrol senaryosundan 8 tanesi başarıyla engellendi.
+SONUÇ: %100 DOĞRULAMA BAŞARILI (TCPValidationError ile güvenli yakalama).

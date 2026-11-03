@@ -1,0 +1,31 @@
+================================================================================
+G071: PYTHON ÇALIŞMA ORTAMI VE BAĞIMLILIK TEDARİK ZİNCİRİ GÜVENLİK RAPORU
+Telif Hakkı (c) 2026 Seydi Eryılmaz | Özel Lisans — Tüm Hakları Saklıdır
+================================================================================
+
+1. SANAL ORTAM (VENV) YALITIM DENETİMİ
+----------------------------------------
+Yalıtım Durumu            : TAM İZOLE (PASS)
+Python Sürümü             : 3.12.2
+Yürütücü Yolu (Home)      : C:\Python312
+
+2. BAĞIMLILIK VE TEDARİK ZİNCİRİ HİJYENİ
+----------------------------------------
+Güvenlik Hijyen Skoru     : %100.0 / 100.0 (KUSURSUZ)
+Denetlenen Paket Sayısı   : 6
+Sabitlenmiş Paket (==)    : 6 / 6 (%100)
+SHA-256 Hash Koruması     : 6 / 6 (%100)
+Typosquatting Şüphesi     : SIFIR (Temiz)
+Bilinen CVE Eşleşmesi     : SIFIR (Temiz)
+
+3. DENETLENEN VE ONAYLANAN PAKETLER LİSTESİ
+--------------------------------------------------------------------------------
+Paket Adı            İşleç    Sürüm        Hash Sayısı    Durum
+--------------------------------------------------------------------------------
+cryptography         ==       42.0.5       1              SECURE
+dnspython            ==       2.6.1        1              SECURE
+paramiko             ==       3.4.0        1              SECURE
+requests             ==       2.31.0       1              SECURE
+scapy                ==       2.5.0        1              SECURE
+urllib3              ==       2.2.1        1              SECURE
+================================================================================

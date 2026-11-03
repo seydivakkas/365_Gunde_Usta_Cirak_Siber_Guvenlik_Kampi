@@ -1,0 +1,92 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 108: X.509 v3 SERTİFİKA ANATOMİSİ VE PKI GÜVEN ZİNCİRİ (RFC 5280)
+================================================================================
+
+[ 1. ÜÇ KADEMELİ PKI GÜVEN ZİNCİRİ HİYERARŞİSİ ]
+
+  ┌────────────────────────────────────────────────────────┐
+  │ 1. KÖK SERTİFİKA OTORİTESİ (ROOT CA)                   │
+  │    Subject : CN=Global Guvenlik Root CA                │
+  │    Issuer  : CN=Global Guvenlik Root CA (Self-Signed)  │
+  │    BasicConstraints: is_ca=TRUE, pathLenConstraint=2   │
+  │    KeyUsage: keyCertSign, cRLSign                      │
+  │    Konum   : İstemci Güven Deposu (OS / Browser Store) │
+  └────────────────────────────────────────────────────────┘
+                              │
+                    İmzalar (d_root)
+                              ▼
+  ┌────────────────────────────────────────────────────────┐
+  │ 2. ARA SERTİFİKA OTORİTESİ (INTERMEDIATE CA)           │
+  │    Subject : CN=Kurumsal E-Ticaret ve Finans CA        │
+  │    Issuer  : CN=Global Guvenlik Root CA                │
+  │    BasicConstraints: is_ca=TRUE, pathLenConstraint=0   │
+  │    KeyUsage: keyCertSign, cRLSign, digitalSignature    │
+  │    Amaç    : Kök CA'yı çevrimdışı (air-gapped) tutmak  │
+  └────────────────────────────────────────────────────────┘
+                              │
+                    İmzalar (d_intermediate)
+                              ▼
+  ┌────────────────────────────────────────────────────────┐
+  │ 3. UÇ SUNUCU SERTİFİKASI (LEAF / END-ENTITY)           │
+  │    Subject : CN=secure.bank.com.tr                     │
+  │    Issuer  : CN=Kurumsal E-Ticaret ve Finans CA        │
+  │    BasicConstraints: is_ca=FALSE (Asla alt CA olamaz!) │
+  │    KeyUsage: digitalSignature, keyEncipherment         │
+  │    SAN     : [secure.bank.com.tr, *.bank.com.tr]       │
+  └────────────────────────────────────────────────────────┘
+
+
+--------------------------------------------------------------------------------
+[ 2. RFC 5280 YOL DOĞRULAMA (PATH VALIDATION) SIRASI ]
+
+      İstemci Tarayıcısı / Uygulama
+                 │
+                 ▼
+      [ Adım 1: Alan Adı Eşleme (RFC 6125) ]
+      Talep: https://secure.bank.com.tr
+      Denetim: Leaf SAN & CN eşleşiyor mu? ──► EVET (CWE-297 Savunması)
+                 │
+                 ▼
+      [ Adım 2: Geçerlilik Tarihi Denetimi ]
+      NotBefore <= Şu anki Zaman <= NotAfter ──► EVET (CWE-298 Savunması)
+                 │
+                 ▼
+      [ Adım 3: İptal Durumu (CRL / OCSP) ]
+      Seri No listede var mı? ───────────────► HAYIR (Aktif)
+                 │
+                 ▼
+      [ Adım 4: BasicConstraints Denetimi ]
+      Leaf is_ca=False mu? ──────────────────► EVET
+      Ara CA is_ca=True mu? ─────────────────► EVET (CWE-295 Savunması)
+                 │
+                 ▼
+      [ Adım 5: İmza Zincirinin Doğrulanması ]
+      Verify(Leaf, PubKey_Intermediate) ─────► GEÇERLİ
+      Verify(Intermediate, PubKey_Root) ─────► GEÇERLİ
+                 │
+                 ▼
+      [ Adım 6: Güvenilen Kök Dayanağı (Trust Anchor) ]
+      Kök CA yerel Trust Store'da var mı? ───► EVET (CWE-295 Savunması)
+                 │
+                 ▼
+      [ SONUÇ: BAĞLANTI GÜVENLİ — TLS KURULDU ]
+
+--------------------------------------------------------------------------------
+[ 3. ÖNLENEN SALDIRI VE ZAFİYETLER ]
+
+  * CWE-295 (BasicConstraints İhlali):
+    Bir web sitesi sertifikası ele geçirilse dahi is_ca=False olduğundan
+    onunla sahte alt sertifikalar imzalanamaz.
+
+  * CWE-297 (Hostname Mismatch / MITM):
+    Saldırgan kendi adına aldığı geçerli bir SSL sertifikasını banka kurbanına
+    sunamaz; alan adı uyuşmazlığı bağlantıyı derhal sonlandırır.
+
+  * CWE-298 (Expired / Not Yet Valid Certificate):
+    Süresi dolmuş veya tarihi manipüle edilmiş sertifikalar engellenir.
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

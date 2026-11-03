@@ -1,0 +1,33 @@
+# 📊 TCP Üçlü El Sıkışma (Three-Way Handshake) ve Güvenlik Denetim Raporu
+
+**ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR**  
+*Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)*
+
+---
+
+## 1. TCP Oturumları ve Durum Makinesi Özeti
+
+| Oturum Kimliği | Paket Sayısı | İstemci Durumu | Sunucu Durumu | El Sıkışma Tamamlandı mı? | Güvenlik Uyarıları |
+|---|---|---|---|---|---|
+| `192.168.30.15:54321->172.16.20.10:80` | 4 | `ESTABLISHED` | `ESTABLISHED` | **✅ EVET** | Yok (Temiz) |
+| `198.51.100.44:49152->172.16.20.10:80` | 1 | `SYN_SENT` | `SYN_RECEIVED` | **❌ HAYIR (Yarım Açık)** | Yok (Temiz) |
+| `192.168.30.99:55555->172.16.20.10:443` | 1 | `CLOSED` | `CLOSED` | **❌ HAYIR (Yarım Açık)** | Yok (Temiz) |
+| `192.168.30.99:55556->172.16.20.10:80` | 1 | `CLOSED` | `LISTEN` | **❌ HAYIR (Yarım Açık)** | Yok (Temiz) |
+| `192.168.30.99:55557->172.16.20.10:80` | 1 | `SYN_SENT` | `SYN_RECEIVED` | **❌ HAYIR (Yarım Açık)** | Yok (Temiz) |
+
+## 2. Tespit Edilen Güvenlik Anomalileri ve Tarama Girişimleri
+
+| No | Paket ID | Kategori | Seviye | Kaynak | Hedef | Güvenlik Riski ve Açıklama |
+|---|---|---|---|---|---|---|
+| 1 | `TCP-PKT-05` | `SYN_FLOOD_BELIRTISI` | ⚠️ **YUKSEK** | `198.51.100.44:49152` | `172.16.20.10:80` | Anormal düşük pencere boyutlu izole SYN paketi tespit edildi (SYN Flood DoS belirtisi)! |
+| 2 | `TCP-PKT-06` | `GIZLI_SYN_TARAMASI_SUPHESI` | ⚠️ **ORTA** | `192.168.30.99:55555` | `172.16.20.10:443` | Şüpheli RST paketi tespit edildi (Stealth SYN Port Taraması belirtisi)! |
+| 3 | `TCP-PKT-07` | `PORT_TARAMA_XMAS` | ⚠️ **YUKSEK** | `192.168.30.99:55556` | `172.16.20.10:80` | XMAS Port Taraması tespit edildi (FIN+PSH+URG bayrakları aktif)! |
+| 4 | `TCP-PKT-08` | `KURAL_DISI_BAYRAK_SYN_FIN` | 🚨 **KRITIK** | `192.168.30.99:55557` | `172.16.20.10:80` | SYN ve FIN bayrakları aynı anda set edilmiş! Güvenlik duvarı baypas veya anomali girişimi. |
+| 5 | `TCP-PKT-08` | `SYN_FLOOD_BELIRTISI` | ⚠️ **YUKSEK** | `192.168.30.99:55557` | `172.16.20.10:80` | Anormal düşük pencere boyutlu izole SYN paketi tespit edildi (SYN Flood DoS belirtisi)! |
+
+## 3. TCP Seviyesinde Savunma ve Sıkılaştırma İlkeleri
+
+1. **SYN Cookies (RFC 4987):** Sunucularda SYN Backlog kuyruğunun tükenmesini önlemek amacıyla, SYN-ACK paketindeki ISN değeri kriptografik özet olarak hesaplanmalı; el sıkışma tamamlanana kadar bellek ayrılmamalıdır.
+2. **Stateful Firewall & Connection Tracking:** Güvenlik duvarlarında el sıkışması tamamlanmamış (ESTABLISHED durumuna geçmemiş) paketlerin iç ağ sunucularına geçişine kesinlikle izin verilmemelidir.
+3. **Rastgele ve Kriptografik ISN Üretimi (RFC 6528):** Öngörülebilir sıra numaraları ile oturum kaçırma (TCP Session Hijacking) saldırılarını engellemek adına güvenilir ISN algoritmaları zorunlu kılınmalıdır.
+4. **Kural Dışı Bayrak Filtreleme:** Güvenlik duvarı çekirdeğinde `SYN+FIN`, `XMAS` (FIN+PSH+URG) ve `NULL` paketleri doğrudan düşürülmeli (DROP) ve saldırı alarmı üretilmelidir.

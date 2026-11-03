@@ -1,0 +1,37 @@
+{
+  "gun_no": 7,
+  "gun_kimligi": "G007",
+  "asama": "01",
+  "hafta": 1,
+  "konu": "Mini proje 1: güvenli laboratuvar sözleşmesi",
+  "tarih": "2026-10-26",
+  "durum": "PASS",
+  "puan": 100,
+  "degerlendirme_detayi": {
+    "teori": 20,
+    "uygulama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "kanit_durumu": "TAM",
+  "tamamlanan_gorevler": [
+    "Hafta 1 kapanış milestone projesi olarak Güvenli Laboratuvar Sözleşmesi (Lab Charter) Usta-Çırak derinliğinde kurgulandı.",
+    "5 düğümlü (Host, Ağ Geçidi/SIEM, İzole Analiz Kurbanı, Saldırı Düğümü, Güvenli Depo) BSL-4 seviyesinde tam yalıtımlı JSON sözleşmesi yazıldı.",
+    "Zararlı yazılım analizinde çift yönlü ağ sızıntısı (data exfiltration & C2 leak), host köprüleme ve snapshot imha kontrolleri kodlandı.",
+    "Her kod satırı eğitsel açıklamalarla donatılmış lab_contract_validator.py CLI aracı geliştirildi.",
+    "Köprülenmiş ağ kartı, internet sızıntısı, sahipsiz düğüm, eksik snapshot ve acil durdurma protokolü açıkları yakalandı.",
+    "11 birim test ile pozitif, negatif ve güvenlik sınır koşulları 0.004 saniyede %100 başarıyla doğrulandı.",
+    "Gerçek CLI yürütme, unittest çıktısı ve temsilî ASCII lab topolojisi kanıt olarak üretildi.",
+    "Soru bankasındaki 3 soru katı 4 bölümlü formatta cevaplandı."
+  ],
+  "pozitif_negatif_kontrol_sonuclari": {
+    "pozitif_kontrol": "5 düğüm, 4 ağ bölgesi, çift yönlü kural seti ve acil durum prosedürleri eksiksiz doğrulandı (0 ihlal)",
+    "negatif_kontrol_koprulenmis_ag": "İzole analiz düğümünde köprülenmiş (bridged) ağ modu tespit edilip KRİTİK İHLAL olarak engellendi",
+    "negatif_kontrol_internet_sizintisi": "Karantina bölgesinden dış internete (0.0.0.0/0) açık yönlendirme yakalanıp engellendi",
+    "negatif_kontrol_tanimsiz_dugum": "Ağ kuralında kayıt dışı / sahipsiz düğüm referansı engellendi",
+    "negatif_kontrol_eksik_snapshot": "Patlatma öncesi anlık görüntü (snapshot) şartı eksik olduğunda doğrulama reddedildi",
+    "negatif_kontrol_gecersiz_cidr": "Hatalı CIDR blok formatı tespit edilip şema doğrulamasında reddedildi"
+  },
+  "onceki_gun_bagimliligi": "G001, G002, G003, G004, G005, G006 sentezi (Hafta 1 Milestone Projesi)",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ."
+}

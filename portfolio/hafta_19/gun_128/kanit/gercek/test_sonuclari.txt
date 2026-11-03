@@ -1,0 +1,35 @@
+test_01_perfect_cis_hardened_baseline (tests.test_windows_defender.TestWindowsDefenderEngine.test_01_perfect_cis_hardened_baseline)
+Test 01: Kusursuz CIS uyumlu yap�land�rma 100/100 tam puan ve s�f�r bulgu �retmelidir. ... ok
+test_02_disabled_realtime_monitoring_cwe_693 (tests.test_windows_defender.TestWindowsDefenderEngine.test_02_disabled_realtime_monitoring_cwe_693)
+Test 02: Ger�ek zamanl� koruman�n kapat�lmas� kritik CWE-693 bulgusu ve 40 puan d����� olu�turmal�d�r. ... ok
+test_03_disabled_behavior_monitoring_cwe_693 (tests.test_windows_defender.TestWindowsDefenderEngine.test_03_disabled_behavior_monitoring_cwe_693)
+Test 03: Davran��sal izlemenin kapat�lmas� Y�ksek riskli bulgu ve 20 puan d����� olu�turmal�d�r. ... ok
+test_04_disabled_ioav_protection_cwe_693 (tests.test_windows_defender.TestWindowsDefenderEngine.test_04_disabled_ioav_protection_cwe_693)
+Test 04: �nternet indirmeleri taramas�n�n kapat�lmas� 15 puan d����� ve T1566 uyar�s� �retmelidir. ... ok
+test_05_tamper_protection_disabled_cwe_693 (tests.test_windows_defender.TestWindowsDefenderEngine.test_05_tamper_protection_disabled_cwe_693)
+Test 05: Kurcalama Korumas�n�n (Tamper Protection) kapal� olmas� kritik zafiyet olu�turmal�d�r. ... ok
+test_06_weak_cloud_protection_cwe_1188 (tests.test_windows_defender.TestWindowsDefenderEngine.test_06_weak_cloud_protection_cwe_1188)
+Test 06: Bulut koruma seviyesinin 'Basic' veya 'Disabled' olmas� CWE-1188 uyar�s� vermelidir. ... ok
+test_07_pua_protection_disabled_cwe_1188 (tests.test_windows_defender.TestWindowsDefenderEngine.test_07_pua_protection_disabled_cwe_1188)
+Test 07: PUA korumas�n�n kapal� olmas� 10 puan k�r�lmas�n� sa�lamal�d�r. ... ok
+test_08_network_protection_disabled_cwe_319 (tests.test_windows_defender.TestWindowsDefenderEngine.test_08_network_protection_disabled_cwe_319)
+Test 08: A� korumas�n�n kapal� olmas� CWE-319 bulgusu ve 10 puan ceza getirmelidir. ... ok
+test_09_controlled_folder_access_disabled_cwe_693 (tests.test_windows_defender.TestWindowsDefenderEngine.test_09_controlled_folder_access_disabled_cwe_693)
+Test 09: Denetimli klas�r eri�iminin kapal� olmas� fidye yaz�l�m� uyar�s� (T1486) �retmelidir. ... ok
+test_10_dangerous_exclusion_path_cwe_732 (tests.test_windows_defender.TestWindowsDefenderEngine.test_10_dangerous_exclusion_path_cwe_732)
+Test 10: 'C:\' veya 'C:\Windows' hari� tutmas� kritik CWE-732 bulgusu �retmelidir. ... ok
+test_11_dangerous_exclusion_extension_cwe_732 (tests.test_windows_defender.TestWindowsDefenderEngine.test_11_dangerous_exclusion_extension_cwe_732)
+Test 11: '.exe' uzant� hari� tutmas� kritik CWE-732 bulgusu �retmelidir. ... ok
+test_12_missing_critical_asr_rules_cwe_358 (tests.test_windows_defender.TestWindowsDefenderEngine.test_12_missing_critical_asr_rules_cwe_358)
+Test 12: ASR kurallar�n�n yap�land�r�lmam�� olmas� CWE-358 bulgusu �retmelidir. ... ok
+test_13_all_asr_rules_blocked_passes (tests.test_windows_defender.TestWindowsDefenderEngine.test_13_all_asr_rules_blocked_passes)
+Test 13: 7 kritik kural�n t�m� BLOCK modunda oldu�unda ASR bulgusu �retilmemelidir. ... ok
+test_14_markdown_report_generation (tests.test_windows_defender.TestWindowsDefenderEngine.test_14_markdown_report_generation)
+Test 14: Markdown denetim raporu ��kt�s�n�n ba�l�k, tablo ve d�zeltme beti�ini i�erdi�i do�rulanmal�d�r. ... ok
+test_15_cli_parser_and_data_mapping (tests.test_windows_defender.TestWindowsDefenderEngine.test_15_cli_parser_and_data_mapping)
+Test 15: CLI s�zl�k d�n��t�r�c� ve arg�man ayr��t�r�c�s� beklenen formatta �al��mal�d�r. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.002s
+
+OK

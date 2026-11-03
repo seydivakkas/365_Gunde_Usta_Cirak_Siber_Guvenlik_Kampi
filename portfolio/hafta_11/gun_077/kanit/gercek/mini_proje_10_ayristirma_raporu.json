@@ -1,0 +1,209 @@
+{
+  "total_lines_read": 11,
+  "parsed_events_count": 12,
+  "unrecognized_lines_count": 1,
+  "total_alerts_generated": 12,
+  "locked_out_ips": [
+    "198.51.100.99"
+  ],
+  "alerts": [
+    {
+      "alert_type": "WEB_ATTACK_SQL_INJECTION",
+      "source_ip": "198.51.100.25",
+      "risk_level": "CRITICAL",
+      "evidence": "/products.php?id=1%20UNION%20SELECT%20null,username,password%20FROM%20users"
+    },
+    {
+      "alert_type": "WEB_ACCESS_IOC",
+      "source_ip": "198.51.100.25",
+      "risk_level": "HIGH",
+      "evidence": "Tehdit İstihbaratı Karaliste Eşleşmesi: 198.51.100.25"
+    },
+    {
+      "alert_type": "WEB_ATTACK_DIRECTORY_TRAVERSAL",
+      "source_ip": "203.0.113.80",
+      "risk_level": "HIGH",
+      "evidence": "/../../../../etc/passwd"
+    },
+    {
+      "alert_type": "WEB_ATTACK_PASSWD_ACCESS",
+      "source_ip": "203.0.113.80",
+      "risk_level": "CRITICAL",
+      "evidence": "/../../../../etc/passwd"
+    },
+    {
+      "alert_type": "WEB_ACCESS_IOC",
+      "source_ip": "203.0.113.80",
+      "risk_level": "HIGH",
+      "evidence": "Tehdit İstihbaratı Karaliste Eşleşmesi: 203.0.113.80"
+    },
+    {
+      "alert_type": "SSH_AUTH_IOC",
+      "source_ip": "198.51.100.99",
+      "risk_level": "HIGH",
+      "evidence": "Tehdit İstihbaratı Karaliste Eşleşmesi: 198.51.100.99"
+    },
+    {
+      "alert_type": "SSH_AUTH_IOC",
+      "source_ip": "198.51.100.99",
+      "risk_level": "HIGH",
+      "evidence": "Tehdit İstihbaratı Karaliste Eşleşmesi: 198.51.100.99"
+    },
+    {
+      "alert_type": "SSH_AUTH_IOC",
+      "source_ip": "198.51.100.99",
+      "risk_level": "HIGH",
+      "evidence": "Tehdit İstihbaratı Karaliste Eşleşmesi: 198.51.100.99"
+    },
+    {
+      "alert_type": "SSH_AUTH_IOC",
+      "source_ip": "198.51.100.99",
+      "risk_level": "HIGH",
+      "evidence": "Tehdit İstihbaratı Karaliste Eşleşmesi: 198.51.100.99"
+    },
+    {
+      "alert_type": "BRUTE_FORCE_LOCKOUT",
+      "source_ip": "198.51.100.99",
+      "risk_level": "CRITICAL",
+      "failure_count": 5,
+      "evidence": "60 saniyede 5 hatalı deneme."
+    },
+    {
+      "alert_type": "SSH_AUTH_IOC",
+      "source_ip": "198.51.100.99",
+      "risk_level": "HIGH",
+      "evidence": "Tehdit İstihbaratı Karaliste Eşleşmesi: 198.51.100.99"
+    },
+    {
+      "alert_type": "FIREWALL_SRC_IOC",
+      "source_ip": "203.0.113.5",
+      "risk_level": "HIGH",
+      "evidence": "Tehdit İstihbaratı Karaliste Eşleşmesi: 203.0.113.5"
+    }
+  ],
+  "parsed_records": [
+    {
+      "ip": "192.168.1.50",
+      "user": "-",
+      "timestamp": "31/Oct/2026:10:00:01 +0300",
+      "method": "GET",
+      "uri": "/index.html",
+      "protocol": "HTTP/1.1",
+      "status": 200,
+      "size": 1420,
+      "referrer": "https://kurum.local",
+      "user_agent": "Mozilla/5.0",
+      "log_type": "WEB_ACCESS"
+    },
+    {
+      "ip": "198.51.100.25",
+      "user": "-",
+      "timestamp": "31/Oct/2026:10:00:02 +0300",
+      "method": "GET",
+      "uri": "/products.php?id=1%20UNION%20SELECT%20null,username,password%20FROM%20users",
+      "protocol": "HTTP/1.1",
+      "status": 500,
+      "size": 240,
+      "referrer": "-",
+      "user_agent": "sqlmap/1.7.2",
+      "log_type": "WEB_ACCESS"
+    },
+    {
+      "ip": "203.0.113.80",
+      "user": "-",
+      "timestamp": "31/Oct/2026:10:00:03 +0300",
+      "method": "GET",
+      "uri": "/../../../../etc/passwd",
+      "protocol": "HTTP/1.1",
+      "status": 403,
+      "size": 162,
+      "referrer": "-",
+      "user_agent": "curl/8.4.0",
+      "log_type": "WEB_ACCESS"
+    },
+    {
+      "timestamp": "Oct 31 10:00:10",
+      "host": "srv-auth01",
+      "pid": 14201,
+      "auth_action": "Failed",
+      "user": "admin",
+      "ip": "198.51.100.99",
+      "port": 52341,
+      "log_type": "SSH_AUTH"
+    },
+    {
+      "timestamp": "Oct 31 10:00:12",
+      "host": "srv-auth01",
+      "pid": 14205,
+      "auth_action": "Failed",
+      "user": "root",
+      "ip": "198.51.100.99",
+      "port": 52344,
+      "log_type": "SSH_AUTH"
+    },
+    {
+      "timestamp": "Oct 31 10:00:14",
+      "host": "srv-auth01",
+      "pid": 14209,
+      "auth_action": "Failed",
+      "user": "guest",
+      "ip": "198.51.100.99",
+      "port": 52348,
+      "log_type": "SSH_AUTH"
+    },
+    {
+      "timestamp": "Oct 31 10:00:16",
+      "host": "srv-auth01",
+      "pid": 14212,
+      "auth_action": "Failed",
+      "user": "test",
+      "ip": "198.51.100.99",
+      "port": 52352,
+      "log_type": "SSH_AUTH"
+    },
+    {
+      "timestamp": "Oct 31 10:00:18",
+      "host": "srv-auth01",
+      "pid": 14215,
+      "auth_action": "Failed",
+      "user": "oracle",
+      "ip": "198.51.100.99",
+      "port": 52356,
+      "log_type": "SSH_AUTH"
+    },
+    {
+      "timestamp": "Oct 31 10:00:20",
+      "host": "srv-auth01",
+      "pid": 14220,
+      "auth_action": "Accepted",
+      "user": "secops",
+      "ip": "10.0.0.15",
+      "port": 42110,
+      "log_type": "SSH_AUTH"
+    },
+    {
+      "timestamp": "OCT 31 10:00:25",
+      "host": "fw-edge",
+      "rule_tag": "FW_BLOCK",
+      "src_ip": "203.0.113.5",
+      "dst_ip": "192.168.1.10",
+      "proto": "TCP",
+      "spt": 49152,
+      "dpt": 4444,
+      "action": "DROP",
+      "log_type": "FIREWALL_TRAFFIC"
+    },
+    {
+      "timestamp": "OCT 31 10:00:30",
+      "host": "fw-edge",
+      "rule_tag": "FW_ALLOW",
+      "src_ip": "8.8.8.8",
+      "dst_ip": "192.168.1.100",
+      "proto": "UDP",
+      "spt": 53,
+      "dpt": 58912,
+      "action": "ALLOW",
+      "log_type": "FIREWALL_TRAFFIC"
+    }
+  ]
+}

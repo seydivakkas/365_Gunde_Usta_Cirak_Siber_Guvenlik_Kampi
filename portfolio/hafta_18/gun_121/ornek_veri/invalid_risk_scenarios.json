@@ -1,0 +1,126 @@
+[
+  {
+    "senaryo_no": 1,
+    "senaryo_adi": "Negatif Varlık Değeri Girişi",
+    "aciklama": "Varlık değeri sıfırdan küçük (-100000$) tanımlandığında motorun işlemi reddetmesi.",
+    "risk_verisi": {
+      "risk_id": "RSK-NEG-VAL",
+      "title": "Negatif Varlık Testi",
+      "asset_name": "Hayali Sunucu",
+      "asset_value": -100000.0,
+      "exposure_factor": 0.5,
+      "annualized_rate_of_occurrence": 1.0,
+      "likelihood": 3,
+      "impact": 3
+    },
+    "beklenen_hata": "InvalidFinancialMetricError"
+  },
+  {
+    "senaryo_no": 2,
+    "senaryo_adi": "Aşırı Maruz Kalma Faktörü (EF > 1.0)",
+    "aciklama": "Maruz kalma faktörünün yüzde yüzden büyük (1.80) girilmesi durumunda reddedilmesi.",
+    "risk_verisi": {
+      "risk_id": "RSK-BIG-EF",
+      "title": "Aşırı EF Testi",
+      "asset_name": "Veri Ambarı",
+      "asset_value": 50000.0,
+      "exposure_factor": 1.80,
+      "annualized_rate_of_occurrence": 1.0,
+      "likelihood": 3,
+      "impact": 3
+    },
+    "beklenen_hata": "InvalidFinancialMetricError"
+  },
+  {
+    "senaryo_no": 3,
+    "senaryo_adi": "Negatif Yıllık Gerçekleşme Oranı (ARO < 0)",
+    "aciklama": "Olay sıklığı ARO eksi değer (-0.5) girildiğinde matematiksel hatanın engellenmesi.",
+    "risk_verisi": {
+      "risk_id": "RSK-NEG-ARO",
+      "title": "Negatif ARO Testi",
+      "asset_name": "API Gateway",
+      "asset_value": 100000.0,
+      "exposure_factor": 0.5,
+      "annualized_rate_of_occurrence": -0.5,
+      "likelihood": 3,
+      "impact": 3
+    },
+    "beklenen_hata": "InvalidFinancialMetricError"
+  },
+  {
+    "senaryo_no": 4,
+    "senaryo_adi": "Sıfır veya Eksi Olasılık Puanı (Likelihood < 1)",
+    "aciklama": "Risk olasılığı 1-5 skala sınırının altında (0) verildiğinde fırlatılan istisna.",
+    "risk_verisi": {
+      "risk_id": "RSK-ZERO-LIKE",
+      "title": "Sıfır Olasılık Testi",
+      "asset_name": "İç Portal",
+      "asset_value": 20000.0,
+      "exposure_factor": 0.2,
+      "annualized_rate_of_occurrence": 0.5,
+      "likelihood": 0,
+      "impact": 3
+    },
+    "beklenen_hata": "InvalidRiskScoreError"
+  },
+  {
+    "senaryo_no": 5,
+    "senaryo_adi": "Üst Sınırı Aşan Etki Puanı (Impact > 5)",
+    "aciklama": "Etki derecesi 5'lik skalanın üzerinde (7) verildiğinde sistemin hata fırlatması.",
+    "risk_verisi": {
+      "risk_id": "RSK-OVER-IMP",
+      "title": "Aşırı Etki Testi",
+      "asset_name": "Ödeme Sunucusu",
+      "asset_value": 80000.0,
+      "exposure_factor": 0.5,
+      "annualized_rate_of_occurrence": 1.0,
+      "likelihood": 3,
+      "impact": 7
+    },
+    "beklenen_hata": "InvalidRiskScoreError"
+  },
+  {
+    "senaryo_no": 6,
+    "senaryo_adi": "Geçersiz Kontrol Etkinlik Oranı (Effectiveness > 1.0)",
+    "aciklama": "Kontrol etkinliğinin %100'ü aşan bir değerle (1.20) kataloğa kaydedilmeye çalışılması.",
+    "kontrol_verisi": {
+      "control_id": "CTRL-INVALID-EFF",
+      "name": "Aşırı Güvenlik Kontrolü",
+      "family": "AC",
+      "control_type": "PREVENTIVE",
+      "annual_cost": 5000.0,
+      "implementation_cost": 5000.0,
+      "effectiveness_ratio": 1.20
+    },
+    "beklenen_hata": "InvalidControlSelectionError"
+  },
+  {
+    "senaryo_no": 7,
+    "senaryo_adi": "Mükerrer Kontrol ID Tanımlama",
+    "aciklama": "Aynı kimliğe sahip iki farklı kontrolün kataloğa kaydedilmesinin engellenmesi.",
+    "kontrol_verisi": {
+      "control_id": "NIST-IA-2",
+      "name": "Çift Tanımlı MFA",
+      "family": "IA",
+      "control_type": "PREVENTIVE",
+      "annual_cost": 1000.0,
+      "implementation_cost": 1000.0,
+      "effectiveness_ratio": 0.50
+    },
+    "beklenen_hata": "DuplicateControlError"
+  },
+  {
+    "senaryo_no": 8,
+    "senaryo_adi": "Kontrolsüz Azaltma Stratejisi İhlali",
+    "aciklama": "Strateji AZALT (MITIGATE) seçilmiş olmasına rağmen hiçbir güvenlik kontrolü atanmaması.",
+    "yonetisim_senaryosu": "MITIGATE_WITHOUT_CONTROLS",
+    "beklenen_hata": "RiskAppetiteExceededError"
+  },
+  {
+    "senaryo_no": 9,
+    "senaryo_adi": "Onaysız Yüksek Risk Kabulü (CWE-1025 İhlali)",
+    "aciklama": "Risk iştahı (10) üzerinde skora (25) sahip kritik bir riskin yönetim onayı olmaksızın kabul edilmesi.",
+    "yonetisim_senaryosu": "UNAPPROVED_CRITICAL_ACCEPTANCE",
+    "beklenen_hata": "RiskAppetiteExceededError"
+  }
+]

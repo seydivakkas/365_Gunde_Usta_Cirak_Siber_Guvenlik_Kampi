@@ -1,0 +1,35 @@
+===============================================================================================
+GÜN 101: KRİPTOGRAFİK HASH FONKSİYONLARI VE ÇAKIŞMA ANALİZ RAPORU
+Tarih/Saat : 2026-11-02 01:57:28
+Standart   : NIST FIPS 180-4 Secure Hash Standard & RFC 7693 BLAKE2
+===============================================================================================
+
+1. NIST FIPS 180-4 REFERANS TEST VEKTÖRÜ DOĞRULAMASI
+   - Girdi Metni              : 'abc'
+   - Hesaplanan SHA-256 Özeti : ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+   - Doğrulama Durumu         : ONAYLANDI (Kusursuz Standart Uyumu)
+
+2. ÇIĞ ETKİSİ (AVALANCHE EFFECT) İSTATİSTİKSEL ANALİZİ
+   - Girdi 1                  : SiberGuvenlik2026_KriptoDersi_G101_A
+   - Girdi 2                  : SiberGuvenlik2026_KriptoDersi_G101_B
+   - Algoritma                : SHA256
+   - Toplam Çıktı Biti        : 256 bit
+   - Farklılaşan Bit Sayısı   : 123 bit
+   - Değişim Yüzdesi          : %48.05 (İdeal Kriptografik Aralık: %45 - %55)
+   - Durum                    : MÜKEMMEL (İdeal Çığ Etkisi ~50%)
+
+3. DOĞUM GÜNÜ PARADOKSU (BIRTHDAY ATTACK) ÇAKIŞMA SİMÜLASYONU
+   - Kırpma Boyutu (b)        : 16 bit
+   - Gerçekleşen Deneme       : 110 deneme
+   - Teorik Beklenen Deneme   : 320 deneme (sqrt(pi/2 * 2^16))
+   - Harcanan Süre            : 0.179 ms
+   - Çakışan Girdi 1          : candidate_nonce_102_d198767cbb11b48b
+   - Çakışan Girdi 2          : candidate_nonce_110_cda0ca41e1ee1b0d
+   - Ortak Çakışan Özet (Hex) : bbf9
+
+===============================================================================================
+4. TEKNİK SONUÇ VE GÜVENLİK İLKELERİ
+   - MD5 ve SHA-1 çakışma saldırıları (Wang 2004, SHAttered 2017) nedeniyle kriptografide yasaklanmıştır (CWE-328).
+   - 256-bit hash alanında Doğum Günü çakışma zorluğu 2^128 işlemdir; günümüz süper bilgisayarlarıyla kırılamaz.
+   - Hash karşılaştırmalarında zamanlama saldırılarını (CWE-208) önlemek için hmac.compare_digest şarttır.
+===============================================================================================

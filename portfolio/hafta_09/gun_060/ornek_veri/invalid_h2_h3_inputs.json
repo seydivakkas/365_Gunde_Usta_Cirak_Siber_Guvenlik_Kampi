@@ -1,0 +1,71 @@
+{
+  "aciklama": "G060 - HTTP/2 ve HTTP/3 Negatif ve Saldiri Sinir Deger Senaryolari (9 Senaryo)",
+  "telif_hakki": "Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Tum Haklari Saklidir.",
+  "negatif_senaryolar": [
+    {
+      "senaryo_id": "NEG_01_TRUNCATED_FRAME_HEADER",
+      "aciklama": "9 bayttan daha kisa kesilmis HTTP/2 cerceve basligi.",
+      "raw_hex": "0000050105",
+      "beklenen_hata": "HTTP2MalformedFrameError",
+      "hata_nedeni": "HTTP/2 cerceve basligi en az 9 bayt uzunlugunda olmalidir."
+    },
+    {
+      "senaryo_id": "NEG_02_UNKNOWN_FRAME_TYPE",
+      "aciklama": "RFC 7540 standardinda tanimsiz cerceve tipi (ornek 0xFF = 255).",
+      "raw_hex": "000004ff000000000101020304",
+      "beklenen_hata": "HTTP2ValidationError",
+      "hata_nedeni": "Bilinmeyen HTTP/2 cerceve tipi: 255."
+    },
+    {
+      "senaryo_id": "NEG_03_FRAME_LENGTH_OVERFLOW",
+      "aciklama": "Varsayilan 16384 bayt limitini asan cerceve boyutu (SETTINGS_MAX_FRAME_SIZE asimi).",
+      "raw_hex": "005000000100000001",
+      "beklenen_hata": "HTTP2ValidationError",
+      "hata_nedeni": "HTTP/2 cerceve boyutu izin verilen maksimum siniri (16384 bayt) asamaz. Bildirilen: 20480 bayt."
+    },
+    {
+      "senaryo_id": "NEG_04_STREAM_ID_ZERO_FOR_DATA_FRAME",
+      "aciklama": "DATA cercevesinin Akis ID 0 uzerinden iletilmesi (RFC 7540 Bolum 6.1 ihlali).",
+      "raw_hex": "00000400010000000001020304",
+      "beklenen_hata": "HTTP2ValidationError",
+      "hata_nedeni": "DATA cercevesi Akis ID 0 uzerinden gonderilemez. Yalnizca pozitif akislar icindir."
+    },
+    {
+      "senaryo_id": "NEG_05_NON_ZERO_STREAM_ID_FOR_SETTINGS",
+      "aciklama": "SETTINGS cercevesinin Akis ID > 0 ile gonderilmesi (RFC 7540 Bolum 6.5 ihlali).",
+      "raw_hex": "000006040000000001000300000064",
+      "beklenen_hata": "HTTP2ValidationError",
+      "hata_nedeni": "SETTINGS cercevesi yalnizca baglanti seviyesinde (Akis ID 0) gecerlidir."
+    },
+    {
+      "senaryo_id": "NEG_06_INVALID_RST_STREAM_PAYLOAD_SIZE",
+      "aciklama": "RST_STREAM cerceve yukunun tam 4 bayt olmamasi (RFC 7540 Bolum 6.4 ihlali).",
+      "raw_hex": "0000020300000000010008",
+      "beklenen_hata": "HTTP2MalformedFrameError",
+      "hata_nedeni": "RST_STREAM cercevesi tam olarak 4 baytlik hata kodu tasimalidir. Alinan: 2 bayt."
+    },
+    {
+      "senaryo_id": "NEG_07_INVALID_PING_PAYLOAD_SIZE",
+      "aciklama": "PING cerceve yukunun tam 8 bayt olmamasi (RFC 7540 Bolum 6.7 ihlali).",
+      "raw_hex": "00000406000000000001020304",
+      "beklenen_hata": "HTTP2MalformedFrameError",
+      "hata_nedeni": "PING cercevesi tam olarak 8 baytlik yuk tasimalidir. Alinan: 4 bayt."
+    },
+    {
+      "senaryo_id": "NEG_08_RAPID_RESET_ATTACK_DETECTED",
+      "aciklama": "CVE-2023-44487 Rapid Reset saldirisi: Cok kisa surede esik degeri asan HEADERS + RST_STREAM dongusu.",
+      "rapid_reset_count": 150,
+      "time_window_sec": 1.0,
+      "beklenen_hata": "HTTP2RapidResetAttackError",
+      "hata_nedeni": "HTTP/2 Rapid Reset Saldirisi (CVE-2023-44487) tespit edildi! RST_STREAM iptal orani esigi asti."
+    },
+    {
+      "senaryo_id": "NEG_09_QUIC_ANTI_AMPLIFICATION_VIOLATION",
+      "aciklama": "RFC 9000 Bolum 8.1 ihlali: Dogrulanmamis istemciye 3x katindan fazla veri gonderilmeye calisilmasi.",
+      "client_initial_bytes": 1200,
+      "attempted_server_response_bytes": 4500,
+      "beklenen_hata": "QUICAmplificationError",
+      "hata_nedeni": "QUIC Anti-Amplification Limiti (3x) asildi! Istemci onaylanmadan 3600 bayttan fazla veri gonderilemez."
+    }
+  ]
+}

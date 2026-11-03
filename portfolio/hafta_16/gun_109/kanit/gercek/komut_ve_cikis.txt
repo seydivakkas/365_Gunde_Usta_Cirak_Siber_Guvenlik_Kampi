@@ -1,0 +1,51 @@
+========================================================================
+  GÜN 109: PKI CLI YÜRÜTME KOMUTU VE ÇIKTI KANITI
+  Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_109\uygulama\pki_cli.py
+========================================================================
+
+========================================================================
+  PKI VE SERT�F�KA YA�AM D�NG�S� Y�NET�M VE DENET�M ARACI
+  RFC 5280 / RFC 6960 (OCSP) / RFC 6962 (CT) / RFC 8555 (ACME)
+========================================================================
+
+[*] 1. ADIM: K�k CA ve Ara CA Altyap�s� Kuruluyor...
+[+] K�k CA aktif edildi.
+
+[*] 2. ADIM: ACME Y�neticisi ve Ya�am D�ng�s� Orkestrat�r� Ba�lat�l�yor...
+[*] guvenli.kurum.gov.tr i�in CSR olu�turuluyor ve ACME HTTP-01 do�rulamas� ba�lat�l�yor...
+[+] Sertifika Ba�ar�yla �hra� Edildi!
+    - Seri No: 279837948513273624712295361175175280727
+    - Konu DN: {'CN': 'guvenli.kurum.gov.tr', 'O': 'Akademi G�venli Sunucu', 'C': 'TR'}
+    - SAN: ['guvenli.kurum.gov.tr']
+    - Biti� Tarihi: 2027-01-31T01:01:10.636652+00:00
+    - CT SCT Log ID: CT_LOG_ANADOLU_01
+
+[*] 3. ADIM: �evrimi�i Durum Protokol� (OCSP) Sorgulan�yor...
+[+] OCSP Yan�t�: GOOD (Nonce E�le�mesi: Ba�ar�l�)
+
+[*] 4. ADIM: Otomatik Anahtar Rotasyonu ve Kriptografik �mha (Crypto-Shredding) Y�r�t�l�yor...
+[+] Rotasyon Tamamland�!
+    - Eski Sertifika Seri No: 279837948513273624712295361175175280727 (�ptal Durumu: SUPERSEDED)
+    - Yeni Sertifika Seri No: 33655010103790339925146225699050955615 (Aktif)
+[+] CRL Denetimi: Eski Sertifika �ptal Listesinde mi? -> True (Neden: superseded)
+
+========================================================================
+  G�VENL�K ZAF�YET� VE SALDIRI SENARYOLARI (CWE ANAL�Z�)
+========================================================================
+
+[!] 1. Test: Sahte Proof-of-Possession ��eren CSR (CWE-347)...
+    -> Savunma Ba�ar�l�: CWE-347: CSR m�lkiyet ispat� (Proof-of-Possession) do�rulamas� ba�ar�s�z oldu!
+
+[!] 2. Test: OCSP Yan�t�nda Nonce Manip�lasyonu / Replay (CWE-294)...
+    -> Savunma Ba�ar�l�: CWE-294: OCSP yan�t nonce de�eri uyu�muyor! Beklenen: yeni_istek_nonce_999, Al�nan: eski_nonce_replay
+
+[!] 3. Test: �ptal Edilmi� Sertifikan�n Do�rulanmas� (CWE-299)...
+    -> Savunma Ba�ar�l�: CWE-299: Sertifika iptal edilmi�tir! Neden: {'revocation_time': '2026-11-02T01:01:10.726342+00:00', 'reason': 'keyCompromise'}
+
+[!] 4. Test: S�resi Dolmu� Sertifika Zaman S�n�r� (CWE-298)...
+    -> Savunma Ba�ar�l�: CWE-298: Sertifikan�n s�resi dolmu�tur! (Biti�: 2027-01-31T01:01:10.724262+00:00)
+
+========================================================================
+  T�M YA�AM D�NG�S� ��LEMLER� VE ZAF�YET SAVUNMALARI TAMAMLANDI
+========================================================================
+

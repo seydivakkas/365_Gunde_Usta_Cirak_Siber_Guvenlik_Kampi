@@ -1,0 +1,95 @@
+{
+  "aciklama": "G065 TCP Stream Yeniden Birleştirme İçin Negatif Sınır ve Güvenlik İstisnası Senaryoları",
+  "test_senaryolari": [
+    {
+      "test_kodu": "NEG_01",
+      "senaryo_adi": "Giderilemeyen Sıra Boşluğu (Sequence Gap Stall)",
+      "beklenen_hata": "SequenceGapError",
+      "beklenen_tespit": "SIRA_BOSLUGU_DURAKLAMASI",
+      "segmentler": [
+        { "paket_no": 1, "sira_no": 1000, "onay_no": 2000, "bayraklar": ["ACK"], "yuk_metin": "PARCA_1_", "yuk_boyutu": 8 },
+        { "paket_no": 2, "sira_no": 1500, "onay_no": 2000, "bayraklar": ["ACK"], "yuk_metin": "PARCA_3_", "yuk_boyutu": 8 }
+      ]
+    },
+    {
+      "test_kodu": "NEG_02",
+      "senaryo_adi": "Kötü Niyetli Çelişkili Örtüşen Yük (IDS Evasion / Ptacek-Newsham)",
+      "beklenen_hata": "OverlappingPayloadConflictError",
+      "beklenen_tespit": "CELISKILI_ORTUSME_SALDIRISI",
+      "segmentler": [
+        { "paket_no": 1, "sira_no": 1000, "onay_no": 2000, "bayraklar": ["ACK"], "yuk_metin": "USER_ROOT", "yuk_boyutu": 9 },
+        { "paket_no": 2, "sira_no": 1005, "onay_no": 2000, "bayraklar": ["ACK"], "yuk_metin": "GUEST_NO", "yuk_boyutu": 8 }
+      ]
+    },
+    {
+      "test_kodu": "NEG_03",
+      "senaryo_adi": "Bozuk Segment Boyutu (Bildirilen Boyut ile Metin Uyuşmazlığı)",
+      "beklenen_hata": "CorruptedSegmentError",
+      "beklenen_tespit": "BOZUK_SEGMENT_BOYUTU",
+      "segmentler": [
+        { "paket_no": 1, "sira_no": 1000, "onay_no": 2000, "bayraklar": ["ACK"], "yuk_metin": "KISA", "yuk_boyutu": 9999 }
+      ]
+    },
+    {
+      "test_kodu": "NEG_04",
+      "senaryo_adi": "Sıra Dışı Arabellek Taşması (Reassembly Queue Exhaustion)",
+      "beklenen_hata": "ReassemblyBufferOverflowError",
+      "beklenen_tespit": "ARABELLEK_TASMASI",
+      "segmentler": [
+        { "paket_no": 1, "sira_no": 1000, "onay_no": 2000, "bayraklar": ["ACK"], "yuk_metin": "A", "yuk_boyutu": 1 },
+        { "paket_no": 2, "sira_no": 1050, "onay_no": 2000, "bayraklar": ["ACK"], "yuk_metin": "B", "yuk_boyutu": 1 },
+        { "paket_no": 3, "sira_no": 1100, "onay_no": 2000, "bayraklar": ["ACK"], "yuk_metin": "C", "yuk_boyutu": 1 },
+        { "paket_no": 4, "sira_no": 1150, "onay_no": 2000, "bayraklar": ["ACK"], "yuk_metin": "D", "yuk_boyutu": 1 },
+        { "paket_no": 5, "sira_no": 1200, "onay_no": 2000, "bayraklar": ["ACK"], "yuk_metin": "E", "yuk_boyutu": 1 },
+        { "paket_no": 6, "sira_no": 1250, "onay_no": 2000, "bayraklar": ["ACK"], "yuk_metin": "F", "yuk_boyutu": 1 },
+        { "paket_no": 7, "sira_no": 1300, "onay_no": 2000, "bayraklar": ["ACK"], "yuk_metin": "G", "yuk_boyutu": 1 }
+      ]
+    },
+    {
+      "test_kodu": "NEG_05",
+      "senaryo_adi": "Arabellekte Birleşmemiş Parça Varken Erken FIN/RST Sonlandırması",
+      "beklenen_hata": "UnreassembledDataLossError",
+      "beklenen_tespit": "BIRLESMEMIS_VERI_KAYBI",
+      "segmentler": [
+        { "paket_no": 1, "sira_no": 1000, "onay_no": 2000, "bayraklar": ["ACK"], "yuk_metin": "BASLANGIC", "yuk_boyutu": 9 },
+        { "paket_no": 2, "sira_no": 1050, "onay_no": 2000, "bayraklar": ["ACK"], "yuk_metin": "KOPUK_PARCA", "yuk_boyutu": 11 },
+        { "paket_no": 3, "sira_no": 1061, "onay_no": 2000, "bayraklar": ["RST"], "yuk_metin": "", "yuk_boyutu": 0 }
+      ]
+    },
+    {
+      "test_kodu": "NEG_06",
+      "senaryo_adi": "El Sıkışmasız (SYN Eksik) Rastgele Veri Akışı",
+      "beklenen_hata": "MissingHandshakeError",
+      "beklenen_tespit": "EKSIK_EL_SIKISMA",
+      "segmentler": [
+        { "paket_no": 1, "sira_no": 54321, "onay_no": 98765, "bayraklar": ["PSH", "ACK"], "yuk_metin": "KORLEMESINE_VERI", "yuk_boyutu": 16 }
+      ]
+    },
+    {
+      "test_kodu": "NEG_07",
+      "senaryo_adi": "Akış Oturumu Uyuşmazlığı (Farklı 5-Demet Enjeksiyonu)",
+      "beklenen_hata": "StreamSessionMismatchError",
+      "beklenen_tespit": "OTURUM_UYUSMAZLIGI",
+      "segmentler": [
+        { "paket_no": 1, "kaynak_ip": "192.168.1.105", "kaynak_port": 51234, "hedef_ip": "93.184.216.34", "hedef_port": 80, "sira_no": 1000, "bayraklar": ["ACK"], "yuk_metin": "NORMAL", "yuk_boyutu": 6 },
+        { "paket_no": 2, "kaynak_ip": "10.0.0.66", "kaynak_port": 9999, "hedef_ip": "172.16.0.1", "hedef_port": 22, "sira_no": 1006, "bayraklar": ["ACK"], "yuk_metin": "SAHTE", "yuk_boyutu": 5 }
+      ]
+    },
+    {
+      "test_kodu": "NEG_08",
+      "senaryo_adi": "Boş veya Null Segment Listesi",
+      "beklenen_hata": "EmptyStreamError",
+      "beklenen_tespit": "BOS_SEGMENT_GIRDISI",
+      "segmentler": []
+    },
+    {
+      "test_kodu": "NEG_09",
+      "senaryo_adi": "TCP Dışı Protokol Segmenti İletimi",
+      "beklenen_hata": "InvalidProtocolError",
+      "beklenen_tespit": "GECERSIZ_PROTOKOL",
+      "segmentler": [
+        { "paket_no": 1, "protokol": "UDP", "sira_no": 1000, "yuk_metin": "DNS_PACKET", "yuk_boyutu": 10 }
+      ]
+    }
+  ]
+}

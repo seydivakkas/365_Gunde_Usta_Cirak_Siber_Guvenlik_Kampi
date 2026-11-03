@@ -1,0 +1,80 @@
+================================================================================
+GÜN 116: JSON WEB TOKEN (JWT) YAPISI VE DOĞRULAMA GÜVENLİK ANALİZ RAPORU
+Rapor Tarihi: 2026-11-02T02:29:05.432260+00:00
+Mühendis: Seydi Eryılmaz (@seydivakkas)
+Standartlar: RFC 7519 (JWT), RFC 7515 (JWS), OWASP Top 10 (A01:2021, A07:2021)
+================================================================================
+
+1. GÜVENLİK MEKANİZMALARI VE SALDIRI SAVUNMA ANALİZİ
+--------------------------------------------------------------------------------
+A. 'alg: none' İmzasız Belirteç Savunması (CVE-2015-9235 / CWE-347):
+   - Başlıkta 'alg: none' içeren belirteçler koşulsuz ve istisnasız derhal imha edilir.
+   - İmza doğrulama adımı hiçbir koşulda atlanamaz.
+
+B. Algoritma Karışıklığı (Algorithm Confusion Attack — CWE-327):
+   - RS256 bekleyen sunucunun genel anahtarı HMAC-SHA256 (HS256) anahtarı gibi kullanılamaz.
+   - Doğrulayıcı katı algoritma beyaz listesi (allowed_algorithms whitelist) uygular.
+
+C. Zaman ve Yaşam Döngüsü Denetimleri (exp, nbf, iat — CWE-298 / CWE-613):
+   - exp (Expiration): Süresi dolan belirteçler katı şekilde reddedilir.
+   - nbf (Not Before): Belirlenen tarihten önce sunulan belirteçler geçersizdir.
+   - Leeway: 5 saniyelik kontrollü saat kayması (clock skew) toleransı.
+
+D. Replay Saldırısı ve İptal Yönetimi (jti Blacklist — CWE-294):
+   - Her belirtece kriptografik tekil 'jti' kimliği damgalanır.
+   - Çıkış (Logout) anında jti kara listeye alınarak tekrar kullanımı engellenir.
+
+2. NEGATİF KONTROL SENARYO TEST SONUÇLARI
+--------------------------------------------------------------------------------
+Toplam Negatif Senaryo: 9 | Başarılı Engelleme: 9 | Başarısız: 0
+
+[PASS] NEG_01: 'alg: none' İmzasız Belirteç Enjeksiyonu Saldırısı
+   Zafiyet Kodu : CWE-347: Improper Verification of Cryptographic Signature
+   Beklenen Hata: AlgorithmNoneAttackError
+   Yakalanan    : AlgorithmNoneAttackError
+
+[PASS] NEG_02: Algoritma Karışıklığı (RS256 Bekleyen Sunucuya HS256 Gönderilmesi)
+   Zafiyet Kodu : CWE-327: Use of a Broken or Risky Cryptographic Algorithm
+   Beklenen Hata: AlgorithmConfusionError
+   Yakalanan    : AlgorithmConfusionError
+
+[PASS] NEG_03: Tahrif Edilmiş Payload ve Geçersiz Dijital İmza
+   Zafiyet Kodu : CWE-347: Improper Verification of Cryptographic Signature
+   Beklenen Hata: InvalidSignatureError
+   Yakalanan    : InvalidSignatureError
+
+[PASS] NEG_04: Hatalı Simetrik Gizli Anahtarla Doğrulama Teşebbüsü
+   Zafiyet Kodu : CWE-347: Improper Verification of Cryptographic Signature
+   Beklenen Hata: InvalidSignatureError
+   Yakalanan    : InvalidSignatureError
+
+[PASS] NEG_05: Geçerlilik Süresi Dolan (Expired) Belirteç Sunulması
+   Zafiyet Kodu : CWE-298: Improper Validation of Certificate Expiration
+   Beklenen Hata: TokenExpiredError
+   Yakalanan    : TokenExpiredError
+
+[PASS] NEG_06: Geçerlilik Tarihi Henüz Gelmemiş (nbf) Belirteç
+   Zafiyet Kodu : CWE-298: Improper Validation of Certificate Expiration
+   Beklenen Hata: TokenNotYetValidError
+   Yakalanan    : TokenNotYetValidError
+
+[PASS] NEG_07: Bilinmeyen veya Sahte Kimlik Sağlayıcı (Issuer Uyuşmazlığı)
+   Zafiyet Kodu : CWE-287: Improper Authentication
+   Beklenen Hata: InvalidIssuerError
+   Yakalanan    : InvalidIssuerError
+
+[PASS] NEG_08: Farklı Servis İçin Üretilmiş Belirteç (Audience Uyuşmazlığı)
+   Zafiyet Kodu : CWE-287: Improper Authentication
+   Beklenen Hata: InvalidAudienceError
+   Yakalanan    : InvalidAudienceError
+
+[PASS] NEG_09: İptal Edilmiş (Kara Listedeki jti) Belirtecin Tekrar Sunulması
+   Zafiyet Kodu : CWE-294: Authentication Bypass by Capture-replay
+   Beklenen Hata: TokenRevokedError
+   Yakalanan    : TokenRevokedError
+
+3. SONUÇ VE MİMARİ KARNE
+--------------------------------------------------------------------------------
+Tüm birim testleri ve negatif saldırı senaryoları %100 başarıyla sonuçlanmıştır.
+JWT doğrulama motoru üretime ve federatif mikroservis mimarilerine hazır durumdadır.
+Genel Değerlendirme: 100/100 (YETERLİ - MÜKEMMEL)

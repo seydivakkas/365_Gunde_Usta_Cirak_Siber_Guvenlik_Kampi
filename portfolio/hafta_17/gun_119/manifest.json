@@ -1,0 +1,20 @@
+{
+  "ders.md": "ccb18e1c5168f2521112441d220da0ee8bc8b91fa33e34b6c8d878e5850b4f65",
+  "kanit_uretici.py": "497683f543dac8b16af32b30c11b40da1d69a513fc7daaf018ba49718706f290",
+  "rapor.md": "f520ed8f9a6f9fcc2c71df58ecea305ed70a2f3a890a40874a95766bf47c932a",
+  "README.md": "6ae329298c9b135892a9a7fbab36f73a44b7f3fde8c44384819acf96261bcc5a",
+  "sonuc.json": "b20bd65ee88074bcaeb431b93e0e4ff1144c07794dc891797bac596ebc106ca0",
+  "soru_cevap.md": "dd2caf8fc7fa57e5ed65f7ee75a88c4a2665c76aa9264fae1ce6e5126d90c0bf",
+  "kanit\\gercek\\komut_ve_cikis.txt": "8f87eb5872dd1aafd8daa4d56200e4c183fe4f29a1d093e586f5b95e0034ad83",
+  "kanit\\gercek\\negatif_kontrol_sonuclari.txt": "91adbb18e656870afc5dd22e030d08987ea6dd96f55633344b7649479bf286e6",
+  "kanit\\gercek\\rbac_sim_analiz_raporu.txt": "df385665627d369ab4c88a9aeb6af5d46cbffbbe2c5fdadf813a40ffddc12a82",
+  "kanit\\gercek\\test_sonuclari.txt": "03eacd355c5979762142e7eab671b47cb3196bea07da0479f34796fc95c90841",
+  "kanit\\temsili\\rbac_simulator_mimarisi.txt": "ab0457fd34b8d7314e58eef863d07db86b867102da1cdee12003c8f4c30b4a6b",
+  "ornek_veri\\enterprise_rbac_model.json": "dd578a1b1380d491a7c20e0f037b6a6d355c03dba51d16132f75c3cad94f8bf3",
+  "ornek_veri\\invalid_simulator_requests.json": "6489a4317d81cd41afffe011beb02bb8f4a5a99d468da3dcda490704a4bb9da3",
+  "tests\\test_rbac_simulator.py": "90034b37173923f36eca37d49d46084182271ceef1f3ee939c7aa3ea9aba5bfb",
+  "tests\\__init__.py": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+  "uygulama\\rbac_simulator_engine.py": "40f2a3acaf36d6ada1abde8c1e9ca6d408c90352cd4032e09a9b38d3ebe0f469",
+  "uygulama\\rbac_sim_cli.py": "176993afde0585a978a04708b113d956ec106fbfd2912f12578c3acc846431e6",
+  "uygulama\\__init__.py": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4"
+}

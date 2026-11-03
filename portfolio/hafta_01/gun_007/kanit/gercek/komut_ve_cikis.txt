@@ -1,0 +1,53 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Gerçek Yürütme Kanıtı: Güvenli Laboratuvar Sözleşmesi Doğrulaması
+
+[METADATA]
+Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe portfolio\hafta_01\gun_007\uygulama\lab_contract_validator.py --sozlesme portfolio\hafta_01\gun_007\ornek_veri\laboratuvar_sozlesmesi.json
+Çalışma Dizini: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Ortam: Windows 11 / Python 3.14.3
+Zaman Damgası: 2026-10-26T19:35:00+03:00
+Çıkış Kodu: 0
+
+[STANDART ÇIKTI (STDOUT)]
+========================================================================================================
+  GÜVENLİ LABORATUVAR KURULUM VE İZOLASYON TOPOLOJİSİ: Anadolu Siber Güvenlik Araştırma Laboratuvarı (ASGAL) Kurulum Sözleşmesi
+  Sözleşme Durumu: ONAYLANDI | Gün: G007 | Toplam Düğüm: 5
+========================================================================================================
+
+  [DIŞ DÜNYA / İNTERNET]  <--- X (KESİNLİKLE YASAK / AIR-GAPPED İZOLASYON) X --->
+                                   |
+          +------------------------v------------------------+
+          | [NODE-05] pfSense Sanal Güvenlik Duvarı & Ağ Geçidi |
+          | IP: 192.168.100.1 (Yalnızca İç VLAN Yönlendirme)|
+          +------------------------+------------------------+
+                                   |
+        ================= SANAL ANAHTAR (vSwitch: Host-Only) =================
+               |                           |                          |
+  +------------v-----------+  +------------v-----------+  +-----------v------------+
+  | [NODE-01] SALDIRGAN    |  | [NODE-02] HEDEF DOMAIN |  | [NODE-04] MAVİ TAKIM   |
+  | Kali Linux Rolling     |  | Windows Server 2022 AD |  | Zeek NIDS & Wazuh SIEM |
+  | IP: 192.168.100.10     |  | IP: 192.168.100.20     |  | IP: 192.168.100.40     |
+  | Segment: RED_ZONE      |  | Segment: TARGET_ZONE   |  | Segment: BLUE_ZONE     |
+  +------------------------+  +------------------------+  +------------------------+
+                                           |
+                              +------------v-----------+
+                              | [NODE-03] HEDEF LINUX  |
+                              | Ubuntu 22.04 Web & DB  |
+                              | IP: 192.168.100.30     |
+                              | Segment: TARGET_ZONE   |
+                              +------------------------+
+
+--------------------------------------------------------------------------------------------------------
+  HİPERVİZÖR SIKILAŞTIRMA VE İZOLASYON DENETİMİ:
+  * Pano Paylaşımı (Clipboard)     : DEVRE_DISI (VM Escape Engellendi)
+  * Ortak Klasörler (Shared Folders): DEVRE_DISI (Disk İzolasyonu Sağlandı)
+  * Sürükle & Bırak (Drag & Drop)  : DEVRE_DISI (Bellek İzolasyonu Sağlandı)
+--------------------------------------------------------------------------------------------------------
+  [+] SÖZLEŞME VE İZOLASYON DOĞRULANDI: Sıfır sızıntı riski, tüm düğümler güvenli Host-Only modunda.
+      Etik kurallar ve onaylı CISO imzaları eksiksizdir.
+========================================================================================================
+
+
+[HATA ÇIKTISI (STDERR)]
+(Temiz - Hata Yok)

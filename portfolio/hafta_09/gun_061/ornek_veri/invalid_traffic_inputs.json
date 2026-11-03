@@ -1,0 +1,86 @@
+{
+  "aciklama": "G061 - Proxy, NAT ve Guvenlik Duvari Negatif ve Saldiri Sinir Deger Senaryolari (9 Senaryo)",
+  "telif_hakki": "Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Tum Haklari Saklidir.",
+  "negatif_senaryolar": [
+    {
+      "senaryo_id": "NEG_01_INVALID_TCP_FLAGS_SYN_FIN",
+      "aciklama": "RFC 793 standardina aykiri gizli tarama: SYN ve FIN bayraklarinin ayni anda set edilmesi (SYN+FIN Scan).",
+      "kaynak_ip": "198.51.100.55",
+      "hedef_ip": "192.168.1.100",
+      "hedef_port": 443,
+      "tcp_flags": ["SYN", "FIN"],
+      "beklenen_hata": "InvalidPacketFlagsError",
+      "hata_nedeni": "Gecersiz TCP bayrak kombinasyonu tespit edildi: SYN+FIN saldiri taramasi reddedildi."
+    },
+    {
+      "senaryo_id": "NEG_02_X_FORWARDED_FOR_SPOOFING",
+      "aciklama": "Guvenilmeyen istemcinin X-Forwarded-For basligina sahte 127.0.0.1 enjekte ederek yetki atlatma girisimi.",
+      "istemci_ip": "198.51.100.77",
+      "enjekte_edilen_xff": "127.0.0.1",
+      "beklenen_hata": "ProxySecurityViolationError",
+      "hata_nedeni": "Guvenilmeyen istemciden gelen sahte X-Forwarded-For basligi engellendi."
+    },
+    {
+      "senaryo_id": "NEG_03_OUT_OF_STATE_UNSOLICITED_PACKET",
+      "aciklama": "Onceden el sikismasi yapilmamis baglantiya sahte ACK paketi gonderilmesi (Durumsuz Sizma Girisimi).",
+      "kaynak_ip": "198.51.100.88",
+      "hedef_ip": "192.168.1.100",
+      "hedef_port": 443,
+      "tcp_flags": ["ACK"],
+      "beklenen_hata": "FirewallDropError",
+      "hata_nedeni": "Durum takipli guvenlik duvari: Durum tablosunda bulunmayan beklenmedik ACK paketi engellendi (INVALID State)."
+    },
+    {
+      "senaryo_id": "NEG_04_BLOCKED_INBOUND_PORT_TELNET",
+      "aciklama": "Guvenlik duvari kural listesinde izin verilmeyen port 23 (Telnet) uzerine gelen SYN paketi.",
+      "kaynak_ip": "198.51.100.99",
+      "hedef_ip": "192.168.1.100",
+      "hedef_port": 23,
+      "tcp_flags": ["SYN"],
+      "beklenen_hata": "FirewallDropError",
+      "hata_nedeni": "Guvenlik duvari varsayilan DROP politikasi: Port 23 icin erisim kurali bulunamadi."
+    },
+    {
+      "senaryo_id": "NEG_05_NAT_PORT_EXHAUSTION",
+      "aciklama": "PAT port havuzundaki tum bos portlarin tukenmesi ve yeni cevirme yapilamamasi.",
+      "tukenme_simulasyonu": true,
+      "beklenen_hata": "NATExhaustionError",
+      "hata_nedeni": "PAT port havuzu tukendi: 10000-65535 araliginda bos port kalmadi."
+    },
+    {
+      "senaryo_id": "NEG_06_MALFORMED_IP_ADDRESS",
+      "aciklama": "Gecersiz IP adresi formatina sahip paket (ornek: 999.999.999.999 veya harf iceren IP).",
+      "kaynak_ip": "999.999.999.999",
+      "hedef_ip": "192.168.1.100",
+      "hedef_port": 443,
+      "tcp_flags": ["SYN"],
+      "beklenen_hata": "NetworkValidationError",
+      "hata_nedeni": "Gecersiz IPv4 adresi: 999.999.999.999."
+    },
+    {
+      "senaryo_id": "NEG_07_FORWARD_PROXY_FORBIDDEN_CONNECT_PORT",
+      "aciklama": "Forward Proxy CONNECT tüneli uzerinden yasakli port 22 (SSH) erisim suistimali.",
+      "proxy_komut": "CONNECT",
+      "hedef_host_port": "internal-server:22",
+      "beklenen_hata": "ProxyAccessDeniedError",
+      "hata_nedeni": "Forward Proxy CONNECT metoduna yalnizca guvenli portlar (443) icin izin verilir. Port 22 engellendi."
+    },
+    {
+      "senaryo_id": "NEG_08_CONNTRACK_TABLE_OVERFLOW",
+      "aciklama": "Durum tablosunun (Conntrack Table) maksimum kapasitesini asan SYN Flood saldirisi.",
+      "esik_asimi": true,
+      "beklenen_hata": "ConntrackOverflowError",
+      "hata_nedeni": "Guvenlik duvari conntrack durum tablosu maksimum kapasiteye ulasti! Yeni oturum acilamaz."
+    },
+    {
+      "senaryo_id": "NEG_09_NULL_SCAN_PACKET_DETECTED",
+      "aciklama": "Hicbir TCP bayraginin set edilmedigi (Flags = 0) gizli ag tarama paketi (Null Scan).",
+      "kaynak_ip": "198.51.100.12",
+      "hedef_ip": "192.168.1.100",
+      "hedef_port": 80,
+      "tcp_flags": [],
+      "beklenen_hata": "InvalidPacketFlagsError",
+      "hata_nedeni": "Gecersiz TCP bayrak kombinasyonu: Null Scan (Flags = 0) saldirisi tespit edildi ve engellendi."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+================================================================================
+G052: NEGATIF KONTROL VE HATA SINIR DENETIMI KANITLARI
+================================================================================
+
+Test No / Hata Kodu: NEG-UDP-01 / ERR_SRC_PORT_NEGATIVE
+Girdi Parametreleri : src_port=-1, dst_port=53, length=8, src_ip='192.168.1.1', dst_ip='8.8.8.8'
+Beklenen Hata      : Kaynak port 0 ile 65535 arasında olmalıdır.
+Firlatilan Hata     : UDPValidationError -> Kaynak port 0 ile 65535 arasında olmalıdır: -1
+Sonuc               : BASARILI (Gecersiz paket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-UDP-02 / ERR_SRC_PORT_OVERFLOW
+Girdi Parametreleri : src_port=70000, dst_port=53, length=8, src_ip='192.168.1.1', dst_ip='8.8.8.8'
+Beklenen Hata      : Kaynak port 0 ile 65535 arasında olmalıdır.
+Firlatilan Hata     : UDPValidationError -> Kaynak port 0 ile 65535 arasında olmalıdır: 70000
+Sonuc               : BASARILI (Gecersiz paket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-UDP-03 / ERR_DST_PORT_OVERFLOW
+Girdi Parametreleri : src_port=54321, dst_port=65536, length=8, src_ip='192.168.1.1', dst_ip='8.8.8.8'
+Beklenen Hata      : Hedef port 0 ile 65535 arasında olmalıdır.
+Firlatilan Hata     : UDPValidationError -> Hedef port 0 ile 65535 arasında olmalıdır: 65536
+Sonuc               : BASARILI (Gecersiz paket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-UDP-04 / ERR_LENGTH_UNDERFLOW
+Girdi Parametreleri : src_port=54321, dst_port=53, length=7, src_ip='192.168.1.1', dst_ip='8.8.8.8'
+Beklenen Hata      : UDP toplam uzunluğu en az 8 bayt (başlık boyutu) olmalıdır.
+Firlatilan Hata     : UDPValidationError -> UDP toplam uzunluğu en az 8 bayt (başlık boyutu) olmalıdır: 7
+Sonuc               : BASARILI (Gecersiz paket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-UDP-05 / ERR_LENGTH_OVERFLOW
+Girdi Parametreleri : src_port=54321, dst_port=53, length=65536, src_ip='192.168.1.1', dst_ip='8.8.8.8'
+Beklenen Hata      : UDP toplam uzunluğu 65535 baytı aşamaz.
+Firlatilan Hata     : UDPValidationError -> UDP toplam uzunluğu 65535 baytı aşamaz: 65536
+Sonuc               : BASARILI (Gecersiz paket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-UDP-06 / ERR_LENGTH_PAYLOAD_MISMATCH
+Girdi Parametreleri : src_port=54321, dst_port=53, length=20, src_ip='192.168.1.1', dst_ip='8.8.8.8'
+Beklenen Hata      : Belirtilen UDP uzunluğu (20) başlık + yük toplamı (13) ile uyuşmuyor.
+Firlatilan Hata     : UDPValidationError -> Belirtilen UDP uzunluğu (20) başlık + yük toplamı (13) ile uyuşmuyor.
+Sonuc               : BASARILI (Gecersiz paket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-UDP-07 / ERR_MALFORMED_SRC_IP
+Girdi Parametreleri : src_port=54321, dst_port=53, length=8, src_ip='999.1.2.3', dst_ip='8.8.8.8'
+Beklenen Hata      : Geçersiz IPv4 kaynak adresi biçimi.
+Firlatilan Hata     : UDPValidationError -> Geçersiz IPv4 adresi biçimi: '999.1.2.3'. Hata: Octet 999 (> 255) not permitted in '999.1.2.3'
+Sonuc               : BASARILI (Gecersiz paket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-UDP-08 / ERR_MALFORMED_DST_IP
+Girdi Parametreleri : src_port=54321, dst_port=53, length=8, src_ip='192.168.1.1', dst_ip='not_an_ip_address'
+Beklenen Hata      : Geçersiz IPv4 hedef adresi biçimi.
+Firlatilan Hata     : UDPValidationError -> Geçersiz IPv4 adresi biçimi: 'not_an_ip_address'. Hata: Expected 4 octets in 'not_an_ip_address'
+Sonuc               : BASARILI (Gecersiz paket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+
+TOPLAM NEGATIF TEST: 8
+BASARILI BLOKLAMA  : 8
+BASARI ORANI       : %100.0

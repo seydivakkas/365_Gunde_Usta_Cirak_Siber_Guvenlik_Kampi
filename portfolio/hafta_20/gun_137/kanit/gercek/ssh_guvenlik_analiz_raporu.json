@@ -1,0 +1,123 @@
+{
+  "guvenlik_skoru": 0.0,
+  "durum": "KRİTİK RİSK (ACİL MÜDAHALE GEREKLİ)",
+  "toplam_anahtar": 3,
+  "toplam_authorized_key": 2,
+  "toplam_bulgu": 10,
+  "kritik_bulgu_sayisi": 3,
+  "yuksek_bulgu_sayisi": 3,
+  "orta_bulgu_sayisi": 2,
+  "dusuk_bulgu_sayisi": 2,
+  "bulgular": [
+    {
+      "rule_id": "SSH-001",
+      "target": "/home/legacy_user/.ssh/id_dsa",
+      "cwe": "CWE-732",
+      "mitre_attack": "T1552.004",
+      "severity": "CRITICAL",
+      "title": "Gevşek Özel Anahtar (Private Key) Dosya İzinleri",
+      "description": "'/home/legacy_user/.ssh/id_dsa' özel anahtar dosyasının izin modu '0644' güvensizdir. Başka kullanıcılar tarafından okunabilir.",
+      "remediation_advice": "Özel anahtarın izinlerini derhal sınırlandırın: chmod 0600 /home/legacy_user/.ssh/id_dsa",
+      "deduction_points": 20.0
+    },
+    {
+      "rule_id": "SSH-002",
+      "target": "/home/legacy_user/.ssh/id_dsa",
+      "cwe": "CWE-522",
+      "mitre_attack": "T1552.004",
+      "severity": "MEDIUM",
+      "title": "Özel Anahtar Parola (Passphrase) ile Korunmuyor",
+      "description": "'/home/legacy_user/.ssh/id_dsa' özel anahtarı diske düz metin kaydedilmiştir. Sunucuya sızan saldırgan anahtarı kopyalayıp anında kullanabilir.",
+      "remediation_advice": "Anahtara güçlü bir parola ekleyin: ssh-keygen -p -f /home/legacy_user/.ssh/id_dsa",
+      "deduction_points": 10.0
+    },
+    {
+      "rule_id": "SSH-003",
+      "target": "/home/legacy_user/.ssh/id_dsa",
+      "cwe": "CWE-327",
+      "mitre_attack": "T1552.004",
+      "severity": "CRITICAL",
+      "title": "Güvensiz ve Kullanımdan Kaldırılmış DSA Anahtarı",
+      "description": "'/home/legacy_user/.ssh/id_dsa' anahtarı 1024-bit DSA algoritması kullanmaktadır. DSA şifreleme standardı güvensizdir ve OpenSSH tarafından terk edilmiştir.",
+      "remediation_advice": "DSA anahtarını derhal iptal edin ve yerine Ed25519 anahtarı üretin: ssh-keygen -t ed25519",
+      "deduction_points": 20.0
+    },
+    {
+      "rule_id": "SSH-005",
+      "target": "/home/legacy_user/.ssh/authorized_keys",
+      "cwe": "CWE-732",
+      "mitre_attack": "T1098.004",
+      "severity": "CRITICAL",
+      "title": "Gevşek authorized_keys Dosya İzinleri (Yazılabilir)",
+      "description": "'/home/legacy_user/.ssh/authorized_keys' dosyasının izinleri (0666) başkalarına yazma hakkı vermektedir. Saldırgan kendi açık anahtarını ekleyebilir.",
+      "remediation_advice": "Dosya izinlerini sıkılaştırın: chmod 0600 /home/legacy_user/.ssh/authorized_keys",
+      "deduction_points": 20.0
+    },
+    {
+      "rule_id": "SSH-006",
+      "target": "authorized_keys (old-backup-cron)",
+      "cwe": "CWE-327",
+      "mitre_attack": "T1078.003",
+      "severity": "HIGH",
+      "title": "authorized_keys Dosyasında Zayıf DSA Anahtarı Tanımlı",
+      "description": "Kullanıcı 'legacy_user' için yetkilendirilmiş DSA anahtarı tespit edildi. Zayıf anahtarla giriş yapılabilir.",
+      "remediation_advice": "Bu açık anahtarı authorized_keys dosyasından silin ve Ed25519 ile değiştirin.",
+      "deduction_points": 15.0
+    },
+    {
+      "rule_id": "SSH-007",
+      "target": "/etc/ssh/sshd_config:PermitRootLogin",
+      "cwe": "CWE-250",
+      "mitre_attack": "T1078.003",
+      "severity": "HIGH",
+      "title": "Doğrudan Root SSH Girişine İzin Verilmiş (PermitRootLogin yes)",
+      "description": "Root kullanıcısının SSH üzerinden doğrudan oturum açması açıktır. Kaba kuvvet saldırılarına ve denetimsiz yetki kullanımına yol açar.",
+      "remediation_advice": "PermitRootLogin direktifini 'no' veya 'prohibit-password' olarak ayarlayın.",
+      "deduction_points": 15.0
+    },
+    {
+      "rule_id": "SSH-008",
+      "target": "/etc/ssh/sshd_config:PasswordAuthentication",
+      "cwe": "CWE-307",
+      "mitre_attack": "T1110.001",
+      "severity": "HIGH",
+      "title": "Parola ile Kimlik Doğrulama Açık (PasswordAuthentication yes)",
+      "description": "SSH servisinde parola tabanlı giriş açıktır. Sunucu sözlük ve kaba kuvvet saldırılarına açık kalmaktadır.",
+      "remediation_advice": "Parola doğrulamasını kapatıp sadece anahtara zorlayın: PasswordAuthentication no",
+      "deduction_points": 15.0
+    },
+    {
+      "rule_id": "SSH-010",
+      "target": "/etc/ssh/sshd_config:MaxAuthTries",
+      "cwe": "CWE-307",
+      "mitre_attack": "T1110.001",
+      "severity": "MEDIUM",
+      "title": "Maksimum Başarısız Giriş Denemesi Sınırı Çok Yüksek (MaxAuthTries > 4)",
+      "description": "MaxAuthTries değeri 6 olarak yapılandırılmış. CIS standardı maksimum 4 önermektedir.",
+      "remediation_advice": "MaxAuthTries değerini 3 veya 4 olarak sınırlayın.",
+      "deduction_points": 8.0
+    },
+    {
+      "rule_id": "SSH-011",
+      "target": "/etc/ssh/sshd_config:X11Forwarding",
+      "cwe": "CWE-200",
+      "mitre_attack": "T1059",
+      "severity": "LOW",
+      "title": "X11 Grafik Yönlendirmesi Aktif (X11Forwarding yes)",
+      "description": "Sunucularda gereksiz X11 yönlendirmesi pencere yakalama ve tuş vuruşu izleme risklerine yol açabilir.",
+      "remediation_advice": "X11Forwarding direktifini 'no' yapın.",
+      "deduction_points": 4.0
+    },
+    {
+      "rule_id": "SSH-012",
+      "target": "/etc/ssh/sshd_config:ClientAliveInterval",
+      "cwe": "CWE-613",
+      "mitre_attack": "T1078",
+      "severity": "LOW",
+      "title": "SSH Oturum Hareketsizlik Zaman Aşımı Eksik veya Çok Uzun",
+      "description": "Boşta kalan SSH oturumları otomatik sonlandırılmamaktadır veya 15 dakikadan uzundur.",
+      "remediation_advice": "ClientAliveInterval 300 ve ClientAliveCountMax 2 olarak yapılandırın.",
+      "deduction_points": 5.0
+    }
+  ]
+}

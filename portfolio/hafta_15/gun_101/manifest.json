@@ -1,0 +1,82 @@
+{
+  "gun": 101,
+  "hafta": 15,
+  "asama": 5,
+  "konu": "Hash fonksiyonları ve çakışma",
+  "olusturma_tarihi": "2026-11-02 01:59:17",
+  "toplam_dosya": 18,
+  "dosyalar": {
+    "README.md": {
+      "boyut_bayt": 4497,
+      "sha256": "126ca4d0ae832ccfe7b007ec77bf7ced6a865c3903a3017b192e74f02933cf6c"
+    },
+    "ders.md": {
+      "boyut_bayt": 7454,
+      "sha256": "cac07724e908f0e9e49c873e9782200d7091555d6941fd8dffd7fdd2fcb07b1c"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 11583,
+      "sha256": "cd10890fe80f918bff3969aaf07b021cef291c64949bb76c067a966e14606c09"
+    },
+    "rapor.md": {
+      "boyut_bayt": 3770,
+      "sha256": "207726cd3418bbaab49eebd7c6432758ba81ee79afde5a9c4f521a88d2546c61"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1088,
+      "sha256": "7b67c288bf13e2223e2a2413d423c49ddcc14ec1c5067c5c5fee7a58d4349089"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 9781,
+      "sha256": "4809a31b39309e14fc00904754dea1c9af061e6440fbfe4c7a30993ad8cf47f1"
+    },
+    "kanit\\gercek\\hash_cakisma_analiz_raporu.txt": {
+      "boyut_bayt": 2200,
+      "sha256": "43b4b715fa6756ee22aeb615064eb91a5f4567579b1e0a1abfdd234f077f685a"
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "boyut_bayt": 6412,
+      "sha256": "595b7fae572cde51905896f01924fc149c725f69a14a2d9abe80b4e8f8451afa"
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 4244,
+      "sha256": "d902beb81b4ee789ae758caaa886533d75f5f35e6f99452a384d34eaca647470"
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "boyut_bayt": 4079,
+      "sha256": "8196b5f6605909cc76fc4875a34adac6a899ed848f5b82db18a891bb649ec612"
+    },
+    "kanit\\temsili\\hash_cakisma_mimarisi.txt": {
+      "boyut_bayt": 3997,
+      "sha256": "5d78d6965c0d17919b7d1de182cfba32fdd8b8a58e306a502d250c16a1e8231b"
+    },
+    "ornek_veri\\collision_samples.json": {
+      "boyut_bayt": 1067,
+      "sha256": "f61e8606ce535ae1490f3ea7c1eae95d214005f488ae03f0ad0b97214658e11f"
+    },
+    "ornek_veri\\invalid_hash_inputs.json": {
+      "boyut_bayt": 2565,
+      "sha256": "c5c2739795cd8223b84ba565f7ba7b2fbc3a6b18b62d287b11776c51c2d0bc81"
+    },
+    "tests\\__init__.py": {
+      "boyut_bayt": 608,
+      "sha256": "211f59bb29067054a952626324da4ff76f73d75a9b56509a37bcd8a5ef3fa0b8"
+    },
+    "tests\\test_hash_collision.py": {
+      "boyut_bayt": 10466,
+      "sha256": "46771de5ef8936725e9a3a785f13a7da7855acc339eeb7ba85d1c642622b9386"
+    },
+    "uygulama\\__init__.py": {
+      "boyut_bayt": 612,
+      "sha256": "f8960884b59705a6b186943be544dfe572ba4b9072cbbbb66f568f74e90392de"
+    },
+    "uygulama\\hash_cli.py": {
+      "boyut_bayt": 8287,
+      "sha256": "1788c5dd1665c423fe730cf02d601496d590b4a2ef281c660ef285485995cb38"
+    },
+    "uygulama\\hash_collision_engine.py": {
+      "boyut_bayt": 11666,
+      "sha256": "486308f4855fcfe894f71cd6e469d28899352632b2c7184e4240440df09fb877"
+    }
+  }
+}

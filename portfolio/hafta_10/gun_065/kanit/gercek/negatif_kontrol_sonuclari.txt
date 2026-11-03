@@ -1,0 +1,54 @@
+================================================================================
+G065: NEGATIF SINIR VE TCP ANOMALI TEST SONUCLARI
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas) - Tum Haklari Saklidir
+================================================================================
+
+[BASARILI / PASS] NEG_01 - Giderilemeyen Sıra Boşluğu (Sequence Gap Stall)
+  * Beklenen Hata   : SequenceGapError
+  * Yakalanan Hata  : SequenceGapError
+  * Beklenen Tespit : SIRA_BOSLUGU_DURAKLAMASI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_02 - Kötü Niyetli Çelişkili Örtüşen Yük (IDS Evasion / Ptacek-Newsham)
+  * Beklenen Hata   : OverlappingPayloadConflictError
+  * Yakalanan Hata  : OverlappingPayloadConflictError
+  * Beklenen Tespit : CELISKILI_ORTUSME_SALDIRISI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_03 - Bozuk Segment Boyutu (Bildirilen Boyut ile Metin Uyuşmazlığı)
+  * Beklenen Hata   : CorruptedSegmentError
+  * Yakalanan Hata  : CorruptedSegmentError
+  * Beklenen Tespit : BOZUK_SEGMENT_BOYUTU
+------------------------------------------------------------
+[BASARILI / PASS] NEG_04 - Sıra Dışı Arabellek Taşması (Reassembly Queue Exhaustion)
+  * Beklenen Hata   : ReassemblyBufferOverflowError
+  * Yakalanan Hata  : ReassemblyBufferOverflowError
+  * Beklenen Tespit : ARABELLEK_TASMASI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_05 - Arabellekte Birleşmemiş Parça Varken Erken FIN/RST Sonlandırması
+  * Beklenen Hata   : UnreassembledDataLossError
+  * Yakalanan Hata  : UnreassembledDataLossError
+  * Beklenen Tespit : BIRLESMEMIS_VERI_KAYBI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_06 - El Sıkışmasız (SYN Eksik) Rastgele Veri Akışı
+  * Beklenen Hata   : MissingHandshakeError
+  * Yakalanan Hata  : MissingHandshakeError
+  * Beklenen Tespit : EKSIK_EL_SIKISMA
+------------------------------------------------------------
+[BASARILI / PASS] NEG_07 - Akış Oturumu Uyuşmazlığı (Farklı 5-Demet Enjeksiyonu)
+  * Beklenen Hata   : StreamSessionMismatchError
+  * Yakalanan Hata  : StreamSessionMismatchError
+  * Beklenen Tespit : OTURUM_UYUSMAZLIGI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_08 - Boş veya Null Segment Listesi
+  * Beklenen Hata   : EmptyStreamError
+  * Yakalanan Hata  : EmptyStreamError
+  * Beklenen Tespit : BOS_SEGMENT_GIRDISI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_09 - TCP Dışı Protokol Segmenti İletimi
+  * Beklenen Hata   : InvalidProtocolError
+  * Yakalanan Hata  : InvalidProtocolError
+  * Beklenen Tespit : GECERSIZ_PROTOKOL
+------------------------------------------------------------
+
+TOPLAM NEGATIF TEST: 9
+BASARILI YAKALANAN : 9
+SONUC              : %100 BASARILI / TAM UYUM

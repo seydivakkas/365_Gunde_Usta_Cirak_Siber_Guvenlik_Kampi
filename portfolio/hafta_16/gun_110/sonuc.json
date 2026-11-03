@@ -1,0 +1,35 @@
+{
+  "gun": 110,
+  "hafta": 16,
+  "konu": "TLS güvenlik sınırları",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "tamamlanma_tarihi": "2026-11-02",
+  "kategori": "Asimetrik Kriptografi ve PKI",
+  "puan_detaylari": {
+    "mimari": 20,
+    "kodlama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "zafiyet_savunmalari": [
+    "CWE-757",
+    "CWE-327",
+    "CWE-353",
+    "CWE-294",
+    "CWE-20"
+  ],
+  "test_ozeti": {
+    "toplam_birim_test": 15,
+    "basarili_birim_test": 15,
+    "basarisiz_birim_test": 0,
+    "negatif_senaryolar": 9,
+    "basarili_negatif_senaryolar": 9
+  },
+  "yurutulen_araclar": [
+    "uygulama/tls_security_boundary_engine.py",
+    "uygulama/tls_cli.py",
+    "tests/test_tls_boundary.py",
+    "kanit_uretici.py"
+  ]
+}

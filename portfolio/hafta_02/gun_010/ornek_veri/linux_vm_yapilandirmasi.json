@@ -1,0 +1,103 @@
+{
+  "$sema_versiyonu": "1.0",
+  "aciklama": "Linux Sanal Makinesi Güvenlik Sertleştirme ve Başlangıç Konfigürasyon Veri Tabanı",
+  "olusturan": "Seydi Eryılmaz (@seydivakkas)",
+  "tarih": "2026-10-27",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz. Açık kaynak lisans KULLANILMAZ.",
+  "sistem_profilleri": [
+    {
+      "sistem_id": "LINUX-SEC-01",
+      "sistem_adi": "Sertlestirilmis_Debian_Security_Lab_VM",
+      "dagitim": "Debian 12 / Kali Hardened",
+      "hedef_rol": "Siber Güvenlik Analiz ve Test Düğümü",
+      "guvenlik_seviyesi": "CIS_SEVIYE_1_HARDENED",
+      "ssh_yapilandirmasi": {
+        "port": 2222,
+        "permit_root_login": "no",
+        "password_authentication": "no",
+        "pubkey_authentication": "yes",
+        "max_auth_tries": 3,
+        "x11_forwarding": "no",
+        "allow_agent_forwarding": "no"
+      },
+      "kullanici_ve_yetki_yonetimi": {
+        "root_oturum_kilitli": true,
+        "sudoers_nopasswd_izinli": false,
+        "sudo_yetki_kapsami": "Zorunlu_Parolali_Grup",
+        "varsayilan_umask": "027",
+        "parola_karma_algoritmasi": "yescrypt"
+      },
+      "dosya_sistemi_izinleri": {
+        "etc_shadow": "0640",
+        "etc_passwd": "0644",
+        "etc_ssh_sshd_config": "0600",
+        "root_ev_dizini": "0700"
+      },
+      "guvenlik_duvari_ufw": {
+        "etkin": true,
+        "varsayilan_gelen": "DENY",
+        "varsayilan_giden": "ALLOW",
+        "izinli_kurallar": [
+          {
+            "port": 2222,
+            "protokol": "tcp",
+            "kaynak": "192.168.56.0/24",
+            "hedef_eylem": "ALLOW"
+          }
+        ]
+      },
+      "calisan_servisler": [
+        "sshd",
+        "chronyd",
+        "fail2ban"
+      ],
+      "yasakli_guvensiz_servisler": []
+    },
+    {
+      "sistem_id": "LINUX-RISK-99",
+      "sistem_adi": "Guvenliksiz_Varsayilan_Kali_VM",
+      "dagitim": "Kali Linux (Varsayılan Kurulum)",
+      "hedef_rol": "Hatalı ve Güvensiz Başlangıç Profili (Negatif Kontrol)",
+      "guvenlik_seviyesi": "YUKSEK_RISK_GUVENSIZ",
+      "ssh_yapilandirmasi": {
+        "port": 22,
+        "permit_root_login": "yes",
+        "password_authentication": "yes",
+        "pubkey_authentication": "yes",
+        "max_auth_tries": 10,
+        "x11_forwarding": "yes",
+        "allow_agent_forwarding": "yes"
+      },
+      "kullanici_ve_yetki_yonetimi": {
+        "root_oturum_kilitli": false,
+        "sudoers_nopasswd_izinli": true,
+        "sudo_yetki_kapsami": "NOPASSWD_ALL",
+        "varsayilan_umask": "000",
+        "parola_karma_algoritmasi": "md5"
+      },
+      "dosya_sistemi_izinleri": {
+        "etc_shadow": "0644",
+        "etc_passwd": "0777",
+        "etc_ssh_sshd_config": "0666",
+        "root_ev_dizini": "0777"
+      },
+      "guvenlik_duvari_ufw": {
+        "etkin": false,
+        "varsayilan_gelen": "ALLOW",
+        "varsayilan_giden": "ALLOW",
+        "izinli_kurallar": []
+      },
+      "calisan_servisler": [
+        "sshd",
+        "telnetd",
+        "vsftpd",
+        "rshd"
+      ],
+      "yasakli_guvensiz_servisler": [
+        "telnetd",
+        "vsftpd",
+        "rshd"
+      ]
+    }
+  ]
+}

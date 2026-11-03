@@ -1,0 +1,50 @@
+======================================================================
+GÜN 119: MİNİ PROJE 16 — CLI KOMUT VE ÇIKTI GÜNLÜĞÜ
+Tarih: 2026-11-02T05:48:26.787944
+======================================================================
+
+--- KOMUT ÇALIŞTIRILIYOR ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/rbac_sim_cli.py sim-access --user-id cfo_selim --target budget --action approve
+
+
+[STDERR]
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_17\gun_119\uygulama\rbac_sim_cli.py", line 23, in <module>
+    from uygulama.rbac_simulator_engine import (
+    ...<3 lines>...
+    )
+ModuleNotFoundError: No module named 'uygulama'
+
+[ÇIKIŞ KODU]: 1
+======================================================================
+
+--- KOMUT ÇALIŞTIRILIYOR ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/rbac_sim_cli.py sim-access --user-id dev_ayse --target budget --action approve
+
+
+[STDERR]
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_17\gun_119\uygulama\rbac_sim_cli.py", line 23, in <module>
+    from uygulama.rbac_simulator_engine import (
+    ...<3 lines>...
+    )
+ModuleNotFoundError: No module named 'uygulama'
+
+[ÇIKIŞ KODU]: 1
+======================================================================
+
+--- KOMUT ÇALIŞTIRILIYOR ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/rbac_sim_cli.py check-sod --roles accountant,cashier
+
+
+[STDERR]
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_17\gun_119\uygulama\rbac_sim_cli.py", line 23, in <module>
+    from uygulama.rbac_simulator_engine import (
+    ...<3 lines>...
+    )
+ModuleNotFoundError: No module named 'uygulama'
+
+[ÇIKIŞ KODU]: 1
+======================================================================
+

@@ -1,0 +1,61 @@
+{
+  "betik_adi": "log_sanitizer_tool",
+  "versiyon": "2.4.0",
+  "yazar": "Seydi Eryılmaz (@seydivakkas)",
+  "amaci": "Kurumsal SIEM ve SOC sistemlerine iletilen loglardaki hassas kişisel verileri (TCKN, Kredi Kartı, Parola) filtreleyip güvenli şekilde depolamak.",
+  "yetki_seviyesi": "Kullanıcı (Standart User) / Log dosyası okuma yetkisi",
+  "tehdit_matrisi": [
+    "CWE-532: Log Dosyasına Hassas Bilgi Yazılması (Düz metin kimlik ve kart sızıntısı)",
+    "CWE-250: Gereksiz Yüksek Yetki Kullanımı (Root gerektirmez, en düşük yetkiyle çalışır)",
+    "CWE-400: Kontrolsüz Kaynak Tüketimi (1 MB üzeri log dosyalarında parçalı okuma zorunludur)"
+  ],
+  "parametreler": [
+    {
+      "bayrak": "-i, --input-file",
+      "tip": "Dosya Yolu (string)",
+      "zorunlu": true,
+      "varsayilan": null,
+      "aciklama": "İncelenecek ham log dosyasının tam veya bağıl dosya yolu.",
+      "guvenlik_notu": "Path Traversal (CWE-22) engeli için mutlak yol doğrulaması yapılır."
+    },
+    {
+      "bayrak": "-o, --output-file",
+      "tip": "Dosya Yolu (string)",
+      "zorunlu": false,
+      "varsayilan": null,
+      "aciklama": "Filtrelenmiş ve maskelenmiş logların yazılacağı hedef dosya.",
+      "guvenlik_notu": "Mevcut sistem dosyalarının üzerine yazılması engellenmelidir."
+    },
+    {
+      "bayrak": "--mask-mode",
+      "tip": "Seçim (partial | full)",
+      "zorunlu": false,
+      "varsayilan": "partial",
+      "aciklama": "Kişisel veriler için maskeleme modu.",
+      "guvenlik_notu": "Dış denetim ve üçüncü parti entegrasyonlarda 'full' modu zorunludur."
+    },
+    {
+      "bayrak": "--purge-original",
+      "tip": "Boole (Bayrak)",
+      "zorunlu": false,
+      "varsayilan": false,
+      "aciklama": "İşlem sonrası kaynak ham log dosyasını kalıcı olarak siler.",
+      "guvenlik_notu": "DİKKAT: Veri kaybına (CWE-16) yol açabileceğinden yalnızca onaylı ortamlarda kullanılmalıdır."
+    }
+  ],
+  "cikis_kodlari": {
+    "0": "BAŞARILI: Log dosyası incelendi ve hassas veriler temizlendi.",
+    "1": "UYARI / GÜVENLİK ENGELİ: Hassas veri sızıntısı tespit edildi veya kural ihlali oluştu.",
+    "2": "KULLANIM / GİRDİ HATASI: Belirtilen dosya bulunamadı veya parametreler geçersiz."
+  },
+  "guvenlik_uyarilari": [
+    "ÖNEMLİ: Bu betik root veya Administrator yetkileriyle ÇALIŞTIRILMAMALIDIR (Least Privilege).",
+    "DİKKAT: '--purge-original' bayrağı adli delil niteliğindeki logları kalıcı olarak silebileceğinden önce yedekleme yapılmalıdır.",
+    "GÜVENLİK: Çıktı dosyasının erişim izinleri (Linux: 0600, Windows: Yalnızca Sahip) olarak ayarlanmalıdır."
+  ],
+  "ornek_kullanimlar": [
+    "python log_sanitizer_tool.py -i /var/log/auth.log -o /tmp/safe_auth.log",
+    "python log_sanitizer_tool.py -i app.log --mask-mode full",
+    "python log_sanitizer_tool.py -i access.log -o access_clean.log --purge-original"
+  ]
+}

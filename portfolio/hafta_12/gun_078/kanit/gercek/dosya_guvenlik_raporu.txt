@@ -1,0 +1,34 @@
+{
+  "title": "G078: Dosya Okuma ve Pathlib Güvenlik Raporu",
+  "sandbox_directory": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_12\\gun_078\\ornek_veri\\guvenli_dosya_deposu",
+  "allowed_extensions": [
+    ".json",
+    ".log",
+    ".txt",
+    ".yaml"
+  ],
+  "max_file_size_bytes": 1048576,
+  "read_operations_count": 0,
+  "write_operations_count": 0,
+  "files_audited": [
+    {
+      "relative_path": "config.json",
+      "size_bytes": 219,
+      "extension": ".json",
+      "sha256": "9369c8845d839cbb908fe92fe7d47144eb1a9063601bcd65e04125695e08a355"
+    },
+    {
+      "relative_path": "sample_policy.yaml",
+      "size_bytes": 180,
+      "extension": ".yaml",
+      "sha256": "8e7bfda9f1f50dda2c651a1b20ded65b832dcca5c9734398c7f423b18b8d8daa"
+    },
+    {
+      "relative_path": "security_audit.log",
+      "size_bytes": 226,
+      "extension": ".log",
+      "sha256": "e35e1dbeb72308b293915a0e4e557e782b381a924631bdcfd81e023f156788da"
+    }
+  ],
+  "status": "SANDBOX_INTEGRITY_VERIFIED"
+}

@@ -1,0 +1,109 @@
+{
+  "versiyon": "2026.1",
+  "proje_adi": "Asama 1 Kalite Ozeti ve Guvenlik Temelleri Laboratuvar Kabul Dosyasi",
+  "lisans": "OZEL LISANS - TUM HAKLARI SAKLIDIR. Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas)",
+  "laboratuvar_projeleri": [
+    {
+      "proje_id": "LAB-SEC-GOLDEN-01",
+      "proje_basligi": "Kurumsal Siber Guvenlik Arastirma ve Tehdit Similasyon Laboratuvari (Altin Kabul)",
+      "amac": "Izole ortamda saldiri analizleri, sistem sertlestirme ve olay mudahale tatbikatlarinin icrasi",
+      "etik_roe_kapsami": {
+        "hedef_ip_araligi": "192.168.100.0/24",
+        "yetkili_test_zamani": "09:00 - 18:00 UTC",
+        "yazili_onay_var_mi": true,
+        "dis_ag_erisim_izni": false,
+        "uretim_sistem_etkilesimi": false
+      },
+      "varlik_envanteri_ve_siniflandirma": {
+        "toplam_varlik_sayisi": 4,
+        "kritik_varlik_etiketleri": ["Gizli", "Ic_Kullanim"],
+        "sahip_ve_sorumlular_belirlenmis_mi": true
+      },
+      "nist_csf_2_0_uyumluluk": {
+        "govern_yonetisim": {
+          "politika_belgesi_mevcut_mu": true,
+          "roller_ve_yetkiler_tanimli_mi": true
+        },
+        "identify_tanimlama": {
+          "risk_matrisi_cikarildi_mi": true,
+          "stride_tehdit_modeli_mevcut_mu": true
+        },
+        "protect_koruma": {
+          "cis_seviye_1_sertlestirme": true,
+          "ssh_anahtar_tabanli_auth": true,
+          "mikro_segmentasyon_vlan": true
+        },
+        "detect_tespit": {
+          "merkezi_syslog_veya_siem": true,
+          "event_log_4688_ve_conntrack_izleme": true
+        },
+        "respond_mudahale": {
+          "olay_mudahale_akis_diyagrami": true,
+          "karantina_vlan_rotasyonu": true
+        },
+        "recover_kurtarma": {
+          "3_2_1_1_0_yedekleme_plani": true,
+          "worm_degismezlik_kilidi": true,
+          "sha256_butunluk_dogrulamasi": true,
+          "rollback_ve_restore_tatbikati": true
+        }
+      },
+      "kaynak_dogrulama": {
+        "craap_skor_ortalamasi": 95.0,
+        "resmi_nvd_ve_vendor_advisory_kullanimi": true,
+        "trojanized_poc_taramasi_yapildi_mi": true
+      }
+    },
+    {
+      "proje_id": "LAB-SEC-DEFECTIVE-99",
+      "proje_basligi": "Kontrolsuz ve Kusurlu Baslangic Laboratuvari (Tek Onleme Guvenme Yanilgisi)",
+      "amac": "Hizli test ortami (Kapsamsiz, izolesiz ve geri donussuz)",
+      "etik_roe_kapsami": {
+        "hedef_ip_araligi": "0.0.0.0/0",
+        "yetkili_test_zamani": "Belirtilmemis",
+        "yazili_onay_var_mi": false,
+        "dis_ag_erisim_izni": true,
+        "uretim_sistem_etkilesimi": true
+      },
+      "varlik_envanteri_ve_siniflandirma": {
+        "toplam_varlik_sayisi": 0,
+        "kritik_varlik_etiketleri": [],
+        "sahip_ve_sorumlular_belirlenmis_mi": false
+      },
+      "nist_csf_2_0_uyumluluk": {
+        "govern_yonetisim": {
+          "politika_belgesi_mevcut_mu": false,
+          "roller_ve_yetkiler_tanimli_mi": false
+        },
+        "identify_tanimlama": {
+          "risk_matrisi_cikarildi_mi": false,
+          "stride_tehdit_modeli_mevcut_mu": false
+        },
+        "protect_koruma": {
+          "cis_seviye_1_sertlestirme": false,
+          "ssh_anahtar_tabanli_auth": false,
+          "mikro_segmentasyon_vlan": false
+        },
+        "detect_tespit": {
+          "merkezi_syslog_veya_siem": false,
+          "event_log_4688_ve_conntrack_izleme": false
+        },
+        "respond_mudahale": {
+          "olay_mudahale_akis_diyagrami": false,
+          "karantina_vlan_rotasyonu": false
+        },
+        "recover_kurtarma": {
+          "3_2_1_1_0_yedekleme_plani": false,
+          "worm_degismezlik_kilidi": false,
+          "sha256_butunluk_dogrulamasi": false,
+          "rollback_ve_restore_tatbikati": false
+        }
+      },
+      "kaynak_dogrulama": {
+        "craap_skor_ortalamasi": 20.0,
+        "resmi_nvd_ve_vendor_advisory_kullanimi": false,
+        "trojanized_poc_taramasi_yapildi_mi": false
+      }
+    }
+  ]
+}

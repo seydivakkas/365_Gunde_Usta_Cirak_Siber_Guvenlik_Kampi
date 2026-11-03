@@ -1,0 +1,66 @@
+=== GÜN 123 NEGATİF KONTROL VE HATA DOĞRULAMA RAPORU ===
+Tarih: 2026-11-02T08:15:24.618076
+Toplam Senaryo: 9
+
+Senaryo 1: Geliştirme / Debug Modu Varsayılan Olarak Açık (CWE-1188)
+  Açıklama: Üretim ortamında debug modunun varsayılan olarak açık bırakılmasının engellenmesi.
+  Beklenen Hata: InsecureDefaultDetectedError
+  Alınan Hata: InsecureDefaultDetectedError: Güvenli Olmayan Varsayılan İhlali (CWE-1188):
+CWE-1188 İHLALİ [RES-BAD-DEBUG - Hatalı Debug Servisi]: Geliştirme / Debug Modu Varsayılan Olarak Açık
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 2: Fabrika Çıkışlı Varsayılan Parola Aktif (CWE-1188)
+  Açıklama: Varsayılan yönetici parolasının (admin/admin vb.) değiştirilmediğinin tespiti.
+  Beklenen Hata: InsecureDefaultDetectedError
+  Alınan Hata: InsecureDefaultDetectedError: Güvenli Olmayan Varsayılan İhlali (CWE-1188):
+CWE-1188 İHLALİ [RES-DEF-CRED - Değiştirilmemiş Parolalı Cihaz]: Varsayılan Parola / Kimlik Değiştirilmemiş
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 3: Permissive CORS (*) Açık Bırakılmış (CWE-1188)
+  Açıklama: CORS başlığının tüm alan adlarına serbest bırakılmasının engellenmesi.
+  Beklenen Hata: InsecureDefaultDetectedError
+  Alınan Hata: InsecureDefaultDetectedError: Güvenli Olmayan Varsayılan İhlali (CWE-1188):
+CWE-1188 İHLALİ [RES-OPEN-CORS - Korumasız CORS API]: CORS Herkese Açık (*) Bırakılmış
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 4: TLS Şifrelemesi Zorunlu Değil (CWE-1188)
+  Açıklama: Düz metin HTTP iletişimine izin verilmesinin tespiti ve engellenmesi.
+  Beklenen Hata: InsecureDefaultDetectedError
+  Alınan Hata: InsecureDefaultDetectedError: Güvenli Olmayan Varsayılan İhlali (CWE-1188):
+CWE-1188 İHLALİ [RES-CLEARTEXT - Düz Metin HTTP Ağ Geçidi]: Şifresiz İletişim (HTTP/Telnet) Varsayılan Olarak İzinli
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 5: Durağan Depolama Şifresiz (CWE-1188)
+  Açıklama: Veritabanı veya disk depolamasının şifresiz bırakılmasının engellenmesi.
+  Beklenen Hata: InsecureDefaultDetectedError
+  Alınan Hata: InsecureDefaultDetectedError: Güvenli Olmayan Varsayılan İhlali (CWE-1188):
+CWE-1188 İHLALİ [RES-NO-ENCRYPT - Şifresiz Müşteri Dosyaları]: Durağan Depolama Varsayılan Olarak Şifresiz
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 6: Varsayılan Erişim İZİN (ALLOW) Yapılmış (Saltzer-Schroeder İhlali)
+  Açıklama: Default-Deny yerine Default-Permit yapılandırmasının tespiti ve reddi.
+  Beklenen Hata: InsecureDefaultDetectedError
+  Alınan Hata: InsecureDefaultDetectedError: Güvenli Olmayan Varsayılan İhlali (CWE-1188):
+CWE-1188 İHLALİ [RES-PERMIT-ALL - Güvensiz Varsayılan Servis]: Erişim Kuralı Varsayılanı İZİN (Allow) Yapılmış
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 7: Yetkisiz Fail-Open Yapılandırması (CWE-636 İhlali)
+  Açıklama: Acil durum can güvenliği token'ı olmaksızın arıza anında kapıların açılmasının engellenmesi.
+  Beklenen Hata: InsecureFailOpenForbiddenError
+  Alınan Hata: InsecureFailOpenForbiddenError: Güvenli Kapanma İhlali (CWE-636):
+CWE-636 İHLALİ: Sistem seviyesinde 'FAIL_OPEN' yapılandırılmış! Yetkili acil can güvenliği (Life-Safety) gerekçesi olmaksızın fail-open kabul edilemez.
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 8: Boş Kaynak Adı ile Yapılandırma Girişi
+  Açıklama: Kaynak adı boş dize verildiğinde doğrulama hatası üretilmesi.
+  Beklenen Hata: InvalidResourceConfigurationError
+  Alınan Hata: InvalidResourceConfigurationError: Kaynak adı boş bırakılamaz.
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Senaryo 9: Mükerrer Kaynak ID Tanımlama
+  Açıklama: Aynı kimliğe sahip iki farklı kaynağın kaydedilmesinin engellenmesi.
+  Beklenen Hata: DuplicateResourceError
+  Alınan Hata: DuplicateResourceError: Bu ID ile kaynak zaten mevcut: RES-AUTH-API
+  Sonuç: [PASS - BEKLENEN HATA ALINDI]
+
+Genel Sonuç: 9/9 senaryo başarıyla doğrulandı.

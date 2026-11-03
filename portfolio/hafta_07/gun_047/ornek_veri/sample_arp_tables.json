@@ -1,0 +1,87 @@
+{
+  "aciklama": "G047 - ARP Tablosu, Yerel Ağ Komşuluğu ve ARP Zehirleme (Spoofing) Simülasyon Veri Seti",
+  "arp_onbellegi": [
+    {
+      "id": "ARP-01",
+      "ip": "192.168.1.1",
+      "mac": "00:1A:2B:3C:4D:01",
+      "arayuz": "eth0",
+      "tur": "Dinamik",
+      "rol": "Varsayılan Ağ Geçidi (Default Gateway)"
+    },
+    {
+      "id": "ARP-02",
+      "ip": "192.168.1.10",
+      "mac": "00:1A:2B:3C:4D:0A",
+      "arayuz": "eth0",
+      "tur": "Statik",
+      "rol": "Yerel DNS/LDAP Sunucusu"
+    },
+    {
+      "id": "ARP-03",
+      "ip": "192.168.1.50",
+      "mac": "52:54:00:12:34:56",
+      "arayuz": "eth0",
+      "tur": "Dinamik",
+      "rol": "İstemci İş İstasyonu"
+    },
+    {
+      "id": "ARP-04",
+      "ip": "192.168.1.255",
+      "mac": "FF:FF:FF:FF:FF:FF",
+      "arayuz": "eth0",
+      "tur": "Statik",
+      "rol": "Alt Ağ Yayın Adresi (Broadcast)"
+    },
+    {
+      "id": "ARP-05",
+      "ip": "224.0.0.1",
+      "mac": "01:00:5E:00:00:01",
+      "arayuz": "eth0",
+      "tur": "Statik",
+      "rol": "Tüm Düğümler Çok Noktaya Yayın (Multicast)"
+    }
+  ],
+  "arp_trafik_olaylari": [
+    {
+      "olay_id": "EVT-01",
+      "zaman": "10:00:01",
+      "islem": "REQUEST",
+      "kaynak_ip": "192.168.1.50",
+      "kaynak_mac": "52:54:00:12:34:56",
+      "hedef_ip": "192.168.1.1",
+      "hedef_mac": "00:00:00:00:00:00",
+      "aciklama": "Meşru ARP İstek: Ağ geçidinin MAC adresini soruyor"
+    },
+    {
+      "olay_id": "EVT-02",
+      "zaman": "10:00:02",
+      "islem": "REPLY",
+      "kaynak_ip": "192.168.1.1",
+      "kaynak_mac": "00:1A:2B:3C:4D:01",
+      "hedef_ip": "192.168.1.50",
+      "hedef_mac": "52:54:00:12:34:56",
+      "aciklama": "Meşru ARP Yanıt: Ağ geçidi gerçek MAC adresini bildiriyor"
+    },
+    {
+      "olay_id": "EVT-03",
+      "zaman": "10:00:05",
+      "islem": "REPLY",
+      "kaynak_ip": "192.168.1.1",
+      "kaynak_mac": "AA:BB:CC:DD:EE:FF",
+      "hedef_ip": "192.168.1.50",
+      "hedef_mac": "52:54:00:12:34:56",
+      "aciklama": "ZARARLI ARP ZEHİRLEME: Saldırgan ağ geçidinin IP'sini kendi MAC adresine bağlıyor!"
+    },
+    {
+      "olay_id": "EVT-04",
+      "zaman": "10:00:06",
+      "islem": "GRATUITOUS_REPLY",
+      "kaynak_ip": "192.168.1.10",
+      "kaynak_mac": "AA:BB:CC:DD:EE:FF",
+      "hedef_ip": "192.168.1.255",
+      "hedef_mac": "FF:FF:FF:FF:FF:FF",
+      "aciklama": "ZARARLI GRATUITOUS ARP: Saldırgan sunucu IP'sini de kendi MAC'ine çekerek MitM yapıyor"
+    }
+  ]
+}

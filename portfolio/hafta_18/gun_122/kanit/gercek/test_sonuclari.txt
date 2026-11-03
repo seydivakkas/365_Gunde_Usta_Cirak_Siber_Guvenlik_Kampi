@@ -1,0 +1,38 @@
+=== GÜN 122 BİRİM TEST RAPORU ===
+Tarih: 2026-11-02T06:12:47.480583
+
+test_01_all_seven_layers_enum_representation (test_defense_in_depth.TestDefenseInDepthEngine.test_01_all_seven_layers_enum_representation)
+7 temel savunma derinliği katmanının eksiksiz tanımlandığı doğrulanır. ... ok
+test_02_control_types_enum_coverage (test_defense_in_depth.TestDefenseInDepthEngine.test_02_control_types_enum_coverage)
+Tüm 5 kontrol tipinin (Önleyici, Tespit, Düzeltici, Telafi, Caydırıcı) varlığı doğrulanır. ... ok
+test_03_invalid_control_effectiveness_out_of_bounds (test_defense_in_depth.TestDefenseInDepthEngine.test_03_invalid_control_effectiveness_out_of_bounds)
+Kontrol etkinliği 0.01 altı veya 0.99 üstü olduğunda hata vermelidir. ... ok
+test_04_duplicate_control_registration_rejected (test_defense_in_depth.TestDefenseInDepthEngine.test_04_duplicate_control_registration_rejected)
+Aynı ID'ye sahip iki kontrol eklenmeye çalışıldığında DuplicateControlError fırlatılmalıdır. ... ok
+test_05_layer_gap_audit_detection (test_defense_in_depth.TestDefenseInDepthEngine.test_05_layer_gap_audit_detection)
+Bir katmanda hiçbir kontrol olmadığında CWE-653 Katman Boşluğu tespit edilmelidir. ... ok
+test_06_unmonitored_layer_blind_spot_detection (test_defense_in_depth.TestDefenseInDepthEngine.test_06_unmonitored_layer_blind_spot_detection)
+Önleyici kontrol varken Tespit Edici (Detective) kontrol yoksa kör nokta (Blind Spot) uyarısı verilmelidir. ... ok
+test_07_passive_layer_no_preventive_detection (test_defense_in_depth.TestDefenseInDepthEngine.test_07_passive_layer_no_preventive_detection)
+Sadece Tespit Edici kontrol olup Önleyici bariyer olmayan katman PASİF KATMAN olarak uyarılmalıdır. ... ok
+test_08_spof_single_point_of_failure_detection (test_defense_in_depth.TestDefenseInDepthEngine.test_08_spof_single_point_of_failure_detection)
+Bir saldırı kategorisine karşı tüm mimaride yalnızca 1 önleyici kontrol varsa SPoF (CWE-1008) uyarısı verilmelidir. ... ok
+test_09_enforce_resilience_raises_defense_gap_error (test_defense_in_depth.TestDefenseInDepthEngine.test_09_enforce_resilience_raises_defense_gap_error)
+Boş katman varken enforce_resilience çağrıldığında DefenseGapError fırlatılmalıdır. ... ok
+test_10_enforce_resilience_raises_spof_error (test_defense_in_depth.TestDefenseInDepthEngine.test_10_enforce_resilience_raises_spof_error)
+Tüm katmanlara genel kontrol eklenip bir saldırıda tek kontrol bırakıldığında SinglePointOfFailureError fırlatılmalıdır. ... ok
+test_11_successful_multi_layer_attack_interception (test_defense_in_depth.TestDefenseInDepthEngine.test_11_successful_multi_layer_attack_interception)
+Düşük kaçınma gücüne (0.4) sahip saldırı Çevre katmanındaki Firewall (%90) tarafından durdurulmalıdır. ... ok
+test_12_deep_attack_stopped_at_inner_layer (test_defense_in_depth.TestDefenseInDepthEngine.test_12_deep_attack_stopped_at_inner_layer)
+Çevre ve ağı aşan gelişmiş bir saldırı, Sunucu katmanındaki EDR tarafından engellenmelidir. ... ok
+test_13_complete_defense_breach_data_compromise (test_defense_in_depth.TestDefenseInDepthEngine.test_13_complete_defense_breach_data_compromise)
+Tüm katmanlardaki kontrolleri aşan saldırı Veri katmanına ulaşıp veri ihlali üretmelidir. ... ok
+test_14_detective_alarm_triggered_even_if_penetrated (test_defense_in_depth.TestDefenseInDepthEngine.test_14_detective_alarm_triggered_even_if_penetrated)
+Önleyici kontrol aşılsa bile tespit kontrolü alarm üretmelidir. ... ok
+test_15_resilient_architecture_full_audit_and_report_generation (test_defense_in_depth.TestDefenseInDepthEngine.test_15_resilient_architecture_full_audit_and_report_generation)
+Tam konfigüre edilmiş 7 katmanlı sağlam mimarinin denetimi ve rapor üretimi doğrulanır. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

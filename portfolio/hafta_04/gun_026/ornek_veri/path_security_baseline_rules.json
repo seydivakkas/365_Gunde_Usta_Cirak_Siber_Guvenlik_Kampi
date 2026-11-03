@@ -1,0 +1,42 @@
+{
+  "standart": "CIS Linux Benchmark 5.4.4 & NIST SP 800-53 CM-7 / SI-4",
+  "surum": "2026.1",
+  "aciklama": "PATH ve Ortam Degiskenleri Guvenlik ve Oncelik Temel Kurallari",
+  "yasakli_path_ogeleri": [
+    ".",
+    "",
+    "/tmp",
+    "/var/tmp",
+    "/dev/shm"
+  ],
+  "tehlikeli_yukleyici_degiskenleri": [
+    "LD_PRELOAD",
+    "LD_LIBRARY_PATH",
+    "DYLD_INSERT_LIBRARIES",
+    "DYLD_LIBRARY_PATH",
+    "IFS"
+  ],
+  "hassas_veri_anahtar_kelimeleri": [
+    "PASSWORD",
+    "PASSWD",
+    "SECRET",
+    "TOKEN",
+    "API_KEY",
+    "PRIVATE_KEY",
+    "CREDENTIAL"
+  ],
+  "onerilen_sistem_path_sirasi": [
+    "/usr/local/sbin",
+    "/usr/local/bin",
+    "/usr/sbin",
+    "/usr/bin",
+    "/sbin",
+    "/bin"
+  ],
+  "cwe_eslemeleri": {
+    "bagil_yol": "CWE-426: Untrusted Search Path",
+    "yazilabilir_dizin": "CWE-427: Uncontrolled Search Path Element",
+    "acik_kimlik": "CWE-526: Information Exposure Through Environmental Variables",
+    "yukleyici_enjeksiyonu": "CWE-114: Process Control (Dynamic Linker Hijacking)"
+  }
+}

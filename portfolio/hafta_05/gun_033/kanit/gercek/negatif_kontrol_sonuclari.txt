@@ -1,0 +1,27 @@
+================================================================================
+G033: NEGATİF KONTROL VE BOZUK HASH ŞEMA DOĞRULAMA TEST RAPORU
+================================================================================
+İncelenen Bozuk Veri Kaydı Sayısı: 7
+Beklenen Davranış: Bütün bozuk kayıtlar güvenle reddedilmeli, sistem çökmemelidir.
+--------------------------------------------------------------------------------
+Taban Çizgisine Kabul Edilen Kayıt Sayısı: 0 (Beklenen: 0)
+Reddedilen Hatalı Kayıt Sayısı           : 7 (Beklenen: 7)
+--------------------------------------------------------------------------------
+AYRINTILI REDDETME GEREKÇELERİ:
+[01] Reddetme Nedeni: GECERSIZ_HASH_FORMATI: GECERSIZ_HEX: Hash degeri yalnizca onaltilik (0-9, a-f) karakterler icerebilir.
+     Gelen Ham Veri : {'file_name': 'invalid_hex.json', 'relative_path': 'sample_files/invalid_hex.json', 'sha256': 'zzzz86ce37d1c9fdf227bd875fc638c83938da29d65c074a562c30e79136474f', 'size_bytes': 100}
+[02] Reddetme Nedeni: GECERSIZ_HASH_FORMATI: HATALI_UZUNLUK: SHA256 hash degeri tam 64 karakter olmalidir.
+     Gelen Ham Veri : {'file_name': 'truncated_hash.json', 'relative_path': 'sample_files/truncated_hash.json', 'sha256': '2cf886ce37d1c9fd', 'size_bytes': 100}
+[03] Reddetme Nedeni: EKSIK_ALAN: 'relative_path' alani zorunludur.
+     Gelen Ham Veri : {'file_name': 'missing_path.json', 'sha256': '2cf886ce37d1c9fdf227bd875fc638c83938da29d65c074a562c30e79136474f', 'size_bytes': 100}
+[04] Reddetme Nedeni: EKSIK_ALAN: 'sha256' alani zorunludur.
+     Gelen Ham Veri : {'file_name': 'missing_hash.json', 'relative_path': 'sample_files/missing_hash.json', 'size_bytes': 100}
+[05] Reddetme Nedeni: GECERSIZ_YOL: Dosya yolu bos olamaz.
+     Gelen Ham Veri : {'file_name': 'whitespace_path.json', 'relative_path': '   ', 'sha256': '2cf886ce37d1c9fdf227bd875fc638c83938da29d65c074a562c30e79136474f'}
+[06] Reddetme Nedeni: GECERSIZ_HASH_FORMATI: BOS_HASH: Hash degeri bos veya yalnizca bosluk olamaz.
+     Gelen Ham Veri : {'file_name': 'whitespace_hash.json', 'relative_path': 'sample_files/whitespace_hash.json', 'sha256': '   '}
+[07] Reddetme Nedeni: KAYIT_SOZLUK_DEGIL: Taban cizgisi kaydi sozluk olmalidir.
+     Gelen Ham Veri : invalid_non_dict_entry_string_item
+--------------------------------------------------------------------------------
+SONUÇ: Bütün negatif kontrol senaryoları %100 başarıyla doğrulanmıştır.
+================================================================================

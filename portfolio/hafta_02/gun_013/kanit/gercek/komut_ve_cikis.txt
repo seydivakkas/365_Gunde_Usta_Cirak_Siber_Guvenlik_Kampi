@@ -1,0 +1,39 @@
+================================================================================
+GERÇEK KOMUT ÇALIŞTIRMA VE KANIT KAYDI — GÜN 013
+Tarih: 2026-10-27
+Platform: Windows 11 (10.0.26300)
+Python Sürümü: 3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]
+Çalışma Dizini: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Lisans: ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+
+>>> KOMUT: python portfolio/hafta_02/gun_013/uygulama/security_source_validator.py --veri-tabani portfolio/hafta_02/gun_013/ornek_veri/guvenlik_arastirma_kaynaklari.json --tumunu-denetle
+Çıkış Kodu: 0
+[STDOUT]:
+[*] T�m Ara�t�rma Vakalar� Analiz Ediliyor...
+    - Vaka VAKA-CVE-RCE-01 -> Onayl�: SRC-NVD-OFFICIAL (100p) vs Reddedilen: SRC-GITHUB-ANON-POC (10p)
+    - Vaka VAKA-LINUX-HARDENING-02 -> Onayl�: SRC-CIS-BENCHMARK (100p) vs Reddedilen: SRC-LEGACY-FORUM-POST (0p)
+
+--------------------------------------------------------------------------------
+>>> KOMUT: python portfolio/hafta_02/gun_013/uygulama/security_source_validator.py --veri-tabani portfolio/hafta_02/gun_013/ornek_veri/guvenlik_arastirma_kaynaklari.json --vaka-id VAKA-CVE-RCE-01 --karsilastir
+Çıkış Kodu: 0
+[STDOUT]:
+[*] �apraz Kaynak Kar��la�t�rmas� Ba�lat�l�yor: Vaka=VAKA-CVE-RCE-01
+[+] Vaka: CVE-2024-9999 Kritik Uzaktan Kod Calistirma (RCE) Analizi
+[+] Onaylanan Kaynak: NIST National Vulnerability Database (NVD) & Uretici MSRC Guvenlik Bulteni (Skor: 100)
+[-] Reddedilen Kaynak: Anonim GitHub Deposu: 'CVE-2024-9999-1day-exploit-auto-pwn' (Skor: 10)
+[!] G�venilirlik Fark�: 90 puan
+[+] Nihai Karar: KAYNAK_A_ONAYLANDI__KAYNAK_B_REDDEDILDI
+
+--------------------------------------------------------------------------------
+>>> KOMUT: python portfolio/hafta_02/gun_013/uygulama/security_source_validator.py --veri-tabani portfolio/hafta_02/gun_013/ornek_veri/guvenlik_arastirma_kaynaklari.json --vaka-id VAKA-LINUX-HARDENING-02 --karsilastir
+Çıkış Kodu: 0
+[STDOUT]:
+[*] �apraz Kaynak Kar��la�t�rmas� Ba�lat�l�yor: Vaka=VAKA-LINUX-HARDENING-02
+[+] Vaka: SSH Servisi Root Girisi ve Sudoers Sertlestirme Kriteri
+[+] Onaylanan Kaynak: CIS Ubuntu Linux 24.04 LTS Benchmark v1.0.0 (Skor: 100)
+[-] Reddedilen Kaynak: Eski Forum Cevabi: 'Root ile baglanamiyorum acil yardim (2011)' (Skor: 0)
+[!] G�venilirlik Fark�: 100 puan
+[+] Nihai Karar: KAYNAK_A_ONAYLANDI__KAYNAK_B_REDDEDILDI
+
+--------------------------------------------------------------------------------

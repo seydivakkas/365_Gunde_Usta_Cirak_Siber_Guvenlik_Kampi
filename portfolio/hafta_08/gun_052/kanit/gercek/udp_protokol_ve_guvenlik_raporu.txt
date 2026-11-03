@@ -1,0 +1,115 @@
+================================================================================
+G052: UDP PROTOKOL VE GUVENLIK ANALIZ RAPORU
+Standart: RFC 768 / RFC 1071 / RFC 5452 / BCP 38
+================================================================================
+
+Datagram ID       : UDP-DNS-REQ-01
+Tanim             : Standart DNS A kaydı sorgusu (example.com), ephemeral kaynak portu: 54321
+Kaynak/Hedef      : 192.168.1.105:54321 -> 8.8.8.8:53
+Uzunluk / Checksum: 37 B / 0x6f83 (Gecerli: True)
+Protokol Sinifi   : DNS
+  - dns_transaction_id: 0x1a2b
+  - tur: QUERY
+  - soru_sayisi: 1
+  - cevap_sayisi: 0
+  - ek_kayit_sayisi: 0
+--------------------------------------------------------------------------------
+Datagram ID       : UDP-DNS-RESP-01
+Tanim             : Standart DNS A kaydı yanıtı (93.184.216.34)
+Kaynak/Hedef      : 8.8.8.8:53 -> 192.168.1.105:54321
+Uzunluk / Checksum: 53 B / 0xd4ea (Gecerli: True)
+Protokol Sinifi   : DNS
+  - dns_transaction_id: 0x1a2b
+  - tur: RESPONSE
+  - soru_sayisi: 1
+  - cevap_sayisi: 1
+  - ek_kayit_sayisi: 0
+--------------------------------------------------------------------------------
+Datagram ID       : UDP-NTP-REQ-01
+Tanim             : NTPv4 İstemci Zaman Senkronizasyon İsteği (Mode 3: Client, VN: 4, LI: 0, 48 bayt standart başlık)
+Kaynak/Hedef      : 192.168.1.105:49152 -> 192.168.1.1:123
+Uzunluk / Checksum: 56 B / 0xb146 (Gecerli: True)
+Protokol Sinifi   : NTP
+  - ntp_version: 4
+  - leap_indicator: 0
+  - mode_kod: 3
+  - mode_aciklama: Client
+  - monlist_riski: False
+--------------------------------------------------------------------------------
+Datagram ID       : UDP-NTP-RESP-01
+Tanim             : NTPv4 Sunucu Yanıtı (Mode 4: Server, Stratum 1 GPS referans saati)
+Kaynak/Hedef      : 192.168.1.1:123 -> 192.168.1.105:49152
+Uzunluk / Checksum: 56 B / 0x5c0b (Gecerli: True)
+Protokol Sinifi   : NTP
+  - ntp_version: 4
+  - leap_indicator: 0
+  - mode_kod: 4
+  - mode_aciklama: Server
+  - monlist_riski: False
+--------------------------------------------------------------------------------
+Datagram ID       : UDP-NTP-MONLIST-AMP
+Tanim             : NTP Mode 7 (Private/monlist) Amplifikasyon İstek Vektörü (8 bayt istek -> binlerce bayt yanıt)
+Kaynak/Hedef      : 203.0.113.50:58210 -> 198.51.100.10:123
+Uzunluk / Checksum: 16 B / 0x9b55 (Gecerli: True)
+Protokol Sinifi   : NTP
+  - ntp_version: 2
+  - leap_indicator: 0
+  - mode_kod: 7
+  - mode_aciklama: Private/Monlist
+  - monlist_riski: True
+--------------------------------------------------------------------------------
+Datagram ID       : UDP-DNS-ANY-AMP
+Tanim             : DNS ANY + EDNS0 Amplifikasyon Yanıtı (Genişletilmiş EDNS0 bayrakları, BAF > 30x)
+Kaynak/Hedef      : 198.51.100.10:53 -> 203.0.113.50:58210
+Uzunluk / Checksum: 44 B / 0xf6cf (Gecerli: True)
+Protokol Sinifi   : DNS
+  - dns_transaction_id: 0x3f4e
+  - tur: RESPONSE
+  - soru_sayisi: 1
+  - cevap_sayisi: 32
+  - ek_kayit_sayisi: 1
+--------------------------------------------------------------------------------
+Datagram ID       : UDP-ZERO-CHECKSUM-IPV4
+Tanim             : RFC 768 IPv4 Checksum = 0x0000 (Sağlama toplamı devre dışı bırakılmış geçerli datagram)
+Kaynak/Hedef      : 10.0.0.1:9000 -> 10.0.0.2:9001
+Uzunluk / Checksum: 17 B / 0x0000 (Gecerli: True)
+Protokol Sinifi   : GENERIC_UDP
+--------------------------------------------------------------------------------
+
+================================================================================
+AMPLIFIKASYON / YANSITMA (REFLECTION DDOS) RISK ANALIZI
+================================================================================
+Vektor     : NTP monlist
+Istek/Yanit: 8 B -> 4000 B (BAF: 500.0x)
+Tehdit     : CRITICAL
+Aciklama   : NTP protokolünde BAF=500.00x ile devasa yansıtma / amplifikasyon DDoS riski tespit edildi!
+Onerilen Savunma Maddeleri:
+  * RFC 2827 / BCP 38: Ağ çıkışlarında kaynak IP doğrulaması (uRPF) ile IP sahteciliğini önleyin.
+  * RRL (Response Rate Limiting): Aynı istemci IP'sine dönülen yanıt oranını kısıtlayın.
+  * NTP Sunucularında 'monlist' ve Mode 7 sorgularını 'noquery' direktifiyle tamamen devre dışı bırakın.
+  * Açık DNS Çözümleyicilerini (Open Resolvers) kapatın; yalnızca yetkili iç ağlara sorgu izni verin.
+--------------------------------------------------------------------------------
+Vektor     : DNS ANY (EDNS0)
+Istek/Yanit: 50 B -> 3200 B (BAF: 64.0x)
+Tehdit     : CRITICAL
+Aciklama   : DNS protokolünde BAF=64.00x ile devasa yansıtma / amplifikasyon DDoS riski tespit edildi!
+Onerilen Savunma Maddeleri:
+  * RFC 2827 / BCP 38: Ağ çıkışlarında kaynak IP doğrulaması (uRPF) ile IP sahteciliğini önleyin.
+  * RRL (Response Rate Limiting): Aynı istemci IP'sine dönülen yanıt oranını kısıtlayın.
+  * NTP Sunucularında 'monlist' ve Mode 7 sorgularını 'noquery' direktifiyle tamamen devre dışı bırakın.
+  * Açık DNS Çözümleyicilerini (Open Resolvers) kapatın; yalnızca yetkili iç ağlara sorgu izni verin.
+--------------------------------------------------------------------------------
+Vektor     : Standart DNS Sorgusu
+Istek/Yanit: 45 B -> 120 B (BAF: 2.67x)
+Tehdit     : SAFE
+Aciklama   : DNS trafiğinde istek ve yanıt boyutları simetriktir (BAF=2.67x).
+Onerilen Savunma Maddeleri:
+  * Standart güvenlik duvarı filtrelemesi yeterlidir.
+--------------------------------------------------------------------------------
+Vektor     : Standart NTPv4 Sorgusu
+Istek/Yanit: 48 B -> 48 B (BAF: 1.0x)
+Tehdit     : SAFE
+Aciklama   : NTP trafiğinde istek ve yanıt boyutları simetriktir (BAF=1.00x).
+Onerilen Savunma Maddeleri:
+  * Standart güvenlik duvarı filtrelemesi yeterlidir.
+--------------------------------------------------------------------------------

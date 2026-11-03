@@ -1,0 +1,18 @@
+{
+  "README.md": "44722cc592233ecfd68130038a76b039658d12c8f02446f4a18571d743c6dcd2",
+  "ders.md": "179fd8180bebc4312427721edd3f38aebc354a4235ca22526b391afebb24c58b",
+  "rapor.md": "40a1856d4a7a2e77010317140b2542a749280daa718293eaf41961abf01d1622",
+  "sonuc.json": "cdcbce03cc267494b850c916e232e353291e8a1dcd6c2941e1ebb2e626ac85df",
+  "soru_cevap.md": "6d328580438e29a6f8692a1b243209670f9cbb4569a55ca0ec289117aabcdf9f",
+  "kanit/gercek/http_mesaj_ve_guvenlik_raporu.txt": "37fce353ed43102d5a889fd93f7b9319e29502d201917e960a6fe40066b66624",
+  "kanit/gercek/komut_ve_cikis.txt": "69a93f4c79fe7c9e6e105acae41dce33e25cc0d22917fc204aeddb34d00d0957",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "e97a8bc53d9c0d8fee784e5f171ad35f1c3a995bfa5033217815dd15b0390ef6",
+  "kanit/gercek/test_sonuclari.txt": "ababa555063353716bda2f2bb79c6d6e341bad80f3b7a14b6743e4878f2f684e",
+  "kanit/temsili/http_istek_yanit_ve_guvenlik_mimarisi.txt": "04f17ac96e0a863fd0c5181be2e99ecce0ee8a001eefc5af03f13ec77e692439",
+  "ornek_veri/invalid_http_inputs.json": "ba5557a34fbe92e1e0cd70110e577a03e953bbcb79d3287fa8ad0a170a7b5039",
+  "ornek_veri/sample_http_messages.json": "294041026806c2055f95442ce7b95043c14edbf521cc172428eb3f2baa439878",
+  "tests/__init__.py": "017a2ef65a7dcdf6f5129b110054b7aff8dc7ea20ad5bc1e0998491a03faa363",
+  "tests/test_http_protocol_analyzer.py": "63e19ee3fd5cdc1ce93838c3232dc1938af531ae1ad9e8700eac466f7b132752",
+  "uygulama/__init__.py": "e264942be3753deaf76e3dba888ffd8feb3c20f339b83a1c911770e0a4e1232f",
+  "uygulama/http_protocol_analyzer.py": "9c09d174dc9503de89861ed5420fa8f5bfb02317ec16d544ea7b66da99f4b93b"
+}

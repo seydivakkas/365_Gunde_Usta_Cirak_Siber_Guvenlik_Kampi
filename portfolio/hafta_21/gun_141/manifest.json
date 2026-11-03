@@ -1,0 +1,90 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "gun": 141,
+  "dosyalar": {
+    "README.md": {
+      "boyut_bayt": 5975,
+      "sha256": "78979a72067843890e61dd8611f30ac5e85344573b2b5d7362cc029da2bcee13"
+    },
+    "ders.md": {
+      "boyut_bayt": 8521,
+      "sha256": "4dc3a23891e1bf97db56a3d27d3673d76d631d51037a6d2f4860c3c665165219"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 20523,
+      "sha256": "bb515abfdd0010760ccf541f87d9bb20a4543afb784150683da1c44ff03475d8"
+    },
+    "rapor.md": {
+      "boyut_bayt": 4413,
+      "sha256": "20c69bbb84e900a806da8c1faad42410b8d362d888372b62ceecd3760af0eeb4"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1138,
+      "sha256": "96269539b5bbe355b7e46a1f9246b0209cac2bbdb13b74831a9436e9e73cbc4e"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 10624,
+      "sha256": "cb61d6e6a9f3c2fd6410633ca5f3723ef004174e54bdb77aefa336b16f3bf0eb"
+    },
+    "kanit/gercek/acil_geri_alma.sh": {
+      "boyut_bayt": 982,
+      "sha256": "9485836a23dc8616d2a27bdd932ee2b272dc7566694133889226a941ebbec3d8"
+    },
+    "kanit/gercek/cve_yama_analiz_raporu.json": {
+      "boyut_bayt": 1735,
+      "sha256": "fa846e806de07aeb3ef5c121bf05c6e2eed26936cb43beaed1c749312cbfa0a1"
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "boyut_bayt": 1944,
+      "sha256": "46282dcaf06fcf66adfa67d10ea65eeecc064d02c552c4f502d03c93b5bec3fa"
+    },
+    "kanit/gercek/kurumsal_yama_politikasi_sla.json": {
+      "boyut_bayt": 1702,
+      "sha256": "f44078a3724976beb5b2aa9a388556eaf9915bcd3e2caa37509803a8f6891dec"
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 3527,
+      "sha256": "e3e362039fbee5ba5eb93915667b5ee0fd3f1df6fed4a1ce6db8264dfd5ebd0c"
+    },
+    "kanit/gercek/otomatik_yama_plani.sh": {
+      "boyut_bayt": 1899,
+      "sha256": "adbc2d06e8d0fac22699a1aae53c04c045a61ab8c0816686be10027ed7af6c51"
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "boyut_bayt": 3895,
+      "sha256": "d84e9c2634612e42563ca0e96bf2d7c29787bbfd96b1dff79331f2ae4f6166d7"
+    },
+    "kanit/temsili/yama_ve_cve_mimarisi.txt": {
+      "boyut_bayt": 5210,
+      "sha256": "77140c1cbe75574f1574f5500e92d4d349349245fd700bcd2f1ad2bd810c9b9a"
+    },
+    "ornek_veri/invalid_cve_scenarios.json": {
+      "boyut_bayt": 4832,
+      "sha256": "c369d58787403be2cba079faed96a2c40e9237a1360e1bd8ff931a6a901fff64"
+    },
+    "ornek_veri/package_inventory_cve_spec.json": {
+      "boyut_bayt": 2146,
+      "sha256": "df42d553e7e376f42d7f5fcbf114d6bc8d2a7f525d4038b9196a2723263905b0"
+    },
+    "tests/__init__.py": {
+      "boyut_bayt": 557,
+      "sha256": "88a5424a19b2de2e0684c2e22e80fa5f1fd0a398986505bccdbd6dee447282bf"
+    },
+    "tests/test_patch_cve_management.py": {
+      "boyut_bayt": 10895,
+      "sha256": "2300d7741004f1eb05f603b93a909bdc41df5cfedf6a5593f0b3c000633d9b9e"
+    },
+    "uygulama/__init__.py": {
+      "boyut_bayt": 593,
+      "sha256": "327f2e3e7c78d7e89db9c0ef1e99810eb42a0b3afd4390630ea47701768e5f1e"
+    },
+    "uygulama/cve_patch_cli.py": {
+      "boyut_bayt": 6166,
+      "sha256": "b7d5662afa9303f13d34579b0282f205a3d02ded8aa1d45c9644c9e8e5085c06"
+    },
+    "uygulama/patch_cve_engine.py": {
+      "boyut_bayt": 19591,
+      "sha256": "24c80c30d0ea902e232d6d8abd5adc4eed87cc5cbd666d3e79712aec589d34fe"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "aciklama": "GÜN 016 - CPU, RAM ve Depolama Güvenlik Taban Çizgisi ve Sertleştirme Standartları",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "surum": "1.0.0",
+  "tarih": "2026-10-27",
+  "standartlar": [
+    {
+      "kod": "NIST SP 800-88 Rev. 1",
+      "baslik": "Medya Temizleme Kılavuzu (Guidelines for Media Sanitization)",
+      "kapsam": "Depolama ortamlarının imhası, yeniden kullanımı ve manyetik/flash kalıntıların önlenmesi (Clear, Purge, Destroy)."
+    },
+    {
+      "kod": "NIST SP 800-53 Rev. 5",
+      "baslik": "Güvenlik ve Gizlilik Kontrolleri",
+      "kontroller": [
+        "SC-28: Dinlenmedeki Bilginin Korunması (Protection of Information at Rest)",
+        "SC-39: Süreç Kalıntısı ve Bellek Temizliği (Process Remnants)",
+        "MP-6: Medya Temizleme (Media Sanitization)"
+      ]
+    },
+    {
+      "kod": "CIS Windows/Linux Benchmark",
+      "baslik": "İşletim Sistemi Güvenlik Taban Çizgisi",
+      "onerilen_ayarlar": {
+        "ClearPageFileAtShutdown": 1,
+        "DisablePagingExecutive": 1,
+        "CrashDumpSecurity": "Kısıtlı / Yalnızca Yönetici veya Tamamen Devre Dışı",
+        "BitLocker_LUKS_Enforcement": "Zorunlu Tam Disk Şifreleme"
+      }
+    },
+    {
+      "kod": "OWASP ASVS V8",
+      "baslik": "Uygulama Güvenlik Doğrulama Standardı - Veri Koruma ve Bellek Hijyeni",
+      "kural": "Kritik kimlik ve kriptografik anahtarlar kullanım biter bitmez SecureZeroMemory veya eşdeğeriyle bellekten sıfırlanmalı, mlock/VirtualLock ile takas alanına yazılması engellenmelidir."
+    }
+  ],
+  "guvenlik_denetim_kurallari": [
+    {
+      "kural_id": "RULE-CPU-001",
+      "katman": "CPU",
+      "kriter": "spec_ctrl_meltdown_spectre_yamalari",
+      "beklenen_deger": true,
+      "seviye": "KRITIK",
+      "hata_mesaji": "CPU spekülatif yürütme yan kanal zaafiyet yamaları eksik."
+    },
+    {
+      "kural_id": "RULE-RAM-001",
+      "katman": "RAM",
+      "kriter": "aslr_etkin",
+      "beklenen_deger": true,
+      "seviye": "YUKSEK",
+      "hata_mesaji": "Adres Alanı Düzeni Rastgeleleştirme (ASLR) devre dışı."
+    },
+    {
+      "kural_id": "RULE-RAM-002",
+      "katman": "RAM",
+      "kriter": "dep_nx_etkin",
+      "beklenen_deger": true,
+      "seviye": "KRITIK",
+      "hata_mesaji": "Veri Yürütme Engellemesi (DEP/NX) devre dışı; yığıt/öbek üzerinde kod yürütülebilir."
+    },
+    {
+      "kural_id": "RULE-STORAGE-001",
+      "katman": "Depolama",
+      "kriter": "tam_disk_sifreleme",
+      "beklenen_deger": true,
+      "seviye": "KRITIK",
+      "hata_mesaji": "Kalıcı depolama biriminde tam disk şifreleme (FDE) etkin değil; fiziksel veri hırsızlığı riski."
+    },
+    {
+      "kural_id": "RULE-STORAGE-002",
+      "katman": "Depolama",
+      "kriter": "kapanista_pagefile_temizleme",
+      "beklenen_deger": true,
+      "seviye": "YUKSEK",
+      "hata_mesaji": "Sistem kapanırken sayfalama (pagefile) dosyasının sıfırlanması kapalı; diskte RAM kalıntısı kalabilir."
+    }
+  ]
+}

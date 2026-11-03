@@ -1,0 +1,18 @@
+{
+  "README.md": "5cb15ef2a6a4d6b2103b9c5121928854ae459158520a09aa2242700e3d8dbc19",
+  "ders.md": "aa5c38d10a7d80f828d3d124e0d9f7b4dd139588b9fe29b32a58b470e8a6b32a",
+  "rapor.md": "c614b5f9540ef26e48625db9812253ec9ac7f8b98cefc0483d5ff9a96c149da3",
+  "sonuc.json": "095858dff0ca4991406a345b15116010a0ab723299240599a53493a88b7541a9",
+  "soru_cevap.md": "f22129c15821c75047296c19a8f827db6f7b30768b3697c5725c634e4237e221",
+  "kanit/gercek/ag_adresleme_calisma_kitabi_raporu.txt": "ea3c1abdf931b76a1d2f7168aea1593379e1268c33b7b3fdba0ebc2d72b23578",
+  "kanit/gercek/komut_ve_cikis.txt": "8be9a03472eb1a8ba5687b0dd36c94cda1ec328b8bbdbc50313f094395ed1cc5",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "0443e92b13e62019ede5464273ecd3f08b790a5a8fb20450a5c2e90c12c493b6",
+  "kanit/gercek/test_sonuclari.txt": "5695f94f2c59eec031c7e5cc46132a241f725814de4b7ed8ec93f376a3b07724",
+  "kanit/temsili/ag_adresleme_ve_segmentasyon_topolojisi.txt": "b421e0788dcb06ba1feda2817b99f44a5bc0d45cdbf8778b4952a4be860b20ad",
+  "ornek_veri/invalid_topology_inputs.json": "9f737f8df23fdb0fc95a7ccebdc073904a8443130ab32aeb9cff0e588dbcc3e6",
+  "ornek_veri/sample_topology_workbook.json": "a9c124a990205675da8ebd4328718aa28ad8d0c8aacf186091d8339c68811cfd",
+  "tests/__init__.py": "b19f49dc710f82ebbb4823ca6cf9f012139744a743bb478b9739ae4e65bacc63",
+  "tests/test_network_addressing_workbook.py": "f167680a2507a5ddce94e03f36c04ed73f17c05059519f985ad0d462db51c9de",
+  "uygulama/__init__.py": "b19f49dc710f82ebbb4823ca6cf9f012139744a743bb478b9739ae4e65bacc63",
+  "uygulama/network_addressing_workbook.py": "91b1246fa5467435cb2fd2e06a4ae4b912320c139653ee18719f35929aa2b9de"
+}

@@ -1,0 +1,68 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+GÜN 095: GÜVENLİK BETİKLERİ PERFORMANS ÖLÇÜM VE PROFİLLEME MİMARİSİ
+========================================================================================
+
++--------------------------------------------------------------------------------------+
+|                     SİBER GÜVENLİK İŞ YÜKÜ VE HEDEF FONKSİYONLAR                     |
+|         (Kriptografik Hash, Log Ayrıştırma, DLP Redaksiyonu, Ağ Analizi)             |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                  GİRDİ DOĞRULAMA VE GÜVENLİK SINIR DENETİM KATMANI                   |
+|  - Tip Denetimi (CWE-843: Callable harici nesnelerin reddedilmesi)                   |
+|  - Null-Byte Zehirlemesi Koruması (CWE-158: \x00 tespiti anında işlem kesilir)       |
+|  - İterasyon ve Persentil Doğrulaması (CWE-20 & CWE-1284: [0, 100] ve pozitif tam sayı|
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                ISINMA DÖNGÜSÜ (WARMUP) VE ÖN BELLEK NÖTRALİZASYONU                   |
+|  - JIT Derleyici, Python Baytkod (pyc) Yükleme ve CPU Önbellek Isınması              |
+|  - İlk Çalıştırma Anomalilerinin (Cold-start jitter) Ölçümden Düşürülmesi            |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|            ÇİFT KANALLI YÜKSEK HASSASİYETLİ ZAMAN VE BELLEK SAYAÇLARI                |
+|                                                                                      |
+|   [Duvar Saati (Wall Time)]   ---> time.perf_counter()                               |
+|                                    Gerçek geçen süre (I/O, kilitler, bekleme dahil)  |
+|                                                                                      |
+|   [İşlemci Saati (CPU Time)]  ---> time.process_time()                               |
+|                                    Sadece çekirdeğin aktif harcadığı hesaplama süresi|
+|                                                                                      |
+|   [Bellek Tahsisatı (Peak)]   ---> tracemalloc.get_traced_memory()                   |
+|                                    Aktif tahsisat ve ulaşılan tepe bellek miktarı    |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|             İSTATİSTİKSEL HESAPLAMA VE PERSENTİL ANALİZ MOTORU                       |
+|  - Ortalama (Mean) & Medyan (Median): Merkezi dağılım tespiti                         |
+|  - Standart Sapma (Stdev): Jitter ve gecikme kararsızlığı analizi                     |
+|  - Min / Max: En iyi ve en kötü durum (Worst-Case Latency)                           |
+|  - P95 / P99 Persentil: Kuyruk gecikmesi (Tail Latency) ve SLA analizi               |
+|  - Throughput (Ops/Sec): Saniyedeki maksimum işlem kapasitesi                        |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|             SLA BÜTÇESİ VE GÜVENLİK EŞİK DENETÇİSİ (SLA GUARDIAN)                    |
+|                                                                                      |
+|   [Süre Aşımı Denetimi]       ---> Ortalama süre > threshold_ms ise:                 |
+|                                    PerformanceBudgetExceededError (CWE-400 DoS Alarmı)
+|                                                                                      |
+|   [Bellek Tavanı Denetimi]    ---> Tepe bellek > max_memory_bytes ise:               |
+|                                    MemoryLimitExceededError (CWE-401 Sızıntı Alarmı) |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                       RAPORLAMA VE ÇIKTI ENTEGRASYON KATMANI                         |
+|  - POSIX Çıkış Kodları: 0 (Başarılı), 1 (Eşik/Bütçe İhlali), 2 (Girdi Hatası)        |
+|  - CI/CD ve Boru Hattı JSON Çıktısı: Makine tarafından okunabilir telemetri          |
++--------------------------------------------------------------------------------------+
+========================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

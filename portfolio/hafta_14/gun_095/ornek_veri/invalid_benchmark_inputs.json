@@ -1,0 +1,68 @@
+[
+  {
+    "id": "NEG_01_NEGATIVE_ITERATIONS",
+    "tanim": "Sıfır veya negatif iterasyon sayısı iletilmesi",
+    "iterasyon": -10,
+    "beklenen_hata": "InvalidBenchmarkParameterError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_02_ZERO_THRESHOLD",
+    "tanim": "Sıfır veya negatif performans eşik değeri belirtilmesi",
+    "esik_ms": 0.0,
+    "beklenen_hata": "InvalidBenchmarkParameterError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_03_UNKNOWN_BENCHMARK_TARGET",
+    "tanim": "Sistemde kayıtlı olmayan sahte hedef fonksiyon adı çağrılması",
+    "hedef": "non_existent_crypto_routine_xyz",
+    "beklenen_hata": "TargetNotFoundError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_04_THRESHOLD_BUDGET_EXCEEDED",
+    "tanim": "Güvenlik SLA bütçesini aşan yavaş fonksiyonun tespiti ve engellenmesi",
+    "esik_ms": 1.0,
+    "yapay_gecikme_ms": 20.0,
+    "beklenen_hata": "PerformanceBudgetExceededError",
+    "cwe": "CWE-400: Uncontrolled Resource Consumption"
+  },
+  {
+    "id": "NEG_05_MEMORY_LEAK_DETECTED",
+    "tanim": "Bellek tavanını aşan kontrolsüz tahsisat simülasyonu",
+    "maks_bellek_bayt": 1024,
+    "yapay_bellek_bayt": 1048576,
+    "beklenen_hata": "MemoryLimitExceededError",
+    "cwe": "CWE-401: Missing Release of Memory after Effective Lifetime"
+  },
+  {
+    "id": "NEG_06_NULL_BYTE_TARGET_NAME",
+    "tanim": "Fonksiyon veya hedef adında Null-Byte enjeksiyonu denemesi",
+    "hedef": "sha256_hash\u0000malicious_call",
+    "beklenen_hata": "NullByteInjectionError",
+    "cwe": "CWE-158: Improper Neutralization of Null Byte or Special Characters"
+  },
+  {
+    "id": "NEG_07_NON_CALLABLE_TARGET",
+    "tanim": "Çalıştırılamaz (non-callable) nesnenin profillemeye gönderilmesi",
+    "hedef_nesne": "sadece_bir_metin_dizisi",
+    "beklenen_hata": "TypeValidationError",
+    "cwe": "CWE-843: Access of Resource Using Incompatible Type"
+  },
+  {
+    "id": "NEG_08_INVALID_PERCENTILE_VALUE",
+    "tanim": "0-100 aralığı dışında geçersiz persentil metriği istenmesi",
+    "persentil": 105.0,
+    "beklenen_hata": "InvalidBenchmarkParameterError",
+    "cwe": "CWE-1284: Improper Validation of Specified Quantity in Input"
+  },
+  {
+    "id": "NEG_09_WARMUP_EXCEEDS_ITERATIONS",
+    "tanim": "Isınma (warmup) döngü sayısının toplam iterasyon sayısına eşit veya büyük olması",
+    "iterasyon": 10,
+    "warmup": 15,
+    "beklenen_hata": "InvalidBenchmarkParameterError",
+    "cwe": "CWE-20: Improper Input Validation"
+  }
+]

@@ -1,0 +1,29 @@
+===============================================================================
+GÜN 105: CLI KOMUT VE ÇIKIŞ KANITLARI
+Tarih/Saat: 2026-11-02 02:33:00
+===============================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_105\uygulama\manifest_cli.py --create --dir C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_105\ornek_veri\sample_project_tree --manifest C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_105\ornek_veri\sample_project_manifest.json --key MASTER_INTEGRITY_KEY_2026 --algo sha256
+Çıkış Kodu: 0
+=== HASH BÜTÜNLÜK MANİFESTOSU OLUŞTURULDU ===
+Kök Dizin      : sample_project_tree
+Algoritma      : SHA256
+Toplam Dosya   : 3
+Toplam Boyut   : 96 Bayt
+HMAC Mührü     : 580d0a82e05d4cfed76efcbb215b3a8b9ef1c2a81655cf5b088aff548985dc23
+Kaydedilen Dosya: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_105\ornek_veri\sample_project_manifest.json
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_105\uygulama\manifest_cli.py --verify --dir C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_105\ornek_veri\sample_project_tree --manifest C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_105\ornek_veri\sample_project_manifest.json --key MASTER_INTEGRITY_KEY_2026
+Çıkış Kodu: 2
+=== BÜTÜNLÜK DENETİM KARNESİ ===
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_105\uygulama\manifest_cli.py --tamper-sim
+Çıkış Kodu: 0
+=== BÜTÜNLÜK TAHRİFAT SİMÜLASYONU RAPORU ===
+Deney Adı    : Dosya Bütünlük Tahrifatı ve HMAC Mühür Denetimi Simülasyonu
+Temiz Durum  : Tam Eşleşme (Değişiklik yok -> INTEGRITY_VERIFIED)
+Senaryolar   :
+  - [Dosya İçeriği Değişimi]: Saldırgan bir dosyaya zararlı kod eklediğinde SHA-256 hash uyuşmazlığı tespit edilir (CWE-354).
+  - [HMAC Mührü Sahtelemesi]: Saldırgan dosyaları değiştirip manifestoyu yeniden yazsa bile anahtarı bilmediği için sahte HMAC mührü yakalanır (CWE-353).
+  - [Yetkisiz Dosya Enjeksiyonu]: Manifestte olmayan arka kapı (backdoor) dosyası ADDED olarak raporlanır.
+Ustanın Dersi: Bütünlük manifestosunu HMAC veya dijital imza ile mühürlemezseniz, saldırgan dosyayı değiştirdikten sonra manifestoyu da günceller ve denetimi atlatır!

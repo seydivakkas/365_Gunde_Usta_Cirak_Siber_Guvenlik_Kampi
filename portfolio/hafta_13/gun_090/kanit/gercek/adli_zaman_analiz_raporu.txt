@@ -1,0 +1,15 @@
+=====================================================================================
+ADLİ BİLİŞİM VE OLAY MÜDAHALESİ — UTC ZAMAN DAMGASI NORMALİZASYON RAPORU
+=====================================================================================
+Toplam İncelenen Olay Sayısı: 6
+Rapor Oluşturma Zamanı (UTC): 2026-11-01T20:20:53Z
+-------------------------------------------------------------------------------------
+SIRA  | UTC ZAMAN DAMGASI    | KAYNAK ID          | RİSK     | OLAY TİPİ
+-------------------------------------------------------------------------------------
+1     | 2026-10-25T19:50:05Z | WIN-DC-ROOT-01     | LOW      | KERBEROS_TGS_REQUEST (Servis bileti talep edildi.)
+2     | 2026-11-01T14:29:45Z | SRV-AUTH-NYC-01    | LOW      | TOKEN_ISSUED (OAuth2 Bearer belirteci olusturuldu.)
+3     | 2026-11-01T14:30:00Z | SRV-API-LON-02     | INFO     | DATABASE_QUERY (Kullanici veritabani tablosu okundu.)
+4     | 2026-11-01T14:30:15Z | SRV-WEB-IST-01     | LOW      | AUTHENTICATION_SUCCESS (Kullanici basariyla oturum acti.)
+5     | 2026-11-01T14:30:15Z | IOT-SENSOR-ANR-05  | MEDIUM   | TEMPERATURE_ALERT (Sunucu odasi sicakligi yuksek (28 C).)
+6     | 2026-11-01T14:30:20Z | FW-EDGE-TKY-01     | HIGH     | PACKET_DROP (Port taramasi engellendi (Port 445).)
+=====================================================================================

@@ -1,0 +1,51 @@
+{
+  "gun": 27,
+  "tarih": "2026-10-27",
+  "baslik": "Paket ve güncelleme yöneticileri",
+  "asama": "Aşama 02 — Sistem ve Ağ Güvenliği Temelleri",
+  "hafta": 4,
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "puan_detay": {
+    "kriter_1": 20,
+    "kriter_2": 40,
+    "kriter_3": 25,
+    "kriter_4": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "kanitlar": {
+    "gercek": [
+      "portfolio/hafta_04/gun_027/kanit/gercek/test_sonuclari.txt",
+      "portfolio/hafta_04/gun_027/kanit/gercek/komut_ve_cikis.txt",
+      "portfolio/hafta_04/gun_027/kanit/gercek/guncelleme_ve_geri_alma_kaydi.txt"
+    ],
+    "temsili": [
+      "portfolio/hafta_04/gun_027/kanit/temsili/paket_yonetimi_ve_guvenlik_mimarisi.txt"
+    ]
+  },
+  "kod_dosyalari": [
+    "portfolio/hafta_04/gun_027/uygulama/package_update_manager_auditor.py",
+    "portfolio/hafta_04/gun_027/tests/test_package_update_manager_auditor.py"
+  ],
+  "dokumanlar": [
+    "portfolio/hafta_04/gun_027/ders.md",
+    "portfolio/hafta_04/gun_027/soru_cevap.md",
+    "portfolio/hafta_04/gun_027/rapor.md",
+    "portfolio/hafta_04/gun_027/README.md"
+  ],
+  "kazanimlar": [
+    "Paket yöneticilerinin (APT/DNF) mimarisi ve kriptografik güven zinciri (GPG ve HTTPS) incelendi.",
+    "Şifresiz HTTP kaynak depolarının (CWE-319) ve imzasız depoların (CWE-347) tespiti kodlandı.",
+    "SemVer formatında sürüm karşılaştırması ve kritik servislerde sürüm sabitleme (pinning/hold) uygulandı.",
+    "Sabitlenmiş paketin zorlama olmadan güncellenememesiyle negatif kontrol sınandı.",
+    "İşlem günlüğü (transaction journal) tabanlı atomik güncelleme ve tek komutla geri alma (rollback) motoru doğrulandı.",
+    "14 birim test %100 başarıyla tamamlandı, 100/100 tam puan tescillendi."
+  ],
+  "ozel_not": "G027-SC1, SC2 ve SC3 gereksinimleri bağımsız girdiler, işlem günlüğü ve rollback testleriyle doğrulanarak tamamlandı."
+}

@@ -1,0 +1,123 @@
+{
+  "inventory_metadata": {
+    "system_name": "CORP-WKS-01",
+    "os_version": "Windows Server 2022 / Windows 11 Enterprise",
+    "audit_standard": "CIS Microsoft Windows Server Benchmark v2.0",
+    "auditor": "Seydi Eryılmaz (@seydivakkas)",
+    "scan_timestamp": "2026-11-02T10:45:00Z"
+  },
+  "services": [
+    {
+      "service_name": "W32Time",
+      "display_name": "Windows Time",
+      "image_path": "\"C:\\Windows\\system32\\svchost.exe\" -k LocalServiceNetworkRestricted",
+      "start_type": "Automatic",
+      "run_as_account": "NT AUTHORITY\\LocalService",
+      "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)",
+      "binary_permissions": {
+        "NT AUTHORITY\\SYSTEM": ["FullControl"],
+        "BUILTIN\\Administrators": ["FullControl"],
+        "BUILTIN\\Users": ["ReadAndExecute"]
+      },
+      "required_privileges": ["SeSystemtimePrivilege"],
+      "is_third_party": false,
+      "description": "Ağ istemcileri ve sunucuları için tarih ve saat eşitlemesini sürdürür."
+    },
+    {
+      "service_name": "EventLog",
+      "display_name": "Windows Event Log",
+      "image_path": "\"C:\\Windows\\System32\\svchost.exe\" -k LocalServiceNetworkRestricted -p",
+      "start_type": "Automatic",
+      "run_as_account": "NT AUTHORITY\\LocalService",
+      "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)",
+      "binary_permissions": {
+        "NT AUTHORITY\\SYSTEM": ["FullControl"],
+        "BUILTIN\\Administrators": ["FullControl"],
+        "BUILTIN\\Users": ["ReadAndExecute"]
+      },
+      "required_privileges": ["SeAuditPrivilege"],
+      "is_third_party": false,
+      "description": "Olayları ve olay günlüklerini yönetir."
+    },
+    {
+      "service_name": "CorpSecureAgent",
+      "display_name": "Corporate Endpoint Security Agent",
+      "image_path": "\"C:\\Program Files\\CorpSecurity\\agent.exe\"",
+      "start_type": "Automatic",
+      "run_as_account": "NT SERVICE\\CorpSecureAgent",
+      "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)",
+      "binary_permissions": {
+        "NT AUTHORITY\\SYSTEM": ["FullControl"],
+        "BUILTIN\\Administrators": ["FullControl"],
+        "BUILTIN\\Users": ["ReadAndExecute"]
+      },
+      "required_privileges": ["SeChangeNotifyPrivilege"],
+      "is_third_party": true,
+      "description": "Uç nokta telemetri ve izleme servisi."
+    },
+    {
+      "service_name": "InsecureBackupSvc",
+      "display_name": "Legacy Enterprise Backup Utility",
+      "image_path": "C:\\Program Files\\Enterprise Backup Suite\\backup_engine.exe -daemon",
+      "start_type": "Automatic",
+      "run_as_account": "LocalSystem",
+      "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)",
+      "binary_permissions": {
+        "NT AUTHORITY\\SYSTEM": ["FullControl"],
+        "BUILTIN\\Administrators": ["FullControl"],
+        "BUILTIN\\Users": ["ReadAndExecute"]
+      },
+      "required_privileges": ["SeBackupPrivilege"],
+      "is_third_party": true,
+      "description": "Yedekleme motoru (Tırnaksız servis yolu ve aşırı yetkili hesap barındırır)."
+    },
+    {
+      "service_name": "LegacyDbAgent",
+      "display_name": "Internal Database Sync Agent",
+      "image_path": "\"C:\\Program Files\\DbSync\\sync_agent.exe\"",
+      "start_type": "Automatic",
+      "run_as_account": "LocalSystem",
+      "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;DC;;;BU)",
+      "binary_permissions": {
+        "NT AUTHORITY\\SYSTEM": ["FullControl"],
+        "BUILTIN\\Administrators": ["FullControl"],
+        "BUILTIN\\Users": ["ReadAndExecute"]
+      },
+      "required_privileges": [],
+      "is_third_party": true,
+      "description": "Veritabanı senkronizasyon servisi (BUILTIN\\Users grubuna SERVICE_CHANGE_CONFIG verilmiş)."
+    },
+    {
+      "service_name": "CustomLogger",
+      "display_name": "Application Logger Collector",
+      "image_path": "\"C:\\CustomApps\\Logger\\logger.exe\"",
+      "start_type": "Automatic",
+      "run_as_account": "NT AUTHORITY\\LocalService",
+      "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)",
+      "binary_permissions": {
+        "NT AUTHORITY\\SYSTEM": ["FullControl"],
+        "BUILTIN\\Administrators": ["FullControl"],
+        "BUILTIN\\Users": ["Modify", "Write"]
+      },
+      "required_privileges": [],
+      "is_third_party": true,
+      "description": "Log toplayıcı servis (Users grubu binary dosyayı yazma yetkisine sahip)."
+    },
+    {
+      "service_name": "RemoteRegistry",
+      "display_name": "Remote Registry",
+      "image_path": "\"C:\\Windows\\system32\\svchost.exe\" -k regsvc",
+      "start_type": "Automatic",
+      "run_as_account": "NT AUTHORITY\\LocalService",
+      "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)",
+      "binary_permissions": {
+        "NT AUTHORITY\\SYSTEM": ["FullControl"],
+        "BUILTIN\\Administrators": ["FullControl"],
+        "BUILTIN\\Users": ["ReadAndExecute"]
+      },
+      "required_privileges": [],
+      "is_third_party": false,
+      "description": "Uzak kullanıcıların yerel kayıt defteri ayarlarını değiştirmesine olanak tanır."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Bu dosya Siber Güvenlik 365 Gün Müfredatı kapsamında üretilmiştir.
+# Gün 021: Mini Proje 2 - İşletim Sistemi Güvenlik Envanteri Mimarisi (CIS Control 1-2 / NIST SP 800-53 CM-8)
+
+========================================================================================
+KURUMSAL İŞLETİM SİSTEMİ GÜVENLİK ENVANTERİ TOPLAMA VE ANALİZ AKIŞI
+========================================================================================
+
+    [ WINDOWS UÇ NOKTA / SUNUCU ]                  [ LINUX UÇ NOKTA / SUNUCU ]
+       (Win32_OperatingSystem)                        (/etc/os-release, uname)
+       (WMI / PowerShell / Registry)                  (systemctl, /etc/passwd)
+       (Get-Hotfix / Windows Update)                  (apt list / rpm -qa)
+                 |                                               |
+                 +-----------------------+-----------------------+
+                                         |
+                                         v
+                 +-----------------------------------------------+
+                 |  OS Security Inventory Collector (Ajan/CLI)  |
+                 +-----------------------------------------------+
+                                         |
+            +----------------------------+----------------------------+
+            | 5 ZORUNLU KATEGORİ ALANI (G021-SC1):                    |
+            |   1. İşletim Sistemi & Çekirdek (Sürüm, Build, Mimari)  |
+            |   2. Donanım & Depolama (CPU, RAM, Disk Şifreleme)     |
+            |   3. Hesap Yönetimi (SID/UID, Yönetici, Aktiflik)       |
+            |   4. Servisler & Daemon (Çalışma Durumu, Hesap Bağlamı) |
+            |   5. Yama ve Güncellemeler (KB, Güvenlik Yamaları)      |
+            +----------------------------+----------------------------+
+                                         |
+                                         v
+                         +-------------------------------+
+                         |   CIS / NIST Kural Motoru     |
+                         |   - Telnet / FTP Karaliste     |
+                         |   - Konuk Hesabı Devre Dışı   |
+                         |   - Kritik Yama Yaşlandırması |
+                         |   - BitLocker / LUKS Denetimi |
+                         +---------------+---------------+
+                                         |
+         +-------------------------------+-------------------------------+
+         |                                                               |
+         v                                                               v
++------------------------------------+          +------------------------------------+
+|  KARŞILAŞTIRMALI CSV MATRİSİ       |          |  GÜVENLİK DURUŞ RAPORU & ALARM     |
+|  (kategori, ozellik_adi,           |          |  - KRİTİK: Güvensiz Servis         |
+|   windows_degeri, linux_degeri,    |          |  - YÜKSEK: Bekleyen Kritik Yama    |
+|   guvenlik_onemi_ve_etkisi)        |          |  - YÜKSEK: Etkin Guest Hesabı      |
++------------------------------------+          +------------------------------------+
+
+========================================================================================
+STANDART KARŞILAŞTIRMA ÖZETİ (WINDOWS vs LINUX)
+========================================================================================
+- Sürüm & EOL         : Windows Server 2022 (20348)     <--> Ubuntu 24.04 LTS (6.8.0)
+- Dosya & Şifreleme   : NTFS + BitLocker                <--> ext4 + LUKS2
+- Kimlik Denetimi     : Active Directory / SID          <--> PAM / UID 0 / Sudo Grubu
+- Savunma Servisi     : MpsSvc (Firewall) + WinDefend   <--> UFW + Auditd
+- Yama Mekanizması    : Windows Update / WSUS (KB'ler)  <--> APT / Unattended-Upgrades

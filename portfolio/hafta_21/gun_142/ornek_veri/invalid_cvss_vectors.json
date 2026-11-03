@@ -1,0 +1,60 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "aciklama": "Gün 142 CVSS Taban Metrikleri için 9 adet negatif kontrol ve hatalı vektör testi.",
+  "senaryolar": [
+    {
+      "senaryo_id": "SCENARIO-CVSS-01",
+      "baslik": "Hatalı CVSS Sürüm Öneki (CVSS:2.0)",
+      "vector_string": "CVSS:2.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "beklenen_hata": "Hatalı CVSS sürüm öneki"
+    },
+    {
+      "senaryo_id": "SCENARIO-CVSS-02",
+      "baslik": "Eksik Zorunlu Metrik (Kapsam - S Eksik)",
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/C:H/I:H/A:H",
+      "beklenen_hata": "Eksik zorunlu CVSS metriği tespit edildi: 'S'"
+    },
+    {
+      "senaryo_id": "SCENARIO-CVSS-03",
+      "baslik": "Geçersiz Saldırı Vektörü Değeri (AV:X)",
+      "vector_string": "CVSS:3.1/AV:X/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "beklenen_hata": "Geçersiz AV (Attack Vector) değeri"
+    },
+    {
+      "senaryo_id": "SCENARIO-CVSS-04",
+      "baslik": "Geçersiz Saldırı Karmaşıklığı Değeri (AC:Z)",
+      "vector_string": "CVSS:3.1/AV:N/AC:Z/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "beklenen_hata": "Geçersiz AC (Attack Complexity) değeri"
+    },
+    {
+      "senaryo_id": "SCENARIO-CVSS-05",
+      "baslik": "Geçersiz Gereken Yetki Değeri (PR:ROOT)",
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:ROOT/UI:N/S:U/C:H/I:H/A:H",
+      "beklenen_hata": "Geçersiz PR (Privileges Required) değeri"
+    },
+    {
+      "senaryo_id": "SCENARIO-CVSS-06",
+      "baslik": "Geçersiz Kullanıcı Etkileşimi Değeri (UI:OPTIONAL)",
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:OPTIONAL/S:U/C:H/I:H/A:H",
+      "beklenen_hata": "Geçersiz UI (User Interaction) değeri"
+    },
+    {
+      "senaryo_id": "SCENARIO-CVSS-07",
+      "baslik": "Geçersiz Kapsam Değeri (S:EXTENDED)",
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:EXTENDED/C:H/I:H/A:H",
+      "beklenen_hata": "Geçersiz S (Scope) değeri"
+    },
+    {
+      "senaryo_id": "SCENARIO-CVSS-08",
+      "baslik": "İki Nokta İçermeyen Bozuk Vektör Bileşeni (AV_N)",
+      "vector_string": "CVSS:3.1/AV_N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "beklenen_hata": "Bozuk vektör bileşeni"
+    },
+    {
+      "senaryo_id": "SCENARIO-CVSS-09",
+      "baslik": "Boş Vektör Girdisi",
+      "vector_string": "",
+      "beklenen_hata": "Geçersiz veya boş CVSS vektör dizesi"
+    }
+  ]
+}

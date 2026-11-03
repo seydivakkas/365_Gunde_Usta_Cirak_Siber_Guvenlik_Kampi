@@ -1,0 +1,102 @@
+{
+  "aciklama": "G053 Port, Soket ve Bağlantı Durumu — Gerçekçi Soket Tablosu ve Güvenlik Senaryoları",
+  "lisans": "Özel Lisans — Tüm Hakları Saklıdır (c) 2026 Seydi Eryılmaz",
+  "soketler": [
+    {
+      "id": "SOCK-01",
+      "protokol": "TCP",
+      "yerel_ip": "0.0.0.0",
+      "yerel_port": 443,
+      "uzak_ip": "0.0.0.0",
+      "uzak_port": 0,
+      "durum": "LISTEN",
+      "pid": 1120,
+      "surec_adi": "nginx.exe",
+      "aciklama": "Tüm ağ arayüzlerinde dinleyen meşru HTTPS web sunucusu"
+    },
+    {
+      "id": "SOCK-02",
+      "protokol": "TCP",
+      "yerel_ip": "0.0.0.0",
+      "yerel_port": 22,
+      "uzak_ip": "0.0.0.0",
+      "uzak_port": 0,
+      "durum": "LISTEN",
+      "pid": 892,
+      "surec_adi": "sshd.exe",
+      "aciklama": "SSH yönetim servisi dinleme soketi"
+    },
+    {
+      "id": "SOCK-03",
+      "protokol": "TCP",
+      "yerel_ip": "127.0.0.1",
+      "yerel_port": 5432,
+      "uzak_ip": "0.0.0.0",
+      "uzak_port": 0,
+      "durum": "LISTEN",
+      "pid": 2450,
+      "surec_adi": "postgres.exe",
+      "aciklama": "Güvenli şekilde sadece localhost üzerinde dinleyen PostgreSQL veritabanı"
+    },
+    {
+      "id": "SOCK-04-EXPOSURE",
+      "protokol": "TCP",
+      "yerel_ip": "0.0.0.0",
+      "yerel_port": 6379,
+      "uzak_ip": "0.0.0.0",
+      "uzak_port": 0,
+      "durum": "LISTEN",
+      "pid": 3310,
+      "surec_adi": "redis-server.exe",
+      "aciklama": "KRİTİK HATA: Parolasız Redis veritabanının 0.0.0.0 üzerinden tüm internete açılması"
+    },
+    {
+      "id": "SOCK-05",
+      "protokol": "TCP",
+      "yerel_ip": "192.168.1.100",
+      "yerel_port": 52140,
+      "uzak_ip": "142.250.190.46",
+      "uzak_port": 443,
+      "durum": "ESTABLISHED",
+      "pid": 4120,
+      "surec_adi": "chrome.exe",
+      "aciklama": "İstemcinin Google sunucusuna kurduğu meşru giden HTTPS oturumu"
+    },
+    {
+      "id": "SOCK-06-THREAT",
+      "protokol": "TCP",
+      "yerel_ip": "192.168.1.100",
+      "yerel_port": 49210,
+      "uzak_ip": "198.51.100.77",
+      "uzak_port": 4444,
+      "durum": "ESTABLISHED",
+      "pid": 5590,
+      "surec_adi": "powershell.exe",
+      "aciklama": "TEHDİT / ALARM: PowerShell sürecinden saldırganın C2 sunucusuna (port 4444 Metasploit) giden Reverse Shell"
+    },
+    {
+      "id": "SOCK-07-TIMEWAIT",
+      "protokol": "TCP",
+      "yerel_ip": "192.168.1.100",
+      "yerel_port": 51001,
+      "uzak_ip": "93.184.216.34",
+      "uzak_port": 80,
+      "durum": "TIME_WAIT",
+      "pid": 0,
+      "surec_adi": "SYSTEM",
+      "aciklama": "Kapanış aşamasında 2*MSL süresince gecikmiş paketleri bekleyen TCP soketi"
+    },
+    {
+      "id": "SOCK-08-UDP",
+      "protokol": "UDP",
+      "yerel_ip": "0.0.0.0",
+      "yerel_port": 53,
+      "uzak_ip": "0.0.0.0",
+      "uzak_port": 0,
+      "durum": "NONE",
+      "pid": 1055,
+      "surec_adi": "named.exe",
+      "aciklama": "UDP üzerinden sorgu bekleyen DNS sunucusu soketi"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+======================================================================
+GÜN 127: UÇ NOKTA TEHDİT MODELİ NEGATİF KONTROL TESTLERİ
+Tarih/Saat: 2026-11-02T09:30:46.219365
+Toplam Senaryo: 9
+======================================================================
+
+[NEG-EP-01] Merkezi EDR Ajanı Eksikliği (CWE-693 / T1562.001) -> PASS
+   Ayrıntı: Tespit Edildi: [Kritik] Aktif Uç Nokta Tespit ve Yanıt (EDR) Ajanı Yok (Tehdit Skoru: 25.0/100)
+
+[NEG-EP-02] LSA Koruması (RunAsPPL) Eksikliği (CWE-311 / T1003.001) -> PASS
+   Ayrıntı: Tespit Edildi: [Kritik] LSA Koruması (RunAsPPL / Credential Guard) Devre Dışı (Tehdit Skoru: 37.5/100)
+
+[NEG-EP-03] Tırnaksız Servis Yolu (Unquoted Service Path) (CWE-428 / T1574.009) -> PASS
+   Ayrıntı: Tespit Edildi: [Yüksek] Tırnaksız Servis Yolu Zafiyeti (2 Adet) (Tehdit Skoru: 16.5/100)
+
+[NEG-EP-04] Linux Güvensiz SUID/SGID Dosyaları (CWE-250 / T1548.001) -> PASS
+   Ayrıntı: Tespit Edildi: [Kritik] Güvensiz SUID/SGID İkili Dosya Yapılandırması (4 Adet) (Tehdit Skoru: 32.5/100)
+
+[NEG-EP-05] Gelişmiş Telemetri (Sysmon / Auditd) Yokluğu (CWE-778 / T1070) -> PASS
+   Ayrıntı: Tespit Edildi: [Orta] Gelişmiş Uç Nokta Telemetrisi (Sysmon / Auditd) Eksik (Tehdit Skoru: 8.8/100)
+
+[NEG-EP-06] PowerShell Kısıtlanmamış Dil Modu (CWE-284 / T1059.001) -> PASS
+   Ayrıntı: Tespit Edildi: [Orta] PowerShell Kısıtlı Dil Modu (CLM) Etkin Değil (Tehdit Skoru: 8.0/100)
+
+[NEG-EP-07] Ağ Üzerinde Açık Tehlikeli Portlar (CWE-319 / T1021) -> PASS
+   Ayrıntı: Tespit Edildi: [Yüksek] Güvensiz Ağ Protokolleri ve Portlar Açık (SMBv1 (445), Telnet (23)) (Tehdit Skoru: 19.5/100)
+
+[NEG-EP-08] Dizüstü Cihazda Disk Şifreleme Eksikliği (CWE-311 / T1005) -> PASS
+   Ayrıntı: Tespit Edildi: [Yüksek] Tam Disk Şifreleme (BitLocker / LUKS) Devre Dışı (Tehdit Skoru: 15.0/100)
+
+[NEG-EP-09] Zayıf İzinli Otomatik Başlatma (Autorun) Anahtarları (CWE-732 / T1547.001) -> PASS
+   Ayrıntı: Tespit Edildi: [Yüksek] Zayıf İzinli Otomatik Başlatma Kayıtları (2 Adet) (Tehdit Skoru: 15.0/100)
+
+----------------------------------------------------------------------
+TOPLAM: 9 | BAŞARILI: 9 | BAŞARISIZ: 0
+SONUÇ: 100% PASS
+======================================================================

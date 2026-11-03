@@ -1,0 +1,89 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas).",
+  "gun": 143,
+  "hafta": 21,
+  "konu": "Active Directory etki alanı",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "c555820b3971ac246a9e2feb872de4dbce4c4ecf764707344bd846bac9a1f8cf",
+      "size_bytes": 4893
+    },
+    "ders.md": {
+      "sha256": "49b528362b0ba358c27c04892aec258f72bf4997859132bc22b2dda29559d616",
+      "size_bytes": 10070
+    },
+    "kanit_uretici.py": {
+      "sha256": "74d3ce61c6511b9f6723a2ff09668ec2fb6be73c35d174163d7161afe405b8df",
+      "size_bytes": 18607
+    },
+    "rapor.md": {
+      "sha256": "4c0209127474994c1b38863a0dff22c912a82711bb5b29d156817ba383d88941",
+      "size_bytes": 4677
+    },
+    "sonuc.json": {
+      "sha256": "e2ba7375e9156c2d3874cf48bdda77075cf15ca7c44af6e317322ac879379ad2",
+      "size_bytes": 1190
+    },
+    "soru_cevap.md": {
+      "sha256": "14be7238c849548fe989b840e2d5a92398c3d9afaead4819fd357d415942f091",
+      "size_bytes": 12281
+    },
+    "kanit\\gercek\\ad_domain_guvenlik_raporu.json": {
+      "sha256": "9169eff942a16c08e6f40bd8cf26cfbc597d31c4dc7db816779fac00a1a39560",
+      "size_bytes": 5672
+    },
+    "kanit\\gercek\\ad_hardening_matrix.json": {
+      "sha256": "5592f27e035db6ddfa4a82da1f2fdb5f571bebbcb90ca4365a127cdce4660856",
+      "size_bytes": 1331
+    },
+    "kanit\\gercek\\ad_sertlestirme_gpo.ps1": {
+      "sha256": "64d96ab4d3449c0cc030b2bdf6c4f37d465894406f6c0e8b0dc3fca8623e7e4d",
+      "size_bytes": 612
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "sha256": "88b5d75112bfcf3b59837d785db872977eb96746af2d78fdac6e7147514804d5",
+      "size_bytes": 2745
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "sha256": "23ce16e6531459ff22bdd434ec49390699562b1210c0f30ef8dc61ea98b13f64",
+      "size_bytes": 3951
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "sha256": "5b603ad359b5c8b29f1fff4409453d23f61a6d194b2d1717184e2a59e15d754d",
+      "size_bytes": 3832
+    },
+    "kanit\\temsili\\ad_mimarisi.txt": {
+      "sha256": "70ded5caa8f9f53add896aff01a91387b96a49caa105597e03888f0d609d06e9",
+      "size_bytes": 4913
+    },
+    "ornek_veri\\enterprise_ad_domain_spec.json": {
+      "sha256": "76d378e11d5fffa30cd422a8ea9a69f28e9d2565819c9f52a62702f87ab0242c",
+      "size_bytes": 2868
+    },
+    "ornek_veri\\invalid_ad_scenarios.json": {
+      "sha256": "51788b8e23441b2e20b521dbcc5552ccb1be71aec1c0d5d453fcc78981d8e07d",
+      "size_bytes": 4346
+    },
+    "tests\\__init__.py": {
+      "sha256": "c57521dc3f3f45020f90f7472766d8a8ffc9ec32d4e9a986d18a067880051e64",
+      "size_bytes": 557
+    },
+    "tests\\test_ad_domain_security.py": {
+      "sha256": "f76dc28ebe47d0d2f718faab9837ea1f40839ef230cf063055ec255372b6adac",
+      "size_bytes": 9593
+    },
+    "uygulama\\__init__.py": {
+      "sha256": "f7dce9c6f1ce43207e23b843837ef0c6a8c2223881be8b4a5e96a7da7480f524",
+      "size_bytes": 604
+    },
+    "uygulama\\ad_domain_cli.py": {
+      "sha256": "91e3dd91570c2c33e18f5aa688aedb30a451e42660d88c3a245551cd32816268",
+      "size_bytes": 5548
+    },
+    "uygulama\\ad_domain_security_engine.py": {
+      "sha256": "0a01b71058bf7f58d1484bb1b311ae66dc72713aa70900ae936da30d37c8c943",
+      "size_bytes": 31404
+    }
+  }
+}

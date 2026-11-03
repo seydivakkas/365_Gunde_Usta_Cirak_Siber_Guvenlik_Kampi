@@ -1,0 +1,33 @@
+test_01_init_state (portfolio.hafta_05.gun_034.tests.test_file_metadata_mime_analyzer.TestFileMetadataMimeAnalyzer.test_01_init_state)
+Analizcinin ba■lang² durumunun bo■ ve temiz oldu­unu do­rular. ... ok
+test_02_detect_pdf_signature (portfolio.hafta_05.gun_034.tests.test_file_metadata_mime_analyzer.TestFileMetadataMimeAnalyzer.test_02_detect_pdf_signature)
+Me■ru PDF dosyas²n²n ba■l²k baytlar²ndan (%PDF-) tam do­rulukla tespit edildi­ini test eder. ... ok
+test_03_detect_png_signature (portfolio.hafta_05.gun_034.tests.test_file_metadata_mime_analyzer.TestFileMetadataMimeAnalyzer.test_03_detect_png_signature)
+Me■ru PNG dosyas²n²n sihirli baytlar²ndan (\x89PNG) do­ru tespit edildi­ini test eder. ... ok
+test_04_detect_zip_signature (portfolio.hafta_05.gun_034.tests.test_file_metadata_mime_analyzer.TestFileMetadataMimeAnalyzer.test_04_detect_zip_signature)
+Me■ru ZIP ar■ivinin (PK) do­ru tespit edildi­ini test eder. ... ok
+test_05_detect_pe_mismatch_fake_pdf (portfolio.hafta_05.gun_034.tests.test_file_metadata_mime_analyzer.TestFileMetadataMimeAnalyzer.test_05_detect_pe_mismatch_fake_pdf)
+Uzant²s² .pdf olan fakat MZ ba■l²­² ieren zararl² dosyay² (CRITICAL) tespit eder. ... ok
+test_06_detect_elf_mismatch_disguised_photo (portfolio.hafta_05.gun_034.tests.test_file_metadata_mime_analyzer.TestFileMetadataMimeAnalyzer.test_06_detect_elf_mismatch_disguised_photo)
+Uzant²s² .jpg olan fakat Linux ELF ba■l²­² ieren ikiliyi (CRITICAL) tespit eder. ... ok
+test_07_detect_double_extension (portfolio.hafta_05.gun_034.tests.test_file_metadata_mime_analyzer.TestFileMetadataMimeAnalyzer.test_07_detect_double_extension)
+Ãift uzant² sald²r²s²n² (.pdf.exe) ve gizli y³r³tme giri■imini yakalar. ... ok
+test_08_empty_file_handling (portfolio.hafta_05.gun_034.tests.test_file_metadata_mime_analyzer.TestFileMetadataMimeAnalyzer.test_08_empty_file_handling)
+0 baytl²k bo■ dosyan²n ÷kme olmaks²z²n 'Empty File' olarak i■lendi­ini test eder. ... ok
+test_09_plain_text_detection (portfolio.hafta_05.gun_034.tests.test_file_metadata_mime_analyzer.TestFileMetadataMimeAnalyzer.test_09_plain_text_detection)
+Sihirli ikili bayt iermeyen salt metin dosyas²n²n 'Plain Text' olarak tespit edildi­ini test eder. ... ok
+test_10_inventory_analysis (portfolio.hafta_05.gun_034.tests.test_file_metadata_mime_analyzer.TestFileMetadataMimeAnalyzer.test_10_inventory_analysis)
+Envanter dosyas²n²n taran²p 7 dosyan²n ba■ar²yla analiz edildi­ini test eder. ... ok
+test_11_negative_control_corrupted_manifest (portfolio.hafta_05.gun_034.tests.test_file_metadata_mime_analyzer.TestFileMetadataMimeAnalyzer.test_11_negative_control_corrupted_manifest)
+Negatif kontrol: Bozuk ■emal² ve hatal² metadata kay²tlar²n²n g³venle reddedildi­ini test eder. ... ok
+test_12_negative_control_missing_file (portfolio.hafta_05.gun_034.tests.test_file_metadata_mime_analyzer.TestFileMetadataMimeAnalyzer.test_12_negative_control_missing_file)
+Negatif kontrol: Diskte var olmayan hayali bir dosyada FileNotFoundError f²rlat²ld²­²n² test eder. ... ok
+test_13_ascii_report_generation (portfolio.hafta_05.gun_034.tests.test_file_metadata_mime_analyzer.TestFileMetadataMimeAnalyzer.test_13_ascii_report_generation)
+ASCII denetim raporunun format²n² ve kritik tehdit uyar²lar²n² eksiksiz ³retti­ini test eder. ... ok
+test_14_custom_license_presence (portfolio.hafta_05.gun_034.tests.test_file_metadata_mime_analyzer.TestFileMetadataMimeAnalyzer.test_14_custom_license_presence)
+Ízel lisans kural² gere­ince dosyalarda 'Ízel Lisans - T³m Haklar² Sakl²d²r' ibaresini denetler. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.004s
+
+OK

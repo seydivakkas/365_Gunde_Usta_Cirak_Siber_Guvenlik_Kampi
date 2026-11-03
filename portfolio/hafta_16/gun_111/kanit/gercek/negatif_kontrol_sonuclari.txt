@@ -1,0 +1,52 @@
+========================================================================
+  GÜN 111: NIST SP 800-57 NEGATİF KONTROL VE ZAFİYET SAVUNMA SONUÇLARI
+  Tarih: 2026-11-02T04:42:05.358192
+========================================================================
+
+Senaryo: NEG_01_SURESI_DOLMUS_ANAHTARLA_SIFRELEME - Kriptoperiyodu (Geçerlilik Süresi) Dolmuş Anahtarla Yeni Veri Şifreleme
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    KeyExpiredError
+Mesaj:   CWE-320: kek_base anahtarının kriptoperiyodu dolmuştur! (Bitiş: 2024-01-01T00:00:00Z)
+------------------------------------------------------------------------
+Senaryo: NEG_02_IPTAL_EDILMIS_ANAHTAR_KULLANIMI - Sızmış / İptal Edilmiş (COMPROMISED) Anahtar ile İşlem Yapılması
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    KeyCompromisedError
+Mesaj:   CWE-320: kek_base anahtarı ihlal edilmiş (COMPROMISED) durumdadır!
+------------------------------------------------------------------------
+Senaryo: NEG_03_ZAYIF_ANAHTAR_UZUNLUGU - Yetersiz Anahtar Uzunluğu ile Şifreleme (NIST Altı Bit Boyutu)
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    InadequateKeyLengthError
+Mesaj:   CWE-326: Yetersiz anahtar uzunluğu (64 bit)! Asgari 128-bit gereklidir.
+------------------------------------------------------------------------
+Senaryo: NEG_04_HACIM_LIMITI_ASIMI_NONCE_TUKENMESI - Aynı DEK ile İzin Verilen Azami Şifreleme Hacminin Aşılması
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    KeyUsageLimitExceededError
+Mesaj:   CWE-329: limit_kek anahtarının azami kullanım sınırı (1000000) aşıldı! Rotasyon zorunlu.
+------------------------------------------------------------------------
+Senaryo: NEG_05_ZARF_SIFRELEMEDE_TAHRIF_EDILMIS_DEK - Zarf Şifreleme Yükünde Şifreli DEK Tahrifatı (Auth Tag Hatası)
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    EncryptedDEKIntegrityError
+Mesaj:   CWE-353: AEAD kimlik doğrulama etiketi geçersiz veya veri tahrif edilmiş!
+------------------------------------------------------------------------
+Senaryo: NEG_06_ZEROIZATION_DOGRALAMASI_VE_SIZINTI - Kriptografik Sıfırlama (Zeroization) Sonrası Anahtar Belleğine Erişim
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    KeyAlreadyDestroyedError
+Mesaj:   CWE-226: del_kek anahtarı imha edilmiştir!
+------------------------------------------------------------------------
+Senaryo: NEG_07_DUAL_CONTROL_EKSIK_PAYLASIM - Çift Kontrollü (Dual Control) Anahtar Birleştirmede Eksik Parça
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    InsufficientKeySharesError
+Mesaj:   CWE-320: Dual Control için asgari 2 anahtar parçası sunulmalıdır!
+------------------------------------------------------------------------
+Senaryo: NEG_08_DEPRECATED_ANAHTARLA_YENI_SIFRELEME - Yalnızca Okuma/Deşifre İznine Sahip (DEPRECATED) Anahtarla Yazma/Şifreleme
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    KeyDeprecatedError
+Mesaj:   CWE-320: DEPRECATED durumdaki KEK ile yeni veri şifrelenemez!
+------------------------------------------------------------------------
+Senaryo: NEG_09_HARDCODED_VEYA_STATIK_ANAHTAR_GIRISI - Statik, Tahmin Edilebilir veya Boşluk İçeren Sabit Anahtar Tespiti
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    PredictableKeyError
+Mesaj:   CWE-321: Tahmin edilebilir veya düşük entropili sabit anahtar tespit edildi!
+------------------------------------------------------------------------
+
+Özet: Toplam Senaryo: 9, Başarılı Engelleme: 9

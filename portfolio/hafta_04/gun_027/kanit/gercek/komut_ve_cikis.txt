@@ -1,0 +1,42 @@
+======================================================================
+PAKET VE GÜNCELLEME YÖNETİCİLERİ GÜVENLİK DENETİM RAPORU
+======================================================================
+Denetim Zamanı    : 2026-10-27T08:05:51Z
+Toplam Depo       : 3
+Toplam Paket      : 5
+Toplam İhlal      : 6
+Kritik İhlal      : 4
+Uyumluluk Skoru   : %25.0
+----------------------------------------------------------------------
+BULGULAR VE İYİLEŞTİRME ÖNERİLERİ:
+
+[KRITIK] GUVENSIZ_DEPO_PROTOKOLU -> Hedef: Depo: thirdparty-untrusted-ppa (http://ppa.unverified-dev.org/tools)
+   Açıklama   : Depo şifresiz iletişim protokolü ('http') kullanıyor! Ortadaki Adam (MitM) saldırısıyla zararlı paket enjekte edilebilir.
+   Standart   : CWE-319: Cleartext Transmission of Sensitive Information
+   İyileştirme: Depo adresini HTTPS protokollü güvenilir bir mirror ile değiştirin.
+
+[KRITIK] IMZASIZ_DEPO_RISKI -> Hedef: Depo: thirdparty-untrusted-ppa
+   Açıklama   : Depo paketleri GPG anahtarı ile doğrulanmıyor! Sahte veya tahrif edilmiş paketler yüklenebilir.
+   Standart   : CWE-347: Improper Verification of Cryptographic Signature
+   İyileştirme: Deponun resmi açık GPG anahtarını /etc/apt/trusted.gpg.d/ altına ekleyin.
+
+[YUKSEK] SURUM_SABITLEME_EKSIKLIGI -> Hedef: Paket: openssl (v3.0.2)
+   Açıklama   : Kritik paket 'openssl' için sürüm sabitleme (pinning) yapılmamış! Otomatik güncellemelerde uyumsuzluk veya kırılma yaşanabilir.
+   Standart   : CWE-1395: Dependency on Uncontrolled Third-Party Component
+   İyileştirme: apt-mark hold openssl (veya dnf versionlock add openssl) komutuyla sürümü dondurun.
+
+[KRITIK] KRITIK_YAMASIZ_ZAFİYET -> Hedef: Paket: openssl (CVE-2024-0727 - CVSS: 7.5)
+   Açıklama   : Pakette kritik CVE zafiyeti mevcut! Güvenlik yaması (3.0.13) derhal uygulanmalıdır.
+   Standart   : CWE-1395: Dependency on Known Vulnerable Software
+   İyileştirme: apt-get --only-upgrade install openssl=3.0.13
+
+[YUKSEK] SURUM_SABITLEME_EKSIKLIGI -> Hedef: Paket: postgresql (v14.9)
+   Açıklama   : Kritik paket 'postgresql' için sürüm sabitleme (pinning) yapılmamış! Otomatik güncellemelerde uyumsuzluk veya kırılma yaşanabilir.
+   Standart   : CWE-1395: Dependency on Uncontrolled Third-Party Component
+   İyileştirme: apt-mark hold postgresql (veya dnf versionlock add postgresql) komutuyla sürümü dondurun.
+
+[KRITIK] KRITIK_YAMASIZ_ZAFİYET -> Hedef: Paket: postgresql (CVE-2024-0985 - CVSS: 8.1)
+   Açıklama   : Pakette kritik CVE zafiyeti mevcut! Güvenlik yaması (14.11) derhal uygulanmalıdır.
+   Standart   : CWE-1395: Dependency on Known Vulnerable Software
+   İyileştirme: apt-get --only-upgrade install postgresql=14.11
+======================================================================

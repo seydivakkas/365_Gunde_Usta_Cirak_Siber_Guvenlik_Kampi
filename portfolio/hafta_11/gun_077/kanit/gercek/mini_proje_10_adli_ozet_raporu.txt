@@ -1,0 +1,38 @@
+================================================================================
+          MİNİ PROJE 10: BAĞIMSIZ GÜVENLİK LOG AYRIŞTIRMA VE ADLİ RAPOR        
+================================================================================
+Toplam İşlenen Satır   : 11
+Ayrıştırılan Olaylar   : 12
+Tanınmayan Satırlar    : 1
+Üretilen Tehdit Alarmı : 12
+Kilitlenen Saldırgan IP: 1 adet
+--------------------------------------------------------------------------------
+KİLİTLENEN SALDIRGANLAR (BRUTE FORCE LOCKOUT):
+  [BLOCKED] -> 198.51.100.99
+--------------------------------------------------------------------------------
+GÜVENLİK ALARMLARI VE TEHDİT KORELASYONLARI:
+  [CRITICAL] WEB_ATTACK_SQL_INJECTION: Kaynak IP=198.51.100.25
+      Kanıt: /products.php?id=1%20UNION%20SELECT%20null,username,password%20FROM%20users
+  [HIGH] WEB_ACCESS_IOC: Kaynak IP=198.51.100.25
+      Kanıt: Tehdit İstihbaratı Karaliste Eşleşmesi: 198.51.100.25
+  [HIGH] WEB_ATTACK_DIRECTORY_TRAVERSAL: Kaynak IP=203.0.113.80
+      Kanıt: /../../../../etc/passwd
+  [CRITICAL] WEB_ATTACK_PASSWD_ACCESS: Kaynak IP=203.0.113.80
+      Kanıt: /../../../../etc/passwd
+  [HIGH] WEB_ACCESS_IOC: Kaynak IP=203.0.113.80
+      Kanıt: Tehdit İstihbaratı Karaliste Eşleşmesi: 203.0.113.80
+  [HIGH] SSH_AUTH_IOC: Kaynak IP=198.51.100.99
+      Kanıt: Tehdit İstihbaratı Karaliste Eşleşmesi: 198.51.100.99
+  [HIGH] SSH_AUTH_IOC: Kaynak IP=198.51.100.99
+      Kanıt: Tehdit İstihbaratı Karaliste Eşleşmesi: 198.51.100.99
+  [HIGH] SSH_AUTH_IOC: Kaynak IP=198.51.100.99
+      Kanıt: Tehdit İstihbaratı Karaliste Eşleşmesi: 198.51.100.99
+  [HIGH] SSH_AUTH_IOC: Kaynak IP=198.51.100.99
+      Kanıt: Tehdit İstihbaratı Karaliste Eşleşmesi: 198.51.100.99
+  [CRITICAL] BRUTE_FORCE_LOCKOUT: Kaynak IP=198.51.100.99
+      Kanıt: 60 saniyede 5 hatalı deneme.
+  [HIGH] SSH_AUTH_IOC: Kaynak IP=198.51.100.99
+      Kanıt: Tehdit İstihbaratı Karaliste Eşleşmesi: 198.51.100.99
+  [HIGH] FIREWALL_SRC_IOC: Kaynak IP=203.0.113.5
+      Kanıt: Tehdit İstihbaratı Karaliste Eşleşmesi: 203.0.113.5
+================================================================================

@@ -1,0 +1,101 @@
+[
+  {
+    "id": "NEG_01",
+    "tanim": "Zayıf veya çarpışma zafiyeti bulunan hash algoritması seçimi (MD5 katı modda reddi)",
+    "girdi": {
+      "dosya_adi": "secure_config.conf",
+      "algoritma": "md5",
+      "strict_mode": true
+    },
+    "beklenen_hata": "WeakHashAlgorithmError",
+    "cwe_kodu": "CWE-328: Use of Weak Hash"
+  },
+  {
+    "id": "NEG_02",
+    "tanim": "Desteklenmeyen veya sözdizimsel olarak geçersiz algoritma adı",
+    "girdi": {
+      "dosya_adi": "secure_config.conf",
+      "algoritma": "rot13_cipher_fake",
+      "strict_mode": false
+    },
+    "beklenen_hata": "UnsupportedAlgorithmError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_03",
+    "tanim": "Sistemde bulunmayan veya silinmiş dosya yolu",
+    "girdi": {
+      "dosya_adi": "tamamen_var_olmayan_dosya_12345.bin",
+      "algoritma": "sha256",
+      "strict_mode": false
+    },
+    "beklenen_hata": "TargetFileNotFoundError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_04",
+    "tanim": "Dosya yolunda Dizin Atlama (Path Traversal / '..' CWE-22)",
+    "girdi": {
+      "dosya_adi": "../../etc/shadow",
+      "algoritma": "sha256",
+      "strict_mode": false
+    },
+    "beklenen_hata": "PathTraversalError",
+    "cwe_kodu": "CWE-22: Improper Limitation of a Pathname to a Restricted Directory"
+  },
+  {
+    "id": "NEG_05",
+    "tanim": "Doğrulamada eksik uzunlukta SHA-256 sağlama toplamı (63 karakter)",
+    "girdi": {
+      "dosya_adi": "secure_config.conf",
+      "beklenen_hash": "6ab41d63c809129b15ab6ecb2e98a7b59899dd12bc634a6502a6eb644154e0b",
+      "algoritma": "sha256"
+    },
+    "beklenen_hata": "InvalidChecksumFormatError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_06",
+    "tanim": "Doğrulamada hexadecimal olmayan karakter içeren hash dizesi",
+    "girdi": {
+      "dosya_adi": "secure_config.conf",
+      "beklenen_hash": "6ab41d63c809129b15ab6ecb2e98a7b59899dd12bc634a6502a6eb644154ZZZZ",
+      "algoritma": "sha256"
+    },
+    "beklenen_hata": "InvalidChecksumFormatError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_07",
+    "tanim": "Bütünlük İhlali / Kurcalanmış veya değiştirilmiş dosya içeriği tespiti",
+    "girdi": {
+      "dosya_adi": "secure_config.conf",
+      "beklenen_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "algoritma": "sha256"
+    },
+    "beklenen_hata": "IntegrityMismatchError",
+    "cwe_kodu": "CWE-353: Missing Support for Integrity Check / Data Tampering"
+  },
+  {
+    "id": "NEG_08",
+    "tanim": "Dosya yolunda Null-Byte (\\x00) enjeksiyonu saldırısı",
+    "girdi": {
+      "dosya_adi": "secure_config.conf\u0000.exe",
+      "algoritma": "sha256",
+      "strict_mode": false
+    },
+    "beklenen_hata": "NullBytePathError",
+    "cwe_kodu": "CWE-158: Improper Neutralization of Null Byte or Special Characters"
+  },
+  {
+    "id": "NEG_09",
+    "tanim": "Aşırı uzun dosya yolu dizesi / DoS saldırı yükü (>1024 karakter)",
+    "girdi": {
+      "dosya_adi": "DOS_PATH_OVERSIZED_TRIGGER",
+      "algoritma": "sha256",
+      "strict_mode": false
+    },
+    "beklenen_hata": "PathTooLongError",
+    "cwe_kodu": "CWE-400: Uncontrolled Resource Consumption"
+  }
+]

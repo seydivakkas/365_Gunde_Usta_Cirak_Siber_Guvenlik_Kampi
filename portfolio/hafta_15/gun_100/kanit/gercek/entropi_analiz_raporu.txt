@@ -1,0 +1,35 @@
+===============================================================================================
+GÜN 100: ENTROPİ VE KRİPTOGRAFİK RASTGELELİK MATEMATİKSEL ANALİZ RAPORU
+Tarih/Saat : 2026-11-02 01:48:33
+Standart   : NIST SP 800-90B Entropi Kaynakları & NIST SP 800-22 İstatistiksel Test Paketi
+===============================================================================================
+
+1. ÖRNEK 1: KRİPTOGRAFİK GÜVENLİ CSPRNG AKIŞI (os.urandom / secrets)
+   - Shannon Entropisi (Max 8.0) : 7.7931 bit/bayt (Eşik: >= 7.0)
+   - Min-Entropi (Worst-Case)    : 6.6781 bit/bayt
+   - Ki-Kare (Chi-Square) Değeri : 268.5
+   - Monobit 1-Bit Oranı         : 0.5038 (Beklenen: ~0.50)
+   - Monobit p-Değeri            : 0.4933 (NIST Standardı: >= 0.01)
+   - Toplam Bayt / Tekil Bayt    : 1024 / 250
+   - Değerlendirme               : YÜKSEK (Kriptografik Güvenli)
+   - Kriptografik Uygunluk       : ONAYLANDI (PASS)
+
+2. ÖRNEK 2: DÜŞÜK ENTROPİLİ TEKRARLANAN DİZİ (Sabit 'A' Dizisi)
+   - Shannon Entropisi (Max 8.0) : 0.0 bit/bayt
+   - Min-Entropi (Worst-Case)    : -0.0 bit/bayt
+   - Ki-Kare (Chi-Square) Değeri : 261120.0
+   - Monobit 1-Bit Oranı         : 0.25
+   - Monobit p-Değeri            : 0.0
+   - Toplam Bayt / Tekil Bayt    : 1024 / 1
+   - Değerlendirme               : DÜŞÜK (Tahmin Edilebilir / Güvensiz)
+   - Kriptografik Uygunluk       : REDDEDİLDİ (FAIL - CWE-331)
+   - Tespit Edilen Uyarilar:
+     * CWE-331: Shannon entropisi (0.0 bit/bayt) kabul eşiğinin (7.0) altında!
+     * CWE-330: Monobit frekans testi başarısız (p=0.0 < 0.01). Bit dağılımı tekdüze değil!
+
+===============================================================================================
+3. TEKNİK SONUÇ VE GÜVENLİK İLKELERİ
+   - Kriptografide anahtar, IV, tuz ve token üretiminde ASLA 'random' modülü kullanılamaz (CWE-338).
+   - Yalnızca işletim sistemi donanımsal/kesinti entropi havuzunu kullanan CSPRNG geçerlidir.
+   - Shannon entropisi 7.0 bit/baytın altında olan anahtarlar brute-force ve sözlük saldırısına açıktır.
+===============================================================================================

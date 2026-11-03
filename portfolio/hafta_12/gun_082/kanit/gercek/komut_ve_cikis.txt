@@ -1,0 +1,72 @@
+================================================================================
+G082: PYTEST İLE BİRİM TESTLERİ — KOMUT VE YÜRÜTME ÇIKILARI
+================================================================================
+
+[KOMUT 1: pytest ile Testlerin Koşulması]
+$ python -m pytest portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py -v
+============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0
+rootdir: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+collected 39 items
+
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_01_password_complexity_valid PASSED [  2%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_02_password_complexity_too_short[Kisa1!] PASSED [  5%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_02_password_complexity_too_short[Abc!1] PASSED [  7%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_02_password_complexity_too_short[123456789!A] PASSED [ 10%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_02_password_complexity_too_short[11Karakter!] PASSED [ 12%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_03_password_complexity_missing_character_classes[kucukharfveozelkarakter123!-büyük harf] PASSED [ 15%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_03_password_complexity_missing_character_classes[BUYUKHARFVEOZELKARAKTER123!-küçük harf] PASSED [ 17%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_03_password_complexity_missing_character_classes[HarfVeOzelKarakterVarAmaSayiYok!-rakam] PASSED [ 20%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_03_password_complexity_missing_character_classes[BuyukKucukRakamVarAmaOzelYok123-özel karakter] PASSED [ 23%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_04_password_complexity_dictionary_blacklist PASSED [ 25%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_05_classify_security_incident_boundaries[0-LOW] PASSED [ 28%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_05_classify_security_incident_boundaries[39-LOW] PASSED [ 30%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_05_classify_security_incident_boundaries[40-MEDIUM] PASSED [ 33%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_05_classify_security_incident_boundaries[69-MEDIUM] PASSED [ 35%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_05_classify_security_incident_boundaries[70-HIGH] PASSED [ 38%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_05_classify_security_incident_boundaries[89-HIGH] PASSED [ 41%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_05_classify_security_incident_boundaries[90-CRITICAL] PASSED [ 43%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_05_classify_security_incident_boundaries[100-CRITICAL] PASSED [ 46%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_06_classify_security_incident_out_of_bounds[-100] PASSED [ 48%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_06_classify_security_incident_out_of_bounds[-1] PASSED [ 51%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_06_classify_security_incident_out_of_bounds[101] PASSED [ 53%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_06_classify_security_incident_out_of_bounds[250] PASSED [ 56%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_07_sanitize_target_domain_valid[example.com-example.com] PASSED [ 58%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_07_sanitize_target_domain_valid[HTTPS://SUB.DOMAIN.ORG-sub.domain.org] PASSED [ 61%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_07_sanitize_target_domain_valid[http://target-soc.internal.corp-target-soc.internal.corp] PASSED [ 64%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_07_sanitize_target_domain_valid[  api.gateway.net  -api.gateway.net] PASSED [ 66%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_08_sanitize_target_domain_path_traversal_raises[target.com/../../etc/passwd] PASSED [ 69%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_08_sanitize_target_domain_path_traversal_raises[target.com\\..\\..\\windows\\system32] PASSED [ 71%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_08_sanitize_target_domain_path_traversal_raises[evil.com/shell.php] PASSED [ 74%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_09_sanitize_target_domain_null_byte_raises PASSED [ 76%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_10_evaluate_firewall_rule_valid PASSED [ 79%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_11_evaluate_firewall_rule_invalid_port[0] PASSED [ 82%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_11_evaluate_firewall_rule_invalid_port[65536] PASSED [ 84%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_11_evaluate_firewall_rule_invalid_port[70000] PASSED [ 87%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_11_evaluate_firewall_rule_invalid_port[-1] PASSED [ 89%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_11_evaluate_firewall_rule_invalid_port[80] PASSED [ 92%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_12_evaluate_firewall_rule_invalid_ip PASSED [ 94%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_13_enforcer_rate_limiting_fixture PASSED [ 97%]
+portfolio/hafta_12/gun_082/tests/test_security_policy_enforcer.py::test_14_enforcer_audit_log_recording PASSED [100%]
+
+============================= 39 passed in 0.07s ==============================
+
+[KOMUT 2: Uygulamanın Bağımsız Yürütülmesi]
+$ python portfolio/hafta_12/gun_082/uygulama/security_policy_enforcer.py
+[+] G082: Güvenlik Politikası Yürütme Motoru Başlatılıyor...
+[+] Parola Politikası: APPROVED
+[+] Olay Ciddiyeti: CRITICAL
+[+] Steril Alan Adı: soc-gateway.internal.corp
+[+] Güvenlik Duvarı Kuralı: VALIDATED
+[+] Politika denetim raporu kaydedildi: .../kanit/gercek/politika_denetim_raporu.txt
+
+[KOMUT 3: Negatif Güvenlik Kontrollerinin Yürütülmesi (9 Senaryo)]
+[PASS] NEG_01_PASSWORD_TOO_SHORT -> PolicyViolationException: Parola uzunluğu 12-64 karakter arasında olmalıdır. Alınan: 6
+[PASS] NEG_02_PASSWORD_NO_SPECIAL_CHAR -> PolicyViolationException: Parola en az bir özel karakter içermelidir.
+[PASS] NEG_03_PASSWORD_COMMON_DICTIONARY -> PolicyViolationException: Parola yaygın ve tahmin edilebilir sözlük listesinde yer alıyor.
+[PASS] NEG_04_SEVERITY_SCORE_OUT_OF_BOUNDS_HIGH -> ValueError: Ciddiyet skoru 0-100 aralığında olmalıdır. Alınan: 150
+[PASS] NEG_05_SEVERITY_SCORE_OUT_OF_BOUNDS_NEGATIVE -> ValueError: Ciddiyet skoru 0-100 aralığında olmalıdır. Alınan: -25
+[PASS] NEG_06_DOMAIN_PATH_TRAVERSAL_INJECTION -> PolicyViolationException: Alan adı geçersiz yol karakterleri barındırıyor: evil.com/../../etc/passwd
+[PASS] NEG_07_DOMAIN_NULL_BYTE_POISONING -> PolicyViolationException: Alan adı içinde geçersiz null-byte bulundu.
+[PASS] NEG_08_FIREWALL_RULE_INVALID_PORT -> PolicyViolationException: Hedef port 1-65535 aralığında geçerli bir tamsayı olmalıdır: 70000
+[PASS] NEG_09_RATE_LIMIT_BURST_ATTACK -> PolicyViolationException: İstemci hız sınırı eşiği aşıldı (5): 198.51.100.99

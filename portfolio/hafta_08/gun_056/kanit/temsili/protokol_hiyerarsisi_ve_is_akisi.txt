@@ -1,0 +1,76 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+================================================================================
+G056 - MINI PROJE 7: PROTOKOL HIYERARSISI, AKIS VE TEHDIT HARITASI
+(Temsili Kavramsal Mimari ve Paket Cozumleme Is Akisi)
+================================================================================
+
+1. PROTOKOL KAPSULLEME VE COZUMLEME HIYERARSISI (DISSECTION PIPELINE)
+================================================================================
+  [ Fiziksel Ağ Kablosu / Wi-Fi ] -> Ham Bit Akışı
+                 |
+                 v
+  +-------------------------------------------------------------+
+  | KATMAN 2: ETHERNET II CERCEVESI (14 Bayt Baslik)           |
+  | [ Hedef MAC: 6B ] [ Kaynak MAC: 6B ] [ EtherType: 2B ]      |
+  +-------------------------------------------------------------+
+                 |
+                 +---> EtherType == 0x0806 ===> [ ARP Katmanı (Katman 2.5) ]
+                 |                              - Who has IP? Tell MAC
+                 v
+  +-------------------------------------------------------------+
+  | KATMAN 3: IPv4 PAKETI (20 Bayt Temel Baslik)                |
+  | [ Ver/IHL ] [ Total Length ] [ TTL ] [ Protocol (6/17) ]    |
+  | [ Kaynak IP: 4B ] [ Hedef IP: 4B ]                          |
+  +-------------------------------------------------------------+
+                 |
+                 +-----------------------+----------------------+
+                 | (Protocol == 6)       | (Protocol == 17)     |
+                 v                       v                      v
+  +--------------------------+  +--------------------------+  [ ICMP (Proto 1) ]
+  | KATMAN 4: TCP (20B)      |  | KATMAN 4: UDP (8B)       |  - Ping / Unreachable
+  | [ SrcPort ] [ DstPort ]  |  | [ SrcPort ] [ DstPort ]  |
+  | [ Seq / Ack Numaralari ] |  | [ Length ] [ Checksum ]  |
+  | [ Flags: SYN/ACK/FIN/RST]|  +--------------------------+
+  +--------------------------+               |
+                 |                           +------------+------------+
+                 v                           v                         v
+  +--------------------------+  +------------------------+  +------------------------+
+  | KATMAN 7: HTTP           |  | KATMAN 7: DNS          |  | KATMAN 7: DHCP         |
+  | Port: 80 / 8080          |  | Port: 53 (UDP)         |  | Port: 67/68 (UDP)      |
+  | GET / POST İstekleri     |  | A, AAAA, TXT Sorgulari |  | DORA (BOOTP + Cookie)  |
+  +--------------------------+  +------------------------+  +------------------------+
+
+2. ILETISIM AKISI VE DURUM TAKIP MATRISI (5-TUPLE STATE MACHINE)
+================================================================================
+   Her Gelen Paket 5-Tuple ile Eslesir:
+   (SrcIP, SrcPort, DstIP, DstPort, Protocol)
+              |
+              v
+   +------------------------------------------------------------------------+
+   |                        DURUM GECIS MOTORU                              |
+   |                                                                        |
+   |   [SYN] ------> HANDSHAKE_INIT                                         |
+   |                     |                                                  |
+   |   [SYN+ACK, ACK] -> ESTABLISHED (Oturum Aktif, Akış Boyutu Sayılıyor)  |
+   |                     |                                                  |
+   |   [FIN / RST] ----> CLOSED (Oturum Sonlandı)                           |
+   |                                                                        |
+   |   [Yinelenen Seq + Ack + Payload] -> RETRANSMISSION (Paket Kaybı!)     |
+   +------------------------------------------------------------------------+
+
+3. GUVERCIN (THREAT HUNTING) VE ANOMALI AVCILIGI
+================================================================================
+   Gelen Paket Akisinda Eszamanli Calisan 3 Temel Guvenlik Dedektoru:
+
+   [A] PORT SCAN / SYN FLOOD DEDEKTORU:
+       Kural: Tek bir kaynak IP'den kısa sürede >= 3 farklı hedef porta
+              sadece SYN bayraklı paket geliyorsa -> ALARM! (Reconnaissance)
+
+   [B] DNS TUNNELING VE VERI SIZINTISI DEDEKTORU:
+       Kural: Port 53 sorgusundaki domain adı uzunluğu >= 25 karakter VE
+              Shannon Entropisi H >= 2.8 bit ise -> ALARM! (Data Exfiltration)
+
+   [C] ROGUE DHCP SUNUCUSU DEDEKTORU:
+       Kural: Port 67/68 üzerinden gelen OFFER/ACK paketinin kaynak IP'si
+              kurumsal yetkili DHCP sunucusuyla uyuşmuyorsa -> ALARM! (MitM Attack)

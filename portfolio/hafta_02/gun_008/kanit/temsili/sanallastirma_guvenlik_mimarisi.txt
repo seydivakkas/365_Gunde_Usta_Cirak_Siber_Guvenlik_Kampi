@@ -1,0 +1,66 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+Bu belge, Sanallaştırma Güvenlik Mimarisi, Hypervisor İzolasyonu ve 
+VM Escape Vektörlerini görselleştiren pedagojik bir ASCII mimari şemasıdır.
+================================================================================
+
+            +-------------------------------------------------------------+
+            |      SANALLAŞTIRMA GÜVENLİK VE İZOLASYON MİMARİSİ           |
+            |       (Hypervisor Katmanı, VM Sınırları ve Kaçış Yolları)   |
+            +-------------------------------------------------------------+
+
+  [ KULLANICI / YÖNETİCİ ARAYÜZÜ ]
+                 |
+                 v
+  +===============================================================================+
+  | KONAK İŞLETİM SİSTEMİ (HOST OS - Windows / Linux / macOS) [RING 0 / RING 3]  |
+  |                                                                               |
+  |  +---------------------+   +---------------------+   +---------------------+  |
+  |  |  Konak Dosya Sis.   |   |   Konak Belleği     |   |   Konak Ağ Kartı    |  |
+  |  |  (C:\ / Root /home) |   |    (Host RAM)       |   |  (Fiziksel LAN/NIC) |  |
+  |  +---------------------+   +---------------------+   +---------------------+  |
+  +===============================================================================+
+                 |                           ^                           ^
+                 | (Yazılabilir Paylaşım)    | (Pano / Sürükle-Bırak)    | (Bridged Ağ)
+                 | [FELAKET RİSKİ]          | [VM ESCAPE RİSKİ]         | [YAYILMA RİSKİ]
+                 x                           x                           x
+  #################################################################################
+  ###     HYPERVISOR / VMM (Virtual Machine Monitor) İZOLASYON KALKANI        ###
+  ###         Intel VT-x / AMD-V Donanım Destekli Sanallaştırma (RING -1)      ###
+  #################################################################################
+         |                                           |
+         v [TAM İZOLASYON: GÜVENLİ]                 v [TEHLİKELİ YAPILANDIRMA]
+  +-------------------------------------+     +-------------------------------------+
+  |     SANAL MAKİNE 1: VM-SEC-01       |     |     SANAL MAKİNE 2: VM-RISK-99      |
+  |   (Sertleştirilmiş Zararlı Analizi) |     |  (Güvensiz Geliştirici Makinesi)    |
+  +-------------------------------------+     +-------------------------------------+
+  | [X] Pano Paylaşımı: DISABLED        |     | [!] Pano Paylaşımı: BIDIRECTIONAL   |
+  | [X] Sürükle-Bırak: DISABLED         |     | [!] Sürükle-Bırak: BIDIRECTIONAL    |
+  | [X] Paylaşılan Klasör: YOK          |     | [!] Paylaşılan Klasör: C:\ (R/W)    |
+  | [X] 3D Hızlandırma: DISABLED        |     | [!] 3D Hızlandırma: AÇIK (GPU Bug)  |
+  | [X] Ağ: Internal_Isolated           |     | [!] Ağ: Bridged (Doğrudan LAN)      |
+  | [X] Snapshot: Her Testte Sıfırla    |     | [!] Snapshot: YOK (Kalıcı Kirlenme) |
+  | [X] Anti-VM: Maskeli MAC/CPUID      |     | [!] Anti-VM: Açıkta (08:00:27 VBox) |
+  +-------------------------------------+     +-------------------------------------+
+         |                                           |
+         | [İzole Sanal Anahtar / vSwitch]           | [Fiziksel Anahtar / Switch]
+         v                                           v
+  +-----------------------------+             +-----------------------------+
+  |  İZOLASYON BÖLGESİ (VLAN 100)|             |  FİZİKSEL ŞİRKET YEREL AĞI   |
+  |  - Host-Only / Internal Net |             |  (192.168.1.0/24 - LAN)     |
+  |  - Sahte DNS/C2 (INetSim)   |             |  - Active Directory DC      |
+  |  - Sıfır Fiziksel Sızıntı   |             |  - Üretim Veritabanları     |
+  |  => GÜVENLİ PATLATMA ALANI  |             |  => FİDYE YAZILIMI YAYILIR! |
+  +-----------------------------+             +-----------------------------+
+
+--------------------------------------------------------------------------------
+ZİHİNSEL MODEL VE İSTİSMAR MEKANİZMASI:
+1. VM Escape (Misafirden Konağa Kaçış): Hypervisor'ın emüle ettiği çevre birimlerindeki
+   (Pano ayrıştırma tamponu, 3D OpenGL wrapper kodları, paylaşılan klasör sürücüsü)
+   kodlama hataları sömürülerek misafir VM'den konak işletim sisteminde kod çalıştırılır.
+2. Lateral Movement (Yatay Yayılma): Bridged adaptör kullanan bir zararlı yazılım,
+   sanal makineden çıkmaya bile gerek duymadan fiziksel ağdaki diğer sunuculara SMB/RDP
+   üzerinden saldırır.
+3. Evasion (Sanallaştırmadan Kaçınma): Zararlı yazılım CPUID hypervisor flag, bilinen MAC
+   önekleri veya ACPI tablolarına bakarak analiz edildiğini anlar ve zararsız görünür.
+================================================================================

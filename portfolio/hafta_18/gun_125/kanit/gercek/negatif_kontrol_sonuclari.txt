@@ -1,0 +1,37 @@
+======================================================================
+GÜN 125: NEGATİF KONTROL VE HATA ENJEKSİYON TESTLERİ
+Tarih/Saat: 2026-11-02T08:49:10.783721
+Toplam Senaryo: 9
+======================================================================
+
+[NEG-ID-01] Zayıf Parola ile Kayıt Girişimi (CWE-521) -> PASS
+   Ayrıntı: WeakPasswordError yakalandı: Parola en az 12 karakter uzunluğunda olmalıdır (NIST SP 800-63B / CWE-521).
+
+[NEG-ID-02] Hatalı Parola ile Kimlik Doğrulama (CWE-307) -> PASS
+   Ayrıntı: AuthenticationFailedError yakalandı: Geçersiz kullanıcı adı veya parola.
+
+[NEG-ID-03] Kaba Kuvvet (Brute-Force) Sonrası Hesap Kilitleme (CWE-307) -> PASS
+   Ayrıntı: AccountLockedError yakalandı (Hesap kilitlendi): Hesap güvenlik nedeniyle kilitlenmiştir. Lütfen yöneticiye başvurun.
+
+[NEG-ID-04] Görevler Ayrılığı (SoD) Çıkar Çatışması Ataması (CWE-863) -> PASS
+   Ayrıntı: SeparationOfDutyConflictError yakalandı: Statik Görevler Ayrılığı (SoD) İhlali: Bir kullanıcı aynı anda hem 'payment_maker' hem de 'payment_checker' rollerine sahip olamaz (CWE-863)!
+
+[NEG-ID-05] Döngüsel Rol Mirası (Circular Hierarchy) (CWE-674) -> PASS
+   Ayrıntı: CircularRoleHierarchyError yakalandı: Döngüsel rol hiyerarşisi tespit edildi: 'loop_role' -> 'loop_role' (CWE-674)!
+
+[NEG-ID-06] Sahte/Geçersiz Belirteç (Token) ile Yetkilendirme Talebi (CWE-613) -> PASS
+   Ayrıntı: Erişim REDDEDİLDİ (DENY): Geçersiz veya süresi dolmuş oturum belirteci (CWE-613).
+
+[NEG-ID-07] Zaman Aşımına Uğramış (Expired TTL) Belirteç ile Erişim (CWE-613) -> PASS
+   Ayrıntı: Erişim REDDEDİLDİ (DENY): Oturum süresi (TTL) sona ermiştir. Yeniden giriş yapılmalıdır (CWE-613).
+
+[NEG-ID-08] Step-Up MFA Doğrulaması Olmadan Kritik Sistem Eylemi (CWE-308) -> PASS
+   Ayrıntı: Erişim REDDEDİLDİ (DENY): Bu kritik işlem için Step-Up Çok Faktörlü Doğrulama (MFA) zorunludur (CWE-308).
+
+[NEG-ID-09] Altyapı Kesintisinde Fail-Secure Reddi (CWE-636) -> PASS
+   Ayrıntı: Fail-Secure Devreye Girdi (DENY): Kritik Altyapı Arızası (Veritabanı Servis Dışı) tespit edildi. Fail-Secure ilkesi gereğince tüm erişim talepleri REDDEDİLDİ (CWE-636 Koruması).
+
+----------------------------------------------------------------------
+TOPLAM: 9 | BAŞARILI: 9 | BAŞARISIZ: 0
+SONUÇ: 100% PASS
+======================================================================

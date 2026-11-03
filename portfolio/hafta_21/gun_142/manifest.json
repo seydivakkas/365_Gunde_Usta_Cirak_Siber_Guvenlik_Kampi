@@ -1,0 +1,82 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "gun": 142,
+  "dosyalar": {
+    "README.md": {
+      "boyut_bayt": 5782,
+      "sha256": "7dfa4324636d69f370a229090c4660dcc8ced2133b16751ef5caed11f7a1c560"
+    },
+    "ders.md": {
+      "boyut_bayt": 8021,
+      "sha256": "ad3af8272bf2327acce35b67086d3c497fdfb224a721326cd4ab092c7ba987b6"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 17122,
+      "sha256": "e1771887a075ee4d1726d76b1eaf7d76d08e32e7a0d857497b4adf4548e1abc5"
+    },
+    "rapor.md": {
+      "boyut_bayt": 4198,
+      "sha256": "0220e4da6cf4d2d4cd33ab58c91a9096e9dd30aaf068b2595d253bcaad91e672"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1112,
+      "sha256": "d9fbbff13b3734273936793c233ad45b5c2fcf615353792e34d6b4be16fc6e38"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 11376,
+      "sha256": "c89d745e77efafc8d8e3f6043641e4dea7b7e7b583bb1f9416c3313207e442a1"
+    },
+    "kanit/gercek/cvss_benchmark_analiz_raporu.json": {
+      "boyut_bayt": 2715,
+      "sha256": "5f27ad087e52a62c841d1c06faf9088a1029cbf19bfadc2a929574d6876bef72"
+    },
+    "kanit/gercek/cvss_v31_metric_reference.json": {
+      "boyut_bayt": 1268,
+      "sha256": "5bf45ed931372e9e21bf576f9a9dc532469d19af94169a49c61d16a32ef9009b"
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "boyut_bayt": 2271,
+      "sha256": "16bc6f7a3c31fe259255b4dba3eb8edff3a81af78eaaf654e31e5453d0dc1dc3"
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 3948,
+      "sha256": "17cc2076cbcf603b22bb2f3bdeaec54e11746049db29899eb7d7d062aa3ca517"
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "boyut_bayt": 3707,
+      "sha256": "2662c49eb30b50e00a81a314dee1bfc6d404d6e89b5a78772d34165062b7149a"
+    },
+    "kanit/temsili/cvss_mimarisi.txt": {
+      "boyut_bayt": 4725,
+      "sha256": "38a1f0c7ac740838c2cbbd051ec0928dc5ad353794796b5bb7baa31575173e65"
+    },
+    "ornek_veri/cvss_benchmark_vectors.json": {
+      "boyut_bayt": 2370,
+      "sha256": "776b21f49dbdad0a7e5bfd3bdf9b5c854b57bfc909769f8e68e909233328f3bf"
+    },
+    "ornek_veri/invalid_cvss_vectors.json": {
+      "boyut_bayt": 2475,
+      "sha256": "fd6ca048b2aa990841d9781aeb1fa8bc4965a151cd794f6f31f6bde7ad85544e"
+    },
+    "tests/__init__.py": {
+      "boyut_bayt": 557,
+      "sha256": "6d9f2884f65b608d8cb43475b600953867d34c16fca0514320c60b29c5e07de4"
+    },
+    "tests/test_cvss_base_metrics.py": {
+      "boyut_bayt": 9174,
+      "sha256": "641542f9173997ec3fb3afe681ad186382e35a8fd89416cf1e0a3c738fb43b55"
+    },
+    "uygulama/__init__.py": {
+      "boyut_bayt": 600,
+      "sha256": "d98721ca4d7b09899fb6e5c57029d0023ed8df776a75f9b765511227340d969c"
+    },
+    "uygulama/cvss_base_engine.py": {
+      "boyut_bayt": 13853,
+      "sha256": "8b5ba9257467bf76d42d190fbf86c73479c9503f627dab9d7005cfbd3447ac9b"
+    },
+    "uygulama/cvss_calculator_cli.py": {
+      "boyut_bayt": 7951,
+      "sha256": "bd5130b99806926fe869d5b9ac20149c710d7e6198f4eac3d977630aea0047b0"
+    }
+  }
+}

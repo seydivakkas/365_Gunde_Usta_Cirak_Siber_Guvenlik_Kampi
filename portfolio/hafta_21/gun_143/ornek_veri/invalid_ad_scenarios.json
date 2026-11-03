@@ -1,0 +1,135 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "aciklama": "Gün 143 Active Directory Etki Alanı Güvenliği için 9 adet negatif kontrol ve kural ihlali senaryosu.",
+  "senaryolar": [
+    {
+      "senaryo_id": "SCENARIO-AD-01",
+      "baslik": "Eski Orman ve Etki Alanı Fonksiyonel Seviyesi (Windows Server 2008 R2)",
+      "beklenen_kategori": "ARCHITECTURE",
+      "beklenen_kural": "AD-ARCH-01",
+      "beklenen_durum": "FAIL",
+      "spesifikasyon_yamasi": {
+        "architecture": {
+          "domain_functional_level": "Windows2008R2Domain",
+          "forest_functional_level": "Windows2008R2Forest"
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-AD-02",
+      "baslik": "Zayıf Kerberos Şifreleme Türleri Açık (RC4-HMAC ve DES)",
+      "beklenen_kategori": "KERBEROS",
+      "beklenen_kural": "AD-KERB-01",
+      "beklenen_durum": "FAIL",
+      "spesifikasyon_yamasi": {
+        "kerberos_policy": {
+          "supported_encryption_types": ["RC4-HMAC", "DES-CBC-MD5", "AES128-CTS-HMAC-SHA1-96"]
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-AD-03",
+      "baslik": "krbtgt Parolası 450 Gündür Sıfırlanmamış (Golden Ticket Kalıcılık)",
+      "beklenen_kategori": "KERBEROS",
+      "beklenen_kural": "AD-KERB-02",
+      "beklenen_durum": "FAIL",
+      "tarih_override": "2026-11-02",
+      "spesifikasyon_yamasi": {
+        "krbtgt_account": {
+          "password_last_set": "2025-08-01"
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-AD-04",
+      "baslik": "Güvensiz NTLMv1 İletişimi Aktif (LmCompatibilityLevel 1)",
+      "beklenen_kategori": "NTLM",
+      "beklenen_kural": "AD-NTLM-01",
+      "beklenen_durum": "FAIL",
+      "spesifikasyon_yamasi": {
+        "ntlm_policy": {
+          "lm_compatibility_level": 1
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-AD-05",
+      "baslik": "LDAP İmzalama Devre Dışı (LDAPServerIntegrity = 0)",
+      "beklenen_kategori": "LDAP_SMB",
+      "beklenen_kural": "AD-LDAP-01",
+      "beklenen_durum": "FAIL",
+      "spesifikasyon_yamasi": {
+        "ldap_smb_policy": {
+          "ldap_server_integrity": 0
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-AD-06",
+      "baslik": "SMB İmzalama Kapalı ve SMBv1 Aktif",
+      "beklenen_kategori": "LDAP_SMB",
+      "beklenen_kural": "AD-SMB-01",
+      "beklenen_durum": "FAIL",
+      "spesifikasyon_yamasi": {
+        "ldap_smb_policy": {
+          "smb_signing_required": false,
+          "smbv1_disabled": false
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-AD-07",
+      "baslik": "Domain Admin Hesabında SPN Tanımlı (Kerberoasting Zafiyeti)",
+      "beklenen_kategori": "ACCOUNTS",
+      "beklenen_kural": "AD-ACC-01",
+      "beklenen_durum": "FAIL",
+      "spesifikasyon_yamasi": {
+        "accounts": [
+          {
+            "sam_account_name": "da_superadmin",
+            "is_privileged_admin": true,
+            "service_principal_names": ["MSSQLSvc/secret.corp.internal"],
+            "dont_req_preauth": false,
+            "delegation_type": "None"
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-AD-08",
+      "baslik": "Kerberos Ön Kimlik Doğrulama Kapalı (AS-REP Roasting Riski)",
+      "beklenen_kategori": "ACCOUNTS",
+      "beklenen_kural": "AD-ACC-02",
+      "beklenen_durum": "FAIL",
+      "spesifikasyon_yamasi": {
+        "accounts": [
+          {
+            "sam_account_name": "legacy_service_user",
+            "is_privileged_admin": false,
+            "service_principal_names": [],
+            "dont_req_preauth": true,
+            "delegation_type": "None"
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-AD-09",
+      "baslik": "Sınırsız Delegasyon (Unconstrained Delegation) Aktif Nesne",
+      "beklenen_kategori": "ACCOUNTS",
+      "beklenen_kural": "AD-ACC-03",
+      "beklenen_durum": "FAIL",
+      "spesifikasyon_yamasi": {
+        "accounts": [
+          {
+            "sam_account_name": "iis_web_server",
+            "is_privileged_admin": false,
+            "service_principal_names": ["HTTP/portal"],
+            "dont_req_preauth": false,
+            "delegation_type": "Unconstrained"
+          }
+        ]
+      }
+    }
+  ]
+}

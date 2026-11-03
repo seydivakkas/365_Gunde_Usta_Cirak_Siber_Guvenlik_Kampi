@@ -1,0 +1,22 @@
+{
+  "dosyalar": {
+    "README.md": "140f17813468a2093d0642a847b8d9dcb6b80c15d1fc5410a504cea87e5513da",
+    "ders.md": "b3aa7d8828082db81f27f81a187aaa4a228e327c4fd14ec090dc1b87640b571c",
+    "rapor.md": "5ed82b82fccf89d73673e6d7941cd8baff57ec0c372c996271979716c01addd6",
+    "sonuc.json": "8fa390fcf6468623b825e41a0fd7638d16ffe1faa5f99c6e79b269fb97d94d95",
+    "soru_cevap.md": "37ccff7989952573fd77abe09afd1e512548e9ec4db6232848d9642047cf8a51",
+    "kanit/gercek/komut_ve_cikis.txt": "714541883879b983b8e8a36bddcde0a1b78f27cb3d9bcb73d375e18070d9daab",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": "908fbb66fcf5fc2c14142dc4bf9b85c61fef72bb762ffd6e13cc658be89d460c",
+    "kanit/gercek/powershell_boru_hatti_denetim_raporu.txt": "f7051867ad04336d64ebab7a89f6ebc2b55c9ed43be73bf2d09300f7e52b2c7d",
+    "kanit/gercek/test_sonuclari.txt": "7805d005f17315f311f8d02a9d4ab2c3e10f8cbd4aa74f1f54d2b40a1ea6c446",
+    "kanit/temsili/powershell_boru_hatti_mimarisi.txt": "5d5d0181b1a7ea82cfba0587bbaf4a8ab46bc3e3bea4ad47362e9f3ec2b07113",
+    "ornek_veri/invalid_powershell_inputs.json": "99e5a2a7ae075a6ed197ff6fc1474a0f1592fc2df65e038319fb0a602d7101e1",
+    "ornek_veri/sample_pipeline_script.ps1": "5031decab3e8d0561c76ac3d165ed755cb46f5a641757b4e8ece78c016f978e4",
+    "ornek_veri/sample_powershell_artifacts.json": "0737ecec96c62b5bdd91cbd7b9d986088bdbf880601b2305795d60f864172c48",
+    "tests/__init__.py": "1faf222c3edc56ef702fbff7c0443e37f2a7a22d50258e0ea920c819eabdfc97",
+    "tests/test_powershell_pipeline_security_engine.py": "048ae3a9b2088b10b9a899148f0be6d47931ca1c6367ddd1b040af48bbce667b",
+    "uygulama/SecurityPipelineAuditor.ps1": "402e7f98272a82f3427b171c64cb86989001c0cbe94b1a8950c9300689793ce9",
+    "uygulama/__init__.py": "77e8e6c9bd119d7b9c2280f5a9568bec73ffcbe6a84003701ed092773eef452c",
+    "uygulama/powershell_pipeline_security_engine.py": "ada81625d7798ee29df0c951b100b20945334f84cef6f589999e078c284837d0"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "gun": 89,
+  "baslik": "Argparse ve CLI tasarımı",
+  "olusturma_zamani": "2026-11-01T20:15:56.973200+00:00",
+  "toplam_dosya": 19,
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "934fbed74d0a7549620e213721e7154f330f458c6547910fcaffb94cc117cfb9",
+      "boyut_bayt": 3968
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "353cb463b72dea1bb498aa1399eeba67b62d72d91c31280afe827a08e9356a1c",
+      "boyut_bayt": 8037
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "4036ebf2d1f10f55db71c55959843dc45b15e3b91d8118dbd5536b8c10c3f237",
+      "boyut_bayt": 9744
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "9a2625de39d715f86b2a922a19250781e61a8175ce7fd63604f5487ef4ff77d4",
+      "boyut_bayt": 2616
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "531b9a222233125d852914ee63ca343c80aa4d6018ad8d920d0d1f433e3796b4",
+      "boyut_bayt": 1893
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "649605b057f771d713ef6fd8bb52c783ab53b54e8fbb17f49d53ab4f5cbc3de6",
+      "boyut_bayt": 10035
+    },
+    {
+      "dosya": "kanit\\gercek\\cli_tasarim_denetim_raporu.txt",
+      "sha256": "c8619c9be9813d5ae655f0d432a11017586ccae4352d90fcdd559e15a6fece7f",
+      "boyut_bayt": 1907
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "34b23af3774fff1b890862be9ff9b0779c3cc8873e40b75befdd93147532190a",
+      "boyut_bayt": 4916
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "f3f6817bd85b0fad34b107b9662664935e73d3c3f2850942df793bad2a12952e",
+      "boyut_bayt": 3755
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "43419bc568876410950891bfc7e796066b6596687e1f8f7a7cd4b81a235dbada",
+      "boyut_bayt": 442
+    },
+    {
+      "dosya": "kanit\\temsili\\argparse_cli_mimarisi.txt",
+      "sha256": "72665c12145d7ed97dbfe8c003302c90098ce068045f6a8f0ea125a3017f3461",
+      "boyut_bayt": 4626
+    },
+    {
+      "dosya": "ornek_veri\\invalid_cli_inputs.json",
+      "sha256": "0cc93e091dd1b288ac00cf646c3265ed3e9279512806a797a292b60bce295ad0",
+      "boyut_bayt": 3502
+    },
+    {
+      "dosya": "ornek_veri\\sample_cli_commands.json",
+      "sha256": "0644d89bee75526c1e066591b6387761da7c1ebad08fdf88b3a4dcf7eef49ccd",
+      "boyut_bayt": 745
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "9a7f29503eec1ce19b6021278bea01fa7f44d823826f4f529f01d3d0be26c17c",
+      "boyut_bayt": 561
+    },
+    {
+      "dosya": "tests\\test_security_cli_engine.py",
+      "sha256": "beaf9754d6d7519393ca073ff99101a9f2d49fdc14d5e4490244c7840881f6df",
+      "boyut_bayt": 7886
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "d4314a8009db6b423c8e758a73be10dd542ed1274b1e49592cb3b99580750fd3",
+      "boyut_bayt": 565
+    },
+    {
+      "dosya": "uygulama\\cli_runner.py",
+      "sha256": "ea168a7be9aed8a890d27f442c3c2cb198342f97413d7f4d6aad4545bea9b81b",
+      "boyut_bayt": 2355
+    },
+    {
+      "dosya": "uygulama\\security_cli_engine.py",
+      "sha256": "323eb48317262e75954341a0a8281487c61ebb5307ef46a915e51b82ea5fb059",
+      "boyut_bayt": 12393
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Bu dosya Siber Güvenlik 365 Gün Müfredatı kapsamında üretilmiştir.
+# Gün 023: Linux Terminali ve Kabuk — G023-SC2 Bağımsız Laboratuvar Çıktısı
+
+========================================================================
+GÜN 023: LİNUX KABUK VE TERMİNAL GÜVENLİK LABORATUVARI (G023-SC2)
+========================================================================
+1. Adım [pwd] Başlangıç Çalışma Dizini : /home/analyst
+2. Adım [ls]  Mevcut Dizin İçeriği     : 1 öğe listelendi
+       -> [FILE] notes.txt (0600, Sahip: analyst:analyst)
+3. Adım [cd]  Hedefe Geçiş             : /var/log
+4. Adım [pwd] Yeni Çalışma Dizini      : /var/log
+------------------------------------------------------------------------
+5. Adım [head] auth.log İlk 3 Satırı:
+   | Oct 27 01:10:01 srv-corp sshd[4120]: Accepted publickey for analyst from 192.168.1.50 port 54322 ssh2
+   | Oct 27 01:15:22 srv-corp sudo: analyst : TTY=pts/0 ; PWD=/home/analyst ; USER=root ; COMMAND=/bin/cat /etc/app.conf
+   | Oct 27 01:20:00 srv-corp sshd[4200]: Failed password for invalid user admin from 203.0.113.10 port 49120 ssh2
+------------------------------------------------------------------------
+6. Adım [cat] Güvenlik Notları (/home/analyst/notes.txt):
+   | Güvenlik Denetim Notları:
+   | 1. Göreli yol kullanımından (./script) kaçınılmalı, mutlak yol tercih edilmeli.
+   | 2. PATH değişkeni başında '.' bulunmamalı.
+   | 3. Geçici dosyalarda güvenli umask 027 kullanılmalı.
+------------------------------------------------------------------------
+7. Adım [head] /etc/passwd İlk 2 Satırı:
+   | root:x:0:0:root:/root:/bin/bash
+   | daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+========================================================================
+POSIX Standart Komutları ve Yol Güvenliği Başarıyla Doğrulandı.
+========================================================================

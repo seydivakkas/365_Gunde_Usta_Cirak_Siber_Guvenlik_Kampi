@@ -1,0 +1,156 @@
+{
+  "metadata": {
+    "title": "Kurumsal Güvenlik Denetimi Salt-Okunur Komut Kataloğu",
+    "version": "1.0.0",
+    "total_commands": 12,
+    "classification": "READ_ONLY_OBSERVATION",
+    "standard": "NIST SP 800-53 / MITRE ATT&CK Discovery Matrix",
+    "created_at": "2026-10-27T08:00:00Z"
+  },
+  "commands": [
+    {
+      "id": "CMD-01",
+      "name": "whoami",
+      "command": "whoami",
+      "category": "kimlik_yonetimi",
+      "platform": "cross-platform",
+      "description": "Aktif kabuk oturumunu icra eden kullanıcının kullanıcı adını görüntüler.",
+      "security_relevance": "Saldırgan ve savunmacı için temel keşif adımıdır (MITRE ATT&CK T1033). Yetkisiz oturum veya beklenmeyen ayrıcalık (root/SYSTEM) durumunu ortaya koyar.",
+      "safety_level": "read_only",
+      "expected_output_pattern": "^[a-zA-Z0-9_\\\\-]+$",
+      "mock_output": "secops_analyst"
+    },
+    {
+      "id": "CMD-02",
+      "name": "id",
+      "command": "id",
+      "category": "kimlik_yonetimi",
+      "platform": "posix",
+      "description": "Kullanıcının UID, GID ve üye olduğu tüm ikincil grup kimliklerini dökümler.",
+      "security_relevance": "Kullanıcının 'sudo', 'wheel' veya 'docker' gibi ayrıcalıklı gruplara dahil olup olmadığını doğrular. İstem dışı yetki artışı riskini tespit eder.",
+      "safety_level": "read_only",
+      "expected_output_pattern": "uid=\\d+.*gid=\\d+.*groups=.*",
+      "mock_output": "uid=1001(secops_analyst) gid=1001(secops) groups=1001(secops),27(sudo)"
+    },
+    {
+      "id": "CMD-03",
+      "name": "hostname",
+      "command": "hostname",
+      "category": "sistem_bilgisi",
+      "platform": "cross-platform",
+      "description": "Sistemin yerel ve ağ seviyesindeki ana makine adını görüntüler.",
+      "security_relevance": "Hedef makinenin etki alanı (domain) rolünü ve ortamını (prod-db-01, dev-srv) anlamak için kullanılır (MITRE ATT&CK T1082).",
+      "safety_level": "read_only",
+      "expected_output_pattern": "^[a-zA-Z0-9.-]+$",
+      "mock_output": "sec-core-prod-01"
+    },
+    {
+      "id": "CMD-04",
+      "name": "uname -a",
+      "command": "uname -a",
+      "category": "sistem_bilgisi",
+      "platform": "posix",
+      "description": "İşletim sistemi çekirdek sürümü, mimarisi (x86_64, aarch64) ve derleme zamanını listeler.",
+      "security_relevance": "Çekirdek sürümüne özgü bilinen zafiyetlerin (örn: Dirty COW, Dirty Pipe) ve yama eksikliklerinin analizi için zorunludur.",
+      "safety_level": "read_only",
+      "expected_output_pattern": "Linux\\s+\\S+\\s+[0-9.-]+.*",
+      "mock_output": "Linux sec-core-prod-01 6.5.0-28-generic #29-Ubuntu SMP PREEMPT_DYNAMIC x86_64 GNU/Linux"
+    },
+    {
+      "id": "CMD-05",
+      "name": "uptime",
+      "command": "uptime",
+      "category": "sistem_durumu",
+      "platform": "posix",
+      "description": "Sistemin son yeniden başlatmadan bu yana geçen çalışma süresini ve yük ortalamasını (load average) verir.",
+      "security_relevance": "Sistemin yakın zamanda yetkisiz yeniden başlatılıp başlatılmadığını ve anormal kaynak tüketimini (kripto madenciliği vb.) gösterir.",
+      "safety_level": "read_only",
+      "expected_output_pattern": ".*up.*load average:.*",
+      "mock_output": " 10:15:22 up 45 days, 3:12,  2 users,  load average: 0.14, 0.08, 0.05"
+    },
+    {
+      "id": "CMD-06",
+      "name": "ps aux",
+      "command": "ps aux",
+      "category": "surec_yonetimi",
+      "platform": "posix",
+      "description": "Sistemde o anda çalışan tüm süreçlerin PID, kullanıcı, bellek, CPU ve komut satırı argümanlarını listeler.",
+      "security_relevance": "Yetkisiz arka plan ajanlarının, ters kabukların (reverse shell) ve olağan dışı süreç ağaçlarının tespiti için birincil araçtır (MITRE ATT&CK T1057).",
+      "safety_level": "read_only",
+      "expected_output_pattern": "USER\\s+PID\\s+%CPU\\s+%MEM.*",
+      "mock_output": "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot         1  0.0  0.1 168432 13540 ?        Ss   Sep12   1:45 /sbin/init\nroot       612  0.0  0.2  18740  8920 ?        Ss   Sep12   0:15 /lib/systemd/systemd-journald\nwww-data   980  0.0  0.4 124500 18450 ?        S    Sep12   2:10 nginx: worker process\nsecops    1450  0.0  0.1  11450  3240 pts/0    R+   10:15   0:00 ps aux"
+    },
+    {
+      "id": "CMD-07",
+      "name": "df -h",
+      "command": "df -h",
+      "category": "depolama_ve_dosya",
+      "platform": "posix",
+      "description": "Bağlı dosya sistemlerini, toplam alanları, kullanılan miktarları ve doluluk oranlarını okunabilir (GB/MB) formatta sunar.",
+      "security_relevance": "Log taşması saldırıları (Log Flooding DoS) veya saldırgan tarafından /tmp veya /var/tmp altına indirilen gizli verileri tespit eder.",
+      "safety_level": "read_only",
+      "expected_output_pattern": "Filesystem\\s+Size\\s+Used\\s+Avail.*",
+      "mock_output": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1        98G   24G   70G  26% /\ntmpfs           3.9G     0  3.9G   0% /dev/shm\n/dev/sda2       196G   45G  142G  25% /var/log"
+    },
+    {
+      "id": "CMD-08",
+      "name": "free -m",
+      "command": "free -m",
+      "category": "bellek_kaynaklari",
+      "platform": "posix",
+      "description": "Fiziksel RAM ve takas (swap) alanının toplam, kullanılan ve boş miktarlarını megabayt cinsinden görüntüler.",
+      "security_relevance": "Bellek tüketimi tabanlı Hizmet Engelleme (DoS) zafiyetlerini veya yetkisiz bellek içi kötücül yazılımları işaret eder.",
+      "safety_level": "read_only",
+      "expected_output_pattern": "total\\s+used\\s+free.*",
+      "mock_output": "               total        used        free      shared  buff/cache   available\nMem:            7942        1820        4510         124        1612        5710\nSwap:           2048           0        2048"
+    },
+    {
+      "id": "CMD-09",
+      "name": "ss -tulpn",
+      "command": "ss -tulpn",
+      "category": "ag_soketleri",
+      "platform": "posix",
+      "description": "Dinleme durumundaki TCP ve UDP soketlerini, port numaralarını ve bu soketleri açan süreçlerin PID/adlarını listeler.",
+      "security_relevance": "Yetkisiz arka kapı (backdoor), güvensiz servis (Telnet, rsh) veya dışa açık hassas portları (3306, 5432, 6379) tespit eder (MITRE ATT&CK T1049).",
+      "safety_level": "read_only",
+      "expected_output_pattern": "Netid\\s+State\\s+Recv-Q\\s+Send-Q.*",
+      "mock_output": "Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess\ntcp   LISTEN 0      128          0.0.0.0:22         0.0.0.0:*    users:((\"sshd\",pid=780,fd=3))\ntcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:((\"nginx\",pid=980,fd=6))\ntcp   LISTEN 0      511          0.0.0.0:443        0.0.0.0:*    users:((\"nginx\",pid=980,fd=7))\ntcp   LISTEN 0      128        127.0.0.1:5432       0.0.0.0:*    users:((\"postgres\",pid=1120,fd=4))"
+    },
+    {
+      "id": "CMD-10",
+      "name": "ip addr",
+      "command": "ip addr",
+      "category": "ag_yapilandirmasi",
+      "platform": "posix",
+      "description": "Sistemdeki tüm fiziksel ve sanal ağ arayüzlerini, bunlara atanmış IPv4/IPv6 adreslerini ve bayrakları (UP/DOWN) listeler.",
+      "security_relevance": "Gizli ağ arayüzleri, promiscuous moddaki dinleyiciler ve yetkisiz VPN/tünel adaptörlerinin keşfi için kritiktir (MITRE ATT&CK T1016).",
+      "safety_level": "read_only",
+      "expected_output_pattern": "\\d+:\\s+[a-zA-Z0-9_]+:.*",
+      "mock_output": "1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000\n    inet 127.0.0.1/8 scope host lo\n2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000\n    inet 10.0.4.15/24 brd 10.0.4.255 scope global dynamic eth0"
+    },
+    {
+      "id": "CMD-11",
+      "name": "env",
+      "command": "env",
+      "category": "ortam_degiskenleri",
+      "platform": "posix",
+      "description": "Aktif oturuma ait tüm ortam değişkenlerini anahtar-değer çiftleri olarak yazdırır.",
+      "security_relevance": "PATH manipülasyonu, LD_PRELOAD suistimalleri veya ortam değişkenlerine açık metin olarak gömülmüş API anahtarları/şifreleri denetler.",
+      "safety_level": "read_only",
+      "expected_output_pattern": ".*=.*",
+      "mock_output": "SHELL=/bin/bash\nUSER=secops_analyst\nPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\nPWD=/home/secops_analyst\nHOME=/home/secops_analyst\nLANG=en_US.UTF-8"
+    },
+    {
+      "id": "CMD-12",
+      "name": "ls -ld /tmp",
+      "command": "ls -ld /tmp",
+      "category": "dosya_izinleri",
+      "platform": "posix",
+      "description": "Geçici dizinin (/tmp) izinlerini, sahipliğini ve sticky bit (t) durumunu listeler.",
+      "security_relevance": "Geçici dizinlerde sticky bit eksikliği kullanıcıların birbirlerinin dosyalarını silmesine veya değiştirmesine yol açar (CWE-276 / CWE-377).",
+      "safety_level": "read_only",
+      "expected_output_pattern": "drwxrwxrwt.*",
+      "mock_output": "drwxrwxrwt 14 root root 4096 Oct 27 10:15 /tmp"
+    }
+  ]
+}

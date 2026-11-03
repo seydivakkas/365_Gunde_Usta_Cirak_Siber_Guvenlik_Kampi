@@ -1,0 +1,26 @@
+[
+  {
+    "file_name": "config.json",
+    "relative_path": "sample_files/config.json",
+    "sha256": "2cf886ce37d1c9fdf227bd875fc638c83938da29d65c074a562c30e79136474f",
+    "md5": "ab2d7aa56941c4b10d1eb49fcbe0a32e",
+    "size_bytes": 190,
+    "status": "AUTHORIZED_BASELINE"
+  },
+  {
+    "file_name": "security_policy.txt",
+    "relative_path": "sample_files/security_policy.txt",
+    "sha256": "5b73db061e0757260a4dedbadfcf57191864c64727b42b3d375f96337472ed6c",
+    "md5": "dd4411664b36a99f9071f603e1788ff7",
+    "size_bytes": 731,
+    "status": "AUTHORIZED_BASELINE"
+  },
+  {
+    "file_name": "authorized_tool.py",
+    "relative_path": "sample_files/authorized_tool.py",
+    "sha256": "0c7cedf21756e8a6982e5303ed4ccf4c931c9b38923348ecc245746a73728853",
+    "md5": "819b050a7fb9d7ccc5116545e034b1c4",
+    "size_bytes": 176,
+    "status": "AUTHORIZED_BASELINE"
+  }
+]

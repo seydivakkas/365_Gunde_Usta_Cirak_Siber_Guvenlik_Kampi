@@ -1,0 +1,64 @@
+================================================================================
+G053: NEGATIF KONTROL VE HATA SINIR DENETIMI KANITLARI
+================================================================================
+
+Test No / Hata Kodu: NEG-SOCK-01 / ERR_PORT_NEGATIVE
+Girdi Parametreleri : proto=TCP, local_ip='127.0.0.1', local_port=-1, remote_ip='0.0.0.0', remote_port=0, state='LISTEN', pid=1000
+Beklenen Hata      : Port numarası 0 ile 65535 arasında olmalıdır.
+Firlatilan Hata     : SocketValidationError -> Port numarası 0 ile 65535 arasında olmalıdır: -1
+Sonuc               : BASARILI (Gecersiz soket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-SOCK-02 / ERR_PORT_OVERFLOW
+Girdi Parametreleri : proto=TCP, local_ip='127.0.0.1', local_port=70000, remote_ip='0.0.0.0', remote_port=0, state='LISTEN', pid=1000
+Beklenen Hata      : Port numarası 0 ile 65535 arasında olmalıdır.
+Firlatilan Hata     : SocketValidationError -> Port numarası 0 ile 65535 arasında olmalıdır: 70000
+Sonuc               : BASARILI (Gecersiz soket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-SOCK-03 / ERR_REMOTE_PORT_OVERFLOW
+Girdi Parametreleri : proto=TCP, local_ip='192.168.1.5', local_port=50000, remote_ip='8.8.8.8', remote_port=65536, state='ESTABLISHED', pid=1000
+Beklenen Hata      : Port numarası 0 ile 65535 arasında olmalıdır.
+Firlatilan Hata     : SocketValidationError -> Port numarası 0 ile 65535 arasında olmalıdır: 65536
+Sonuc               : BASARILI (Gecersiz soket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-SOCK-04 / ERR_INVALID_TCP_STATE
+Girdi Parametreleri : proto=TCP, local_ip='0.0.0.0', local_port=80, remote_ip='0.0.0.0', remote_port=0, state='INVALID_STATE_XYZ', pid=1000
+Beklenen Hata      : Geçersiz TCP bağlantı durumu.
+Firlatilan Hata     : SocketValidationError -> Geçersiz TCP bağlantı durumu: INVALID_STATE_XYZ
+Sonuc               : BASARILI (Gecersiz soket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-SOCK-05 / ERR_MALFORMED_LOCAL_IP
+Girdi Parametreleri : proto=TCP, local_ip='300.1.2.3', local_port=80, remote_ip='0.0.0.0', remote_port=0, state='LISTEN', pid=1000
+Beklenen Hata      : Geçersiz IPv4 yerel adresi biçimi.
+Firlatilan Hata     : SocketValidationError -> Geçersiz IPv4 yerel adresi biçimi: '300.1.2.3'. Hata: Octet 300 (> 255) not permitted in '300.1.2.3'
+Sonuc               : BASARILI (Gecersiz soket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-SOCK-06 / ERR_MALFORMED_REMOTE_IP
+Girdi Parametreleri : proto=TCP, local_ip='192.168.1.10', local_port=50000, remote_ip='not_an_ip', remote_port=443, state='ESTABLISHED', pid=1000
+Beklenen Hata      : Geçersiz IPv4 uzak adresi biçimi.
+Firlatilan Hata     : SocketValidationError -> Geçersiz IPv4 uzak adresi biçimi: 'not_an_ip'. Hata: Expected 4 octets in 'not_an_ip'
+Sonuc               : BASARILI (Gecersiz soket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-SOCK-07 / ERR_UNSUPPORTED_PROTOCOL
+Girdi Parametreleri : proto=SCTP, local_ip='0.0.0.0', local_port=80, remote_ip='0.0.0.0', remote_port=0, state='LISTEN', pid=1000
+Beklenen Hata      : Desteklenmeyen soket protokolü (Yalnızca TCP veya UDP).
+Firlatilan Hata     : SocketValidationError -> Desteklenmeyen soket protokolü (Yalnızca TCP veya UDP): SCTP
+Sonuc               : BASARILI (Gecersiz soket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-SOCK-08 / ERR_NEGATIVE_PID
+Girdi Parametreleri : proto=TCP, local_ip='127.0.0.1', local_port=8080, remote_ip='0.0.0.0', remote_port=0, state='LISTEN', pid=-10
+Beklenen Hata      : PID (Süreç Kimliği) negatif olamaz.
+Firlatilan Hata     : SocketValidationError -> PID (Süreç Kimliği) negatif olamaz: -10
+Sonuc               : BASARILI (Gecersiz soket guvenle engellendi)
+
+--------------------------------------------------------------------------------
+
+TOPLAM NEGATIF TEST: 8
+BASARILI BLOKLAMA  : 8
+BASARI ORANI       : %100.0

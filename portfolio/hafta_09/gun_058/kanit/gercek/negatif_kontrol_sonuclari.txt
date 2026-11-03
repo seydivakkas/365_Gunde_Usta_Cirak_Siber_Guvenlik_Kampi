@@ -1,0 +1,58 @@
+================================================================================
+G058 - HTTP YONTEMLERI VE IDEMPOTENCY: NEGATIF VE SINIR KONTROL SONUCLARI
+Tarih: 2026-10-29 22:08:15
+Toplam Negatif Test Senaryosu: 9
+================================================================================
+
+[NEG-01-INVALID-METHOD-NAME] GecersizMetotAdi:
+    Girdi: method="PURGE" (RFC 7231 disi ozel metot)
+    Beklenen Istisna: MethodValidationError
+    Hata Mesaji: "Gecersiz veya standart disi HTTP metodu: 'PURGE'. Yalnizca RFC 7231 metotlari desteklenir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-02-LOWERCASE-METHOD] KucukHarfMetotHatasi:
+    Girdi: method="get" (Kucuk harfle yazilmis metot)
+    Beklenen Istisna: MethodValidationError
+    Hata Mesaji: "RFC 7231 geregi HTTP metotlari buyuk harfle yazilmalidir: 'get'."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-03-EMPTY-IDEMPOTENCY-KEY] BosIdempotencyAnahtari:
+    Girdi: Idempotency-Key="   " (Yalnizca bosluk karakterleri)
+    Beklenen Istisna: MethodValidationError
+    Hata Mesaji: "Idempotency-Key basligi bos veya yalnizca bosluk karakterlerinden olusamaz."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-04-MALFORMED-IDEMPOTENCY-KEY] GecersizIdempotencyFormati:
+    Girdi: Idempotency-Key uzunlugu 150 karakter (> 128 karakter siniri)
+    Beklenen Istisna: MethodValidationError
+    Hata Mesaji: "Gecersiz Idempotency-Key formati: Uzunluk 128 karakteri asamaz veya gecersiz karakterler iceremez."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-05-PAYLOAD-HASH-MISMATCH] IdempotencyGovdeUyusmazligi:
+    Girdi: Ayni anahtarla ('key-101') ilk basta 100 TL, ardindan 500 TL gonderildi
+    Beklenen Istisna: IdempotencyConflictError
+    Hata Mesaji: "Idempotency-Key Cakismasi: Ayni anahtar ('key-101') farkli bir istek govdesiyle yeniden kullanilamaz (422 Unprocessable Entity / 409 Conflict)."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-06-UNSAFE-GET-MODIFICATION] GuvenliMetotDurumDegisikligi:
+    Girdi: GET /api/v1/transfer?amount=100
+    Beklenen Istisna: MethodValidationError
+    Hata Mesaji: "RFC 7231 Ihlali: GET metodu sunucu durumunu degistiren islemler (para transferi, silme) icin kullanilamaz: '/api/v1/transfer?amount=100'."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-07-EXPIRED-KEY-LOOKUP] SuresiDolmusAnahtar:
+    Girdi: Idempotency TTL suresi dolmus anahtar
+    Beklenen Durum: Kaydin bellekten temizlenmesi ve clean_expired_records() tarafindan dondurulmesi
+    Sonuc: BASARILI (Temizlendi ve dogrulandi)
+
+[NEG-08-PUT-WITHOUT-BODY] GovdesizPutIstegi:
+    Girdi: PUT /api/v1/profile (Gövde bos string)
+    Beklenen Istisna: MethodValidationError
+    Hata Mesaji: "PUT metodu kaynagin tam temsilini gerektirir; istek govdesi bos olamaz."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-09-VERB-TAMPERING-BYPASS] MetotAtlatmaSaldirisi:
+    Girdi: Yetkisiz kullanicinin '/admin/delete' kaynagina HEAD metoduyla erisim girisimi
+    Beklenen Istisna: VerbTamperingAlert
+    Hata Mesaji: "HTTP Verb Tampering Tehdidi: '/admin/delete' kaynagi yalnizca {'POST'} ile kullanilabilir; 'HEAD' metodu ile guvenlik filtresi atlatilamaz (403 Forbidden)."
+    Sonuc: BASARILI (Hata firlatildi ve yetkisiz erisim engellendi)

@@ -1,0 +1,48 @@
+======================================================================
+GÜN 126: AŞAMA 5 KALİTE ÖZETİ VE KABUL - BİRİM TEST RAPORU
+Tarih/Saat: 2026-11-02T08:57:35.570279
+Standartlar: NIST SP 800-131A, NIST SP 800-57, NIST SP 800-160
+======================================================================
+
+Çalıştırılan Test Sayısı: 15
+Hata Sayısı (Errors): 0
+Başarısızlık Sayısı (Failures): 0
+Genel Durum: BAŞARILI (100% PASS)
+
+------------------- AYRINTILI TEST ÇIKTISI -------------------
+test_01_approved_crypto_suite_gets_full_score (test_stage5_quality.TestStage5QualityAuditor.test_01_approved_crypto_suite_gets_full_score)
+NIST onaylı modern kriptografik algoritmalar 100 tam puan almalıdır. ... ok
+test_02_banned_md5_algorithm_penalized (test_stage5_quality.TestStage5QualityAuditor.test_02_banned_md5_algorithm_penalized)
+Kırık MD5 algoritması tespit edildiğinde puan kırılmalı ve CWE-327 raporlanmalıdır. ... ok
+test_03_banned_sha1_algorithm_penalized (test_stage5_quality.TestStage5QualityAuditor.test_03_banned_sha1_algorithm_penalized)
+Güvensiz SHA-1 algoritması kullanıldığında puan kırılmalı ve CWE-327 bildirilmelidir. ... ok
+test_04_ecb_mode_penalized (test_stage5_quality.TestStage5QualityAuditor.test_04_ecb_mode_penalized)
+AES için güvensiz ECB çalışma modu tespit edildiğinde CWE-327 ihlali üretilmelidir. ... ok
+test_05_insufficient_rsa_key_length_penalized (test_stage5_quality.TestStage5QualityAuditor.test_05_insufficient_rsa_key_length_penalized)
+NIST standartlarına göre 2048 bitten küçük RSA anahtarları CWE-326 ile cezalandırılmalıdır. ... ok
+test_06_weak_prng_randomness_source_penalized (test_stage5_quality.TestStage5QualityAuditor.test_06_weak_prng_randomness_source_penalized)
+Kriptografik olmayan sözde rastgelelik kaynağı (PRNG) CWE-338 ile cezalandırılmalıdır. ... ok
+test_07_insufficient_pbkdf2_iterations_penalized (test_stage5_quality.TestStage5QualityAuditor.test_07_insufficient_pbkdf2_iterations_penalized)
+PBKDF2 iterasyon sayısı 100.000 altında olduğunda CWE-916 ihlali bildirilmelidir. ... ok
+test_08_timing_attack_non_constant_time_penalized (test_stage5_quality.TestStage5QualityAuditor.test_08_timing_attack_non_constant_time_penalized)
+Sabit zamanlı karşılaştırma yapılmadığında zamanlama saldırısı (CWE-208) raporlanmalıdır. ... ok
+test_09_default_deny_enforced_architecture_passes (test_stage5_quality.TestStage5QualityAuditor.test_09_default_deny_enforced_architecture_passes)
+Saltzer-Schroeder Varsayılan Ret (Default-Deny) ilkesi devredeyken mimari tam puan almalıdır. ... ok
+test_10_default_allow_architecture_heavily_penalized (test_stage5_quality.TestStage5QualityAuditor.test_10_default_allow_architecture_heavily_penalized)
+Varsayılan İzin (Default-Allow) mimarisi CWE-1188 ile ağır şekilde cezalandırılmalıdır. ... ok
+test_11_fail_open_outage_penalized (test_stage5_quality.TestStage5QualityAuditor.test_11_fail_open_outage_penalized)
+Altyapı kesintisinde kapıları açık bırakan Fail-Open davranışı CWE-636 ile cezalandırılmalıdır. ... ok
+test_12_static_sod_violation_penalized (test_stage5_quality.TestStage5QualityAuditor.test_12_static_sod_violation_penalized)
+Statik Görevler Ayrılığı (SoD) zorunlu tutulmadığında CWE-863 ihlali bildirilmelidir. ... ok
+test_13_wildcard_permission_violates_polp (test_stage5_quality.TestStage5QualityAuditor.test_13_wildcard_permission_violates_polp)
+Normal rollere joker (*) izin verilmesi En Az Yetki İlkesini (CWE-250) ihlal eder. ... ok
+test_14_log_masking_disabled_penalized (test_stage5_quality.TestStage5QualityAuditor.test_14_log_masking_disabled_penalized)
+Denetim kütüklerinde sır maskelemesi kapalıysa CWE-532 ihlali üretilmelidir. ... ok
+test_15_full_audit_produces_accepted_pass_and_certificate (test_stage5_quality.TestStage5QualityAuditor.test_15_full_audit_produces_accepted_pass_and_certificate)
+Kusursuz Aşama 5 şartnamesinde genel skor >= 85 olmalı ve ACCEPTED_PASS kararı verilmelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+

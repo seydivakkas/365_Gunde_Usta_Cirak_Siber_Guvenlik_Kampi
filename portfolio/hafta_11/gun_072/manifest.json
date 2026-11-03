@@ -1,0 +1,18 @@
+{
+  "README.md": "1f641a97cdf05ab400a7db7709f43c7538bf0c01f7938ed45a467afd786f2780",
+  "ders.md": "589728485a6dbb5bb3cd417e9cd37ad01764cbdbd4374c839a47b0d8cb62311c",
+  "rapor.md": "b28bdd8294c2dc35e618d2b23818062590e0553b9f46831384771b823baca5da",
+  "sonuc.json": "4402e4e6357e4a1df40c33075e1aed08915e04a442cac3de4523d63092dbbfb3",
+  "soru_cevap.md": "b8eb1f14fb75fc15eac72f68f4a5f85050f4f12f2105b94a9c43da004bff87ff",
+  "kanit/gercek/guvenli_girdi_dogrulama_raporu.txt": "a65230f55955d9a3b8c27f7498c1208f4a983052c92f85d5ab7fc7e0c00df36b",
+  "kanit/gercek/komut_ve_cikis.txt": "203dc757cda490aa6747c6780739e9c804b785bdd55fa537591aeaddc07b540a",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "2c3779eba08cf2da06490bb5b53847608826e314a0f5a36d533b581241267e9a",
+  "kanit/gercek/test_sonuclari.txt": "6c68992a8774a7320104984450d05ec8affe89e4ebfffa465c8e946ddea01a88",
+  "kanit/temsili/guvenli_girdi_ve_tip_denetim_mimarisi.txt": "f7810ab94d05aa31856f2400d28276804d17714acf5551fdee04f567d3e1ffaf",
+  "ornek_veri/guvenli_girdi_ornekleri.json": "b88a3ef547506038997f87b119df3fbd989eefbd1199638cf67c750d257e0121",
+  "ornek_veri/invalid_input_test_cases.json": "867e4999fe1c9f9ce37949a46bcaa19e297b05b61a669fa7d1a2e0a4d39d73aa",
+  "tests/__init__.py": "c6c8171f01550a17609f784dae79e503262250dcedd2e2011977398251bcc6fe",
+  "tests/test_secure_input_and_type_validator.py": "97e863e4180fec7574f0f4606c2c5e6647a33585befe7b9a6e9db53e2b12547f",
+  "uygulama/__init__.py": "d6f224494d23f5d8c2d1cf6a1a3772f15723a78ae363c86ecb25eb63f61309f4",
+  "uygulama/secure_input_and_type_validator.py": "4fc85ea5b85930c1a3ccd3829c9cee7c669682926e4ff9f51cf8f84fa2d27ea6"
+}

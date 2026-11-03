@@ -1,0 +1,161 @@
+{
+  "NEG_01_NOT_A_DICT": {
+    "payload": [
+      {"stage_id": "03"}
+    ],
+    "expected_error": "Aşama 3 denetim verisi bir JSON sözlüğü (dict) olmalıdır."
+  },
+  "NEG_02_STAGE_ID_MISMATCH": {
+    "payload": {
+      "stage_metadata": {
+        "stage_id": "02",
+        "stage_name": "İşletim Sistemi Güvenliği",
+        "weeks_covered": [5, 6, 7]
+      },
+      "quality_pillars": {},
+      "days": []
+    },
+    "expected_error": "Aşama ID '03' olmalıdır, alınan: 02"
+  },
+  "NEG_03_MISSING_MANDATORY_PILLAR": {
+    "payload": {
+      "stage_metadata": {
+        "stage_id": "03",
+        "stage_name": "Ağ Analizi ve Güvenliği",
+        "weeks_covered": [8, 9, 10],
+        "license_policy": "OZEL_LISANS_TUM_HAKLARI_SAKLIDIR"
+      },
+      "quality_pillars": {
+        "capture_and_filters": {"name": "Paket Yakalama"},
+        "stream_and_automation": {"name": "TCP Akışı"},
+        "core_protocols": {"name": "Temel Protokoller"},
+        "app_layer_and_crypto": {"name": "L7 ve TLS"},
+        "compliance_and_forensics": {"name": "KVKK ve Adli Raporlama"}
+      },
+      "days": []
+    },
+    "expected_error": "Zorunlu kalite sütunu 'threat_detection' envanterde bulunamadı."
+  },
+  "NEG_04_INCOMPLETE_DAYS_COUNT": {
+    "payload": {
+      "stage_metadata": {
+        "stage_id": "03",
+        "stage_name": "Ağ Analizi ve Güvenliği",
+        "weeks_covered": [8, 9, 10],
+        "license_policy": "OZEL_LISANS_TUM_HAKLARI_SAKLIDIR"
+      },
+      "quality_pillars": {
+        "capture_and_filters": {},
+        "stream_and_automation": {},
+        "core_protocols": {},
+        "app_layer_and_crypto": {},
+        "threat_detection": {},
+        "compliance_and_forensics": {}
+      },
+      "days": [
+        {"day_id": 51, "score": 100, "status": "PASS", "tests_run": 14, "tests_passed": 14, "negative_controls": 9, "negative_controls_passed": 9, "license": "OZEL_LISANS_TUM_HAKLARI_SAKLIDIR", "backup_verified": true}
+      ]
+    },
+    "expected_error": "Aşama 3 tam 20 gün (Gün 51-70) içermelidir. Mevcut gün adedi: 1"
+  },
+  "NEG_05_SUBPAR_SCORE": {
+    "payload": {
+      "stage_metadata": {
+        "stage_id": "03",
+        "license_policy": "OZEL_LISANS_TUM_HAKLARI_SAKLIDIR"
+      },
+      "quality_pillars": {
+        "capture_and_filters": {},
+        "stream_and_automation": {},
+        "core_protocols": {},
+        "app_layer_and_crypto": {},
+        "threat_detection": {},
+        "compliance_and_forensics": {}
+      },
+      "days": [
+        {"day_id": 58, "title": "TCP akışı takip etme", "score": 75, "status": "FAIL", "tests_run": 14, "tests_passed": 10, "license": "OZEL_LISANS_TUM_HAKLARI_SAKLIDIR", "backup_verified": true}
+      ]
+    },
+    "expected_error": "Gün 58 skoru 100 olmalıdır, alınan: 75"
+  },
+  "NEG_06_OPEN_SOURCE_LICENSE_VIOLATION": {
+    "payload": {
+      "stage_metadata": {
+        "stage_id": "03",
+        "license_policy": "OZEL_LISANS_TUM_HAKLARI_SAKLIDIR"
+      },
+      "quality_pillars": {
+        "capture_and_filters": {},
+        "stream_and_automation": {},
+        "core_protocols": {},
+        "app_layer_and_crypto": {},
+        "threat_detection": {},
+        "compliance_and_forensics": {}
+      },
+      "days": [
+        {"day_id": 64, "title": "HTTP ve HTTPS trafiği farkı", "score": 100, "status": "PASS", "tests_run": 14, "tests_passed": 14, "license": "MIT", "backup_verified": true}
+      ]
+    },
+    "expected_error": "Lisans kuralı ihlali: Gün 64 açık kaynak lisans ('MIT') içeremez."
+  },
+  "NEG_07_INSUFFICIENT_TEST_COUNT": {
+    "payload": {
+      "stage_metadata": {
+        "stage_id": "03",
+        "license_policy": "OZEL_LISANS_TUM_HAKLARI_SAKLIDIR"
+      },
+      "quality_pillars": {
+        "capture_and_filters": {},
+        "stream_and_automation": {},
+        "core_protocols": {},
+        "app_layer_and_crypto": {},
+        "threat_detection": {},
+        "compliance_and_forensics": {}
+      },
+      "days": [
+        {"day_id": 61, "title": "ARP ve ICMP trafiği analizi", "score": 100, "status": "PASS", "tests_run": 10, "tests_passed": 10, "license": "OZEL_LISANS_TUM_HAKLARI_SAKLIDIR", "backup_verified": true}
+      ]
+    },
+    "expected_error": "Yetersiz test sayısı: Gün 61 en az 14 test içermelidir, alınan: 10"
+  },
+  "NEG_08_UNVERIFIED_BACKUP": {
+    "payload": {
+      "stage_metadata": {
+        "stage_id": "03",
+        "license_policy": "OZEL_LISANS_TUM_HAKLARI_SAKLIDIR"
+      },
+      "quality_pillars": {
+        "capture_and_filters": {},
+        "stream_and_automation": {},
+        "core_protocols": {},
+        "app_layer_and_crypto": {},
+        "threat_detection": {},
+        "compliance_and_forensics": {}
+      },
+      "days": [
+        {"day_id": 69, "title": "Mini proje 9: Wireshark analiz raporu", "score": 100, "status": "PASS", "tests_run": 14, "tests_passed": 14, "negative_controls": 9, "negative_controls_passed": 9, "license": "OZEL_LISANS_TUM_HAKLARI_SAKLIDIR", "backup_verified": false}
+      ]
+    },
+    "expected_error": "Yedek doğrulama başarısız: Gün 69 için doğrulanmış arşiv bulunamadı."
+  },
+  "NEG_09_CORRUPT_DAY_NUMBER": {
+    "payload": {
+      "stage_metadata": {
+        "stage_id": "03",
+        "license_policy": "OZEL_LISANS_TUM_HAKLARI_SAKLIDIR"
+      },
+      "quality_pillars": {
+        "capture_and_filters": {},
+        "stream_and_automation": {},
+        "core_protocols": {},
+        "app_layer_and_crypto": {},
+        "threat_detection": {},
+        "compliance_and_forensics": {}
+      },
+      "days": [
+        {"day_id": 99, "title": "Geçersiz Gün", "score": 100, "status": "PASS", "tests_run": 14, "tests_passed": 14, "license": "OZEL_LISANS_TUM_HAKLARI_SAKLIDIR", "backup_verified": true}
+      ]
+    },
+    "expected_error": "Aşama 3 gün aralığı dışı: Gün 99 (beklenen: 51-70)"
+  }
+}

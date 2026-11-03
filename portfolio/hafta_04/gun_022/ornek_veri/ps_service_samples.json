@@ -1,0 +1,50 @@
+[
+  {
+    "Name": "wuauserv",
+    "DisplayName": "Windows Update",
+    "Status": "Running",
+    "StartType": "Automatic",
+    "BinaryPathName": "C:\\Windows\\system32\\svchost.exe -k netsvcs -p",
+    "ServiceAccount": "LocalSystem"
+  },
+  {
+    "Name": "MpsSvc",
+    "DisplayName": "Windows Defender Firewall",
+    "Status": "Running",
+    "StartType": "Automatic",
+    "BinaryPathName": "C:\\Windows\\system32\\svchost.exe -k LocalServiceNoNetworkFirewall -p",
+    "ServiceAccount": "NT AUTHORITY\\LocalService"
+  },
+  {
+    "Name": "Spooler",
+    "DisplayName": "Print Spooler",
+    "Status": "Running",
+    "StartType": "Automatic",
+    "BinaryPathName": "C:\\Windows\\System32\\spoolsv.exe",
+    "ServiceAccount": "LocalSystem"
+  },
+  {
+    "Name": "TlntSvr",
+    "DisplayName": "Telnet Server",
+    "Status": "Running",
+    "StartType": "Manual",
+    "BinaryPathName": "C:\\Windows\\System32\\tlntsvr.exe",
+    "ServiceAccount": "LocalSystem"
+  },
+  {
+    "Name": "RemoteRegistry",
+    "DisplayName": "Remote Registry Service",
+    "Status": "Running",
+    "StartType": "Automatic",
+    "BinaryPathName": "C:\\Windows\\system32\\svchost.exe -k regsvc",
+    "ServiceAccount": "NT AUTHORITY\\LocalService"
+  },
+  {
+    "Name": "VulnerableCustomService",
+    "DisplayName": "Enterprise Custom Legacy Agent",
+    "Status": "Running",
+    "StartType": "Automatic",
+    "BinaryPathName": "C:\\Program Files\\Enterprise Software\\Legacy Agent\\service.exe",
+    "ServiceAccount": "LocalSystem"
+  }
+]

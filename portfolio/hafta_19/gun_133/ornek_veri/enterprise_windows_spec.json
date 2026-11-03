@@ -1,0 +1,61 @@
+{
+  "audit_metadata": {
+    "system_name": "CORP-WKS-SRV22",
+    "domain_name": "CORP.LOCAL",
+    "os_version": "Windows Server 2022 Datacenter",
+    "scan_timestamp": "2026-11-02T11:00:00Z",
+    "lead_auditor": "Seydi Eryılmaz (@seydivakkas)"
+  },
+  "defender": {
+    "real_time_protection_enabled": true,
+    "behavior_monitoring_enabled": true,
+    "tamper_protection_enabled": false,
+    "pua_protection": 1
+  },
+  "uac_and_accounts": {
+    "enable_lua": 1,
+    "consent_prompt_behavior_admin": 2,
+    "prompt_on_secure_desktop": 1,
+    "guest_account_enabled": true
+  },
+  "ntfs_security": {
+    "writable_system_directories_for_users": [
+      "C:\\Program Files\\LegacySuite"
+    ],
+    "broken_inheritance_count": 0,
+    "sacl_auditing_enabled": true
+  },
+  "firewall": {
+    "profiles": {
+      "Domain": { "enabled": true, "default_inbound_action": "Block" },
+      "Private": { "enabled": true, "default_inbound_action": "Block" },
+      "Public": { "enabled": true, "default_inbound_action": "Block" }
+    },
+    "public_exposed_ports": [3389]
+  },
+  "services": {
+    "services": [
+      {
+        "service_name": "W32Time",
+        "image_path": "\"C:\\Windows\\system32\\svchost.exe\" -k LocalService",
+        "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)",
+        "binary_permissions": { "BUILTIN\\Users": ["ReadAndExecute"] },
+        "start_type": "Automatic"
+      },
+      {
+        "service_name": "BackupAgentSvc",
+        "image_path": "C:\\Program Files\\Enterprise Backup\\agent.exe -run",
+        "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)",
+        "binary_permissions": { "BUILTIN\\Users": ["ReadAndExecute"] },
+        "start_type": "Automatic"
+      },
+      {
+        "service_name": "RemoteRegistry",
+        "image_path": "\"C:\\Windows\\system32\\svchost.exe\" -k regsvc",
+        "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)",
+        "binary_permissions": { "BUILTIN\\Users": ["ReadAndExecute"] },
+        "start_type": "Automatic"
+      }
+    ]
+  }
+}

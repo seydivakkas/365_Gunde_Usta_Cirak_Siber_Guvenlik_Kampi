@@ -1,0 +1,43 @@
+======================================================================
+GÜN 120: STRIDE TEHDİT MODELLEME BİRİM TEST RAPORU
+Tarih / Saat: 2026-11-02T05:58:31.129926
+Standart: Microsoft STRIDE & DREAD Modelleme Metodolojisi
+======================================================================
+
+test_01_element_registration_and_matrix (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_01_element_registration_and_matrix)
+TEST 01: Process (Süreç) bileşeni tüm 6 STRIDE kategorisini (S, T, R, I, D, E) türetmelidir. ... ok
+test_02_external_entity_matrix (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_02_external_entity_matrix)
+TEST 02: Dış Varlık (External Entity) yalnızca Spoofing ve Repudiation (S, R) tehditlerini türetmelidir. ... ok
+test_03_data_store_matrix (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_03_data_store_matrix)
+TEST 03: Veri Deposu (Data Store) Tampering, Repudiation, Info Disclosure, DoS (T, R, I, D) türetmelidir. ... ok
+test_04_data_flow_matrix (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_04_data_flow_matrix)
+TEST 04: Veri Akışı (Data Flow) Tampering, Info Disclosure ve DoS (T, I, D) tehditlerini türetmelidir. ... ok
+test_05_dread_calculation_critical (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_05_dread_calculation_critical)
+TEST 05: Yüksek metrikli DREAD nesnesi (9.0) CRITICAL risk seviyesi üretmelidir. ... ok
+test_06_dread_calculation_low (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_06_dread_calculation_low)
+TEST 06: Düşük metrikli DREAD nesnesi (2.2) LOW risk seviyesi üretmelidir. ... ok
+test_07_invalid_dread_score_out_of_bounds (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_07_invalid_dread_score_out_of_bounds)
+TEST 07: 1-10 sınırları dışındaki DREAD puanı InvalidDREADScoreError vermelidir (CWE-20). ... ok
+test_08_missing_flow_endpoint_error (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_08_missing_flow_endpoint_error)
+TEST 08: Modelde olmayan uç noktaya veri akışı bağlamak MissingDataFlowEndpointError vermelidir (CWE-20). ... ok
+test_09_automatic_trust_boundary_crossing_detection (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_09_automatic_trust_boundary_crossing_detection)
+TEST 09: Farklı güven bölgeleri arasındaki veri akışında sınır aşımı otomatik saptanmalıdır. ... ok
+test_10_trust_boundary_threat_generation (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_10_trust_boundary_threat_generation)
+TEST 10: Güven sınırı aşan akışların analizi yüksek riskli DREAD skorları atamalıdır. ... ok
+test_11_apply_mitigation_score_reduction (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_11_apply_mitigation_score_reduction)
+TEST 11: Tedbir uygulandığında tehdit is_mitigated=True olmalı ve DREAD skoru düşmelidir. ... ok
+test_12_unmitigated_critical_threat_blocks_readiness (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_12_unmitigated_critical_threat_blocks_readiness)
+TEST 12: Tedbirsiz kalan kritik tehdit canlıya geçiş denetiminde hata fırlatmalıdır (CWE-1025). ... ok
+test_13_security_readiness_pass (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_13_security_readiness_pass)
+TEST 13: Tüm yüksek/kritik tehditler çözüldüğünde canlıya geçiş onaylanmalıdır. ... ok
+test_14_markdown_report_generation (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_14_markdown_report_generation)
+TEST 14: Markdown tehdit modelleme raporu DFD özetini ve tehdit tablosunu içermelidir. ... ok
+test_15_audit_trail_logging (test_stride_threat_modeling.TestSTRIDEThreatModeling.test_15_audit_trail_logging)
+TEST 15: Tüm modelleme adımları denetim günlüğüne zaman damgalı yazılmalıdır. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.003s
+
+OK
+
+Çıkış Kodu: 0

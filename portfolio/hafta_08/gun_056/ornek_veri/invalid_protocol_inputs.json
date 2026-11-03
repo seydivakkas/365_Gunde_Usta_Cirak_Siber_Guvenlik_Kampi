@@ -1,0 +1,82 @@
+{
+  "aciklama": "G056 Mini Proje 7: Protokol Haritasi - Sinir Durumlari ve Negatif Paket Ayrıştırma Girdileri",
+  "versiyon": "1.0.0",
+  "negatif_testler": [
+    {
+      "test_id": "NEG-01-SHORT-ETHERNET",
+      "hata_tipi": "KirpikliEthernetCercevesi",
+      "beklenen_hata": "Ethernet cercevesi cok kisa: 10 bayt. Minimum baslik uzunlugu 14 bayttir.",
+      "veri": {
+        "ham_baytlar": "000c294f8e35ffffffff"
+      }
+    },
+    {
+      "test_id": "NEG-02-INVALID-ETHERTYPE",
+      "hata_tipi": "BilinmeyenEtherType",
+      "beklenen_hata": "Desteklenmeyen veya gecersiz EtherType: 0xffff.",
+      "veri": {
+        "src_mac": "00:0c:29:4f:8e:35",
+        "dst_mac": "52:54:00:12:34:56",
+        "ethertype": "0xffff"
+      }
+    },
+    {
+      "test_id": "NEG-03-BAD-IP-VERSION",
+      "hata_tipi": "GecersizIpVersiyonu",
+      "beklenen_hata": "Gecersiz IP versiyonu: 2. IPv4 icin versiyon 4 olmalidir.",
+      "veri": {
+        "version": 2,
+        "ihl": 5,
+        "total_length": 40
+      }
+    },
+    {
+      "test_id": "NEG-04-SHORT-IP-HEADER",
+      "hata_tipi": "KirpikliIpBasligi",
+      "beklenen_hata": "IPv4 basligi yetersiz: 16 bayt. Minimum uzunluk 20 bayt olmalidir.",
+      "veri": {
+        "ham_bayt_uzunlugu": 16
+      }
+    },
+    {
+      "test_id": "NEG-05-INVALID-L4-PROTOCOL",
+      "hata_tipi": "BilinmeyenKatman4Protokolu",
+      "beklenen_hata": "Desteklenmeyen L4 protokol kodu: 99. Yalnizca TCP (6), UDP (17), ICMP (1) desteklenir.",
+      "veri": {
+        "protocol": 99
+      }
+    },
+    {
+      "test_id": "NEG-06-SHORT-TCP-HEADER",
+      "hata_tipi": "KirpikliTcpBasligi",
+      "beklenen_hata": "TCP basligi yetersiz: 12 bayt. Minimum TCP basligi 20 bayttir.",
+      "veri": {
+        "ham_bayt_uzunlugu": 12
+      }
+    },
+    {
+      "test_id": "NEG-07-SHORT-UDP-HEADER",
+      "hata_tipi": "KirpikliUdpBasligi",
+      "beklenen_hata": "UDP basligi yetersiz: 4 bayt. Minimum UDP basligi 8 bayttir.",
+      "veri": {
+        "ham_bayt_uzunlugu": 4
+      }
+    },
+    {
+      "test_id": "NEG-08-MALFORMED-MAC",
+      "hata_tipi": "BozukMacAdresi",
+      "beklenen_hata": "Gecersiz MAC adresi: '00:11:ZZ:44:55:66'. 6 baytlik heksadesimal olmalidir.",
+      "veri": {
+        "mac": "00:11:ZZ:44:55:66"
+      }
+    },
+    {
+      "test_id": "NEG-09-MALFORMED-IPV4",
+      "hata_tipi": "GecersizIpv4Adresi",
+      "beklenen_hata": "Gecersiz IPv4 adresi: '999.1.1.1'. Oktet degerleri 0-255 araliginda olmalidir.",
+      "veri": {
+        "ip": "999.1.1.1"
+      }
+    }
+  ]
+}

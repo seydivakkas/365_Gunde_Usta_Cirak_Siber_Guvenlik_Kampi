@@ -1,0 +1,20 @@
+# IPv4 Adresleme, Alt Ağ (Subnetting) ve CIDR Analiz Raporu
+
+Bu rapor, analiz edilen alt ağların bit düzeyindeki maske, ağ, yayın, konak aralıklarını
+ve IETF standartları çerçevesindeki güvenlik/bogon durumlarını belgeler.
+
+| ID / CIDR | Ağ Adresi | Alt Ağ Maskesi | Kullanılabilir Aralık | Toplam / Konak | Kategori | Bogon |
+|---|---|---|---|---|---|---|
+| `192.168.1.10/24` | `192.168.1.0` | `255.255.255.0` | `192.168.1.1 - 192.168.1.254` | 256 / 254 | RFC 1918 Private (Class C) | ⚠️ EVET (Filtrele) |
+| `10.50.0.1/16` | `10.50.0.0` | `255.255.0.0` | `10.50.0.1 - 10.50.255.254` | 65536 / 65534 | RFC 1918 Private (Class A) | ⚠️ EVET (Filtrele) |
+| `172.16.100.45/28` | `172.16.100.32` | `255.255.255.240` | `172.16.100.33 - 172.16.100.46` | 16 / 14 | RFC 1918 Private (Class B) | ⚠️ EVET (Filtrele) |
+| `10.0.0.1/30` | `10.0.0.0` | `255.255.255.252` | `10.0.0.1 - 10.0.0.2` | 4 / 2 | RFC 1918 Private (Class A) | ⚠️ EVET (Filtrele) |
+| `192.0.2.1/31` | `192.0.2.0` | `255.255.255.254` | `192.0.2.0 - 192.0.2.1` | 2 / 2 | RFC 5737 Documentation (TEST-NET-1) | ⚠️ EVET (Filtrele) |
+| `198.51.100.5/32` | `198.51.100.5` | `255.255.255.255` | `198.51.100.5 - 198.51.100.5` | 1 / 1 | RFC 5737 Documentation (TEST-NET-2) | ⚠️ EVET (Filtrele) |
+| `100.64.10.50/20` | `100.64.0.0` | `255.255.240.0` | `100.64.0.1 - 100.64.15.254` | 4096 / 4094 | RFC 6598 Shared Address Space (CGNAT) | ⚠️ EVET (Filtrele) |
+| `8.8.8.8/24` | `8.8.8.0` | `255.255.255.0` | `8.8.8.1 - 8.8.8.254` | 256 / 254 | Public Routable IP | ✅ HAYIR (Genel) |
+
+## Güvenlik Denetim Notları ve Savunma Tavsiyeleri
+- **BCP 38 / RFC 2827:** Dış WAN arayüzlerinden içeri giren ve kaynak adresi Bogon/RFC 1918 olan paketler derhal atılmalıdır (Ingress Filtering).
+- **Mikro-Segmentasyon:** DMZ ve hassas veritabanı ağlarında /28 veya /29 gibi daraltılmış alt ağlar kullanarak yanal hareketi (lateral movement) kısıtlayın.
+- **Noktadan Noktaya Bağlantılar:** Yönlendirici arası linklerde RFC 3021 (/31) kullanarak IP israfını ve yayın trafiği riskini engelleyin.

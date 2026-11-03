@@ -1,0 +1,52 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+       YEREL NOT UYGULAMASI (KRİPTONOT) VERİ AKIŞ DİYAGRAMI (DFD LEVEL 1)
+================================================================================
+
+ [DIŞ VARLIK: E1]
+ (Kullanıcı / İnsan)
+         |
+         | [DF1: Not Metni]
+         | (Girdi Doğrulama & Sanitizasyon)
+ ~ ~ ~ ~ v ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+ [ GÜVEN SINIRI: TB1 - Kullanıcı / İşletim Sistemi Oturum Sınırı ]
+ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+         |
+         v
+ +-----------------------------------------------------------------------------+
+ | [SÜREÇ: P1] Not Defteri Masaüstü Süreci (Bellek / Execution Memory)         |
+ | - Kullanıcı Arayüzü Olay Yönetimi (UI Event Loop)                           |
+ | - Kriptografik Şifreleme & Çözme (AES-256-GCM / PBKDF2)                     |
+ | - Tehditler: Memory Dump (Tahrifat / Sızıntı), Buffer Overflow              |
+ +----------------------+------------------------------+-----------------------+
+                        |                              |
+ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  v  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ v ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+ [ GÜVEN SINIRI: TB2 - Disk Depolama Sınırı ]   [ GÜVEN SINIRI: TB3 - İnternet/Bulut Sınırı ]
+ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+                        |                              |
+    [DF2/DF3: Şifreli Kalıcı Depolama]           [DF4: Sıfır Bilgi E2EE Senkronizasyon]
+    - At-Rest AES-256-GCM                       - TLS 1.3 Taşıma Koruması
+    - GCM Kimlik Doğrulama Etiketi (Auth Tag)   - Certificate Pinning & JWT
+    - OS Keyring Anahtar Yönetimi               - Sıfır Bilgi (Zero-Knowledge)
+                        |                              |
+                        v                              v
+ [(VERİ DEPOSU: DS1)]                          [UZAK SÜREÇ: P2]
+ Şifreli Not Kasası (SQLite Dosyası)           Bulut Senkronizasyon Servisi (AWS API)
+
+================================================================================
+STRIDE TEHDİT MATRİSİ VE SAVUNMA KALKANI:
+--------------------------------------------------------------------------------
+S - Spoofing (Kimlik Sahteciliği): Sahte bulut API sunucusu -> TLS Certificate Pinning
+T - Tampering (Veri Tahrifatı): Diskteki SQLite dosyasının bozulması -> GCM Auth Tag
+R - Repudiation (İnkar): Kullanıcının not sildiğini reddetmesi -> İstemci Denetim İzi
+I - Information Disclosure (Bilgi İfşası): Diskin çalınması -> AES-256-GCM Şifreleme
+D - Denial of Service (Hizmet Engelleme): Aşırı büyük girdi ile çökertme -> 10MB Sınırı
+E - Elevation of Privilege (Yetki Yükseltme): Normal kullanıcının admin olması -> LAPS/UAC
+================================================================================
+ALTIN KURAL: Tehdit != Olay!
+(Tehdit, gerçekleşmesi muhtemel olan potansiyel tehlikedir; doğru mimari sınırları
+ve kontrollerle tehditler birer güvenlik ihlaline dönüşmeden engellenir!)
+================================================================================

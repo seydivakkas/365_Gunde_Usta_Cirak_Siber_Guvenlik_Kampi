@@ -1,0 +1,77 @@
+=== GÜN 122 NEGATİF KONTROL VE HATA DOĞRULAMA RAPORU ===
+Tarih: 2026-11-02T06:12:47.481270
+Toplam Senaryo: 9
+
+Senaryo 1: Sıfır Etkinlikli Kontrol Yapılandırması
+  Açıklama: Kontrol etkinliğinin yüzde 0 olarak verilmesi durumunda motorun bunu reddetmesi.
+  Beklenen: InvalidControlConfigurationError
+  Sonuç/Hata: InvalidControlConfigurationError: Kontrol etkinliği 0.01 ile 0.99 arasında olmalıdır. Verilen: 0.0
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 2: Yüzde Yüzü Aşan Kontrol Etkinliği
+  Açıklama: Mükemmel güvenlik iddiasıyla 1.05 etkinlik girilmesinin engellenmesi.
+  Beklenen: InvalidControlConfigurationError
+  Sonuç/Hata: InvalidControlConfigurationError: Kontrol etkinliği 0.01 ile 0.99 arasında olmalıdır. Verilen: 1.05
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 3: Boş Kontrol Adı Tanımlama
+  Açıklama: Kontrol adı alanı boşluklardan veya boş dizeden oluştuğunda fırlatılan hata.
+  Beklenen: InvalidControlConfigurationError
+  Sonuç/Hata: InvalidControlConfigurationError: Kontrol adı boş bırakılamaz.
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 4: Mükerrer Kontrol ID Tanımlama
+  Açıklama: Aynı kimliğe sahip iki kontrolün mimariye eklenmesinin engellenmesi.
+  Beklenen: DuplicateControlError
+  Sonuç/Hata: DuplicateControlError: Bu ID ile bir kontrol zaten mevcut: CTRL-PERIM-01
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 5: Katman Boşluğu İhlali (CWE-653)
+  Açıklama: Savunma katmanlarından birinde (örn: DATA) hiçbir aktif kontrol olmaması durumunda enforce_resilience hatası.
+  Beklenen: DefenseGapError
+  Sonuç/Hata: DefenseGapError: Mimari Katman Boşluğu İhlali (CWE-653):
+KATMAN BOŞLUĞU (CWE-653): '1_Fiziksel_Guvenlik' katmanında hiçbir aktif güvenlik kontrolü bulunmuyor!
+KATMAN BOŞLUĞU (CWE-653): '2_Cevre_ve_Dis_Ag' katmanında hiçbir aktif güvenlik kontrolü bulunmuyor!
+KATMAN BOŞLUĞU (CWE-653): '3_Ic_Ag_ve_Segmentasyon' katmanında hiçbir aktif güvenlik kontrolü bulunmuyor!
+KATMAN BOŞLUĞU (CWE-653): '4_Uc_Nokta_ve_Sunucu' katmanında hiçbir aktif güvenlik kontrolü bulunmuyor!
+KATMAN BOŞLUĞU (CWE-653): '5_Uygulama_ve_API' katmanında hiçbir aktif güvenlik kontrolü bulunmuyor!
+KATMAN BOŞLUĞU (CWE-653): '6_Veri_ve_Depolama' katmanında hiçbir aktif güvenlik kontrolü bulunmuyor!
+KATMAN BOŞLUĞU (CWE-653): '7_Kimlik_ve_Insan' katmanında hiçbir aktif güvenlik kontrolü bulunmuyor!
+SAVUNMASIZ VEKTÖR (CWE-653): 'SQL Injection (Veri Tabanı İhlali)' saldırısına karşı mimaride hiçbir aktif önleyici kontrol tanımlanmamış!
+SAVUNMASIZ VEKTÖR (CWE-653): 'Ransomware (Fidye Yazılımı ve Yayılma)' saldırısına karşı mimaride hiçbir aktif önleyici kontrol tanımlanmamış!
+SAVUNMASIZ VEKTÖR (CWE-653): 'Credential Stuffing (Kaba Kuvvet ve Hesap Hırsızlığı)' saldırısına karşı mimaride hiçbir aktif önleyici kontrol tanımlanmamış!
+SAVUNMASIZ VEKTÖR (CWE-653): 'İç Tehdit (Yetki İstismarı ve Sabotaj)' saldırısına karşı mimaride hiçbir aktif önleyici kontrol tanımlanmamış!
+SAVUNMASIZ VEKTÖR (CWE-653): 'Hassas Veri Sızıntısı (Ağ Üzerinden Veri Çıkarma)' saldırısına karşı mimaride hiçbir aktif önleyici kontrol tanımlanmamış!
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 6: Tek Hata Noktası / SPoF İhlali (CWE-1008)
+  Açıklama: Kritik bir saldırı vektörüne (örn: SQL Injection) karşı tüm mimaride sadece 1 önleyici kontrol bulunması.
+  Beklenen: SinglePointOfFailureError
+  Sonuç/Hata: SinglePointOfFailureError: Tek Hata Noktası İhlali (CWE-1008):
+TEK HATA NOKTASI / SPoF (CWE-1008): 'SQL Injection (Veri Tabanı İhlali)' saldırısına karşı tüm mimaride yalnızca 1 önleyici kontrol ('Tek WAF') mevcut! O aşılırsa savunma çöker.
+SAVUNMASIZ VEKTÖR (CWE-653): 'Ransomware (Fidye Yazılımı ve Yayılma)' saldırısına karşı mimaride hiçbir aktif önleyici kontrol tanımlanmamış!
+SAVUNMASIZ VEKTÖR (CWE-653): 'Credential Stuffing (Kaba Kuvvet ve Hesap Hırsızlığı)' saldırısına karşı mimaride hiçbir aktif önleyici kontrol tanımlanmamış!
+SAVUNMASIZ VEKTÖR (CWE-653): 'İç Tehdit (Yetki İstismarı ve Sabotaj)' saldırısına karşı mimaride hiçbir aktif önleyici kontrol tanımlanmamış!
+SAVUNMASIZ VEKTÖR (CWE-653): 'Hassas Veri Sızıntısı (Ağ Üzerinden Veri Çıkarma)' saldırısına karşı mimaride hiçbir aktif önleyici kontrol tanımlanmamış!
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 7: Gözetimsiz Katman / Kör Nokta İhlali
+  Açıklama: Bir katmanda önleyici kontrol varken loglama ve izleme (Detective) bulunmaması.
+  Beklenen: UnmonitoredLayerError
+  Sonuç/Hata: UnmonitoredLayerError: Gözetimsiz Katman İhlali:
+GÖZETİMSİZ KATMAN (Blind Spot): '5_Uygulama_ve_API' katmanında önleyici kontrol mevcut ancak izleme/tespit edici (Detective) kontrol yok!
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 8: Tanımsız Senaryo Simülasyonu
+  Açıklama: Sistemde kayıtlı olmayan bir senaryo kimliğiyle simülasyon koşturulmaya çalışılması.
+  Beklenen: DefenseInDepthError
+  Sonuç/Hata: DefenseInDepthError: Saldırı senaryosu bulunamadı: NON_EXISTENT_SCENARIO
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 9: Tam Katman Delinmesi ve Veri İhlali
+  Açıklama: Kontrollerin atlatma gücünün altında kaldığı senaryoda saldırganın veriye erişmesi ve ihlalin raporlanması.
+  Beklenen: DATA_COMPROMISED
+  Sonuç/Hata: N/A: Saldırı tüm savunmayı deldi ve veri sızdırıldı (Beklenen senaryo).
+  Durum: [PASS - DOĞRULANDI]
+
+Genel Sonuç: 9/9 senaryo başarıyla doğrulandı.

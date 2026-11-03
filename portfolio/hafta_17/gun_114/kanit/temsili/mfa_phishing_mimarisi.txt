@@ -1,0 +1,52 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
++------------------------------------------------------------------------------+
+|            GÜN 114: ÇOK FAKTÖRLÜ KİMLİK DOĞRULAMA (MFA) VE OLTALAMA DİRENCİ  |
+|             TOTP VS. FIDO2 WEBAUTHN TERS VEKİL (AiTM) KARŞILAŞTIRMASI         |
++------------------------------------------------------------------------------+
+
+                    +--------------------------------+
+                    | Kurban (Kullanıcı / Tarayıcı)  |
+                    +---------------+----------------+
+                                    |
+          (Oltalama Linkine Tıklar: https://phishing-site.com)
+                                    |
+                                    v
+     +--------------------------------------------------------------+
+     |   TERS VEKİL (AiTM PROXY / EVILGINX2 SALDIRGANI)             |
+     +--------------------------------------------------------------+
+     | Saldırgan sahte login sayfasını kurbana sunar.               |
+     +------------------------------+-------------------------------+
+                    |                               |
+    [SENARYO 1: TOTP KULLANIMI]         [SENARYO 2: FIDO2 WEBAUTHN]
+                    |                               |
+                    v                               v
+     +------------------------------+ +------------------------------+
+     | Kurban 6 haneli TOTP kodunu  | | Donanım anahtarı (YubiKey)   |
+     | sahte forma yazar: '481920'  | | tarayıcıdaki menşei imzalar: |
+     |                              | | Origin: 'phishing-site.com'  |
+     +--------------+---------------+ +--------------+---------------+
+                    |                               |
+                    | (Kodu Meşru Siteye İletir)    | (İmzayı Meşru Siteye İletir)
+                    v                               v
+     +--------------------------------------------------------------+
+     |   MEŞRU KURUMSAL SUNUCU (https://mevzuat.siber.local)        |
+     +--------------------------------------------------------------+
+     | SENARYO 1 SONUCU (TOTP):                                     |
+     | - Sunucu kodu doğrular: Kod GEÇERLİ!                         |
+     | - ZAFİYET (CWE-287): TOTP kodunda menşe bilgisi olmadığı     |
+     |   için saldırgan kurbanın oturumunu ELE GEÇİRİR!             |
+     +--------------------------------------------------------------+
+     | SENARYO 2 SONUCU (FIDO2 WEBAUTHN):                           |
+     | - Sunucu 'clientDataJSON' içindeki menşei kontrol eder:      |
+     |   Beklenen Menşe : https://mevzuat.siber.local               |
+     |   Gelen Menşe    : https://phishing-site.com                 |
+     | - MENŞE UYUMSUZLUĞU (CWE-346) TESPİT EDİLDİ!                |
+     | - SAVUNMA: İstek anında imha edilir, saldırgan engellenir!   |
+     +--------------------------------------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

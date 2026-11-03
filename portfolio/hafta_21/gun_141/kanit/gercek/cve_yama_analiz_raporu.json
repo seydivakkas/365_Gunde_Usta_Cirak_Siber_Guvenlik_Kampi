@@ -1,0 +1,45 @@
+{
+  "hostname": "srv-prod-app01.corp.internal",
+  "os_distribution": "Ubuntu 22.04.4 LTS (Jammy Jellyfish)",
+  "scan_timestamp": "2026-11-02T15:20:56.311628",
+  "total_vulnerabilities": 3,
+  "emergency_count": 2,
+  "sla_breached_count": 0,
+  "auto_update_enabled": true,
+  "reboot_required": false,
+  "patch_hygiene_score": 50.0,
+  "compliance_status": "NON_COMPLIANT",
+  "triage_results": [
+    {
+      "cve_id": "CVE-2024-6387",
+      "severity": "HIGH",
+      "urgency_level": "EMERGENCY",
+      "max_sla_days": 3,
+      "elapsed_days": 1,
+      "sla_breached": false,
+      "remediation_command": "apt-get update && apt-get install --only-upgrade -y openssh-server=1:8.9p1-3ubuntu0.10",
+      "rollback_command": "apt-get install -y --allow-downgrades openssh-server=1:8.9p1-3ubuntu0.7"
+    },
+    {
+      "cve_id": "CVE-2023-4863",
+      "severity": "HIGH",
+      "urgency_level": "EMERGENCY",
+      "max_sla_days": 3,
+      "elapsed_days": 1,
+      "sla_breached": false,
+      "remediation_command": "apt-get update && apt-get install --only-upgrade -y libwebp7=1.2.2-2ubuntu0.2",
+      "rollback_command": "apt-get install -y --allow-downgrades libwebp7=1.2.2-2ubuntu0.1"
+    },
+    {
+      "cve_id": "CVE-2024-21626",
+      "severity": "HIGH",
+      "urgency_level": "HIGH",
+      "max_sla_days": 14,
+      "elapsed_days": 8,
+      "sla_breached": false,
+      "remediation_command": "apt-get update && apt-get install --only-upgrade -y runc=1.1.7-0ubuntu1~22.04.2",
+      "rollback_command": "apt-get install -y --allow-downgrades runc=1.1.7-0ubuntu1~22.04.1"
+    }
+  ],
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)."
+}

@@ -1,0 +1,86 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas).",
+  "total_evaluated": 8,
+  "average_base_score": 8.09,
+  "severity_distribution": {
+    "CRITICAL": 2,
+    "HIGH": 5,
+    "MEDIUM": 1,
+    "LOW": 0,
+    "NONE": 0
+  },
+  "results": [
+    {
+      "cve_id": "CVE-2021-44228",
+      "title": "Apache Log4j2 JNDI Remote Code Execution (Log4Shell)",
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "base_score": 10.0,
+      "severity": "CRITICAL",
+      "impact": 6.0,
+      "exploitability": 3.9
+    },
+    {
+      "cve_id": "CVE-2024-6387",
+      "title": "OpenSSH Server Signal Handler Race Condition (regreSSHion)",
+      "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "base_score": 8.1,
+      "severity": "HIGH",
+      "impact": 5.9,
+      "exploitability": 2.2
+    },
+    {
+      "cve_id": "CVE-2014-0160",
+      "title": "OpenSSL TLS Heartbeat Information Disclosure (Heartbleed)",
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "base_score": 7.5,
+      "severity": "HIGH",
+      "impact": 3.6,
+      "exploitability": 3.9
+    },
+    {
+      "cve_id": "CVE-2016-5195",
+      "title": "Linux Kernel Copy-on-Write Memory Breakout (Dirty COW)",
+      "vector_string": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "base_score": 7.8,
+      "severity": "HIGH",
+      "impact": 5.9,
+      "exploitability": 1.8
+    },
+    {
+      "cve_id": "CVE-2022-22965",
+      "title": "Spring Framework DataBinder Remote Code Execution (Spring4Shell)",
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "base_score": 9.8,
+      "severity": "CRITICAL",
+      "impact": 5.9,
+      "exploitability": 3.9
+    },
+    {
+      "cve_id": "CVE-2021-3156",
+      "title": "Sudo Heap-Based Buffer Overflow (Baron Samedit)",
+      "vector_string": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "base_score": 7.8,
+      "severity": "HIGH",
+      "impact": 5.9,
+      "exploitability": 1.8
+    },
+    {
+      "cve_id": "CVE-2022-3602",
+      "title": "OpenSSL X.509 Email Address 4-byte Buffer Overflow",
+      "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "base_score": 5.9,
+      "severity": "MEDIUM",
+      "impact": 3.6,
+      "exploitability": 2.2
+    },
+    {
+      "cve_id": "CVE-2021-4034",
+      "title": "Polkit pkexec Local Privilege Escalation (PwnKit)",
+      "vector_string": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "base_score": 7.8,
+      "severity": "HIGH",
+      "impact": 5.9,
+      "exploitability": 1.8
+    }
+  ]
+}

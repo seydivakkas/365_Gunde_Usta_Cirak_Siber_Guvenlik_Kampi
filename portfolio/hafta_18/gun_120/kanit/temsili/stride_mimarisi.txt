@@ -1,0 +1,38 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+======================================================================
+STRIDE TEHDİT MODELLEME VE GÜVEN SINIRLARI DFD MİMARİSİ
+======================================================================
+
+   [ DIŞ VARLIK: KULLANICI ] (Tehditler: Spoofing, Repudiation)
+                 │
+                 ▼ (Veri Akışı: HTTPS / TLS 1.3 - T, I, D)
+   ~~~~~~~~~~~~~~ GÜVEN SINIRI: Internet / DMZ ~~~~~~~~~~~~~~
+                 │
+                 ▼
+   ┌────────────────────────────────────────────────────────┐
+   │       SÜREÇ: API AĞ GEÇİDİ (Ters Vekil / PEP)          │
+   │  Tehditler: S, T, R, I, D, E                           │
+   │  Tedbirler: WAF, Rate Limiting, TLS, JWT Doğrulama    │
+   └───────────────────────────┬────────────────────────────┘
+                               │
+                               ▼ (Veri Akışı: mTLS / gRPC - T, I, D)
+   ~~~~~~~~~~~~~~ GÜVEN SINIRI: DMZ / Intranet ~~~~~~~~~~~~~~
+                               │
+                               ▼
+   ┌────────────────────────────────────────────────────────┐
+   │        SÜREÇ: ÖDEME MİKROSERVİSİ                       │
+   │  Tehditler: S, T, R, I, D, E                           │
+   │  Tedbirler: RBAC/ABAC, JIT, İmzalı Audit Log          │
+   └───────────────────────────┬────────────────────────────┘
+                               │
+                               ▼ (Veri Akışı: Şifreli SQL - T, I, D)
+   ~~~~~~~~~~~~~~ GÜVEN SINIRI: Intranet / Secure Core ~~~~~~
+                               │
+                               ▼
+   ┌────────────────────────────────────────────────────────┐
+   │     VERİ DEPOSU: KREDİ KARTI VERİTABANI                │
+   │  Tehditler: Tampering, Repudiation, Info Disc, DoS     │
+   │  Tedbirler: AES-256-GCM, Disk Şifreleme, WORM Log      │
+   └────────────────────────────────────────────────────────┘
+
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

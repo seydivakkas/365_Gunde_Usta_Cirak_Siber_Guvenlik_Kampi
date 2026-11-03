@@ -1,0 +1,81 @@
+{
+  "aciklama": "GÜN 019 - Windows Dosya Sistemi, NTFS ACL, ADS ve Dosya Başlığı Örnek Veri Seti",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "surum": "1.0.0",
+  "tarih": "2026-10-27",
+  "ornek_dosyalar": [
+    {
+      "dosya_adi": "kurumsal_fatura.pdf",
+      "gorunen_uzanti": ".pdf",
+      "sihirli_baytlar_hex": "4d5a9000",
+      "gercek_dosya_tipi": "PE Executable (Windows Çalıştırılabilir .EXE)",
+      "boyut_byte": 245760,
+      "ads_akislari": [],
+      "acl_izinleri": {
+        "sahip": "CORP\\seydieryilmaz",
+        "dacl": [
+          {"kullanici_grup": "BUILTIN\\Administrators", "izin": "FullControl", "tip": "Allow"},
+          {"kullanici_grup": "NT AUTHORITY\\SYSTEM", "izin": "FullControl", "tip": "Allow"},
+          {"kullanici_grup": "BUILTIN\\Users", "izin": "ReadAndExecute", "tip": "Allow"}
+        ]
+      },
+      "beklenen_bulgu": "CRITICAL_EXTENSION_SPOOFING (PDF kılığına girmiş PE Executable)"
+    },
+    {
+      "dosya_adi": "masum_not.txt",
+      "gorunen_uzanti": ".txt",
+      "sihirli_baytlar_hex": "54686973",
+      "gercek_dosya_tipi": "ASCII / UTF-8 Düz Metin",
+      "boyut_byte": 128,
+      "ads_akislari": [
+        {
+          "akis_adi": "hidden_payload.ps1",
+          "akis_boyut_byte": 4096,
+          "aciklama": "Alternatif Veri Akışında (ADS) saklanan zararlı PowerShell betiği"
+        },
+        {
+          "akis_adi": "Zone.Identifier",
+          "akis_boyut_byte": 64,
+          "aciklama": "İnternet bölgesinden indirildiğini gösteren ZoneId=3 etiketi"
+        }
+      ],
+      "acl_izinleri": {
+        "sahip": "CORP\\seydieryilmaz",
+        "dacl": [
+          {"kullanici_grup": "Everyone", "izin": "FullControl", "tip": "Allow"}
+        ]
+      },
+      "beklenen_bulgu": "HIDDEN_ADS_DETECTED ve WEAK_ACL_EVERYONE_FULLCONTROL"
+    },
+    {
+      "dosya_adi": "resmi_rapor.pdf",
+      "gorunen_uzanti": ".pdf",
+      "sihirli_baytlar_hex": "25504446",
+      "gercek_dosya_tipi": "Adobe Portable Document Format (PDF)",
+      "boyut_byte": 524288,
+      "ads_akislari": [],
+      "acl_izinleri": {
+        "sahip": "CORP\\seydieryilmaz",
+        "dacl": [
+          {"kullanici_grup": "BUILTIN\\Administrators", "izin": "FullControl", "tip": "Allow"},
+          {"kullanici_grup": "BUILTIN\\Users", "izin": "Read", "tip": "Allow"}
+        ]
+      },
+      "beklenen_bulgu": "GUVENLI_TUTARLI_DOSYA"
+    }
+  ],
+  "klasor_acl_once_sonra_senaryosu": {
+    "klasor_adi": "C:\\Kurumsal_Veri_Test",
+    "onceki_izinler": [
+      {"kullanici_grup": "Everyone", "izin": "FullControl", "tip": "Allow"},
+      {"kullanici_grup": "BUILTIN\\Users", "izin": "Write", "tip": "Allow"}
+    ],
+    "sonraki_izinler": [
+      {"kullanici_grup": "BUILTIN\\Administrators", "izin": "FullControl", "tip": "Allow"},
+      {"kullanici_grup": "NT AUTHORITY\\SYSTEM", "izin": "FullControl", "tip": "Allow"},
+      {"kullanici_grup": "BUILTIN\\Users", "izin": "ReadAndExecute", "tip": "Allow"},
+      {"kullanici_grup": "Everyone", "izin": "Write", "tip": "Deny"}
+    ],
+    "hedef_guvenlik_iyilestirmesi": "Everyone FullControl kaldırıldı, Explicit Deny ile kısıtlandı, En Az Ayrıcalık uygulandı."
+  }
+}

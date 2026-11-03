@@ -1,0 +1,33 @@
+test_01_valid_scanner_payload (portfolio.hafta_11.gun_072.tests.test_secure_input_and_type_validator.TestSecureInputAndTypeValidator.test_01_valid_scanner_payload)
+Geerli a­ taray²c² y³k³n³n (scanner_task) t³m alanlar²n²n hatas²z do­ruland²­²n² s²nar. ... ok
+test_02_valid_firewall_rule_payload (portfolio.hafta_11.gun_072.tests.test_secure_input_and_type_validator.TestSecureInputAndTypeValidator.test_02_valid_firewall_rule_payload)
+G³venlik duvar² kural y³k³n³n kat² tiplerle ba■ar²yla do­ruland²­²n² test eder. ... ok
+test_03_canonicalization_and_nfkc (portfolio.hafta_11.gun_072.tests.test_secure_input_and_type_validator.TestSecureInputAndTypeValidator.test_03_canonicalization_and_nfkc)
+Unicode NFKC normalizasyonu ve bo■luk temizleme yetene­ini s²nar. ... ok
+test_04_text_and_json_report_generation (portfolio.hafta_11.gun_072.tests.test_secure_input_and_type_validator.TestSecureInputAndTypeValidator.test_04_text_and_json_report_generation)
+Metin ve JSON raporlama ²kt²lar²n²n hatas²z ³retildi­ini test eder. ... ok
+test_05_safe_path_resolution (portfolio.hafta_11.gun_072.tests.test_secure_input_and_type_validator.TestSecureInputAndTypeValidator.test_05_safe_path_resolution)
+G³venli k÷k dizin alt²ndaki geerli alt dosya yollar²n²n kabul edildi­ini test eder. ... ok
+test_06_neg_01_type_confusion_boolean_as_int (portfolio.hafta_11.gun_072.tests.test_secure_input_and_type_validator.TestSecureInputAndTypeValidator.test_06_neg_01_type_confusion_boolean_as_int)
+NEG_01: Boolean tipi int/port olarak verildi­inde tip karma■as² hatas² f²rlat²ld²­²n² s²nar. ... ok
+test_07_neg_02_port_out_of_bounds (portfolio.hafta_11.gun_072.tests.test_secure_input_and_type_validator.TestSecureInputAndTypeValidator.test_07_neg_02_port_out_of_bounds)
+NEG_02: 1-65535 d²■²ndaki port numaralar²nda s²n²r a■²m² hatas² verildi­ini s²nar. ... ok
+test_08_neg_03_command_injection_in_hostname (portfolio.hafta_11.gun_072.tests.test_secure_input_and_type_validator.TestSecureInputAndTypeValidator.test_08_neg_03_command_injection_in_hostname)
+NEG_03: Hostname iinde kabuk metakarakteri tespitinde enjeksiyon hatas² f²rlat²ld²­²n² s²nar. ... ok
+test_09_neg_04_path_traversal_attack (portfolio.hafta_11.gun_072.tests.test_secure_input_and_type_validator.TestSecureInputAndTypeValidator.test_09_neg_04_path_traversal_attack)
+NEG_04: ../ ieren dizin atlatma sald²r²lar²n²n engellendi­ini s²nar. ... ok
+test_10_neg_05_invalid_ipv4_octet (portfolio.hafta_11.gun_072.tests.test_secure_input_and_type_validator.TestSecureInputAndTypeValidator.test_10_neg_05_invalid_ipv4_octet)
+NEG_05: 255'ten b³y³k oktet ieren geersiz IPv4 adresinin reddedildi­ini test eder. ... ok
+test_11_neg_06_ambiguous_boolean_value (portfolio.hafta_11.gun_072.tests.test_secure_input_and_type_validator.TestSecureInputAndTypeValidator.test_11_neg_06_ambiguous_boolean_value)
+NEG_06: 'maybe' gibi belirsiz de­erlerin mant²ksal tipe evrilemeyip reddedildi­ini s²nar. ... ok
+test_12_neg_07_null_byte_injection (portfolio.hafta_11.gun_072.tests.test_secure_input_and_type_validator.TestSecureInputAndTypeValidator.test_12_neg_07_null_byte_injection)
+NEG_07: Null byte (\x00) ieren girdilerin derhal reddedildi­ini test eder. ... ok
+test_13_neg_08_string_oversized_dos (portfolio.hafta_11.gun_072.tests.test_secure_input_and_type_validator.TestSecureInputAndTypeValidator.test_13_neg_08_string_oversized_dos)
+NEG_08: RFC s²n²r²n² a■an devasa uzunluktaki dizelerin engellendi­ini test eder. ... ok
+test_14_neg_09_malformed_payload_schema (portfolio.hafta_11.gun_072.tests.test_secure_input_and_type_validator.TestSecureInputAndTypeValidator.test_14_neg_09_malformed_payload_schema)
+NEG_09: Y³k³n s÷zl³k yerine dizi format²nda gelmesi durumunda hata f²rlat²ld²­²n² s²nar. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.002s
+
+OK

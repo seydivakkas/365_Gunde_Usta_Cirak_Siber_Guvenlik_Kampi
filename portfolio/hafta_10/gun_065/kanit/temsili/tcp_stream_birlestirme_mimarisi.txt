@@ -1,0 +1,93 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+====================================================================================================
+G065: FOLLOW TCP STREAM VE YENIDEN BIRLESTIRME (REASSEMBLY) MIMARISI
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR | Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+====================================================================================================
+
+Bu şema, TCP segmentlerinin sıra numaralarına (Sequence Number) göre nasıl hizalandığını,
+sıra dışı (out-of-order) gelen parçaların nasıl arabelleğe alınıp ardışık hale getirildiğini,
+örtüşen (overlapping) kötü niyetli segmentlerin nasıl tespit edildiğini ve Wireshark Follow Stream
+formatında nasıl görselleştirildiğini gösteren kavramsal bir mimari tasarımdır.
+
++--------------------------------------------------------------------------------------------------+
+|                  1. TCP BAYT AKISI VE SIRA NUMARASI YONETIMI                                     |
++--------------------------------------------------------------------------------------------------+
+
+   İstemci (192.168.1.105)                     Sunucu (93.184.216.34)
+   -----------------------                     ----------------------
+   ISN_c = 1000000                             ISN_s = 2000000
+        │                                           │
+   t0   ├────────── SYN (Seq=1000000) ─────────────>│  [El sıkışma başlar: Beklenen=1000001]
+   t1   │<───────── SYN-ACK (Seq=2000000, Ack=1000001)┤ [Beklenen_s=2000001]
+   t2   ├────────── ACK (Seq=1000001, Ack=2000001) ─>│  [Bağlantı ESTABLISHED]
+        │                                           │
+   t3   ├────────── Seg 4: HTTP GET Parça 1 ───────>│  [Seq=1000001, Len=38, Beklenen: 1000039]
+   t4   ├────────── Seg 5: HTTP GET Parça 2 ───────>│  [Seq=1000039, Len=31, Beklenen: 1000070]
+        │                                           │
+        │<───────── Seg 6: HTTP Yanıt GÖVDE ────────┤  [Seq=2000111, Len=78] !!! SIRA DIŞI (OOO)
+        │           (Gövde, başlıktan ÖNCE geldi!)  │  -> ARABELLEĞE ALINIR (Queue[2000111] = Seg 6)
+        │                                           │
+        │<───────── Seg 7: HTTP Yanıt BAŞLIK ───────┤  [Seq=2000001, Len=110] GECİKEN BAŞLIK
+        │                                           │  -> Beklenen (2000001) geldi!
+        │                                           │  -> Başlık eklenir, Beklenen: 2000111 olur.
+        │                                           │  -> Arabellekten Seg 6 otomatik çekilir!
+        │                                           │
+        │<───────── Seg 8: KOPYA GÖVDE (Retransmit)─┤  [Seq=2000111, Len=78] KOPYA (DUPLICATE)
+        │                                           │  -> Seq < Beklenen -> ELENİR (Drop)
+        │                                           │
+   t8   ├────────── FIN-ACK (Seq=1000070) ──────────>│
+   t9   │<───────── FIN-ACK (Seq=2000189) ──────────┤
+   t10  ├────────── Final ACK (Seq=1000071) ────────>│  [CLOSED: Toplam 257 bayt birleşti]
+
++--------------------------------------------------------------------------------------------------+
+|                  2. SIRA DIŞI ARABELLEKLEME VE KORUMA MEKANIZMASI                                |
++--------------------------------------------------------------------------------------------------+
+
+   Gelen Segment (Seq, Len, Payload)
+          │
+          ├──> Seq == Beklenen (In-Order) ──> Akışa Ekle -> Beklenen += Len -> FlushBuffer()
+          │
+          ├──> Seq < Beklenen  ──> Seq + Len <= Beklenen? ──[EVET]──> Kopya (Duplicate / Drop)
+          │                                  │
+          │                                 [HAYIR] -> Örtüşme (Overlap) Kontrolü
+          │                                            Çelişki varsa: OverlappingPayloadConflictError!
+          │                                            Temiz ise: Budama (Trim) ve Ekleme
+          │
+          └──> Seq > Beklenen (Out-of-Order)
+                    │
+                    ├──> Kuyruk Boyutu >= max_buffer_size? ──[EVET]──> ReassemblyBufferOverflowError
+                    │
+                    └──> [HAYIR] -> Arabelleğe Ekle (out_of_order_buffer[Seq] = Segment)
+
++--------------------------------------------------------------------------------------------------+
+|                  3. WIRESHARK "FOLLOW TCP STREAM" GORSEL ARAYUZ TEMSILI                          |
++--------------------------------------------------------------------------------------------------+
+
+   +-----------------------------------------------------------------------------------------------+
+   | Wireshark: Follow TCP Stream (Stream 0)                                            [ _ ][ X ] |
+   +-----------------------------------------------------------------------------------------------+
+   |                                                                                               |
+   | [KIRMIZI METIN - İSTEMCİ -> SUNUCU]:                                                          |
+   | GET /api/v1/telemetry HTTP/1.1                                                                |
+   | Host: kurumsal.local                                                                          |
+   | Accept: */*                                                                                   |
+   |                                                                                               |
+   |                                                                                               |
+   | [MAVİ METIN - SUNUCU -> İSTEMCİ]:                                                             |
+   | HTTP/1.1 200 OK                                                                               |
+   | Server: nginx/1.24                                                                            |
+   | Content-Type: application/json                                                                |
+   | Content-Length: 78                                                                            |
+   | Connection: close                                                                             |
+   |                                                                                               |
+   | {"status": "active", "sensor_id": "SN-4021", "security": "ok", "temp": 22.4}                  |
+   |                                                                                               |
+   +-----------------------------------------------------------------------------------------------+
+   | Toplam: 257 bayt (İstemci: 69 bayt, Sunucu: 188 bayt) | 1 OOO Segment | 1 Yeniden İletim       |
+   +-----------------------------------------------------------------------------------------------+
+
+====================================================================================================
+SONUÇ: TCP akış yeniden birleştirme, paket seviyesindeki karmaşık ağ gecikmelerini ve parça
+kayıplarını şeffaf bir uygulama katmanı diyaloğuna dönüştüren temel adli bilişim sürecidir.
+====================================================================================================

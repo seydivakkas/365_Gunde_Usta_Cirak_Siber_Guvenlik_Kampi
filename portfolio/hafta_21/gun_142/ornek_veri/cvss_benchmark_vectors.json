@@ -1,0 +1,62 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "aciklama": "FIRST ve NVD resmî kayıtlarıyla doğrulanmış gerçek dünya CVSS v3.1 referans zafiyet vektörleri.",
+  "vectors": [
+    {
+      "cve_id": "CVE-2021-44228",
+      "title": "Apache Log4j2 JNDI Remote Code Execution (Log4Shell)",
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "expected_base_score": 10.0,
+      "expected_severity": "CRITICAL"
+    },
+    {
+      "cve_id": "CVE-2024-6387",
+      "title": "OpenSSH Server Signal Handler Race Condition (regreSSHion)",
+      "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "expected_base_score": 8.1,
+      "expected_severity": "HIGH"
+    },
+    {
+      "cve_id": "CVE-2014-0160",
+      "title": "OpenSSL TLS Heartbeat Information Disclosure (Heartbleed)",
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "expected_base_score": 7.5,
+      "expected_severity": "HIGH"
+    },
+    {
+      "cve_id": "CVE-2016-5195",
+      "title": "Linux Kernel Copy-on-Write Memory Breakout (Dirty COW)",
+      "vector_string": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "expected_base_score": 7.8,
+      "expected_severity": "HIGH"
+    },
+    {
+      "cve_id": "CVE-2022-22965",
+      "title": "Spring Framework DataBinder Remote Code Execution (Spring4Shell)",
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "expected_base_score": 9.8,
+      "expected_severity": "CRITICAL"
+    },
+    {
+      "cve_id": "CVE-2021-3156",
+      "title": "Sudo Heap-Based Buffer Overflow (Baron Samedit)",
+      "vector_string": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "expected_base_score": 7.8,
+      "expected_severity": "HIGH"
+    },
+    {
+      "cve_id": "CVE-2022-3602",
+      "title": "OpenSSL X.509 Email Address 4-byte Buffer Overflow",
+      "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "expected_base_score": 5.9,
+      "expected_severity": "MEDIUM"
+    },
+    {
+      "cve_id": "CVE-2021-4034",
+      "title": "Polkit pkexec Local Privilege Escalation (PwnKit)",
+      "vector_string": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "expected_base_score": 7.8,
+      "expected_severity": "HIGH"
+    }
+  ]
+}

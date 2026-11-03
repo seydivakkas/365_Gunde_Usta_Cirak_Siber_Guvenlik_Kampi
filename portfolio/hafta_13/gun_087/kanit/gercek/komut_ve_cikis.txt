@@ -1,0 +1,52 @@
+================================================================================
+G087: GERCEK TERMINAL KOMUTLARI VE CALISTIRMA CIKTILARI
+Zaman: 2026-11-01T20:00:44.284634+00:00
+================================================================================
+
+KOMUT 1: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor -v
+CIKIS 1:
+
+test_01_parse_secure_bash_skeleton (portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor.TestBashSkeletonQuotingAuditor.test_01_parse_secure_bash_skeleton)
+Guvenli Bash betiginin shebang, kati kip, IFS ve trap kurallarini gectigini test eder. ... ok
+test_02_detect_missing_shebang (portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor.TestBashSkeletonQuotingAuditor.test_02_detect_missing_shebang)
+Betiğin basinda shebang eksikliginin MEDIUM seviyede tespit edildigini test eder. ... ok
+test_03_detect_missing_strict_mode (portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor.TestBashSkeletonQuotingAuditor.test_03_detect_missing_strict_mode)
+Kati kip (set -euo pipefail) eksikliginin HIGH seviyede yakalandigini test eder. ... ok
+test_04_detect_dangerous_eval (portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor.TestBashSkeletonQuotingAuditor.test_04_detect_dangerous_eval)
+Dinamik eval komutunun CRITICAL seviyede komut enjeksiyonu olarak yakalandigini test eder. ... ok
+test_05_detect_dangerous_eval_strict_exception (portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor.TestBashSkeletonQuotingAuditor.test_05_detect_dangerous_eval_strict_exception)
+strict=True modunda eval tespit edildiginde DangerousEvalException firlatildigini test eder. ... ok
+test_06_detect_catastrophic_unquoted_rm (portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor.TestBashSkeletonQuotingAuditor.test_06_detect_catastrophic_unquoted_rm)
+rm -rf komutunda tirnaksiz degisken genislemesinin CRITICAL risk olarak yakalandigini test eder. ... ok
+test_07_detect_catastrophic_unquoted_rm_strict_exception (portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor.TestBashSkeletonQuotingAuditor.test_07_detect_catastrophic_unquoted_rm_strict_exception)
+strict=True modunda tirnaksiz rm tespit edildiginde UnquotedVariableException firlatildigini test eder. ... ok
+test_08_detect_unquoted_array_expansion (portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor.TestBashSkeletonQuotingAuditor.test_08_detect_unquoted_array_expansion)
+Tirnaksiz $* ve $@ kullaniminin HIGH riskli kural ihlali olarak tespit edildigini test eder. ... ok
+test_09_detect_unquoted_ls_loop (portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor.TestBashSkeletonQuotingAuditor.test_09_detect_unquoted_ls_loop)
+for f in $(ls ...) kalibinin kelime bolunmesi riski olarak yakalandigini test eder. ... ok
+test_10_word_splitting_simulation_quoted_vs_unquoted (portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor.TestBashSkeletonQuotingAuditor.test_10_word_splitting_simulation_quoted_vs_unquoted)
+Simulatorde tirnakli ve tirnaksiz genislemelerin kelime bolunmesi farkini test eder. ... ok
+test_11_globbing_flag_injection_detection (portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor.TestBashSkeletonQuotingAuditor.test_11_globbing_flag_injection_detection)
+Simulatorde tire (-) ile baslayan parametrelerin bayrak enjeksiyonu olarak algilandigini test eder. ... ok
+test_12_reject_null_byte (portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor.TestBashSkeletonQuotingAuditor.test_12_reject_null_byte)
+Betik metninde null-byte (0x00) bulunmasi durumunda NullByteForbiddenException firlatildigini test eder. ... ok
+test_13_reject_oversized_script (portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor.TestBashSkeletonQuotingAuditor.test_13_reject_oversized_script)
+64 KB limitini asan devasa betiklerde BashScriptSizeLimitException firlatildigini test eder. ... ok
+test_14_audit_vulnerable_script_full_report (portfolio.hafta_13.gun_087.tests.test_bash_skeleton_quoting_auditor.TestBashSkeletonQuotingAuditor.test_14_audit_vulnerable_script_full_report)
+Zaafiyetli ornek betigin tum aciklarinin tespit edildigini ve is_secure=False dondugunu dogrular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.004s
+
+OK
+
+--------------------------------------------------------------------------------
+
+KOMUT 2: C:\Program Files\Git\bin\bash.exe ./portfolio/hafta_13/gun_087/uygulama/secure_skeleton.sh --file audit_log_2026.log --action report
+CIKIS 2:
+[2026-11-01T20:00:44Z] [BÄ°LGÄ°] GÃ¼venli Bash Ä°skeleti BaÅŸlatÄ±ldÄ±. Eylem: report
+[2026-11-01T20:00:44Z] [BÄ°LGÄ°] Hedef dosya henÃ¼z mevcut deÄŸil: audit_log_2026.log
+[2026-11-01T20:00:44Z] [BÄ°LGÄ°] GeÃ§ici dosya oluÅŸturuldu ve doÄŸrulandÄ±: /tmp/sec_skeleton_onGVZq.tmp
+
+
+================================================================================

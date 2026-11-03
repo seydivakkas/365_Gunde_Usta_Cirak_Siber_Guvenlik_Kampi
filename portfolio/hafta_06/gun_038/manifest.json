@@ -1,0 +1,22 @@
+{
+  "gun": 38,
+  "gun_id": "G038",
+  "dosyalar": {
+    "README.md": "08ba5ff3c7cdf9fcdc07adf0248e6f2d8ed79da678a231e4ef41ffb7713de802",
+    "ders.md": "4e077ce38cc30f0cbc436d1f0d7f6c2f1599dd7662fe9b4539b4a2f494a94764",
+    "rapor.md": "72b59a6f51a88365aa821d297159e29398438cc5f380f60257386d0857b86b99",
+    "sonuc.json": "d88bab7135bbf6c02ae3eac62ad7cce4aa99cc328ce576c4c32b9eb3d1d74cf4",
+    "soru_cevap.md": "bc815d63f10786dff613aaf7f7ba8fd7157283550ac32e2d46d6dc2dfc0d8ddd",
+    "kanit/gercek/komut_ve_cikis.txt": "befd4cea81526a80d68a8b2007f56589da19f8b9feb56e26b9e5a9b0bbf851f9",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": "317fa8236c7c2f73959eb0c03d4dd95cc25f26f0a08a84e0a3ccf9264fdd8ec3",
+    "kanit/gercek/test_sonuclari.txt": "4c3b7ad7672a694d11180b7ca5e34d21f207283b11a332fb54dfc1c9ae90cd9d",
+    "kanit/gercek/zaman_ve_ntp_denetim_raporu.txt": "b9e7a123a6619ec8c41b6617ba367f099fd15ae6acd9ff476143c8da58e8bc13",
+    "kanit/temsili/zaman_senkronizasyonu_ve_ntp_mimarisi.txt": "8c447f108ed872d57efe867b41d83cda0b1c7fd446c43386653c5294c5969006",
+    "ornek_veri/corrupted_ntp_telemetry_test_cases.json": "9bc8b8d5de9f876b8baa14eab4f23ceb8ec18427667e9adb7fe0d1e40862c14a",
+    "ornek_veri/sample_ntp_telemetry.json": "95fdc41dee3b43f8f61ea8c8093ed555d830b867bd0532f18f75e070fa7f2bd2",
+    "tests/__init__.py": "4818d67da4ce521ea804b03eaf04356702d30462ee4f1a0702eafd0b986a1d76",
+    "tests/test_ntp_time_sync_auditor.py": "ece42fc2f8010dc9945e29679e970e208f41fcdfdbbc7737a58affcddad53c0c",
+    "uygulama/__init__.py": "f099422649c547efec53fbe78a1e6057c8cd48e75299c54c11f28462aac514f0",
+    "uygulama/ntp_time_sync_auditor.py": "7743e4a82eb0205a84d4764d6abc3a5813883d01602d558fb16080bbee8f4d29"
+  }
+}

@@ -1,0 +1,11 @@
+192.168.1.50 - - [31/Oct/2026:10:00:01 +0300] "GET /index.html HTTP/1.1" 200 1420 "https://kurum.local" "Mozilla/5.0"
+198.51.100.25 - - [31/Oct/2026:10:00:02 +0300] "GET /products.php?id=1%20UNION%20SELECT%20null,username,password%20FROM%20users HTTP/1.1" 500 240 "-" "sqlmap/1.7.2"
+203.0.113.80 - - [31/Oct/2026:10:00:03 +0300] "GET /../../../../etc/passwd HTTP/1.1" 403 162 "-" "curl/8.4.0"
+Oct 31 10:00:10 srv-auth01 sshd[14201]: Failed password for invalid user admin from 198.51.100.99 port 52341 ssh2
+Oct 31 10:00:12 srv-auth01 sshd[14205]: Failed password for invalid user root from 198.51.100.99 port 52344 ssh2
+Oct 31 10:00:14 srv-auth01 sshd[14209]: Failed password for invalid user guest from 198.51.100.99 port 52348 ssh2
+Oct 31 10:00:16 srv-auth01 sshd[14212]: Failed password for invalid user test from 198.51.100.99 port 52352 ssh2
+Oct 31 10:00:18 srv-auth01 sshd[14215]: Failed password for invalid user oracle from 198.51.100.99 port 52356 ssh2
+Oct 31 10:00:20 srv-auth01 sshd[14220]: Accepted publickey for secops from 10.0.0.15 port 42110 ssh2
+OCT 31 10:00:25 fw-edge kernel: [FW_BLOCK] SRC=203.0.113.5 DST=192.168.1.10 PROTO=TCP SPT=49152 DPT=4444 ACTION=DROP
+OCT 31 10:00:30 fw-edge kernel: [FW_ALLOW] SRC=8.8.8.8 DST=192.168.1.100 PROTO=UDP SPT=53 DPT=58912 ACTION=ALLOW

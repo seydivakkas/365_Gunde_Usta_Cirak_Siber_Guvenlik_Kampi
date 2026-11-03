@@ -1,0 +1,47 @@
+{
+  "versiyon": "2026.1",
+  "aciklama": "Sentetik Karakter Kodlamasi, Bayt Duzeyi ve Guvenlik Test Veri Tabani",
+  "lisans": "OZEL LISANS - TUM HAKLARI SAKLIDIR. Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas)",
+  "kodlama_ornekleri": [
+    {
+      "ornek_id": "SAMPLE-01-ASCII-STANDARD",
+      "baslik": "Standart Saf ASCII Metin (1 Karakter = 1 Bayt)",
+      "ham_metin": "CYBER_SECURITY_LAB_2026",
+      "beklenen_kodlama": "US-ASCII",
+      "guvenlik_durumu": "GUVENLI",
+      "aciklama": "Tamami 0-127 araliginda standart 1 baytlik karakterler."
+    },
+    {
+      "ornek_id": "SAMPLE-02-TURKISH-MULTIBYTE",
+      "baslik": "Turkce Cok Baytli Metin (Degisken Genislikli UTF-8)",
+      "ham_metin": "Siber Güvenlik Şifreleme Ağ Geçidi",
+      "beklenen_kodlama": "UTF-8",
+      "guvenlik_durumu": "GUVENLI_DIKKAT_GEREKTIREN_BOYUT",
+      "aciklama": "Türkçe 'ü', 'Ş', 'ğ', 'ç' harfleri UTF-8'de 2 bayt yer kaplar. Karakter sayisi != Bayt sayisi!"
+    },
+    {
+      "ornek_id": "SAMPLE-03-EMOJI-SURROGATE",
+      "baslik": "4 Baytlik UTF-8 Emojiler ve Ozel Semboller",
+      "ham_metin": "Guvenlik Kalkanı 🛡️ ve Kilit 🔒",
+      "beklenen_kodlama": "UTF-8",
+      "guvenlik_durumu": "GUVENLI_YUKSEK_BAYT_GENISLEMESI",
+      "aciklama": "Emojiler 4 bayt genisligindedir. Veritabani utf8 yerine utf8mb4 gerektirir."
+    },
+    {
+      "ornek_id": "SAMPLE-04-NULL-BYTE-ATTACK",
+      "baslik": "Null Byte (\\x00) Enjeksiyonu ile Uzanti ve Sonlandirma Saldirisi",
+      "ham_metin": "rapor_2026.pdf\u0000.exe",
+      "beklenen_kodlama": "UTF-8",
+      "guvenlik_durumu": "KRITIK_SALDIRI_TESPITI",
+      "aciklama": "C tabanli sistemlerde metni sonlandirarak dosya uzanti filtrelerini aldatma saldirisi."
+    },
+    {
+      "ornek_id": "SAMPLE-05-HOMOGLYPH-SPOOF",
+      "baslik": "Homoglyph / IDN Karakter Benzetme Saldirisi (Kiril Karisimi)",
+      "ham_metin": "pаypаl-login.com",
+      "beklenen_kodlama": "UTF-8",
+      "guvenlik_durumu": "YUKSEK_OLTALAMA_RISKI",
+      "aciklama": "Görsel olarak 'paypal' gibi görünen metinde Latin 'a' yerine Kiril 'а' (U+0430) yerlestirilmistir."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+======================================================================
+NIST SP 800-207 SIFIR GÜVEN (ZERO TRUST) & EN AZ AYRICALIK MİMARİSİ
+======================================================================
+
+   [KULLANICI / ÇALIŞAN CİHAZI]
+                 │
+                 ▼ (İç Ağ / VPN / Dış Ağ Fark Etmeksizin İstek)
+   ┌────────────────────────────────────────────────────────┐
+   │        PEP (Policy Enforcement Point - Ağ Geçidi)      │
+   └───────────────────────────┬────────────────────────────┘
+                               │
+                               ▼
+   ┌────────────────────────────────────────────────────────┐
+   │             PDP (Policy Decision Point)                │
+   │                                                        │
+   │  1. Cihaz Posture Analizi (MDM, EDR, Disk, Yama)       │
+   │  2. Mikro-Segmentasyon Yanal Hareket Kontrolü          │
+   │  3. Step-Up MFA Doğrulama Kapısı                       │
+   │  4. Dinamik Güven Skoru Değerlendirmesi                │
+   │  5. En Az Ayrıcalık — JIT TTL ve Kapsam Teyidi         │
+   └───────────────────────────┬────────────────────────────┘
+                               │
+                  ┌────────────┴────────────┐
+                  ▼ (Herhangi Bir Kusur)    ▼ (Tüm Koşullar PASS)
+           [ERİŞİM REDDEDİLDİ]      [ERİŞİM ONAYLANDI]
+           - Oturum İptali          - Tekil JIT Oturumu
+           - SOC Güvenlik Alarmı    - Şifreli Tünel Erişimi
+           - Adli Audit Kaydı       - JSON Audit Trail
+
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

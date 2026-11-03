@@ -1,0 +1,88 @@
+{
+  "aciklama": "Gün 106 Asimetrik Kriptografi ve RSA Negatif Kontrol Test Senaryoları",
+  "negatif_senaryolar": [
+    {
+      "id": "NEG_01_INSUFFICIENT_KEY_LENGTH",
+      "aciklama": "512 bit ve altı güvensiz anahtar boyutu tespiti",
+      "zafiyet_kodu": "CWE-326",
+      "beklenen_hata": "WeakKeySizeError",
+      "parametreler": {
+        "bit_length": 256
+      }
+    },
+    {
+      "id": "NEG_02_CORRUPTED_CIPHERTEXT",
+      "aciklama": "Şifreli metin baytlarında tahrifat yapıldığında OAEP doğrulamasının başarısız olması",
+      "zafiyet_kodu": "CWE-780",
+      "beklenen_hata": "OAEPPaddingError",
+      "parametreler": {
+        "tamper_byte_index": 5
+      }
+    },
+    {
+      "id": "NEG_03_INVALID_PUBLIC_EXPONENT",
+      "aciklama": "Çift sayı veya phi ile aralarında asal olmayan geçersiz genel üs (e)",
+      "zafiyet_kodu": "CWE-327",
+      "beklenen_hata": "InvalidExponentError",
+      "parametreler": {
+        "e": 65536
+      }
+    },
+    {
+      "id": "NEG_04_MESSAGE_EXCEEDS_MODULUS",
+      "aciklama": "Modül kapasitesini veya OAEP blok sınırını aşan devasa mesaj",
+      "zafiyet_kodu": "CWE-780",
+      "beklenen_hata": "MessageTooLargeError",
+      "parametreler": {
+        "message_length_bytes": 1024
+      }
+    },
+    {
+      "id": "NEG_05_NON_PRIME_INPUT",
+      "aciklama": "Asal olmayan bileşik sayının p veya q olarak sunulması",
+      "zafiyet_kodu": "CWE-327",
+      "beklenen_hata": "CompositeNumberError",
+      "parametreler": {
+        "candidate": 65535
+      }
+    },
+    {
+      "id": "NEG_06_MALFORMED_KEY_JSON",
+      "aciklama": "Eksik alan veya bozuk JSON formatında sunulan RSA anahtarı",
+      "zafiyet_kodu": "CWE-20",
+      "beklenen_hata": "MalformedKeyError",
+      "parametreler": {
+        "raw_json": "{\"n_hex\": \"1234\"}"
+      }
+    },
+    {
+      "id": "NEG_07_TEXTBOOK_RSA_MALLEABILITY",
+      "aciklama": "Düz (Textbook) RSA şifrelemesinde çarpımsal homomorfik manipülasyon (Malleability) tespiti",
+      "zafiyet_kodu": "CWE-327",
+      "beklenen_hata": "TextbookRSAMalleabilityDetected",
+      "parametreler": {
+        "factor": 2
+      }
+    },
+    {
+      "id": "NEG_08_INVALID_PADDING_LABEL",
+      "aciklama": "Şifreleme sırasında kullanılan etiket (label) ile çözme sırasındaki etiketin uyuşmaması",
+      "zafiyet_kodu": "CWE-780",
+      "beklenen_hata": "OAEPPaddingError",
+      "parametreler": {
+        "enc_label": "auth_scope_admin",
+        "dec_label": "auth_scope_guest"
+      }
+    },
+    {
+      "id": "NEG_09_COMMON_MODULUS_EXPOSURE",
+      "aciklama": "Aynı n modülünün farklı üslerle paylaşılması durumunda mesajın özel anahtarsız kurtarılması",
+      "zafiyet_kodu": "CWE-327",
+      "beklenen_hata": "CommonModulusExploitVulnerability",
+      "parametreler": {
+        "e1": 3,
+        "e2": 65537
+      }
+    }
+  ]
+}

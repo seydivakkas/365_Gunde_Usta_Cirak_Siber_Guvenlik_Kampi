@@ -1,0 +1,53 @@
+=== G094 CLI KOMUT KOŞUMLARI VE ÇIKIŞLARI ===
+Tarih: 2026-11-01 23:47:53
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/masker_cli.py --text Test tckn=12345678950 pan=4532015112830366 --json
+[Çıkış Kodu: 0]
+[STDOUT]
+{
+  "mask_style": "MASK",
+  "active_rules": [
+    "all"
+  ],
+  "duration_ms": 0.117,
+  "stats": {
+    "tckn_count": 1,
+    "credit_card_count": 1,
+    "email_count": 0,
+    "iban_count": 0,
+    "phone_count": 0,
+    "secret_count": 0
+  },
+  "total_pii_detected": 2,
+  "status": "SUCCESS"
+}
+
+----------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/masker_cli.py --file ornek_veri/raw_telemetry_logs.log --style MASK
+[Çıkış Kodu: 0]
+[STDOUT]
+2026-11-01 10:14:02.124 INFO  [auth-service] User login attempt: email="ah***@kurumsal-banka.com.tr" ip=192.168.10.45 tckn=123******50 status=SUCCESS
+2026-11-01 10:14:15.541 WARN  [payment-gw] Payment processed: customer_id=8921 pan=453201******0366 amount=1450.50 TRY phone=905324 *** ** 11
+2026-11-01 10:14:22.880 INFO  [transfer-api] Wire transfer initiated: sender_iban="TR78 **** **** **** **** **** 01" recipient="Zeynep Kaya" tckn=100******46
+2026-11-01 10:15:01.002 ERROR [billing-core] Card declined for user: email=me***@guvenlik-arge.org card_pan=542523******9903 phone=05559 *** ** 43
+2026-11-01 10:16:45.312 DEBUG [admin-portal] Config reload token=**************** by user=ro***@internal-monitor.local
+
+
+----------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/masker_cli.py --file ornek_veri/raw_telemetry_logs.log --style REDACT
+[Çıkış Kodu: 0]
+[STDOUT]
+2026-11-01 10:14:02.124 INFO  [auth-service] User login attempt: email="[REDACTED_EMAIL]" ip=192.168.10.45 tckn=[REDACTED_TCKN] status=SUCCESS
+2026-11-01 10:14:15.541 WARN  [payment-gw] Payment processed: customer_id=8921 pan=[REDACTED_CARD] amount=1450.50 TRY phone=[REDACTED_PHONE]
+2026-11-01 10:14:22.880 INFO  [transfer-api] Wire transfer initiated: sender_iban="[REDACTED_IBAN]" recipient="Zeynep Kaya" tckn=[REDACTED_TCKN]
+2026-11-01 10:15:01.002 ERROR [billing-core] Card declined for user: email=[REDACTED_EMAIL] card_pan=[REDACTED_CARD] phone=[REDACTED_PHONE]
+2026-11-01 10:16:45.312 DEBUG [admin-portal] Config reload token=[REDACTED_SECRET] by user=[REDACTED_EMAIL]
+
+
+----------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/masker_cli.py --text email=test@example.com phone=05321112233 --rules email,phone
+[Çıkış Kodu: 0]
+[STDOUT]
+email=te***@example.com phone=05321 *** ** 33
+
+----------------------------------------------------------------------

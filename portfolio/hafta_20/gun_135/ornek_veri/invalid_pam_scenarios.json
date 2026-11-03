@@ -1,0 +1,156 @@
+{
+  "description": "Linux PAM ve Oturum Politikası 9 Negatif ve Sınır Durum Denetim Senaryosu",
+  "generated_at": "2026-11-02T14:20:00Z",
+  "scenarios": [
+    {
+      "scenario_id": "NEG-PAM-01",
+      "test_name": "Hesap Kilitleme (pam_faillock) Tamamen Devre Dışı",
+      "domain": "LOCKOUT",
+      "payload": {
+        "account_lockout": {
+          "enabled": false,
+          "module_name": "pam_faillock",
+          "deny": 5,
+          "unlock_time": 900,
+          "fail_interval": 900,
+          "even_deny_root": true
+        }
+      },
+      "expected_cwe": "CWE-307",
+      "expected_mitre": "T1110.001"
+    },
+    {
+      "scenario_id": "NEG-PAM-02",
+      "test_name": "Hesap Kilitleme Deneme Eşiği Yetersiz (deny=10)",
+      "domain": "LOCKOUT",
+      "payload": {
+        "account_lockout": {
+          "enabled": true,
+          "module_name": "pam_faillock",
+          "deny": 10,
+          "unlock_time": 900,
+          "fail_interval": 900,
+          "even_deny_root": true
+        }
+      },
+      "expected_cwe": "CWE-307",
+      "expected_mitre": "T1110.001"
+    },
+    {
+      "scenario_id": "NEG-PAM-03",
+      "test_name": "Hesap Kilit Kalma Süresi Yetersiz (unlock_time=300s)",
+      "domain": "LOCKOUT",
+      "payload": {
+        "account_lockout": {
+          "enabled": true,
+          "module_name": "pam_faillock",
+          "deny": 5,
+          "unlock_time": 300,
+          "fail_interval": 900,
+          "even_deny_root": true
+        }
+      },
+      "expected_cwe": "CWE-307",
+      "expected_mitre": "T1110.001"
+    },
+    {
+      "scenario_id": "NEG-PAM-04",
+      "test_name": "Parola Uzunluğu Yetersiz (minlen=8)",
+      "domain": "PASSWORD",
+      "payload": {
+        "password_quality": {
+          "minlen": 8,
+          "dcredit": -1,
+          "ucredit": -1,
+          "lcredit": -1,
+          "ocredit": -1,
+          "retry": 3,
+          "enforce_for_root": true
+        }
+      },
+      "expected_cwe": "CWE-521",
+      "expected_mitre": "T1201"
+    },
+    {
+      "scenario_id": "NEG-PAM-05",
+      "test_name": "Parola Karmaşıklık Kredileri Eksik (dcredit=0, ucredit=0)",
+      "domain": "PASSWORD",
+      "payload": {
+        "password_quality": {
+          "minlen": 14,
+          "dcredit": 0,
+          "ucredit": 0,
+          "lcredit": -1,
+          "ocredit": -1,
+          "retry": 3,
+          "enforce_for_root": true
+        }
+      },
+      "expected_cwe": "CWE-521",
+      "expected_mitre": "T1201"
+    },
+    {
+      "scenario_id": "NEG-PAM-06",
+      "test_name": "Boş Parola Giriş İzni (nullok Bayrağı Aktif)",
+      "domain": "SESSION",
+      "payload": {
+        "session_policy": {
+          "inactivity_timeout_tmout": 900,
+          "pwhistory_remember": 5,
+          "nullok_present": true,
+          "maxlogins": 10
+        }
+      },
+      "expected_cwe": "CWE-258",
+      "expected_mitre": "T1078"
+    },
+    {
+      "scenario_id": "NEG-PAM-07",
+      "test_name": "Parola Geçmişi Koruması Yetersiz (remember=2)",
+      "domain": "SESSION",
+      "payload": {
+        "session_policy": {
+          "inactivity_timeout_tmout": 900,
+          "pwhistory_remember": 2,
+          "nullok_present": false,
+          "maxlogins": 10
+        }
+      },
+      "expected_cwe": "CWE-262",
+      "expected_mitre": "T1201"
+    },
+    {
+      "scenario_id": "NEG-PAM-08",
+      "test_name": "Oturum Boşta Kalma Zaman Aşımı Yetersiz (TMOUT=3600s)",
+      "domain": "SESSION",
+      "payload": {
+        "session_policy": {
+          "inactivity_timeout_tmout": 3600,
+          "pwhistory_remember": 5,
+          "nullok_present": false,
+          "maxlogins": 10
+        }
+      },
+      "expected_cwe": "CWE-613",
+      "expected_mitre": "T1078"
+    },
+    {
+      "scenario_id": "NEG-PAM-09",
+      "test_name": "PAM Dosya İzni Gevşek (0666 / Others Writable)",
+      "domain": "PERMISSIONS",
+      "payload": {
+        "file_permissions": [
+          {
+            "file_path": "/etc/pam.d/system-auth",
+            "owner": "root",
+            "group": "root",
+            "mode_octal": "0666",
+            "is_writable_by_others": true
+          }
+        ]
+      },
+      "expected_cwe": "CWE-732",
+      "expected_mitre": "T1548"
+    }
+  ]
+}

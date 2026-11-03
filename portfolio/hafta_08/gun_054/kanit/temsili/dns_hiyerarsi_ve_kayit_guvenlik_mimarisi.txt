@@ -1,0 +1,111 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+Bu dosya yapay zekâ tarafından oluşturulmuş temsili bir DNS mimarisi, kayıt
+hiyerarşisi ve güvenlik tehditleri illüstrasyonudur. Gerçek test çıktıları ve
+gözlenebilir kanıtlar 'kanit/gercek/' dizini altındaki dosyalarda yer almaktadır.
+================================================================================
+
+================================================================================
+BÖLÜM 1: DNS HİYERARŞİK DAĞITIK VERİTABANI AĞACI
+================================================================================
+
+                              [ . ] (Root Zone / Kök Sunucular)
+                             /      \                  \
+                      [ .com ]      [ .org ]          [ .tr ]  (TLD Sunucuları)
+                      /      \             \                 \
+             [ example ]     [ google ]   [ wikipedia ]     [ metu ] (Yetkili SLD)
+             /    |    \
+        [ www ] [ api ] [ blog ]                               (Alt Alan Adları)
+
+Sorgu Akışı:
+  İstemci -> Yinelemeli Çözümleyici (Recursive Resolver) -> Kök (.) -> TLD (.com) -> Yetkili NS
+
+
+================================================================================
+BÖLÜM 2: RFC 1035 İKİLİ (BINARY) DNS MESAJ PAKET YAPISI
+================================================================================
+
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|          Transaction ID       |QR| Opcode |AA|TC|RD|RA| Z |RCODE| (12 Bayt
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  Sabit
+|            QDCOUNT            |            ANCOUNT            |  Başlık)
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|            NSCOUNT            |            ARCOUNT            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
+/               Question Section (QNAME, QTYPE, QCLASS)         /
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
+/          Answer Section (Resource Records: NAME, TYPE, TTL...) /
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+Etiket (Label) Kodlama Formatı:
+  "api.example.com" -> [0x03] a p i [0x07] e x a m p l e [0x03] c o m [0x00]
+
+
+================================================================================
+BÖLÜM 3: KRİTİK DNS KAYIT TÜRLERİ VE GÜVENLİK ROLLERİ
+================================================================================
+
++-------+------+------------------------------------+---------------------------------------+
+| Tür   | Kod  | Taşınan Bilgi / Veri Türü          | Siber Güvenlik Rolü & Risk            |
++-------+------+------------------------------------+---------------------------------------+
+| A     | 1    | 32-bit IPv4 Adresi (örn. 93.184...) | Yanıltılırsa trafiği saldırgana çeker |
+| AAAA  | 28   | 128-bit IPv6 Adresi                | Modern ağlarda IPv6 zehirleme vektörü |
+| CNAME | 5    | Kanonik Ad / Takma Ad              | Dangling CNAME -> Subdomain Takeover  |
+| MX    | 15   | Öncelik + Posta Sunucusu Adresi    | E-posta trafiğini ele geçirme riski   |
+| TXT   | 16   | Serbest Metin Dizgisi             | SPF/DMARC (Savunma) & Tunneling (Hücum|
+| NS    | 2    | Yetkili Ad Sunucusu                | Yetki gaspı (Bölge transferi / AXFR)  |
+| SOA   | 6    | Bölge Yönetim ve Seri Numarası     | TTL ve seri takip zaafiyetleri        |
++-------+------+------------------------------------+---------------------------------------+
+
+
+================================================================================
+BÖLÜM 4: SAHİPSİZ CNAME (SUBDOMAIN TAKEOVER) SALDIRI DİYAGRAMI
+================================================================================
+
+  [ Kurban Şirket DNS ]
+  blog.example.com CNAME ----> s3-website.amazonaws.com (Kurbanın eski deposu)
+                                          |
+  (Şirket AWS S3 deposunu sildi,          |
+   fakat DNS CNAME kaydını unuttu!)       v
+                                  [ DEPO SİLİNDİ ] (404 Not Found)
+                                          ^
+                                          | (Saldırgan aynı isimle S3
+                                          |  deposu açar ve sahiplenir!)
+  [ İnternet Kullanıcısı ]                |
+  https://blog.example.com ==============> [ SALDIRGANIN KONTROLÜNDEKİ S3 ]
+  (Kullanıcı kurban şirketin güvenli      (Zararlı yazılım veya phishing
+   çerezleri ve kimliğiyle saldırgana     sayfası yayınlar!)
+   teslim olur!)
+
+
+================================================================================
+BÖLÜM 5: DNS TÜNELLEME VE VERİ SIZDIRMA (DATA EXFILTRATION)
+================================================================================
+
+  +-------------------+
+  | Kurumsal Ağ (DLP) |
+  | (HTTP/SSH Bloklu) |
+  +-------------------+
+            |
+            | 1. Şifreli Veri Alt Alan Adına Gizlenir:
+            |    "48656c6c6f576f726c64457866696c74726174696f6e.c2.attacker.com"
+            v
+  [ Yerel DNS Çözümleyici ] (UDP Port 53 Serbesttir!)
+            |
+            | 2. Yinelemeli Sorgu Kökten Saldırganın NS'ine Ulaşır
+            v
+  +-------------------------------------+
+  | SALDIRGANIN YETKİLİ AD SUNUCUSU     |
+  | (attacker.com NS)                   |
+  |                                     |
+  | * Gelen sorgunun alt etiketini çözer|
+  | * Sızdırılan veriyi birleştirir!    |
+  +-------------------------------------+
+================================================================================

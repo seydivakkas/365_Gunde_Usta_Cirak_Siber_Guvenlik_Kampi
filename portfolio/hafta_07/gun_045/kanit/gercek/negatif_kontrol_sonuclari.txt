@@ -1,0 +1,51 @@
+G045: Negatif Kontrol ve Hata Yakalama Test Sonuclari
+======================================================================
+Test ID: ERR-01
+Girdi  : 256.1.1.1/24
+Hata   : OctetOutOfRange
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Oktet değeri 0 ile 255 arasında olmalıdır: 256
+----------------------------------------------------------------------
+Test ID: ERR-02
+Girdi  : 192.168.1/24
+Hata   : InvalidOctetCount
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : IPv4 adresi tam olarak 4 oktetten oluşmalıdır, bulunan: 3
+----------------------------------------------------------------------
+Test ID: ERR-03
+Girdi  : 192.168.1.1.5/24
+Hata   : InvalidOctetCount
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : IPv4 adresi tam olarak 4 oktetten oluşmalıdır, bulunan: 5
+----------------------------------------------------------------------
+Test ID: ERR-04
+Girdi  : 192.168.01.1/24
+Hata   : LeadingZeroForbidden
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Oktet başında sıfır (leading zero) bulunamaz: 01
+----------------------------------------------------------------------
+Test ID: ERR-05
+Girdi  : 192.168.1.1/33
+Hata   : PrefixOutOfRange
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : CIDR önek uzunluğu 0 ile 32 arasında olmalıdır: 33
+----------------------------------------------------------------------
+Test ID: ERR-06
+Girdi  : 192.168.1.1/-5
+Hata   : PrefixOutOfRange
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : CIDR önek uzunluğu 0 ile 32 arasında olmalıdır: -5
+----------------------------------------------------------------------
+Test ID: ERR-07
+Girdi  : 192.168.1.1/abc
+Hata   : InvalidPrefixFormat
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : CIDR önek uzunluğu sayısal bir tam sayı olmalıdır: abc
+----------------------------------------------------------------------
+Test ID: ERR-08
+Girdi  : 192.168.1.1
+Hata   : MissingCIDRPrefix
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : CIDR biçimi eksik, '/' ayracı bulunamadı: 192.168.1.1
+----------------------------------------------------------------------
+Toplam Negatif Test: 8 | Basarili Engelleme: 8

@@ -1,0 +1,18 @@
+{
+  "README.md": "cbefb024d0ae948fd66da3b8f2f2cf9625554cdd8013ce884f7f0e0f42a01684",
+  "ders.md": "61a02147f9969116701461b234936e66f8c675aad6b5fab33cbecd96d785f2a1",
+  "kanit/gercek/komut_ve_cikis.txt": "9098361fb5b576ad9d08a175e38f0818aeb6f7abbb5ad234defce8ffaaf7ef9f",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "9d92da4596217863f21331762a2c4ac32ac075ca85eb253adf5ab3294c537a33",
+  "kanit/gercek/test_sonuclari.txt": "9c3e8949734b1e069bff800242c3a70498ff820339397352862d1f818d04d075",
+  "kanit/gercek/udp_protokol_ve_guvenlik_raporu.txt": "b94abb31e37d3ec5b77faec46dccf1397bea0da4e2d6c2d38e3b56b09387a1a6",
+  "kanit/temsili/udp_datagram_amplification_ve_savunma_mimarisi.txt": "022b0d2b1bf840b80ed974c89d7b8ceac163940713d175790b5a3f75cbb47a2e",
+  "ornek_veri/invalid_udp_inputs.json": "d9bd0d217c9f1fc8c24b5a2f7f0e94c668252cf4ecfa025e84633a09efe502c6",
+  "ornek_veri/sample_udp_datagrams.json": "1ab8ad31c149f8b32cfc54ba7087f5b6faf2dee3a71f2647b50a8f9b160701da",
+  "rapor.md": "3b3a35575c663d00b96df18815ae9ccc7394399d397184fbbadc9f6ecb5342f6",
+  "sonuc.json": "781a7584bf36933c44befd4bffdd2fadc9dc7a87f642d4272410d1133993d1d3",
+  "soru_cevap.md": "249eb0cba1e540d769da58715b3a7a04230fe65d9b445d6356aa32772e04ead2",
+  "tests/__init__.py": "80ec28d2ec012d136a94f0d1878ffe34429ffb4861adbac685c14156af001eb7",
+  "tests/test_udp_protocol_analyzer.py": "26d285ef560ff9e362784b3a311697bc3724505778738e7e469e908f6f0312a0",
+  "uygulama/__init__.py": "80ec28d2ec012d136a94f0d1878ffe34429ffb4861adbac685c14156af001eb7",
+  "uygulama/udp_protocol_analyzer.py": "85dd94c13f844aada47cdf5bee1381a9d43e9b3a9433635ea7fee4c3d65260a1"
+}

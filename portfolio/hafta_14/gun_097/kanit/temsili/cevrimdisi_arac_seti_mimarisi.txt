@@ -1,0 +1,56 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+GÜN 097: MİNİ PROJE 13 — ÇEVRİMDİŞİ (AIR-GAPPED) GÜVENLİK ARAÇ SETİ MİMARİSİ
+========================================================================================
+
++--------------------------------------------------------------------------------------+
+|                     HAVA BOŞLUKLU (AIR-GAPPED) İZOLE GÜVENLİK ALTYAPISI              |
+|        (SCADA / ICS Kontrol Odası, Banka HSM Odası, Nükleer / Askeri Ağlar)         |
+|                     * İnternet Erişimi YOK (No Pip / No Apt / No Git) *              |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|             AIR-GAP DOCTOR & ÇEVRESEL SAĞLIK DENETÇİSİ (Zero Dependencies)           |
+|  - Standart Kütüphane Doğrulaması (Pure Python 3.10+ Standard Library)               |
+|  - Harici Kütüphane İhlali Kalkanı (AirGapDependencyViolationError - CWE-16)        |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                TÜMLEŞİK MODÜLER GÜVENLİK MOTORLARI (HAFTA 14 CAPSTONE)               |
+|                                                                                      |
+|   [1. Ağ Varlık & Tip Güvenliği]  ---> IPv4 (No Octal CWE-704), Port [1-65535]      |
+|                                        MAC EUI-48, Hostname RFC-1123                 |
+|                                                                                      |
+|   [2. Kriptografik FIM Bütünlük]  ---> 64 KB Parçalı Akış (SHA-256 / SHA-512)        |
+|                                        Zamanlama Saldırısı Kalkanı (CWE-208)         |
+|                                        Dizin Taban Çizgisi ve Tahrifat Tespiti       |
+|                                                                                      |
+|   [3. DLP & Kişisel Veri Sansürü] ---> ReDoS Korumalı Regex + Algoritmik Teyit      |
+|                                        Luhn Mod-10 Kart, TCKN 10/11, E-Posta, Token |
+|                                                                                      |
+|   [4. Yüksek Hassasiyetli Profil] ---> time.perf_counter & time.process_time         |
+|                                        tracemalloc Tepe Bellek & SLA Bütçe Kalkanı   |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                       TÜMLEŞİK CLI ARAYÜZÜ (sec_toolkit_cli.py)                      |
+|                                                                                      |
+|   $ sec_toolkit doctor    ---> Çevrimdışı hazır bulunuşluk ve bağımsızlık raporu     |
+|   $ sec_toolkit validate  ---> Ağ varlıkları JSON doğrulama                          |
+|   $ sec_toolkit hash      ---> Kriptografik özet hesaplama                           |
+|   $ sec_toolkit fim       ---> Dizin taban çizgisi oluşturma ve tahrifat taraması    |
+|   $ sec_toolkit mask      ---> Telemetri ve log kişisel veri redaksiyonu             |
+|   $ sec_toolkit bench     ---> Kripto ve bellek performans testi                     |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                       GÜVENLİ VE STANDARTLAŞTIRILMIŞ ÇIKTI                           |
+|  - Standart POSIX Çıkış Kodları: 0 (Temiz), 1 (Güvenlik / FIM İhlali), 2 (Hata)      |
+|  - Sıfır Dış Paket Bağımlılığı ile %100 Tek Başına Çalışabilirlik                    |
++--------------------------------------------------------------------------------------+
+========================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

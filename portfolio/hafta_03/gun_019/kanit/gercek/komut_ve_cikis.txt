@@ -1,0 +1,69 @@
+================================================================================
+GERÇEK KANIT — KOMUT ÇALIŞTIRMA VE SİSTEM ÇIKTILARI
+Tarih: 2026-10-27
+Aşama 02: Sistem, Bellek ve Düşük Seviyeli Güvenlik
+Hafta 03, Gün 019: Windows Dosya Sistemi ve NTFS
+================================================================================
+
+[ORTAM BİLGİSİ]
+Python Sürümü : Python 3.14.0a2
+İşletim Sistemi: Windows 11 Enterprise (10.0.26300 AMD64)
+Dosya Sistemi  : NTFS
+Hedef Dizin    : C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+
+--------------------------------------------------------------------------------
+1. KOMUT 1: Canlı Dizin NTFS İzinleri Sorgulaması (--live - icacls)
+--------------------------------------------------------------------------------
+Komut:
+python portfolio/hafta_03/gun_019/uygulama/ntfs_security_and_acl_analyzer.py --live
+
+Çıktı:
+{
+  "sorgu_zamani": "2026-10-27T01:48:04.045921",
+  "hedef_yol": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi",
+  "isletim_sistemi": "Windows",
+  "ham_izin_kayitlari": [
+    "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi SEYDIV\\CodexSandboxUsers:(I)(OI)(CI)(RX)",
+    "NT AUTHORITY\\SYSTEM:(I)(OI)(CI)(F)",
+    "BUILTIN\\Administrators:(I)(OI)(CI)(F)",
+    "SEYDIV\\seydieryilmaz:(I)(OI)(CI)(F)"
+  ]
+}
+
+--------------------------------------------------------------------------------
+2. KOMUT 2: NTFS Dosya Bütünlüğü, ADS ve Klasör ACL Önce/Sonra Fark Denetimi (G019-SC2)
+--------------------------------------------------------------------------------
+Komut:
+python portfolio/hafta_03/gun_019/uygulama/ntfs_security_and_acl_analyzer.py --sample portfolio/hafta_03/gun_019/ornek_veri/ntfs_file_samples.json --baseline portfolio/hafta_03/gun_019/ornek_veri/ntfs_security_baseline.json
+
+Çıktı:
+========================================================================
+GÜN 019: WINDOWS DOSYA SİSTEMİ VE NTFS GÜVENLİK DENETİMİ
+========================================================================
+Denetim Zamanı : 2026-10-27T01:48:08.878001
+Genel Sonuç    : IHLAL_VAR
+İncelenen Dosya: 3
+Zafiyetli Dosya: 2 adet riskli dosya tespit edildi!
+------------------------------------------------------------------------
+CANLI SİSTEM DİZİN İZİNLERİ (icacls):
+  C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi SEYDIV\CodexSandboxUsers:(I)(OI)(CI)(RX)
+  NT AUTHORITY\SYSTEM:(I)(OI)(CI)(F)
+  BUILTIN\Administrators:(I)(OI)(CI)(F)
+  SEYDIV\seydieryilmaz:(I)(OI)(CI)(F)
+------------------------------------------------------------------------
+DOSYA BÜTÜNLÜĞÜ VE SİHİRLİ BAYT BULGULARI:
+  [KRITIK] kurumsal_fatura.pdf:
+    - Dosya uzantısı PDF/TXT gibi gösterilmiş ancak içeriği Windows PE (.EXE) çalıştırılabilir kodudur!
+  [KRITIK] masum_not.txt:
+    - Dosyada gizlenmiş tehlikeli Alternatif Veri Akışı (ADS) tespit edildi!
+    - DACL izinlerinde 'Everyone' grubuna FullControl tam yetki tanımlanmış (Zayıf Erişim Kontrolü)!
+  [DUSUK] resmi_rapor.pdf:
+------------------------------------------------------------------------
+KLASÖR ACL ÖNCE/SONRA FARK ANALİZİ (G019-SC2):
+  Önceki İzin Sayısı: 2 -> Sonraki: 4
+  [+] KRİTİK BAŞARI: 'Everyone' grubunun FullControl tam denetim izni başarıyla kaldırıldı!
+  [+] Geniş yazma izni iptal edildi: BUILTIN\Users:Write:Allow
+  [+] Yetkili yönetim grubu eklendi: NT AUTHORITY\SYSTEM:FullControl:Allow
+  [+] Yetkili yönetim grubu eklendi: BUILTIN\Administrators:FullControl:Allow
+  [+] Açıkça Reddetme (Explicit Deny) kuralı eklendi: Everyone:Write:Deny
+========================================================================

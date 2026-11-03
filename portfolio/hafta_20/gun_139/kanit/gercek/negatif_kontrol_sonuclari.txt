@@ -1,0 +1,64 @@
+==============================================================================
+GÜN 139: AUDIT VE JOURNAL NEGATİF KONTROL VE SINIR DURUM TEST KANIT RAPORU
+==============================================================================
+Çalıştırma Tarihi: 2026-11-02 14:52:59
+Hedef: Audit Motorunun Hatalı/Eksik Denetim Durumlarını Tespit Yeteneği
+------------------------------------------------------------------------------
+[1/9] NEG_AUD_01: auditd Servisinin Kapalı / Durdurulmuş Olması
+  • Açıklama       : auditd is_active=false durumu. Motor AUD-001 (CRITICAL / CWE-778) tespit etmelidir.
+  • Beklenen Kural : AUD-001
+  • Üretilen Kural : AUD-001, AUD-002, AUD-003, AUD-004
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[2/9] NEG_AUD_02: auditd Servisinin Açılışta Başlamaması
+  • Açıklama       : is_enabled_on_boot=false olması durumu (AUD-001 / T1562.002).
+  • Beklenen Kural : AUD-001
+  • Üretilen Kural : AUD-001, AUD-002, AUD-003, AUD-004
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[3/9] NEG_AUD_03: /etc/shadow Dosyasında Watch Kuralı Eksikliği
+  • Açıklama       : Parola özetlerinin izlenmemesi (AUD-002 / CWE-778 / T1003).
+  • Beklenen Kural : AUD-002
+  • Üretilen Kural : AUD-002
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[4/9] NEG_AUD_04: /etc/passwd Dosyasında Watch Kuralı Eksikliği
+  • Açıklama       : Kullanıcı hesap dosyasının izlenmemesi (AUD-002 / CWE-778).
+  • Beklenen Kural : AUD-002
+  • Üretilen Kural : AUD-002
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[5/9] NEG_AUD_05: /etc/sudoers Dosyasında Watch Kuralı Eksikliği
+  • Açıklama       : Sudoers dosyasının izlenmemesi (AUD-003 / CWE-778 / T1548.003).
+  • Beklenen Kural : AUD-003
+  • Üretilen Kural : AUD-003
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[6/9] NEG_AUD_06: Kernel Modülü Yükleme/Çıkarma Syscall Denetimi Eksikliği
+  • Açıklama       : init_module ve delete_module syscall kurallarının olmaması (AUD-004 / T1547.006).
+  • Beklenen Kural : AUD-004
+  • Üretilen Kural : AUD-004
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[7/9] NEG_AUD_07: Journald Storage=volatile (Uçucu Bellek) Yapılandırması
+  • Açıklama       : Logların diske kalıcı yazılmaması (AUD-005 / CWE-778 / CIS 4.2.1.2).
+  • Beklenen Kural : AUD-005
+  • Üretilen Kural : AUD-005
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[8/9] NEG_AUD_08: Audit Kurallarında Değiştirilemezlik (-e 2) Kilidinin Eksikliği
+  • Açıklama       : immutable_flag=false olması (AUD-006 / CWE-345 / CIS 4.1.18).
+  • Beklenen Kural : AUD-006
+  • Üretilen Kural : AUD-006
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[9/9] NEG_AUD_09: Audit Disk Dolum Aksiyonunun 'ignore' Olması
+  • Açıklama       : disk_full_action='ignore' olması (AUD-007 / CWE-778 / CIS 4.1.2).
+  • Beklenen Kural : AUD-007
+  • Üretilen Kural : AUD-007
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+Toplam Senaryo    : 9
+Başarılı Doğrulama: 9 / 9
+Sonuç             : TAM BAŞARILI (%100 PASS)
+==============================================================================

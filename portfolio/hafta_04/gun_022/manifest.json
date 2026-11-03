@@ -1,0 +1,25 @@
+{
+  "dosyalar": {
+    "README.md": "5bdf25526669889e7eebd77883a5d680a8575bda83ca7499429b971af0cc4a75",
+    "ders.md": "7fc2343d25d20d66dc0e81421b35c0e9bd19bac94ceceadea55449dbe0e8ea27",
+    "rapor.md": "898a208059feaa2d7be3286e96046904086f9aa85fea1d03230bf0f692bea06b",
+    "sonuc.json": "61361289ccea063de062216c12c2475da4fee3edbe68fb9363db42d2b90b604c",
+    "soru_cevap.md": "f5eb461ca5c670cd0ddd6aa3bad62ce653a95c88203cfac222e887683c132c66",
+    "kanit/gercek/filtrelenmis_surec_ve_servisler.csv": "51470d17c9023dd5d42eb5bab546521e4caf7a70c1f6f7b0f6540fb69be5beab",
+    "kanit/gercek/komut_ve_cikis.txt": "e65571733349966664ea1cf31df75973423063f76b22cff2ebeff8cde37093f3",
+    "kanit/gercek/test_sonuclari.txt": "e44185bbf7ee566d0d560b204b9c3db460eade24450187b6963d34e871caeb0b",
+    "kanit/temsili/powershell_pipeline_mimarisi.txt": "b4d8bf648ebc4868de0500a6dea5b475b6703c6d6820294bef2693ec4c8d1bb3",
+    "ornek_veri/ps_audit_rules.json": "d484354ba98495e586f503a09934542f3b97fed32343d5e4a0a412bbc0c4ae0b",
+    "ornek_veri/ps_process_samples.json": "dbd575c85428b90f507a68c3a4649a127ccfd00c178ad57bc8c22ec57047d6c6",
+    "ornek_veri/ps_service_samples.json": "d5ea00d69559ee41ed938c5a8fd5a522aacff648678510f1041cc69ad9d5d9f8",
+    "tests/__init__.py": "2580b69cba4241d382c3358de6399bd4b186f24f3ce642a5efba9261df170d31",
+    "tests/test_powershell_security_pipeline_auditor.py": "ce557aedcc3651d343d48cd8ee41f7f0f517105c6f7a5df73a50376fb4b030b7",
+    "uygulama/__init__.py": "145fdbd860c57f16fafdce9b4bac59274b67513279c1a2a6de33b7abd48a9fec",
+    "uygulama/powershell_security_pipeline_auditor.py": "20f6d46a6916993cf9ad4029eb5a9618ea5f772480ea5ce02e011c5e32d6cb44"
+  },
+  "ozet": {
+    "toplam_dosya": 16,
+    "gun": 22,
+    "durum": "DOGRULANDI_PASS"
+  }
+}

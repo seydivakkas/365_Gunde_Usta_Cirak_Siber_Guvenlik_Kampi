@@ -1,0 +1,26 @@
+================================================================================
+G072: DEĞİŞKENLER, VERİ TİPLERİ VE GÜVENLİ GİRİŞ DOĞRULAMA RAPORU
+Telif Hakkı (c) 2026 Seydi Eryılmaz | Özel Lisans — Tüm Hakları Saklıdır
+================================================================================
+
+1. GİRDİ GÜVENLİK DENETİMİ ÖZETİ
+----------------------------------------
+Denetim Durumu            : TAM BAŞARILI (PASS)
+Zaman Damgası UTC         : 2026-10-31T08:53:59.355295+00:00
+Doğrulanan Alan Sayısı    : 7
+Unicode Kanonikleştirme   : NFKC Aktif
+Null Byte Filtreleme      : Aktif (Sıfır Tolerans)
+Tip Karmaşası Koruması    : Aktif (Boolean vs Int Trap Engellendi)
+
+2. DOĞRULANMIŞ VE KANONİKLEŞTİRİLMİŞ PARAMETRELER
+--------------------------------------------------------------------------------
+Parametre Adı             Doğrulanan Tip     Güvenli Değer
+--------------------------------------------------------------------------------
+target_ip                 str                192.168.1.100
+target_port               int                443
+hostname                  str                gateway.kurum.local
+timeout_sec               int                5
+verbose                   bool               True
+packet_count              int                100
+log_filename              str                C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\logs\tarama_20261031.log
+================================================================================

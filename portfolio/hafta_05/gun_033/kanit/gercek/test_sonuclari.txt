@@ -1,0 +1,33 @@
+test_01_initial_state (portfolio.hafta_05.gun_033.tests.test_file_integrity_hash_checker.TestFileIntegrityHashChecker.test_01_initial_state)
+Denetleyicinin ba■lang² durumunun bo■ ve temiz oldu­unu do­rular. ... ok
+test_02_compute_file_hash_sha256 (portfolio.hafta_05.gun_033.tests.test_file_integrity_hash_checker.TestFileIntegrityHashChecker.test_02_compute_file_hash_sha256)
+config.json dosyas²n²n fiili SHA-256 ÷zetini tam do­rulukla hesaplar. ... ok
+test_03_compute_file_hash_md5 (portfolio.hafta_05.gun_033.tests.test_file_integrity_hash_checker.TestFileIntegrityHashChecker.test_03_compute_file_hash_md5)
+config.json dosyas²n²n fiili MD5 ÷zetini tam do­rulukla hesaplar. ... ok
+test_04_avalanche_effect_demonstration (portfolio.hafta_05.gun_033.tests.test_file_integrity_hash_checker.TestFileIntegrityHashChecker.test_04_avalanche_effect_demonstration)
+Tek bir bit/karakter de­i■iminin Ã²­ Etkisini (%40-%60 bit fark²) do­rulad²­²n² test eder. ... ok
+test_05_load_valid_baseline (portfolio.hafta_05.gun_033.tests.test_file_integrity_hash_checker.TestFileIntegrityHashChecker.test_05_load_valid_baseline)
+Yetkili taban izgisi dosyas²n²n ba■ar²yla y³klendi­ini test eder. ... ok
+test_06_verify_file_integrity_clean (portfolio.hafta_05.gun_033.tests.test_file_integrity_hash_checker.TestFileIntegrityHashChecker.test_06_verify_file_integrity_clean)
+Yetkili taban izgisiyle tamamen uyu■an bir ortamda hibir ihlal ²kmad²­²n² test eder. ... ok
+test_07_verify_tampered_file_detection (portfolio.hafta_05.gun_033.tests.test_file_integrity_hash_checker.TestFileIntegrityHashChecker.test_07_verify_tampered_file_detection)
+De­i■tirilmi■ bir dosyan²n INTEGRITY_COMPROMISED ve CRITICAL olarak saptand²­²n² test eder. ... ok
+test_08_verify_missing_file_detection (portfolio.hafta_05.gun_033.tests.test_file_integrity_hash_checker.TestFileIntegrityHashChecker.test_08_verify_missing_file_detection)
+Taban izgisinde olup diskte bulunamayan dosyan²n FILE_MISSING olarak yakaland²­²n² test eder. ... ok
+test_09_verify_new_unauthorized_file (portfolio.hafta_05.gun_033.tests.test_file_integrity_hash_checker.TestFileIntegrityHashChecker.test_09_verify_new_unauthorized_file)
+Taban izgisinde olmayan yetkisiz yeni dosyan²n NEW_UNAUTHORIZED_FILE olarak yakaland²­²n² test eder. ... ok
+test_10_trust_limitation_didactic (portfolio.hafta_05.gun_033.tests.test_file_integrity_hash_checker.TestFileIntegrityHashChecker.test_10_trust_limitation_didactic)
+G033-SC1: 'Hash tek ba■²na dosyan²n g³venilir oldu­unu s÷ylemez' ilkesini test eder. ... ok
+test_11_negative_control_corrupted_dataset (portfolio.hafta_05.gun_033.tests.test_file_integrity_hash_checker.TestFileIntegrityHashChecker.test_11_negative_control_corrupted_dataset)
+Negatif kontrol: Bozuk formatl², hatal² uzunluklu ve geersiz hex ieren hash kay²tlar²n² g³venle reddeder. ... ok
+test_12_negative_control_missing_file_exception (portfolio.hafta_05.gun_033.tests.test_file_integrity_hash_checker.TestFileIntegrityHashChecker.test_12_negative_control_missing_file_exception)
+Negatif kontrol: Var olmayan bir dosyada FileNotFoundError f²rlat²ld²­²n² test eder. ... ok
+test_13_text_report_generation (portfolio.hafta_05.gun_033.tests.test_file_integrity_hash_checker.TestFileIntegrityHashChecker.test_13_text_report_generation)
+Metin tabanl² b³t³nl³k raporunun format ve ba■l²klar²n² eksiksiz ³retti­ini test eder. ... ok
+test_14_custom_license_presence (portfolio.hafta_05.gun_033.tests.test_file_integrity_hash_checker.TestFileIntegrityHashChecker.test_14_custom_license_presence)
+Ízel lisans kural² gere­ince dosyalarda 'Ízel Lisans - T³m Haklar² Sakl²d²r' ibaresini denetler. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.014s
+
+OK

@@ -1,0 +1,45 @@
+{
+  "gun_no": 12,
+  "gun_kimligi": "G012",
+  "asama": "01",
+  "hafta": 2,
+  "konu": "Anlık görüntü, yedek ve geri dönüş",
+  "tarih": "2026-10-27",
+  "durum": "PASS",
+  "puan": 100,
+  "degerlendirme_detayi": {
+    "teori": 20,
+    "uygulama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "kanit_durumu": "TAM",
+  "tamamlanan_gorevler": [
+    "Sanal makine anlık görüntü (snapshot), tam bağımsız yedek (backup) ve geri dönüş (rollback/restore) mimarisi Usta-Çırak derinliğinde açıklandı.",
+    "Laboratuvar masası fotoğrafı vs nükleer sığınak kasası analojisi ile snapshot'ın bir yedek olmadığı zihinsel modeli kuruldu.",
+    "Hypervisor seviyesinde ana disk dondurma, differencing/delta diski ve bellek dondurma (Copy-on-Write) mekanizması somutlaştırıldı.",
+    "Snapshot yaş sınırı (72 saat), kontrolsüz disk şişmesi (bloat) ve hypervisor I/O kilitlenmesi riskleri kodlandı.",
+    "Fidye yazılımlarının vssadmin delete shadows taktikleri ve buna karşı WORM (Write Once Read Many) / S3 Object Lock değişmezlik kalkanı geliştirildi.",
+    "3-2-1-1-0 kurumsal yedekleme standardı ve SHA-256 kriptografik bütünlük denetimi vm_snapshot_backup_manager.py içinde kodlandı.",
+    "Her kod satırı eğitsel açıklamalarla donatılmış CLI yönetim aracı geliştirildi.",
+    "14 birim test ile pozitif altın akış, negatif güvenlik sınırları ve hash tahrifatı durumunda BackupIntegrityError fırlatılması 0.018 saniyede %100 başarıyla doğrulandı.",
+    "Gerçek CLI yürütme, unittest çıktısı ve temsilî ASCII mimari şeması kanıt olarak üretildi.",
+    "Soru bankasındaki 3 soru (G012-SC1, G012-SC2, G012-SC3) katı 4 bölümlü formatta cevaplandı."
+  ],
+  "pozitif_negatif_kontrol_sonuclari": {
+    "pozitif_kontrol_altin_yedek": "3-2-1 uyumlu ve WORM kilitli VM-SEC-LNX-01 profilinde 100/100 puan, 0 bulgu ve GUVENLI durumu teyit edildi",
+    "pozitif_kontrol_snapshot_olusturma": "Snapshot alındığında ana diskin salt-okunur yapıldığı ve delta diskinin açıldığı doğrulandı",
+    "pozitif_kontrol_rollback": "Rollback icrasında delta diskin sıfırlanarak sistemin altın duruma saniyeler içinde döndüğü teyit edildi",
+    "pozitif_kontrol_tam_yedek": "Bağımsız tam yedekte 64 karakterli SHA-256 özeti ve WORM değişmezlik kilidi üretildi",
+    "pozitif_kontrol_butunluk": "Doğru hash ile geri yükleme bütünlüğü onaylandı",
+    "negatif_kontrol_snapshot_as_backup": "Yedeği olmayan fakat snapshot'ı olan makinede RISK-01-SNAP-AS-BACKUP ile 30 puan ceza uygulandı",
+    "negatif_kontrol_72_saat_yas": "72 saati aşmış açık snapshot tespitinde RISK-02-SNAPSHOT-AGE-EXCEEDED ile 20 puan ceza uygulandı",
+    "negatif_kontrol_zincir_derinligi": "3'ten fazla iç içe geçmiş snapshot durumunda RISK-03-DEEP-SNAPSHOT-CHAIN uyarısı raporlandı",
+    "negatif_kontrol_worm_yoklugu": "WORM değişmezlik kilidi bulunmayan sistemde RISK-04-IMMUTABILITY-MISSING tespit edildi",
+    "negatif_kontrol_vss_saldirisi": "Windows sisteminde VSS aktif fakat harici koruma yoksa RISK-05-VSS-TAMPER-SURFACE yakalandı",
+    "negatif_kontrol_butunluk_hatasi": "Hash uyuşmazlığında BackupIntegrityError fırlatılarak bozulmuş yedeğin geri yüklenmesi engellendi",
+    "negatif_kontrol_limit_asimi": "5'ten fazla snapshot eklenmek istendiğinde SnapshotPolicyViolationError ile zincir şişmesi durduruldu"
+  },
+  "onceki_gun_bagimliligi": "YOK (Tamamen bağımsız)",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ."
+}

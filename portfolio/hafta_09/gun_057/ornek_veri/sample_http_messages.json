@@ -1,0 +1,71 @@
+{
+  "aciklama": "G057 HTTP Istek ve Yanit Yapisi - Standart Mesajlar, Guvenlik Basliklari ve Saldiri Ornekleri",
+  "versiyon": "1.0.0",
+  "mesajlar": {
+    "gecerli_get_istegi": {
+      "tur": "ISTEK",
+      "ham_metin": "GET /api/v1/users?role=analyst HTTP/1.1\r\nHost: api.kurum.local\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\r\nAccept: application/json\r\nConnection: keep-alive\r\n\r\n",
+      "beklenen": {
+        "method": "GET",
+        "path": "/api/v1/users?role=analyst",
+        "version": "HTTP/1.1",
+        "host": "api.kurum.local",
+        "body_length": 0
+      }
+    },
+    "gecerli_post_istegi": {
+      "tur": "ISTEK",
+      "ham_metin": "POST /api/v1/auth/token HTTP/1.1\r\nHost: auth.kurum.local\r\nContent-Type: application/json\r\nContent-Length: 46\r\nUser-Agent: SecurityScanner/2.1\r\n\r\n{\"username\": \"seydi_analyst\", \"mfa_code\": 123456}",
+      "beklenen": {
+        "method": "POST",
+        "path": "/api/v1/auth/token",
+        "version": "HTTP/1.1",
+        "content_length": 46,
+        "content_type": "application/json"
+      }
+    },
+    "gecerli_200_ok_yaniti": {
+      "tur": "YANIT",
+      "ham_metin": "HTTP/1.1 200 OK\r\nDate: Thu, 29 Oct 2026 19:28:00 GMT\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 27\r\nConnection: close\r\n\r\n{\"status\": \"authenticated\"}",
+      "beklenen": {
+        "version": "HTTP/1.1",
+        "status_code": 200,
+        "reason_phrase": "OK",
+        "content_length": 27
+      }
+    },
+    "guvenli_sikilastirilmis_yanit": {
+      "tur": "YANIT",
+      "ham_metin": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Length: 35\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nContent-Security-Policy: default-src 'self'; script-src 'self'; object-src 'none'\r\nX-Frame-Options: DENY\r\nX-Content-Type-Options: nosniff\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nPermissions-Policy: camera=(), microphone=(), geolocation=()\r\n\r\n<!DOCTYPE html><p>Guvenli Web</p>",
+      "guvenlik_skoru": 100,
+      "eksik_basliklar": []
+    },
+    "guvensiz_acik_bilgi_veren_yanit": {
+      "tur": "YANIT",
+      "ham_metin": "HTTP/1.1 200 OK\r\nServer: Apache/2.4.41 (Ubuntu) mod_ssl/2.4.41 OpenSSL/1.1.1f\r\nX-Powered-By: PHP/7.4.3\r\nContent-Type: text/html\r\nContent-Length: 23\r\n\r\n<p>Acik Bilgi Sizintisi</p>",
+      "guvenlik_skoru": 20,
+      "eksik_basliklar": [
+        "Content-Security-Policy",
+        "Strict-Transport-Security",
+        "X-Frame-Options",
+        "X-Content-Type-Options",
+        "Referrer-Policy",
+        "Permissions-Policy"
+      ],
+      "afis_sizintisi": [
+        "Server: Apache/2.4.41 (Ubuntu) mod_ssl/2.4.41 OpenSSL/1.1.1f",
+        "X-Powered-By: PHP/7.4.3"
+      ]
+    },
+    "crlf_enjeksiyonu_ornek": {
+      "tur": "ISTEK",
+      "ham_metin": "GET /test%0d%0aSet-Cookie:%20session=saldirgan_cerez HTTP/1.1\r\nHost: victim.local\r\nUser-Agent: EvilInjector\r\n\r\n",
+      "saldiri_tipi": "CRLF_INJECTION_RESPONSE_SPLITTING"
+    },
+    "request_smuggling_cl_te": {
+      "tur": "ISTEK",
+      "ham_metin": "POST /search HTTP/1.1\r\nHost: vulnerable.local\r\nContent-Length: 13\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nSMUGGLED",
+      "saldiri_tipi": "HTTP_REQUEST_SMUGGLING_CL_TE"
+    }
+  }
+}

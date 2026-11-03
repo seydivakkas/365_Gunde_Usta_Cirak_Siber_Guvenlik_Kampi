@@ -1,0 +1,68 @@
+================================================================================
+G058 - HTTP YONTEMLERI VE IDEMPOTENCY: PROTOKOL VE GUVENLIK DENETIM RAPORU
+Tarih: 2026-10-29 22:08:00
+Standartlar: RFC 7231 (HTTP Semantics), RFC 5789 (PATCH), IETF Idempotency-Key
+Isletim Modu: Yerel Calistirildi (Local Standalone Engine)
+================================================================================
+
+1. HTTP METOTLARI SEMANTIK VE GUVENLIK MATRISI (RFC 7231)
+--------------------------------------------------------------------------------
+Metot      | Guvenli (Safe)?  | Esguklu (Idempotent)? | Onbelleklenebilir?
+-----------+------------------+-----------------------+--------------------
+GET        | EVET (Durum 0)   | EVET                  | EVET (Varsayilan)
+HEAD       | EVET (Govdesiz)  | EVET                  | EVET
+POST       | HAYIR (Yan etki) | HAYIR                 | Kosullu (Nadiren)
+PUT        | HAYIR (Tam temsil| EVET                  | HAYIR
+DELETE     | HAYIR (Silme)    | EVET                  | HAYIR
+OPTIONS    | EVET (Preflight) | EVET                  | HAYIR
+TRACE      | EVET (Tehlikeli) | EVET                  | HAYIR (XST Riski!)
+PATCH      | HAYIR (Kismi)    | HAYIR (Genellikle)    | Kosullu
+
+2. IDEMPOTENCY-KEY ILE CIFTE PARA CEKME (DOUBLE CHARGE) ENGELLEME TESTI
+--------------------------------------------------------------------------------
+[SENARYO]: Bakiye: 1000.0 TL | Cekilmek Istenen Tutar: 200.0 TL
+- Islem 1 (Ilk Istek):
+    * Metot / Yol: POST /api/v1/payments
+    * Idempotency-Key: e82b203c-7729-4d64-9418-2e0f4cb7331c
+    * Payload Hash: SHA256(amount=200) = 4f9b8c1...
+    * Durum: Islem ilk kez calisti -> 201 Created
+    * Kalan Bakiye: 800.0 TL | Islem Sayaci: 1
+- Islem 2 (Ag Kopmasi Sonrasi Yinelenen Istek - Replay):
+    * Metot / Yol: POST /api/v1/payments (Ayni Anahtar ve Ayni Payload)
+    * Durum: Idempotency-Key tablosundan eslesti!
+    * Sonuc: [IDEMPOTENT-REPLAYED] Onbellekteki 201 Created yaniti aynen donuldu.
+    * Islem Fonksiyonu CalistirilMADI!
+    * Kalan Bakiye: 800.0 TL (CIFTE CEKIM ONLENDI) | Islem Sayaci: 1
+
+3. IDEMPOTENCY-KEY GOVDE CAKISMASI (PAYLOAD MISMATCH) TESPITI
+--------------------------------------------------------------------------------
+[SALDIRI / HATA]: Ayni Idempotency-Key ile farkli tutar iletildi!
+- Kayitli Istek: key='key-101' -> Payload: amount=100
+- Yeni Istek:    key='key-101' -> Payload: amount=500
+- Aksiyon: IdempotencyConflictError firlatildi!
+- HTTP Durum Kodu: 422 Unprocessable Entity / 409 Conflict
+- Degerlendirme: Saldırganın veya istemcinin aynı anahtarla farklı bir işlemi
+  sinsice onaylatma (key reuse / tampering) girişimi engellendi.
+
+4. HTTP VERB TAMPERING VE GUVEKSIZ METOT DENETIMI
+--------------------------------------------------------------------------------
+[TEHDIT 1]: HTTP METOT ATLATMA (VERB TAMPERING)
+    - Hedef Kaynak: /admin/delete (Yetkisiz kullanicilara kapali)
+    - Normal Koruma: Yalnizca POST isteklerine yetki denetimi konulmus.
+    - Saldiri: Saldirgan yetkisiz olarak 'HEAD' veya 'PUT' metoduyla cagirdi.
+    - Aksiyon: VerbTamperingAuditor ihlali yakaladi ve VerbTamperingAlert firlatti!
+    - Kural: Erisim denetimi yalnizca belirli metotlara degil, URL'in tamamina uygulanmalidir.
+
+[TEHDIT 2]: TRACE METODU VE XST (CROSS-SITE TRACING)
+    - Incelenen Metot: TRACE /debug
+    - Tehdit: Tarayicida saklanan 'HttpOnly' bayrakli oturum cerezleri, TRACE yanitinin
+      govdesinde yankilandigi icin XSS uzerinden okunabilir (XST saldirisi).
+    - Tavsiye: Web sunucu yapilandirmasinda (Apache, Nginx, IIS) 'TraceEnable Off'
+      uygulanarak TRACE metodu tamamen devre disi birakilmalidir.
+
+[TEHDIT 3]: GET METODU ILE DURUM DEGISTIRME (ANTI-PATTERN)
+    - Incelenen Istek: GET /api/v1/transfer?from=acc1&to=acc2&amount=1000
+    - Hata: RFC 7231 ihlali! GET metodu sunucu durumunu degistiremez.
+    - Guvenlik Etkisi: Arama motoru orumcekleri (web crawlers), on yukleyiciler (prefetchers)
+      veya CSRF saldirganlari tek bir <img> etiketiyle kullanici adina para transferi yapabilir!
+    - Aksiyon: MethodValidationError firlatildi, POST/PUT kullanimi zorunlu kilindi.

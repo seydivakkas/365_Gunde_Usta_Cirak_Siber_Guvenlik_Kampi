@@ -1,0 +1,59 @@
+================================================================================
+G057 - HTTP ISTEK VE YANIT YAPISI: NEGATIF VE SINIR KONTROL SONUCLARI
+Tarih: 2026-10-29 19:31:00
+Toplam Negatif Test Senaryosu: 9
+================================================================================
+
+[NEG-01-EMPTY-REQUEST] BosHttpMesaji:
+    Girdi: "" (Bos dize)
+    Beklenen Istisna: HTTPParsingError
+    Hata Mesaji: "HTTP mesaji bos olamaz."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-02-MALFORMED-REQUEST-LINE] BozukIstekSatiri:
+    Girdi: "GET /index.html" (Sürüm eksik, 2 parça)
+    Beklenen Istisna: HTTPParsingError
+    Hata Mesaji: "Gecersiz HTTP istek satiri: 'GET /index.html'. Metot, yol ve versiyon 3 parca olmalidir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-03-UNSUPPORTED-HTTP-METHOD] GecersizHttpMetodu:
+    Girdi: "HACK /api/v1/data HTTP/1.1"
+    Beklenen Istisna: HTTPParsingError
+    Hata Mesaji: "Desteklenmeyen veya gecersiz HTTP metodu: 'HACK'."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-04-UNSUPPORTED-HTTP-VERSION] GecersizHttpVersiyonu:
+    Girdi: "GET / HTTP/9.9"
+    Beklenen Istisna: HTTPParsingError
+    Hata Mesaji: "Desteklenmeyen HTTP versiyonu: 'HTTP/9.9'. Yalnizca HTTP/1.0 ve HTTP/1.1 desteklenir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-05-MISSING-HOST-HEADER] EksikHostBasligi:
+    Girdi: Host basligi bulunmayan HTTP/1.1 istegi
+    Beklenen Istisna: HTTPParsingError
+    Hata Mesaji: "RFC 7230 geregi HTTP/1.1 isteklerinde zorunlu 'Host' basligi bulunamadi (400 Bad Request)."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-06-MALFORMED-STATUS-LINE] BozukDurumSatiri:
+    Girdi: "HTTP/1.1 OK" (Durum kodu tamsayisi eksik)
+    Beklenen Istisna: HTTPParsingError
+    Hata Mesaji: "Durum kodu tamsayi olmalidir: 'OK'."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-07-INVALID-STATUS-CODE] GecersizDurumKodu:
+    Girdi: status_code = 999 (100-599 disinda aralik disi kod)
+    Beklenen Istisna: HTTPParsingError
+    Hata Mesaji: "Gecersiz HTTP durum kodu: 999. Durum kodu 100-599 araliginda bir tamsayi olmalidir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-08-MALFORMED-HEADER-FORMAT] BozukBaslikFormati:
+    Girdi: "User-Agent Mozilla/5.0" (Iki nokta ':' ayirici yok)
+    Beklenen Istisna: HTTPParsingError
+    Hata Mesaji: "Gecersiz baslik satiri (iki nokta ':' eksik): 'User-Agent Mozilla/5.0'."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-09-NEGATIVE-CONTENT-LENGTH] GecersizIcerikUzunlugu:
+    Girdi: "Content-Length: -50" (Negatif tamsayi degeri)
+    Beklenen Istisna: HTTPParsingError
+    Hata Mesaji: "Gecersiz Content-Length degeri: '-50'. Sifir veya pozitif bir tamsayi olmalidir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)

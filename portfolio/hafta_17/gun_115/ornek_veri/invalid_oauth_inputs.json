@@ -1,0 +1,103 @@
+{
+  "aciklama": "Gün 115 OAuth 2.0 ve OIDC 9 Adet Negatif Kontrol Senaryosu",
+  "versiyon": "1.0.0",
+  "senaryolar": [
+    {
+      "id": "NEG_01",
+      "baslik": "Açık Yönlendirici (Open Redirector) Saldırısı — Beyaz Liste Dışı redirect_uri",
+      "hedef_zafiyet": "CWE-601: URL Redirection to Untrusted Site ('Open Redirector')",
+      "beklenen_istisna": "InvalidRedirectURIError",
+      "girdi": {
+        "client_id": "finans_portal_app",
+        "redirect_uri": "https://attacker-phishing.com/steal-token"
+      },
+      "beklenen_davranis": "Beyaz listede yer almayan redirect_uri anında InvalidRedirectURIError ile engellenmelidir."
+    },
+    {
+      "id": "NEG_02",
+      "baslik": "PKCE Doğrulama Başarısızlığı (Çalıntı Kod ile Sahte Verifier Takası)",
+      "hedef_zafiyet": "CWE-287: Improper Authentication (Authorization Code Interception)",
+      "beklenen_istisna": "PKCEVerificationFailedError",
+      "girdi": {
+        "client_id": "finans_portal_app",
+        "sahte_verifier": true
+      },
+      "beklenen_davranis": "Kod özeti ile eşleşmeyen verifier sunulduğunda PKCEVerificationFailedError fırlatılmalıdır."
+    },
+    {
+      "id": "NEG_03",
+      "baslik": "Daha Önce Kullanılmış Yetkilendirme Kodunun Tekrar Sunulması (Replay)",
+      "hedef_zafiyet": "CWE-294: Authentication Bypass by Capture-replay",
+      "beklenen_istisna": "AuthorizationCodeExpiredOrUsedError",
+      "girdi": {
+        "client_id": "finans_portal_app",
+        "kod_tekrar_kullanimi": true
+      },
+      "beklenen_davranis": "Tek kullanımlık kod ikinci kez sunulduğunda AuthorizationCodeExpiredOrUsedError verilmelidir."
+    },
+    {
+      "id": "NEG_04",
+      "baslik": "Süresi Dolmuş Yetkilendirme Kodu ile Belirteç Takası",
+      "hedef_zafiyet": "CWE-294: Authentication Bypass by Capture-replay",
+      "beklenen_istisna": "AuthorizationCodeExpiredOrUsedError",
+      "girdi": {
+        "client_id": "finans_portal_app",
+        "ttl_asimi_saniye": 120
+      },
+      "beklenen_davranis": "60 saniyelik ömrü dolan kod geçersiz kılınmalı ve reddedilmelidir."
+    },
+    {
+      "id": "NEG_05",
+      "baslik": "CSRF Saldırısı — İstemci Tarafında State Parametresi Uyuşmazlığı",
+      "hedef_zafiyet": "CWE-352: Cross-Site Request Forgery (CSRF)",
+      "beklenen_istisna": "StateMismatchCSRFError",
+      "girdi": {
+        "orijinal_state": "state_istemci_12345",
+        "gelen_state": "state_saldirgan_99999"
+      },
+      "beklenen_davranis": "State parametresi uyuşmadığında istemci işlemi kesmeli ve StateMismatchCSRFError fırlatmalıdır."
+    },
+    {
+      "id": "NEG_06",
+      "baslik": "OIDC ID Token Nonce Uyuşmazlığı (Replay Saldırısı)",
+      "hedef_zafiyet": "CWE-294: Authentication Bypass by Capture-replay",
+      "beklenen_istisna": "OIDCNonceMismatchError",
+      "girdi": {
+        "orijinal_nonce": "beklenen_nonce_111",
+        "gelen_nonce": "farkli_veya_eski_nonce_222"
+      },
+      "beklenen_davranis": "ID Token içindeki nonce istemcinin gönderdiği ile eşleşmediğinde OIDCNonceMismatchError alınmalıdır."
+    },
+    {
+      "id": "NEG_07",
+      "baslik": "Yetersiz Kapsam (Scope) ile Korumalı API'ye Yetkisiz Erişim",
+      "hedef_zafiyet": "CWE-285: Improper Authorization (Insufficient Scope)",
+      "beklenen_istisna": "InsufficientScopeError",
+      "girdi": {
+        "atanan_kapsam": "read:profile",
+        "talep_edilen_kaynak_kapsami": "read:reports"
+      },
+      "beklenen_davranis": "Token gerekli kapsama sahip olmadığında Resource Server InsufficientScopeError ile reddetmelidir."
+    },
+    {
+      "id": "NEG_08",
+      "baslik": "Kayıtlı Olmayan Sahte İstemci Kimliği ile Yetkilendirme Talebi",
+      "hedef_zafiyet": "CWE-287: Improper Authentication",
+      "beklenen_istisna": "InvalidClientError",
+      "girdi": {
+        "client_id": "sahte_ve_yetkisiz_istemci_app"
+      },
+      "beklenen_davranis": "IdP veritabanında bulunmayan client_id anında InvalidClientError ile engellenmelidir."
+    },
+    {
+      "id": "NEG_09",
+      "baslik": "Geçersiz veya Sahte Bearer Erişim Belirteci ile API Çağrısı",
+      "hedef_zafiyet": "CWE-287: Improper Authentication",
+      "beklenen_istisna": "InvalidAccessTokenError",
+      "girdi": {
+        "access_token": "tamamen_uydurma_ve_kayitsiz_token_abc"
+      },
+      "beklenen_davranis": "Geçersiz token ile yapılan istekler Resource Server tarafından 401 InvalidAccessTokenError ile kesilmelidir."
+    }
+  ]
+}

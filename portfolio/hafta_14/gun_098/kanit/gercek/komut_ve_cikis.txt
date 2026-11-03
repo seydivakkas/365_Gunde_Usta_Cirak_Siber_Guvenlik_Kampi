@@ -1,0 +1,80 @@
+=== GÜN 098: AŞAMA 4 KALİTE DENETÇİSİ CLI YÜRÜTME VE ÇIKIŞ KODLARI KANITI ===
+Tarih/Saat : 2026-11-02 01:36:29
+Standart   : POSIX Exit Codes (0: Başarılı, 1: Denetim İhlali, 2: Girdi/Sistem Hatası)
+==========================================================================================
+
+--- 1. Yardım Menüsü ve Parametre Doğrulama ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_098\uygulama\auditor_cli.py --help
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+usage: auditor_cli [-h] [-f FILE] [-d DIR] [-t THRESHOLD] [--strict] [--json]
+                   [-o OUTPUT]
+
+G098: Aşama 4 Siber Güvenlik Otomasyonu Kalite ve Yönetişim Denetçisi
+
+options:
+  -h, --help            show this help message and exit
+  -f, --file FILE       Denetlenecek tekil Python betiğinin dosya yolu
+  -d, --dir DIR         Denetlenecek tüm Python betiklerini içeren dizin yolu
+  -t, --threshold THRESHOLD
+                        Kabul edilebilir minimum kalite ve güvenlik skoru
+                        (varsayılan: 80.0)
+  --strict              Kritik bulgularda veya eşik altında doğrudan hata
+                        fırlatmayı zorunlu kılar
+  --json                Denetim sonuçlarını JSON formatında stdout'a basar
+  -o, --output OUTPUT   Raporun kaydedileceği hedef dosya
+------------------------------------------------------------------------------------------
+
+--- 2. Uyumlu Betik Tekil Denetimi (Çıkış Kodu: 0) ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_098\uygulama\auditor_cli.py -f C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_098\ornek_veri\sample_compliant_script.py
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+==========================================================================================
+HEDEF DOSYA                         | SKOR   | GÜVENLİK  | TEST   | MİMARİ   | DURUM 
+------------------------------------------------------------------------------------------
+sample_compliant_script.py          | 100    | 40        | 25     | 20       | PASS  
+==========================================================================================
+------------------------------------------------------------------------------------------
+
+--- 3. Zafiyetli Betik Tekil Denetimi (Çıkış Kodu: 1) ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_098\uygulama\auditor_cli.py -f C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_098\ornek_veri\sample_vulnerable_script.py
+[ÇIKIŞ KODU] 1
+[STDOUT]:
+==========================================================================================
+HEDEF DOSYA                         | SKOR   | GÜVENLİK  | TEST   | MİMARİ   | DURUM 
+------------------------------------------------------------------------------------------
+sample_vulnerable_script.py         | 20     | 0         | 5      | 15       | FAIL  
+==========================================================================================
+------------------------------------------------------------------------------------------
+
+--- 4. Dizin Taraması ve Toplu Kalite Karnesi Tablosu ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_098\uygulama\auditor_cli.py -d C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_098\ornek_veri
+[ÇIKIŞ KODU] 1
+[STDOUT]:
+==========================================================================================
+HEDEF DOSYA                         | SKOR   | GÜVENLİK  | TEST   | MİMARİ   | DURUM 
+------------------------------------------------------------------------------------------
+sample_compliant_script.py          | 100    | 40        | 25     | 20       | PASS  
+sample_vulnerable_script.py         | 20     | 0         | 5      | 15       | FAIL  
+==========================================================================================
+------------------------------------------------------------------------------------------
+
+--- 5. JSON Çıktı Modu (CI/CD Otomasyon Boru Hattı) ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_098\uygulama\auditor_cli.py -f C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_098\ornek_veri\sample_compliant_script.py --json
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+[
+  {
+    "hedef_dosya": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_14\\gun_098\\ornek_veri\\sample_compliant_script.py",
+    "toplam_puan": 100,
+    "kod_guvenligi_puani": 40,
+    "test_ve_dayaniklilik_puani": 25,
+    "mimari_ve_standartlar_puani": 20,
+    "dokumantasyon_ve_lisans_puani": 15,
+    "arl_seviyesi": "ARL-4: Üretim Düzeyi / Tam Güvenli Otomasyon",
+    "durum": "PASS",
+    "bulgular": [],
+    "denetim_zamani": "2026-11-02 01:36:30"
+  }
+]
+------------------------------------------------------------------------------------------

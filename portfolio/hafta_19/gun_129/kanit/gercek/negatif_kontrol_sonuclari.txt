@@ -1,0 +1,54 @@
+================================================================================
+GÜN 129: WINDOWS YEREL HESAPLAR VE UAC NEGATİF KONTROL VE ENGELLENEN SENARYOLAR RAPORU
+Tarih: 2026-11-02T09:53:33.877714
+================================================================================
+
+Senaryo [NEG-UAC-01]: Kullanıcı Hesabı Denetimi (UAC) Tamamen Devre Dışı (EnableLUA=0)
+  - Beklenen CWE: CWE-693 | Beklenen MITRE: T1548.002
+  - Skor: 60.0/100 | Duruş: ORTA_RİSK (İYİLEŞTİRME GEREKLİ)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-UAC-02]: Yönetici Onay Modu Devre Dışı (FilterAdministratorToken=0)
+  - Beklenen CWE: CWE-250 | Beklenen MITRE: T1548.002
+  - Skor: 80.0/100 | Duruş: ORTA_RİSK (İYİLEŞTİRME GEREKLİ)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-UAC-03]: Güvenli Masaüstü İstemi Kapalı (PromptOnSecureDesktop=0)
+  - Beklenen CWE: CWE-284 | Beklenen MITRE: T1548.002
+  - Skor: 85.0/100 | Duruş: SIKILAŞTIRILMIŞ / CIS UYUMLU (PASS)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-UAC-04]: Yerleşik Konuk (Guest) Hesabı Etkin
+  - Beklenen CWE: CWE-284 | Beklenen MITRE: T1078.003
+  - Skor: 80.0/100 | Duruş: ORTA_RİSK (İYİLEŞTİRME GEREKLİ)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-UAC-05]: Yerleşik Administrator Hesabı Varsayılan Adda ve Etkin
+  - Beklenen CWE: CWE-1188 | Beklenen MITRE: T1078.003
+  - Skor: 85.0/100 | Duruş: SIKILAŞTIRILMIŞ / CIS UYUMLU (PASS)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-UAC-06]: Hesap Kilitleme Eşiği Sıfır (Kaba Kuvvet Koruması Yok)
+  - Beklenen CWE: CWE-307 | Beklenen MITRE: T1110
+  - Skor: 90.0/100 | Duruş: SIKILAŞTIRILMIŞ / CIS UYUMLU (PASS)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-UAC-07]: Yetkisiz Grup Üyeliği: 'Everyone' Yöneticiler Grubunda
+  - Beklenen CWE: CWE-250 | Beklenen MITRE: T1078.003
+  - Skor: 80.0/100 | Duruş: ORTA_RİSK (İYİLEŞTİRME GEREKLİ)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-UAC-08]: Aşırı Geniş RDP Üyeliği: 'Users' Uzak Masaüstü Grubunda
+  - Beklenen CWE: CWE-284 | Beklenen MITRE: T1021.001
+  - Skor: 85.0/100 | Duruş: SIKILAŞTIRILMIŞ / CIS UYUMLU (PASS)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-UAC-09]: Yöneticiler için Sessiz Yükseltme (ConsentPromptBehaviorAdmin=0)
+  - Beklenen CWE: CWE-250 | Beklenen MITRE: T1548.002
+  - Skor: 85.0/100 | Duruş: SIKILAŞTIRILMIŞ / CIS UYUMLU (PASS)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+--------------------------------------------------------------------------------
+Toplam Negatif Senaryo: 9 | Başarılı Tespit: 9 / 9
+Genel Negatif Kontrol Değerlendirmesi: TAM UYUMLU (PASS)
+--------------------------------------------------------------------------------

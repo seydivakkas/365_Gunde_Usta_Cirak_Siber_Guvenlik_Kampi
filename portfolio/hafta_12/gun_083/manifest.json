@@ -1,0 +1,20 @@
+{
+  "dosyalar": {
+    "README.md": "152a0c47665637396fa200947c599386c843e8717b1e8ce2f6e707a8ed0e5a43",
+    "ders.md": "85f0804ad42e278d10591a309055106cea5dbfa1a1181222bfd3a12c409e7935",
+    "rapor.md": "5c3a69fc05ab440b339d85287e77907377e0d8c9acc57be8ce3c72b829b224a0",
+    "sonuc.json": "f7edbba32cdb103d5c62a6e3bbaa95ee83c21b83d3cb60a7a4a77120de0a8ced",
+    "soru_cevap.md": "91450e24c40e3d7c86ffc30adff131c0c96a504e2430c9f3b0a12fba62571330",
+    "kanit/gercek/git_denetim_raporu.txt": "1d4be4e47577655e9926371aa0d602063355c81d0f0d18f00f25669916977f04",
+    "kanit/gercek/komut_ve_cikis.txt": "d758fefa93d14c207bafa791d98f0061c140a1b3d909b09f790985e47253c45a",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": "f332a46922e832837dc1330736243a291796232b74196df620e5f13ba683b9d2",
+    "kanit/gercek/test_sonuclari.txt": "fa2cbe97548105d4ccb91fbf23acf693ee02d47c452701551c23d46475562c3f",
+    "kanit/temsili/git_diff_ve_guvenlik_mimarisi.txt": "5ccd781e3defc99afda800b154e89046bf10e64a81c54249ffc2ce75bd5510da",
+    "ornek_veri/invalid_git_inputs.json": "61a3ada6f68e8c9ac374a8cc7b5d7cbead584b0c41b44e4a67af0a21d082af8e",
+    "ornek_veri/sample_commit.diff": "38af2c513f1b1658d84ecbcdea332001a1edac22ca560896dd10cec261fc6d73",
+    "tests/__init__.py": "d83862ed40bf9f3a93cb8ca7a41a062a3f4a5f9e90e39390a6939d96ae096369",
+    "tests/test_git_commit_diff_auditor.py": "99f9d2abcbcf4198365564e8ac065b6a7ff625bf9d1c1d83849b6025396dc74f",
+    "uygulama/__init__.py": "2b105de48eefd19ac7a369006f23058b7f32c8a7b3c283475e4400eac187da80",
+    "uygulama/git_commit_diff_auditor.py": "7be62fdb8127d9ae5088258d532487e69161be130758373e0854569e423a315d"
+  }
+}

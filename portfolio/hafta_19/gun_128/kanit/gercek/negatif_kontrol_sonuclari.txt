@@ -1,0 +1,54 @@
+================================================================================
+GÜN 128: WINDOWS DEFENDER NEGATİF KONTROL VE ENGELLENEN SENARYOLAR RAPORU
+Tarih: 2026-11-02T09:45:07.921230
+================================================================================
+
+Senaryo [NEG-DEF-01]: Tam Koruma Devre Dışı (DisableRealtimeMonitoring)
+  - Beklenen CWE: CWE-693 | Beklenen MITRE: T1562.001
+  - Skor: 0.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-DEF-02]: Kurcalama Koruması Devre Dışı (TamperProtection Off)
+  - Beklenen CWE: CWE-693 | Beklenen MITRE: T1562.001
+  - Skor: 5.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-DEF-03]: Tehlikeli Hariç Tutma: Kök Dizin C:\ Hariç Tutulmuş
+  - Beklenen CWE: CWE-732 | Beklenen MITRE: T1562.001
+  - Skor: 0.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-DEF-04]: Tehlikeli Hariç Tutma: .exe Uzantısı Taramadan Çıkarılmış
+  - Beklenen CWE: CWE-732 | Beklenen MITRE: T1562.001
+  - Skor: 0.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-DEF-05]: Fidye Yazılımı Koruması (ControlledFolderAccess) Kapalı
+  - Beklenen CWE: CWE-693 | Beklenen MITRE: T1486
+  - Skor: 5.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-DEF-06]: Ağ Koruması (Network Protection) Kapalı
+  - Beklenen CWE: CWE-319 | Beklenen MITRE: T1071
+  - Skor: 5.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-DEF-07]: ASR Saldırı Yüzeyi Azaltma Kuralları Eksik
+  - Beklenen CWE: CWE-358 | Beklenen MITRE: T1566 / T1059 / T1003
+  - Skor: 5.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-DEF-08]: Davranışsal İzleme ve İndirme Koruması Kapalı
+  - Beklenen CWE: CWE-693 | Beklenen MITRE: T1562.001
+  - Skor: 0.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-DEF-09]: Bulut Koruması 'Disabled' ve PUA Koruması Kapalı
+  - Beklenen CWE: CWE-1188 | Beklenen MITRE: T1027
+  - Skor: 5.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+--------------------------------------------------------------------------------
+Toplam Negatif Senaryo: 9 | Başarılı Tespit: 9 / 9
+Genel Negatif Kontrol Değerlendirmesi: TAM UYUMLU (PASS)
+--------------------------------------------------------------------------------

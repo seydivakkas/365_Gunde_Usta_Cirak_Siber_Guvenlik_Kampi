@@ -1,0 +1,39 @@
+{
+  "avalanche_test_cifti": {
+    "metin_1": "SiberGuvenlik2026_KriptoDersi_G101_A",
+    "metin_2": "SiberGuvenlik2026_KriptoDersi_G101_B",
+    "aciklama": "Son karakterde 1 bitlik fark içeren iki metin dizisi (Çığ Etkisi ölçümü)"
+  },
+  "sha256_referans_vektoru": {
+    "girdi": "abc",
+    "beklenen_sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+  },
+  "kirilmis_algoritmalar": [
+    {
+      "ad": "MD5",
+      "bit_uzunlugu": 128,
+      "durum": "GÜVENSİZ / ÇAKIŞMA BULUNDU (Wang et al. 2004)",
+      "cwe": "CWE-328"
+    },
+    {
+      "ad": "SHA-1",
+      "bit_uzunlugu": 160,
+      "durum": "GÜVENSİZ / ÇAKIŞMA BULUNDU (SHAttered 2017)",
+      "cwe": "CWE-328"
+    }
+  ],
+  "onerilen_guvenli_algoritmalar": [
+    {
+      "ad": "SHA-256",
+      "bit_uzunlugu": 256,
+      "durum": "GÜVENLİ (NIST FIPS 180-4)",
+      "guvenlik_seviyesi_bit": 128
+    },
+    {
+      "ad": "BLAKE2b",
+      "bit_uzunlugu": 512,
+      "durum": "GÜVENLİ & YÜKSEK PERFORMANS (RFC 7693)",
+      "guvenlik_seviyesi_bit": 256
+    }
+  ]
+}

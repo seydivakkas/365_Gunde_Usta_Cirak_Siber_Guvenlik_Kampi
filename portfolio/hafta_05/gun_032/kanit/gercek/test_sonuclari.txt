@@ -1,0 +1,33 @@
+test_01_init_state (portfolio.hafta_05.gun_032.tests.test_startup_service_auditor.TestStartupServiceAuditor.test_01_init_state)
+Denetleyicinin ba■lang² durumunun bo■ ve haz²r oldu­unu do­rular. ... ok
+test_02_load_sample_inventory (portfolio.hafta_05.gun_032.tests.test_startup_service_auditor.TestStartupServiceAuditor.test_02_load_sample_inventory)
+Gereki ÷rnek envanter dosyas²n²n eksiksiz y³klendi­ini test eder. ... ok
+test_03_detect_unquoted_service_path (portfolio.hafta_05.gun_032.tests.test_startup_service_auditor.TestStartupServiceAuditor.test_03_detect_unquoted_service_path)
+T²rnaks²z servis yolu (Unquoted Service Path - T1574.009) zafiyetini yakalar. ... ok
+test_04_detect_suspicious_binary_paths (portfolio.hafta_05.gun_032.tests.test_startup_service_auditor.TestStartupServiceAuditor.test_04_detect_suspicious_binary_paths)
+Temp ve Public dizinlerinden al²■an ba■lang² girdilerini yakalar. ... ok
+test_05_detect_name_masquerading (portfolio.hafta_05.gun_032.tests.test_startup_service_auditor.TestStartupServiceAuditor.test_05_detect_name_masquerading)
+Me■ru sistem isimlerini taklit eden (Masquerading - T1036) kay²tlar² yakalar. ... ok
+test_06_detect_security_service_tampering (portfolio.hafta_05.gun_032.tests.test_startup_service_auditor.TestStartupServiceAuditor.test_06_detect_security_service_tampering)
+Devre d²■² b²rak²lan g³venlik duvar² servisini (MpsSvc) yakalar. ... ok
+test_07_detect_malicious_script_execution (portfolio.hafta_05.gun_032.tests.test_startup_service_auditor.TestStartupServiceAuditor.test_07_detect_malicious_script_execution)
+Gizli ve baypas parametreli PowerShell ba■lang² g÷revini yakalar. ... ok
+test_08_risk_score_calculation (portfolio.hafta_05.gun_032.tests.test_startup_service_auditor.TestStartupServiceAuditor.test_08_risk_score_calculation)
+T³m zafiyetler tetiklendi­inde risk puan²n²n ve tehdit duru■unun do­rulu­unu test eder. ... ok
+test_09_clean_baseline_risk_score (portfolio.hafta_05.gun_032.tests.test_startup_service_auditor.TestStartupServiceAuditor.test_09_clean_baseline_risk_score)
+Sadece me■ru ve temiz servislerden olu■an ortamda riskin 0 ²kt²­²n² test eder. ... ok
+test_10_negative_control_corrupted_dataset (portfolio.hafta_05.gun_032.tests.test_startup_service_auditor.TestStartupServiceAuditor.test_10_negative_control_corrupted_dataset)
+Negatif kontrol: Bozuk ■emal² veri setinin g³venle reddedildi­ini test eder. ... ok
+test_11_negative_control_missing_file (portfolio.hafta_05.gun_032.tests.test_startup_service_auditor.TestStartupServiceAuditor.test_11_negative_control_missing_file)
+Negatif kontrol: Var olmayan bir dosya yolunda FileNotFoundError f²rlat²ld²­²n² test eder. ... ok
+test_12_negative_control_non_list_json (portfolio.hafta_05.gun_032.tests.test_startup_service_auditor.TestStartupServiceAuditor.test_12_negative_control_non_list_json)
+Negatif kontrol: JSON ieri­i liste yerine obje veya say² oldu­unda ValueError f²rlat²r. ... ok
+test_13_text_report_generation (portfolio.hafta_05.gun_032.tests.test_startup_service_auditor.TestStartupServiceAuditor.test_13_text_report_generation)
+Metin tabanl² denetim raporunun eksiksiz ve format²na uygun ³retildi­ini test eder. ... ok
+test_14_custom_license_presence (portfolio.hafta_05.gun_032.tests.test_startup_service_auditor.TestStartupServiceAuditor.test_14_custom_license_presence)
+Lisans kural² gere­i kod dosyalar²nda ÷zel 'T³m Haklar² Sakl²d²r' lisans²n² do­rular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.007s
+
+OK

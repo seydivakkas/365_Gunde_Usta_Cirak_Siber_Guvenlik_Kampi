@@ -1,0 +1,20 @@
+======================================================================
+PROCESS EXPLORER SÜREÇ AĞACI ŞEMASI (G031-SC2)
+======================================================================
+└── [PID: 4    ] System (User: NT AUTHORITY\SYSTEM) (Microsoft Windows Component Publisher)
+    └── [PID: 340  ] smss.exe (User: NT AUTHORITY\SYSTEM) (Microsoft Windows)
+        └── [PID: 520  ] wininit.exe (User: NT AUTHORITY\SYSTEM) (Microsoft Windows)
+            ├── [PID: 610  ] services.exe (User: NT AUTHORITY\SYSTEM) (Microsoft Windows)
+            │   ├── [PID: 780  ] svchost.exe (User: NT AUTHORITY\SYSTEM) (Microsoft Windows)
+            │   └── [PID: 790  ] svchost.exe (User: NT AUTHORITY\NETWORK SERVICE) (Microsoft Windows)
+            ├── [PID: 620  ] lsass.exe (User: NT AUTHORITY\SYSTEM) (Microsoft Windows)
+            └── [PID: 1040 ] explorer.exe (User: SEC-CORP\analyst) (Microsoft Windows)
+                ├── [PID: 2100 ] chrome.exe (User: SEC-CORP\analyst) (Google LLC)
+                │   ├── [PID: 2110 ] chrome.exe (User: SEC-CORP\analyst) (Google LLC)
+                │   ├── [PID: 2120 ] chrome.exe (User: SEC-CORP\analyst) (Google LLC)
+                │   └── [PID: 2130 ] chrome.exe (User: SEC-CORP\analyst) (Google LLC)
+                └── [PID: 3100 ] winword.exe (User: SEC-CORP\analyst) (Microsoft Corporation)
+                    └── [PID: 3150 ] cmd.exe (User: SEC-CORP\analyst) (Microsoft Windows) [! TEHDİT: 1 Anomali]
+                        └── [PID: 3160 ] powershell.exe (User: SEC-CORP\analyst) (Microsoft Windows) [! TEHDİT: 1 Anomali]
+                            └── [PID: 4050 ] svchost.exe (User: SEC-CORP\analyst) (Unsigned) [! TEHDİT: 3 Anomali]
+======================================================================

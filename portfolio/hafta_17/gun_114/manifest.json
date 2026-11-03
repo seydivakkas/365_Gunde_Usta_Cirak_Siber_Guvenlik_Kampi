@@ -1,0 +1,97 @@
+{
+  "gun": 114,
+  "konu": "MFA yöntemleri ve phishing direnci",
+  "olusturma_tarihi": "2026-11-02T05:18:51.284748",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "40fc3f3fdb994126f2be85c4fd6501cfa12a9341b9240cecd00ff93a6bba905a",
+      "boyut_bayt": 5905
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "2e1535bde0b083f342671d3d020060e4d97ca1a84bb9623e2c69945d51968f35",
+      "boyut_bayt": 7409
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "fc6340972d509ac2a6ea8f2bc8fe0d533a1341304e7395ca1cf345b783f234f1",
+      "boyut_bayt": 20163
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "945e2d46b1e1049f00277423dfbe9a80c3b1aeba709dbda2a23ec9838a6069f4",
+      "boyut_bayt": 3892
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "6e8e7b088c31bc6a7eaf5b9c3b12f1306495f41da2bc02b87065077791445753",
+      "boyut_bayt": 786
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "2a909d825879bfe18a1ca5eed910a21f2be4d4a98fdc4614e3ef8988e97da9fc",
+      "boyut_bayt": 12163
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "7bb8b98e7e042db291b7a28ae1c367d8dac2cd45dfca7e76570c24d22e1f931f",
+      "boyut_bayt": 1025
+    },
+    {
+      "dosya": "kanit\\gercek\\mfa_phishing_analiz_raporu.txt",
+      "sha256": "ae56d08ba61aaeb1f166e980ae994d09b2a6e6646b19ac124b09c08b7f610d8a",
+      "boyut_bayt": 4347
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "0b51efe159a5fc2183515eb6fa64a4ceb335ab75c29a6e547445ae8a4b923e36",
+      "boyut_bayt": 2150
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "0463cb0cee470abd8c4bfe090745ecc5c9a62bd7ac8b014f693cdbbb559ecf58",
+      "boyut_bayt": 4080
+    },
+    {
+      "dosya": "kanit\\temsili\\mfa_phishing_mimarisi.txt",
+      "sha256": "94051584b45dbd2f73644a0ce166fa38541d46a03646739f5e0a498f87064c82",
+      "boyut_bayt": 3396
+    },
+    {
+      "dosya": "ornek_veri\\invalid_mfa_inputs.json",
+      "sha256": "9687be59b8e5b4913d876eb7e54af0581bdca279a81dbba3ef36dff0f630c53e",
+      "boyut_bayt": 4422
+    },
+    {
+      "dosya": "ornek_veri\\mfa_sample_credentials.json",
+      "sha256": "793fef5933b33a23fc0d8d91b45acf568551756f8453cc003aba311383dd45b2",
+      "boyut_bayt": 2186
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "410d11446b6fa3326cd42b4836f9900adeeb9f7e59e4cc6411d0ada780502ad6",
+      "boyut_bayt": 603
+    },
+    {
+      "dosya": "tests\\test_mfa_phishing_resistance.py",
+      "sha256": "a1ae46ecbacafb2a29aacc52be814686afeb03cdfc7fda4eb61fe6cb3279677f",
+      "boyut_bayt": 14120
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "d975754db2a78e422610aac5405e7d613c76ddd905ce7b65511b3d0bd64988e4",
+      "boyut_bayt": 878
+    },
+    {
+      "dosya": "uygulama\\mfa_cli.py",
+      "sha256": "3a1b56ff43d8b655aae61dcfddde268f6df3a0fd828de6e7c260a4a060c2bc98",
+      "boyut_bayt": 9124
+    },
+    {
+      "dosya": "uygulama\\mfa_phishing_resistant_engine.py",
+      "sha256": "8bfc3fdd66b21febb3e25ea19e0e947641b5994a9e594fdd8c08804561b6ae9c",
+      "boyut_bayt": 26330
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "inventory_metadata": {
+    "enterprise": "Anadolu Finans & Teknoloji A.Ş.",
+    "audit_scope": "KURUMSAL_YEDEKLEME_VE_321_UYUMLULUK_DENETIMI",
+    "timestamp": "2026-10-27T11:50:00Z"
+  },
+  "backup_policies": [
+    {
+      "policy_id": "POL-CORE-DB",
+      "workload_name": "Core_Banking_Database_PostgreSQL",
+      "criticality": "TIER_1_CRITICAL",
+      "total_copies": 3,
+      "media_types": [
+        "NVMe_SAN_Primary",
+        "HDD_NAS_Secondary",
+        "Cloud_S3_Glacier_Immutable"
+      ],
+      "offsite_copies": 1,
+      "is_immutable_or_airgapped": true,
+      "immutability_mechanism": "AWS_S3_Object_Lock_Compliance_Mode",
+      "days_since_last_restore_test": 14,
+      "last_restore_verification_status": "SUCCESSFUL",
+      "integrity_checksum_algorithm": "SHA256",
+      "target_rpo_hours": 1.0,
+      "actual_backup_interval_hours": 1.0,
+      "target_rto_hours": 2.0,
+      "relies_on_raid_as_backup": false,
+      "snapshot_on_same_pool_only": false
+    },
+    {
+      "policy_id": "POL-LEGACY-FS",
+      "workload_name": "Muhasebe_ve_IK_Dosya_Sunucusu",
+      "criticality": "TIER_2_HIGH",
+      "total_copies": 1,
+      "media_types": [
+        "Local_RAID5_DAS"
+      ],
+      "offsite_copies": 0,
+      "is_immutable_or_airgapped": false,
+      "immutability_mechanism": "none",
+      "days_since_last_restore_test": null,
+      "last_restore_verification_status": "NEVER_TESTED",
+      "integrity_checksum_algorithm": "none",
+      "target_rpo_hours": 24.0,
+      "actual_backup_interval_hours": 72.0,
+      "target_rto_hours": 8.0,
+      "relies_on_raid_as_backup": true,
+      "snapshot_on_same_pool_only": false
+    },
+    {
+      "policy_id": "POL-VM-INFRA",
+      "workload_name": "VMware_Kurumsal_Sanal_Makineler",
+      "criticality": "TIER_2_HIGH",
+      "total_copies": 2,
+      "media_types": [
+        "Primary_SAN_Storage"
+      ],
+      "offsite_copies": 0,
+      "is_immutable_or_airgapped": false,
+      "immutability_mechanism": "none",
+      "days_since_last_restore_test": 120,
+      "last_restore_verification_status": "OUTDATED",
+      "integrity_checksum_algorithm": "none",
+      "target_rpo_hours": 12.0,
+      "actual_backup_interval_hours": 24.0,
+      "target_rto_hours": 4.0,
+      "relies_on_raid_as_backup": false,
+      "snapshot_on_same_pool_only": true
+    }
+  ]
+}

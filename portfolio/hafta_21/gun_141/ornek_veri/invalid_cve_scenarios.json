@@ -1,0 +1,162 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "aciklama": "Gün 141 Yama Yönetimi ve CVE için 9 adet negatif kontrol ve zafiyet ihlal senaryosu.",
+  "senaryolar": [
+    {
+      "senaryo_id": "SCENARIO-CVE-01",
+      "baslik": "Geçersiz CVE Kimliği Sözdizimi Biçimi",
+      "hata_tipi": "ValueError",
+      "beklenen_mesaj": "Geçersiz CVE kimliği biçimi tespit edildi",
+      "envanter_yamasi": {
+        "vulnerabilities": [
+          {
+            "cve_id": "VULN-2024-9999",
+            "package_name": "bash",
+            "cvss_score": 7.5,
+            "epss_score": 0.1
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-CVE-02",
+      "baslik": "CVSS Taban Skoru Geçersiz Aralıkta (> 10.0)",
+      "hata_tipi": "ValueError",
+      "beklenen_mesaj": "Geçersiz CVSS skoru",
+      "envanter_yamasi": {
+        "vulnerabilities": [
+          {
+            "cve_id": "CVE-2024-9999",
+            "package_name": "sudo",
+            "cvss_score": 15.5,
+            "epss_score": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-CVE-03",
+      "baslik": "EPSS Olasılık Skoru Geçersiz Aralıkta (> 1.0)",
+      "hata_tipi": "ValueError",
+      "beklenen_mesaj": "Geçersiz EPSS skoru",
+      "envanter_yamasi": {
+        "vulnerabilities": [
+          {
+            "cve_id": "CVE-2024-8888",
+            "package_name": "nginx",
+            "cvss_score": 8.0,
+            "epss_score": 2.5
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-CVE-04",
+      "baslik": "CISA KEV Listesindeki Zafiyette SLA İhlali (Süre Aşımı > 3 Gün)",
+      "hata_tipi": "SLA_BREACH",
+      "beklenen_kural": "EMERGENCY_SLA_BREACH",
+      "tarih_override": "2026-11-20",
+      "envanter_yamasi": {
+        "vulnerabilities": [
+          {
+            "cve_id": "CVE-2024-6387",
+            "package_name": "openssh-server",
+            "cvss_score": 8.1,
+            "is_in_cisa_kev": true,
+            "epss_score": 0.5,
+            "published_date": "2026-10-01"
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-CVE-05",
+      "baslik": "Otomatik Güvenlik Güncellemeleri Devre Dışı",
+      "hata_tipi": "CONFIG_DEFECT",
+      "beklenen_kural": "AUTO_UPDATES_DISABLED",
+      "envanter_yamasi": {
+        "patch_config_spec": {
+          "auto_security_updates": false,
+          "reboot_required": false
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-CVE-06",
+      "baslik": "Yeniden Başlatma Bekleyen Çekirdek Güncellemesi (Reboot Pending)",
+      "hata_tipi": "CONFIG_DEFECT",
+      "beklenen_kural": "REBOOT_REQUIRED",
+      "envanter_yamasi": {
+        "patch_config_spec": {
+          "auto_security_updates": true,
+          "reboot_required": true
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-CVE-07",
+      "baslik": "Kritik CVSS 9.8 Zafiyeti (Log4Shell Benzeri) Tespit Edildi",
+      "hata_tipi": "CRITICAL_TRIAGE",
+      "beklenen_kural": "CRITICAL_VULNERABILITY",
+      "envanter_yamasi": {
+        "vulnerabilities": [
+          {
+            "cve_id": "CVE-2021-44228",
+            "package_name": "log4j-core",
+            "cvss_score": 10.0,
+            "is_in_cisa_kev": true,
+            "epss_score": 0.95,
+            "published_date": "2026-11-01"
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-CVE-08",
+      "baslik": "Çok Sayıda İhmal Edilmiş Zafiyet ve NON_COMPLIANT Düzeyi",
+      "hata_tipi": "COMPLIANCE_FAILURE",
+      "beklenen_kural": "NON_COMPLIANT_STATUS",
+      "tarih_override": "2026-12-01",
+      "envanter_yamasi": {
+        "patch_config_spec": {
+          "auto_security_updates": false,
+          "reboot_required": true
+        },
+        "vulnerabilities": [
+          {
+            "cve_id": "CVE-2024-6387",
+            "package_name": "openssh-server",
+            "cvss_score": 9.8,
+            "is_in_cisa_kev": true,
+            "epss_score": 0.8,
+            "published_date": "2026-09-01"
+          },
+          {
+            "cve_id": "CVE-2023-4863",
+            "package_name": "libwebp7",
+            "cvss_score": 9.0,
+            "is_in_cisa_kev": true,
+            "epss_score": 0.9,
+            "published_date": "2026-09-01"
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-CVE-09",
+      "baslik": "Negatif CVSS Taban Skoru Kontrolü (< 0.0)",
+      "hata_tipi": "ValueError",
+      "beklenen_mesaj": "Geçersiz CVSS skoru",
+      "envanter_yamasi": {
+        "vulnerabilities": [
+          {
+            "cve_id": "CVE-2024-1111",
+            "package_name": "curl",
+            "cvss_score": -1.5,
+            "epss_score": 0.1
+          }
+        ]
+      }
+    }
+  ]
+}

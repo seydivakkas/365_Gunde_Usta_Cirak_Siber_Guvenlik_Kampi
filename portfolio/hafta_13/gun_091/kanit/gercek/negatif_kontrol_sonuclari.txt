@@ -1,0 +1,19 @@
+=====================================================================================
+GÜN 091: MİNİ PROJE 12 — NEGATİF KONTROL VE ZAFİYET ENGELLEME KANITLARI
+Çalıştırma Zamanı (UTC): 2026-11-01T20:27:18Z
+=====================================================================================
+SENARYO ID | BEKLENEN HATA                    | DURUM      | CWE KODU
+-------------------------------------------------------------------------------------
+NEG_01     | UnsupportedPlatformError         | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_02     | UnsupportedFormatError           | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_03     | MutuallyExclusiveViolationError  | ENGELLENDİ | CWE-754: Improper Check for Exceptional Conditions
+NEG_04     | PathTraversalError               | ENGELLENDİ | CWE-22: Improper Limitation of a Pathname to a Restricted Directory
+NEG_05     | MalformedTelemetryError          | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_06     | MissingRequiredFieldError        | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_07     | NaiveTimestampTelemetryError     | ENGELLENDİ | CWE-613: Insufficient Session Expiration / Ambiguous Timezone
+NEG_08     | PayloadTooLargeError             | ENGELLENDİ | CWE-400: Uncontrolled Resource Consumption
+NEG_09     | SensitiveDataExposureError       | ENGELLENDİ | CWE-532: Insertion of Sensitive Information into Log File
+=====================================================================================
+Toplam Negatif Senaryo: 9
+Başarıyla Engellenen / Tespit Edilen: 9
+Negatif Başarı Oranı: %100.0

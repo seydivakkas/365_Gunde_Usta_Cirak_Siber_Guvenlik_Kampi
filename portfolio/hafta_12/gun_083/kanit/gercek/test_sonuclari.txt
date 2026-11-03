@@ -1,0 +1,33 @@
+test_01_parse_valid_safe_commit_metadata (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_01_parse_valid_safe_commit_metadata)
+Gecerli commit ustbilgilerinin (hash, yazar, e-posta, mesaj) basariyla ayrastirildigini dogrular. ... ok
+test_02_parse_file_deltas_and_hunks (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_02_parse_file_deltas_and_hunks)
+Dosya deltalarinin, eklenen ve silinen satir adetlerinin dogru ayrastirildigini test eder. ... ok
+test_03_audit_clean_commit_approved (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_03_audit_clean_commit_approved)
+Guvenli ve temiz degisikliklerin 100 puan ile APPROVE karari aldigini dogrular. ... ok
+test_04_shannon_entropy_calculation_accuracy (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_04_shannon_entropy_calculation_accuracy)
+Shannon entropi hesaplayicisinin dusuk ve yuksek entropili metinleri dogru olctugunu test eder. ... ok
+test_05_detect_hardcoded_aws_access_key (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_05_detect_hardcoded_aws_access_key)
+Diff icine eklenen hardcoded AWS anahtarinin CRITICAL seviyede yakalandigini test eder. ... ok
+test_06_detect_rsa_private_key_block (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_06_detect_rsa_private_key_block)
+Diff icine sizdirilan RSA ozel anahtar blogunun tespit edildigini test eder. ... ok
+test_07_detect_github_personal_access_token (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_07_detect_github_personal_access_token)
+Diff icine eklenen GitHub PAT belirtecinin tespit edildigini test eder. ... ok
+test_08_detect_trojan_source_bidi_character (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_08_detect_trojan_source_bidi_character)
+CVE-2021-42574 Trojan Source Bidi karakteri enjeksiyonunun CRITICAL olarak yakalandigini test eder. ... ok
+test_09_detect_trojan_source_in_commit_message (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_09_detect_trojan_source_in_commit_message)
+Commit basliginda ve aciklama mesajinda gizlenen Bidi kontrol karakterlerinin tespitini test eder. ... ok
+test_10_detect_dangerous_code_eval_and_exec (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_10_detect_dangerous_code_eval_and_exec)
+Diff ile eklenen eval() gibi tehlikeli kod yurutme fonksiyonlarinin tespitini dogrular. ... ok
+test_11_detect_high_entropy_secret_token (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_11_detect_high_entropy_secret_token)
+Standart kaliplara uymayan ancak yuksek entropiye sahip rastgele parolalarin tespitini dogrular. ... ok
+test_12_fail_fast_mode_raises_exception_immediately (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_12_fail_fast_mode_raises_exception_immediately)
+fail_fast=True parametresi verildiginde ilk kritik ihlalde istisna firlatildigini dogrular. ... ok
+test_13_reject_null_byte_in_diff (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_13_reject_null_byte_in_diff)
+Diff akisina enjekte edilen null byte (0x00) karakterinin MalformedDiffException ile reddini test eder. ... ok
+test_14_reject_oversized_diff_bomb (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_14_reject_oversized_diff_bomb)
+Maksimum bayt veya satir limitini asan diff akisinin DoS korumasi ile reddini test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.015s
+
+OK

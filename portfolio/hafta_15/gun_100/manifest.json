@@ -1,0 +1,82 @@
+{
+  "gun": 100,
+  "hafta": 15,
+  "asama": 5,
+  "konu": "Entropi ve rastgelelik",
+  "olusturma_tarihi": "2026-11-02 01:50:18",
+  "toplam_dosya": 18,
+  "dosyalar": {
+    "README.md": {
+      "boyut_bayt": 4455,
+      "sha256": "1ecf3db65d92f6fa33e11f9095f8aba726e46d59c76210cf3467d4a581bc8a81"
+    },
+    "ders.md": {
+      "boyut_bayt": 7446,
+      "sha256": "b5d635f64952963c27f3b24abd00e0055e9fcd10c83cda4e53e2229ef675c33e"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 11597,
+      "sha256": "043dcab4bc6f721a822453eecaff9cc674370ca22aaf411783672779c93c9f11"
+    },
+    "rapor.md": {
+      "boyut_bayt": 3779,
+      "sha256": "d69ddff252962756dd414f318b447ac6d02660fe732ced6bbd8ccb5fb35b6cbc"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1096,
+      "sha256": "48089f63cd75b8830d61ff56f75794db5ea71f82390aaa74bd8f9a330597943a"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 8981,
+      "sha256": "41323376e133cbbb00af4e5ec1febbb65218963282a956bb6801e6009063c10e"
+    },
+    "kanit\\gercek\\entropi_analiz_raporu.txt": {
+      "boyut_bayt": 2213,
+      "sha256": "60064db23f36d443af8f252ceac0ba1b02b6acd79e3afe25b551083024cceae0"
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "boyut_bayt": 7337,
+      "sha256": "2d267e02b90a4a48f321a4dc39697a0b8f991792ee0dc312e02937427c48e15c"
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 4309,
+      "sha256": "b2860879dc8ac78e83858b0de3d002618216c71bd01de7d2bf09bf68ccef16c3"
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "boyut_bayt": 4065,
+      "sha256": "ea9339dce6972463be7c2bceb16a4e7176f671007350a5690342a89e6214ef72"
+    },
+    "kanit\\temsili\\entropi_rastgelelik_mimarisi.txt": {
+      "boyut_bayt": 3753,
+      "sha256": "eaf733158bc7c65ed5367952ec433d25e9ee2c20e8f1f4173b71412a1ef33b2e"
+    },
+    "ornek_veri\\entropy_test_samples.json": {
+      "boyut_bayt": 954,
+      "sha256": "bbc1ba6503184ba46e16ffb52c8c6c69721c899b37550bbbd58c2dd61f4025f5"
+    },
+    "ornek_veri\\invalid_entropy_inputs.json": {
+      "boyut_bayt": 2543,
+      "sha256": "820656b95fdae8a78a521aa735272173826c653d6cf5e39bba037ec8cfb7d2f2"
+    },
+    "tests\\__init__.py": {
+      "boyut_bayt": 576,
+      "sha256": "218a502ef89aee97f0d2c3d00b14c4a1a85aed82ba371cc716266651f334a627"
+    },
+    "tests\\test_entropy_randomness.py": {
+      "boyut_bayt": 9959,
+      "sha256": "7f38c3d28edbac288fbd04b57cdba33448faac0575464abfd635e57120a418f3"
+    },
+    "uygulama\\__init__.py": {
+      "boyut_bayt": 580,
+      "sha256": "6d70c91ea4e113524a38cc2365eba3aaaf175b1902035cf4d56676bc29ffb417"
+    },
+    "uygulama\\entropy_cli.py": {
+      "boyut_bayt": 8505,
+      "sha256": "0651b61e07b06a0f53d083e6c032a95b7fd4049440948a1e0149645d5b13d4f1"
+    },
+    "uygulama\\entropy_randomness_engine.py": {
+      "boyut_bayt": 13614,
+      "sha256": "bdc120de344da84f1375291d8dab3badb88be8b037eb494d8604a97efebaeb86"
+    }
+  }
+}

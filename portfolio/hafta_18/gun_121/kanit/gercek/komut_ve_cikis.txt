@@ -1,0 +1,22 @@
+=== GÜN 121 KOMUT VE ÇIKIŞ KANITI ===
+Tarih: 2026-11-02T06:04:33.503705
+
+$ python uygulama/risk_cli.py evaluate C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_121\ornek_veri\risk_assessment_config.json
+=== Atlas Finans ve Odeme Teknolojileri A.S. Risk Değerlendirme Özeti ===
+Tanımlı Risk Sayısı: 4
+Tanımlı Kontrol Sayısı: 5
+[RSK-001] Kritik Müşteri Veritabanına Yetkisiz Erişim ve Veri Sızıntısı | Doğal: 20 (KRİTİK) -> Artık: 2 (DÜŞÜK) | ROSI: %182.2
+[RSK-002] Sunuculara Ransomware Bulaşması ve İş Durması | Doğal: 20 (KRİTİK) -> Artık: 2 (DÜŞÜK) | ROSI: %94.7
+[RSK-003] Eski Muhasebe Yazılımı Destek Süresinin Dolması | Doğal: 6 (ORTA) -> Artık: 6 (ORTA) | ROSI: %0.0
+[RSK-004] Üçüncü Taraf Bulut Altyapısı Kesintisi | Doğal: 12 (YÜKSEK) -> Artık: 12 (YÜKSEK) | ROSI: %0.0
+[+] Yönetişim Durumu: BAŞARILI (Riskler tolerans sınırları içinde).
+
+$ python uygulama/risk_cli.py rosi --asset-value 500000 --ef 0.6 --aro 0.8 --cost 30000 --effectiveness 0.85
+=== Finansal Risk ve ROSI Analizi ===
+Tekil Kayıp Beklentisi (SLE): $300,000.00
+Doğal Yıllık Kayıp Beklentisi (Inherent ALE): $240,000.00
+Artık Yıllık Kayıp Beklentisi (Residual ALE): $36,000.00
+Önlenen Yıllık Kayıp: $204,000.00
+Yıllık Kontrol Yatırımı: $30,000.00
+Net Tasarruf / Kazanç: $174,000.00
+Yatırım Getirisi (ROSI): %580.00

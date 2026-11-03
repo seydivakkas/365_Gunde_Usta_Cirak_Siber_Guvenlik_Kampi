@@ -1,0 +1,24 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+plugins: anyio-4.13.0, asyncio-1.3.0, cov-7.1.0, typeguard-4.6.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 14 items
+
+portfolio/hafta_07/gun_047/tests/test_arp_neighbor_analyzer.py::TestARPNeighborAnalyzer::test_01_add_valid_dynamic_entry PASSED [  7%]
+portfolio/hafta_07/gun_047/tests/test_arp_neighbor_analyzer.py::TestARPNeighborAnalyzer::test_02_add_static_entry_and_protection PASSED [ 14%]
+portfolio/hafta_07/gun_047/tests/test_arp_neighbor_analyzer.py::TestARPNeighborAnalyzer::test_03_broadcast_and_multicast_mac_detection PASSED [ 21%]
+portfolio/hafta_07/gun_047/tests/test_arp_neighbor_analyzer.py::TestARPNeighborAnalyzer::test_04_mac_normalization_formats PASSED [ 28%]
+portfolio/hafta_07/gun_047/tests/test_arp_neighbor_analyzer.py::TestARPNeighborAnalyzer::test_05_process_legitimate_arp_packets PASSED [ 35%]
+portfolio/hafta_07/gun_047/tests/test_arp_neighbor_analyzer.py::TestARPNeighborAnalyzer::test_06_detect_arp_cache_poisoning_mac_flip PASSED [ 42%]
+portfolio/hafta_07/gun_047/tests/test_arp_neighbor_analyzer.py::TestARPNeighborAnalyzer::test_07_detect_dai_dhcp_snooping_violation PASSED [ 50%]
+portfolio/hafta_07/gun_047/tests/test_arp_neighbor_analyzer.py::TestARPNeighborAnalyzer::test_08_detect_single_mac_multiple_ip_abuse PASSED [ 57%]
+portfolio/hafta_07/gun_047/tests/test_arp_neighbor_analyzer.py::TestARPNeighborAnalyzer::test_09_markdown_report_generation PASSED [ 64%]
+portfolio/hafta_07/gun_047/tests/test_arp_neighbor_analyzer.py::TestARPNeighborAnalyzer::test_10_negative_invalid_ip_octet_and_zero PASSED [ 71%]
+portfolio/hafta_07/gun_047/tests/test_arp_neighbor_analyzer.py::TestARPNeighborAnalyzer::test_11_negative_invalid_mac_length_and_hex PASSED [ 78%]
+portfolio/hafta_07/gun_047/tests/test_arp_neighbor_analyzer.py::TestARPNeighborAnalyzer::test_12_negative_unicast_all_zero_mac PASSED [ 85%]
+portfolio/hafta_07/gun_047/tests/test_arp_neighbor_analyzer.py::TestARPNeighborAnalyzer::test_13_negative_missing_fields PASSED [ 92%]
+portfolio/hafta_07/gun_047/tests/test_arp_neighbor_analyzer.py::TestARPNeighborAnalyzer::test_14_negative_invalid_arp_opcode PASSED [100%]
+
+============================= 14 passed in 0.03s ==============================

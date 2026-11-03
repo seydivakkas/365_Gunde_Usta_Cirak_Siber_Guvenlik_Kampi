@@ -1,0 +1,67 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+====================================================================================================
+      G071: PYTHON ÇALIŞMA ORTAMI, VENV VE TEDARİK ZİNCİRİ GÜVENLİK MİMARİSİ
+====================================================================================================
+
+      +-----------------------------------------------------------------------------------+
+      |                  SİBER GÜVENLİK İÇİN PYTHON ÇALIŞMA ORTAMI GÜVENLİĞİ               |
+      +-----------------------------------------------------------------------------------+
+                                                |
+               +--------------------------------+--------------------------------+
+               |                                                                 |
+               v                                                                 v
++-------------------------------+                                 +-------------------------------+
+|  1. SANAL ORTAM (VENV)        |                                 |  2. TEDARİK ZİNCİRİ VE        |
+|     YALITIM KATMANI           |                                 |     BAĞIMLILIK HİJYENİ        |
++-------------------------------+                                 +-------------------------------+
+| [pyvenv.cfg Denetimi]         |                                 | [requirements.txt Denetimi]   |
+| - home = C:\Python312         |                                 | - Kesin Sabitleme (==)        |
+| - include-system-packages:    |                                 | - SHA-256 Kriptografik Hash   |
+|   `false` (Hermetic Yalıtım)  |                                 |   (--hash=sha256:...)         |
+| - version >= 3.10 (EOL Yok)   |                                 | - Levenshtein Typosquatting   |
+|                               |                                 | - Yerel CVE Zafiyet Veritabanı|
++-------------------------------+                                 +-------------------------------+
+               |                                                                 |
+               +--------------------------------+--------------------------------+
+                                                |
+                                                v
+               +-----------------------------------------------------------------+
+               |              GÜVENLİK VE TEHDİT KONTROL DÖNGÜSÜ                 |
+               +-----------------------------------------------------------------+
+               |                                                                 |
+               |  [Girdi: requirements.txt] ──► [Sözdizimi ve İşleç Kontrolü]    |
+               |                                               │                 |
+               |                                     ┌─────────┴─────────┐       |
+               |                                     ▼                   ▼       |
+               |                                 İşleç ==             İşleç >=   |
+               |                                     │                   │       |
+               |                                     ▼                   ▼       |
+               |                              [Typosquatting]         [REDDEDİLDİ|
+               |                               Levenshtein <= 2       Gevşek     |
+               |                                     │                Sürüm]     |
+               |                                     ▼                           |
+               |                               [CVE Taraması]                    |
+               |                               Zafiyetli Sürüm?                  |
+               |                                     │                           |
+               |                                     ▼                           |
+               |                           [SHA-256 Hash Kontrolü]               |
+               |                           Tam 64 Karakter Hex?                  |
+               |                                     │                           |
+               |                                     ▼                           |
+               |                         [KABUL / GÜVENLİ (PASS)]                |
+               +-----------------------------------------------------------------+
+                                                |
+                                                v
+               +-----------------------------------------------------------------+
+               |            KURUMSAL KABUL VE DENETİM ÇIKTILARI                  |
+               |  - Yalıtım Durumu       : TAM İZOLE (include-system: false)     |
+               |  - Python Sürüm Durumu  : 3.12.2 (Modern / Güncel)              |
+               |  - Hijyen Skoru         : %100.0 / 100.0 (Kusursuz)             |
+               |  - Hash Kapsama Oranı   : %100.0 (Tam Bütünlük Mührü)           |
+               |  - Raporlama Biçimi     : TEXT ve JSON formatlı adli rapor      |
+               +-----------------------------------------------------------------+
+
+====================================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+====================================================================================================

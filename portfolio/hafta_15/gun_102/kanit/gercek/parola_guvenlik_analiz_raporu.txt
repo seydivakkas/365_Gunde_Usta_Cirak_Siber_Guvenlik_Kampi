@@ -1,0 +1,37 @@
+===============================================================================
+GÜN 102: KURUMSAL PAROLA SAKLAMA GÜVENLİK VE TEHDİT ANALİZİ RAPORU
+Tarih/Saat: 2026-11-02 02:06:08
+Analist: Seydi Eryılmaz (@seydivakkas)
+===============================================================================
+
+1. TEHDİT MODELİ VE SAVUNMA MEKANİZMALARI:
+-------------------------------------------------------------------------------
+A. Gökkuşağı Tabloları (Rainbow Tables) Savunması: [TUZ (SALT)]
+   - Mekanizma: 128-bit (16 bayt) kriptografik rastgele tuz secrets.token_bytes() ile üretilir.
+   - Etki: İki kullanıcı aynı parolayı kullansa bile hash özetleri tamamen farklıdır.
+   - Önlenen Zafiyet: CWE-759 (Use of a One-Way Hash without a Salt).
+   - Önceden hesaplanmış tersine çevirme tablolarını (precomputed hashes) geçersiz kılar.
+
+B. Çevrimdışı Kaba Kuvvet ve GPU Kırma Savunması: [KDF İTERASYONU]
+   - Mekanizma: PBKDF2-HMAC-SHA256 algoritması ve minimum 100.000 iterasyon.
+   - Etki: Tek bir parola denemesinin işlemci maliyeti ~40-60 ms seviyesine çıkarılır.
+   - Önlenen Zafiyet: CWE-916 (Insufficient Computational Effort).
+   - GPU kümelerinin saniyede milyarlarca parola deneme kabiliyeti boğulur.
+
+C. Veritabanı Sızıntısında Çevrimdışı Sözlük Koruması: [BİBER (PEPPER)]
+   - Mekanizma: Biber veritabanında ASLA saklanmaz. HSM/KMS veya izole ortamda tutulur.
+   - Etki: SQL Injection veya disk hırsızlığı ile veritabanı sızsa dahi, saldırgan
+     biber anahtarını bilmediği için tuzlu hashleri kırmak üzere çevrimdışı iş başlatamaz.
+   - Önlenen Zafiyet: CWE-345 / Sistem İzolasyonu Güvencesi.
+
+D. Zamanlama Analizi Saldırıları (Timing Attacks): [SABİT ZAMANLI KIYAS]
+   - Mekanizma: hmac.compare_digest() ile sabit zamanlı doğrulama.
+   - Etki: İlk byte uyuşmazlığında hemen dönen '==' işleci engellenir; süre sabittir.
+   - Önlenen Zafiyet: CWE-208 (Observable Timing Discrepancy).
+
+2. ESKİ HASH FORMATLARI RİSK TABLOSU:
+-------------------------------------------------------------------------------
+MD5 (32 hex)        : KRİTİK GÜVENSİZ -> Saniyede 100+ milyar deneme -> DERHAL TERK EDİLMELİ
+SHA-1 (40 hex)      : KRİTİK GÜVENSİZ -> LinkedIn 2012 sızıntısı örneği -> TERK EDİLMELİ
+Düz SHA-256 (64 hex): YÜKSEK RİSKLİ   -> Hızlı hash KDF değildir, GPU ile kırılabilir
+PBKDF2-HMAC-SHA256  : GÜVENLİ (NIST SP 800-132, RFC 8018) -> TAVSİYE EDİLEN KURUMSAL MİMARİ

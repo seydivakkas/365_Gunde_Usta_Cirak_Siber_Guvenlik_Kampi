@@ -1,0 +1,85 @@
+{
+  "aciklama": "GÜN 018 - Süreç (Process), İş Parçacığı (Thread) ve Hizmet (Service) Güvenlik Envanteri",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "surum": "1.0.0",
+  "tarih": "2026-10-27",
+  "surecler": [
+    {
+      "pid": 5820,
+      "ad": "notepad.exe",
+      "ppid": 4120,
+      "oturum_id": 1,
+      "kullanici": "CORP\\seydieryilmaz",
+      "butunluk": "Medium",
+      "is_parcacigi_sayisi": 2,
+      "bellek_alani": "0x00007ff700000000 (İzole Kullanıcı Alanı)",
+      "korumali_mi": false,
+      "aciklama": "Standart kullanıcı metin düzenleyici süreci"
+    },
+    {
+      "pid": 7140,
+      "ad": "calculator.exe",
+      "ppid": 4120,
+      "oturum_id": 1,
+      "kullanici": "CORP\\seydieryilmaz",
+      "butunluk": "Medium",
+      "is_parcacigi_sayisi": 4,
+      "bellek_alani": "0x00007ff600000000 (İzole Kullanıcı Alanı)",
+      "korumali_mi": false,
+      "aciklama": "Standart kullanıcı hesap makinesi süreci"
+    }
+  ],
+  "hizmetler": [
+    {
+      "hizmet_adi": "VulnBakimServisi",
+      "gorunen_ad": "Kurumsal Bakim ve Yedekleme Servisi",
+      "pid": 1840,
+      "oturum_id": 0,
+      "hesap": "LocalSystem (NT AUTHORITY\\SYSTEM)",
+      "baslangic_turu": "Otomatik",
+      "calistirilabilir_yol": "C:\\Program Files\\Kurumsal Bakim Yazilimi\\agent service\\engine.exe",
+      "yol_tirnak_icinde_mi": false,
+      "dizin_yazma_izni_kullanicilar": true,
+      "durum": "Calisiyor",
+      "zafiyetler": [
+        "Unquoted Service Path (Tırnak İçine Alınmamış Servis Yolu)",
+        "Weak Service Binary Permissions (Yazılabilir Servis Dizini)"
+      ]
+    },
+    {
+      "hizmet_adi": "GuvenliKriptoServisi",
+      "gorunen_ad": "Kurumsal Kriptografi ve Sertifika Yonetim Servisi",
+      "pid": 2100,
+      "oturum_id": 0,
+      "hesap": "NT AUTHORITY\\LocalService",
+      "baslangic_turu": "Otomatik",
+      "calistirilabilir_yol": "\"C:\\Program Files\\KurumsalGuvenlik\\Kripto\\kripto_svc.exe\"",
+      "yol_tirnak_icinde_mi": true,
+      "dizin_yazma_izni_kullanicilar": false,
+      "durum": "Calisiyor",
+      "zafiyetler": []
+    },
+    {
+      "hizmet_adi": "W32Time",
+      "gorunen_ad": "Windows Saat Servisi",
+      "pid": 1120,
+      "oturum_id": 0,
+      "hesap": "NT AUTHORITY\\LocalService",
+      "baslangic_turu": "Manuel",
+      "calistirilabilir_yol": "C:\\Windows\\System32\\svchost.exe -k LocalServiceNetworkRestricted",
+      "yol_tirnak_icinde_mi": false,
+      "dizin_yazma_izni_kullanicilar": false,
+      "durum": "Calisiyor",
+      "aciklama": "System32 altında boşluksuz yol olduğu için tırnaksız olsa da boşluk arama zaafiyeti oluşturmaz."
+    }
+  ],
+  "is_parcacigi_senkronizasyon_senaryosu": {
+    "senaryo_id": "THREAD-RACE-001",
+    "aciklama": "İki thread'in paylaşılan bakiye değişkenini kilitsiz (mutex'siz) güncellemesi (Race Condition)",
+    "baslangic_degeri": 1000,
+    "thread_1_islem": "bakiye += 100",
+    "thread_2_islem": "bakiye -= 100",
+    "kilit_kullanildi_mi": false,
+    "risk": "TOCTOU / Veri Bozulması (Data Corruption)"
+  }
+}

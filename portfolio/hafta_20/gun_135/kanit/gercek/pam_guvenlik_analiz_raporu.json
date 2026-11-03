@@ -1,0 +1,81 @@
+{
+  "audit_metadata": {
+    "standard": "CIS Linux Benchmark (Section 5.4 - User Accounts and PAM Policy)",
+    "auditor": "Seydi Eryılmaz (@seydivakkas)",
+    "timestamp": "2026-11-02T14:15:00Z"
+  },
+  "summary": {
+    "score": 5.0,
+    "max_score": 100.0,
+    "status": "CRITICAL",
+    "total_vulnerabilities": 6,
+    "severity_breakdown": {
+      "CRITICAL": 2,
+      "HIGH": 3,
+      "MEDIUM": 1,
+      "LOW": 0
+    }
+  },
+  "findings_detail": [
+    {
+      "target": "faillock.conf: even_deny_root",
+      "cwe_id": "CWE-307",
+      "mitre_id": "T1110.001",
+      "severity": "MEDIUM",
+      "title": "Root Kullanıcısı İçin Hesap Kilitleme Koruması Kapalı",
+      "description": "even_deny_root direktifinin olmaması, root hesabına yönelik kaba kuvvet saldırılarını engellemez.",
+      "remediation": "/etc/security/faillock.conf dosyasına 'even_deny_root' parametresini ekleyin.",
+      "penalty": 5.0
+    },
+    {
+      "target": "/etc/security/pwquality.conf: minlen",
+      "cwe_id": "CWE-521",
+      "mitre_id": "T1201",
+      "severity": "HIGH",
+      "title": "Yetersiz Minimum Parola Uzunluğu (minlen=12)",
+      "description": "CIS standardı minimum 14 karakter parola uzunluğu gerektirir. Mevcut değer: 12.",
+      "remediation": "/etc/security/pwquality.conf dosyasına 'minlen = 14' direktifini ekleyin.",
+      "penalty": 10.0
+    },
+    {
+      "target": "/etc/pam.d/* (pam_unix.so nullok)",
+      "cwe_id": "CWE-258",
+      "mitre_id": "T1078",
+      "severity": "CRITICAL",
+      "title": "Boş Parola ile Giriş İzni (nullok Bayrağı Aktif)",
+      "description": "pam_unix modülünde 'nullok' parametresi etkindir. Parolası olmayan hesaplar parola girmeden sisteme oturum açabilir. Bu durum sistemde ciddi kimlik doğrulama bypass açığı yaratır.",
+      "remediation": "/etc/pam.d/ altındaki tüm yapılandırma dosyalarından 'nullok' argümanını kaldırın.",
+      "penalty": 25.0
+    },
+    {
+      "target": "/etc/pam.d/system-auth: pam_pwhistory.so",
+      "cwe_id": "CWE-262",
+      "mitre_id": "T1201",
+      "severity": "HIGH",
+      "title": "Yetersiz Parola Geçmişi Koruması (remember=3)",
+      "description": "Sistem son 3 parolayı hatırlamaktadır. CIS standardı en az son 5 parolanın tekrar kullanımının engellenmesini şart koşar.",
+      "remediation": "/etc/pam.d/password-auth ve system-auth dosyalarına 'password required pam_pwhistory.so remember=5' satırını ekleyin.",
+      "penalty": 15.0
+    },
+    {
+      "target": "/etc/profile.d/timeout.sh: TMOUT",
+      "cwe_id": "CWE-613",
+      "mitre_id": "T1078",
+      "severity": "HIGH",
+      "title": "Yetersiz Oturum Zaman Aşımı (TMOUT=1800s)",
+      "description": "Kabuk boşta kalma zaman aşımı (TMOUT) 1800 saniyedir veya tanımsızdır. CIS standardı boşta kalan oturumların en fazla 900 saniye (15 dakika) içinde sonlandırılmasını gerektirir.",
+      "remediation": "echo 'readonly TMOUT=900 ; export TMOUT' > /etc/profile.d/timeout.sh && chmod 0644 /etc/profile.d/timeout.sh",
+      "penalty": 15.0
+    },
+    {
+      "target": "/etc/security/pwquality.conf",
+      "cwe_id": "CWE-732",
+      "mitre_id": "T1548",
+      "severity": "CRITICAL",
+      "title": "Gevşek PAM Dosya İzni (/etc/security/pwquality.conf - Mod: 0666)",
+      "description": "'/etc/security/pwquality.conf' dosyasının izin modu 0666 olarak ayarlanmış. Yetkisiz kullanıcılar PAM kurallarını değiştirerek kimlik doğrulamayı bypass edebilir.",
+      "remediation": "chmod 0644 /etc/security/pwquality.conf",
+      "penalty": 25.0
+    }
+  ]
+}

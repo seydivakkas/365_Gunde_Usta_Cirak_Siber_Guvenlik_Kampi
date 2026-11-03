@@ -1,0 +1,33 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "gun": 129,
+  "hafta": 19,
+  "asama": "Aşama 6: Uç Nokta Güvenliği ve Sertleştirme",
+  "konu": "Yerel hesaplar, gruplar ve UAC",
+  "tarih": "2026-11-02",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "kriterler": {
+    "kod_kalitesi_ve_didaktik_yorumlar": 20,
+    "birim_testler_ve_kapsam": 40,
+    "negatif_kontroller_ve_sinir_durumlari": 25,
+    "mimari_tasarim_guvenlik_belgeleme": 15
+  },
+  "test_sonuclari": {
+    "toplam_test": 15,
+    "basarili_test": 15,
+    "hatali_test": 0,
+    "test_suresi_saniye": 0.002
+  },
+  "negatif_senaryolar": {
+    "toplam_senaryo": 9,
+    "basarili_senaryo": 9,
+    "hatali_senaryo": 0
+  },
+  "guvenlik_standartlari": [
+    "CIS Microsoft Windows 11 Enterprise Benchmark v3.0.0 (Section 2.3)",
+    "Microsoft Security Baselines for Windows 11 and Windows Server 2022",
+    "MITRE ATT&CK Matrix (T1548.002, T1078.003, T1021.001, T1110)",
+    "NIST SP 800-53 Rev 5: AC-2 (Account Management) and AC-6 (Least Privilege)"
+  ]
+}

@@ -1,0 +1,79 @@
+[
+  {
+    "id": "NEG_01",
+    "tanim": "Desteklenmeyen veya geçersiz işletim sistemi platformu",
+    "girdi": {"platform": "solaris_embedded"},
+    "beklenen_hata": "UnsupportedPlatformError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_02",
+    "tanim": "Desteklenmeyen rapor çıktı biçimi (sadece text, json, html kabul edilir)",
+    "girdi": {"format": "pdf_raw_binary"},
+    "beklenen_hata": "UnsupportedFormatError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_03",
+    "tanim": "Karşılıklı dışlayan bayrakların ihlali (--fast ve --deep aynı anda)",
+    "girdi": {"fast": true, "deep": true},
+    "beklenen_hata": "MutuallyExclusiveViolationError",
+    "cwe_kodu": "CWE-754: Improper Check for Exceptional Conditions"
+  },
+  {
+    "id": "NEG_04",
+    "tanim": "Rapor çıktı yolunda dizin atlama (Path Traversal / '..' CWE-22)",
+    "girdi": {"output_path": "../../../etc/cron.d/malicious_report.txt"},
+    "beklenen_hata": "PathTraversalError",
+    "cwe_kodu": "CWE-22: Improper Limitation of a Pathname to a Restricted Directory"
+  },
+  {
+    "id": "NEG_05",
+    "tanim": "Bozuk veya boş telemetri verisi",
+    "girdi": "",
+    "beklenen_hata": "MalformedTelemetryError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_06",
+    "tanim": "Telemetride eksik zorunlu alanlar (hostname veya zaman damgası yok)",
+    "girdi": {"platform": "linux", "calisma_suresi_saat": 10},
+    "beklenen_hata": "MissingRequiredFieldError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_07",
+    "tanim": "Telemetri zaman damgasının naive (saat dilimsiz) olması (CWE-613)",
+    "girdi": {
+      "platform": "windows",
+      "hostname": "SRV-TEST",
+      "zaman_damgasi_utc": "2026-11-01 20:25:00"
+    },
+    "beklenen_hata": "NaiveTimestampTelemetryError",
+    "cwe_kodu": "CWE-613: Insufficient Session Expiration / Ambiguous Timezone"
+  },
+  {
+    "id": "NEG_08",
+    "tanim": "Aşırı büyük telemetri DoS yükü (>1 MB payload boyutu)",
+    "girdi": {
+      "platform": "linux",
+      "hostname": "SRV-DOS",
+      "zaman_damgasi_utc": "2026-11-01T20:25:00Z",
+      "payload": "OVERSIZED_PAYLOAD_SIMULATION"
+    },
+    "beklenen_hata": "PayloadTooLargeError",
+    "cwe_kodu": "CWE-400: Uncontrolled Resource Consumption"
+  },
+  {
+    "id": "NEG_09",
+    "tanim": "Stderr akışında filtrelenmemiş hassas kimlik bilgisi (CWE-209 / CWE-532)",
+    "girdi": {
+      "platform": "windows",
+      "hostname": "SRV-LEAK",
+      "zaman_damgasi_utc": "2026-11-01T20:25:00Z",
+      "stderr_gunlukleri": "Error connecting to db: password=SuperSecretPassword123!"
+    },
+    "beklenen_hata": "SensitiveDataExposureError",
+    "cwe_kodu": "CWE-532: Insertion of Sensitive Information into Log File"
+  }
+]

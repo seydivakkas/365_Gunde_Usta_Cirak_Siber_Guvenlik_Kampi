@@ -1,0 +1,86 @@
+[
+  {
+    "id": "NEG_01",
+    "baslik": "Tedbirsiz Bırakılan Kritik Tehdit ile Canlıya Geçiş Denetimi",
+    "cwe": "CWE-1025",
+    "beklenen_hata": "UnmitigatedThreatSecurityError",
+    "eleman_id": "P_CRITICAL_SVC",
+    "tedbir_uygulandi_mi": false
+  },
+  {
+    "id": "NEG_02",
+    "baslik": "DREAD Hasar Puanı Üst Sınır Aşımı (Damage > 10)",
+    "cwe": "CWE-20",
+    "beklenen_hata": "InvalidDREADScoreError",
+    "dread_degerleri": {
+      "damage": 12,
+      "reproducibility": 5,
+      "exploitability": 5,
+      "affected_users": 5,
+      "discoverability": 5
+    }
+  },
+  {
+    "id": "NEG_03",
+    "baslik": "DREAD Tekrarlanabilirlik Alt Sınır İhlali (Reproducibility < 1)",
+    "cwe": "CWE-20",
+    "beklenen_hata": "InvalidDREADScoreError",
+    "dread_degerleri": {
+      "damage": 5,
+      "reproducibility": 0,
+      "exploitability": 5,
+      "affected_users": 5,
+      "discoverability": 5
+    }
+  },
+  {
+    "id": "NEG_04",
+    "baslik": "Veri Akışında Tanımsız Kaynak Uç Noktası",
+    "cwe": "CWE-20",
+    "beklenen_hata": "MissingDataFlowEndpointError",
+    "kaynak_id": "NON_EXISTENT_SRC",
+    "hedef_id": "P1_APIGW"
+  },
+  {
+    "id": "NEG_05",
+    "baslik": "Veri Akışında Tanımsız Hedef Uç Noktası",
+    "cwe": "CWE-20",
+    "beklenen_hata": "MissingDataFlowEndpointError",
+    "kaynak_id": "E1_BROWSER",
+    "hedef_id": "NON_EXISTENT_TGT"
+  },
+  {
+    "id": "NEG_06",
+    "baslik": "Modelde Bulunmayan Eleman İçin Tehdit Türetme Girişimi",
+    "cwe": "CWE-20",
+    "beklenen_hata": "MissingDataFlowEndpointError",
+    "eleman_id": "GHOST_ELEMENT_99"
+  },
+  {
+    "id": "NEG_07",
+    "baslik": "Tanımsız Tehdit ID İçin Tedbir Kaydetme Girişimi",
+    "cwe": "CWE-1025",
+    "beklenen_hata": "STRIDEModelingSecurityError",
+    "tehdit_id": "THREAT-FAKE-UNKNOWN-001"
+  },
+  {
+    "id": "NEG_08",
+    "baslik": "Güven Sınırı Aşan Yüksek Riskli Akışın Tedbirsiz Kalması",
+    "cwe": "CWE-1025",
+    "beklenen_hata": "UnmitigatedThreatSecurityError",
+    "akistaki_risk": "CRITICAL_FLOW"
+  },
+  {
+    "id": "NEG_09",
+    "baslik": "Geçersiz Türde (String) DREAD Puan Girişi",
+    "cwe": "CWE-20",
+    "beklenen_hata": "InvalidDREADScoreError",
+    "dread_degerleri": {
+      "damage": "TEN",
+      "reproducibility": 5,
+      "exploitability": 5,
+      "affected_users": 5,
+      "discoverability": 5
+    }
+  }
+]

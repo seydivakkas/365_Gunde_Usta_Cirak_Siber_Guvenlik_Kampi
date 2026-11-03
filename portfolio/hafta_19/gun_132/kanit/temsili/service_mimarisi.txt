@@ -1,0 +1,48 @@
+# TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+# =========================================================================
+# Windows Service Control Manager (SCM) ve Hizmet Güvenlik Mimarisi
+# =========================================================================
+
++-------------------------------------------------------------------------+
+|                  KULLANICI ALANI (USER MODE)                            |
++-------------------------------------------------------------------------+
+|  [Standart Kullanıcı / Saldırgan]        [Yönetici / Güvenlik Uzmanı]   |
+|         |                                              |                |
+|         v                                              v                |
+|  sc.exe / Set-Service                        sc.exe sdset / icacls      |
+|         |                                              |                |
++---------+----------------------------------------------+----------------+
+          | RPC / LPC                                    |
+          v                                              v
++-------------------------------------------------------------------------+
+|             SERVICE CONTROL MANAGER (services.exe)                      |
+|                                                                         |
+|  +-------------------------------------------------------------------+  |
+|  | Güvenlik Tanımlayıcısı (Service DACL / SDDL) Kontrolü             |  |
+|  | - SERVICE_CHANGE_CONFIG (DC) -> Yetkisiz kullanıcı engellenir!   |  |
+|  | - SERVICE_START / STOP (RP/WP)                                    |  |
+|  | - WRITE_DAC (WD) / WRITE_OWNER (WO) -> Sadece SYSTEM & Admin      |  |
+|  +-------------------------------------------------------------------+  |
+|                                 |                                       |
+|  +------------------------------v------------------------------------+  |
+|  | Servis Başlatma ve Süreç Yürütme Motoru (CreateProcessAsUserW)    |  |
+|  +-------------------------------------------------------------------+  |
++---------------------------------+---------------------------------------+
+                                  |
+                                  v
++-------------------------------------------------------------------------+
+|        KAYIT DEFTERİ & DOSYA SİSTEMİ GÜVENLİK SINIRLARI                 |
+|                                                                         |
+|  [HKLM\SYSTEM\CurrentControlSet\Services\<ServiceName>]               |
+|  - ImagePath : Tırnak Koruması -> "C:\Program Files\App\service.exe" |
+|    (Zafiyet: Tırnaksız ise C:\Program.exe hijacking - CWE-428)         |
+|                                                                         |
+|  [Dosya Sistemi ACL - icacls]                                           |
+|  - service.exe İzinleri: SYSTEM (F), Administrators (F), Users (RX)    |
+|    (Zafiyet: Users grubuna Modify/Write verilirse binary değişir)       |
+|                                                                         |
+|  [Çalışma Kimliği & Ayrıcalık Kapsamı (RunAs / Least Privilege)]        |
+|  - LocalService / NetworkService / Virtual Account (NT SERVICE)        |
+|  - gMSA (Group Managed Service Account)                                 |
+|  - RequiredPrivileges Sıkılaştırma (SeDebug vb. kaldırılması)           |
++-------------------------------------------------------------------------+

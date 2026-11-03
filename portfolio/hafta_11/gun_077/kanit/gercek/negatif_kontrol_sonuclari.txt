@@ -1,0 +1,21 @@
+=== GÜN 077: MİNİ PROJE 10 NEGATİF KONTROL VE GÜVENLİK RAPORU ===
+Toplam Senaryo: 9, Başarılı: 9, Başarısız: 0
+
+[PASS] NEG_01_REDOS_OVERSIZED_LINE_INJECTION: ReDoS felaket geri izleme oluşturmayı hedefleyen 5000 karakterlik aşırı uzun log satırı
+  Detay: ReDoS uzunluk tavanı aşıldığında engellendi: Log satırı izin verilen uzunluk tavanını (4096) aştı.
+[PASS] NEG_02_NULL_BYTE_LINE_POISONING: Log satırına enjekte edilen Null-Byte (\x00) ile dize kesme ve ayrıştırıcı yanıltma girişimi
+  Detay: Null-byte enjeksiyonu yakalandı: Log satırında tehlikeli Null-Byte (\x00) tespit edildi.
+[PASS] NEG_03_TROJAN_SOURCE_BIDI_IN_USER_FIELD: Kullanıcı adı alanına Unicode Bidi (\u202E / RLO) enjeksiyonu ile görsel sahtecilik girişimi
+  Detay: Trojan Source Bidi karakteri engellendi: Log satırında Unicode Bidi (Trojan Source) karakteri tespit edildi.
+[PASS] NEG_04_UNRECOGNIZED_MALFORMED_FORMAT: Tanımlı hiçbir log formatına (Web, SSH, FW) uymayan rastgele bozuk veri satırı
+  Detay: Bozuk veri çökmeksizin UNRECOGNIZED olarak güvenle işlendi.
+[PASS] NEG_05_MALFORMED_IP_IN_LOG_HEADER: Geçersiz oktet (999.999.999.999) içeren malforme IP adresi enjeksiyonu
+  Detay: Geçersiz IP adresi sınırda engellendi: Geçersiz IP adresi tespit edildi: 999.999.999.999
+[PASS] NEG_06_BRUTE_FORCE_LOCKOUT_BURST: Eşik değeri (5) aşan ardışık başarısız SSH giriş denemeleri ile kilit tetiklenmesi
+  Detay: 5 ardışık başarısız giriş sonrası BRUTE_FORCE_LOCKOUT kilit uygulandı.
+[PASS] NEG_07_NON_EXISTENT_LOG_FILE_PATH: Var olmayan bir log dosya yolu verildiğinde FileNotFoundError üretilmesi
+  Detay: Var olmayan dosyada FileNotFoundError yakalandı: Log dosyası bulunamadı: non_existent_path_to_log.log
+[PASS] NEG_08_WHITELIST_SUPPRESSION_OF_KNOWN_IOC: Bilinen IoC listesinde yer alsa dahi beyaz listedeki IP (8.8.8.8) için blok alarmı üretilmemelidir
+  Detay: Beyaz listedeki 8.8.8.8 için IoC alarmı bastırıldı (False Positive engellendi).
+[PASS] NEG_09_ANSI_TERMINAL_ESCAPE_LOG_INJECTION: Log satırına terminal temizleme veya renk manipülasyonu sağlayan ANSI kaçış kodu enjeksiyonu
+  Detay: ANSI terminal kaçış dizileri temizlendi, log forging engellendi.

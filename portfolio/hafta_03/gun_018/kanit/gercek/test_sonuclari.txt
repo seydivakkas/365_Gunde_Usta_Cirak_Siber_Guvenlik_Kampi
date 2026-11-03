@@ -1,0 +1,41 @@
+================================================================================
+GERÇEK KANIT — UNITTEST TEST SONUÇLARI
+Tarih: 2026-10-27
+Aşama 02: Sistem, Bellek ve Düşük Seviyeli Güvenlik
+Hafta 03, Gün 018: Süreç, Thread ve Hizmet Kavramları
+Komut: python -m unittest portfolio/hafta_03/gun_018/tests/test_process_thread_service_security_auditor.py -v
+================================================================================
+
+test_01_init_ve_surum_kontrolu (portfolio.hafta_03.gun_018.tests.test_process_thread_service_security_auditor.TestProcessThreadServiceSecurityAuditor.test_01_init_ve_surum_kontrolu)
+Test 01: Sınıf başlatma ve sürüm numarası doğrulaması. ... ok
+test_02_canli_envanter_kullanici_surecleri_en_az_iki_surec (portfolio.hafta_03.gun_018.tests.test_process_thread_service_security_auditor.TestProcessThreadServiceSecurityAuditor.test_02_canli_envanter_kullanici_surecleri_en_az_iki_surec)
+Test 02: Canlı sistemden en az iki kullanıcı sürecinin belgelenmesi (G018-SC2). ... ok
+test_03_canli_envanter_sistem_hizmeti_session_zero (portfolio.hafta_03.gun_018.tests.test_process_thread_service_security_auditor.TestProcessThreadServiceSecurityAuditor.test_03_canli_envanter_sistem_hizmeti_session_zero)
+Test 03: Canlı sistemden en az bir sistem hizmetinin belgelenmesi (G018-SC2). ... ok
+test_04_dosya_yukleme_gecerli_json (portfolio.hafta_03.gun_018.tests.test_process_thread_service_security_auditor.TestProcessThreadServiceSecurityAuditor.test_04_dosya_yukleme_gecerli_json)
+Test 04: Geçerli JSON dosyasının UTF-8 ile başarıyla yüklenmesi. ... ok
+test_05_dosya_yukleme_bulunamadi_negatif_kontrol (portfolio.hafta_03.gun_018.tests.test_process_thread_service_security_auditor.TestProcessThreadServiceSecurityAuditor.test_05_dosya_yukleme_bulunamadi_negatif_kontrol)
+Test 05: Var olmayan dosya istendiğinde FileNotFoundError fırlatılması (Negatif Test). ... ok
+test_06_unquoted_path_tespiti_pozitif_zafiyet (portfolio.hafta_03.gun_018.tests.test_process_thread_service_security_auditor.TestProcessThreadServiceSecurityAuditor.test_06_unquoted_path_tespiti_pozitif_zafiyet)
+Test 06: Boşluklu ve tırnaksız servis yolunda zaafiyet tespiti (MITRE T1574.009). ... ok
+test_07_unquoted_path_cift_tirnakli_guvenli_yol (portfolio.hafta_03.gun_018.tests.test_process_thread_service_security_auditor.TestProcessThreadServiceSecurityAuditor.test_07_unquoted_path_cift_tirnakli_guvenli_yol)
+Test 07: Çift tırnak içine alınmış servis yolunun güvenli olarak sınıflandırılması. ... ok
+test_08_unquoted_path_bosluksuz_guvenli_yol (portfolio.hafta_03.gun_018.tests.test_process_thread_service_security_auditor.TestProcessThreadServiceSecurityAuditor.test_08_unquoted_path_bosluksuz_guvenli_yol)
+Test 08: Boşluk içermeyen servis yolunun güvenli olarak sınıflandırılması. ... ok
+test_09_unquoted_path_olasi_tuzak_yol_uretme (portfolio.hafta_03.gun_018.tests.test_process_thread_service_security_auditor.TestProcessThreadServiceSecurityAuditor.test_09_unquoted_path_olasi_tuzak_yol_uretme)
+Test 09: Unquoted path istismarında CreateProcess ara tuzak .exe adaylarının listelenmesi. ... ok
+test_10_hizmet_denetimi_kritik_yazilabilir_klasor_tespiti (portfolio.hafta_03.gun_018.tests.test_process_thread_service_security_auditor.TestProcessThreadServiceSecurityAuditor.test_10_hizmet_denetimi_kritik_yazilabilir_klasor_tespiti)
+Test 10: Standart kullanıcıların yazabildiği servis klasöründe KRİTİK risk tespiti. ... ok
+test_11_hizmet_denetimi_guvenli_hizmet (portfolio.hafta_03.gun_018.tests.test_process_thread_service_security_auditor.TestProcessThreadServiceSecurityAuditor.test_11_hizmet_denetimi_guvenli_hizmet)
+Test 11: Düzgün tırnaklanmış ve kısıtlı izinli hizmetin DÜŞÜK risk alması. ... ok
+test_12_is_parcacigi_kilitli_senkronizasyon_guvenli_sonuc (portfolio.hafta_03.gun_018.tests.test_process_thread_service_security_auditor.TestProcessThreadServiceSecurityAuditor.test_12_is_parcacigi_kilitli_senkronizasyon_guvenli_sonuc)
+Test 12: Mutex (Kilit) kullanılan iş parçacıklarında yarış durumunun engellenmesi. ... ok
+test_13_tam_denetim_raporu_olusturma (portfolio.hafta_03.gun_018.tests.test_process_thread_service_security_auditor.TestProcessThreadServiceSecurityAuditor.test_13_tam_denetim_raporu_olusturma)
+Test 13: Bütünleştirilmiş tam denetim raporunun eksiksiz üretilmesi. ... ok
+test_14_cli_alt_surec_yurutme_dogrulamasi (portfolio.hafta_03.gun_018.tests.test_process_thread_service_security_auditor.TestProcessThreadServiceSecurityAuditor.test_14_cli_alt_surec_yurutme_dogrulamasi)
+Test 14: Komut satırı (CLI) aracının harici alt süreç (subprocess) olarak yürütülmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 13.930s
+
+OK (14/14 PASS — %100 Başarı)

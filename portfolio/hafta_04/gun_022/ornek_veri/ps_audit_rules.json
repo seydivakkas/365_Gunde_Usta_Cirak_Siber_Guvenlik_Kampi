@@ -1,0 +1,37 @@
+{
+  "kural_seti_adi": "PowerShell Nesne Akışı ve Güvenlik Denetim Kuralları",
+  "surum": "1.0.0",
+  "standart_referanslari": [
+    "CIS Microsoft Windows Server Benchmark (Section 5: System Services)",
+    "MITRE ATT&CK T1059.001 (Command and Scripting Interpreter: PowerShell)",
+    "MITRE ATT&CK T1569.002 (System Services: Service Execution)",
+    "CWE-428: Unquoted Search Path or Element"
+  ],
+  "supheli_surec_kaliplari": [
+    "mimikatz",
+    "-enc",
+    "-encodedcommand",
+    "-executionpolicy bypass",
+    "-w hidden",
+    "-windowstyle hidden",
+    "sekurlsa"
+  ],
+  "kaynak_sinirlari": {
+    "maks_handles": 2000,
+    "maks_ram_mb": 150.0
+  },
+  "guvensiz_servis_karalistesi": [
+    "tlntsvr",
+    "remoteregistry",
+    "ftpsvc",
+    "smbv1"
+  ],
+  "csv_rapor_kolonlari": [
+    "nesne_tipi",
+    "isim",
+    "id_veya_durum",
+    "metrik_veya_hesap",
+    "risk_seviyesi",
+    "guvenlik_gerekcesi"
+  ]
+}

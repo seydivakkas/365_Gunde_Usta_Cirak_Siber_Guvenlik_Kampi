@@ -1,0 +1,195 @@
+{
+  "proje_adi": "Kurumsal Ağ Adresleme ve Segmentasyon Çalışma Kitabı",
+  "versiyon": "1.0.0",
+  "aciklama": "Katman-2 ve Katman-3 ağ mimarisi, VLSM/CIDR alt ağ planı ve uç cihaz adresleme envanteri",
+  "alt_aglar": [
+    {
+      "alt_ag_id": "NET-01",
+      "vlan_id": 10,
+      "ad": "Yonetim_ve_Guvenlik_VLAN",
+      "ipv4_cidr": "10.10.10.0/24",
+      "varsayilan_ag_gecidi": "10.10.10.1",
+      "birincil_dns": "10.10.10.2",
+      "ikincil_dns": "1.1.1.1",
+      "ipv6_cidr": "2001:db8:acad:10::/64",
+      "ipv6_ag_gecidi": "fe80::1",
+      "bolge": "Internal_Trust"
+    },
+    {
+      "alt_ag_id": "NET-02",
+      "vlan_id": 20,
+      "ad": "Sunucu_Ciftligi_DMZ_VLAN",
+      "ipv4_cidr": "172.16.20.0/24",
+      "varsayilan_ag_gecidi": "172.16.20.1",
+      "birincil_dns": "10.10.10.2",
+      "ikincil_dns": "8.8.8.8",
+      "ipv6_cidr": "2001:db8:acad:20::/64",
+      "ipv6_ag_gecidi": "fe80::1",
+      "bolge": "DMZ_Demilitarized"
+    },
+    {
+      "alt_ag_id": "NET-03",
+      "vlan_id": 30,
+      "ad": "Kullanici_Istemcileri_VLAN",
+      "ipv4_cidr": "192.168.30.0/23",
+      "varsayilan_ag_gecidi": "192.168.30.1",
+      "birincil_dns": "10.10.10.2",
+      "ikincil_dns": "1.1.1.1",
+      "ipv6_cidr": "2001:db8:acad:30::/64",
+      "ipv6_ag_gecidi": "fe80::1",
+      "bolge": "Internal_Workstations"
+    },
+    {
+      "alt_ag_id": "NET-04",
+      "vlan_id": 40,
+      "ad": "Misafir_Wifi_Izole_VLAN",
+      "ipv4_cidr": "192.168.100.0/24",
+      "varsayilan_ag_gecidi": "192.168.100.1",
+      "birincil_dns": "8.8.8.8",
+      "ikincil_dns": "1.1.1.1",
+      "ipv6_cidr": "2001:db8:acad:40::/64",
+      "ipv6_ag_gecidi": "fe80::1",
+      "bolge": "Untrusted_Guest"
+    }
+  ],
+  "cihazlar": [
+    {
+      "cihaz_id": "DEV-01",
+      "konak_adi": "fw-core-01",
+      "rol": "Core Firewall & Gateway",
+      "alt_ag_id": "NET-01",
+      "ipv4": "10.10.10.1",
+      "mac": "00:50:56:A1:00:01",
+      "ipv6": "2001:db8:acad:10::1",
+      "durum": "aktif"
+    },
+    {
+      "cihaz_id": "DEV-02",
+      "konak_adi": "srv-dc01-dns",
+      "rol": "Domain Controller & DNS",
+      "alt_ag_id": "NET-01",
+      "ipv4": "10.10.10.2",
+      "mac": "00:50:56:A1:00:02",
+      "ipv6": "2001:db8:acad:10::2",
+      "durum": "aktif"
+    },
+    {
+      "cihaz_id": "DEV-03",
+      "konak_adi": "srv-siem-log",
+      "rol": "SIEM Log Collector",
+      "alt_ag_id": "NET-01",
+      "ipv4": "10.10.10.50",
+      "mac": "00:50:56:A1:00:50",
+      "ipv6": "2001:db8:acad:10::50",
+      "durum": "aktif"
+    },
+    {
+      "cihaz_id": "DEV-04",
+      "konak_adi": "srv-web-nginx",
+      "rol": "Public Web Frontend",
+      "alt_ag_id": "NET-02",
+      "ipv4": "172.16.20.10",
+      "mac": "00:50:56:B2:00:10",
+      "ipv6": "2001:db8:acad:20::10",
+      "durum": "aktif"
+    },
+    {
+      "cihaz_id": "DEV-05",
+      "konak_adi": "srv-db-pgsql",
+      "rol": "Core Database Backend",
+      "alt_ag_id": "NET-02",
+      "ipv4": "172.16.20.20",
+      "mac": "00:50:56:B2:00:20",
+      "ipv6": "2001:db8:acad:20::20",
+      "durum": "aktif"
+    },
+    {
+      "cihaz_id": "DEV-06",
+      "konak_adi": "pc-finance-01",
+      "rol": "Finance Workstation",
+      "alt_ag_id": "NET-03",
+      "ipv4": "192.168.30.15",
+      "mac": "00:50:56:C3:00:15",
+      "ipv6": "2001:db8:acad:30::15",
+      "durum": "aktif"
+    },
+    {
+      "cihaz_id": "DEV-07",
+      "konak_adi": "pc-dev-02",
+      "rol": "Developer Workstation",
+      "alt_ag_id": "NET-03",
+      "ipv4": "192.168.31.200",
+      "mac": "00:50:56:C3:02:00",
+      "ipv6": "2001:db8:acad:30::200",
+      "durum": "aktif"
+    },
+    {
+      "cihaz_id": "DEV-08",
+      "konak_adi": "guest-phone-88",
+      "rol": "Guest Mobile Device",
+      "alt_ag_id": "NET-04",
+      "ipv4": "192.168.100.88",
+      "mac": "00:50:56:D4:00:88",
+      "ipv6": "2001:db8:acad:40::88",
+      "durum": "aktif"
+    }
+  ],
+  "denetim_test_senaryolari": [
+    {
+      "senaryo_id": "SCN-ERR-01",
+      "aciklama": "Alt Ağ Dışında Ağ Geçidi Tanımı",
+      "cihaz": {
+        "cihaz_id": "DEV-ERR-01",
+        "konak_adi": "pc-misconfigured-gw",
+        "alt_ag_id": "NET-01",
+        "ipv4": "10.10.10.99",
+        "mac": "00:50:56:E5:00:01",
+        "ozel_ag_gecidi": "192.168.1.1"
+      }
+    },
+    {
+      "senaryo_id": "SCN-ERR-02",
+      "aciklama": "Kullanılamaz Network ID Ataması",
+      "cihaz": {
+        "cihaz_id": "DEV-ERR-02",
+        "konak_adi": "srv-invalid-netid",
+        "alt_ag_id": "NET-02",
+        "ipv4": "172.16.20.0",
+        "mac": "00:50:56:E5:00:02"
+      }
+    },
+    {
+      "senaryo_id": "SCN-ERR-03",
+      "aciklama": "Kullanılamaz Broadcast IP Ataması",
+      "cihaz": {
+        "cihaz_id": "DEV-ERR-03",
+        "konak_adi": "srv-invalid-bcast",
+        "alt_ag_id": "NET-02",
+        "ipv4": "172.16.20.255",
+        "mac": "00:50:56:E5:00:03"
+      }
+    },
+    {
+      "senaryo_id": "SCN-ERR-04",
+      "aciklama": "IP Adresi Çakışması (Duplicate IP)",
+      "cihaz": {
+        "cihaz_id": "DEV-ERR-04",
+        "konak_adi": "srv-rogue-dc",
+        "alt_ag_id": "NET-01",
+        "ipv4": "10.10.10.2",
+        "mac": "00:50:56:E5:00:04"
+      }
+    },
+    {
+      "senaryo_id": "SCN-ERR-05",
+      "aciklama": "Çakışan Alt Ağ Tanımı (Overlapping Subnet)",
+      "cakisan_alt_ag": {
+        "alt_ag_id": "NET-OVERLAP-01",
+        "vlan_id": 35,
+        "ad": "Cakisan_VLAN",
+        "ipv4_cidr": "192.168.31.0/24",
+        "varsayilan_ag_gecidi": "192.168.31.1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "aciklama": "PATH ve Ortam Degiskenleri Guvenlik Denetimi Icin Ornek Profiller",
+  "profiller": [
+    {
+      "profil_adi": "guvenli_sunucu_profili",
+      "aciklama": "CIS Benchmark uyumlu sertlestirilmis Linux sunucu profili",
+      "ortam_degiskenleri": {
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "USER": "analist",
+        "HOME": "/home/analist",
+        "SHELL": "/bin/bash",
+        "LANG": "en_US.UTF-8",
+        "TMOUT": "900"
+      }
+    },
+    {
+      "profil_adi": "guvensiz_gelistirici_profili",
+      "aciklama": "Kritik guvenlik ihlalleri iceren gelistirici ortami profili",
+      "ortam_degiskenleri": {
+        "PATH": ".:/tmp:/home/dev/bin:/usr/local/bin:/usr/bin:/bin",
+        "USER": "developer",
+        "HOME": "/home/developer",
+        "SHELL": "/bin/bash",
+        "DB_PASSWORD": "SuperSecretPassword123!",
+        "AWS_SECRET_KEY": "AKIAIOSFODNN7EXAMPLE",
+        "LD_PRELOAD": "/opt/custom_libs/hook.so"
+      }
+    },
+    {
+      "profil_adi": "gecersiz_path_ayirici_profili",
+      "aciklama": "Bosta ayrac (::) nedeniyle gizli bagil yol iceren profil",
+      "ortam_degiskenleri": {
+        "PATH": "/usr/local/bin::/usr/bin:/bin",
+        "USER": "deploy_user",
+        "HOME": "/home/deploy_user",
+        "SHELL": "/bin/sh"
+      }
+    }
+  ]
+}

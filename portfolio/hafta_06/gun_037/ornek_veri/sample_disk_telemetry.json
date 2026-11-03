@@ -1,0 +1,98 @@
+{
+  "system_info": {
+    "hostname": "sec-srv-node01.corp.internal",
+    "architecture": "x86_64",
+    "operating_system": "Linux 6.8.0-generic",
+    "timestamp": "2026-10-27T11:45:00Z"
+  },
+  "disks": [
+    {
+      "device": "/dev/nvme0n1",
+      "model": "Samsung SSD 990 PRO 1TB",
+      "size_gb": 1000.0,
+      "partition_table": "gpt",
+      "partitions": [
+        {
+          "partition_id": "/dev/nvme0n1p1",
+          "label": "EFI_SYSTEM",
+          "filesystem": "vfat",
+          "mount_point": "/boot/efi",
+          "total_gb": 1.0,
+          "used_gb": 0.15,
+          "free_gb": 0.85,
+          "is_encrypted": false,
+          "encryption_type": "none",
+          "mount_options": ["rw", "relatime", "fmask=0077", "dmask=0077"]
+        },
+        {
+          "partition_id": "/dev/nvme0n1p2",
+          "label": "SYSTEM_ROOT",
+          "filesystem": "ext4",
+          "mount_point": "/",
+          "total_gb": 250.0,
+          "used_gb": 145.0,
+          "free_gb": 105.0,
+          "is_encrypted": true,
+          "encryption_type": "luks2_aes_xts_512",
+          "mount_options": ["rw", "relatime", "errors=remount-ro"]
+        },
+        {
+          "partition_id": "/dev/nvme0n1p3",
+          "label": "VAR_LOG",
+          "filesystem": "ext4",
+          "mount_point": "/var",
+          "total_gb": 150.0,
+          "used_gb": 85.0,
+          "free_gb": 65.0,
+          "is_encrypted": true,
+          "encryption_type": "luks2_aes_xts_512",
+          "mount_options": ["rw", "nodev", "nosuid"]
+        },
+        {
+          "partition_id": "/dev/nvme0n1p4",
+          "label": "USER_TMP",
+          "filesystem": "ext4",
+          "mount_point": "/tmp",
+          "total_gb": 50.0,
+          "used_gb": 12.0,
+          "free_gb": 38.0,
+          "is_encrypted": false,
+          "encryption_type": "none",
+          "mount_options": ["rw", "relatime"]
+        },
+        {
+          "partition_id": "/dev/nvme0n1p5",
+          "label": "SWAP_VOL",
+          "filesystem": "swap",
+          "mount_point": "[SWAP]",
+          "total_gb": 32.0,
+          "used_gb": 4.5,
+          "free_gb": 27.5,
+          "is_encrypted": true,
+          "encryption_type": "dm-crypt_random_key",
+          "mount_options": ["sw"]
+        }
+      ]
+    },
+    {
+      "device": "/dev/sdb",
+      "model": "WDC WD20EZAZ Legacy Storage",
+      "size_gb": 2000.0,
+      "partition_table": "mbr",
+      "partitions": [
+        {
+          "partition_id": "/dev/sdb1",
+          "label": "LEGACY_DATA",
+          "filesystem": "fat32",
+          "mount_point": "/mnt/legacy_storage",
+          "total_gb": 1950.0,
+          "used_gb": 1820.0,
+          "free_gb": 130.0,
+          "is_encrypted": false,
+          "encryption_type": "none",
+          "mount_options": ["rw", "exec", "suid", "dev"]
+        }
+      ]
+    }
+  ]
+}

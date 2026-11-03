@@ -1,0 +1,54 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+Süreç (Process), İş Parçacığı (Thread) ve Hizmet (Service) İzolasyon Mimarisi
+================================================================================
+
++------------------------------------------------------------------------------+
+|               KULLANICI OTURUMU (SESSION 1+ / ETKİLEŞİMLİ)                   |
+|                                                                              |
+|  +-------------------------------------+  +-------------------------------+  |
+|  |           SÜREÇ A (PID: 5820)       |  |      SÜREÇ B (PID: 7140)      |  |
+|  |  [Özel Sanal Adres Alanı - CR3 A]   |  | [Özel Sanal Adres Alanı-CR3 B]|  |
+|  |                                     |  |                               |  |
+|  |  +-------------------------------+  |  |  +-------------------------+  |  |
+|  |  | Heap (Paylaşılan Bellek)      |  |  |  | Heap (İzole Bellek)     |  |  |
+|  |  +-------------------------------+  |  |  +-------------------------+  |  |
+|  |         |                  |        |  |                               |  |
+|  |         v                  v        |  |  GÜVENLİK SINIRI:             |  |
+|  |  +--------------+  +--------------+ |  |  Süreç A, Süreç B'nin         |  |
+|  |  | Thread 1     |  | Thread 2     | |  |  belleğini doğrudan okuyamaz |  |
+|  |  | (Stack 1)    |  | (Stack 2)    | |  |  veya yazamaz! (ASLR / MMU)   |  |
+|  |  +--------------+  +--------------+ |  |                               |  |
+|  |         \                  /        |  |  GÜVENLİK TEHDİDİ:            |  |
+|  |          \--[KİLİT YOK]--/          |  |  Process Injection            |  |
+|  |                 |                   |  |  (VirtualAllocEx,             |  |
+|  |                 v                   |  |   WriteProcessMemory)         |  |
+|  |       [RACE CONDITION / VERİ        |  |                               |  |
+|  |        BOZULMASI RİSKİ]             |  |                               |  |
+|  +-------------------------------------+  +-------------------------------+  |
++------------------------------------------------------------------------------+
+                                       |
+                   SESSION 0 İZOLASYON SINIRI (NON-INTERACTIVE)
+                                       v
++------------------------------------------------------------------------------+
+|                 SİSTEM HİZMETLERİ (SESSION 0 / SERVİSLER)                    |
+|                                                                              |
+|  [Hesap: NT AUTHORITY\SYSTEM / LocalSystem veya gMSA]                        |
+|  - Kullanıcı arayüzü (GUI) yoktur; masaüstüyle etkileşim yasaktır (Shatter). |
+|                                                                              |
+|  +-----------------------------------------------------------------------+   |
+|  | VulnBakimServisi (PID: 1840 - SYSTEM)                                 |   |
+|  | Yol: C:\Program Files\Kurumsal Bakim Yazilimi\agent service\engine.exe|   |
+|  |                                                                       |   |
+|  | GÜVENLİK AÇIĞI: UNQUOTED SERVICE PATH (MITRE T1574.009)               |   |
+|  | Çift tırnak yok! CreateProcess arama sırası:                          |   |
+|  |  1. C:\Program.exe  <--- Saldırgan buraya zararlı .exe koyarsa SYSTEM  |   |
+|  |  2. C:\Program Files\Kurumsal.exe                        ayrıcalığı   |   |
+|  |  3. C:\Program Files\Kurumsal Bakim.exe                  elde eder!   |   |
+|  +-----------------------------------------------------------------------+   |
+|                                                                              |
+|  SAVUNMA MEKANİZMASI:                                                        |
+|  - Çift tırnak zorunluluğu: "C:\Program Files\...\engine.exe"                |
+|  - En Az Ayrıcalık (Least Privilege): SYSTEM yerine LocalService / gMSA      |
+|  - Sıkı ACL: Standart kullanıcıların C:\ kök dizinine .exe yazması engeli   |
++------------------------------------------------------------------------------+

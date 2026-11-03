@@ -1,0 +1,47 @@
+================================================================================
+G058 - HTTP YONTEMLERI VE IDEMPOTENCY: KOMUT VE CIKIS KAYDI
+Calistirilma Zamani: 2026-10-29 22:07:49
+Isletim Sistemi: Windows (pwsh / Python 3.12)
+Calisma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+================================================================================
+
+KOMUT:
+python -m unittest portfolio/hafta_09/gun_058/tests/test_http_methods_idempotency.py -v
+
+CIKIS:
+test_01_safe_methods_semantics (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_01_safe_methods_semantics)
+Test 1: RFC 7231 §4.2.1 uyarinca Guvenli (Safe) metotlarin dogrulanmasi. ... ok
+test_02_idempotent_methods_semantics (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_02_idempotent_methods_semantics)
+Test 2: RFC 7231 §4.2.2 uyarinca Esguklu (Idempotent) metotlarin dogrulanmasi. ... ok
+test_03_put_vs_patch_distinction (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_03_put_vs_patch_distinction)
+Test 3: PUT (tam temsil - idempotent) ve PATCH (kismi guncelleme) anlamsal ayrimi. ... ok
+test_04_idempotency_key_first_execution (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_04_idempotency_key_first_execution)
+Test 4: Idempotency-Key ile ilk odeme cagrisinda bakiyeden dusum ve islem kaydi. ... ok
+test_05_idempotency_key_replay_cached_response (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_05_idempotency_key_replay_cached_response)
+Test 5: Ag kopmasi nedeniyle yinelenen POST isteginde cifte cekimin onlenmesi ve onbellek donusu. ... ok
+test_06_idempotency_key_payload_conflict (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_06_idempotency_key_payload_conflict)
+Test 6: Ayni Idempotency-Key ile farkli tutar/veri gonderildiginde 409/422 uyusmazlik hatasi. ... ok
+test_07_idempotency_key_ttl_cleanup (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_07_idempotency_key_ttl_cleanup)
+Test 7: Yasam suresi (TTL) dolan idempotency kayitlarinin bellekten temizlenmesi. ... ok
+test_08_verb_tampering_head_bypass_prevention (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_08_verb_tampering_head_bypass_prevention)
+Test 8: HTTP Verb Tampering ile korumali yonetici yolunun HEAD ile atlatilmasinin engellenmesi. ... ok
+test_09_trace_method_xst_security_audit (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_09_trace_method_xst_security_audit)
+Test 9: TRACE metodunun XST saldiri tehdidi olarak isaretlenmesi. ... ok
+test_10_negative_invalid_method_syntax (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_10_negative_invalid_method_syntax)
+Test 10 (Negatif): Kucuk harfli metot ('get') veya standart disi metot ('PURGE') reddi. ... ok
+test_11_negative_empty_or_too_long_idempotency_key (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_11_negative_empty_or_too_long_idempotency_key)
+Test 11 (Negatif): Bos veya 128 karakteri asan Idempotency-Key basliginin reddedilmesi. ... ok
+test_12_negative_unsafe_get_modification (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_12_negative_unsafe_get_modification)
+Test 12 (Negatif): GET metoduyla para transferi veya silme yapilmaya calisildiginda hata verilmesi. ... ok
+test_13_negative_put_without_body (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_13_negative_put_without_body)
+Test 13 (Negatif): Govdesi bos birakilan PUT isteklerinin reddedilmesi. ... ok
+test_14_delete_idempotent_state_consistency (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_14_delete_idempotent_state_consistency)
+Test 14: DELETE metodunun esguklulugu ve ardisik silme isteklerinde durum tutarliligi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK
+
+EXIT CODE: 0
+DURUM: 14/14 TEST BASARILI (PASS)

@@ -1,0 +1,38 @@
+==============================================================================
+G059: HTTPS VE TLS EL SIKISMASI — KOMUT VE YURUTME KANITI
+==============================================================================
+Tarih: 2026-10-29 22:17:05 UTC+3
+Calisma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Python Surumu: Python 3.14.0 (Windows x64)
+Test Modulu: portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer
+
+Calistirilan Komut:
+$ python -m unittest portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer -v
+
+Cikis Kodu (Exit Code): 0 (Basarili)
+
+Test Sonuclari Ozeti:
+- Toplam Test: 14
+- Basarili: 14
+- Hatali (Error): 0
+- Basarisiz (Failure): 0
+- Calisma Suresi: 0.001 saniye
+- Durum: OK (PASS)
+
+Yurutulen Testlerin Kapsami:
+1.  test_01_valid_record_layer_header_parsing              -> OK (Pozitif: 5 bayt Content-Type 22, 0x0303 ayrıştırma)
+2.  test_02_negative_truncated_record_header               -> OK (Negatif: <5 bayt kesik başlıkta TLSMalformedRecordError)
+3.  test_03_negative_invalid_content_type                  -> OK (Negatif: Tanımsız Content-Type 99 reddi)
+4.  test_04_negative_obsolete_ssl_version                  -> OK (Negatif: Güvensiz SSL 3.0 0x0300 reddi)
+5.  test_05_negative_record_length_overflow                -> OK (Negatif: 16384 bayt sınır aşımı reddi)
+6.  test_06_negative_payload_length_mismatch               -> OK (Negatif: Eksik gövde akışında TLSMalformedRecordError)
+7.  test_07_valid_sni_hostname_validation                  -> OK (Pozitif: RFC 6066 uyumlu alan adları onayı)
+8.  test_08_negative_invalid_sni_hostname                  -> OK (Negatif: Null-byte, 255+ karakter, geçersiz karakter reddi)
+9.  test_09_valid_compression_methods_security             -> OK (Pozitif: Yalnızca Null 0x00 sıkıştırma onayı)
+10. test_10_negative_insecure_compression_crime_detection  -> OK (Negatif: DEFLATE 0x01 tespiti ile CRIME önleme)
+11. test_11_valid_downgrade_protection                     -> OK (Pozitif: Normal TLS 1.3 el sıkışması doğrulaması)
+12. test_12_negative_downgrade_mitm_detection              -> OK (Negatif: MitM DOWNGRD\x01 sentinel tespiti ve engelleme)
+13. test_13_cipher_suite_security_assessment               -> OK (Pozitif: PFS, AEAD vs statik RSA/CBC analizi)
+14. test_14_end_to_end_synthetic_client_hello_and_comparison -> OK (Pozitif: İkili ClientHello sentezleme, TLS 1.2 vs 1.3 matrisi)
+
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Ozel Lisans — Tum Haklari Saklidir.

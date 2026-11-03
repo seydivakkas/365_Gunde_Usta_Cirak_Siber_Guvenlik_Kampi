@@ -1,0 +1,24 @@
+=== GÜN 116: JWT CLI ÇALIŞTIRMA KOMUTLARI VE ÇIKTILARI ===
+
+1. Yeni Güvenli HS256 Belirteci Üretme:
+$ python uygulama/jwt_cli.py uret --kullanici seydi_kullanici --rol security_engineer
+YENİ GÜVENLİ JWT ÜRETİLDİ (HS256)
+Token Dizgesi :
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzZXlkaV9rdWxsYW5pY2ki...n5A
+Kullanıcı (sub): seydi_kullanici | Rol: security_engineer | Geçerlilik: 3600 saniye
+
+2. Geçerli Belirteci Doğrulama:
+$ python uygulama/jwt_cli.py dogrula --token eyJhbGciOiJIUzI1Ni...n5A
+[BAŞARILI] JWT DOĞRULANDI! Belirteç geçerli ve güvenilirdir.
+{
+  "sub": "seydi_kullanici",
+  "rol": "security_engineer",
+  "iss": "https://idp.siber.local"
+}
+
+3. Saldırı Simülasyonu ('alg: none' ve Sahtecilik Savunması):
+$ python uygulama/jwt_cli.py saldiri-simulasyonu
+[SALDIRI 1] 'alg: none' İmzasız Belirteç Enjeksiyonu...
+[BAŞARILI SAVUNMA] [CWE-347] ALGORITHM_NONE_FORBIDDEN: Kritik Güvenlik İhlali! 'alg: none' imzasız belirteç reddedildi.
+[SALDIRI 2] Payload Değiştirme (Tampering) ve Sahte İmza...
+[BAŞARILI SAVUNMA] [CWE-347] INVALID_SIGNATURE: HMAC-SHA256 dijital imzası doğrulanamadı!

@@ -1,0 +1,37 @@
+{
+  "feed_metadata": {
+    "version": "1.0",
+    "generator": "SOC-SIEM-Exporter",
+    "exported_at": "2026-11-01T03:00:00Z",
+    "total_records": 3
+  },
+  "security_events": [
+    {
+      "event_id": "EVT-1001",
+      "source_ip": "198.51.100.45",
+      "destination_port": 443,
+      "severity": "HIGH",
+      "threat_score": 88,
+      "is_blocked": true,
+      "rule_name": "ET-MALWARE-CommandAndControl-Traffic"
+    },
+    {
+      "event_id": "EVT-1002",
+      "source_ip": "203.0.113.12",
+      "destination_port": 22,
+      "severity": "CRITICAL",
+      "threat_score": 95,
+      "is_blocked": true,
+      "rule_name": "SSH-BruteForce-Detected"
+    },
+    {
+      "event_id": "EVT-1003",
+      "source_ip": "192.0.2.77",
+      "destination_port": 80,
+      "severity": "LOW",
+      "threat_score": 15,
+      "is_blocked": false,
+      "rule_name": "HTTP-Unusual-UserAgent"
+    }
+  ]
+}

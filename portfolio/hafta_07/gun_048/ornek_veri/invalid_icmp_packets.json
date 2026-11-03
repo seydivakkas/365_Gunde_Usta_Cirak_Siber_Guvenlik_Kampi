@@ -1,0 +1,90 @@
+{
+  "aciklama": "G048 - Geçersiz ICMP Paketleri ve Hata Senaryoları (Negatif Test Seti)",
+  "gecersiz_ornekler": [
+    {
+      "id": "ICMP-ERR-01",
+      "girdi": {
+        "type": 255,
+        "code": 0,
+        "identifier": 1,
+        "sequence": 1
+      },
+      "hata_turu": "InvalidICMPType",
+      "beklenen_mesaj": "Tanımsız veya desteklenmeyen ICMP tipi: 255"
+    },
+    {
+      "id": "ICMP-ERR-02",
+      "girdi": {
+        "type": 0,
+        "code": 5,
+        "identifier": 1,
+        "sequence": 1
+      },
+      "hata_turu": "InvalidICMPCodeForType",
+      "beklenen_mesaj": "Echo Reply (Type 0) için yalnızca Code 0 geçerlidir, bulunan: 5"
+    },
+    {
+      "id": "ICMP-ERR-03",
+      "girdi": {
+        "type": 8,
+        "code": 1,
+        "identifier": 1,
+        "sequence": 1
+      },
+      "hata_turu": "InvalidICMPCodeForType",
+      "beklenen_mesaj": "Echo Request (Type 8) için yalnızca Code 0 geçerlidir, bulunan: 1"
+    },
+    {
+      "id": "ICMP-ERR-04",
+      "girdi": {
+        "type": 11,
+        "code": 9,
+        "identifier": 0,
+        "sequence": 0
+      },
+      "hata_turu": "InvalidICMPCodeForType",
+      "beklenen_mesaj": "Time Exceeded (Type 11) için yalnızca Code 0 (transit) veya 1 (reassembly) geçerlidir, bulunan: 9"
+    },
+    {
+      "id": "ICMP-ERR-05",
+      "girdi": {
+        "type": 8,
+        "code": 0,
+        "identifier": -1,
+        "sequence": 1
+      },
+      "hata_turu": "NegativeIdentifier",
+      "beklenen_mesaj": "Identifier değeri 0 ile 65535 arasında olmalıdır: -1"
+    },
+    {
+      "id": "ICMP-ERR-06",
+      "girdi": {
+        "type": 8,
+        "code": 0,
+        "identifier": 1,
+        "sequence": 70000
+      },
+      "hata_turu": "SequenceOutOfRange",
+      "beklenen_mesaj": "Sequence numarası 0 ile 65535 arasında olmalıdır: 70000"
+    },
+    {
+      "id": "ICMP-ERR-07",
+      "girdi": {
+        "type": 8,
+        "code": 0,
+        "kaynak_ip": "999.1.1.1",
+        "hedef_ip": "8.8.8.8"
+      },
+      "hata_turu": "InvalidIPAddress",
+      "beklenen_mesaj": "Geçersiz IPv4 kaynak adresi: 999.1.1.1"
+    },
+    {
+      "id": "ICMP-ERR-08",
+      "girdi": {
+        "raw_hex": "0800F7FF00010001"
+      },
+      "hata_turu": "ChecksumMismatch",
+      "beklenen_mesaj": "ICMP Checksum doğrulama hatası (Sahte veya bozulmuş paket)"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+Bu görsel şema ve mimari illüstrasyon, TCP Üçlü El Sıkışma (Three-Way Handshake)
+sürecini, durum makinesi (State Machine) geçişlerini, ISN/Ack matematiğini,
+SYN Flood saldırısını ve SYN Cookies savunma mekanizmasını göstermek amacıyla
+kavramsal olarak üretilmiştir. Gerçek donanım yakalaması veya canlı test kanıtı yerine geçmez.
+================================================================================
+
+1. NORMAL TCP ÜÇ AŞAMALI EL SIKIŞMA (THREE-WAY HANDSHAKE) AKIŞI
+================================================================================
+
+ İSTEMCİ (Client)                                             SUNUCU (Server)
+ [192.168.30.15:54321]                                        [172.16.20.10:80]
+  Durum: CLOSED                                                Durum: LISTEN
+         |                                                            |
+         |  1. ADIM: SYN (Bağlantı Talebi & ISN Senkronizasyonu)       |
+         |----------------------------------------------------------->|
+         |  Flags: [SYN]                                              |
+         |  Seq: ISN_c (Örn: 1000000), Ack: 0, Payload: 0 Bayt        |
+         |  Seçenekler: MSS=1460, Win=64240                           |
+  Durum: SYN_SENT                                              Durum: SYN_RECEIVED
+         |                                                     (Backlog Kuyruğuna
+         |                                                      Kayıt Açılır)
+         |  2. ADIM: SYN-ACK (Bağlantı Kabul & Karşılıklı Senkron)    |
+         |<-----------------------------------------------------------|
+         |  Flags: [SYN, ACK]                                         |
+         |  Seq: ISN_s (Örn: 5000000), Ack: ISN_c + 1 (1000001)       |
+         |  Seçenekler: MSS=1460, Win=65535                           |
+  Durum: ESTABLISHED                                                  |
+         |                                                            |
+         |  3. ADIM: ACK (Nihai Onay & Oturum Kurulumu)               |
+         |----------------------------------------------------------->|
+         |  Flags: [ACK]                                              |
+         |  Seq: ISN_c + 1 (1000001), Ack: ISN_s + 1 (5000001)        |
+         |  Payload: 0 Bayt                                           |
+         |                                                     Durum: ESTABLISHED
+         |                                                     (Backlog -> TCB Tablosu)
+         |                                                            |
+         |=================== OTURUM AÇILDI ==========================|
+         |                                                            |
+         |  4. ADIM: VERİ AKTARIMI (HTTP GET / TLS Client Hello)      |
+         |----------------------------------------------------------->|
+         |  Flags: [PSH, ACK], Seq: 1000001, Ack: 5000001             |
+         |  Payload: 84 Bayt ("GET / HTTP/1.1\r\nHost: ...")          |
+         v                                                            v
+
+================================================================================
+2. SALDIRI SENARYOSU: SYN FLOOD (DOS / DDOS) VE BACKLOG TÜKETİMİ
+================================================================================
+
+ SALDIRGAN (Sahte IP'ler)                                      HEDEF SUNUCU
+ [Spoofed: 198.51.100.X]                                      [172.16.20.10:80]
+         |                                                            |
+         |  SYN (Seq: X1, Ack: 0) [Sahte IP-1]                       |
+         |----------------------------------------------------------->| [Kayıt 1: SYN_RECEIVED]
+         |  SYN (Seq: X2, Ack: 0) [Sahte IP-2]                       |
+         |----------------------------------------------------------->| [Kayıt 2: SYN_RECEIVED]
+         |  SYN (Seq: X3, Ack: 0) [Sahte IP-3]                       |
+         |----------------------------------------------------------->| [Kayıt 3: SYN_RECEIVED]
+         |  ... (Binlerce Sahte SYN Paketi)                           |
+         |----------------------------------------------------------->| [SYN BACKLOG DOLDU!]
+         |                                                            |
+ MEŞRU KULLANICI                                                      |
+ [192.168.30.15]                                                      |
+         |  SYN (Meşru Bağlantı Talebi)                              |
+         |----------------------------------------------------------->| ❌ REDDEDİLDİ / DÜŞTÜ!
+         |                                                            | (Hafıza / Kuyruk Tükendi)
+
+================================================================================
+3. SAVUNMA MEKANİZMASI: SYN COOKIES (RFC 4987) ÇALIŞMA PRENSİBİ
+================================================================================
+
+ Sunucu, SYN paketini aldığında bellekte TCB (Transmission Control Block) 
+ kaydı açmaz. Bunun yerine:
+ 
+ ISN_s = Kriptografik_Hash(Kaynak IP, Hedef IP, Portlar, Zaman Damgası, Gizli Anahtar)
+ 
+ formülüyle bir SYN Cookie hesaplar ve SYN-ACK içinde istemciye yollar.
+ İstemci 3. adımda geçerli Ack (ISN_s + 1) döndürdüğünde, sunucu matematiksel olarak 
+ hash değerini teyit eder ve oturumu o an oluşturur. Bellek tüketimi engellenir!
+================================================================================

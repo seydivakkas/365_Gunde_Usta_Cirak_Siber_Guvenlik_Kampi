@@ -1,0 +1,66 @@
+================================================================================
+GERÇEK KOMUT ÇALIŞTIRMA VE KANIT KAYDI — GÜN 015
+Tarih: 2026-10-27
+Platform: Windows 11 (10.0.26300)
+Python Sürümü: 3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]
+Çalışma Dizini: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Lisans: ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+
+>>> KOMUT: python portfolio/hafta_03/gun_015/uygulama/binary_byte_encoding_inspector.py --veri-tabani portfolio/hafta_03/gun_015/ornek_veri/karakter_kodlama_ornekleri.json --tumunu-denetle
+Çıkış Kodu: 0
+[STDOUT]:
+[*] T�m Karakter Kodlama �rnekleri Denetleniyor...
+    - �rnek: SAMPLE-01-ASCII-STANDARD -> Skor: 100 | Durum: GUVENLI | Bulgular: 0
+    - �rnek: SAMPLE-02-TURKISH-MULTIBYTE -> Skor: 85 | Durum: GUVENLI | Bulgular: 1
+    - �rnek: SAMPLE-03-EMOJI-SURROGATE -> Skor: 85 | Durum: GUVENLI | Bulgular: 1
+    - �rnek: SAMPLE-04-NULL-BYTE-ATTACK -> Skor: 60 | Durum: UYARI | Bulgular: 1
+    - �rnek: SAMPLE-05-HOMOGLYPH-SPOOF -> Skor: 60 | Durum: UYARI | Bulgular: 2
+
+--------------------------------------------------------------------------------
+>>> KOMUT: python portfolio/hafta_03/gun_015/uygulama/binary_byte_encoding_inspector.py --veri-tabani portfolio/hafta_03/gun_015/ornek_veri/karakter_kodlama_ornekleri.json --ornek-id SAMPLE-01-ASCII-STANDARD --hex-dump
+Çıkış Kodu: 0
+[STDOUT]:
+[*] �rnek �nceleniyor: SAMPLE-01-ASCII-STANDARD (Standart Saf ASCII Metin (1 Karakter = 1 Bayt))
+[+] Karakter Say�s�: 23 | UTF-8 Bayt Boyutu: 23
+[+] Denetim Skoru: 100 / 100 (GUVENLI)
+
+[+] Hex Dump ��kt�s�:
+00000000: 43 59 42 45 52 5f 53 45 43 55 52 49 54 59 5f 4c  |CYBER_SECURITY_L|
+00000010: 41 42 5f 32 30 32 36                             |AB_2026|
+
+--------------------------------------------------------------------------------
+>>> KOMUT: python portfolio/hafta_03/gun_015/uygulama/binary_byte_encoding_inspector.py --veri-tabani portfolio/hafta_03/gun_015/ornek_veri/karakter_kodlama_ornekleri.json --ornek-id SAMPLE-02-TURKISH-MULTIBYTE --hex-dump
+Çıkış Kodu: 0
+[STDOUT]:
+[*] �rnek �nceleniyor: SAMPLE-02-TURKISH-MULTIBYTE (Turkce Cok Baytli Metin (Degisken Genislikli UTF-8))
+[+] Karakter Say�s�: 34 | UTF-8 Bayt Boyutu: 38
+[+] Denetim Skoru: 85 / 100 (GUVENLI)
+    - [YUKSEK] �ok Baytl� Karakter Geni�lemesi (+4 bayt fazlal�k) (-15p)
+
+[+] Hex Dump ��kt�s�:
+00000000: 53 69 62 65 72 20 47 c3 bc 76 65 6e 6c 69 6b 20  |Siber G..venlik |
+00000010: c5 9e 69 66 72 65 6c 65 6d 65 20 41 c4 9f 20 47  |..ifreleme A.. G|
+00000020: 65 c3 a7 69 64 69                                |e..idi|
+
+--------------------------------------------------------------------------------
+>>> KOMUT: python portfolio/hafta_03/gun_015/uygulama/binary_byte_encoding_inspector.py --veri-tabani portfolio/hafta_03/gun_015/ornek_veri/karakter_kodlama_ornekleri.json --ornek-id SAMPLE-04-NULL-BYTE-ATTACK --yonetici-hakki
+Çıkış Kodu: 0
+[STDOUT]:
+[*] �rnek �nceleniyor: SAMPLE-04-NULL-BYTE-ATTACK (Null Byte (\x00) Enjeksiyonu ile Uzanti ve Sonlandirma Saldirisi)
+[+] Karakter Say�s�: 19 | UTF-8 Bayt Boyutu: 19
+[+] Denetim Skoru: 60 / 100 (UYARI)
+    - [FELAKET] Null Byte (\x00) Enjeksiyonu Tespit Edildi (-40p)
+    - [YONETISIM_HATASI] �l�mc�l Hata: Y�netici �znini Otomatik G�venli Davran�� Saymak (-0p)
+
+--------------------------------------------------------------------------------
+>>> KOMUT: python portfolio/hafta_03/gun_015/uygulama/binary_byte_encoding_inspector.py --veri-tabani portfolio/hafta_03/gun_015/ornek_veri/karakter_kodlama_ornekleri.json --ornek-id SAMPLE-05-HOMOGLYPH-SPOOF
+Çıkış Kodu: 0
+[STDOUT]:
+[*] �rnek �nceleniyor: SAMPLE-05-HOMOGLYPH-SPOOF (Homoglyph / IDN Karakter Benzetme Saldirisi (Kiril Karisimi))
+[+] Karakter Say�s�: 16 | UTF-8 Bayt Boyutu: 18
+[+] Denetim Skoru: 60 / 100 (UYARI)
+    - [YUKSEK] �ok Baytl� Karakter Geni�lemesi (+2 bayt fazlal�k) (-15p)
+    - [YUKSEK] Homoglyph / Kar���k Alfabe Tespiti: LATIN, CYRILLIC (-25p)
+
+--------------------------------------------------------------------------------

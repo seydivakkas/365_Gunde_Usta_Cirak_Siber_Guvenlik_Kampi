@@ -1,0 +1,54 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
++-----------------------------------------------------------------------------------+
+|               KURUMSAL RİSK SKORLAMA VE KONTROL SEÇİMİ MİMARİSİ                   |
+|                   (NIST SP 800-30 / ISO 27005 / NIST SP 800-53)                   |
++-----------------------------------------------------------------------------------+
+
+     [ VARLIK ENVANTERİ ]           [ TEHDİT & ZAFİYET DEĞERLENDİRME ]
+      - Varlık Değeri ($)             - Doğal Olasılık (Likelihood: 1-5)
+      - Maruz Kalma (EF: 0-1)         - Doğal Etki (Impact: 1-5)
+      - Oluşma Sıklığı (ARO)          - Doğal Risk Skoru = L x I (1-25)
+              |                                     |
+              +------------------+------------------+
+                                 |
+                                 v
+                     [ NİCEL FİNANSAL HESAPLAMA ]
+                      SLE = Varlık Değeri x EF ($)
+                      Inherent ALE = SLE x ARO ($)
+                                 |
+                                 v
+                 [ GÜVENLİK KONTROLÜ SEÇİMİ (KATALOG) ]
+      +-------------------------------------------------------------+
+      |  NIST-IA-2: Çok Faktörlü Kimlik Doğrulama (MFA) [%85 Etki] |
+      |  NIST-SC-7: Web Uygulama Güvenlik Duvarı (WAF)  [%75 Etki] |
+      |  NIST-SI-4: Uç Nokta Tespit ve Yanıt (EDR/XDR)  [%80 Etki] |
+      |  NIST-CP-9: Değiştirilemez Yedekleme (Immutable)[%90 Etki] |
+      |  CIS-CSC-4: Ayrıcalıklı Erişim Yönetimi (PAM)   [%88 Etki] |
+      +-------------------------------------------------------------+
+                                 |
+                                 v
+                     [ ARTIK RİSK & ROSI HESAPLAMA ]
+      - Birleşik Kontrol Etkinliği: 1 - (1-e1)(1-e2)...
+      - Residual ALE = Inherent ALE x (1 - Etkinlik)
+      - Önlenen Yıllık Kayıp = Inherent ALE - Residual ALE
+      - Kontrol Maliyeti = Yıllık İdame + (Kurulum / Yaşam Yılı)
+      - ROSI = [ (Önlenen Kayıp - Maliyet) / Maliyet ] x 100
+                                 |
+                                 v
+               [ KURUMSAL YÖNETİŞİM & İŞTAH DENETİMİ ]
+               - Eşik Skoru: Azami 10 / 25
+               - Finansal Tolerans: Azami $50,000 ALE
+               - İstisna: C-Level Executive Sign-Off (CWE-1025)
+                                 |
+              +------------------+------------------+
+              |                                     |
+         [ UYGUN ]                             [ İHLAL ]
+   Artık Risk <= İştah                     Artık Risk > İştah
+   Üretime Onay Verilir                   İşlem Engellenir (CWE-1025)
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

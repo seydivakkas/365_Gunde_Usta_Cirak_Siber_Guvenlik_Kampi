@@ -1,0 +1,77 @@
+{
+  "aciklama": "G087: Bash betik iskeleti, quoting kurallari ve enjeksiyon tehditleri icin 9 negatif kontrol senaryosu.",
+  "negatif_testler": [
+    {
+      "test_id": "NEG_01_COMMAND_INJECTION_EVAL",
+      "baslik": "Dinamik Komut Calistirmada eval Kullanimi (Komut Enjeksiyonu)",
+      "beklenen_hata": "DangerousEvalException",
+      "zafiyet_turu": "CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
+      "kod_parcasi": "#!/usr/bin/env bash\nset -euo pipefail\neval $USER_INPUT\n",
+      "parametre": "eval"
+    },
+    {
+      "test_id": "NEG_02_CATASTROPHIC_UNQUOTED_RM",
+      "baslik": "rm -rf Komutunda Tirnaksiz Degisken Genislemesi (Kok Dizin Felaketi)",
+      "beklenen_hata": "UnquotedVariableException",
+      "zafiyet_turu": "CWE-732: Incorrect Permission Assignment / Dangerous Command Sink",
+      "kod_parcasi": "#!/usr/bin/env bash\nset -euo pipefail\nrm -rf $TARGET_DIR/*\n",
+      "parametre": "rm"
+    },
+    {
+      "test_id": "NEG_03_WORD_SPLITTING_PAYLOAD",
+      "baslik": "Bosluk Iceren Girdide Tirnaksiz Degisken ile Kelime Bolunmesi (Word Splitting)",
+      "beklenen_hata": "WordSplittingDetectedException",
+      "zafiyet_turu": "CWE-88: Improper Neutralization of Argument Delimiters in a Command",
+      "kod_parcasi": "file name with spaces.txt; whoami",
+      "parametre": "IFS_Simulation"
+    },
+    {
+      "test_id": "NEG_04_GLOBBING_WILDCARD_INJECTION",
+      "baslik": "Tirnaksiz Yolda Globbing ve Bayrak Enjeksiyonu (-rf, *)",
+      "beklenen_hata": "GlobbingInjectionException",
+      "zafiyet_turu": "CWE-88: Argument Injection via Pathname Expansion",
+      "kod_parcasi": "-rf",
+      "parametre": "GlobCheck"
+    },
+    {
+      "test_id": "NEG_05_MISSING_SHEBANG",
+      "baslik": "Betiğin Ilk Satirinda Bash Shebang (#!/...) Eksikligi",
+      "beklenen_hata": "MissingShebangException",
+      "zafiyet_turu": "CWE-20: Improper Input Validation in Script Header",
+      "kod_parcasi": "echo 'Hello world without shebang'",
+      "parametre": "Shebang"
+    },
+    {
+      "test_id": "NEG_06_MISSING_STRICT_MODE",
+      "baslik": "Kati Yurutme Modu (set -euo pipefail) Eksikligi",
+      "beklenen_hata": "MissingStrictModeException",
+      "zafiyet_turu": "CWE-754: Improper Check for Unusual or Exceptional Conditions",
+      "kod_parcasi": "#!/usr/bin/env bash\necho $UNSET_VAR\nls /nonexistent\n",
+      "parametre": "StrictMode"
+    },
+    {
+      "test_id": "NEG_07_NULL_BYTE_INJECTION",
+      "baslik": "Betik Iceriginde veya Parametresinde Null Byte (0x00) Enjeksiyonu",
+      "beklenen_hata": "NullByteForbiddenException",
+      "zafiyet_turu": "CWE-158: Improper Neutralization of Null Byte or Special Characters",
+      "kod_parcasi": "#!/usr/bin/env bash\nset -euo pipefail\necho 'valid\u0000injected'\n",
+      "parametre": "NullByte"
+    },
+    {
+      "test_id": "NEG_08_OVERSIZED_SCRIPT_DOS",
+      "baslik": "Asiri Boyutlu Betik Metni ile Kaynak Tukenmesi (DoS)",
+      "beklenen_hata": "BashScriptSizeLimitException",
+      "zafiyet_turu": "CWE-400: Uncontrolled Resource Consumption",
+      "kod_parcasi": "OVERSIZED_SCRIPT_PAYLOAD_MARKER",
+      "parametre": "SizeLimit"
+    },
+    {
+      "test_id": "NEG_09_UNQUOTED_ARRAY_EXPANSION",
+      "baslik": "Tirnaksiz Dizi veya Parametre Aktarimi ($* veya unquoted $@)",
+      "beklenen_hata": "UnquotedArrayExpansionException",
+      "zafiyet_turu": "CWE-20: Unquoted Parameter List Expansion",
+      "kod_parcasi": "#!/usr/bin/env bash\nset -euo pipefail\necho $*\n",
+      "parametre": "ArrayExpansion"
+    }
+  ]
+}

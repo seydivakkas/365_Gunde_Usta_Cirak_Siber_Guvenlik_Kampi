@@ -1,0 +1,43 @@
+=== GÜN 100: ENTROPİ VE RASTGELELİK BİRİM TEST RAPORU ===
+Tarih/Saat : 2026-11-02 01:48:33
+Komut      : C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_100\tests\test_entropy_randomness.py -v
+Çıkış Kodu : 0
+--------------------------------------------------------------------------------
+test_01_shannon_entropy_calculation_math (tests.test_entropy_randomness.TestEntropyRandomness.test_01_shannon_entropy_calculation_math)
+Shannon Entropisi: Sabit baytta 0.0, tekdüze 256 baytta tam 8.0 bit/bayt olmasını doğrular. ... ok
+test_02_min_entropy_worst_case (tests.test_entropy_randomness.TestEntropyRandomness.test_02_min_entropy_worst_case)
+Min-Entropi: En sık tekrarlanan bayta göre en kötü durum entropisini doğrular. ... ok
+test_03_chi_square_uniformity (tests.test_entropy_randomness.TestEntropyRandomness.test_03_chi_square_uniformity)
+Ki-Kare Testi: Tam uniform dağılımda Ki-Kare değerinin sıfır olduğunu doğrular. ... ok
+test_04_monobit_frequency_test (tests.test_entropy_randomness.TestEntropyRandomness.test_04_monobit_frequency_test)
+Monobit Testi: Tam dengeli bit akışında 1 oranının 0.5 ve p-değerinin 1.0 olmasını doğrular. ... ok
+test_05_csprng_key_generation_entropy (tests.test_entropy_randomness.TestEntropyRandomness.test_05_csprng_key_generation_entropy)
+CSPRNG: Üretilen 256-bit anahtarın yüksek entropiye (>= 7.0) sahip olduğunu doğrular. ... ok
+test_06_csprng_token_length_and_hex (tests.test_entropy_randomness.TestEntropyRandomness.test_06_csprng_token_length_and_hex)
+CSPRNG: Güvenli token üretiminin uzunluğunu ve onaltılık formatını doğrular. ... ok
+test_07_small_entropy_space_rejection (tests.test_entropy_randomness.TestEntropyRandomness.test_07_small_entropy_space_rejection)
+Small Space: 64 bitten küçük anahtarların reddedildiğini doğrular (CWE-334). ... ok
+test_08_weak_prng_static_detection (tests.test_entropy_randomness.TestEntropyRandomness.test_08_weak_prng_static_detection)
+Weak PRNG: Mersenne Twister veya random modülü kullanımının yakalandığını doğrular (CWE-338). ... ok
+test_09_predictable_seed_detection (tests.test_entropy_randomness.TestEntropyRandomness.test_09_predictable_seed_detection)
+Predictable Seed: Sistem zaman damgası gibi tohumların engellendiğini doğrular (CWE-337). ... ok
+test_10_low_entropy_strict_rejection (tests.test_entropy_randomness.TestEntropyRandomness.test_10_low_entropy_strict_rejection)
+Insufficient Entropy: Düşük entropili verilerin sıkı modda hata fırlatmasını doğrular (CWE-331). ... ok
+test_11_empty_payload_rejection (tests.test_entropy_randomness.TestEntropyRandomness.test_11_empty_payload_rejection)
+Empty Payload: Boş veri dizisinin InsufficientEntropyError fırlatmasını doğrular (CWE-20). ... ok
+test_12_oversized_payload_rejection (tests.test_entropy_randomness.TestEntropyRandomness.test_12_oversized_payload_rejection)
+Payload Limit: 1 MB tavanını aşan tamponların engellendiğini doğrular (CWE-400). ... ok
+test_13_null_byte_rejection (tests.test_entropy_randomness.TestEntropyRandomness.test_13_null_byte_rejection)
+Null-Byte: İsim veya yoldaki Null-Byte zehirlemesinin engellendiğini doğrular (CWE-158). ... ok
+test_14_type_validation_rejection (tests.test_entropy_randomness.TestEntropyRandomness.test_14_type_validation_rejection)
+Type Validation: Uyumsuz veri tiplerinin TypeValidationError fırlatmasını doğrular (CWE-843). ... ok
+test_15_negative_inputs_json_suite (tests.test_entropy_randomness.TestEntropyRandomness.test_15_negative_inputs_json_suite)
+invalid_entropy_inputs.json dosyasındaki 9 negatif senaryonun tamamını doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.003s
+
+OK
+
+================================================================================
+DURUM: 15/15 BİRİM TESTİ BAŞARIYLA GEÇTİ (100% PASS)

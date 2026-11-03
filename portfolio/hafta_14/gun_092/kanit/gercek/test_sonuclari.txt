@@ -1,0 +1,45 @@
+===========================================================================
+GÜN 092: VERİ DOĞRULAMA VE TİP GÜVENLİĞİ — BİRİM TEST KANITLARI
+Tarih (UTC): 2026-11-01T20:34:34Z
+===========================================================================
+
+test_01_valid_ipv4_validation (test_security_data_validator.TestSecurityDataValidator.test_01_valid_ipv4_validation)
+1. Test: Geçerli IPv4 adreslerinin doğrulanması. ... ok
+test_02_invalid_ipv4_out_of_bounds (test_security_data_validator.TestSecurityDataValidator.test_02_invalid_ipv4_out_of_bounds)
+2. Test: 255'ten büyük oktet içeren IP'nin reddedilmesi (CWE-20). ... ok
+test_03_invalid_ipv4_octal_prevention (test_security_data_validator.TestSecurityDataValidator.test_03_invalid_ipv4_octal_prevention)
+3. Test: Baştaki sıfırlarla gelen octal karışıklığı yaratan IP'nin engellenmesi. ... ok
+test_04_valid_port_validation (test_security_data_validator.TestSecurityDataValidator.test_04_valid_port_validation)
+4. Test: 1-65535 aralığındaki geçerli port numaralarının kabulü. ... ok
+test_05_invalid_port_type_confusion (test_security_data_validator.TestSecurityDataValidator.test_05_invalid_port_type_confusion)
+5. Test: Port alanına bool veya metin girildiğinde Type Confusion tespiti (CWE-843). ... ok
+test_06_invalid_port_range (test_security_data_validator.TestSecurityDataValidator.test_06_invalid_port_range)
+6. Test: 0 veya 65535'ten büyük portların sınır hatası vermesi (CWE-1284). ... ok
+test_07_valid_mac_address (test_security_data_validator.TestSecurityDataValidator.test_07_valid_mac_address)
+7. Test: EUI-48 standardı MAC adresinin büyük harfe ve iki noktaya dönüştürülmesi. ... ok
+test_08_invalid_mac_format (test_security_data_validator.TestSecurityDataValidator.test_08_invalid_mac_format)
+8. Test: Bozuk veya eksik oktetli MAC adresinin reddedilmesi. ... ok
+test_09_valid_hostname_rfc1123 (test_security_data_validator.TestSecurityDataValidator.test_09_valid_hostname_rfc1123)
+9. Test: RFC-1123 uyumlu geçerli alan adının doğrulanması. ... ok
+test_10_invalid_hostname_shell_injection (test_security_data_validator.TestSecurityDataValidator.test_10_invalid_hostname_shell_injection)
+10. Test: Hostname içinde kabuk komut karakterleri bulunduğunda engelleme (CWE-88). ... ok
+test_11_null_byte_injection_detection (test_security_data_validator.TestSecurityDataValidator.test_11_null_byte_injection_detection)
+11. Test: Metin alanlarında Null-Byte (\x00) enjeksiyonunun anında engellenmesi (CWE-158). ... ok
+test_12_valid_sha256_checksum (test_security_data_validator.TestSecurityDataValidator.test_12_valid_sha256_checksum)
+12. Test: 64 karakterlik SHA-256 sağlama toplamının doğrulanması. ... ok
+test_13_enforce_types_decorator (test_security_data_validator.TestSecurityDataValidator.test_13_enforce_types_decorator)
+13. Test: @enforce_types dekoratörünün çalışma anında tip uyuşmazlığını yakalaması. ... ok
+test_14_batch_validate_and_asset_conversion (test_security_data_validator.TestSecurityDataValidator.test_14_batch_validate_and_asset_conversion)
+14. Test: Toplu varlık doğrulamasının geçerli ve hatalı kayıtları hatasız ayrıştırması. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK
+
+===========================================================================
+Toplam Test: 14
+Başarılı: 14
+Hatalar: 0
+Başarısızlıklar: 0
+Genel Sonuç: PASS (BAŞARILI)

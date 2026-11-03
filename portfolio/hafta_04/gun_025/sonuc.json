@@ -1,0 +1,34 @@
+{
+  "gun": 25,
+  "asama": "02",
+  "hafta": "04",
+  "konu": "Kullanıcı, grup ve oturum",
+  "tarih": "2026-10-27",
+  "kod_kalitesi_puani": 20,
+  "uygulama_fonksiyonellik_puani": 40,
+  "guvenlik_risk_yonetimi_puani": 25,
+  "belgeleme_raporlama_puani": 15,
+  "toplam_puan": 100,
+  "durum": "YETERLİ / PASS",
+  "tamamlanan_gorevler": [
+    "Kimlik (Authentication) ile Etkin Oturum (Active Session) kavramsal ve pratik mimari ayrimi",
+    "G025-SC2 sartinda yerel oturumun (whoami, SID, platform, PID, ayricaliklar) canli olarak belgelenmesi",
+    "Servis hesaplarinda etkilesimli kabuk (/bin/bash) yasaklama ve nologin yonlendirme denetimi",
+    "Ortak hesap (shared account) kullanimi sonucu inkar edilemezlik (non-repudiation) kaybinin tespiti",
+    "Atil / yetim hesaplarin (dormant accounts > 90 gun) ve oturum zaman asimi (timeout > 900 sn) denetimleri",
+    "14/14 birim testin 0.504 saniyede PASS seviyesinde basariyla kosulmasi"
+  ],
+  "kazanilan_yetkinlikler": [
+    "Linux ve Windows isletim sistemi kimlik ve oturum mimarisine tam hakimiyet",
+    "UID, GID ve SID tanimlayicilarini analiz etme ve yetki yukseltme risklerini tespit etme",
+    "Servis ve sistem hesaplarini En Az Ayricalik (Least Privilege) ilkesine gore sertlestirme",
+    "Adli bilisim ve denetim standartlarinda inkar edilemezlik (non-repudiation) mimarisi kurma",
+    "Canli oturum ve durumsal farkindalik (situational awareness) sorgulama uzmanligi"
+  ],
+  "kanit_dosyalari": [
+    "portfolio/hafta_04/gun_025/kanit/gercek/yerel_oturum_belgeleme.txt",
+    "portfolio/hafta_04/gun_025/kanit/gercek/test_sonuclari.txt",
+    "portfolio/hafta_04/gun_025/kanit/gercek/komut_ve_cikis.txt",
+    "portfolio/hafta_04/gun_025/kanit/temsili/kimlik_ve_oturum_mimarisi.txt"
+  ]
+}

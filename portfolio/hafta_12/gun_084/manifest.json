@@ -1,0 +1,21 @@
+{
+  "dosyalar": {
+    "README.md": "fe42174dcd91f60ea7268a80ff2152c9a8a20f75206f37f7c2885f29e48002db",
+    "ders.md": "0d3c423fdc95a1dfdb593bddd0cbcaf8a7de17aef00782a1554526f5e1eee554",
+    "rapor.md": "85fa3944ce8258d88d19366b4da8a2f2731c018937807d0afd18f15357ec5633",
+    "sonuc.json": "3220d31c03f3e8397f1844cde58e66f21514c671f309f7c98862317fd381964a",
+    "soru_cevap.md": "a75d11b60660840d23d3521c838116c10c2e858dbe009790e0756dc6f52fb0c3",
+    "kanit/gercek/komut_ve_cikis.txt": "fee303ecf81d4b970138e0c457ba58457716ce03a4e3992bf2bcc580ae9f38f1",
+    "kanit/gercek/log_araci_denetim_raporu.txt": "020f102c8ebdd88ff0d2e4f05387697bb30a8b99df0c3a240d302426febe8105",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": "390d4c34a4497a9e7a48af76e8c73bfeedff4806364d7a90dcaf59a27460847d",
+    "kanit/gercek/test_sonuclari.txt": "065b23992663c96ee707c4433d825e1a2289668071378ef55825585d8f1996dd",
+    "kanit/temsili/log_araci_ve_guvenlik_mimarisi.txt": "e875cdbb793827ec2e3ae4373c38892b5e74217338d7d2c9ed5f5a0de6e83fd7",
+    "ornek_veri/invalid_log_tool_inputs.json": "2f11dbcbcb6b29071c4401d121373f418cef4f4bdb56df03206fb0ee7592bbfd",
+    "ornek_veri/raw_access_logs.jsonl": "84ea0cbd28d594753ae21f78eeb8b4738c7cada93fd30412c41c3d554e71e2c9",
+    "tests/__init__.py": "5a1b43e21f73cb0bb89dfaf6b059c2a4273d6860a804f75e79ebdb6d84cfc380",
+    "tests/conftest.py": "e07dee15aa8b9167fd4d9897eba4f21de30f8043dfed8f92197fa3b1f389a241",
+    "tests/test_tested_security_log_tool.py": "42554a980342a0f05745ef81565890dbbc13c87220cea6378cd66d1d168a1518",
+    "uygulama/__init__.py": "8877c9093457033463fb3db9ea00c3c32339332bf19fd83ed674962e8ebdd4aa",
+    "uygulama/tested_security_log_tool.py": "1d3a90cd7b876680e3e14af8b3624423d2bcf99ba7c8a14c2d71ad348da9ca6a"
+  }
+}

@@ -1,0 +1,34 @@
+# Atlas Kurumsal Savunma Derinliği Mimarisi (7 Katman) — Savunma Derinliği ve Kontrol Tipleri Raporu
+**Rapor Tarihi:** 2026-11-02 06:12:47
+
+## 1. Katman Bazlı Güvenlik Kontrol Matrisi
+| Katman No ve Adı | Kontrol ID | Kontrol Adı | Kontrol Tipi | Etkinlik | Desteklenen Saldırılar | Durum |
+|---|---|---|---|---|---|---|
+| 1_Fiziksel_Guvenlik | CTRL-PHY-01 | Biyometrik Veri Merkezi Giriş Kapısı ve Mantrap | Önleyici | %98 | INSIDER_THREAT | ✅ Aktif |
+| 1_Fiziksel_Guvenlik | CTRL-PHY-02 | 7/24 CCTV ve Hareket Sensörü İzleme | Tespit Edici | %95 | INSIDER_THREAT | ✅ Aktif |
+| 2_Cevre_ve_Dis_Ag | CTRL-PERIM-01 | Yeni Nesil Güvenlik Duvarı (NGFW / Statefull Inspection) | Önleyici | %90 | RANSOMWARE, DATA_EXFILTRATION | ✅ Aktif |
+| 2_Cevre_ve_Dis_Ag | CTRL-PERIM-02 | Ağ Tabanlı Saldırı Tespit Sistemi (NIDS / Zeek) | Tespit Edici | %88 | RANSOMWARE, DATA_EXFILTRATION, CREDENTIAL_STUFFING | ✅ Aktif |
+| 3_Ic_Ag_ve_Segmentasyon | CTRL-NET-01 | Mikro-Segmentasyon ve ZTNA Yazılım Tanımlı Ağ | Önleyici | %92 | RANSOMWARE, INSIDER_THREAT | ✅ Aktif |
+| 3_Ic_Ag_ve_Segmentasyon | CTRL-NET-02 | NetFlow ve Doğu-Batı Ağ Trafiği Anomali Analizörü | Tespit Edici | %85 | RANSOMWARE, DATA_EXFILTRATION | ✅ Aktif |
+| 4_Uc_Nokta_ve_Sunucu | CTRL-HOST-01 | Uç Nokta Tespit ve Otomatik Müdahale (EDR/XDR) | Önleyici | %95 | RANSOMWARE, INSIDER_THREAT | ✅ Aktif |
+| 4_Uc_Nokta_ve_Sunucu | CTRL-HOST-02 | Ana Makine Bütünlük Denetleyicisi (FIM / Osquery) | Tespit Edici | %90 | RANSOMWARE | ✅ Aktif |
+| 4_Uc_Nokta_ve_Sunucu | CTRL-HOST-03 | Otomatik Karantina ve İmaj Yenileme Playbook | Düzeltici | %92 | RANSOMWARE | ✅ Aktif |
+| 5_Uygulama_ve_API | CTRL-APP-01 | Web Uygulama Güvenlik Duvarı (WAF - ModSecurity / Cloudflare) | Önleyici | %92 | SQL_INJECTION, CREDENTIAL_STUFFING | ✅ Aktif |
+| 5_Uygulama_ve_API | CTRL-APP-02 | Parametreli Sorgular ve ORM Katı Girdi Doğrulama | Önleyici | %99 | SQL_INJECTION | ✅ Aktif |
+| 5_Uygulama_ve_API | CTRL-APP-03 | API Ağ Geçidi Hız Sınırlama ve İstek Günlükleme | Tespit Edici | %88 | SQL_INJECTION, CREDENTIAL_STUFFING | ✅ Aktif |
+| 6_Veri_ve_Depolama | CTRL-DATA-01 | Durağan Veri Şifreleme (AES-256 Encryption at Rest) | Önleyici | %99 | DATA_EXFILTRATION, SQL_INJECTION | ✅ Aktif |
+| 6_Veri_ve_Depolama | CTRL-DATA-02 | Veri Kaybı Önleme Ajanı (Endpoint & Network DLP) | Tespit Edici | %86 | DATA_EXFILTRATION | ✅ Aktif |
+| 6_Veri_ve_Depolama | CTRL-DATA-03 | Değiştirilemez Çevrimdışı Yedekleme (Immutable Backup) | Düzeltici | %98 | RANSOMWARE | ✅ Aktif |
+| 7_Kimlik_ve_Insan | CTRL-ID-01 | Donanım Tabanlı Çok Faktörlü Kimlik Doğrulama (FIDO2 / MFA) | Önleyici | %96 | CREDENTIAL_STUFFING, INSIDER_THREAT | ✅ Aktif |
+| 7_Kimlik_ve_Insan | CTRL-ID-02 | Kullanıcı Davranış Analitiği (UEBA) | Tespit Edici | %85 | INSIDER_THREAT, CREDENTIAL_STUFFING | ✅ Aktif |
+| 7_Kimlik_ve_Insan | CTRL-ID-03 | Oturum Açma Uyarı Banner'ı ve Hukuki İkaz Metni | Caydırıcı | %40 | INSIDER_THREAT | ✅ Aktif |
+
+## 2. Mimari Dayanıklılık ve Boşluk Analizi
+> [!NOTE]
+> **MİMARİ SAĞLAM:** 7 katmanda da gerekli önleyici ve tespit edici kontroller mevcuttur. Tek hata noktası (SPoF) tespit edilmemiştir.
+
+## 3. Modellenen Saldırı Senaryoları
+| Senaryo ID | Senaryo Adı | Saldırı Kategorisi | Hedef Katman Sayısı |
+|---|---|---|---|
+| SCN-RANSOM-01 | Kurumsal Ağa Sızan Fidye Yazılımı Zinciri | Ransomware (Fidye Yazılımı ve Yayılma) | 3 |
+| SCN-SQLI-01 | Web Uygulaması Üzerinden Veritabanı İhlali | SQL Injection (Veri Tabanı İhlali) | 2 |

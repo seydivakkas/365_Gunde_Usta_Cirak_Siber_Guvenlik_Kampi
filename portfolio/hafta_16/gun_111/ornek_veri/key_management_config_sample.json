@@ -1,0 +1,25 @@
+{
+  "aciklama": "NIST SP 800-57 Uyumlu Anahtar Yönetimi ve Rotasyon Yapılandırma Profili",
+  "kms_bolgesi": "Ulusal Güvenli Veri Merkezi (HSM Entegre)",
+  "kriptoperiyot_ayarlari": {
+    "kek_gecerlilik_gun": 365,
+    "dek_gecerlilik_gun": 90,
+    "otomatik_rotasyon_uyari_gun": 30
+  },
+  "guvenlik_politikalari": {
+    "zarf_sifreleme_zorunlu": true,
+    "minimum_anahtar_bit": 256,
+    "max_sifreleme_islem_limiti": 1000000,
+    "dual_control_esik": "2-of-3",
+    "zeroization_gecis_sayisi": 3,
+    "izin_verilen_algoritmalar": ["AES-256-GCM", "ChaCha20-Poly1305"]
+  },
+  "anahtar_durumlari_semasi": [
+    "PRE_ACTIVATION",
+    "ACTIVE",
+    "SUSPENDED",
+    "DEPRECATED",
+    "COMPROMISED",
+    "DESTROYED"
+  ]
+}

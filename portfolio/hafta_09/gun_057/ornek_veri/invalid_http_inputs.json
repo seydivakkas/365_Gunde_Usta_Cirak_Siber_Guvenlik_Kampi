@@ -1,0 +1,78 @@
+{
+  "aciklama": "G057 HTTP Istek ve Yanit Yapisi - Sinir Durumlari ve Negatif Ayrıştırma Girdileri",
+  "versiyon": "1.0.0",
+  "negatif_testler": [
+    {
+      "test_id": "NEG-01-EMPTY-REQUEST",
+      "hata_tipi": "BosHttpMesaji",
+      "beklenen_hata": "HTTP mesaji bos olamaz.",
+      "veri": {
+        "ham_metin": ""
+      }
+    },
+    {
+      "test_id": "NEG-02-MALFORMED-REQUEST-LINE",
+      "hata_tipi": "BozukIstekSatiri",
+      "beklenen_hata": "Gecersiz HTTP istek satiri: 'GET /index.html'. Metot, yol ve versiyon 3 parca olmalidir.",
+      "veri": {
+        "ham_metin": "GET /index.html\r\nHost: example.com\r\n\r\n"
+      }
+    },
+    {
+      "test_id": "NEG-03-UNSUPPORTED-HTTP-METHOD",
+      "hata_tipi": "GecersizHttpMetodu",
+      "beklenen_hata": "Desteklenmeyen veya gecersiz HTTP metodu: 'HACK'.",
+      "veri": {
+        "ham_metin": "HACK /api/v1/data HTTP/1.1\r\nHost: example.com\r\n\r\n"
+      }
+    },
+    {
+      "test_id": "NEG-04-UNSUPPORTED-HTTP-VERSION",
+      "hata_tipi": "GecersizHttpVersiyonu",
+      "beklenen_hata": "Desteklenmeyen HTTP versiyonu: 'HTTP/9.9'. Yalnizca HTTP/1.0 ve HTTP/1.1 desteklenir.",
+      "veri": {
+        "ham_metin": "GET / HTTP/9.9\r\nHost: example.com\r\n\r\n"
+      }
+    },
+    {
+      "test_id": "NEG-05-MISSING-HOST-HEADER",
+      "hata_tipi": "EksikHostBasligi",
+      "beklenen_hata": "RFC 7230 geregi HTTP/1.1 isteklerinde zorunlu 'Host' basligi bulunamadi (400 Bad Request).",
+      "veri": {
+        "ham_metin": "GET /index.html HTTP/1.1\r\nUser-Agent: TestClient\r\n\r\n"
+      }
+    },
+    {
+      "test_id": "NEG-06-MALFORMED-STATUS-LINE",
+      "hata_tipi": "BozukDurumSatiri",
+      "beklenen_hata": "Gecersiz HTTP durum satiri: 'HTTP/1.1 OK'. Versiyon ve durum kodu icermelidir.",
+      "veri": {
+        "ham_metin": "HTTP/1.1 OK\r\nContent-Length: 0\r\n\r\n"
+      }
+    },
+    {
+      "test_id": "NEG-07-INVALID-STATUS-CODE",
+      "hata_tipi": "GecersizDurumKodu",
+      "beklenen_hata": "Gecersiz HTTP durum kodu: 999. Durum kodu 100-599 araliginda bir tamsayi olmalidir.",
+      "veri": {
+        "ham_metin": "HTTP/1.1 999 SpecialStatus\r\nContent-Length: 0\r\n\r\n"
+      }
+    },
+    {
+      "test_id": "NEG-08-MALFORMED-HEADER-FORMAT",
+      "hata_tipi": "BozukBaslikFormati",
+      "beklenen_hata": "Gecersiz baslik satiri (iki nokta ':' eksik): 'User-Agent Mozilla/5.0'.",
+      "veri": {
+        "ham_metin": "GET / HTTP/1.1\r\nHost: example.com\r\nUser-Agent Mozilla/5.0\r\n\r\n"
+      }
+    },
+    {
+      "test_id": "NEG-09-NEGATIVE-CONTENT-LENGTH",
+      "hata_tipi": "GecersizIcerikUzunlugu",
+      "beklenen_hata": "Gecersiz Content-Length degeri: '-50'. Sifir veya pozitif bir tamsayi olmalidir.",
+      "veri": {
+        "ham_metin": "POST /submit HTTP/1.1\r\nHost: example.com\r\nContent-Length: -50\r\n\r\n"
+      }
+    }
+  ]
+}

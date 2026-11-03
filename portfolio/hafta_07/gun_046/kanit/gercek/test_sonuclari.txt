@@ -1,0 +1,24 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+plugins: anyio-4.13.0, asyncio-1.3.0, cov-7.1.0, typeguard-4.6.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 14 items
+
+portfolio/hafta_07/gun_046/tests/test_ipv6_analyzer.py::TestIPv6Analyzer::test_01_global_unicast_compression PASSED [  7%]
+portfolio/hafta_07/gun_046/tests/test_ipv6_analyzer.py::TestIPv6Analyzer::test_02_link_local_unicast PASSED [ 14%]
+portfolio/hafta_07/gun_046/tests/test_ipv6_analyzer.py::TestIPv6Analyzer::test_03_unique_local_address_ula PASSED [ 21%]
+portfolio/hafta_07/gun_046/tests/test_ipv6_analyzer.py::TestIPv6Analyzer::test_04_loopback_address PASSED [ 28%]
+portfolio/hafta_07/gun_046/tests/test_ipv6_analyzer.py::TestIPv6Analyzer::test_05_unspecified_address PASSED [ 35%]
+portfolio/hafta_07/gun_046/tests/test_ipv6_analyzer.py::TestIPv6Analyzer::test_06_all_nodes_multicast PASSED [ 42%]
+portfolio/hafta_07/gun_046/tests/test_ipv6_analyzer.py::TestIPv6Analyzer::test_07_ipv4_mapped_ipv6 PASSED [ 50%]
+portfolio/hafta_07/gun_046/tests/test_ipv6_analyzer.py::TestIPv6Analyzer::test_08_solicited_node_multicast PASSED [ 57%]
+portfolio/hafta_07/gun_046/tests/test_ipv6_analyzer.py::TestIPv6Analyzer::test_09_eui64_generation PASSED [ 64%]
+portfolio/hafta_07/gun_046/tests/test_ipv6_analyzer.py::TestIPv6Analyzer::test_10_eui64_different_mac_formats PASSED [ 71%]
+portfolio/hafta_07/gun_046/tests/test_ipv6_analyzer.py::TestIPv6Analyzer::test_11_rfc5952_single_zero_hextet_not_compressed PASSED [ 78%]
+portfolio/hafta_07/gun_046/tests/test_ipv6_analyzer.py::TestIPv6Analyzer::test_12_negative_multiple_double_colons PASSED [ 85%]
+portfolio/hafta_07/gun_046/tests/test_ipv6_analyzer.py::TestIPv6Analyzer::test_13_negative_invalid_hex_and_hextet_length PASSED [ 92%]
+portfolio/hafta_07/gun_046/tests/test_ipv6_analyzer.py::TestIPv6Analyzer::test_14_negative_prefix_and_hextet_count PASSED [100%]
+
+============================= 14 passed in 0.03s ==============================

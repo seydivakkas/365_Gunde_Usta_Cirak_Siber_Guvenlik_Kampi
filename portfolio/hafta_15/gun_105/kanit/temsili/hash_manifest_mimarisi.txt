@@ -1,0 +1,60 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+====================================================================================================
+GÜN 105: MİNİ PROJE 14 - KRİPTOGRAFİK HASH BÜTÜNLÜK MANİFESTİ MİMARİSİ
+====================================================================================================
+
+      [ HEDEF DOSYA SİSTEMİ ] (Kök Dizin: /var/www veya App Tree)
+                  |
+                  |--- app.py
+                  |--- config.json
+                  |--- docs/guide.md
+                  |
+                  v
+      +-----------------------------------------------------------+
+      | 1. GÜVENLİ YOL DENETÇİSİ (safe_resolve_path)             |
+      |    - Path Traversal Engeli (CWE-22: ../../etc/shadow)     |
+      |    - Sembolik Bağ Kaçış Koruması (CWE-59)                 |
+      |    - Null-Byte Zehirlenme Engeli (CWE-158)                |
+      +-----------------------------------------------------------+
+                  |
+                  v
+      +-----------------------------------------------------------+
+      | 2. AKIŞLI ÇOKLU HASH MOTORU (compute_streaming_hash)      |
+      |    - 64 KB Bloklarla Akışlı Okuma (1 MB DoS Engeli CWE-400)|
+      |    - SHA-256 (FIPS 180-4) + BLAKE2b (RFC 7693)            |
+      |    - Kırılmış Hash Reddi (CWE-328: MD5/SHA-1 Yasak)       |
+      +-----------------------------------------------------------+
+                  |
+                  v
+      +-----------------------------------------------------------+
+      | 3. KURCALANMAZ MÜHÜRLEME KATMANI                          |
+      |    - Serileştirilmiş Dosya Listesi                        |
+      |    - HMAC-SHA256(Master_Key, File_Entries_JSON)           |
+      |    - Mühürsüz veya Sahte Mühürler Anında Reddedilir       |
+      +-----------------------------------------------------------+
+                  |
+                  v
+      [ İMZALI BÜTÜNLÜK MANİFESTOSU (.json) ]
+      {
+        "algoritma": "SHA256",
+        "toplam_dosya": 3,
+        "dosyalar": [ ... ],
+        "hmac_muhru": "d1e7c53fa0e6c278913e6488bc6b16e4..."
+      }
+
+====================================================================================================
+DENETİM VE ADLİ BİLİŞİM DEĞERLENDİRME ÇARK:
+====================================================================================================
+
+               [ CANLI DİSK DURUMU ]  vs  [ MÜHÜRLÜ MANİFEST ]
+                           |                      |
+                           +----------+-----------+
+                                      |
+                 +--------------------+--------------------+
+                 |                                         |
+                 v                                         v
+   [ 1. HMAC Mühür Denetimi ]                [ 2. Dosya Karşılaştırma ]
+   hmac.compare_digest(actual, seal)         - MATCH     : Hashler birebir eşit (Temiz)
+   -> Bozuksa: CWE-353 TAHRİFAT!             - MODIFIED  : Hash uyuşmazlığı (Zararlı kod!)
+                                             - ADDED     : Manifestte yok (Backdoor / Trojan)
+                                             - DELETED   : Dosya silinmiş (Delil karartma)

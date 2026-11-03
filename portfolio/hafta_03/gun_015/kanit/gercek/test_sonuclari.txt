@@ -1,0 +1,42 @@
+================================================================================
+BİRİM TEST SONUÇLARI KANIT DOSYASI — GÜN 015
+Komut: python -m unittest portfolio/hafta_03/gun_015/tests/test_binary_byte_encoding_inspector.py -v
+Çıkış Kodu: 0
+Tarih: 2026-10-27
+Lisans: ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+
+
+test_01_ascii_metin_1_karakter_1_bayt_pozitif (portfolio.hafta_03.gun_015.tests.test_binary_byte_encoding_inspector.TestBinaryByteEncodingInspector.test_01_ascii_metin_1_karakter_1_bayt_pozitif)
+POZ�T�F TEST: Saf ASCII metinde karakter say�s� ile bayt say�s� e�it olmal� ve 100 tam puan almal�d�r. ... ok
+test_02_karakter_ayrintilari_dogrulugu (portfolio.hafta_03.gun_015.tests.test_binary_byte_encoding_inspector.TestBinaryByteEncodingInspector.test_02_karakter_ayrintilari_dogrulugu)
+POZ�T�F TEST: karakter_ayrintilari metodu do�ru Unicode Code Point ve hex baytlar� �retmelidir. ... ok
+test_03_hex_dump_standart_bicim_dogrulugu (portfolio.hafta_03.gun_015.tests.test_binary_byte_encoding_inspector.TestBinaryByteEncodingInspector.test_03_hex_dump_standart_bicim_dogrulugu)
+POZ�T�F TEST: hex_dump_olustur ofset, hex ve ASCII s�tunlar�n� i�eren standart format �retmelidir. ... ok
+test_04_turkce_cok_baytli_genisleme_dogrulama (portfolio.hafta_03.gun_015.tests.test_binary_byte_encoding_inspector.TestBinaryByteEncodingInspector.test_04_turkce_cok_baytli_genisleme_dogrulama)
+POZ�T�F TEST: T�rk�e metinde karakter say�s� < bayt say�s� olmal� ve boyutsal fark tespit edilmelidir. ... ok
+test_05_emoji_4_bayt_genisleme_dogrulama (portfolio.hafta_03.gun_015.tests.test_binary_byte_encoding_inspector.TestBinaryByteEncodingInspector.test_05_emoji_4_bayt_genisleme_dogrulama)
+POZ�T�F TEST: 4-baytl�k emoji i�eren metinde karakter ba�� bayt oran� do�rulanmal�d�r. ... ok
+test_06_null_byte_enjeksiyonu_felaket_kontrol (portfolio.hafta_03.gun_015.tests.test_binary_byte_encoding_inspector.TestBinaryByteEncodingInspector.test_06_null_byte_enjeksiyonu_felaket_kontrol)
+NEGAT�F TEST: Metinde \x00 bulunmas� durumunda VULN-01 FELAKET uyar�s�yla 40 puan kesilmelidir. ... ok
+test_07_homoglyph_kiril_latin_karisimi_kontrol (portfolio.hafta_03.gun_015.tests.test_binary_byte_encoding_inspector.TestBinaryByteEncodingInspector.test_07_homoglyph_kiril_latin_karisimi_kontrol)
+NEGAT�F TEST: Kiril ve Latin harflerinin kar��t�r�ld��� metinde VULN-03 yakalanmal�d�r. ... ok
+test_08_path_traversal_overlong_kontrol (portfolio.hafta_03.gun_015.tests.test_binary_byte_encoding_inspector.TestBinaryByteEncodingInspector.test_08_path_traversal_overlong_kontrol)
+NEGAT�F TEST: Metinde '../' veya kodlanm�� ge�i� oldu�unda VULN-04 tespit edilmelidir. ... ok
+test_09_yonetici_iznini_otomatik_guvenli_sayma_yanilgisi_kontrol (portfolio.hafta_03.gun_015.tests.test_binary_byte_encoding_inspector.TestBinaryByteEncodingInspector.test_09_yonetici_iznini_otomatik_guvenli_sayma_yanilgisi_kontrol)
+NEGAT�F TEST: Y�netici hakk�yla �al��sa bile zafiyetli girdide FALLACY-05 �l�mc�l hata uyar�s� eklenmelidir. ... ok
+test_10_tampon_kesilme_ve_parcalanmis_bayt_kontrol (portfolio.hafta_03.gun_015.tests.test_binary_byte_encoding_inspector.TestBinaryByteEncodingInspector.test_10_tampon_kesilme_ve_parcalanmis_bayt_kontrol)
+NEGAT�F TEST: �ok baytl� karakterin ortas�ndan kesildi�inde par�alanm�� bayt tespiti yap�lmal�d�r. ... ok
+test_11_tanimsiz_ornek_id_hata_yonetimi (portfolio.hafta_03.gun_015.tests.test_binary_byte_encoding_inspector.TestBinaryByteEncodingInspector.test_11_tanimsiz_ornek_id_hata_yonetimi)
+HATA Y�NET�M�: Tan�ms�z �rnek kimli�i arand���nda None d�nmeli ve y�netilebilmelidir. ... ok
+test_12_gecersiz_sema_hata_yonetimi (portfolio.hafta_03.gun_015.tests.test_binary_byte_encoding_inspector.TestBinaryByteEncodingInspector.test_12_gecersiz_sema_hata_yonetimi)
+HATA Y�NET�M�: Ge�ersiz �emaya sahip JSON dosyas�nda EncodingInspectorError f�rlat�lmal�d�r. ... ok
+test_13_tum_orneklerin_toplu_denetimi (portfolio.hafta_03.gun_015.tests.test_binary_byte_encoding_inspector.TestBinaryByteEncodingInspector.test_13_tum_orneklerin_toplu_denetimi)
+��LEVSELL�K: Veritaban�ndaki t�m �rnekler d�ng�de ba�ar�yla denetlenmelidir. ... ok
+test_14_olmayan_dosya_hatasi (portfolio.hafta_03.gun_015.tests.test_binary_byte_encoding_inspector.TestBinaryByteEncodingInspector.test_14_olmayan_dosya_hatasi)
+��LEVSELL�K & HATA Y�NET�M�: Olmayan dosya yolunda FileNotFoundError f�rlat�lmal�d�r. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.006s
+
+OK

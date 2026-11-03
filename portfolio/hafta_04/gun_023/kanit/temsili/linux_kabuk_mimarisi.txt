@@ -1,0 +1,54 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Bu dosya Siber Güvenlik 365 Gün Müfredatı kapsamında üretilmiştir.
+# Gün 023: Linux Terminali, Kabuk (Shell) Yorumlayıcısı ve Yol Güvenliği Mimarisi
+
+========================================================================================
+LİNUX TERMİNALİ VE KABUK (SHELL) KATMANLARI
+========================================================================================
+
+  [ KULLANICI ] ---> [ TERMİNAL EMÜLATÖRÜ ] (pty/tty: klavye girdisi, ekran çıktısı)
+                            |
+                            v
+                 [ KABUK (BASH / SH / ZSH) ]
+                 - Sözdizimi Ayrıştırma (Tokenization & Lexing)
+                 - Değişken Genişletme ($VAR, ${VAR})
+                 - Dosya Adı Tamamlama / Globbing (*, ?)
+                 - G/Ç Yönlendirme (<, >, >>, 2>&1)
+                 - Boru Hattı (| / Pipe)
+                            |
+            +---------------+---------------+
+            |                               |
+            v                               v
+     [ KABUK YERLEŞİKLERİ ]         [ HARİCİ İKİLİLER ]
+     (Shell Builtins)               (/bin, /usr/bin)
+     - cd (cwd değiştirir)          - ls (dizin içeriği)
+     - pwd (dahili cwd okur)        - cat (dosya akışı)
+     - echo, exit, ulimit           - head (satır sınırlama)
+
+========================================================================================
+GÖRELİ YOL vs MUTLAK YOL VE GÜVENLİK TEHDİDİ (G023-SC1)
+========================================================================================
+
+  GÖRELİ YOL TEHLİKESİ (Relative Path - ./script.sh veya cat app.conf):
+  - Çalışma dizini (cwd) = /tmp ise:
+    `cat app.conf` -> /tmp/app.conf dosyasını açar (Saldırgan sahte dosya bırakabilir!)
+  - Güvenlik Zafiyeti: CWE-426 (Untrusted Search Path) / CWE-22 (Path Traversal '../../')
+
+  MUTLAK YOL GÜVENCESİ (Absolute Path - /etc/app/app.conf):
+  - Kök dizinden (/) başlar, çalışma dizininden bağımsızdır ve deterministiktir.
+  - Savunma Kuralı: Sistem betiklerinde ve zamanlanmış görevlerde (cron) mutlaka mutlak yol!
+
+========================================================================================
+GÜVENSİZ PATH ORTAM DEĞİŞKENİ VE SALDIRI SENARYOSU (CWE-426)
+========================================================================================
+
+  ZAFİYETLİ PATH:
+  PATH=.:/usr/local/bin:/usr/bin:/bin   <--- Başta '.' (Mevcut Dizin) var!
+
+  1. Saldırgan /tmp içine 'ls' adında zararlı bir betik bırakır (chmod +x ls).
+  2. Sistem yöneticisi (root) /tmp içine girip masumca `ls` yazar.
+  3. Kabuk PATH'te ilk önce '.' dizinine bakar ve /tmp/ls'i root yetkisinde çalıştırır!
+  4. SONUÇ: Tam Yetki Yükseltme (Privilege Escalation).

@@ -1,0 +1,148 @@
+{
+  "domain_name": "corp.internal",
+  "forest_name": "corp.internal",
+  "functional_level": "WindowsServer2016Domain",
+  "scan_timestamp": "2026-11-02T19:09:12.623120",
+  "ad_security_score": 100.0,
+  "compliance_status": "SECURE",
+  "total_checks": 13,
+  "passed_checks": 13,
+  "failed_checks": 0,
+  "critical_findings_count": 0,
+  "findings": [
+    {
+      "category": "ARCHITECTURE",
+      "rule_id": "AD-ARCH-01",
+      "title": "Orman ve Etki Alanı Fonksiyonel Seviyesi",
+      "severity": "HIGH",
+      "status": "PASS",
+      "current_value": "DFL: WindowsServer2016Domain, FFL: WindowsServer2016Forest",
+      "expected_value": ">= Windows Server 2016",
+      "remediation": "Fonksiyonel seviye modern güvenlik özelliklerini (PAM, Protected Users) destekliyor."
+    },
+    {
+      "category": "ARCHITECTURE",
+      "rule_id": "AD-ARCH-02",
+      "title": "FSMO Operasyon Rolleri Dağılımı",
+      "severity": "MEDIUM",
+      "status": "PASS",
+      "current_value": "PDC: DC01.corp.internal, RID: DC01.corp.internal",
+      "expected_value": "Tüm FSMO rolleri tanımlı ve erişilebilir",
+      "remediation": "FSMO rolleri sağlıklı."
+    },
+    {
+      "category": "KERBEROS",
+      "rule_id": "AD-KERB-01",
+      "title": "Kerberos Şifreleme Algoritmaları (AES Zorunluluğu)",
+      "severity": "CRITICAL",
+      "status": "PASS",
+      "current_value": [
+        "AES128-CTS-HMAC-SHA1-96",
+        "AES256-CTS-HMAC-SHA1-96"
+      ],
+      "expected_value": "AES-128, AES-256 (RC4/DES Yasak)",
+      "remediation": "Kerberos biletlerinde modern AES şifreleme kullanılıyor."
+    },
+    {
+      "category": "KERBEROS",
+      "rule_id": "AD-KERB-02",
+      "title": "krbtgt Hesap Parola Yaşı ve Rotasyon Durumu",
+      "severity": "HIGH",
+      "status": "PASS",
+      "current_value": "32 gün önce sıfırlandı",
+      "expected_value": "<= 180 gün",
+      "remediation": "krbtgt hesabı düzenli aralıklarla sıfırlanıyor."
+    },
+    {
+      "category": "KERBEROS",
+      "rule_id": "AD-KERB-03",
+      "title": "Kerberos TGT Maksimum Bilet Ömrü",
+      "severity": "MEDIUM",
+      "status": "PASS",
+      "current_value": "10 saat",
+      "expected_value": "<= 10 saat",
+      "remediation": "Bilet ömrü standartlara uygun."
+    },
+    {
+      "category": "NTLM",
+      "rule_id": "AD-NTLM-01",
+      "title": "NTLMv1 Engelleme ve NTLMv2 Zorunluluğu (LmCompatibilityLevel)",
+      "severity": "CRITICAL",
+      "status": "PASS",
+      "current_value": "Seviye 5 (Sadece NTLMv2)",
+      "expected_value": "Seviye 5 (Send NTLMv2 response only / refuse LM & NTLM)",
+      "remediation": "Zayıf NTLMv1 ve LM protokolleri engellenmiş."
+    },
+    {
+      "category": "LDAP_SMB",
+      "rule_id": "AD-LDAP-01",
+      "title": "LDAP Sunucu Bütünlük Denetimi ve İmzalama (LDAP Signing)",
+      "severity": "HIGH",
+      "status": "PASS",
+      "current_value": "2 (İmza Zorunlu)",
+      "expected_value": "2 (Require signature)",
+      "remediation": "LDAP sorguları ortadaki adam (MitM) saldırılarına karşı imzalanıyor."
+    },
+    {
+      "category": "LDAP_SMB",
+      "rule_id": "AD-LDAP-02",
+      "title": "LDAP Kanal Bağlama (LdapEnforceChannelBinding)",
+      "severity": "HIGH",
+      "status": "PASS",
+      "current_value": "2 (Her zaman zorla)",
+      "expected_value": "2 (Always enforce)",
+      "remediation": "Kanal bağlama etkin."
+    },
+    {
+      "category": "LDAP_SMB",
+      "rule_id": "AD-SMB-01",
+      "title": "SMB İmzalama ve SMBv1 Protokol İzolasyonu",
+      "severity": "HIGH",
+      "status": "PASS",
+      "current_value": "SMB Signing Açık, SMBv1 Kapalı",
+      "expected_value": "SMB Signing: True, SMBv1: Disabled",
+      "remediation": "SMB Relay ve EternalBlue tipi zafiyetler önlenmiş."
+    },
+    {
+      "category": "ACCOUNTS",
+      "rule_id": "AD-ACC-01",
+      "title": "Ayrıcalıklı Hesaplarda Kerberoasting İncelemesi",
+      "severity": "CRITICAL",
+      "status": "PASS",
+      "current_value": "Yönetici hesaplarında SPN yok",
+      "expected_value": "Yönetici hesaplarında SPN olmamalı",
+      "remediation": "Hassas hesaplar Kerberoasting saldırısına karşı güvenli."
+    },
+    {
+      "category": "ACCOUNTS",
+      "rule_id": "AD-ACC-02",
+      "title": "Kerberos Ön Kimlik Doğrulama Koruması (AS-REP Roasting)",
+      "severity": "HIGH",
+      "status": "PASS",
+      "current_value": "Tüm hesaplarda Ön Kimlik Doğrulama Zorunlu",
+      "expected_value": "DONT_REQ_PREAUTH bayrağı kapalı olmalı",
+      "remediation": "Parolasız AS-REP talebi oluşturulamaz."
+    },
+    {
+      "category": "ACCOUNTS",
+      "rule_id": "AD-ACC-03",
+      "title": "Kerberos Delegasyon Modeli (Unconstrained Delegation Engeli)",
+      "severity": "CRITICAL",
+      "status": "PASS",
+      "current_value": "Sınırsız delegasyona sahip nesne yok",
+      "expected_value": "Yalnızca Constrained veya RBCD izinli",
+      "remediation": "TGT sızıntısı riski engellenmiş."
+    },
+    {
+      "category": "TRUSTS",
+      "rule_id": "AD-TRUST-01",
+      "title": "Güven İlişkilerinde SID Filtering Zorunluluğu",
+      "severity": "CRITICAL",
+      "status": "PASS",
+      "current_value": "Tüm güven ilişkilerinde SID Filtering devrede",
+      "expected_value": "SID Filtering: Enabled",
+      "remediation": "Ormanlar arası yetki yükseltme ve sahte SID enjeksiyonu engellenmiş."
+    }
+  ],
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)."
+}

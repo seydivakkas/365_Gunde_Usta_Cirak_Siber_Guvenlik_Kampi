@@ -1,0 +1,46 @@
+================================================================================
+GERÇEK YÜRÜTME KANITI — KOMUT VE ÇIKIŞ
+================================================================================
+Tarih/Saat : 2026-10-26T20:23:38.605553
+İşletim Sis: Windows-11-10.0.26300-SP0
+Python     : 3.14.3
+Komut      : C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest portfolio/hafta_02/gun_009/tests/test_windows_lab_provisioner.py -v
+Çıkış Kodu : 0
+--------------------------------------------------------------------------------
+STDOUT:
+
+--------------------------------------------------------------------------------
+STDERR:
+test_01_altin_standart_pozitif_kontrol (portfolio.hafta_02.gun_009.tests.test_windows_lab_provisioner.TestWindowsLabProvisioner.test_01_altin_standart_pozitif_kontrol)
+POZ�T�F KONTROL: BSL-4 seviyesinde tam sertle�tirilmi� Windows laboratuvar� ... ok
+test_02_sandbox_networking_default_negatif_kontrol (portfolio.hafta_02.gun_009.tests.test_windows_lab_provisioner.TestWindowsLabProvisioner.test_02_sandbox_networking_default_negatif_kontrol)
+NEGAT�F KONTROL: Windows Sandbox a� ayar� 'Default' (A��k) b�rak�l�rsa, ... ok
+test_03_sandbox_mapped_folder_kok_dizin_felaket_kontrol (portfolio.hafta_02.gun_009.tests.test_windows_lab_provisioner.TestWindowsLabProvisioner.test_03_sandbox_mapped_folder_kok_dizin_felaket_kontrol)
+NEGAT�F KONTROL: Windows Sandbox i�ine konak sistemin 'C:\' k�k dizini ba�lan�rsa, ... ok
+test_04_sandbox_mapped_folder_yazma_izni_negatif_kontrol (portfolio.hafta_02.gun_009.tests.test_windows_lab_provisioner.TestWindowsLabProvisioner.test_04_sandbox_mapped_folder_yazma_izni_negatif_kontrol)
+NEGAT�F KONTROL: Sandbox i�ine ba�lanan klas�rde 'salt_okunur=False' yap�ld���nda, ... ok
+test_05_hyper_v_external_vswitch_negatif_kontrol (portfolio.hafta_02.gun_009.tests.test_windows_lab_provisioner.TestWindowsLabProvisioner.test_05_hyper_v_external_vswitch_negatif_kontrol)
+NEGAT�F KONTROL: Hyper-V Sanal Anahtar� (vSwitch) 'External' olarak yap�land�r�ld���nda, ... ok
+test_06_hyper_v_promiscuous_mode_negatif_kontrol (portfolio.hafta_02.gun_009.tests.test_windows_lab_provisioner.TestWindowsLabProvisioner.test_06_hyper_v_promiscuous_mode_negatif_kontrol)
+NEGAT�F KONTROL: vSwitch �zerinde Promiscuous mod 'Allow_All' yap�ld���nda, ... ok
+test_07_defender_yasakli_genis_dislama_felaket_kontrol (portfolio.hafta_02.gun_009.tests.test_windows_lab_provisioner.TestWindowsLabProvisioner.test_07_defender_yasakli_genis_dislama_felaket_kontrol)
+NEGAT�F KONTROL: Windows Defender d��lamalar�na 'C:\Users' veya 'C:\Windows' eklenirse, ... ok
+test_08_defender_acl_standart_kullanici_yazma_negatif_kontrol (portfolio.hafta_02.gun_009.tests.test_windows_lab_provisioner.TestWindowsLabProvisioner.test_08_defender_acl_standart_kullanici_yazma_negatif_kontrol)
+NEGAT�F KONTROL: Defender d��lama klas�r�ne standart kullan�c�lar�n yazma izni varsa, ... ok
+test_09_vbs_ve_hvci_kapali_negatif_kontrol (portfolio.hafta_02.gun_009.tests.test_windows_lab_provisioner.TestWindowsLabProvisioner.test_09_vbs_ve_hvci_kapali_negatif_kontrol)
+NEGAT�F KONTROL: Sanalla�t�rma Tabanl� G�venlik (VBS) ve HVCI kapal�ysa, ... ok
+test_10_wsl1_eski_mimari_negatif_kontrol (portfolio.hafta_02.gun_009.tests.test_windows_lab_provisioner.TestWindowsLabProvisioner.test_10_wsl1_eski_mimari_negatif_kontrol)
+NEGAT�F KONTROL: WSL1 kullan�ld���nda (�ekirdek payla��m�), ... ok
+test_11_wsb_dosya_uretim_dogrulamasi (portfolio.hafta_02.gun_009.tests.test_windows_lab_provisioner.TestWindowsLabProvisioner.test_11_wsb_dosya_uretim_dogrulamasi)
+��LEVSELL�K KONTROL�: urete_guvenli_wsb_dosyasi metodu ge�erli bir XML olu�turmal� ... ok
+test_12_gecersiz_sema_ve_alan_eksikligi (portfolio.hafta_02.gun_009.tests.test_windows_lab_provisioner.TestWindowsLabProvisioner.test_12_gecersiz_sema_ve_alan_eksikligi)
+HATA Y�NET�M�: Zorunlu alanlardan biri eksik oldu�unda WindowsLabValidationError f�rlat�lmal�d�r. ... ok
+test_13_olmayan_dosya_hatasi (portfolio.hafta_02.gun_009.tests.test_windows_lab_provisioner.TestWindowsLabProvisioner.test_13_olmayan_dosya_hatasi)
+HATA Y�NET�M�: Olmayan bir dosya yolu verildi�inde FileNotFoundError f�rlat�lmal�d�r. ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.037s
+
+OK
+
+================================================================================

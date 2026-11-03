@@ -1,0 +1,168 @@
+{
+  "description": "Linux Sudo ve Ayrıcalık Devri 9 Negatif ve Sınır Durum Denetim Senaryosu",
+  "generated_at": "2026-11-02T13:15:00Z",
+  "scenarios": [
+    {
+      "scenario_id": "NEG-SUDO-01",
+      "test_name": "Şifresiz Tam Root Yetkisi (NOPASSWD: ALL)",
+      "domain": "RULES",
+      "payload": {
+        "rules": [
+          {
+            "user_or_group": "insecure_user",
+            "hosts": "ALL",
+            "runas_user": "(ALL)",
+            "tags": ["NOPASSWD"],
+            "commands": ["ALL"]
+          }
+        ]
+      },
+      "expected_cwe": "CWE-250",
+      "expected_mitre": "T1548.003"
+    },
+    {
+      "scenario_id": "NEG-SUDO-02",
+      "test_name": "GTFOBins NOPASSWD /usr/bin/vim Kabuk Kaçışı",
+      "domain": "RULES",
+      "payload": {
+        "rules": [
+          {
+            "user_or_group": "editor_user",
+            "hosts": "ALL",
+            "runas_user": "(ALL)",
+            "tags": ["NOPASSWD"],
+            "commands": ["/usr/bin/vim"]
+          }
+        ]
+      },
+      "expected_cwe": "CWE-250",
+      "expected_mitre": "T1548.003"
+    },
+    {
+      "scenario_id": "NEG-SUDO-03",
+      "test_name": "GTFOBins NOPASSWD /usr/bin/find Kabuk Kaçışı",
+      "domain": "RULES",
+      "payload": {
+        "rules": [
+          {
+            "user_or_group": "search_user",
+            "hosts": "ALL",
+            "runas_user": "(ALL)",
+            "tags": ["NOPASSWD"],
+            "commands": ["/usr/bin/find"]
+          }
+        ]
+      },
+      "expected_cwe": "CWE-250",
+      "expected_mitre": "T1548.003"
+    },
+    {
+      "scenario_id": "NEG-SUDO-04",
+      "test_name": "GTFOBins NOPASSWD /usr/bin/python3 Kabuk Kaçışı",
+      "domain": "RULES",
+      "payload": {
+        "rules": [
+          {
+            "user_or_group": "dev_user",
+            "hosts": "ALL",
+            "runas_user": "(ALL)",
+            "tags": ["NOPASSWD"],
+            "commands": ["/usr/bin/python3"]
+          }
+        ]
+      },
+      "expected_cwe": "CWE-250",
+      "expected_mitre": "T1548.003"
+    },
+    {
+      "scenario_id": "NEG-SUDO-05",
+      "test_name": "env_keep İçerisinde Tehlikeli LD_PRELOAD Koruması",
+      "domain": "DEFAULTS",
+      "payload": {
+        "defaults": {
+          "env_reset": true,
+          "secure_path": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "use_pty": true,
+          "mail_badpass": true,
+          "logfile": "/var/log/sudo.log",
+          "timestamp_timeout": 15,
+          "env_keep": ["LD_PRELOAD"]
+        }
+      },
+      "expected_cwe": "CWE-426",
+      "expected_mitre": "T1574.006"
+    },
+    {
+      "scenario_id": "NEG-SUDO-06",
+      "test_name": "Defaults env_reset Direktifi Devre Dışı",
+      "domain": "DEFAULTS",
+      "payload": {
+        "defaults": {
+          "env_reset": false,
+          "secure_path": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "use_pty": true,
+          "mail_badpass": true,
+          "logfile": "/var/log/sudo.log",
+          "timestamp_timeout": 15,
+          "env_keep": []
+        }
+      },
+      "expected_cwe": "CWE-250",
+      "expected_mitre": "T1548.003"
+    },
+    {
+      "scenario_id": "NEG-SUDO-07",
+      "test_name": "Sudoers Dosya İzninin 0666 Olması (Dünya Tarafından Yazılabilir)",
+      "domain": "PERMISSIONS",
+      "payload": {
+        "file_permissions": [
+          {
+            "file_path": "/etc/sudoers",
+            "owner": "root",
+            "group": "root",
+            "mode_octal": "0666",
+            "is_writable_by_others": true
+          }
+        ]
+      },
+      "expected_cwe": "CWE-732",
+      "expected_mitre": "T1548.003"
+    },
+    {
+      "scenario_id": "NEG-SUDO-08",
+      "test_name": "Sudoers Dosya Sahibinin root Olmaması",
+      "domain": "PERMISSIONS",
+      "payload": {
+        "file_permissions": [
+          {
+            "file_path": "/etc/sudoers.d/custom",
+            "owner": "john",
+            "group": "users",
+            "mode_octal": "0440",
+            "is_writable_by_others": false
+          }
+        ]
+      },
+      "expected_cwe": "CWE-732",
+      "expected_mitre": "T1548.003"
+    },
+    {
+      "scenario_id": "NEG-SUDO-09",
+      "test_name": "Komut Yolunda Denetimsiz Wildcard (*) Parametre Enjeksiyonu",
+      "domain": "RULES",
+      "payload": {
+        "rules": [
+          {
+            "user_or_group": "analyst",
+            "hosts": "ALL",
+            "runas_user": "(ALL)",
+            "tags": ["PASSWD"],
+            "commands": ["/bin/cat /var/log/*"]
+          }
+        ]
+      },
+      "expected_cwe": "CWE-88",
+      "expected_mitre": "T1548.003"
+    }
+  ]
+}

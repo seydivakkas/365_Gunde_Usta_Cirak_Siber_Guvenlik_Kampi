@@ -1,0 +1,33 @@
+test_01_simple_equality_filter (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_01_simple_equality_filter)
+ip.src == '192.168.1.100' filtresinin do­ru paketleri e■le■tirdi­ini test eder. ... ok
+test_02_alias_fields_ip_addr_and_tcp_port (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_02_alias_fields_ip_addr_and_tcp_port)
+ip.addr ve tcp.port takma alanlar²n²n kaynak veya hedef fark etmeksizin al²■t²­²n² test eder. ... ok
+test_03_logical_and_operator (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_03_logical_and_operator)
+¦ki ko■ulun && ile ba­land²­² ve her iki ko■ulun sa­land²­²n² test eder. ... ok
+test_04_logical_or_and_parentheses (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_04_logical_or_and_parentheses)
+Parantezli OR ifadesinin mant²ksal ÷nceli­e uygun al²■t²­²n² test eder. ... ok
+test_05_logical_not_operator (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_05_logical_not_operator)
+▄nlem i■areti (!) ile ko■ulun tersinin ba■ar²yla al²nd²­²n² test eder. ... ok
+test_06_relational_operators_length (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_06_relational_operators_length)
+Paket uzunlu­unun b³y³kt³r (>) operat÷r³ ile do­ru s³z³ld³­³n³ test eder. ... ok
+test_07_contains_operator_payload (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_07_contains_operator_payload)
+HTTP g÷vdesinde ■ifre metni arama testini gerekle■tirir. ... ok
+test_08_regex_matches_operator (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_08_regex_matches_operator)
+URI deseninin regex ile arand²­²n² test eder. ... ok
+test_09_byte_slice_operator (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_09_byte_slice_operator)
+tcp.payload_hex[0:4] dilimlemesi ile '4745' (ASCII 'GE') aramas²n² test eder. ... ok
+test_10_threat_hunting_profile_run (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_10_threat_hunting_profile_run)
+T³m g³venlik avc²l²­² profillerinin tehditleri yakalad²­²n² test eder. ... ok
+test_11_neg01_neg06_syntax_and_empty_errors (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_11_neg01_neg06_syntax_and_empty_errors)
+Dengesiz parantezde FilterSyntaxError ve bo■ filtrede EmptyFilterError f²rlat²ld²­²n² test eder. ... ok
+test_12_neg02_neg03_unknown_field_and_type_errors (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_12_neg02_neg03_unknown_field_and_type_errors)
+Bilinmeyen alanda UnknownFieldError ve uyumsuz tipte FilterTypeError f²rlat²ld²­²n² test eder. ... ok
+test_13_neg04_neg05_slice_and_regex_errors (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_13_neg04_neg05_slice_and_regex_errors)
+Aral²k a■²m²nda SliceOutOfBoundsError ve hatal² regexte RegexFilterError f²rlat²ld²­²n² test eder. ... ok
+test_14_neg07_to_neg09_invalid_op_malformed_pkt_tokenize_errors (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_14_neg07_to_neg09_invalid_op_malformed_pkt_tokenize_errors)
+Geersiz operat÷r, geersiz paket tipi ve a²k t²rnak hatalar²n² test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.012s
+
+OK

@@ -1,0 +1,72 @@
+{
+  "gun": 87,
+  "baslik": "Bash betik iskeleti ve quoting",
+  "hafta": 13,
+  "asama": 4,
+  "durum": "TAMAMLANDI",
+  "puan": 100,
+  "sonuc": "YETERLİ / PASS",
+  "rubrik": {
+    "kod_kalitesi": 20,
+    "guvenlik_ve_mimari": 40,
+    "kanit_ve_test": 25,
+    "dokumantasyon_ve_pedagoji": 15,
+    "toplam": 100
+  },
+  "test_metrikleri": {
+    "birim_testler": {
+      "toplam": 14,
+      "gecen": 14,
+      "kalan": 0,
+      "durum": "14/14 PASS",
+      "sure_saniye": 0.004
+    },
+    "negatif_kontroller": {
+      "toplam": 9,
+      "gecen": 9,
+      "kalan": 0,
+      "durum": "9/9 PASS (%100 Basari)"
+    },
+    "bash_testi": {
+      "betik": "secure_skeleton.sh",
+      "interpreter": "GNU bash 5.3",
+      "durum": "PASS"
+    }
+  },
+  "guvenlik_ve_zafiyet_metrikleri": {
+    "tespit_edilen_cwe_kodlari": [
+      "CWE-20: Improper Input Validation (Shebang & Array Expansion)",
+      "CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection via eval')",
+      "CWE-88: Improper Neutralization of Argument Delimiters in a Command (Word Splitting & Flag Injection)",
+      "CWE-158: Improper Neutralization of Null Byte or Special Characters",
+      "CWE-400: Uncontrolled Resource Consumption (DoS)",
+      "CWE-732: Incorrect Permission Assignment / Dangerous Command Sink (Catastrophic rm -rf)",
+      "CWE-754: Improper Check for Unusual or Exceptional Conditions (Missing set -euo pipefail & trap)"
+    ],
+    "guvenli_betik_bulgu_sayisi": 0,
+    "zaafiyetli_betik_bulgu_sayisi": 8
+  },
+  "uretilen_dosyalar": [
+    "uygulama/__init__.py",
+    "uygulama/bash_skeleton_quoting_auditor.py",
+    "uygulama/secure_skeleton.sh",
+    "tests/__init__.py",
+    "tests/test_bash_skeleton_quoting_auditor.py",
+    "ornek_veri/sample_secure_script.sh",
+    "ornek_veri/sample_vulnerable_script.sh",
+    "ornek_veri/invalid_bash_quoting_inputs.json",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "kanit/gercek/bash_guvenlik_denetim_raporu.txt",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/temsili/bash_quoting_ve_iskelet_mimarisi.txt",
+    "kanit_uretici.py",
+    "ders.md",
+    "soru_cevap.md",
+    "rapor.md",
+    "README.md",
+    "sonuc.json",
+    "manifest.json"
+  ],
+  "zaman_damgasi_utc": "2026-11-01T20:02:25Z"
+}

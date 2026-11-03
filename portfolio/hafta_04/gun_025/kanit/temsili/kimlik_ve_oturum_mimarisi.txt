@@ -1,0 +1,62 @@
+==============================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+==============================================================================
+LİNUX KİMLİK, GRUP VE ETKİN OTURUM GÜVENLİK MİMARİSİ
+==============================================================================
+
+1. KİMLİK (AUTHENTICATION) İLE ETKİN OTURUM (AUTHORIZATION) AYRIMI
+
+   +-----------------------+              +-----------------------+
+   |   STATİK KİMLİK       |              |    DİNAMİK OTURUM     |
+   | (Identity / Creds)    |              | (Active Session / RUID)|
+   +-----------------------+              +-----------------------+
+   | /etc/passwd           |              | login / sshd / sudo   |
+   | /etc/shadow           |              | utmp / wtmp / btmp    |
+   | UID / Primary GID     |              | EUID / EGID / SuIDs   |
+   | Secondary Groups      | === PAM ==>  | Session Token / TTY   |
+   | Home Directory        |              | Environment Vars      |
+   | Default Shell         |              | Resource Limits (PAM) |
+   +-----------------------+              +-----------------------+
+              |                                       |
+              v                                       v
+      "Sen kimsin?" (Kimlik)                 "Şu an ne yapabilirsin?" (Oturum)
+
+2. ÇEKİRDEK SEVİYESİNDE SÜREÇ YETKİ BELİRTEÇLERİ (PROCESS CREDENTIALS)
+
+      Gerçek Kullanıcı (RUID)  : Süreci başlatan asıl kullanıcı kimliği.
+      Etkin Kullanıcı (EUID)   : Dosya/kaynak erişim kontrollerinde kullanılan kimlik.
+      Kaydedilmiş Kullanıcı(SUID): Sürecin geri dönebileceği ayrıcalıklı kimlik.
+      
+      [Sıradan Kullanıcı] --(çalıştır: passwd SUID)--> [EUID = 0 (root), RUID = 1001]
+                                                                |
+                                                                v
+                                              /etc/shadow dosyasına yazabilir!
+
+3. ORTAK HESAP ANTİ-PATERNİ VE İNKÂR EDİLEMEZLİK (NON-REPUDIATION) KAYBI
+
+   Yanlış Mimari (Ortak Hesap):
+   [Yönetici A] ----\
+   [Yönetici B] -----> [ ssh admin@server ] ===> [ Log: 'admin rm -rf /db' ]
+   [Yönetici C] ----/                                     |
+                                                          v
+                                        Fail kim? İnkâr edilemezlik YOK!
+
+   Doğru Mimari (Kişiselleştirilmiş + Sudo Denetimi):
+   [Yönetici A] ===(ssh ali@server)===> [ ali: sudo su - ] ==> [ Log: 'ali as root...' ]
+   [Yönetici B] ===(ssh veli@server)==> [ veli: systemctl ] => [ Log: 'veli as root...' ]
+
+4. HESAP VE OTURUM RİSK MATRİSİ
+
+   +--------------------------+-----------------------+-------------------------+
+   | Vektör                   | Oluşan Güvenlik Riski | Güçlendirme / Kontrol   |
+   +--------------------------+-----------------------+-------------------------+
+   | Servis Hesabı + Bash     | Web Shell / LPE       | /usr/sbin/nologin       |
+   | Servis Hesabı + Sudo     | Yetki Sıçraması (Esc) | gpasswd -d svc sudo     |
+   | Atıl (Dormant) Hesap     | Gizli Kalıcı Erişim   | 90 gün kuralı + Lock    |
+   | Eşzamanlı İdari Oturum   | Hesap Gaspı / Sızıntı | maxlogins 1 (limits)    |
+   | Sınırsız Boşta Kalma     | Fiziksel Oturum Hırs. | TMOUT=900 (15 dk auto)  |
+   +--------------------------+-----------------------+-------------------------+
+
+==============================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+==============================================================================

@@ -1,0 +1,9 @@
+kategori,ozellik_adi,windows_degeri,linux_degeri,guvenlik_onemi_ve_etkisi
+OS Bilgisi,İşletim Sistemi Adı ve Edisyon,Microsoft Windows Server 2022 Datacenter,Ubuntu Linux (Ubuntu 24.04 LTS (Noble Numbat)),Desteklenen sürümler güncel güvenlik yamalarını alır; EOL sistemler saldırıya açıktır.
+OS Bilgisi,Çekirdek / Yapı Derleme Sürümü,Build 20348.2407,Kernel 6.8.0-45-generic,Bilinen yerel yetki yükseltme (LPE) açıklarının çekirdek seviyesinde yamalanması denetlenir.
+OS Bilgisi,Donanım Mimarisi,x86_64,x86_64,"64-bit mimariler DEP/NX, ASLR ve SMEP/SMAP gibi modern donanım korumalarını destekler."
+Donanım,İşlemci Çekirdek ve RAM Kapasitesi,16 Çekirdek / 64.0 GB RAM,32 Çekirdek / 128.0 GB RAM,Kaynak tüketimi izlenerek DoS ve kripto madencilik zararlılarının erken tespiti sağlanır.
+Donanım & Depolama,Birincil Dosya Sistemi ve Şifreleme,NTFS (BitLocker Etkin),ext4 (LUKS2 Etkin),Fiziksel disk hırsızlığına karşı durağan verinin (Data at Rest) tam disk şifreleme ile korunması zorunludur.
+Hesap Yönetimi,Toplam Hesap ve Yönetici Ayrıcalığı,4 Toplam Hesap / 2 Yönetici (SID tabanlı),4 Toplam Hesap / 2 Sudo/Root (UID tabanlı),En Az Ayrıcalık (Least Privilege) ilkesi gereği yönetici hesap sayısı en aza indirilmelidir.
+Servisler & Daemon,Çalışan Kritik Servis Durumu,"4 Aktif Servis (Defender, Firewall, Update)","4 Aktif Servis (SSHD, UFW, Journald, Auditd)",Gereksiz servislerin kapatılması saldırı yüzeyini (Attack Surface) daraltır.
+Yama Yönetimi,Bekleyen Kritik Güvenlik Yaması,0 Bekleyen (Windows Update),0 Bekleyen (APT Security),Bilinen zafiyetlerin (CVE) istismarını önlemek için yamalar 30 gün içinde uygulanmalıdır.

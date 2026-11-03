@@ -1,0 +1,57 @@
+{
+  "gun": 20,
+  "asama": 2,
+  "hafta": 3,
+  "konu": "Linux dosya ağacı ve FHS",
+  "durum": "TAMAMLANDI_PASS",
+  "tarih": "2026-10-27",
+  "puan": 100,
+  "puan_detay": {
+    "teorik_metodolojik_hakimiyet": 20,
+    "kodlama_uygulama_yetkinligi": 40,
+    "test_dogrulama_kapsami": 25,
+    "kanit_dokumantasyon_kalitesi": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "dosyalar": [
+    "uygulama/linux_fhs_hierarchy_auditor.py",
+    "tests/test_linux_fhs_hierarchy_auditor.py",
+    "ornek_veri/linux_fhs_sample_map.json",
+    "ornek_veri/linux_fhs_security_baseline.json",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/temsili/linux_fhs_mimarisi.txt",
+    "ders.md",
+    "soru_cevap.md",
+    "rapor.md",
+    "README.md",
+    "sonuc.json"
+  ],
+  "kanitlar": [
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/temsili/linux_fhs_mimarisi.txt"
+  ],
+  "ogrenilen_standartlar": [
+    "Filesystem Hierarchy Standard (FHS 3.0)",
+    "CIS Linux Benchmark (Section 1.1 Filesystem Configuration & Section 6.1 System File Permissions)",
+    "NIST SP 800-53 Rev. 5 (AC-3 Access Enforcement, CM-6 Configuration Settings, SI-7 Software Integrity)",
+    "CWE-732 (Incorrect Permission Assignment for Critical Resource) & CWE-377 (Insecure Temporary File)"
+  ],
+  "karsilanan_gereksinimler": [
+    "Linux tek kök (/) mimarisi ve FHS 3.0 standart ayrımı derinlemesine analiz edildi",
+    "En az 6 çekirdek dizin (/etc, /var, /home, /tmp, /dev, /proc) doğrulandı ve haritası çıkarıldı (G020-SC2)",
+    "Sticky Bit (+t) ve mount güvenlik bayrakları (nodev, nosuid, noexec, hidepid) denetlendi",
+    "Kritik sistem dosyaları (/etc/shadow, /etc/sudoers) izin ihlalleri CWE eşleştirmesi ile modellendi",
+    "Tüm kod ve test satırları didaktik açıklamalarla zenginleştirildi",
+    "14 birim test (pozitif ve negatif) 0.239 saniyede başarıyla (%100 PASS) icra edildi",
+    "Özel Lisans (Tüm Hakları Saklıdır) tüm dosyalara uygulandı"
+  ],
+  "notlar": "Gün 020 eksiksiz tamamlanarak 14/14 test PASS ve 100/100 tam puanla sonuçlandırıldı."
+}

@@ -1,0 +1,18 @@
+{
+  "README.md": "05c5a64488c26b0b04fdcba4b0c2458b82b962eb8aa6b56478a2c6ffe21e02b2",
+  "ders.md": "7d9d650b31409fedba970b86ca61443bb433d0e945f6001ecf2601fbfb832a16",
+  "kanit/gercek/komut_ve_cikis.txt": "e4b6e071db3b11e87a2086015c96d6f40b3551bec4fd41684619b2ce6636fdfd",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "638fc659443147d1a8f21a05da0ad9bd0f56818049ee8cd83bdb2659ec45891f",
+  "kanit/gercek/surec_agaci_semasi.txt": "6583a4c570cc9e770be18ee81ca6bff6579e45d185761deae18ab415666717e8",
+  "kanit/gercek/test_sonuclari.txt": "19939673c4661cf13d71e3c00c0f89b1065c24b9f98293db4ca5d559625acb47",
+  "kanit/temsili/surec_agaci_ve_tehdit_mimarisi.txt": "4d2156b7d81fe5da1108fd8a9d38c31f5afc9fe0f98319ac83b24c808aa4e209",
+  "ornek_veri/corrupted_process_tree_test.json": "13e10a24add015d71e23abad0a9cf3ee8b34b524f0e3b668836b9494cb32ccaf",
+  "ornek_veri/sample_process_inventory.json": "616295d628bf374ff62d618e5d87de9d51071568a08ee8c9715d4c788af8ba2d",
+  "rapor.md": "a84b3f1f87d709a4c83616fe442c30a19ebfbfac9d81ff3004e736dd9b3040a5",
+  "sonuc.json": "aa08e1a36aedbe348d50fafefef1d0ffd78cdca62f4e228d24ffecc8097977c1",
+  "soru_cevap.md": "59fb259fbf0d0332feaa86be0d621f9c1c2ff45f7da2c08e42ae2c2ec2f8cbac",
+  "tests/__init__.py": "de4a3b8164007efc7da20564463ffa1d1fe8eb66d6ca036d0b595805657f8408",
+  "tests/test_process_tree_explorer_analyzer.py": "359597e87160a61795f2a79335d8c6631988b6c79e68d33de5773ff87c0c7354",
+  "uygulama/__init__.py": "5fb8bff6738a0a74fa3bc72b45fe4364cb4e2f4f068cca2f88a1ad41cdb6dad1",
+  "uygulama/process_tree_explorer_analyzer.py": "6fdf450630c9cabd3be03abe6cf2629602f84248666e6e204cf9a74b9d841d93"
+}

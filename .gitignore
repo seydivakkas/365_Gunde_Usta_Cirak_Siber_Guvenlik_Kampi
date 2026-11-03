@@ -1,0 +1,27 @@
+# Python önbellek dosyaları
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Sanal ortamlar
+venv/
+.venv/
+env/
+ENV/
+
+# IDE ve Editör ayarları
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# İşletim sistemi kalıntıları
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Geçici dosyalar
+*.tmp
+*.bak

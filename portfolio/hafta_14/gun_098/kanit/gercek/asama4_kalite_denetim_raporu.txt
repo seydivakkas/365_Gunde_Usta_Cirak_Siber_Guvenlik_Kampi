@@ -1,0 +1,44 @@
+===============================================================================================
+GÜN 098: AŞAMA 4 SİBER GÜVENLİK OTOMASYONU KALİTE VE YÖNETİŞİM DENETİM RAPORU
+Tarih/Saat : 2026-11-02 01:36:29
+Standart   : ISO/IEC 25010 Yazılım Kalitesi, CIS Controls v8, OWASP Secure Coding
+===============================================================================================
+
+1. DENETLENEN BETİK 1: TAM UYUMLU KURUMSAL BETİK (sample_compliant_script.py)
+   - Toplam Kalite Skoru       : 100 / 100
+   - Kod Güvenliği (Max 40)    : 40
+   - Test & Hata Yönetimi (25) : 25
+   - Mimari & Standartlar (20) : 20
+   - Dokümantasyon & Lisans(15): 15
+   - Hazır Bulunuşluk Seviyesi : ARL-4: Üretim Düzeyi / Tam Güvenli Otomasyon
+   - Denetim Durumu            : PASS
+   - Bulgu Sayısı              : 0
+
+2. DENETLENEN BETİK 2: ZAFİYETLİ ÖRNEK BETİK (sample_vulnerable_script.py)
+   - Toplam Kalite Skoru       : 20 / 100
+   - Kod Güvenliği (Max 40)    : 0
+   - Test & Hata Yönetimi (25) : 5
+   - Mimari & Standartlar (20) : 15
+   - Dokümantasyon & Lisans(15): 0
+   - Hazır Bulunuşluk Seviyesi : ARL-1: Güvensiz / Reddedilmiş Otomasyon
+   - Denetim Durumu            : FAIL
+   - Tespit Edilen Bulgular    : 4 Adet
+     [1] Kural: SEC_RULE_01_LICENSE | Kategori: Dokümantasyon ve Lisans | Seviye: CRITICAL
+         CWE   : CWE-16: Configuration
+         Mesaj : Kurumsal Özel Lisans başlığı eksik veya değiştirilmiş
+     [2] Kural: SEC_RULE_02_HARDCODED_SECRET | Kategori: Kod Güvenliği | Seviye: CRITICAL
+         CWE   : CWE-798: Use of Hard-coded Credentials
+         Mesaj : Sabit gizli anahtar/parola tanımlaması tespit edildi: 'API_KEY'
+     [3] Kural: SEC_RULE_03_EVAL_EXEC | Kategori: Kod Güvenliği | Seviye: CRITICAL
+         CWE   : CWE-95: Eval Injection
+         Mesaj : Tehlikeli dinamik kod yürütme çağrısı: 'eval()'
+     [4] Kural: SEC_RULE_04_BARE_EXCEPT | Kategori: Hata Yönetimi | Seviye: HIGH
+         CWE   : CWE-391: Unchecked Error Condition
+         Mesaj : Tüm hataları ayırt etmeksizin yutan çıplak 'except:' bloğu tespit edildi
+
+===============================================================================================
+3. AŞAMA 4 OTOMASYON VE KALİTE YÖNETİŞİM DEĞERLENDİRMESİ
+   - Gün 071-098 boyunca geliştirilen tüm araç setleri AST ve statik kurallarla test edilmiştir.
+   - 'Usta-Çırak' öğretisi gereği otomasyonda hiçbir güvenlik varsayımına güvenilmez.
+   - Tüm üretim araçlarının ARL-4 seviyesinde ve 100 tam puan olması zorunludur.
+===============================================================================================

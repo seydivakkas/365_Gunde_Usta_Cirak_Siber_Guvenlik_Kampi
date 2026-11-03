@@ -1,0 +1,83 @@
+{
+  "target_system": "CORP-FILESERVER-01",
+  "operating_system": "Windows Server 2022 Datacenter",
+  "audit_standard": "CIS_Microsoft_Windows_Server_Benchmark_v3.0.0_Sec18",
+  "descriptors": [
+    {
+      "path": "C:\\Windows\\System32\\calc.exe",
+      "is_directory": false,
+      "owner": "NT AUTHORITY\\TrustedInstaller",
+      "group": "NT AUTHORITY\\TrustedInstaller",
+      "are_access_rules_protected": true,
+      "dacl": [
+        {
+          "identity": "NT AUTHORITY\\SYSTEM",
+          "ace_type": "AccessAllowed",
+          "rights": ["FullControl"]
+        },
+        {
+          "identity": "BUILTIN\\Administrators",
+          "ace_type": "AccessAllowed",
+          "rights": ["ReadAndExecute", "Read"]
+        },
+        {
+          "identity": "BUILTIN\\Users",
+          "ace_type": "AccessAllowed",
+          "rights": ["ReadAndExecute", "Read"]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Program Files\\CustomCRM\\service.exe",
+      "is_directory": false,
+      "owner": "BUILTIN\\Administrators",
+      "group": "BUILTIN\\Administrators",
+      "are_access_rules_protected": true,
+      "dacl": [
+        {
+          "identity": "NT AUTHORITY\\SYSTEM",
+          "ace_type": "AccessAllowed",
+          "rights": ["FullControl"]
+        },
+        {
+          "identity": "BUILTIN\\Administrators",
+          "ace_type": "AccessAllowed",
+          "rights": ["FullControl"]
+        },
+        {
+          "identity": "BUILTIN\\Users",
+          "ace_type": "AccessAllowed",
+          "rights": ["Modify", "Write"]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Program Files\\Unquoted App\\agent service.exe",
+      "is_directory": false,
+      "owner": "BUILTIN\\Administrators",
+      "group": "BUILTIN\\Administrators",
+      "are_access_rules_protected": true,
+      "dacl": [
+        {
+          "identity": "Everyone",
+          "ace_type": "AccessAllowed",
+          "rights": ["Write"]
+        }
+      ]
+    },
+    {
+      "path": "C:\\ProgramData\\BackupData\\secrets.bak",
+      "is_directory": false,
+      "owner": "Guest",
+      "group": "BUILTIN\\Users",
+      "are_access_rules_protected": true,
+      "dacl": [
+        {
+          "identity": "Everyone",
+          "ace_type": "AccessAllowed",
+          "rights": ["FullControl"]
+        }
+      ]
+    }
+  ]
+}

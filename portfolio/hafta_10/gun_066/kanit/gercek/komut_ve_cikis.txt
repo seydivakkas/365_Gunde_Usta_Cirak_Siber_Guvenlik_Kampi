@@ -1,0 +1,38 @@
+# G066: DNS VE HTTP ANOMALİ İŞARETLERİ - KOMUT VE ÇIKIS KANITI
+# Tarih: 2026-10-31
+# Komut: python -m unittest portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector -v
+
+$ python -m unittest portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector -v
+test_01_ornek_trafik_veri_seti_yukleme_ve_dogrulama (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_01_ornek_trafik_veri_seti_yukleme_ve_dogrulama)
+Trafik veri setinin eksiksiz yüklendiğini ve beklenen şemaya uyduğunu doğrular. ... ok
+test_02_normal_dns_trafigi_temiz_analiz (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_02_normal_dns_trafigi_temiz_analiz)
+Standart kurumsal alan adı sorgusunun anomali üretmediğini teyit eder. ... ok
+test_03_normal_http_trafigi_temiz_analiz (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_03_normal_http_trafigi_temiz_analiz)
+Standart HTTP GET isteğinin temiz sonuçlandığını ve anomali üretmediğini doğrular. ... ok
+test_04_dga_alan_adi_entropi_ve_sessiz_harf_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_04_dga_alan_adi_entropi_ve_sessiz_harf_tespiti)
+Rastgele üretilmiş yüksek entropili DGA alan adının başarıyla yakalandığını test eder. ... ok
+test_05_dns_tunelleme_veri_sizintisi_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_05_dns_tunelleme_veri_sizintisi_tespiti)
+Aşırı uzun alt alan etiketine sahip TXT tünelleme sorgusunun yakalandığını test eder. ... ok
+test_06_dns_amplification_yansitma_ve_buyutme_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_06_dns_amplification_yansitma_ve_buyutme_tespiti)
+Yüksek yanıt/istek oranına ve ANY sorgusuna sahip DoS paterninin tespitini doğrular. ... ok
+test_07_fast_flux_botnet_c2_mikro_ttl_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_07_fast_flux_botnet_c2_mikro_ttl_tespiti)
+Kısa TTL ve çok sayıda dinamik IP adresi içeren Fast Flux C2 ağının yakalandığını test eder. ... ok
+test_08_http_request_smuggling_cl_te_catismasi_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_08_http_request_smuggling_cl_te_catismasi_tespiti)
+Hem Content-Length hem de Transfer-Encoding içeren sızdırma isteğinin yakalandığını test eder. ... ok
+test_09_http_crlf_baslik_enjeksiyonu_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_09_http_crlf_baslik_enjeksiyonu_tespiti)
+URI içinde URL-encoded CRLF ve Set-Cookie enjeksiyon girişiminin tespitini test eder. ... ok
+test_10_http_path_traversal_dizin_gecisi_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_10_http_path_traversal_dizin_gecisi_tespiti)
+URI içinde ../ dizin dışına çıkma ve /etc/passwd okuma denemesinin yakalandığını test eder. ... ok
+test_11_otomatik_saldiri_tarayicisi_imza_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_11_otomatik_saldiri_tarayicisi_imza_tespiti)
+sqlmap gibi otomatik tarayıcıların başlık imzasıyla yakalandığını test eder. ... ok
+test_12_toplu_trafik_analizi_ve_metrik_dagilimi (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_12_toplu_trafik_analizi_ve_metrik_dagilimi)
+Tüm DNS ve HTTP paketlerinin toplu analizinde üretilen güvenlik raporunu denetler. ... ok
+test_13_negatif_sinir_senaryolari_grup_1 (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_13_negatif_sinir_senaryolari_grup_1)
+NEG_01'den NEG_04'e kadar olan anomali istisnalarının fırlatıldığını teyit eder. ... ok
+test_14_negatif_sinir_senaryolari_grup_2 (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_14_negatif_sinir_senaryolari_grup_2)
+NEG_05'ten NEG_09'a kadar olan anomali ve bozuk veri istisnalarını test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.012s
+
+OK

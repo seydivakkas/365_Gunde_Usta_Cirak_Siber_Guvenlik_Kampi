@@ -1,0 +1,67 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+Konu: Gün 34 — Dosya Türleri, Sihirli Baytlar (Magic Bytes) ve MIME Mimarisi
+Amaç: Dosya uzantısının (.pdf, .jpg) aldatıcı bir kabuktan ibaret olduğunu,
+      gerçek dosya kimliğinin başlık baytları (Magic Bytes) ve MIME analiziyle
+      nasıl ortaya çıkarıldığını gösteren mimari şema.
+
++---------------------------------------------------------------------------------------+
+|                    DOSYA KİMLİĞİ VE SİHİRLİ BAYTLAR (MAGIC BYTES) MİMARİSİ            |
++---------------------------------------------------------------------------------------+
+
+             [ KULLANICI / İŞLETİM SİSTEMİ GÖRÜNÜMÜ: YÜZEYSEL UZANTI ]
+                                     |
+                       "fatura_ekstresi.pdf" (.pdf)
+                                     |
+                                     v
++---------------------------------------------------------------------------------------+
+|                        FİZİKSEL DOSYA BAŞLIK ANALİZİ                                  |
++---------------------------------------------------------------------------------------+
+| Offset (Bayt)  | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F | ASCII Eşdeğeri     |
+|----------------+-------------------------------------------------+--------------------|
+| 00000000       | 4D 5A 90 00 03 00 00 00 04 00 00 00 FF FF 00 00 | MZ..............   |
+| 00000010       | B8 00 00 00 00 00 00 00 40 00 00 00 00 00 00 00 | ........@.......   |
+| 00000040       | 54 68 69 73 20 70 72 6F 67 72 61 6D 20 63 61 6E | This program can.. |
++---------------------------------------------------------------------------------------+
+                                     |
+                                     v
+          +-----------------------------------------------------+
+          |              SİHİRLİ BAYT ÇIKARIMI                 |
+          |  İlk 2 Bayt: 0x4D 0x5A ("MZ")                       |
+          |  Standart: Windows Taşınabilir Yürütülebilir (PE)   |
+          |  MIME Türü: application/x-dosexec                   |
+          +-----------------------------------------------------+
+                                     |
+                                     v
++---------------------------------------------------------------------------------------+
+| GÜVENLİK DEĞERLENDİRMESİ VE ANOMALİ ALARMI                                           |
++---------------------------------------------------------------------------------------+
+|  İddia Edilen Uzantı : .pdf (Adobe PDF Belgesi)                                       |
+|  Raporlanan MIME     : application/pdf (İstemci tarafından beyan edilmiş)             |
+|  Fiili Başlık İmzası : 4D 5A ("MZ" - Windows PE Executable)                           |
+|  Gerçek MIME Türü    : application/x-dosexec                                          |
+|                                                                                       |
+|  [!] UYUŞMAZLIK      : EVET (Extension vs Signature Mismatch)                         |
+|  [!] RİSK DERECESİ   : CRITICAL                                                       |
+|  [!] MITRE KODU      : T1036.008 (Masquerading: Masquerade File Type)                 |
+|  [!] TEKNİK AÇIKLAMA : Kullanıcı PDF açtığını zannederken arka planda Windows PE      |
+|                        çalıştırılabilir ikili dosyası yürütülecektir.                 |
++---------------------------------------------------------------------------------------+
+
++---------------------------------------------------------------------------------------+
+| YAYGIN DOSYA İMZALARI (MAGIC BYTES REFERANS TABLOSU)                                 |
++---------------------------------------------------------------------------------------+
+|  Format Adı               | Sihirli Baytlar (Hex)           | Standart MIME           |
+|---------------------------+---------------------------------+-------------------------|
+|  Windows PE (EXE / DLL)   | 4D 5A ("MZ")                    | application/x-dosexec   |
+|  Linux ELF                | 7F 45 4C 46 ("\x7fELF")         | application/x-executable|
+|  Adobe PDF                | 25 50 44 46 ("%PDF-")           | application/pdf         |
+|  PNG Image                | 89 50 4E 47 0D 0A 1A 0A         | image/png               |
+|  JPEG Image               | FF D8 FF                        | image/jpeg              |
+|  ZIP / Office (DOCX/XLSX) | 50 4B 03 04 ("PK\x03\x04")      | application/zip         |
+|  Shell Script (Unix)      | 23 21 ("#!")                    | text/x-shellscript      |
++---------------------------------------------------------------------------------------+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

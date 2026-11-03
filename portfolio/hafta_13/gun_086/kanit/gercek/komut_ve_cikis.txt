@@ -1,0 +1,57 @@
+================================================================================
+G086: GERCEK TERMINAL KOMUTLARI VE CALISTIRMA CIKTILARI
+Zaman: 2026-11-01T19:51:58.779856+00:00
+================================================================================
+
+KOMUT 1: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor -v
+CIKIS 1:
+
+test_01_parse_secure_script_parameters (portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor.TestPowerShellParameterSecurityAuditor.test_01_parse_secure_script_parameters)
+Guvenli ornek betikteki 5 parametrenin dogru tipler ve dogrulama kurallariyla ayrastirildigini test eder. ... ok
+test_02_detect_cmdlet_binding_presence (portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor.TestPowerShellParameterSecurityAuditor.test_02_detect_cmdlet_binding_presence)
+Zaafiyetli betikte [CmdletBinding()] eksikliginin tespit edildigini test eder. ... ok
+test_03_detect_plaintext_password_parameter (portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor.TestPowerShellParameterSecurityAuditor.test_03_detect_plaintext_password_parameter)
+Acik metin [string]$Password parametre bildiriminin CRITICAL olarak yakalandigini test eder. ... ok
+test_04_detect_plaintext_password_strict_exception (portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor.TestPowerShellParameterSecurityAuditor.test_04_detect_plaintext_password_strict_exception)
+strict=True modunda acik metin parola parametresinde PlaintextCredentialParameterException firlatildigini test eder. ... ok
+test_05_detect_unvalidated_path_parameter (portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor.TestPowerShellParameterSecurityAuditor.test_05_detect_unvalidated_path_parameter)
+ValidateScript ile sinirlandirilmamis dosya yolu parametresinin HIGH olarak tespit edildigini test eder. ... ok
+test_06_detect_untyped_parameter (portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor.TestPowerShellParameterSecurityAuditor.test_06_detect_untyped_parameter)
+Tip belirtilmemis (untyped) parametrenin MEDIUM seviyede zayiflik olarak yakalandigini dogrular. ... ok
+test_07_detect_subprocess_argument_injection_risk (portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor.TestPowerShellParameterSecurityAuditor.test_07_detect_subprocess_argument_injection_risk)
+Dis komutlara parametre baglarken olusan arguman enjeksiyonu riskinin CRITICAL olarak raporlandigini test eder. ... ok
+test_08_runtime_validator_reject_null_byte (portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor.TestPowerShellParameterSecurityAuditor.test_08_runtime_validator_reject_null_byte)
+Parametre degerinde null-byte (0x00) bulunmasi durumunda NullByteForbiddenException firlatildigini dogrular. ... ok
+test_09_runtime_validator_reject_oversized_payload (portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor.TestPowerShellParameterSecurityAuditor.test_09_runtime_validator_reject_oversized_payload)
+4096 karakterden uzun parametre girdisinin DoS korumasiyla engellendigini dogrular. ... ok
+test_10_runtime_validator_path_traversal (portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor.TestPowerShellParameterSecurityAuditor.test_10_runtime_validator_path_traversal)
+Dosya yolu parametresinde dizin atlama (..) girisiminin engellendigini test eder. ... ok
+test_11_runtime_validator_set_violation (portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor.TestPowerShellParameterSecurityAuditor.test_11_runtime_validator_set_violation)
+ValidateSet kumesi disinda bir deger girildiginde InvalidParameterSetException firlatildigini test eder. ... ok
+test_12_runtime_validator_range_violation (portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor.TestPowerShellParameterSecurityAuditor.test_12_runtime_validator_range_violation)
+ValidateRange sinirlari disinda sayi girildiginde ParameterOutOfRangeException firlatildigini test eder. ... ok
+test_13_runtime_validator_pattern_mismatch (portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor.TestPowerShellParameterSecurityAuditor.test_13_runtime_validator_pattern_mismatch)
+ValidatePattern kuralini ihlal eden karakterlerde ParameterPatternMismatchException firlatildigini test eder. ... ok
+test_14_argument_injection_detector_strict_exception (portfolio.hafta_13.gun_086.tests.test_powershell_parameter_security_auditor.TestPowerShellParameterSecurityAuditor.test_14_argument_injection_detector_strict_exception)
+Arguman enjeksiyonu iceren degerlerde strict modda ArgumentInjectionDetectedException firlatildigini test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.005s
+
+OK
+
+--------------------------------------------------------------------------------
+
+KOMUT 2: pwsh -NoProfile -Command . ./portfolio/hafta_13/gun_086/uygulama/SecureParameterModule.ps1; Invoke-SecureParameterAudit -TargetFile 'audit_target.log' -Port 8443 -Mode 'Enforce' -HostName 'gateway.internal.lan' | ConvertTo-Json
+CIKIS 2:
+{
+  "FileValidated": "audit_target.log",
+  "PortValidated": 8443,
+  "ModeValidated": "Enforce",
+  "HostValidated": "gateway.internal.lan",
+  "Status": "SECURE_BOUND",
+  "TimestampUTC": "2026-11-01T19:51:58Z"
+}
+
+
+================================================================================

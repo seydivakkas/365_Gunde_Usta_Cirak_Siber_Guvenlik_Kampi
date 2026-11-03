@@ -1,0 +1,33 @@
+test_01_ornek_gunluk_veri_seti_yukleme_ve_dogrulama (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_01_ornek_gunluk_veri_seti_yukleme_ve_dogrulama)
+Ham g³nl³k veri setinin 5 farkl² a­ g³nl³­³ ierdi­ini do­rular. ... ok
+test_02_ip_adresi_alt_ag_maskeleme (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_02_ip_adresi_alt_ag_maskeleme)
+IPv4 adreslerinin son oktetinin s²f²rlan²p /24 olarak maskelendi­ini do­rular. ... ok
+test_03_ip_adresi_tuzlu_sozde_anonimlestirme (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_03_ip_adresi_tuzlu_sozde_anonimlestirme)
+HMAC-SHA256 ile IP adreslerinin deterministik ve geri d÷nd³r³lemez hash'lendi­ini do­rular. ... ok
+test_04_mac_adresi_oui_korumali_maskeleme (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_04_mac_adresi_oui_korumali_maskeleme)
+MAC adresinin ilk 3 oktetinin korunup son 3 oktetinin XX ile gizlendi­ini test eder. ... ok
+test_05_eposta_adresi_maskeleme (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_05_eposta_adresi_maskeleme)
+E-posta adresinin ilk ve son harfi haricinde y²ld²zland²­²n² do­rular. ... ok
+test_06_kredi_karti_pci_dss_maskeleme (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_06_kredi_karti_pci_dss_maskeleme)
+Kredi kart²n²n ilk 4 ve son 4 hanesi korunup ortas²n²n y²ld²zland²­²n² test eder. ... ok
+test_07_tckn_kimlik_numarasi_maskeleme (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_07_tckn_kimlik_numarasi_maskeleme)
+TC Kimlik numaras²n²n ilk 2 ve son 2 hanesinin korunup aran²n y²ld²zland²­²n² test eder. ... ok
+test_08_http_baslik_arindirma (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_08_http_baslik_arindirma)
+Authorization ve Cookie ba■l²klar²n²n temizlenip Host ba■l²­²n²n korundu­unu test eder. ... ok
+test_09_uri_sorgu_parametresi_arindirma (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_09_uri_sorgu_parametresi_arindirma)
+URI query ierisindeki ?email= ve &tckn= parametrelerinin maskelendi­ini do­rular. ... ok
+test_10_serbest_metin_ve_syslog_arindirma (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_10_serbest_metin_ve_syslog_arindirma)
+Syslog veya metin g÷vdesinde geen e-posta ve telefonun temizlendi­ini test eder. ... ok
+test_11_tekil_kayit_arindirma_butunlugu (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_11_tekil_kayit_arindirma_butunlugu)
+T³m PII alanlar²n² ieren karma■²k bir web kayd²n²n tamamen ar²nd²r²ld²­²n² test eder. ... ok
+test_12_toplu_gunluk_arindirma_ve_uyum_raporu (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_12_toplu_gunluk_arindirma_ve_uyum_raporu)
+5 kayd²n tamam²n²n topluca ar²nd²r²ld²­²n² ve KVKK raporunun ³retildi­ini teyit eder. ... ok
+test_13_negatif_sinir_senaryolari_grup_1 (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_13_negatif_sinir_senaryolari_grup_1)
+NEG_01'den NEG_04'e kadar olan bo■ ak²■, biim, IP ve tuz hatalar²n² do­rular. ... ok
+test_14_negatif_sinir_senaryolari_grup_2 (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_14_negatif_sinir_senaryolari_grup_2)
+NEG_05'ten NEG_09'a kadar olan a²k PII, bozuk kay²t, politika ve saklama s³resi testlerini do­rular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.011s
+
+OK

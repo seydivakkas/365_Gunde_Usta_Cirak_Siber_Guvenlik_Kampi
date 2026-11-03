@@ -1,0 +1,12 @@
+=== GÜN 135: LINUX PAM VE OTURUM POLİTİKASI BİRİM TEST SONUÇLARI ===
+Tarih / Saat : 2026-11-02T11:16:08.521800+00:00
+Komut        : C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest discover tests/
+Çıkış Kodu   : 0
+---------------------------------------------------------------------------
+
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+

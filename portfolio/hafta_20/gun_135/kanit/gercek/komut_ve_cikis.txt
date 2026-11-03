@@ -1,0 +1,84 @@
+=== GÜN 135: CLI ÇALIŞTIRMA VE KANIT KAYITLARI ===
+Tarih / Saat : 2026-11-02T11:16:08.951576+00:00
+
+[KOMUT 1] C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama\pam_security_cli.py audit -i C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_135\ornek_veri\pam_inventory_spec.json -o C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_135\kanit\gercek\pam_guvenlik_analiz_raporu.json
+[*] Linux PAM ve Oturum Politikas� Denetimi Ba�lat�l�yor: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_135\ornek_veri\pam_inventory_spec.json
+
+======================================================================
+           L�NUX PAM VE OTURUM POL�T�KASI DENET�M RAPORU           
+======================================================================
+Genel G�venlik Skoru : 5.0 / 100.0
+Sistem Uyum Durumu   : CRITICAL
+Toplam Zafiyet       : 6
+�nem Da��l�m�        : {'CRITICAL': 2, 'HIGH': 3, 'MEDIUM': 1, 'LOW': 0}
+----------------------------------------------------------------------
+
+[!] TESP�T ED�LEN PAM VE OTURUM ZAF�YETLER�:
+
+  [1] Hedef : faillock.conf: even_deny_root | �nem: MEDIUM
+      Zafiyet     : Root Kullan�c�s� ��in Hesap Kilitleme Korumas� Kapal� (CWE-307 / T1110.001)
+      A��klama    : even_deny_root direktifinin olmamas�, root hesab�na y�nelik kaba kuvvet sald�r�lar�n� engellemez.
+      �yile�tirme : /etc/security/faillock.conf dosyas�na 'even_deny_root' parametresini ekleyin.
+
+  [2] Hedef : /etc/security/pwquality.conf: minlen | �nem: HIGH
+      Zafiyet     : Yetersiz Minimum Parola Uzunlu�u (minlen=12) (CWE-521 / T1201)
+      A��klama    : CIS standard� minimum 14 karakter parola uzunlu�u gerektirir. Mevcut de�er: 12.
+      �yile�tirme : /etc/security/pwquality.conf dosyas�na 'minlen = 14' direktifini ekleyin.
+
+  [3] Hedef : /etc/pam.d/* (pam_unix.so nullok) | �nem: CRITICAL
+      Zafiyet     : Bo� Parola ile Giri� �zni (nullok Bayra�� Aktif) (CWE-258 / T1078)
+      A��klama    : pam_unix mod�l�nde 'nullok' parametresi etkindir. Parolas� olmayan hesaplar parola girmeden sisteme oturum a�abilir. Bu durum sistemde ciddi kimlik do�rulama bypass a���� yarat�r.
+      �yile�tirme : /etc/pam.d/ alt�ndaki t�m yap�land�rma dosyalar�ndan 'nullok' arg�man�n� kald�r�n.
+
+  [4] Hedef : /etc/pam.d/system-auth: pam_pwhistory.so | �nem: HIGH
+      Zafiyet     : Yetersiz Parola Ge�mi�i Korumas� (remember=3) (CWE-262 / T1201)
+      A��klama    : Sistem son 3 parolay� hat�rlamaktad�r. CIS standard� en az son 5 parolan�n tekrar kullan�m�n�n engellenmesini �art ko�ar.
+      �yile�tirme : /etc/pam.d/password-auth ve system-auth dosyalar�na 'password required pam_pwhistory.so remember=5' sat�r�n� ekleyin.
+
+  [5] Hedef : /etc/profile.d/timeout.sh: TMOUT | �nem: HIGH
+      Zafiyet     : Yetersiz Oturum Zaman A��m� (TMOUT=1800s) (CWE-613 / T1078)
+      A��klama    : Kabuk bo�ta kalma zaman a��m� (TMOUT) 1800 saniyedir veya tan�ms�zd�r. CIS standard� bo�ta kalan oturumlar�n en fazla 900 saniye (15 dakika) i�inde sonland�r�lmas�n� gerektirir.
+      �yile�tirme : echo 'readonly TMOUT=900 ; export TMOUT' > /etc/profile.d/timeout.sh && chmod 0644 /etc/profile.d/timeout.sh
+
+  [6] Hedef : /etc/security/pwquality.conf | �nem: CRITICAL
+      Zafiyet     : Gev�ek PAM Dosya �zni (/etc/security/pwquality.conf - Mod: 0666) (CWE-732 / T1548)
+      A��klama    : '/etc/security/pwquality.conf' dosyas�n�n izin modu 0666 olarak ayarlanm��. Yetkisiz kullan�c�lar PAM kurallar�n� de�i�tirerek kimlik do�rulamay� bypass edebilir.
+      �yile�tirme : chmod 0644 /etc/security/pwquality.conf
+
+[+] Detayl� denetim raporu kaydedildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_135\kanit\gercek\pam_guvenlik_analiz_raporu.json
+
+---------------------------------------------------------------------------
+
+[KOMUT 2] C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama\pam_security_cli.py remediate -i C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_135\ornek_veri\pam_inventory_spec.json -o C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_135\kanit\gercek\otomatik_sikilastirma.sh
+[*] Bash S�k�la�t�rma Beti�i �retiliyor: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_135\ornek_veri\pam_inventory_spec.json
+[+] Bash s�k�la�t�rma beti�i kaydedildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_135\kanit\gercek\otomatik_sikilastirma.sh
+
+---------------------------------------------------------------------------
+
+[KOMUT 3] C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama\pam_security_cli.py pam-help
+
+===================================================================
+LINUX PAM VE OTURUM POL�T�KASI HIZLI BA�VURU REHBER�
+===================================================================
+1. Hesap Kilitleme (pam_faillock - CWE-307 / T1110.001):
+   - deny = 5 (En fazla 5 ba�ar�s�z deneme)
+   - unlock_time = 900 (En az 15 dakika kilit)
+   - even_deny_root (Root hesab�n� da korur)
+
+2. Parola Karma��kl��� (pam_pwquality - CWE-521):
+   - minlen = 14 (Minimum 14 karakter)
+   - dcredit = -1, ucredit = -1, lcredit = -1, ocredit = -1
+   - enforce_for_root (Root kullan�c�s�na da uygular)
+
+3. Parola Ge�mi�i (pam_pwhistory - CWE-262):
+   - remember = 5 (Son 5 parolan�n tekrar kullan�m�n� engeller)
+
+4. Bo� Parola Engeli (pam_unix - CWE-258):
+   - 'nullok' bayra�� t�m PAM dosyalar�ndan kald�r�lmal�d�r.
+
+5. Oturum Zaman A��m� (TMOUT - CWE-613):
+   - /etc/profile.d/timeout.sh i�inde readonly TMOUT=900 tan�mlanmal�d�r.
+===================================================================
+    
+
+---------------------------------------------------------------------------

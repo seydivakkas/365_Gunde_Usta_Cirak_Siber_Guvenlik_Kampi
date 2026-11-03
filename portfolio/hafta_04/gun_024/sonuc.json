@@ -1,0 +1,34 @@
+{
+  "gun": 24,
+  "asama": "02",
+  "hafta": "04",
+  "konu": "Linux dosya izinleri rwx",
+  "tarih": "2026-10-27",
+  "kod_kalitesi_puani": 20,
+  "uygulama_fonksiyonellik_puani": 40,
+  "guvenlik_risk_yonetimi_puani": 25,
+  "belgeleme_raporlama_puani": 15,
+  "toplam_puan": 100,
+  "durum": "YETERLİ / PASS",
+  "tamamlanan_gorevler": [
+    "POSIX dosya izinleri okuma (r=4), yazma (w=2) ve calistirma (x=1) bit bloklarinin matematiksel cozumu",
+    "SUID (4000), SGID (2000) ve Sticky (1000) ozel izin bitlerinin analizi ve guvenlik etkilerinin belirlenmesi",
+    "Umask formulu (Base & ~Umask) ile yeni dosya ve dizin izin turetme motoru",
+    "CWE-732 kaynak erisim zafiyetlerinin (world-writable, asiri izinli SSH anahtari vb.) otomatik tespiti",
+    "G024-SC2 kontrollu deney sartlarinda chmod degisikligi, islem gunlugu (journaling) ve geri alma (rollback) dongusu",
+    "14/14 birim testin 0.178 saniyede PASS seviyesinde basariyla kosulmasi"
+  ],
+  "kazanilan_yetkinlikler": [
+    "Linux DAC (Discretionary Access Control) izin mimarisine tam hakimiyet",
+    "Oktal ve sembolik izin formatlari arasinda cift yonlu donusturme yetkinligi",
+    "Umask 022 ve 027 konfigürasyonlarinin guvenlik farklarini hesaplama ve sertlestirme",
+    "En Az Ayricalik (Least Privilege) prensibine uygun dosya sistemi guclendirmesi",
+    "Uretim ortamlarinda geri alinabilir (reversible/rollback) degisiklik yonetimi kulturu"
+  ],
+  "kanit_dosyalari": [
+    "portfolio/hafta_04/gun_024/kanit/gercek/test_sonuclari.txt",
+    "portfolio/hafta_04/gun_024/kanit/gercek/chmod_degisiklik_ve_geri_alma_kaydi.txt",
+    "portfolio/hafta_04/gun_024/kanit/gercek/komut_ve_cikis.txt",
+    "portfolio/hafta_04/gun_024/kanit/temsili/linux_izin_rwx_mimarisi.txt"
+  ]
+}

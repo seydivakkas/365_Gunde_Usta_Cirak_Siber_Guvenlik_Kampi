@@ -1,0 +1,97 @@
+{
+  "gun": 112,
+  "konu": "Mini proje 15: imzalı yapılandırma konsepti",
+  "olusturma_tarihi": "2026-11-02T05:05:22.243825",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "e7590987b162946dbb4f17c21c545c5f70306f97fb784f380993d34ab1f190db",
+      "boyut_bayt": 6058
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "5113c225a29205128ad7acfc607701ae987552b718984d507f29a0b3ff8a358d",
+      "boyut_bayt": 8461
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "69565f083f473bc3f36b4c0089f4a93bfb9fb5628c3cbe12c64df296a8129d75",
+      "boyut_bayt": 10048
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "ed42b456e57d6211cf400709e54ed8f2494cb9b9ceaae00ff507a10bfd20bc30",
+      "boyut_bayt": 5361
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "c12e776200186cd67dbcaf53df663126f29fe44d5ea72e5acd56538058880dcb",
+      "boyut_bayt": 811
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "4693c5bd69b42c0d35997e13358121415fbfdda542990bc803b8902080009d55",
+      "boyut_bayt": 11288
+    },
+    {
+      "dosya": "kanit\\gercek\\imzali_yapilandirma_analiz_raporu.txt",
+      "sha256": "6467a2103884bc1c80eef5adcb4eca8632f7c315a11c43b41852375db36c5d26",
+      "boyut_bayt": 1144
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "84a7035637464270b39080f7b2d10dd521e2611dc3fc3da9c8b0ed4b0895a7d1",
+      "boyut_bayt": 2696
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "85730767cc0ea0ddacbb26f64908ce8c3994a09a18013e9f9e99aa8d33e3bc44",
+      "boyut_bayt": 3357
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "06d7520a973feccab8cc75a8666ec6bfb1000b39151c143cbd5db05c90b90a5d",
+      "boyut_bayt": 375
+    },
+    {
+      "dosya": "kanit\\temsili\\imzali_yapilandirma_mimarisi.txt",
+      "sha256": "f9177524afff95219832da019876b756876ea97b46f364d38357acfe6754a6a6",
+      "boyut_bayt": 5335
+    },
+    {
+      "dosya": "ornek_veri\\invalid_signed_config_inputs.json",
+      "sha256": "0d894181023f502ea4e4417a709c46431359641d6a4a6f47249021f54bda640c",
+      "boyut_bayt": 4165
+    },
+    {
+      "dosya": "ornek_veri\\production_firewall_policy.json",
+      "sha256": "79800873002361776c5e6b8380f2b56c63d390fd35f5c6ceb212af23a0709710",
+      "boyut_bayt": 853
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "47a8c66edc91f6e4b908e6089a19e89373593ffc9950e674ff60c98bff81ae85",
+      "boyut_bayt": 601
+    },
+    {
+      "dosya": "tests\\test_signed_config.py",
+      "sha256": "21262eefccc28458671f95a1596cca5975ccade6eb16d3460688f1404471cfae",
+      "boyut_bayt": 8734
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "3140cb36255f43d433e168364270b86064e61abc817ad4e5c79a26fc5b9c603f",
+      "boyut_bayt": 771
+    },
+    {
+      "dosya": "uygulama\\signed_config_cli.py",
+      "sha256": "f5821cb43d52ac332dd40ca5b8b2e73a9233f78cbc114aadf63f6ee67f85897a",
+      "boyut_bayt": 8747
+    },
+    {
+      "dosya": "uygulama\\signed_config_engine.py",
+      "sha256": "42a212125269acbe4600de76349920643e0c2cabbf22745e0adec64874c8fa41",
+      "boyut_bayt": 15762
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+================================================================================
+G080: HATA YÖNETİMİ VE ÖZEL DURUMLAR — KOMUT VE YÜRÜTME ÇIKILARI
+================================================================================
+
+[KOMUT 1: Birim Testlerin Yürütülmesi]
+$ python -m unittest portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler -v
+----------------------------------------------------------------------
+test_01_security_exception_base_incident_id ... ok
+test_02_custom_exception_subclasses_hierarchy ... ok
+test_03_sanitize_log_message_removes_crlf_and_ansi ... ok
+test_04_build_sanitized_client_response_suppresses_stack_trace ... ok
+test_05_record_forensic_incident_records_details ... ok
+test_06_resource_context_manager_acquires_and_releases ... ok
+test_07_resource_context_manager_releases_on_exception ... ok
+test_08_gateway_valid_transaction_success ... ok
+test_09_gateway_invalid_token_fails_closed ... ok
+test_10_gateway_unauthorized_role_denied ... ok
+test_11_gateway_input_sanitization_violation_caught ... ok
+test_12_gateway_rate_limit_exceeded ... ok
+test_13_gateway_unhandled_system_exception_fails_closed ... ok
+test_14_gateway_io_error_ensures_resource_released ... ok
+
+Ran 14 tests in 0.001s
+OK
+
+[KOMUT 2: Uygulamanın Bağımsız Yürütülmesi]
+$ python portfolio/hafta_12/gun_080/uygulama/secure_exception_and_error_handler.py
+[+] G080: Hata Yönetimi ve Özel Durumlar Motoru Başlatılıyor...
+[+] Meşru İstek Sonucu: BASARILI
+[+] Yetkisiz İstek Sonucu: HATA_ERISIM_ENGEL (Olay Kodu: SEC-ERR-AF4001AB)
+[+] Adli rapor kaydedildi: .../kanit/gercek/hata_yonetimi_guvenlik_raporu.txt
+
+[KOMUT 3: Negatif Güvenlik Kontrollerinin Yürütülmesi (9 Senaryo)]
+[PASS] NEG_01_FAIL_OPEN_PREVENTION_TEST -> Fail-closed başarıyla tetiklendi: Güvenlik politikası ihlali tespit edildi. Olay Kodu: SEC-ERR-43B2692A
+[PASS] NEG_02_STACK_TRACE_LEAKAGE_PROBE -> Yığın izi gizlendi, güvenli kod verildi: SEC-ERR-9B465A13
+[PASS] NEG_03_RESOURCE_EXHAUSTION_CLEANUP -> Kritik IO hatasında kaynak kilidi başarıyla serbest bırakıldı.
+[PASS] NEG_04_UNHANDLED_EXCEPTION_SHIELD -> Beklenmeyen sistem hatası en dış kalkanda karşılandı: SEC-ERR-412C356D
+[PASS] NEG_05_AUTHENTICATION_CORRUPTION -> Boş/geçersiz kimlik bilgisi başarıyla reddedildi.
+[PASS] NEG_06_AUTHORIZATION_TAMPERING -> Yetkisiz rol erişimi AuthorizationDeniedException ile engellendi.
+[PASS] NEG_07_RATE_LIMIT_BURST_FLOOD -> Rate limit eşiği aşıldı, 198.51.100.77 IP'si engellendi.
+[PASS] NEG_08_INPUT_SANITIZATION_VIOLATION -> XSS/enjeksiyon kalıbı InputSanitizationException ile engellendi.
+[PASS] NEG_09_LOG_INJECTION_POISONING -> CRLF karakterleri logdan arındırıldı: NormalHata [INFO] 2026-11-01 Admin logged in successfully

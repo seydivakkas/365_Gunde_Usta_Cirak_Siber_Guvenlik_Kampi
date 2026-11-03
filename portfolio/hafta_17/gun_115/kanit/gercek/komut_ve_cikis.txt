@@ -1,0 +1,22 @@
+=== GÜN 115: OAUTH 2.0 & OIDC CLI ÇALIŞTIRMA KOMUTLARI VE ÇIKTILARI ===
+
+1. PKCE ve State Parametreleri ile Yetkilendirme Başlatma:
+$ python uygulama/oauth_cli.py akisi-baslat --client-id finans_portal_app
+İstemci Kimliği (client_id)     : finans_portal_app
+Yönlendirme Adresi (redirect_uri): https://portal.siber.local/callback
+Kriptografik State (CSRF)       : qW9fL2mP8kZ1...x4A
+PKCE code_challenge (S256)      : E9Melhoa2OwvFrGMTJguCH5rtx64ZnUea88a3ecdgg
+
+2. Uçtan Uca Yetkilendirme, PKCE Takası ve API Erişimi:
+$ python uygulama/oauth_cli.py tam-akis --kullanici seydi_kullanici
+1. Yetkilendirme Başarılı. Yönlendirme URL'i:
+   https://portal.siber.local/callback?code=z8K1...&state=qW9f...
+2. Belirteç Takası Başarılı (/token):
+   Access Token: vK4mN8pQ... (Bearer)
+   ID Token    : eyJhbGciOiJIUzI1Ni... (JWT)
+3. OIDC ID Token Doğrulandı:
+   Issuer (iss) : https://idp.siber.local
+   Subject (sub): seydi_kullanici
+4. Korumalı Kaynak Sunucusuna (Resource Server) Erişim Başarılı:
+   Profil Bilgisi: {'durum': 'ONAYLANDI', 'kullanici': 'seydi_kullanici'}
+   Rapor Bilgisi : {'durum': 'ONAYLANDI', 'rapor_id': 'RAPOR_2026_Q4'}

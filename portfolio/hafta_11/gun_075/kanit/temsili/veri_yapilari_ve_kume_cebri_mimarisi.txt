@@ -1,0 +1,70 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+# ==============================================================================
+# GÜN 075: LİSTELER, SÖZLÜKLER VE KÜMELER — GÜVENLİK VE KÜME CEBRİ MİMARİSİ
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# ==============================================================================
+
+                ┌─────────────────────────────────────────────────────────────┐
+                │          KÜME CEBRİ İLE TEHDİT İSTİHBARATI KORELASYONU      │
+                │        (Threat Intelligence Correlation via Set Algebra)    │
+                └──────────────────────────────┬──────────────────────────────┘
+                                               │
+                   ┌───────────────────────────┴───────────────────────────┐
+                   ▼                                                       ▼
+      ┌─────────────────────────┐                             ┌─────────────────────────┐
+      │   FEED A (OTX SENSOR)   │                             │   FEED B (MISP SENSOR)  │
+      │   198.51.100.10         │                             │   198.51.100.10         │
+      │   203.0.113.5           │                             │   203.0.113.5           │
+      │   192.0.2.1             │                             │   192.0.2.2             │
+      │   8.8.8.8 (False Pos.)  │                             │   1.1.1.1 (False Pos.)  │
+      └────────────┬────────────┘                             └────────────┬────────────┘
+                   │                                                       │
+                   └───────────────────────────┬───────────────────────────┘
+                                               │
+                                               ▼
+                              ┌─────────────────────────────────┐
+                              │      KESİŞİM (Intersection &)   │
+                              │    Ortak Tehditler = SetA & SetB│
+                              │    [198.51.100.10, 203.0.113.5] │
+                              └────────────────┬────────────────┘
+                                               │
+                                               ▼
+       ┌────────────────────────┐              │
+       │ BEYAZ LİSTE (WHITELIST)│ ─────────────┴───────────── (FARK / Difference -)
+       │ 8.8.8.8, 1.1.1.1       │
+       └────────────────────────┘
+                                               │
+                                               ▼
+                   ┌───────────────────────────────────────────────────────┐
+                   │ YÜKSEK GÜVENİLİRLİKLİ FİLTRELENMİŞ AKTİF BLOK LİSTESİ │
+                   │       (High-Confidence Filtered Threat Feed)          │
+                   │        [198.51.100.10, 203.0.113.5]                   │
+                   │    * False Positive oranı: %0                         │
+                   │    * Eşleşme Hızı: O(1) Sabit Zaman Karmaşıklığı      │
+                   └───────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+                ┌─────────────────────────────────────────────────────────────┐
+                │        ZAMAN KARMAŞIKLIĞI VE PERFORMANS FARKI (BENCHMARK)   │
+                └──────────────────────────────┬──────────────────────────────┘
+                                               │
+                 ┌─────────────────────────────┴─────────────────────────────┐
+                 ▼                                                           ▼
+┌─────────────────────────────────┐                         ┌─────────────────────────────────┐
+│     LİSTE ARAMASI: O(N)         │                         │      KÜME ARAMASI: O(1)         │
+│     (Linear Scan in List)       │                         │      (Hash Table in Set)        │
+├─────────────────────────────────┤                         ├─────────────────────────────────┤
+│ • 1.000.000 eleman: 1.000.000   │                         │ • 1.000.000 eleman: 1 tek hash  │
+│   karşılaştırma adımı           │                         │   işlemi                        │
+│ • Süre: ~45.20 µs               │                         │ • Süre: ~0.40 µs                │
+│ • Ağ Trafiği: Paket kaybı ve    │                         │ • Ağ Trafiği: Hat hızında       │
+│   yüksek CPU darboğazı (%100)   │                         │   (Wire-Speed) 0 kayıp inceleme │
+└─────────────────────────────────┘                         └─────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────────────
+GÜVENLİK KAZANIMLARI:
+  1. safe_deep_dict_get ile KeyError kaynaklı DoS (Hizmet Dışı Bırakma) riskinin sıfırlanması.
+  2. In-place liste silme (mutasyon) tuzaklarının engellenerek kaçan IoC kalmaması.
+  3. Koleksiyon boyut sınırlaması (MAX_COLLECTION_LIMIT = 50.000) ile bellek tükenmesi koruması.

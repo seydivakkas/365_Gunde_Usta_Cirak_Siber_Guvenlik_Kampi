@@ -1,0 +1,32 @@
+# ARP Tablosu, Yerel Ağ Komşuluğu ve Güvenlik Denetim Raporu
+
+Bu rapor, yerel ağ arayüzündeki IP-MAC eşlemelerini, statik/dinamik girişleri ve
+simüle edilen ARP Zehirleme (Cache Poisoning) saldırılarına ait alarmları belgeler.
+
+## 1. Yerel Ağ ARP Önbellek Tablosu
+
+| IP Adresi | Fiziksel MAC Adresi | Arayüz | Tür | Ağ Rolü | Güvenlik Durumu |
+|---|---|---|---|---|---|
+| `192.168.1.1` | `00:1A:2B:3C:4D:01` | `eth0` | Dinamik | Normal Düğüm | ⚡ Dinamik (Değişebilir) |
+| `192.168.1.10` | `00:1A:2B:3C:4D:0A` | `eth0` | Statik | Yerel DNS/LDAP Sunucusu | 🔒 Statik (Korumalı) |
+| `192.168.1.50` | `52:54:00:12:34:56` | `eth0` | Dinamik | Normal Düğüm | ⚡ Dinamik (Değişebilir) |
+| `192.168.1.255` | `FF:FF:FF:FF:FF:FF` | `eth0` | Statik | Alt Ağ Yayın Adresi (Broadcast) | 📢 Yayın (Broadcast) |
+| `224.0.0.1` | `01:00:5E:00:00:01` | `eth0` | Statik | Tüm Düğümler Çok Noktaya Yayın (Multicast) | 👥 Çok Noktaya Yayın (Multicast) |
+
+## 2. Tespit Edilen ARP Güvenlik Alarmları (Anomali Analizi)
+
+| Alarm ID | Zaman | Hedef IP | Meşru MAC | Saldırgan MAC | Tehdit Türü | Seviye |
+|---|---|---|---|---|---|---|
+| `ALT-001` | 10:00:05 | `192.168.1.1` | `00:1A:2B:3C:4D:01` | `AA:BB:CC:DD:EE:FF` | DAI_DHCP_SNOOPING_VIOLATION | **CRITICAL** |
+| `ALT-002` | 10:00:06 | `192.168.1.10` | `00:1A:2B:3C:4D:0A` | `AA:BB:CC:DD:EE:FF` | DAI_DHCP_SNOOPING_VIOLATION | **CRITICAL** |
+
+### Ayrıntılı Müdahale ve Savunma Tavsiyeleri
+- **[ALT-001] DAI İHLALİ: 192.168.1.1 için beklenen MAC 00:1A:2B:3C:4D:01, ancak paket AA:BB:CC:DD:EE:FF taşıyor!**
+  - *Savunma Adımı:* Paket switch seviyesinde derhal DROP edilmeli ve port güvenlik ihlali oluşturulmalıdır.
+- **[ALT-002] DAI İHLALİ: 192.168.1.10 için beklenen MAC 00:1A:2B:3C:4D:0A, ancak paket AA:BB:CC:DD:EE:FF taşıyor!**
+  - *Savunma Adımı:* Paket switch seviyesinde derhal DROP edilmeli ve port güvenlik ihlali oluşturulmalıdır.
+
+## 3. Kurumsal Ağlar İçin Sertleştirme Prensipleri
+- **Dynamic ARP Inspection (DAI):** Anahtarlar üzerinde DHCP Snooping veri tabanına dayanarak sahte ARP paketleri donanım seviyesinde düşürülmelidir.
+- **Statik Ağ Geçidi Eşlemesi:** Kritik sunucularda varsayılan ağ geçidi (Default Gateway) MAC adresi statik olarak (`arp -s`) sabitlenmelidir.
+- **Port Güvenliği (Port Security):** Anahtar portlarında MAC adresi sınırlaması yapılarak tek bir fiziksel porttan sahte MAC yayımı engellenmelidir.

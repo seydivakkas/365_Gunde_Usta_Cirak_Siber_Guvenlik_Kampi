@@ -1,0 +1,34 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "gun": 126,
+  "hafta": 18,
+  "asama": "Aşama 5: Kriptografi ve Güvenlik Mimarisi",
+  "konu": "Aşama 5 kalite özeti: kriptografi ve mimari",
+  "tarih": "2026-11-02",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "kriterler": {
+    "kod_kalitesi_ve_didaktik_yorumlar": 20,
+    "birim_testler_ve_kapsam": 40,
+    "negatif_kontroller_ve_sinir_durumlari": 25,
+    "mimari_tasarim_guvenlik_belgeleme": 15
+  },
+  "test_sonuclari": {
+    "toplam_test": 15,
+    "basarili_test": 15,
+    "hatali_test": 0,
+    "test_suresi_saniye": 0.000
+  },
+  "negatif_senaryolar": {
+    "toplam_senaryo": 9,
+    "basarili_senaryo": 9,
+    "hatali_senaryo": 0
+  },
+  "asama_5_karari": "STAGE_5_ACCEPTED (PASS)",
+  "guvenlik_standartlari": [
+    "NIST SP 800-131A (Transitions: Cryptographic Algorithms and Key Lengths)",
+    "NIST SP 800-57 (Key Management Recommendations)",
+    "NIST SP 800-160 (Systems Security Engineering)",
+    "Saltzer-Schroeder (1975) Fail-Safe Defaults & Complete Mediation Principles"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "aciklama": "G064 Wireshark Filtre Motoru Icin Negatif Sinir ve Sozdizim Hatasi Test Senaryolari",
+  "test_senaryolari": [
+    {
+      "test_kodu": "NEG_01",
+      "senaryo_adi": "Dengesiz Parantez Sozdizim Hatasi",
+      "filtre": "(ip.src == 192.168.1.100 && (tcp.dstport == 80)",
+      "beklenen_hata": "FilterSyntaxError",
+      "beklenen_tespit": "DENGESIZ_PARANTEZ_HATASI"
+    },
+    {
+      "test_kodu": "NEG_02",
+      "senaryo_adi": "Tanimsiz / Desteklenmeyen Protokol Alani",
+      "filtre": "quantum.superposition == 1",
+      "beklenen_hata": "UnknownFieldError",
+      "beklenen_tespit": "TANIMSIZ_PROTOKOL_ALANI"
+    },
+    {
+      "test_kodu": "NEG_03",
+      "senaryo_adi": "Veri Tipi Uyusmazligi (Sayisal Alana Metin Karsilastirmasi)",
+      "filtre": "tcp.dstport == \"eighty\"",
+      "beklenen_hata": "FilterTypeError",
+      "beklenen_tespit": "TIP_UYUSMAZLIK_HATASI"
+    },
+    {
+      "test_kodu": "NEG_04",
+      "senaryo_adi": "Gecersiz Bayt Dilimleme Araligi (Slice Out of Bounds)",
+      "filtre": "tcp.payload[100:105] == 47:45",
+      "beklenen_hata": "SliceOutOfBoundsError",
+      "beklenen_tespit": "BAYT_DILIMLEME_ASIMI"
+    },
+    {
+      "test_kodu": "NEG_05",
+      "senaryo_adi": "Bozuk Duzenli Ifade (Regex) Sozdizimi",
+      "filtre": "http.request.uri matches \"*[invalid_regex\"",
+      "beklenen_hata": "RegexFilterError",
+      "beklenen_tespit": "GECERSIZ_REGEX_SOZDIZIMI"
+    },
+    {
+      "test_kodu": "NEG_06",
+      "senaryo_adi": "Bos / Beyaz Bosluk Filtre Ifadesi",
+      "filtre": "     ",
+      "beklenen_hata": "EmptyFilterError",
+      "beklenen_tespit": "BOS_FILTRE_GIRDISI"
+    },
+    {
+      "test_kodu": "NEG_07",
+      "senaryo_adi": "Gecersiz Karsilastirma Operatoru",
+      "filtre": "ip.dst === 192.168.1.1",
+      "beklenen_hata": "InvalidOperatorError",
+      "beklenen_tespit": "GECERSIZ_OPERATOR"
+    },
+    {
+      "test_kodu": "NEG_08",
+      "senaryo_adi": "Bozuk veya Gecersiz Paket Formati",
+      "filtre": "ip.proto == 6",
+      "paket_override": "gecersiz_paket_verisi_string",
+      "beklenen_hata": "MalformedPacketError",
+      "beklenen_tespit": "BOZUK_PAKET_NESNESI"
+    },
+    {
+      "test_kodu": "NEG_09",
+      "senaryo_adi": "Kapatilmamis Tirnak Isareti (Tokenize Hatasi)",
+      "filtre": "http.request.method == \"GET",
+      "beklenen_hata": "FilterTokenizeError",
+      "beklenen_tespit": "KAPATILMAMIS_TIRNAK"
+    }
+  ]
+}

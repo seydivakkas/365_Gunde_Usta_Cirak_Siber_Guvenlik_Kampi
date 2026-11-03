@@ -1,0 +1,82 @@
+{
+  "gun": 99,
+  "hafta": 15,
+  "asama": 5,
+  "konu": "CIA ve güvenlik özellikleri tekrar",
+  "olusturma_tarihi": "2026-11-02 01:43:17",
+  "toplam_dosya": 18,
+  "dosyalar": {
+    "README.md": {
+      "boyut_bayt": 4565,
+      "sha256": "66303e4a0cbc60b6a956aac5e01617d72f6a821413794484641cbbd5514dfd3b"
+    },
+    "ders.md": {
+      "boyut_bayt": 7156,
+      "sha256": "a282ed4de6b0f0bf5119d90604a4cd1c782dad616dcbbbcdadf1c6b469f1a5ed"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 12082,
+      "sha256": "808de561e270e8ece0cf49fc98e9f16e37b67a2b4fbacef4b9eef53527fbd620"
+    },
+    "rapor.md": {
+      "boyut_bayt": 3860,
+      "sha256": "89af855832eadf6177c6e6aca19fdd392f6f2a6701f35106037fed64fd40d0fc"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1129,
+      "sha256": "35ecaf399cbb49cf68a930de326ff63ce7d4fd13032cc30c3558342d4f753a32"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 8602,
+      "sha256": "a508de46fb3a8dd10e04b8d135f8895aaafbe57f91d9e7dc334eded30cf40fa6"
+    },
+    "kanit\\gercek\\cia_guvenlik_degerlendirme_raporu.txt": {
+      "boyut_bayt": 1813,
+      "sha256": "e7e89fabdf6ae4ab15fbdf342889431ae64feeffb67705137d220daf2d3b83e8"
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "boyut_bayt": 5658,
+      "sha256": "12d9339ae41716390fb64050b99a8e1a39c039ac71b6f973528e524f77b3a657"
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 4358,
+      "sha256": "d3056d619df4643715fbff41b4219ac9220796a6e59d7914e1fe391a275d5bb9"
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "boyut_bayt": 4100,
+      "sha256": "ff06c24d60d8ed86e4b483abc658383f1e042f60c4bab1d1d99c22f4b9a5fae7"
+    },
+    "kanit\\temsili\\cia_triad_mimarisi.txt": {
+      "boyut_bayt": 3530,
+      "sha256": "a7978fc1b7284a4c25d2202582ff8e402e450a053bc5fb3a57027375f12d3a55"
+    },
+    "ornek_veri\\invalid_cia_inputs.json": {
+      "boyut_bayt": 2838,
+      "sha256": "0ab92c5a342643e697ecfb83f26e68b6bc0dfc2906e44d149c23025ee8908d8e"
+    },
+    "ornek_veri\\sample_transaction.json": {
+      "boyut_bayt": 301,
+      "sha256": "2277e66c773bb7de715628a278940fe273e10c5e97f47541d403f26280dd5579"
+    },
+    "tests\\__init__.py": {
+      "boyut_bayt": 583,
+      "sha256": "4e01902ac8ff355e9824cac4197927a30d45bc95b5a2194a18cbf584831bbb57"
+    },
+    "tests\\test_cia_triad_engine.py": {
+      "boyut_bayt": 13056,
+      "sha256": "8da809d08f56400aa1b64d3c27e25f104f746367b7beeaf7a8526ab65e794dde"
+    },
+    "uygulama\\__init__.py": {
+      "boyut_bayt": 587,
+      "sha256": "7489174091bb95e6f2b2b15823b5160211ce2e31370df599c3a850660b89b8b6"
+    },
+    "uygulama\\cia_evaluator_cli.py": {
+      "boyut_bayt": 9356,
+      "sha256": "b04f68cb81b87b699f61848210be02c8b81d820416e7515f7f0be628385f5ec7"
+    },
+    "uygulama\\cia_triad_engine.py": {
+      "boyut_bayt": 20980,
+      "sha256": "f1d109d4b37fdc180ffa48f7dd8ca826a0c8ec40707635b66c64078475e74bf4"
+    }
+  }
+}

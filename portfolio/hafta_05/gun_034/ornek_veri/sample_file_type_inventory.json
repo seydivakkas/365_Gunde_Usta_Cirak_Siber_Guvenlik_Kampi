@@ -1,0 +1,58 @@
+[
+  {
+    "id": "FILE-001",
+    "file_name": "sample_document.pdf",
+    "relative_path": "sample_files/sample_document.pdf",
+    "claimed_extension": ".pdf",
+    "reported_mime": "application/pdf",
+    "description": "Standard PDF administrative report."
+  },
+  {
+    "id": "FILE-002",
+    "file_name": "sample_image.png",
+    "relative_path": "sample_files/sample_image.png",
+    "claimed_extension": ".png",
+    "reported_mime": "image/png",
+    "description": "Standard corporate PNG banner image."
+  },
+  {
+    "id": "FILE-003",
+    "file_name": "sample_archive.zip",
+    "relative_path": "sample_files/sample_archive.zip",
+    "claimed_extension": ".zip",
+    "reported_mime": "application/zip",
+    "description": "Compressed ZIP software archive."
+  },
+  {
+    "id": "FILE-004",
+    "file_name": "sample_text.txt",
+    "relative_path": "sample_files/sample_text.txt",
+    "claimed_extension": ".txt",
+    "reported_mime": "text/plain",
+    "description": "Plain text security advisory memo."
+  },
+  {
+    "id": "FILE-005",
+    "file_name": "fake_invoice.pdf",
+    "relative_path": "sample_files/fake_invoice.pdf",
+    "claimed_extension": ".pdf",
+    "reported_mime": "application/pdf",
+    "description": "Phishing attachment disguised as PDF invoice, actually a Windows PE executable."
+  },
+  {
+    "id": "FILE-006",
+    "file_name": "disguised_photo.jpg",
+    "relative_path": "sample_files/disguised_photo.jpg",
+    "claimed_extension": ".jpg",
+    "reported_mime": "image/jpeg",
+    "description": "Image file uploaded to web server, actually an ELF Linux binary."
+  },
+  {
+    "id": "FILE-007",
+    "file_name": "urgent_bill.pdf.exe",
+    "relative_path": "sample_files/urgent_bill.pdf.exe",
+    "claimed_extension": ".pdf.exe",
+    "reported_mime": "application/x-msdownload",
+    "description": "Double extension executable attempting to deceive Windows users."
+  }
+]

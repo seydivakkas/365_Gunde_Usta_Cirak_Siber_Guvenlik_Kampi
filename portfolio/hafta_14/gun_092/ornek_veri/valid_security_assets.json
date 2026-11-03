@@ -1,0 +1,50 @@
+[
+  {
+    "asset_id": "AST-FW-01",
+    "ipv4_address": "10.0.0.1",
+    "mac_address": "00:50:56:A1:B2:C3",
+    "port": 443,
+    "hostname": "firewall-edge-01.corp.internal",
+    "protocol": "TCP",
+    "sha256_checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "risk_score": 2.5,
+    "tags": ["perimeter", "firewall", "production"],
+    "is_active": true
+  },
+  {
+    "asset_id": "AST-WEB-02",
+    "ipv4_address": "192.168.10.25",
+    "mac_address": "08:00:27:12:34:56",
+    "port": 80,
+    "hostname": "nginx-frontend-02.dmz.local",
+    "protocol": "TCP",
+    "sha256_checksum": "2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae",
+    "risk_score": 4.0,
+    "tags": ["dmz", "nginx", "web"],
+    "is_active": true
+  },
+  {
+    "asset_id": "AST-DB-01",
+    "ipv4_address": "172.16.5.100",
+    "mac_address": "52:54:00:FE:DC:BA",
+    "port": 5432,
+    "hostname": "postgres-master-01.db.internal",
+    "protocol": "TCP",
+    "sha256_checksum": "fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb9",
+    "risk_score": 1.2,
+    "tags": ["database", "postgresql", "critical"],
+    "is_active": true
+  },
+  {
+    "asset_id": "AST-DNS-01",
+    "ipv4_address": "10.0.0.53",
+    "mac_address": "00:15:5D:88:99:AA",
+    "port": 53,
+    "hostname": "coredns-resolver-01.corp.internal",
+    "protocol": "UDP",
+    "sha256_checksum": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+    "risk_score": 3.0,
+    "tags": ["infrastructure", "dns"],
+    "is_active": true
+  }
+]

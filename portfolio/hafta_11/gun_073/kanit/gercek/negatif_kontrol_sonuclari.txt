@@ -1,0 +1,74 @@
+================================================================================
+G073: KOŞULLAR VE SAVUNMACI DÖNGÜLER — NEGATİF KONTROL VE SINIR KANITLARI
+Tarih: 2026-10-31
+Denetleyici: SecurityControlFlowEngine
+Hedef Kapsam: Fail-Closed Politikalar, Sonsuz Döngü Koruması, Kayan Pencere Hız Sınırı
+Standart: CWE-835 Loop with Unreachable Exit Condition, Anti-DoS Denetimi
+================================================================================
+
+VAKA 1: NEG_01_POINTER_CYCLE_DETECTED
+--------------------------------------------------------------------------------
+Girdi: 10 -> 20 -> 10 döngüsel atıf içeren gösterici haritası
+Beklenen İstisna: ControlFlowSecurityError ("Döngüsel gösterici (Pointer Cycle) tespit edildi...")
+Fırlatılan Mesaj: Döngüsel gösterici (Pointer Cycle) tespit edildi: 10 -> 20 -> 10.
+Sonuç: BAŞARILI (PASS) - Döngüsel atıf tespit edildi ve sonsuz döngü engellendi.
+
+VAKA 2: NEG_02_MAX_ITERATIONS_EXCEEDED
+--------------------------------------------------------------------------------
+Girdi: Azami 3 yineleme sınırını aşan 4 adımlı zincir
+Beklenen İstisna: ControlFlowSecurityError ("Azami döngü yineleme tavanı aşıldı: 3 adımda sonlandırılamadı...")
+Fırlatılan Mesaj: Azami döngü yineleme tavanı aşıldı: 3 adımda sonlandırılamadı (Anti-DoS koruması).
+Sonuç: BAŞARILI (PASS) - Anti-DoS yineleme tavanı tetiklendi.
+
+VAKA 3: NEG_03_INVALID_POLICY_RULE_SCHEMA
+--------------------------------------------------------------------------------
+Girdi: 'action' (ALLOW/DENY) alanı bulunmayan kusurlu kural kaydı
+Beklenen İstisna: ControlFlowSecurityError ("Kural şema ihlali: 'action' (ALLOW/DENY) alanı eksik.")
+Fırlatılan Mesaj: Kural şema ihlali: 'action' (ALLOW/DENY) alanı eksik.
+Sonuç: BAŞARILI (PASS) - Kusurlu kural şeması elendi.
+
+VAKA 4: NEG_04_UNDEFINED_DEFAULT_ACTION
+--------------------------------------------------------------------------------
+Girdi: default_action = "ALLOW_ALL_RISKY" (Geçersiz varsayılan eylem)
+Beklenen İstisna: ControlFlowSecurityError ("Geçersiz varsayılan politika eylemi: 'ALLOW_ALL_RISKY'...")
+Fırlatılan Mesaj: Geçersiz varsayılan politika eylemi: 'ALLOW_ALL_RISKY' (Yalnızca ALLOW veya DENY kabul edilir).
+Sonuç: BAŞARILI (PASS) - Tanımsız varsayılan eylem engellendi.
+
+VAKA 5: NEG_05_AMBIGUOUS_EVALUATION_NONE_VS_FALSE
+--------------------------------------------------------------------------------
+Girdi: condition_value = None (Yokluk/tanımsızlık)
+Beklenen İstisna: ControlFlowSecurityError ("Belirsiz mantıksal değerlendirme: Değer 'None' (Yokluk)...")
+Fırlatılan Mesaj: Belirsiz mantıksal değerlendirme: Değer 'None' (Yokluk), kesin True veya False bekleniyor.
+Sonuç: BAŞARILI (PASS) - 'None' ile 'False' arasındaki belirsizlik engellendi.
+
+VAKA 6: NEG_06_RATE_LIMITER_WINDOW_NEGATIVE
+--------------------------------------------------------------------------------
+Girdi: window_seconds = -60 (Negatif kayan pencere süresi)
+Beklenen İstisna: ControlFlowSecurityError ("Geçersiz kayan pencere süresi: -60 saniye (Sıfırdan büyük olmalıdır).")
+Fırlatılan Mesaj: Geçersiz kayan pencere süresi: -60 saniye (Sıfırdan büyük olmalıdır).
+Sonuç: BAŞARILI (PASS) - Negatif zaman penceresi reddedildi.
+
+VAKA 7: NEG_07_RATE_LIMITER_THRESHOLD_ZERO
+--------------------------------------------------------------------------------
+Girdi: threshold = 0 (Geçersiz sıfır eşiği)
+Beklenen İstisna: ControlFlowSecurityError ("Geçersiz hız sınırı eşiği: 0 (En az 1 olmalıdır).")
+Fırlatılan Mesaj: Geçersiz hız sınırı eşiği: 0 (En az 1 olmalıdır).
+Sonuç: BAŞARILI (PASS) - Sıfır eşik değeri engellendi.
+
+VAKA 8: NEG_08_CORRUPT_POINTER_OFFSET
+--------------------------------------------------------------------------------
+Girdi: Tampon boyutu 128 iken 500 nolu ofsete zıplama girişimi
+Beklenen İstisna: ControlFlowSecurityError ("Arabellek sınır aşımı: Gösterici ofseti 500, azami tampon boyutu 128.")
+Fırlatılan Mesaj: Arabellek sınır aşımı: Gösterici ofseti 500, azami tampon boyutu 128.
+Sonuç: BAŞARILI (PASS) - Tampon dışı ofset başarıyla yakalandı.
+
+VAKA 9: NEG_09_MALFORMED_EVENT_STREAM
+--------------------------------------------------------------------------------
+Girdi: Liste yerine sözlük formatında olay akışı
+Beklenen İstisna: ControlFlowSecurityError ("Olay akışı bir liste (list) olmalıdır, alınan: dict")
+Fırlatılan Mesaj: Olay akışı bir liste (list) olmalıdır, alınan: dict
+Sonuç: BAŞARILI (PASS) - Tip uyumsuzluğu başarıyla yakalandı.
+
+================================================================================
+ÖZET: 9 / 9 Negatif Sınır Kontrolü Eksiksiz Başarıyla Geçti (%100 Başarı).
+================================================================================

@@ -1,0 +1,21 @@
+{
+  "README.md": "2781332a5e18d383b3ca461d3557ab56ab76be6365ceadc783e158e11326aa17",
+  "ders.md": "9e33a119d8e39017fe718007f5d6938d7f9a635c14186f11bc575bd39619eb6f",
+  "rapor.md": "2be61e5fb2a31c61a7f2e629dc91b4c9ab40f52831c9c57379129402522d693a",
+  "sonuc.json": "647db0fa845578407d674e775d7d3e570f6995add13217a9f64bf910d2dafe34",
+  "soru_cevap.md": "793ff47cce3010b557661e875c4441163a94e6ecc97b760cd2ad4f5e9b554a44",
+  "kanit\\gercek\\komut_ve_cikis.txt": "0ca9751e543195c77372374d10a28c53b1fc3c45c948a9da0e272c80c13e6a16",
+  "kanit\\gercek\\negatif_kontrol_sonuclari.txt": "f4e83705b73d217a6487a085a4df8ebbbf41f67d717df50203e3a0cd7b9ce391",
+  "kanit\\gercek\\temiz_kod_guvenlik_raporu.txt": "e1ae19eb0129bd1e4d282478017ff05c1e8690fb249bf7c1ab4a17c2dfd0f48a",
+  "kanit\\gercek\\test_sonuclari.txt": "c814f8a831efd55c4980e30537870d659f0d64dfb9416c4e5e4dd0e033f01f06",
+  "kanit\\temsili\\fonksiyonlar_ve_temiz_kod_mimarisi.txt": "287707bf2a58fc7376a4c487e4dee23de33bb2ba9d4ad95cef11941993ea0d42",
+  "ornek_veri\\guvenlik_fonksiyonlari_ornek_verisi.json": "fa6c41d5321af7dfdee1e12622967d69a08f415148680c70c000903375078d8d",
+  "ornek_veri\\invalid_function_call_inputs.json": "b6a296654b75b0e4693f89f83b36b7966b2fecc0b57e9b3a4758852c66c6a5cf",
+  "tests\\__init__.py": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+  "tests\\test_clean_functions_and_security_modularizer.py": "b6a9ac16f1c16088dd911a519774dbe50fcc9c9886e8041af63b0994e85da934",
+  "tests\\__pycache__\\__init__.cpython-314.pyc": "127243c42cc790d3f86de7d616a93d01feb5fcf789aa2727b89aa82590330935",
+  "tests\\__pycache__\\test_clean_functions_and_security_modularizer.cpython-314.pyc": "4bb2db063726c87d5868f559bd0f9b459431d6b29d654b1d63758fa11efa0d54",
+  "uygulama\\__init__.py": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+  "uygulama\\clean_functions_and_security_modularizer.py": "8b21dbb389ec7660f766c5c8e4e41de785da7a7073da91a82b509a270a4d5722",
+  "uygulama\\__pycache__\\clean_functions_and_security_modularizer.cpython-314.pyc": "b6e53ceb41e05af096babfaac5d520cfeda187f7a6a429c583add96be1077189"
+}

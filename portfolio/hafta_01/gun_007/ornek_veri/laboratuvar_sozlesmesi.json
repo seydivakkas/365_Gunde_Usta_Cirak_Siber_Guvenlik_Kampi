@@ -1,0 +1,109 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ.",
+  "proje_adi": "Anadolu Siber Güvenlik Araştırma Laboratuvarı (ASGAL) Kurulum Sözleşmesi",
+  "gun_no": 7,
+  "gun_kimligi": "G007",
+  "versiyon": "1.0.0",
+  "tarih": "2026-10-26",
+  "sozlesme_durumu": "ONAYLANDI",
+  "taraflar_ve_imzalar": {
+    "ciso": "Dr. Selin Kaya (Bilgi Güvenliği Başkanı)",
+    "arastirmaci": "Seydi Eryılmaz (Baş Siber Güvenlik Mühendisi)",
+    "sistem_yoneticisi": "Burak Demir (Altyapı ve Sanallaştırma Lideri)"
+  },
+  "etik_ve_hukuki_kapsam": {
+    "aciklama": "Bu sözleşme, laboratuvarda yürütülecek tüm saldırı ve savunma testlerinin yalnızca belirlenen izole sanal ağ sınırları içinde kalmasını hukuken bağlar.",
+    "izinli_ip_bloklari": [
+      "192.168.100.0/24",
+      "10.0.50.0/24"
+    ],
+    "yasakli_ip_bloklari": [
+      "0.0.0.0/0",
+      "8.8.8.8",
+      "1.1.1.1",
+      "192.168.1.1"
+    ],
+    "dis_internet_izni": false,
+    "izolasyon_modu": "HOST_ONLY_ISOLATED",
+    "panik_butonu_acil_durdurma": "Sanal anahtar (vSwitch) bağlantısının yazılımsal ve fiziksel olarak 5 saniye içinde kapatılması"
+  },
+  "hypervisor_guvenlik_ayarlari": {
+    "pano_paylasimi_clipboard": "DEVRE_DISI",
+    "ortak_klasorler_shared_folders": "DEVRE_DISI",
+    "surukle_birak_drag_drop": "DEVRE_DISI",
+    "hypervisor_guncel_mi": true,
+    "otomatik_anlik_goruntu_snapshot": true
+  },
+  "laboratuvar_topolojisi": [
+    {
+      "node_id": "NODE-01",
+      "ad": "Kali Linux Saldırı Makinesi",
+      "ip_adresi": "192.168.100.10",
+      "mac_adresi": "08:00:27:AA:01:10",
+      "segment": "RED_ZONE",
+      "adaptor_tipi": "Host-Only",
+      "rol": "SALDIRGAN",
+      "amac": "Penetrasyon testi, paket üretimi ve zafiyet istismarı"
+    },
+    {
+      "node_id": "NODE-02",
+      "ad": "Windows Server 2022 AD DC",
+      "ip_adresi": "192.168.100.20",
+      "mac_adresi": "08:00:27:AA:01:20",
+      "segment": "TARGET_ZONE",
+      "adaptor_tipi": "Host-Only",
+      "rol": "HEDEF",
+      "amac": "Active Directory güvenlik sıkılaştırması ve Kerberos atak analizi"
+    },
+    {
+      "node_id": "NODE-03",
+      "ad": "Ubuntu 22.04 LTS Web/Veritabanı",
+      "ip_adresi": "192.168.100.30",
+      "mac_adresi": "08:00:27:AA:01:30",
+      "segment": "TARGET_ZONE",
+      "adaptor_tipi": "Host-Only",
+      "rol": "HEDEF",
+      "amac": "OWASP Top 10 zafiyetleri ve SQL Injection testleri"
+    },
+    {
+      "node_id": "NODE-04",
+      "ad": "Zeek NIDS ve Wazuh SIEM Sensörü",
+      "ip_adresi": "192.168.100.40",
+      "mac_adresi": "08:00:27:AA:01:40",
+      "segment": "BLUE_ZONE",
+      "adaptor_tipi": "Host-Only",
+      "rol": "SAVUNMA_IZLEME",
+      "amac": "Ağ telemetrisi toplama, olay korelasyonu ve SOC analizi"
+    },
+    {
+      "node_id": "NODE-05",
+      "ad": "pfSense Sanal Ağ Geçidi ve Güvenlik Duvarı",
+      "ip_adresi": "192.168.100.1",
+      "mac_adresi": "08:00:27:AA:01:01",
+      "segment": "GATEWAY",
+      "adaptor_tipi": "Host-Only",
+      "rol": "DENETIM_GECITI",
+      "amac": "VLAN yönlendirme, paket loglama ve iç trafik filtreleme"
+    }
+  ],
+  "riskler_ve_kontroller": [
+    {
+      "risk_id": "RSK-01",
+      "risk_tanimi": "Sanal makineden üretilen zararlı paketlerin ev/şirket ağına veya internete sızması.",
+      "kontrol_adi": "Host-Only / Air-Gapped Sanal Ağ Kısıtlaması",
+      "durum": "UYGULANDI"
+    },
+    {
+      "risk_id": "RSK-02",
+      "risk_tanimi": "Zararlı yazılımın hipervizör açığından yararlanarak ana işletim sistemine sıçraması (VM Escape).",
+      "kontrol_adi": "Pano Paylaşımı, Sürükle-Bırak ve Paylaşılan Klasörlerin Kapatılması",
+      "durum": "UYGULANDI"
+    },
+    {
+      "risk_id": "RSK-03",
+      "risk_tanimi": "Yapılan saldırı simülasyonu sonrasında hedef sunucunun çökmesi ve test ortamının kilitlenmesi.",
+      "kontrol_adi": "Her Test Öncesi Temiz Durum Anlık Görüntüsü (Snapshot) Alma Zorunluluğu",
+      "durum": "UYGULANDI"
+    }
+  ]
+}

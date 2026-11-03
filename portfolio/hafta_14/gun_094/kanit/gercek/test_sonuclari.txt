@@ -1,0 +1,38 @@
+=== G094 BİRİM TEST SONUÇLARI (14 SENARYO) ===
+Tarih: 2026-11-01 23:47:53
+
+test_01_verify_luhn_valid_cards (test_pii_masker.TestPIIMaskerEngine.test_01_verify_luhn_valid_cards)
+Test 01: Geçerli Visa ve MasterCard kart numaralarının Luhn kontrolünden geçtiğini doğrular. ... ok
+test_02_verify_luhn_invalid_cards (test_pii_masker.TestPIIMaskerEngine.test_02_verify_luhn_invalid_cards)
+Test 02: Basamağı tahrif edilmiş sahte kartın Luhn kontrolünde başarısız olduğunu doğrular. ... ok
+test_03_verify_tckn_valid (test_pii_masker.TestPIIMaskerEngine.test_03_verify_tckn_valid)
+Test 03: Matematiksel algoritması geçerli TCKN'lerin onaylandığını doğrular. ... ok
+test_04_verify_tckn_invalid_algorithm (test_pii_masker.TestPIIMaskerEngine.test_04_verify_tckn_invalid_algorithm)
+Test 04: 10. ve 11. basamak formülü tutmayan sahte TCKN'nin reddedildiğini doğrular. ... ok
+test_05_verify_tckn_leading_zero (test_pii_masker.TestPIIMaskerEngine.test_05_verify_tckn_leading_zero)
+Test 05: Sıfır ile başlayan 11 haneli sayıların TCKN olarak kabul edilmediğini doğrular. ... ok
+test_06_verify_iban_tr_valid (test_pii_masker.TestPIIMaskerEngine.test_06_verify_iban_tr_valid)
+Test 06: ISO 7064 MOD-97 doğrulamasından geçen TR IBAN'ın onaylandığını doğrular. ... ok
+test_07_verify_iban_tr_invalid (test_pii_masker.TestPIIMaskerEngine.test_07_verify_iban_tr_invalid)
+Test 07: MOD-97 kontrol basamağı bozuk IBAN'ın reddedildiğini doğrular. ... ok
+test_08_email_masking (test_pii_masker.TestPIIMaskerEngine.test_08_email_masking)
+Test 08: E-posta adreslerinin domain korunarak doğru maskelendiğini doğrular. ... ok
+test_09_phone_masking (test_pii_masker.TestPIIMaskerEngine.test_09_phone_masking)
+Test 09: Telefon numaralarının formatına uygun maskelendiğini doğrular. ... ok
+test_10_secrets_masking (test_pii_masker.TestPIIMaskerEngine.test_10_secrets_masking)
+Test 10: Parola ve API anahtarı dizgilerinin maskelendiğini doğrular. ... ok
+test_11_mask_styles (test_pii_masker.TestPIIMaskerEngine.test_11_mask_styles)
+Test 11: MASK, REDACT ve HASH stillerinin farklı davranışlarını doğrular. ... ok
+test_12_redos_defense (test_pii_masker.TestPIIMaskerEngine.test_12_redos_defense)
+Test 12: ReDoS saldırı şablonlarının tespit edilerek engellendiğini doğrular. ... ok
+test_13_null_byte_rejection (test_pii_masker.TestPIIMaskerEngine.test_13_null_byte_rejection)
+Test 13: Null-Byte karakteri içeren metinlerin reddedildiğini doğrular (CWE-158). ... ok
+test_14_dos_payload_limits (test_pii_masker.TestPIIMaskerEngine.test_14_dos_payload_limits)
+Test 14: 1 MB tavanını aşan aşırı büyük girdilerin DoS korumasına takıldığını doğrular (CWE-400). ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.002s
+
+OK
+
+Toplam: 14, Başarılı: 14, Hata: 0, Başarısız: 0

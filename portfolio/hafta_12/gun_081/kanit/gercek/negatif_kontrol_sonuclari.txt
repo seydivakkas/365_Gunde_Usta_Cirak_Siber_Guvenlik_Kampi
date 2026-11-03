@@ -1,0 +1,49 @@
+=== G081 NEGATİF GÜVENLİK KONTROLLERİ VE LOGLAMA SAVUNMA RAPORU ===
+Toplam Senaryo: 9
+Başarılı Savunma: 9
+
+[PASS] NEG_01_LOG_INJECTION_CRLF
+  Açıklama : Log dosyasina sahte satir eklemeyi hedefleyen CRLF (\r\n) log enjeksiyonu (CWE-117)
+  Sonuç    : CRLF filtrelendi ve tek satira indirgendi: Kullanici bulunamadi [AUDIT] 2026-11-01 Administrator session opened successfully
+  Savunma  : Log mesajindaki tum CRLF karakterleri filtrelenir ve tek bir guvenli satira indirgenir.
+
+[PASS] NEG_02_SENSITIVE_CREDENTIAL_LEAK
+  Açıklama : Hata loguna kazara veya kasitli olarak parola ve gizli anahtar yazilmasi (CWE-532)
+  Sonuç    : Parola basariyla maskelendi: Veritabani baglanti hatasi: db_user=postgres password=[REDACTED] host=10.0.0.1
+  Savunma  : password= parametresi regex filtresi tarafindan tespit edilip [REDACTED] ile maskelenir.
+
+[PASS] NEG_03_BEARER_TOKEN_EXPOSURE
+  Açıklama : API istek basligindaki Bearer JWT yetki belirtecinin loga ifsa edilmesi (CWE-359)
+  Sonuç    : Bearer JWT basariyla maskelendi: HTTP 401 Unauthorized: Header Authorization: Bearer [REDACTED_JWT]
+  Savunma  : Bearer token degeri [REDACTED_JWT] olarak maskelenir.
+
+[PASS] NEG_04_ANSI_TERMINAL_ESCAPE_POISONING
+  Açıklama : SIEM veya terminal log izleyicilerini yaniltmaya yonelik ANSI kacis dizisi enjeksiyonu
+  Sonuç    : ANSI kacis kodlari temizlendi: Islem tamamlandi [CRITICAL] SALDIRI ALGILANDI
+  Savunma  : ANSI terminal kontrol karakterleri temizlenerek yalnizca duz metin loglanir.
+
+[PASS] NEG_05_NULL_BYTE_POISONING_IN_MESSAGE
+  Açıklama : C-tabanli log parser'larini yaniltmaya yonelik null-byte (\x00) enjeksiyonu
+  Sonuç    : Null-byte karakteri temizlendi: Kullanici adi: admin .saldirgan.com giris yapti
+  Savunma  : Dize icindeki null-byte karakteri bosluk veya ozel belirtec ile degistirilir.
+
+[PASS] NEG_06_OVERSIZED_MESSAGE_DOS
+  Açıklama : Log depolama alanini ve bellegi doldurmaya yonelik tavan boyutu asan devasa log iletisi
+  Sonuç    : Devasa mesaj kesildi (uzunluk: 114): XXXXXX...[TRUNCATED]
+  Savunma  : max_message_length (or. 4096 karakter) tavani uygulanarak fazlalik kesilir (...[TRUNCATED]).
+
+[PASS] NEG_07_INVALID_LOG_LEVEL_SPEC
+  Açıklama : Gecersiz veya sahte log seviyesi atama girisimi
+  Sonuç    : Gecersiz seviye 'SAHTE_LEVEL_99' guvenli 'WARNING' seviyesine normalizasyon yapildi.
+  Savunma  : Gecersiz log seviyeleri reddedilir veya guvenli varsayilan seviyeye (INFO/WARNING) atanir.
+
+[PASS] NEG_08_CREDIT_CARD_PAN_EXPOSURE
+  Açıklama : Odeme islemi loglarina 16 haneli kredi karti numarasinin (PAN) acik metin sizmasi
+  Sonuç    : Kredi karti numarasi maskelendi: Odeme basarisiz oldu: Kart no: ****-****-****-4444 tutar: 1500 TL
+  Savunma  : Kredi karti desenleri tespit edilerek son 4 hane haric maskelenir (****-****-****-4444).
+
+[PASS] NEG_09_MALFORMED_JSON_LOG_CONTEXT
+  Açıklama : Yapilandirilmis JSON formatlayiciya serilestirilemeyen veya dongusel veri nesnesi aktarimi
+  Sonuç    : Bozuk/dongusel nesnede sistem cokmedi, fallback JSON uretildi.
+  Savunma  : JSON serilestirme hatasi durumunda guvenli geri donus (fallback) formati kullanilir.
+

@@ -1,0 +1,39 @@
+================================================================================
+GERÇEK KOMUT ÇALIŞTIRMA VE KANIT KAYDI — GÜN 014 (AŞAMA 1 KAPANIŞ PROJESİ)
+Tarih: 2026-10-27
+Platform: Windows 11 (10.0.26300)
+Python Sürümü: 3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]
+Çalışma Dizini: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Lisans: ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+
+>>> KOMUT: python portfolio/hafta_02/gun_014/uygulama/stage1_security_auditor.py --dosya portfolio/hafta_02/gun_014/ornek_veri/asama_01_laboratuvar_dosyasi.json --tumunu-denetle
+Çıkış Kodu: 0
+[STDOUT]:
+[*] T�m A�ama 1 Laboratuvar Projeleri Denetleniyor...
+    - Proje: LAB-SEC-GOLDEN-01 -> Puan: 100.0 | Durum: ASAMA_1_KABUL_PASS | Kabul: True
+    - Proje: LAB-SEC-DEFECTIVE-99 -> Puan: 0.0 | Durum: REDDEDILDI_TEHLIKELI | Kabul: False
+
+--------------------------------------------------------------------------------
+>>> KOMUT: python portfolio/hafta_02/gun_014/uygulama/stage1_security_auditor.py --dosya portfolio/hafta_02/gun_014/ornek_veri/asama_01_laboratuvar_dosyasi.json --proje-id LAB-SEC-GOLDEN-01 --denetle
+Çıkış Kodu: 0
+[STDOUT]:
+[*] A�ama 1 Kabul Denetimi Ba�lat�l�yor: Proje=LAB-SEC-GOLDEN-01
+[+] Denetim Skoru: 100.0 / 100 (ASAMA_1_KABUL_PASS)
+[+] Kriptografik Kan�t Zinciri: aadc4b0201b48a33...
+[+] Bulgu Say�s�: 0
+
+--------------------------------------------------------------------------------
+>>> KOMUT: python portfolio/hafta_02/gun_014/uygulama/stage1_security_auditor.py --dosya portfolio/hafta_02/gun_014/ornek_veri/asama_01_laboratuvar_dosyasi.json --proje-id LAB-SEC-DEFECTIVE-99 --denetle
+Çıkış Kodu: 0
+[STDOUT]:
+[*] A�ama 1 Kabul Denetimi Ba�lat�l�yor: Proje=LAB-SEC-DEFECTIVE-99
+[+] Denetim Skoru: 0.0 / 100 (REDDEDILDI_TEHLIKELI)
+[+] Kriptografik Kan�t Zinciri: 245abe50bfe394ee...
+[+] Bulgu Say�s�: 4
+    - [FELAKET_DURDURMA] CRIT-01-ETIK-ROE-IHLALI: Yaz�l� onay eksik veya �retim sistemlerine / t�m internete a��k yetkisiz test kapsam� tespit edildi! (Etik �hlal = STOP) (-40.0p)
+    - [YUKSEK] WARN-02-EKSIK-VARLIK-ENVANTERI: Varl�k envanteri tutulmam�� veya kritik varl�k sahipleri atanmam��. Korumak istedi�in varl��� bilmeden g�venlik sa�layamazs�n! (-15.0p)
+    - [KRITIK] WARN-03-NIST-CSF-EKSIK-ISLEVLER: NIST CSF 2.0 alt� temel i�levinden eksikler tespit edildi: govern_yonetisim, identify_tanimlama, protect_koruma, detect_tespit, respond_mudahale, recover_kurtarma (-40.0p)
+    - [ORTA] WARN-05-DOGRULANMAMIS-KAYNAK-KULLANIMI: Ara�t�rmalarda kullan�lan kaynaklar�n CRAAP g�venilirlik skoru yetersiz (<80) veya resm� b�lten teyidi eksik. (-10.0p)
+
+--------------------------------------------------------------------------------

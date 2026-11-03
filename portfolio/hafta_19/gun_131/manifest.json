@@ -1,0 +1,81 @@
+{
+  "gun": 131,
+  "hafta": 19,
+  "konu": "Windows Firewall profilleri",
+  "lisans": "OZEL LISANS - TUM HAKLAR SAKLIDIR (c) 2026 Seydi Eryilmaz",
+  "dosyalar": {
+    "README.md": {
+      "sha256": "77a6847db0494496e673b5ee3fc454c6b97a265b7cee83fca04d76be487446fb",
+      "boyut_byte": 5029
+    },
+    "ders.md": {
+      "sha256": "21b4841e6b378a8b6b7985592b2f4c17e4fe20c406bd4085e6b620a56111e936",
+      "boyut_byte": 9938
+    },
+    "kanit_uretici.py": {
+      "sha256": "7e04961198af34f7449a5784b84c5e33c01f8dd5bc948b93b4ca35b295490ca6",
+      "boyut_byte": 11922
+    },
+    "rapor.md": {
+      "sha256": "da5e69447e2aaf8d506f01ee2fa63786bff29e70183fabe5bfc881ad51c6c582",
+      "boyut_byte": 5592
+    },
+    "sonuc.json": {
+      "sha256": "10882a77e93be1232cab79aa8e902d81aeb56c779c9e6c462fe55ab281af32b3",
+      "boyut_byte": 1100
+    },
+    "soru_cevap.md": {
+      "sha256": "2a46b7303f50f8c9b845354bf1a908a278c607ee76cb349732e1f2c0ec303e43",
+      "boyut_byte": 9530
+    },
+    "kanit/gercek/firewall_denetim_raporu.md": {
+      "sha256": "72c1f58b2c217e9152ce0eca2bf030287e364b757094d844db227f09ba293a22",
+      "boyut_byte": 2855
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "sha256": "d494737bc1aa3ce622d9a8bc2c8e1741a6417b23a6ee2de321d624877f725766",
+      "boyut_byte": 5107
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "sha256": "57d5ebed02270053c8136d861d52d3e552fed1a245460ef7d696f0651a1ba94a",
+      "boyut_byte": 2769
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "sha256": "6a13a48d0d897e82f096b4120595222d67eb96186d497c2ee8331b99b63f9627",
+      "boyut_byte": 3939
+    },
+    "kanit/temsili/firewall_mimarisi.txt": {
+      "sha256": "717d79a2c3415264d658f99c5f20e54108ae7364a04efc8b64f679fdfb2df261",
+      "boyut_byte": 4026
+    },
+    "ornek_veri/firewall_baseline_spec.json": {
+      "sha256": "9746ad9bbb585013919304fbc839769a4d3ba6460d8e7154dd700c28d58f5707",
+      "boyut_byte": 1593
+    },
+    "ornek_veri/invalid_firewall_scenarios.json": {
+      "sha256": "d37f6063be331b959f4585d3778069419e4437c634dd8de4334cb7947abb9691",
+      "boyut_byte": 5077
+    },
+    "tests/__init__.py": {
+      "sha256": "8a6c1348c28f591efd22659cef9ad0d8e9eda89fb423b4ab5295fb1b8e03439b",
+      "boyut_byte": 579
+    },
+    "tests/test_windows_firewall.py": {
+      "sha256": "374963b323f85a1c2d7b00a6deabf031fb357b2366267f8c08f67ea8b364d148",
+      "boyut_byte": 13881
+    },
+    "uygulama/__init__.py": {
+      "sha256": "d8f0f2f0b36604cb5e335a7e993ad048a8365467d63f68cdd21641f24246c80e",
+      "boyut_byte": 574
+    },
+    "uygulama/firewall_cli.py": {
+      "sha256": "2d6af123a133668002768f6a0cd0f4f88a70f664722be2ccfd4d8b36b5e6b9ee",
+      "boyut_byte": 8441
+    },
+    "uygulama/windows_firewall_engine.py": {
+      "sha256": "4db30640546bb8c3d02dea90d021e8064ffa3a9583da9b0ad24ce9c4bd7dfd5e",
+      "boyut_byte": 21356
+    }
+  },
+  "toplam_dosya_sayisi": 18
+}

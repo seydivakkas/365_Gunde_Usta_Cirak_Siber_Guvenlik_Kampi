@@ -1,0 +1,50 @@
+======================================================================
+GÜN 117: RBAC & ABAC CLI KOMUT VE ÇIKTI DOĞRULAMA GÜNLÜĞÜ
+Tarih: 2026-11-02T05:36:53.129760
+======================================================================
+
+--- KOMUT ÇALIŞTIRILIYOR ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/access_cli.py evaluate --user-id dev_01 --roles staff --department it --clearance 2 --tenant tenant_corp --ip 10.0.1.100 --resource-id code_repo --resource-type project_doc --owner-dept it --classification 2 --action read
+
+
+[STDERR]
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_17\gun_117\uygulama\access_cli.py", line 26, in <module>
+    from uygulama.rbac_abac_engine import (
+    ...<8 lines>...
+    )
+ModuleNotFoundError: No module named 'uygulama'
+
+[ÇIKIŞ KODU]: 1
+======================================================================
+
+--- KOMUT ÇALIŞTIRILIYOR ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/access_cli.py sod-check --roles purchaser,approver
+
+
+[STDERR]
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_17\gun_117\uygulama\access_cli.py", line 26, in <module>
+    from uygulama.rbac_abac_engine import (
+    ...<8 lines>...
+    )
+ModuleNotFoundError: No module named 'uygulama'
+
+[ÇIKIŞ KODU]: 1
+======================================================================
+
+--- KOMUT ÇALIŞTIRILIYOR ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/access_cli.py evaluate --user-id guest_user --roles user --department guest --resource-id secret_db --resource-type financial_report --action write
+
+
+[STDERR]
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_17\gun_117\uygulama\access_cli.py", line 26, in <module>
+    from uygulama.rbac_abac_engine import (
+    ...<8 lines>...
+    )
+ModuleNotFoundError: No module named 'uygulama'
+
+[ÇIKIŞ KODU]: 1
+======================================================================
+

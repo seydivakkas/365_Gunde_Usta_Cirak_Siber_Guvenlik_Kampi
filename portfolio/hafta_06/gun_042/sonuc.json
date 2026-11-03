@@ -1,0 +1,44 @@
+{
+  "gun": 42,
+  "gun_id": "G042",
+  "asama": "02",
+  "hafta": "06",
+  "baslik": "Aşama 2 kalite özeti: işletim sistemi temelleri",
+  "tarih": "2026-10-27",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kavramsal_derinlik": 20,
+    "uygulama_gelistirme": 40,
+    "test_kapsami": 25,
+    "savunma_sikilastirma": 15
+  },
+  "test_ozeti": {
+    "toplam": 14,
+    "basarili": 14,
+    "hatali": 0,
+    "sure_saniye": 0.009
+  },
+  "kod_aciklama_satirlari_tamamlandi": true,
+  "kanitlar": {
+    "gercek": [
+      "kanit/gercek/test_sonuclari.txt",
+      "kanit/gercek/komut_ve_cikis.txt",
+      "kanit/gercek/stage2_kalite_kabul_raporu.txt",
+      "kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "kanit/temsili/stage2_os_temelleri_mimarisi.txt"
+    ]
+  },
+  "soru_bankasi_eslesmesi": [
+    "G042-SC1",
+    "G042-SC2",
+    "G042-SC3",
+    "W06-SC1",
+    "W06-SC2",
+    "W06-SC3",
+    "A02-KALİTE"
+  ],
+  "notlar": "Aşama 02 (Gün 29-42) tüm 6 sütun (süreç, izin, log, hash, yedek, servis) doğrulanarak 100/100 ile STAGE_02_PASS kararı mühürlendi."
+}

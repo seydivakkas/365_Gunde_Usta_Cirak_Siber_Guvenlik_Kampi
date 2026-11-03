@@ -1,0 +1,36 @@
+================================================================================
+G067: AĞ PERFORMANSI, GECİKME, JİTTER VE PAKET KAYBI ADLİ RAPORU
+Tarih: 2026-10-31 | Analiz Motoru: NetworkPerformanceQoSAnalyzer v1.0
+================================================================================
+
+GENEL TELEMETRİ VE SAĞLIK ÖZETİ:
+  - Analiz Edilen Toplam Akış Sayısı : 4
+  - SLA Uyumlu Akış Sayısı           : 1
+  - SLA İhlal Edilen Akış Sayısı     : 3
+  - Genel Ağ Sağlık Durumu           : TIKANIKLIK_VE_IHLAL_TESPIT_EDILDI
+
+AKIŞ BAZLI DETAYLI QoS VE PERFORMANS METRİKLERİ:
+--------------------------------------------------------------------------------
+[1] Akış Kimliği: FLOW-CLEAN-01 | Protokol: UDP | SLA Durumu: UYUMLU
+    Paket İstatistiği : Gönderilen=10, Alınan=10, Kayıp=0 (%0.00)
+    Gecikme (Latency) : Ortalama=10.00 ms
+    Jitter (RFC 3393) : Ortalama=0.00 ms | RFC 3550 Filtered=0.00 ms
+
+[2] Akış Kimliği: FLOW-VOIP-JITTER-01 | Protokol: UDP | SLA Durumu: IHLAL_VAR
+    Paket İstatistiği : Gönderilen=10, Alınan=8, Kayıp=2 (%20.00)
+    Gecikme (Latency) : Ortalama=56.88 ms
+    Jitter (RFC 3393) : Ortalama=16.43 ms | RFC 3550 Filtered=6.05 ms
+    SLA İhlalleri     : Paket kayıp oranı (%20.00) SLA limitini (%3.0) aştı.
+
+[3] Akış Kimliği: FLOW-TCP-LOSS-01 | Protokol: TCP | SLA Durumu: KRITIK_TEHLIKE
+    Paket İstatistiği : Gönderilen=8, Alınan=6, Kayıp=2 (%25.00)
+    Gecikme (Latency) : Ortalama=75.33 ms
+    Jitter (RFC 3393) : Ortalama=82.00 ms | RFC 3550 Filtered=69.70 ms
+    TCP Retransmission: 2 adet
+    SLA İhlalleri     : TCP yeniden iletim oranı (%25.00) SLA limitini (%5.0) aştı.
+
+[4] Akış Kimliği: FLOW-DOS-CONGESTION-01 | Protokol: UDP | SLA Durumu: KRITIK_TEHLIKE
+    Paket İstatistiği : Gönderilen=9, Alınan=4, Kayıp=5 (%55.56)
+    Gecikme (Latency) : Ortalama=992.50 ms
+    Jitter (RFC 3393) : Ortalama=590.00 ms | RFC 3550 Filtered=106.01 ms
+    SLA İhlalleri     : Ortalama gecikme (992.50ms) SLA limitini (150.0ms) aştı. | Ortalama jitter (590.00ms) SLA limitini (30.0ms) aştı. | Paket kayıp oranı (%55.56) SLA limitini (%3.0) aştı.

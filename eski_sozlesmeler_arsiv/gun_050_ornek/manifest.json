@@ -1,0 +1,11 @@
+{
+  "gun": 50,
+  "baslik": "TCP üçlü el sıkışma",
+  "uretim_turu": "AI ajanı",
+  "bagimsiz": true,
+  "internet_gerekli": false,
+  "simulasyon_turu": "OFFLINE_PYTHON_MODEL",
+  "gercek_ag_yakalama": false,
+  "linux_python_test": "PASS_5_5",
+  "windows_fiziksel_kabul": "NOT_RUN"
+}

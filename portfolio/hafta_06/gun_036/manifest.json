@@ -1,0 +1,22 @@
+{
+  "gun": 36,
+  "gun_id": "G036",
+  "dosyalar": {
+    "README.md": "3ce3424c8490eb1d5b5a46e335c2d0465308846c4798836743b0eeac1e98dde0",
+    "ders.md": "a7ff902de46f2147063a7f9bdd86cb26f63d58fea30c78d65a0eaaccbfd66966",
+    "rapor.md": "fd9c1230c63df8bba9795d477242ce65da9ab23906a0657355f61ff475532161",
+    "sonuc.json": "dc86f031fb58852f10a22a20ae8475aac3069249c5cee86ce941ccfab3e3c464",
+    "soru_cevap.md": "5d4e87d22a1fbca6db75be52308898d7e32b63197939ab6c16b0406236c86c41",
+    "kanit/gercek/bellek_ve_swap_denetim_raporu.txt": "7f4b011bf81f6844defb8189bfd6e8a7260a8e5afcba4825cd89e336a5076433",
+    "kanit/gercek/komut_ve_cikis.txt": "7f4b011bf81f6844defb8189bfd6e8a7260a8e5afcba4825cd89e336a5076433",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": "abcee909c728488d52ee0e718551d8dc78b943c9ee964f3c0e5bf4b555d237f4",
+    "kanit/gercek/test_sonuclari.txt": "2d91bd89979eb05715522d459971464003a48b66363a19d0e2b658efdb1a0110",
+    "kanit/temsili/bellek_sanal_bellek_ve_swap_mimarisi.txt": "296b8991496ad51c30304a60373285426aeb609741371b8e77ab2026cf7f7fb2",
+    "ornek_veri/corrupted_memory_telemetry_test_cases.json": "63e419ce8b83d8de7fc34f17ec7031c6c7e66532ebbe807f3313b7e1f6f34383",
+    "ornek_veri/sample_memory_telemetry.json": "f45efa2f631be395d19bf220b4502b0936481b53d5e7652b47619d49e08477f4",
+    "tests/__init__.py": "2ff6be463d2a093a278863b3078c23ecbbe4738bfd0258a0fb180f3235689908",
+    "tests/test_memory_virtual_swap_auditor.py": "093c986d4ca6b960894019f088b46c0b153054ec14d688bbf41e07f8169b3ab5",
+    "uygulama/__init__.py": "fca8b66f6d7531c8e1a6fd30686b32358eee3ebc2a85a92d145cf58366d20c83",
+    "uygulama/memory_virtual_swap_auditor.py": "ff5af849d34da0b6481196322e65cb03b621c2c6027e870fba3d89d5a93300f8"
+  }
+}

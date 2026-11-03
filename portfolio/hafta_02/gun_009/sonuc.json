@@ -1,0 +1,39 @@
+{
+  "gun_no": 9,
+  "gun_kimligi": "G009",
+  "asama": "01",
+  "hafta": 2,
+  "konu": "Windows üzerinde laboratuvar hazırlığı",
+  "tarih": "2026-10-26",
+  "durum": "PASS",
+  "puan": 100,
+  "degerlendirme_detayi": {
+    "teori": 20,
+    "uygulama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "kanit_durumu": "TAM",
+  "tamamlanan_gorevler": [
+    "Windows üzerinde güvenli laboratuvar hazırlığı (VBS/HVCI, Windows Sandbox, Hyper-V vSwitch, WSL2 ve Defender dışlamaları) Usta-Çırak derinliğinde açıklandı.",
+    "Kimya çekerocak (Fume Hood) analojisi ile tek kullanımlık (disposable) mikro-izolasyon zihinsel modeli kuruldu.",
+    "Windows Sandbox .wsb XML mimarisi, salt-okunur mapped folder ve sıfır ağ çıkışı mekanizması kodlandı.",
+    "Defender Exclusion Hijacking saldırı vektörü ve katı NTFS ACL kalkanı somutlaştırıldı.",
+    "Her kod satırı eğitsel açıklamalarla donatılmış windows_lab_provisioner.py CLI motoru geliştirildi.",
+    "13 birim test ile pozitif, negatif ve güvenlik sınır durumları 0.214 saniyede %100 başarıyla doğrulandı.",
+    "Gerçek CLI yürütme, unittest çıktısı ve temsilî ASCII Windows lab mimari şeması kanıt olarak üretildi.",
+    "Soru bankasındaki 3 soru katı 4 bölümlü formatta cevaplandı."
+  ],
+  "pozitif_negatif_kontrol_sonuclari": {
+    "pozitif_kontrol": "Tam sertleştirilmiş WIN-LAB-SEC-01 profilinde 100/100 puan, 0 bulgu ve GÜVENLİ durumu teyit edildi",
+    "negatif_kontrol_sandbox_ag": "Sandbox ağ ayarı 'Default' olduğunda C2 sızıntı riskiyle KRİTİK bulgu üretildi",
+    "negatif_kontrol_sandbox_kok_dizin": "Sandbox içine konak C:\\ kök dizini eşlendiğinde FELAKET uyarısıyla 50 ceza puanı kesildi",
+    "negatif_kontrol_sandbox_yazma": "Eşlenen klasörde salt_okunur=False olduğunda konak bozma riskiyle KRİTİK bulgu üretildi",
+    "negatif_kontrol_external_vswitch": "Hyper-V External vSwitch fiziksel ağa yayılma riskiyle KRİTİK olarak engellendi",
+    "negatif_kontrol_defender_dislama": "Defender dışlamalarında C:\\Users tespitiyle FELAKET seviyesinde Exclusion Hijacking engellendi",
+    "negatif_kontrol_acl_yazma": "Dışlanan klasörde standart kullanıcı yazma izni YÜKSEK risk olarak yakalandı",
+    "islevsellik_wsb_uretimi": "Güvenli Izole_Zararli_Inceleme.wsb XML profili Networking=Disable ve ReadOnly=true ile başarıyla üretildi"
+  },
+  "onceki_gun_bagimliligi": "YOK (Tamamen bağımsız)",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ."
+}

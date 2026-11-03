@@ -1,0 +1,115 @@
+{
+  "aciklama": "Gün 113 Kimlik Doğrulama ve Yetkilendirme 9 Adet Negatif Kontrol Senaryosu",
+  "versiyon": "1.0.0",
+  "senaryolar": [
+    {
+      "id": "NEG_01",
+      "baslik": "Geçersiz Parola ile Kimlik Doğrulama Girişimi",
+      "hedef_zafiyet": "CWE-287: Improper Authentication",
+      "beklenen_istisna": "InvalidCredentialsError",
+      "girdi": {
+        "kullanici": "alice",
+        "parola": "YanlisParola_999!"
+      },
+      "beklenen_davranis": "Kimlik doğrulama başarısız olmalı, oturum üretilmemeli ve CWE-287 hatası fırlatılmalıdır."
+    },
+    {
+      "id": "NEG_02",
+      "baslik": "Kaba Kuvvet (Brute-Force) ile Hesap Kilitleme Eşiğinin Aşılması",
+      "hedef_zafiyet": "CWE-307: Improper Restriction of Excessive Authentication Attempts",
+      "beklenen_istisna": "AccountLockedError",
+      "girdi": {
+        "kullanici": "bob",
+        "hatali_denemeler": ["deneme1", "deneme2", "deneme3"]
+      },
+      "beklenen_davranis": "Ardı ardına gelen 3 başarısız denemeden sonra hesap dondurulmalı ve AccountLockedError verilmelidir."
+    },
+    {
+      "id": "NEG_03",
+      "baslik": "Süresi Dolmuş (Expired) Oturum Belirteci ile Yetkili Kaynağa Erişim",
+      "hedef_zafiyet": "CWE-613: Insufficient Session Expiration",
+      "beklenen_istisna": "SessionExpiredError",
+      "girdi": {
+        "kullanici": "alice",
+        "ttl_saniye": 1,
+        "bekleme_saniye": 2,
+        "kaynak": "doc_alice_01",
+        "eylem": "read"
+      },
+      "beklenen_davranis": "TTL süresi geçmiş belirteç geçersiz sayılmalı ve SessionExpiredError fırlatılmalıdır."
+    },
+    {
+      "id": "NEG_04",
+      "baslik": "İptal Edilmiş (Revoked / Logged Out) Oturum Belirteci ile Yeniden Erişim",
+      "hedef_zafiyet": "CWE-384: Session Fixation / Improper Session Invalidation",
+      "beklenen_istisna": "SessionInvalidError",
+      "girdi": {
+        "kullanici": "alice",
+        "cikis_yap": true,
+        "kaynak": "doc_alice_01",
+        "eylem": "read"
+      },
+      "beklenen_davranis": "Kullanıcı çıkış yaptıktan sonra eski belirteç derhal reddedilmeli ve SessionInvalidError fırlatılmalıdır."
+    },
+    {
+      "id": "NEG_05",
+      "baslik": "Kimlik Doğrulama Belirteci Olmadan Doğrudan Korumalı Kaynağa Erişim",
+      "hedef_zafiyet": "CWE-306: Missing Authentication for Critical Function",
+      "beklenen_istisna": "MissingAuthenticationError",
+      "girdi": {
+        "belirtec": null,
+        "kaynak": "doc_alice_01",
+        "eylem": "read"
+      },
+      "beklenen_davranis": "Oturum belirteci boş bırakıldığında AuthN katmanı MissingAuthenticationError ile erişimi kesmelidir."
+    },
+    {
+      "id": "NEG_06",
+      "baslik": "Rol Tabanlı Yetkisiz Eylem Girişimi (Analistin Silme Yapmaya Çalışması)",
+      "hedef_zafiyet": "CWE-862: Missing Authorization / Broken Access Control",
+      "beklenen_istisna": "AccessDeniedError",
+      "girdi": {
+        "kullanici": "alice",
+        "kaynak": "doc_alice_01",
+        "eylem": "delete"
+      },
+      "beklenen_davranis": "Analist rolünün DELETE_DOCUMENT izni olmadığı için AuthZ katmanı AccessDeniedError vermelidir."
+    },
+    {
+      "id": "NEG_07",
+      "baslik": "IDOR (Insecure Direct Object Reference) Başka Kullanıcının Kaynağına Erişim",
+      "hedef_zafiyet": "CWE-639: Authorization Bypass Through User-Controlled Key (IDOR)",
+      "beklenen_istisna": "InsecureDirectObjectReferenceError",
+      "girdi": {
+        "kullanici": "bob",
+        "kaynak": "doc_alice_01",
+        "eylem": "read"
+      },
+      "beklenen_davranis": "Bob okuma iznine sahip bir operatör olsa dahi Alice'in özel dokümanına erişmeye çalıştığında IDOR engeli tetiklenmelidir."
+    },
+    {
+      "id": "NEG_08",
+      "baslik": "Çapraz Kiracı (Cross-Tenant) Veri Erişim ve İzolasyon İhlali Teşebbüsü",
+      "hedef_zafiyet": "CWE-284: Improper Access Control (Tenant Leakage)",
+      "beklenen_istisna": "TenantMismatchError",
+      "girdi": {
+        "kullanici": "eve_attacker",
+        "kaynak": "doc_alice_01",
+        "eylem": "read"
+      },
+      "beklenen_davranis": "Farklı kiracıya (TENANT_BETA) ait kullanıcı başka kiracının (TENANT_ALPHA) kaynağına asla erişememeli ve TenantMismatchError almalıdır."
+    },
+    {
+      "id": "NEG_09",
+      "baslik": "Tanımsız veya Politika Dışı Eylem Çalıştırma (Default Deny İlkesi)",
+      "hedef_zafiyet": "CWE-285: Improper Authorization (Default Deny Enforcement)",
+      "beklenen_istisna": "AccessDeniedError",
+      "girdi": {
+        "kullanici": "charlie_admin",
+        "kaynak": "doc_alice_01",
+        "eylem": "tamamen_tanimsiz_aksiyon"
+      },
+      "beklenen_davranis": "Kural tanımlanmamış herhangi bir eylem Default Deny prensibi gereği yönetici olsa dahi engellenmelidir."
+    }
+  ]
+}

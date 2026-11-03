@@ -1,0 +1,61 @@
+================================================================================
+G089: 9 ADET NEGATIF KONTROL VE CLI ENJEKSIYON ENGELLEME TESTLERI
+Zaman Damgasi (UTC): 2026-11-01T20:13:05.098912+00:00
+================================================================================
+
+[PASS] NEG_01_PATH_TRAVERSAL_ARG
+  Baslik          : Dosya Parametresinde Dizin Atlama (Path Traversal) Denemesi
+  Zafiyet Sinifi  : CWE-22: Improper Limitation of a Pathname to a Restricted Directory
+  Beklenen Istisna: CliPathTraversalException
+  Yakalanan Hata  : CliPathTraversalException
+--------------------------------------------------------------------------------
+[PASS] NEG_02_PORT_OUT_OF_RANGE
+  Baslik          : Port Parametresinde Sinir Disi Sayisal Deger (1-65535 Disinda)
+  Zafiyet Sinifi  : CWE-20: Improper Input Validation (Port Range Violation)
+  Beklenen Istisna: CliPortOutOfRangeException
+  Yakalanan Hata  : CliPortOutOfRangeException
+--------------------------------------------------------------------------------
+[PASS] NEG_03_INVALID_MUTUALLY_EXCLUSIVE
+  Baslik          : Karsilikli Dislayan Parametrelerin (--fast ve --deep) Birlikte Girilmesi
+  Zafiyet Sinifi  : CWE-20: Mutually Exclusive Parameter Conflict
+  Beklenen Istisna: CliMutuallyExclusiveConflictException
+  Yakalanan Hata  : CliMutuallyExclusiveConflictException
+--------------------------------------------------------------------------------
+[PASS] NEG_04_MISSING_REQUIRED_SUBCOMMAND
+  Baslik          : Zorunlu Alt Komutun (scan/audit/hash) Belirtilmemesi
+  Zafiyet Sinifi  : CWE-20: Missing Required Subcommand
+  Beklenen Istisna: CliMissingRequiredSubcommandException
+  Yakalanan Hata  : CliMissingRequiredSubcommandException
+--------------------------------------------------------------------------------
+[PASS] NEG_05_NULL_BYTE_IN_ARGUMENT
+  Baslik          : CLI Argumaninda Zararli Null Byte (0x00) Enjeksiyonu
+  Zafiyet Sinifi  : CWE-158: Improper Neutralization of Null Byte or Special Characters
+  Beklenen Istisna: CliNullByteException
+  Yakalanan Hata  : CliNullByteException
+--------------------------------------------------------------------------------
+[PASS] NEG_06_OVERSIZED_CLI_ARGUMENT
+  Baslik          : Asiri Boyutlu Arguman Degeri ile Bellek Tukenmesi (DoS)
+  Zafiyet Sinifi  : CWE-400: Uncontrolled Resource Consumption in CLI Input
+  Beklenen Istisna: CliOversizedPayloadException
+  Yakalanan Hata  : CliOversizedPayloadException
+--------------------------------------------------------------------------------
+[PASS] NEG_07_INVALID_CHOICE_ALGORITHM
+  Baslik          : Guvenlik Kuralina Uymayan Zayif Ozet Algoritmasi Girisi (MD5)
+  Zafiyet Sinifi  : CWE-327: Use of a Broken or Risky Cryptographic Algorithm
+  Beklenen Istisna: InvalidCliArgumentException
+  Yakalanan Hata  : InvalidCliArgumentException
+--------------------------------------------------------------------------------
+[PASS] NEG_08_INVALID_HOSTNAME_PATTERN
+  Baslik          : Host Parametresinde Komut Enjeksiyonu Karakterleri (;, &&, |)
+  Zafiyet Sinifi  : CWE-88: Improper Neutralization of Argument Delimiters in a Command
+  Beklenen Istisna: InvalidCliArgumentException
+  Yakalanan Hata  : InvalidCliArgumentException
+--------------------------------------------------------------------------------
+[PASS] NEG_09_TOO_MANY_ARGUMENTS_DOS
+  Baslik          : 100'den Fazla Arguman ile Parametre Bombalamasi (CLI DoS)
+  Zafiyet Sinifi  : CWE-400: Denial of Service via Argument Flooding
+  Beklenen Istisna: CliOversizedPayloadException
+  Yakalanan Hata  : CliOversizedPayloadException
+--------------------------------------------------------------------------------
+
+TOPLAM NEGATIF TEST SONUCU: 9/9 PASS (100% Basari)

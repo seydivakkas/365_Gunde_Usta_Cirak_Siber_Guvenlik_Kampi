@@ -1,0 +1,75 @@
+{
+  "aciklama": "G054 DNS Negatif Kontrol ve Hata Test Girdileri",
+  "lisans": "Özel Lisans — Tüm Hakları Saklıdır (c) 2026 Seydi Eryılmaz",
+  "gecersiz_girdiler": [
+    {
+      "id": "NEG-DNS-01",
+      "hata_kodu": "ERR_INVALID_QTYPE_STRING",
+      "ad": "example.com",
+      "tur": "UNKNOWN_TYPE_XYZ",
+      "ttl": 3600,
+      "deger": "1.1.1.1",
+      "beklenen_hata": "Bilinmeyen DNS kayıt türü."
+    },
+    {
+      "id": "NEG-DNS-02",
+      "hata_kodu": "ERR_LABEL_LENGTH_OVERFLOW",
+      "ad": "bu-etiket-tam-olarak-altmis-dort-karakterden-uzun-olup-rfc-1035-sinirini-asar-ve-hata-firlatir.com",
+      "tur": "A",
+      "ttl": 3600,
+      "deger": "1.2.3.4",
+      "beklenen_hata": "DNS etiket uzunluğu 63 karakteri aşamaz."
+    },
+    {
+      "id": "NEG-DNS-03",
+      "hata_kodu": "ERR_NEGATIVE_TTL",
+      "ad": "example.com",
+      "tur": "A",
+      "ttl": -60,
+      "deger": "93.184.216.34",
+      "beklenen_hata": "DNS TTL değeri negatif olamaz."
+    },
+    {
+      "id": "NEG-DNS-04",
+      "hata_kodu": "ERR_MALFORMED_A_RDATA",
+      "ad": "example.com",
+      "tur": "A",
+      "ttl": 300,
+      "deger": "999.1.2.3",
+      "beklenen_hata": "A kaydı için geçersiz IPv4 adresi biçimi."
+    },
+    {
+      "id": "NEG-DNS-05",
+      "hata_kodu": "ERR_MALFORMED_AAAA_RDATA",
+      "ad": "example.com",
+      "tur": "AAAA",
+      "ttl": 300,
+      "deger": "gecersiz:ipv6:formati:12345",
+      "beklenen_hata": "AAAA kaydı için geçersiz IPv6 adresi biçimi."
+    },
+    {
+      "id": "NEG-DNS-06",
+      "hata_kodu": "ERR_EMPTY_DOMAIN_NAME",
+      "ad": "",
+      "tur": "A",
+      "ttl": 300,
+      "deger": "1.1.1.1",
+      "beklenen_hata": "Alan adı boş olamaz."
+    },
+    {
+      "id": "NEG-DNS-07",
+      "hata_kodu": "ERR_TRANSACTION_ID_OVERFLOW",
+      "tx_id": 70000,
+      "beklenen_hata": "Transaction ID 0 ile 65535 arasında olmalıdır."
+    },
+    {
+      "id": "NEG-DNS-08",
+      "hata_kodu": "ERR_DOMAIN_TOTAL_LENGTH_OVERFLOW",
+      "ad": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd.com",
+      "tur": "A",
+      "ttl": 300,
+      "deger": "1.1.1.1",
+      "beklenen_hata": "Toplam alan adı uzunluğu 253 karakteri aşamaz."
+    }
+  ]
+}

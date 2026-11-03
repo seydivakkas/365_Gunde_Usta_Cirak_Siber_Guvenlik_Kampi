@@ -1,0 +1,20 @@
+[
+  {
+    "asset_id": "SCADA-PLC-01",
+    "ip_address": "10.20.30.40",
+    "port": 502,
+    "mac_address": "00:1A:2B:3C:4D:5E",
+    "hostname": "plc-nuclear-controller.local",
+    "protocol": "TCP",
+    "criticality": "HIGH"
+  },
+  {
+    "asset_id": "AIRGAP-HSM-02",
+    "ip_address": "192.168.100.10",
+    "port": 443,
+    "mac_address": "AA:BB:CC:DD:EE:FF",
+    "hostname": "hsm-vault-primary.local",
+    "protocol": "TCP",
+    "criticality": "CRITICAL"
+  }
+]

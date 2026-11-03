@@ -1,0 +1,72 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+# ==============================================================================
+# GÜN 076: METİN, REGEX VE KARAKTER KODLAMASI — GÜVENLİK MİMARİSİ
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# ==============================================================================
+
+                ┌─────────────────────────────────────────────────────────────┐
+                │          GÜVENSİZ METİN VE REGEX SALDIRI VEKTÖRLERİ         │
+                │        (ReDoS, Homoglyph Spoofing, Null-Byte, Trojan Bidi)  │
+                └──────────────────────────────┬──────────────────────────────┘
+                                               │
+               ┌───────────────────────────────┴───────────────────────────────┐
+               ▼                                                               ▼
+┌──────────────────────────────┐                              ┌──────────────────────────────┐
+│  1. ReDoS (CWE-1333)         │                              │  2. IDN HOMOGRAF SALDIRISI   │
+│  Catastrophic Backtracking   │                              │  Cyrillic Script Spoofing    │
+├──────────────────────────────┤                              ├──────────────────────────────┤
+│ Desen: ^(a+)+$               │                              │ Görünen:   paypal.com        │
+│ Yük:   "aaaa...!" (50 char)  │                              │ Gerçek:    p\u0430yp\u0430l  │
+│ Karmaşıklık: O(2^N) Üstel    │                              │ Kiril 'а' (\u0430) Latin 'a' │
+│ Sonuç: %100 CPU Kilidi (DoS) │                              │ Sonuç: Kullanıcı Avı         │
+└──────────────────────────────┘                              └──────────────────────────────┘
+               │                                                               │
+               └───────────────────────────────┬───────────────────────────────┘
+                                               │
+               ┌───────────────────────────────┴───────────────────────────────┐
+               ▼                                                               ▼
+┌──────────────────────────────┐                              ┌──────────────────────────────┐
+│  3. NULL-BYTE ENJEKSİYONU    │                              │  4. TROJAN SOURCE (Bidi)     │
+│  String Truncation           │                              │  CVE-2021-42574              │
+├──────────────────────────────┤                              ├──────────────────────────────┤
+│ Girdi: payload\x00.png       │                              │ Girdi: file_\u202Ecod.exe    │
+│ WAF Doğrulaması: .png (Geçti)│                              │ Ekranda: file_exe.doc        │
+│ C/İşletim Sistemi: payload   │                              │ Gerçek İcra: Zararlı .exe    │
+│ Sonuç: Güvenlik Duvarı İhlali│                              │ Sonuç: Görsel Aldatmaca      │
+└──────────────────────────────┘                              └──────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+                ┌─────────────────────────────────────────────────────────────┐
+                │        SAVUNMACI VE ÇOK KATMANLI METİN GÜVENLİK KALKANI     │
+                │  (Input Ceiling, NFKC Canonicalization, Strict Anchors)     │
+                └──────────────────────────────┬──────────────────────────────┘
+                                               │
+                                               ▼
+         ┌───────────────────────────────────────────────────────────┐
+         │ 1. ADIM: GİRDİ UZUNLUK TAVANI (MAX_INPUT_LENGTH = 4096)   │
+         │    -> 4096 karakteri aşan girdiler regex motoruna         │
+         │       ulaşmadan reddedilir (ReDoS anında engellenir).     │
+         └─────────────────────────────┬─────────────────────────────┘
+                                       │
+                                       ▼
+         ┌───────────────────────────────────────────────────────────┐
+         │ 2. ADIM: NULL-BYTE VE BIDI KARAKTER FİLTRESİ              │
+         │    -> \x00 ve \u202E karakterleri sınırda yakalanır.      │
+         └─────────────────────────────┬─────────────────────────────┘
+                                       │
+                                       ▼
+         ┌───────────────────────────────────────────────────────────┐
+         │ 3. ADIM: UNICODE NFKC NORMALİZASYONU VE SCRIPT ANALİZİ    │
+         │    -> unicodedata.normalize('NFKC') ile kanonik form.     │
+         │    -> Latin + Cyrillic karışımı anında tespit edilir.     │
+         └─────────────────────────────┬─────────────────────────────┘
+                                       │
+                                       ▼
+         ┌───────────────────────────────────────────────────────────┐
+         │ 4. ADIM: ÖNCEDEN DERLENMİŞ KATI BAĞLAÇLI REGEX (^ ... $)  │
+         │    -> re.compile() ile mikro-saniyelik sabit hız.         │
+         │    -> İsimlendirilmiş yakalama grupları (?P<name>...).    │
+         │    -> Kısmi eşleşme (partial match bypass) imkansız.      │
+         └───────────────────────────────────────────────────────────┘

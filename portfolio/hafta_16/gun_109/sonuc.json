@@ -1,0 +1,37 @@
+{
+  "gun": 109,
+  "hafta": 16,
+  "konu": "PKI ve sertifika yaşam döngüsü",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "tamamlanma_tarihi": "2026-11-02",
+  "kategori": "Asimetrik Kriptografi ve PKI",
+  "puan_detaylari": {
+    "mimari": 20,
+    "kodlama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "zafiyet_savunmalari": [
+    "CWE-347",
+    "CWE-20",
+    "CWE-299",
+    "CWE-298",
+    "CWE-294",
+    "CWE-295",
+    "CWE-311"
+  ],
+  "test_ozeti": {
+    "toplam_birim_test": 15,
+    "basarili_birim_test": 15,
+    "basarisiz_birim_test": 0,
+    "negatif_senaryolar": 9,
+    "basarili_negatif_senaryolar": 9
+  },
+  "yurutulen_araclar": [
+    "uygulama/pki_lifecycle_engine.py",
+    "uygulama/pki_cli.py",
+    "tests/test_pki_lifecycle.py",
+    "kanit_uretici.py"
+  ]
+}

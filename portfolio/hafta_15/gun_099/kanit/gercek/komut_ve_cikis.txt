@@ -1,0 +1,90 @@
+=== GÜN 099: CIA EVALUATOR CLI YÜRÜTME VE STANDART ÇIKIŞ KODLARI KANITI ===
+Tarih/Saat : 2026-11-02 01:41:44
+Standart   : POSIX Exit Codes (0: Başarılı, 1: Güvenlik İhlali, 2: Girdi Hatası)
+==========================================================================================
+
+--- 1. Yardım Menüsü ve Komut Doğrulama ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_099\uygulama\cia_evaluator_cli.py --help
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+usage: cia_evaluator_cli [-h] [-f FILE] [--tamper-test] [--dos-test]
+                         [--audit-chain] [--json] [-o OUTPUT]
+
+G099: CIA Triad ve Güvenlik Nitelikleri Değerlendirme ve Simülasyon Aracı
+
+options:
+  -h, --help           show this help message and exit
+  -f, --file FILE      Değerlendirilecek işlem (JSON veya metin) dosya yolu
+  --tamper-test        İletim sırasında 1 baytlık tahrifat (bit-flip)
+                       saldırısını simüle eder
+  --dos-test           Hız limiti aşımı ve DoS saldırı savunmasını simüle eder
+  --audit-chain        İnkar edilemezlik denetim zincirinin kriptografik
+                       bütünlüğünü doğrular
+  --json               Sonuçları yapılandırılmış JSON formatında stdout'a
+                       yazar
+  -o, --output OUTPUT  Raporun kaydedileceği dosya yolu
+------------------------------------------------------------------------------------------
+
+--- 2. Örnek Finansal İşlem CIA Değerlendirmesi (Çıkış Kodu: 0) ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_099\uygulama\cia_evaluator_cli.py -f C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_099\ornek_veri\sample_transaction.json
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+================================================================================
+GÜN 099: CIA GÜVENLİK DEĞERLENDİRME KARNESİ (sample_transaction.json)
+================================================================================
+  Gizlilik Skoru        (Max 25): 25
+  Bütünlük Skoru        (Max 25): 25
+  Erişilebilirlik Skoru (Max 25): 25
+  İnkar Edilemezlik Sk. (Max 25): 25
+--------------------------------------------------------------------------------
+  TOPLAM SKOR           (Max 100): 100
+  DURUM                          : PASS
+  İhlal Sayısı                   : 0
+================================================================================
+------------------------------------------------------------------------------------------
+
+--- 3. Bütünlük Tahrifat (Bit-Flip) Saldırı Simülasyonu ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_099\uygulama\cia_evaluator_cli.py --tamper-test
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+[GÜVENLİK ALARMI] Tahrifat Başarıyla Tespit Edildi! (CWE-345/CWE-353)
+  Orijinal Veri : TRANSFER=5000_TL&ALICI=TR1000&ZAMAN=20261102
+  Tahrif Veri   : TRANSFER=9000_TL&ALICI=TR1000&ZAMAN=20261102
+  Orijinal Mühür: 6761f0430f719e065c68e94fc11ff1fc7ce47a446143061b6746fb8d4022d4f5
+  Sonuç         : SAHTE İŞLEM REDDEDİLDİ (Bütünlük Korundu)
+------------------------------------------------------------------------------------------
+
+--- 4. Erişilebilirlik DoS Frekans Taşkın Savunma Testi ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_099\uygulama\cia_evaluator_cli.py --dos-test
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+[BİLGİ] DoS Savunma Testi: 1 saniyede 15 istek gönderiliyor (Limit: 10)
+  -> İstek 11: HIZ LİMİTİ TETİKLENDİ! İstek engellendi. (CWE-770)
+[BAŞARILI] DoS Saldırısı Hız Limitleyici Tarafından Bertaraf Edildi.
+------------------------------------------------------------------------------------------
+
+--- 5. İnkar Edilemezlik Denetim Zinciri Bütünlük Doğrulaması ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_099\uygulama\cia_evaluator_cli.py --audit-chain
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+[BİLGİ] Denetim Zinciri Blok Sayısı: 4
+[BAŞARILI] Tüm bloklar kriptografik olarak doğrulandı. İnkar Edilemezlik Tam.
+------------------------------------------------------------------------------------------
+
+--- 6. Yapılandırılmış JSON Çıktı Modu (DevSecOps Entegrasyonu) ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_099\uygulama\cia_evaluator_cli.py -f C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_099\ornek_veri\sample_transaction.json --json
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+{
+  "hedef_adi": "sample_transaction.json",
+  "gizlilik_skoru": 25,
+  "butunluk_skoru": 25,
+  "erisilebilirlik_skoru": 25,
+  "inkar_edilemezlik_skoru": 25,
+  "toplam_skor": 100,
+  "durum": "PASS",
+  "ihlal_sayisi": 0,
+  "ihlal_detaylari": [],
+  "zaman": "2026-11-02 01:41:45"
+}
+------------------------------------------------------------------------------------------

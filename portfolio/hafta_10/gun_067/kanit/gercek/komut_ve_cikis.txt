@@ -1,0 +1,38 @@
+# G067: PAKET KAYBI, GECİKME VE JİTTER - KOMUT VE ÇIKIŞ KANITI
+# Tarih: 2026-10-31
+# Komut: python -m unittest portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer -v
+
+$ python -m unittest portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer -v
+test_01_telemetri_veri_seti_yukleme_ve_dogrulama (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_01_telemetri_veri_seti_yukleme_ve_dogrulama)
+Telemetri dosyasının 4 ana akışı eksiksiz içerdiğini teyit eder. ... ok
+test_02_referans_temiz_akis_gecikme_ve_sifir_kayip (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_02_referans_temiz_akis_gecikme_ve_sifir_kayip)
+İdeal ağ ortamında sıfır kayıp ve sabit gecikmenin hesaplandığını doğrular. ... ok
+test_03_voip_rtp_gecikme_hesaplama (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_03_voip_rtp_gecikme_hesaplama)
+VoIP akışında ortalama, minimum ve maksimum tek yönlü gecikmeyi test eder. ... ok
+test_04_voip_rtp_jitter_rfc3393_ve_rfc3550 (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_04_voip_rtp_jitter_rfc3393_ve_rfc3550)
+Gecikme değişimlerinin (jitter) pozitif ve beklenen aralıkta çıktığını doğrular. ... ok
+test_05_voip_rtp_paket_kaybi_tespiti (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_05_voip_rtp_paket_kaybi_tespiti)
+Eksik sıra numaralarından hareketle kaybolan paketlerin ve oranının tespiti doğrulanır. ... ok
+test_06_tcp_rtt_gecikme_hesaplama (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_06_tcp_rtt_gecikme_hesaplama)
+TCP segmentlerinin ACK geliş sürelerinden RTT hesaplamasının doğruluğu test edilir. ... ok
+test_07_tcp_retransmission_ve_kayip_orani (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_07_tcp_retransmission_ve_kayip_orani)
+Tekrarlanan segmentlerden TCP yeniden iletim sayısının ve oranının tespiti doğrulanır. ... ok
+test_08_dos_saldiri_akisi_asiri_gecikme_ve_kayip (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_08_dos_saldiri_akisi_asiri_gecikme_ve_kayip)
+Trafik patlaması ve DoS saldırısı altında gelişen yüksek gecikme ve kaybı test eder. ... ok
+test_09_sla_uyumluluk_ve_ihlal_sebepleri (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_09_sla_uyumluluk_ve_ihlal_sebepleri)
+SLA limitleri aşıldığında ihlal gerekçelerinin listelendiğini doğrular. ... ok
+test_10_ozel_sla_esik_degerleri_enjeksiyonu (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_10_ozel_sla_esik_degerleri_enjeksiyonu)
+Kullanıcı tanımlı çok sıkı SLA limitleri verildiğinde ihlal tespitini doğrular. ... ok
+test_11_toplu_telemetri_raporlama (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_11_toplu_telemetri_raporlama)
+Tüm ağ telemetri veri setinin toplu analizinde üretilen konsolide raporu doğrular. ... ok
+test_12_tekil_paket_gecikme_sinir_durumu (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_12_tekil_paket_gecikme_sinir_durumu)
+Yalnızca tek bir pakete sahip uç durumda jitter ve kayıp hesaplarının çökmediğini doğrular. ... ok
+test_13_negatif_sinir_senaryolari_grup_1 (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_13_negatif_sinir_senaryolari_grup_1)
+NEG_01'den NEG_04'e kadar olan istisnaların eksiksiz fırlatıldığını doğrular. ... ok
+test_14_negatif_sinir_senaryolari_grup_2 (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_14_negatif_sinir_senaryolari_grup_2)
+NEG_05'ten NEG_09'a kadar olan DoS kaybı, sıra hatası, biçim ve saat kayması istisnalarını test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.021s
+
+OK

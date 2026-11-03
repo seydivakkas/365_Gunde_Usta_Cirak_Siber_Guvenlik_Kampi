@@ -1,0 +1,50 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+# ==============================================================================
+# GÜN 077: MİNİ PROJE 10 — BAĞIMSIZ GÜVENLİK LOG AYRIŞTIRICI MİMARİSİ
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# ==============================================================================
+
+          ┌─────────────────────────────────────────────────────────────┐
+          │             GELEN HETEROJEN GÜVENLİK LOG AKIŞI              │
+          │     (Web Access, Linux SSHD Auth, Kernel Firewall Drops)    │
+          └──────────────────────────────┬──────────────────────────────┘
+                                         │
+                                         ▼
+   ┌─────────────────────────────────────────────────────────────────────────┐
+   │            SAVUNMACI ÖN İŞLEME VE ENJEKSİYON ARINDIRMA HATTI            │
+   │  [1] Girdi Uzunluğu Sınırı (<= 4096 Karakter - ReDoS Koruması)          │
+   │  [2] Null-Byte (\x00) ve Trojan Source Bidi (\u202E) Tespiti & İptali   │
+   │  [3] Unicode NFKC Kanonik Normalizasyonu                                │
+   │  [4] ANSI Kaçış Kodları (\x1b[...) ve Kontrol Karakterleri Tasfiyesi    │
+   └─────────────────────────────────────┬───────────────────────────────────┘
+                                         │
+                                         ▼
+   ┌─────────────────────────────────────────────────────────────────────────┐
+   │         ÇOK FORMATLI İSİMLENDİRİLMİŞ REGEX AYRIŞTIRMA MOTORU            │
+   │                                                                         │
+   │   ├── [WEB REGEX]     ──> IP, Method, URI, Status, User-Agent, Size     │
+   │   ├── [SSHD REGEX]    ──> Timestamp, Host, AuthAction, User, IP, Port   │
+   │   ├── [FIREWALL REGEX]──> Timestamp, Host, RuleTag, SRC, DST, Proto, DPT│
+   │   └── [UNRECOGNIZED]  ──> Bilinmeyen format (Güvenli Hata İzolasyonu)   │
+   └─────────────────────────────────────┬───────────────────────────────────┘
+                                         │
+                                         ▼
+   ┌─────────────────────────────────────────────────────────────────────────┐
+   │               KÜME CEBRİ VE TEHDİT KORELASYON MOTORU                    │
+   │                                                                         │
+   │   • O(1) Karaliste Eşleştirme (IoC IP & Domain Set)                     │
+   │   • Beyaz Liste Bastırması: (IoC & Alert) - Whitelist (0 False Pos.)    │
+   │   • Kayan Pencere Brute-Force Takibi (Sliding Window: 60s / 5 Hata)     │
+   │   • Web Saldırı İmzası Denetimi: SQLi (%20 unquote), Path Traversal     │
+   └─────────────────────────────────────┬───────────────────────────────────┘
+                                         │
+                                         ▼
+   ┌─────────────────────────────────────────────────────────────────────────┐
+   │                 ADLİ BİLİŞİM VE GÜVENLİK ALARM RAPORU                   │
+   │                                                                         │
+   │   ├── JSON Yapılandırılmış Çıktı (SIEM / SOAR Entegrasyonu)             │
+   │   ├── İnsan Okunabilir Adli Özet (Forensic Executive Summary)           │
+   │   ├── Kilitlenen Saldırgan IP Havuzu (Brute Force Lockout: 198.51.100.99│
+   │   └── Kritik Web Saldırı Alarmları (SQL Injection, /etc/passwd Access)  │
+   └─────────────────────────────────────────────────────────────────────────┘

@@ -1,0 +1,68 @@
+{
+  "aciklama": "G084 Mini Proje 11: Guvenlik Log Araci icin 9 adet negatif guvenlik kontrol testi.",
+  "negatif_testler": [
+    {
+      "test_id": "NEG_01_PATH_TRAVERSAL_LOG_PATH",
+      "baslik": "Dizin Atlama (Path Traversal) ile Log Disi Dosya Okuma Denemesi",
+      "beklenen_hata": "SecurityPathTraversalException",
+      "zafiyet_turu": "CWE-22: Improper Limitation of a Pathname to a Restricted Directory",
+      "girdi": "../../../Windows/System32/drivers/etc/hosts"
+    },
+    {
+      "test_id": "NEG_02_SYMLINK_LOG_ATTACK",
+      "baslik": "Sembolik Bag (Symlink) ile Guvenli Bolge Disina Yonlendirme",
+      "beklenen_hata": "SymlinkViolationException",
+      "zafiyet_turu": "CWE-59: Improper Link Resolution Before File Access",
+      "girdi": "symlink_evil_target"
+    },
+    {
+      "test_id": "NEG_03_LOG_INJECTION_CRLF",
+      "baslik": "Log Enjeksiyonu (CRLF / Log Forgery) Denemesi",
+      "beklenen_hata": "LogInjectionAttemptException",
+      "zafiyet_turu": "CWE-117: Improper Output Handling for Logs",
+      "girdi": "User login ok\r\n[CRITICAL] ADMIN PASSWORD CHANGED BY ROOT"
+    },
+    {
+      "test_id": "NEG_04_NULL_BYTE_IN_LOG",
+      "baslik": "Log Akisinda Null Byte (0x00) Enjeksiyonu",
+      "beklenen_hata": "NullByteForbiddenException",
+      "zafiyet_turu": "CWE-158: Improper Neutralization of Null Byte or Special Characters",
+      "girdi": "Valid log record\u0000malicious_hidden_cmd"
+    },
+    {
+      "test_id": "NEG_05_OVERSIZED_LOG_ENTRY_DOS",
+      "baslik": "Asiri Uzun Log Satiri ile DoS / Bellek Tukenmesi",
+      "beklenen_hata": "LogLineLengthLimitException",
+      "zafiyet_turu": "CWE-400: Uncontrolled Resource Consumption",
+      "girdi": "OVERSIZED_PAYLOAD_MARKER"
+    },
+    {
+      "test_id": "NEG_06_MALFORMED_JSON_LOG",
+      "baslik": "Bozuk veya Gecersiz JSON Sentaksi Iceren Log Satiri",
+      "beklenen_hata": "MalformedJsonLogException",
+      "zafiyet_turu": "CWE-20: Improper Input Validation",
+      "girdi": "{\"timestamp\": \"2026-11-01\", \"client_ip\": INVALID_JSON_SYNTAX"
+    },
+    {
+      "test_id": "NEG_07_EXCESSIVE_FAIL_COUNT_BRUTE_FORCE",
+      "baslik": "Ayni IP'den Esik Degeri Asan Basarisiz Giris Denemesi (Kaba Kuvvet)",
+      "beklenen_hata": "BruteForceDetectedException",
+      "zafiyet_turu": "CWE-307: Improper Restriction of Excessive Authentication Attempts",
+      "girdi": "10.0.0.99"
+    },
+    {
+      "test_id": "NEG_08_SQL_INJECTION_IN_QUERY",
+      "baslik": "Log Istek URL veya Parametresinde SQL Enjeksiyon Deseni",
+      "beklenen_hata": "SqlInjectionDetectedException",
+      "zafiyet_turu": "CWE-89: SQL Injection Pattern in Ingested Log Record",
+      "girdi": "/api/v1/search?q=' UNION SELECT username, password FROM users--"
+    },
+    {
+      "test_id": "NEG_09_INVALID_IP_FORMAT",
+      "baslik": "Gecersiz veya Bozuk Istemci IP Formati (Sahtecilik)",
+      "beklenen_hata": "InvalidIpAddressException",
+      "zafiyet_turu": "CWE-20: Improper Input Validation for Network Entities",
+      "girdi": "999.999.999.999"
+    }
+  ]
+}

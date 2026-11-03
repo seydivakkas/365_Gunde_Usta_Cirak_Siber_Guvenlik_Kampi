@@ -1,0 +1,77 @@
+{
+  "aciklama": "G088: Komut cikis kodu, stderr analizi ve hata yonetimi icin 9 adet negatif kontrol senaryosu.",
+  "negatif_testler": [
+    {
+      "test_id": "NEG_01_SILENT_ERROR_SUPPRESSION",
+      "baslik": "Kritik Komutta 2> /dev/null ile Hatanin Sessizce Gizlenmesi",
+      "beklenen_hata": "SilentErrorSuppressionException",
+      "zafiyet_turu": "CWE-390: Detection of Error Condition Without Action (Silent Error Swallowing)",
+      "kod_parcasi": "curl -s http://internal.api 2> /dev/null",
+      "hedef": "2> /dev/null"
+    },
+    {
+      "test_id": "NEG_02_STDERR_PASSWORD_LEAKAGE",
+      "baslik": "Standart Hata (stderr) Akisina Acik Metin Kimlik Bilgisi Sizdirilmasi",
+      "beklenen_hata": "SensitiveDataInStderrException",
+      "zafiyet_turu": "CWE-209: Generation of Error Message Containing Sensitive Information",
+      "kod_parcasi": "ERROR: Database connection failed. Password: SuperSecretAdminPass123!",
+      "hedef": "stderr"
+    },
+    {
+      "test_id": "NEG_03_COMMAND_NOT_FOUND_127",
+      "baslik": "Sistemde Olmayan Komutun Calistirilmasi (Cikis Kodu 127)",
+      "beklenen_hata": "CommandNotFoundSecurityException",
+      "zafiyet_turu": "CWE-20: Missing Command / Path Execution Failure",
+      "kod_parcasi": "non_existent_malicious_binary_xyz_123",
+      "hedef": "ExitCode127"
+    },
+    {
+      "test_id": "NEG_04_PERMISSION_DENIED_126",
+      "baslik": "Yetkisiz veya Calistirma Izni Olmayan Komut (Cikis Kodu 126)",
+      "beklenen_hata": "CommandExecutionFailedException",
+      "zafiyet_turu": "CWE-276: Incorrect Default Permissions (Permission Denied 126)",
+      "kod_parcasi": "chmod 000 && ./no_exec.sh",
+      "hedef": "ExitCode126"
+    },
+    {
+      "test_id": "NEG_05_UNCHECKED_NONZERO_EXIT",
+      "baslik": "Sifir Disi Cikis Koduna Ragmen Isleme Devam Edilmesi",
+      "beklenen_hata": "CommandExecutionFailedException",
+      "zafiyet_turu": "CWE-754: Improper Check for Exceptional Conditions",
+      "kod_parcasi": "exit 1",
+      "hedef": "ExitCode1"
+    },
+    {
+      "test_id": "NEG_06_NULL_BYTE_IN_STDERR",
+      "baslik": "stderr Akisinda veya Komut Girdisinde Null Byte (0x00) Enjeksiyonu",
+      "beklenen_hata": "NullByteForbiddenException",
+      "zafiyet_turu": "CWE-158: Improper Neutralization of Null Byte or Special Characters",
+      "kod_parcasi": "Error log with null byte: \u0000malicious",
+      "hedef": "NullByte"
+    },
+    {
+      "test_id": "NEG_07_OVERSIZED_STDERR_DOS",
+      "baslik": "Asiri Boyutlu stderr Mesaji ile Bellek Tukenmesi (DoS)",
+      "beklenen_hata": "OversizedStderrPayloadException",
+      "zafiyet_turu": "CWE-400: Uncontrolled Resource Consumption in Error Stream",
+      "kod_parcasi": "OVERSIZED_STDERR_MARKER",
+      "hedef": "SizeLimit"
+    },
+    {
+      "test_id": "NEG_08_PROCESS_TIMEOUT_HANG",
+      "baslik": "Asili Kalan ve Zaman Asimina Ugrayan Surec Calismasi",
+      "beklenen_hata": "ProcessExecutionTimeoutException",
+      "zafiyet_turu": "CWE-400: Process Unresponsiveness and Hang",
+      "kod_parcasi": "sleep 100",
+      "hedef": "Timeout"
+    },
+    {
+      "test_id": "NEG_09_HARDCODED_FAKE_EXIT_ZERO",
+      "baslik": "Hatalara Ragmen Betigin Sonunda Yaniltici 'exit 0' Donulmesi",
+      "beklenen_hata": "SilentErrorSuppressionException",
+      "zafiyet_turu": "CWE-390: Fraudulent Success Status Code",
+      "kod_parcasi": "tar -czf backup.tar.gz /missing\nexit 0",
+      "hedef": "FakeExitZero"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+nesne_tipi,isim,id_veya_durum,metrik_veya_hesap,risk_seviyesi,guvenlik_gerekcesi
+Surec,powershell,4820,620 Handle / 68.5 MB,KRITIK,Şüpheli PowerShell/süreç parametresi tespit edildi: '-executionpolicy bypass' (MITRE T1059.001)
+Surec,explorer,3290,2840 Handle / 185.0 MB,ORTA,Kaynak tüketimi eşik değerleri aşıldı (Eşik: 2000 Handle / 150.0 MB)
+Surec,mimikatz_test,9924,190 Handle / 28.0 MB,KRITIK,Şüpheli PowerShell/süreç parametresi tespit edildi: 'mimikatz' (MITRE T1059.001)
+Servis,wuauserv,Running,LocalSystem,YUKSEK,Tırnaksız servis yolu zafiyeti (CWE-428): 'C:\Windows\system32\svchost.exe -k netsvcs -p'
+Servis,MpsSvc,Running,NT AUTHORITY\LocalService,YUKSEK,Tırnaksız servis yolu zafiyeti (CWE-428): 'C:\Windows\system32\svchost.exe -k LocalServiceNoNetworkFirewall -p'
+Servis,TlntSvr,Running,LocalSystem,KRITIK,Güvensiz/eski protokol servisi çalışıyor: 'TlntSvr' (CIS İhlali)
+Servis,RemoteRegistry,Running,NT AUTHORITY\LocalService,KRITIK,Güvensiz/eski protokol servisi çalışıyor: 'RemoteRegistry' (CIS İhlali)
+Servis,RemoteRegistry,Running,NT AUTHORITY\LocalService,YUKSEK,Tırnaksız servis yolu zafiyeti (CWE-428): 'C:\Windows\system32\svchost.exe -k regsvc'
+Servis,VulnerableCustomService,Running,LocalSystem,YUKSEK,Tırnaksız servis yolu zafiyeti (CWE-428): 'C:\Program Files\Enterprise Software\Legacy Agent\service.exe'

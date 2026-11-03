@@ -1,0 +1,19 @@
+{
+  "README.md": "fb53a9abcdcb26c888d4719e774f99d731bfa9efb2b1fc36ae9ac8969abe9dc3",
+  "ders.md": "1d1437ee5d4e7796636c7efbfb131feb868c5c363c89637390b784516c39c293",
+  "rapor.md": "b09448c9ba8b12c3b0ff6354abde2379e9fa090f07e1034c00301c6caa60c863",
+  "sonuc.json": "25a9378ab07285b0ec51455cf416dbc69a8ef8fe21a99569779829e68f7258cb",
+  "soru_cevap.md": "4eb658d82ee9e1d10bcfacd7cfcf4ead2675d1ce89c834235113be06c4401b55",
+  "kanit/gercek/journal_filtreleme_ve_zaman_kaydi.txt": "e3177da14e7a32079b95b67e31dc06ec24099274a9db4fe26896cf77d3cf4965",
+  "kanit/gercek/komut_ve_cikis.txt": "9ed911cb0a403feb16317dc971136b7e614862f12d9ce0480bfee6011abfbc75",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "d144c279eb34d8d6b8ae3c024a2b22b639f552452e041f6ff38d0d1e07013331",
+  "kanit/gercek/test_sonuclari.txt": "3ca32f0e05d495170fb9f77b14386cee14ffdf9afc1bb7b2ea3863a52d9047a1",
+  "kanit/temsili/linux_journald_ve_log_mimarisi.txt": "a0c82d849375b3e225d668d47234c99a5e7c11bbe6a3e07e22e07f61f130bbf6",
+  "ornek_veri/corrupted_journal_test.json": "bb9d1de79efbfde00fc9f776889159abf3f9b51dfb601493b97b363884b5603d",
+  "ornek_veri/sample_journal_logs.json": "f4ccb97d2b08969e9e8ccc5c2fa636161d38dd3943d41fe82184d00c7ff759b0",
+  "ornek_veri/sample_journald_conf_baseline.ini": "b85f8aa0b9138ea0dc32787661348acc8551b2547e6f001e9d117bca436ad70d",
+  "tests/__init__.py": "6c67e5a34bb20005128c403bf14b306e61b0f19f45474fe3074b7882a8d68c00",
+  "tests/test_linux_journalctl_log_auditor.py": "06ebd220d7ed1bf836b8e1204d4ea33c518e07435c8cd3f9cbccfa14f92450fc",
+  "uygulama/__init__.py": "8e323416818452130c8e2a2321f5e50a53cd8f4c6770c2b95a8ccec1af95bcb9",
+  "uygulama/linux_journalctl_log_auditor.py": "61483ce1bf5d993eee8924039b37cb2c27a6ab2d247c4e7cfef2b77730b90bd3"
+}

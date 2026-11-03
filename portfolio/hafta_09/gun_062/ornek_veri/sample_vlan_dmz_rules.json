@@ -1,0 +1,86 @@
+{
+  "aciklama": "G062 - VLAN, Segmentasyon ve DMZ Topoloji ve Kural Yapilandirma Paketi",
+  "telif_hakki": "Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Tum Haklari Saklidir.",
+  "vlan_tanimlari": {
+    "vlan_10": {
+      "vlan_id": 10,
+      "ad": "KULLANICI_LAN",
+      "alt_ag": "192.168.10.0/24",
+      "guvenlik_seviyesi": "ORTA",
+      "aciklama": "Kurumsal calisanlarin son kullanici is istasyonlari segmenti."
+    },
+    "vlan_20": {
+      "vlan_id": 20,
+      "ad": "DMZ_BOLGESI",
+      "alt_ag": "192.168.20.0/24",
+      "guvenlik_seviyesi": "DUSUK_DISA_ACIK",
+      "aciklama": "Kamuya acik web, vekil ve DNS sunucularinin barindigi cevre ag (Demilitarized Zone)."
+    },
+    "vlan_30": {
+      "vlan_id": 30,
+      "ad": "VERITABANI_LAN",
+      "alt_ag": "192.168.30.0/24",
+      "guvenlik_seviyesi": "YUKSEK_KRITIK",
+      "aciklama": "Hassas musteri verilerini barindiran kritik veritabani sunuculari havuzu."
+    },
+    "vlan_99": {
+      "vlan_id": 99,
+      "ad": "NATIVE_YONETIM_VLAN",
+      "alt_ag": "192.168.99.0/24",
+      "guvenlik_seviyesi": "KORUMALI",
+      "aciklama": "VLAN Hopping saldirilarini engellemek icin kullanici trafiginden arindirilmis yerel yonetim VLAN'i."
+    }
+  },
+  "anahtar_port_profilleri": {
+    "port_01_access_user": {
+      "port_id": "Fa0/1",
+      "mod": "ACCESS",
+      "atanan_vlan_id": 10,
+      "dtp_durumu": "NONEGOTIATE",
+      "port_guvenligi": true
+    },
+    "port_02_access_dmz": {
+      "port_id": "Fa0/2",
+      "mod": "ACCESS",
+      "atanan_vlan_id": 20,
+      "dtp_durumu": "NONEGOTIATE",
+      "port_guvenligi": true
+    },
+    "port_24_trunk_uplink": {
+      "port_id": "Gi0/1",
+      "mod": "TRUNK",
+      "native_vlan_id": 99,
+      "izin_verilen_vlanlar": [10, 20, 30],
+      "dtp_durumu": "NONEGOTIATE"
+    }
+  },
+  "inter_vlan_guvenlik_kurallari": [
+    {
+      "kural_id": "IVF_RULE_01",
+      "kaynak_vlan": 20,
+      "hedef_vlan": 30,
+      "izinli_hedef_portlar": [5432],
+      "protokol": "TCP",
+      "eylem": "ACCEPT",
+      "aciklama": "DMZ'deki web sunucusunun yalnizca veritabani portuna (PostgreSQL 5432) erisimine izin ver."
+    },
+    {
+      "kural_id": "IVF_RULE_02",
+      "kaynak_vlan": 10,
+      "hedef_vlan": 20,
+      "izinli_hedef_portlar": [443, 80],
+      "protokol": "TCP",
+      "eylem": "ACCEPT",
+      "aciklama": "Kullanicilarin DMZ'deki web sunucularina test/yonetim amaciyla erisimine izin ver."
+    },
+    {
+      "kural_id": "IVF_RULE_DEFAULT_DENY",
+      "kaynak_vlan": 20,
+      "hedef_vlan": 10,
+      "izinli_hedef_portlar": [],
+      "protokol": "ANY",
+      "eylem": "DROP",
+      "aciklama": "DMZ'den ic kullanici agina (VLAN 10) dogru TUM yanal yayilim (Lateral Movement) girisimlerini engelle."
+    }
+  ]
+}

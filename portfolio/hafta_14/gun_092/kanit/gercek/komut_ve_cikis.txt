@@ -1,0 +1,115 @@
+=====================================================================================
+GÜN 092: VERİ DOĞRULAMA VE TİP GÜVENLİĞİ — CLI KOMUT VE ÇIKTILARI
+Kayıt Zamanı (UTC): 2026-11-01T20:34:34Z
+=====================================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_092\uygulama\validator_cli.py --input-file C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_092\ornek_veri\valid_security_assets.json
+[Çıkış Kodu: 0]
+[STDOUT]:
+===========================================================================
+SİBER GÜVENLİK VERİ DOĞRULAMA VE TİP GÜVENLİĞİ RAPORU
+===========================================================================
+Toplam İncelenen Kayıt: 4
+Başarıyla Doğrulanan:  4
+Hatalı Kayıt Sayısı:   0
+---------------------------------------------------------------------------
+[+] Tüm varlıklar tip güvenliği ve sınır denetimlerinden başarıyla geçti.
+===========================================================================
+-------------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_092\uygulama\validator_cli.py --input-file C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_092\ornek_veri\valid_security_assets.json --json-output
+[Çıkış Kodu: 0]
+[STDOUT]:
+{
+  "toplam_kayit": 4,
+  "gecerli_kayit_sayisi": 4,
+  "hatali_kayit_sayisi": 0,
+  "gecerli_varliklar": [
+    {
+      "asset_id": "AST-FW-01",
+      "ipv4_address": "10.0.0.1",
+      "mac_address": "00:50:56:A1:B2:C3",
+      "port": 443,
+      "hostname": "firewall-edge-01.corp.internal",
+      "protocol": "TCP",
+      "sha256_checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "risk_score": 2.5,
+      "tags": [
+        "perimeter",
+        "firewall",
+        "production"
+      ],
+      "is_active": true
+    },
+    {
+      "asset_id": "AST-WEB-02",
+      "ipv4_address": "192.168.10.25",
+      "mac_address": "08:00:27:12:34:56",
+      "port": 80,
+      "hostname": "nginx-frontend-02.dmz.local",
+      "protocol": "TCP",
+      "sha256_checksum": "2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae",
+      "risk_score": 4.0,
+      "tags": [
+        "dmz",
+        "nginx",
+        "web"
+      ],
+      "is_active": true
+    },
+    {
+      "asset_id": "AST-DB-01",
+      "ipv4_address": "172.16.5.100",
+      "mac_address": "52:54:00:FE:DC:BA",
+      "port": 5432,
+      "hostname": "postgres-master-01.db.internal",
+      "protocol": "TCP",
+      "sha256_checksum": "fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb9",
+      "risk_score": 1.2,
+      "tags": [
+        "database",
+        "postgresql",
+        "critical"
+      ],
+      "is_active": true
+    },
+    {
+      "asset_id": "AST-DNS-01",
+      "ipv4_address": "10.0.0.53",
+      "mac_address": "00:15:5D:88:99:AA",
+      "port": 53,
+      "hostname": "coredns-resolver-01.corp.internal",
+      "protocol": "UDP",
+      "sha256_checksum": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+      "risk_score": 3.0,
+      "tags": [
+        "infrastructure",
+        "dns"
+      ],
+      "is_active": true
+    }
+  ],
+  "hatalar": []
+}
+-------------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_092\uygulama\validator_cli.py --input-file C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_092\ornek_veri\invalid_security_assets.json --strict
+[Çıkış Kodu: 2]
+[STDOUT]:
+===========================================================================
+SİBER GÜVENLİK VERİ DOĞRULAMA VE TİP GÜVENLİĞİ RAPORU
+===========================================================================
+Toplam İncelenen Kayıt: 9
+Başarıyla Doğrulanan:  0
+Hatalı Kayıt Sayısı:   9
+---------------------------------------------------------------------------
+[!] TESPİT EDİLEN DOĞRULAMA HATALARI:
+    - Kayıt #0: [ValueRangeError] Zorunlu varlık alanı eksik: 'asset_id'
+    - Kayıt #1: [ValueRangeError] Zorunlu varlık alanı eksik: 'asset_id'
+    - Kayıt #2: [ValueRangeError] Zorunlu varlık alanı eksik: 'asset_id'
+    - Kayıt #3: [ValueRangeError] Zorunlu varlık alanı eksik: 'asset_id'
+    - Kayıt #4: [ValueRangeError] Zorunlu varlık alanı eksik: 'asset_id'
+    - Kayıt #5: [ValueRangeError] Zorunlu varlık alanı eksik: 'asset_id'
+    - Kayıt #6: [ValueRangeError] Zorunlu varlık alanı eksik: 'asset_id'
+    - Kayıt #7: [ValueRangeError] Zorunlu varlık alanı eksik: 'asset_id'
+    - Kayıt #8: [ValueRangeError] Zorunlu varlık alanı eksik: 'asset_id'
+===========================================================================
+-------------------------------------------------------------------------------------

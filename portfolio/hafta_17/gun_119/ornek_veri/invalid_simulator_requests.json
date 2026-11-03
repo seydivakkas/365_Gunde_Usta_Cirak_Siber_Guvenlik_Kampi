@@ -1,0 +1,80 @@
+[
+  {
+    "id": "NEG_01",
+    "baslik": "Rolde Bulunmayan Yetki ile İzinsiz Erişim Talebi",
+    "cwe": "CWE-862",
+    "beklenen_olay": "ACCESS_DENIED_CWE_862",
+    "kullanici_id": "dev_ayse",
+    "hedef": "budget",
+    "eylem": "approve"
+  },
+  {
+    "id": "NEG_02",
+    "baslik": "Statik Görevler Ayrılığı (SSD) Toksik Rol Çatışması",
+    "cwe": "CWE-863",
+    "beklenen_hata": "StaticSoDViolationError",
+    "kullanici_id": "fraud_tester",
+    "atanacak_roller": ["accountant", "cashier"]
+  },
+  {
+    "id": "NEG_03",
+    "baslik": "Dinamik Görevler Ayrılığı (DSD) Oturum Çatışması",
+    "cwe": "CWE-863",
+    "beklenen_hata": "DynamicSoDViolationError",
+    "kullanici_id": "hybrid_worker",
+    "aktiflestirilecek_roller": ["sec_officer", "developer"]
+  },
+  {
+    "id": "NEG_04",
+    "baslik": "Kullanıcıya Atanmamış Yetkisiz Rol Aktivasyonu",
+    "cwe": "CWE-285",
+    "beklenen_hata": "UnassignedRoleActivationError",
+    "kullanici_id": "dev_ayse",
+    "aktiflestirilecek_roller": ["admin"]
+  },
+  {
+    "id": "NEG_05",
+    "baslik": "Döngüsel Rol Miras Ağacı (Circular Hierarchy) Enjeksiyonu",
+    "cwe": "CWE-674",
+    "beklenen_hata": "RoleHierarchyCycleDetectedError",
+    "parent_rol": "employee",
+    "child_rol": "finance_director"
+  },
+  {
+    "id": "NEG_06",
+    "baslik": "Aşırı Yetki Birikimi (Privilege Creep) Eşik Aşımı",
+    "cwe": "CWE-250",
+    "beklenen_hata": "PrivilegeCreepWarningError",
+    "kullanici_id": "creep_user",
+    "atanacak_roller": ["employee", "developer", "sec_officer", "accountant", "admin"]
+  },
+  {
+    "id": "NEG_07",
+    "baslik": "Geçersiz veya Sahte Oturum Kimliği ile Erişim",
+    "cwe": "CWE-613",
+    "beklenen_hata": "SessionInvalidOrExpiredError",
+    "kullanici_id": "dev_ayse",
+    "sahte_oturum_id": "SES-MALICIOUS-TOKEN-666",
+    "hedef": "repo",
+    "eylem": "read"
+  },
+  {
+    "id": "NEG_08",
+    "baslik": "Geri Alınan (Revoked) Rolün Sağladığı Yetkiye Erişim",
+    "cwe": "CWE-862",
+    "beklenen_olay": "ACCESS_DENIED_CWE_862",
+    "kullanici_id": "temp_dev",
+    "geri_alinacak_rol": "developer",
+    "hedef": "repo",
+    "eylem": "read"
+  },
+  {
+    "id": "NEG_09",
+    "baslik": "Sistemde Kayıtlı Olmayan Hayali Kullanıcı Erişimi",
+    "cwe": "CWE-287",
+    "beklenen_olay": "USER_NOT_FOUND",
+    "kullanici_id": "unknown_ghost_user",
+    "hedef": "public_wiki",
+    "eylem": "read"
+  }
+]

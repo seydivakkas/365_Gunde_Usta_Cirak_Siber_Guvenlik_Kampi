@@ -1,0 +1,79 @@
+{
+  "gun": 95,
+  "baslik": "Basit performans olcumu",
+  "toplam_dosya": 18,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "b0ce55790d2fc2b514968ce12807c5de17817481f7defc52e0d2db8b9f7fc4cf",
+      "size": 4990
+    },
+    "ders.md": {
+      "sha256": "4b922f4eae4ee062aa83c7b5d3dd51ab8522120592fa492719c88ad29445ce11",
+      "size": 7459
+    },
+    "kanit_uretici.py": {
+      "sha256": "834a32f3c6c2f746b2c5d67f3322a9a6ad72c205bc8d171c57fcb12a25871787",
+      "size": 13324
+    },
+    "rapor.md": {
+      "sha256": "69a27a8feef51f20aeadb9f239bff55d3924ef453c95408378834beeb7bc89cb",
+      "size": 3085
+    },
+    "sonuc.json": {
+      "sha256": "b57bf5ea4a47ba7176b51770d0ab8795c1ef718bd6debeca5e1e550ee6a8205b",
+      "size": 1982
+    },
+    "soru_cevap.md": {
+      "sha256": "1e7cdded5e5f50571aa7c6b46340babeaabe513028114964b4a7dc27f742d5cd",
+      "size": 9364
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "sha256": "c3bb77812e042ab285ba514bb4c6fa3f4f26d8b763b437fa2010a279dcceac8d",
+      "size": 3600
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "sha256": "47f9a95288286274ff258561ad3c3810473643c91a85df24e86dd9d664c9c900",
+      "size": 2510
+    },
+    "kanit\\gercek\\performans_olcum_raporu.txt": {
+      "sha256": "9390de4edf958e54c7e615bb55a982b8f3c9a8e9acc5ddcc1e79a4d98d508af3",
+      "size": 2110
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "sha256": "66551994391fee165991ceca2bf80edd213cab90402d3ed7c07c70ede5336e46",
+      "size": 3297
+    },
+    "kanit\\temsili\\performans_olcum_mimarisi.txt": {
+      "sha256": "c4a568f1c91c4b1905a4ba3ed47c1c9fca88116f630ab1589775b976e8d7d05b",
+      "size": 5492
+    },
+    "ornek_veri\\benchmark_scenarios.json": {
+      "sha256": "b5dabcbed1ca920a7261fc05103285d15df58ad122f145b8684c04b1604e5f9b",
+      "size": 1048
+    },
+    "ornek_veri\\invalid_benchmark_inputs.json": {
+      "sha256": "70f772534612d01b8a487f4d469ece30c7440bc2acdde933fb4a433e69cd44bb",
+      "size": 2568
+    },
+    "tests\\__init__.py": {
+      "sha256": "c0273f743304308f55ae14ec71333dc71bb4e2e9f288709dc8625653d015ac9f",
+      "size": 563
+    },
+    "tests\\test_security_benchmarker.py": {
+      "sha256": "535434e399e91e41d35fe726f1fdbdae16ef85187e93532c26561752107bf9f8",
+      "size": 8944
+    },
+    "uygulama\\__init__.py": {
+      "sha256": "ab7d5899959a6b39b79b6d3017474a07232edae7b0505df0e146d2fa51336fa4",
+      "size": 690
+    },
+    "uygulama\\benchmarker_cli.py": {
+      "sha256": "81981be16cd2868045ed827573848aa821c1a98debeffb948088a38a381ac279",
+      "size": 7998
+    },
+    "uygulama\\security_benchmarker.py": {
+      "sha256": "cc7a254af42479fc6c85c73c78c218e40b43515ca7281f636a62d767f54c00d3",
+      "size": 15108
+    }
+  }
+}

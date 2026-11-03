@@ -1,0 +1,72 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+# ==============================================================================
+# GÜN 078: DOSYA OKUMA VE PATHLIB — GÜVENLİK VE SANDBOX MİMARİSİ
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# ==============================================================================
+
+                ┌─────────────────────────────────────────────────────────────┐
+                │          GÜVENSİZ DOSYA GİRDİLERİ VE SALDIRI VEKTÖRLERİ     │
+                │        (Path Traversal, Symlink Following, TOCTOU, OOM)     │
+                └──────────────────────────────┬──────────────────────────────┘
+                                               │
+               ┌───────────────────────────────┴───────────────────────────────┐
+               ▼                                                               ▼
+┌──────────────────────────────┐                              ┌──────────────────────────────┐
+│  1. PATH TRAVERSAL (CWE-22)  │                              │  2. MUTLAK YOL ENJEKSİYONU   │
+│  Dizin Aşımı Atlama          │                              │  Absolute Path Escape        │
+├──────────────────────────────┤                              ├──────────────────────────────┤
+│ Girdi: ../../cmd.exe         │                              │ Girdi: C:\Windows\System32   │
+│ Hedef: Sandbox dışına çıkış  │                              │ Girdi: /etc/passwd           │
+│ Sonuç: Sistem dosyası ifşası │                              │ Sonuç: Hassas veri sızıntısı │
+└──────────────────────────────┘                              └──────────────────────────────┘
+               │                                                               │
+               └───────────────────────────────┬───────────────────────────────┘
+                                               │
+               ┌───────────────────────────────┴───────────────────────────────┐
+               ▼                                                               ▼
+┌──────────────────────────────┐                              ┌──────────────────────────────┐
+│  3. NULL-BYTE VE UZANTI HİLESİ│                             │  4. YARIŞ DURUMU (TOCTOU)    │
+│  Extension Bypass (CWE-626)  │                              │  CWE-367 Race Condition      │
+├──────────────────────────────┤                              ├──────────────────────────────┤
+│ Girdi: config.json\x00.exe   │                              │ Kontrol: if path.exists():   │
+│ C Kütüphanesi: config.json   │                              │ Saldırgan Araya Girer (Symlk)│
+│ Güvenlik Filtresi: Atlatıldı │                              │ İcra: with open(path): Çöktü!│
+└──────────────────────────────┘                              └──────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+                ┌─────────────────────────────────────────────────────────────┐
+                │        SAVUNMACI PATHLIB VE ATOMİK İŞLEM MİMARİSİ           │
+                │  (Path.resolve(), is_relative_to(), Atomic os.replace)      │
+                └──────────────────────────────┬──────────────────────────────┘
+                                               │
+                                               ▼
+         ┌───────────────────────────────────────────────────────────┐
+         │ 1. ADIM: MUTLAK YOL VE NULL-BYTE ÖN KONTROLÜ              │
+         │    -> if '\x00' in path: raise ValueError                 │
+         │    -> if Path(p).is_absolute(): raise PermissionError     │
+         └─────────────────────────────┬─────────────────────────────┘
+                                       │
+                                       ▼
+         ┌───────────────────────────────────────────────────────────┐
+         │ 2. ADIM: KANONİKLEŞTİRME VE İLİŞKİ KONTROLÜ               │
+         │    -> candidate = (sandbox_dir / p).resolve()             │
+         │    -> if not candidate.is_relative_to(sandbox_dir):       │
+         │           raise PermissionError (Path Traversal Bloklandı)│
+         └─────────────────────────────┬─────────────────────────────┘
+                                       │
+                                       ▼
+         ┌───────────────────────────────────────────────────────────┐
+         │ 3. ADIM: UZANTI VE BOYUT TAVANI DOĞRULAMASI               │
+         │    -> suffix in {".json", ".log", ".yaml", ".txt"}        │
+         │    -> if file.stat().st_size > MAX_BYTES: raise ValueError│
+         └─────────────────────────────┬─────────────────────────────┘
+                                       │
+                                       ▼
+         ┌───────────────────────────────────────────────────────────┐
+         │ 4. ADIM: GÜVENLİ OKUMA VE ATOMİK YAZMA (ATOMIC WRITE)     │
+         │    -> Okuma: with open(...) as f: (Context Manager)       │
+         │    -> Yazma: .tmp_PID_TIME -> flush() -> fsync()          │
+         │              -> os.replace(temp, target) (Atomik Takas)   │
+         └───────────────────────────────────────────────────────────┘

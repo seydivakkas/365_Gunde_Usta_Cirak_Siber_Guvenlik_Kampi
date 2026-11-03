@@ -1,0 +1,136 @@
+{
+  "aciklama": "G066 DNS ve HTTP Anomali Motoru Negatif Sınır ve Güvenlik İhlali Senaryoları",
+  "test_senaryolari": [
+    {
+      "test_kodu": "NEG_01",
+      "senaryo_adi": "DGA Algoritmik Alan Adı İstisnası",
+      "beklenen_hata": "DGAAnomalyError",
+      "beklenen_tespit": "DGA_ALAN_ADI_TESPITI",
+      "dns_kaydi": {
+        "kayit_id": "NEG-DGA-01",
+        "alan_adi": "qz98xkw7mp201flbv.biz",
+        "sorgu_tipi": "A",
+        "ttl": 60,
+        "istek_boyutu": 40,
+        "yanit_boyutu": 60
+      }
+    },
+    {
+      "test_kodu": "NEG_02",
+      "senaryo_adi": "DNS Tünelleme Aşırı Uzunluk İstisnası",
+      "beklenen_hata": "DNSTunnelingError",
+      "beklenen_tespit": "DNS_TUNELLEME_SIZINTISI",
+      "dns_kaydi": {
+        "kayit_id": "NEG-TUNNEL-01",
+        "alan_adi": "ZXhoaWJpdGlvbl9zZWNyZXRfZGF0YV9leGZpbHRyYXRpb24_dG9rZW4.t.tunnel.xyz",
+        "sorgu_tipi": "TXT",
+        "ttl": 30,
+        "istek_boyutu": 75,
+        "yanit_boyutu": 150
+      }
+    },
+    {
+      "test_kodu": "NEG_03",
+      "senaryo_adi": "DNS Amplification Yüksek Büyütme İstisnası",
+      "beklenen_hata": "DNSAmplificationError",
+      "beklenen_tespit": "DNS_AMPLIFICATION_SALDIRISI",
+      "dns_kaydi": {
+        "kayit_id": "NEG-AMP-01",
+        "alan_adi": "large-zone.org",
+        "sorgu_tipi": "ANY",
+        "ttl": 120,
+        "istek_boyutu": 40,
+        "yanit_boyutu": 4000
+      }
+    },
+    {
+      "test_kodu": "NEG_04",
+      "senaryo_adi": "HTTP Request Smuggling (CL ve TE Birlikte) İstisnası",
+      "beklenen_hata": "HTTPRequestSmugglingError",
+      "beklenen_tespit": "HTTP_REQUEST_SMUGGLING",
+      "http_kaydi": {
+        "kayit_id": "NEG-SMUGGLE-01",
+        "metot": "POST",
+        "uri": "/submit",
+        "basliklar": {
+          "Host": "victim.local",
+          "Content-Length": "12",
+          "Transfer-Encoding": "chunked"
+        },
+        "govde": "0\r\n\r\n"
+      }
+    },
+    {
+      "test_kodu": "NEG_05",
+      "senaryo_adi": "HTTP Header Injection / CRLF Bölünmesi İstisnası",
+      "beklenen_hata": "HeaderInjectionError",
+      "beklenen_tespit": "HTTP_CRLF_ENJEKSIYONU",
+      "http_kaydi": {
+        "kayit_id": "NEG-CRLF-01",
+        "metot": "GET",
+        "uri": "/set?theme=dark%0d%0aLocation:%20http://attacker.com",
+        "basliklar": {
+          "Host": "victim.local"
+        },
+        "govde": ""
+      }
+    },
+    {
+      "test_kodu": "NEG_06",
+      "senaryo_adi": "HTTP Path Traversal Dizin Geçişi İstisnası",
+      "beklenen_hata": "PathTraversalError",
+      "beklenen_tespit": "PATH_TRAVERSAL_DIZIN_GECISI",
+      "http_kaydi": {
+        "kayit_id": "NEG-TRAVERSAL-01",
+        "metot": "GET",
+        "uri": "/static/..\\..\\..\\windows\\win.ini",
+        "basliklar": {
+          "Host": "victim.local"
+        },
+        "govde": ""
+      }
+    },
+    {
+      "test_kodu": "NEG_07",
+      "senaryo_adi": "Otomatik Saldırı Tarayıcısı İmzası İstisnası",
+      "beklenen_hata": "MaliciousScannerError",
+      "beklenen_tespit": "OTOMATIK_TARAMA_TESPITI",
+      "http_kaydi": {
+        "kayit_id": "NEG-SCANNER-01",
+        "metot": "GET",
+        "uri": "/test.php",
+        "basliklar": {
+          "Host": "victim.local",
+          "User-Agent": "Nikto/2.1.6"
+        },
+        "govde": ""
+      }
+    },
+    {
+      "test_kodu": "NEG_08",
+      "senaryo_adi": "Bozuk veya Eksik Kayıt Nesnesi İstisnası",
+      "beklenen_hata": "MalformedRecordError",
+      "beklenen_tespit": "BOZUK_KAYIT_NESNESI",
+      "dns_kaydi": "bu_bir_sozluk_degil_string"
+    },
+    {
+      "test_kodu": "NEG_09",
+      "senaryo_adi": "Fast Flux Botnet C2 Mikro-TTL İstisnası",
+      "beklenen_hata": "FastFluxAnomalyError",
+      "beklenen_tespit": "FAST_FLUX_BOTNET_C2",
+      "dns_kaydi": {
+        "kayit_id": "NEG-FLUX-01",
+        "alan_adi": "c2-relay.dark-mesh.net",
+        "sorgu_tipi": "A",
+        "ttl": 10,
+        "cozulmus_ipler": [
+          "1.2.3.4",
+          "5.6.7.8",
+          "9.10.11.12",
+          "13.14.15.16",
+          "17.18.19.20"
+        ]
+      }
+    }
+  ]
+}

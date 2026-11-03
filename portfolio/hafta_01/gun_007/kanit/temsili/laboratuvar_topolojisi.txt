@@ -1,0 +1,52 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+   GÜVENLİ SİBER GÜVENLİK LABORATUVARI (ASGAL) TOPOLOJİ VE İZOLASYON ŞEMASI
+================================================================================
+
+  +----------------------------------------------------------------------------+
+  |              FİZİKSEL HOST MAKİNE (Windows 11 / Linux Ana Sistem)           |
+  |                                                                            |
+  |   [Hipervizör İzolasyon Duvarı]                                            |
+  |   - Pano Paylaşımı (Clipboard): DEVRE DIŞI                                  |
+  |   - Ortak Klasörler (Shared Folders): DEVRE DIŞI                            |
+  |   - Sürükle & Bırak: DEVRE DIŞI                                            |
+  |                                                                            |
+  |   [Fiziksel Ağ Kartı: Wi-Fi / Ethernet]                                    |
+  |   ====================== X KESİNLİKLE BAĞLANTI YOK X ===================== |
+  |   (İnternete ve Ev/Şirket Ağına Sızıntı Sıfır Toleransla Engellenmiştir)   |
+  +----------------------------------------------------------------------------+
+                                        |
+                   +--------------------+--------------------+
+                   |                                         |
+                   v                                         v
+   +-------------------------------+         +---------------------------------+
+   | [İÇ GÜVENLİK DUVARI: NODE-05] |         | [AYNA PORT / SPAN SENSÖR: 04]   |
+   | pfSense Sanal Ağ Geçidi       |         | Zeek NIDS & Wazuh SIEM          |
+   | IP: 192.168.100.1             |         | IP: 192.168.100.40              |
+   | Rol: Yönlendirme ve Loglama   |         | Segment: BLUE_ZONE (İzleme)     |
+   +---------------+---------------+         +----------------+----------------+
+                   |                                          |
+   ================+=========== SANAL ANAHTAR ================+=================
+   (vSwitch / Host-Only İzole Sanal Ağ: 192.168.100.0/24 - Paket Dışarı Çıkamaz)
+                   |                                          |
+         +---------+---------+                      +---------+---------+
+         |                   |                      |                   |
+         v                   v                      v                   v
+ +---------------+   +---------------+      +---------------+   +---------------+
+ | [NODE-01]     |   | [NODE-02]     |      | [NODE-03]     |   | [SNAPSHOT]    |
+ | SALDIRGAN     |   | HEDEF DOMAIN  |      | HEDEF LINUX   |   | Her test      |
+ | Kali Linux    |   | Win Server AD |      | Ubuntu Web/DB |   | öncesi temiz  |
+ | 192.168.100.10|   | 192.168.100.20|      | 192.168.100.30|   | duruma dönüş  |
+ | RED_ZONE      |   | TARGET_ZONE   |      | TARGET_ZONE   |   | garantisi     |
+ +---------------+   +---------------+      +---------------+   +---------------+
+
+================================================================================
+HAFTALIK MİNİ PROJE SÖZLEŞME KURALLARI:
+1. İZOLASYON: Laboratuvar yalnızca Host-Only sanal ağda çalışır; Bridged yasaktır.
+2. ETİK & HUKUKİ KAPSAM: 192.168.100.0/24 dışındaki hiçbir IP'ye paket atılamaz.
+3. VM ESCAPE ÖNLEMİ: Misafir eklentilerinin tehlikeli özellikleri kapatılmıştır.
+4. PANİK BUTONU: Acil durumda sanal anahtar bağlantısı derhal kesilir.
+================================================================================

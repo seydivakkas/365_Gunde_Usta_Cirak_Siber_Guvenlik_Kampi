@@ -1,0 +1,98 @@
+{
+  "gun": 90,
+  "baslik": "Tarih-saat, UTC ve saat dilimi",
+  "olusturma_zamani": "2026-11-01T20:22:47.938832+00:00",
+  "toplam_dosya": 19,
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "02a23f9ab13e1668d7487d1c4ffa8f499c29129833ef764d347014c6cf828284",
+      "boyut_bayt": 4258
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "4349088f284da2859c5a3be9d116138d4f0d64e9657465946f3e7bf3edaab4e2",
+      "boyut_bayt": 6186
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "643484a0885ae47fa597e256dfcc908126b3eee2229809aae0c6915d0ea0eb71",
+      "boyut_bayt": 8484
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "36214b4b184aa50d2297b56e10878c7b1175b1c68f3cbb11f55550813df7e0d9",
+      "boyut_bayt": 2696
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "b193ef9c10fcaa431322604a8785b6590bfd64abaa6e46d39b61940c32d869fa",
+      "boyut_bayt": 1843
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "11b80006ce02e21f65b6f996aeb9447bece5e43f4d7dc846fd9b0b7464f3130e",
+      "boyut_bayt": 9437
+    },
+    {
+      "dosya": "kanit\\gercek\\adli_zaman_analiz_raporu.txt",
+      "sha256": "7b29241f8c87324e5200f6391783fe6edf786f4cceafe6f397deab859ac43427",
+      "boyut_bayt": 1394
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "229fd400a0eb6ef854e9ef4b5e2dd45d20dc5612c94b0e2f95a01ed2f82e0166",
+      "boyut_bayt": 5614
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "34194d5c7cec38f89884219cc649bad54b48ff64f713c0427bfa14108a01d22d",
+      "boyut_bayt": 1486
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "6f3c4fe86b5272c5af949f512b8b9fbfce87f5bc4093c74d2dc8a3fc875a60e7",
+      "boyut_bayt": 3835
+    },
+    {
+      "dosya": "kanit\\temsili\\utc_saat_dilimi_adli_mimari.txt",
+      "sha256": "f187db06bc35e2bfa1353cdf0028499a5dfded56bccca2fcdecd1e590b4f278e",
+      "boyut_bayt": 4078
+    },
+    {
+      "dosya": "ornek_veri\\invalid_timestamp_inputs.json",
+      "sha256": "af19e4ad35f9bd4221a8abfaa964a1a784e52176f858911bb569d67830b31c55",
+      "boyut_bayt": 2555
+    },
+    {
+      "dosya": "ornek_veri\\sample_multisource_logs.json",
+      "sha256": "db4a4b786344708323d2942fbaaa2441483a42342705c6ec2fb07077a9fdd228",
+      "boyut_bayt": 2161
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "c29f7c5e5f7473e2a87ae27d1464d29d230e63008b081a97f2e373d81a6c34ea",
+      "boyut_bayt": 572
+    },
+    {
+      "dosya": "tests\\test_utc_timezone_forensic_normalizer.py",
+      "sha256": "61f5ba83d753d1530085836693e33107fa2ad9a6252a0e374f37bc1300df1b49",
+      "boyut_bayt": 9459
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "f64d1748eae37c8db87252c42b7f0aab9abc37469fe20c7b3f00331272e7906e",
+      "boyut_bayt": 594
+    },
+    {
+      "dosya": "uygulama\\forensic_timeline_runner.py",
+      "sha256": "0c8d49a1fd0fb07cf64a8761a5813182a747cac8e02111815fb49e65ea73e420",
+      "boyut_bayt": 4254
+    },
+    {
+      "dosya": "uygulama\\utc_timezone_forensic_normalizer.py",
+      "sha256": "c0138fa45737a92790b9e772f48848c49cb86657f19ada0d7a5d1f0105df8609",
+      "boyut_bayt": 24321
+    }
+  ]
+}

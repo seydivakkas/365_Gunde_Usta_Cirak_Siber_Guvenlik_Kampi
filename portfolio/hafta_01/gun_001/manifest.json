@@ -1,0 +1,15 @@
+{
+  "dosyalar": {
+    "README.md": "87bc0f3b5501aeaf1653e3cb7e3aa421ae10bc083359b03339d749d3ce79e43a",
+    "ders.md": "01028a178b84509a069a2568bc24ed0c62e6da809ec4d3ae53a8d09201c47920",
+    "rapor.md": "d3d34631dee2945876f9611a39c4bb7d0b73f06d98632cec5074f48e3f701731",
+    "sonuc.json": "9b42abe09547ea44b08679402ea11b5c781fa124dbf8d5cac6b2051f84c7463f",
+    "soru_cevap.md": "430f3e91a634a6f874471d0a130a712e570acc1d9269ffe8ec6cae65bd3ff098",
+    "kanit/gercek/komut_ve_cikis.txt": "adeb2e9bec6bd1371d7af5ec6cf004f92504e725c9d66890b208fae5871ad0db",
+    "kanit/gercek/test_sonuclari.txt": "4e06b5cb8d54beb485ee23560057464cfc32e1429f71b378c92e7ace2db89f73",
+    "kanit/temsili/cia_triad_zihin_haritasi.txt": "30ed6b91297d0e8866eb494f2c80af27dbb01ff530cc8f392d4d183a38ab133b",
+    "ornek_veri/okul_not_sistemi.txt": "46aee3212bb26681084365fc374803b9ae6ebaf8a0d603a064473753c4bdb308",
+    "tests/test_cia_triad_lab.py": "15b95d715a2c03b9cb43952513c4800a2c9b2396fcbcc03a5d112c4bdd17c888",
+    "uygulama/cia_triad_lab.py": "299d55d12b23296c1518072f1792fde8d248261981b8d57d5a091c988bfe8f7a"
+  }
+}

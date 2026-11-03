@@ -1,0 +1,26 @@
+======================================================================
+GÜN 118: EN AZ AYRICALIK VE SIFIR GÜVEN MİMARİSİ ANALİZ RAPORU
+Mühendis: Seydi Eryılmaz (@seydivakkas)
+Tarih: 2026-11-02 05:42:34
+======================================================================
+
+1. MİMARİ İNCELEME (NIST SP 800-207 ZERO TRUST ARCHITECTURE):
+   - 'Asla Güvenme, Sürekli Doğrula' (Never Trust, Always Verify): Ağ konumu (LAN/VPN)
+     ayrıcalık üretmez. Her işlem anında uç nokta sağlığı ve bağlam yeniden doğrulanır.
+   - Kalıcı Ayrıcalıkların Kaldırılması (Zero Standing Privileges - ZSP): Hiçbir kullanıcıya
+     daimi root/admin yetkisi tanınmaz. Yetkiler Just-In-Time (JIT) ile kısıtlı TTL için açılır.
+   - Dinamik Güven Skoru: Cihaz sağlığı (%50) ve kimlik gücü (%50) ile anlık hesaplanır;
+     şüpheli anomalilerde puan otomatik kırılarak oturum sonlandırılır.
+   - Mikro-Segmentasyon: Segmentler arası doğrudan geçişler yasaklanmış, yanal hareket
+     (Lateral Movement) kökünden engellenmiştir.
+
+2. KAPSAMLI ZAFİYET ENGELLEME PERFORMANSI:
+   - CWE-250 (Standing Privileges)        : Kalıcı sınırsız yetki talepleri engellendi.
+   - CWE-272 (Least Privilege Violation)  : Görev dışı aşırı kapsam talepleri reddedildi.
+   - CWE-613 (Expired Session / JIT)      : Süresi dolan veya iptal edilen JIT engellendi.
+   - CWE-284 (Untrusted Device & Posture) : BYOD ve yamasız cihazlar PEP'te durduruldu.
+   - CWE-284 (Lateral Movement)           : Mikro-segment ihlalleri engellendi.
+   - CWE-308 (Missing Step-Up Auth)       : Kritik işlemlerde anlık Step-Up MFA uygulandı.
+
+3. SONUÇ:
+   Geliştirilen Sıfır Güven Motoru, kurumsal SOC ve bulut altyapılarında tam koruma sağlar.

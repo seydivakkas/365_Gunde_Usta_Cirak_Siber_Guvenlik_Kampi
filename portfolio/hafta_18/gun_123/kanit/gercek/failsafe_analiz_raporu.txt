@@ -1,0 +1,23 @@
+# Atlas Kurumsal Kimlik ve Yetki Altyapısı (Secure by Default) — Güvenli Varsayılanlar ve Fail-Safe Raporu
+**Rapor Tarihi:** 2026-11-02 08:15:24
+**Sistem Arıza Davranış Modu:** `FAIL_SECURE`
+
+## 1. Kaynak Güvenlik Yapılandırması ve Varsayılanlar
+| Kaynak ID | Kaynak Adı | Varsayılan Erişim | Debug Modu | TLS Zorunlu | Varsayılan Parola | CORS Durumu | Depolama |
+|---|---|---|---|---|---|---|---|
+| RES-AUTH-API | Merkezi Kimlik Doğrulama API Ağ Geçidi | DENY | ✅ Kapalı | ✅ Zorunlu | ✅ Değiştirildi | ✅ Kısıtlı | ✅ Şifreli |
+| RES-PAYMENT-SVC | Çekirdek Ödeme ve EFT Mikroservisi | DENY | ✅ Kapalı | ✅ Zorunlu | ✅ Değiştirildi | ✅ Kısıtlı | ✅ Şifreli |
+| RES-CUSTOMER-DB | PostgreSQL Müşteri Veritabanı Kümesi | DENY | ✅ Kapalı | ✅ Zorunlu | ✅ Değiştirildi | ✅ Kısıtlı | ✅ Şifreli |
+| RES-AUDIT-LOG | Değiştirilemez WORM Denetim Günlüğü Deposu | DENY | ✅ Kapalı | ✅ Zorunlu | ✅ Değiştirildi | ✅ Kısıtlı | ✅ Şifreli |
+
+## 2. Kurumsal Standartlara Uyum ve Zaafiyet Analizi
+> [!NOTE]
+> **TAM UYUMLU:** Tüm sistem bileşenleri 'Secure by Default' prensiplerine uygundur. Hiçbir CWE-1188 veya CWE-636 zaafiyeti tespit edilmemiştir.
+
+## 3. Açık Yetki Kuralları (Saltzer-Schroeder Kural İstisnaları)
+| Kural ID | Rol | Hedef Kaynak | Eylem | Karar |
+|---|---|---|---|---|
+| RULE-ADMIN-FULL | admin | RES-AUTH-API | manage | İZİN_VERİLDİ |
+| RULE-PAYMENT-EXEC | payment_service | RES-PAYMENT-SVC | execute_transfer | İZİN_VERİLDİ |
+| RULE-CUSTOMER-READ | support_agent | RES-CUSTOMER-DB | read_profile | İZİN_VERİLDİ |
+| RULE-AUDIT-APPEND | security_logger | RES-AUDIT-LOG | append | İZİN_VERİLDİ |

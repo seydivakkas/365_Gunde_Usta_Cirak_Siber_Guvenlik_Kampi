@@ -1,0 +1,147 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ.",
+  "kurum_adi": "Anadolu Finansal Teknolojiler A.Ş.",
+  "degerlendirme_tarihi": "2026-10-26",
+  "cerceve_surumu": "NIST CSF 2.0 (CSWP 29)",
+  "hedef_olgunluk_seviyesi": "Tier 3 - Repeatable",
+  "fonksiyonlar": {
+    "GOVERN": {
+      "kod": "GV",
+      "tanim": "Yönetişim: Kurumun siber güvenlik risk yönetimi stratejisini, beklentilerini ve politikasını belirler ve izler.",
+      "kategoriler": {
+        "GV.OC": {
+          "ad": "Kurumsal Bağlam (Organizational Context)",
+          "olgunluk_puani": 85,
+          "aciklama": "Kurumun finansal misyonu, yasal yükümlülükleri (KVKK/BDDK) ve siber risk iştahı tanımlanmış ve yönetim kurulu onayından geçmiştir.",
+          "kanit": "POL-SEC-2026-01: Kurumsal Risk İştahı ve Siber Güvenlik Yönetişim Belgesi"
+        },
+        "GV.RM": {
+          "ad": "Risk Yönetim Stratejisi (Risk Management Strategy)",
+          "olgunluk_puani": 80,
+          "aciklama": "Kurumsal risk toleransı belirlenmiş; risk değerlendirme metodolojisi iş etki analizleriyle bütünleştirilmiştir.",
+          "kanit": "MET-RM-2026: Bütünleşik Tehdit ve Risk Puanlama Metodolojisi"
+        },
+        "GV.SC": {
+          "ad": "Siber Güvenlik Tedarik Zinciri Risk Yönetimi (C-SCRM)",
+          "olgunluk_puani": 75,
+          "aciklama": "Tüm kritik 3. parti yazılım ve bulut tedarikçileri güvenlik değerlendirmesine tabi tutulmakta ve SLA/NDA maddeleri denetlenmektedir.",
+          "kanit": "SCRM-AUD-2026: Üçüncü Taraf Güvenlik Değerlendirme Çizelgesi"
+        }
+      }
+    },
+    "IDENTIFY": {
+      "kod": "ID",
+      "tanim": "Tanımlama: Kurumun siber güvenlik risklerini yönetebilmesi için varlıkları, veri akışlarını ve risklerini belirler.",
+      "kategoriler": {
+        "ID.AM": {
+          "ad": "Varlık Yönetimi (Asset Management)",
+          "olgunluk_puani": 85,
+          "aciklama": "Donanım, sanal sunucular, yazılım kütüphaneleri ve veri depoları merkezi CMDB üzerinde canlı taranarak kayıt altına alınmaktadır.",
+          "kanit": "CMDB-INV-2026: Otomatik Varlık ve Konfigürasyon Veri Tabanı"
+        },
+        "ID.RA": {
+          "ad": "Risk Değerlendirmesi (Risk Assessment)",
+          "olgunluk_puani": 80,
+          "aciklama": "Tehdit modellemeleri (STRIDE) ve zafiyet tarama sonuçları periyodik olarak iş varlıklarıyla eşleştirilmektedir.",
+          "kanit": "VULN-REP-Q3: Çeyreklik Tehdit ve Zafiyet Korelasyon Raporu"
+        },
+        "ID.IM": {
+          "ad": "İyileştirme (Improvement)",
+          "olgunluk_puani": 70,
+          "aciklama": "Önceki siber olaylardan ve tatbikatlardan çıkarılan dersler risk kayıtlarına işlenmektedir.",
+          "kanit": "LES-LRN-2025: Yıllık Alınan Dersler ve Süreç İyileştirme Kaydı"
+        }
+      }
+    },
+    "PROTECT": {
+      "kod": "PR",
+      "tanim": "Koruma: Kritik hizmetlerin sürekliliğini sağlamak ve tehditleri engellemek için koruyucu önlemler uygular.",
+      "kategoriler": {
+        "PR.AA": {
+          "ad": "Kimlik Yönetimi ve Erişim Kontrolü (Identity Management & Access Control)",
+          "olgunluk_puani": 90,
+          "aciklama": "Tüm personel ve sunucu erişimleri için FIDO2/MFA zorunlu kılınmış, en az yetki (Least Privilege) ve PAM mimarisi kurulmuştur.",
+          "kanit": "IAM-CFG-2026: Merkezi IAM ve FIDO2 Zorunluluk Matrisi"
+        },
+        "PR.AT": {
+          "ad": "Farkındalık ve Eğitim (Awareness and Training)",
+          "olgunluk_puani": 75,
+          "aciklama": "Personele aylık simüle oltalama testleri ve rol bazlı güvenli yazılım geliştirme eğitimleri verilmektedir.",
+          "kanit": "TRN-STAT-2026: Personel Oltalama ve Güvenlik Sınav Çizelgesi"
+        },
+        "PR.DS": {
+          "ad": "Veri Güvenliği (Data Security)",
+          "olgunluk_puani": 85,
+          "aciklama": "Durağan veriler AES-256 ile, hareket halindeki veriler TLS 1.3 ile şifrelenmiş; veri sızıntısı önleme (DLP) ajanları devrededir.",
+          "kanit": "ENC-STD-2026: Veri Kriptolama ve DLP Uygulama Raporu"
+        },
+        "PR.PS": {
+          "ad": "Platform Güvenliği (Platform Security)",
+          "olgunluk_puani": 80,
+          "aciklama": "CIS Benchmark sıkılaştırmaları uygulanmış, kritik yamalar 72 saat içinde sunuculara dağıtılmaktadır.",
+          "kanit": "PATCH-LOG-2026: Otomatik Yama Dağıtım ve CIS Uyum Denetimi"
+        }
+      }
+    },
+    "DETECT": {
+      "kod": "DE",
+      "tanim": "Tespit: Siber güvenlik olaylarını ve potansiyel ihlalleri zamanında keşfetmek için sürekli izleme yürütür.",
+      "kategoriler": {
+        "DE.CM": {
+          "ad": "Sürekli İzleme (Continuous Monitoring)",
+          "olgunluk_puani": 80,
+          "aciklama": "Ağ akışları, sunucu olay günlükleri ve EDR telemetrileri 7/24 SOC ekibi tarafından SIEM korelasyon kurallarıyla izlenmektedir.",
+          "kanit": "SOC-OPS-2026: 7/24 SIEM Korelasyon ve İzleme Panosu"
+        },
+        "DE.AE": {
+          "ad": "Olumsuz Olay Analizi (Adverse Event Analysis)",
+          "olgunluk_puani": 75,
+          "aciklama": "Şüpheli davranış anomalileri (anormal veri transferi, şüpheli PowerShell yürütmeleri) MITRE ATT&CK teknikleriyle eşleştirilir.",
+          "kanit": "ANOM-RULES-2026: Davranışsal Anomali ve Tehdit Avcılığı Raporu"
+        }
+      }
+    },
+    "RESPOND": {
+      "kod": "RS",
+      "tanim": "Müdahale: Tespit edilen bir siber güvenlik olayı gerçekleştiğinde kontrolü sağlamak ve yayılımı durdurmak için eyleme geçer.",
+      "kategoriler": {
+        "RS.MA": {
+          "ad": "Olay Yönetimi (Incident Management)",
+          "olgunluk_puani": 85,
+          "aciklama": "Tanımlı Olay Müdahale Planı (IRP) devrededir; olaylar şiddet derecesine göre triyaj edilir ve eskalasyon matrisi işletilir.",
+          "kanit": "IRP-DOC-2026: Siber Olay Müdahale ve Triyaj Prosedürü"
+        },
+        "RS.AN": {
+          "ad": "Olay Analizi (Incident Analysis)",
+          "olgunluk_puani": 75,
+          "aciklama": "Adli bilişim (forensics) ve bellek analizi araçlarıyla saldırganın giriş vektörü ve yanal hareketi tespit edilir.",
+          "kanit": "DFIR-TOOL-2026: Dijital Adli Bilişim Araç Kiti ve Kanıt Zinciri Formu"
+        },
+        "RS.MI": {
+          "ad": "Tehdit Sönümleme ve İzolasyon (Incident Mitigation)",
+          "olgunluk_puani": 80,
+          "aciklama": "Enfekte uç noktalar EDR üzerinden tek tıkla ağdan izole edilir; kötü niyetli IP ve domainler sınır güvenlik duvarında anında engellenir.",
+          "kanit": "SOAR-PLAY-2026: Otomatik İzolasyon ve Bloklama Playbook'u"
+        }
+      }
+    },
+    "RECOVER": {
+      "kod": "RC",
+      "tanim": "İyileştirme ve Kurtarma: Bir siber olay sonucunda zarar gören veya kesintiye uğrayan sistem ve verileri eski kararlı haline döndürür.",
+      "kategoriler": {
+        "RC.RP": {
+          "ad": "Kurtarma Planı Yürütme (Recovery Plan Execution)",
+          "olgunluk_puani": 80,
+          "aciklama": "Değiştirilemez (WORM/Air-Gapped) yedeklerden veri geri yükleme tatbikatları 3 ayda bir yapılmakta, RTO ve RPO hedefleri karşılanmaktadır.",
+          "kanit": "BCP-DRP-2026: Değiştirilemez Yedek Geri Yükleme Tatbikat Raporu"
+        },
+        "RC.CO": {
+          "ad": "Kurtarma İletişimi (Recovery Communication)",
+          "olgunluk_puani": 75,
+          "aciklama": "Olay sonrası müşteriler, düzenleyici kurumlar (BDDK/KVKK) ve basın için kriz iletişim şablonları hazırdır.",
+          "kanit": "CRISIS-PR-2026: Olay Sonrası Paydaş ve Yasal Bildirim Şablonları"
+        }
+      }
+    }
+  }
+}

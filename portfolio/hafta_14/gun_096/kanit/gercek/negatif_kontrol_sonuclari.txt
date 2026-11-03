@@ -1,0 +1,47 @@
+=== G096 NEGATİF KONTROL VE HATA ENGELLEME KANITLARI (9 SENARYO) ===
+Tarih: 2026-11-02 01:08:36
+
+[BAŞARILI (ENGELLEDİ)] NEG_01_MISSING_MANDATORY_FIELD
+  Tanım: Şemada zorunlu güvenlik uyarıları alanının bulunmaması
+  CWE: CWE-16: Configuration
+  Beklenen: MissingMandatoryDocumentationError | Alınan: MissingMandatoryDocumentationError
+
+[BAŞARILI (ENGELLEDİ)] NEG_02_LINTER_UNDOCUMENTED_ARG
+  Tanım: Kaynak kodda bulunan CLI argümanının kullanım belgesinde yer almaması
+  CWE: CWE-1188: Insecure Default Initialization of Resource
+  Beklenen: UndocumentedArgumentError | Alınan: MissingLicenseHeaderError
+
+[BAŞARILI (ENGELLEDİ)] NEG_03_EMPTY_EXIT_CODES
+  Tanım: Betiğin standart çıkış kodlarının şemada boş bırakılması
+  CWE: CWE-16: Configuration
+  Beklenen: MissingExitCodesDocumentationError | Alınan: MissingExitCodesDocumentationError
+
+[BAŞARILI (ENGELLEDİ)] NEG_04_NULL_BYTE_IN_PATH
+  Tanım: Belge veya kaynak betik yolunda Null-Byte zehirlemesi denemesi
+  CWE: CWE-158: Improper Neutralization of Null Byte or Special Characters
+  Beklenen: NullByteInjectionError | Alınan: NullByteInjectionError
+
+[BAŞARILI (ENGELLEDİ)] NEG_05_OVERSIZED_SCHEMA_PAYLOAD
+  Tanım: 1 MB tavanını aşan aşırı büyük şema girdisi ile DoS denemesi
+  CWE: CWE-400: Uncontrolled Resource Consumption
+  Beklenen: PayloadLimitExceededError | Alınan: PayloadLimitExceededError
+
+[BAŞARILI (ENGELLEDİ)] NEG_06_INVALID_FORMAT_REQUEST
+  Tanım: Belge üreticiden desteklenmeyen format talep edilmesi
+  CWE: CWE-20: Improper Input Validation
+  Beklenen: InvalidFormatError | Alınan: InvalidFormatError
+
+[BAŞARILI (ENGELLEDİ)] NEG_07_NON_STRING_SOURCE_PATH
+  Tanım: Linter fonksiyonuna dosya yolu yerine geçersiz tip gönderilmesi
+  CWE: CWE-843: Access of Resource Using Incompatible Type
+  Beklenen: TypeValidationError | Alınan: TypeValidationError
+
+[BAŞARILI (ENGELLEDİ)] NEG_08_INVALID_PRIVILEGE_LEVEL
+  Tanım: Geçersiz veya boş yetki seviyesi tanımlanması
+  CWE: CWE-20: Improper Input Validation
+  Beklenen: InvalidPrivilegeLevelError | Alınan: InvalidPrivilegeLevelError
+
+[BAŞARILI (ENGELLEDİ)] NEG_09_LINTER_MISSING_LICENSE
+  Tanım: Kaynak betikte kurumsal Özel Lisans başlığının bulunmaması
+  CWE: CWE-16: Configuration
+  Beklenen: MissingLicenseHeaderError | Alınan: MissingLicenseHeaderError

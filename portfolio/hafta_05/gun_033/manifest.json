@@ -1,0 +1,23 @@
+{
+  "README.md": "cb30fba154533f97f904a22c7e226f56bffc9a78d9af0cb5e8d0f1070e5cf8c2",
+  "ders.md": "b4c35930ac4bb3dfcb2c62bb177a318b2d1120a26921eed9dc5d6bf685b0998a",
+  "kanit/gercek/butunluk_denetim_raporu.txt": "5bb1b01d3f3b912b393f98c48fc8f552f5791d078c8ba1c930342b527704611a",
+  "kanit/gercek/komut_ve_cikis.txt": "5bb1b01d3f3b912b393f98c48fc8f552f5791d078c8ba1c930342b527704611a",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "28b7619566bae949524572c68be016307dda4f02b9b1f3ea836beb46e012b28a",
+  "kanit/gercek/test_sonuclari.txt": "5fff0e334b20fc86e818950249da65a819a1632b4c389b7e5366454a014e3281",
+  "kanit/temsili/kriptografik_ozet_ve_butunluk_mimarisi.txt": "b655497fd076521b4c1ded530b8bbfd7371fe4478202e6d7b2a64f4ce4ac45f7",
+  "ornek_veri/corrupted_hash_test_cases.json": "c738650231554b146fca00fb3eba3b5a132698b9d0458450722cccf5bcfca52c",
+  "ornek_veri/sample_baseline_manifest.json": "cca6233d2d998cf62528cb4895db738b97a49cc339e8219a7778fa5dbc6672dd",
+  "ornek_veri/sample_files/authorized_tool.py": "0c7cedf21756e8a6982e5303ed4ccf4c931c9b38923348ecc245746a73728853",
+  "ornek_veri/sample_files/config.json": "2cf886ce37d1c9fdf227bd875fc638c83938da29d65c074a562c30e79136474f",
+  "ornek_veri/sample_files/malicious_payload.sh": "dcd59f2408108885c608ad1b49cd1b876be59aef496a2cdca473129823dea6b4",
+  "ornek_veri/sample_files/security_policy.txt": "5b73db061e0757260a4dedbadfcf57191864c64727b42b3d375f96337472ed6c",
+  "ornek_veri/sample_files/tampered_config.json": "91a7743b52a28d0b1f2f9ac03d848dca744ee0b9fe8d9f62608de3870e363d3c",
+  "rapor.md": "1038965e6656b31301f96bfcc7544c2e5e3ab900b4457285a7f8c2121712c458",
+  "sonuc.json": "7f36f4528f9e6ad7beaa9968b504e9f28239667815089731e6486eda7031731c",
+  "soru_cevap.md": "37cede1f98672469ffd0dcc788b2fd7d8fc6430b4c68163f7159a2c4e4c25b78",
+  "tests/__init__.py": "1c49e1196a6608af8f8e1632b5d5ab57958775fc895346b3e695004ac8b22924",
+  "tests/test_file_integrity_hash_checker.py": "fd571e5456993dc1f4d0273f497b3c55fadfb8f69997335423d072d6ab952a6f",
+  "uygulama/__init__.py": "132e38594da6d33e3185807b57524c6e162681913c31c6cd3680a3ee41325e9e",
+  "uygulama/file_integrity_hash_checker.py": "5687ce3693a4d56d025d2a32a180113c49afd2439273d23da3068a3a0ab97841"
+}

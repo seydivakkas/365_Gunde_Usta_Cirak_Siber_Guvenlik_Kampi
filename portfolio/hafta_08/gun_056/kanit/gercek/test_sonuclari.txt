@@ -1,0 +1,33 @@
+test_01_raw_ethernet_dissection (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_01_raw_ethernet_dissection)
+Test 1: 14 baytl²k ham ikili Ethernet II ba■l²­²n²n ayr²■t²r²lmas² ve EtherType kontrol³. ... ok
+test_02_raw_ipv4_dissection (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_02_raw_ipv4_dissection)
+Test 2: 20 baytl²k ham IPv4 ba■l²­²n²n ayr²■t²r²lmas² ve IP adreslerinin do­rulanmas². ... ok
+test_03_raw_tcp_dissection (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_03_raw_tcp_dissection)
+Test 3: 20 baytl²k ham TCP ba■l²­²n²n ayr²■t²r²lmas², bayraklar ve portlar²n do­rulanmas². ... ok
+test_04_raw_udp_dissection (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_04_raw_udp_dissection)
+Test 4: 8 baytl²k ham UDP ba■l²­²n²n ayr²■t²r²lmas² ve uzunluk do­rulamas². ... ok
+test_05_sample_pcap_batch_ingestion (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_05_sample_pcap_batch_ingestion)
+Test 5: sample_pcap_frames.json dosyas²ndaki 15 paketin topluca ba■ar²yla ayr²■t²r²lmas². ... ok
+test_06_protocol_hierarchy_distribution (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_06_protocol_hierarchy_distribution)
+Test 6: Katmanlar aras² protokol da­²l²m istatistiklerinin (Ethernet, IPv4, TCP, UDP vb.) hesaplanmas². ... ok
+test_07_flow_matrix_creation_and_state (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_07_flow_matrix_creation_and_state)
+Test 7: 5'li demet (5-tuple) ileti■im ak²■lar²n²n gruplanmas² ve TCP durum gei■leri. ... ok
+test_08_tcp_retransmission_tracking (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_08_tcp_retransmission_tracking)
+Test 8: Paket ak²■²nda yinelenen (yeniden iletilen) TCP segmentinin tespiti. ... ok
+test_09_security_port_scan_detection (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_09_security_port_scan_detection)
+Test 9: H²zl² port taramas² (SYN Scan Flood) sald²r²s²n²n g³venlik olay² olarak yakalanmas². ... ok
+test_10_security_dns_tunneling_detection (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_10_security_dns_tunneling_detection)
+Test 10: Y³ksek Shannon entropili uzun DNS sorgular²n²n (DNS Tunneling) tespiti. ... ok
+test_11_security_rogue_dhcp_detection (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_11_security_rogue_dhcp_detection)
+Test 11: Yetkisiz kaynaktan gelen sahte DHCP Offer paketinin g³venlik olay² olarak yakalanmas². ... ok
+test_12_negative_short_headers (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_12_negative_short_headers)
+Test 12 (Negatif): K²rp²lm²■ Ethernet, IPv4, TCP ve UDP ba■l²klar²nda PacketParsingError f²rlat²lmas². ... ok
+test_13_negative_invalid_protocol_and_version (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_13_negative_invalid_protocol_and_version)
+Test 13 (Negatif): Geersiz EtherType, geersiz IP versiyonu ve bilinmeyen L4 protokol hatalar². ... ok
+test_14_negative_malformed_addresses (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_14_negative_malformed_addresses)
+Test 14 (Negatif): Hatal² formatl² MAC adresi ve geersiz oktetli IPv4 adresi do­rulamas². ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.004s
+
+OK

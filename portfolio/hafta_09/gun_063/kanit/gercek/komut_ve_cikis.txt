@@ -1,0 +1,39 @@
+# G063 Mini Proje 8: Protokol Zaman Çizelgesi - Komut ve Çıkış Kaydı
+# Çalıştırma Tarihi: 2026-10-31T01:06:00Z
+# Çalışma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+# Yürütücü: Seydi Eryılmaz (@seydivakkas)
+
+$ python -m unittest portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer -v
+test_01_load_valid_trace_and_count_events (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_01_load_valid_trace_and_count_events)
+Standart veri setinden olayların doğru sayıda ve eksiksiz yüklendiğini test eder. ... ok
+test_02_validate_and_sort_chronological_order (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_02_validate_and_sort_chronological_order)
+Olayların zaman sırasına dizildiğini ve milisaniye deltalarının hesaplandığını test eder. ... ok
+test_03_tcp_three_way_handshake_rtt_calculation (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_03_tcp_three_way_handshake_rtt_calculation)
+TCP SYN -> SYN-ACK -> ACK akışını ve RTT gecikme süresini test eder. ... ok
+test_04_tls_handshake_completion_state (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_04_tls_handshake_completion_state)
+TLS ClientHello ve ServerHello sonrası güvenli tünelin kurulduğunu test eder. ... ok
+test_05_http2_multiplexed_stream_tracking (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_05_http2_multiplexed_stream_tracking)
+HTTP/2 çerçevelerinde akım kimliklerinin (Stream 1 ve Stream 3) ayrıştırıldığını test eder. ... ok
+test_06_connection_teardown_fin_ack_sequence (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_06_connection_teardown_fin_ack_sequence)
+Çift yönlü FIN ve ACK paketleriyle bağlantının CLOSED durumuna geldiğini test eder. ... ok
+test_07_generate_ascii_timeline_output (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_07_generate_ascii_timeline_output)
+ASCII formatında çizilen zaman çizelgesinin tüm protokol ve başlıkları içerdiğini test eder. ... ok
+test_08_neg01_timeline_order_error_clock_skew (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_08_neg01_timeline_order_error_clock_skew)
+Kronolojik gerileme olduğunda TimelineOrderError fırlatıldığını test eder. ... ok
+test_09_neg02_timestamp_format_error (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_09_neg02_timestamp_format_error)
+Bozuk tarih/zaman dizgisi verildiğinde TimestampFormatError fırlatıldığını test eder. ... ok
+test_10_neg03_handshake_violation_premature_data (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_10_neg03_handshake_violation_premature_data)
+TCP el sıkışması tamamlanmadan veri gönderildiğinde HandshakeViolationError fırlatıldığını test eder. ... ok
+test_11_neg04_sequence_anomaly_tcp_jump (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_11_neg04_sequence_anomaly_tcp_jump)
+Açıklanamayan sıra numarası sıçramasında SequenceAnomalyError fırlatıldığını test eder. ... ok
+test_12_neg05_slowloris_drip_attack_detection (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_12_neg05_slowloris_drip_attack_detection)
+25 saniyelik yapay başlık gecikmesinde SlowlorisAnomalyError fırlatıldığını test eder. ... ok
+test_13_neg06_rapid_port_scan_syn_burst (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_13_neg06_rapid_port_scan_syn_burst)
+Kısa sürede 6 farklı porta SYN gönderildiğinde PortScanAnomalyError fırlatıldığını test eder. ... ok
+test_14_neg07_to_neg09_tunneling_missing_fields_illegal_state (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_14_neg07_to_neg09_tunneling_missing_fields_illegal_state)
+DNS tünelleme, eksik alanlar, geçersiz durum geçişi ve özet rapor doğrulanır. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.009s
+
+OK

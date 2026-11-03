@@ -1,0 +1,77 @@
+{
+  "aciklama": "G052 UDP ve Kullanım Alanları — Gerçekçi UDP Datagram Test Senaryoları",
+  "lisans": "Özel Lisans — Tüm Hakları Saklıdır (c) 2026 Seydi Eryılmaz",
+  "datagramlar": [
+    {
+      "id": "UDP-DNS-REQ-01",
+      "protokol_adi": "DNS",
+      "src_ip": "192.168.1.105",
+      "dst_ip": "8.8.8.8",
+      "src_port": 54321,
+      "dst_port": 53,
+      "payload_hex": "1a2b01000001000000000000076578616d706c6503636f6d0000010001",
+      "aciklama": "Standart DNS A kaydı sorgusu (example.com), ephemeral kaynak portu: 54321"
+    },
+    {
+      "id": "UDP-DNS-RESP-01",
+      "protokol_adi": "DNS",
+      "src_ip": "8.8.8.8",
+      "dst_ip": "192.168.1.105",
+      "src_port": 53,
+      "dst_port": 54321,
+      "payload_hex": "1a2b81800001000100000000076578616d706c6503636f6d0000010001c00c000100010000012c00045db8d822",
+      "aciklama": "Standart DNS A kaydı yanıtı (93.184.216.34)"
+    },
+    {
+      "id": "UDP-NTP-REQ-01",
+      "protokol_adi": "NTP",
+      "src_ip": "192.168.1.105",
+      "dst_ip": "192.168.1.1",
+      "src_port": 49152,
+      "dst_port": 123,
+      "payload_hex": "23000000000000000000000000000000000000000000000000000000000000000000000000000000e700000000000000",
+      "aciklama": "NTPv4 İstemci Zaman Senkronizasyon İsteği (Mode 3: Client, VN: 4, LI: 0, 48 bayt standart başlık)"
+    },
+    {
+      "id": "UDP-NTP-RESP-01",
+      "protokol_adi": "NTP",
+      "src_ip": "192.168.1.1",
+      "dst_ip": "192.168.1.105",
+      "src_port": 123,
+      "dst_port": 49152,
+      "payload_hex": "240104e7000000000000000047505300e700000000000000e700000000000000e700000000000000e700000000000000",
+      "aciklama": "NTPv4 Sunucu Yanıtı (Mode 4: Server, Stratum 1 GPS referans saati)"
+    },
+    {
+      "id": "UDP-NTP-MONLIST-AMP",
+      "protokol_adi": "NTP",
+      "src_ip": "203.0.113.50",
+      "dst_ip": "198.51.100.10",
+      "src_port": 58210,
+      "dst_port": 123,
+      "payload_hex": "1700032a00000000",
+      "aciklama": "NTP Mode 7 (Private/monlist) Amplifikasyon İstek Vektörü (8 bayt istek -> binlerce bayt yanıt)"
+    },
+    {
+      "id": "UDP-DNS-ANY-AMP",
+      "protokol_adi": "DNS",
+      "src_ip": "198.51.100.10",
+      "dst_ip": "203.0.113.50",
+      "src_port": 53,
+      "dst_port": 58210,
+      "payload_hex": "3f4e8180000100200000000104697363036f72670000ff00010000291000000000000000",
+      "aciklama": "DNS ANY + EDNS0 Amplifikasyon Yanıtı (Genişletilmiş EDNS0 bayrakları, BAF > 30x)"
+    },
+    {
+      "id": "UDP-ZERO-CHECKSUM-IPV4",
+      "protokol_adi": "Custom",
+      "src_ip": "10.0.0.1",
+      "dst_ip": "10.0.0.2",
+      "src_port": 9000,
+      "dst_port": 9001,
+      "payload_hex": "48656c6c6f20554450",
+      "force_zero_checksum": true,
+      "aciklama": "RFC 768 IPv4 Checksum = 0x0000 (Sağlama toplamı devre dışı bırakılmış geçerli datagram)"
+    }
+  ]
+}

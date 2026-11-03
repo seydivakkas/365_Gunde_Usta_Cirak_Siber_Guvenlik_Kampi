@@ -1,0 +1,43 @@
+=== GÜN 108 X.509 VE SERTİFİKA ZİNCİRİ BİRİM TEST RAPORU ===
+Tarih/Saat: 2026-11-02 03:52:46
+Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_108\tests\test_x509_chain.py -v
+Çıkış Kodu: 0
+
+--- TEST ÇIKTISI (STDERR / STDOUT) ---
+test_01_root_ca_creation_and_self_signature (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_01_root_ca_creation_and_self_signature)
+1. K�k CA kendinden imzal� olmal�, is_ca=True ve keyCertSign yetkisine sahip olmal�d�r. ... ok
+test_02_intermediate_ca_issuance (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_02_intermediate_ca_issuance)
+2. Ara CA k�k CA taraf�ndan imzalanmal� ve is_ca=True olmal�d�r. ... ok
+test_03_leaf_certificate_issuance (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_03_leaf_certificate_issuance)
+3. U� sunucu sertifikas� is_ca=False olmal� ve Ara CA taraf�ndan do�rulanmal�d�r. ... ok
+test_04_valid_3_tier_chain_validation (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_04_valid_3_tier_chain_validation)
+4. 3 Kademeli me�ru zincir (Leaf -> Intermediate -> Root) ba�ar�yla do�rulanmal�d�r. ... ok
+test_05_hostname_exact_and_san_match (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_05_hostname_exact_and_san_match)
+5. Sertifika hem ana CN hem de SAN listesindeki alan adlar�yla birebir e�le�melidir. ... ok
+test_06_wildcard_domain_matching (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_06_wildcard_domain_matching)
+6. *.bank.com.tr jokeri tek seviyeli alt alan adlar�yla e�le�meli, �oklu seviyeyi reddetmelidir. ... ok
+test_07_hostname_mismatch_rejection (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_07_hostname_mismatch_rejection)
+7. Sertifikada listelenmeyen yabanc� alan ad� HostnameMismatchError f�rlatmal�d�r (CWE-297). ... ok
+test_08_expired_certificate_rejection (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_08_expired_certificate_rejection)
+8. S�resi dolmu� sertifika CertificateExpiredError f�rlatmal�d�r (CWE-298). ... ok
+test_09_not_yet_valid_certificate_rejection (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_09_not_yet_valid_certificate_rejection)
+9. Ge�erlilik tarihi hen�z ba�lamam�� sertifika reddedilmelidir (CWE-298). ... ok
+test_10_untrusted_root_ca_rejection (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_10_untrusted_root_ca_rejection)
+10. G�ven deposunda bulunmayan sahte k�k sertifika UntrustedRootCAError f�rlatmal�d�r (CWE-295). ... ok
+test_11_tampered_tbs_signature_rejection (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_11_tampered_tbs_signature_rejection)
+11. Sertifikan�n TBS alan�nda tahrifat yap�ld���nda imza do�rulamas� ��kmelidir (CWE-295). ... ok
+test_12_non_ca_cannot_issue_certificates (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_12_non_ca_cannot_issue_certificates)
+12. is_ca=False olan u� sertifika ile alt sertifika �retimi engellenmelidir (CWE-295). ... ok
+test_13_revoked_certificate_rejection (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_13_revoked_certificate_rejection)
+13. �ptal listesinde (CRL) yer alan sertifika RevokedCertificateError f�rlatmal�d�r (CWE-295). ... ok
+test_14_path_length_constraint_enforcement (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_14_path_length_constraint_enforcement)
+14. pathLenConstraint=0 olan ara CA alt�ndan ikinci bir ara CA olu�turulamaz/do�rulanamaz. ... ok
+test_15_certificate_dict_and_pem_serialization (portfolio.hafta_16.gun_108.tests.test_x509_chain.TestX509Chain.test_15_certificate_dict_and_pem_serialization)
+15. Sertifikalar s�zl�k ve PEM format�na serile�tirilip kay�ps�z geri y�klenebilmelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.166s
+
+OK
+
+=== DEĞERLENDİRME: 15/15 TEST BAŞARILI (%100 PASS) ===

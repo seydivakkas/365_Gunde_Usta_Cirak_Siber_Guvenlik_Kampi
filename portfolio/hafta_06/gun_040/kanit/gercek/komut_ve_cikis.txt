@@ -1,0 +1,81 @@
+<!--
+├ûZEL L─░SANS ÔÇö T├£M HAKLAR SAKLIDIR
+Telif Hakk─▒ (c) 2026 Seydi Ery─▒lmaz (@seydivakkas)
+Bu yaz─▒l─▒m ve ilgili t├╝m dosyalar ('Yaz─▒l─▒m') yaln─▒zca g├Âr├╝nt├╝leme ve e─şitim ama├ğl─▒ olarak payla┼ş─▒lm─▒┼şt─▒r.
+-->
+
+# G├╝venli Uzaktan Y├Ânetim ve Eri┼şim Matrisi Denetim Raporu
+
+**Denetim Tarihi:** `2026-10-27T08:56:58.725869+00:00`  
+**G├╝venlik Puan─▒:** `0 / 100`  
+**Genel Durum:** `CRITICAL`
+
+## ­şôè Denetim Metrikleri ├ûzeti
+
+| Metrik | De─şer |
+| :--- | :---: |
+| ─░ncelenen Y├Ânetim Servisi Say─▒s─▒ | 3 |
+| Kritik (CRITICAL) Bulgular | 4 |
+| Y├╝ksek (HIGH) Seviye Bulgular | 3 |
+| Orta (MEDIUM) Seviye Bulgular | 2 |
+| Uyar─▒ (WARNING) Bulgular | 0 |
+| **Toplam G├╝venlik Bulgusu** | **9** |
+
+## ­şöı G├╝venlik Bulgular─▒ ve ─░yile┼ştirme Re├ğetesi
+
+### 1. [CRITICAL] ┼Şifresiz ve G├╝vensiz Protokol Tespiti (TELNET) ÔÇö Kimlik Bilgisi Koklama Riski
+- **Hedef:** `SVC-LEGACY-TELNET (db-legacy.internal:23)`
+- **Kategori:** `PLAINTEXT_PROTOCOL_EXPOSURE`
+- **A├ğ─▒klama:** 'db-legacy.internal' ├╝zerinde ├ğal─▒┼şan 'TELNET' (Port 23) servisi t├╝m oturum trafi─şini, kullan─▒c─▒ adlar─▒n─▒ ve parolalar─▒ a─ş ├╝zerinden a├ğ─▒k metin (cleartext) olarak iletmektedir. Yerel a─şdaki herhangi bir sald─▒rgan veya pasif dinleyici (Wireshark/tcpdump), t├╝m y├Ânetim oturumunu ve ┼şifreleri tek bir paket yakalama i┼şlemiyle ele ge├ğirebilir.
+- **­şøí´©Å ─░yile┼ştirme:** 'TELNET' servisini derhal kapat─▒n (`systemctl disable --now telnet.socket`), yerine modern SSHv2 veya WinRM over HTTPS (TLS) kurun.
+
+### 2. [CRITICAL] Y├Ânetim Portu ─░nternete Do─şrudan A├ğ─▒k (TELNET:23) ÔÇö Kaba Kuvvet ve ─░stismar Riski
+- **Hedef:** `SVC-LEGACY-TELNET (db-legacy.internal:23)`
+- **Kategori:** `PERIMETER_MANAGEMENT_EXPOSURE`
+- **A├ğ─▒klama:** 'db-legacy.internal' ├╝zerindeki 'TELNET' y├Ânetim servisi (Port 23), hi├ğbir VPN veya Bastion/Jump Host korumas─▒ olmaks─▒z─▒n do─şrudan genel internete (0.0.0.0/0) maruz b─▒rak─▒lm─▒┼şt─▒r. Bu durum botnet'ler, otomatik parola deneme (brute-force) sald─▒r─▒lar─▒ ve s─▒f─▒r-g├╝n istismarlar─▒ (├Ârn. RDP BlueKeep CVE-2019-0708) i├ğin en kolay hedefi olu┼şturur.
+- **­şøí´©Å ─░yile┼ştirme:** Portu genel internete kapat─▒n; eri┼şimi yaln─▒zca IPsec/WireGuard VPN veya kurumsal Bastion Jump Host arkas─▒na al─▒n.
+
+### 3. [CRITICAL] Y├Ânetim Portu ─░nternete Do─şrudan A├ğ─▒k (RDP:3389) ÔÇö Kaba Kuvvet ve ─░stismar Riski
+- **Hedef:** `SVC-FINANCE-RDP (fin-ws01.corp.internal:3389)`
+- **Kategori:** `PERIMETER_MANAGEMENT_EXPOSURE`
+- **A├ğ─▒klama:** 'fin-ws01.corp.internal' ├╝zerindeki 'RDP' y├Ânetim servisi (Port 3389), hi├ğbir VPN veya Bastion/Jump Host korumas─▒ olmaks─▒z─▒n do─şrudan genel internete (0.0.0.0/0) maruz b─▒rak─▒lm─▒┼şt─▒r. Bu durum botnet'ler, otomatik parola deneme (brute-force) sald─▒r─▒lar─▒ ve s─▒f─▒r-g├╝n istismarlar─▒ (├Ârn. RDP BlueKeep CVE-2019-0708) i├ğin en kolay hedefi olu┼şturur.
+- **­şøí´©Å ─░yile┼ştirme:** Portu genel internete kapat─▒n; eri┼şimi yaln─▒zca IPsec/WireGuard VPN veya kurumsal Bastion Jump Host arkas─▒na al─▒n.
+
+### 4. [CRITICAL] RDP A─ş D├╝zeyinde Kimlik Do─şrulama (NLA) Devre D─▒┼ş─▒ ÔÇö ├ûn-Yetkilendirme ─░stismar Riski
+- **Hedef:** `SVC-FINANCE-RDP (fin-ws01.corp.internal:3389)`
+- **Kategori:** `RDP_NLA_DISABLED_VULNERABILITY`
+- **A├ğ─▒klama:** 'fin-ws01.corp.internal' ├╝zerindeki Uzak Masa├╝st├╝ (RDP) servisinde NLA (Network Level Authentication) kapal─▒d─▒r. NLA kapal─▒ oldu─şunda sunucu, kullan─▒c─▒ kimli─şini do─şrulamadan ├Ânce t├╝m RDP grafik oturumunu ve bellek yap─▒lar─▒n─▒ ba┼şlat─▒r. Bu durum BlueKeep (CVE-2019-0708) gibi kimlik do─şrulamas─▒z uzaktan kod ├ğal─▒┼şt─▒rma (RCE) a├ğ─▒klar─▒na ve DoS sald─▒r─▒lar─▒na zemin haz─▒rlar.
+- **­şøí´©Å ─░yile┼ştirme:** Windows Sistem ├ûzellikleri veya Grup ─░lkesi (GPO) ├╝zerinden 'Yaln─▒zca A─ş D├╝zeyinde Kimlik Do─şrulama ile ba─şlanan bilgisayarlardan ba─şlant─▒lara izin ver' kural─▒n─▒ etkinle┼ştirin.
+
+### 5. [HIGH] RDP Uzak Masa├╝st├╝ Oturumunda MFA Eksikli─şi
+- **Hedef:** `SVC-FINANCE-RDP (fin-ws01.corp.internal:3389)`
+- **Kategori:** `RDP_MFA_MISSING`
+- **A├ğ─▒klama:** 'fin-ws01.corp.internal' RDP eri┼şiminde tek fakt├Ârl├╝ (yaln─▒zca kullan─▒c─▒ ad─▒ ve parola) oturum a├ğ─▒lmaktad─▒r. Fidye yaz─▒l─▒m─▒ akt├Ârlerinin en yayg─▒n ilk eri┼şim (initial access) y├Ântemi ├ğal─▒nm─▒┼ş RDP parolalar─▒d─▒r.
+- **­şøí´©Å ─░yile┼ştirme:** RDP Gateway ├╝zerinde Azure MFA veya kurumsal Duo Security entegrasyonu uygulay─▒n.
+
+### 6. [HIGH] Otomatik Kaba Kuvvet (Brute-Force) Korumas─▒ Yok (TELNET)
+- **Hedef:** `SVC-LEGACY-TELNET (db-legacy.internal:23)`
+- **Kategori:** `BRUTE_FORCE_PROTECTION_MISSING`
+- **A├ğ─▒klama:** 'db-legacy.internal' ├╝zerinde ├ğal─▒┼şan 'TELNET' servisinde ba┼şar─▒s─▒z oturum denemelerini engelleyen bir mekanizma (Fail2ban, pam_tally2/pam_faillock veya Windows Hesap Kilitleme E┼şi─şi) bulunmamaktad─▒r. Sald─▒rganlar s├Âzl├╝k sald─▒r─▒lar─▒ (dictionary attack) ile milyonlarca parolay─▒ s─▒n─▒rs─▒zca deneyebilir.
+- **­şøí´©Å ─░yile┼ştirme:** Linux'ta `fail2ban` servisini etkinle┼ştirin; Windows'ta 'Account lockout threshold' de─şerini 5 olarak ayarlay─▒n.
+
+### 7. [MEDIUM] Oturum Denetim G├╝nl├╝kleme (Session Audit Logging) Kapal─▒ (TELNET)
+- **Hedef:** `SVC-LEGACY-TELNET (db-legacy.internal:23)`
+- **Kategori:** `SESSION_AUDIT_LOGGING_MISSING`
+- **A├ğ─▒klama:** 'db-legacy.internal' uzaktan y├Ânetim oturumlar─▒n─▒n a├ğ─▒l─▒┼ş, kapan─▒┼ş ve yetki y├╝kseltme kay─▒tlar─▒ merkezi SIEM sistemine aktar─▒lmamaktad─▒r. Bir ihlal durumunda adli iz s├╝r├╝lemez.
+- **­şøí´©Å ─░yile┼ştirme:** Olay g├╝nl├╝klerini (Linux /var/log/auth.log, Windows Event ID 4624/4625) syslog ile SIEM'e y├Ânlendirin.
+
+### 8. [HIGH] Otomatik Kaba Kuvvet (Brute-Force) Korumas─▒ Yok (RDP)
+- **Hedef:** `SVC-FINANCE-RDP (fin-ws01.corp.internal:3389)`
+- **Kategori:** `BRUTE_FORCE_PROTECTION_MISSING`
+- **A├ğ─▒klama:** 'fin-ws01.corp.internal' ├╝zerinde ├ğal─▒┼şan 'RDP' servisinde ba┼şar─▒s─▒z oturum denemelerini engelleyen bir mekanizma (Fail2ban, pam_tally2/pam_faillock veya Windows Hesap Kilitleme E┼şi─şi) bulunmamaktad─▒r. Sald─▒rganlar s├Âzl├╝k sald─▒r─▒lar─▒ (dictionary attack) ile milyonlarca parolay─▒ s─▒n─▒rs─▒zca deneyebilir.
+- **­şøí´©Å ─░yile┼ştirme:** Linux'ta `fail2ban` servisini etkinle┼ştirin; Windows'ta 'Account lockout threshold' de─şerini 5 olarak ayarlay─▒n.
+
+### 9. [MEDIUM] Oturum Denetim G├╝nl├╝kleme (Session Audit Logging) Kapal─▒ (RDP)
+- **Hedef:** `SVC-FINANCE-RDP (fin-ws01.corp.internal:3389)`
+- **Kategori:** `SESSION_AUDIT_LOGGING_MISSING`
+- **A├ğ─▒klama:** 'fin-ws01.corp.internal' uzaktan y├Ânetim oturumlar─▒n─▒n a├ğ─▒l─▒┼ş, kapan─▒┼ş ve yetki y├╝kseltme kay─▒tlar─▒ merkezi SIEM sistemine aktar─▒lmamaktad─▒r. Bir ihlal durumunda adli iz s├╝r├╝lemez.
+- **­şøí´©Å ─░yile┼ştirme:** Olay g├╝nl├╝klerini (Linux /var/log/auth.log, Windows Event ID 4624/4625) syslog ile SIEM'e y├Ânlendirin.
+
+
+Rapor ba┼şar─▒yla kaydedildi: portfolio/hafta_06/gun_040/kanit/gercek/uzaktan_yonetim_denetim_raporu.txt

@@ -1,0 +1,40 @@
+{
+  "gun": 55,
+  "gun_id": "G055",
+  "asama": "03",
+  "hafta": "08",
+  "baslik": "DHCP ve IP ataması",
+  "tarih": "2026-10-29",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kavramsal_derinlik": 20,
+    "uygulama_gelistirme": 40,
+    "test_kapsami": 25,
+    "savunma_sikilastirma": 15
+  },
+  "test_ozeti": {
+    "toplam": 14,
+    "basarili": 14,
+    "hatali": 0,
+    "sure_saniye": 0.001
+  },
+  "kod_aciklama_satirlari_tamamlandi": true,
+  "kanitlar": {
+    "gercek": [
+      "kanit/gercek/test_sonuclari.txt",
+      "kanit/gercek/komut_ve_cikis.txt",
+      "kanit/gercek/dhcp_protokol_ve_guvenlik_raporu.txt",
+      "kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "kanit/temsili/dhcp_dora_ve_saldiri_savunma_mimarisi.txt"
+    ]
+  },
+  "soru_bankasi_eslesmesi": [
+    "G055-SC1",
+    "G055-SC2",
+    "G055-SC3"
+  ],
+  "notlar": "RFC 2131/2132 ikili 236 baytlık BOOTP başlığı, 4 baytlık sihirli çerez (0x63825363) ve TLV seçenekleri ayrıştırma/paketleme motoru, 4 adımlı DORA (Discover, Offer, Request, ACK) yaşam döngüsü, IP kiralama havuzu ve T1/T2 zamanlayıcıları, Sahte (Rogue) DHCP sunucusu ve TunnelVision (Option 121) tespiti, DHCP Starvation (Havuz Tükenme) sel engelleme ve Katman-2 DHCP Snooping (Trusted/Untrusted port filtreleme ve Dinamik Binding Tablosu) motoru geliştirildi; 14 birim ve negatif sınır testi 0.001 saniyede %100 PASS oldu."
+}

@@ -1,0 +1,48 @@
+======================================================================
+GÜN 125: GÜVENLİ KİMLİK / ROL PROTOTİPİ - BİRİM TEST RAPORU
+Tarih/Saat: 2026-11-02T08:49:10.782211
+Standartlar: NIST SP 800-63B, ISO 27001 A.9, NIST SP 800-53 AC-2/AC-6
+======================================================================
+
+Çalıştırılan Test Sayısı: 15
+Hata Sayısı (Errors): 0
+Başarısızlık Sayısı (Failures): 0
+Genel Durum: BAŞARILI (100% PASS)
+
+------------------- AYRINTILI TEST ÇIKTISI -------------------
+test_01_user_authentication_success_pbkdf2 (test_secure_identity_role.TestSecureIdentityRoleEngine.test_01_user_authentication_success_pbkdf2)
+Doğru parola ile PBKDF2 doğrulaması başarılı olmalı ve geçerli bir AuthToken dönmelidir. ... ok
+test_02_authentication_failure_invalid_password (test_secure_identity_role.TestSecureIdentityRoleEngine.test_02_authentication_failure_invalid_password)
+Hatalı parola girildiğinde AuthenticationFailedError fırlatılmalıdır (CWE-287). ... ok
+test_03_account_lockout_after_multiple_failures (test_secure_identity_role.TestSecureIdentityRoleEngine.test_03_account_lockout_after_multiple_failures)
+5 kez üst üste hatalı parola girildiğinde hesap güvenlik amacıyla kilitlenmelidir. ... ok
+test_04_session_ttl_expiration (test_secure_identity_role.TestSecureIdentityRoleEngine.test_04_session_ttl_expiration)
+Oturum süresi (TTL) dolduğunda erişim talebi DENY ile reddedilmelidir (CWE-613). ... ok
+test_05_static_sod_conflict_rejected_on_registration (test_secure_identity_role.TestSecureIdentityRoleEngine.test_05_static_sod_conflict_rejected_on_registration)
+Aynı kullanıcıya çatışan iki rol (maker + checker) atanmaya çalışıldığında SeparationOfDutyConflictError fırlatılmalıdır (CWE-863). ... ok
+test_06_hierarchical_rbac_direct_permission (test_secure_identity_role.TestSecureIdentityRoleEngine.test_06_hierarchical_rbac_direct_permission)
+Kullanıcının doğrudan rolündeki izin başarıyla onaylanmalıdır. ... ok
+test_07_hierarchical_rbac_inherited_permission (test_secure_identity_role.TestSecureIdentityRoleEngine.test_07_hierarchical_rbac_inherited_permission)
+Üst rollerden miras alınan izinler hiyerarşik olarak çözümlenmelidir. ... ok
+test_08_saltzer_schroeder_default_deny (test_secure_identity_role.TestSecureIdentityRoleEngine.test_08_saltzer_schroeder_default_deny)
+Tanımlı olmayan veya yetki dışı bir istek Saltzer-Schroeder Default-Deny ile reddedilmelidir. ... ok
+test_09_step_up_mfa_blocks_unverified_critical_access (test_secure_identity_role.TestSecureIdentityRoleEngine.test_09_step_up_mfa_blocks_unverified_critical_access)
+MFA zorunlu bir rolde oturum MFA ile doğrulanmamışsa erişim bloke edilmelidir (CWE-308). ... ok
+test_10_step_up_mfa_success_permits_critical_access (test_secure_identity_role.TestSecureIdentityRoleEngine.test_10_step_up_mfa_success_permits_critical_access)
+Step-Up MFA kodu doğrulandıktan sonra kritik erişime izin verilmelidir. ... ok
+test_11_fail_secure_on_identity_store_timeout (test_secure_identity_role.TestSecureIdentityRoleEngine.test_11_fail_secure_on_identity_store_timeout)
+Kimlik servisi zaman aşımına uğradığında Fail-Secure mekanizması yetkiyi kesmelidir (CWE-636). ... ok
+test_12_fail_secure_on_database_unavailable (test_secure_identity_role.TestSecureIdentityRoleEngine.test_12_fail_secure_on_database_unavailable)
+Veritabanı çöktüğünde Fail-Secure kapıları kilitlemelidir. ... ok
+test_13_fail_secure_on_mfa_provider_down (test_secure_identity_role.TestSecureIdentityRoleEngine.test_13_fail_secure_on_mfa_provider_down)
+MFA sağlayıcısı yanıt vermediğinde fail-open olmak yerine fail-secure devreye girmelidir. ... ok
+test_14_log_masking_redacts_passwords_and_tokens (test_secure_identity_role.TestSecureIdentityRoleEngine.test_14_log_masking_redacts_passwords_and_tokens)
+Log maskeleyici kullanıcının düz metin parolasını ve aktif token'ını sansürlemelidir (CWE-532). ... ok
+test_15_capstone_full_report_and_summary_export (test_secure_identity_role.TestSecureIdentityRoleEngine.test_15_capstone_full_report_and_summary_export)
+Mini Proje 17 bitirme raporu ve JSON özet çıktısı eksiksiz üretilmelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 2.125s
+
+OK
+

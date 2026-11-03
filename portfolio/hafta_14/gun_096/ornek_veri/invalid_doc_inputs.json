@@ -1,0 +1,71 @@
+[
+  {
+    "id": "NEG_01_MISSING_MANDATORY_FIELD",
+    "tanim": "Şemada zorunlu güvenlik uyarıları alanının bulunmaması",
+    "schema_verisi": {
+      "betik_adi": "eksik_betik",
+      "versiyon": "1.0",
+      "amaci": "Test",
+      "yetki_seviyesi": "Kullanıcı"
+    },
+    "beklenen_hata": "MissingMandatoryDocumentationError",
+    "cwe": "CWE-16: Configuration"
+  },
+  {
+    "id": "NEG_02_LINTER_UNDOCUMENTED_ARG",
+    "tanim": "Kaynak kodda bulunan CLI argümanının kullanım belgesinde yer almaması",
+    "kod_icerigi": "parser.add_argument('--dangerous-purge', action='store_true')",
+    "belgelenen_argumanlar": ["--input-file"],
+    "beklenen_hata": "UndocumentedArgumentError",
+    "cwe": "CWE-1188: Insecure Default Initialization of Resource"
+  },
+  {
+    "id": "NEG_03_EMPTY_EXIT_CODES",
+    "tanim": "Betiğin standart çıkış kodlarının şemada boş bırakılması",
+    "cikis_kodlari": {},
+    "beklenen_hata": "MissingExitCodesDocumentationError",
+    "cwe": "CWE-16: Configuration"
+  },
+  {
+    "id": "NEG_04_NULL_BYTE_IN_PATH",
+    "tanim": "Belge veya kaynak betik yolunda Null-Byte zehirlemesi denemesi",
+    "yol": "doc_schema.json\u0000injected_path",
+    "beklenen_hata": "NullByteInjectionError",
+    "cwe": "CWE-158: Improper Neutralization of Null Byte or Special Characters"
+  },
+  {
+    "id": "NEG_05_OVERSIZED_SCHEMA_PAYLOAD",
+    "tanim": "1 MB tavanını aşan aşırı büyük şema girdisi ile DoS denemesi",
+    "payload_boyutu": "OVERSIZED_DOCUMENTATION_SCHEMA_EXCEEDING_1MB_LIMIT",
+    "beklenen_hata": "PayloadLimitExceededError",
+    "cwe": "CWE-400: Uncontrolled Resource Consumption"
+  },
+  {
+    "id": "NEG_06_INVALID_FORMAT_REQUEST",
+    "tanim": "Belge üreticiden desteklenmeyen format talep edilmesi",
+    "format": "unsupported_binary_docx",
+    "beklenen_hata": "InvalidFormatError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_07_NON_STRING_SOURCE_PATH",
+    "tanim": "Linter fonksiyonuna dosya yolu yerine geçersiz tip gönderilmesi",
+    "yol": 987654321,
+    "beklenen_hata": "TypeValidationError",
+    "cwe": "CWE-843: Access of Resource Using Incompatible Type"
+  },
+  {
+    "id": "NEG_08_INVALID_PRIVILEGE_LEVEL",
+    "tanim": "Geçersiz veya boş yetki seviyesi tanımlanması",
+    "yetki_seviyesi": "",
+    "beklenen_hata": "InvalidPrivilegeLevelError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_09_LINTER_MISSING_LICENSE",
+    "tanim": "Kaynak betikte kurumsal Özel Lisans başlığının bulunmaması",
+    "kod_icerigi": "# Telifsiz kod parcası\nimport os\nprint('hello')",
+    "beklenen_hata": "MissingLicenseHeaderError",
+    "cwe": "CWE-16: Configuration"
+  }
+]

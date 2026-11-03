@@ -1,0 +1,70 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Bu yazılım ve ilgili tüm dosyalar ("Yazılım") yalnızca görüntüleme ve eğitim amaçlı olarak paylaşılmıştır.
+================================================================================
+
+GÜVENLİ UZAKTAN YÖNETİM, BASTION (JUMP HOST) VE AĞ SINIRI MİMARİSİ
+--------------------------------------------------------------------------------
+
+1. GÜVENSİZ vs SERTLEŞTİRİLMİŞ UZAKTAN ERİŞİM KARŞILAŞTIRMASI
+--------------------------------------------------------------------------------
+
+   A) GÜVENSİZ MİMARİ (FELAKET MODELİ):
+   
+      Genel İnternet (0.0.0.0/0)
+      [ Saldırganlar / Botnetler ]
+            │
+            ├──► Doğrudan Telnet (Port 23)   ──► Açık Metin Parola Koklama (Sniffing)
+            ├──► Doğrudan RDP (Port 3389)    ──► BlueKeep (CVE-2019-0708) & Kaba Kuvvet
+            └──► Doğrudan SSH Root (Port 22) ──► Sözlük Saldırısı (Root Parolası Kırma)
+            
+      * Sonuç: Günlük yok, MFA yok, sınır yok -> Sunucu dakikalar içinde botnete katılır!
+
+   B) SERTLEŞTİRİLMİŞ ZERO TRUST & BASTION MİMARİSİ (SAVUNMA MODELİ):
+
+      Genel İnternet (0.0.0.0/0)
+      [ Sistem Yöneticisi ]
+            │
+            ▼ 1. Kriptografik Tünel (WireGuard / IPsec VPN) + MFA
+      ┌────────────────────────────────────────────────────────┐
+      │ Kurumsal Güvenlik Duvarı (Perimeter Firewall)          │
+      │ Kural: Yalnızca VPN üzerinden Yönetim VLAN'ına İzin Ver│
+      └───────────────────────────┬────────────────────────────┘
+                                  │
+                                  ▼ 2. Donanım Anahtarı (FIDO2) + Ed25519 SSH Anahtarı
+      ┌────────────────────────────────────────────────────────┐
+      │ BASTION / JUMP HOST (Sıçrama Sunucusu)                 │
+      │ - Port: 2222 (Standart dışı)                           │
+      │ - PermitRootLogin: NO                                  │
+      │ - PasswordAuthentication: NO (Yalnızca Anahtar)        │
+      │ - Fail2ban & pam_faillock (3 hatalı denemede blok)     │
+      │ - Tüm Oturum Kaydı (Script / Tlog -> SIEM)             │
+      └───────────────────────────┬────────────────────────────┘
+                                  │
+                                  ▼ 3. Dahili İzole Yönetim VLAN'ı (10.10.100.0/24)
+          ┌───────────────────────┴───────────────────────┐
+          ▼                                               ▼
+   [ Kritik Linux Sunucular ]                    [ Windows Server (RDP / WinRM) ]
+   - Yalnızca Bastion IP'sini kabul eder         - Yalnızca Bastion IP'sini kabul eder
+   - Sudo ile bireysel yetki denetimi            - NLA (Network Level Auth) ZORUNLU
+   - Root şifresi kilitli                        - RDP Gateway üzerinden MFA Zorunlu
+
+--------------------------------------------------------------------------------
+2. PROTOKOL BAZLI SERTLEŞTİRME VE EN AZ AYRICALIK MATRİSİ
+--------------------------------------------------------------------------------
+
+   Parametre               │ Güvensiz Yapılandırma       │ Sertleştirilmiş Güvenli Yapılandırma
+   ────────────────────────┼─────────────────────────────┼─────────────────────────────────────
+   Protokol Seçimi         │ Telnet (23), VNC Plain (5900)│ SSHv2 (22/2222), WinRM over HTTPS (5986)
+   Ağ Kapsamı              │ 0.0.0.0/0 (Tüm İnternet)    │ Yalnızca VPN / Bastion IP Adresi
+   Root / Admin Girişi     │ PermitRootLogin yes         │ PermitRootLogin no (Kişisel kullanıcı + sudo)
+   Kimlik Doğrulama Türü   │ Basit Parola                │ Ed25519 SSH Anahtarı + FIDO2 / TPM
+   Çok Faktörlü Doğrulama  │ Yok (Yalnızca Parola)       │ Zorunlu MFA (TOTP / Duo / Azure MFA)
+   RDP NLA Seviyesi        │ Devre Dışı (Ön-oturum açık) │ Zorunlu NLA (Kimlik doğrulanmadan UI yok)
+   Kaba Kuvvet Koruması    │ Yok (Sınırsız deneme)       │ Fail2ban (3 deneme -> 24 saat IP ban)
+   Oturum Günlükleme       │ Kapalı / Yerel              │ Syslog / WinEvent -> Merkezi SIEM
+
+--------------------------------------------------------------------------------
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

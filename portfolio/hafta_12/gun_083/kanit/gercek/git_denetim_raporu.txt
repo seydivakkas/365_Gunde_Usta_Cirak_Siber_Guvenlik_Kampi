@@ -1,0 +1,34 @@
+================================================================================
+G083: GIT COMMIT VE DEGISIKLIK INCELEME MOTORU - GERCEK DENETIM CIKTISI
+Tarih: 2026-11-01T04:22:00+03:00
+================================================================================
+
+1. COMMIT USTBILGILERI (METADATA):
+  Commit Hash   : e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  Yazar Adi     : Seydi Eryilmaz
+  Yazar E-Posta : seydi@guvenlik.local
+  Tarih         : Sun Nov 1 03:00:00 2026 +0300
+  Mesaj Ozeti   : feat(security): refactor authentication middleware and rate limiting
+
+2. DEGISIKLIK METRIKLERI (DIFF STATISTICS):
+  Incelenen Dosya Sayisi : 2
+  Toplam Eklenen Satir   : +7
+  Toplam Silinen Satir   : -3
+
+3. GUVENLIK DEGERLENDIRMESI (TEMIZ COMMIT):
+  Guvenlik Skoru         : 100 / 100
+  Nihai Karar (Verdict)  : APPROVE
+  Toplam Bulgu Sayisi    : 0
+
+  [ONAYLANDI] Bu commit hicbir guvenlik zaafiyeti, acik metin anahtar veya
+  Trojan Source Bidi karakteri icermemektedir. Uretime gonderilebilir.
+
+================================================================================
+4. TAINTED (GUVENSIZ) DIFF DENETIM SIMULASYONU:
+  Guvenlik Skoru        : 10 / 100
+  Nihai Karar (Verdict) : REJECT
+  Toplam Bulgu          : 3
+  - [CRITICAL] AWS_ACCESS_KEY | CWE: CWE-798: Use of Hard-coded Credentials | Satir: 2 | Kanit: AKIA***MPLE
+  - [HIGH] HIGH_ENTROPY_SECRET_DETECTED | CWE: CWE-798: High Entropy Secret | Satir: 3 | Kanit: Entropi: 5.00 bit/char - Token: s7K9***&cT5
+  - [HIGH] DANGEROUS_EVAL | CWE: CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code | Satir: 5 | Kanit: result = eval(user_code)
+================================================================================

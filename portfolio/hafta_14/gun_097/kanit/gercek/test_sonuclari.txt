@@ -1,0 +1,38 @@
+=== G097 BİRİM TEST SONUÇLARI (14 SENARYO) ===
+Tarih: 2026-11-02 01:13:27
+
+test_01_doctor_compliance (test_offline_security_toolkit.TestOfflineSecurityToolkit.test_01_doctor_compliance)
+Test 01: AirGap Doctor kontrolünün ortamı onayladığını doğrular. ... ok
+test_02_validate_ipv4_valid (test_offline_security_toolkit.TestOfflineSecurityToolkit.test_02_validate_ipv4_valid)
+Test 02: Geçerli IPv4 adreslerinin onaylandığını doğrular. ... ok
+test_03_validate_ipv4_octal_rejected (test_offline_security_toolkit.TestOfflineSecurityToolkit.test_03_validate_ipv4_octal_rejected)
+Test 03: Baştaki sıfır (Octal IP) içeren adreslerin reddedildiğini doğrular (CWE-704). ... ok
+test_04_validate_port_boundaries (test_offline_security_toolkit.TestOfflineSecurityToolkit.test_04_validate_port_boundaries)
+Test 04: Port sınırlarının [1, 65535] olduğunu ve bool tipinin reddedildiğini doğrular (CWE-1284/843). ... ok
+test_05_calculate_file_hash_sha256 (test_offline_security_toolkit.TestOfflineSecurityToolkit.test_05_calculate_file_hash_sha256)
+Test 05: Dosya hash fonksiyonunun geçerli 64 karakter SHA-256 ürettiğini doğrular. ... ok
+test_06_verify_file_hash_constant_time (test_offline_security_toolkit.TestOfflineSecurityToolkit.test_06_verify_file_hash_constant_time)
+Test 06: Bütünlük doğrulamasının eşleşmede True döndüğünü, bozulmada hata fırlattığını doğrular. ... ok
+test_07_fim_tamper_detection (test_offline_security_toolkit.TestOfflineSecurityToolkit.test_07_fim_tamper_detection)
+Test 07: Dosya tahrifatının FIM tarafından MODIFIED olarak tespit edildiğini doğrular. ... ok
+test_08_fim_path_traversal_rejection (test_offline_security_toolkit.TestOfflineSecurityToolkit.test_08_fim_path_traversal_rejection)
+Test 08: Dosya hashlemede dizin aşımı (..) denemelerinin engellendiğini doğrular (CWE-22). ... ok
+test_09_luhn_algorithm (test_offline_security_toolkit.TestOfflineSecurityToolkit.test_09_luhn_algorithm)
+Test 09: Luhn kart algoritması doğrulamasını test eder. ... ok
+test_10_tckn_algorithm (test_offline_security_toolkit.TestOfflineSecurityToolkit.test_10_tckn_algorithm)
+Test 10: TCKN modüler algoritma doğrulamasını test eder. ... ok
+test_11_mask_sensitive_text (test_offline_security_toolkit.TestOfflineSecurityToolkit.test_11_mask_sensitive_text)
+Test 11: DLP maskeleme motorunun TCKN, kart ve token'ları başarıyla gizlediğini doğrular. ... ok
+test_12_redos_defense (test_offline_security_toolkit.TestOfflineSecurityToolkit.test_12_redos_defense)
+Test 12: ReDoS kötücül şablonlarının tespit edilip durdurulduğunu doğrular (CWE-1333). ... ok
+test_13_null_byte_rejection (test_offline_security_toolkit.TestOfflineSecurityToolkit.test_13_null_byte_rejection)
+Test 13: Null-Byte karakterlerinin engellendiğini doğrular (CWE-158). ... ok
+test_14_profile_execution_budget_exceeded (test_offline_security_toolkit.TestOfflineSecurityToolkit.test_14_profile_execution_budget_exceeded)
+Test 14: SLA bütçesini aşan yavaş fonksiyonlarda PerformanceBudgetExceededError fırlatıldığını doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.037s
+
+OK
+
+Toplam: 14, Başarılı: 14, Hata: 0, Başarısız: 0

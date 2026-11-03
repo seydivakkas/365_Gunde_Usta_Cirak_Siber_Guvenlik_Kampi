@@ -1,0 +1,33 @@
+test_01_telemetry_schema_validation_success (portfolio.hafta_06.gun_037.tests.test_disk_partition_fs_auditor.TestDiskPartitionFsAuditor.test_01_telemetry_schema_validation_success)
+Geerli telemetri verisinin ■ema do­rulamas²n² hatas²z geti­ini do­rular. ... ok
+test_02_missing_disks_key_raises_validation_error (portfolio.hafta_06.gun_037.tests.test_disk_partition_fs_auditor.TestDiskPartitionFsAuditor.test_02_missing_disks_key_raises_validation_error)
+'disks' anahtar² bulunmad²­²nda hata f²rlat²ld²­²n² test eder. ... ok
+test_03_negative_disk_size_raises_validation_error (portfolio.hafta_06.gun_037.tests.test_disk_partition_fs_auditor.TestDiskPartitionFsAuditor.test_03_negative_disk_size_raises_validation_error)
+Negatif disk boyutu verildi­inde sistemin hata f²rlatt²­²n² do­rular. ... ok
+test_04_used_space_exceeds_total_raises_validation_error (portfolio.hafta_06.gun_037.tests.test_disk_partition_fs_auditor.TestDiskPartitionFsAuditor.test_04_used_space_exceeds_total_raises_validation_error)
+B÷l³mde kullan²lan alan toplam alandan b³y³k oldu­unda hata f²rlat²ld²­²n² denetler. ... ok
+test_05_non_numeric_partition_capacity_raises_error (portfolio.hafta_06.gun_037.tests.test_disk_partition_fs_auditor.TestDiskPartitionFsAuditor.test_05_non_numeric_partition_capacity_raises_error)
+B÷l³m kapasite de­erleri string veya None oldu­unda hata f²rlat²ld²­²n² do­rular. ... ok
+test_06_non_string_filesystem_type_raises_error (portfolio.hafta_06.gun_037.tests.test_disk_partition_fs_auditor.TestDiskPartitionFsAuditor.test_06_non_string_filesystem_type_raises_error)
+Dosya sistemi alan² int veya None oldu­unda hata f²rlat²ld²­²n² do­rular. ... ok
+test_07_mbr_partition_table_detected_as_medium_severity (portfolio.hafta_06.gun_037.tests.test_disk_partition_fs_auditor.TestDiskPartitionFsAuditor.test_07_mbr_partition_table_detected_as_medium_severity)
+MBR b÷l³m tablosu ieren disklerin MEDIUM ÷nem derecesinde raporland²­²n² do­rular. ... ok
+test_08_gpt_partition_table_passes_clean (portfolio.hafta_06.gun_037.tests.test_disk_partition_fs_auditor.TestDiskPartitionFsAuditor.test_08_gpt_partition_table_passes_clean)
+Modern GPT b÷l³m tablosu kullanan disklerde herhangi bir MBR uyar²s² ³retilmedi­ini do­rular. ... ok
+test_09_fat32_data_partition_detected_as_high_severity (portfolio.hafta_06.gun_037.tests.test_disk_partition_fs_auditor.TestDiskPartitionFsAuditor.test_09_fat32_data_partition_detected_as_high_severity)
+Sistem veya veri b÷l³m³nde izin deste­i olmayan FAT32 kullan²m²n²n HIGH olarak raporland²­²n² do­rular. ... ok
+test_10_unencrypted_partition_detected_as_critical (portfolio.hafta_06.gun_037.tests.test_disk_partition_fs_auditor.TestDiskPartitionFsAuditor.test_10_unencrypted_partition_detected_as_critical)
+Ìifresiz k÷k ('/') b÷l³m³n³n CRITICAL olarak raporland²­²n² do­rular. ... ok
+test_11_mount_options_missing_noexec_on_tmp_detected (portfolio.hafta_06.gun_037.tests.test_disk_partition_fs_auditor.TestDiskPartitionFsAuditor.test_11_mount_options_missing_noexec_on_tmp_detected)
+/tmp dizininde 'noexec' bayra­² eksikli­inin HIGH ÷nem derecesinde tespit edildi­ini do­rular. ... ok
+test_12_capacity_exhaustion_warning_and_critical_thresholds (portfolio.hafta_06.gun_037.tests.test_disk_partition_fs_auditor.TestDiskPartitionFsAuditor.test_12_capacity_exhaustion_warning_and_critical_thresholds)
+%85 ³zerinde WARNING, %95 ³zerinde CRITICAL kapasite bulgusu ³retildi­ini do­rular. ... ok
+test_13_corrupted_test_cases_suite_robustness (portfolio.hafta_06.gun_037.tests.test_disk_partition_fs_auditor.TestDiskPartitionFsAuditor.test_13_corrupted_test_cases_suite_robustness)
+corrupted_disk_telemetry_test_cases.json dosyas²ndaki t³m senaryolar²n yakaland²­²n² do­rular. ... ok
+test_14_markdown_and_full_audit_workflow (portfolio.hafta_06.gun_037.tests.test_disk_partition_fs_auditor.TestDiskPartitionFsAuditor.test_14_markdown_and_full_audit_workflow)
+Tam denetim i■ ak²■²n²n ba■ar²yla tamamland²­²n² ve Markdown ²kt²s²n²n ³retildi­ini do­rular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.003s
+
+OK

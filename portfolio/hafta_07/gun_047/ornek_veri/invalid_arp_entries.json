@@ -1,0 +1,85 @@
+{
+  "aciklama": "G047 - Geçersiz ARP Girişleri ve Hatalı Paket Biçimleri (Negatif Test Seti)",
+  "gecersiz_ornekler": [
+    {
+      "id": "ARP-ERR-01",
+      "girdi": {
+        "ip": "192.168.1.300",
+        "mac": "00:1A:2B:3C:4D:01",
+        "arayuz": "eth0"
+      },
+      "hata_turu": "InvalidIPAddress",
+      "beklenen_mesaj": "Geçersiz IPv4 adresi oktet değeri: 300"
+    },
+    {
+      "id": "ARP-ERR-02",
+      "girdi": {
+        "ip": "192.168.1.1",
+        "mac": "00:1A:2B:3C:4D",
+        "arayuz": "eth0"
+      },
+      "hata_turu": "InvalidMACLength",
+      "beklenen_mesaj": "MAC adresi 6 oktetten (12 onaltılık hane) oluşmalıdır, bulunan: 5 oktet"
+    },
+    {
+      "id": "ARP-ERR-03",
+      "girdi": {
+        "ip": "192.168.1.1",
+        "mac": "00:1A:2B:3C:4D:GG",
+        "arayuz": "eth0"
+      },
+      "hata_turu": "InvalidMACHex",
+      "beklenen_mesaj": "MAC adresinde geçersiz onaltılık (hex) karakter: 'GG'"
+    },
+    {
+      "id": "ARP-ERR-04",
+      "girdi": {
+        "ip": "192.168.1.1",
+        "mac": "00:00:00:00:00:00",
+        "arayuz": "eth0"
+      },
+      "hata_turu": "InvalidUnicastMAC",
+      "beklenen_mesaj": "Tekil IP için geçersiz (tamamen sıfır) MAC adresi eşlemesi"
+    },
+    {
+      "id": "ARP-ERR-05",
+      "girdi": {
+        "ip": "192.168.1.1",
+        "mac": "00:1A:2B:3C:4D:01",
+        "arayuz": ""
+      },
+      "hata_turu": "MissingInterface",
+      "beklenen_mesaj": "Ağ arayüzü (interface) alanı boş olamaz"
+    },
+    {
+      "id": "ARP-ERR-06",
+      "girdi": {
+        "ip": "",
+        "mac": "00:1A:2B:3C:4D:01",
+        "arayuz": "eth0"
+      },
+      "hata_turu": "MissingIP",
+      "beklenen_mesaj": "IP adresi alanı boş olamaz"
+    },
+    {
+      "id": "ARP-ERR-07",
+      "girdi": {
+        "ip": "192.168.1.1",
+        "mac": "",
+        "arayuz": "eth0"
+      },
+      "hata_turu": "MissingMAC",
+      "beklenen_mesaj": "MAC adresi alanı boş olamaz"
+    },
+    {
+      "id": "ARP-ERR-08",
+      "girdi": {
+        "islem": "INVALID_OPCODE_99",
+        "kaynak_ip": "192.168.1.1",
+        "kaynak_mac": "00:1A:2B:3C:4D:01"
+      },
+      "hata_turu": "InvalidARPOpcode",
+      "beklenen_mesaj": "Desteklenmeyen ARP işlem kodu (Opcode): INVALID_OPCODE_99"
+    }
+  ]
+}

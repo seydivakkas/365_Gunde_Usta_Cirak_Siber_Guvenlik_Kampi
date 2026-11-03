@@ -1,0 +1,35 @@
+test_01_totp_rfc6238_vector_generation (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_01_totp_rfc6238_vector_generation)
+Test 1: RFC 6238 algoritmasının 6-haneli sayısal kod üretmesi doğrulanır. ... ok
+test_02_totp_verification_success_within_period (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_02_totp_verification_success_within_period)
+Test 2: Üretilen geçerli TOTP kodunun aynı zaman aralığında başarıyla doğrulanması denetlenir. ... ok
+test_03_totp_verification_failure_with_wrong_code_cwe_287 (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_03_totp_verification_failure_with_wrong_code_cwe_287)
+Test 3: Hatalı TOTP kodu sunulduğunda InvalidTOTPCodeError (CWE-287) fırlatıldığı doğrulanır. ... ok
+test_04_totp_drift_window_tolerance (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_04_totp_drift_window_tolerance)
+Test 4: Saat kayması toleransında (+1 pencere = 30 saniye sonra) kodun kabul edilmesi denetlenir. ... ok
+test_05_totp_replay_prevention_cwe_294 (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_05_totp_replay_prevention_cwe_294)
+Test 5: Aynı TOTP kodunun ikinci kez sunulmasında TOTPReplayError (CWE-294) denetlenir. ... ok
+test_06_fido2_registration_and_credential_storage (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_06_fido2_registration_and_credential_storage)
+Test 6: FIDO2 kimlik bilgisinin doğru sayaç ve Relying Party kimliğiyle kaydedilmesi denetlenir. ... ok
+test_07_fido2_challenge_creation_and_expiration (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_07_fido2_challenge_creation_and_expiration)
+Test 7: WebAuthn 32-baytlık tek kullanımlık challenge üretimi ve TTL süresi denetlenir. ... ok
+test_08_fido2_assertion_success_on_legitimate_origin (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_08_fido2_assertion_success_on_legitimate_origin)
+Test 8: Meşru menşede (https://mevzuat.siber.local) geçerli FIDO2 imzasının onaylanması denetlenir. ... ok
+test_09_fido2_phishing_resistance_origin_mismatch_cwe_346 (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_09_fido2_phishing_resistance_origin_mismatch_cwe_346)
+Test 9: Sahte oltalama sitesinde FIDO2 menşe uyuşmazlığının (CWE-346) engellenmesi denetlenir. ... ok
+test_10_fido2_challenge_replay_attack_prevention_cwe_294 (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_10_fido2_challenge_replay_attack_prevention_cwe_294)
+Test 10: Daha önce kullanılmış bir WebAuthn challenge'ının tekrar sunulması (CWE-294) denetlenir. ... ok
+test_11_fido2_challenge_expired_rejection (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_11_fido2_challenge_expired_rejection)
+Test 11: Süresi dolmuş WebAuthn challenge'ının reddedilmesi denetlenir. ... ok
+test_12_fido2_invalid_signature_rejection_cwe_347 (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_12_fido2_invalid_signature_rejection_cwe_347)
+Test 12: Yanlış özel anahtarla imzalanmış WebAuthn yanıtında WebAuthnInvalidSignatureError denetlenir. ... ok
+test_13_fido2_authenticator_clone_detection_cwe_347 (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_13_fido2_authenticator_clone_detection_cwe_347)
+Test 13: Donanım anahtarı sayacının gerilemesi durumunda klon tespiti (CWE-347) denetlenir. ... ok
+test_14_aitm_simulator_totp_vulnerability_demonstration (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_14_aitm_simulator_totp_vulnerability_demonstration)
+Test 14: AiTM simülatörünün TOTP kodunun ters vekil tarafından başarıyla çalınabildiğini kanıtlaması. ... ok
+test_15_aitm_simulator_fido2_phishing_defense_demonstration (test_mfa_phishing_resistance.TestMFAPhishingResistance.test_15_aitm_simulator_fido2_phishing_defense_demonstration)
+Test 15: AiTM simülatörünün FIDO2'nin ters vekil oltalama saldırısını sıfıra indirdiğini kanıtlaması. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.007s
+
+OK

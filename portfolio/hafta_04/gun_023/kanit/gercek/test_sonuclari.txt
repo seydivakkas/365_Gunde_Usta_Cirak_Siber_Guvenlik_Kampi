@@ -1,0 +1,54 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Bu dosya Siber Güvenlik 365 Gün Müfredatı kapsamında üretilmiştir.
+# Gün 023: Linux Terminali ve Kabuk Birim Test Sonuçları Kanıtı
+
+Test Komutu:
+python -m unittest discover -s portfolio/hafta_04/gun_023/tests -p "test_*.py" -v
+
+Test Çalışma Tarihi: 2026-10-27T05:38:50
+Python Sürümü: Python 3.12.9
+Test Ortamı: Windows 11 (POSIX Shell & Utility Simulator Engine)
+
+======================================================================
+TEST DETAYLARI:
+======================================================================
+test_01_init_ve_varsayilan_dizin_yapisi (test_linux_shell_security_simulator.TestLinuxShellSecuritySimulator.test_01_init_ve_varsayilan_dizin_yapisi)
+Test 01: Sınıf başlatma, başlangıç dizini ve temel sanal ağacın doğrulanması. ... ok
+test_02_pwd_komutu_dogrulamasi (test_linux_shell_security_simulator.TestLinuxShellSecuritySimulator.test_02_pwd_komutu_dogrulamasi)
+Test 02: pwd komutunun mevcut çalışma dizinini eksiksiz döndürmesi. ... ok
+test_03_cd_gecerli_dizin_degistirme (test_linux_shell_security_simulator.TestLinuxShellSecuritySimulator.test_03_cd_gecerli_dizin_degistirme)
+Test 03: cd komutu ile mutlak ve göreceli dizin geçişlerinin doğrulanması. ... ok
+test_04_cd_bulunamadi_negatif_kontrol (test_linux_shell_security_simulator.TestLinuxShellSecuritySimulator.test_04_cd_bulunamadi_negatif_kontrol)
+Test 04: Var olmayan bir dizine geçilmek istendiğinde FileNotFoundError fırlatılması (Negatif Test). ... ok
+test_05_cd_dosyaya_gitme_negatif_kontrol (test_linux_shell_security_simulator.TestLinuxShellSecuritySimulator.test_05_cd_dosyaya_gitme_negatif_kontrol)
+Test 05: Dizin yerine dosya yoluna cd yapılmak istendiğinde NotADirectoryError fırlatılması (Negatif Test). ... ok
+test_06_ls_mevcut_dizin_ve_ogeler (test_linux_shell_security_simulator.TestLinuxShellSecuritySimulator.test_06_ls_mevcut_dizin_ve_ogeler)
+Test 06: ls komutunun hedef dizin içeriğini tür, izin ve sahiplikle listelemesi. ... ok
+test_07_ls_bulunamadi_negatif_kontrol (test_linux_shell_security_simulator.TestLinuxShellSecuritySimulator.test_07_ls_bulunamadi_negatif_kontrol)
+Test 07: Var olmayan dizin listelenmek istendiğinde FileNotFoundError fırlatılması (Negatif Test). ... ok
+test_08_cat_gecerli_dosya_okuma (test_linux_shell_security_simulator.TestLinuxShellSecuritySimulator.test_08_cat_gecerli_dosya_okuma)
+Test 08: cat komutunun dosya içeriğini eksiksiz döndürmesi. ... ok
+test_09_cat_dosya_bulunamadi_negatif_kontrol (test_linux_shell_security_simulator.TestLinuxShellSecuritySimulator.test_09_cat_dosya_bulunamadi_negatif_kontrol)
+Test 09: Var olmayan dosya cat ile istendiğinde FileNotFoundError fırlatılması (Negatif Test). ... ok
+test_10_cat_dizine_uygulama_negatif_kontrol (test_linux_shell_security_simulator.TestLinuxShellSecuritySimulator.test_10_cat_dizine_uygulama_negatif_kontrol)
+Test 10: Dizin yoluna cat komutu verildiğinde IsADirectoryError fırlatılması (Negatif Test). ... ok
+test_11_head_satir_sayisi_sinirlama (test_linux_shell_security_simulator.TestLinuxShellSecuritySimulator.test_11_head_satir_sayisi_sinirlama)
+Test 11: head komutunun belirtilen satır adedi kadar veri döndürmesi. ... ok
+test_12_goreli_yol_ve_path_traversal_tespiti (test_linux_shell_security_simulator.TestLinuxShellSecuritySimulator.test_12_goreli_yol_ve_path_traversal_tespiti)
+Test 12: Göreceli '../../' girdisinde Dizin Aşımı (CWE-22) riskinin tespit edilmesi (G023-SC1). ... ok
+test_13_guvensiz_path_ortam_degiskeni_tespiti (test_linux_shell_security_simulator.TestLinuxShellSecuritySimulator.test_13_guvensiz_path_ortam_degiskeni_tespiti)
+Test 13: PATH ortam değişkeninde '.' veya '/tmp' bulunduğunda KRİTİK risk tespiti (CWE-426). ... ok
+test_14_tam_laboratuvar_akisi_ve_cli (test_linux_shell_security_simulator.TestLinuxShellSecuritySimulator.test_14_tam_laboratuvar_akisi_ve_cli)
+Test 14: 5 temel komutun (pwd, ls, cd, cat, head) sıralı laboratuvar akışının ve CLI'nin doğrulanması (G023-SC2). ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.095s
+
+OK
+
+SONUÇ: 14/14 BAŞARILI (100% PASS)
+Eksik/Hatalı Test: 0
+Negatif Test Sayısı: 5 (test_04, test_05, test_07, test_09, test_10)
+Pozitif/Sınır Test Sayısı: 9
+Doğrulama Durumu: TAM GEÇTİ

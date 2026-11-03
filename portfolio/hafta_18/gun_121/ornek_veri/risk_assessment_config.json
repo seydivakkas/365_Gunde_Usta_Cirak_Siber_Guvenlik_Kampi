@@ -1,0 +1,124 @@
+{
+  "organization": "Atlas Finans ve Odeme Teknolojileri A.S.",
+  "risk_appetite_score": 10,
+  "max_acceptable_ale": 50000.0,
+  "controls_catalog": [
+    {
+      "control_id": "NIST-IA-2",
+      "name": "Çok Faktörlü Kimlik Doğrulama (MFA)",
+      "family": "IA",
+      "control_type": "PREVENTIVE",
+      "annual_cost": 15000.0,
+      "implementation_cost": 25000.0,
+      "effectiveness_ratio": 0.85,
+      "lifecycle_years": 3
+    },
+    {
+      "control_id": "NIST-SC-7",
+      "name": "Web Uygulama Güvenlik Duvarı (WAF)",
+      "family": "SC",
+      "control_type": "PREVENTIVE",
+      "annual_cost": 20000.0,
+      "implementation_cost": 15000.0,
+      "effectiveness_ratio": 0.75,
+      "lifecycle_years": 3
+    },
+    {
+      "control_id": "NIST-SI-4",
+      "name": "Uç Nokta Tespit ve Yanıt (EDR / XDR)",
+      "family": "SI",
+      "control_type": "DETECTIVE",
+      "annual_cost": 30000.0,
+      "implementation_cost": 20000.0,
+      "effectiveness_ratio": 0.80,
+      "lifecycle_years": 3
+    },
+    {
+      "control_id": "NIST-CP-9",
+      "name": "Değiştirilemez Çevrimdışı Yedekleme (Immutable Backup)",
+      "family": "CP",
+      "control_type": "CORRECTIVE",
+      "annual_cost": 18000.0,
+      "implementation_cost": 35000.0,
+      "effectiveness_ratio": 0.90,
+      "lifecycle_years": 5
+    },
+    {
+      "control_id": "CIS-CSC-4",
+      "name": "Ayrıcalıklı Erişim Yönetimi (PAM)",
+      "family": "AC",
+      "control_type": "PREVENTIVE",
+      "annual_cost": 25000.0,
+      "implementation_cost": 40000.0,
+      "effectiveness_ratio": 0.88,
+      "lifecycle_years": 4
+    }
+  ],
+  "risks": [
+    {
+      "risk_id": "RSK-001",
+      "title": "Kritik Müşteri Veritabanına Yetkisiz Erişim ve Veri Sızıntısı",
+      "description": "SQL Injection veya kimlik hırsızlığı yoluyla müşteri kredi kartı ve PII verilerinin çalınması.",
+      "asset_name": "Birincil PostgreSQL Müşteri Veritabanı",
+      "asset_value": 500000.0,
+      "exposure_factor": 0.60,
+      "annualized_rate_of_occurrence": 0.8,
+      "likelihood": 4,
+      "impact": 5,
+      "treatment_strategy": "MITIGATE",
+      "assigned_control_ids": [
+        "NIST-IA-2",
+        "NIST-SC-7",
+        "CIS-CSC-4"
+      ],
+      "executive_sign_off": false
+    },
+    {
+      "risk_id": "RSK-002",
+      "title": "Sunuculara Ransomware Bulaşması ve İş Durması",
+      "description": "Oltalama veya zero-day zafiyetiyle fidye yazılımının kurumsal sunucuları şifrelemesi.",
+      "asset_name": "Ana Veri Merkezi Sanal Sunucu Çiftliği",
+      "asset_value": 350000.0,
+      "exposure_factor": 0.70,
+      "annualized_rate_of_occurrence": 0.5,
+      "likelihood": 4,
+      "impact": 5,
+      "treatment_strategy": "MITIGATE",
+      "assigned_control_ids": [
+        "NIST-SI-4",
+        "NIST-CP-9"
+      ],
+      "executive_sign_off": false
+    },
+    {
+      "risk_id": "RSK-003",
+      "title": "Eski Muhasebe Yazılımı Destek Süresinin Dolması",
+      "description": "Artık güvenlik yaması almayan eski muhasebe sunucusunun ağda çalışması.",
+      "asset_name": "Legacy ERP Muhasebe Sunucusu",
+      "asset_value": 80000.0,
+      "exposure_factor": 0.30,
+      "annualized_rate_of_occurrence": 0.2,
+      "likelihood": 2,
+      "impact": 3,
+      "treatment_strategy": "ACCEPT",
+      "assigned_control_ids": [],
+      "executive_sign_off": true,
+      "sign_off_notes": "6 ay içinde bulut ERP'ye taşınacağı için CFO ve CISO onayıyla geçici kabul edildi."
+    },
+    {
+      "risk_id": "RSK-004",
+      "title": "Üçüncü Taraf Bulut Altyapısı Kesintisi",
+      "description": "Bulut sağlayıcının veri merkezinde yaşanabilecek genel elektrik/şebeke kesintisi.",
+      "asset_name": "AWS Prod E-Ticaret Uygulama Katmanı",
+      "asset_value": 200000.0,
+      "exposure_factor": 0.50,
+      "annualized_rate_of_occurrence": 0.3,
+      "likelihood": 3,
+      "impact": 4,
+      "treatment_strategy": "TRANSFER",
+      "assigned_control_ids": [],
+      "executive_sign_off": true,
+      "sign_off_notes": "AWS SLA sözleşmesi ve kurumsal siber kesinti sigortası teminatına bağlandı."
+    }
+  ]
+}

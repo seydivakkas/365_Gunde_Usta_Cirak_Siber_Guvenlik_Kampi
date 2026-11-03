@@ -1,0 +1,20 @@
+{
+  "gun": 1,
+  "gun_id": "G001",
+  "konu": "Siber güvenlik nedir ve neyi korur?",
+  "durum": "PASS",
+  "neden": "Tüm pozitif ve negatif kontroller başarıyla geçti, kanıtlar doğrulandı.",
+  "puan": 100,
+  "kanit_durumu": "TAMAM",
+  "calistirma_modu": "GERCEK",
+  "pozitif_test": true,
+  "negatif_test": true,
+  "excel_dogrulandi": true,
+  "bagimsizlik_dogrulandi": true,
+  "sonraki_gun_tetiklenebilir": true,
+  "kanit_yollari": {
+    "gercek_komut": "kanit/gercek/komut_ve_cikis.txt",
+    "gercek_test": "kanit/gercek/test_sonuclari.txt",
+    "temsili_sema": "kanit/temsili/cia_triad_zihin_haritasi.txt"
+  }
+}

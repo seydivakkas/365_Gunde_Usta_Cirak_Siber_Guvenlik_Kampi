@@ -1,0 +1,40 @@
+{
+  "gun_no": 10,
+  "gun_kimligi": "G010",
+  "asama": "01",
+  "hafta": 2,
+  "konu": "Linux sanal makinesine güvenli başlangıç",
+  "tarih": "2026-10-27",
+  "durum": "PASS",
+  "puan": 100,
+  "degerlendirme_detayi": {
+    "teori": 20,
+    "uygulama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "kanit_durumu": "TAM",
+  "tamamlanan_gorevler": [
+    "Linux sanal makinesine güvenli başlangıç ve taban çizgisi (CIS Benchmark Seviye 1, PoLP, SSH ve Sudoers) Usta-Çırak derinliğinde açıklandı.",
+    "Varsayılan şifre ve açık kapı analojisi ile kaba kuvvet (brute-force) ve GTFOBins yetki yükseltme zihinsel modeli kuruldu.",
+    "OpenSSH sunucusunda root giriş yasağı, parola kapatma, Ed25519 anahtar zorunluluğu ve port sertleştirmesi kodlandı.",
+    "/etc/sudoers dosyasında parolasız sudo (NOPASSWD) felaketi ve denetim izi mekanizması somutlaştırıldı.",
+    "/etc/shadow ve /etc/passwd kritik dosya izinleri ile UFW güvenlik duvarı varsayılan reddetme kuralları doğrulandı.",
+    "Her kod satırı eğitsel açıklamalarla donatılmış linux_baseline_auditor.py CLI aracı geliştirildi.",
+    "13 birim test ile pozitif, negatif ve güvenlik sınır durumları 0.196 saniyede %100 başarıyla doğrulandı.",
+    "Gerçek CLI yürütme, unittest çıktısı ve temsilî ASCII Linux güvenlik mimari şeması kanıt olarak üretildi.",
+    "Soru bankasındaki 3 soru katı 4 bölümlü formatta cevaplandı."
+  ],
+  "pozitif_negatif_kontrol_sonuclari": {
+    "pozitif_kontrol": "CIS Seviye 1 sertleştirilmiş LINUX-SEC-01 profilinde 100/100 puan, 0 bulgu ve GÜVENLİ durumu teyit edildi",
+    "negatif_kontrol_root_ssh": "PermitRootLogin=yes tespitiyle doğrudan root kaba kuvvet riski KRİTİK olarak raporlandı",
+    "negatif_kontrol_parola_ssh": "PasswordAuthentication=yes tespitiyle parola saldırısı riski YÜKSEK seviyede yakalandı",
+    "negatif_kontrol_nopasswd": "/etc/sudoers NOPASSWD izni anında root yetki yükseltme riskiyle FELAKET seviyesinde 50 puan ceza aldı",
+    "negatif_kontrol_shadow_izin": "/etc/shadow dosyasının 0644 okunabilir olması parola hash hırsızlığı riskiyle FELAKET olarak engellendi",
+    "negatif_kontrol_passwd_yazma": "/etc/passwd dosyasının 0777 yazılabilir olması yeni UID 0 kullanıcısı ekleme riskiyle FELAKET olarak engellendi",
+    "negatif_kontrol_ufw_kapali": "Güvenlik duvarının kapalı olması açık port riskiyle KRİTİK olarak yakalandı",
+    "islevsellik_sablon_uretimi": "CIS Seviye 1 sshd_config_hardened ve sudoers_hardened şablonları başarıyla üretildi"
+  },
+  "onceki_gun_bagimliligi": "YOK (Tamamen bağımsız)",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ."
+}

@@ -1,0 +1,26 @@
+{
+  "aciklama": "X.509 v3 3 Kademeli Hiyerarşik PKI Sertifika Zinciri Referans Modeli",
+  "standart_referans": "RFC 5280 (Internet X.509 Public Key Infrastructure Certificate and CRL Profile)",
+  "root_ca": {
+    "subject": { "CN": "Siber Guvenlik Global Root CA", "O": "Siber Savunma Baskanligi", "C": "TR" },
+    "issuer": { "CN": "Siber Guvenlik Global Root CA", "O": "Siber Savunma Baskanligi", "C": "TR" },
+    "is_self_signed": true,
+    "basic_constraints": { "is_ca": true, "path_len": 2 },
+    "key_usage": [ "keyCertSign", "cRLSign" ]
+  },
+  "intermediate_ca": {
+    "subject": { "CN": "Siber Guvenlik E-Ticaret ve Finans CA", "O": "Siber Savunma Baskanligi", "C": "TR" },
+    "issuer": { "CN": "Siber Guvenlik Global Root CA", "O": "Siber Savunma Baskanligi", "C": "TR" },
+    "is_self_signed": false,
+    "basic_constraints": { "is_ca": true, "path_len": 0 },
+    "key_usage": [ "keyCertSign", "cRLSign", "digitalSignature" ]
+  },
+  "leaf_certificate": {
+    "subject": { "CN": "secure.bank.com.tr", "O": "Milli Guvenli Bankacilik A.S.", "C": "TR" },
+    "issuer": { "CN": "Siber Guvenlik E-Ticaret ve Finans CA", "O": "Siber Savunma Baskanligi", "C": "TR" },
+    "is_self_signed": false,
+    "basic_constraints": { "is_ca": false, "path_len": null },
+    "key_usage": [ "digitalSignature", "keyEncipherment" ],
+    "subject_alt_names": [ "secure.bank.com.tr", "api.bank.com.tr", "*.bank.com.tr" ]
+  }
+}

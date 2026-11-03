@@ -1,0 +1,25 @@
+{
+  "standart": "NIST FIPS 197 & NIST SP 800-38A",
+  "aes_128_fips197_single_block": {
+    "key_hex": "2b7e151628aed2a6abf7158809cf4f3c",
+    "plaintext_hex": "6bc1bee22e409f96e93d7e117393172a",
+    "expected_ciphertext_hex": "3ad77bb40d7a3660a89ecaf32466ef97"
+  },
+  "aes_128_cbc_sp800_38a": {
+    "key_hex": "2b7e151628aed2a6abf7158809cf4f3c",
+    "iv_hex": "000102030405060708090a0b0c0d0e0f",
+    "plaintext_hex": "6bc1bee22e409f96e93d7e117393172a",
+    "expected_ciphertext_hex": "7649abac8119b246cee98e9b12e9197d"
+  },
+  "aes_128_ctr_sp800_38a": {
+    "key_hex": "2b7e151628aed2a6abf7158809cf4f3c",
+    "initial_counter_hex": "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+    "plaintext_hex": "6bc1bee22e409f96e93d7e117393172a",
+    "expected_ciphertext_hex": "874d6191b620e3261bef6864990db6ce"
+  },
+  "ecb_desen_sizintisi_ornek": {
+    "aciklama": "ECB modunda özdeş 16-baytlık düz metin blokları özdeş şifreli bloklar üretir (ECB Penguin / Desen Sızıntısı - CWE-327).",
+    "blok_a": "GIZLI_PAROLA_123",
+    "blok_b": "GIZLI_PAROLA_123"
+  }
+}

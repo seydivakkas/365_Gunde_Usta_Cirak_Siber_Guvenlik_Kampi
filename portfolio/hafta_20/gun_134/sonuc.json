@@ -1,0 +1,34 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "gun": 134,
+  "hafta": 20,
+  "asama": "Aşama 6: Uç Nokta Güvenliği ve Sertleştirme",
+  "konu": "Linux sudo ve ayrıcalık devri",
+  "tarih": "2026-11-02",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "kriterler": {
+    "kod_kalitesi_ve_didaktik_yorumlar": 20,
+    "birim_testler_ve_kapsam": 40,
+    "negatif_kontroller_ve_sinir_durumlari": 25,
+    "mimari_tasarim_guvenlik_belgeleme": 15
+  },
+  "test_sonuclari": {
+    "toplam_test": 15,
+    "basarili_test": 15,
+    "hatali_test": 0,
+    "test_suresi_saniye": 0.001
+  },
+  "negatif_senaryolar": {
+    "toplam_senaryo": 9,
+    "basarili_senaryo": 9,
+    "hatali_senaryo": 0
+  },
+  "guvenlik_standartlari": [
+    "CIS Linux Benchmark v2.0.0 (Section 5.3)",
+    "GTFOBins Privilege Escalation Matrix",
+    "MITRE ATT&CK Matrix (T1548.003, T1574.006, T1574.007)",
+    "Common Weakness Enumeration (CWE-250, CWE-732, CWE-426, CWE-88)",
+    "NIST SP 800-123: Guide to General Server Security"
+  ]
+}

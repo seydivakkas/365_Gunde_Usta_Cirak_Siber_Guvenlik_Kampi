@@ -1,0 +1,39 @@
+==============================================================================
+GÜN 137: LINUX SSH ANAHTAR VE SUNUCU GÜVENLİK KOMUT SATIRI VE ÇIKTI KANITI
+==============================================================================
+Tarih: 2026-11-02 14:34:19
+
+$ python uygulama/ssh_security_cli.py audit -i ornek_veri/ssh_inventory_spec.json
+------------------------------------------------------------------------------
+============================================================================
+         LINUX SSH ANAHTAR VE SUNUCU GÜVENLİK DENETİM RAPORU             
+============================================================================
+Denetlenen SSH Anahtarı : 3
+Yetkili Açık Anahtar     : 2
+Genel Sistem Güvenlik Skoru : 0.0 / 100.0
+Değerlendirme Durumu    : KRİTİK RİSK (ACİL MÜDAHALE GEREKLİ)
+Tespit Edilen Zafiyet   : 10 adet
+  • Kritik Bulgular     : 3
+  • Yüksek Bulgular     : 3
+  • Orta Bulgular       : 2
+  • Düşük Bulgular      : 2
+----------------------------------------------------------------------------
+ÖNE ÇIKAN GÜVENLİK BULGULARI:
+  [CRITICAL] SSH-001: Gevşek Özel Anahtar (Private Key) Dosya İzinleri -> /home/legacy_user/.ssh/id_dsa
+  [MEDIUM] SSH-002: Özel Anahtar Parola (Passphrase) ile Korunmuyor -> /home/legacy_user/.ssh/id_dsa
+  [CRITICAL] SSH-003: Güvensiz ve Kullanımdan Kaldırılmış DSA Anahtarı -> /home/legacy_user/.ssh/id_dsa
+  [CRITICAL] SSH-005: Gevşek authorized_keys Dosya İzinleri (Yazılabilir) -> /home/legacy_user/.ssh/authorized_keys
+  [HIGH] SSH-006: authorized_keys Dosyasında Zayıf DSA Anahtarı Tanımlı -> authorized_keys (old-backup-cron)
+  [HIGH] SSH-007: Doğrudan Root SSH Girişine İzin Verilmiş (PermitRootLogin yes) -> /etc/ssh/sshd_config:PermitRootLogin
+  [HIGH] SSH-008: Parola ile Kimlik Doğrulama Açık (PasswordAuthentication yes) -> /etc/ssh/sshd_config:PasswordAuthentication
+  [MEDIUM] SSH-010: Maksimum Başarısız Giriş Denemesi Sınırı Çok Yüksek (MaxAuthTries > 4) -> /etc/ssh/sshd_config:MaxAuthTries
+  [LOW] SSH-011: X11 Grafik Yönlendirmesi Aktif (X11Forwarding yes) -> /etc/ssh/sshd_config:X11Forwarding
+  [LOW] SSH-012: SSH Oturum Hareketsizlik Zaman Aşımı Eksik veya Çok Uzun -> /etc/ssh/sshd_config:ClientAliveInterval
+============================================================================
+
+$ python uygulama/ssh_security_cli.py remediate -i ornek_veri/ssh_inventory_spec.json -o kanit/gercek/otomatik_sikilastirma.sh
+[+] Otomatik Bash sertleştirme betiği üretildi: kanit/gercek/otomatik_sikilastirma.sh
+
+$ python uygulama/ssh_security_cli.py sshd-config -o kanit/gercek/ornek_guvenli_sshd_config
+[+] Güvenli sshd_config şablonu oluşturuldu: kanit/gercek/ornek_guvenli_sshd_config
+==============================================================================

@@ -1,0 +1,80 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "gun": 125,
+  "hafta": 18,
+  "konu": "Mini proje 17: güvenli kimlik/rol prototipi",
+  "dosyalar": {
+    "ders.md": {
+      "boyut_bayt": 8486,
+      "sha256": "8e1a4f5b364c9d4380fdd7c3b110f1e76f4ba8d8af13f5c68f64a81a55d39e2f"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 29607,
+      "sha256": "e4c9979d07511cf54c77a7abe5299b6ea1768209159f4b046a0b4c13b70bd85b"
+    },
+    "rapor.md": {
+      "boyut_bayt": 4599,
+      "sha256": "333dd9c1417674daad651bfe78d35171ccab27c3d977c5dafd78abda3786cb25"
+    },
+    "README.md": {
+      "boyut_bayt": 5346,
+      "sha256": "60b5b3f348b936c290d4973dd9b0cf5ca76471f0f8f864d90509e368ca3fc084"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1004,
+      "sha256": "901f8cc74a01349c661cccbe25b71b9d504b526e3cd474743acccad81cac675f"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 9076,
+      "sha256": "b7e8f4bce51533a91106006066d32df73234acca718339e713a72628e27f6d6e"
+    },
+    "kanit/gercek/kimlik_rol_analiz_raporu.json": {
+      "boyut_bayt": 3196,
+      "sha256": "acf37b20d4f69533b262f7958d64340ec92a6d6c8c0e00fda9d617a2f386bbb6"
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "boyut_bayt": 3143,
+      "sha256": "2863624fd62481ddc71811e16146221d500dce5e9f7476e3f9775646b88b6015"
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 2469,
+      "sha256": "63f7d0a2523e699135dac2ae4162531da5eceb592a6bbef3a8504d931297673e"
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "boyut_bayt": 4377,
+      "sha256": "08ca7c338e8d025cf509bd2cb290bb8812e63c97089b80e356b13d5751f38644"
+    },
+    "kanit/temsili/identity_mimarisi.txt": {
+      "boyut_bayt": 3504,
+      "sha256": "9526cc8580dbc02b7cf67a487514c892ae31dac994f9201da3c30e39ba985e08"
+    },
+    "ornek_veri/identity_prototype_config.json": {
+      "boyut_bayt": 2658,
+      "sha256": "a3c02dce421f927ab2f633856ea623abae0d9f301f7d7734f048ec1e33ea8ab2"
+    },
+    "ornek_veri/invalid_identity_scenarios.json": {
+      "boyut_bayt": 3801,
+      "sha256": "d862b647f19873a4f87841233efe7ccda1653179204abbc6ae2cdfe1c8275291"
+    },
+    "tests/test_secure_identity_role.py": {
+      "boyut_bayt": 10858,
+      "sha256": "d7f0bc3736e72b3aea2f9a6ffbae3c344a3fe2a837fab02794bf081a20a81d78"
+    },
+    "tests/__init__.py": {
+      "boyut_bayt": 591,
+      "sha256": "9b056d2c2c59659d67619a02d61c26241ab1142bb5eb8ef4589450c5b90a98ac"
+    },
+    "uygulama/identity_cli.py": {
+      "boyut_bayt": 7554,
+      "sha256": "d241c82a18af297857d1b1fd9f094a61458d7a1010f6ea636a92e3489e0e4ccd"
+    },
+    "uygulama/secure_identity_role_engine.py": {
+      "boyut_bayt": 26137,
+      "sha256": "5971ef42900a77ff7d44362f8b5cfdd8f37b29bda77ba8f6cff6c1fd80fb0a9a"
+    },
+    "uygulama/__init__.py": {
+      "boyut_bayt": 773,
+      "sha256": "f9c76e87c8281ba9afbe7310b7cd32c37e3babdf1bc142a2e6b12d7cc73b3719"
+    }
+  }
+}

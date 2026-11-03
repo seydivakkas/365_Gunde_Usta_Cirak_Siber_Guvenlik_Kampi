@@ -1,0 +1,18 @@
+{
+  "ders.md": "ade5358508877e00ac305e2a05cc443f192f5f68aed32ffc874a0902b44db6e8",
+  "kanit/gercek/komut_ve_cikis.txt": "9fda205bc2532a6c79a77de746e1b99e17084be87e6688c63401059017f19715",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "3484f71cc7a8023415d5aaae1bbfc9befe3a4fbb5f0a90eb47c763033b96c55a",
+  "kanit/gercek/test_sonuclari.txt": "f0c9956882b651df67e7599ed21ea3a4943278f4083393ef67bd0a3f695bea71",
+  "kanit/gercek/wireshark_analiz_raporu_ciktisi.txt": "d185a3e6406ef990cdd786443de1054f7379df8586d9db95aed62c24f7cf2455",
+  "kanit/temsili/wireshark_raporlama_mimarisi.txt": "4ccc45e6acc186346dd67cd363804f1d328cec3cc591d8db1de29157f05dd729",
+  "ornek_veri/invalid_report_inputs.json": "83b7c54827af8da2b8b42c91b5fd8db8bf465d892a0b2104042e5ebc3f3281ec",
+  "ornek_veri/sample_pcap_dissection.json": "880136d5ff13d73d9f92d5123cff8976078f74866b6bad61c76e50cb4407e3b5",
+  "rapor.md": "ef26ceae8f9e37a8f92d6f80d7d464bcbe5af27490b54e807435adc77a12c326",
+  "README.md": "948c220307ad5fd3c6e1984adebaa8be330262db58f35de898f39561fe1167bb",
+  "sonuc.json": "e390519a0bd19e3ac46d6bf8e862fcbb0081cd8ad99d8b5ac5113bddc98fdbab",
+  "soru_cevap.md": "b106ac4446ff448c39d6ab30eb443f7666df6b2440f22604dba13cf5a075aa7a",
+  "tests/__init__.py": "b79f6dfba15063a53b60d3fa027c9ea7ecb0173ecb7169fa8a79471f4fb53cf6",
+  "tests/test_wireshark_analysis_report_generator.py": "ee2610de105f4bf4e69e211c6d6c192838ad064fd7af8543d08a1bccd887e029",
+  "uygulama/__init__.py": "b72b6438c9065cdb21e0dd71325702b189f7905bca3a071a960cf2a0127ce351",
+  "uygulama/wireshark_analysis_report_generator.py": "fa7ccfccfc039e3b5d1daa22e1f3e217aa2200c7440128104fa3f61e62e32914"
+}

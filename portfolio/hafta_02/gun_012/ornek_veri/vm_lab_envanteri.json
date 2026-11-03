@@ -1,0 +1,154 @@
+{
+  "versiyon": "2026.1",
+  "aciklama": "Sentetik Siber Guvenlik Laboratuvari Sanal Makine Snapshot ve Yedek Envanteri",
+  "lisans": "OZEL LISANS - TUM HAKLARI SAKLIDIR. Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas)",
+  "laboratuvar_vmler": [
+    {
+      "vm_id": "VM-SEC-WIN-01",
+      "vm_adi": "Windows-11-Analiz-Hostu",
+      "isletim_sistemi": "Windows 11 Enterprise (23H2)",
+      "rol": "Malware Analizi ve Adli Bilisim Inceleme Laboratuvari",
+      "ana_disk": {
+        "disk_id": "DSK-WIN-BASE-01",
+        "dosya_adi": "win11_clean_base.vhdx",
+        "boyut_gb": 64.0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "salt_okunur_mu": true
+      },
+      "anlik_goruntuler": [
+        {
+          "snapshot_id": "SNAP-WIN-01",
+          "snapshot_adi": "Temiz_Altin_Durum_Pre_Infection",
+          "olusturma_tarihi": "2026-10-24T08:00:00Z",
+          "yas_saat": 73.5,
+          "delta_diski": "win11_clean_base_diff_001.avhdx",
+          "delta_boyut_gb": 12.8,
+          "durum": "AKTIF",
+          "bellek_dahil_mi": true,
+          "aciklama": "Zararlı yazılım analizi öncesi temiz sistem anlık görüntüsü"
+        }
+      ],
+      "yedekler": [],
+      "vss_golge_kopya_etkin_mi": false,
+      "yedekleme_politikasi": {
+        "3_2_1_uyumlu_mu": false,
+        "degismezlik_kilidi_worm": false,
+        "rpo_hedefi_saat": 24,
+        "rto_hedefi_dakika": 60
+      }
+    },
+    {
+      "vm_id": "VM-SEC-LNX-01",
+      "vm_adi": "Ubuntu-SIEM-Log-Sunucusu",
+      "isletim_sistemi": "Ubuntu Server 24.04 LTS",
+      "rol": "Laboratuvar SIEM ve Tehdit Istihbarat Toplayicisi",
+      "ana_disk": {
+        "disk_id": "DSK-LNX-BASE-01",
+        "dosya_adi": "ubuntu_siem_base.qcow2",
+        "boyut_gb": 100.0,
+        "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+        "salt_okunur_mu": false
+      },
+      "anlik_goruntuler": [
+        {
+          "snapshot_id": "SNAP-LNX-01",
+          "snapshot_adi": "Guncelleme_Oncesi_Snap",
+          "olusturma_tarihi": "2026-10-26T20:00:00Z",
+          "yas_saat": 4.2,
+          "delta_diski": "ubuntu_siem_base_snap01.qcow2",
+          "delta_boyut_gb": 1.2,
+          "durum": "AKTIF",
+          "bellek_dahil_mi": false,
+          "aciklama": "Çekirdek güncellemesi öncesi güvenlik kontrol noktası"
+        }
+      ],
+      "yedekler": [
+        {
+          "yedek_id": "BAK-LNX-20261026",
+          "yedek_tipi": "TAM_BAGIMSIZ_YEDEK",
+          "hedef_depolama": "s3://immutable-lab-backups/lnx_siem/20261026.tar.gz",
+          "tarih": "2026-10-26T22:00:00Z",
+          "boyut_gb": 100.0,
+          "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+          "degismezlik_kilidi_aktif_mi": true,
+          "air_gap_izolasyon": true,
+          "dogrulama_durumu": "DOGRULANDI"
+        }
+      ],
+      "vss_golge_kopya_etkin_mi": false,
+      "yedekleme_politikasi": {
+        "3_2_1_uyumlu_mu": true,
+        "degismezlik_kilidi_worm": true,
+        "rpo_hedefi_saat": 4,
+        "rto_hedefi_dakika": 30
+      }
+    },
+    {
+      "vm_id": "VM-VULN-SRV-99",
+      "vm_adi": "Legacy-Web-Uygulama-Sunucusu",
+      "isletim_sistemi": "Windows Server 2019",
+      "rol": "Zaafiyetli Test Web Uygulaması ve Veritabani",
+      "ana_disk": {
+        "disk_id": "DSK-SRV-BASE-99",
+        "dosya_adi": "win2019_legacy.vhdx",
+        "boyut_gb": 250.0,
+        "sha256": "7d793037a0760186574b0282f2f435e70d7c6e0689bfeefe41334604f4518244",
+        "salt_okunur_mu": false
+      },
+      "anlik_goruntuler": [
+        {
+          "snapshot_id": "SNAP-SRV-01",
+          "snapshot_adi": "Snap_Kurulum_Gunu",
+          "olusturma_tarihi": "2026-06-01T10:00:00Z",
+          "yas_saat": 3550.0,
+          "delta_diski": "win2019_diff1.avhdx",
+          "delta_boyut_gb": 68.0,
+          "durum": "AKTIF",
+          "bellek_dahil_mi": false,
+          "aciklama": "Yıllar önce unutulmuş tehlikeli snapshot zincir başlangıcı"
+        },
+        {
+          "snapshot_id": "SNAP-SRV-02",
+          "snapshot_adi": "Snap_Yama_Denemesi",
+          "olusturma_tarihi": "2026-08-15T14:30:00Z",
+          "yas_saat": 1740.0,
+          "delta_diski": "win2019_diff2.avhdx",
+          "delta_boyut_gb": 45.0,
+          "durum": "AKTIF",
+          "bellek_dahil_mi": true,
+          "aciklama": "Başarısız yama denemesi sonrası silinmemiş snapshot"
+        },
+        {
+          "snapshot_id": "SNAP-SRV-03",
+          "snapshot_adi": "Snap_Veritabani_Guncelleme",
+          "olusturma_tarihi": "2026-10-01T09:15:00Z",
+          "yas_saat": 620.0,
+          "delta_diski": "win2019_diff3.avhdx",
+          "delta_boyut_gb": 92.0,
+          "durum": "AKTIF",
+          "bellek_dahil_mi": true,
+          "aciklama": "Veritabanı yükseltme öncesi alınan devasa delta diski"
+        },
+        {
+          "snapshot_id": "SNAP-SRV-04",
+          "snapshot_adi": "Snap_Test_Log4j_Yukleme",
+          "olusturma_tarihi": "2026-10-20T16:00:00Z",
+          "yas_saat": 152.0,
+          "delta_diski": "win2019_diff4.avhdx",
+          "delta_boyut_gb": 38.0,
+          "durum": "AKTIF",
+          "bellek_dahil_mi": false,
+          "aciklama": "Saldırı simülasyonu öncesi 4. seviye iç içe geçmiş snapshot"
+        }
+      ],
+      "yedekler": [],
+      "vss_golge_kopya_etkin_mi": true,
+      "yedekleme_politikasi": {
+        "3_2_1_uyumlu_mu": false,
+        "degismezlik_kilidi_worm": false,
+        "rpo_hedefi_saat": 72,
+        "rto_hedefi_dakika": 240
+      }
+    }
+  ]
+}

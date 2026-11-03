@@ -1,0 +1,56 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+========================================================================================
+           POWERSHELL GELİŞMİŞ PARAMETRE GÜVENLİK VE BAĞLAMA MİMARİSİ
+========================================================================================
+
++--------------------------------------------------------------------------------------+
+|                           DIŞ DÜNYA / KULLANICI GİRDİLERİ                             |
+|  - CLI Parametreleri (--TargetFile, -Port, -ApiKey, -Mode)                           |
+|  - İşlem Hatları (Pipeline Objects / ValueFromPipeline)                              |
+|  - Otomasyon / CI/CD Ortam Değişkenleri                                              |
++--------------------------------------------------------------------------------------+
+                                          |
+                                          v
++--------------------------------------------------------------------------------------+
+|                     KATMAN 1: GÜVENLİK SÖZDİZİMİ VE BİLDİRİM                         |
+|   [CmdletBinding(SupportsShouldProcess = $true)]                                     |
+|   param ( ... )                                                                      |
+|                                                                                      |
+|   [-] Eksik CmdletBinding() -> Uyarı / Otomatik Koruma İptali (CWE-20)               |
+|   [-] Açık Metin Parola ([string]$Password) -> CRITICAL Tehdit (CWE-312)             |
+|   [+] Çözüm: [System.Security.SecureString] veya [PSCredential]                      |
++--------------------------------------------------------------------------------------+
+                                          |
+                                          v
++--------------------------------------------------------------------------------------+
+|                   KATMAN 2: PARAMETRE ÖZNİTELİK DOĞRULAMA (VALIDATE)                 |
+|                                                                                      |
+|   [ValidateNotNullOrEmpty()]      -> Boş veya null girdi enjeksiyonunu önler         |
+|   [ValidateScript({ Test-Path })] -> Dizin Atlama (Path Traversal - CWE-22) önler    |
+|   [ValidateRange(1, 65535)]       -> Sınır dışı sayısal değerleri reddeder           |
+|   [ValidateSet('A', 'B', 'C')]    -> Beklenmeyen mod girdilerini filtreler           |
+|   [ValidatePattern('^[a-z]+$')]   -> Komut ayırıcı (;, &&, |) karakterleri bloklar   |
++--------------------------------------------------------------------------------------+
+                                          |
+                                          v
++--------------------------------------------------------------------------------------+
+|                   KATMAN 3: ÇALIŞMA ZAMANI BAĞLAMA VE SPLATTING                      |
+|                                                                                      |
+|   [-] cmd.exe /c "ping $HostToPing" -> Argüman Enjeksiyonu Riski (CWE-88)            |
+|   [+] Güvenli Splatting:                                                             |
+|       $splatParams = @{                                                              |
+|           FilePath     = 'ping.exe'                                                  |
+|           ArgumentList = @('-n', '1', $SanitizedHost)                                |
+|           NoNewWindow  = $true                                                       |
+|       }                                                                              |
+|       Start-Process @splatParams                                                     |
++--------------------------------------------------------------------------------------+
+                                          |
+                                          v
++--------------------------------------------------------------------------------------+
+|                     KATMAN 4: GÜVENLİ YÜRÜTME & DENETİM LOGU                         |
+|   - Null-byte (0x00) ve 4096 Karakter DoS Tavanı Koruması                            |
+|   - PSCustomObject Yapısal Log Çıktısı (begin / process / end)                       |
+|   - SIEM / Splunk / Event Log 4104 Uyumlu Denetim İzi                                |
++--------------------------------------------------------------------------------------+

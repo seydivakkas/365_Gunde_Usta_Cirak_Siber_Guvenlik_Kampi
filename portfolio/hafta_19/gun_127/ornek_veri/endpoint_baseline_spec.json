@@ -1,0 +1,21 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "endpoint_name": "CORP-W11-FINANCE-04",
+  "os_family": "WINDOWS",
+  "role": "WORKSTATION",
+  "description": "Finans Departmanı Kıdemli Analist Dizüstü Bilgisayarı",
+  "kontroller": {
+    "edr_active": true,
+    "tamper_protection_active": true,
+    "telemetry_active": true,
+    "credential_guard_active": true,
+    "disk_encryption_active": true,
+    "strict_uac_active": true,
+    "app_whitelisting_active": true,
+    "powershell_clm_active": true,
+    "unquoted_service_paths_count": 0,
+    "suid_misconfigurations_count": 0,
+    "insecure_open_ports": [],
+    "weak_registry_autoruns_count": 0
+  }
+}

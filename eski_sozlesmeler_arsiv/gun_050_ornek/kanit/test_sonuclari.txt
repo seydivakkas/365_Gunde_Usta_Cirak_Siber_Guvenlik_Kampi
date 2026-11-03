@@ -1,0 +1,10 @@
+test_expected_three_step_sequence_is_valid (test_handshake_sim.HandshakeTests.test_expected_three_step_sequence_is_valid) ... ok
+test_invalid_ack_is_rejected (test_handshake_sim.HandshakeTests.test_invalid_ack_is_rejected) ... ok
+test_missing_packet_is_rejected (test_handshake_sim.HandshakeTests.test_missing_packet_is_rejected) ... ok
+test_negative_sequence_is_rejected (test_handshake_sim.HandshakeTests.test_negative_sequence_is_rejected) ... ok
+test_sequence_wrap_is_supported_in_toy_model (test_handshake_sim.HandshakeTests.test_sequence_wrap_is_supported_in_toy_model) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

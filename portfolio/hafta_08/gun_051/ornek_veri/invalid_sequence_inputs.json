@@ -1,0 +1,88 @@
+[
+  {
+    "hata_kodu": "ERR_NEGATIVE_PAYLOAD_LENGTH",
+    "aciklama": "Negatif veri yükü uzunluğu (-50 bayt)",
+    "girdi": {
+      "kaynak_port": 54321,
+      "hedef_port": 80,
+      "seq_no": 1000,
+      "ack_no": 5000,
+      "payload_len": -50
+    }
+  },
+  {
+    "hata_kodu": "ERR_SEQUENCE_OVERFLOW",
+    "aciklama": "32-bit tamsayı sınırını aşan sıra numarası (5000000000 > 4294967295)",
+    "girdi": {
+      "kaynak_port": 54321,
+      "hedef_port": 80,
+      "seq_no": 5000000000,
+      "ack_no": 5000,
+      "payload_len": 100
+    }
+  },
+  {
+    "hata_kodu": "ERR_ACK_OVERFLOW",
+    "aciklama": "32-bit tamsayı sınırını aşan onay numarası (9999999999 > 4294967295)",
+    "girdi": {
+      "kaynak_port": 54321,
+      "hedef_port": 80,
+      "seq_no": 1000,
+      "ack_no": 9999999999,
+      "payload_len": 0
+    }
+  },
+  {
+    "hata_kodu": "ERR_NEGATIVE_WINDOW_SIZE",
+    "aciklama": "Negatif pencere boyutu (-1024)",
+    "girdi": {
+      "kaynak_port": 54321,
+      "hedef_port": 80,
+      "seq_no": 1000,
+      "ack_no": 5000,
+      "window_size": -1024
+    }
+  },
+  {
+    "hata_kodu": "ERR_WINDOW_OVERFLOW",
+    "aciklama": "16-bit sınırını aşan pencere boyutu (70000 > 65535)",
+    "girdi": {
+      "kaynak_port": 54321,
+      "hedef_port": 80,
+      "seq_no": 1000,
+      "ack_no": 5000,
+      "window_size": 70000
+    }
+  },
+  {
+    "hata_kodu": "ERR_INVALID_PORT_ZERO",
+    "aciklama": "Geçersiz port numarası (Port 0)",
+    "girdi": {
+      "kaynak_port": 0,
+      "hedef_port": 80,
+      "seq_no": 1000,
+      "ack_no": 5000
+    }
+  },
+  {
+    "hata_kodu": "ERR_MALFORMED_IP_FORMAT",
+    "aciklama": "Geçersiz oktet aralığına sahip IP adresi (192.168.1.999)",
+    "girdi": {
+      "kaynak_ip": "192.168.1.999",
+      "hedef_ip": "172.16.20.10",
+      "kaynak_port": 54321,
+      "hedef_port": 80
+    }
+  },
+  {
+    "hata_kodu": "ERR_NON_NUMERIC_TIMESTAMP",
+    "aciklama": "Sayısal olmayan zaman damgası değeri ('invalid_time')",
+    "girdi": {
+      "kaynak_port": 54321,
+      "hedef_port": 80,
+      "seq_no": 1000,
+      "ack_no": 5000,
+      "zaman_damgasi_ms": "invalid_time"
+    }
+  }
+]

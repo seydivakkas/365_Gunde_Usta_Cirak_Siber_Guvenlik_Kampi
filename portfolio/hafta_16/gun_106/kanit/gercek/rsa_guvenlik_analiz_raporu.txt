@@ -1,0 +1,31 @@
+=== GÜN 106 ASİMETRİK KRİPTOGRAFİ VE RSA GÜVENLİK ANALİZ RAPORU ===
+Tarih/Saat: 2026-11-02 02:40:54
+Standart Uyumluluğu: NIST SP 800-56B Rev. 2 & RFC 8017 (PKCS#1 v2.2)
+--------------------------------------------------------------------------------
+
+1. MATEMATİKSEL TEMELLER VE ASALLIK TESTİ (MILLER-RABIN):
+   - Asallık testi k=40 tanık (witness) tabanı ile koşturulmaktadır.
+   - Bir bileşik sayının bu testi geçme olasılığı 4^(-40) ≈ 8.27 x 10^(-25) mertebesindedir.
+   - FIPS 186-4 standartlarına göre kriptografik kesinlikte asal kabul edilir.
+
+2. DÜZ (TEXTBOOK) RSA TEHLİKELERİ VE HOMOMORFİZM (CWE-327):
+   - Düz RSA'da c1 = m1^e mod n ve c2 = m2^e mod n şifrelendiğinde;
+     c_tampered = (c1 * c2) mod n doğrudan (m1 * m2) mod n değerini verir.
+   - Bu durum saldırganın şifreli metinleri birleştirerek meşru bir işlem üretmesine
+     (örneğin bankacılık transfer miktarını katlamasına) olanak tanır.
+   - Bu nedenle endüstri standardı sistemlerde düz RSA KESİNLİKLE YASAKTIR.
+
+3. RSA-OAEP GÜVENLİ DOLGULAMA (OPTIMAL ASYMMETRIC ENCRYPTION PADDING):
+   - MGF1 (SHA-256) maskeleme fonksiyonu ve Feistel benzeri iki turlu ağ yapısı kullanılır.
+   - Şifreleme her seferinde rastgele bir tohum (seed) içerdiğinden deterministik değildir;
+     aynı düz metin defalarca şifrelense dahi tamamen farklı şifreli bloklar üretilir (IND-CCA2 güvenliği).
+   - Sabit zamanlı lHash ve bayt kontrolleri (hmac.compare_digest) ile zamanlama yan kanal (CWE-208)
+     ve Bleichenbacher dolgu kahini (padding oracle) saldırıları bertaraf edilmiştir.
+
+4. KÜÇÜK GENEL ÜS (e=3) VE HÅSTAD TEHLİKESİ:
+   - e=3 seçildiğinde ve mesaj küçük olduğunda (m^3 < n), modüler indirgeme gerçekleşmez.
+   - Saldırgan hiçbir özel anahtar olmadan tam sayı küp kökünü alarak mesajı anında çözer.
+   - Standart genel üs olarak F4 Fermat asalı (e = 65537 = 2^16 + 1) kullanılmalıdır.
+
+--------------------------------------------------------------------------------
+SONUÇ: Asimetrik motor NIST SP 800-56B ve PKCS#1 v2.2 yönergelerine tam uyumludur.

@@ -1,0 +1,118 @@
+{
+  "gun": 91,
+  "baslik": "Mini proje 12: Çok platformlu sistem raporu",
+  "olusturma_zamani": "2026-11-01T20:29:16.205415+00:00",
+  "toplam_dosya": 23,
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "4cda7f0440ff496824c5f93a7f078f838edc37ed5f1b033e835535d85caeb27b",
+      "boyut_bayt": 4765
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "036d58e9d548ee45e98c0abeb90eff33c58368dc87e0c6c36c928274cd7c6194",
+      "boyut_bayt": 5777
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "58640449a604e770ddcfdeda619279a6dc77c57e8144791cd10bfd53f285a796",
+      "boyut_bayt": 9657
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "53c0b462b49d34c55a1bfa3c3c42cbf11897d57b1aa93caa271164e12b1b72f0",
+      "boyut_bayt": 3077
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "46ff8d5773064913f1a94724752bf5cb3e049133151719cb1a954f843c0d6b4b",
+      "boyut_bayt": 2792
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "c04e187b2427515b9756c7f020522dd3010503ce55fd6fa3fb231c65be74fa2f",
+      "boyut_bayt": 9579
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "428e0cba181afbd90d257b32ab872737913de89c52b9df443e4b1256b078c80e",
+      "boyut_bayt": 6370
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "ab81529797cd6556cc7830c0913e2213dd71cdd81cc2554574d3636a178e3b8b",
+      "boyut_bayt": 1639
+    },
+    {
+      "dosya": "kanit\\gercek\\sistem_guvenlik_raporu.json",
+      "sha256": "af0d0e77f99ffa4ab937dfd3b3ed046dcbcaf16efe6ac35b3a1dfc5c976dbe88",
+      "boyut_bayt": 5098
+    },
+    {
+      "dosya": "kanit\\gercek\\sistem_guvenlik_raporu.txt",
+      "sha256": "951553c36fe62f7a63d9c5d106f3f68029ea246a1289f550361aeeefe6fb3aeb",
+      "boyut_bayt": 4767
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "86851d638fce3fe9bb3ae76775e115f665e72d4d5a5bead3e2f88f19e6f4999b",
+      "boyut_bayt": 3739
+    },
+    {
+      "dosya": "kanit\\temsili\\cok_platformlu_rapor_mimarisi.txt",
+      "sha256": "8f931ebd1939b875e7874b7db56388b24de03402a8dc1e4b45a37dc46fdd848e",
+      "boyut_bayt": 4236
+    },
+    {
+      "dosya": "ornek_veri\\invalid_reporter_inputs.json",
+      "sha256": "04eacf83f7dbffa976e8d2378f16690f165e6e1e6c057d9800aface508dfaff2",
+      "boyut_bayt": 2828
+    },
+    {
+      "dosya": "ornek_veri\\sample_linux_telemetry.json",
+      "sha256": "00eb1f2ee750f4d9066c3ae16a09709a95815b08bd813aa1c3ad045d83a2792b",
+      "boyut_bayt": 1024
+    },
+    {
+      "dosya": "ornek_veri\\sample_windows_telemetry.json",
+      "sha256": "21a573549fc19252164738f8db56421b905ef1bdd9ec56f3d4ba5bc163337b8f",
+      "boyut_bayt": 1171
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "dd6cbce39905edb1e2a7cb0fa98be57282513ade5099972d6f98fbb38522bc2f",
+      "boyut_bayt": 554
+    },
+    {
+      "dosya": "tests\\test_cross_platform_security_reporter.py",
+      "sha256": "a6006645f1700b09110e931e1509549e0466701f12911152cc1fadb10a702fd1",
+      "boyut_bayt": 8476
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "94681ae4bd3280bb3b04336bb5ed709a2415f5bc501813f8b910b92e86aaa6e4",
+      "boyut_bayt": 600
+    },
+    {
+      "dosya": "uygulama\\cross_platform_security_reporter.py",
+      "sha256": "2d24fbc631257e4e22cc4984b366556e1e199f5027721d99600df1a8e6be1fa3",
+      "boyut_bayt": 21520
+    },
+    {
+      "dosya": "uygulama\\linux_collector.sh",
+      "sha256": "3a320e23d36d561a5a560379be29b1980171304d78adc4604ea67615f7eb78fa",
+      "boyut_bayt": 2183
+    },
+    {
+      "dosya": "uygulama\\reporter_cli.py",
+      "sha256": "76e26a2c1e7e8594347a818ec949cf4d317302957d48d1a614a5ce87fa01a6fe",
+      "boyut_bayt": 4979
+    },
+    {
+      "dosya": "uygulama\\windows_collector.ps1",
+      "sha256": "0ac9ef6821a730307d7e60d93a3e837c2f77bf8bbddb3086441cc93bbea23cc1",
+      "boyut_bayt": 2937
+    }
+  ]
+}

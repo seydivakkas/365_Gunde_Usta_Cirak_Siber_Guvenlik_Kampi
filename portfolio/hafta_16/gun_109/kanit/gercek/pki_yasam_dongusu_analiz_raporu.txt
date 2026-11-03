@@ -1,0 +1,24 @@
+========================================================================
+  PKI VE SERTİFİKA YAŞAM DÖNGÜSÜ GÜVENLİK VE MİMARİ ANALİZ RAPORU
+========================================================================
+
+1. YAŞAM DÖNGÜSÜ AŞAMALARI VE KRİPTOGRAFİK GÜVENLİK:
+   - Anahtar Üretimi: CSPRNG (secrets) ile asal sayı üretimi ve FIPS 186-4 uyumu.
+   - CSR ve Proof-of-Possession (PoP): PKCS#10 standardında başvuru sahibinin özel
+     anahtarla CSR'yi imzalaması zorunlu kılınarak sahte anahtar enjeksiyonu engellendi (CWE-347).
+   - İhraç (Issuance) ve CT Log: Sertifikalar RFC 6962 uyumlu Certificate Transparency
+     günlüklerine tescil edilerek gizli/izinsiz sertifika basımı ortadan kaldırıldı.
+
+2. İPTAL YÖNETİMİ (CRL vs OCSP vs OCSP STAPLING):
+   - CRL (RFC 5280): Statik, gecikmeli ve büyük dosya boyutu dezavantajına sahiptir.
+   - OCSP (RFC 6960): Gerçek zamanlı sorgulama sağlar. Nonce doğrulaması ile
+     tekrar oynatma (replay) saldırıları önlenmiştir (CWE-294).
+   - OCSP Stapling (RFC 6066): CA yanıtı periyodik olarak sunucuda önbelleklenir ve
+     TLS el sıkışmasında istemciye sunulur. Bu sayede hem istemcinin gizliliği korunur
+     hem de bağlantı gecikmesi sıfırlanır.
+
+3. OTOMATİK ROTASYON VE KRİPTOGRAFİK İMHA (CRYPTO-SHREDDING):
+   - ACME Protokolü (RFC 8555): HTTP-01 challenge ile otomatik alan adı doğrulama.
+   - Sıfır Kesinti: Yeni sertifika aktif edildikten sonra eski sertifika 'superseded'
+     olarak iptal listesine kaydedilir ve eski özel anahtar üzerine rastgele veriler
+     yazılarak bellekten/disktan tamamen yok edilir (Crypto-Shredding / CWE-311).

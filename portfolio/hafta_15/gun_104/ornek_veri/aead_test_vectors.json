@@ -1,0 +1,14 @@
+{
+  "aciklama": "AEAD ve Nonce Yeniden Kullanımı (Two-Time Pad) Test Vektörleri",
+  "anahtar_hex": "2b7e151628aed2a6abf7158809cf4f3c",
+  "yeniden_kullanilan_nonce_hex": "9a8b7c6d5e4f3a2b1c0d9e8f",
+  "associated_data": "user_id=4821;role=admin;session=sec_2026_x99",
+  "senaryo_two_time_pad": {
+    "duz_metin_1": "KREDI_KARTI_NO=4111222233334444_CVV=999",
+    "duz_metin_2": "TRANSFER_TUTAR=0000500000_TL_ALICI=AHM",
+    "zafiyet_aciklamasi": "Aynı (Key, Nonce) çifti ile şifrelenen iki metnin şifreli hallerinin XOR'u (C1 ^ C2), düz metinlerin XOR'una (P1 ^ P2) eşittir. Keystream tamamen yok olur!"
+  },
+  "siv_deterministik_ornek": {
+    "aciklama": "Synthetic IV (SIV) modunda Nonce düz metin ve ilişkili verinin kriptografik özetinden türetilir; nonce kazara tekrar etse bile akış şifresi anahtar sızıntısı yapmaz."
+  }
+}

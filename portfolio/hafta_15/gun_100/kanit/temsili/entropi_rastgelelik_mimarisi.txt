@@ -1,0 +1,46 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+            KRİPTOGRAFİK ENTROPİ VE RASTGELELİK ANALİZ MİMARİSİ
+========================================================================================
+
++--------------------------------------------------------------------------------------+
+|                     ENTROPİ KAYNAKLARI VE RASTGELE SAYI ÜRETEÇLERİ                    |
++--------------------------------------------------------------------------------------+
+|                                                                                      |
+|   [1. GÜVENSİZ SÖZDE RASTGELE (PRNG)]             [2. KRİPTOGRAFİK GÜVENLİ (CSPRNG)]  |
+|       * random modülü (Mersenne Twister)              * os.urandom / secrets         |
+|       * Deterministik matematik formülü               * Donanım kesintileri, termal  |
+|       * 624 çıktıdan sonra durum tahmin               * Öngörülemez, geri döndürülemez|
+|       * CWE-338: Kriptografide Yasak!                 * FIPS 140-3 & NIST Onaylı     |
+|                                                                                      |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                     NIST SP 800-22 VE MATEMATİKSEL İSTATİSTİK TESTLERİ                |
++--------------------------------------------------------------------------------------+
+|   (1) Shannon Entropisi: H(X) = -sum(p_i * log2(p_i)) [Eşik: >= 7.0 bit/bayt]        |
+|   (2) Min-Entropi (Worst-Case): H_inf = -log2(max(p_i))                              |
+|   (3) Ki-Kare (Chi-Square) Testi: sum((O_i - E)^2 / E) [Tekdüze Dağılım Uyumu]       |
+|   (4) Monobit (Frekans) Testi: 0 ve 1 Bit Oranı & p-değeri (p >= 0.01)               |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                        GÜVENLİK FİLTRESİ VE ZAFİYET KORUMASI                         |
++--------------------------------------------------------------------------------------+
+|   * CWE-338 (Weak PRNG): random.MT19937 tespiti ve engellemesi                       |
+|   * CWE-331 (Insufficient Entropy): Shannon < 7.0 bit/bayt reddi                     |
+|   * CWE-337 (Predictable Seed): time.time() tohumlama engellemesi                    |
+|   * CWE-334 (Small Space): < 64-bit anahtar ve token reddi                           |
+|   * CWE-158 (Null Byte): \x00 parametre zehirlemesi filtresi                         |
+|   * CWE-400 (Resource Exhaustion): 1 MB bellek tavan koruması                        |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                             ÇIKTI VE KARNE DEĞERLENDİRMESİ                           |
+|      * Kriptografik Anahtarlar (AES-256, HMAC-256, ChaCha20 Nonce)                  |
+|      * Oturum ve Kimlik Doğrulama Token'ları (CSPRNG Hex)                            |
+|      * CLI & JSON Formatında Standart POSIX Çıkış Kodları (0: Pass, 1: Fail)         |
++--------------------------------------------------------------------------------------+

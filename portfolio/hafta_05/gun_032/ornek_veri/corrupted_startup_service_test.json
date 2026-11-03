@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ERR-001",
+    "display_name": "Missing Name Service",
+    "entry_type": "service",
+    "start_mode": "Automatic",
+    "binary_path": "C:\\Windows\\System32\\valid.exe"
+  },
+  {
+    "id": "ERR-002",
+    "name": "MissingPathService",
+    "display_name": "Service without Binary Path",
+    "entry_type": "service",
+    "start_mode": "Automatic"
+  },
+  {
+    "id": "ERR-003",
+    "name": "   ",
+    "display_name": "Whitespace Name Service",
+    "entry_type": "service",
+    "start_mode": "Automatic",
+    "binary_path": "C:\\Windows\\System32\\valid.exe"
+  },
+  {
+    "id": "ERR-004",
+    "name": "EmptyPathRun",
+    "display_name": "Run Key with Empty Path",
+    "entry_type": "registry_run",
+    "binary_path": "    "
+  },
+  {
+    "id": "ERR-005",
+    "name": "InvalidTypeEntry",
+    "display_name": "Unknown Type Entity",
+    "entry_type": "unknown_hook_type_999",
+    "binary_path": "C:\\test\\bin.exe"
+  },
+  {
+    "id": "ERR-006",
+    "name": "InvalidStartModeService",
+    "display_name": "Service with Unrecognized Start Mode",
+    "entry_type": "service",
+    "start_mode": "HyperDriveMode",
+    "binary_path": "C:\\Windows\\System32\\valid.exe"
+  },
+  "invalid_string_item_not_a_dictionary"
+]

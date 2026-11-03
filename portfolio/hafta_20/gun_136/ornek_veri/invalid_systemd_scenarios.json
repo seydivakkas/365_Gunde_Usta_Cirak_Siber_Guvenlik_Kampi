@@ -1,0 +1,171 @@
+{
+  "_aciklama": "Systemd ve Servis Güvenliği 9 Adet Negatif ve Sınır Durum Test Senaryosu",
+  "scenarios": [
+    {
+      "id": "NEG_SYS_01",
+      "baslik": "Boş Servis Listesi Sınır Durumu",
+      "aciklama": "Envanterde hiç servis bulunmaması durumu. Motor çökmeksizin 0.0 puan ve kritik uyarı üretmelidir.",
+      "services": [],
+      "beklenen_kural": "GENEL_SIFIR_PUAN",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SYS_02",
+      "baslik": "Herkese Yazılabilir Unit Dosyası (0666 / 0777)",
+      "aciklama": "Unit dosyasının yetkisiz kullanıcılar tarafından yazılabilir olması (CWE-732 / T1543.002).",
+      "services": [
+        {
+          "name": "backdoor-trigger.service",
+          "path": "/etc/systemd/system/backdoor-trigger.service",
+          "file_owner": "developer",
+          "file_group": "developer",
+          "file_mode": "0666",
+          "user": "appuser",
+          "no_new_privileges": true,
+          "protect_system": "strict",
+          "protect_home": "yes",
+          "private_tmp": true,
+          "private_devices": true
+        }
+      ],
+      "beklenen_kural": "SYS-002",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SYS_03",
+      "baslik": "SUID Bayraklı Servis İkili Dosyası",
+      "aciklama": "Servisin ExecStart hedefinde 4755 izinli veya SUID bayraklı binary bulunması (T1548.001 / CWE-250).",
+      "services": [
+        {
+          "name": "suid-exec.service",
+          "path": "/etc/systemd/system/suid-exec.service",
+          "user": "appuser",
+          "exec_start": "/usr/local/bin/suid-helper",
+          "binary_suid": true,
+          "binary_mode": "4755",
+          "no_new_privileges": true,
+          "protect_system": "strict",
+          "protect_home": "yes",
+          "private_tmp": true,
+          "private_devices": true
+        }
+      ],
+      "beklenen_kural": "SYS-003",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SYS_04",
+      "baslik": "User= Tanımsız veya Root Olarak Çalıştırma",
+      "aciklama": "Servisin varsayılan olarak root yetkileriyle çalıştırılması (CWE-250 / T1068).",
+      "services": [
+        {
+          "name": "unconfined-daemon.service",
+          "path": "/etc/systemd/system/unconfined-daemon.service",
+          "user": "",
+          "exec_start": "/usr/bin/daemon",
+          "no_new_privileges": true,
+          "protect_system": "strict",
+          "protect_home": "yes",
+          "private_tmp": true,
+          "private_devices": true
+        }
+      ],
+      "beklenen_kural": "SYS-004",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SYS_05",
+      "baslik": "NoNewPrivileges Sandboxing Eksikliği",
+      "aciklama": "NoNewPrivileges=false olması sebebiyle alt süreçlerin SUID ikili dosyalarıyla yetki yükseltebilmesi (T1548).",
+      "services": [
+        {
+          "name": "priv-escalate.service",
+          "path": "/etc/systemd/system/priv-escalate.service",
+          "user": "appuser",
+          "no_new_privileges": false,
+          "protect_system": "strict",
+          "protect_home": "yes",
+          "private_tmp": true,
+          "private_devices": true
+        }
+      ],
+      "beklenen_kural": "SYS-005",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SYS_06",
+      "baslik": "ProtectSystem Eksikliği veya 'no' Değeri",
+      "aciklama": "ProtectSystem direktifinin devre dışı bırakılmasıyla dosya sisteminin tahrifata açık kalması (CWE-732).",
+      "services": [
+        {
+          "name": "writable-fs.service",
+          "path": "/etc/systemd/system/writable-fs.service",
+          "user": "appuser",
+          "no_new_privileges": true,
+          "protect_system": "no",
+          "protect_home": "yes",
+          "private_tmp": true,
+          "private_devices": true
+        }
+      ],
+      "beklenen_kural": "SYS-006",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SYS_07",
+      "baslik": "ProtectHome İzolasyon Eksikliği",
+      "aciklama": "ProtectHome boş veya 'no' olması sonucu kullanıcı ana dizinlerine yetkisiz erişim riski (CWE-200 / T1005).",
+      "services": [
+        {
+          "name": "home-reader.service",
+          "path": "/etc/systemd/system/home-reader.service",
+          "user": "appuser",
+          "no_new_privileges": true,
+          "protect_system": "strict",
+          "protect_home": "",
+          "private_tmp": true,
+          "private_devices": true
+        }
+      ],
+      "beklenen_kural": "SYS-007",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SYS_08",
+      "baslik": "Tehlikeli Linux Capabilities (CAP_SYS_ADMIN)",
+      "aciklama": "Servise kontrolsüz CAP_SYS_ADMIN veya CAP_SYS_PTRACE verilmesi (CWE-250 / T1548).",
+      "services": [
+        {
+          "name": "admin-caps.service",
+          "path": "/etc/systemd/system/admin-caps.service",
+          "user": "appuser",
+          "no_new_privileges": true,
+          "protect_system": "strict",
+          "protect_home": "yes",
+          "private_tmp": true,
+          "private_devices": true,
+          "capability_bounding_set": ["CAP_SYS_ADMIN", "CAP_SYS_RAWIO"]
+        }
+      ],
+      "beklenen_kural": "SYS-010",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SYS_09",
+      "baslik": "Aktif Güvensiz Legacy Servis (telnet / rsh)",
+      "aciklama": "CIS Benchmark uyarınca yasaklanmış olan telnet.socket servisinin çalışır olması (CIS 2.1).",
+      "services": [
+        {
+          "name": "telnet.socket",
+          "path": "/lib/systemd/system/telnet.socket",
+          "user": "root",
+          "active": true,
+          "enabled": true,
+          "masked": false
+        }
+      ],
+      "beklenen_kural": "SYS-001",
+      "beklenen_sonuc": "PASS"
+    }
+  ]
+}

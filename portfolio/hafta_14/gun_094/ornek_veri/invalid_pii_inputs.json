@@ -1,0 +1,66 @@
+[
+  {
+    "id": "NEG_01_LUHN_CHECKSUM_FAILURE",
+    "tanim": "Luhn algoritması kontrolünden geçmeyen 16 basamaklı geçersiz kart numarası",
+    "girdi": "Geçersiz kart numarası: 4532015112830367 ve deneme",
+    "beklenen_hata": "LuhnChecksumError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_02_TCKN_CHECKSUM_FAILURE",
+    "tanim": "10. ve 11. hane algoritmik kontrolü tutmayan sahte TCKN",
+    "girdi": "Kullanıcı sahte TCKN girdi: 12345678959 bildirim",
+    "beklenen_hata": "TCKNChecksumError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_03_TCKN_LEADING_ZERO",
+    "tanim": "Sıfır ile başlayan 11 haneli geçersiz kimlik dizisi",
+    "girdi": "Sıfırla başlayan kimlik: 01234567890 geçersiz kabul edilmeli",
+    "beklenen_hata": "TCKNLeadingZeroError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_04_IBAN_MOD97_FAILURE",
+    "tanim": "ISO 7064 MOD-97 doğrulamasından geçmeyen sahte TR IBAN",
+    "girdi": "Bozuk IBAN transferi: TR00 0006 1005 1978 6457 8410 01",
+    "beklenen_hata": "IBANChecksumError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_05_REDOS_CATASTROPHIC_ATTACK",
+    "tanim": "Düzenli ifade karmaşıklığı ile DoS tetiklemeyi amaçlayan ReDoS saldırı dizgisi",
+    "girdi": "user_input: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!@very-long-domain-name-evil.org",
+    "beklenen_hata": "ReDoSProtectionTriggered",
+    "cwe": "CWE-1333: Inefficient Regular Expression Complexity"
+  },
+  {
+    "id": "NEG_06_NULL_BYTE_INJECTION",
+    "tanim": "Log ayrıştırıcılarını zehirlemeyi hedefleyen Null-Byte enjeksiyonu",
+    "girdi": "user_id=8812\u0000admin_override=true email=hacker@evil.corp",
+    "beklenen_hata": "NullByteInjectionError",
+    "cwe": "CWE-158: Improper Neutralization of Null Byte or Special Characters"
+  },
+  {
+    "id": "NEG_07_OVERSIZED_PAYLOAD_DOS",
+    "tanim": "Bellek tüketimi ve CPU kilitlenmesi amaçlı 1 MB üzeri aşırı büyük log girdisi",
+    "girdi": "OVERSIZED_LOG_BUFFER_SIMULATION_EXCEEDING_LIMITS",
+    "beklenen_hata": "PayloadLimitExceededError",
+    "cwe": "CWE-400: Uncontrolled Resource Consumption"
+  },
+  {
+    "id": "NEG_08_INVALID_RULE_TYPE",
+    "tanim": "Maskeleme motoruna tanımlı olmayan kural tipi iletilmesi",
+    "girdi": "test verisi",
+    "gecersiz_kural": "unsupported_biometric_rule",
+    "beklenen_hata": "InvalidRuleError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_09_MALFORMED_NON_STRING_TYPE",
+    "tanim": "Metin maskeleme fonksiyonuna geçersiz veri tipi gönderilmesi",
+    "girdi": 123456789,
+    "beklenen_hata": "TypeValidationError",
+    "cwe": "CWE-843: Access of Resource Using Incompatible Type"
+  }
+]

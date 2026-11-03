@@ -1,0 +1,15 @@
+{
+  "portfolio/hafta_02/gun_010/ders.md": "1042c29445112f69d16b57c9d552ac63aede573c4defdb01b1ac2f01b0ee248c",
+  "portfolio/hafta_02/gun_010/kanit/gercek/komut_ve_cikis.txt": "f3acfd68a0686d4edb49045b18e1c9b59a9b5ca7e2b433f071099fa4fd6bceac",
+  "portfolio/hafta_02/gun_010/kanit/gercek/test_sonuclari.txt": "075a32cdb0cd1aefd070b112218df6f33881c69e76d4ed928e75a52efa5852dc",
+  "portfolio/hafta_02/gun_010/kanit/temsili/linux_guvenlik_mimarisi.txt": "b697d2d0ff4756ea74e3570f5de7df36509c61201fc4f14e7fd03115d7801f09",
+  "portfolio/hafta_02/gun_010/ornek_veri/linux_vm_yapilandirmasi.json": "b44537140f76e2c3e30d8ada56f63057cd4065dfa42b1dff7799bf92440ecbcf",
+  "portfolio/hafta_02/gun_010/ornek_veri/sshd_config_hardened": "c25af48e148ac5442bf45b31cd5b7f07e53169981547b9a96d78af2f1d4faa7f",
+  "portfolio/hafta_02/gun_010/ornek_veri/sudoers_hardened": "1ee63e3795719ef3898c9cc5eccfc761661fa4d3bcb140a104e4663f22722c18",
+  "portfolio/hafta_02/gun_010/rapor.md": "6b2a120b02b7673edecabf9b3e37c5c65ff3447714d7d2dcfe2d7c42714782d8",
+  "portfolio/hafta_02/gun_010/README.md": "1e9da7319a0fd4e63068cbbacb9e59f031284bc817b9b8360d30d1649e572dd6",
+  "portfolio/hafta_02/gun_010/sonuc.json": "295afce82f1bd4f5257a58713c2c6f2f2fbd228cc2dd95034c2e43244b8e09d6",
+  "portfolio/hafta_02/gun_010/soru_cevap.md": "abea3fe483ef05e61a2c3ab2b0d05fa3d295765eddb7d727312c07a94e0d49a5",
+  "portfolio/hafta_02/gun_010/tests/test_linux_baseline_auditor.py": "f2e1ee9a247f4bdc9c2071ded6e29e3f3f63f880c33c12c2fe06cca0ff1234bc",
+  "portfolio/hafta_02/gun_010/uygulama/linux_baseline_auditor.py": "371b76de66cda76503b4d6e7d47175544dc16f766817139544e5d63ae07cdc56"
+}

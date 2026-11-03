@@ -1,0 +1,54 @@
+======================================================================
+WINDOWS EVENT VIEWER ADLİ VE GÜVENLİK OLAY ANALİZ RAPORU
+======================================================================
+Analiz Zamanı (UTC)  : 2026-10-27T08:12:56.461678+00:00
+İncelenen Olay Sayısı : 3
+Reddedilen Hatalı Olay: 0
+Metodoloji           : G029-SC1 Bağlamsal Korelasyon & G029-SC2 3 Sistem Olayı
+----------------------------------------------------------------------
+
+[OLAY #1] Event ID: 6005 | Provider: EventLog
+   Record ID       : 104201
+   Kanal (Channel) : System
+   Düzey (Level)   : Information
+   Zaman (UTC)     : 2026-10-27T07:15:30.124500Z
+   Bilgisayar      : SEC-CORP-WS01
+   Kullanıcı       : NT AUTHORITY\SYSTEM (SID: S-1-5-18)
+   Kriptografik İzi: ca52b0e342b846ef7c547355...
+   Ham Mesaj       : The Event log service was started....
+   --> Bağlam Kararı : [INFO] SYSTEM_BOOT_AUDIT_START
+   --> MITRE ATT&CK  : N/A - System Baseline
+   --> Adli Gerekçe  : İşletim sistemi başlatıldı ve EventLog servisi günlük kaydına başladı.
+
+[OLAY #2] Event ID: 7045 | Provider: Service Control Manager
+   Record ID       : 104205
+   Kanal (Channel) : System
+   Düzey (Level)   : Information
+   Zaman (UTC)     : 2026-10-27T07:22:15.891200Z
+   Bilgisayar      : SEC-CORP-WS01
+   Kullanıcı       : NT AUTHORITY\SYSTEM (SID: S-1-5-18)
+   Kriptografik İzi: 20da855eb6145fb92877a4f1...
+   Ham Mesaj       : A service was installed in the system. Service Name: SysmonAgentService, Image Path: C:\Program Files\Sysinternals\sysmon64.exe -i -accepteu...
+   --> Bağlam Kararı : [INFORMATIONAL] AUTHORIZED_SERVICE_INSTALLATION
+   --> MITRE ATT&CK  : T1543.003 - Create or Modify System Process: Windows Service
+   --> Adli Gerekçe  : Sistem genelinde yeni servis ('SysmonAgentService') kuruldu. İkili yol meşru görünüyor: 'C:\Program Files\Sysinternals\sysmon64.exe -i -accepteula'.
+
+[OLAY #3] Event ID: 1074 | Provider: USER32
+   Record ID       : 104210
+   Kanal (Channel) : System
+   Düzey (Level)   : Information
+   Zaman (UTC)     : 2026-10-27T08:05:10.450120Z
+   Bilgisayar      : SEC-CORP-WS01
+   Kullanıcı       : SEC-CORP\administrator (SID: S-1-5-21-3623811015-3361044348-30300820-1001)
+   Kriptografik İzi: 5387dbfa8176848e5ba64ec1...
+   Ham Mesaj       : The process C:\Windows\System32\shutdown.exe has initiated the restart of computer SEC-CORP-WS01 on behalf of user SEC-CORP\administrator fo...
+   --> Bağlam Kararı : [LOW] SYSTEM_SHUTDOWN_PLANNED
+   --> MITRE ATT&CK  : T1529 - System Shutdown/Reboot
+   --> Adli Gerekçe  : Sistem yeniden başlatması 'SEC-CORP\administrator' kullanıcısı tarafından başlatıldı. Gerekçe: 'Operating System: Upgrade (Planned)'.
+
+======================================================================
+GÜVENLİK KURALI HATIRLATMASI (G029-SC1):
+'Tek bir olay kimliği bağlam olmadan saldırı kanıtı değildir.'
+Her olay; zaman çizelgesi, kullanıcı ayrıcalığı ve süreç ağacıyla
+birlikte korele edilmelidir.
+======================================================================

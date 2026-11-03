@@ -1,0 +1,60 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+SİBER GÜVENLİK 365 | GÜN 002: TEHDİT, ZAFİYET, OLAY VE 5x5 RİSK MATRİSİ
+================================================================================
+
+Bu görsel/şematik model, Tehdit, Zafiyet, Olay ve Risk arasındaki ilişkiyi ve 5x5 risk
+derecelendirme matrisini gösteren temsili bir illüstrasyondur.
+
+                     +---------------------------------------+
+                     |           TEHDİT AKTÖRÜ              |
+                     |  (Motivasyon, Yetenek, Fırsat)       |
+                     +-------------------+-------------------+
+                                         |
+                                         | [Saldırır / Hedef Alır]
+                                         v
+                     +---------------------------------------+
+                     |              ZAFİYET                  |
+                     |  (Yamasız Sistem, Yanlış Yapılandırma)|
+                     +-------------------+-------------------+
+                                         |
+                                         | [İstismar Edilirse (Exploit)]
+                                         v
+                     +---------------------------------------+
+                     |           GÜVENLİK OLAYI              |
+                     |   (Incident: Veri Sızıntısı, Kesinti) |
+                     +-------------------+-------------------+
+                                         |
+                                         | [Zararın Boyutu & Meydana Gelme İhtimali]
+                                         v
+                     +---------------------------------------+
+                     |                RİSK                   |
+                     |        (Olasılık x Etki)              |
+                     +-------------------+-------------------+
+
+================================================================================
+5x5 RİSK DEĞERLENDİRME MATRİSİ:
+================================================================================
+ETKİ (1-5) ^
+           |
+      5    |   5 [ORTA]    10 [YÜKSEK]   15 [YÜKSEK]   20 [KRİTİK]   25 [KRİTİK]
+           |
+      4    |   4 [DÜŞÜK]    8 [ORTA]     12 [YÜKSEK]   16 [YÜKSEK]   20 [KRİTİK]
+           |
+      3    |   3 [DÜŞÜK]    6 [ORTA]      9 [ORTA]     12 [YÜKSEK]   15 [YÜKSEK]
+           |
+      2    |   2 [DÜŞÜK]    4 [DÜŞÜK]     6 [ORTA]      8 [ORTA]     10 [YÜKSEK]
+           |
+      1    |   1 [DÜŞÜK]    2 [DÜŞÜK]     3 [DÜŞÜK]     4 [DÜŞÜK]     5 [ORTA]
+           +-------------------------------------------------------------------->
+                  1             2             3             4             5
+                                      OLASILIK (1-5)
+
+================================================================================
+HOCANIN KRİTİK DERS NOTU:
+"Zafiyet tek başına felaket değildir; tehdit olmadan zafiyet bir potansiyelden
+ibarettir. Tehdit de tek başına sisteme giremez; bir zafiyet arar.
+Bu ikisi buluştuğunda OLAY (Incident) doğar. Güvenlik uzmanının görevi,
+riski sıfırlamak değil (çünkü sıfır risk bir illüzyondur), kabul edilebilir
+ve yönetilebilir bir artık risk (residual risk) seviyesine çekmektir."
+================================================================================

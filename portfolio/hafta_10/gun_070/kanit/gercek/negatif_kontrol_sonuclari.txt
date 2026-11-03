@@ -1,0 +1,74 @@
+================================================================================
+AŞAMA 3 KALİTE ÖZETİ VE KABUL MOTORU - NEGATİF SINIR TESTLERİ KANIT DOSYASI
+Tarih: 2026-10-31
+Denetleyici Sınıf: Asama3KaliteOzetiAnalizor
+Hedef Kapsam: Aşama 03 (Gün 51 - Gün 70)
+Standart: Sıfır Tolerans, Kesin Hata Yakalama ve Sınır Denetimi
+================================================================================
+
+VAKA 1: NEG_01_NOT_A_DICT
+--------------------------------------------------------------------------------
+Girdi: JSON dizisi (list) formatında kök nesne
+Beklenen İstisna: Asama3KaliteAuditError ("Aşama 3 denetim verisi bir JSON sözlüğü (dict) olmalıdır.")
+Fırlatılan Mesaj: Aşama 3 denetim verisi bir JSON sözlüğü (dict) olmalıdır.
+Sonuç: BAŞARILI (PASS) - Hata tam zamanında yakalandı.
+
+VAKA 2: NEG_02_STAGE_ID_MISMATCH
+--------------------------------------------------------------------------------
+Girdi: stage_metadata.stage_id = "02" (İşletim Sistemi Güvenliği)
+Beklenen İstisna: Asama3KaliteAuditError ("Aşama ID '03' olmalıdır, alınan: 02")
+Fırlatılan Mesaj: Aşama ID '03' olmalıdır, alınan: 02
+Sonuç: BAŞARILI (PASS) - Aşama karışıklığı engellendi.
+
+VAKA 3: NEG_03_MISSING_MANDATORY_PILLAR
+--------------------------------------------------------------------------------
+Girdi: quality_pillars altında 'threat_detection' sütununun eksik olması
+Beklenen İstisna: Asama3KaliteAuditError ("Zorunlu kalite sütunu 'threat_detection' envanterde bulunamadı.")
+Fırlatılan Mesaj: Zorunlu kalite sütunu 'threat_detection' envanterde bulunamadı.
+Sonuç: BAŞARILI (PASS) - Eksik kalite sütunu derhal tespit edildi.
+
+VAKA 4: NEG_04_INCOMPLETE_DAYS_COUNT
+--------------------------------------------------------------------------------
+Girdi: days listesinde 20 yerine yalnızca 1 gün (Gün 51) bulunması
+Beklenen İstisna: Asama3KaliteAuditError ("Aşama 3 tam 20 gün (Gün 51-70) içermelidir. Mevcut gün adedi: 1")
+Fırlatılan Mesaj: Aşama 3 tam 20 gün (Gün 51-70) içermelidir. Mevcut gün adedi: 1
+Sonuç: BAŞARILI (PASS) - Eksik gün teslimatı reddedildi.
+
+VAKA 5: NEG_05_SUBPAR_SCORE
+--------------------------------------------------------------------------------
+Girdi: Gün 58 kaydında score = 75 (100 tam puanın altında)
+Beklenen İstisna: Asama3KaliteAuditError ("Gün 58 skoru 100 olmalıdır, alınan: 75")
+Fırlatılan Mesaj: Gün 58 skoru 100 olmalıdır, alınan: 75
+Sonuç: BAŞARILI (PASS) - Kusursuzluk standardı korundu.
+
+VAKA 6: NEG_06_OPEN_SOURCE_LICENSE_VIOLATION
+--------------------------------------------------------------------------------
+Girdi: Gün 64 kaydında license = "MIT" (Açık kaynak lisans ihlali)
+Beklenen İstisna: Asama3KaliteAuditError ("Lisans kuralı ihlali: Gün 64 açık kaynak lisans ('MIT') içeremez.")
+Fırlatılan Mesaj: Lisans kuralı ihlali: Gün 64 açık kaynak lisans ('MIT') içeremez.
+Sonuç: BAŞARILI (PASS) - Fikri mülkiyet ve lisans güvenliği sağlandı.
+
+VAKA 7: NEG_07_INSUFFICIENT_TEST_COUNT
+--------------------------------------------------------------------------------
+Girdi: Gün 61 kaydında tests_run = 10 (Zorunlu minimum 14 testin altında)
+Beklenen İstisna: Asama3KaliteAuditError ("Yetersiz test sayısı: Gün 61 en az 14 test içermelidir, alınan: 10")
+Fırlatılan Mesaj: Yetersiz test sayısı: Gün 61 en az 14 test içermelidir, alınan: 10
+Sonuç: BAŞARILI (PASS) - Test derinliği standardı denetlendi.
+
+VAKA 8: NEG_08_UNVERIFIED_BACKUP
+--------------------------------------------------------------------------------
+Girdi: Gün 69 kaydında backup_verified = false (Doğrulanmamış arşiv)
+Beklenen İstisna: Asama3KaliteAuditError ("Yedek doğrulama başarısız: Gün 69 için doğrulanmış arşiv bulunamadı.")
+Fırlatılan Mesaj: Yedek doğrulama başarısız: Gün 69 için doğrulanmış arşiv bulunamadı.
+Sonuç: BAŞARILI (PASS) - Yedekleme zorunluluğu doğrulandı.
+
+VAKA 9: NEG_09_CORRUPT_DAY_NUMBER
+--------------------------------------------------------------------------------
+Girdi: days listesinde day_id = 99 (51-70 aralığı dışında)
+Beklenen İstisna: Asama3KaliteAuditError ("Aşama 3 gün aralığı dışı: Gün 99 (beklenen: 51-70)")
+Fırlatılan Mesaj: Aşama 3 gün aralığı dışı: Gün 99 (beklenen: 51-70)
+Sonuç: BAŞARILI (PASS) - Geçersiz gün kimliği filtrelendi.
+
+================================================================================
+ÖZET: 9 / 9 Negatif Sınır Testi Eksiksiz Başarıyla Geçti (%100 Başarı).
+================================================================================

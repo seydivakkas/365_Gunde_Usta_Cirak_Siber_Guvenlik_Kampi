@@ -1,0 +1,51 @@
+# TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+# =========================================================================
+# Linux PAM (Pluggable Authentication Modules) ve Oturum Politikası Mimarisi
+# =========================================================================
+
++-------------------------------------------------------------------------+
+|                  UYGULAMA KATMANI (APPLICATIONS)                        |
+|  [login]       [sshd]       [sudo]       [su]       [gdm/gui]           |
++------------------------------------+------------------------------------+
+                                     |
+                                     v
++-------------------------------------------------------------------------+
+|                    PAM KÜTÜPHANESİ (libpam.so)                          |
+|                                                                         |
+|  Yapılandırma Dosyaları: /etc/pam.d/<servis_adi>                         |
+|  (Örn: /etc/pam.d/sshd, /etc/pam.d/system-auth, /etc/pam.d/sudo)        |
++------------------------------------+------------------------------------+
+                                     |
+    +--------------------------------+--------------------------------+
+    |                                |                                |
+    v                                v                                v
++------------------+       +------------------+       +------------------+
+| 1. AUTH          |       | 2. ACCOUNT       |       | 3. PASSWORD      |
+| Kimlik Doğrulama |       | Hesap Geçerliliği|       | Şifre Yönetimi   |
++------------------+       +------------------+       +------------------+
+| * pam_faillock.so|       | * pam_faillock.so|       | * pam_pwquality  |
+|   (deny=5, 900s) |       |   (Kilit kontrol)|       |   (minlen=14,    |
+| * pam_unix.so    |       | * pam_time.so    |       |    krediler: -1) |
+|   (!nullok)      |       | * pam_access.so  |       | * pam_pwhistory  |
+| * pam_2fa/duo.so |       |                  |       |   (remember=5)   |
++------------------+       +------------------+       +------------------+
+                                                              |
+                                                              v
+                                                   +---------------------+
+                                                   | 4. SESSION          |
+                                                   | Ortam & Limitler    |
+                                                   +---------------------+
+                                                   | * pam_limits.so     |
+                                                   |   (/etc/security/)  |
+                                                   | * TMOUT=900 (15 dk) |
+                                                   | * pam_mkhomedir.so  |
+                                                   +---------------------+
+
++-------------------------------------------------------------------------+
+|              KONTROL BAYRAKLARI VE YÜRÜTME MANTIĞI                      |
+|                                                                         |
+|  - required  : Başarısız olsa bile zincir sürer; sonuç mutlaka FAIL olur|
+|  - requisite : Başarısız olduğu anda zincir derhal kesilir (FAIL)       |
+|  - sufficient: Öncekiler başarılıysa ve bu modül OK ise anında PASS    |
+|  - optional  : Sadece tek modülse veya ek bilgi amaçlı kullanılır      |
++-------------------------------------------------------------------------+

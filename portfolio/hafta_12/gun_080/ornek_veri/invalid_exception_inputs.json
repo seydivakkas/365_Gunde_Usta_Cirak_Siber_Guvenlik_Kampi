@@ -1,0 +1,69 @@
+{
+  "aciklama": "G080 Hata Yonetimi ve Ozel Durumlar Negatif Guvenlik Kontrolleri Test Paketi",
+  "olusturma_tarihi": "2026-11-01",
+  "negatif_testler": [
+    {
+      "test_id": "NEG_01_FAIL_OPEN_PREVENTION_TEST",
+      "aciklama": "Hata durumunda guvenlik kontrolunun sessizce gecilmesini (fail-open) onleme ve kesin ret (fail-closed) kurali",
+      "girdi": {"token": "INVALID_OR_CORRUPT_JWT_999"},
+      "beklenen_hata": "AuthenticationFailureException",
+      "savunma": "Yakalanan veya beklenmeyen her hata durumunda erisim kesinlikle reddedilir, varsayilan durum Erisim Engellendi'dir."
+    },
+    {
+      "test_id": "NEG_02_STACK_TRACE_LEAKAGE_PROBE",
+      "aciklama": "Istemciye gonderilen hata yanitinda dosya yollari, satir numaralari veya ic kod bilgilerinin ifsa edilmemesi (CWE-209)",
+      "girdi": {"query": "' OR 1=1; DROP TABLE users;--"},
+      "beklenen_hata": "SecurityException",
+      "savunma": "Hata ayiklama yigin izi (stack trace) istemciye dondurulmez; istemciye yalnizca benzersiz olay referans kodu (or. SEC-ERR-8812) iletilir."
+    },
+    {
+      "test_id": "NEG_03_RESOURCE_EXHAUSTION_CLEANUP",
+      "aciklama": "Islem ortasinda hata firlatildiginda kaynaklarin (dosya, kilit, oturum) acik kalmasini onleyen deterministic temizlik",
+      "girdi": {"simulate_io_error": true},
+      "beklenen_hata": "SecurityResourceException",
+      "savunma": "try-finally ve context manager bloklari ile hata olussa dahi kaynaklar daima serbest birakilir."
+    },
+    {
+      "test_id": "NEG_04_UNHANDLED_EXCEPTION_SHIELD",
+      "aciklama": "Beklenmeyen sistem veya bellek hatalarinin guvenli katmanla sarilip fail-closed modunda yonetilmesi",
+      "girdi": {"payload": "CRASH_TRIGGER"},
+      "beklenen_hata": "SecurityException",
+      "savunma": "En dis katmandaki guvenlik kalkani bilinmeyen tum hatalari yakalayarak guvenli hata sablonuyla sarar."
+    },
+    {
+      "test_id": "NEG_05_AUTHENTICATION_CORRUPTION",
+      "aciklama": "Gecersiz kimlik bilgisi girdisiyle sistem davranisini bozma girisimi",
+      "girdi": {"username": "admin", "password": ""},
+      "beklenen_hata": "AuthenticationFailureException",
+      "savunma": "Eksik veya gecersiz kimlik parametreleri dogrudan ozellesmis istisna uretir."
+    },
+    {
+      "test_id": "NEG_06_AUTHORIZATION_TAMPERING",
+      "aciklama": "Yetkisiz kullanicinin yonetici endpoint veya verisine erisim denemesi",
+      "girdi": {"role": "guest", "target_resource": "classified_firewall_rules"},
+      "beklenen_hata": "AuthorizationDeniedException",
+      "savunma": "Rol yetkisi yetersiz oldugunda AuthorizationDeniedException ile islem durdurulur."
+    },
+    {
+      "test_id": "NEG_07_RATE_LIMIT_BURST_FLOOD",
+      "aciklama": "Kisa surede arka arkaya cok sayida hatali istek gondererek brute-force veya DoS uygulama",
+      "girdi": {"source_ip": "198.51.100.77", "attempt_count": 10},
+      "beklenen_hata": "RateLimitExceededException",
+      "savunma": "Esik degeri asan IP adresleri icin RateLimitExceededException uretilir ve istekler bloklanir."
+    },
+    {
+      "test_id": "NEG_08_INPUT_SANITIZATION_VIOLATION",
+      "aciklama": "Zararli komut ve ozel karakterler iceren girdiyle islem baslatma denemesi",
+      "girdi": {"param": "<script>alert(1)</script>"},
+      "beklenen_hata": "InputSanitizationException",
+      "savunma": "Girdi dogrulama asamasinda zararli karakter tespit edildiginde islem baslatilmadan InputSanitizationException uretilir."
+    },
+    {
+      "test_id": "NEG_09_LOG_INJECTION_POISONING",
+      "aciklama": "Hata loglarini tahrif etmeye yonelik satir sonu ve kontrol karakteri enjeksiyonu (CWE-117)",
+      "girdi": {"error_msg": "NormalHata\n[INFO] 2026-11-01 Admin logged in successfully"},
+      "beklenen_hata": "SecurityException",
+      "savunma": "Hata mesajlari loglanmadan once CRLF ve terminal kacis karakterlerinden arindirilir."
+    }
+  ]
+}

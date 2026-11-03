@@ -1,0 +1,71 @@
+[
+  {
+    "hata_kodu": "ERR_INVALID_CIDR_PREFIX",
+    "aciklama": "Geçersiz CIDR önek değeri (33 > 32)",
+    "girdi": {
+      "alt_ag_id": "NET-BAD-01",
+      "vlan_id": 10,
+      "ipv4_cidr": "10.0.0.0/33"
+    }
+  },
+  {
+    "hata_kodu": "ERR_INVALID_OCTET_RANGE",
+    "aciklama": "Geçersiz oktet değeri (300 > 255)",
+    "girdi": {
+      "alt_ag_id": "NET-BAD-02",
+      "vlan_id": 20,
+      "ipv4_cidr": "192.168.300.0/24"
+    }
+  },
+  {
+    "hata_kodu": "ERR_INVALID_MAC_FORMAT",
+    "aciklama": "Geçersiz hex karakterler içeren MAC adresi",
+    "girdi": {
+      "cihaz_id": "DEV-BAD-01",
+      "konak_adi": "bad-mac-host",
+      "mac": "00:50:56:ZZ:GG:99",
+      "ipv4": "10.10.10.15"
+    }
+  },
+  {
+    "hata_kodu": "ERR_INVALID_IPV6_FORMAT",
+    "aciklama": "Birden fazla çift iki nokta içeren hatalı IPv6",
+    "girdi": {
+      "alt_ag_id": "NET-BAD-03",
+      "vlan_id": 30,
+      "ipv6_cidr": "2001::db8::1/64"
+    }
+  },
+  {
+    "hata_kodu": "ERR_MISSING_REQUIRED_FIELD",
+    "aciklama": "Zorunlu ipv4_cidr alanı eksik",
+    "girdi": {
+      "alt_ag_id": "NET-BAD-04",
+      "vlan_id": 40
+    }
+  },
+  {
+    "hata_kodu": "ERR_INVALID_VLAN_ID",
+    "aciklama": "Geçersiz VLAN kimliği (5000 > 4094)",
+    "girdi": {
+      "alt_ag_id": "NET-BAD-05",
+      "vlan_id": 5000,
+      "ipv4_cidr": "10.20.30.0/24"
+    }
+  },
+  {
+    "hata_kodu": "ERR_EMPTY_TOPOLOGY",
+    "aciklama": "Boş topoloji verisi veya None",
+    "girdi": {}
+  },
+  {
+    "hata_kodu": "ERR_NON_STRING_IP",
+    "aciklama": "IP adresi string yerine integer tipi verilmiş",
+    "girdi": {
+      "cihaz_id": "DEV-BAD-02",
+      "konak_adi": "bad-type-host",
+      "ipv4": 16843009,
+      "mac": "00:50:56:A1:00:05"
+    }
+  }
+]

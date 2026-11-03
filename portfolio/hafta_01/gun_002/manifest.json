@@ -1,0 +1,15 @@
+{
+  "dosyalar": {
+    "README.md": "94eb14da6582737413c3b40e06c417c6541e996a3fb9615df7cebd0f64224678",
+    "ders.md": "690ff9b987fa780a1cdd0baad35919e8b8ed5e3696eff9f14ed6f86172f623dd",
+    "rapor.md": "63d5f2ea838f1fc15c2b12ef7414ae77643dd1ba3a73ccf2e1abe603d2a48b4c",
+    "sonuc.json": "384830362895cd67f489db28d0fc80b2ab92338ced4876bc878b6ee2685dfa4d",
+    "soru_cevap.md": "6ece7e04c7e0d6dea848dd3551b1e4dc63707981658e992e48e896a20b247210",
+    "kanit/gercek/komut_ve_cikis.txt": "ed5cebdf39ecdbf41447e9b0fdcff6dba0b023b8d23a3d998120ec7de431a53d",
+    "kanit/gercek/test_sonuclari.txt": "e22505d5d090b01f33e887b34de3e07f9965863ae64d131ce03ace59c86e1a33",
+    "kanit/temsili/risk_matrisi_sema.txt": "64dc082ade19339f48e2695bf60b892bcdf0968cdb80a5ba29db3ab38698dc52",
+    "ornek_veri/senaryolar.json": "3213e0bcf6be1c3043aafb33503aa394d6fb502ad0c649d425f3595702367fe2",
+    "tests/test_risk_matrix_evaluator.py": "6b36772f78c5e126adc86fa9a8d360e495e5f60be654aaae9df6fa3a852582ac",
+    "uygulama/risk_matrix_evaluator.py": "c4694a852ca943021950682c32749e924d77e16766b066bb76f39bb6c6234c18"
+  }
+}

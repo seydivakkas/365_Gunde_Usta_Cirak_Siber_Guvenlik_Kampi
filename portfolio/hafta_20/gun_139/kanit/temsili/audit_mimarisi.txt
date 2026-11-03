@@ -1,0 +1,52 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 139: LINUX AUDITD VE JOURNALD GÜVENLİK VE GÜNLÜKLEME MİMARİSİ
+================================================================================
+
+[KULLANICI / SÜREÇ / SALDIRGAN]
+           |
+           v (Sistem Çağrısı: open, chmod, init_module, execve)
++------------------------------------------------------------------------------+
+|                         LINUX ÇEKİRDEĞİ (KERNEL AUDIT SUBSYSTEM)             |
+|                                                                              |
+|  [Syscall Filter] --------> [File Watch (-w)] --------> [Netfilter Audit]    |
+|         |                           |                           |            |
+|         v                           v                           v            |
+|  +------------------------------------------------------------------------+  |
+|  |                 AUDIT ÇEKİRDEK TAMPON BELLEĞİ (BUFFER)                 |  |
+|  |                 audit_backlog_limit = 8192 | audit = 1                 |  |
+|  +------------------------------------------------------------------------+  |
++------------------------------------------------------------------------------+
+                                       | (Netlink Socket / Raw Event Stream)
+                                       v
++------------------------------------------------------------------------------+
+|                     AUDITD DAEMON & KURAL KONTROLÜ                           |
++------------------------------------------------------------------------------+
+| • /etc/audit/rules.d/*.rules (augenrules)                                    |
+|   ├── -w /etc/shadow -p wa -k identity                                       |
+|   ├── -w /etc/sudoers -p wa -k actions                                       |
+|   ├── -a always,exit -F arch=b64 -S init_module,delete_module -k modules     |
+|   └── -e 2  ===> [DEĞİŞTİRİLEMEZLİK KİLİDİ: Root dahi silemez / Anti-Tamper] |
+|                                                                              |
+| • /etc/audit/auditd.conf                                                     |
+|   ├── disk_full_action = halt  (Log diski dolarsa güvenle durdur)             |
+|   └── space_left_action = email                                              |
+|                                                                              |
+| • Günlük Dosyası: /var/log/audit/audit.log (0600 root:root)                  |
++------------------------------------------------------------------------------+
+                                       |
+                                       v
++------------------------------------------------------------------------------+
+|             SYSTEMD-JOURNALD & KRİPTOGRAFİK MÜHÜRLEME (FSS)                  |
++------------------------------------------------------------------------------+
+| • Storage=persistent  ==> /var/log/journal altında kalıcı depolama           |
+| • Compress=yes        ==> Disk tasarrufu ve sıkıştırma                       |
+| • Seal=yes            ==> Forward Secure Sealing (Geriye dönük tahrifat      |
+|                           engellenir; silinen satırlar kriptografik anlaşılır)|
+| • ForwardToSyslog=yes ==> Merkezi Kurumsal SIEM / SOC İletimi                |
++------------------------------------------------------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

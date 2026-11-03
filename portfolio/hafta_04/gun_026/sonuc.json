@@ -1,0 +1,35 @@
+{
+  "gun": 26,
+  "asama": "02",
+  "hafta": "04",
+  "konu": "PATH ve ortam değişkenleri",
+  "tarih": "2026-10-27",
+  "kod_kalitesi_puani": 20,
+  "uygulama_fonksiyonellik_puani": 40,
+  "guvenlik_risk_yonetimi_puani": 25,
+  "belgeleme_raporlama_puani": 15,
+  "toplam_puan": 100,
+  "durum": "YETERLİ / PASS",
+  "tamamlanan_gorevler": [
+    "PATH arama sirasi (soldan saga) ve ikili golgeleme (binary hijacking) mekanizmasinin cozumlenmesi",
+    "G026-SC2 geregince yerel sistem PATH degerinin salt-okunur incelenerek didaktik guvenlik notu uretilmesi",
+    "CWE-426 bagil yol ('.' ve '::') arama yolu zafiyetlerinin otomatik tespiti",
+    "CWE-427 dunyaya yazilabilir ortak dizinlerin (/tmp vb.) PATH icinde yer almasinin engellenmesi",
+    "LD_PRELOAD ve dinamik baglayici (CWE-114) manipülasyonlarinin tespit edilmesi",
+    "Ortam degiskenlerinde acik metin parola/sır sizintilarinin (CWE-526) yakalanmasi",
+    "14/14 birim testin 0.304 saniyede PASS seviyesinde basariyla kosulmasi"
+  ],
+  "kazanilan_yetkinlikler": [
+    "Isletim sistemlerinde komut arama sirasi ve dinamik baglayici guvenligi uzmanligi",
+    "CIS Benchmark 5.4.4 standartlarina uygun PATH ve ortam degiskeni sertlestirmesi",
+    "Trojan binary hijacking ve yerel yetki yukseltme (LPE) saldirilarini analiz etme",
+    "Sistem yonetiminde mutlak yol (absolute path) kullanimi disiplini gelistirme",
+    "Sır yonetiminde ortam degiskenleri risklerini anlayarak Vault/Keyring mimarisine gecis bilgisi"
+  ],
+  "kanit_dosyalari": [
+    "portfolio/hafta_04/gun_026/kanit/gercek/yerel_path_guvenlik_incelemesi.txt",
+    "portfolio/hafta_04/gun_026/kanit/gercek/test_sonuclari.txt",
+    "portfolio/hafta_04/gun_026/kanit/gercek/komut_ve_cikis.txt",
+    "portfolio/hafta_04/gun_026/kanit/temsili/path_ve_arama_sirasi_mimarisi.txt"
+  ]
+}

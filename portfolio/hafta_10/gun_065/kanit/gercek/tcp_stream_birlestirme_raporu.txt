@@ -1,0 +1,41 @@
+================================================================================
+G065: FOLLOW TCP STREAM VE YENIDEN BIRLESTIRME ANALIZ RAPORU
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas) - Tum Haklari Saklidir
+================================================================================
+
+1. WIRESHARK FOLLOW STREAM DIYALOG DOKUMU:
+================================================================================
+WIRESHARK FOLLOW TCP STREAM (Stream Index: 0)
+İstemci: 192.168.1.105:51234 <---> Sunucu: 93.184.216.34:80
+================================================================================
+[CLIENT -> SERVER (38 bayt)]
+GET /api/v1/telemetry HTTP/1.1
+Host:
+----------------------------------------
+[CLIENT -> SERVER (31 bayt)]
+kurumsal.local
+Accept: */*
+----------------------------------------
+[SERVER -> CLIENT (78 bayt)]
+{"status": "active", "sensor_id": "SN-4021", "security": "ok", "temp": 22.4}
+----------------------------------------
+[SERVER -> CLIENT (110 bayt)]
+HTTP/1.1 200 OK
+Server: nginx/1.24
+Content-Type: application/json
+Content-Length: 78
+Connection: close
+----------------------------------------
+================================================================================
+
+2. AKIS VE YENIDEN BIRLESTIRME ISTATISTIKLERI:
+  * Akis Indeksi              : 0
+  * Toplam Segment Sayisi     : 11
+  * Istemci Gonderilen Bayt   : 69 bayt
+  * Sunucu Gonderilen Bayt    : 188 bayt
+  * Toplam Akis Hacmi         : 257 bayt
+  * Toplam Sure               : 150.0 ms
+  * Sira Disi (OOO) Segment   : 1
+  * Yeniden Iletim (Duplicate): 1
+  * Ortusen Segment Sayisi    : 0
+  * Yeniden Birlesme Durumu   : BASARIYLA_BIRLESTIRILDI

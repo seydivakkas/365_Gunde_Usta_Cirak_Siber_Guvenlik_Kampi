@@ -1,0 +1,34 @@
+==============================================================================
+GÜN 138: LINUX GÜVENLİK DUVARI (NFTABLES/UFW) KOMUT SATIRI VE ÇIKTI KANITI
+==============================================================================
+Tarih: 2026-11-02 14:43:20
+
+$ python uygulama/firewall_security_cli.py audit -i ornek_veri/firewall_inventory_spec.json
+------------------------------------------------------------------------------
+============================================================================
+      LINUX GÜVENLİK DUVARI (NFTABLES / UFW) DENETİM RAPORU            
+============================================================================
+Güvenlik Duvarı Türü     : NFTABLES
+Çalışma Durumu           : AKTİF
+Toplam Kural Sayısı      : 4
+Genel Güvenlik Skoru     : 85.0 / 100.0
+Sistem Değerlendirmesi   : GÜVENLİ (STANDARTLARA UYGUN)
+Tespit Edilen Zafiyet    : 1 adet
+  • Kritik Derece        : 0
+  • Yüksek Derece        : 1
+  • Orta Derece          : 0
+  • Düşük Derece         : 0
+----------------------------------------------------------------------------
+ÖNE ÇIKAN GÜVENLİK BULGULARI:
+  [HIGH] FW-006: Tehlikeli Servis Portu Tüm Ağlara Açık (Port 23) -> Port 23 (Telnet şifrelenmemiş metin protokolü)
+============================================================================
+
+$ python uygulama/firewall_security_cli.py remediate -i ornek_veri/firewall_inventory_spec.json -o kanit/gercek/otomatik_sikilastirma.sh
+[+] Otomatik Bash sertleştirme betiği üretildi: kanit/gercek/otomatik_sikilastirma.sh
+
+$ python uygulama/firewall_security_cli.py nft-template -o kanit/gercek/ornek_guvenli_nftables.conf
+[+] CIS uyumlu nftables.conf şablonu üretildi: kanit/gercek/ornek_guvenli_nftables.conf
+
+$ python uygulama/firewall_security_cli.py ufw-template -o kanit/gercek/ornek_guvenli_ufw.sh
+[+] CIS uyumlu UFW sertleştirme betiği üretildi: kanit/gercek/ornek_guvenli_ufw.sh
+==============================================================================

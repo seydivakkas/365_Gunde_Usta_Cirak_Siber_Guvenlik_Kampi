@@ -1,0 +1,66 @@
+{
+  "aciklama": "G068 Ağ Günlükleri ve Kişisel Veri (PII) Ham Telemetri Örnek Veri Seti",
+  "gunluk_kayitlari": [
+    {
+      "kayit_id": "LOG-WEB-01",
+      "zaman_damgasi": 1730340000.120,
+      "protokol": "HTTP",
+      "istemci_ip": "192.168.1.145",
+      "istemci_mac": "00:1A:2B:3C:4D:5E",
+      "sunucu_ip": "10.0.5.20",
+      "metot": "GET",
+      "uri": "/api/v1/profile?email=ahmet.yilmaz@kurum.com.tr&tckn=12345678901",
+      "basliklar": {
+        "Host": "api.kurum.local",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.somerandomtoken",
+        "Cookie": "session_id=a9f8b7c6d5e4f3a2b1c0; user_prefs=dark",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+      },
+      "govde": ""
+    },
+    {
+      "kayit_id": "LOG-DNS-01",
+      "zaman_damgasi": 1730340000.150,
+      "protokol": "DNS",
+      "istemci_ip": "172.16.20.88",
+      "istemci_mac": "A4:83:E7:12:34:56",
+      "sunucu_ip": "172.16.20.1",
+      "sorgulanan_alan_adi": "portal.musteri-hizmetleri.com",
+      "sorgu_tipi": "A"
+    },
+    {
+      "kayit_id": "LOG-PAYMENT-01",
+      "zaman_damgasi": 1730340000.180,
+      "protokol": "HTTP",
+      "istemci_ip": "203.0.113.55",
+      "istemci_mac": "BC:5F:F4:78:9A:BC",
+      "sunucu_ip": "10.0.8.44",
+      "metot": "POST",
+      "uri": "/checkout/process",
+      "basliklar": {
+        "Host": "odeme.kurum.local",
+        "Content-Type": "application/json",
+        "X-Forwarded-For": "198.51.100.99"
+      },
+      "govde": "{\"kart_no\": \"4543123456789012\", \"ad_soyad\": \"Mehmet Demir\", \"telefon\": \"+905551234567\", \"tutar\": 250.0}"
+    },
+    {
+      "kayit_id": "LOG-AUTH-01",
+      "zaman_damgasi": 1730340000.210,
+      "protokol": "SYSLOG",
+      "istemci_ip": "10.10.1.200",
+      "istemci_mac": "E8:40:F2:AA:BB:CC",
+      "sunucu_ip": "10.10.1.5",
+      "mesaj": "Kullanici girisi basarili: kullanici=zeynep.kaya@sirket.com ip=10.10.1.200 port=51420 rol=YONETICI"
+    },
+    {
+      "kayit_id": "LOG-CLEAN-01",
+      "zaman_damgasi": 1730340000.240,
+      "protokol": "NTP",
+      "istemci_ip": "192.168.1.1",
+      "istemci_mac": "00:00:5E:00:53:01",
+      "sunucu_ip": "192.168.1.254",
+      "mesaj": "NTP zaman senkronizasyonu tamamlandi. Stratum 2 ofset=0.0012s"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+================================================================================
+G066: DNS VE HTTP ANOMALİ İŞARETLERİ TESPİT PİPELINE VE TEHDİT MİMARİSİ
+================================================================================
+
++-----------------------------------------------------------------------------+
+|                      GELEN AĞ TELEMETRİSİ VE PAKET AKIŞI                    |
+|                        (DNS Port 53 / HTTP Port 80, 8080)                   |
++-----------------------------------------------------------------------------+
+                                      |
+                                      v
++-----------------------------------------------------------------------------+
+|                     PROTOKOL AYRIŞTIRICI VE NORMALİZER                      |
++-----------------------------------------------------------------------------+
+             |                                              |
+      [DNS Telemetrisi]                              [HTTP Telemetrisi]
+             v                                              v
++-----------------------------+               +-------------------------------+
+|      DNS ANOMALİ MOTORU     |               |      HTTP ANOMALİ MOTORU      |
++-----------------------------+               +-------------------------------+
+|                             |               |                               |
+| 1. DNS Tünelleme Analizi    |               | 1. Request Smuggling Kontrolü |
+|    - TXT / Büyük Yükler     |               |    - CL.TE / TE.CL Çatışması  |
+|    - Label Uzunluğu > 25    |               |    - RFC 7230 İhlali          |
+|    - Domain Uzunluğu > 45   |               |                               |
+|                             |               | 2. CRLF Enjeksiyon Analizi    |
+| 2. DGA Entropi Analizi      |               |    - %0d%0a / \r\n Kontrolü   |
+|    - Şannon Entropisi >= 3.4|               |    - Response Splitting       |
+|    - Sessiz Oranı >= 0.65   |               |    - Sahte Başlık / Çerez     |
+|    - Label Uzunluğu >= 12   |               |                               |
+|                             |               | 3. Path Traversal & LFI       |
+| 3. DNS Amplification        |               |    - ../ , ..\ , %2e%2e       |
+|    - Yanıt/İstek Oranı >=25x|               |    - /etc/passwd, win.ini     |
+|    - ANY Sorgusu >= 2048 B  |               |                               |
+|                             |               | 4. Otomatik Tarayıcı Avı      |
+| 4. Fast Flux C2             |               |    - User-Agent İmzaları      |
+|    - TTL <= 30 sn           |               |    - sqlmap, nikto, dirbuster |
+|    - IP Sayısı >= 5         |               |                               |
++-----------------------------+               +-------------------------------+
+             |                                              |
+             +----------------------+-----------------------+
+                                    |
+                                    v
++-----------------------------------------------------------------------------+
+|                     KORELASYON VE ADLİ RAPORLAMA KATMANI                    |
+|  - Önem Derecelendirmesi: KRİTİK, YÜKSEK, ORTA, DÜŞÜK                       |
+|  - SIEM / SOC Entegrasyonu: CEF, JSON, Syslog Olay Formatı                  |
++-----------------------------------------------------------------------------+

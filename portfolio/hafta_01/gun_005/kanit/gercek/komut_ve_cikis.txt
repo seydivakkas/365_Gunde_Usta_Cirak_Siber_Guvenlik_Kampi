@@ -1,0 +1,35 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Gerçek Yürütme Kanıtı: Varlık Envanteri ve Sınıflandırma Denetimi
+
+[METADATA]
+Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe portfolio\hafta_01\gun_005\uygulama\asset_classifier.py --envanter portfolio\hafta_01\gun_005\ornek_veri\varlik_envanteri.json
+Çalışma Dizini: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Ortam: Windows 11 / Python 3.14.3
+Zaman Damgası: 2026-10-26T17:25:00+03:00
+Çıkış Kodu: 0
+
+[STANDART ÇIKTI (STDOUT)]
+========================================================================================================================
+  KURUMSAL VARLIK ENVANTERİ VE VERİ SINIFLANDIRMA DENETİMİ: Anadolu Finansal Teknolojiler A.Ş.
+  Gün Kimliği: G005 | Toplam Varlık: 5
+========================================================================================================================
+ID        | TÜR       | SINIF          | KRİTİKLİK  | DONANIM ($)  | İŞ ETKİSİ ($)  | ORAN   | VARLIK ADI
+------------------------------------------------------------------------------------------------------------------------
+AST-001   | VERI      | COK_GIZLI_SIR  | KRITIK     | $2,500       | $15,000,000    | 6000.0x | Müşteri Kredi Kartı ve Finansal Hesap Veritabanı (PostgreSQL Prod)
+AST-002   | UYGULAMA  | KAMUYA_ACIK    | DUSUK      | $12,000      | $50,000        | 4.2x   | Dış Web Portalı ve Kurumsal Tanıtım Sunucusu (Nginx Web Cluster)
+AST-003   | KIMLIK    | GIZLI          | KRITIK     | $4,000       | $25,000,000    | 6250.0x | Merkezi Active Directory Etki Alanı Yöneticisi (Domain Controller DC-01)
+AST-004   | UYGULAMA  | GIZLI          | YUKSEK     | $6,000       | $8,000,000     | 1333.3x | Ar-Ge Kaynak Kod Deposu ve Dağıtım Sunucusu (GitLab Enterprise)
+AST-005   | CIHAZ     | DAHILI         | KRITIK     | $45,000      | $10,000,000    | 222.2x | Merkezi Omurga Yönlendiricisi ve Yeni Nesil Güvenlik Duvarı (Core NGFW)
+========================================================================================================================
+  FINANSAL PARADOKS VE CROWN JEWELS ANALİZİ:
+  * Toplam Satın Alma / Donanım Bedeli: $69,500.00
+  * Olası İhlal Durumunda Toplam İş Etkisi: $58,050,000.00
+  * SONUÇ: Kritiklik donanım fiyatıyla ölçülemez! $2,500'lık eski bir DB sunucusu $15,000,000'lık risk barındırır.
+------------------------------------------------------------------------------------------------------------------------
+  [+] GÜVENLİK DENETİMİ BAŞARILI: Veri sınıfları ve kontroller arasında çelişki bulunamadı.
+========================================================================================================================
+
+
+[HATA ÇIKTISI (STDERR)]
+(Temiz - Hata Yok)

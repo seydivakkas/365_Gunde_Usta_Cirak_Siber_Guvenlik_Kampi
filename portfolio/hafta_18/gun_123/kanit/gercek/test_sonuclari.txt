@@ -1,0 +1,38 @@
+=== GÜN 123 BİRİM TEST RAPORU ===
+Tarih: 2026-11-02T08:15:24.617310
+
+test_01_default_deny_when_no_rules_match (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_01_default_deny_when_no_rules_match)
+Hiçbir açık izin kuralı eşleşmediğinde Saltzer-Schroeder Default-Deny kuralı işlemelidir. ... ok
+test_02_explicit_rule_permits_access (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_02_explicit_rule_permits_access)
+Açıkça tanımlanmış bir kural eşleştiğinde erişim onaylanmalıdır. ... ok
+test_03_unknown_resource_default_denied (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_03_unknown_resource_default_denied)
+Sistemde tanımlı olmayan bir kaynağa erişim talebi güvenli varsayılanla reddedilmelidir. ... ok
+test_04_cwe_1188_debug_mode_detection (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_04_cwe_1188_debug_mode_detection)
+Debug modu açık bırakılmış kaynak CWE-1188 zaafiyeti olarak tespit edilmelidir. ... ok
+test_05_cwe_1188_default_credentials_active_detection (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_05_cwe_1188_default_credentials_active_detection)
+Varsayılan parola değiştirilmemiş kaynak CWE-1188 olarak bayraklanmalıdır. ... ok
+test_06_cwe_1188_permissive_cors_detection (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_06_cwe_1188_permissive_cors_detection)
+Herkese açık CORS (*) yapılandırması CWE-1188 olarak yakalanmalıdır. ... ok
+test_07_cwe_1188_unencrypted_storage_detection (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_07_cwe_1188_unencrypted_storage_detection)
+Durağan depolaması şifresiz kaynak CWE-1188 olarak yakalanmalıdır. ... ok
+test_08_cwe_1188_default_permit_access_detection (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_08_cwe_1188_default_permit_access_detection)
+Varsayılan erişimi ALLOW (İzinli) yapılmış kaynak zaafiyet olarak işaretlenmelidir. ... ok
+test_09_enforce_secure_defaults_raises_insecure_default_detected (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_09_enforce_secure_defaults_raises_insecure_default_detected)
+Güvensiz varsayılana sahip kaynak varken enforce çağrıldığında InsecureDefaultDetectedError fırlatılmalıdır. ... ok
+test_10_fail_secure_on_database_down (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_10_fail_secure_on_database_down)
+Veritabanı arızalandığında Fail-Secure mekanizması erişimi reddetmelidir (CWE-636). ... ok
+test_11_fail_secure_on_auth_service_timeout (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_11_fail_secure_on_auth_service_timeout)
+Kimlik servisi zaman aşımına uğradığında Fail-Secure devreye girmelidir. ... ok
+test_12_fail_secure_on_unhandled_exception (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_12_fail_secure_on_unhandled_exception)
+Beklenmeyen kod istisnasında Fail-Secure kapıları kapatmalıdır. ... ok
+test_13_cwe_636_unauthorized_fail_open_forbidden (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_13_cwe_636_unauthorized_fail_open_forbidden)
+Yetkisiz FAIL_OPEN yapılandırmasında arıza simüle edilirse InsecureFailOpenForbiddenError fırlatılmalıdır. ... ok
+test_14_authorized_safety_fail_open_emergency (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_14_authorized_safety_fail_open_emergency)
+Geçerli can güvenliği acil durum token'ı varsa kontrollü Fail-Open çalışabilmelidir. ... ok
+test_15_resilient_secure_defaults_audit_and_report (test_secure_defaults_failsafe.TestSecureDefaultsFailSafe.test_15_resilient_secure_defaults_audit_and_report)
+Tam uyumlu mimarinin denetimi ve Markdown rapor üretimi doğrulanır. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

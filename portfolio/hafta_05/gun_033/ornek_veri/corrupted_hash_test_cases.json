@@ -1,0 +1,35 @@
+[
+  {
+    "file_name": "invalid_hex.json",
+    "relative_path": "sample_files/invalid_hex.json",
+    "sha256": "zzzz86ce37d1c9fdf227bd875fc638c83938da29d65c074a562c30e79136474f",
+    "size_bytes": 100
+  },
+  {
+    "file_name": "truncated_hash.json",
+    "relative_path": "sample_files/truncated_hash.json",
+    "sha256": "2cf886ce37d1c9fd",
+    "size_bytes": 100
+  },
+  {
+    "file_name": "missing_path.json",
+    "sha256": "2cf886ce37d1c9fdf227bd875fc638c83938da29d65c074a562c30e79136474f",
+    "size_bytes": 100
+  },
+  {
+    "file_name": "missing_hash.json",
+    "relative_path": "sample_files/missing_hash.json",
+    "size_bytes": 100
+  },
+  {
+    "file_name": "whitespace_path.json",
+    "relative_path": "   ",
+    "sha256": "2cf886ce37d1c9fdf227bd875fc638c83938da29d65c074a562c30e79136474f"
+  },
+  {
+    "file_name": "whitespace_hash.json",
+    "relative_path": "sample_files/whitespace_hash.json",
+    "sha256": "   "
+  },
+  "invalid_non_dict_entry_string_item"
+]

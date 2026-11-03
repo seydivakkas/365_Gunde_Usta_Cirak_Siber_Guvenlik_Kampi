@@ -1,0 +1,53 @@
+{
+  "gun": 28,
+  "tarih": "2026-10-27",
+  "baslik": "Mini proje 3: komut satırı çalışma defteri",
+  "asama": "Aşama 02 — Sistem ve Ağ Güvenliği Temelleri",
+  "hafta": 4,
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "puan_detay": {
+    "kriter_1": 20,
+    "kriter_2": 40,
+    "kriter_3": 25,
+    "kriter_4": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "kanitlar": {
+    "gercek": [
+      "portfolio/hafta_04/gun_028/kanit/gercek/test_sonuclari.txt",
+      "portfolio/hafta_04/gun_028/kanit/gercek/komut_ve_cikis.txt",
+      "portfolio/hafta_04/gun_028/kanit/gercek/calisma_defteri_ornek.md",
+      "portfolio/hafta_04/gun_028/kanit/gercek/guvenlik_engelleme_kaydi.txt"
+    ],
+    "temsili": [
+      "portfolio/hafta_04/gun_028/kanit/temsili/komut_satiri_gozlem_mimarisi.txt"
+    ]
+  },
+  "kod_dosyalari": [
+    "portfolio/hafta_04/gun_028/uygulama/command_line_notebook_engine.py",
+    "portfolio/hafta_04/gun_028/tests/test_command_line_notebook_engine.py"
+  ],
+  "dokumanlar": [
+    "portfolio/hafta_04/gun_028/ders.md",
+    "portfolio/hafta_04/gun_028/soru_cevap.md",
+    "portfolio/hafta_04/gun_028/rapor.md",
+    "portfolio/hafta_04/gun_028/README.md"
+  ],
+  "kazanimlar": [
+    "İşletim sistemi gözlemlerinin yeniden üretilebilir komut ve beklenen çıktıyla belgelenmesi ilkesi hayata geçirildi.",
+    "En az 10 salt-okunur (read-only) komut kuralı 12 komutla eksiksiz sağlandı.",
+    "Çift aşamalı komut güvenliği doğrulayıcısı (Blacklist RegEx + Whitelist Base Binary) geliştirildi.",
+    "Negatif kontrolde 8 adet yıkıcı/zararlı komut (rm -rf, del, mkfs, dd, kill -9 vb.) %100 engellendi ve adli olarak günlüğe yazıldı.",
+    "Her yürütme çıktısı için 64 karakterlik SHA-256 kriptografik bütünlük mühürlemesi uygulandı.",
+    "380 satırlık profesyonel Markdown çalışma defteri (runbook) otonom olarak üretildi.",
+    "14 birim test %100 başarıyla tamamlandı, 100/100 tam puan tescillendi ve Hafta 04 başarıyla tamamlandı."
+  ],
+  "ozel_not": "Hafta 04'ün haftalık mini projesi (MP-04) bağımsız girdi, gözlenebilir çıktı, negatif kontrol ve kriptografik özet doğrulamasıyla tamamlandı."
+}

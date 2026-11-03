@@ -1,0 +1,97 @@
+{
+  "gun": 110,
+  "konu": "TLS güvenlik sınırları",
+  "olusturma_tarihi": "2026-11-02T04:10:17.554755",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "3457876c499cad2b6802e3eb4a1c107c1f5e3da2b703d8afdc4ba6ab4669253d",
+      "boyut_bayt": 5749
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "291c2f0cfea73f009de1abd6b62d8d226f51a241c01960eac8165562b402adf7",
+      "boyut_bayt": 10317
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "826fff399d1e1f8cf7d540e33d7adc447d446b95bb345b84195e9b8139147c2a",
+      "boyut_bayt": 11638
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "0f854b62d685fe04ab07bab46f48020f6baf5161a1110f9379deffe46c986e21",
+      "boyut_bayt": 5222
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "86438367eab5f2815d636850ad35e8f92b9c4d699075d2cff3b106b09904a366",
+      "boyut_bayt": 744
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "a51d6bed3e0989b78ee65d72845bed211648a4f8260dcfb96559dddd2ac26760",
+      "boyut_bayt": 13257
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "149f1e4aa7dee5f3d51fdfd5d391915f181ffd4e82715cf6f86312f3c68940b1",
+      "boyut_bayt": 3000
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "239c61d6224df4dc64e4d3674ddc6298e2a36767b3e4d39468e78b0e4e0e1e61",
+      "boyut_bayt": 3706
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "142f789716400be42d6639a91d2f64ddd2e52ecb3d7cad91077c62bbb0e58acf",
+      "boyut_bayt": 372
+    },
+    {
+      "dosya": "kanit\\gercek\\tls_guvenlik_analiz_raporu.txt",
+      "sha256": "ece0f2c7d091397bb1cf30ed69108d9451d8f9e8359d8b7dfe1c60673fca37ae",
+      "boyut_bayt": 1731
+    },
+    {
+      "dosya": "kanit\\temsili\\tls_guvenlik_sinirlari_mimarisi.txt",
+      "sha256": "5370212503ed280ec1edd5543dd09e9045dcb0d49d3087f147542b600c718ebe",
+      "boyut_bayt": 3853
+    },
+    {
+      "dosya": "ornek_veri\\invalid_tls_inputs.json",
+      "sha256": "36aae9f1e08d5582919d049eaa32d291dbe9a119b5354cb6b2fc0e064f0152ac",
+      "boyut_bayt": 4681
+    },
+    {
+      "dosya": "ornek_veri\\tls_config_sample.json",
+      "sha256": "5325bde582045967f6f6b02f7d53bb897b0e4358ae3ffbe95e54033c349dc433",
+      "boyut_bayt": 832
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "e72694de7194582218dff54fd159c6315e916317430fc4143dadf73267882d5c",
+      "boyut_bayt": 580
+    },
+    {
+      "dosya": "tests\\test_tls_boundary.py",
+      "sha256": "ddc130389faca353286342a11dcae7638377128ba889c224649e6bd6dd7beefa",
+      "boyut_bayt": 10688
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "b366e7c132c030a38d9c7b206f0275900275dcc2bb2e508d74c932cb61c457f2",
+      "boyut_bayt": 733
+    },
+    {
+      "dosya": "uygulama\\tls_cli.py",
+      "sha256": "6ffcfec1c7f3b9ddc89fd4e3ef284946bee0f82def573ad7fe09009dd688ef45",
+      "boyut_bayt": 10491
+    },
+    {
+      "dosya": "uygulama\\tls_security_boundary_engine.py",
+      "sha256": "6a795ebd55acbbf706be5c92e15b5abe9eabb20ec0238f9673e7491c9863976c",
+      "boyut_bayt": 19948
+    }
+  ]
+}

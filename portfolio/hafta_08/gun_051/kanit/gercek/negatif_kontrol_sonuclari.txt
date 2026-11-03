@@ -1,0 +1,39 @@
+================================================================================
+G051: TCP SIRALAMA VE YENİDEN İLETİM - NEGATİF KONTROL VE HATA DOĞRULAMA KANITI
+================================================================================
+
+[1/8] [ENGELLENDİ / BLOCKED] ERR_NEGATIVE_PAYLOAD_LENGTH
+     Açıklama      : Negatif veri yükü uzunluğu (-50 bayt)
+     Yakalanan Hata: Veri yükü uzunluğu (payload_len) negatif olamaz: -50
+--------------------------------------------------------------------------------
+[2/8] [ENGELLENDİ / BLOCKED] ERR_SEQUENCE_OVERFLOW
+     Açıklama      : 32-bit tamsayı sınırını aşan sıra numarası (5000000000 > 4294967295)
+     Yakalanan Hata: Sıra numarası (seq_no) 0-4294967295 aralığında olmalıdır: 5000000000
+--------------------------------------------------------------------------------
+[3/8] [ENGELLENDİ / BLOCKED] ERR_ACK_OVERFLOW
+     Açıklama      : 32-bit tamsayı sınırını aşan onay numarası (9999999999 > 4294967295)
+     Yakalanan Hata: Onay numarası (ack_no) 0-4294967295 aralığında olmalıdır: 9999999999
+--------------------------------------------------------------------------------
+[4/8] [ENGELLENDİ / BLOCKED] ERR_NEGATIVE_WINDOW_SIZE
+     Açıklama      : Negatif pencere boyutu (-1024)
+     Yakalanan Hata: Pencere boyutu 0-65535 aralığında olmalıdır: -1024
+--------------------------------------------------------------------------------
+[5/8] [ENGELLENDİ / BLOCKED] ERR_WINDOW_OVERFLOW
+     Açıklama      : 16-bit sınırını aşan pencere boyutu (70000 > 65535)
+     Yakalanan Hata: Pencere boyutu 0-65535 aralığında olmalıdır: 70000
+--------------------------------------------------------------------------------
+[6/8] [ENGELLENDİ / BLOCKED] ERR_INVALID_PORT_ZERO
+     Açıklama      : Geçersiz port numarası (Port 0)
+     Yakalanan Hata: Geçersiz kaynak port numarası (1-65535 olmalıdır): 0
+--------------------------------------------------------------------------------
+[7/8] [ENGELLENDİ / BLOCKED] ERR_MALFORMED_IP_FORMAT
+     Açıklama      : Geçersiz oktet aralığına sahip IP adresi (192.168.1.999)
+     Yakalanan Hata: Geçersiz kaynak IP adresi: 192.168.1.999 - Hata: Octet 999 (> 255) not permitted in '192.168.1.999'
+--------------------------------------------------------------------------------
+[8/8] [ENGELLENDİ / BLOCKED] ERR_NON_NUMERIC_TIMESTAMP
+     Açıklama      : Sayısal olmayan zaman damgası değeri ('invalid_time')
+     Yakalanan Hata: Zaman damgası negatif olmayan sayısal bir değer olmalıdır: invalid_time
+--------------------------------------------------------------------------------
+
+ÖZET: Toplam 8 negatif kontrol senaryosundan 8 tanesi başarıyla engellendi.
+SONUÇ: %100 DOĞRULAMA BAŞARILI (TCPSequenceError ile güvenli yakalama).

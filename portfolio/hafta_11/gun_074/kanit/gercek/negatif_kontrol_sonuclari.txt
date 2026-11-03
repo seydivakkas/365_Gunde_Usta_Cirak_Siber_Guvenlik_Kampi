@@ -1,0 +1,21 @@
+=== GÜN 074: NEGATİF KONTROL VE SINIR DURUMU DOĞRULAMA RAPORU ===
+Toplam Senaryo: 9, Başarılı: 9, Başarısız: 0
+
+[PASS] NEG_01_MUTABLE_DEFAULT_TRAP_ATTACK: Varsayılan argüman zehirleme denemesi — ardışık çağrılarda önceki çağrının etiketlerinin sonraki çağrıya sızması engellenmelidir
+  Detay: İzole liste sağlandı, önceki çağrının etiketi sızmadı.
+[PASS] NEG_02_IMPURE_MUTATION_OF_SHARED_RULE: Fonksiyonun parametre olarak aldığı kural sözlüğünü yerinde (in-place) değiştirmesi denemesi
+  Detay: Orijinal kural nesnesi derin korundu, yerinde mutasyon engellendi.
+[PASS] NEG_03_UNSUPPORTED_HASH_ALGORITHM: Desteklenmeyen veya geçersiz kriptografik hash algoritması enjeksiyonu
+  Detay: Beklenen hata fırlatıldı: Desteklenmeyen hash algoritması: md6
+[PASS] NEG_04_MALFORMED_SHA256_LENGTH: 64 karakterden eksik (63 karakter) malforme SHA-256 hash dizesi
+  Detay: Beklenen uzunluk hatası fırlatıldı: Geçersiz hash uzunluğu. SHA256 için beklenen 64, ancak gelen 63
+[PASS] NEG_05_MALFORMED_MD5_NON_HEX_CHARS: Onaltılık tabanda (hex) olmayan karakterler içeren MD5 dizesi
+  Detay: Beklenen hex karakter hatası fırlatıldı: Geçersiz onaltılık (hex) karakterler tespit edildi.
+[PASS] NEG_06_THREAT_SCORE_INVALID_WEIGHT_OUT_OF_BOUNDS: 0.0 ile 1.0 aralığının dışında (1.5) tehdit faktörü ağırlığı
+  Detay: Beklenen sınır aşımı hatası fırlatıldı: Tehdit faktörü katsayısı [0.0, 1.0] aralığında olmalıdır: 1.5
+[PASS] NEG_07_EMPTY_OR_NONE_RAW_LOG_PIPELINE: Boru hattına boş veya None log dizesi gönderilerek sessiz hata oluşturma girişimi
+  Detay: Beklenen boş log hatası fırlatıldı: Ham log girdisi boş veya geçersiz olamaz.
+[PASS] NEG_08_MALFORMED_IP_TOKEN_EXTRACTION: IP alanı içermeyen veya geçersiz sözdizimli log satırı ayrıştırma denemesi
+  Detay: Beklenen IP ayrıştırma hatası fırlatıldı: Log satırında geçerli SRC IP ayrıştırılamadı.
+[PASS] NEG_09_CONTRACT_POSTCONDITION_VIOLATION: Sözleşme son-koşul (postcondition) ihlali — fonksiyonun geçersiz bir güvenlik kararı üretmesi engellenmelidir
+  Detay: Sözleşme son-koşul kümesi UNKNOWN_ACTION_CODE girdisini başarıyla reddetti.

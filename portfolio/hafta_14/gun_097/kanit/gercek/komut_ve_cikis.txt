@@ -1,0 +1,44 @@
+=== G097 CLI KOMUT KOŞUMLARI VE ÇIKIŞLARI ===
+Tarih: 2026-11-02 01:13:27
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/sec_toolkit_cli.py doctor
+[Çıkış Kodu: 0]
+[STDOUT]
+{
+  "durum": "AIRGAP_COMPLIANT",
+  "python_version": "3.14.3",
+  "version_check": "PASS",
+  "external_dependencies_count": 0,
+  "pure_standard_library": true,
+  "network_isolated": true,
+  "timestamp_utc": "2026-11-01 22:13:27Z"
+}
+
+---------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/sec_toolkit_cli.py validate --file ornek_veri/airgap_test_env/assets.json
+[Çıkış Kodu: 0]
+[STDOUT]
+[BAŞARILI] 2 adet ağ varlığı doğrulandı.
+
+---------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/sec_toolkit_cli.py hash --file ornek_veri/airgap_test_env/system_conf.ini --algo sha256
+[Çıkış Kodu: 0]
+[STDOUT]
+SHA256: 969df690581ff6f411a2510d4e3a26d531cda925a7a4fe0e0a6eea935aaf8155  ornek_veri/airgap_test_env/system_conf.ini
+
+---------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/sec_toolkit_cli.py mask --file ornek_veri/airgap_test_env/sensitive_traffic.log --style MASK
+[Çıkış Kodu: 0]
+[STDOUT]
+2026-11-02 02:00:10 [SCADA_OP] Operator login auth: user="ah***@airgap-defense.local" tckn=123******50 ip=10.20.30.40
+2026-11-02 02:00:25 [AUDIT_SEC] Hardware key verified: token=**************** status=PASSED
+2026-11-02 02:01:05 [ALERT_PAY] Emergency procurement card: pan=453201******0366 phone=+90-532-444-2211
+
+
+---------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/sec_toolkit_cli.py bench --bytes 65536
+[Çıkış Kodu: 2]
+[STDERR]
+[SİSTEM HATASI] name 'hashlib' is not defined
+
+---------------------------------------------------------------------------

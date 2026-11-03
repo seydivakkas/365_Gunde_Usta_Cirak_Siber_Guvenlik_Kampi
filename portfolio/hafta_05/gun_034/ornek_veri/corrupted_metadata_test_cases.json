@@ -1,0 +1,28 @@
+[
+  {
+    "id": "ERR-001",
+    "relative_path": "sample_files/missing_name.pdf",
+    "claimed_extension": ".pdf",
+    "reported_mime": "application/pdf"
+  },
+  {
+    "id": "ERR-002",
+    "file_name": "missing_path.pdf",
+    "claimed_extension": ".pdf",
+    "reported_mime": "application/pdf"
+  },
+  {
+    "id": "ERR-003",
+    "file_name": "   ",
+    "relative_path": "sample_files/valid.pdf",
+    "claimed_extension": ".pdf"
+  },
+  {
+    "id": "ERR-004",
+    "file_name": "empty_path.pdf",
+    "relative_path": "   ",
+    "claimed_extension": ".pdf"
+  },
+  "invalid_non_dict_string_item",
+  123456
+]

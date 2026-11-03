@@ -1,0 +1,97 @@
+{
+  "gun": 115,
+  "konu": "OAuth 2.0 ve OpenID Connect",
+  "olusturma_tarihi": "2026-11-02T05:25:07.439559",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "1d0791607003c2203c89eba33d2f7d82a2c751ac00d529db3a56a0f0ec90da0b",
+      "boyut_bayt": 5898
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "becf4909882b73f5f6d1813c77e1bd3c9c0767d60224e9cf0d31ae1ead0fc7f3",
+      "boyut_bayt": 6703
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "20addfada0279d04a637bdad77cb4b3f683e43c987a46a6247a26ffc9b343cbd",
+      "boyut_bayt": 19957
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "c2247010224dbaab67cd804805acfb222639aec4feb668cab05cf9a0e3717498",
+      "boyut_bayt": 3840
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "b0da789d71b137e4938c67e8f98016e2cd8db8c42f8349506874fcc5e17439b7",
+      "boyut_bayt": 757
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "720ad21461c6252502479320ab5e8c040ebb1ff4e63b1ad94895588a5e19700a",
+      "boyut_bayt": 11879
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "f04d613aa6667b6aeccdb49b1b48147c959397e47eecb79bc6c7dc242351bc82",
+      "boyut_bayt": 1181
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "02055e40cb2c0842c05e38abfab708aa4cb4772a7ab2340fa69a6fab64ad7485",
+      "boyut_bayt": 2216
+    },
+    {
+      "dosya": "kanit\\gercek\\oauth_oidc_analiz_raporu.txt",
+      "sha256": "edb24ab737fbb6ac386fdecad56902a82879a775bcc45c29ba8c136887dde253",
+      "boyut_bayt": 4276
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "aa198a9e5b7a8c628851d14907a3dc62dce085197e187d182818369693064bdd",
+      "boyut_bayt": 3869
+    },
+    {
+      "dosya": "kanit\\temsili\\oauth_oidc_mimarisi.txt",
+      "sha256": "2cd759aa8486cf3ad0c069f2ba092805ac5498231b9c3a8ef6e03e9b4cc21f48",
+      "boyut_bayt": 2932
+    },
+    {
+      "dosya": "ornek_veri\\invalid_oauth_inputs.json",
+      "sha256": "af86ebc3b4675a6edb4ef2004e06dfa86610255fa58875a050bc59cfe86a5926",
+      "boyut_bayt": 4527
+    },
+    {
+      "dosya": "ornek_veri\\oauth_sample_clients.json",
+      "sha256": "8843831259ca2ffbeb44dfe4f8b875aa9d59e698da784d9f8484440fc9d9c113",
+      "boyut_bayt": 1345
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "3b9d92f538277f1037ad9cf897eef1947742947543256e3f58c1341651be502c",
+      "boyut_bayt": 585
+    },
+    {
+      "dosya": "tests\\test_oauth2_oidc.py",
+      "sha256": "156b6c096d4829042c029808153bf4424daf348b6c25e466ec86612c96d9dd1d",
+      "boyut_bayt": 16806
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "7c112ad345165074e3cb9fb6812287604f386afcfa2039a3a7c2d24bf53a2da2",
+      "boyut_bayt": 887
+    },
+    {
+      "dosya": "uygulama\\oauth2_oidc_engine.py",
+      "sha256": "42e27588e195d2a85fa8cecf3f6ad32a2f76201308587ecdfdc0c0e95a0fa988",
+      "boyut_bayt": 27491
+    },
+    {
+      "dosya": "uygulama\\oauth_cli.py",
+      "sha256": "87789e5c3e770a0c7224e547713578abeadf505b9e7306bd57a35db0f4940940",
+      "boyut_bayt": 7992
+    }
+  ]
+}

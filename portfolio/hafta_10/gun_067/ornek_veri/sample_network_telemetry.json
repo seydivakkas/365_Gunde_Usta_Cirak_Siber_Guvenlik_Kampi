@@ -1,0 +1,73 @@
+{
+  "aciklama": "G067 Paket Kaybı, Gecikme ve Jitter Ağ Performans ve QoS Telemetri Veri Seti",
+  "referans_akisi": {
+    "akis_id": "FLOW-CLEAN-01",
+    "protokol": "UDP",
+    "kaynak_ip": "10.0.0.10",
+    "hedef_ip": "10.0.0.20",
+    "kaynak_port": 5004,
+    "hedef_port": 5004,
+    "paketler": [
+      {"sira_no": 1, "gonderim_zamani": 1000.000, "varis_zamani": 1000.010, "boyut_bayt": 160},
+      {"sira_no": 2, "gonderim_zamani": 1000.020, "varis_zamani": 1000.030, "boyut_bayt": 160},
+      {"sira_no": 3, "gonderim_zamani": 1000.040, "varis_zamani": 1000.050, "boyut_bayt": 160},
+      {"sira_no": 4, "gonderim_zamani": 1000.060, "varis_zamani": 1000.070, "boyut_bayt": 160},
+      {"sira_no": 5, "gonderim_zamani": 1000.080, "varis_zamani": 1000.090, "boyut_bayt": 160},
+      {"sira_no": 6, "gonderim_zamani": 1000.100, "varis_zamani": 1000.110, "boyut_bayt": 160},
+      {"sira_no": 7, "gonderim_zamani": 1000.120, "varis_zamani": 1000.130, "boyut_bayt": 160},
+      {"sira_no": 8, "gonderim_zamani": 1000.140, "varis_zamani": 1000.150, "boyut_bayt": 160},
+      {"sira_no": 9, "gonderim_zamani": 1000.160, "varis_zamani": 1000.170, "boyut_bayt": 160},
+      {"sira_no": 10, "gonderim_zamani": 1000.180, "varis_zamani": 1000.190, "boyut_bayt": 160}
+    ]
+  },
+  "voip_rtp_akisi": {
+    "akis_id": "FLOW-VOIP-JITTER-01",
+    "protokol": "UDP",
+    "kaynak_ip": "192.168.1.100",
+    "hedef_ip": "192.168.2.200",
+    "kaynak_port": 16384,
+    "hedef_port": 16384,
+    "paketler": [
+      {"sira_no": 1, "gonderim_zamani": 2000.000, "varis_zamani": 2000.025, "boyut_bayt": 200},
+      {"sira_no": 2, "gonderim_zamani": 2000.020, "varis_zamani": 2000.060, "boyut_bayt": 200},
+      {"sira_no": 3, "gonderim_zamani": 2000.040, "varis_zamani": 2000.075, "boyut_bayt": 200},
+      {"sira_no": 5, "gonderim_zamani": 2000.080, "varis_zamani": 2000.140, "boyut_bayt": 200},
+      {"sira_no": 6, "gonderim_zamani": 2000.100, "varis_zamani": 2000.145, "boyut_bayt": 200},
+      {"sira_no": 7, "gonderim_zamani": 2000.120, "varis_zamani": 2000.190, "boyut_bayt": 200},
+      {"sira_no": 8, "gonderim_zamani": 2000.140, "varis_zamani": 2000.220, "boyut_bayt": 200},
+      {"sira_no": 10, "gonderim_zamani": 2000.180, "varis_zamani": 2000.280, "boyut_bayt": 200}
+    ]
+  },
+  "tcp_retransmission_akisi": {
+    "akis_id": "FLOW-TCP-LOSS-01",
+    "protokol": "TCP",
+    "kaynak_ip": "172.16.0.5",
+    "hedef_ip": "172.16.0.88",
+    "kaynak_port": 49152,
+    "hedef_port": 443,
+    "segmentler": [
+      {"sira_no": 1000, "ack_no": 1, "gonderim_zamani": 3000.000, "ack_varis_zamani": 3000.035, "boyut_bayt": 1460, "is_retrans": false},
+      {"sira_no": 2460, "ack_no": 1, "gonderim_zamani": 3000.005, "ack_varis_zamani": 3000.042, "boyut_bayt": 1460, "is_retrans": false},
+      {"sira_no": 3920, "ack_no": 1, "gonderim_zamani": 3000.010, "ack_varis_zamani": 3000.250, "boyut_bayt": 1460, "is_retrans": false},
+      {"sira_no": 5380, "ack_no": 1, "gonderim_zamani": 3000.015, "ack_varis_zamani": null, "boyut_bayt": 1460, "is_retrans": false},
+      {"sira_no": 5380, "ack_no": 1, "gonderim_zamani": 3000.215, "ack_varis_zamani": 3000.260, "boyut_bayt": 1460, "is_retrans": true},
+      {"sira_no": 6840, "ack_no": 1, "gonderim_zamani": 3000.220, "ack_varis_zamani": 3000.270, "boyut_bayt": 1460, "is_retrans": false},
+      {"sira_no": 8300, "ack_no": 1, "gonderim_zamani": 3000.225, "ack_varis_zamani": null, "boyut_bayt": 1460, "is_retrans": false},
+      {"sira_no": 8300, "ack_no": 1, "gonderim_zamani": 3000.425, "ack_varis_zamani": 3000.470, "boyut_bayt": 1460, "is_retrans": true}
+    ]
+  },
+  "dos_saldiri_akisi": {
+    "akis_id": "FLOW-DOS-CONGESTION-01",
+    "protokol": "UDP",
+    "kaynak_ip": "198.51.100.4",
+    "hedef_ip": "203.0.113.1",
+    "kaynak_port": 8080,
+    "hedef_port": 8080,
+    "paketler": [
+      {"sira_no": 1, "gonderim_zamani": 4000.000, "varis_zamani": 4000.250, "boyut_bayt": 1200},
+      {"sira_no": 2, "gonderim_zamani": 4000.010, "varis_zamani": 4000.550, "boyut_bayt": 1200},
+      {"sira_no": 5, "gonderim_zamani": 4000.040, "varis_zamani": 4001.200, "boyut_bayt": 1200},
+      {"sira_no": 9, "gonderim_zamani": 4000.080, "varis_zamani": 4002.100, "boyut_bayt": 1200}
+    ]
+  }
+}

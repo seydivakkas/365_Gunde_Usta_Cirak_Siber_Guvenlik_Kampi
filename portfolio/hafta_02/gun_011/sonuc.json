@@ -1,0 +1,43 @@
+{
+  "gun_no": 11,
+  "gun_kimligi": "G011",
+  "asama": "01",
+  "hafta": 2,
+  "konu": "Laboratuvar ağ sınırları",
+  "tarih": "2026-10-27",
+  "durum": "PASS",
+  "puan": 100,
+  "degerlendirme_detayi": {
+    "teori": 20,
+    "uygulama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "kanit_durumu": "TAM",
+  "tamamlanan_gorevler": [
+    "Laboratuvar ağ sınırları ve mikro-segmentasyon mimarisi (VLAN İzolasyonu, Statefull Conntrack, DNS Sinkhole) Usta-Çırak derinliğinde açıklandı.",
+    "Denizaltı su geçirmez bölmeleri (Bulkheads) analojisi ile düz ağ felaketi ve yatay hareket (lateral movement) zihinsel modeli kuruldu.",
+    "Durum takipli (Statefull conntrack: NEW, ESTABLISHED, RELATED) güvenlik duvarı asimetrisi ve tersine kabuk (reverse shell) engelleme mekanizması kodlandı.",
+    "Kötü amaçlı yazılım C2 trafiğinin ve DNS tünellemenin yerel sahte yanıtlara yönlendirilmesini sağlayan DNS sinkholing kalkanı somutlaştırıldı.",
+    "Kurumsal standartlarda varsayılan FORWARD DROP politikası içeren iptables kural betiği (iptables_rules.sh) otomatik üretildi.",
+    "Her kod satırı eğitsel açıklamalarla donatılmış lab_network_boundary_auditor.py CLI aracı geliştirildi.",
+    "14 birim test ile pozitif, negatif ve güvenlik sınır durumları 0.189 saniyede %100 başarıyla doğrulandı.",
+    "Gerçek CLI yürütme, unittest çıktısı ve temsilî ASCII laboratuvar ağ topoloji şeması kanıt olarak üretildi.",
+    "Soru bankasındaki 3 soru (G011-SC1, G011-SC2, G011-SC3) katı 4 bölümlü formatta cevaplandı."
+  ],
+  "pozitif_negatif_kontrol_sonuclari": {
+    "pozitif_kontrol": "4 bölgeli tam izole altın topolojide 100/100 puan, 0 bulgu ve GÜVENLİ durumu teyit edildi",
+    "negatif_kontrol_karantina_internet": "Karantina bölgesinde internet açıkken FELAKET uyarısıyla 50 puan ceza kesildi",
+    "negatif_kontrol_duz_ag": "Bölge sayısı 3'ten az düz ağlarda yatay hareket riskiyle 25 ceza puanı kesildi",
+    "negatif_kontrol_cakisan_cidr": "İki bölgeye aynı CIDR atandığında yönlendirme çöküşü riski KRİTİK olarak yakalandı",
+    "negatif_kontrol_harici_dns": "Harici DNS sorguları izinliyken DNS tünelleme riski YÜKSEK seviyede raporlandı",
+    "negatif_kontrol_sinkhole_eksik": "DNS sinkhole tanımlı değilken sahte yanıtlayıcı eksikliği ORTA risk olarak yakalandı",
+    "negatif_kontrol_forward_accept": "Varsayılan forward eylemi ACCEPT iken açık geçiş riski KRİTİK olarak raporlandı",
+    "negatif_kontrol_conntrack_kapali": "Durum takibi kapalıyken durumsuz yönlendirme riski KRİTİK olarak engellendi",
+    "negatif_kontrol_tersine_kabuk": "Kurbandan saldırgana NEW bağlantı kurma izni tersine kabuk riskiyle KRİTİK olarak yakalandı",
+    "negatif_kontrol_genis_izin": "Karantinadan INTERNET'e geniş ACCEPT kuralı FELAKET seviyesinde yakalandı",
+    "islevsellik_iptables_uretimi": "-P FORWARD DROP ve DNAT sinkhole kurallarını içeren kurumsal iptables_rules.sh başarıyla üretildi"
+  },
+  "onceki_gun_bagimliligi": "YOK (Tamamen bağımsız)",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ."
+}

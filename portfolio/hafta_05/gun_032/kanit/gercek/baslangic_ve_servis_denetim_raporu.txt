@@ -1,0 +1,77 @@
+================================================================================
+BAÌLANGIÃ UYGULAMALARI VE H¦ZMET YÍNET¦M¦ G▄VENL¦K DENET¦M RAPORU
+================================================================================
+¦ncelenen Toplam Ba■lang²/Servis Í­esi: 14
+Reddedilen Bozuk Kay²t Say²s²         : 0
+Genel Tehdit Puan² (Risk Score)       : 100 / 100
+Sistem G³venlik Duru■u (Posture)      : CRITICAL_THREAT
+Tespit Edilen G³venlik Bulgular²      : 10
+--------------------------------------------------------------------------------
+Ciddiyet Da­²l²m²:
+  * CRITICAL  : 9
+  * HIGH      : 1
+  * MEDIUM    : 0
+  * LOW       : 0
+--------------------------------------------------------------------------------
+DETAYLI G▄VENL¦K BULGULARI:
+
+[1] [HIGH] VulnBackupService (ID: SVC-004)
+    Zafiyet T³r³ : UNQUOTED_SERVICE_PATH
+    MITRE Kodu   : T1574.009 (Path Interception by Unquoted Path)
+    A²klama     : Servis ikili dosya yolu ('C:\Program Files\Vulnerable Backup Solution\BackupAgent.exe') bo■luk karakteri iermesine ra­men ift t²rnak ierisine al²nmam²■. Windows SCM bile■eni yetki y³kseltme sald²r²lar²na a²k bir ■ekilde dosya arama zinciri (Path Interception) i■letecektir.
+    ¦yile■tirme  : Kay²t defterinde veya sc.exe yap²land²rmas²nda ikili dosya yolunu ift t²rnak iine al²n²z: sc.exe config "VulnBackupService" binPath= "\"C:\Program Files\Vulnerable Backup Solution\BackupAgent.exe\""
+
+[2] [CRITICAL] svch0st_service (ID: SVC-005)
+    Zafiyet T³r³ : SUSPICIOUS_PATH
+    MITRE Kodu   : T1547.001 (Registry Run Keys / Startup Folder)
+    A²klama     : Ba■lang² ÷­esi ■³pheli ve kullan²c² taraf²ndan yaz²labilir bir konumdan ('C:\Windows\Temp\svch0st.exe --listen') y³r³t³lmektedir. Bu konumlar zararl² yaz²l²mlar taraf²ndan kal²c²l²k sa­lamak ve standart sistem kontrollerini atlatmak iin s²ka tercih edilir.
+    ¦yile■tirme  : ¦lgili ba■lang² girdisini ('svch0st_service') derhal devre d²■² b²rak²n, dosya karmas²n² (SHA256) EDR/Sandbox ortam²nda analiz edin ve kal²c²l²k anahtar²n² silin.
+
+[3] [CRITICAL] lsasss_service (ID: SVC-006)
+    Zafiyet T³r³ : SUSPICIOUS_PATH
+    MITRE Kodu   : T1547.001 (Registry Run Keys / Startup Folder)
+    A²klama     : Ba■lang² ÷­esi ■³pheli ve kullan²c² taraf²ndan yaz²labilir bir konumdan ('C:\ProgramData\lsasss.exe') y³r³t³lmektedir. Bu konumlar zararl² yaz²l²mlar taraf²ndan kal²c²l²k sa­lamak ve standart sistem kontrollerini atlatmak iin s²ka tercih edilir.
+    ¦yile■tirme  : ¦lgili ba■lang² girdisini ('lsasss_service') derhal devre d²■² b²rak²n, dosya karmas²n² (SHA256) EDR/Sandbox ortam²nda analiz edin ve kal²c²l²k anahtar²n² silin.
+
+[4] [CRITICAL] EdgeUpdateHelper (ID: RUN-003)
+    Zafiyet T³r³ : SUSPICIOUS_PATH
+    MITRE Kodu   : T1547.001 (Registry Run Keys / Startup Folder)
+    A²klama     : Ba■lang² ÷­esi ■³pheli ve kullan²c² taraf²ndan yaz²labilir bir konumdan ('C:\Users\JohnDoe\AppData\Local\Temp\updater_payload.exe') y³r³t³lmektedir. Bu konumlar zararl² yaz²l²mlar taraf²ndan kal²c²l²k sa­lamak ve standart sistem kontrollerini atlatmak iin s²ka tercih edilir.
+    ¦yile■tirme  : ¦lgili ba■lang² girdisini ('EdgeUpdateHelper') derhal devre d²■² b²rak²n, dosya karmas²n² (SHA256) EDR/Sandbox ortam²nda analiz edin ve kal²c²l²k anahtar²n² silin.
+
+[5] [CRITICAL] SystemMaintenance (ID: RUN-004)
+    Zafiyet T³r³ : SUSPICIOUS_PATH
+    MITRE Kodu   : T1547.001 (Registry Run Keys / Startup Folder)
+    A²klama     : Ba■lang² ÷­esi ■³pheli ve kullan²c² taraf²ndan yaz²labilir bir konumdan ('C:\Users\Public\Downloads\nc.exe -L -p 4444 -e cmd.exe') y³r³t³lmektedir. Bu konumlar zararl² yaz²l²mlar taraf²ndan kal²c²l²k sa­lamak ve standart sistem kontrollerini atlatmak iin s²ka tercih edilir.
+    ¦yile■tirme  : ¦lgili ba■lang² girdisini ('SystemMaintenance') derhal devre d²■² b²rak²n, dosya karmas²n² (SHA256) EDR/Sandbox ortam²nda analiz edin ve kal²c²l²k anahtar²n² silin.
+
+[6] [CRITICAL] svch0st_service (ID: SVC-005)
+    Zafiyet T³r³ : MASQUERADING
+    MITRE Kodu   : T1036 (Masquerading)
+    A²klama     : Ba■lang² kayd² me■ru Windows bile■eni 'svchost.exe' (Hizmet Ana S³reci) ismini taklit etmektedir (Yol: 'C:\Windows\Temp\svch0st.exe --listen'). Bu teknik g³venlik analistlerini ve temel izleme aralar²n² yan²ltmak amac²yla kullan²l²r.
+    ¦yile■tirme  : S³re ve ba■lang² kayd²n² karantinaya al²n. S³recin me■ru System32 ikilisi olmad²­²n² do­rulayarak dosya imzas²n² ve bellek d÷k³m³n³ inceleyin.
+
+[7] [CRITICAL] lsasss_service (ID: SVC-006)
+    Zafiyet T³r³ : MASQUERADING
+    MITRE Kodu   : T1036 (Masquerading)
+    A²klama     : Ba■lang² kayd² me■ru Windows bile■eni 'lsass.exe' (Yerel G³venlik Yetki Alt Sistemi) ismini taklit etmektedir (Yol: 'C:\ProgramData\lsasss.exe'). Bu teknik g³venlik analistlerini ve temel izleme aralar²n² yan²ltmak amac²yla kullan²l²r.
+    ¦yile■tirme  : S³re ve ba■lang² kayd²n² karantinaya al²n. S³recin me■ru System32 ikilisi olmad²­²n² do­rulayarak dosya imzas²n² ve bellek d÷k³m³n³ inceleyin.
+
+[8] [CRITICAL] MpsSvc (ID: SVC-003)
+    Zafiyet T³r³ : SERVICE_TAMPERING
+    MITRE Kodu   : T1562.001 (Impair Defenses: Disable or Modify Tools)
+    A²klama     : Kritik g³venlik bile■eni 'MpsSvc' (Windows G³venlik Duvar²) beklenen al²■ma durumunda de­ildir! Mevcut Durum: 'Stopped', Ba■lang² Modu: 'Disabled'. Sald²rganlar tespit edilmemek iin savunma aralar²n² devre d²■² b²rak²rlar.
+    ¦yile■tirme  : Servisi derhal otomatik ba■lang² moduna geirip yeniden ba■lat²n²z: sc.exe config MpsSvc start= auto && sc.exe start MpsSvc
+
+[9] [CRITICAL] SystemMaintenance (ID: RUN-004)
+    Zafiyet T³r³ : MALICIOUS_SCRIPT
+    MITRE Kodu   : T1059.001 (Command and Scripting Interpreter: PowerShell)
+    A²klama     : Ba■lang² girdisi zararl² veya gizlenmi■ komut sat²r² bayraklar² (Reverse Shell Listener) iermektedir: 'C:\Users\Public\Downloads\nc.exe -L -p 4444 -e cmd.exe'.
+    ¦yile■tirme  : Kal²c²l²k girdisini derhal sonland²r²n ve silin. Betik ieri­ini de■ifre edip ba­lant² kurulan C2 IP adreslerini g³venlik duvar²nda engelleyiniz.
+
+[10] [CRITICAL] PowerShellScriptAuto (ID: TSK-001)
+    Zafiyet T³r³ : MALICIOUS_SCRIPT
+    MITRE Kodu   : T1059.001 (Command and Scripting Interpreter: PowerShell)
+    A²klama     : Ba■lang² girdisi zararl² veya gizlenmi■ komut sat²r² bayraklar² (-executionpolicy bypass, -windowstyle hidden, -encodedcommand, -nop, -enc) iermektedir: 'powershell.exe -ExecutionPolicy Bypass -NoProfile -WindowStyle Hidden -EncodedCommand SQBFAFgA...'.
+    ¦yile■tirme  : Kal²c²l²k girdisini derhal sonland²r²n ve silin. Betik ieri­ini de■ifre edip ba­lant² kurulan C2 IP adreslerini g³venlik duvar²nda engelleyiniz.
+================================================================================

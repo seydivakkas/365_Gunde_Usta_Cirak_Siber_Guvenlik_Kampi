@@ -1,0 +1,18 @@
+{
+  "README.md": "3fca51ef24709508cc0e51ce7d2afcb55051b7f2ddf5d9b8c973800eac8e7007",
+  "ders.md": "236aeee2a3fc7646253aeb050df3608b3f1edcfe8d90b94836de94704b67d41a",
+  "rapor.md": "c48eb63b06a3c1fc14b0eaf3f5f3ffdc691fb618474b68d0b10f1b3d83a0c6d3",
+  "sonuc.json": "ffa555f58fd0558ea34476940a007f889bc601f11f5085c99e794723b0f16d10",
+  "soru_cevap.md": "d96c1af41adef616ea1e1621fcb93fff253ae7e8b88a01def3c8767248bab58c",
+  "kanit/gercek/ipv4_subnet_hesaplama_raporu.txt": "191bea4dab21f5749f963308c3b22d920e8706ffb5f7ec02e51dd9149d86a77d",
+  "kanit/gercek/komut_ve_cikis.txt": "1ece6a4d509213c79d864eb2d3cfbeac0cc57bd919a991e48b756924412082df",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "74f6e6cef574055f8ef19222c388869f14c8d78b092527c5674823e63a86a780",
+  "kanit/gercek/test_sonuclari.txt": "2ed69c69d90440b1575ee4375de225f27556b203bd05a41ad7530cda9a4cbab5",
+  "kanit/temsili/ipv4_cidr_ve_subnetting_mimarisi.txt": "731ef9b2fc22f9f925900d6cf8ea9885afc05b504b62bfea925665f4545a0161",
+  "ornek_veri/invalid_subnets.json": "ecef9af644da3657837737dce256860c37e49cc8cbf74585836f29fdddd48e1e",
+  "ornek_veri/sample_subnets.json": "8f936f27cb9213aaaa6c96e5dae37e9eed8627b0b7fcd5a2058f843d671f6e01",
+  "tests/__init__.py": "b19f49dc710f82ebbb4823ca6cf9f012139744a743bb478b9739ae4e65bacc63",
+  "tests/test_ipv4_cidr_analyzer.py": "1f944f8df8579106924beb2c094e90c99da18007d50e35221a4eb06d0964b531",
+  "uygulama/__init__.py": "b19f49dc710f82ebbb4823ca6cf9f012139744a743bb478b9739ae4e65bacc63",
+  "uygulama/ipv4_cidr_analyzer.py": "c3d36b906e0a8284b59c7481e5d384dbaf24de838bccbf41937928ae8bc94490"
+}

@@ -1,0 +1,79 @@
+================================================================================
+GÜN 115: OAUTH 2.0 VE OPENID CONNECT (OIDC) GÜVENLİK ANALİZ RAPORU
+Rapor Tarihi: 2026-11-02T02:22:54.031139+00:00
+Mühendis: Seydi Eryılmaz (@seydivakkas)
+Standartlar: RFC 6749, RFC 7636 (PKCE), OIDC Core 1.0, RFC 7519 (JWT)
+================================================================================
+
+1. PROTOKOL VE GÜVENLİK STANDARTLARI DEĞERLENDİRMESİ
+--------------------------------------------------------------------------------
+A. OAuth 2.0 Yetkilendirme Çerçevesi (RFC 6749):
+   - Yetki devri (Delegated Authorization) ve erişim belirteçleri (Access Token).
+   - Açık Yönlendirici Koruması (CWE-601): redirect_uri katı beyaz liste (whitelist) denetimi.
+   - CSRF Koruması (CWE-352): Kriptografik rastgele 'state' parametresi doğrulaması.
+   - Kapsam Kısıtlaması (Least Privilege - CWE-285): Belirteç scope sınırları.
+
+B. RFC 7636 PKCE (Proof Key for Code Exchange):
+   - Yetkilendirme kodu yakalama saldırılarına (CWE-287) karşı tam savunma.
+   - S256 yöntemi: code_challenge = BASE64URL(SHA256(code_verifier)).
+   - Saldırgan auth_code'u ele geçirse dahi, istemcinin belleğindeki code_verifier olmadan
+     /token uç noktasından belirteç alamaz.
+
+C. OpenID Connect (OIDC Core 1.0):
+   - Kimlik doğrulama katmanı (Identity Assertion) ve ID Token (JWT).
+   - Nonce parametresi: ID Token'ın tekrar kullanımına (CWE-294 Replay) karşı koruma.
+
+2. NEGATİF KONTROL SENARYO TEST SONUÇLARI
+--------------------------------------------------------------------------------
+Toplam Negatif Senaryo: 9 | Başarılı Engelleme: 9 | Başarısız: 0
+
+[PASS] NEG_01: Açık Yönlendirici (Open Redirector) Saldırısı — Beyaz Liste Dışı redirect_uri
+   Zafiyet Kodu : CWE-601: URL Redirection to Untrusted Site ('Open Redirector')
+   Beklenen Hata: InvalidRedirectURIError
+   Yakalanan    : InvalidRedirectURIError
+
+[PASS] NEG_02: PKCE Doğrulama Başarısızlığı (Çalıntı Kod ile Sahte Verifier Takası)
+   Zafiyet Kodu : CWE-287: Improper Authentication (Authorization Code Interception)
+   Beklenen Hata: PKCEVerificationFailedError
+   Yakalanan    : PKCEVerificationFailedError
+
+[PASS] NEG_03: Daha Önce Kullanılmış Yetkilendirme Kodunun Tekrar Sunulması (Replay)
+   Zafiyet Kodu : CWE-294: Authentication Bypass by Capture-replay
+   Beklenen Hata: AuthorizationCodeExpiredOrUsedError
+   Yakalanan    : AuthorizationCodeExpiredOrUsedError
+
+[PASS] NEG_04: Süresi Dolmuş Yetkilendirme Kodu ile Belirteç Takası
+   Zafiyet Kodu : CWE-294: Authentication Bypass by Capture-replay
+   Beklenen Hata: AuthorizationCodeExpiredOrUsedError
+   Yakalanan    : AuthorizationCodeExpiredOrUsedError
+
+[PASS] NEG_05: CSRF Saldırısı — İstemci Tarafında State Parametresi Uyuşmazlığı
+   Zafiyet Kodu : CWE-352: Cross-Site Request Forgery (CSRF)
+   Beklenen Hata: StateMismatchCSRFError
+   Yakalanan    : StateMismatchCSRFError
+
+[PASS] NEG_06: OIDC ID Token Nonce Uyuşmazlığı (Replay Saldırısı)
+   Zafiyet Kodu : CWE-294: Authentication Bypass by Capture-replay
+   Beklenen Hata: OIDCNonceMismatchError
+   Yakalanan    : OIDCNonceMismatchError
+
+[PASS] NEG_07: Yetersiz Kapsam (Scope) ile Korumalı API'ye Yetkisiz Erişim
+   Zafiyet Kodu : CWE-285: Improper Authorization (Insufficient Scope)
+   Beklenen Hata: InsufficientScopeError
+   Yakalanan    : InsufficientScopeError
+
+[PASS] NEG_08: Kayıtlı Olmayan Sahte İstemci Kimliği ile Yetkilendirme Talebi
+   Zafiyet Kodu : CWE-287: Improper Authentication
+   Beklenen Hata: InvalidClientError
+   Yakalanan    : InvalidClientError
+
+[PASS] NEG_09: Geçersiz veya Sahte Bearer Erişim Belirteci ile API Çağrısı
+   Zafiyet Kodu : CWE-287: Improper Authentication
+   Beklenen Hata: InvalidAccessTokenError
+   Yakalanan    : InvalidAccessTokenError
+
+3. SONUÇ VE MİMARİ KARNE
+--------------------------------------------------------------------------------
+RFC 7636 PKCE ve OIDC Core 1.0 mekanizmaları sıfır güvenlik açığıyla uygulanmıştır.
+Tüm birim testleri ve negatif saldırı senaryoları %100 başarıyla sonuçlanmıştır.
+Genel Değerlendirme: 100/100 (YETERLİ - MÜKEMMEL)

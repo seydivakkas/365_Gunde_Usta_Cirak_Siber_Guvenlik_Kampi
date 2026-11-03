@@ -1,0 +1,59 @@
+{
+  "guvenlik_skoru": 50.0,
+  "durum": "KRİTİK RİSK (ACİL MÜDAHALE GEREKLİ)",
+  "auditd_aktiflik": true,
+  "journald_depolama": "volatile",
+  "toplam_watch_kural": 2,
+  "toplam_syscall_kural": 1,
+  "toplam_bulgu": 4,
+  "kritik_bulgu_sayisi": 0,
+  "yuksek_bulgu_sayisi": 2,
+  "orta_bulgu_sayisi": 2,
+  "dusuk_bulgu_sayisi": 0,
+  "bulgular": [
+    {
+      "rule_id": "AUD-003",
+      "target": "/etc/sudoers",
+      "cwe": "CWE-778",
+      "mitre_attack": "T1548.003",
+      "severity": "HIGH",
+      "title": "Sudoers Dosyalarında Audit İzleme Kuralı Eksik",
+      "description": "/etc/sudoers dosyasındaki değişiklikler audit edilmemektedir. Yetki yükseltme kuralları tahrif edilebilir.",
+      "remediation_advice": "audit.rules içine '-w /etc/sudoers -p wa -k actions' satırını ekleyin.",
+      "deduction_points": 15.0
+    },
+    {
+      "rule_id": "AUD-005",
+      "target": "journald:Storage",
+      "cwe": "CWE-778",
+      "mitre_attack": "T1562.002",
+      "severity": "HIGH",
+      "title": "Journald Günlükleri Kalıcı Olarak Saklanmıyor (Storage!=persistent)",
+      "description": "journald storage değeri 'volatile'. Sistem yeniden başladığında loglar silinecektir.",
+      "remediation_advice": "/etc/systemd/journald.conf içinde 'Storage=persistent' direktifini yapılandırın.",
+      "deduction_points": 15.0
+    },
+    {
+      "rule_id": "AUD-006",
+      "target": "audit.rules:immutable_flag",
+      "cwe": "CWE-345",
+      "mitre_attack": "T1562.002",
+      "severity": "MEDIUM",
+      "title": "Audit Kurallarında Değiştirilemezlik Kilidi (-e 2) Eksik",
+      "description": "Audit kurallarının sonunda '-e 2' tanımlanmamış. Saldırgan root yetkisi aldığında kuralları silebilir.",
+      "remediation_advice": "audit.rules dosyasının en sonuna '-e 2' satırını ekleyerek kuralları kilitleyin.",
+      "deduction_points": 10.0
+    },
+    {
+      "rule_id": "AUD-007",
+      "target": "auditd.conf:disk_full_action",
+      "cwe": "CWE-778",
+      "mitre_attack": "T1562.002",
+      "severity": "MEDIUM",
+      "title": "Audit Disk Dolum Aksiyonu Yetersiz veya Tanımsız",
+      "description": "Audit diski dolduğunda alınacak aksiyon 'ignore' olarak atanmış. Log diski dolduğunda loglama duracaktır.",
+      "remediation_advice": "auditd.conf içinde 'disk_full_action = halt' veya 'single' olarak ayarlayın.",
+      "deduction_points": 10.0
+    }
+  ]
+}

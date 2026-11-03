@@ -1,0 +1,49 @@
+=== G080 NEGATİF GÜVENLİK KONTROLLERİ VE HATA YÖNETİMİ SAVUNMA RAPORU ===
+Toplam Senaryo: 9
+Başarılı Savunma: 9
+
+[PASS] NEG_01_FAIL_OPEN_PREVENTION_TEST
+  Açıklama : Hata durumunda guvenlik kontrolunun sessizce gecilmesini (fail-open) onleme ve kesin ret (fail-closed) kurali
+  Sonuç    : Fail-closed basariyla tetiklendi: Güvenlik politikası ihlali tespit edildi. Olay Kodu: SEC-ERR-43B2692A
+  Savunma  : Yakalanan veya beklenmeyen her hata durumunda erisim kesinlikle reddedilir, varsayilan durum Erisim Engellendi'dir.
+
+[PASS] NEG_02_STACK_TRACE_LEAKAGE_PROBE
+  Açıklama : Istemciye gonderilen hata yanitinda dosya yollari, satir numaralari veya ic kod bilgilerinin ifsa edilmemesi (CWE-209)
+  Sonuç    : Yigin izi gizlendi, guvenli kod verildi: SEC-ERR-9B465A13
+  Savunma  : Hata ayiklama yigin izi (stack trace) istemciye dondurulmez; istemciye yalnizca benzersiz olay referans kodu (or. SEC-ERR-8812) iletilir.
+
+[PASS] NEG_03_RESOURCE_EXHAUSTION_CLEANUP
+  Açıklama : Islem ortasinda hata firlatildiginda kaynaklarin (dosya, kilit, oturum) acik kalmasini onleyen deterministic temizlik
+  Sonuç    : Kritik IO hatasinda kaynak kilidi basariyla serbest birakildi.
+  Savunma  : try-finally ve context manager bloklari ile hata olussa dahi kaynaklar daima serbest birakilir.
+
+[PASS] NEG_04_UNHANDLED_EXCEPTION_SHIELD
+  Açıklama : Beklenmeyen sistem veya bellek hatalarinin guvenli katmanla sarilip fail-closed modunda yonetilmesi
+  Sonuç    : Beklenmeyen sistem hatasi en dis kalkanda karsilandi: SEC-ERR-412C356D
+  Savunma  : En dis katmandaki guvenlik kalkani bilinmeyen tum hatalari yakalayarak guvenli hata sablonuyla sarar.
+
+[PASS] NEG_05_AUTHENTICATION_CORRUPTION
+  Açıklama : Gecersiz kimlik bilgisi girdisiyle sistem davranisini bozma girisimi
+  Sonuç    : Bos/gecersiz kimlik bilgisi basariyla reddedildi.
+  Savunma  : Eksik veya gecersiz kimlik parametreleri dogrudan ozellesmis istisna uretir.
+
+[PASS] NEG_06_AUTHORIZATION_TAMPERING
+  Açıklama : Yetkisiz kullanicinin yonetici endpoint veya verisine erisim denemesi
+  Sonuç    : Yetkisiz rol erisimi AuthorizationDeniedException ile engellendi.
+  Savunma  : Rol yetkisi yetersiz oldugunda AuthorizationDeniedException ile islem durdurulur.
+
+[PASS] NEG_07_RATE_LIMIT_BURST_FLOOD
+  Açıklama : Kisa surede arka arkaya cok sayida hatali istek gondererek brute-force veya DoS uygulama
+  Sonuç    : Rate limit esigi asildi, 198.51.100.77 IP'si engellendi.
+  Savunma  : Esik degeri asan IP adresleri icin RateLimitExceededException uretilir ve istekler bloklanir.
+
+[PASS] NEG_08_INPUT_SANITIZATION_VIOLATION
+  Açıklama : Zararli komut ve ozel karakterler iceren girdiyle islem baslatma denemesi
+  Sonuç    : XSS/enjeksiyon kalibi InputSanitizationException ile engellendi.
+  Savunma  : Girdi dogrulama asamasinda zararli karakter tespit edildiginde islem baslatilmadan InputSanitizationException uretilir.
+
+[PASS] NEG_09_LOG_INJECTION_POISONING
+  Açıklama : Hata loglarini tahrif etmeye yonelik satir sonu ve kontrol karakteri enjeksiyonu (CWE-117)
+  Sonuç    : CRLF karakterleri logdan arindirildi: NormalHata [INFO] 2026-11-01 Admin logged in successfully
+  Savunma  : Hata mesajlari loglanmadan once CRLF ve terminal kacis karakterlerinden arindirilir.
+

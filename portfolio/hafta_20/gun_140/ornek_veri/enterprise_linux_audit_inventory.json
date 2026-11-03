@@ -1,0 +1,110 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "host_info": {
+    "hostname": "prod-sec-node01.corp.internal",
+    "os": "Linux 6.8.0-45-generic #45-Ubuntu SMP",
+    "architecture": "x86_64",
+    "profile": "CIS_Ubuntu_Linux_22.04_LTS_Server_L2"
+  },
+  "sudo_spec": {
+    "file_mode": "0440",
+    "defaults": [
+      "env_reset",
+      "mail_badpass",
+      "secure_path=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\""
+    ],
+    "rules": [
+      "%sudo ALL=(ALL:ALL) ALL",
+      "operator ALL=(root) /usr/bin/systemctl restart nginx"
+    ]
+  },
+  "pam_spec": {
+    "pwquality": {
+      "minlen": 14,
+      "dcredit": -1,
+      "ucredit": -1,
+      "lcredit": -1,
+      "ocredit": -1,
+      "retry": 3
+    },
+    "faillock": {
+      "deny": 5,
+      "unlock_time": 900,
+      "fail_interval": 900
+    },
+    "tmout_seconds": 900
+  },
+  "systemd_spec": {
+    "running_services": [
+      "sshd",
+      "auditd",
+      "systemd-journald",
+      "chrony",
+      "nftables",
+      "nginx"
+    ],
+    "monitored_units": {
+      "nginx.service": {
+        "NoNewPrivileges": true,
+        "ProtectSystem": "strict",
+        "ProtectHome": "yes",
+        "PrivateTmp": true,
+        "PrivateDevices": true
+      },
+      "api_gateway.service": {
+        "NoNewPrivileges": true,
+        "ProtectSystem": "strict",
+        "ProtectHome": "yes",
+        "PrivateTmp": true,
+        "PrivateDevices": true
+      }
+    }
+  },
+  "ssh_spec": {
+    "sshd_config": {
+      "PermitRootLogin": "no",
+      "PasswordAuthentication": "no",
+      "MaxAuthTries": 3,
+      "X11Forwarding": "no",
+      "ClientAliveInterval": 300,
+      "ClientAliveCountMax": 3
+    },
+    "private_key_mode": "0600",
+    "authorized_keys_mode": "0600"
+  },
+  "firewall_spec": {
+    "active": true,
+    "backend": "nftables",
+    "default_input_policy": "DROP",
+    "default_forward_policy": "DROP",
+    "stateful_conntrack": true,
+    "loopback_allowed": true,
+    "listening_ports": [
+      22,
+      443
+    ]
+  },
+  "audit_spec": {
+    "immutable_flag_enabled": true,
+    "watched_files": [
+      "/etc/shadow",
+      "/etc/passwd",
+      "/etc/sudoers",
+      "/etc/pam.d",
+      "/etc/ssh/sshd_config"
+    ],
+    "monitored_syscalls": [
+      "init_module",
+      "delete_module",
+      "adjtimex",
+      "settimeofday",
+      "clock_settime"
+    ]
+  },
+  "journal_spec": {
+    "Storage": "persistent",
+    "Compress": true,
+    "Seal": true,
+    "ForwardToSyslog": true
+  }
+}

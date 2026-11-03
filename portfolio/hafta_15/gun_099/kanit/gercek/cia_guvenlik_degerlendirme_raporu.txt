@@ -1,0 +1,27 @@
+===============================================================================================
+GÜN 099: CIA TRIAD VE GÜVENLİK NİTELİKLERİ KURUMSAL DEĞERLENDİRME RAPORU
+Tarih/Saat : 2026-11-02 01:41:44
+Standart   : ISO/IEC 27001 Bilgi Güvenliği, NIST SP 800-53, FIPS 140-3 Prensipleri
+===============================================================================================
+
+1. DEĞERLENDİRİLEN VARLIK: Örnek Finansal Transfer İşlemi (sample_transaction.json)
+   - Gizlilik Skoru        (Max 25): 25 / 25
+   - Bütünlük Skoru        (Max 25): 25 / 25
+   - Erişilebilirlik Skoru (Max 25): 25 / 25
+   - İnkar Edilemezlik Sk. (Max 25): 25 / 25
+   ----------------------------------------------------------------------
+   - TOPLAM GÜVENLİK SKORU (Max 100): 100 / 100
+   - DEĞERLENDİRME DURUMU           : PASS (KUSURSUZ UYUM)
+   - İHLAL SAYISI                   : 0
+
+2. KRİPTOGRAFİK MÜHÜR VE BÜTÜNLÜK PARAMETRELERİ
+   - Hesaplanan HMAC-SHA256 Mührü  : 0f1cae76f3495834a19ec3a61852446779e601e6c8e7760efa557e5af2ce0787
+   - Karşılaştırma Yöntemi         : hmac.compare_digest (Zamanlama Saldırılarına Dirençli)
+   - Denetim Zinciri Blok Derinliği: 2 Adet Blok Kilitlendi
+
+3. GÜVENLİK MİMARİSİ VE SAVUNMA PRENSİPLERİ ÖZETİ
+   - Gizlilik (Confidentiality): Açık metin hassas kart/parola taraması ve simetrik akış şifreleme.
+   - Bütünlük (Integrity): HMAC-SHA256 ile verinin aktarımda 1 bit dahi değişmediğinin ispatı.
+   - Erişilebilirlik (Availability): Kayan pencere hız sınırlayıcı ve 1 MB bellek tavan koruması.
+   - İnkar Edilemezlik (Non-Repudiation): Zaman damgalı, hash-bağlantılı blok denetim zinciri.
+===============================================================================================

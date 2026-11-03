@@ -1,0 +1,29 @@
+{
+  "surum": "1.0.0",
+  "algoritma": "SHA-256",
+  "imza_algoritmasi": "HMAC-SHA256",
+  "kok_dizin": "sample_project_tree",
+  "ornek_muhurlu_manifest": {
+    "olusturma_tarihi": "2026-11-02T02:30:00Z",
+    "toplam_dosya": 3,
+    "toplam_boyut_bayt": 82,
+    "dosyalar": [
+      {
+        "yol": "app.py",
+        "boyut_bayt": 24,
+        "sha256": "47a3dc1e2474db1c628e93d39fc73105342a780287ab66601ad02e9cfc683b51"
+      },
+      {
+        "yol": "config.json",
+        "boyut_bayt": 35,
+        "sha256": "252f58e6e58b859942a77ec86e1e82ef62b66236357878696ecae5e80fa983e2"
+      },
+      {
+        "yol": "docs/guide.md",
+        "boyut_bayt": 23,
+        "sha256": "63bbab8df348633785a9bc83f7a7ebdb716f9f30eec9562762a56763428d0959"
+      }
+    ],
+    "hmac_muhru": "d1e7c53fa0e6c278913e6488bc6b16e45873919ad778396ecf7b4618e5b87192"
+  }
+}

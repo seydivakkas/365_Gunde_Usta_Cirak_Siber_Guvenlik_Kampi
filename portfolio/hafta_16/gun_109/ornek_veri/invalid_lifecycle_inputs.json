@@ -1,0 +1,108 @@
+{
+  "aciklama": "PKI ve Sertifika Yaşam Döngüsü Negatif Test Senaryoları (9 Adet)",
+  "senaryolar": [
+    {
+      "id": "NEG_01_CSR_GEÇERSİZ_POP",
+      "baslik": "Geçersiz Proof-of-Possession (İmza Uyuşmazlığı)",
+      "zafiyet_kodu": "CWE-347",
+      "hata_tipi": "CSRSignatureVerificationError",
+      "veri": {
+        "subject_dn": {"CN": "sahte.ornek.local", "O": "Saldirgan AS", "C": "TR"},
+        "san_names": ["sahte.ornek.local"],
+        "sahte_imza": "ffffffffffffffffffffffffffffffffffffffff"
+      },
+      "beklenen_sonuc": "CSR başvurusu reddedilmeli; mülkiyet ispatı (PoP) imza doğrulaması başarısız olmalıdır."
+    },
+    {
+      "id": "NEG_02_CSR_EKSIK_SUBJECT",
+      "baslik": "Eksik Subject DN (Boş Common Name)",
+      "zafiyet_kodu": "CWE-20",
+      "hata_tipi": "InvalidCSRError",
+      "veri": {
+        "subject_dn": {"O": "Isimsiz AS", "C": "TR"},
+        "san_names": ["ornek.local"]
+      },
+      "beklenen_sonuc": "CSR'de en az bir Common Name (CN) veya geçerli SAN bulunması zorunlu olmalıdır."
+    },
+    {
+      "id": "NEG_03_IPTAL_EDILMIS_SERTIFIKA",
+      "baslik": "CRL/OCSP ile İptal Edilmiş Sertifikanın Kabulü",
+      "zafiyet_kodu": "CWE-299",
+      "hata_tipi": "CertificateRevokedError",
+      "veri": {
+        "seri_no": 9876543210,
+        "iptal_nedeni": "keyCompromise",
+        "durum": "REVOKED"
+      },
+      "beklenen_sonuc": "Doğrulama motoru iptal listesinde (CRL) veya OCSP'de yer alan sertifikayı derhal reddetmelidir."
+    },
+    {
+      "id": "NEG_04_SURESI_DOLMUS_SERTIFIKA",
+      "baslik": "Süresi Dolmuş Sertifika ile Bağlantı Kurulması",
+      "zafiyet_kodu": "CWE-298",
+      "hata_tipi": "CertificateExpiredError",
+      "veri": {
+        "gecerlilik_bitis": "2024-01-01T00:00:00Z",
+        "mevcut_zaman": "2026-11-02T03:00:00Z"
+      },
+      "beklenen_sonuc": "NotAfter tarihi geçmiş sertifika geçersiz sayılmalı ve reddedilmelidir."
+    },
+    {
+      "id": "NEG_05_HENUZ_GECERLI_OLMAYAN_SERTIFIKA",
+      "baslik": "Henüz Başlangıç Tarihi Gelmemiş Sertifika",
+      "zafiyet_kodu": "CWE-298",
+      "hata_tipi": "CertificateNotYetValidError",
+      "veri": {
+        "gecerlilik_baslangic": "2027-01-01T00:00:00Z",
+        "mevcut_zaman": "2026-11-02T03:00:00Z"
+      },
+      "beklenen_sonuc": "NotBefore tarihi gelecekte olan sertifika geçersiz sayılmalıdır."
+    },
+    {
+      "id": "NEG_06_OCSP_REPLAY_SALDIRISI",
+      "baslik": "OCSP Yanıtında Nonce Uyuşmazlığı / Replay Saldırısı",
+      "zafiyet_kodu": "CWE-294",
+      "hata_tipi": "OCSPNonceMismatchError",
+      "veri": {
+        "istek_nonce": "a1b2c3d4e5f60718",
+        "yanit_nonce": "9999999999999999"
+      },
+      "beklenen_sonuc": "OCSP yanıtındaki nonce ile istemci isteğindeki nonce uyuşmuyorsa yanıt replay olarak reddedilmelidir."
+    },
+    {
+      "id": "NEG_07_FAIL_OPEN_REVOCATION_BYPASS",
+      "baslik": "İptal Sunucusuna Erişilemediğinde Güvensiz Fail-Open Tutumu",
+      "zafiyet_kodu": "CWE-295",
+      "hata_tipi": "RevocationStatusUnknownError",
+      "veri": {
+        "ocsp_baglanti_hatasi": true,
+        "guvenlik_politikasi": "FAIL_CLOSED"
+      },
+      "beklenen_sonuc": "Kritik güvenlik altyapılarında fail-closed politikası gereği bilinmeyen iptal durumu hata fırlatmalıdır."
+    },
+    {
+      "id": "NEG_08_ACME_GECERSIZ_CHALLENGE",
+      "baslik": "ACME Alan Adı Doğrulama (Challenge) Hatası",
+      "zafiyet_kodu": "CWE-295",
+      "hata_tipi": "ACMEChallengeFailedError",
+      "veri": {
+        "alan_adi": "api.guvenli.local",
+        "beklenen_token": "acme_token_gizli_12345",
+        "sunulan_token": "yanlis_token_saldirgan"
+      },
+      "beklenen_sonuc": "ACME HTTP-01 veya DNS-01 token doğrulaması eşleşmediğinde sertifika ihraç edilmemelidir."
+    },
+    {
+      "id": "NEG_09_GUVENSIZ_OZEL_ANAHTAR_IZNI",
+      "baslik": "Özel Anahtar Dosyasında Güvensiz İzinler veya Bozuk Bütünlük",
+      "zafiyet_kodu": "CWE-311",
+      "hata_tipi": "InsecureKeyStorageError",
+      "veri": {
+        "dosya_izni": "0777",
+        "izin_verilen_maksimum": "0600",
+        "sifreli_mi": false
+      },
+      "beklenen_sonuc": "Özel anahtarın dünya geneline okunabilir/yazılabilir olması durumunda motor işlemi durdurmalıdır."
+    }
+  ]
+}

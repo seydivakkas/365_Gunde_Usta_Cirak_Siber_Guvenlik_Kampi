@@ -1,0 +1,33 @@
+=== G097 ÇEVRİMDIŞI (AIR-GAPPED) GÜVENLİK ARAÇ SETİ ENTEGRASYON VE DENETİM RAPORU ===
+Denetim Zamanı: 2026-11-02 01:13:27
+
+--- 1. HAVA BOŞLUKLU (AIR-GAP) SAĞLIK VE SIFIR BAĞIMLILIK DENETİMİ ---
+{
+  "durum": "AIRGAP_COMPLIANT",
+  "python_version": "3.14.3",
+  "version_check": "PASS",
+  "external_dependencies_count": 0,
+  "pure_standard_library": true,
+  "network_isolated": true,
+  "timestamp_utc": "2026-11-01 22:13:27Z"
+}
+
+--- 2. AĞ VARLIKLARI VE ŞEMA GÜVENLİĞİ DOĞRULAMASI ---
+[DOĞRULANDI] Asset: SCADA-PLC-01 | IP: 10.20.30.40 | Port: 502 | MAC: 00:1A:2B:3C:4D:5E
+[DOĞRULANDI] Asset: AIRGAP-HSM-02 | IP: 192.168.100.10 | Port: 443 | MAC: AA:BB:CC:DD:EE:FF
+
+--- 3. KRİPTOGRAFİK BÜTÜNLÜK (FIM TABAN ÇİZGİSİ) ---
+Hedef Dosya: ornek_veri/airgap_test_env/system_conf.ini
+SHA-256: 969df690581ff6f411a2510d4e3a26d531cda925a7a4fe0e0a6eea935aaf8155
+SHA-512: 5788d429517fadb27583791536860b5ff28d48180ff3a42137ed8aa0c291b2514f742b4b37af41a2c1e408c3e50be3ca40f4757d627be4afafb84a193ac1a849
+
+--- 4. DLP HASSAS VERİ MASKELEME ÇIKTISI ---
+2026-11-02 02:00:10 [SCADA_OP] Operator login auth: user="ah***@airgap-defense.local" tckn=123******50 ip=10.20.30.40
+2026-11-02 02:00:25 [AUDIT_SEC] Hardware key verified: token=**************** status=PASSED
+2026-11-02 02:01:05 [ALERT_PAY] Emergency procurement card: pan=453201******0366 phone=+90-532-444-2211
+
+Maskelenen PII İstatistikleri: {"tckn": 1, "credit_card": 1, "email": 1, "secret": 1}
+
+--- 5. ÇALIŞMA SÜRESİ VE BELLEK PERFORMANSI ---
+Dosya Hash Süresi: 0.144 ms | Tepe Bellek Tahsisatı: 197697 B
+SLA Bütçe Durumu: BAŞARILI (Eşik < 10.0 ms)

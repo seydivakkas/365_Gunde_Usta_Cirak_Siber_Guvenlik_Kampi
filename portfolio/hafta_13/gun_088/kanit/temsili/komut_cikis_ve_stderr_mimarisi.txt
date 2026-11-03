@@ -1,0 +1,50 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+========================================================================================
+           KOMUT ÇIKIŞ KODU, STDERR VE HATA YÖNETİMİ GÜVENLİK MİMARİSİ
+========================================================================================
+
++--------------------------------------------------------------------------------------+
+|                           İŞLETİM SİSTEMİ SÜREÇ YÜRÜTME                              |
+|   Komut: /usr/bin/security_tool --target "corp.internal"                             |
++--------------------------------------------------------------------------------------+
+                                          |
+                +-------------------------+-------------------------+
+                |                                                   |
+                v                                                   v
++-------------------------------+                   +-------------------------------+
+|    STANDART ÇIKTI (stdout)    |                   |     STANDART HATA (stderr)    |
+|    Dosya Tanımlayıcı: 1       |                   |     Dosya Tanımlayıcı: 2      |
+|    - Normal işlem verileri    |                   |    - Hata ve uyarı logları    |
+|    - Yapısal JSON / Tablolar  |                   |    - Arıza teşhis metinleri   |
++-------------------------------+                   +-------------------------------+
+                |                                                   |
+                |                                   +---------------+---------------+
+                |                                   |                               |
+                |                          [-] ZAAFİYETLİ:                 [+] GÜVENLİ:
+                |                          2> /dev/null (CWE-390)          2> audit_error.log
+                |                          "Parola: $PWD" (CWE-209)        Hassas Veri Maskeleme
+                |                          Hata körlüğü                    (Redaction - CWE-532)
+                |                                   |                               |
+                +-------------------------+---------+-------------------------------+
+                                          |
+                                          v
++--------------------------------------------------------------------------------------+
+|                     ÇIKIŞ KODU (EXIT STATUS / RETURN CODE)                           |
+|                                                                                      |
+|   [0]   BAŞARILI (Success)        -> Yürütme normal tamamlandı                       |
+|   [1]   GENEL HATA (Error)        -> Mantıksal veya girdi hatası                     |
+|   [2]   KABUK HATASI              -> Dahili komut (builtin) kullanım hatası          |
+|   [126] ÇALIŞTIRMA İZNİ YOK       -> Permission Denied / Non-executable binary       |
+|   [127] KOMUT BULUNAMADI          -> Command Not Found (PATH hijacking/missing)      |
+|   [128+N] SİNYAL İLE SONLANMA     -> SIGINT (130), SIGKILL (137), SIGTERM (143)      |
++--------------------------------------------------------------------------------------+
+                                          |
+                                          v
++--------------------------------------------------------------------------------------+
+|                   GÜVENLİ KABUK DENETİM VE BORU HATTI ZIRHI                          |
+|                                                                                      |
+|   - PIPESTATUS[] / $LASTEXITCODE Kontrolü (Boru hattında gizlenen hataları açığa çıkar)|
+|   - Sahte 'exit 0' (Fraudulent Exit) Yasağı                                          |
+|   - SIEM / Event Log Entegrasyonu: Exit code != 0 durumunda otomatik alarm           |
++--------------------------------------------------------------------------------------+

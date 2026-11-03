@@ -1,0 +1,21 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "rapor_tarihi": "2026-11-02T09:30:46.220917",
+  "report_id": "REP-EP-475171A9",
+  "endpoint_name": "CORP-W11-FINANCE-04",
+  "os_family": "Windows",
+  "role": "Kullanıcı İş İstasyonu",
+  "threat_index_score": 0.0,
+  "security_posture_level": "GÜVENLİ / SIKILAŞTIRILMIŞ (PASS)",
+  "threats_count": 0,
+  "threats": [],
+  "hardening_roadmap": [
+    "Sistem CIS Benchmark ve Microsoft Security Baseline standartlarına tam uygundur; ek acil sıkılaştırma adımı gerekmemektedir."
+  ],
+  "standart_referanslari": [
+    "MITRE ATT&CK for Enterprise Matrix v14",
+    "CIS Microsoft Windows 11 Enterprise Benchmark v3.0.0",
+    "CIS Ubuntu Linux 22.04 LTS Benchmark v1.0.0",
+    "Microsoft Security Baselines for Windows 11 and Windows Server"
+  ]
+}

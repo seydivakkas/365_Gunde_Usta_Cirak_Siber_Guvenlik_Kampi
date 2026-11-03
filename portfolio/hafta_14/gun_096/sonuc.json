@@ -1,0 +1,64 @@
+{
+  "gun": 96,
+  "baslik": "Güvenli betik kullanım belgeleri",
+  "hafta": 14,
+  "asama": 4,
+  "durum": "TAMAMLANDI",
+  "puan": 100,
+  "sonuc": "YETERLİ / PASS",
+  "rubrik": {
+    "kod_kalitesi": 20,
+    "guvenlik_ve_mimari": 40,
+    "kanit_ve_test": 25,
+    "dokumantasyon_ve_pedagoji": 15,
+    "toplam": 100
+  },
+  "test_metrikleri": {
+    "birim_testler": {
+      "toplam": 14,
+      "gecen": 14,
+      "kalan": 0,
+      "durum": "14/14 PASS",
+      "sure_saniye": 0.004
+    },
+    "negatif_kontroller": {
+      "toplam": 9,
+      "gecen": 9,
+      "kalan": 0,
+      "durum": "9/9 PASS (%100 Basari)"
+    }
+  },
+  "guvenlik_ve_zafiyet_metrikleri": {
+    "tespit_edilen_cwe_kodlari": [
+      "CWE-16: Configuration (Exit codes, parameter missing and documentation drift)",
+      "CWE-158: Improper Neutralization of Null Byte or Special Characters (Path Poisoning)",
+      "CWE-250: Execution with Unnecessary Privileges (Least Privilege Documentation)",
+      "CWE-400: Uncontrolled Resource Consumption (Schema Payload Limit 1MB)",
+      "CWE-843: Access of Resource Using Incompatible Type",
+      "CWE-1188: Insecure Default Initialization of Resource (Undocumented CLI Arguments)"
+    ]
+  },
+  "uretilen_dosyalar": [
+    "uygulama/__init__.py",
+    "uygulama/security_doc_generator.py",
+    "uygulama/docgen_cli.py",
+    "tests/__init__.py",
+    "tests/test_security_doc_generator.py",
+    "ornek_veri/sample_security_script.py",
+    "ornek_veri/script_security_schema.json",
+    "ornek_veri/invalid_doc_inputs.json",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "kanit/gercek/ornek_betik_kilavuzu.md",
+    "kanit/gercek/ornek_betik_yardim_metni.txt",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/temsili/guvenli_belgeleme_mimarisi.txt",
+    "kanit_uretici.py",
+    "ders.md",
+    "soru_cevap.md",
+    "rapor.md",
+    "README.md",
+    "sonuc.json",
+    "manifest.json"
+  ]
+}

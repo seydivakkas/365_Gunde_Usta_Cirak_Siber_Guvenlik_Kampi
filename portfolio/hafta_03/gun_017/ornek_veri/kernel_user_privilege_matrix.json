@@ -1,0 +1,105 @@
+{
+  "aciklama": "GÜN 017 - İşletim Sistemi Çekirdeği (Kernel Mode) ve Kullanıcı Modu (User Mode) Yetki ve İzin Matrisi",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "surum": "1.0.0",
+  "tarih": "2026-10-27",
+  "yetki_seviyeleri": {
+    "user_mode_ring3_standard": {
+      "ad": "Kullanıcı Kipi (Standart Kullanıcı - Medium Integrity)",
+      "halka": "Ring 3",
+      "bellek_erisim_siniri": "Yalnızca kendi sanal kullanıcı bellek alanı (0x0000000000000000 - 0x7FFFFFFFFFFF)",
+      "donanim_komutlari": "Sınırlı (CLI, STI, IN, OUT, HLT, MOV CR3 yasaktır)",
+      "izinler": {
+        "dosya_okuma_kendi_dizini": true,
+        "dosya_yazma_sistem_dizini": false,
+        "surucu_yukleme": false,
+        "fiziksel_bellek_okuma": false,
+        "diger_sureclere_kod_enjekte_etme": false,
+        "sistem_saati_degistirme": false,
+        "kayit_defteri_hklm_yazma": false
+      }
+    },
+    "user_mode_ring3_admin": {
+      "ad": "Kullanıcı Kipi (Yönetici - High Integrity / Elevated)",
+      "halka": "Ring 3",
+      "bellek_erisim_siniri": "Kullanıcı alanı; SeDebugPrivilege ile diğer kullanıcı süreçlerine erişebilir",
+      "donanim_komutlari": "Sınırlı (Yine Ring 3'tür; CPU doğrudan denetleyemez)",
+      "izinler": {
+        "dosya_okuma_kendi_dizini": true,
+        "dosya_yazma_sistem_dizini": true,
+        "surucu_yukleme": true,
+        "fiziksel_bellek_okuma": false,
+        "diger_sureclere_kod_enjekte_etme": true,
+        "sistem_saati_degistirme": true,
+        "kayit_defteri_hklm_yazma": true
+      }
+    },
+    "kernel_mode_ring0_kernel": {
+      "ad": "Çekirdek Kipi (Kernel / Ring 0 - ntoskrnl.exe / vmlinuz)",
+      "halka": "Ring 0",
+      "bellek_erisim_siniri": "Tüm fiziksel ve sanal bellek (0xFFFF800000000000 - 0xFFFFFFFFFFFFFFFF ve altı)",
+      "donanim_komutlari": "Tam yetki (MSR, CR0, CR3, CR4 kayıtçıları, interrupt tabloları)",
+      "izinler": {
+        "dosya_okuma_kendi_dizini": true,
+        "dosya_yazma_sistem_dizini": true,
+        "surucu_yukleme": true,
+        "fiziksel_bellek_okuma": true,
+        "diger_sureclere_kod_enjekte_etme": true,
+        "sistem_saati_degistirme": true,
+        "kayit_defteri_hklm_yazma": true
+      }
+    }
+  },
+  "bilinen_guvenliksiz_suruculer_byovd": [
+    {
+      "surucu_adi": "RTCore64.sys",
+      "uretici": "Micro-Star International (MSI)",
+      "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "zafiyet_turu": "Keyfi Fiziksel/Sanal Bellek Okuma/Yazma (Arbitrary Kernel Read/Write)",
+      "istismar_edildigi_tehditler": ["BlackCat (ALPHV) Ransomware", "RobbinHood Ransomware"],
+      "durum": "ENGEL_LISTESINDE_OLMALI"
+    },
+    {
+      "surucu_adi": "gdrv.sys",
+      "uretici": "Giga-Byte Technology",
+      "sha256": "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210",
+      "zafiyet_turu": "Doğrulanmamış IOCTL ile Çekirdek Bellek Ezme",
+      "istismar_edildigi_tehditler": ["EDR Killer Kötü Amaçlı Yazılımları"],
+      "durum": "ENGEL_LISTESINDE_OLMALI"
+    },
+    {
+      "surucu_adi": "clean_corp_filter.sys",
+      "uretici": "Kurumsal Guvenlik A.S.",
+      "sha256": "112233445566778899aabbccddeeff00112233445566778899aabbccddeeff00",
+      "zafiyet_turu": "Yok",
+      "istismar_edildigi_tehditler": [],
+      "durum": "GUVENLI_IMZALI"
+    }
+  ],
+  "sistem_cagrisi_isaretci_test_senaryolari": [
+    {
+      "senaryo_id": "SYSCALL-PTR-001",
+      "aciklama": "Kullanıcı alanında geçerli tampon göstericisi (ProbeForRead başarılı)",
+      "adres": "0x00007ffd12340000",
+      "boyut_byte": 1024,
+      "hedef_alan": "KULLANICI_ALANI",
+      "beklenen_sonuc": "GECERLI"
+    },
+    {
+      "senaryo_id": "SYSCALL-PTR-002",
+      "aciklama": "Çekirdek adres alanına sızmaya çalışan sahte kullanıcı göstericisi (SMEP/SMAP ihlali)",
+      "adres": "0xfffff80012340000",
+      "boyut_byte": 64,
+      "hedef_alan": "CEKIRDEK_ALANI",
+      "beklenen_sonuc": "ERISIM_ENGEL_GUVENLIK_IHLALI"
+    },
+    {
+      "senaryo_id": "SYSCALL-PTR-003",
+      "aciklama": "NULL Pointer dereference tetiklemeye çalışan gösterici (0x0)",
+      "adres": "0x0000000000000000",
+      "boyut_byte": 32,
+      "hedef_alan": "SIFIR_SAYFASI",
+      "beklenen_sonuc": "NULL_POINTER_ENGEL"
+    }
+  ]
+}

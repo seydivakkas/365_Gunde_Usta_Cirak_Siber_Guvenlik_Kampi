@@ -1,0 +1,91 @@
+{
+  "gun": 93,
+  "baslik": "Hashlib ile dosya dogrulama",
+  "toplam_dosya": 21,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "4391817069da090239a04c32f9465bdad8f66a6248f31b3cdbd83fcaefe95526",
+      "size": 5206
+    },
+    "ders.md": {
+      "sha256": "2006b34c26c125a6054ed2c5bb269bb051d8559a8557ddc3d2b4df5ef6abb998",
+      "size": 7326
+    },
+    "kanit_uretici.py": {
+      "sha256": "4031b0ecd53e79d4b81acd9718d046450f9fbc9312ce17ac54848506e4c8fae5",
+      "size": 9199
+    },
+    "rapor.md": {
+      "sha256": "35e07fce860632eeebab85eb3c9074c224f2eff23539a3f7bc6c4b64dc066d71",
+      "size": 3053
+    },
+    "sonuc.json": {
+      "sha256": "9ec243dfaa88e100531d4266a081b6b1c6b97bdb48479d07bdd7bd574e323a12",
+      "size": 2070
+    },
+    "soru_cevap.md": {
+      "sha256": "c3881eb76e838790ec07bbf7097be97ca939b45af5daefcc7438e44db85f2188",
+      "size": 8860
+    },
+    "kanit\\gercek\\butunluk_denetim_raporu.txt": {
+      "sha256": "69c64f83946253cba8399d87e6ddc533e1835dd6e599fbe53246ff9ff78dfbf0",
+      "size": 937
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "sha256": "7ea346b31eb1af64e4876fb6d17b4318de6e69fbd9975d449dc7a8f71dc9048d",
+      "size": 2541
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "sha256": "c6eca9cd399bed5728abf3fd9014dbdf73adb36f6c5821c04fca81d2ab4eb193",
+      "size": 1591
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "sha256": "932f03acd24558b9fc43dae5ab0ca9f8cb3bc3df5dcae34ffbc57ae1d05ae0ef",
+      "size": 3617
+    },
+    "kanit\\temsili\\hashlib_fim_mimarisi.txt": {
+      "sha256": "2711c3e2961b49b776f7f23723818a6358a651f57ac0c9d3be887dfda6983d60",
+      "size": 4190
+    },
+    "ornek_veri\\invalid_hash_inputs.json": {
+      "sha256": "4e75e9619e987591c7f3739b9fc39458737bdb0d6fe523ea3311c215d9a0e573",
+      "size": 3294
+    },
+    "ornek_veri\\known_checksums.json": {
+      "sha256": "9da2fb33e3c74ab0b54c947424f43a505ab45d0ff69b08ba17fb577c61e450f3",
+      "size": 854
+    },
+    "ornek_veri\\test_corpus\\app_payload.bin": {
+      "sha256": "520edcd1a6bbcc9ed9daf0e1f61443ff38df65ea119686d75c6d7469505c70b6",
+      "size": 264
+    },
+    "ornek_veri\\test_corpus\\policy_doc.txt": {
+      "sha256": "552ff1ced3bdf29bd644b71f38943936e30e54293fc3cceb5dfe549154910238",
+      "size": 471
+    },
+    "ornek_veri\\test_corpus\\secure_config.conf": {
+      "sha256": "6ab41d63c809129b15ab6ecb2e98a7b59899dd12bc634a6502a6eb644154e0b9",
+      "size": 343
+    },
+    "tests\\__init__.py": {
+      "sha256": "eb5ce4804cbf4e27cfa772e0d8f0725b576202b883ee8d4fbe5cb162e4d63080",
+      "size": 565
+    },
+    "tests\\test_file_integrity_verifier.py": {
+      "sha256": "daae2204574ffaf2020316c03fd008fc3bb76adc2f65dae714e6ff106f299328",
+      "size": 9176
+    },
+    "uygulama\\__init__.py": {
+      "sha256": "10e87b848e2dc347f8e613ce709d375b4f312ad170d7f55503906510bbbcf6a0",
+      "size": 586
+    },
+    "uygulama\\file_integrity_verifier.py": {
+      "sha256": "726dea5555fb9c04558d768a447fca69e1897286807268a7faf18589d939f52e",
+      "size": 16841
+    },
+    "uygulama\\fim_runner.py": {
+      "sha256": "6eab758ff93ec474081407d87d9fa2e95f14c240db3d111f383c36a312826132",
+      "size": 4254
+    }
+  }
+}

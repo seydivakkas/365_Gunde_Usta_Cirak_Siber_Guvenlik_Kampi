@@ -1,0 +1,23 @@
+================================================================================
+[+] Mini Proje 6: Ağ Adresleme Çalışma Kitabı ve Güvenlik Denetim Motoru Başlatılıyor...
+================================================================================
+[*] 1. Temel Ağ Topolojisi Yüklendi. Alt Ağlar ve Cihazlar Denetleniyor...
+    -> Temel topolojide bulunan anomali sayısı: 0
+
+[*] 2. Güvenlik Denetim Test Senaryoları (Anomali Enjeksiyonu) Yürütülüyor...
+    -> Enjekte Ediliyor: [SCN-ERR-01] Alt Ağ Dışında Ağ Geçidi Tanımı
+    -> Enjekte Ediliyor: [SCN-ERR-02] Kullanılamaz Network ID Ataması
+    -> Enjekte Ediliyor: [SCN-ERR-03] Kullanılamaz Broadcast IP Ataması
+    -> Enjekte Ediliyor: [SCN-ERR-04] IP Adresi Çakışması (Duplicate IP)
+    -> Enjekte Ediliyor: [SCN-ERR-05] Çakışan Alt Ağ Tanımı (Overlapping Subnet)
+
+[*] 3. Kapsamlı Güvenlik Denetimi Koşuluyor...
+    -> Toplam Tespit Edilen Güvenlik ve Yapılandırma Anomalisi: 5
+       [1] KRITIK | CAKISAN_ALT_AG | Kaynak: NET-03 (192.168.30.0/23) -> Alt ağlar arasında IP uzayı çakışması tespit edildi! Rota belirsizliği oluşur.
+       [2] KRITIK | GECERSIZ_OZEL_AG_GECIDI | Kaynak: DEV-ERR-01 -> Cihaz özel ağ geçidi 192.168.1.1, alt ağ (10.10.10.0/24) dışındadır!
+       [3] KRITIK | KULLANILAMAZ_IP_ATAMASI | Kaynak: DEV-ERR-02 -> Cihaza ağ adresi veya yayın adresi atanmış (172.16.20.0)! Konaklar bu IP'yi kullanamaz.
+       [4] KRITIK | KULLANILAMAZ_IP_ATAMASI | Kaynak: DEV-ERR-03 -> Cihaza ağ adresi veya yayın adresi atanmış (172.16.20.255)! Konaklar bu IP'yi kullanamaz.
+       [5] KRITIK | IP_CAKISMASI | Kaynak: DEV-ERR-04 -> IP adresi 10.10.10.2 hem DEV-02 hem de DEV-ERR-04 üzerinde tanımlıdır!
+
+[+] Ağ Çalışma Kitabı Raporu Başarıyla Kaydedildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_07\gun_049\kanit\gercek\ag_adresleme_calisma_kitabi_raporu.txt
+================================================================================

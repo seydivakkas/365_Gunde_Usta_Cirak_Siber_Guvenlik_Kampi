@@ -1,0 +1,33 @@
+test_01_valid_dataset_loading (test_ethernet_frame_analyzer.TestEthernetFrameAnalyzer.test_01_valid_dataset_loading)
+Geerli ÷rnek veri setinin 3 adet ereve ierdi­ini ve do­ruland²­²n² test eder. ... ok
+test_02_unicast_frame_dissection (test_ethernet_frame_analyzer.TestEthernetFrameAnalyzer.test_02_unicast_frame_dissection)
+ETH-001 erevesinin tek noktaya yay²n (Unicast) IPv4 erevesi oldu­unu do­rular. ... ok
+test_03_broadcast_arp_frame_dissection (test_ethernet_frame_analyzer.TestEthernetFrameAnalyzer.test_03_broadcast_arp_frame_dissection)
+ETH-002 erevesinin genel yay²n (Broadcast) ARP erevesi oldu­unu do­rular. ... ok
+test_04_vlan_tagged_frame_dissection (test_ethernet_frame_analyzer.TestEthernetFrameAnalyzer.test_04_vlan_tagged_frame_dissection)
+ETH-003 erevesinin 802.1Q VLAN etiketli ve VLAN ID 20 oldu­unu test eder. ... ok
+test_05_multicast_destination_mac_detection (test_ethernet_frame_analyzer.TestEthernetFrameAnalyzer.test_05_multicast_destination_mac_detection)
+ETH-003 hedef MAC adresinin (01:00:5E:...) ok noktaya yay²n (Multicast) oldu­unu do­rular. ... ok
+test_06_oui_vendor_resolution (test_ethernet_frame_analyzer.TestEthernetFrameAnalyzer.test_06_oui_vendor_resolution)
+OUI ÷neklerinin bilinen ³reticilerle (VMware) do­ru e■le■ti­ini test eder. ... ok
+test_07_minimum_frame_size_padding (test_ethernet_frame_analyzer.TestEthernetFrameAnalyzer.test_07_minimum_frame_size_padding)
+ETH-002 iin 18 baytl²k dolgu ile asgari 64 bayt s²n²r²n²n sa­land²­²n² do­rular. ... ok
+test_08_markdown_report_generation (test_ethernet_frame_analyzer.TestEthernetFrameAnalyzer.test_08_markdown_report_generation)
+▄retilen Markdown raporunun zorunlu ba■l²klar², tablolar² ve lisans bildirimini ierdi­ini do­rular. ... ok
+test_09_negative_multicast_source_mac (test_ethernet_frame_analyzer.TestEthernetFrameAnalyzer.test_09_negative_multicast_source_mac)
+Negatif Kontrol: Kaynak MAC adresinde I/G bitinin 1 olmas² durumunda hata f²rlat²ld²­²n² do­rular. ... ok
+test_10_negative_invalid_mac_hex_format (test_ethernet_frame_analyzer.TestEthernetFrameAnalyzer.test_10_negative_invalid_mac_hex_format)
+Negatif Kontrol: MAC adresinde geersiz karakterler bulundu­unda hata f²rlat²ld²­²n² do­rular. ... ok
+test_11_negative_invalid_ethertype_format (test_ethernet_frame_analyzer.TestEthernetFrameAnalyzer.test_11_negative_invalid_ethertype_format)
+Negatif Kontrol: EtherType alan²n²n format² bozuksa hata f²rlat²ld²­²n² test eder. ... ok
+test_12_negative_undersized_runt_frame (test_ethernet_frame_analyzer.TestEthernetFrameAnalyzer.test_12_negative_undersized_runt_frame)
+Negatif Kontrol: Toplam ereve boyutu 64 bayt²n alt²nda (Runt) oldu­unda hata verildi­ini do­rular. ... ok
+test_13_negative_missing_mandatory_field (test_ethernet_frame_analyzer.TestEthernetFrameAnalyzer.test_13_negative_missing_mandatory_field)
+Negatif Kontrol: Zorunlu alanlardan biri eksik oldu­unda hata f²rlat²ld²­²n² do­rular. ... ok
+test_14_negative_non_dict_frame_entry (test_ethernet_frame_analyzer.TestEthernetFrameAnalyzer.test_14_negative_non_dict_frame_entry)
+Negatif Kontrol: Ãereve listesinde dize veya say² geti­inde sistemin hata ³retti­ini do­rular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.003s
+
+OK

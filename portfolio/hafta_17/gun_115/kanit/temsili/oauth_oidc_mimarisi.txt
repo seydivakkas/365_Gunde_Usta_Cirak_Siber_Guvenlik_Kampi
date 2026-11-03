@@ -1,0 +1,38 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
++------------------------------------------------------------------------------+
+|              GÜN 115: OAUTH 2.0 PKCE VE OPENID CONNECT (OIDC) MİMARİSİ       |
+|               YETKİ DEVRİ VE FEDERATİF KİMLİK DOĞRULAMA AKIŞI                |
++------------------------------------------------------------------------------+
+
+    +-------------------+       1. /authorize (code_challenge S256 + state + nonce)
+    |  İstemci (Client  | ---------------------------------------------> +-----------------------+
+    |  SPA / Mobil App) | <--------------------------------------------- | Yetkilendirme         |
+    +---------+---------+       2. 302 Redirect (auth_code + state)      | Sunucusu / IdP        |
+              |                                                          | (Authorization Server)|
+              |                 3. /token (auth_code + code_verifier)    +-----------+-----------+
+              | ------------------------------------------------------->             |
+              | <-------------------------------------------------------             |
+              |         4. Token Yanıtı:                                             |
+              |            - access_token (API yetkisi)                              |
+              |            - id_token (JWT kimlik belgesi)                           |
+              |                                                                      |
+              | 5. GET /api/v1/protected (Bearer access_token)                       |
+              v                                                                      |
+    +-------------------+                                                            |
+    |  Kaynak Sunucusu  | <----------------------------------------------------------+
+    | (Resource Server) |       6. Token Geçerlilik ve Kapsam (Scope) Doğrulaması
+    +-------------------+
+
+GÜVENLİK SAVUNMA MEKANİZMALARI:
+1. PKCE (RFC 7636): code_challenge = BASE64URL(SHA256(code_verifier)) -> CWE-287 Kod Çalma Savunması
+2. State Parametresi: İstemci tarafından üretilen tek kullanımlık rastgele dizge -> CWE-352 CSRF Savunması
+3. Nonce Parametresi: ID Token içindeki tek kullanımlık değer -> CWE-294 Replay Savunması
+4. Katı Whitelist: redirect_uri kesin eşleşme kontrolü -> CWE-601 Open Redirector Savunması
+5. Scope Sınırları: Kapsam dışı API çağrılarının engellenmesi -> CWE-285 Yetki İhlali Savunması
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

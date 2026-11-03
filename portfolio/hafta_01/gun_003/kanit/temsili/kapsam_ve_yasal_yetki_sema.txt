@@ -1,0 +1,43 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+SİBER GÜVENLİK 365 | GÜN 003: ETİK, YASAL YETKİ VE SIZMA TESTİ KAPSAM SINIRLARI
+================================================================================
+
+Bu görsel/şematik model, Beyaz Şapkalı Hacker (Etik Güvenlik Uzmanı) ile
+Siyah Şapkalı Saldırgan arasındaki yasal sınırı ve Kapsam Dokümanı (RoE) mimarisini
+gösteren temsili bir illüstrasyondur.
+
+                     +---------------------------------------+
+                     |        YASAL SÖZLEŞME & ROE          |
+                     |  (Rules of Engagement / Yazılı Yetki) |
+                     +-------------------+-------------------+
+                                         |
+         +-------------------------------+-------------------------------+
+         |                                                               |
+         v [İZİNLİ BÖLGE: IN-SCOPE]                                      v [YASAKLI BÖLGE: OUT-OF-SCOPE]
++---------------------------------------+               +---------------------------------------+
+|  HEDEFLER:                            |               |  HEDEFLER:                            |
+|  - Test Web Sunucusu (192.168.10.50)  |               |  - Canlı Ödeme Sunucusu (Production)  |
+|  - Geliştirme DB (192.168.10.51)      |               |  - Active Directory DC (192.168.10.254)|
+|  - Test Ağı (192.168.10.48/28)        |               |  - Ağ Omurgası / Firewall (192.168.10.1)|
+|                                       |               |  - Üçüncü Taraf İnternet (8.8.8.8)   |
+|  İZİNLİ FAALİYETLER:                  |               |                                       |
+|  - Port ve Servis Taraması            |               |  KESİNLİKLE YASAK FAALİYETLER:        |
+|  - Web Zafiyet Tespiti                |               |  - DoS / DDoS (Hizmeti çökertme)      |
+|  - Yapılandırma İncelemesi            |               |  - Veri Silme / Değiştirme            |
+|  - Zararsız PoC (Proof of Concept)    |               |  - Sosyal Mühendislik / Oltalama      |
++---------------------------------------+               +---------------------------------------+
+         |                                                               |
+         v                                                               v
+   [YASAL VE MEŞRU]                                           [TCK MADDE 243-244 SUÇU!]
+ "Sözleşmeli Güvenlik Denetimi"                             "Bilişim Sistemini Engelleme, Bozma,
+                                                             Verileri Yok Etme veya Değiştirme"
+
+================================================================================
+HOCANIN KRİTİK DERS NOTU:
+"Evlat, kulağına küpe olsun: Etik hackerlığı korsanlıktan ayıran şey
+kullandığın araçlar değil; imzaladığın KAPSAM BELGESİDİR (Rules of Engagement).
+Nmap, Wireshark, Burp Suite gibi araçlar nötrdür. Kendi evindeki sanal makineye
+yaparsan öğrenirsin; okulun sunucusuna izinsiz yaparsan TCK 243'ten yargılanırsın.
+'İyi niyetliydim, açığı söyleyecektim' savunması mahkemede 1 saniye bile dinlenmez!"
+================================================================================

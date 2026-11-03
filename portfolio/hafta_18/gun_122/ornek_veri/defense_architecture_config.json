@@ -1,0 +1,213 @@
+{
+  "architecture_name": "Atlas Kurumsal Savunma Derinliği Mimarisi (7 Katman)",
+  "controls": [
+    {
+      "control_id": "CTRL-PHY-01",
+      "name": "Biyometrik Veri Merkezi Giriş Kapısı ve Mantrap",
+      "layer": "PHYSICAL",
+      "control_type": "PREVENTIVE",
+      "effectiveness": 0.98,
+      "supported_attacks": ["INSIDER_THREAT"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-PHY-02",
+      "name": "7/24 CCTV ve Hareket Sensörü İzleme",
+      "layer": "PHYSICAL",
+      "control_type": "DETECTIVE",
+      "effectiveness": 0.95,
+      "supported_attacks": ["INSIDER_THREAT"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-PERIM-01",
+      "name": "Yeni Nesil Güvenlik Duvarı (NGFW / Statefull Inspection)",
+      "layer": "PERIMETER",
+      "control_type": "PREVENTIVE",
+      "effectiveness": 0.90,
+      "supported_attacks": ["RANSOMWARE", "DATA_EXFILTRATION"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-PERIM-02",
+      "name": "Ağ Tabanlı Saldırı Tespit Sistemi (NIDS / Zeek)",
+      "layer": "PERIMETER",
+      "control_type": "DETECTIVE",
+      "effectiveness": 0.88,
+      "supported_attacks": ["RANSOMWARE", "DATA_EXFILTRATION", "CREDENTIAL_STUFFING"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-NET-01",
+      "name": "Mikro-Segmentasyon ve ZTNA Yazılım Tanımlı Ağ",
+      "layer": "INTERNAL_NETWORK",
+      "control_type": "PREVENTIVE",
+      "effectiveness": 0.92,
+      "supported_attacks": ["RANSOMWARE", "INSIDER_THREAT"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-NET-02",
+      "name": "NetFlow ve Doğu-Batı Ağ Trafiği Anomali Analizörü",
+      "layer": "INTERNAL_NETWORK",
+      "control_type": "DETECTIVE",
+      "effectiveness": 0.85,
+      "supported_attacks": ["RANSOMWARE", "DATA_EXFILTRATION"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-HOST-01",
+      "name": "Uç Nokta Tespit ve Otomatik Müdahale (EDR/XDR)",
+      "layer": "HOST",
+      "control_type": "PREVENTIVE",
+      "effectiveness": 0.95,
+      "supported_attacks": ["RANSOMWARE", "INSIDER_THREAT"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-HOST-02",
+      "name": "Ana Makine Bütünlük Denetleyicisi (FIM / Osquery)",
+      "layer": "HOST",
+      "control_type": "DETECTIVE",
+      "effectiveness": 0.90,
+      "supported_attacks": ["RANSOMWARE"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-HOST-03",
+      "name": "Otomatik Karantina ve İmaj Yenileme Playbook",
+      "layer": "HOST",
+      "control_type": "CORRECTIVE",
+      "effectiveness": 0.92,
+      "supported_attacks": ["RANSOMWARE"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-APP-01",
+      "name": "Web Uygulama Güvenlik Duvarı (WAF - ModSecurity / Cloudflare)",
+      "layer": "APPLICATION",
+      "control_type": "PREVENTIVE",
+      "effectiveness": 0.92,
+      "supported_attacks": ["SQL_INJECTION", "CREDENTIAL_STUFFING"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-APP-02",
+      "name": "Parametreli Sorgular ve ORM Katı Girdi Doğrulama",
+      "layer": "APPLICATION",
+      "control_type": "PREVENTIVE",
+      "effectiveness": 0.99,
+      "supported_attacks": ["SQL_INJECTION"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-APP-03",
+      "name": "API Ağ Geçidi Hız Sınırlama ve İstek Günlükleme",
+      "layer": "APPLICATION",
+      "control_type": "DETECTIVE",
+      "effectiveness": 0.88,
+      "supported_attacks": ["SQL_INJECTION", "CREDENTIAL_STUFFING"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-DATA-01",
+      "name": "Durağan Veri Şifreleme (AES-256 Encryption at Rest)",
+      "layer": "DATA",
+      "control_type": "PREVENTIVE",
+      "effectiveness": 0.99,
+      "supported_attacks": ["DATA_EXFILTRATION", "SQL_INJECTION"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-DATA-02",
+      "name": "Veri Kaybı Önleme Ajanı (Endpoint & Network DLP)",
+      "layer": "DATA",
+      "control_type": "DETECTIVE",
+      "effectiveness": 0.86,
+      "supported_attacks": ["DATA_EXFILTRATION"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-DATA-03",
+      "name": "Değiştirilemez Çevrimdışı Yedekleme (Immutable Backup)",
+      "layer": "DATA",
+      "control_type": "CORRECTIVE",
+      "effectiveness": 0.98,
+      "supported_attacks": ["RANSOMWARE"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-ID-01",
+      "name": "Donanım Tabanlı Çok Faktörlü Kimlik Doğrulama (FIDO2 / MFA)",
+      "layer": "IDENTITY",
+      "control_type": "PREVENTIVE",
+      "effectiveness": 0.96,
+      "supported_attacks": ["CREDENTIAL_STUFFING", "INSIDER_THREAT"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-ID-02",
+      "name": "Kullanıcı Davranış Analitiği (UEBA)",
+      "layer": "IDENTITY",
+      "control_type": "DETECTIVE",
+      "effectiveness": 0.85,
+      "supported_attacks": ["INSIDER_THREAT", "CREDENTIAL_STUFFING"],
+      "is_active": true
+    },
+    {
+      "control_id": "CTRL-ID-03",
+      "name": "Oturum Açma Uyarı Banner'ı ve Hukuki İkaz Metni",
+      "layer": "IDENTITY",
+      "control_type": "DETERRENT",
+      "effectiveness": 0.40,
+      "supported_attacks": ["INSIDER_THREAT"],
+      "is_active": true
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario_id": "SCN-RANSOM-01",
+      "name": "Kurumsal Ağa Sızan Fidye Yazılımı Zinciri",
+      "category": "RANSOMWARE",
+      "steps": [
+        {
+          "step_number": 1,
+          "target_layer": "PERIMETER",
+          "technique": "VPN Zafiyeti Üzerinden Giriş",
+          "evasion_power": 0.65
+        },
+        {
+          "step_number": 2,
+          "target_layer": "INTERNAL_NETWORK",
+          "technique": "SMB Yanal Yayılma (Lateral Movement)",
+          "evasion_power": 0.70
+        },
+        {
+          "step_number": 3,
+          "target_layer": "HOST",
+          "technique": "Process Hollowing ve Şifreleme",
+          "evasion_power": 0.80
+        }
+      ]
+    },
+    {
+      "scenario_id": "SCN-SQLI-01",
+      "name": "Web Uygulaması Üzerinden Veritabanı İhlali",
+      "category": "SQL_INJECTION",
+      "steps": [
+        {
+          "step_number": 1,
+          "target_layer": "APPLICATION",
+          "technique": "WAF Evasion Karakter Kodlamalı SQLi",
+          "evasion_power": 0.75
+        },
+        {
+          "step_number": 2,
+          "target_layer": "DATA",
+          "technique": "Kredi Kartı Verilerini Toplu Çekme",
+          "evasion_power": 0.70
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "gun": 34,
+  "tarih": "2026-10-27",
+  "baslik": "Dosya türleri, metadata ve MIME",
+  "asama": "Aşama 02 — Sistem ve Ağ Güvenliği Temelleri",
+  "hafta": 5,
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "puan_detay": {
+    "kriter_1": 20,
+    "kriter_2": 40,
+    "kriter_3": 25,
+    "kriter_4": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "kanitlar": {
+    "gercek": [
+      "portfolio/hafta_05/gun_034/kanit/gercek/test_sonuclari.txt",
+      "portfolio/hafta_05/gun_034/kanit/gercek/komut_ve_cikis.txt",
+      "portfolio/hafta_05/gun_034/kanit/gercek/metadata_ve_mime_denetim_raporu.txt",
+      "portfolio/hafta_05/gun_034/kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "portfolio/hafta_05/gun_034/kanit/temsili/dosya_imzalari_ve_mime_mimarisi.txt"
+    ]
+  },
+  "kod_dosyalari": [
+    "portfolio/hafta_05/gun_034/uygulama/file_metadata_mime_analyzer.py",
+    "portfolio/hafta_05/gun_034/tests/test_file_metadata_mime_analyzer.py"
+  ],
+  "dokumanlar": [
+    "portfolio/hafta_05/gun_034/ders.md",
+    "portfolio/hafta_05/gun_034/soru_cevap.md",
+    "portfolio/hafta_05/gun_034/rapor.md",
+    "portfolio/hafta_05/gun_034/README.md"
+  ],
+  "kazanimlar": [
+    "Dosya adı uzantılarının yüzeysel bir etiket olduğu, gerçek kimliğin sihirli baytlarda (Magic Bytes) saklı olduğu kavrandı.",
+    "G034-SC1 gereğince dosya adı uzantısından bağımsız olarak imza ve MIME gibi metadata içerdiği, bu bilgilerin kolayca değiştirilebileceği temellendirildi.",
+    "G034-SC2 gereğince bağımsız laboratuvarda kontrollü girdi, sihirli bayt eşleştirmesi, beklenen çıktı ve negatif kontrol metodolojisi uygulandı.",
+    "G034-SC3 gereğince uzantı-imza uyuşmazlığı (T1036.008), çift uzantı saldırıları (T1036.007) ve metadata tahrifatı tespit edilip savunma kılavuzu oluşturuldu.",
+    "PE, ELF, PDF, PNG, JPEG, ZIP ve Plain Text formatları başlık düzeyinde ayrıştırıldı.",
+    "Bozuk şema içeren negatif veri setinde 6 hatalı kayıt ve 0 baytlık boş dosya güvenle işlendi.",
+    "14 birim test 0.132 saniyede %100 başarıyla tamamlandı, 100/100 tam puan tescillendi."
+  ],
+  "ozel_not": "G034-SC1, SC2 ve SC3 isterleri sihirli bayt motoru, uzantı uyuşmazlığı analizi ve metadata güvenliği ile başarıyla tamamlandı."
+}

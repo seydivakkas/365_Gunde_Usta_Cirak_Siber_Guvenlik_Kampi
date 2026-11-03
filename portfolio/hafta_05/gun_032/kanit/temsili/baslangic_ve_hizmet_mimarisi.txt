@@ -1,0 +1,94 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+Konu: Gün 32 — Başlangıç Uygulamaları, Hizmet Yönetimi ve Kalıcılık Noktaları Mimarisi
+Amaç: İşletim sistemi başlangıç mekanizmaları, servis denetim hiyerarşisi ve saldırganların
+      yetki yükseltme (LPE) / kalıcılık (Persistence) amacıyla istismar ettiği noktaların
+      kavramsal mimari şeması.
+
++---------------------------------------------------------------------------------------+
+|              İŞLETİM SİSTEMİ BAŞLATMA VE HİZMET YÖNETİMİ MİMARİSİ                     |
++---------------------------------------------------------------------------------------+
+
+                        +----------------------------+
+                        |      BIOS / UEFI BOOT      |
+                        +--------------+-------------+
+                                       |
+                                       v
+                        +----------------------------+
+                        | Windows Boot Manager / GRUB|
+                        +--------------+-------------+
+                                       |
+                   +-------------------+-------------------+
+                   | (Windows)                             | (Linux)
+                   v                                       v
+         +-------------------+                   +-------------------+
+         |   winload.exe     |                   | vmlinuz + initramfs|
+         +---------+---------+                   +---------+---------+
+                   |                                       |
+                   v                                       v
+         +-------------------+                   +-------------------+
+         |   ntoskrnl.exe    |                   | systemd (PID 1)   |
+         +---------+---------+                   +---------+---------+
+                   |                                       |
+                   v                                       |
+         +-------------------+                             |
+         |   smss.exe        |                             |
+         +---------+---------+                             |
+                   |                                       |
+                   v                                       |
+         +-------------------+                             |
+         |  wininit.exe      |                             |
+         +---------+---------+                             |
+                   |                                       |
+         +---------+---------+                             |
+         |                   |                             |
+         v                   v                             v
++-----------------+ +-----------------+          +-------------------+
+|  services.exe   | |    lsass.exe    |          | systemd Services  |
+|  (SCM Engine)   | |  (Security Auth)|          | (/etc/systemd/..) |
++--------+--------+ +-----------------+          +---------+---------+
+         |                                                 |
+         +-----------------------------+                   v
+         |                             |         +-------------------+
+         v                             v         | Cron Jobs         |
++-----------------+           +-----------------+ | (/etc/cron* / ...) |
+| Windows Services|           | Svchost Groups  | +-------------------+
+| (sc.exe / SCM)  |           | (Service Hosts) |
++--------+--------+           +-----------------+
+         |
+         v
++---------------------------------------------------------------------------------------+
+| SALDIRI VE KALICILIK (PERSISTENCE) RİSK NOKTALARI                                    |
++---------------------------------------------------------------------------------------+
+|                                                                                       |
+|  [1] Tırnaksız Servis Yolu (Unquoted Service Path - T1574.009)                        |
+|      Örnek: C:\Program Files\Vulnerable App\service.exe                               |
+|      Zafiyet: SCM sırasıyla C:\Program.exe, C:\Program Files\Vulnerable.exe arar.     |
+|      Sonuç  : SYSTEM yetkisinde ayrıcalık yükseltme (LPE).                            |
+|                                                                                       |
+|  [2] Kayıt Defteri Otomatik Başlatma (Registry Run Keys - T1547.001)                 |
+|      Konum: HKLM\...\Run | HKCU\...\Run                                               |
+|      Zafiyet: Kullanıcı dizinlerinden (Temp, AppData) gizlice arka plan çalıştırma.   |
+|                                                                                       |
+|  [3] İsim Sahteciliği ve Benzetme (Masquerading - T1036)                             |
+|      Örnek: svch0st.exe, lsasss.exe, System32 dışındaki sahte ikililer.               |
+|      Zafiyet: Analistleri yanıltma, güvenlik operasyonlarını körleştirme.             |
+|                                                                                       |
+|  [4] Savunmayı Zayıflatma (Impair Defenses - T1562.001)                               |
+|      Örnek: WinDefend, MpsSvc servislerini Stopped / Disabled yapma.                 |
+|      Zafiyet: Güvenlik duvarı ve antivirüs motorunu devre dışı bırakarak yayılma.     |
+|                                                                                       |
++---------------------------------------------------------------------------------------+
+| DEFANSİF EN İYİ UYGULAMALAR (DEFENSIVE BEST PRACTICES)                               |
++---------------------------------------------------------------------------------------+
+|  1. Bütün servis dosya yollarını mutlaka çift tırnak içine alınız.                    |
+|  2. En az ayrıcalık (Least Privilege): Servisleri zorunlu olmadıkça SYSTEM ile değil,|
+|     NETWORK SERVICE, LOCAL SERVICE veya sanal hesaplarla (Virtual Accounts) çalıştırın.|
+|  3. Gelişigüzel hizmet kapatmayın; bağımlılık zincirini bozarak kararsızlık yaratmayın|
+|  4. Kayıt defteri Run anahtarlarını ve Scheduled Task listelerini Sysinternals       |
+|     Autoruns ve EDR ajanları ile sürekli taban çizgisi (baseline) farkına tabi tutun.|
++---------------------------------------------------------------------------------------+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

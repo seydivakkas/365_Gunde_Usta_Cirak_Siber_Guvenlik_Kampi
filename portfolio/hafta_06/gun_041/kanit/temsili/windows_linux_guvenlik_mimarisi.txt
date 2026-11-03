@@ -1,0 +1,54 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Bu görsel/metin mimari şeması yalnızca eğitim amaçlı kavramsal modellemedir.
+
+================================================================================
+G041: MİNİ PROJE 5 — WINDOWS VE LINUX KARŞILAŞTIRMALI GÜVENLİK MİMARİSİ
+================================================================================
+
+        +------------------------------------------------------------------+
+        |            KURUMSAL SİBER GÜVENLİK SAVUNMA DÜZLEMİ               |
+        |              (10 Standart Göstergeli Envanter)                   |
+        +------------------------------------------------------------------+
+                                        |
+                 +----------------------+----------------------+
+                 |                                             |
+                 v                                             v
++-----------------------------------+         +-----------------------------------+
+|      MICROSOFT WINDOWS SERVER     |         |        LINUX UBUNTU SERVER        |
+|            (Server 2022)          |         |            (22.04 LTS)            |
++-----------------------------------+         +-----------------------------------+
+| 1. Kimlik: Active Directory/LAPS  |         | 1. Kimlik: PAM / SSH Keys Ed25519 |
+| 2. Yetki: NTFS DACL/SACL & SIDs   |         | 2. Yetki: POSIX ACL & AppArmor    |
+| 3. Ayrıcalık: UAC & SePrivileges  |         | 3. Ayrıcalık: sudoers / No-Root   |
+| 4. Çekirdek: VBS / HVCI / DEP     |         | 4. Çekirdek: KASLR / Lockdown     |
+| 5. İzolasyon: NT SERVICE & PPL    |         | 5. İzolasyon: systemd Sandboxing  |
+| 6. Ağ: WFAS Gelişmiş Güvenlik     |         | 6. Ağ: nftables & Fail2ban        |
+| 7. Şifreleme: BitLocker (TPM 2.0) |         | 7. Şifreleme: LUKS2 & dm-crypt    |
+| 8. Olay Log: Sysmon & Event 4688  |         | 8. Olay Log: auditd & Journald    |
+| 9. Yama: WSUS Kalite Güncelleme   |         | 9. Yama: Unattended-Upgrades      |
+| 10. EDR: Defender / ASR Kuralları |         | 10. EDR: Wazuh / Rootkit Hunter   |
++-----------------------------------+         +-----------------------------------+
+                 |                                             |
+                 +----------------------+----------------------+
+                                        |
+                                        v
+                 +---------------------------------------------+
+                 |    MERKEZİ GÜVENLİK YÖNETİMİ & SIEM         |
+                 |  - Normalleştirilmiş Posture Karşılaştırması|
+                 |  - Ortak Güvenlik Kural Çatısı (NIST/CIS)   |
+                 |  - Otomatik Fark ve Sapma Analizi (Drift)   |
+                 +---------------------------------------------+
+
+================================================================================
+AÇIKLAMA NOTLARI:
+- Windows tarafında Active Directory, Kerberos ve yerel parola yönetiminde LAPS
+  kimlik güvenliğinin omurgasını oluşturur. Çekirdek seviyesinde VBS/HVCI güçlüdür.
+- Linux tarafında açık kaynak modüler yapı, systemd kum havuzlama (sandboxing),
+  POSIX ACL ve zorunlu erişim denetimi (AppArmor/SELinux) ile süreç izolasyonunda
+  daha granüler ve hafif bir güvenlik profili sunar.
+================================================================================

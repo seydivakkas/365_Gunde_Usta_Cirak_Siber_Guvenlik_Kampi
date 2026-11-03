@@ -1,0 +1,44 @@
+================================================================================
+GERÇEK YÜRÜTME KANITI — KOMUT VE ÇIKIŞ
+================================================================================
+Tarih/Saat : 2026-10-26T19:36:56.571903
+İşletim Sis: Windows-11-10.0.26300-SP0
+Python     : 3.14.3
+Komut      : C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest portfolio/hafta_02/gun_008/tests/test_vm_security_auditor.py -v
+Çıkış Kodu : 0
+--------------------------------------------------------------------------------
+STDOUT:
+
+--------------------------------------------------------------------------------
+STDERR:
+test_01_altin_standart_pozitif_kontrol (portfolio.hafta_02.gun_008.tests.test_vm_security_auditor.TestVMSecurityAuditor.test_01_altin_standart_pozitif_kontrol)
+POZ�T�F KONTROL: Tam sertle�tirilmi�, izole bir analiz VM'i denetlendi�inde ... ok
+test_02_bridged_ag_negatif_kontrol (portfolio.hafta_02.gun_008.tests.test_vm_security_auditor.TestVMSecurityAuditor.test_02_bridged_ag_negatif_kontrol)
+NEGAT�F KONTROL: A� adapt�r� 'Bridged' olarak ayarland���nda, ... ok
+test_03_promiscuous_mod_negatif_kontrol (portfolio.hafta_02.gun_008.tests.test_vm_security_auditor.TestVMSecurityAuditor.test_03_promiscuous_mod_negatif_kontrol)
+NEGAT�F KONTROL: A� kart�nda Promiscuous mod 'Allow_All' yap�ld���nda, ... ok
+test_04_izole_vm_internet_erisim_negatif_kontrol (portfolio.hafta_02.gun_008.tests.test_vm_security_auditor.TestVMSecurityAuditor.test_04_izole_vm_internet_erisim_negatif_kontrol)
+NEGAT�F KONTROL: KR�T�K_�ZOLE seviyesindeki analiz makinesine do�rudan internet ... ok
+test_05_pano_paylasimi_vm_escape_kontrol (portfolio.hafta_02.gun_008.tests.test_vm_security_auditor.TestVMSecurityAuditor.test_05_pano_paylasimi_vm_escape_kontrol)
+NEGAT�F KONTROL: Pano payla��m� 'Bidirectional' yap�ld���nda, ... ok
+test_06_surukle_birak_escape_kontrol (portfolio.hafta_02.gun_008.tests.test_vm_security_auditor.TestVMSecurityAuditor.test_06_surukle_birak_escape_kontrol)
+NEGAT�F KONTROL: S�r�kle ve b�rak 'Bidirectional' yap�ld���nda, ... ok
+test_07_paylasilan_klasor_felaket_kontrol (portfolio.hafta_02.gun_008.tests.test_vm_security_auditor.TestVMSecurityAuditor.test_07_paylasilan_klasor_felaket_kontrol)
+NEGAT�F KONTROL: Konak sistemin C:\ k�k dizini VM ile ReadWrite payla��l�rsa, ... ok
+test_08_3d_hizlandirma_risk_kontrol (portfolio.hafta_02.gun_008.tests.test_vm_security_auditor.TestVMSecurityAuditor.test_08_3d_hizlandirma_risk_kontrol)
+NEGAT�F KONTROL: 3D donan�m h�zland�rma a��kken GPU s�r�c� zafiyet y�zeyi ... ok
+test_09_snapshot_politikasi_eksik_kontrol (portfolio.hafta_02.gun_008.tests.test_vm_security_auditor.TestVMSecurityAuditor.test_09_snapshot_politikasi_eksik_kontrol)
+NEGAT�F KONTROL: Anl�k g�r�nt� politikas� 'Yok' yap�ld���nda, ... ok
+test_10_anti_vm_mac_evasion_kontrol (portfolio.hafta_02.gun_008.tests.test_vm_security_auditor.TestVMSecurityAuditor.test_10_anti_vm_mac_evasion_kontrol)
+NEGAT�F KONTROL: VirtualBox'�n varsay�lan MAC adresi (08:00:27) kullan�ld���nda, ... ok
+test_11_gecersiz_sema_ve_alan_eksikligi (portfolio.hafta_02.gun_008.tests.test_vm_security_auditor.TestVMSecurityAuditor.test_11_gecersiz_sema_ve_alan_eksikligi)
+HATA Y�NET�M�: Zorunlu alanlardan biri eksik oldu�unda VMSecurityValidationError f�rlat�lmal�d�r. ... ok
+test_12_olmayan_dosya_hatasi (portfolio.hafta_02.gun_008.tests.test_vm_security_auditor.TestVMSecurityAuditor.test_12_olmayan_dosya_hatasi)
+HATA Y�NET�M�: Disk �zerinde bulunmayan bir dosya yolu verildi�inde FileNotFoundError f�rlat�lmal�d�r. ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.040s
+
+OK
+
+================================================================================

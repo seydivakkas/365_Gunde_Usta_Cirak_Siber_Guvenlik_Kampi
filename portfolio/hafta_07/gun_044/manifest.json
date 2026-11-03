@@ -1,0 +1,18 @@
+{
+  "README.md": "aeb2255fdff9f7984afaeafd00335cc9e589bc03026901c3de4634c99a3ca9d2",
+  "ders.md": "c33db08be7a2c74d7bb9a54e743ff3522d8f66c6ce9077e8d4da1d7cf534a8cc",
+  "rapor.md": "c2d579bdfd2f6ad11b90a4c7f5d887e7bb400b400525d1a52ff86733fc9636d4",
+  "sonuc.json": "a5d1e9eeec1b28b76057dff7481869ea26e44b017d3a3b021078772899ba89a6",
+  "soru_cevap.md": "dd28a352d42075f4c148fb61a98f83ac56de696fe72ae5c9bdc78fdb02d7fbb6",
+  "kanit/gercek/ethernet_cerceve_analiz_raporu.txt": "629edf07938da3c285a85b3c635fc38f96b5efa630853ae9be853b9e8e98aa37",
+  "kanit/gercek/komut_ve_cikis.txt": "3cb944c393317291ee97db8f0d40bd3911eed82945ce028fa837fb0a768eb67b",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "f124fd4c54e1f935a53120404d832cf97329de8813995d848530a72b43f0ce20",
+  "kanit/gercek/test_sonuclari.txt": "59d76b6e9867e3207cd839bda5e5401fb71671f89c8e4b8dd939e57482a24792",
+  "kanit/temsili/ethernet_cerceve_mimarisi.txt": "9bb137c2ebf58c53b974acec5009da0f7fed4194e31d65a2b2bce75f3b23f6a4",
+  "ornek_veri/corrupted_ethernet_frames.json": "5f899cde13788b15f4d45cd312f96c022fa2c26ea145eedebdbb43bfc8fb2776",
+  "ornek_veri/sample_ethernet_frames.json": "111bd3986e25157bce295d78462f5fc56e923bbb88f6efd024ffa63af4c10885",
+  "tests/__init__.py": "f6fb62f29866cdda4001b08bcec9bbd41c9e00d702a449fb7b220ca24f55d434",
+  "tests/test_ethernet_frame_analyzer.py": "32a492009ffc8b05645c1bb93038ffd2372027b99dda68f622e201ea9648dcaf",
+  "uygulama/__init__.py": "2fff42774eb88547fce3121fefbf26c02da977e26183492d2264fe042037e727",
+  "uygulama/ethernet_frame_analyzer.py": "47518b5353e43354ec4b619f203529745f624a12605da4b80108be41c71890bd"
+}

@@ -1,0 +1,82 @@
+================================================================================
+GERÇEK KANIT — KOMUT ÇALIŞTIRMA VE SİSTEM ÇIKTILARI
+Tarih: 2026-10-27
+Aşama 02: Sistem, Bellek ve Düşük Seviyeli Güvenlik
+Hafta 03, Gün 018: Süreç, Thread ve Hizmet Kavramları
+================================================================================
+
+[ORTAM BİLGİSİ]
+Python Sürümü : Python 3.14.0a2
+İşletim Sistemi: Windows 11 Enterprise (10.0.26300 AMD64)
+Gözlemlenen Süreçler: PID 48532 (python.exe), PID 4 (System)
+Gözlemlenen Hizmet  : ADPSvc (Session 0 İzolasyonu)
+
+--------------------------------------------------------------------------------
+1. KOMUT 1: Canlı Süreç ve Sistem Hizmeti Envanter Probu (--live - G018-SC2)
+--------------------------------------------------------------------------------
+Komut:
+python portfolio/hafta_03/gun_018/uygulama/process_thread_service_security_auditor.py --live
+
+Çıktı:
+{
+  "toplama_zamani": "2026-10-27T01:45:00.658234",
+  "isletim_sistemi": "Windows",
+  "ornek_kullanici_surecleri": [
+    {
+      "pid": 48532,
+      "ad": "python.exe",
+      "ppid": 45972,
+      "rol": "Kullanıcı Modu Analiz Süreci (User Process 1)",
+      "izolasyon": "Özel Sanal Adres Alanı (VAS) Tahsis Edilmiş"
+    },
+    {
+      "pid": 4,
+      "ad": "System",
+      "rol": "Gözlemlenen Kullanıcı/Sistem Süreci (User Process 2)",
+      "izolasyon": "Ayrı Sayfa Tablosu (CR3) ile İzole Edilmiş"
+    }
+  ],
+  "ornek_sistem_hizmetleri": [
+    {
+      "hizmet_adi": "ADPSvc",
+      "oturum_id": 0,
+      "tip": "Windows Arka Plan Hizmeti (Session 0 İzolasyonu)",
+      "durum": "RUNNING / Calisiyor"
+    }
+  ],
+  "mimari_kural": "Süreçler izole bellek alanlarına (VAS) sahiptir; hizmetler Session 0'da etkileşimsiz çalışır."
+}
+
+--------------------------------------------------------------------------------
+2. KOMUT 2: Süreç, Hizmet ve İş Parçacığı Güvenlik Denetimi
+--------------------------------------------------------------------------------
+Komut:
+python portfolio/hafta_03/gun_018/uygulama/process_thread_service_security_auditor.py --sample portfolio/hafta_03/gun_018/ornek_veri/process_thread_service_inventory.json --baseline portfolio/hafta_03/gun_018/ornek_veri/service_security_baseline.json
+
+Çıktı:
+========================================================================
+GÜN 018: SÜREÇ, İŞ PARÇACIĞI VE HİZMET GÜVENLİK DENETİMİ
+========================================================================
+Denetim Zamanı : 2026-10-27T01:45:07.430375
+Genel Sonuç    : IHLAL_VAR
+Hizmet Sayısı  : 3
+Zafiyetli Svc  : 2 adet riskli hizmet tespit edildi!
+------------------------------------------------------------------------
+CANLI SİSTEM SÜREÇ VE SERVİS ENVANTERİ (G018-SC2):
+  [Süreç] PID: 41960  Ad: python.exe       Rol: Kullanıcı Modu Analiz Süreci (User Process 1)
+  [Süreç] PID: 4      Ad: System           Rol: Gözlemlenen Kullanıcı/Sistem Süreci (User Process 2)
+  [Servis] Ad: ADPSvc               Oturum: 0 Durum: RUNNING / Calisiyor
+------------------------------------------------------------------------
+HİZMET GÜVENLİK DENETİM BULGULARI:
+  [KRITIK] VulnBakimServisi (LocalSystem (NT AUTHORITY\SYSTEM)):
+    - Unquoted Service Path saptandı! Aday tuzak yollar: C:\Program.exe, C:\Program Files\Kurumsal.exe, C:\Program Files\Kurumsal Bakim.exe, C:\Program Files\Kurumsal Bakim Yazilimi\agent.exe
+    - Hizmet ikili dosyasının bulunduğu klasöre standart kullanıcıların yazma izni var (Zayıf Klasör İzni)!
+    - Hizmet en yüksek ayrıcalıklı hesapla (NT AUTHORITY\SYSTEM) çalışıyor; ele geçirilirse tam sistem kontrolü sağlanır.
+  [DUSUK] GuvenliKriptoServisi (NT AUTHORITY\LocalService):
+  [YUKSEK] W32Time (NT AUTHORITY\LocalService):
+    - Unquoted Service Path saptandı! Aday tuzak yollar: C:\Windows\System32\svchost.exe.exe, C:\Windows\System32\svchost.exe -k.exe
+------------------------------------------------------------------------
+İŞ PARÇACIĞI YARIŞ DURUMU (RACE CONDITION) DENEYİ:
+  Kilitsiz : YARIŞ TESTİ TAMAMLANDI
+  Kilitli  : GÜVENLİ (Mutex ile Veri Bütünlüğü Korundu)
+========================================================================

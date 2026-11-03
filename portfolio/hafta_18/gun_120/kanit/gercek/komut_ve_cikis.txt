@@ -1,0 +1,50 @@
+======================================================================
+GÜN 120: STRIDE & DREAD CLI KOMUT VE ÇIKTI GÜNLÜĞÜ
+Tarih: 2026-11-02T05:58:31.167283
+======================================================================
+
+--- KOMUT ÇALIŞTIRILIYOR ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/stride_cli.py model --apply-mitigations
+
+
+[STDERR]
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_120\uygulama\stride_cli.py", line 24, in <module>
+    from uygulama.stride_threat_engine import (
+    ...<5 lines>...
+    )
+ModuleNotFoundError: No module named 'uygulama'
+
+[ÇIKIŞ KODU]: 1
+======================================================================
+
+--- KOMUT ÇALIŞTIRILIYOR ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/stride_cli.py dread -d 9 -r 8 -e 7 -a 9 -disc 8
+
+
+[STDERR]
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_120\uygulama\stride_cli.py", line 24, in <module>
+    from uygulama.stride_threat_engine import (
+    ...<5 lines>...
+    )
+ModuleNotFoundError: No module named 'uygulama'
+
+[ÇIKIŞ KODU]: 1
+======================================================================
+
+--- KOMUT ÇALIŞTIRILIYOR ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/stride_cli.py model --ignore-errors
+
+
+[STDERR]
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_120\uygulama\stride_cli.py", line 24, in <module>
+    from uygulama.stride_threat_engine import (
+    ...<5 lines>...
+    )
+ModuleNotFoundError: No module named 'uygulama'
+
+[ÇIKIŞ KODU]: 1
+======================================================================
+

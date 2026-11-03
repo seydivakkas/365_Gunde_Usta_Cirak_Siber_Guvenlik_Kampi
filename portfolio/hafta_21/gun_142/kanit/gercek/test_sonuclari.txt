@@ -1,0 +1,43 @@
+=== GÜN 142 / CVSS TEMEL METRİKLERİ: BİRİM TEST SONUÇLARI ===
+Tarih/Saat : 2026-11-02T15:32:09.570298
+Toplam Test: 15
+Başarılı   : 15
+Hatalı     : 0
+Geçen Süre : 0.0012 saniye
+
+--- DETAYLI YÜRÜTME DÖKÜMÜ ---
+test_01_parse_valid_vector (test_cvss_base_metrics.TestCvssBaseEngine.test_01_parse_valid_vector)
+Test 01: Geçerli bir CVSS v3.1 vektör dizesinin doğru ayrıştırıldığını doğrular. ... ok
+test_02_parse_vector_missing_prefix (test_cvss_base_metrics.TestCvssBaseEngine.test_02_parse_vector_missing_prefix)
+Test 02: Hatalı sürüm öneki içeren vektörde ValueError fırlatıldığını doğrular. ... ok
+test_03_parse_vector_missing_metric (test_cvss_base_metrics.TestCvssBaseEngine.test_03_parse_vector_missing_metric)
+Test 03: Zorunlu 8 metrikten birinin eksik olması durumunda hata fırlatıldığını doğrular. ... ok
+test_04_parse_vector_invalid_metric_value (test_cvss_base_metrics.TestCvssBaseEngine.test_04_parse_vector_invalid_metric_value)
+Test 04: Geçersiz metrik değerlerinde (örn: AV:X) ValueError fırlatıldığını test eder. ... ok
+test_05_calculate_log4shell_max_score_10 (test_cvss_base_metrics.TestCvssBaseEngine.test_05_calculate_log4shell_max_score_10)
+Test 05: Log4Shell (CVE-2021-44228) vektörünün 10.0 ve CRITICAL verdiğini doğrular. ... ok
+test_06_calculate_regresshion_score_8_1 (test_cvss_base_metrics.TestCvssBaseEngine.test_06_calculate_regresshion_score_8_1)
+Test 06: regreSSHion (CVE-2024-6387) vektörünün tam 8.1 ve HIGH verdiğini test eder. ... ok
+test_07_calculate_heartbleed_score_7_5 (test_cvss_base_metrics.TestCvssBaseEngine.test_07_calculate_heartbleed_score_7_5)
+Test 07: Heartbleed (CVE-2014-0160) vektörünün tam 7.5 ve HIGH verdiğini doğrular. ... ok
+test_08_calculate_zero_impact_none_severity (test_cvss_base_metrics.TestCvssBaseEngine.test_08_calculate_zero_impact_none_severity)
+Test 08: Hiçbir güvenlik etkisi olmayan (C:N/I:N/A:N) zafiyetin 0.0 ve NONE verdiğini test eder. ... ok
+test_09_roundup_edge_cases (test_cvss_base_metrics.TestCvssBaseEngine.test_09_roundup_edge_cases)
+Test 09: FIRST Roundup yuvarlama fonksiyonunun sınır durumlarını doğrular. ... ok
+test_10_scope_changed_impact_multiplier (test_cvss_base_metrics.TestCvssBaseEngine.test_10_scope_changed_impact_multiplier)
+Test 10: Kapsam Değiştiğinde (S:C) 1.08 katsayısının ve değişen formülün uygulandığını doğrular. ... ok
+test_11_compare_vectors_scope_impact (test_cvss_base_metrics.TestCvssBaseEngine.test_11_compare_vectors_scope_impact)
+Test 11: İki vektör karşılaştırıldığında Scope değişim farkının doğru hesaplandığını test eder. ... ok
+test_12_compare_vectors_auth_impact (test_cvss_base_metrics.TestCvssBaseEngine.test_12_compare_vectors_auth_impact)
+Test 12: Yetki seviyesi None'dan High'a çıktığında skorun düştüğünü test eder. ... ok
+test_13_batch_evaluate_distribution (test_cvss_base_metrics.TestCvssBaseEngine.test_13_batch_evaluate_distribution)
+Test 13: Toplu vektör değerlendirmesinde istatistiksel dağılımın hesaplandığını doğrular. ... ok
+test_14_metric_breakdown_descriptions (test_cvss_base_metrics.TestCvssBaseEngine.test_14_metric_breakdown_descriptions)
+Test 14: İnsan tarafından okunabilir metrik açıklamalarının eksiksiz üretildiğini doğrular. ... ok
+test_15_all_benchmark_vectors_verified (test_cvss_base_metrics.TestCvssBaseEngine.test_15_all_benchmark_vectors_verified)
+Test 15: Benchmark dosyasındaki tüm gerçek dünya vektörlerinin resmî skorlarla %100 uyuştuğunu doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

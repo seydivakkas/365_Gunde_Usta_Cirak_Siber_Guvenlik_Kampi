@@ -1,0 +1,117 @@
+==============================================================================
+G026: PATH VE ORTAM DEĞİŞKENLERİ DENETLEYİCİSİ KOMUT VE ÇIKIŞ KANITI
+Çalıştırma Zamanı: 2026-10-27 07:24:36
+==============================================================================
+
+### 1. GÜVENSİZ GELİŞTİRİCİ PROFİLİ GÜVENLİK DENETİMİ (--audit)
+$ python portfolio\hafta_04\gun_026\uygulama\path_environment_security_auditor.py --audit --rules portfolio\hafta_04\gun_026\ornek_veri\path_security_baseline_rules.json --profiles portfolio\hafta_04\gun_026\ornek_veri\sample_environment_profiles.json --profile-name guvensiz_gelistirici_profili
+======================================================================
+PATH VE ORTAM DE─Ş─░┼ŞKENLER─░ G├£VENL─░K DENET─░M─░: guvensiz_gelistirici_profili
+======================================================================
+Denetim Zaman─▒     : 2026-10-27T04:24:36Z
+PATH Dizin Say─▒s─▒  : 6
+Ortam De─şi┼şkeni    : 7
+Toplam ─░hlal       : 5
+Kritik ─░hlal       : 3
+Uyumluluk Skoru    : %61.54
+----------------------------------------------------------------------
+TESP─░T ED─░LEN BULGULAR VE ─░Y─░LE┼ŞT─░RME:
+
+[KRITIK] PATH_BAGIL_YOL_IHLALI -> Hedef: PATH S─▒ra: 1 ('.')
+   A├ğ─▒klama   : PATH arama listesinde ge├ğerli dizin ('.') veya bo┼ş ayra├ğ bulundu! Sald─▒rgan bulundu─şu dizine sahte ikili (Trojan) koyarak yetki y├╝kseltebilir.
+   Standart   : CWE-426: Untrusted Search Path
+   ─░yile┼ştirme: PATH de─şi┼şkeninden '.' ve bo┼ş ayra├ğlar─▒ ('::') derhal temizleyin.
+
+[KRITIK] PATH_YAZILABILIR_DIZIN_IHLALI -> Hedef: PATH S─▒ra: 2 ('/tmp')
+   A├ğ─▒klama   : Herkese yaz─▒labilir ortak dizin ('/tmp') PATH i├ğerisine eklenmi┼ş! Herhangi bir kullan─▒c─▒ me┼şru komutlar─▒n ├Ân├╝ne sahte ikili yerle┼ştirebilir.
+   Standart   : CWE-427: Uncontrolled Search Path Element
+   ─░yile┼ştirme: '/tmp' dizinini sistem PATH listesinden derhal kald─▒r─▒n.
+
+[KRITIK] YUKLEYICI_ENJEKSIYON_RISKI -> Hedef: LD_PRELOAD=/opt/custom_libs/hook.so
+   A├ğ─▒klama   : Tehlikeli dinamik k├╝t├╝phane ba─şlay─▒c─▒ de─şi┼şkeni ('LD_PRELOAD') aktif! S├╝re├ğlerin payla┼ş─▒ml─▒ k├╝t├╝phaneleri hook edilerek kod enjeksiyonu yap─▒labilir.
+   Standart   : CWE-114: Process Control (Dynamic Linker Hijacking)
+   ─░yile┼ştirme: unset LD_PRELOAD komutu ile de─şi┼şkeni sistemden kald─▒r─▒n.
+
+[YUKSEK] ORTAMDA_ACIK_PAROLA_SIZINTISI -> Hedef: DB_PASSWORD
+   A├ğ─▒klama   : Ortam de─şi┼şkeninde ('DB_PASSWORD') a├ğ─▒k metin kimlik/parola verisi saklan─▒yor! T├╝m alt s├╝re├ğler ve /proc/PID/environ dosyas─▒ bu s─▒rr─▒ okuyabilir.
+   Standart   : CWE-526: Information Exposure Through Environmental Variables
+   ─░yile┼ştirme: Gizli anahtarlar─▒ ortam de─şi┼şkenleri yerine g├╝venli s─▒r y├Âneticisi (Vault, Keyring) ile saklay─▒n.
+
+[YUKSEK] ORTAMDA_ACIK_PAROLA_SIZINTISI -> Hedef: AWS_SECRET_KEY
+   A├ğ─▒klama   : Ortam de─şi┼şkeninde ('AWS_SECRET_KEY') a├ğ─▒k metin kimlik/parola verisi saklan─▒yor! T├╝m alt s├╝re├ğler ve /proc/PID/environ dosyas─▒ bu s─▒rr─▒ okuyabilir.
+   Standart   : CWE-526: Information Exposure Through Environmental Variables
+   ─░yile┼ştirme: Gizli anahtarlar─▒ ortam de─şi┼şkenleri yerine g├╝venli s─▒r y├Âneticisi (Vault, Keyring) ile saklay─▒n.
+======================================================================
+
+### 2. GÜVENLİ SUNUCU PROFİLİ GÜVENLİK DENETİMİ (--audit)
+$ python portfolio\hafta_04\gun_026\uygulama\path_environment_security_auditor.py --audit --rules portfolio\hafta_04\gun_026\ornek_veri\path_security_baseline_rules.json --profiles portfolio\hafta_04\gun_026\ornek_veri\sample_environment_profiles.json --profile-name guvenli_sunucu_profili
+======================================================================
+PATH VE ORTAM DE─Ş─░┼ŞKENLER─░ G├£VENL─░K DENET─░M─░: guvenli_sunucu_profili
+======================================================================
+Denetim Zaman─▒     : 2026-10-27T04:24:36Z
+PATH Dizin Say─▒s─▒  : 6
+Ortam De─şi┼şkeni    : 6
+Toplam ─░hlal       : 0
+Kritik ─░hlal       : 0
+Uyumluluk Skoru    : %100.0
+----------------------------------------------------------------------
+TESP─░T ED─░LEN BULGULAR VE ─░Y─░LE┼ŞT─░RME:
+======================================================================
+
+### 3. GÜVENSİZ PROFİL JSON ÇIKTISI (--audit --json)
+$ python portfolio\hafta_04\gun_026\uygulama\path_environment_security_auditor.py --audit --rules portfolio\hafta_04\gun_026\ornek_veri\path_security_baseline_rules.json --profiles portfolio\hafta_04\gun_026\ornek_veri\sample_environment_profiles.json --profile-name guvensiz_gelistirici_profili --json
+{
+  "denetim_zamani": "2026-10-27T04:24:36Z",
+  "toplam_path_dizin_sayisi": 6,
+  "toplam_ortam_degiskeni_sayisi": 7,
+  "toplam_ihlal_sayisi": 5,
+  "kritik_ihlal_sayisi": 3,
+  "uyumluluk_skoru_yuzde": 61.54,
+  "bulgular": [
+    {
+      "kategori": "PATH_BAGIL_YOL_IHLALI",
+      "hedef": "PATH S─▒ra: 1 ('.')",
+      "risk_seviyesi": "KRITIK",
+      "cwe_id": "CWE-426: Untrusted Search Path",
+      "aciklama": "PATH arama listesinde ge├ğerli dizin ('.') veya bo┼ş ayra├ğ bulundu! Sald─▒rgan bulundu─şu dizine sahte ikili (Trojan) koyarak yetki y├╝kseltebilir.",
+      "iyilestirme": "PATH de─şi┼şkeninden '.' ve bo┼ş ayra├ğlar─▒ ('::') derhal temizleyin."
+    },
+    {
+      "kategori": "PATH_YAZILABILIR_DIZIN_IHLALI",
+      "hedef": "PATH S─▒ra: 2 ('/tmp')",
+      "risk_seviyesi": "KRITIK",
+      "cwe_id": "CWE-427: Uncontrolled Search Path Element",
+      "aciklama": "Herkese yaz─▒labilir ortak dizin ('/tmp') PATH i├ğerisine eklenmi┼ş! Herhangi bir kullan─▒c─▒ me┼şru komutlar─▒n ├Ân├╝ne sahte ikili yerle┼ştirebilir.",
+      "iyilestirme": "'/tmp' dizinini sistem PATH listesinden derhal kald─▒r─▒n."
+    },
+    {
+      "kategori": "YUKLEYICI_ENJEKSIYON_RISKI",
+      "hedef": "LD_PRELOAD=/opt/custom_libs/hook.so",
+      "risk_seviyesi": "KRITIK",
+      "cwe_id": "CWE-114: Process Control (Dynamic Linker Hijacking)",
+      "aciklama": "Tehlikeli dinamik k├╝t├╝phane ba─şlay─▒c─▒ de─şi┼şkeni ('LD_PRELOAD') aktif! S├╝re├ğlerin payla┼ş─▒ml─▒ k├╝t├╝phaneleri hook edilerek kod enjeksiyonu yap─▒labilir.",
+      "iyilestirme": "unset LD_PRELOAD komutu ile de─şi┼şkeni sistemden kald─▒r─▒n."
+    },
+    {
+      "kategori": "ORTAMDA_ACIK_PAROLA_SIZINTISI",
+      "hedef": "DB_PASSWORD",
+      "risk_seviyesi": "YUKSEK",
+      "cwe_id": "CWE-526: Information Exposure Through Environmental Variables",
+      "aciklama": "Ortam de─şi┼şkeninde ('DB_PASSWORD') a├ğ─▒k metin kimlik/parola verisi saklan─▒yor! T├╝m alt s├╝re├ğler ve /proc/PID/environ dosyas─▒ bu s─▒rr─▒ okuyabilir.",
+      "iyilestirme": "Gizli anahtarlar─▒ ortam de─şi┼şkenleri yerine g├╝venli s─▒r y├Âneticisi (Vault, Keyring) ile saklay─▒n."
+    },
+    {
+      "kategori": "ORTAMDA_ACIK_PAROLA_SIZINTISI",
+      "hedef": "AWS_SECRET_KEY",
+      "risk_seviyesi": "YUKSEK",
+      "cwe_id": "CWE-526: Information Exposure Through Environmental Variables",
+      "aciklama": "Ortam de─şi┼şkeninde ('AWS_SECRET_KEY') a├ğ─▒k metin kimlik/parola verisi saklan─▒yor! T├╝m alt s├╝re├ğler ve /proc/PID/environ dosyas─▒ bu s─▒rr─▒ okuyabilir.",
+      "iyilestirme": "Gizli anahtarlar─▒ ortam de─şi┼şkenleri yerine g├╝venli s─▒r y├Âneticisi (Vault, Keyring) ile saklay─▒n."
+    }
+  ],
+  "denetlenen_profil": "guvensiz_gelistirici_profili"
+}
+
+==============================================================================
+KOMUT VE ÇIKIŞ KANITLARI EKSİKSİZ DERLENDİ.
+==============================================================================

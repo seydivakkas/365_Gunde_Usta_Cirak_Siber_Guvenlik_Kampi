@@ -1,0 +1,24 @@
+{
+  "dosyalar": {
+    "README.md": "54cb6be25d38255602c68a34acc387a5a4d77fc41a842dceb377c5d72a35e0cb",
+    "ders.md": "3319e21a06e23bd31f6b45ca004624d57e39649751a198e0a19a006c6c34a078",
+    "rapor.md": "7e081f5a3ebb31509ea4b055a95207fe1f893327c39e283900ff4669800fd41c",
+    "sonuc.json": "9f61695ba9587d533f261cfef4b6ff62ad3387d9c30409c02666dcb7bb89e348",
+    "soru_cevap.md": "7f6d90278fac6f77e13d1ae89427efad4d49ab2afbcf024bda233f1e66aefebc",
+    "kanit/gercek/komut_ve_cikis.txt": "a8bac02e420983a8d3bb9eef48b2f857fb75c2b848b8340ea23c7810da0ab98e",
+    "kanit/gercek/test_sonuclari.txt": "7508515e23945af19c7b765414716ee4405151be96c5232492569915c97bfff5",
+    "kanit/gercek/yerel_oturum_belgeleme.txt": "da224a707225a77651d96319b3b3b8b8a55a836a8633e306b9d055e9d6019980",
+    "kanit/temsili/kimlik_ve_oturum_mimarisi.txt": "dbf7e7edd61be4cb90073f30a26f971772cb1a931ffd2fb22d0df2aad352e870",
+    "ornek_veri/sample_active_sessions_and_users.json": "d168aa2a9f85523f549d9ca2587d8b97beec805c5b2f9a5856df063ca88b6a21",
+    "ornek_veri/system_users_groups_baseline.json": "df18313d1b8b8e27a0cb7c167961e270c7b6111a93fd75cbc10740c23c25f518",
+    "tests/__init__.py": "7509e1df4a657ce6690e919ae82816849489e3323a0ef1c1d76192ef97627905",
+    "tests/test_user_group_session_auditor.py": "6adba5de47560b5fb663c08081c89891751745899b5daa1b1c393f44210fa1d2",
+    "uygulama/__init__.py": "cacde9d50d35e614893cb3e339e1e4d4cc309c9d0bb1c26f8664f261d964eb41",
+    "uygulama/user_group_session_auditor.py": "f1efd0819dc5bf1163fad6378b946bdbf7098afe934ef06368fd11e4b50ca03c"
+  },
+  "ozet": {
+    "toplam_dosya": 15,
+    "gun": 25,
+    "durum": "DOGRULANDI_PASS"
+  }
+}

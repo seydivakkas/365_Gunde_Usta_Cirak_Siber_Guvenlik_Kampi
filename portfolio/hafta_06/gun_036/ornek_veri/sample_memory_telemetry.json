@@ -1,0 +1,82 @@
+{
+  "system_memory": {
+    "hostname": "PROD-APP-SRV01",
+    "total_ram_mb": 16384,
+    "used_ram_mb": 14120,
+    "free_ram_mb": 2264,
+    "total_swap_mb": 4096,
+    "used_swap_mb": 3200,
+    "free_swap_mb": 896,
+    "swappiness": 60,
+    "swap_encrypted": false,
+    "clear_pagefile_at_shutdown": false,
+    "aslr_enabled": true,
+    "dep_nx_enabled": true
+  },
+  "processes": [
+    {
+      "pid": 4,
+      "name": "System",
+      "rss_mb": 128,
+      "vms_mb": 512,
+      "shared_mb": 64,
+      "page_faults": 1200,
+      "memory_locked": true,
+      "security_context": "NT AUTHORITY\\SYSTEM",
+      "command_line": "System"
+    },
+    {
+      "pid": 850,
+      "name": "lsass.exe",
+      "rss_mb": 96,
+      "vms_mb": 340,
+      "shared_mb": 48,
+      "page_faults": 4500,
+      "memory_locked": true,
+      "security_context": "NT AUTHORITY\\SYSTEM",
+      "command_line": "C:\\Windows\\system32\\lsass.exe"
+    },
+    {
+      "pid": 2200,
+      "name": "db_service",
+      "rss_mb": 2048,
+      "vms_mb": 4096,
+      "shared_mb": 256,
+      "page_faults": 8500,
+      "memory_locked": true,
+      "security_context": "db_admin",
+      "command_line": "/usr/sbin/postgres -D /var/lib/postgresql/data"
+    },
+    {
+      "pid": 3310,
+      "name": "crypto_wallet_daemon",
+      "rss_mb": 512,
+      "vms_mb": 1536,
+      "shared_mb": 64,
+      "page_faults": 15400,
+      "memory_locked": false,
+      "security_context": "wallet_user",
+      "command_line": "/opt/crypto/bin/walletd --keys-in-memory"
+    },
+    {
+      "pid": 6640,
+      "name": "mem_scraper.exe",
+      "rss_mb": 1024,
+      "vms_mb": 8192,
+      "shared_mb": 32,
+      "page_faults": 98500,
+      "memory_locked": false,
+      "security_context": "StandardUser",
+      "command_line": "C:\\Users\\StandardUser\\AppData\\Local\\Temp\\mem_scraper.exe --dump-lsass --target-pid 850"
+    }
+  ],
+  "swap_artifacts": {
+    "file_path": "/var/swapfile",
+    "leaked_string_patterns": [
+      "AUTH_TOKEN=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.s3cr3t",
+      "PRIVATE_KEY_BEGIN=-----BEGIN RSA PRIVATE KEY-----",
+      "DATABASE_URL=postgres://dbuser:Sup3rS3cretP@ss!@localhost:5432/finance",
+      "API_KEY=sk-live-99a8b7c6d5e4f3a2b1"
+    ]
+  }
+}

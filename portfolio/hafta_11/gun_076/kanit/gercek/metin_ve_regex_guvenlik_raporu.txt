@@ -1,0 +1,31 @@
+{
+  "title": "G076: Metin, Regex ve Karakter Kodlaması Doğrulama Raporu",
+  "parsed_logs": [
+    {
+      "id": "LOG_VALID_01",
+      "ip": "192.168.1.50",
+      "status": 200
+    },
+    {
+      "id": "LOG_VALID_02",
+      "ip": "10.0.0.12",
+      "status": 201
+    },
+    {
+      "id": "LOG_VALID_03",
+      "ip": "203.0.113.195",
+      "status": 404
+    }
+  ],
+  "homoglyph_results": [
+    {
+      "domain": "portal.banka.com.tr",
+      "is_homoglyph": false
+    },
+    {
+      "domain": "p\\u0430yp\\u0430l.com",
+      "is_homoglyph": true
+    }
+  ],
+  "status": "ALL_TEXT_COMPONENTS_VERIFIED"
+}

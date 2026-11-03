@@ -1,0 +1,71 @@
+===============================================================================
+GÜN 104: NEGATİF KONTROL VE ZAFİYET ENGELLEME KANITLARI
+Tarih/Saat: 2026-11-02 02:24:56
+Toplam Negatif Senaryo: 9
+Standart: NIST SP 800-38D & RFC 5116 / RFC 5297
+===============================================================================
+
+[NEG_01_NONCE_REUSE_DETECTED]
+  Tanım         : Aynı anahtar ile daha önce kullanılan bir Nonce değerinin yeniden şifrelemede kullanılması
+  Güvenlik Eşiği: CWE-323: Reusing a Nonce, Key Pair in Encryption
+  Beklenen Hata : NonceReuseDetectedError
+  Yakalana Hata : NonceReuseDetectedError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_02_INSUFFICIENT_NONCE_LENGTH]
+  Tanım         : 96-bit (12 bayt) tavanının altında kalan yetersiz Nonce uzunluğu (Örn: 8 bayt)
+  Güvenlik Eşiği: CWE-326: Inadequate Encryption Strength
+  Beklenen Hata : InsecureNonceLengthError
+  Yakalana Hata : InsecureNonceLengthError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_03_PREDICTABLE_STATIC_NONCE]
+  Tanım         : Tamamı sıfırlardan veya ardışık statik baytlardan oluşan tahmin edilebilir Nonce
+  Güvenlik Eşiği: CWE-329: Generation of Predictable IV / Nonce
+  Beklenen Hata : PredictableNonceError
+  Yakalana Hata : PredictableNonceError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_04_AUTH_TAG_FORGERY]
+  Tanım         : Şifreli metin üzerindeki kimlik doğrulama etiketinin kurcalanması veya sahtelenmesi
+  Güvenlik Eşiği: CWE-353: Missing Support for Integrity Check
+  Beklenen Hata : AuthenticationTagMismatchError
+  Yakalana Hata : AuthenticationTagMismatchError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_05_AAD_METADATA_MANIPULATION]
+  Tanım         : İlişkili kimlik doğrulamalı verinin (AAD) şifre çözme aşamasında tahrif edilmesi
+  Güvenlik Eşiği: CWE-345: Insufficient Verification of Data Authenticity
+  Beklenen Hata : AuthenticationTagMismatchError
+  Yakalana Hata : AuthenticationTagMismatchError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_06_KEY_LENGTH_INVALID]
+  Tanım         : 16 veya 32 bayt dışında kalan standart dışı anahtar boyutu iletimi
+  Güvenlik Eşiği: CWE-326: Inadequate Encryption Strength
+  Beklenen Hata : InvalidKeyLengthError
+  Yakalana Hata : InvalidKeyLengthError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_07_NULL_BYTE_INJECTION]
+  Tanım         : Düz metin veya AAD girdisinde Null-Byte (0x00) zehirlemesi denemesi
+  Güvenlik Eşiği: CWE-158: Improper Neutralization of Null Byte or Special Characters
+  Beklenen Hata : NullByteInjectionError
+  Yakalana Hata : NullByteInjectionError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_08_OVERSIZED_PAYLOAD_DOS]
+  Tanım         : 1 MB tavanını aşan aşırı büyük veri girdisi ile bellek tüketimi saldırısı (DoS)
+  Güvenlik Eşiği: CWE-400: Uncontrolled Resource Consumption
+  Beklenen Hata : PayloadLimitExceededError
+  Yakalana Hata : PayloadLimitExceededError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_09_TYPE_CONFUSION]
+  Tanım         : Anahtar veya Nonce yerine tamsayı veya sözlük tipi iletilmesi
+  Güvenlik Eşiği: CWE-843: Access of Resource Using Incompatible Type
+  Beklenen Hata : TypeValidationError
+  Yakalana Hata : TypeValidationError
+  Sonuç         : PASS (ENGELLENDİ)
+
+ÖZET: 9/9 Negatif Kontrol Başarıyla Doğrulandı.

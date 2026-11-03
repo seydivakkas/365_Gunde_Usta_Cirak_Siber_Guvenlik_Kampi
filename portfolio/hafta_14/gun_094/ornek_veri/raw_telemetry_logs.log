@@ -1,0 +1,5 @@
+2026-11-01 10:14:02.124 INFO  [auth-service] User login attempt: email="ahmet.yilmaz@kurumsal-banka.com.tr" ip=192.168.10.45 tckn=12345678950 status=SUCCESS
+2026-11-01 10:14:15.541 WARN  [payment-gw] Payment processed: customer_id=8921 pan=4532-0151-1283-0366 amount=1450.50 TRY phone=+90-532-444-2211
+2026-11-01 10:14:22.880 INFO  [transfer-api] Wire transfer initiated: sender_iban="TR78 0006 1005 1978 6457 8410 01" recipient="Zeynep Kaya" tckn=10000000146
+2026-11-01 10:15:01.002 ERROR [billing-core] Card declined for user: email=mehmet_demir@guvenlik-arge.org card_pan=5425 2334 3010 9903 phone=05559876543
+2026-11-01 10:16:45.312 DEBUG [admin-portal] Config reload token="secret_api_key_live_998877665544332211" by user=root@internal-monitor.local

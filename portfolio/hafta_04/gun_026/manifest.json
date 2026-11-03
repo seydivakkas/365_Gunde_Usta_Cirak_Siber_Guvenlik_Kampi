@@ -1,0 +1,24 @@
+{
+  "dosyalar": {
+    "README.md": "ee9369a7634eb2caf737fdd159a3a81ae72a937a9f2c191b913552938162771e",
+    "ders.md": "ecec8c141c7be9f498bfe97f3641ee62697622fb2fc503fdd55b52c21f357334",
+    "rapor.md": "6e137b42af24729a68a90f54001db9802ddc9e04e607fb2d5fdb4fdf7513bf60",
+    "sonuc.json": "1b7cfca503b109fa999718bc377a9b694f5bfc4a8e884a9d4c478cecd7968540",
+    "soru_cevap.md": "e4353de2c33f38ae2ced026bc77aa3eb6ee23f92d1f471a63e045f2de0bcef74",
+    "kanit/gercek/komut_ve_cikis.txt": "666860a7a1b4474c5c8fc6512da3971e1c83e4f4348bbc3da1210edabe43720e",
+    "kanit/gercek/test_sonuclari.txt": "debf3f5659c05b89e3548b8bdd65965d6ba132f180a1d51dd42adddaaefe2624",
+    "kanit/gercek/yerel_path_guvenlik_incelemesi.txt": "f4536685e2e069e8194d9979f73d1e31b2ccd3df0a75e0fbef8e40c0cd67c829",
+    "kanit/temsili/path_ve_arama_sirasi_mimarisi.txt": "ba671bfb043256eae22f57aaaefd4992db06d3018c0ecd3eaa759355c23f026c",
+    "ornek_veri/path_security_baseline_rules.json": "86187ae60b2a77f621063fd881cef184798bfb8d109dac3e32f47479a2acb406",
+    "ornek_veri/sample_environment_profiles.json": "f41bcd0ea8f58b788e13b2d68d33ab9749fa524ac38cfe91c647a5dc95997c83",
+    "tests/__init__.py": "b5cfd3e9bdda1660ae2dc30375ce6c3a7df17fd8a84a3acd71d03fc072506df3",
+    "tests/test_path_environment_security_auditor.py": "efbfd9dcb28237c6eb52ba94cef425e50eb2087b99e7cd1c2816b5590211e0b0",
+    "uygulama/__init__.py": "3f7d29fff18441d2bf366d15d8a8e24e2625790a93ae2baaa4d42086fedb6847",
+    "uygulama/path_environment_security_auditor.py": "f81bff6671111667a66d256e91e76811319df4992d8986c43844493366b0ead2"
+  },
+  "ozet": {
+    "toplam_dosya": 15,
+    "gun": 26,
+    "durum": "DOGRULANDI_PASS"
+  }
+}

@@ -1,0 +1,64 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+Konu: Gün 35 — Mini Proje 4: Sistem Durum Kontrolü ve Sağlık Denetim Mimarisi (MP-04)
+Amaç: Hafta 05 (Aşama 02) boyunca öğrenilen süreç ağacı, servis yönetimi,
+      dosya bütünlüğü (FIM) ve sihirli bayt (magic bytes) denetimlerini
+      salt-okunur (read-only) ve sıfır yan etkili bir çatı altında birleştiren
+      konsolide sistem sağlık mimarisi.
+
++---------------------------------------------------------------------------------------+
+|              MİNİ PROJE 4: KONSOLİDE SİSTEM DURUM KONTROLÜ (MP-04)                    |
++---------------------------------------------------------------------------------------+
+
+                        [ HEDEF BİLGİSAYAR / SUNUCU ]
+                                     |
+               (Salt-Okunur / Ayrıcalıksız Telemetri Toplama)
+                                     |
+                                     v
+               +-------------------------------------------+
+               |      system_telemetry_snapshot.json       |
+               +---------------------+---------------------+
+                                     |
+         +---------------------------+---------------------------+
+         |                           |                           |
+         v                           v                           v
++-----------------+         +-----------------+         +-----------------+
+|  Süreç Ağacı    |         |  Servis ve      |         |  Dosya Bütünlüğü|
+|  Denetimi       |         |  Başlangıç      |         |  ve Magic Bytes |
+|  (Process Tree) |         |  (Services/SCM) |         |  (FIM & Mime)   |
++--------+--------+         +--------+--------+         +--------+--------+
+         |                           |                           |
+         v                           v                           v
+  [ Anomali: ]                [ Anomali: ]                [ Anomali: ]
+  * winword -> powershell     * MpsSvc Stopped/Disabled   * security_policy
+    (CRITICAL)                  (CRITICAL)                  MISMATCH (CRITICAL)
+  * svch0st in Temp           * Unquoted Service Path     * invoice.pdf has
+    (CRITICAL)                  (HIGH)                      MZ header (CRITICAL)
+         |                           |                           |
+         +---------------------------+---------------------------+
+                                     |
+                                     v
+         +-------------------------------------------------------+
+         |      AĞIRLIKLI SAĞLIK VE GÜVENLİK DURUŞU MOTORU       |
+         |                                                       |
+         |  Temel Puan: 100                                      |
+         |  Düşüşler  : 4x CRITICAL (-100) + 3x HIGH (-45)      |
+         |  Hesaplanan: 0 / 100                                  |
+         |  Duruş     : COMPROMISED_ENVIRONMENT                  |
+         +---------------------------+---------------------------+
+                                     |
+                                     v
++---------------------------------------------------------------------------------------+
+| ÇÖZÜM VE İYİLEŞTİRME EYLEM PLANI (REMEDIATION PLAYBOOK)                               |
++---------------------------------------------------------------------------------------+
+|  [1] İZOLE ET  : Hedef makineyi yerel ağdan derhal karantinaya alınız.                |
+|  [2] SONLANDIR : PID 8820 (powershell) ve PID 9900 (svch0st) süreçlerini öldürünüz.   |
+|  [3] BAŞLAT    : MpsSvc (Güvenlik Duvarı) servisini Automatic yaparak derhal açınız.  |
+|  [4] TIRNAKLA  : CloudBackupSvc ikili yolunu çift tırnak içine alınız.                |
+|  [5] GERİ YÜKLE: security_policy.cfg dosyasını bilinen temiz yedekten geri dönünüz.   |
+|  [6] TEMİZLE   : fake_invoice.pdf ve double extension (.pdf.exe) zararlılarını siliniz|
++---------------------------------------------------------------------------------------+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

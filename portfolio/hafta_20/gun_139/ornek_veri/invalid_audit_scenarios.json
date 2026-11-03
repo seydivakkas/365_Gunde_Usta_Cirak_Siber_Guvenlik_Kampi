@@ -1,0 +1,170 @@
+{
+  "_aciklama": "Linux Audit ve Journal Güvenliği 9 Adet Negatif ve Sınır Durum Test Senaryosu",
+  "scenarios": [
+    {
+      "id": "NEG_AUD_01",
+      "baslik": "auditd Servisinin Kapalı / Durdurulmuş Olması",
+      "aciklama": "auditd is_active=false durumu. Motor AUD-001 (CRITICAL / CWE-778) tespit etmelidir.",
+      "auditd": {
+        "is_active": false,
+        "is_enabled_on_boot": true,
+        "watch_rules": [],
+        "syscall_rules": []
+      },
+      "journald": { "storage": "persistent" },
+      "beklenen_kural": "AUD-001",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_AUD_02",
+      "baslik": "auditd Servisinin Açılışta Başlamaması",
+      "aciklama": "is_enabled_on_boot=false olması durumu (AUD-001 / T1562.002).",
+      "auditd": {
+        "is_active": true,
+        "is_enabled_on_boot": false,
+        "watch_rules": [],
+        "syscall_rules": []
+      },
+      "journald": { "storage": "persistent" },
+      "beklenen_kural": "AUD-001",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_AUD_03",
+      "baslik": "/etc/shadow Dosyasında Watch Kuralı Eksikliği",
+      "aciklama": "Parola özetlerinin izlenmemesi (AUD-002 / CWE-778 / T1003).",
+      "auditd": {
+        "is_active": true,
+        "is_enabled_on_boot": true,
+        "watch_rules": [
+          { "path": "/etc/passwd", "permissions": "wa", "key": "identity" },
+          { "path": "/etc/sudoers", "permissions": "wa", "key": "actions" }
+        ],
+        "syscall_rules": [
+          { "action": "always,exit", "syscalls": ["init_module", "delete_module"], "key": "modules" }
+        ]
+      },
+      "journald": { "storage": "persistent" },
+      "beklenen_kural": "AUD-002",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_AUD_04",
+      "baslik": "/etc/passwd Dosyasında Watch Kuralı Eksikliği",
+      "aciklama": "Kullanıcı hesap dosyasının izlenmemesi (AUD-002 / CWE-778).",
+      "auditd": {
+        "is_active": true,
+        "is_enabled_on_boot": true,
+        "watch_rules": [
+          { "path": "/etc/shadow", "permissions": "wa", "key": "identity" },
+          { "path": "/etc/sudoers", "permissions": "wa", "key": "actions" }
+        ],
+        "syscall_rules": [
+          { "action": "always,exit", "syscalls": ["init_module", "delete_module"], "key": "modules" }
+        ]
+      },
+      "journald": { "storage": "persistent" },
+      "beklenen_kural": "AUD-002",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_AUD_05",
+      "baslik": "/etc/sudoers Dosyasında Watch Kuralı Eksikliği",
+      "aciklama": "Sudoers dosyasının izlenmemesi (AUD-003 / CWE-778 / T1548.003).",
+      "auditd": {
+        "is_active": true,
+        "is_enabled_on_boot": true,
+        "watch_rules": [
+          { "path": "/etc/shadow", "permissions": "wa", "key": "identity" },
+          { "path": "/etc/passwd", "permissions": "wa", "key": "identity" }
+        ],
+        "syscall_rules": [
+          { "action": "always,exit", "syscalls": ["init_module", "delete_module"], "key": "modules" }
+        ]
+      },
+      "journald": { "storage": "persistent" },
+      "beklenen_kural": "AUD-003",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_AUD_06",
+      "baslik": "Kernel Modülü Yükleme/Çıkarma Syscall Denetimi Eksikliği",
+      "aciklama": "init_module ve delete_module syscall kurallarının olmaması (AUD-004 / T1547.006).",
+      "auditd": {
+        "is_active": true,
+        "is_enabled_on_boot": true,
+        "watch_rules": [
+          { "path": "/etc/shadow", "permissions": "wa", "key": "identity" },
+          { "path": "/etc/passwd", "permissions": "wa", "key": "identity" },
+          { "path": "/etc/sudoers", "permissions": "wa", "key": "actions" }
+        ],
+        "syscall_rules": []
+      },
+      "journald": { "storage": "persistent" },
+      "beklenen_kural": "AUD-004",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_AUD_07",
+      "baslik": "Journald Storage=volatile (Uçucu Bellek) Yapılandırması",
+      "aciklama": "Logların diske kalıcı yazılmaması (AUD-005 / CWE-778 / CIS 4.2.1.2).",
+      "auditd": {
+        "is_active": true,
+        "is_enabled_on_boot": true,
+        "watch_rules": [
+          { "path": "/etc/shadow", "permissions": "wa", "key": "identity" },
+          { "path": "/etc/passwd", "permissions": "wa", "key": "identity" },
+          { "path": "/etc/sudoers", "permissions": "wa", "key": "actions" }
+        ],
+        "syscall_rules": [
+          { "action": "always,exit", "syscalls": ["init_module", "delete_module"], "key": "modules" }
+        ]
+      },
+      "journald": { "storage": "volatile" },
+      "beklenen_kural": "AUD-005",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_AUD_08",
+      "baslik": "Audit Kurallarında Değiştirilemezlik (-e 2) Kilidinin Eksikliği",
+      "aciklama": "immutable_flag=false olması (AUD-006 / CWE-345 / CIS 4.1.18).",
+      "auditd": {
+        "is_active": true,
+        "is_enabled_on_boot": true,
+        "immutable_flag": false,
+        "watch_rules": [
+          { "path": "/etc/shadow", "permissions": "wa", "key": "identity" },
+          { "path": "/etc/passwd", "permissions": "wa", "key": "identity" },
+          { "path": "/etc/sudoers", "permissions": "wa", "key": "actions" }
+        ],
+        "syscall_rules": [
+          { "action": "always,exit", "syscalls": ["init_module", "delete_module"], "key": "modules" }
+        ]
+      },
+      "journald": { "storage": "persistent" },
+      "beklenen_kural": "AUD-006",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_AUD_09",
+      "baslik": "Audit Disk Dolum Aksiyonunun 'ignore' Olması",
+      "aciklama": "disk_full_action='ignore' olması (AUD-007 / CWE-778 / CIS 4.1.2).",
+      "auditd": {
+        "is_active": true,
+        "is_enabled_on_boot": true,
+        "disk_full_action": "ignore",
+        "watch_rules": [
+          { "path": "/etc/shadow", "permissions": "wa", "key": "identity" },
+          { "path": "/etc/passwd", "permissions": "wa", "key": "identity" },
+          { "path": "/etc/sudoers", "permissions": "wa", "key": "actions" }
+        ],
+        "syscall_rules": [
+          { "action": "always,exit", "syscalls": ["init_module", "delete_module"], "key": "modules" }
+        ]
+      },
+      "journald": { "storage": "persistent" },
+      "beklenen_kural": "AUD-007",
+      "beklenen_sonuc": "PASS"
+    }
+  ]
+}

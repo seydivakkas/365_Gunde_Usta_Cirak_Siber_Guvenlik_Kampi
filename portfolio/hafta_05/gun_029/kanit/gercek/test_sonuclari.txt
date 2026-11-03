@@ -1,0 +1,33 @@
+test_01_event_validator_accepts_valid_event (test_windows_event_viewer_analyzer.TestWindowsEventViewerAnalyzer.test_01_event_validator_accepts_valid_event)
+Eksiksiz ve do�ru bi�imlendirilmi� bir olay�n ge�erlilik testinden ba�ar�yla ge�mesini s�nar. ... ok
+test_02_event_validator_rejects_missing_provider (test_windows_event_viewer_analyzer.TestWindowsEventViewerAnalyzer.test_02_event_validator_rejects_missing_provider)
+ProviderName alan� bo� oldu�unda sistemin MISSING_PROVIDER_NAME hatas� �retmesini test eder. ... ok
+test_03_event_validator_rejects_invalid_event_id (test_windows_event_viewer_analyzer.TestWindowsEventViewerAnalyzer.test_03_event_validator_rejects_invalid_event_id)
+Say�sal olmayan EventID durumunda INVALID_EVENT_ID hatas� �retilmesini test eder. ... ok
+test_04_event_validator_rejects_malformed_timestamp (test_windows_event_viewer_analyzer.TestWindowsEventViewerAnalyzer.test_04_event_validator_rejects_malformed_timestamp)
+Ge�ersiz ISO 8601 tarih dizesi girildi�inde MALFORMED_TIMESTAMP hatas� �retilmesini test eder. ... ok
+test_05_contextual_eval_event_6005_boot (test_windows_event_viewer_analyzer.TestWindowsEventViewerAnalyzer.test_05_contextual_eval_event_6005_boot)
+Event ID 6005 (Olay g�nl��� ba�lat�ld�) kayd�n�n SYSTEM_BOOT_AUDIT_START olarak s�n�fland�r�lmas�n� test eder. ... ok
+test_06_contextual_eval_event_7045_legitimate (test_windows_event_viewer_analyzer.TestWindowsEventViewerAnalyzer.test_06_contextual_eval_event_7045_legitimate)
+Me�ru Program Files dizininden kurulan servisin AUTHORIZED_SERVICE_INSTALLATION say�lmas�n� test eder. ... ok
+test_07_contextual_eval_event_7045_suspicious_temp_path (test_windows_event_viewer_analyzer.TestWindowsEventViewerAnalyzer.test_07_contextual_eval_event_7045_suspicious_temp_path)
+Ge�ici dizinden (Temp) kurulan servisin SUSPICIOUS_SERVICE_INSTALLATION ve HIGH risk almas�n� test eder. ... ok
+test_08_contextual_eval_event_1074_shutdown (test_windows_event_viewer_analyzer.TestWindowsEventViewerAnalyzer.test_08_contextual_eval_event_1074_shutdown)
+Event ID 1074 (Kapatma/Yeniden ba�latma) olay�n�n kapatma gerek�esi ve kullan�c�s�yla e�le�mesini test eder. ... ok
+test_09_contextual_eval_event_4625_single_vs_spray (test_windows_event_viewer_analyzer.TestWindowsEventViewerAnalyzer.test_09_contextual_eval_event_4625_single_vs_spray)
+Tek bir 4625 olay�n�n sald�r� ispat� de�il, SINGLE_LOGON_FAILURE say�lmas�n� test eder (G029-SC1). ... ok
+test_10_contextual_eval_event_1102_log_cleared (test_windows_event_viewer_analyzer.TestWindowsEventViewerAnalyzer.test_10_contextual_eval_event_1102_log_cleared)
+Event ID 1102 (G�venlik g�nl��� silindi) olay�n�n CRITICAL ve AUDIT_LOG_TAMPERING say�lmas�n� test eder. ... ok
+test_11_load_sample_system_events_dataset (test_windows_event_viewer_analyzer.TestWindowsEventViewerAnalyzer.test_11_load_sample_system_events_dataset)
+Ger�ek sample_system_events.json dosyas�ndan tam 3 sistem olay�n�n ba�ar�yla y�klenmesini test eder (G029-SC2). ... ok
+test_12_sha256_integrity_hash_computation (test_windows_event_viewer_analyzer.TestWindowsEventViewerAnalyzer.test_12_sha256_integrity_hash_computation)
+Y�klenen her olay�n kriptografik b�t�nl�k i�in 64 karakterlik SHA-256 �zeti �retmesini test eder. ... ok
+test_13_negative_control_corrupted_dataset (test_windows_event_viewer_analyzer.TestWindowsEventViewerAnalyzer.test_13_negative_control_corrupted_dataset)
+Bozuk olaylar test k�mesindeki t�m kay�tlar�n (%100) tespit edilip reddedilmesini test eder (G029-SC2). ... ok
+test_14_cli_subprocess_execution (test_windows_event_viewer_analyzer.TestWindowsEventViewerAnalyzer.test_14_cli_subprocess_execution)
+CLI �zerinden --analyze arg�man�yla script �a�r�ld���nda 0 ��k�� koduyla rapor �retilmesini test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.158s
+
+OK

@@ -1,0 +1,48 @@
+{
+  "test_cases": [
+    {
+      "test_name": "corrupted_negative_port",
+      "expected_error": "ValidationError",
+      "payload": {
+        "remote_services": [
+          {
+            "service_id": "BAD-PORT-1",
+            "target_hostname": "bad-host",
+            "protocol": "SSH",
+            "port": -22
+          }
+        ]
+      }
+    },
+    {
+      "test_name": "corrupted_port_overflow",
+      "expected_error": "ValidationError",
+      "payload": {
+        "remote_services": [
+          {
+            "service_id": "BAD-PORT-2",
+            "target_hostname": "bad-host",
+            "protocol": "RDP",
+            "port": 70000
+          }
+        ]
+      }
+    },
+    {
+      "test_name": "corrupted_missing_services_key",
+      "expected_error": "ValidationError",
+      "payload": {
+        "matrix_metadata": {"org": "No Services Corp"}
+      }
+    },
+    {
+      "test_name": "corrupted_service_entry_non_dict",
+      "expected_error": "ValidationError",
+      "payload": {
+        "remote_services": [
+          "invalid_string_instead_of_object"
+        ]
+      }
+    }
+  ]
+}

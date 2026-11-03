@@ -1,0 +1,135 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "senaryolar": [
+    {
+      "id": "NEG-ST5-01",
+      "baslik": "Kullanımdan Kaldırılmış MD5 Özeti Kullanımı",
+      "cwe": "CWE-327",
+      "bilesen": {
+        "component_name": "Eski Token Üretici",
+        "algorithm": "MD5",
+        "key_bits": 128
+      },
+      "beklenen_cwe": "CWE-327",
+      "aciklama": "NIST SP 800-131A uyarınca çarpışma zafiyeti bulunan MD5 algoritması reddedilmelidir."
+    },
+    {
+      "id": "NEG-ST5-02",
+      "baslik": "Kırık SHA-1 İmza Özeti Kullanımı",
+      "cwe": "CWE-327",
+      "bilesen": {
+        "component_name": "Sertifika İmzalayıcı",
+        "algorithm": "SHA-1",
+        "key_bits": 160
+      },
+      "beklenen_cwe": "CWE-327",
+      "aciklama": "SHAttered saldırısı ile güvensizliği kanıtlanan SHA-1 dijital imzalarda kullanılamaz."
+    },
+    {
+      "id": "NEG-ST5-03",
+      "baslik": "Güvensiz Blok Şifreleme Modu (AES-ECB)",
+      "cwe": "CWE-327",
+      "bilesen": {
+        "component_name": "Görsel Şifreleme",
+        "algorithm": "AES",
+        "key_bits": 256,
+        "mode": "ECB"
+      },
+      "beklenen_cwe": "CWE-327",
+      "aciklama": "ECB modu deseni gizlemez ve CBC/GCM modlarının aksine doğrudan şifreli metin analizi zafiyeti doğurur."
+    },
+    {
+      "id": "NEG-ST5-04",
+      "baslik": "Yetersiz Asimetrik Anahtar Uzunluğu (RSA 1024-bit)",
+      "cwe": "CWE-326",
+      "bilesen": {
+        "component_name": "Eski Sunucu Sertifikası",
+        "algorithm": "RSA-1024",
+        "key_bits": 1024
+      },
+      "beklenen_cwe": "CWE-326",
+      "aciklama": "NIST SP 800-57 uyarınca RSA anahtarları en az 2048 bit olmalıdır."
+    },
+    {
+      "id": "NEG-ST5-05",
+      "baslik": "Kriptografik Olmayan Zayıf Rastgelelik (PRNG)",
+      "cwe": "CWE-338",
+      "bilesen": {
+        "component_name": "Oturum Belirteci Üreteci",
+        "algorithm": "AES-256-GCM",
+        "key_bits": 256,
+        "random_source": "PRNG"
+      },
+      "beklenen_cwe": "CWE-338",
+      "aciklama": "Mersenne Twister gibi tahmin edilebilir PRNG kaynakları oturum tahmin zafiyetine yol açar."
+    },
+    {
+      "id": "NEG-ST5-06",
+      "baslik": "Varsayılan İzin (Default-Allow) Mimarisi",
+      "cwe": "CWE-1188",
+      "mimari": {
+        "control_name": "Gevşek Mimari",
+        "layers": ["Ağ", "Uygulama"],
+        "control_types": ["Önleyici"],
+        "default_deny": false,
+        "fail_secure": true,
+        "sod_enforced": true,
+        "wildcard_allowed": false,
+        "log_masking": true
+      },
+      "beklenen_cwe": "CWE-1188",
+      "aciklama": "Saltzer-Schroeder 'Fail-Safe Defaults' kuralına aykırı olarak varsayılan ret kapalı bırakılmıştır."
+    },
+    {
+      "id": "NEG-ST5-07",
+      "baslik": "Altyapı Kesintisinde Fail-Open Davranışı",
+      "cwe": "CWE-636",
+      "mimari": {
+        "control_name": "Açık Kapı Mimarisi",
+        "layers": ["Fiziksel", "Çevre", "Ağ", "Host", "Uygulama", "Veri", "İnsan"],
+        "control_types": ["Önleyici"],
+        "default_deny": true,
+        "fail_secure": false,
+        "sod_enforced": true,
+        "wildcard_allowed": false,
+        "log_masking": true
+      },
+      "beklenen_cwe": "CWE-636",
+      "aciklama": "Veritabanı veya yetki motoru çöktüğünde kapılar açık kalmaktadır; kilitlenmemektedir."
+    },
+    {
+      "id": "NEG-ST5-08",
+      "baslik": "Statik Görevler Ayrılığı (SoD) Kısıtı Eksikliği",
+      "cwe": "CWE-863",
+      "mimari": {
+        "control_name": "SoD İhmal Edilmiş Mimari",
+        "layers": ["Fiziksel", "Çevre", "Ağ", "Host", "Uygulama", "Veri", "İnsan"],
+        "control_types": ["Önleyici"],
+        "default_deny": true,
+        "fail_secure": true,
+        "sod_enforced": false,
+        "wildcard_allowed": false,
+        "log_masking": true
+      },
+      "beklenen_cwe": "CWE-863",
+      "aciklama": "Ödeme hazırlayan ve onaylayan rollerin aynı kişiye atanmasına karşı engel bulunmamaktadır."
+    },
+    {
+      "id": "NEG-ST5-09",
+      "baslik": "Denetim Kütüklerinde Parola ve Sır İfşası",
+      "cwe": "CWE-532",
+      "mimari": {
+        "control_name": "Maskelemesiz Denetim Kütüğü",
+        "layers": ["Ağ", "Host", "Uygulama", "Veri"],
+        "control_types": ["Önleyici"],
+        "default_deny": true,
+        "fail_secure": true,
+        "sod_enforced": true,
+        "wildcard_allowed": false,
+        "log_masking": false
+      },
+      "beklenen_cwe": "CWE-532",
+      "aciklama": "Kütüklerde hassas parola ve token verileri maskelenmeden açık metin tutulmaktadır."
+    }
+  ]
+}

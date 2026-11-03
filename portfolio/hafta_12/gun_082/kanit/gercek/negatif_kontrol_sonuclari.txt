@@ -1,0 +1,49 @@
+=== G082 NEGATİF GÜVENLİK KONTROLLERİ VE PYTEST TEST RAPORU ===
+Toplam Senaryo: 9
+Başarılı Savunma: 9
+
+[PASS] NEG_01_PASSWORD_TOO_SHORT
+  Açıklama : Kurumsal parola politikasinda belirlenen 12 karakter asgari uzunluk sinirinin altinda parola girisi
+  Sonuç    : PolicyViolationException: Parola uzunluğu 12-64 karakter arasında olmalıdır. Alınan: 6
+  Savunma  : Parola uzunlugu denetlenerek 12 karakterden kisa girdiler PolicyViolationException ile reddedilir.
+
+[PASS] NEG_02_PASSWORD_NO_SPECIAL_CHAR
+  Açıklama : Karmaşıklık kuralını çiğneyerek özel karakter barındırmayan parola denemesi
+  Sonuç    : PolicyViolationException: Parola en az bir özel karakter içermelidir.
+  Savunma  : En az bir ozel karakter bulunmasi zorunlu tutulur.
+
+[PASS] NEG_03_PASSWORD_COMMON_DICTIONARY
+  Açıklama : Bilinen en yaygin ve tahmin edilebilir sozluk parolasi girisi
+  Sonuç    : PolicyViolationException: Parola yaygın ve tahmin edilebilir sözlük listesinde yer alıyor.
+  Savunma  : Sozluk engelleme listesi (blacklist) taranarak yaygin parolalar reddedilir.
+
+[PASS] NEG_04_SEVERITY_SCORE_OUT_OF_BOUNDS_HIGH
+  Açıklama : Tehdit ciddiyet skorunun 0-100 araligini asacak sekilde yuksek gonderilmesi
+  Sonuç    : ValueError: Ciddiyet skoru 0-100 aralığında olmalıdır. Alınan: 150
+  Savunma  : Sinir denetimi yapilarak 100'den buyuk skorlar ValueError ile engellenir.
+
+[PASS] NEG_05_SEVERITY_SCORE_OUT_OF_BOUNDS_NEGATIVE
+  Açıklama : Tehdit ciddiyet skorunun negatif tamsayi olarak gonderilmesi
+  Sonuç    : ValueError: Ciddiyet skoru 0-100 aralığında olmalıdır. Alınan: -25
+  Savunma  : Sinir denetimi yapilarak 0'dan kucuk skorlar ValueError ile engellenir.
+
+[PASS] NEG_06_DOMAIN_PATH_TRAVERSAL_INJECTION
+  Açıklama : Hedef alan adi parametresine enjekte edilen yol gecisi ve protokol dizgisi
+  Sonuç    : PolicyViolationException: Alan adı geçersiz yol karakterleri barındırıyor: evil.com/../../etc/passwd
+  Savunma  : Alan adi kanoniklestirilerek protokol ve yol gecisi karakterleri tespit edildiginde islem reddedilir.
+
+[PASS] NEG_07_DOMAIN_NULL_BYTE_POISONING
+  Açıklama : Hedef alan adi icerisine yerlestirilmis null-byte (\x00) zehirleme karakteri
+  Sonuç    : PolicyViolationException: Alan adı içinde geçersiz null-byte bulundu.
+  Savunma  : Null-byte tespiti durumunda alan adi guvensiz ilan edilip islem durdurulur.
+
+[PASS] NEG_08_FIREWALL_RULE_INVALID_PORT
+  Açıklama : Gecerli TCP/UDP port araligini (1-65535) asan guvenlik duvari kural tanimi
+  Sonuç    : PolicyViolationException: Hedef port 1-65535 aralığında geçerli bir tamsayı olmalıdır: 70000
+  Savunma  : Hedef port 1-65535 araliginda dogrulanir, disindaki degerler reddedilir.
+
+[PASS] NEG_09_RATE_LIMIT_BURST_ATTACK
+  Açıklama : Kisa surede ayni istemciden gelen esik ustu kural degerlendirme istegi
+  Sonuç    : PolicyViolationException: İstemci hız sınırı eşiği aşıldı (5): 198.51.100.99
+  Savunma  : Kayan pencere sayaci ile istemci basina izin verilen istek sayisi sinirlandirilir.
+

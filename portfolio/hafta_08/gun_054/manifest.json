@@ -1,0 +1,18 @@
+{
+  "README.md": "dbe6cad325f611bc9549347440900935b02f24375abdcbbfc5866dc8120846ac",
+  "ders.md": "7b2ab6ae5565249b182914636e82424fb93b0758f26ff8454a8d512fa85ee35c",
+  "kanit/gercek/dns_sorgu_ve_kayit_raporu.txt": "22533c29accc49e189c33494780e5893d0b1c37e584688b2034087239024952e",
+  "kanit/gercek/komut_ve_cikis.txt": "29341b7892e2d44db232e72e446ed7f3857fd9233a73d70b5052895368942021",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "678699fd963b239bb517d567818528cff0addf4f59bcf849c121ad8ba33ccbf9",
+  "kanit/gercek/test_sonuclari.txt": "3065040619459a81cc8e5fc594511a534c8498fef802ec1ca3942014eed6dd58",
+  "kanit/temsili/dns_hiyerarsi_ve_kayit_guvenlik_mimarisi.txt": "96fe3c5fd9d1f8db52fa5b9b3aee5635bf29d5d75c64e158978f82c69b1d2e8f",
+  "ornek_veri/invalid_dns_inputs.json": "2b108e5b15445479e7d48cf9592fb1c6c0dca08e0419192ffb5e908142ece8e9",
+  "ornek_veri/sample_dns_zone_and_queries.json": "a0a7114de4127176bdb69e3f27da1f444602bf93e929581ef27329e6d01ac40f",
+  "rapor.md": "ed867a06657bfc2f08289e680c1c9455923cb95cc099989b18f76e302d5d253e",
+  "sonuc.json": "b9021ebd68e426b14792c6aeb3f43e25a0132f60c3cb69f3f03e1f0d2a42bb76",
+  "soru_cevap.md": "0334c8b417ef6a1f34565b3f7435e729c2b0e6c1fb068234811a2cb9a4114669",
+  "tests/__init__.py": "80ec28d2ec012d136a94f0d1878ffe34429ffb4861adbac685c14156af001eb7",
+  "tests/test_dns_query_record_analyzer.py": "fb87b848d803a7ac8a09ea5d2e19a8bcf6eb79acd1cba66586b2cdc0f7e997b8",
+  "uygulama/__init__.py": "80ec28d2ec012d136a94f0d1878ffe34429ffb4861adbac685c14156af001eb7",
+  "uygulama/dns_query_record_analyzer.py": "e24f46f9c6ada4881f70d7224ef66d06d0e2425e1a1a2e361b6db37dc1eb7197"
+}

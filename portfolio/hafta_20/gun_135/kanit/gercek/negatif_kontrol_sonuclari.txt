@@ -1,0 +1,42 @@
+=== GÜN 135: LINUX PAM VE OTURUM NEGATİF KONTROL VE SINIR DURUM SONUÇLARI ===
+Tarih / Saat       : 2026-11-02T11:16:08.545459+00:00
+Toplam Senaryo     : 9
+Genel Başarı Durumu: BAŞARILI (100% PASS)
+===========================================================================
+
+[PASS] NEG-PAM-01 (LOCKOUT): Hesap Kilitleme (pam_faillock) Tamamen Devre Dışı
+    Beklenen CWE   : CWE-307 | Tespit: ['CWE-307']
+    Beklenen MITRE : T1110.001 | Tespit: ['T1110.001']
+---------------------------------------------------------------------------
+[PASS] NEG-PAM-02 (LOCKOUT): Hesap Kilitleme Deneme Eşiği Yetersiz (deny=10)
+    Beklenen CWE   : CWE-307 | Tespit: ['CWE-307']
+    Beklenen MITRE : T1110.001 | Tespit: ['T1110.001']
+---------------------------------------------------------------------------
+[PASS] NEG-PAM-03 (LOCKOUT): Hesap Kilit Kalma Süresi Yetersiz (unlock_time=300s)
+    Beklenen CWE   : CWE-307 | Tespit: ['CWE-307']
+    Beklenen MITRE : T1110.001 | Tespit: ['T1110.001']
+---------------------------------------------------------------------------
+[PASS] NEG-PAM-04 (PASSWORD): Parola Uzunluğu Yetersiz (minlen=8)
+    Beklenen CWE   : CWE-521 | Tespit: ['CWE-521']
+    Beklenen MITRE : T1201 | Tespit: ['T1201']
+---------------------------------------------------------------------------
+[PASS] NEG-PAM-05 (PASSWORD): Parola Karmaşıklık Kredileri Eksik (dcredit=0, ucredit=0)
+    Beklenen CWE   : CWE-521 | Tespit: ['CWE-521']
+    Beklenen MITRE : T1201 | Tespit: ['T1201']
+---------------------------------------------------------------------------
+[PASS] NEG-PAM-06 (SESSION): Boş Parola Giriş İzni (nullok Bayrağı Aktif)
+    Beklenen CWE   : CWE-258 | Tespit: ['CWE-258']
+    Beklenen MITRE : T1078 | Tespit: ['T1078']
+---------------------------------------------------------------------------
+[PASS] NEG-PAM-07 (SESSION): Parola Geçmişi Koruması Yetersiz (remember=2)
+    Beklenen CWE   : CWE-262 | Tespit: ['CWE-262']
+    Beklenen MITRE : T1201 | Tespit: ['T1201']
+---------------------------------------------------------------------------
+[PASS] NEG-PAM-08 (SESSION): Oturum Boşta Kalma Zaman Aşımı Yetersiz (TMOUT=3600s)
+    Beklenen CWE   : CWE-613 | Tespit: ['CWE-613']
+    Beklenen MITRE : T1078 | Tespit: ['T1078']
+---------------------------------------------------------------------------
+[PASS] NEG-PAM-09 (PERMISSIONS): PAM Dosya İzni Gevşek (0666 / Others Writable)
+    Beklenen CWE   : CWE-732 | Tespit: ['CWE-732']
+    Beklenen MITRE : T1548 | Tespit: ['T1548']
+---------------------------------------------------------------------------

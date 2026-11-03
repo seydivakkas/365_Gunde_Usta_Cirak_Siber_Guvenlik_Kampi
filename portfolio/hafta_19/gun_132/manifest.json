@@ -1,0 +1,85 @@
+{
+  "gun": 132,
+  "hafta": 19,
+  "konu": "Windows hizmet güvenliği",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR (c) 2026 Seydi Eryılmaz",
+  "dosyalar": {
+    "README.md": {
+      "sha256": "38b19876d7beb094d51616aabae11b22d99b77dc14793dbfbb80ad013c91447a",
+      "boyut_byte": 4556
+    },
+    "ders.md": {
+      "sha256": "ae0d4548b8d37c274dcd674d1ea9da8167e8a3d7b7fed5d9e21b2d9248c0fcaa",
+      "boyut_byte": 8525
+    },
+    "kanit_uretici.py": {
+      "sha256": "72f0c71b0a1754cdea38928bca93a0e1d762149c612a017641ba1419a1b54148",
+      "boyut_byte": 12376
+    },
+    "rapor.md": {
+      "sha256": "ce2c1dd1ffe0b0ee8ae5cc4732d75aa0a67aff97e019132af8edc34223b3de91",
+      "boyut_byte": 4740
+    },
+    "sonuc.json": {
+      "sha256": "feb01f5e3ed7a7d84c0cb5efe8be2f7a08518aec54d5ff8ed5336362467255ef",
+      "boyut_byte": 1086
+    },
+    "soru_cevap.md": {
+      "sha256": "e94aa6a926da333f28d51d3559d506a75fd34c35f4d8ef4ef817621590b6caaa",
+      "boyut_byte": 11247
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "sha256": "d06336b8fa88079f92d579370b0747f8a10a68e67d942bf4da596f1d09989c44",
+      "boyut_byte": 7555
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "sha256": "bf7cdaed59225e0945fc2b16db519a008756c8bcfe4546b95557bc366bbcc034",
+      "boyut_byte": 2560
+    },
+    "kanit/gercek/otomatik_sikilastirma.ps1": {
+      "sha256": "15d338de5e01cae5dc991d7f7606ea012ce426c27a16aa6b25618f8ceb25accd",
+      "boyut_byte": 2824
+    },
+    "kanit/gercek/servis_guvenlik_analiz_raporu.json": {
+      "sha256": "f5874d61b366208b43caeecb08a8a814460be049d5329ecfb831bd165a8a951a",
+      "boyut_byte": 8155
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "sha256": "25048df33ecc18369a15654cd46f832bfdd2747368c1fad45efd225287a6cde3",
+      "boyut_byte": 455
+    },
+    "kanit/temsili/service_mimarisi.txt": {
+      "sha256": "8ac02d6fe544f3d209bb3adca09e237d255dc2ac6c11e2ac31fd2fbecfc854a8",
+      "boyut_byte": 3520
+    },
+    "ornek_veri/invalid_service_scenarios.json": {
+      "sha256": "97de16e028791abe721ffa0c1f6fa0ed46625877fc7682b2282f3b4e979b955d",
+      "boyut_byte": 6163
+    },
+    "ornek_veri/service_inventory_spec.json": {
+      "sha256": "cd369496b2b6f8c29b170944e46f4ca55d7254a002d91dda0934457cd9ee228e",
+      "boyut_byte": 5425
+    },
+    "tests/__init__.py": {
+      "sha256": "d1f0606683a0e8d5961c2f638f9c9430593509568836afd82cb44a7e73641bbc",
+      "boyut_byte": 578
+    },
+    "tests/test_windows_service_security.py": {
+      "sha256": "05c927e7649db373d7c68a44351b3d93bb8332917505419ddf659bb8117d3219",
+      "boyut_byte": 14342
+    },
+    "uygulama/__init__.py": {
+      "sha256": "0f6aff7fdf1b8cce9f0a8dad57a2450487860be2ddfbf6f1630825372e5e395a",
+      "boyut_byte": 753
+    },
+    "uygulama/service_security_cli.py": {
+      "sha256": "ce36c0c5e51ced86f8720582467e2ed6ddc18a1d308457d1f79fda6ccf8ffd6a",
+      "boyut_byte": 9979
+    },
+    "uygulama/windows_service_security_engine.py": {
+      "sha256": "9ed8b924a88ecab35e0cda486e3deef7c6dc019e195c84689506ec114ab50854",
+      "boyut_byte": 27988
+    }
+  },
+  "toplam_dosya_sayisi": 19
+}

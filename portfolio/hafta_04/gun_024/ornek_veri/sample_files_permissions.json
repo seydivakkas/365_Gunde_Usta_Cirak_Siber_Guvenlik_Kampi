@@ -1,0 +1,79 @@
+{
+  "tarama_zamani": "2026-10-27T07:00:00Z",
+  "sunucu_adi": "srv-prod-lin-01",
+  "sistem_umask": "0022",
+  "dosyalar": [
+    {
+      "dosya_yolu": "/etc/shadow",
+      "dosya_turu": "file",
+      "sahip": "root",
+      "grup": "shadow",
+      "mevcut_izin_oktal": "0644",
+      "mevcut_izin_sembolik": "-rw-r--r--",
+      "aciklama": "Kullanici kimlik dogrulama ozetleri - Digerlerine okuma verilmis, kritik ihlal!"
+    },
+    {
+      "dosya_yolu": "/etc/passwd",
+      "dosya_turu": "file",
+      "sahip": "root",
+      "grup": "root",
+      "mevcut_izin_oktal": "0644",
+      "mevcut_izin_sembolik": "-rw-r--r--",
+      "aciklama": "Standart kullanici veritabani - Uyumlu"
+    },
+    {
+      "dosya_yolu": "/etc/sudoers",
+      "dosya_turu": "file",
+      "sahip": "root",
+      "grup": "root",
+      "mevcut_izin_oktal": "0440",
+      "mevcut_izin_sembolik": "-r--r-----",
+      "aciklama": "Sudo yapilandirmasi - Uyumlu"
+    },
+    {
+      "dosya_yolu": "/home/analist/.ssh/id_rsa",
+      "dosya_turu": "file",
+      "sahip": "analist",
+      "grup": "analist",
+      "mevcut_izin_oktal": "0644",
+      "mevcut_izin_sembolik": "-rw-r--r--",
+      "aciklama": "SSH ozel anahtar dosyasi herkesce okunabilir durumda - Kritik ihlal!"
+    },
+    {
+      "dosya_yolu": "/home/analist/.ssh/authorized_keys",
+      "dosya_turu": "file",
+      "sahip": "analist",
+      "grup": "analist",
+      "mevcut_izin_oktal": "0600",
+      "mevcut_izin_sembolik": "-rw-------",
+      "aciklama": "SSH public key listesi - Uyumlu"
+    },
+    {
+      "dosya_yolu": "/var/log/syslog",
+      "dosya_turu": "file",
+      "sahip": "syslog",
+      "grup": "adm",
+      "mevcut_izin_oktal": "0666",
+      "mevcut_izin_sembolik": "-rw-rw-rw-",
+      "aciklama": "Sistem log dosyasi herkese yazilabilir (world-writable) birakilmis - CWE-732 ihlali!"
+    },
+    {
+      "dosya_yolu": "/tmp",
+      "dosya_turu": "directory",
+      "sahip": "root",
+      "grup": "root",
+      "mevcut_izin_oktal": "0777",
+      "mevcut_izin_sembolik": "drwxrwxrwx",
+      "aciklama": "Gecici dizinde sticky bit eksik, kullanicilar birbirinin dosyasini silebilir!"
+    },
+    {
+      "dosya_yolu": "/var/www/html/wp-config.php",
+      "dosya_turu": "file",
+      "sahip": "www-data",
+      "grup": "www-data",
+      "mevcut_izin_oktal": "0777",
+      "mevcut_izin_sembolik": "-rwxrwxrwx",
+      "aciklama": "Veritabani parolalarini iceren PHP yapilandirma dosyasi 777 yapilmis!"
+    }
+  ]
+}

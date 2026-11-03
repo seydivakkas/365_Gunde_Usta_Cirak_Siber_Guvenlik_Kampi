@@ -1,0 +1,28 @@
+KOMUT:
+python -m portfolio.hafta_11.gun_073.uygulama.security_control_flow_engine --input portfolio/hafta_11/gun_073/ornek_veri/guvenlik_kurallari_ve_donguler.json --output-txt portfolio/hafta_11/gun_073/kanit/gercek/kontrol_akisi_guvenlik_raporu.txt
+
+ÇIKIŞ:
+================================================================================
+G073: KOŞULLAR, KONTROL AKIŞI VE SAVUNMACI DÖNGÜLER DENETİM RAPORU
+Telif Hakkı (c) 2026 Seydi Eryılmaz | Özel Lisans — Tüm Hakları Saklıdır
+================================================================================
+
+1. GÜVENLİK DUVARI VE POLİTİKA KONTROL AKIŞI (FAIL-CLOSED)
+--------------------------------------------------
+Alınan Politika Kararı      : ALLOW (Durum: PASS)
+Eşleşen Kural ID           : 1
+Eşleşen Kural Adı          : Yönetim Ağından SSH Erişimi İzni
+
+2. GÖSTERİCİ DÖNGÜSÜ (POINTER LOOP / ANTI-DOS) KORUMASI
+--------------------------------------------------
+Ziyaret Edilen Ofsetler    : 0 -> 16 -> 48 -> 80
+Döngü Güvenlik Durumu      : DÖNGÜSEL ATIF YOK (PASS - %100 Güvenli)
+
+3. KAYAN PENCERE HIZ SINIRI VE BRUTE FORCE ANALİZİ
+--------------------------------------------------
+İşlenen Toplam Olay        : 7
+Kilitlenen Tehdit IP Sayısı: 1
+  [LOCKED OUT] IP: 203.0.113.5 | Başarısız Deneme: 6 | Pencere: 60s
+================================================================================
+
+[+] Kontrol akışı ve savunmacı döngüler raporu kaydedildi: portfolio/hafta_11/gun_073/kanit/gercek/kontrol_akisi_guvenlik_raporu.txt

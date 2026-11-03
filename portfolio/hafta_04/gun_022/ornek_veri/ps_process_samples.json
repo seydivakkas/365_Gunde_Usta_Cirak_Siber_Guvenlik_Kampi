@@ -1,0 +1,68 @@
+[
+  {
+    "ProcessName": "powershell",
+    "Id": 4820,
+    "CPU": 2.45,
+    "WorkingSetMB": 68.5,
+    "Handles": 620,
+    "Path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "Company": "Microsoft Corporation",
+    "CommandLine": "powershell.exe -ExecutionPolicy Bypass -NoProfile -WindowStyle Hidden -Command Write-Host 'Security Audit'",
+    "Signed": true
+  },
+  {
+    "ProcessName": "svchost",
+    "Id": 1140,
+    "CPU": 45.12,
+    "WorkingSetMB": 124.0,
+    "Handles": 1420,
+    "Path": "C:\\Windows\\System32\\svchost.exe",
+    "Company": "Microsoft Corporation",
+    "CommandLine": "C:\\Windows\\system32\\svchost.exe -k DcomLaunch -p",
+    "Signed": true
+  },
+  {
+    "ProcessName": "lsass",
+    "Id": 732,
+    "CPU": 18.70,
+    "WorkingSetMB": 42.0,
+    "Handles": 1150,
+    "Path": "C:\\Windows\\System32\\lsass.exe",
+    "Company": "Microsoft Corporation",
+    "CommandLine": "C:\\Windows\\system32\\lsass.exe",
+    "Signed": true
+  },
+  {
+    "ProcessName": "explorer",
+    "Id": 3290,
+    "CPU": 112.30,
+    "WorkingSetMB": 185.0,
+    "Handles": 2840,
+    "Path": "C:\\Windows\\explorer.exe",
+    "Company": "Microsoft Corporation",
+    "CommandLine": "C:\\Windows\\Explorer.EXE",
+    "Signed": true
+  },
+  {
+    "ProcessName": "mimikatz_test",
+    "Id": 9924,
+    "CPU": 0.15,
+    "WorkingSetMB": 28.0,
+    "Handles": 190,
+    "Path": "C:\\Users\\Public\\mimikatz_test.exe",
+    "Company": "Bilinmeyen / İmzalanmamış",
+    "CommandLine": "mimikatz_test.exe sekurlsa::logonpasswords",
+    "Signed": false
+  },
+  {
+    "ProcessName": "notepad",
+    "Id": 5512,
+    "CPU": 0.85,
+    "WorkingSetMB": 18.2,
+    "Handles": 210,
+    "Path": "C:\\Windows\\System32\\notepad.exe",
+    "Company": "Microsoft Corporation",
+    "CommandLine": "notepad.exe C:\\Users\\Public\\audit.txt",
+    "Signed": true
+  }
+]

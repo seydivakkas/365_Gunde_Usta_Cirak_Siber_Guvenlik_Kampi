@@ -1,0 +1,45 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\Seydi Ery²lmaz\AppData\Local\Programs\Python\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+plugins: anyio-4.13.0, hydra-core-1.3.8, asyncio-1.3.0, cov-7.1.0, typeguard-4.6.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 26 items
+
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_01_resolve_valid_log_path PASSED [  3%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_02_path_traversal_detection PASSED [  7%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_03_symlink_violation_detection PASSED [ 11%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_04_null_byte_in_path_rejection PASSED [ 15%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_05_crlf_log_injection_neutralization PASSED [ 19%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_06_crlf_log_injection_strict_rejection PASSED [ 23%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_07_sensitive_data_redaction_credit_card[Payment 4532-1122-3344-5566 processed-Payment ****-****-****-5566 processed] PASSED [ 26%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_07_sensitive_data_redaction_credit_card[Card 1234 5678 9876 5432 charged-Card ****-****-****-5432 charged] PASSED [ 30%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_07_sensitive_data_redaction_credit_card[No card present here-No card present here] PASSED [ 34%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_08_sensitive_data_redaction_credentials[User login password=MySuperPass123! token=123-password=***REDACTED***] PASSED [ 38%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_08_sensitive_data_redaction_credentials[Access key AKIAIOSFODNN7EXAMPLE used-AKIA***REDACTED***] PASSED [ 42%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_08_sensitive_data_redaction_credentials[Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.test.sig-Bearer [REDACTED_JWT]] PASSED [ 46%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_09_network_validator_ipv4_and_ipv6[192.168.1.1] PASSED [ 50%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_09_network_validator_ipv4_and_ipv6[10.0.0.254] PASSED [ 53%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_09_network_validator_ipv4_and_ipv6[127.0.0.1] PASSED [ 57%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_09_network_validator_ipv4_and_ipv6[2001:0db8:85a3:0000:0000:8a2e:0370:7334] PASSED [ 61%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_09_network_validator_ipv4_and_ipv6[::1] PASSED [ 65%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_10_network_validator_invalid_ip[999.999.999.999] PASSED [ 69%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_10_network_validator_invalid_ip[abc.def.ghi.jkl] PASSED [ 73%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_10_network_validator_invalid_ip[192.168.1.300] PASSED [ 76%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_10_network_validator_invalid_ip[] PASSED [ 80%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_10_network_validator_invalid_ip[not_an_ip] PASSED [ 84%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_11_threat_detection_brute_force PASSED [ 88%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_12_threat_detection_sql_injection PASSED [ 92%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_13_process_sample_jsonl_file_end_to_end PASSED [ 96%]
+portfolio/hafta_12/gun_084/tests/test_tested_security_log_tool.py::test_14_oversized_log_line_protection PASSED [100%]
+
+============================= 26 passed in 0.10s ==============================
+Exception ignored in atexit callback <function cleanup_numbered_dir at 0x000001FF0B071170>:
+Traceback (most recent call last):
+  File "C:\Users\Seydi Ery²lmaz\AppData\Local\Programs\Python\Python314\Lib\site-packages\_pytest\pathlib.py", line 374, in cleanup_numbered_dir
+    cleanup_dead_symlinks(root)
+  File "C:\Users\Seydi Ery²lmaz\AppData\Local\Programs\Python\Python314\Lib\site-packages\_pytest\pathlib.py", line 360, in cleanup_dead_symlinks
+    left_dir.unlink()
+  File "C:\Users\Seydi Ery²lmaz\AppData\Local\Programs\Python\Python314\Lib\pathlib\__init__.py", line 1042, in unlink
+    os.unlink(self)
+PermissionError: [WinError 5] Eri■im engellendi: 'C:\\Users\\seydieryilmaz\\AppData\\Local\\Temp\\pytest-of-seydieryilmaz\\pytest-current'

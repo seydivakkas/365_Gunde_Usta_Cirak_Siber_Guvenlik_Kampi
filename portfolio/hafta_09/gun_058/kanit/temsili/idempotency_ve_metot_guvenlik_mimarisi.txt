@@ -1,0 +1,74 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+================================================================================
+G058 - HTTP YONTEMLERI, IDEMPOTENCY-KEY VE VERB TAMPERING GUVENLIK MIMARISI
+(Temsili Kavramsal Mimari ve Islem Akis Semasi)
+================================================================================
+
+1. HTTP METOT SEMANTIGI VE MATEMATIKSEL ESGUCLULUK (IDEMPOTENCY)
+================================================================================
+   Matematiksel Tanim: f(f(x)) = f(x)
+   Bir eylemi 1 kez calistirmak ile N kez calistirmak sistemde ayni sonucu birakiyorsa
+   o islem ESGUCLU (IDEMPOTENT)'dur.
+
+   +----------------+--------------------+---------------------+--------------------+
+   | HTTP Metodu    | Guvenli (Safe)?    | Esguklu (Idempotent)| Ornek Islem        |
+   +----------------+--------------------+---------------------+--------------------+
+   | GET            | EVET (Yan etki yok)| EVET                | Bakiye goruntuleme |
+   | HEAD           | EVET (Yalnizca hdr)| EVET                | Kaynak var mi?     |
+   | PUT            | HAYIR (Yazar)      | EVET                | Profili tamamen yaz|
+   | DELETE         | HAYIR (Siler)      | EVET                | Oturumu sonlandir  |
+   | OPTIONS        | EVET (Sorgular)    | EVET                | CORS Preflight     |
+   | POST           | HAYIR (Olusturur)  | HAYIR (Sayar/Ceker) | 100 TL Para Cekme! |
+   | PATCH          | HAYIR (Kismi)      | KOSULLU / HAYIR     | Sayaci 1 artir     |
+   +----------------+--------------------+---------------------+--------------------+
+
+2. IDEMPOTENCY-KEY MEKANIZMASI VE CIFTE PARA CEKME KORUMASI
+================================================================================
+   [ ISTEMCI (Mobil Uygulama) ]                      [ BANKA API SUNUCUSU ]
+                |                                               |
+   1. ISTENEN: 200 TL Odeme Yap                                 |
+   Idempotency-Key: e82b203c-7729...                            |
+   Payload: {"amount": 200}                                     |
+                | ---------- 1. POST /payments ---------------> |
+                |                                               | -> Anahtar Kontrol: YOK
+                |                                               | -> Bakiye Dusur: 1000 -> 800
+                |                                               | -> Sonucu Kaydet (TTL 24h)
+                |                                               |    Key: e82b... | Resp: 201
+                | <--- X (Ag Koptu! Yanit Istemciye Ulasmadi) - |
+                |                                               |
+   2. YENIDEN DENEME (Retry Logic):                             |
+   Mobil Uygulama zaman asimina ugrayip                         |
+   AYNI anahtarla istegi tekrar basar:                          |
+                | ---------- 2. POST /payments ---------------> |
+                |                                               | -> Anahtar Kontrol: MEVCUT!
+                |                                               | -> Payload Hash: ESLESTI!
+                |                                               | -> [ISLEM CALISTIRILMADI!]
+                |                                               | -> Onbellekteki Yanit Donuldu
+                | <========== 201 Created (Cached) ============ |
+                |             Idempotent-Replayed: true         |
+                v                                               v
+   SONUC: Bakiye 800 TL'de kaldi! Kullanicidan ASLA iki kez 200 TL (400 TL) cekilmedi.
+
+3. IDEMPOTENCY GOVDE CAKISMASI (PAYLOAD MISMATCH ATTACK)
+================================================================================
+   Saldirgan ayni Idempotency-Key ile farkli tutar onaylatmaya calisirsa:
+   Istek 1: Key=AAA -> Amount=100  ===> ONAYLANDI (Hash: a1b2...)
+   Istek 2: Key=AAA -> Amount=500  ===> [ BLOKE! HASH UYUSMAZLIGI ]
+   ===> Sunucu 422 Unprocessable Entity / 409 Conflict doner!
+
+4. HTTP VERB TAMPERING (METOT ATLATMA) TEHDIDI VE SAVUNMASI
+================================================================================
+   Gevsek / Hatali Guvenlik Kurali:
+   <Security-Constraint>
+       <URL-Pattern>/admin/delete</URL-Pattern>
+       <HTTP-Method>POST</HTTP-Method>   <--- (HATA: Yalnizca POST korunmus!)
+   </Security-Constraint>
+
+   Saldirgan Eylemi:
+   Saldirgan 'POST /admin/delete' yerine 'HEAD /admin/delete' veya 'PUT' atar!
+   Filtre yalnizca POST'u kontrol ettigi icin HEAD istegi filtreden sizar!
+
+   DOGRU SAVUNMA:
+   Erisim denetimleri (ACL / WAF) metot bazli degil, URL bazli yapilmali;
+   veya bilinmeyen / yetkisiz tum metotlar varsayilan olarak reddedilmelidir (Deny by Default).

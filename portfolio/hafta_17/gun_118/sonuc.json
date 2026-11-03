@@ -1,0 +1,35 @@
+{
+  "gun": 118,
+  "hafta": 17,
+  "konu": "Least privilege ve zero trust",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "tamamlanma_tarihi": "2026-11-02",
+  "kategori": "Kimlik ve Erişim Yönetimi (IAM)",
+  "puan_detaylari": {
+    "mimari": 20,
+    "kodlama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "zafiyet_savunmalari": [
+    "CWE-250",
+    "CWE-272",
+    "CWE-613",
+    "CWE-284",
+    "CWE-308"
+  ],
+  "test_ozeti": {
+    "toplam_birim_test": 15,
+    "basarili_birim_test": 15,
+    "basarisiz_birim_test": 0,
+    "negatif_senaryolar": 9,
+    "basarili_negatif_senaryolar": 9
+  },
+  "yurutulen_araclar": [
+    "uygulama/least_privilege_zero_trust_engine.py",
+    "uygulama/zero_trust_cli.py",
+    "tests/test_least_privilege_zero_trust.py",
+    "kanit_uretici.py"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "gun": 114,
+  "hafta": 17,
+  "konu": "MFA yöntemleri ve phishing direnci",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "tamamlanma_tarihi": "2026-11-02",
+  "kategori": "Kimlik ve Erişim Yönetimi (IAM)",
+  "puan_detaylari": {
+    "mimari": 20,
+    "kodlama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "zafiyet_savunmalari": [
+    "CWE-287",
+    "CWE-346",
+    "CWE-294",
+    "CWE-347",
+    "CWE-307",
+    "CWE-208"
+  ],
+  "test_ozeti": {
+    "toplam_birim_test": 15,
+    "basarili_birim_test": 15,
+    "basarisiz_birim_test": 0,
+    "negatif_senaryolar": 9,
+    "basarili_negatif_senaryolar": 9
+  },
+  "yurutulen_araclar": [
+    "uygulama/mfa_phishing_resistant_engine.py",
+    "uygulama/mfa_cli.py",
+    "tests/test_mfa_phishing_resistance.py",
+    "kanit_uretici.py"
+  ]
+}

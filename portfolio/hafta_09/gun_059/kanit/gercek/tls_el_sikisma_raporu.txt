@@ -1,0 +1,103 @@
+==============================================================================
+G059: HTTPS VE TLS EL SIKISMASI — KAPSAMLI PROTOKOL VE GUVENLIK RAPORU
+==============================================================================
+Tarih: 2026-10-29 22:18:00 UTC+3
+Standartlar: RFC 5246 (TLS 1.2), RFC 8446 (TLS 1.3), RFC 6066 (SNI), RFC 2818 (HTTPS)
+Analiz Motoru: portfolio.hafta_09.gun_059.uygulama.tls_handshake_analyzer
+
+------------------------------------------------------------------------------
+SENARYO: TLS13_MODERN_HANDSHAKE — Modern TLS 1.3 Guvenli El Sikismasi (1-RTT, PFS, ECH/SNI)
+------------------------------------------------------------------------------
+  * Protokol Surumu          : TLS 1.3
+  * SNI Hostname             : guvenli-banka.internal (Gecerli: True)
+  * Toplam Sifre Paketi      : 3
+  * Guvenli Sifre Paketi     : 3
+  * Guvenlik Skoru           : 100/100
+  * Genel Durum              : GUVENLI
+  * Tespit Edilen Guvenlik Bulgulari: Temiz (Sifir zaafiyet, modern guvenli tasarim)
+
+------------------------------------------------------------------------------
+SENARYO: TLS12_STANDARD_HANDSHAKE — Geleneksel TLS 1.2 El Sikismasi (2-RTT, ECDHE, PFS)
+------------------------------------------------------------------------------
+  * Protokol Surumu          : TLS 1.2
+  * SNI Hostname             : api.kurumsal-hizmet.local (Gecerli: True)
+  * Toplam Sifre Paketi      : 2
+  * Guvenli Sifre Paketi     : 2
+  * Guvenlik Skoru           : 100/100
+  * Genel Durum              : GUVENLI
+  * Tespit Edilen Guvenlik Bulgulari: Temiz (Sifir zaafiyet, modern guvenli tasarim)
+
+------------------------------------------------------------------------------
+SENARYO: TLS12_INSECURE_STATIC_RSA — Guvenli Olmayan TLS 1.2 (Static RSA - PFS Yok, CBC Modu)
+------------------------------------------------------------------------------
+  * Protokol Surumu          : TLS 1.2
+  * SNI Hostname             : legacy-portal.eski-sistem.local (Gecerli: True)
+  * Toplam Sifre Paketi      : 3
+  * Guvenli Sifre Paketi     : 0
+  * Guvenlik Skoru           : 0/100
+  * Genel Durum              : TEHLIKELI
+  * Tespit Edilen Guvenlik Bulgulari:
+    - [KRITIK] CRIME_VULNERABILITY: CRIME (CVE-2012-4929) zaafiyetine yol acan TLS veri sikistirma yontemleri tespit edildi: [1]. TLS sikistirmasi devre disi birakilmalidir (yalnizca 0x00 kabul edilir).
+      Onerilen Aksiyon: TLS duzeyinde veri sikistirmasini derhal kapatin. Yalnizca Null (0x00) kabul edin.
+    - [YUKSEK] INSECURE_CIPHER_SUITE: TLS_RSA_WITH_AES_128_CBC_SHA paketi guvensiz: Iletme Gizliligi (PFS) bulunmuyor: Ozel anahtar sizdirilirsa gecmis trafik cozulur.
+      Onerilen Aksiyon: Zayif sifreleme paketini sunucu ve istemci beyaz listesinden cikarin.
+    - [YUKSEK] INSECURE_CIPHER_SUITE: TLS_RSA_WITH_AES_128_CBC_SHA paketi guvensiz: Blok sifreleme CBC modu: Lucky Thirteen ve dolgu saldirilarina hassas.
+      Onerilen Aksiyon: Zayif sifreleme paketini sunucu ve istemci beyaz listesinden cikarin.
+    - [YUKSEK] INSECURE_CIPHER_SUITE: TLS_RSA_WITH_3DES_EDE_CBC_SHA paketi guvensiz: Iletme Gizliligi (PFS) bulunmuyor: Ozel anahtar sizdirilirsa gecmis trafik cozulur.
+      Onerilen Aksiyon: Zayif sifreleme paketini sunucu ve istemci beyaz listesinden cikarin.
+    - [YUKSEK] INSECURE_CIPHER_SUITE: TLS_RSA_WITH_3DES_EDE_CBC_SHA paketi guvensiz: Zayif blok boyutu (64-bit DES/3DES): Sweet32 zaafiyeti.
+      Onerilen Aksiyon: Zayif sifreleme paketini sunucu ve istemci beyaz listesinden cikarin.
+    - [YUKSEK] INSECURE_CIPHER_SUITE: TLS_RSA_WITH_3DES_EDE_CBC_SHA paketi guvensiz: Zayif blok boyutu (64-bit DES/3DES): Sweet32 zaafiyeti.
+      Onerilen Aksiyon: Zayif sifreleme paketini sunucu ve istemci beyaz listesinden cikarin.
+    - [YUKSEK] INSECURE_CIPHER_SUITE: TLS_RSA_WITH_3DES_EDE_CBC_SHA paketi guvensiz: Blok sifreleme CBC modu: Lucky Thirteen ve dolgu saldirilarina hassas.
+      Onerilen Aksiyon: Zayif sifreleme paketini sunucu ve istemci beyaz listesinden cikarin.
+    - [YUKSEK] INSECURE_CIPHER_SUITE: TLS_RSA_WITH_RC4_128_SHA paketi guvensiz: Iletme Gizliligi (PFS) bulunmuyor: Ozel anahtar sizdirilirsa gecmis trafik cozulur.
+      Onerilen Aksiyon: Zayif sifreleme paketini sunucu ve istemci beyaz listesinden cikarin.
+    - [YUKSEK] INSECURE_CIPHER_SUITE: TLS_RSA_WITH_RC4_128_SHA paketi guvensiz: Kirilmis akis sifresi (RC4): Bar Mitzvah / NOMORE zaafiyetleri.
+      Onerilen Aksiyon: Zayif sifreleme paketini sunucu ve istemci beyaz listesinden cikarin.
+
+------------------------------------------------------------------------------
+SENARYO: TLS13_WITH_0RTT_EARLY_DATA — TLS 1.3 0-RTT Erken Veri El Sikismasi (Replay Saldirisi Riski)
+------------------------------------------------------------------------------
+  * Protokol Surumu          : TLS 1.3
+  * SNI Hostname             : odeme.eticaret.internal (Gecerli: True)
+  * Toplam Sifre Paketi      : 2
+  * Guvenli Sifre Paketi     : 2
+  * Guvenlik Skoru           : 90/100
+  * Genel Durum              : GUVENLI
+  * Tespit Edilen Guvenlik Bulgulari:
+    - [ORTA] TLS13_0RTT_REPLAY_RISK: TLS 1.3 0-RTT Erken Veri aktarimi aktif. Ag saldirganlari tarafindan tekrar (replay) saldirisi yapilabilir.
+      Onerilen Aksiyon: 0-RTT isteklerini yalnizca idempotent ve guvenli HTTP metodlarinda (GET/HEAD) kabul edin.
+
+------------------------------------------------------------------------------
+SENARYO: TLS_DOWNGRADE_MITM_ATTEMPT — TLS Surum Dusurme (Downgrade MitM) Saldiri Tespiti
+------------------------------------------------------------------------------
+  * Protokol Surumu          : TLS 1.2
+  * SNI Hostname             : auth.kritik-altyapi.gov.tr (Gecerli: True)
+  * Toplam Sifre Paketi      : 0
+  * Guvenli Sifre Paketi     : 0
+  * Guvenlik Skoru           : 60/100
+  * Genel Durum              : KOSULLU
+  * Tespit Edilen Guvenlik Bulgulari:
+    - [KRITIK] DOWNGRADE_ATTACK_DETECTED: Sunucu random alaninda DOWNGRD sentineli tespit edildi. Agda aktif MitM saldirisi mevcut.
+      Onerilen Aksiyon: TLS 1.3 destekleyen istemciler icin TLS 1.2'ye yapay gecisleri engelleyin.
+
+==============================================================================
+TLS 1.2 VE TLS 1.3 MIMARI VE PERFORMANS KARSILASTIRMA MATRISI
+==============================================================================
+[EL_SIKISMA_GECIKMESI]
+  - tls_1_2: 2-RTT (Uygulama verisi iletilmeden once 2 tam gidis-donus gerekir)
+  - tls_1_3: 1-RTT (Varsayilan olarak tek gidis-donuste anahtar degisimi ve selamlama biter)
+  - tls_1_3_0rtt: 0-RTT Early Data (Oturum devaminda istemci ilk pakette veri gonderebilir, ancak replay riski tasir)
+[KRIPTOGRAFIK_BUDAMA]
+  - tls_1_2_durum: Statik RSA, CBC modlari, RC4, 3DES, SHA-1 gibi tarihi algoritmalar desteklenir.
+  - tls_1_3_durum: Yalnizca AEAD (GCM, Poly1305, CCM) ve yalnizca PFS zorunludur. Zayif algoritmalar tamamen kaldirilmistir.
+[VERI_SIKISTIRMA]
+  - tls_1_2: Protokol seviyesinde sikistirma desteklenir (CRIME saldirisi riski dogurur).
+  - tls_1_3: Protokol seviyesinde sikistirma tamamen yasaklanmistir (Sifir CRIME riski).
+[GIZLILIK_VE_METADENE]
+  - tls_1_2: Sertifikalar ve bircok uzanti agda acik metin olarak dinlenebilir.
+  - tls_1_3: ServerHello disindaki tum el sikisma mesajlari (Sertifika dahil) sifrelenir (EncryptedExtensions).
+
+==============================================================================
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Ozel Lisans — Tum Haklari Saklidir.

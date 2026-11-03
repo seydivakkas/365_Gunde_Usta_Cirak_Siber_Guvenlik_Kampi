@@ -1,0 +1,99 @@
+=== GÜN 101: HASH CLI YÜRÜTME VE STANDART ÇIKIŞ KODLARI KANITI ===
+Tarih/Saat : 2026-11-02 01:57:28
+Standart   : POSIX Exit Codes (0: Başarılı / Doğrulandı, 1: Güvenlik İhlali / Hata, 2: Girdi Hatası)
+==========================================================================================
+
+--- 1. Yardım Menüsü ve Parametre Doğrulama ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_101\uygulama\hash_cli.py --help
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+usage: hash_cli [-h] [-s STRING] [-a ALGORITHM] [--allow-insecure]
+                [--avalanche] [--birthday-sim [BITS]] [--verify EXPECTED_HEX]
+                [--json] [-o OUTPUT]
+
+G101: Kriptografik Hash Fonksiyonları ve Çakışma Analiz Aracı
+
+options:
+  -h, --help            show this help message and exit
+  -s, --string STRING   Özeti hesaplanacak metin dizgisi
+  -a, --algorithm ALGORITHM
+                        Kullanılacak hash algoritması (varsayılan: sha256)
+  --allow-insecure      Kırılmış algoritmalara (MD5, SHA-1) deneysel izin
+                        verir
+  --avalanche           1 bitlik girdi farkı ile Çığ Etkisini (Avalanche
+                        Effect) analiz eder
+  --birthday-sim [BITS]
+                        Doğum Günü Paradoksu çakışma simülasyonunu BITS
+                        bitiyle koşturur (varsayılan: 16)
+  --verify EXPECTED_HEX
+                        Hesaplanan özeti beklenen özet ile sabit zamanlı
+                        doğrular
+  --json                Sonuçları yapılandırılmış JSON formatında basar
+  -o, --output OUTPUT   Raporun kaydedileceği dosya yolu
+------------------------------------------------------------------------------------------
+
+--- 2. SHA-256 Güvenli Özet Hesaplama ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_101\uygulama\hash_cli.py -s SiberGuvenlik2026 -a sha256
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+================================================================================
+GÜN 101: KRİPTOGRAFİK ÖZET (SHA256)
+================================================================================
+  Girdi     : SiberGuvenlik2026
+  Özet (Hex): 582033cbcb05c36d9ab9cd46b65bcbab2f7bc490ab162b58c664fef856e99e35
+================================================================================
+------------------------------------------------------------------------------------------
+
+--- 3. Çığ Etkisi (Avalanche Effect) Analiz Yürütmesi ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_101\uygulama\hash_cli.py --avalanche
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+================================================================================
+GÜN 101: ÇIĞ ETKİSİ (AVALANCHE EFFECT) ANALİZİ (SHA256)
+================================================================================
+  Girdi 1           : SiberGuvenlik2026_Kripto_G101_A
+  Girdi 2           : SiberGuvenlik2026_Kripto_G101_B
+  Toplam Çıktı Biti : 256 bit
+  Farklılaşan Bit   : 136 bit
+  Değişim Oranı     : %53.12 (İdeal: ~%50)
+  Değerlendirme     : MÜKEMMEL (İdeal Çığ Etkisi ~50%)
+================================================================================
+------------------------------------------------------------------------------------------
+
+--- 4. Doğum Günü Paradoksu 16-Bit Çakışma Simülasyonu ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_101\uygulama\hash_cli.py --birthday-sim 16
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+=====================================================================================
+GÜN 101: DOĞUM GÜNÜ PARADOKSU ÇAKIŞMA SİMÜLASYONU (16-BİT KIRPILMIŞ HASH)
+=====================================================================================
+  Kırpma Boyutu             : 16 bit
+  Gerçekleşen Deneme Sayısı : 98 deneme
+  Teorik Beklenen Deneme    : 320 deneme (O(2^(b/2)))
+  Harcanan Süre             : 0.193 ms
+  Çakışan Girdi 1           : candidate_nonce_4_9b317d338c8c186a
+  Çakışan Girdi 2           : candidate_nonce_98_7d8e18a3f2b8e8c8
+  Ortak Çakışan Özet (Hex)  : 1c1a
+=====================================================================================
+------------------------------------------------------------------------------------------
+
+--- 5. Sabit Zamanlı Bütünlük Doğrulaması (Çıkış Kodu: 0) ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_101\uygulama\hash_cli.py -s abc --verify ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+================================================================================
+GÜN 101: KRİPTOGRAFİK ÖZET (SHA256)
+================================================================================
+  Girdi     : abc
+  Özet (Hex): ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+  Beklenen  : ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+  Doğrulama : BAŞARILI (EŞLEŞTİ)
+================================================================================
+------------------------------------------------------------------------------------------
+
+--- 6. Güvensiz MD5 Algoritması Engelleme Testi (Çıkış Kodu: 1) ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_101\uygulama\hash_cli.py -s test -a md5
+[ÇIKIŞ KODU] 1
+[STDERR]:
+[GÜVENLİK İHLALİ] BrokenHashAlgorithmError: Kırılmış ve çakışmalı algoritma kullanımı engellendi: 'md5'. Kriptografik güvenlik için SHA-256 veya BLAKE2b kullanınız (CWE-328)!
+------------------------------------------------------------------------------------------

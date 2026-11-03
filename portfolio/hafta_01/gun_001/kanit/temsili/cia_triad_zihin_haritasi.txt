@@ -1,0 +1,47 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+SİBER GÜVENLİK 365 | GÜN 001: CIA ÜÇLÜSÜ ZİHİN HARİTASI VE MODELİ
+================================================================================
+
+Bu görsel/şematik model, siber güvenliğin 3 temel direği arasındaki bağımsızlığı
+ve birbirlerini nasıl tamamladıklarını kavramsal olarak gösteren temsili bir illüstrasyondur.
+
+                     +---------------------------------------+
+                     |           SİBER GÜVENLİK             |
+                     |         (Varlıkların Korunması)       |
+                     +-------------------+-------------------+
+                                         |
+         +-------------------------------+-------------------------------+
+         |                               |                               |
+         v                               v                               v
++-----------------+             +-----------------+             +-----------------+
+|   GİZLİLİK      |             |    BÜTÜNLÜK     |             | ERİŞİLEBİLİRLİK |
+| (Confidentiality)             |   (Integrity)   |             | (Availability)  |
++-----------------+             +-----------------+             +-----------------+
+| "Yalnızca       |             | "Veri yetkisiz  |             | "Yetkili kişi   |
+| yetkilisi       |             | değiştirilemez, |             | ihtiyaç duyduğu |
+| okuyabilir."    |             | bozulamaz,      |             | an sisteme      |
+|                 |             | silinemez."     |             | ulaşabilmeli."  |
+| Mekanizmalar:   |             | Mekanizmalar:   |             | Mekanizmalar:   |
+| - Şifreleme     |             | - Kriptografik  |             | - Yedeklilik    |
+|   (AES, RSA)    |             |   Özet (SHA256) |             |   (Redundancy)  |
+| - Erişim Kontrol|             | - Dijital İmza  |             | - DDoS Koruması |
+|   (RBAC, ACL)   |             | - Değişiklik    |             | - Yük Dengeleme |
+| - Yetkilendirme |             |   Denetim İzi   |             | - Felaket       |
+|                 |             |   (Audit Trail) |             |   Kurtarma (DR) |
++-----------------+             +-----------------+             +-----------------+
+         |                               |                               |
+         | (İhlal Örneği)                | (İhlal Örneği)                | (İhlal Örneği)
+         v                               v                               v
+[Veri Sızıntısı / Veri Çalma]   [Veri Tahrifatı / Sahtecilik]   [DDoS / Ransomware Kilidi]
+Örn: Öğrencinin tüm sınıfın     Örn: Notun 45'ten 95'e          Örn: Sınav günü sistemin
+notlarını indirip ifşa etmesi   çaktırmadan yükseltilmesi       çökertilip kilitlenmesi
+
+================================================================================
+HOCANIN KRİTİK DERS NOTU:
+"Bir sistemi 4096-bit RSA veya 256-bit AES ile şifrelemeniz, o sistemin
+güvenli olduğunu tek başına kanıtlamaz! Veri şifreliyken fidye yazılımı (ransomware)
+tarafından silinir veya kilitlenirse ERİŞİLEBİLİRLİK çöker. Ya da şifreli verinin
+içindeki not daha şifrelenmeden önce tahrif edildiyse BÜTÜNLÜK çöker.
+Üç ayaklı bir sehpa düşünün: Bir ayağı keserseniz sehpa devrilir."
+================================================================================

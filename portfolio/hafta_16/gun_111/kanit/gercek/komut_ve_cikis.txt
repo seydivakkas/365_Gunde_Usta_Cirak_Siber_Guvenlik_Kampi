@@ -1,0 +1,55 @@
+========================================================================
+  GÜN 111: ANAHTAR YÖNETİMİ CLI YÜRÜTME KOMUTU VE ÇIKTI KANITI
+  Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_111\uygulama\keymgmt_cli.py
+========================================================================
+
+========================================================================
+  NIST SP 800-57 UYUMLU ANAHTAR Y�NET�M� VE ROTASYON ARACI
+  Zarf �ifreleme (Envelope Encryption) / KEK vs DEK / Re-wrapping / Zeroization
+========================================================================
+
+[*] 1. ADIM: Anahtar Y�netim Servisi (KMS) Ba�lat�l�yor...
+[+] KEK-1 Aktif Edildi: ID=kek_master_v1, Algoritma=AES-256, Durum=ACTIVE
+
+[*] 2. ADIM: Zarf �ifreleme ile Hassas Veri �ifreleniyor...
+[+] Zarf Paketi Olu�turuldu:
+    - KEK ID: kek_master_v1
+    - Sar�lm�� (Wrapped) DEK: f26b3f1240938228f808ca6868ae1a86...
+    - �ifreli Veri: fea69d23964dc9977a2850d3226c3964...
+[+] Do�rulama: Veri Ba�ar�yla ��z�ld�: 'Gizli Finansal Kayitlar: Hesap No 1234-5678-9012'
+
+[*] 3. ADIM: Otomatik KEK Rotasyonu (Rollover) Y�r�t�l�yor...
+[+] KEK-2 Aktif Edildi: ID=kek_master_v2, Durum=ACTIVE
+[+] Eski KEK-1 Durumu: DEPRECATED (Yaln�zca De�ifre Yapabilir)
+
+[*] 4. ADIM: Re-wrapping: Yaln�zca DEK Yeni KEK ile Yeniden Sar�l�yor (O(1) S�re)...
+[+] Re-wrapping Tamamland�!
+    - Yeni KEK ID: kek_master_v2
+    - �ifreli Veri De�i�ti mi? -> True (Veri Kopyalanmad�!)
+
+[*] 5. ADIM: Eski KEK-1 Kriptografik Olarak S�f�rlan�yor (Zeroization)...
+[+] KEK-1 S�f�rland� ve �mha Edildi! Durum: DESTROYED, Bellek: None
+
+========================================================================
+  G�VENL�K ZAF�YET� VE SALDIRI SENARYOLARI (CWE ANAL�Z�)
+========================================================================
+
+[!] 1. Test: Kriptoperiyodu Dolmu� Anahtarla �ifreleme (CWE-320)...
+    -> Savunma Ba�ar�l�: CWE-320: kek_test_01 anahtar�n�n kriptoperiyodu dolmu�tur! (Biti�: 2027-11-02T01:42:05.514227+00:00)
+
+[!] 2. Test: �hlal Edilmi� (COMPROMISED) Anahtar Kullan�m� (CWE-320)...
+    -> Savunma Ba�ar�l�: CWE-320: kek_test_01 anahtar� ihlal edilmi� (COMPROMISED) durumdad�r!
+
+[!] 3. Test: Yetersiz Anahtar Uzunlu�u Talebi (CWE-326)...
+    -> Savunma Ba�ar�l�: CWE-326: Yetersiz anahtar uzunlu�u (64 bit)! Asgari 128-bit gereklidir.
+
+[!] 4. Test: Sabit / Tahmin Edilebilir Anahtar Tespiti (CWE-321)...
+    -> Savunma Ba�ar�l�: CWE-321: Tahmin edilebilir veya d���k entropili sabit anahtar tespit edildi!
+
+[!] 5. Test: �ift Kontrol (Dual Control) Eksik Par�a (CWE-320)...
+    -> Savunma Ba�ar�l�: CWE-320: Dual Control i�in asgari 2 anahtar par�as� sunulmal�d�r!
+
+========================================================================
+  T�M ANAHTAR Y�NET�M� VE ROTASYON TESTLER� BA�ARIYLA TAMAMLANDI
+========================================================================
+

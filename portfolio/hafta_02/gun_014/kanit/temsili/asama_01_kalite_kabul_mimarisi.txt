@@ -1,0 +1,72 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+GÜN 014: Aşama 1 Kalite Özeti, Güvenlik Temelleri ve Kanıt Zinciri Mimarisi
+Lisans: ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+
++-------------------------------------------------------------------------------+
+|         1. AŞAMA 1 SİBER GÜVENLİK TEMELLERİ KANIT ZİNCİRİ (CHAIN OF EVIDENCE)  |
++-------------------------------------------------------------------------------+
+
+  [GÜN 003] ETİK ROE SÖZLEŞMESİ ──► Yazılı İzin, İletişim Kanalları, Kapsam Sınırı
+               │
+               ▼
+  [GÜN 005] VARLIK ENVANTERİ   ──► Donanım, Yazılım, Veri Sınıflandırması (Kritiklik)
+               │
+               ▼
+  [GÜN 004] NIST CSF 2.0 ÇERÇEVESİ (6 TEMEL FONKSİYON)
+        ├── GOVERN   (Yönetişim)  ──► Güvenlik Politikaları ve Yasal Uyum
+        ├── IDENTIFY (Tanımlama)  ──► Risk Matrisi ve STRIDE Tehdit Modellemesi
+        ├── PROTECT  (Koruma)     ──► CIS Seviye 1, SSH Anahtar Auth, Mikro-Segmentasyon
+        ├── DETECT   (Tespit)     ──► Event ID 4688, Merkezi Syslog ve Conntrack
+        ├── RESPOND  (Müdahale)   ──► Olay Müdahale Planı ve İzolasyon Protokolü
+        └── RECOVER  (Kurtarma)   ──► 3-2-1-1-0 WORM Yedek ve Rollback Tatbikatı
+               │
+               ▼
+  [GÜN 008-012] SANALLAŞTIRMA & İZOLASYON
+        ├── Host-Guest İzolasyonu (Donanım Sanallaştırma)
+        ├── 4 Bölgeli Mikro-Segmentasyon (VLAN + Durum Takipli Conntrack)
+        └── DNS Sinkhole ile C2 Sızıntı Önleme
+               │
+               ▼
+  [GÜN 013] GÜVENLİ ARAŞTIRMA & CRAAP ──► Resmî NVD Bültenleri, Çapraz Teyit (Triangulation)
+               │
+               ▼
+  [AŞAMA 1 KABUL SERTİFİKASI] ──► SHA-256 Kriptografik Bütünlük İmzası (PASS - 100/100)
+
+
++-------------------------------------------------------------------------------+
+|   2. ÖLÜMCÜL TUZAK: "BİR ÖNLEMİ TEK BAŞINA EKSİKSİZ SAVUNMA SANMA" YANILGISI   |
++-------------------------------------------------------------------------------+
+
+  SENARYO: "Biz pahalı bir Next-Gen Güvenlik Duvarı (Firewall) aldık, güvendeyiz!"
+
+      [Saldırgan] ────────► [Güvenlik Duvarı (PROTECT)] ───► Güvenlik duvarı aşılır
+                                                               (Phishing / 0-Day)
+                                                                       │
+                                                                       ▼
+      [FELAKET]:
+      - Varlık Envanteri YOK (IDENTIFY eksik)  ──► Hangi sunucunun vurulduğu bilinmiyor!
+      - Loglama / İzleme YOK (DETECT eksik)    ──► Saldırgan 200 gün ağda gizlenir!
+      - Müdahale Planı YOK   (RESPOND eksik)   ──► Sistemler izole edilemiyor!
+      - Değişmez Yedek YOK   (RECOVER eksik)   ──► Tüm veri fidye yazılımıyla silinir!
+
+  ÇÖZÜM: Bütüncül Savunma (Defense-in-Depth). 6 fonksiyon bir zincir gibidir;
+         en zayıf halka kadar güçlüdür!
+
+
++-------------------------------------------------------------------------------+
+|         3. AŞAMA 1 RESMÎ KABUL DENETİM PUANLAMA DAĞILIMI                       |
++-------------------------------------------------------------------------------+
+
+  [Etik RoE ve Kapsam Sınırları]        : 20 Puan  (Yazılı onay, 0 dış temas)
+  [Varlık Envanteri ve Sınıflandırma]   : 15 Puan  (Varlık kaydı ve etiketleme)
+  [NIST CSF 2.0 Altı Fonksiyonu]        : 40 Puan  (Govern/Identify/Protect/Detect/Respond/Recover)
+  [Sanallaştırma ve Geri Dönüş Güvencesi]: 15 Puan  (Mikro-segmentasyon, WORM rollback)
+  [Kaynak Doğrulama ve CRAAP Skoru]     : 10 Puan  (Resmî NVD, sahte PoC taraması)
+  -----------------------------------------------------------------------------
+  TOPLAM KALİTE KABUL SKORU             : 100 / 100 (YETERLİ / PASS)
+
+================================================================================
+Bitiş Etiketi: TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

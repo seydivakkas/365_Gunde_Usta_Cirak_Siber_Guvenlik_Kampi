@@ -1,0 +1,18 @@
+{
+  "README.md": "831b56eecf17cd48635b515f96612ba5bfd2085f5f13b18205ad287ef16faf14",
+  "ders.md": "7b1bd14b50c229f35c8b5b5d850f25f11c135d1d9a328c432481cfafacf9e114",
+  "rapor.md": "30d0d6a125da1b064dd6d643b2f9afffac4f17041dc3f55e52b04d04f0056452",
+  "sonuc.json": "9a2316236d8c75e5b3c92f4958d82fb9a8b1dac17bc09dbd32a6689299ff9799",
+  "soru_cevap.md": "d66ed165c78a3119768c908aa49e3ee1951d4ab696257ba4d2a33ffab272468b",
+  "kanit/gercek/arp_analiz_raporu.txt": "da6ac2a83b111422e43826239599d62d6bb2b11cf614939bf49dd161ae69ef9e",
+  "kanit/gercek/komut_ve_cikis.txt": "7c77d10002368f9e6195443b235a9d2e0ce436f19dd630ff52079c371fc7e6fa",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "3c20f41ef9f840cdba466c19b47d8cfaa5b16655d421d4a2e069357a70d9e198",
+  "kanit/gercek/test_sonuclari.txt": "5ebe6b916e40e6ee87ba43384f7ad7b743a59f6a370b3c328603eb0baba2dd1c",
+  "kanit/temsili/arp_ve_mitm_zehirleme_mimarisi.txt": "ec4b2bf5b694e2b8f5096bb37e54a1f30533013c0136d7bb8523cde8ff54d58e",
+  "ornek_veri/invalid_arp_entries.json": "d605d9fdef1b97d14e1db2e01023183f1d061fdee5528d30cd506c4f9bcec731",
+  "ornek_veri/sample_arp_tables.json": "011025266713507a20d65994d093f48d05302004d1157fe0b6e706fbb9cfefe8",
+  "tests/__init__.py": "b19f49dc710f82ebbb4823ca6cf9f012139744a743bb478b9739ae4e65bacc63",
+  "tests/test_arp_neighbor_analyzer.py": "9bf3a3292c0088483b14d79afce7f88e33789e7ed18512adfb59ba4347ae03db",
+  "uygulama/__init__.py": "b19f49dc710f82ebbb4823ca6cf9f012139744a743bb478b9739ae4e65bacc63",
+  "uygulama/arp_neighbor_analyzer.py": "b9a3478b8104f2a334a79b3478b819b84aebcc77375c33417dd32391f8910dbf"
+}

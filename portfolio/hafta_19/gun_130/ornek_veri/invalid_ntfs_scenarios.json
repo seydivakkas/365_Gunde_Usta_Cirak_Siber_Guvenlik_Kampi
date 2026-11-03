@@ -1,0 +1,206 @@
+[
+  {
+    "scenario_id": "NEG-NTFS-01",
+    "name": "Kritik Sistem İkilisinde Everyone Tam Yetkisi (FullControl)",
+    "description": "System32 altındaki kritik bir çalıştırılabilir dosyaya Everyone grubuna tam yetki verilmiştir.",
+    "expected_cwe": "CWE-732",
+    "expected_mitre": "T1574.009",
+    "expected_finding": "Zayıf NTFS İzni",
+    "spec": {
+      "target_system": "TEST-HOST-01",
+      "descriptors": [
+        {
+          "path": "C:\\Windows\\System32\\cmd.exe",
+          "dacl": [
+            {
+              "identity": "Everyone",
+              "ace_type": "AccessAllowed",
+              "rights": ["FullControl"]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "NEG-NTFS-02",
+    "name": "Program Files Klasöründe Standart Kullanıcı Değiştirme (Modify) Hakkı",
+    "description": "Program Files altındaki sistem DLL kütüphanesine standart kullanıcılar yazabilmektedir.",
+    "expected_cwe": "CWE-732",
+    "expected_mitre": "T1574.009",
+    "expected_finding": "Zayıf NTFS İzni",
+    "spec": {
+      "target_system": "TEST-HOST-02",
+      "descriptors": [
+        {
+          "path": "C:\\Program Files\\App\\core.dll",
+          "dacl": [
+            {
+              "identity": "BUILTIN\\Users",
+              "ace_type": "AccessAllowed",
+              "rights": ["Modify"]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "NEG-NTFS-03",
+    "name": "Tırnak İçine Alınmamış Boşluklu Servis Yolu (Unquoted Service Path)",
+    "description": "Servis yolu boşluk içermekte ve standart kullanıcılar dizine dosya bırakabilmektedir.",
+    "expected_cwe": "CWE-428",
+    "expected_mitre": "T1574.009",
+    "expected_finding": "Tırnak İçine Alınmamış Servis Yolu İstismarı",
+    "spec": {
+      "target_system": "TEST-HOST-03",
+      "descriptors": [
+        {
+          "path": "C:\\Program Files\\Vendor Suite\\service.exe",
+          "dacl": [
+            {
+              "identity": "Everyone",
+              "ace_type": "AccessAllowed",
+              "rights": ["Write"]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "NEG-NTFS-04",
+    "name": "Sistem Sürücüsünde Yetkisiz Kullanıcı Sahipliği (Guest Owner)",
+    "description": "Sistem sürücüsünün sahibi Guest hesabı yapılmış, izin değiştirme hakkı açığa çıkmıştır.",
+    "expected_cwe": "CWE-284",
+    "expected_mitre": "T1078.003",
+    "expected_finding": "Standart Kullanıcı Sahipliği",
+    "spec": {
+      "target_system": "TEST-HOST-04",
+      "descriptors": [
+        {
+          "path": "C:\\Windows\\System32\\drivers\\net.sys",
+          "owner": "Guest",
+          "dacl": []
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "NEG-NTFS-05",
+    "name": "Kanonik Olmayan Bozuk ACE Sıralaması",
+    "description": "Explicit Allow kuralı Explicit Deny kuralından önce gelerek kural sıralamasını bozmuştur.",
+    "expected_cwe": "CWE-284",
+    "expected_mitre": "T1548",
+    "expected_finding": "Kanonik Olmayan ACE Sıralaması",
+    "spec": {
+      "target_system": "TEST-HOST-05",
+      "descriptors": [
+        {
+          "path": "C:\\SecretData",
+          "dacl": [
+            {
+              "identity": "BUILTIN\\Users",
+              "ace_type": "AccessAllowed",
+              "rights": ["Read"],
+              "is_inherited": false
+            },
+            {
+              "identity": "Guest",
+              "ace_type": "AccessDenied",
+              "rights": ["FullControl"],
+              "is_inherited": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "NEG-NTFS-06",
+    "name": "ProgramData İçinde Authenticated Users Yazma İzni",
+    "description": "Otomatik güncelleyici ikilisine kimliği doğrulanmış kullanıcılar yazabilmektedir.",
+    "expected_cwe": "CWE-732",
+    "expected_mitre": "T1574.009",
+    "expected_finding": "Zayıf NTFS İzni",
+    "spec": {
+      "target_system": "TEST-HOST-06",
+      "descriptors": [
+        {
+          "path": "C:\\ProgramData\\UpdateService\\updater.exe",
+          "dacl": [
+            {
+              "identity": "Authenticated Users",
+              "ace_type": "AccessAllowed",
+              "rights": ["Write"]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "NEG-NTFS-07",
+    "name": "Genel Veri Yolunda Güvensiz İzin (CWE-276)",
+    "description": "Şirket ortak alanında Everyone grubuna Modify hakkı tanımlanmıştır.",
+    "expected_cwe": "CWE-276",
+    "expected_mitre": "T1068",
+    "expected_finding": "Zayıf NTFS İzni",
+    "spec": {
+      "target_system": "TEST-HOST-07",
+      "descriptors": [
+        {
+          "path": "D:\\SharedFiles\\Confidential.xlsx",
+          "dacl": [
+            {
+              "identity": "Everyone",
+              "ace_type": "AccessAllowed",
+              "rights": ["Modify"]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "NEG-NTFS-08",
+    "name": "Hassas Servis Klasöründe Kümülatif İzin Zaafı",
+    "description": "Servis ikilisi dizininde hem Users hem Everyone gruplarına yazma izni verilmiştir.",
+    "expected_cwe": "CWE-732",
+    "expected_mitre": "T1574.009",
+    "expected_finding": "Zayıf NTFS İzni",
+    "spec": {
+      "target_system": "TEST-HOST-08",
+      "descriptors": [
+        {
+          "path": "C:\\Services\\Monitoring\\agent.exe",
+          "dacl": [
+            {
+              "identity": "BUILTIN\\Users",
+              "ace_type": "AccessAllowed",
+              "rights": ["Write"]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "NEG-NTFS-09",
+    "name": "Kritik Sistem DLL Dosyasında Standart Kullanıcı Sahipliği",
+    "description": "Sistem DLL dosyasının sahibi BUILTIN\\Users yapılmıştır.",
+    "expected_cwe": "CWE-284",
+    "expected_mitre": "T1078.003",
+    "expected_finding": "Standart Kullanıcı Sahipliği",
+    "spec": {
+      "target_system": "TEST-HOST-09",
+      "descriptors": [
+        {
+          "path": "C:\\Windows\\System32\\auth.dll",
+          "owner": "BUILTIN\\Users",
+          "dacl": []
+        }
+      ]
+    }
+  }
+]

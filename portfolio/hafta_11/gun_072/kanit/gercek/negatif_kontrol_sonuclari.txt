@@ -1,0 +1,74 @@
+================================================================================
+G072: DEĞİŞKENLER VE GÜVENLİ GİRİŞ — NEGATİF KONTROL VE SINIR KANITLARI
+Tarih: 2026-10-31
+Denetleyici: SecureInputAndTypeValidator
+Hedef Kapsam: Girdi Sanitizasyonu, Tip Güvenliği, Enjeksiyon ve Dizin Atlatma
+Standart: OWASP Top 10 A03:2021-Injection, Sıfır Tolerans Doğrulama
+================================================================================
+
+VAKA 1: NEG_01_TYPE_CONFUSION_BOOLEAN_AS_INT
+--------------------------------------------------------------------------------
+Girdi: target_port = True (Python'da isinstance(True, int) tuzağı)
+Beklenen İstisna: SecureInputValidationError ("Tip karmaşası (Type Confusion): Boolean tipi port/tamsayı olarak kabul edilemez.")
+Fırlatılan Mesaj: Tip karmaşası (Type Confusion): Boolean tipi port/tamsayı olarak kabul edilemez.
+Sonuç: BAŞARILI (PASS) - Tip karmaşası tuzağı başarıyla engellendi.
+
+VAKA 2: NEG_02_PORT_OUT_OF_BOUNDS
+--------------------------------------------------------------------------------
+Girdi: target_port = 70000 (1-65535 TCP/UDP sınırının dışı)
+Beklenen İstisna: SecureInputValidationError ("Port sınır aşımı: 70000 (Geçerli aralık: 1-65535)")
+Fırlatılan Mesaj: Port sınır aşımı: 70000 (Geçerli aralık: 1-65535)
+Sonuç: BAŞARILI (PASS) - Geçersiz port engellendi.
+
+VAKA 3: NEG_03_COMMAND_INJECTION_IN_HOSTNAME
+--------------------------------------------------------------------------------
+Girdi: hostname = "gateway.local; cat /etc/passwd" (Kabuk metakarakteri ';')
+Beklenen İstisna: SecureInputValidationError ("Komut enjeksiyonu riski: Ana makine adında yasaklı karakter ';' tespit edildi.")
+Fırlatılan Mesaj: Komut enjeksiyonu riski: Ana makine adında yasaklı karakter ';' tespit edildi.
+Sonuç: BAŞARILI (PASS) - Komut enjeksiyonu girişimi bloke edildi.
+
+VAKA 4: NEG_04_PATH_TRAVERSAL_ATTACK
+--------------------------------------------------------------------------------
+Girdi: log_filename = "../../../../etc/shadow" (Dizin atlatma sekansı)
+Beklenen İstisna: SecureInputValidationError ("Dizin atlatma (Path Traversal) tespiti: Yol temel dizin dışına çıkamaz.")
+Fırlatılan Mesaj: Dizin atlatma (Path Traversal) tespiti: Yol temel dizin dışına çıkamaz.
+Sonuç: BAŞARILI (PASS) - Dizin atlatma engellendi.
+
+VAKA 5: NEG_05_INVALID_IPV4_OCTET
+--------------------------------------------------------------------------------
+Girdi: target_ip = "192.168.1.300" (Oktet > 255)
+Beklenen İstisna: SecureInputValidationError ("Geçersiz IPv4 adresi: '192.168.1.300' (Oktet 0-255 aralığında olmalıdır).")
+Fırlatılan Mesaj: Geçersiz IPv4 adresi: '192.168.1.300' (Oktet 0-255 aralığında olmalıdır).
+Sonuç: BAŞARILI (PASS) - Oktet aşımı başarıyla elendi.
+
+VAKA 6: NEG_06_AMBIGUOUS_BOOLEAN_VALUE
+--------------------------------------------------------------------------------
+Girdi: verbose = "maybe" (Belirsiz boolean metni)
+Beklenen İstisna: SecureInputValidationError ("Belirsiz mantıksal değer (Boolean): 'maybe' geçerli bir bool (true/false/1/0) değildir.")
+Fırlatılan Mesaj: Belirsiz mantıksal değer (Boolean): 'maybe' geçerli bir bool (true/false/1/0) değildir.
+Sonuç: BAŞARILI (PASS) - Belirsiz mantıksal değer reddedildi.
+
+VAKA 7: NEG_07_NULL_BYTE_INJECTION
+--------------------------------------------------------------------------------
+Girdi: log_filename = "test.log\x00.evil.exe" (Null byte zehirlemesi)
+Beklenen İstisna: SecureInputValidationError ("Null byte enjeksiyonu (\\x00) tespit edildi.")
+Fırlatılan Mesaj: Null byte enjeksiyonu (\x00) tespit edildi.
+Sonuç: BAŞARILI (PASS) - Null byte saldırısı bertaraf edildi.
+
+VAKA 8: NEG_08_STRING_OVERSIZED_DOS
+--------------------------------------------------------------------------------
+Girdi: hostname = 290 karakterlik dize (RFC 1123 azami 253 sınırı aşımı)
+Beklenen İstisna: SecureInputValidationError ("Dize uzunluk sınırı aşıldı: 290 karakter (Azami: 253)")
+Fırlatılan Mesaj: Dize uzunluk sınırı aşıldı: 290 karakter (Azami: 253)
+Sonuç: BAŞARILI (PASS) - DoS ve arabellek taşması engellendi.
+
+VAKA 9: NEG_09_MALFORMED_PAYLOAD_SCHEMA
+--------------------------------------------------------------------------------
+Girdi: payload = [{'target_ip': '192.168.1.1'}] (Sözlük yerine liste)
+Beklenen İstisna: SecureInputValidationError ("Girdi yükü bir JSON sözlüğü (dict) olmalıdır.")
+Fırlatılan Mesaj: Girdi yükü bir JSON sözlüğü (dict) olmalıdır.
+Sonuç: BAŞARILI (PASS) - Tip uyuşmazlığı güvenle durduruldu.
+
+================================================================================
+ÖZET: 9 / 9 Negatif Sınır Kontrolü Eksiksiz Başarıyla Geçti (%100 Başarı).
+================================================================================

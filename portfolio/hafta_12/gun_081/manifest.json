@@ -1,0 +1,17 @@
+{
+  "ders.md": "e14bef5f66aa82cd5a65f0bf9b317f23ed22c2cafceec41c257e4cc74bb14e6f",
+  "kanit/gercek/guvenli_loglama_raporu.txt": "1eab7e18d3a5b29d539af7aa200785c99c246721c5d6f7c91d0348f5c4750ab4",
+  "kanit/gercek/komut_ve_cikis.txt": "1e7ce2f01422ce25e436afbdc1cf8144099698a2d5a8af9070163999581c834b",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "9bb54ac3d6a0c11c3631014bafd56457c8bdf0fa3780b9cfad0404ca69dbe46e",
+  "kanit/gercek/test_sonuclari.txt": "a12c3d3a0d3179fe7d75a7e731c7c069f0037075579fb6dfb74425c4adb6e7c1",
+  "kanit/temsili/logging_ve_denetim_mimarisi.txt": "c19f325b3ce48198091c0208e50dcdab3b29a3c506d9f12416a6330397c1bf9a",
+  "ornek_veri/invalid_logging_inputs.json": "fb0dd92fabd5238cf408fa8a9cc4105ec81b8dd182eb5f800e67746518e3efdc",
+  "rapor.md": "4a8cf2fa04f18d7a66080d336df27c8cbf12099bc36f8cbf270dd15258041019",
+  "README.md": "3b068f61ac5ed497fcd952b5dae6a4808ee4b947bb7d2bb746afc576d210fd8e",
+  "sonuc.json": "5d20a82b505145b7d70d4e42ad7fda6ee02d6afecfe18ea136ee762983cf195e",
+  "soru_cevap.md": "e897322b6980584b34f656a46e3748f68dd2184bd73c2377f43b67cc3b2398e2",
+  "tests/__init__.py": "9913a3634a2aacb5df3af480cd7c79e94d5f2042a317e70e4e8195fc8f86493a",
+  "tests/test_secure_logger_and_audit_engine.py": "05eb38110c6b7bba65079dd57540826c2ed0c8573e71901d509a449a3cd6f802",
+  "uygulama/__init__.py": "6cc48a7bf65469890720314679beb715a269ec8f8b77621aeb449cc1a96e8f69",
+  "uygulama/secure_logger_and_audit_engine.py": "054f9f6a74b8c7ea23c11a7391d142a6db819d124f293049875573d6b506778a"
+}

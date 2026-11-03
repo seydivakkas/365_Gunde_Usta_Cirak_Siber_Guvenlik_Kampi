@@ -1,0 +1,67 @@
+{
+  "aciklama": "G060 - HTTP/2 ve HTTP/3 Ornek Cerceve ve QUIC Veri Paketi",
+  "telif_hakki": "Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Tum Haklari Saklidir.",
+  "cerceveler_http2": {
+    "settings_frame": {
+      "tur": "SETTINGS",
+      "tur_kodu": 4,
+      "bayraklar": 0,
+      "akis_id": 0,
+      "uzunluk": 6,
+      "payload_hex": "000300000064",
+      "aciklama": "SETTINGS_MAX_CONCURRENT_STREAMS = 100 bildiren baglanti cercevesi."
+    },
+    "headers_frame": {
+      "tur": "HEADERS",
+      "tur_kodu": 1,
+      "bayraklar": 5,
+      "akis_id": 1,
+      "uzunluk": 16,
+      "aciklama": "END_STREAM (0x1) ve END_HEADERS (0x4) bayrakli GET istek cercevesi."
+    },
+    "data_frame": {
+      "tur": "DATA",
+      "tur_kodu": 0,
+      "bayraklar": 1,
+      "akis_id": 1,
+      "uzunluk": 12,
+      "payload_metin": "Hello HTTP/2",
+      "aciklama": "END_STREAM bayrakli son veri yuk cercevesi."
+    },
+    "rst_stream_frame": {
+      "tur": "RST_STREAM",
+      "tur_kodu": 3,
+      "bayraklar": 0,
+      "akis_id": 1,
+      "uzunluk": 4,
+      "hata_kodu": 8,
+      "hata_adi": "CANCEL",
+      "aciklama": "Istegin iptal edildigini bildiren 4 baytlik hata cercevesi."
+    },
+    "ping_frame": {
+      "tur": "PING",
+      "tur_kodu": 6,
+      "bayraklar": 1,
+      "akis_id": 0,
+      "uzunluk": 8,
+      "payload_hex": "0102030405060708",
+      "aciklama": "ACK bayrakli 8 baytlik canlilik yanit cercevesi."
+    }
+  },
+  "quic_ve_http3_senaryolari": {
+    "baglanti_gocu_connection_migration": {
+      "senaryo": "Mobil istemcinin Wi-Fi'dan LTE agina gecisi",
+      "eski_ip_port": "192.168.1.45:51234",
+      "yeni_ip_port": "100.64.2.10:60112",
+      "connection_id_cid": "0x8a9b2c3d4e5f6071",
+      "http2_davranisi": "TCP baglantisi kopar, TLS el sikismasi bastan yapilir (Gecikme yuksek)",
+      "http3_davranisi": "Ayni CID ile oturum kesintisiz devam eder, 0 gecikme ile paketler akar"
+    },
+    "head_of_line_blocking_simulasyonu": {
+      "senaryo": "3 Eszamanli Akista Paket Kaybi Testi (Akis 1, Akis 2, Akis 3)",
+      "kaybolan_paket_akisi": 2,
+      "http2_etkisi": "TCP seviyesinde Akis 2 kaybi nedeniyle Akis 1 ve Akis 3 de bekletilir (Tam HoL Blokaji)",
+      "http3_etkisi": "QUIC UDP uzerinde calistigindan yalnizca Akis 2 bekler; Akis 1 ve Akis 3 akmaya devam eder (Sifir HoL Blokaji)"
+    }
+  }
+}

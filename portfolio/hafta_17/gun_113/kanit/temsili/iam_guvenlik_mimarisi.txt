@@ -1,0 +1,54 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
++------------------------------------------------------------------------------+
+|             GÜN 113: KİMLİK DOĞRULAMA (AuthN) VE YETKİLENDİRME (AuthZ)       |
+|                  İKİ KADEMELİ GEÇİT (DUAL-GATE PEP) MİMARİSİ                 |
++------------------------------------------------------------------------------+
+
+                    +--------------------------------+
+                    | İstemci / Kullanıcı İstekleri  |
+                    +---------------+----------------+
+                                    |
+                                    v
+     +--------------------------------------------------------------+
+     |   1. KADEME: KİMLİK DOĞRULAMA (Authentication - AuthN)       |
+     |   "SEN KİMSİN? (Who are you?)"                               |
+     +--------------------------------------------------------------+
+     | - PBKDF2-HMAC-SHA256 + 16B Salt Parola Doğrulama            |
+     | - secrets.compare_digest Sabit Zamanlı Özet (CWE-208)        |
+     | - 5 Hatalı Denemede Otomatik Hesap Kilitleme (CWE-307)       |
+     | - Oturum Belirteci Üretimi (32B Urllib Safe Token)          |
+     | - Session Fixation Engelleme (Eski Belirteç İptali CWE-384)  |
+     | - TTL / Inaktivite Süre Aşımı Denetimi (CWE-613)             |
+     +------------------------------+-------------------------------+
+                                    |
+                    [Geçerli Oturum Bilgisi]
+                                    |
+                                    v
+     +--------------------------------------------------------------+
+     |   2. KADEME: YETKİLENDİRME (Authorization - AuthZ - PDP)     |
+     |   "NE YAPABİLİRSİN? (What are you allowed to do?)"           |
+     +--------------------------------------------------------------+
+     | - Açık Red (Default Deny - Whitelist) İlkesi (CWE-862)       |
+     | - Kiracı İzolasyonu: tenant_user == tenant_resource (CWE-284)|
+     | - Rol & İzin Matrisi Denetimi (RBAC/ABAC Eşleşmesi)          |
+     | - IDOR Savunması: Nesne Sahipliği Denetimi (CWE-639)         |
+     |   (Kullanıcı admin değilse başkasının nesnesine erişemez)    |
+     +------------------------------+-------------------------------+
+                                    |
+                        [Erişim Kararı: ONAYLANDI]
+                                    |
+                                    v
+     +--------------------------------------------------------------+
+     |      3. KADEME: GÜVENLİ KAYNAK VE DENETİM İZİ (AUDIT LOG)     |
+     +--------------------------------------------------------------+
+     | - Hedef Kaynak Üzerinde İzin Verilen Eylem İcrası             |
+     | - Değişmez JSON Formatlı Güvenlik Denetim Günlüğü             |
+     |   (Zaman, Özne, Hedef, Eylem, Sonuç, CWE/Etiket)              |
+     +--------------------------------------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

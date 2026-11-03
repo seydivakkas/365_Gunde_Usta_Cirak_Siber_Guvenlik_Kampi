@@ -1,0 +1,68 @@
+[
+  {
+    "kaynak_id": "SRV-WEB-IST-01",
+    "konum": "Istanbul / Datacenter-A",
+    "saat_dilimi": "Europe/Istanbul (+03:00)",
+    "zaman_damgasi_orijinal": "2026-11-01T17:30:15+03:00",
+    "format": "ISO8601_OFFSET",
+    "olay_tipi": "AUTHENTICATION_SUCCESS",
+    "kullanici": "admin_sys",
+    "ip_adresi": "192.168.10.45",
+    "mesaj": "Kullanici basariyla oturum acti."
+  },
+  {
+    "kaynak_id": "SRV-API-LON-02",
+    "konum": "London / Datacenter-B",
+    "saat_dilimi": "UTC",
+    "zaman_damgasi_orijinal": "2026-11-01T14:30:00Z",
+    "format": "ISO8601_UTC",
+    "olay_tipi": "DATABASE_QUERY",
+    "kullanici": "svc_analytics",
+    "ip_adresi": "10.0.4.12",
+    "mesaj": "Kullanici veritabani tablosu okundu."
+  },
+  {
+    "kaynak_id": "SRV-AUTH-NYC-01",
+    "konum": "New York / Datacenter-C",
+    "saat_dilimi": "America/New_York (-04:00)",
+    "zaman_damgasi_orijinal": "2026-11-01T10:29:45-04:00",
+    "format": "ISO8601_OFFSET",
+    "olay_tipi": "TOKEN_ISSUED",
+    "kullanici": "dev_ali",
+    "ip_adresi": "172.16.8.99",
+    "mesaj": "OAuth2 Bearer belirteci olusturuldu."
+  },
+  {
+    "kaynak_id": "FW-EDGE-TKY-01",
+    "konum": "Tokyo / Edge-01",
+    "saat_dilimi": "Asia/Tokyo (+09:00)",
+    "zaman_damgasi_orijinal": "2026-11-01T23:30:20+09:00",
+    "format": "ISO8601_OFFSET",
+    "olay_tipi": "PACKET_DROP",
+    "kullanici": "SYSTEM",
+    "ip_adresi": "203.0.113.88",
+    "mesaj": "Port taramasi engellendi (Port 445)."
+  },
+  {
+    "kaynak_id": "IOT-SENSOR-ANR-05",
+    "konum": "Ankara / Lab",
+    "saat_dilimi": "Unix Epoch (Saniye)",
+    "zaman_damgasi_orijinal": 1793543415,
+    "format": "UNIX_EPOCH_SEC",
+    "olay_tipi": "TEMPERATURE_ALERT",
+    "kullanici": "sensor_agent",
+    "ip_adresi": "192.168.100.12",
+    "mesaj": "Sunucu odasi sicakligi yuksek (28 C)."
+  },
+  {
+    "kaynak_id": "WIN-DC-ROOT-01",
+    "konum": "Active Directory / Domain Controller",
+    "saat_dilimi": "Windows FileTime (UTC)",
+    "zaman_damgasi_orijinal": 134374314050000000,
+    "format": "WINDOWS_FILETIME",
+    "olay_tipi": "KERBEROS_TGS_REQUEST",
+    "kullanici": "krbtgt",
+    "ip_adresi": "10.0.1.5",
+    "mesaj": "Servis bileti talep edildi."
+  }
+]

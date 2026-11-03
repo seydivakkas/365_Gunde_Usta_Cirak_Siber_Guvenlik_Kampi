@@ -1,0 +1,69 @@
+{
+  "corrupted_test_cases": [
+    {
+      "test_name": "multicast_source_mac_violation",
+      "description": "Kaynak MAC adresinde I/G (Individual/Group) bitinin 1 olması; IEEE 802.3 standardında kaynak MAC asla multicast olamaz",
+      "frame_sample": {
+        "frame_id": "ERR-001",
+        "destination_mac": "00:50:56:C0:00:08",
+        "source_mac": "01:00:5E:00:01:02",
+        "ethertype": "0x0800",
+        "payload_size_bytes": 60,
+        "total_frame_size": 78
+      }
+    },
+    {
+      "test_name": "invalid_mac_hex_format",
+      "description": "MAC adresinde onaltılık sayı tabanı dışı karakter bulunması (Örn: 00:1A:2B:3C:4D:ZZ)",
+      "frame_sample": {
+        "frame_id": "ERR-002",
+        "destination_mac": "00:1A:2B:3C:4D:ZZ",
+        "source_mac": "00:0C:29:12:34:56",
+        "ethertype": "0x0800",
+        "payload_size_bytes": 60,
+        "total_frame_size": 78
+      }
+    },
+    {
+      "test_name": "invalid_ethertype_format",
+      "description": "EtherType alanının standart 16-bit hex (0x0000-0xFFFF) formatına uymaması",
+      "frame_sample": {
+        "frame_id": "ERR-003",
+        "destination_mac": "00:50:56:C0:00:08",
+        "source_mac": "00:0C:29:12:34:56",
+        "ethertype": "0x08",
+        "payload_size_bytes": 60,
+        "total_frame_size": 78
+      }
+    },
+    {
+      "test_name": "undersized_runt_frame",
+      "description": "Toplam çerçeve boyutunun Ethernet asgari sınırı olan 64 baytın altında kalması (Runt Frame)",
+      "frame_sample": {
+        "frame_id": "ERR-004",
+        "destination_mac": "00:50:56:C0:00:08",
+        "source_mac": "00:0C:29:12:34:56",
+        "ethertype": "0x0800",
+        "payload_size_bytes": 20,
+        "padding_bytes": 0,
+        "total_frame_size": 38
+      }
+    },
+    {
+      "test_name": "missing_destination_mac",
+      "description": "Çerçeve başlığında zorunlu destination_mac alanının bulunmaması",
+      "frame_sample": {
+        "frame_id": "ERR-005",
+        "source_mac": "00:0C:29:12:34:56",
+        "ethertype": "0x0800",
+        "payload_size_bytes": 60,
+        "total_frame_size": 78
+      }
+    },
+    {
+      "test_name": "non_dict_frame_entry",
+      "description": "Çerçeveler listesinde sözlük yerine geçersiz dize bulunması",
+      "invalid_entry": "Bu bir cerceve sozlugu degildir"
+    }
+  ]
+}

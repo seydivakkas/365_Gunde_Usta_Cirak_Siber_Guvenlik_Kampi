@@ -1,0 +1,33 @@
+test_01_matrix_schema_validation_success (portfolio.hafta_06.gun_040.tests.test_secure_remote_management_auditor.TestSecureRemoteManagementAuditor.test_01_matrix_schema_validation_success)
+Geerli eri■im matrisi verisinin ■ema do­rulamas²ndan ba■ar²yla geti­ini do­rular. ... ok
+test_02_missing_services_key_raises_validation_error (portfolio.hafta_06.gun_040.tests.test_secure_remote_management_auditor.TestSecureRemoteManagementAuditor.test_02_missing_services_key_raises_validation_error)
+'remote_services' anahtar² eksik oldu­unda hata f²rlat²ld²­²n² denetler. ... ok
+test_03_invalid_port_boundary_raises_validation_error (portfolio.hafta_06.gun_040.tests.test_secure_remote_management_auditor.TestSecureRemoteManagementAuditor.test_03_invalid_port_boundary_raises_validation_error)
+Port 1'den k³³k veya 65535'ten b³y³k oldu­unda hata f²rlat²ld²­²n² do­rular. ... ok
+test_04_non_numeric_port_raises_error (portfolio.hafta_06.gun_040.tests.test_secure_remote_management_auditor.TestSecureRemoteManagementAuditor.test_04_non_numeric_port_raises_error)
+Port string oldu­unda hata f²rlat²ld²­²n² denetler. ... ok
+test_05_non_string_hostname_raises_error (portfolio.hafta_06.gun_040.tests.test_secure_remote_management_auditor.TestSecureRemoteManagementAuditor.test_05_non_string_hostname_raises_error)
+target_hostname int veya liste oldu­unda hata f²rlat²ld²­²n² do­rular. ... ok
+test_06_non_string_protocol_raises_error (portfolio.hafta_06.gun_040.tests.test_secure_remote_management_auditor.TestSecureRemoteManagementAuditor.test_06_non_string_protocol_raises_error)
+protocol string olmad²­²nda hata f²rlat²ld²­²n² do­rular. ... ok
+test_07_plaintext_telnet_detected_as_critical (portfolio.hafta_06.gun_040.tests.test_secure_remote_management_auditor.TestSecureRemoteManagementAuditor.test_07_plaintext_telnet_detected_as_critical)
+Telnet (port 23) protokol³n³n CRITICAL a²k metin koklama riski ³retti­ini do­rular. ... ok
+test_08_direct_internet_perimeter_exposure_detected_as_critical (portfolio.hafta_06.gun_040.tests.test_secure_remote_management_auditor.TestSecureRemoteManagementAuditor.test_08_direct_internet_perimeter_exposure_detected_as_critical)
+¦nternete (0.0.0.0/0) do­rudan a²k ve Bastion/VPN korumas²z portun CRITICAL oldu­unu do­rular. ... ok
+test_09_ssh_permit_root_login_detected_as_critical (portfolio.hafta_06.gun_040.tests.test_secure_remote_management_auditor.TestSecureRemoteManagementAuditor.test_09_ssh_permit_root_login_detected_as_critical)
+SSH root giri■inin izinli olmas²n²n CRITICAL seviyesinde raporland²­²n² do­rular. ... ok
+test_10_rdp_nla_disabled_detected_as_critical (portfolio.hafta_06.gun_040.tests.test_secure_remote_management_auditor.TestSecureRemoteManagementAuditor.test_10_rdp_nla_disabled_detected_as_critical)
+RDP ³zerinde NLA kapal² oldu­unda BlueKeep riski sebebiyle CRITICAL raporland²­²n² do­rular. ... ok
+test_11_ssh_password_auth_unhardened_detected_as_high (portfolio.hafta_06.gun_040.tests.test_secure_remote_management_auditor.TestSecureRemoteManagementAuditor.test_11_ssh_password_auth_unhardened_detected_as_high)
+SSH ³zerinde anahtar zorunlu olmadan parola ile giri■in a²k olmas²n²n HIGH raporland²­²n² do­rular. ... ok
+test_12_brute_force_protection_missing_detected_as_high (portfolio.hafta_06.gun_040.tests.test_secure_remote_management_auditor.TestSecureRemoteManagementAuditor.test_12_brute_force_protection_missing_detected_as_high)
+brute_force_protection=False oldu­unda HIGH ÷nem derecesinde bulgu ³retildi­ini do­rular. ... ok
+test_13_corrupted_test_cases_suite_robustness (portfolio.hafta_06.gun_040.tests.test_secure_remote_management_auditor.TestSecureRemoteManagementAuditor.test_13_corrupted_test_cases_suite_robustness)
+corrupted_remote_access_matrix_test_cases.json dosyas²ndaki t³m girdilerin yakaland²­²n² do­rular. ... ok
+test_14_markdown_and_full_audit_workflow (portfolio.hafta_06.gun_040.tests.test_secure_remote_management_auditor.TestSecureRemoteManagementAuditor.test_14_markdown_and_full_audit_workflow)
+Tam denetim i■ ak²■²n²n hatas²z al²■t²­²n² ve Markdown raporu ³retti­ini do­rular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.003s
+
+OK

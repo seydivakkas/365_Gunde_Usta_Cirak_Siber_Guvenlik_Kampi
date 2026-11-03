@@ -1,0 +1,58 @@
+{
+  "gun": 16,
+  "asama": 2,
+  "hafta": 3,
+  "konu": "CPU, RAM ve depolama ayrımı",
+  "durum": "TAMAMLANDI_PASS",
+  "tarih": "2026-10-27",
+  "puan": 100,
+  "puan_detay": {
+    "teorik_metodolojik_hakimiyet": 20,
+    "kodlama_uygulama_yetkinligi": 40,
+    "test_dogrulama_kapsami": 25,
+    "kanit_dokumantasyon_kalitesi": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "dosyalar": [
+    "uygulama/system_hardware_boundary_auditor.py",
+    "tests/test_system_hardware_boundary_auditor.py",
+    "ornek_veri/hardware_boundary_sample.json",
+    "ornek_veri/hardware_security_baseline.json",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/temsili/cpu_ram_depolama_mimarisi.txt",
+    "ders.md",
+    "soru_cevap.md",
+    "rapor.md",
+    "README.md",
+    "sonuc.json"
+  ],
+  "kanitlar": [
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/temsili/cpu_ram_depolama_mimarisi.txt"
+  ],
+  "ogrenilen_standartlar": [
+    "RFC 3227 (Guidelines for Evidence Collection and Archiving)",
+    "NIST SP 800-88 Rev. 1 (Guidelines for Media Sanitization)",
+    "NIST SP 800-53 Rev. 5 (SC-28 Protection at Rest, SC-39 Process Remnants, MP-6)",
+    "CIS Windows & Linux Benchmarks (Memory and Paging Hardening)",
+    "OWASP ASVS V8 (Data Protection and Memory Hygiene)"
+  ],
+  "karsilanan_gereksinimler": [
+    "CPU, RAM ve Depolama donanım sınırları ve yetki halkaları analiz edildi",
+    "Uçuculuk sıralaması (order of volatility) ve adli delil toplama sırası incelendi",
+    "Güvenli sıfırlama (SecureZeroMemory) ile güvensiz bırakma (plain free) farkı simüle edildi",
+    "RAM'den sayfalama/swap alanına sızma riskleri (ClearPageFileAtShutdown) denetlendi",
+    "Kalıcı depolamada silinen dosyaların adli kurtarılması ve NIST SP 800-88 medya imhası değerlendirildi",
+    "Tüm kod ve test satırları didaktik açıklamalarla zenginleştirildi",
+    "Özel Lisans (Tüm Hakları Saklıdır) tüm dosyalara uygulandı"
+  ],
+  "notlar": "Gün 016 eksiksiz tamamlanarak 14/14 test PASS ve 100/100 tam puanla sonuçlandırıldı."
+}

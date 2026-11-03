@@ -1,0 +1,44 @@
+{
+  "standart_adi": "CIS & NIST SP 800-53 Uyumlu İşletim Sistemi Güvenlik Envanteri Şeması",
+  "surum": "1.0.0",
+  "referanslar": [
+    "CIS Control 1: Inventory and Control of Enterprise Assets",
+    "CIS Control 2: Inventory and Control of Software Assets",
+    "NIST SP 800-53 Rev. 5 CM-8: Information System Component Inventory",
+    "ISO/IEC 27001:2022 A.8.1: User Endpoint Devices & Inventory"
+  ],
+  "zorunlu_kategoriler": [
+    "os_bilgisi",
+    "donanim",
+    "hesaplar",
+    "servisler",
+    "guncellemeler"
+  ],
+  "guvensiz_servis_karalistesi": [
+    "telnet",
+    "tlntsvr",
+    "telnetd",
+    "rsh",
+    "rlogin",
+    "ftp",
+    "ftpsvc",
+    "tftp",
+    "smbv1",
+    "snmpv1",
+    "rexec"
+  ],
+  "guvenlik_kurallari": {
+    "maksimum_parola_yasi_gun": 90,
+    "maksimum_yama_gecikmesi_gun": 30,
+    "konuk_hesabi_devre_disi_olmali": true,
+    "disk_sifreleme_zorunlu": true,
+    "guvenlik_duvari_servisi_calismali": true
+  },
+  "karsilastirmali_csv_kolonlari": [
+    "kategori",
+    "ozellik_adi",
+    "windows_degeri",
+    "linux_degeri",
+    "guvenlik_onemi_ve_etkisi"
+  ]
+}

@@ -1,0 +1,74 @@
+================================================================================
+G071: PYTHON ÇALIŞMA ORTAMI VE BAĞIMLILIK GÜVENLİĞİ — NEGATİF KONTROL KANITLARI
+Tarih: 2026-10-31
+Denetleyici: PythonEnvAndDependencyAuditor
+Hedef Kapsam: Sanal Ortam (venv) Yalıtımı ve requirements.txt Tedarik Zinciri
+Standart: Sıfır Tolerans, Statik Sınır Denetimi, Kriptografik Bütünlük
+================================================================================
+
+VAKA 1: NEG_01_CORRUPT_PYVENV_CFG
+--------------------------------------------------------------------------------
+Girdi: Eşittir '=' işareti bulunmayan bozuk pyvenv.cfg yapılandırma satırı
+Beklenen İstisna: EnvSecurityAuditError ("pyvenv.cfg biçimi geçersiz: ayrıştırılamayan anahtar-değer satırı.")
+Fırlatılan Mesaj: pyvenv.cfg biçimi geçersiz: ayrıştırılamayan anahtar-değer satırı.
+Sonuç: BAŞARILI (PASS) - Biçim bozulması derhal yakalandı.
+
+VAKA 2: NEG_02_SYSTEM_PACKAGES_LEAK
+--------------------------------------------------------------------------------
+Girdi: include-system-site-packages = true (Global sistem paketlerine sızıntı)
+Beklenen İstisna: EnvSecurityAuditError ("Yalıtım ihlali: include-system-site-packages değeri 'false' olmalıdır.")
+Fırlatılan Mesaj: Yalıtım ihlali: include-system-site-packages değeri 'false' olmalıdır.
+Sonuç: BAŞARILI (PASS) - Yalıtım ihlali başarıyla engellendi.
+
+VAKA 3: NEG_03_OBSOLETE_PYTHON_VERSION
+--------------------------------------------------------------------------------
+Girdi: version = 2.7.18 (Python 3.10 asgari güvenlik eşiğinin altında)
+Beklenen İstisna: EnvSecurityAuditError ("Güvensiz/Miras Python sürümü tespit edildi: 2.7.18 (Asgari 3.10 gereklidir).")
+Fırlatılan Mesaj: Güvensiz/Miras Python sürümü tespit edildi: 2.7.18 (Asgari 3.10 gereklidir).
+Sonuç: BAŞARILI (PASS) - EOL/Miras Python sürümü reddedildi.
+
+VAKA 4: NEG_04_UNPINNED_PACKAGE
+--------------------------------------------------------------------------------
+Girdi: "requests" (Hiçbir sürüm işleci belirtilmemiş açık bağımlılık)
+Beklenen İstisna: EnvSecurityAuditError ("Sabitlenmemiş paket tespiti: 'requests' sürüm belirtilmeden kullanılamaz.")
+Fırlatılan Mesaj: Sabitlenmemiş paket tespiti: 'requests' sürüm belirtilmeden kullanılamaz.
+Sonuç: BAŞARILI (PASS) - Belirsiz paket sürümü engellendi.
+
+VAKA 5: NEG_05_LOOSELY_PINNED_PACKAGE
+--------------------------------------------------------------------------------
+Girdi: "scapy>=2.0.0" (Gevşek/değişken sürüm işleci)
+Beklenen İstisna: EnvSecurityAuditError ("Gevşek sürüm sabitleme: 'scapy' için kesin sürüm ('==') zorunludur, alınan: >=")
+Fırlatılan Mesaj: Gevşek sürüm sabitleme: 'scapy' için kesin sürüm ('==') zorunludur, alınan: >=
+Sonuç: BAŞARILI (PASS) - Değişken sürüm riski önlendi.
+
+VAKA 6: NEG_06_TYPOSQUATTING_ATTACK
+--------------------------------------------------------------------------------
+Girdi: "reqeusts==2.31.0" ('requests' kütüphanesini taklit eden zararlı paket)
+Beklenen İstisna: EnvSecurityAuditError ("Tedarik zinciri saldırısı (Typosquatting) şüphesi: 'reqeusts' ('requests' taklidi).")
+Fırlatılan Mesaj: Tedarik zinciri saldırısı (Typosquatting) şüphesi: 'reqeusts' ('requests' taklidi).
+Sonuç: BAŞARILI (PASS) - Levenshtein analiziyle typosquatting engellendi.
+
+VAKA 7: NEG_07_KNOWN_VULNERABILITY
+--------------------------------------------------------------------------------
+Girdi: "urllib3==1.26.5" (CVE-2023-45803 zafiyetli sürüm)
+Beklenen İstisna: EnvSecurityAuditError ("Bilinen güvenlik zafiyeti (CVE) tespit edildi: urllib3==1.26.5 (CVE-2023-45803...)")
+Fırlatılan Mesaj: Bilinen güvenlik zafiyeti (CVE) tespit edildi: urllib3==1.26.5 (CVE-2023-45803 (HTTP Request Stripping & Proxy Bypass))
+Sonuç: BAŞARILI (PASS) - Bilinen zafiyetli kütüphane tespiti yapıldı.
+
+VAKA 8: NEG_08_MISSING_HASH_PINNING
+--------------------------------------------------------------------------------
+Girdi: "paramiko==3.4.0" (Sıkı modda hash bayrağı bulunmayan paket)
+Beklenen İstisna: EnvSecurityAuditError ("Kriptografik bütünlük eksikliği: 'paramiko' paketi için SHA-256 hash sabitlemesi bulunamadı.")
+Fırlatılan Mesaj: Kriptografik bütünlük eksikliği: 'paramiko' paketi için SHA-256 hash sabitlemesi bulunamadı.
+Sonuç: BAŞARILI (PASS) - Hash sabitleme zorunluluğu sağlandı.
+
+VAKA 9: NEG_09_MALFORMED_HASH
+--------------------------------------------------------------------------------
+Girdi: "--hash=sha256:not_a_valid_sha256_hash_value" (64 karakterli hex olmayan hash)
+Beklenen İstisna: EnvSecurityAuditError ("Geçersiz SHA-256 hash biçimi: tam 64 karakterli onaltılık (hex) dize olmalıdır.")
+Fırlatılan Mesaj: Geçersiz SHA-256 hash biçimi: tam 64 karakterli onaltılık (hex) dize olmalıdır.
+Sonuç: BAŞARILI (PASS) - Hatalı hash sözdizimi elendi.
+
+================================================================================
+ÖZET: 9 / 9 Negatif Sınır Testi Eksiksiz Başarıyla Geçti (%100 Başarı).
+================================================================================

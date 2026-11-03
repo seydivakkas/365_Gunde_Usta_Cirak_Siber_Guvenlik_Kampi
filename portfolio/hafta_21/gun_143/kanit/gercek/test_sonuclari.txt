@@ -1,0 +1,43 @@
+=== GÜN 143 / ACTIVE DIRECTORY ETKİ ALANI: BİRİM TEST SONUÇLARI ===
+Tarih/Saat : 2026-11-02T19:09:12.621164
+Toplam Test: 15
+Başarılı   : 15
+Hatalı     : 0
+Geçen Süre : 0.0051 saniye
+
+--- DETAYLI YÜRÜTME DÖKÜMÜ ---
+test_01_load_spec_valid (test_ad_domain_security.TestAdDomainSecurityEngine.test_01_load_spec_valid)
+Test 01: Geçerli AD spesifikasyon dosyasının doğru yüklendiğini test eder. ... ok
+test_02_load_spec_missing_file (test_ad_domain_security.TestAdDomainSecurityEngine.test_02_load_spec_missing_file)
+Test 02: Mevcut olmayan bir dosya yüklendiğinde FileNotFoundError fırlatıldığını doğrular. ... ok
+test_03_audit_architecture_pass (test_ad_domain_security.TestAdDomainSecurityEngine.test_03_audit_architecture_pass)
+Test 03: Modern Windows Server 2016+ seviyesinin PASS aldığını doğrular. ... ok
+test_04_audit_architecture_fail_legacy_level (test_ad_domain_security.TestAdDomainSecurityEngine.test_04_audit_architecture_fail_legacy_level)
+Test 04: Windows 2008 R2 gibi eski seviyelerin FAIL ürettiğini doğrular. ... ok
+test_05_audit_kerberos_ciphers_pass_aes (test_ad_domain_security.TestAdDomainSecurityEngine.test_05_audit_kerberos_ciphers_pass_aes)
+Test 05: Yalnızca AES şifreleme türlerinin etkin olmasının PASS aldığını test eder. ... ok
+test_06_audit_kerberos_ciphers_fail_rc4 (test_ad_domain_security.TestAdDomainSecurityEngine.test_06_audit_kerberos_ciphers_fail_rc4)
+Test 06: RC4-HMAC veya DES açıkken CRITICAL düzeyinde FAIL verildiğini doğrular. ... ok
+test_07_audit_krbtgt_password_age_pass (test_ad_domain_security.TestAdDomainSecurityEngine.test_07_audit_krbtgt_password_age_pass)
+Test 07: krbtgt parolası 180 günden taze olduğunda PASS aldığını doğrular. ... ok
+test_08_audit_krbtgt_password_age_fail_overdue (test_ad_domain_security.TestAdDomainSecurityEngine.test_08_audit_krbtgt_password_age_fail_overdue)
+Test 08: krbtgt parolası 180 günden eski olduğunda Golden Ticket riskiyle FAIL aldığını test eder. ... ok
+test_09_audit_ntlm_level_pass_5 (test_ad_domain_security.TestAdDomainSecurityEngine.test_09_audit_ntlm_level_pass_5)
+Test 09: LmCompatibilityLevel = 5 (Yalnızca NTLMv2) ayarının PASS aldığını doğrular. ... ok
+test_10_audit_ntlm_level_fail_ntlmv1 (test_ad_domain_security.TestAdDomainSecurityEngine.test_10_audit_ntlm_level_fail_ntlmv1)
+Test 10: LmCompatibilityLevel < 5 olduğunda NTLMv1 riskiyle FAIL aldığını test eder. ... ok
+test_11_audit_ldap_and_smb_signing_pass (test_ad_domain_security.TestAdDomainSecurityEngine.test_11_audit_ldap_and_smb_signing_pass)
+Test 11: LDAP imzalama ve SMB imzalama zorunluluklarının PASS aldığını doğrular. ... ok
+test_12_audit_kerberoasting_admin_spn (test_ad_domain_security.TestAdDomainSecurityEngine.test_12_audit_kerberoasting_admin_spn)
+Test 12: Domain Admin hesabında SPN tanımlandığında Kerberoasting riskiyle FAIL üretildiğini test eder. ... ok
+test_13_audit_asrep_roasting_preauth (test_ad_domain_security.TestAdDomainSecurityEngine.test_13_audit_asrep_roasting_preauth)
+Test 13: DONT_REQ_PREAUTH bayrağı aktif bir hesap olduğunda AS-REP Roasting FAIL üretildiğini test eder. ... ok
+test_14_audit_unconstrained_delegation (test_ad_domain_security.TestAdDomainSecurityEngine.test_14_audit_unconstrained_delegation)
+Test 14: Sınırsız delegasyona (Unconstrained Delegation) sahip nesnede FAIL üretildiğini doğrular. ... ok
+test_15_generate_powershell_hardening_script (test_ad_domain_security.TestAdDomainSecurityEngine.test_15_generate_powershell_hardening_script)
+Test 15: Otomatik PowerShell sıkılaştırma betiğinin üretildiğini ve kayıt defteri komutlarını içerdiğini doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.005s
+
+OK

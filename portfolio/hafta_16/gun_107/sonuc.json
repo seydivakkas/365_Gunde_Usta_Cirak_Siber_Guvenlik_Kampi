@@ -1,0 +1,36 @@
+{
+  "gun": 107,
+  "hafta": 16,
+  "konu": "Dijital imza ve doğrulama",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "tamamlanma_tarihi": "2026-11-02",
+  "kategori": "Asimetrik Kriptografi ve Dijital İmza",
+  "puan_detaylari": {
+    "mimari": 20,
+    "kodlama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "zafiyet_savunmalari": [
+    "CWE-347",
+    "CWE-327",
+    "CWE-323",
+    "CWE-208",
+    "CWE-326",
+    "CWE-20"
+  ],
+  "test_ozeti": {
+    "toplam_birim_test": 15,
+    "basarili_birim_test": 15,
+    "basarisiz_birim_test": 0,
+    "negatif_senaryolar": 9,
+    "basarili_negatif_senaryolar": 9
+  },
+  "yurutulen_araclar": [
+    "uygulama/digital_signature_engine.py",
+    "uygulama/signature_cli.py",
+    "tests/test_digital_signature.py",
+    "kanit_uretici.py"
+  ]
+}

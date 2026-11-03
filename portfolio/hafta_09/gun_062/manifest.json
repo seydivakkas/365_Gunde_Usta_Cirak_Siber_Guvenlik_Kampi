@@ -1,0 +1,22 @@
+{
+  "dosyalar": {
+    "ders.md": "ea5d6431553b49f4925755cbe130d819f3a4698e409e4434f297f32c99d601e3",
+    "kanit/gercek/komut_ve_cikis.txt": "e1d349f47c1e387892ebf08f15ae737f015ec372e3e68e7b65a1d94e81a55bb4",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": "52e2432e376ee34289a0a6444f49450167e4dd5291b2049c2bfa1d831864d2f3",
+    "kanit/gercek/test_sonuclari.txt": "66ada7d455c7a00c64b763416c7c636a961d186a5077d750999c34f89517537c",
+    "kanit/gercek/vlan_dmz_segmentasyon_raporu.txt": "9cd17318713bbea771b6bad8b133af7c3e563a2dc3542190259614dbf4696bc8",
+    "kanit/temsili/vlan_dmz_segmentasyon_mimarisi.txt": "6b9afe295ba0e53b5a2eec63e0aa93827b9fdabd9d3ee85b38f1a8d705f7db29",
+    "ornek_veri/invalid_vlan_inputs.json": "491b46dfb4fe2e2654d01a07aaf08d18eb0aa8452a6cde2344902f2bcbfe1e28",
+    "ornek_veri/sample_vlan_dmz_rules.json": "baf27c55f7eb37eb83a025b6c52f4a33a719fd839928f256db0685b98fc5c697",
+    "rapor.md": "f6180915c68a8f5ff57f068a5ee3130998281d3ed0f3665194c05018b5ba9df6",
+    "README.md": "5cce8f5ddd6cdafa8aa164c1896a4608ef0faa4184638968ed90f2848500f409",
+    "sonuc.json": "ecf17490dee7ea82768fe2db53496abe3112a33fc43edcc1995614ebd096f1dd",
+    "soru_cevap.md": "9ab55000499ba20bc67b1a76bbec094cca97a60856f4cb2547e8b2ad9131fcd4",
+    "tests/__init__.py": "db1de05b824f390f739e583c60181058c359d7aab0f67f9c00e70f74bc7bf161",
+    "tests/test_vlan_segmentation_dmz_engine.py": "a709aee6a520961248fc400145336d29a92cfcfb95b2c4e49c2f7be7736d9a14",
+    "uygulama/__init__.py": "c9b1e87667c8186804206f7d61966ea87144285beb016c2858e0756261468fe1",
+    "uygulama/vlan_segmentation_dmz_engine.py": "dd60e36c911ff1c1f270b521b3acbc5c5537a9fbb6f170c69271db4a00c786eb"
+  },
+  "toplam_dosya": 16,
+  "telif_hakki": "Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Tum Haklari Saklidir."
+}

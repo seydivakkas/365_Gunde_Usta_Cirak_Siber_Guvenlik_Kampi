@@ -1,0 +1,51 @@
+G047: ARP Negatif Kontrol ve Hata Yakalama Test Sonuclari
+======================================================================
+Test ID: ARP-ERR-01
+Girdi  : {'ip': '192.168.1.300', 'mac': '00:1A:2B:3C:4D:01', 'arayuz': 'eth0'}
+Hata   : InvalidIPAddress
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Geçersiz IPv4 adresi oktet değeri: 300
+----------------------------------------------------------------------
+Test ID: ARP-ERR-02
+Girdi  : {'ip': '192.168.1.1', 'mac': '00:1A:2B:3C:4D', 'arayuz': 'eth0'}
+Hata   : InvalidMACLength
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : MAC adresi 6 oktetten (12 onaltılık hane) oluşmalıdır, bulunan: 5 oktet
+----------------------------------------------------------------------
+Test ID: ARP-ERR-03
+Girdi  : {'ip': '192.168.1.1', 'mac': '00:1A:2B:3C:4D:GG', 'arayuz': 'eth0'}
+Hata   : InvalidMACHex
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : MAC adresinde geçersiz onaltılık (hex) karakter: 'GG'
+----------------------------------------------------------------------
+Test ID: ARP-ERR-04
+Girdi  : {'ip': '192.168.1.1', 'mac': '00:00:00:00:00:00', 'arayuz': 'eth0'}
+Hata   : InvalidUnicastMAC
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Tekil IP için geçersiz (tamamen sıfır) MAC adresi eşlemesi
+----------------------------------------------------------------------
+Test ID: ARP-ERR-05
+Girdi  : {'ip': '192.168.1.1', 'mac': '00:1A:2B:3C:4D:01', 'arayuz': ''}
+Hata   : MissingInterface
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Ağ arayüzü (interface) alanı boş olamaz
+----------------------------------------------------------------------
+Test ID: ARP-ERR-06
+Girdi  : {'ip': '', 'mac': '00:1A:2B:3C:4D:01', 'arayuz': 'eth0'}
+Hata   : MissingIP
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : IP adresi alanı boş olamaz
+----------------------------------------------------------------------
+Test ID: ARP-ERR-07
+Girdi  : {'ip': '192.168.1.1', 'mac': '', 'arayuz': 'eth0'}
+Hata   : MissingMAC
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : MAC adresi alanı boş olamaz
+----------------------------------------------------------------------
+Test ID: ARP-ERR-08
+Girdi  : {'islem': 'INVALID_OPCODE_99', 'kaynak_ip': '192.168.1.1', 'kaynak_mac': '00:1A:2B:3C:4D:01'}
+Hata   : InvalidARPOpcode
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Desteklenmeyen ARP işlem kodu (Opcode): INVALID_OPCODE_99
+----------------------------------------------------------------------
+Toplam Negatif Test: 8 | Basarili Engelleme: 8

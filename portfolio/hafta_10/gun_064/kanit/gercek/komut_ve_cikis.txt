@@ -1,0 +1,39 @@
+# G064: Wireshark Filtre Sözdizimi - Komut ve Çıkış Kaydı
+# Çalıştırma Tarihi: 2026-10-31T01:14:00Z
+# Çalışma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+# Yürütücü: Seydi Eryılmaz (@seydivakkas)
+
+$ python -m unittest portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine -v
+test_01_simple_equality_filter (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_01_simple_equality_filter)
+ip.src == '192.168.1.100' filtresinin doğru paketleri eşleştirdiğini test eder. ... ok
+test_02_alias_fields_ip_addr_and_tcp_port (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_02_alias_fields_ip_addr_and_tcp_port)
+ip.addr ve tcp.port takma alanlarının kaynak veya hedef fark etmeksizin çalıştığını test eder. ... ok
+test_03_logical_and_operator (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_03_logical_and_operator)
+İki koşulun && ile bağlandığı ve her iki koşulun sağlandığını test eder. ... ok
+test_04_logical_or_and_parentheses (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_04_logical_or_and_parentheses)
+Parantezli OR ifadesinin mantıksal önceliğe uygun çalıştığını test eder. ... ok
+test_05_logical_not_operator (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_05_logical_not_operator)
+Ünlem işareti (!) ile koşulun tersinin başarıyla alındığını test eder. ... ok
+test_06_relational_operators_length (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_06_relational_operators_length)
+Paket uzunluğunun büyüktür (>) operatörü ile doğru süzüldüğünü test eder. ... ok
+test_07_contains_operator_payload (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_07_contains_operator_payload)
+HTTP gövdesinde şifre metni arama testini gerçekleştirir. ... ok
+test_08_regex_matches_operator (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_08_regex_matches_operator)
+URI deseninin regex ile arandığını test eder. ... ok
+test_09_byte_slice_operator (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_09_byte_slice_operator)
+tcp.payload_hex[0:4] dilimlemesi ile '4745' (ASCII 'GE') aramasını test eder. ... ok
+test_10_threat_hunting_profile_run (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_10_threat_hunting_profile_run)
+Tüm güvenlik avcılığı profillerinin tehditleri yakaladığını test eder. ... ok
+test_11_neg01_neg06_syntax_and_empty_errors (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_11_neg01_neg06_syntax_and_empty_errors)
+Dengesiz parantezde FilterSyntaxError ve boş filtrede EmptyFilterError fırlatıldığını test eder. ... ok
+test_12_neg02_neg03_unknown_field_and_type_errors (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_12_neg02_neg03_unknown_field_and_type_errors)
+Bilinmeyen alanda UnknownFieldError ve uyumsuz tipte FilterTypeError fırlatıldığını test eder. ... ok
+test_13_neg04_neg05_slice_and_regex_errors (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_13_neg04_neg05_slice_and_regex_errors)
+Aralık aşımında SliceOutOfBoundsError ve hatalı regexte RegexFilterError fırlatıldığını test eder. ... ok
+test_14_neg07_to_neg09_invalid_op_malformed_pkt_tokenize_errors (portfolio.hafta_10.gun_064.tests.test_wireshark_filter_engine.TestWiresharkFilterEngine.test_14_neg07_to_neg09_invalid_op_malformed_pkt_tokenize_errors)
+Geçersiz operatör, geçersiz paket tipi ve açık tırnak hatalarını test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.007s
+
+OK

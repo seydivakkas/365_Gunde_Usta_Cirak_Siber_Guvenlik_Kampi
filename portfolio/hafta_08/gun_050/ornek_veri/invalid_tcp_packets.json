@@ -1,0 +1,83 @@
+[
+  {
+    "hata_kodu": "ERR_INVALID_PORT_RANGE",
+    "aciklama": "Geçersiz hedef port numarası (70000 > 65535)",
+    "girdi": {
+      "kaynak_port": 50000,
+      "hedef_port": 70000,
+      "seq_no": 1000,
+      "ack_no": 0,
+      "flags": {"SYN": 1}
+    }
+  },
+  {
+    "hata_kodu": "ERR_PORT_ZERO",
+    "aciklama": "Geçersiz port numarası (Port 0)",
+    "girdi": {
+      "kaynak_port": 0,
+      "hedef_port": 80,
+      "seq_no": 1000,
+      "ack_no": 0,
+      "flags": {"SYN": 1}
+    }
+  },
+  {
+    "hata_kodu": "ERR_INVALID_DATA_OFFSET",
+    "aciklama": "Geçersiz veri ofseti (4 < 5, 20 bayttan az TCP başlığı olamaz)",
+    "girdi": {
+      "kaynak_port": 50000,
+      "hedef_port": 80,
+      "data_offset": 4,
+      "seq_no": 1000,
+      "ack_no": 0,
+      "flags": {"SYN": 1}
+    }
+  },
+  {
+    "hata_kodu": "ERR_MALFORMED_HEADER_BYTES",
+    "aciklama": "İkili başlık boyutu 20 bayttan küçük (eksik bayt)",
+    "girdi": {
+      "raw_bytes_hex": "1f900050000003e8000000005002"
+    }
+  },
+  {
+    "hata_kodu": "ERR_NEGATIVE_SEQUENCE_NUMBER",
+    "aciklama": "Sıra numarası negatif olamaz (-100)",
+    "girdi": {
+      "kaynak_port": 50000,
+      "hedef_port": 80,
+      "seq_no": -100,
+      "ack_no": 0,
+      "flags": {"SYN": 1}
+    }
+  },
+  {
+    "hata_kodu": "ERR_INVALID_FLAG_TYPE",
+    "aciklama": "TCP bayrakları sözlük veya tamsayı yerine metin verilmiş",
+    "girdi": {
+      "kaynak_port": 50000,
+      "hedef_port": 80,
+      "seq_no": 1000,
+      "ack_no": 0,
+      "flags": "SYN_ONLY"
+    }
+  },
+  {
+    "hata_kodu": "ERR_EMPTY_PACKET_DATA",
+    "aciklama": "Boş ikili paket verisi (0 bayt)",
+    "girdi": {
+      "raw_bytes_hex": ""
+    }
+  },
+  {
+    "hata_kodu": "ERR_NON_INTEGER_PORT",
+    "aciklama": "Port numarası tamsayı yerine float tipi verilmiş",
+    "girdi": {
+      "kaynak_port": 80.5,
+      "hedef_port": 443,
+      "seq_no": 1000,
+      "ack_no": 0,
+      "flags": {"SYN": 1}
+    }
+  }
+]

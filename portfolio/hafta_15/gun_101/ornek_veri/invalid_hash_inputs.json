@@ -1,0 +1,66 @@
+[
+  {
+    "id": "NEG_01_DEPRECATED_MD5_USAGE",
+    "tanim": "Kriptografik bütünlük kontrolünde güvensiz ve çakışmalı MD5 kullanımı",
+    "algoritma": "md5",
+    "beklenen_hata": "BrokenHashAlgorithmError",
+    "cwe": "CWE-328: Use of Weak Hash"
+  },
+  {
+    "id": "NEG_02_DEPRECATED_SHA1_USAGE",
+    "tanim": "Kriptografik dijital imza bağlamında çakışma zafiyeti olan SHA-1 kullanımı",
+    "algoritma": "sha1",
+    "beklenen_hata": "BrokenHashAlgorithmError",
+    "cwe": "CWE-328: Use of Weak Hash"
+  },
+  {
+    "id": "NEG_03_INSUFFICIENT_AVALANCHE_EFFECT",
+    "tanim": "Çığ etkisi testinde %35'in altında kalan kusurlu/tahmin edilebilir özet fonksiyonu",
+    "degisim_orani": 12.5,
+    "beklenen_hata": "AvalancheEffectFailureError",
+    "cwe": "CWE-328: Use of Weak Hash"
+  },
+  {
+    "id": "NEG_04_INSECURE_HASH_COMPARISON",
+    "tanim": "Zamanlama saldırılarına açık, sabit zamanlı olmayan özet karşılaştırması denemesi",
+    "ozet_1": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+    "ozet_2": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ae",
+    "beklenen_hata": "HashVerificationError",
+    "cwe": "CWE-208: Observable Timing Discrepancy"
+  },
+  {
+    "id": "NEG_05_OVERSIZED_INPUT_DOS",
+    "tanim": "1 MB tavanını aşan aşırı büyük veri ile bellek tüketimi saldırısı (DoS)",
+    "boyut_bayt": 2000000,
+    "beklenen_hata": "PayloadLimitExceededError",
+    "cwe": "CWE-400: Uncontrolled Resource Consumption"
+  },
+  {
+    "id": "NEG_06_NULL_BYTE_INJECTION",
+    "tanim": "Algoritma adı veya dosya yolunda Null-Byte (0x00) zehirlemesi",
+    "yol": "sha256\u0000md5",
+    "beklenen_hata": "NullByteInjectionError",
+    "cwe": "CWE-158: Improper Neutralization of Null Byte or Special Characters"
+  },
+  {
+    "id": "NEG_07_INVALID_TRUNCATION_BITS",
+    "tanim": "Doğum günü simülasyonunda geçersiz (negatif veya >32) kırpma bit uzunluğu",
+    "bit_uzunlugu": -8,
+    "beklenen_hata": "TypeValidationError",
+    "cwe": "CWE-1284: Improper Input Handling"
+  },
+  {
+    "id": "NEG_08_EMPTY_DIGEST_COMPARISON",
+    "tanim": "Boş özet değeri ile bütünlük doğrulama denemesi",
+    "ozet": "",
+    "beklenen_hata": "TypeValidationError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_09_TYPE_CONFUSION",
+    "tanim": "Metin/bayt beklenen özet motoruna liste veya tamsayı tipi gönderilmesi",
+    "girdi": [1, 2, 3, 4],
+    "beklenen_hata": "TypeValidationError",
+    "cwe": "CWE-843: Access of Resource Using Incompatible Type"
+  }
+]

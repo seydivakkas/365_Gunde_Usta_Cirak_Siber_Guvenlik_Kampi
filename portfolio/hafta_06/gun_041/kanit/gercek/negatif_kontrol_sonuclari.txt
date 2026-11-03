@@ -1,0 +1,33 @@
+=== G041: MİNİ PROJE 5 — NEGATİF KONTROL VE HATA YÖNETİMİ DOĞRULAMA GÜNLÜĞÜ ===
+Tarih: 2026-10-27
+Mekanizma: Hatalı, sınır dışı ve bozuk veri senaryolarının denetim motoru tarafından yakalanması.
+
+[*] Senaryo: missing_indicator_count
+    Açıklama: Zorunlu 10 gösterge yerine sadece 9 gösterge içeren eksik veri seti
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Mini Proje 5 standardı en az 10 gösterge gerektirir; mevcut: 9
+
+[*] Senaryo: score_overflow
+    Açıklama: Gösterge puanının izin verilen maksimum sınır olan 10 değerini aşması (Örn: 15)
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Gösterge 'IND-01' -> 'windows' puanı 0-10 aralığında olmalıdır, alınan: 15
+
+[*] Senaryo: score_negative
+    Açıklama: Gösterge puanının negatif bir tam sayı olması (Örn: -4)
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Gösterge 'IND-02' -> 'linux' puanı 0-10 aralığında olmalıdır, alınan: -4
+
+[*] Senaryo: invalid_score_data_type
+    Açıklama: Gösterge puanının sayı yerine string veya geçersiz tip içermesi
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Gösterge 'IND-03' -> 'windows' puanı sayı olmalıdır, alınan: str
+
+[*] Senaryo: missing_os_node
+    Açıklama: Gösterge nesnesinde zorunlu windows veya linux alanının bulunmaması
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Gösterge 'IND-04' içinde zorunlu 'linux' verisi eksik.
+
+[*] Senaryo: non_dict_indicator_entry
+    Açıklama: Göstergeler dizisinde sözlük yerine dize veya sayı bulunması
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Gösterge #1 bir sözlük nesnesi olmalıdır, alınan: str

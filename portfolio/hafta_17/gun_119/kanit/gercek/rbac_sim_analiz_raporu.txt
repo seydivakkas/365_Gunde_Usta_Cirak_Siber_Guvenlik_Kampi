@@ -1,0 +1,26 @@
+======================================================================
+GÜN 119: MİNİ PROJE 16 — ROL TABANLI ERİŞİM SİMÜLATÖRÜ ANALİZ RAPORU
+Mühendis: Seydi Eryılmaz (@seydivakkas)
+Tarih: 2026-11-02 05:48:27
+======================================================================
+
+1. PROJE VE MİMARİ İNCELEME (NIST ANSI/INCITS 359-2004 RBAC):
+   - Hiyerarşik Rol Çözümlemesi: Üst roller alt rollerin yetkilerini miras alır.
+     DFS algoritması ile döngüsel bağımlılıklar (Circular Dependency) anında engellenir.
+   - Görevler Ayrılığı (SoD): Hem statik atama seviyesinde (SSD) hem de dinamik oturum
+     aktivasyonu seviyesinde (DSD) toksik rol kombinasyonları kilitlenmiştir.
+   - Yetki Birikimi (Privilege Creep): Kullanıcı başına azami rol sınırı tanımlanarak
+     gereksiz yetki birikimi (CWE-250) engellenmiştir.
+   - Dinamik Oturum Kapsamı: Kullanıcılar oturum açarken rollerinin sadece bir kısmını
+     aktive ederek En Az Ayrıcalık (Least Privilege) ilkesini koruyabilmektedir.
+
+2. KAPSAMLI ZAFİYET ENGELLEME PERFORMANSI:
+   - CWE-862 (Missing Authorization)       : Rol izin eksikliği başarıyla saptandı.
+   - CWE-863 (Incorrect Authorization)     : SSD ve DSD çatışmaları engellendi.
+   - CWE-674 (Uncontrolled Recursion)      : Hiyerarşik döngü enjeksiyonu önlendi.
+   - CWE-285 (Improper Authorization)      : Atanmamış rol aktivasyonu engellendi.
+   - CWE-250 (Privilege Creep)             : Aşırı rol birikimi eşik aşımı yakalandı.
+   - CWE-613 (Insufficient Session Expir.) : Sahte oturum kimlikleri engellendi.
+
+3. SONUÇ VE KARAR:
+   Hafta 17 Mini Proje 16 gereksinimleri sıfır hata ve %100 uyumlulukla tamamlanmıştır.

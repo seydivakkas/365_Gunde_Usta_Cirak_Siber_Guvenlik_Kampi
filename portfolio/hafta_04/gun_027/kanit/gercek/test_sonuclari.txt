@@ -1,0 +1,33 @@
+test_01_version_parsing_and_comparison (test_package_update_manager_auditor.TestPackageUpdateManagerAuditor.test_01_version_parsing_and_comparison)
+S³r³m dizelerinin say²sal demetlere d÷n³■t³r³l³p kar■²la■t²r²lmas²n² test eder. ... ok
+test_02_detect_insecure_http_repository (test_package_update_manager_auditor.TestPackageUpdateManagerAuditor.test_02_detect_insecure_http_repository)
+Ìifresiz HTTP deposu tan²mland²­²nda CWE-319 kritik ihlali ³retilmesini test eder. ... ok
+test_03_detect_unverified_gpg_repository (test_package_update_manager_auditor.TestPackageUpdateManagerAuditor.test_03_detect_unverified_gpg_repository)
+GPG anahtar do­rulamas² olmayan deponun CWE-347 ihlali say²lmas²n² test eder. ... ok
+test_04_detect_unpinned_critical_service_package (test_package_update_manager_auditor.TestPackageUpdateManagerAuditor.test_04_detect_unpinned_critical_service_package)
+Kritik openssl paketinde s³r³m sabitleme yap²lmamas²n²n tespitini test eder (G027-SC2). ... ok
+test_05_detect_vulnerable_package_with_critical_cve (test_package_update_manager_auditor.TestPackageUpdateManagerAuditor.test_05_detect_vulnerable_package_with_critical_cve)
+CVSS 7.5 olan bekleyen CVE iin kritik yamas²z zafiyet alarm² ³retilmesini test eder. ... ok
+test_06_audit_fully_compliant_inventory (test_package_update_manager_auditor.TestPackageUpdateManagerAuditor.test_06_audit_fully_compliant_inventory)
+T³m depolar² HTTPS+GPG olan ve kritik paketleri sabitlenmi■ envanterin %100 skor almas²n² test eder. ... ok
+test_07_package_pinning_workflow (test_package_update_manager_auditor.TestPackageUpdateManagerAuditor.test_07_package_pinning_workflow)
+Paket sabitleme (pinning) i■leminin envanteri ve g³nl³­³ g³ncellemesini test eder. ... ok
+test_08_blocked_update_on_pinned_package (test_package_update_manager_auditor.TestPackageUpdateManagerAuditor.test_08_blocked_update_on_pinned_package)
+Sabitlenmi■ (pinned) bir paketin force olmadan g³ncellenememesini test eder (Pozitif/Negatif Kontrol). ... ok
+test_09_package_update_and_journal_recording (test_package_update_manager_auditor.TestPackageUpdateManagerAuditor.test_09_package_update_and_journal_recording)
+Serbest paketin ba■ar²yla g³ncellenip i■lem g³nl³­³ne yaz²lmas²n² test eder (G027-SC2). ... ok
+test_10_package_rollback_restores_previous_version (test_package_update_manager_auditor.TestPackageUpdateManagerAuditor.test_10_package_rollback_restores_previous_version)
+G³ncellenen paketin rollback ile ÷nceki s³r³m³ne kusursuz d÷nmesini test eder (G027-SC2). ... ok
+test_11_rollback_fails_on_missing_journal_or_package (test_package_update_manager_auditor.TestPackageUpdateManagerAuditor.test_11_rollback_fails_on_missing_journal_or_package)
+Geri alma g³nl³­³ veya paket kayd² olmad²­²nda negatif kontrol istisnalar²n² test eder. ... ok
+test_12_policy_note_generation (test_package_update_manager_auditor.TestPackageUpdateManagerAuditor.test_12_policy_note_generation)
+Kurumsal paket g³ncelleme ve sabitleme politikas² metninin ³retimini test eder (G027-SC2). ... ok
+test_13_negative_control_corrupted_inventory_cli (test_package_update_manager_auditor.TestPackageUpdateManagerAuditor.test_13_negative_control_corrupted_inventory_cli)
+Bozuk JSON envanteri ile CLI a­r²ld²­²nda sistemin kontroll³ hata ³retmesini test eder. ... ok
+test_14_cli_subprocess_audit_execution (test_package_update_manager_auditor.TestPackageUpdateManagerAuditor.test_14_cli_subprocess_audit_execution)
+CLI ³zerinden --audit --json komutunun al²■mas²n² ve ²k²■ kodu 0'² test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.159s
+
+OK

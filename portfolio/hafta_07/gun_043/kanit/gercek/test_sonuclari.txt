@@ -1,0 +1,33 @@
+test_01_valid_https_packet_loading (test_osi_tcpip_packet_inspector.TestOSITCPIPPacketInspector.test_01_valid_https_packet_loading)
+Geerli HTTPS paket kaps³lleme JSON yap²s²n²n ba■ar²yla do­ruland²­²n² test eder. ... ok
+test_02_all_7_osi_layers_present (test_osi_tcpip_packet_inspector.TestOSITCPIPPacketInspector.test_02_all_7_osi_layers_present)
+Zorunlu 7 OSI katman²n²n tamam²n²n kaps³lleme s÷zl³­³nde yer ald²­²n² do­rular. ... ok
+test_03_tcpip_model_mapping (test_osi_tcpip_packet_inspector.TestOSITCPIPPacketInspector.test_03_tcpip_model_mapping)
+7 OSI katman²n²n 4 katmanl² TCP/IP modeline eksiksiz haritaland²­²n² test eder. ... ok
+test_04_valid_ipv4_addresses (test_osi_tcpip_packet_inspector.TestOSITCPIPPacketInspector.test_04_valid_ipv4_addresses)
+Kaynak ve hedef IPv4 adreslerinin biim ve s²n²r testlerini do­rular. ... ok
+test_05_valid_mac_addresses (test_osi_tcpip_packet_inspector.TestOSITCPIPPacketInspector.test_05_valid_mac_addresses)
+Veri ba­lant²s² katman²ndaki MAC adreslerinin standart formata uydu­unu test eder. ... ok
+test_06_valid_ports_and_tls (test_osi_tcpip_packet_inspector.TestOSITCPIPPacketInspector.test_06_valid_ports_and_tls)
+Hedef portun 443 oldu­unu ve sunum katman²nda TLS 1.3 ■ifrelemesinin aktifli­ini denetler. ... ok
+test_07_tcp_flags_verification (test_osi_tcpip_packet_inspector.TestOSITCPIPPacketInspector.test_07_tcp_flags_verification)
+Ta■²ma katman²ndaki TCP bayraklar²n²n standart k³mede yer ald²­²n² test eder. ... ok
+test_08_markdown_report_generation (test_osi_tcpip_packet_inspector.TestOSITCPIPPacketInspector.test_08_markdown_report_generation)
+▄retilen Markdown raporunun zorunlu ba■l²klar², tablolar² ve lisans bildirimini ierdi­ini do­rular. ... ok
+test_09_negative_ipv4_octet_overflow (test_osi_tcpip_packet_inspector.TestOSITCPIPPacketInspector.test_09_negative_ipv4_octet_overflow)
+Negatif Kontrol: IPv4 okteti 255'i a■t²­²nda PacketEncapsulationError f²rlat²ld²­²n² do­rular. ... ok
+test_10_negative_invalid_mac_format (test_osi_tcpip_packet_inspector.TestOSITCPIPPacketInspector.test_10_negative_invalid_mac_format)
+Negatif Kontrol: MAC adresinde onalt²l²k olmayan karakterler varsa hata f²rlat²ld²­²n² do­rular. ... ok
+test_11_negative_port_overflow (test_osi_tcpip_packet_inspector.TestOSITCPIPPacketInspector.test_11_negative_port_overflow)
+Negatif Kontrol: Port numaras²n²n 65535'i a■mas² durumunda sistemin hata ³retti­ini do­rular. ... ok
+test_12_negative_port_negative_or_boolean (test_osi_tcpip_packet_inspector.TestOSITCPIPPacketInspector.test_12_negative_port_negative_or_boolean)
+Negatif Kontrol: Portun negatif say² veya bool olmas² durumunda hata f²rlat²ld²­²n² test eder. ... ok
+test_13_negative_missing_mandatory_layer (test_osi_tcpip_packet_inspector.TestOSITCPIPPacketInspector.test_13_negative_missing_mandatory_layer)
+Negatif Kontrol: 7 zorunlu katmandan biri (÷rn: layer_4_transport) eksikse hata verildi­ini do­rular. ... ok
+test_14_negative_invalid_tcp_flag (test_osi_tcpip_packet_inspector.TestOSITCPIPPacketInspector.test_14_negative_invalid_tcp_flag)
+Negatif Kontrol: TCP bayraklar²nda geersiz bayrak dizesi varsa hata f²rlat²ld²­²n² do­rular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.003s
+
+OK

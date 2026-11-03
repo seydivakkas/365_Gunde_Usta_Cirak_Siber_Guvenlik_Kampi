@@ -1,0 +1,26 @@
+{
+  "standart": "CIS Linux Benchmark 1.2 & NIST SP 800-53 SI-2 / CM-7",
+  "surum": "2026.1",
+  "aciklama": "Paket Yonetimi, Depo Guvenligi ve Surum Sabitleme Politika Kurallari",
+  "izin_verilen_protokoller": ["https://"],
+  "yasakli_protokoller": ["http://", "ftp://"],
+  "zorunlu_gpg_dogrulamasi": true,
+  "zorunlu_surum_sabitleme_paketleri": [
+    "openssl",
+    "nginx",
+    "postgresql",
+    "linux-image-generic"
+  ],
+  "otomatik_guncelleme_politikasi": {
+    "guvenlik_yamalari_otomatik": true,
+    "surum_yukseltme_otomatik": false,
+    "aciklama": "Guvenlik yamalari otomatik uygulanabilir; ancak ana surum yukseltmesi test edilmeden uygulanamaz."
+  },
+  "cve_kritiklik_esigi_cvss": 7.0,
+  "cwe_eslemeleri": {
+    "guvensiz_depo": "CWE-319: Cleartext Transmission of Sensitive Information",
+    "imzasiz_paket": "CWE-347: Improper Verification of Cryptographic Signature",
+    "sabitleme_eksikligi": "CWE-1395: Dependency on Vulnerable Third-Party Component",
+    "yamasiz_zafiyet": "CWE-1395: Dependency on Known Vulnerable Software"
+  }
+}

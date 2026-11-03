@@ -1,0 +1,103 @@
+==============================================================================
+G024: LINUX RWX IZINLERI DENETLEYICI VE CLI CALISTIRMA KANITI
+Calistirma Zamani: 2026-10-27 06:56:08
+==============================================================================
+
+### 1. OKTAL VE SEMBOLIK DONUSTURME TESTLERI (--convert)
+$ python portfolio\hafta_04\gun_024\uygulama\linux_permission_rwx_auditor.py --convert 0755
+Oktal: 0755 -> Sembolik: -rwxr-xr-x
+$ python portfolio\hafta_04\gun_024\uygulama\linux_permission_rwx_auditor.py --convert rwxr-xr-x
+Sembolik: rwxr-xr-x -> Oktal: 0755
+$ python portfolio\hafta_04\gun_024\uygulama\linux_permission_rwx_auditor.py --convert 4755
+Oktal: 4755 -> Sembolik: -rwsr-xr-x
+$ python portfolio\hafta_04\gun_024\uygulama\linux_permission_rwx_auditor.py --convert 1777
+Oktal: 1777 -> Sembolik: -rwxrwxrwt
+
+### 2. UMASK HESAPLAMA VE GUVENLIK ANALIZI (--umask)
+$ python portfolio\hafta_04\gun_024\uygulama\linux_permission_rwx_auditor.py --umask 022
+============================================================
+UMASK HESAPLAMA ANAL─░Z─░: 0022
+============================================================
+Yeni Dosya ─░zni     : 0644 (-rw-r--r--)
+Yeni Dizin ─░zni     : 0755 (drwxr-xr-x)
+G├╝venlik Durumu     : G├£VENL─░
+============================================================
+
+$ python portfolio\hafta_04\gun_024\uygulama\linux_permission_rwx_auditor.py --umask 027
+============================================================
+UMASK HESAPLAMA ANAL─░Z─░: 0027
+============================================================
+Yeni Dosya ─░zni     : 0640 (-rw-r-----)
+Yeni Dizin ─░zni     : 0750 (drwxr-x---)
+G├╝venlik Durumu     : G├£VENL─░
+============================================================
+
+$ python portfolio\hafta_04\gun_024\uygulama\linux_permission_rwx_auditor.py --umask 000
+============================================================
+UMASK HESAPLAMA ANAL─░Z─░: 0000
+============================================================
+Yeni Dosya ─░zni     : 0666 (-rw-rw-rw-)
+Yeni Dizin ─░zni     : 0777 (drwxrwxrwx)
+G├╝venlik Durumu     : R─░SKL─░/TEHL─░KEL─░
+ - [UYARI] Di─şer kullan─▒c─▒lara yazma izni (World-Writable) veriliyor (CWE-732).
+ - [UYARI] Grup ├╝yelerine yazma izni tan─▒mlan─▒yor (payla┼ş─▒ml─▒ ortamlarda riskli).
+ - [UYARI] Umask 0000: Sistem s─▒f─▒r k─▒s─▒tlama ile ├ğal─▒┼ş─▒yor, t├╝m yeni nesneler tamamen savunmas─▒zd─▒r.
+============================================================
+
+### 3. DOSYA IZIN ENVANTERI GUVENLIK DENETIMI (--audit)
+$ python portfolio\hafta_04\gun_024\uygulama\linux_permission_rwx_auditor.py --audit --rules portfolio\hafta_04\gun_024\ornek_veri\permission_baseline_rules.json --inventory portfolio\hafta_04\gun_024\ornek_veri\sample_files_permissions.json
+======================================================================
+L─░NUX DOSYA ─░Z─░NLER─░ RWX G├£VENL─░K DENET─░M RAPORU
+======================================================================
+Denetim Zaman─▒     : 2026-10-27T03:56:09Z
+Toplam Denetlenen  : 8
+Uyumlu Dosyalar    : 3
+─░hlal Say─▒s─▒       : 5
+Kritik ─░hlal       : 3
+Uyumluluk Skoru    : %37.5
+----------------------------------------------------------------------
+DETAYLI BULGULAR:
+
+[KRITIK ─░HLAL] /etc/shadow (dosya)
+   Mevcut ─░zin: 0644 (-rw-r--r--) | ├ûnerilen: 0600
+   - ─░hlal Nedeni: ─░zin a┼ş─▒m─▒: Mevcut (0644) izin, izin verilen azami (0640) s─▒n─▒r─▒n─▒ a┼ş─▒yor.
+   - ─░hlal Nedeni: Kritik veri di─şer kullan─▒c─▒larca okunabilir (o+r ihlali)!
+   - ─░yile┼ştirme : chmod 0600 /etc/shadow
+
+[UYUMLU] /etc/passwd (dosya)
+   Mevcut ─░zin: 0644 (-rw-r--r--) | ├ûnerilen: 0644
+
+[UYUMLU] /etc/sudoers (dosya)
+   Mevcut ─░zin: 0440 (-r--r-----) | ├ûnerilen: 0440
+
+[KRITIK ─░HLAL] /home/analist/.ssh/id_rsa (dosya)
+   Mevcut ─░zin: 0644 (-rw-r--r--) | ├ûnerilen: 0600
+   - ─░hlal Nedeni: ─░zin a┼ş─▒m─▒: Mevcut (0644) izin, izin verilen azami (0600) s─▒n─▒r─▒n─▒ a┼ş─▒yor.
+   - ─░hlal Nedeni: Kritik veri di─şer kullan─▒c─▒larca okunabilir (o+r ihlali)!
+   - ─░yile┼ştirme : chmod 0600 /home/analist/.ssh/id_rsa
+
+[UYUMLU] /home/analist/.ssh/authorized_keys (dosya)
+   Mevcut ─░zin: 0600 (-rw-------) | ├ûnerilen: 0600
+
+[KRITIK ─░HLAL] /var/log/syslog (dosya)
+   Mevcut ─░zin: 0666 (-rw-rw-rw-) | ├ûnerilen: 0640
+   - ─░hlal Nedeni: Kritik: Dosya/dizin di─şer t├╝m kullan─▒c─▒larca de─şi┼ştirilebilir (World-Writable - CWE-732).
+   - ─░hlal Nedeni: ─░zin a┼ş─▒m─▒: Mevcut (0666) izin, izin verilen azami (0640) s─▒n─▒r─▒n─▒ a┼ş─▒yor.
+   - ─░hlal Nedeni: Kritik veri di─şer kullan─▒c─▒larca okunabilir (o+r ihlali)!
+   - ─░yile┼ştirme : chmod 0640 /var/log/syslog
+
+[YUKSEK ─░HLAL] /tmp (dizin)
+   Mevcut ─░zin: 0777 (drwxrwxrwx) | ├ûnerilen: 1777
+   - ─░hlal Nedeni: Kritik: Dosya/dizin di─şer t├╝m kullan─▒c─▒larca de─şi┼ştirilebilir (World-Writable - CWE-732).
+   - ─░hlal Nedeni: Gecici ortak dizinde zorunlu yap─▒┼şkan bit (Sticky Bit: 1000) eksik!
+   - ─░yile┼ştirme : chmod 1777 /tmp
+
+[YUKSEK ─░HLAL] /var/www/html/wp-config.php (dosya)
+   Mevcut ─░zin: 0777 (-rwxrwxrwx) | ├ûnerilen: 0777
+   - ─░hlal Nedeni: Kritik: Dosya/dizin di─şer t├╝m kullan─▒c─▒larca de─şi┼ştirilebilir (World-Writable - CWE-732).
+   - ─░yile┼ştirme : chmod 0777 /var/www/html/wp-config.php
+======================================================================
+
+==============================================================================
+KOMUT VE CIKIS KANITLARI BASARIYLA DERLENDI.
+==============================================================================

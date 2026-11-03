@@ -1,0 +1,24 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+plugins: anyio-4.13.0, asyncio-1.3.0, cov-7.1.0, typeguard-4.6.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 14 items
+
+portfolio/hafta_07/gun_049/tests/test_network_addressing_workbook.py::test_ipv4_subnet_calculator_standard_24 PASSED [  7%]
+portfolio/hafta_07/gun_049/tests/test_network_addressing_workbook.py::test_ipv4_subnet_calculator_supernet_23 PASSED [ 14%]
+portfolio/hafta_07/gun_049/tests/test_network_addressing_workbook.py::test_ipv4_point_to_point_31 PASSED [ 21%]
+portfolio/hafta_07/gun_049/tests/test_network_addressing_workbook.py::test_ipv4_single_host_32 PASSED [ 28%]
+portfolio/hafta_07/gun_049/tests/test_network_addressing_workbook.py::test_ipv4_contains_ip_and_usable_check PASSED [ 35%]
+portfolio/hafta_07/gun_049/tests/test_network_addressing_workbook.py::test_ipv4_subnet_overlap_detection PASSED [ 42%]
+portfolio/hafta_07/gun_049/tests/test_network_addressing_workbook.py::test_ipv6_subnet_calculator PASSED [ 50%]
+portfolio/hafta_07/gun_049/tests/test_network_addressing_workbook.py::test_ipv6_eui64_mac_leakage_detection PASSED [ 57%]
+portfolio/hafta_07/gun_049/tests/test_network_addressing_workbook.py::test_workbook_load_from_json_and_initial_audit PASSED [ 64%]
+portfolio/hafta_07/gun_049/tests/test_network_addressing_workbook.py::test_audit_overlapping_subnets PASSED [ 71%]
+portfolio/hafta_07/gun_049/tests/test_network_addressing_workbook.py::test_audit_gateway_out_of_subnet PASSED [ 78%]
+portfolio/hafta_07/gun_049/tests/test_network_addressing_workbook.py::test_audit_unusable_ip_assignment PASSED [ 85%]
+portfolio/hafta_07/gun_049/tests/test_network_addressing_workbook.py::test_audit_duplicate_ip_and_mac PASSED [ 92%]
+portfolio/hafta_07/gun_049/tests/test_network_addressing_workbook.py::test_markdown_report_generation PASSED [100%]
+
+============================= 14 passed in 0.03s ==============================

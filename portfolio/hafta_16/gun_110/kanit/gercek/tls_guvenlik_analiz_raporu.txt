@@ -1,0 +1,24 @@
+========================================================================
+  TLS 1.2 VS TLS 1.3 GÜVENLİK SINIRLARI VE PROTOKOL ANALİZ RAPORU
+========================================================================
+
+1. MİMARİ KARŞILAŞTIRMA VE KALDIRILAN TEHLİKELİ KRİPTOGRAFİK İLKELER:
+   - Statik RSA Anahtar Değişimi: TLS 1.3'te tamamen yasaklandı; Ephemeral Diffie-Hellman
+     (ECDHE) zorunlu kılınarak Perfect Forward Secrecy (PFS) garantilendi (CWE-327).
+   - CBC Modu ve MAC-then-Encrypt: POODLE ve Lucky 13 saldırılarına açık olan CBC modu kaldırıldı.
+     Yalnızca AEAD (Authenticated Encryption with Associated Data) şifrelerine izin verildi.
+   - Kırılmış Algoritmalar: RC4, 3DES, MD5 ve SHA-1 tamamen protokol dışı bırakıldı.
+
+2. DOWNGRADE SALDIRILARI VE SAVUNMA MEKANİZMALARI:
+   - TLS_FALLBACK_SCSV (RFC 7507): Araya giren saldırganın bağlantıyı yapay olarak hata verdirip
+     eski sürüme düşürme (Downgrade Dance) girişimi tespit edilerek el sıkışma iptal edildi (CWE-757).
+   - RFC 8446 Downgrade Sentinel: ServerRandom son 8 baytına gömülen sentinel değeri ile
+     istemcinin araya girildiğini anlayabilmesi sağlandı.
+
+3. TRANSKRİPT BÜTÜNLÜĞÜ VE RECORD KATMANI GÜVENLİK SINIRLARI:
+   - Finished Mesajı (Transcript-Hash): El sıkışma boyunca gönderilen tüm paketlerin özeti
+     HMAC ile doğrulanarak şifre paketi manipülasyonları engellendi (CWE-353).
+   - Record Sıra Numarası (Sequence Number): Paketlerin kaydırılması, atlanması veya çalınması
+     kesin olarak engellendi.
+   - 0-RTT Erken Veri (Early Data): Tekrar oynatma saldırılarına (CWE-294) karşı anti-replay
+     önbelleği ile korundu.

@@ -1,0 +1,59 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+====================================================================================================
+GÜN 103: FIPS 197 AES SİMETRİK ŞİFRELEME VE İŞLETİM MODLARI MİMARİSİ
+====================================================================================================
+
+[ 128-BİT BLOK GİRDİSİ ] (16 Bayt Düz Metin)
+          |
+          v
+   +---------------+
+   | AddRoundKey   | <--- Başlangıç Anahtarı (Round 0)
+   +---------------+
+          |
+          |====== STANDARD DÖNGÜ (AES-128: 1..9, AES-256: 1..13) ======+
+          |                                                            |
+          +-----> [ SubBytes ]     : S-Box Doğrusal Olmayan Değişim     |
+          |       [ ShiftRows ]    : Satır Kaydırma (Difüzyon)          |
+          |       [ MixColumns ]   : GF(2^8) Galois Matris Çarpımı      |
+          |       [ AddRoundKey ]  : Tur Anahtarı ile XOR              |
+          |                                                            |
+          +------------------------------------------------------------+
+          |
+          v
+   +---------------+
+   | SubBytes      |
+   | ShiftRows     |  (Son Turda MixColumns Uygulanmaz!)
+   | AddRoundKey   | <--- Son Tur Anahtarı (AES-128: Round 10, AES-256: Round 14)
+   +---------------+
+          |
+          v
+[ 128-BİT ŞİFRELİ METİN ] (16 Bayt Çıktı)
+
+====================================================================================================
+İŞLETİM MODLARI (MODES OF OPERATION) VE GÜVENLİK DÜZEYLERİ:
+====================================================================================================
+
+1. ECB (Electronic Codebook) - [CWE-327: GÜVENSİZ / DESEN SIZINTISI]
+   Plaintext Block 1 ---> [ AES Encrypt ] ---> Ciphertext Block 1
+   Plaintext Block 2 ---> [ AES Encrypt ] ---> Ciphertext Block 2
+   (Özdeş bloklar aynı şifreli metni üretir -> Linux Pengueni görseli şifrelense bile silüeti görünür!)
+
+2. CBC (Cipher Block Chaining) - [STANDART / RASTGELE IV GEREKTİRİR]
+   Plaintext Block 1 ---⊕-----------------> [ AES Encrypt ] ---> Ciphertext Block 1 ---+
+                        ^                                                               |
+                       IV (Rastgele 16B)                                                |
+                                                                                        |
+   Plaintext Block 2 ---⊕---------------------------------> [ AES Encrypt ] ---> Ciphertext Block 2
+                        ^
+                        +---------------------------------------------------------------+
+
+3. CTR (Counter Mode) - [YÜKSEK PERFORMANSLI AKIŞ ŞİFRESİ]
+   Nonce + Counter 0 ---> [ AES Encrypt ] ---> Keystream 0 ⊕ Plaintext 0 ---> Ciphertext 0
+   Nonce + Counter 1 ---> [ AES Encrypt ] ---> Keystream 1 ⊕ Plaintext 1 ---> Ciphertext 1
+   (Dolgu gerekmez, sayaçlar paralel hesaplanabilir, donanım hızlandırmaya tam uyumludur)
+
+4. AEAD (Encrypt-then-MAC) - [ALTIN STANDART / GİZLİLİK + BÜTÜNLÜK]
+   Plaintext ---> [ AES-CTR Encrypt ] ---> Ciphertext
+                                               |
+                  IV + Ciphertext + AAD ------> [ HMAC-SHA256 ] ---> Authentication Tag
+                  (Şifreli metindeki tek bir bit değişikliği bile deşifre edilmeden reddedilir - CWE-353)

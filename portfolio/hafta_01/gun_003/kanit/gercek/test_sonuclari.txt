@@ -1,0 +1,31 @@
+================================================================================
+BİRİM VE ENTEGRASYON TEST KANITI (GÜN 003)
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) | ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+================================================================================
+Komut: python -m unittest portfolio/hafta_01/gun_003/tests/test_scope_validator.py
+Çalışma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Ortam: Windows 11 Enterprise (Physical / Localhost)
+Araç Sürümü: Python 3.14.0 (unittest standard library)
+Tarih ve Saat: 2026-10-26 16:38:09 +03:00
+Çıkış Kodu (Exit Code): 0 (BAŞARILI)
+================================================================================
+STANDART ÇIKTI VE HATA AKIŞI:
+================================================================================
+Ran 10 tests in 0.029s
+
+OK
+
+Ayrıntılı Test Dökümü:
+1. test_actual_curriculum_policy_audit: BAŞARILI (Müfredat kapsam belgesinin tam denetimi başarıyla tamamlandı)
+2. test_positive_allowed_ip_and_action: BAŞARILI (Kapsam içi IP ve izinli port taraması onaylandı)
+3. test_positive_allowed_cidr_range: BAŞARILI (CIDR bloğu içindeki test IP'si onaylandı)
+4. test_positive_allowed_domain: BAŞARILI (İzinli test alan adı onaylandı)
+5. test_negative_explicitly_forbidden_ip: BAŞARILI (Yasaklı ağ cihazı ve dış IP ExplicitlyForbiddenTargetError ile bloke edildi)
+6. test_negative_explicitly_forbidden_domain: BAŞARILI (Canlı ödeme sistemi ExplicitlyForbiddenTargetError ile korundu)
+7. test_negative_out_of_scope_target: BAŞARILI (Sözleşmede yer almayan yabancı hedef OutOfScopeTargetError ile engellendi)
+8. test_negative_forbidden_action_dos: BAŞARILI (Yıkıcı DoS saldırısı ForbiddenActionError ile durduruldu)
+9. test_negative_forbidden_action_data_deletion: BAŞARILI (Veri silme girişimi ForbiddenActionError ile engellendi)
+10. test_negative_unauthorized_action: BAŞARILI (Yetkisiz/tanımsız eylem UnauthorizedActionError ile reddedildi)
+
+Toplam Test: 10 | Geçen: 10 | Başarısız: 0 | Hata: 0 | Atlanan: 0
+Sonuç: %100 Başarı Oranı (PASS)

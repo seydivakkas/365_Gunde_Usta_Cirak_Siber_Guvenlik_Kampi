@@ -1,0 +1,95 @@
+================================================================================
+GERÇEK YÜRÜTME KANITI — KOMUT VE ÇIKIŞ
+================================================================================
+Tarih/Saat : 2026-10-26T20:23:38.356272
+İşletim Sis: Windows-11-10.0.26300-SP0
+Python     : 3.14.3
+Komut      : C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe portfolio/hafta_02/gun_009/uygulama/windows_lab_provisioner.py --config portfolio/hafta_02/gun_009/ornek_veri/windows_lab_yapilandirmasi.json
+Çıkış Kodu : 2
+--------------------------------------------------------------------------------
+STDOUT:
+================================================================================
+   WINDOWS G�VENL�K LABORATUVARI DENET�M VE DO�RULAMA RAPORU
+================================================================================
+�ncelenen Dosya: portfolio/hafta_02/gun_009/ornek_veri/windows_lab_yapilandirmasi.json
+Toplam Profil Say�s�: 2
+--------------------------------------------------------------------------------
+
+[+] LAB ID: WIN-LAB-SEC-01 | Ad�: Sertlestirilmis_Windows_Guvenlik_Laboratuvari
+    Hedef Rol         : KRITIK_KORUMALI
+    G�venlik Skoru    : 100/100
+    Risk Durumu       : G�VENL� (SERTLE�T�R�LM�� LABORATUVAR)
+    Toplam Bulgu      : 0
+    -> TEBR�KLER: S�f�r g�venlik a����! Sertle�tirilmi� ve tam izole Windows laboratuvar�.
+
+[+] LAB ID: WIN-LAB-RISK-99 | Ad�: Guvenliksiz_Hatali_Windows_Laboratuvari
+    Hedef Rol         : YUKSEK_RISK_GUVENLIKSIZ
+    G�venlik Skoru    : 0/100
+    Risk Durumu       : KR�T�K FELAKET (AC�L M�DAHALE GEREKL�)
+    Toplam Bulgu      : 14
+    -> TESP�T ED�LEN R�SK VE ZAF�YETLER:
+       * [YUKSEK] Sanalla�t�rma Tabanl� G�venlik (VBS) Kapal� (-20 Puan)
+         Kategori: CEKIRDEK_SANALLASTIRMA
+         Risk    : VBS kapal�yken �ekirdek bellek alan� do�rudan sald�r�lara a��kt�r; Credential Guard gibi korumalar �al��maz.
+         ��z�m   : Grup �lkesi (GPO) veya �ekirdek Yal�t�m ayarlar�ndan VBS'i etkinle�tirin.
+       * [ORTA] Bellek B�t�nl��� (HVCI) Korumas� Kapal� (-15 Puan)
+         Kategori: CEKIRDEK_SANALLASTIRMA
+         Risk    : Zararl� bir �ekirdek s�r�c�s� (rootkit) sisteme s�zabilir ve Ring 0 yetkisi elde edebilir.
+         ��z�m   : Windows G�venli�i -> Cihaz G�venli�i -> �ekirdek Yal�t�m -> Bellek B�t�nl���'n� a��n.
+       * [KRITIK] Windows Sandbox A� �zolasyonu A��k De�il (Networking != Disable) (-35 Puan)
+         Kategori: WINDOWS_SANDBOX
+         Risk    : Sandbox a� ayar� 'Default' olarak b�rak�lm��. Zararl� yaz�l�m C2 sunucular�na veri s�zd�rabilir veya yerel a�daki cihazlara sald�rabilir.
+         ��z�m   : .wsb yap�land�rma dosyas�nda <Networking>Disable</Networking> tan�mlay�n.
+       * [FELAKET] Sandbox'a Kritik Konak Dizini Ba�lanm��: C:\ (-50 Puan)
+         Kategori: WINDOWS_SANDBOX
+         Risk    : Konak i�letim sisteminin kritik dizini Sandbox i�ine ta��nm��t�r. Fidye yaz�l�m� konak dosyalar�n� do�rudan �ifreleyebilir.
+         ��z�m   : Yaln�zca 'C:\Guvenli_Lab\Numuneler' gibi izole ve ge�ici bir klas�r� ba�lay�n.
+       * [KRITIK] Sandbox E�lenen Klas�rde Yazma �zni A��k: C:\ (-30 Puan)
+         Kategori: WINDOWS_SANDBOX
+         Risk    : Sandbox i�indeki zararl� yaz�l�m konak klas�r�ndeki dosyalar� bozabilir veya konak sisteme zararl� yazabilir.
+         ��z�m   : .wsb dosyas�nda <ReadOnly>true</ReadOnly> tan�mlay�n.
+       * [DUSUK] Sandbox vGPU Donan�m H�zland�rma A��k (-10 Puan)
+         Kategori: WINDOWS_SANDBOX
+         Risk    : Grafik s�r�c�s� zafiyetleri �zerinden Sandbox ka��� (escape) riski olu�abilir.
+         ��z�m   : <VGpu>Disable</VGpu> olarak ayarlay�n.
+       * [KRITIK] Tehlikeli External vSwitch Tespit Edildi: External_Physical_Switch (-40 Puan)
+         Kategori: HYPER_V_VSWITCH
+         Risk    : Sanal anahtar do�rudan fiziksel yerel a� kart�na k�pr�lenmi�tir. Laboratuvardaki zararl� a�a yay�labilir.
+         ��z�m   : Anahtar tipini 'Internal' veya 'Private' (Hava Bo�luklu - AirGapped) yap�n.
+       * [YUKSEK] vSwitch �zerinde Promiscuous Mod �zinli: External_Physical_Switch (-25 Puan)
+         Kategori: HYPER_V_VSWITCH
+         Risk    : Sanal makineler birbirinin a� paketlerini koklayabilir (Virtual Network Sniffing).
+         ��z�m   : Promiscuous mod ayar�n� kesinlikle 'Deny' yap�n.
+       * [FELAKET] �l�mc�l Defender D��lamas� Tan�ml�: C:\ (-50 Puan)
+         Kategori: DEFENDER_EXCLUSION
+         Risk    : Kritik i�letim sistemi veya kullan�c� dizini (C:\) vir�s taramas�ndan muaf tutulmu�tur. Sald�rganlar zararl�y� do�rudan buraya yaz�p Defender'� atlat�r (Exclusion Hijacking).
+         ��z�m   : Geni� d��lamay� derhal kald�r�n. Yaln�zca s�k� izinlere sahip 'C:\Guvenli_Lab\Araclar' gibi izole bir alt klas�r� d��lay�n.
+       * [FELAKET] �l�mc�l Defender D��lamas� Tan�ml�: C:\Users (-50 Puan)
+         Kategori: DEFENDER_EXCLUSION
+         Risk    : Kritik i�letim sistemi veya kullan�c� dizini (C:\Users) vir�s taramas�ndan muaf tutulmu�tur. Sald�rganlar zararl�y� do�rudan buraya yaz�p Defender'� atlat�r (Exclusion Hijacking).
+         ��z�m   : Geni� d��lamay� derhal kald�r�n. Yaln�zca s�k� izinlere sahip 'C:\Guvenli_Lab\Araclar' gibi izole bir alt klas�r� d��lay�n.
+       * [FELAKET] �l�mc�l Defender D��lamas� Tan�ml�: C:\Windows\Temp (-50 Puan)
+         Kategori: DEFENDER_EXCLUSION
+         Risk    : Kritik i�letim sistemi veya kullan�c� dizini (C:\Windows\Temp) vir�s taramas�ndan muaf tutulmu�tur. Sald�rganlar zararl�y� do�rudan buraya yaz�p Defender'� atlat�r (Exclusion Hijacking).
+         ��z�m   : Geni� d��lamay� derhal kald�r�n. Yaln�zca s�k� izinlere sahip 'C:\Guvenli_Lab\Araclar' gibi izole bir alt klas�r� d��lay�n.
+       * [YUKSEK] D��lanan Klas�rde Standart Kullan�c� Yazma �zni Var (-25 Puan)
+         Kategori: DEFENDER_EXCLUSION
+         Risk    : Yetkisiz veya k�s�tl� bir kullan�c� (ya da zararl� betik) taranmayan bu dizine dosya yazabilir ve alg�lanmadan �al��t�rabilir.
+         ��z�m   : Klas�r ACL ayarlar�nda sadece 'Administrators' ve 'SYSTEM' gruplar�na Tam Yetki (Full Control) verin; 'Users' grubunun yazma iznini kald�r�n.
+       * [ORTA] WSL1 Kullan�l�yor (Eski Mimari / Payla��lan �ekirdek) (-15 Puan)
+         Kategori: WSL_IZOLASYONU
+         Risk    : WSL1 do�rudan konak �ekirde�iyle sistem �a�r�s� �evirisi yapar. WSL2 ise Hyper-V tabanl� ger�ek Linux �ekirde�i ile tam izolasyon sa�lar.
+         ��z�m   : 'wsl --set-version <dagitim> 2' komutuyla WSL2 mimarisine ge�i� yap�n.
+       * [ORTA] WSL2 ��inde /mnt/c S�r�c�s� Yazma �zniyle Ba�l� (-15 Puan)
+         Kategori: WSL_IZOLASYONU
+         Risk    : Linux ortam�nda �al��an bir zararl� veya s�zma testi arac�, konak Windows dosya sistemindeki dosyalara do�rudan yazabilir.
+         ��z�m   : /etc/wsl.conf dosyas�nda [automount] options = 'ro' tan�mlayarak Windows diskini salt-okunur ba�lay�n.
+
+================================================================================
+Denetim Bitti. T�m haklar� sakl�d�r (c) 2026 Seydi Ery�lmaz.
+================================================================================
+
+--------------------------------------------------------------------------------
+STDERR:
+
+================================================================================

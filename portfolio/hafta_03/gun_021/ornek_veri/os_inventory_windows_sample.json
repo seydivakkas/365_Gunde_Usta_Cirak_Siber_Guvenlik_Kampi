@@ -1,0 +1,123 @@
+{
+  "aciklama": "Kurumsal Windows Sunucu/İş İstasyonu Güvenlik Envanteri Örnek Verisi",
+  "toplayici_surumu": "1.0.0",
+  "toplama_zamani": "2026-10-27T01:00:00Z",
+  "platform": "Windows",
+  "os_bilgisi": {
+    "isletim_sistemi": "Microsoft Windows Server 2022 Datacenter",
+    "surum": "21H2",
+    "is_derleme": "20348.2407",
+    "mimari": "x86_64",
+    "bilgisayar_adi": "SRV-CORP-WIN01",
+    "etki_alani": "CORP.LOCAL",
+    "kurulum_tarihi": "2024-03-15T10:30:00Z"
+  },
+  "donanim": {
+    "islemci_modeli": "Intel(R) Xeon(R) Gold 6330 CPU @ 2.00GHz",
+    "cekirdek_sayisi": 16,
+    "toplam_ram_gb": 64.0,
+    "diskler": [
+      {
+        "surucu": "C:",
+        "dosya_sistemi": "NTFS",
+        "toplam_gb": 250.0,
+        "bos_gb": 112.5,
+        "sifreleme": "BitLocker Etkin"
+      },
+      {
+        "surucu": "D:",
+        "dosya_sistemi": "ReFS",
+        "toplam_gb": 1000.0,
+        "bos_gb": 650.0,
+        "sifreleme": "BitLocker Etkin"
+      }
+    ]
+  },
+  "hesaplar": [
+    {
+      "kullanici_adi": "Administrator",
+      "sid": "S-1-5-21-1234567890-1234567890-1234567890-500",
+      "yonetici_mi": true,
+      "aktif_mi": false,
+      "parola_son_degisiklik": "2026-08-10T14:20:00Z",
+      "aciklama": "Dahili yerleşik yönetici hesabı (CIS gereği devre dışı bırakılmıştır)"
+    },
+    {
+      "kullanici_adi": "Guest",
+      "sid": "S-1-5-21-1234567890-1234567890-1234567890-501",
+      "yonetici_mi": false,
+      "aktif_mi": false,
+      "parola_son_degisiklik": "2024-03-15T10:30:00Z",
+      "aciklama": "Dahili konuk hesabı (Devre dışı)"
+    },
+    {
+      "kullanici_adi": "seydi.admin",
+      "sid": "S-1-5-21-1234567890-1234567890-1234567890-1001",
+      "yonetici_mi": true,
+      "aktif_mi": true,
+      "parola_son_degisiklik": "2026-10-15T09:00:00Z",
+      "aciklama": "Sistem Güvenlik Yöneticisi Hesabı"
+    },
+    {
+      "kullanici_adi": "backup_agent",
+      "sid": "S-1-5-21-1234567890-1234567890-1234567890-1002",
+      "yonetici_mi": false,
+      "aktif_mi": true,
+      "parola_son_degisiklik": "2026-09-01T11:00:00Z",
+      "aciklama": "Otomatik yedekleme servis hesabı"
+    }
+  ],
+  "servisler": [
+    {
+      "servis_adi": "wuauserv",
+      "gorunen_ad": "Windows Update",
+      "durum": "Running",
+      "baslangic_turu": "Automatic",
+      "calistiran_hesap": "LocalSystem",
+      "guvenlik_durumu": "GUVENLI"
+    },
+    {
+      "servis_adi": "MpsSvc",
+      "gorunen_ad": "Windows Defender Firewall",
+      "durum": "Running",
+      "baslangic_turu": "Automatic",
+      "calistiran_hesap": "NT AUTHORITY\\LocalService",
+      "guvenlik_durumu": "GUVENLI"
+    },
+    {
+      "servis_adi": "WinDefend",
+      "gorunen_ad": "Microsoft Defender Antivirus Service",
+      "durum": "Running",
+      "baslangic_turu": "Automatic",
+      "calistiran_hesap": "LocalSystem",
+      "guvenlik_durumu": "GUVENLI"
+    },
+    {
+      "servis_adi": "TermService",
+      "gorunen_ad": "Remote Desktop Services",
+      "durum": "Running",
+      "baslangic_turu": "Manual",
+      "calistiran_hesap": "NetworkService",
+      "guvenlik_durumu": "DENETLENMELI"
+    },
+    {
+      "servis_adi": "TlntSvr",
+      "gorunen_ad": "Telnet Server",
+      "durum": "Stopped",
+      "baslangic_turu": "Disabled",
+      "calistiran_hesap": "LocalSystem",
+      "guvenlik_durumu": "GUVENSIZ_SERVIS_DEVRE_DISI"
+    }
+  ],
+  "guncellemeler": {
+    "son_basarili_guncelleme": "2026-10-18T03:00:00Z",
+    "yuklu_hotfix_sayisi": 42,
+    "kritik_hotfixler": [
+      "KB5034441",
+      "KB5035857",
+      "KB5036899"
+    ],
+    "bekleyen_kritik_guncelleme_sayisi": 0,
+    "yeniden_baslatma_gerekli_mi": false
+  }
+}

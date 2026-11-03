@@ -1,0 +1,123 @@
+{
+  "$sema_versiyonu": "1.0",
+  "aciklama": "Windows Üzerinde Güvenli Siber Güvenlik Laboratuvarı Yapılandırma Profili",
+  "olusturan": "Seydi Eryılmaz (@seydivakkas)",
+  "tarih": "2026-10-26",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz. Açık kaynak lisans KULLANILMAZ.",
+  "laboratuvar_profilleri": [
+    {
+      "lab_id": "WIN-LAB-SEC-01",
+      "lab_adi": "Sertlestirilmis_Windows_Guvenlik_Laboratuvari",
+      "hedef_rol": "Zararlı Yazılım Analizi, Olay Müdahale ve İnceleme Ortamı",
+      "guvenlik_derecesi": "KRITIK_KORUMALI",
+      "sanallastirma_ve_vbs": {
+        "hyper_v_etkin": true,
+        "vbs_etkin": true,
+        "hvci_etkin": true,
+        "windows_sandbox_etkin": true
+      },
+      "windows_sandbox": {
+        "profil_adi": "Izole_Zararli_Inceleme.wsb",
+        "v_gpu": "Disable",
+        "networking": "Disable",
+        "baglanan_klasorler": [
+          {
+            "konak_yolu": "C:\\Guvenli_Lab\\Incelenecek_Numuneler",
+            "sandbox_yolu": "C:\\Users\\WDAGUtilityAccount\\Desktop\\Numuneler",
+            "salt_okunur": true
+          }
+        ],
+        "oturum_acilis_komutu": "",
+        "bellek_siniri_mb": 4096
+      },
+      "hyper_v_ag_anahtarlari": [
+        {
+          "anahtar_id": "VSW-01",
+          "anahtar_adi": "Lab_Internal_Switch",
+          "anahtar_tipi": "Internal",
+          "promiscuous_mode": "Deny",
+          "fiziksel_ag_kartina_bagli": false,
+          "guvenlik_duvari_kurali": "Block_Public_Inbound"
+        },
+        {
+          "anahtar_id": "VSW-02",
+          "anahtar_adi": "Lab_AirGapped_Private_Switch",
+          "anahtar_tipi": "Private",
+          "promiscuous_mode": "Deny",
+          "fiziksel_ag_kartina_bagli": false,
+          "guvenlik_duvari_kurali": "Strict_Isolation"
+        }
+      ],
+      "defender_dislama_politikasi": {
+        "dislama_etkin": true,
+        "dislanan_klasorler": [
+          "C:\\Guvenli_Lab\\Araclar"
+        ],
+        "acl_guvenlik_dogrulamasi": {
+          "sadece_admin_ve_system_yazabilir": true,
+          "standart_kullanici_yazma_engeli": true
+        }
+      },
+      "wsl2_altyapisi": {
+        "wsl_surumu": 2,
+        "dagitim": "Kali-Linux-Lab",
+        "mnt_c_erisim_modu": "ReadOnly",
+        "ag_modu": "NAT_Host_Only"
+      }
+    },
+    {
+      "lab_id": "WIN-LAB-RISK-99",
+      "lab_adi": "Guvenliksiz_Hatali_Windows_Laboratuvari",
+      "hedef_rol": "Yetkisiz ve Güvensiz Test Ortamı (Negatif Kontrol)",
+      "guvenlik_derecesi": "YUKSEK_RISK_GUVENLIKSIZ",
+      "sanallastirma_ve_vbs": {
+        "hyper_v_etkin": true,
+        "vbs_etkin": false,
+        "hvci_etkin": false,
+        "windows_sandbox_etkin": true
+      },
+      "windows_sandbox": {
+        "profil_adi": "Tehlikeli_Acik_Sandbox.wsb",
+        "v_gpu": "Enable",
+        "networking": "Default",
+        "baglanan_klasorler": [
+          {
+            "konak_yolu": "C:\\",
+            "sandbox_yolu": "C:\\Users\\WDAGUtilityAccount\\Desktop\\Host_C",
+            "salt_okunur": false
+          }
+        ],
+        "oturum_acilis_komutu": "powershell.exe -ExecutionPolicy Bypass",
+        "bellek_siniri_mb": 2048
+      },
+      "hyper_v_ag_anahtarlari": [
+        {
+          "anahtar_id": "VSW-BAD",
+          "anahtar_adi": "External_Physical_Switch",
+          "anahtar_tipi": "External",
+          "promiscuous_mode": "Allow_All",
+          "fiziksel_ag_kartina_bagli": true,
+          "guvenlik_duvari_kurali": "None"
+        }
+      ],
+      "defender_dislama_politikasi": {
+        "dislama_etkin": true,
+        "dislanan_klasorler": [
+          "C:\\",
+          "C:\\Users",
+          "C:\\Windows\\Temp"
+        ],
+        "acl_guvenlik_dogrulamasi": {
+          "sadece_admin_ve_system_yazabilir": false,
+          "standart_kullanici_yazma_engeli": false
+        }
+      },
+      "wsl2_altyapisi": {
+        "wsl_surumu": 1,
+        "dagitim": "Ubuntu-Default",
+        "mnt_c_erisim_modu": "Full_ReadWrite",
+        "ag_modu": "Mirrored"
+      }
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+==============================================================================
+GÜN 138: GÜVENLİK DUVARI NEGATİF KONTROL VE SINIR DURUM TEST KANIT RAPORU
+==============================================================================
+Çalıştırma Tarihi: 2026-11-02 14:43:20
+Hedef: Güvenlik Duvarı Motorunun Hatalı/Zafiyetli Durumları Tespit Yeteneği
+------------------------------------------------------------------------------
+[1/9] NEG_FW_01: Güvenlik Duvarının Tamamen Durdurulmuş Olması
+  • Açıklama       : is_active=false durumu. Motor FW-001 (CRITICAL / CWE-284) tespit etmelidir.
+  • Beklenen Kural : FW-001
+  • Üretilen Kural : FW-001
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[2/9] NEG_FW_02: Güvenlik Duvarının Açılışta Başlamaması
+  • Açıklama       : is_enabled_on_boot=false olması durumu (FW-001 / T1562.004).
+  • Beklenen Kural : FW-001
+  • Üretilen Kural : FW-001
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[3/9] NEG_FW_03: Varsayılan Gelen (INPUT) Politikasının ACCEPT Olması
+  • Açıklama       : Default Deny ilkesinin ihlal edilmesi (FW-002 / CWE-284 / T1046).
+  • Beklenen Kural : FW-002
+  • Üretilen Kural : FW-002
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[4/9] NEG_FW_04: Varsayılan Yönlendirme (FORWARD) Politikasının ACCEPT Olması
+  • Açıklama       : FORWARD chain üzerinde accept bulunması (FW-003 / CIS 3.4.3).
+  • Beklenen Kural : FW-003
+  • Üretilen Kural : FW-003
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[5/9] NEG_FW_05: Durum Denetimli (conntrack) Filtreleme Eksikliği
+  • Açıklama       : established/related veya invalid paket kurallarının olmaması (FW-004 / CWE-693).
+  • Beklenen Kural : FW-004
+  • Üretilen Kural : FW-004
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[6/9] NEG_FW_06: Loopback İzolasyonu ve Anti-Spoofing Eksikliği
+  • Açıklama       : lo arayüzü kabul edilmiyor ve sahte 127.0.0.0/8 engellenmiyor (FW-005 / CWE-290).
+  • Beklenen Kural : FW-005
+  • Üretilen Kural : FW-005
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[7/9] NEG_FW_07: Herkese Açık Tehlikeli SMB Portu (Port 445)
+  • Açıklama       : Port 445'in any IP üzerinden kabul edilmesi (FW-006 / CWE-250 / T1046).
+  • Beklenen Kural : FW-006
+  • Üretilen Kural : FW-006
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[8/9] NEG_FW_08: Herkese Açık RDP Portu (Port 3389)
+  • Açıklama       : Port 3389'un any IP üzerinden kabul edilmesi (FW-006 / CWE-250).
+  • Beklenen Kural : FW-006
+  • Üretilen Kural : FW-006
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[9/9] NEG_FW_09: Güvenlik Duvarı Loglamasının Kapalı Olması
+  • Açıklama       : logging_enabled=false olması (FW-007 / CWE-778 / CIS 3.5.1).
+  • Beklenen Kural : FW-007
+  • Üretilen Kural : FW-007
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+Toplam Senaryo    : 9
+Başarılı Doğrulama: 9 / 9
+Sonuç             : TAM BAŞARILI (%100 PASS)
+==============================================================================

@@ -1,0 +1,21 @@
+=== GÜN 075: NEGATİF KONTROL VE SINIR DURUMU DOĞRULAMA RAPORU ===
+Toplam Senaryo: 9, Başarılı: 9, Başarısız: 0
+
+[PASS] NEG_01_IN_PLACE_LIST_MUTATION_DURING_ITERATION: İterasyon sırasında liste üzerinde silme (remove/pop) işlemi yapılarak eleman atlama hatası üretme girişimi
+  Detay: Savunmacı liste filtreleme (comprehension) eleman atlama hatasını engelledi.
+[PASS] NEG_02_DIRECT_KEY_ACCESS_KEYERROR_DOS: Sözlükte bulunmayan bir anahtara doğrudan köşeli parantez dict[key] ile erişilerek KeyError DoS oluşturma denemesi
+  Detay: KeyError DoS engellendi, güvenli varsayılan değer döndürüldü.
+[PASS] NEG_03_UNHASHABLE_TYPE_IN_SET: Kümeye değiştirilebilir ve hashlenemeyen (unhashable) veri yapısı (list veya dict) ekleme girişimi
+  Detay: Unhashable liste tipi tespit edilip güvenli tuple nesnesine dönüştürüldü.
+[PASS] NEG_04_MALFORMED_IP_IN_THREAT_FEED: Tehdit beslemesine (feed) geçersiz/malforme IP dizesi enjeksiyonu
+  Detay: Beklenen malforme IP hatası fırlatıldı: feed_a içinde malforme IP adresi tespit edildi: 999.999.999.999
+[PASS] NEG_05_DEEP_NESTED_PATH_ON_NONE_NODE: İç içe sözlükte ara düğümlerden biri None olduğunda derin yol erişimi (AttributeError / TypeError) oluşturma girişimi
+  Detay: None ara düğümde AttributeError/TypeError oluşmadan güvenli varsayılan döndü.
+[PASS] NEG_06_FEED_CORRELATION_NULL_OR_INVALID_INPUT: Küme korelasyon fonksiyonuna küme veya liste yerine None veya integer gönderme denemesi
+  Detay: Beklenen TypeError fırlatıldı: Tehdit beslemeleri (feed_a ve feed_b) None olamaz.
+[PASS] NEG_07_DUPLICATE_KEY_DATA_COLLISION: Sözlük oluşturulurken aynı kural anahtarı ile veri ezilmesi (shadowing / collision) oluşturulması
+  Detay: Mükerrer kural anahtarı ile kural ezilmesi (shadowing) başarıyla tespit edildi.
+[PASS] NEG_08_INVALID_SET_DIFFERENCE_OPERAND: Küme farkı (difference) işleminde sağ tarafa küme olmayan ve dönüştürülemeyen geçersiz tip aktarılması
+  Detay: Beklenen TypeError fırlatıldı: feed_b bir koleksiyon (list/set/tuple) olmalıdır.
+[PASS] NEG_09_EXCESSIVE_COLLECTION_SIZE_MEMORY_EXHAUSTION: Bellek tüketimi saldırısı — koleksiyon boyutu izin verilen güvenlik tavanını (örn. 50.000 eleman) aştığında engelleme
+  Detay: Beklenen bellek koruma OverflowError hatası fırlatıldı: feed_a için maksimum eleman sınırı aşıldı: 50001

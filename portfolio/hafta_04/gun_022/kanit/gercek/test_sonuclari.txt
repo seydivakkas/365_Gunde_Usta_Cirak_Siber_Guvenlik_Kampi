@@ -1,0 +1,54 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Bu dosya Siber Güvenlik 365 Gün Müfredatı kapsamında üretilmiştir.
+# Gün 022: Komut Satırı: PowerShell Temelleri Birim Test Sonuçları Kanıtı
+
+Test Komutu:
+python -m unittest discover -s portfolio/hafta_04/gun_022/tests -p "test_*.py" -v
+
+Test Çalışma Tarihi: 2026-10-27T02:14:48
+Python Sürümü: Python 3.12.9
+Test Ortamı: Windows 11 (PowerShell Security Pipeline & Cmdlet Architecture)
+
+======================================================================
+TEST DETAYLARI:
+======================================================================
+test_01_init_ve_varsayilan_kurallar (test_powershell_security_pipeline_auditor.TestPowerShellSecurityPipelineAuditor.test_01_init_ve_varsayilan_kurallar)
+Test 01: Sınıf başlatma ve varsayılan kural sözlüğünün doğrulanması. ... ok
+test_02_canli_powershell_nesne_toplama (test_powershell_security_pipeline_auditor.TestPowerShellSecurityPipelineAuditor.test_02_canli_powershell_nesne_toplama)
+Test 02: Canlı sistemden PowerShell süreç ve servis nesnelerinin toplanması. ... ok
+test_03_json_yukleme_gecerli_surecler (test_powershell_security_pipeline_auditor.TestPowerShellSecurityPipelineAuditor.test_03_json_yukleme_gecerli_surecler)
+Test 03: Proje ornek_veri altındaki süreç JSON dosyasının hatasız yüklenmesi. ... ok
+test_04_json_yukleme_gecerli_servisler (test_powershell_security_pipeline_auditor.TestPowerShellSecurityPipelineAuditor.test_04_json_yukleme_gecerli_servisler)
+Test 04: Proje ornek_veri altındaki servis JSON dosyasının hatasız yüklenmesi. ... ok
+test_05_dosya_bulunamadi_negatif_kontrol (test_powershell_security_pipeline_auditor.TestPowerShellSecurityPipelineAuditor.test_05_dosya_bulunamadi_negatif_kontrol)
+Test 05: Var olmayan dosya istendiğinde FileNotFoundError fırlatılması (Negatif Test). ... ok
+test_06_bozuk_json_negatif_kontrol (test_powershell_security_pipeline_auditor.TestPowerShellSecurityPipelineAuditor.test_06_bozuk_json_negatif_kontrol)
+Test 06: Bozuk sözdizimli JSON dosyasında ValueError fırlatılması (Negatif Test). ... ok
+test_07_temiz_surec_denetimi (test_powershell_security_pipeline_auditor.TestPowerShellSecurityPipelineAuditor.test_07_temiz_surec_denetimi)
+Test 07: Standart ve zararsız süreç nesnesinin 0 bulgu ile temiz çıkması. ... ok
+test_08_supheli_powershell_komut_satiri_tespiti (test_powershell_security_pipeline_auditor.TestPowerShellSecurityPipelineAuditor.test_08_supheli_powershell_komut_satiri_tespiti)
+Test 08: Bypass ve Hidden parametreli PowerShell sürecinde KRİTİK risk tespiti (MITRE T1059.001). ... ok
+test_09_mimikatz_ve_sekurlsa_tespiti (test_powershell_security_pipeline_auditor.TestPowerShellSecurityPipelineAuditor.test_09_mimikatz_ve_sekurlsa_tespiti)
+Test 09: Mimikatz bellek dökümü aracı sürecinde KRİTİK risk tespiti (Zafiyet/Saldırı Testi). ... ok
+test_10_asiri_kaynak_tuketim_anomalisi_tespiti (test_powershell_security_pipeline_auditor.TestPowerShellSecurityPipelineAuditor.test_10_asiri_kaynak_tuketim_anomalisi_tespiti)
+Test 10: Eşik üstü handle/RAM kullanan süreçte ORTA seviye anomali tespiti. ... ok
+test_11_guvensiz_servis_tespiti (test_powershell_security_pipeline_auditor.TestPowerShellSecurityPipelineAuditor.test_11_guvensiz_servis_tespiti)
+Test 11: Karalistedeki Telnet servisinin çalışması durumunda KRİTİK risk tespiti (CIS İhlali). ... ok
+test_12_tirnaksiz_servis_yolu_tespiti (test_powershell_security_pipeline_auditor.TestPowerShellSecurityPipelineAuditor.test_12_tirnaksiz_servis_yolu_tespiti)
+Test 12: Boşluk içeren ve tırnak içine alınmamış servis yolunda YÜKSEK risk tespiti (CWE-428). ... ok
+test_13_csv_disa_aktarma_ve_kolon_dogrulamasi (test_powershell_security_pipeline_auditor.TestPowerShellSecurityPipelineAuditor.test_13_csv_disa_aktarma_ve_kolon_dogrulamasi)
+Test 13: Filtrelenmiş bulguların CSV olarak kaydedilmesi ve sütun doğrulaması (G022-SC2). ... ok
+test_14_cli_alt_surec_yurutme (test_powershell_security_pipeline_auditor.TestPowerShellSecurityPipelineAuditor.test_14_cli_alt_surec_yurutme)
+Test 14: Komut satırı (CLI) aracının alt süreç (subprocess) olarak yürütülmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.903s
+
+OK
+
+SONUÇ: 14/14 BAŞARILI (100% PASS)
+Eksik/Hatalı Test: 0
+Negatif Test Sayısı: 4 (test_05, test_06, test_08, test_09)
+Pozitif/Sınır Test Sayısı: 10
+Doğrulama Durumu: TAM GEÇTİ

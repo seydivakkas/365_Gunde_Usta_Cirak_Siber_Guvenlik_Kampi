@@ -1,0 +1,45 @@
+======================================================================
+GÜN 090: BİRİM TEST SONUÇLARI (UNIT TEST EVIDENCE)
+Tarih (UTC): 2026-11-01T20:20:53Z
+======================================================================
+
+test_01_parse_iso_utc_z (test_utc_timezone_forensic_normalizer.TestUtcTimezoneForensicNormalizer.test_01_parse_iso_utc_z)
+1. Test: Z soneki içeren ISO-8601 UTC dizgisinin doğru ayrıştırılması. ... ok
+test_02_parse_iso_positive_offset (test_utc_timezone_forensic_normalizer.TestUtcTimezoneForensicNormalizer.test_02_parse_iso_positive_offset)
+2. Test: Pozitif saat dilimi ofseti (+03:00) içeren dizginin UTC'ye doğru indirgenmesi. ... ok
+test_03_parse_iso_negative_offset (test_utc_timezone_forensic_normalizer.TestUtcTimezoneForensicNormalizer.test_03_parse_iso_negative_offset)
+3. Test: Negatif saat dilimi ofseti (-04:00) içeren dizginin UTC'ye doğru dönüştürülmesi. ... ok
+test_04_naive_timestamp_rejection (test_utc_timezone_forensic_normalizer.TestUtcTimezoneForensicNormalizer.test_04_naive_timestamp_rejection)
+4. Test: Saat dilimi içermeyen naive zaman damgasının reddedilmesi (CWE-613). ... ok
+test_05_invalid_time_range_rejection (test_utc_timezone_forensic_normalizer.TestUtcTimezoneForensicNormalizer.test_05_invalid_time_range_rejection)
+5. Test: Geçersiz saat/dakika/saniye sınır değerlerinin reddedilmesi (CWE-20). ... ok
+test_06_invalid_calendar_date_rejection (test_utc_timezone_forensic_normalizer.TestUtcTimezoneForensicNormalizer.test_06_invalid_calendar_date_rejection)
+6. Test: Takvimsel olarak imkansız tarihlerin (Şubat 30) reddedilmesi. ... ok
+test_07_unix_epoch_seconds_conversion (test_utc_timezone_forensic_normalizer.TestUtcTimezoneForensicNormalizer.test_07_unix_epoch_seconds_conversion)
+7. Test: Geçerli Unix Epoch saniyesinin UTC datetime nesnesine dönüştürülmesi. ... ok
+test_08_unix_epoch_milliseconds_conversion (test_utc_timezone_forensic_normalizer.TestUtcTimezoneForensicNormalizer.test_08_unix_epoch_milliseconds_conversion)
+8. Test: 13 haneli Unix Epoch milisaniye değerinin UTC'ye dönüştürülmesi. ... ok
+test_09_negative_epoch_rejection (test_utc_timezone_forensic_normalizer.TestUtcTimezoneForensicNormalizer.test_09_negative_epoch_rejection)
+9. Test: Negatif veya sıfır epoch değerinin reddedilmesi. ... ok
+test_10_windows_filetime_conversion (test_utc_timezone_forensic_normalizer.TestUtcTimezoneForensicNormalizer.test_10_windows_filetime_conversion)
+10. Test: 64-bit Windows FileTime tamsayısının UTC datetime nesnesine dönüştürülmesi. ... ok
+test_11_invalid_filetime_rejection (test_utc_timezone_forensic_normalizer.TestUtcTimezoneForensicNormalizer.test_11_invalid_filetime_rejection)
+11. Test: Negatif veya Unix öncesi Windows FileTime değerinin reddedilmesi. ... ok
+test_12_clock_skew_acceptable (test_utc_timezone_forensic_normalizer.TestUtcTimezoneForensicNormalizer.test_12_clock_skew_acceptable)
+12. Test: Kabul edilebilir saat sapması (Clock Skew <= 300 sn) testi. ... ok
+test_13_clock_skew_violation (test_utc_timezone_forensic_normalizer.TestUtcTimezoneForensicNormalizer.test_13_clock_skew_violation)
+13. Test: İzin verilen saat sapmasının aşılması ve Replay riski hükmü (CWE-1385). ... ok
+test_14_build_forensic_timeline_chronological_order (test_utc_timezone_forensic_normalizer.TestUtcTimezoneForensicNormalizer.test_14_build_forensic_timeline_chronological_order)
+14. Test: Çok kaynaklı logların eksiksiz normalize edilip kronolojik UTC sırasına dizilmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK
+
+======================================================================
+Toplam Test: 14
+Başarılı: 14
+Hatalar: 0
+Başarısızlıklar: 0
+Genel Durum: PASS (BAŞARILI)

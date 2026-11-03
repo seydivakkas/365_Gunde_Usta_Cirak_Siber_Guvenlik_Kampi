@@ -1,0 +1,33 @@
+test_01_firewall_rule_matching_priority (portfolio.hafta_11.gun_073.tests.test_security_control_flow_engine.TestSecurityControlFlowEngine.test_01_firewall_rule_matching_priority)
+Íncelikli kural²n (Rule 1, SSH 22, 10.100.0.0/24) ALLOW karar² verdi­ini s²nar. ... ok
+test_02_firewall_rule_default_deny (portfolio.hafta_11.gun_073.tests.test_security_control_flow_engine.TestSecurityControlFlowEngine.test_02_firewall_rule_default_deny)
+Hibir kurala uymayan paketin 'for ... else' ile varsay²lan DENY ald²­²n² test eder. ... ok
+test_03_firewall_rule_exact_ip_deny (portfolio.hafta_11.gun_073.tests.test_security_control_flow_engine.TestSecurityControlFlowEngine.test_03_firewall_rule_exact_ip_deny)
+Y³ksek ÷ncelikli (priority 5) zararl² IP engelleme kural²n²n al²■t²­²n² test eder. ... ok
+test_04_safe_pointer_traversal_success (portfolio.hafta_11.gun_073.tests.test_security_control_flow_engine.TestSecurityControlFlowEngine.test_04_safe_pointer_traversal_success)
+D÷ng³sel olmayan me■ru g÷sterici zincirinin hatas²z sonland²­²n² s²nar. ... ok
+test_05_rate_limiter_brute_force_detection (portfolio.hafta_11.gun_073.tests.test_security_control_flow_engine.TestSecurityControlFlowEngine.test_05_rate_limiter_brute_force_detection)
+60 saniyede 5'ten fazla ba■ar²s²z denemenin kilitlenme tetikledi­ini test eder. ... ok
+test_06_threat_ioc_stream_for_else_malware_detected (portfolio.hafta_11.gun_073.tests.test_security_control_flow_engine.TestSecurityControlFlowEngine.test_06_threat_ioc_stream_for_else_malware_detected)
+Threat IoC ak²■²nda zararl² etiket bulundu­unda d÷ng³n³n break ile k²r²ld²­²n² test eder. ... ok
+test_07_threat_ioc_stream_clean_stream (portfolio.hafta_11.gun_073.tests.test_security_control_flow_engine.TestSecurityControlFlowEngine.test_07_threat_ioc_stream_clean_stream)
+Yaln²zca temiz eserler ieren ak²■ta 'for ... else' blo­unun PASS verdi­ini test eder. ... ok
+test_08_neg_01_pointer_cycle_detected (portfolio.hafta_11.gun_073.tests.test_security_control_flow_engine.TestSecurityControlFlowEngine.test_08_neg_01_pointer_cycle_detected)
+NEG_01: 10 -> 20 -> 10 d÷ng³sel at²f²nda Pointer Cycle istisnas² verildi­ini s²nar. ... ok
+test_09_neg_02_max_iterations_exceeded (portfolio.hafta_11.gun_073.tests.test_security_control_flow_engine.TestSecurityControlFlowEngine.test_09_neg_02_max_iterations_exceeded)
+NEG_02: Yineleme tavan² a■²ld²­²nda Anti-DoS istisnas² f²rlat²ld²­²n² s²nar. ... ok
+test_10_neg_03_invalid_policy_rule_schema (portfolio.hafta_11.gun_073.tests.test_security_control_flow_engine.TestSecurityControlFlowEngine.test_10_neg_03_invalid_policy_rule_schema)
+NEG_03: Kuralda 'action' alan² eksik oldu­unda ■ema hatas² verildi­ini s²nar. ... ok
+test_11_neg_04_undefined_default_action (portfolio.hafta_11.gun_073.tests.test_security_control_flow_engine.TestSecurityControlFlowEngine.test_11_neg_04_undefined_default_action)
+NEG_04: Varsay²lan eylem ALLOW veya DENY olmad²­²nda hata f²rlat²ld²­²n² s²nar. ... ok
+test_12_neg_05_ambiguous_evaluation_none_vs_false (portfolio.hafta_11.gun_073.tests.test_security_control_flow_engine.TestSecurityControlFlowEngine.test_12_neg_05_ambiguous_evaluation_none_vs_false)
+NEG_05: 'None' de­eri kesin boolean de­erlendirmesine sokuldu­unda hata verildi­ini test eder. ... ok
+test_13_neg_06_rate_limiter_window_negative (portfolio.hafta_11.gun_073.tests.test_security_control_flow_engine.TestSecurityControlFlowEngine.test_13_neg_06_rate_limiter_window_negative)
+NEG_06: H²z s²n²rlay²c² kayan pencere s³resi negatif oldu­unda hata verildi­ini s²nar. ... ok
+test_14_neg_07_to_09_boundary_errors (portfolio.hafta_11.gun_073.tests.test_security_control_flow_engine.TestSecurityControlFlowEngine.test_14_neg_07_to_09_boundary_errors)
+NEG_07, NEG_08 ve NEG_09 s²n²r a■²m² ve biim bozulmas² hatalar²n² s²nar. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.002s
+
+OK

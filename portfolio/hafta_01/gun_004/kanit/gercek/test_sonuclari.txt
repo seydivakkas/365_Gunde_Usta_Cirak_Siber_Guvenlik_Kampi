@@ -1,0 +1,37 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Gerçek Birim Test Yürütme Kanıtı
+
+[METADATA]
+Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest portfolio\hafta_01\gun_004\tests\test_nist_csf_evaluator.py -v
+Çalışma Dizini: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Ortam: Python unittest / Python 3.14.3
+Zaman Damgası: 2026-10-26T17:21:00+03:00
+Çıkış Kodu: 0
+
+[TEST ÇIKTISI]
+test_ascii_radar_ve_rapor_cikisi (portfolio.hafta_01.gun_004.tests.test_nist_csf_evaluator.TestNistCsfEvaluator.test_ascii_radar_ve_rapor_cikisi)
+GÖRSEL ÇIKTI KONTROLÜ: ascii_radar_ciz() ve ozet_rapor_olustur() ... ok
+test_bos_kategori_negatif_kontrol (portfolio.hafta_01.gun_004.tests.test_nist_csf_evaluator.TestNistCsfEvaluator.test_bos_kategori_negatif_kontrol)
+NEGATİF KONTROL: Bir fonksiyonun altında hiç alt kategori tanımlanmadığında ... ok
+test_eksik_govern_negatif_kontrol (portfolio.hafta_01.gun_004.tests.test_nist_csf_evaluator.TestNistCsfEvaluator.test_eksik_govern_negatif_kontrol)
+NEGATİF KONTROL: NIST CSF 2.0 ile zorunlu kılınan 'GOVERN' (Yönetişim) işlevi ... ok
+test_eksik_recover_negatif_kontrol (portfolio.hafta_01.gun_004.tests.test_nist_csf_evaluator.TestNistCsfEvaluator.test_eksik_recover_negatif_kontrol)
+NEGATİF KONTROL: 'RECOVER' (Kurtarma) işlevi eksik olduğunda sistemin hata vermesi ... ok
+test_esnek_mod_hata_toplama (portfolio.hafta_01.gun_004.tests.test_nist_csf_evaluator.TestNistCsfEvaluator.test_esnek_mod_hata_toplama)
+ESNEK MOD KONTROLÜ: katilik_modu=False olduğunda istisna fırlatılmamalı, ... ok
+test_gecersiz_puan_araligi_negatif_kontrol (portfolio.hafta_01.gun_004.tests.test_nist_csf_evaluator.TestNistCsfEvaluator.test_gecersiz_puan_araligi_negatif_kontrol)
+NEGATİF KONTROL: Olgunluk puanı olarak mantıksız bir değer (örn: 150 veya -10) ... ok
+test_protect_bias_tespiti (portfolio.hafta_01.gun_004.tests.test_nist_csf_evaluator.TestNistCsfEvaluator.test_protect_bias_tespiti)
+MİMARİ YANILGI TESTİ: Kurum sadece önleyici duvarlara (Protect=95) yatırım yapmış, ... ok
+test_tam_matris_pozitif_kontrol (portfolio.hafta_01.gun_004.tests.test_nist_csf_evaluator.TestNistCsfEvaluator.test_tam_matris_pozitif_kontrol)
+POZİTİF KONTROL: 6 işlevi eksiksiz olan geçerli bir matrisin doğrulanması, ... ok
+test_tier_seviye_eslemeleri (portfolio.hafta_01.gun_004.tests.test_nist_csf_evaluator.TestNistCsfEvaluator.test_tier_seviye_eslemeleri)
+SINIR DEĞER KONTROLÜ: Puanların ilgili Tier aralıklarıyla doğru eşleştiği kontrol edilir. ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+OK
+
+

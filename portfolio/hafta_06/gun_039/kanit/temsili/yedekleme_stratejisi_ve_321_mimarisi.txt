@@ -1,0 +1,88 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Bu yazılım ve ilgili tüm dosyalar ("Yazılım") yalnızca görüntüleme ve eğitim amaçlı olarak paylaşılmıştır.
+================================================================================
+
+YEDEKLLEME STRATEJİSİ, 3-2-1 KURALI VE FİDYE YAZILIMI (RANSOMWARE) SAVUNMASI
+--------------------------------------------------------------------------------
+
+1. ALTIN KURAL: 3-2-1 YEDEKLEME MİMARİSİ
+--------------------------------------------------------------------------------
+
+                [ ÜRETİM VERİSİ (Production Data) ]
+                Örn: NVMe SAN / PostgreSQL Veritabanı
+                                │
+          ┌─────────────────────┴─────────────────────┐
+          ▼                                           ▼
+   [ 3 KOPYA ]                                 [ 2 FARKLI MEDYA ]
+   Kopya 1: Canlı Üretim Verisi (Primary)      Medya A: Yerel NVMe/SSD Storage
+   Kopya 2: Yerel Yedek Deposu (NAS / SAN)    Medya B: Manyetik Teyp (LTO) veya
+   Kopya 3: İkincil / Harici Yedek (Cloud/Off)          Bulut Nesne Deposu (S3)
+          │                                           │
+          └─────────────────────┬─────────────────────┘
+                                │
+                                ▼
+                       [ 1 TESİS DIŞI (Offsite) ]
+                       Ana veri merkezinden coğrafi olarak
+                       farklı ikincil lokasyon veya bulut.
+                                │
+                                ▼
+                       [ +1 DEĞİŞTİRİLEMEZ (Immutable / Air-gapped) ]
+                       WORM (Write Once Read Many), S3 Object Lock,
+                       Çevrimdışı Teyp (Fidye yazılımı silemez/şifreleyemez!)
+
+--------------------------------------------------------------------------------
+2. YEDEK vs SNAPSHOT vs RAID KAVRAMSAL AYRIM MATRİSİ
+--------------------------------------------------------------------------------
+
+   Özellik / Tehdit        │ RAID (Örn: RAID-5/6) │ Snapshot (Anlık Gör.) │ Gerçek Yedek (3-2-1)
+   ────────────────────────┼──────────────────────┼───────────────────────┼─────────────────────
+   Tek Disk Arızası        │ KORUR (Pariteyle)    │ Korur (Pool sağlamsa) │ KORUR
+   Tüm SAN/Storage Çökmesi │ KORUMAZ (Hepsi gider)│ KORUMAZ (Aynı pool)   │ KORUR (Harici medya)
+   Kazara Dosya Silinmesi  │ KORUMAZ (Anında siler)│ KORUR (Geçmişe döner) │ KORUR
+   Fidye Yazılımı Şifreleme│ KORUMAZ (Şifreyi yazar)│ KORUMAZ (Snap silinir)│ KORUR (Değiştirilemez)
+   Yangın / Doğal Afet     │ KORUMAZ (Tek bina)   │ KORUMAZ (Tek bina)    │ KORUR (Offsite kopya)
+   Delil / Geriye Dönüklük │ YOKTUR               │ Kısa süreli (günlük)  │ Uzun süreli (yıllık)
+
+   * TEMEL KURAL: "RAID bir yedekleme DEĞİLDİR; sadece iş sürekliliğidir!"
+
+--------------------------------------------------------------------------------
+3. SCHRÖDINGER'İN YEDEĞİ PARADOKSU
+--------------------------------------------------------------------------------
+
+                    ┌──────────────────────────────────┐
+                    │ "Yedek Alındı: SUCCESSFUL (Yeşil)│
+                    └─────────────────┬────────────────┘
+                                      │
+                                      ▼
+                        Geri Yükleme Testi Yapıldı mı?
+                                      │
+                     ┌────────────────┴────────────────┐
+                     ▼                                 ▼
+                 [ HAYIR ]                          [ EVET ]
+         Yedek hem var hem YOKTUR!             Yedek GERÇEKTEN vardır!
+         (Kutu açılana kadar belirsiz:         (Test ortamında ayağa kalktı,
+         bozuk blok, şifre anahtarı yok,       veritabanı açıldı, tablolar
+         loglar eksik -> FELAKET!)             doğrulandı -> GÜVENLİ!)
+
+--------------------------------------------------------------------------------
+4. FİDYE YAZILIMI (RANSOMWARE) SALDIRI VE SAVUNMA AKIŞI
+--------------------------------------------------------------------------------
+
+   A) GELENEKSEL KORUMASIZ YEDEK:
+      Saldırgan (Domain Admin) ──► Canlı Sistemi Şifreler
+                               ├──► Paylaşımlı NAS/SMB Yedeklerini Siler/Şifreler
+                               └──► Sanal Makine Snapshot'larını Yok Eder!
+      SONUÇ: Şirket iflas eder, yedekler tamamen yok olmuştur.
+
+   B) 3-2-1 + DEĞİŞTİRİLEMEZ (IMMUTABLE WORM) SAVUNMA:
+      Saldırgan (Domain Admin) ──► Canlı Sistemi Şifreler
+                               ├──► Yerel NAS yedeğini silmeye çalışır
+                               │    (API Reddi: Object Lock Compliance Mode!)
+                               └──► Çevrimdışı Teybe (Air-gap) Ulaşamaz!
+      SONUÇ: Sistem 2 saat içinde temiz değiştirilemez yedekten kurtarılır (RTO).
+
+--------------------------------------------------------------------------------
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

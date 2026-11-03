@@ -1,0 +1,22 @@
+{
+  "dosyalar": {
+    "ders.md": "456acd3c84c417dff92f6e9258c0dbd3a73fff09409eac88069584e2c4522cb7",
+    "kanit/gercek/komut_ve_cikis.txt": "db2bff35ed06b40c11c246280f839366c92336a18baeefd8553a216ed5e2554b",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": "bf92c8ca03717e607b918a47918a31bb5b61c14286999ae687c59f373eed312b",
+    "kanit/gercek/test_sonuclari.txt": "56b46a072f4b9dfb95f3945802f8f37d8b49c74e7fb0cb53b1b3f5748a714d57",
+    "kanit/gercek/tls_el_sikisma_raporu.txt": "e19edfd6018ac0d0e7e2fbc5632dfc28cd05b3ddb1fb1430dde86593a6ed0b91",
+    "kanit/temsili/tls_el_sikisma_ve_guvenlik_mimarisi.txt": "9412eb66b44f3ad4e53d4010da39e5a17239b5ebd569652145c667e343ac9954",
+    "ornek_veri/invalid_tls_inputs.json": "57de1d40b89135682917813901010e3ba1d9b75b9201b93630f6d9a662ef774b",
+    "ornek_veri/sample_tls_handshake.json": "8131346aac85281b1e1078ace3f39408be6309700f18b85814dbfdd53be1f371",
+    "rapor.md": "da60627ca9398d308934411174a4d538b2bb6393bc67cb84ec112509d6125488",
+    "README.md": "aca5650bd5f465d6097299aad5b9b51c0fb8c287e30eaabfdd2b00095ff19fc4",
+    "sonuc.json": "78a955de682c2f39bc9501644106bf1fa00a2fa1f6589274a591b88094bef431",
+    "soru_cevap.md": "add38d310224ee9b886f18f8e2bf333538e2aea69bdf044543f9f2d98bf6818f",
+    "tests/__init__.py": "80e28f0a709e3cc17148ca11a29519e45c10eceac67580d21167fe9211f3eaa7",
+    "tests/test_tls_handshake_analyzer.py": "9ea704da498faeec8ce605f2713e024a5b15cc7fb804092ea45c9fe37f39a16b",
+    "uygulama/__init__.py": "4ab71be0d40b7401978fef1170b42124437c434ea5d4446b12bf2c350aeaf08d",
+    "uygulama/tls_handshake_analyzer.py": "892b794deb9f54174f236a221300f5c9fdd29951b6bf27b58eb51b4ea3f5b32b"
+  },
+  "toplam_dosya": 16,
+  "telif_hakki": "Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Tum Haklari Saklidir."
+}

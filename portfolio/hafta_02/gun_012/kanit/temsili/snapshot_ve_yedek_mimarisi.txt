@@ -1,0 +1,118 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+GÜN 012: Sanal Makine Snapshot, Bağımsız Yedekleme ve Geri Dönüş Mimarisi
+Lisans: ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+
++-------------------------------------------------------------------------------+
+|               1. ANLIK GÖRÜNTÜ (SNAPSHOT) ÇALIŞMA MEKANİZMASI                |
++-------------------------------------------------------------------------------+
+
+  [Adım 1: Normal Çalışma]
+  +-------------------------------------------------------------+
+  | VM İşletim Sistemi (Okuma/Yazma)                           |
+  |                           │                                 |
+  |                           ▼                                 |
+  |   +-----------------------------------------------------+   |
+  |   | Ana Disk (Base Disk: win11.vhdx) [OKUMA + YAZMA]    |   |
+  |   +-----------------------------------------------------+   |
+  +-------------------------------------------------------------+
+
+  [Adım 2: Snapshot Alındı — "Altın Durum Donduruldu"]
+  +-------------------------------------------------------------+
+  | VM İşletim Sistemi                                         |
+  |      │ (Tüm Yeni Yazmalar)                │ (Eski Okumalar) |
+  |      ▼                                    ▼                 |
+  |   +--------------------------+         +----------------+   |
+  |   | Delta / Fark Diski       |         | Ana Disk       |   |
+  |   | (win11_diff.avhdx)       |         | (win11.vhdx)   |   |
+  |   | [YAZMA KİPİ - BÜYÜYOR]   |         | [SALT-OKUNUR]  |   |
+  |   +--------------------------+         +----------------+   |
+  |                                                ▲            |
+  |   (Zararlı yazılım bulaştı, dosyalar bozuldu)  │ (Donduruldu|
+  +------------------------------------------------┴------------+
+
+  [Adım 3A: ROLLBACK (Saniyeler İçinde Temiz Duruma Dönüş)]
+  +-------------------------------------------------------------+
+  |   [Delta Diski SİL / SIFIRLA] ──► (Bulaşan zararlı yok oldu)|
+  |                                                             |
+  |   VM Yeniden Başlatılır ──► Ana Disk [SALT-OKUNUR KİLİDİ]   |
+  |                             doğrudan temiz haline döner!    |
+  +-------------------------------------------------------------+
+
+  [Adım 3B: MERGE / COMMIT (Snapshot Birleştirme)]
+  +-------------------------------------------------------------+
+  |   Delta diskteki geçerli değişiklikler ana diske işlenir    |
+  |   ve delta dosyası silinir (Disk şişmesini önleme adımı).    |
+  +-------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------+
+|       2. ÖLÜMCÜL TUZAK: SNAPSHOT BİR YEDEK (BACKUP) DEĞİLDİR!                 |
++-------------------------------------------------------------------------------+
+
+  SENARYO: Hypervisor Depolama Havuzu (SAN/LUN/RAID) Arızalandı!
+
+      [ Fiziksel Disk Arızası ] ───►  [ Ana Disk (win11.vhdx) ÇÖKTÜ ]
+                                                     │
+                                                     ▼
+                                      [ Delta Diski (win11_diff.avhdx) ]
+                                      BAĞIMSIZ DEĞİLDİR! Ana disk yoksa
+                                      delta disk TEK BAŞINA HİÇBİR İŞE
+                                      YARAMAZ! TÜM VERİ KAYBEDİLİR!
+
+
++-------------------------------------------------------------------------------+
+|      3. KURUMSAL GÜVENLİK STANDARDI: 3-2-1-1-0 YEDEKLEME KALKANI              |
++-------------------------------------------------------------------------------+
+
+  [Üretim VM'i] ────► [Yerel Hızlı Yedek] ────► [Bulut / Uzak Depo]
+  (Ana Sistem)        (NAS / Yerel Sunucu)      (S3 Object Storage)
+                             │                          │
+                             ▼                          ▼
+                     [Farklı Medya]             [WORM / Immutable]
+                                                (Write Once Read Many)
+                                                        │
+                                                        ▼
+                                                [Air-Gap İzolasyon]
+                                                (Ağdan Fiziksel/
+                                                 Mantıksal Kopuk)
+
+  3 : En az 3 adet veri kopyası bulundur.
+  2 : En az 2 farklı depolama ortamı (Storage) kullan (SSD + LTO Tape / Cloud).
+  1 : En az 1 kopyayı şirket/lokasyon dışına (Off-site) gönder.
+  1 : En az 1 kopyayı DEĞİŞMEZ (Immutable / WORM) veya Hava Boşluklu (Air-Gapped) yap.
+  0 : Geri dönüş tatbikatında SIFIR HATA (SHA-256 bütünlük doğrulaması ile).
+
+
++-------------------------------------------------------------------------------+
+|   4. SALDIRGANIN GÖZÜ: FİDYE YAZILIMI (RANSOMWARE) YEDEK İMHA ZİNCİRİ          |
++-------------------------------------------------------------------------------+
+
+  [1. Keşif & Yetki Yükseltme] ──► Domain Admin / Root Yetkisi
+                 │
+                 ▼
+  [2. Yerel Gölge Kopyaları İmha Et]
+        Komut: vssadmin delete shadows /all /quiet
+        Komut: wmic shadowcopy delete
+        Komut: bcdedit /set {default} bootstatuspolicy ignoreallfailures
+        Komut: bcdedit /set {default} recoveryenabled no
+                 │
+                 ▼
+  [3. Sanallaştırma Snapshot'larını Sil]
+        ESXi: vim-cmd vmsvc/snapshot.removeall
+        Hyper-V: Remove-VMSnapshot
+                 │
+                 ▼
+  [4. Ağ Paylaşımındaki Açık Yedekleri Şifrele / Sil]
+        SMB/NFS \\backup-server\share ──► ŞİFRELENDİ!
+                 │
+                 ▼
+  [5. SAVUNMACININ SON KALKANI: IMMUTABLE WORM & AIR-GAP]
+        Saldırgan 'DELETE' veya 'ENCRYPT' isteği gönderse dahi,
+        Donanımsal / S3 Object Lock kilidi isteği REDDEDER (Access Denied)!
+        Savunmacı doğrulanmış temiz yedekten sistemi geri yükler (RESTORE)!
+
+================================================================================
+Bitiş Etiketi: TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

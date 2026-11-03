@@ -1,0 +1,31 @@
+================================================================================
+BİRİM VE ENTEGRASYON TEST KANITI (GÜN 001)
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) | ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+================================================================================
+Komut: python -m unittest portfolio/hafta_01/gun_001/tests/test_cia_triad_lab.py
+Çalışma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Ortam: Windows 11 Enterprise (Physical / Localhost)
+Araç Sürümü: Python 3.14.0 (unittest standard library)
+Tarih ve Saat: 2026-10-26 16:34:14 +03:00
+Çıkış Kodu (Exit Code): 0 (BAŞARILI)
+================================================================================
+STANDART ÇIKTI VE HATA AKIŞI:
+================================================================================
+Ran 10 tests in 0.050s
+
+OK
+
+Ayrıntılı Test Dökümü:
+1. test_confidentiality_teacher_can_read_all: BAŞARILI (Öğretmen tam kütüğü okudu)
+2. test_confidentiality_student_only_reads_own_grade: BAŞARILI (Öğrenci 101 sadece kendi notunu okudu)
+3. test_confidentiality_student_without_id_blocked: BAŞARILI (ID'siz talep ConfidentialityViolationError üretti)
+4. test_confidentiality_guest_access_blocked: BAŞARILI (Misafir erişimi ConfidentialityViolationError üretti)
+5. test_confidentiality_invalid_role_blocked: BAŞARILI (Geçersiz rol ConfidentialityViolationError üretti)
+6. test_integrity_valid_file_passes: BAŞARILI (Orijinal SHA-256 hash doğrulandı)
+7. test_integrity_tampering_detected: BAŞARILI (Not değişimi IntegrityViolationError ve çığ etkisi üretti)
+8. test_availability_unlocked_system_responds: BAŞARILI (Aktif sistem yanıt verdi)
+9. test_availability_locked_system_raises_error: BAŞARILI (Kilitli sistem AvailabilityViolationError üretti)
+10. test_full_comprehensive_audit: BAŞARILI (Tam CIA denetimi başarıyla tamamlandı)
+
+Toplam Test: 10 | Geçen: 10 | Başarısız: 0 | Hata: 0 | Atlanan: 0
+Sonuç: %100 Başarı Oranı (PASS)

@@ -1,0 +1,42 @@
+================================================================================
+BİRİM TEST SONUÇLARI KANIT DOSYASI — GÜN 012
+Komut: python -m unittest portfolio/hafta_02/gun_012/tests/test_vm_snapshot_backup_manager.py -v
+Çıkış Kodu: 0
+Tarih: 2026-10-27
+Lisans: ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+
+
+test_01_altin_yedek_yapilandirmasi_pozitif_kontrol (portfolio.hafta_02.gun_012.tests.test_vm_snapshot_backup_manager.TestVMSnapshotBackupManager.test_01_altin_yedek_yapilandirmasi_pozitif_kontrol)
+POZ�T�F TEST: 3-2-1 kural�na uygun ve de�i�mez yedekli VM-SEC-LNX-01 denetimi 100 tam puan almal�d�r. ... ok
+test_02_snapshot_olusturma_ve_ana_disk_kilitleme_pozitif_kontrol (portfolio.hafta_02.gun_012.tests.test_vm_snapshot_backup_manager.TestVMSnapshotBackupManager.test_02_snapshot_olusturma_ve_ana_disk_kilitleme_pozitif_kontrol)
+POZ�T�F TEST: Yeni snapshot olu�turuldu�unda ana disk salt-okunur olmal� ve delta diski a��lmal�d�r. ... ok
+test_03_snapshot_rollback_temiz_duruma_donus_pozitif_kontrol (portfolio.hafta_02.gun_012.tests.test_vm_snapshot_backup_manager.TestVMSnapshotBackupManager.test_03_snapshot_rollback_temiz_duruma_donus_pozitif_kontrol)
+POZ�T�F TEST: Rollback icra edildi�inde delta diski s�f�rlanmal� ve alt�n duruma d�n�lmelidir. ... ok
+test_04_tam_bagimsiz_yedek_olusturma_pozitif_kontrol (portfolio.hafta_02.gun_012.tests.test_vm_snapshot_backup_manager.TestVMSnapshotBackupManager.test_04_tam_bagimsiz_yedek_olusturma_pozitif_kontrol)
+POZ�T�F TEST: Ba��ms�z tam yedek olu�turuldu�unda SHA-256 ve WORM kilidi �retilmelidir. ... ok
+test_05_yedek_kriptografik_butunluk_dogrulamasi_pozitif_kontrol (portfolio.hafta_02.gun_012.tests.test_vm_snapshot_backup_manager.TestVMSnapshotBackupManager.test_05_yedek_kriptografik_butunluk_dogrulamasi_pozitif_kontrol)
+POZ�T�F TEST: Do�ru hash sa�land���nda geri y�kleme b�t�nl��� onaylanmal�d�r. ... ok
+test_06_snapshot_as_backup_yanilgisi_negatif_kontrol (portfolio.hafta_02.gun_012.tests.test_vm_snapshot_backup_manager.TestVMSnapshotBackupManager.test_06_snapshot_as_backup_yanilgisi_negatif_kontrol)
+NEGAT�F TEST: Yede�i olmayan ancak snapshot'� olan VM'de KR�T�K RISK-01 bulgusu olu�mal�d�r. ... ok
+test_07_snapshot_yas_siniri_asimi_negatif_kontrol (portfolio.hafta_02.gun_012.tests.test_vm_snapshot_backup_manager.TestVMSnapshotBackupManager.test_07_snapshot_yas_siniri_asimi_negatif_kontrol)
+NEGAT�F TEST: 72 saati a�m�� a��k snapshot tespitinde Y�KSEK RISK-02 cezas� kesilmelidir. ... ok
+test_08_derin_snapshot_zinciri_negatif_kontrol (portfolio.hafta_02.gun_012.tests.test_vm_snapshot_backup_manager.TestVMSnapshotBackupManager.test_08_derin_snapshot_zinciri_negatif_kontrol)
+NEGAT�F TEST: 3'ten fazla i� i�e ge�mi� snapshot olan makinede RISK-03 uyar�s� verilmelidir. ... ok
+test_09_degismezlik_kilidi_yoklugu_negatif_kontrol (portfolio.hafta_02.gun_012.tests.test_vm_snapshot_backup_manager.TestVMSnapshotBackupManager.test_09_degismezlik_kilidi_yoklugu_negatif_kontrol)
+NEGAT�F TEST: WORM de�i�mezlik kilidi bulunmayan sistemde fidye yaz�l�m� riski raporlanmal�d�r. ... ok
+test_10_vss_golge_kopya_saldiri_yuzeyi_negatif_kontrol (portfolio.hafta_02.gun_012.tests.test_vm_snapshot_backup_manager.TestVMSnapshotBackupManager.test_10_vss_golge_kopya_saldiri_yuzeyi_negatif_kontrol)
+NEGAT�F TEST: Windows sisteminde VSS aktif fakat harici koruma yoksa vssadmin sald�r� riski yakalanmal�d�r. ... ok
+test_11_kriptografik_butunluk_hatasi_ve_fidye_yazilimi_bozulmasi_kontrol (portfolio.hafta_02.gun_012.tests.test_vm_snapshot_backup_manager.TestVMSnapshotBackupManager.test_11_kriptografik_butunluk_hatasi_ve_fidye_yazilimi_bozulmasi_kontrol)
+NEGAT�F TEST: Hash uyu�mazl���nda BackupIntegrityError f�rlat�lmal� ve geri y�kleme reddedilmelidir. ... ok
+test_12_maksimum_snapshot_zincir_limiti_asimi_kontrol (portfolio.hafta_02.gun_012.tests.test_vm_snapshot_backup_manager.TestVMSnapshotBackupManager.test_12_maksimum_snapshot_zincir_limiti_asimi_kontrol)
+NEGAT�F TEST: 5'ten fazla snapshot eklenmeye �al���ld���nda SnapshotPolicyViolationError f�rlat�lmal�d�r. ... ok
+test_13_tanimsiz_vm_veya_kayit_hata_yonetimi (portfolio.hafta_02.gun_012.tests.test_vm_snapshot_backup_manager.TestVMSnapshotBackupManager.test_13_tanimsiz_vm_veya_kayit_hata_yonetimi)
+HATA Y�NET�M�: Tan�ms�z VM kimli�i sorguland���nda SnapshotPolicyViolationError f�rlat�lmal�d�r. ... ok
+test_14_fiziksel_dosya_sha256_hesaplama_ve_olmayan_dosya (portfolio.hafta_02.gun_012.tests.test_vm_snapshot_backup_manager.TestVMSnapshotBackupManager.test_14_fiziksel_dosya_sha256_hesaplama_ve_olmayan_dosya)
+��LEVSELL�K & HATA Y�NET�M�: Ger�ek dosyan�n SHA-256 �zeti do�ru hesaplanmal�, olmayan dosyada hata verilmelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.008s
+
+OK

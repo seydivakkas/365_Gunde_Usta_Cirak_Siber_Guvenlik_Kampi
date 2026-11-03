@@ -1,0 +1,60 @@
+<!--
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Bu yazılım ve ilgili tüm dosyalar ('Yazılım') yalnızca görüntüleme ve eğitim amaçlı olarak paylaşılmıştır.
+-->
+
+# Zaman Senkronizasyonu ve NTP Güvenlik Denetim Raporu
+
+**Denetim Tarihi:** `2026-10-27T08:50:32.481008+00:00`  
+**Güvenlik Puanı:** `15 / 100`  
+**Genel Durum:** `CRITICAL`
+
+## 📊 Denetim Metrikleri Özeti
+
+| Metrik | Değer |
+| :--- | :---: |
+| İncelenen Sistem Sayısı | 2 |
+| Kritik (CRITICAL) Bulgular | 3 |
+| Yüksek (HIGH) Seviye Bulgular | 2 |
+| Orta (MEDIUM) Seviye Bulgular | 1 |
+| Uyarı (WARNING) Bulgular | 0 |
+| **Toplam Güvenlik Bulgusu** | **6** |
+
+## 🔍 Güvenlik Bulguları ve İyileştirme Reçetesi
+
+### 1. [CRITICAL] Kritik Saat Kayması — Kerberos Kimlik Doğrulama Çöküşü (KRB_AP_ERR_SKEW)
+- **Hedef:** `app01.dmz.internal`
+- **Kategori:** `KERBEROS_AUTHENTICATION_FAILURE`
+- **Açıklama:** 'app01.dmz.internal' sisteminde saat kayması 345.0 saniyedir (345000.0 ms). Active Directory ve Kerberos protokolü, yeniden oynatma saldırılarını (replay attacks) önlemek için en fazla 5 dakikalık (300 saniye) saat farkına izin verir. Bu eşik aşıldığında etki alanı kullanıcıları oturum açamaz, bilet (TGT) alamaz ve tüm kimlik doğrulama süreçleri felç olur.
+- **🛡️ İyileştirme:** Sistem saatini acilen NTP sunucusuyla eşitleyin (`w32tm /resync` veya `chronyc makestep`).
+
+### 2. [CRITICAL] NTP Senkronizasyon Kaybı — Serbest Dönen Sistem Saati (Stratum 16)
+- **Hedef:** `app01.dmz.internal`
+- **Kategori:** `NTP_SYNCHRONIZATION_LOSS`
+- **Açıklama:** 'app01.dmz.internal' sistemi şu anda hiçbir zaman kaynağına senkronize değildir (is_synchronized: false, stratum: 16, referans: 'unreachable'). Donanım saati (RTC) zamanla sapacak ve sistem tüm güvenlik protokollerinde uyumsuz hale gelecektir.
+- **🛡️ İyileştirme:** NTP servis durumunu kontrol edin (`systemctl status chrony` veya `w32tm /query /status`), UDP 123 erişimini açın.
+
+### 3. [HIGH] Yetersiz NTP Üst Sunucu Sayısı — Tek Hata Noktası (SPOF) Riski
+- **Hedef:** `app01.dmz.internal`
+- **Kategori:** `NTP_REDUNDANCY_AND_SPOF`
+- **Açıklama:** 'app01.dmz.internal' yalnızca 1 adet zaman sunucusuyla (['192.168.10.5']) yapılandırılmıştır. Marzullo algoritması ve Bizans hata toleransı (Byzantine Fault Tolerance) gereği, hatalı veya saldırıya uğramış bir zaman sunucusunu (false-ticker) tespit edebilmek için en az 3, tercihen 4 bağımsız zaman kaynağı tanımlanmalıdır. Tek bir sunucuya bağımlılık, saldırganın sahte zaman paketleriyle sistemi kolayca manipüle etmesine yol açar.
+- **🛡️ İyileştirme:** Yapılandırmaya en az 3-4 adet bağımsız NTP sunucusu veya kurumsal havuz adresi ekleyin.
+
+### 4. [HIGH] NTP 'monlist' Açığı Etkin — DDoS Yükseltme Saldırısı Riski
+- **Hedef:** `app01.dmz.internal`
+- **Kategori:** `NTP_AMPLIFICATION_DDOS_RISK`
+- **Açıklama:** 'app01.dmz.internal' üzerindeki NTP servisinde 'monlist' (Mode 6) sorguları açıktır. Saldırganlar IP sahteciliği (IP spoofing) ile küçük bir UDP paketi göndererek sunucudan yüzlerce kat büyük yanıtlar ürettirebilir ve hedef hedeflere karşı devasa NTP Yükseltme (Amplification) DDoS saldırıları gerçekleştirebilir.
+- **🛡️ İyileştirme:** NTP konfigürasyonuna `disable monitor` ve `noquery` kısıtlamalarını ekleyin.
+
+### 5. [MEDIUM] Şifresiz ve Doğrulanmamış NTP İletişimi (NTS Eksikliği)
+- **Hedef:** `app01.dmz.internal`
+- **Kategori:** `UNAUTHENTICATED_TIME_SYNC`
+- **Açıklama:** 'app01.dmz.internal' zaman senkronizasyonunu düz metin UDP 123 üzerinden yürütmektedir. Ağda yerel saldırgan (MitM) ARP zehirlemesi veya DNS saptırmasıyla zaman paketlerini değiştirip sistemin saatini geriye veya ileriye alabilir.
+- **🛡️ İyileştirme:** Modern NTS (Network Time Security) protokolüne veya simetrik anahtarlı NTP kimlik doğrulamasına geçin.
+
+### 6. [CRITICAL] Sistemler Arası Kritik Zaman Uyumsuzluğu
+- **Hedef:** `dc01.corp.internal <-> app01.dmz.internal`
+- **Kategori:** `DISTRIBUTED_TIMELINE_MISMATCH`
+- **Açıklama:** 'dc01.corp.internal' ile 'app01.dmz.internal' sistemleri arasında 345.0 saniyelik (344997.9 ms) saat farkı tespit edildi. Bu durum dağıtık sistemlerde kimlik doğrulama reddine, log analizinde olay sıralamasının çökmesine ve adli bilişim zincirinin (chain of custody) bozulmasına yol açar.
+- **🛡️ İyileştirme:** Tüm etki alanı ve DMZ sunucularını ortak bir kurumsal iç NTP kaynağına bağlayın.

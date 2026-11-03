@@ -1,0 +1,18 @@
+{
+  "README.md": "3cf214ce570ee53983796f27c182bd4990f668887b7070f490e20b32eaecc458",
+  "ders.md": "7570a1492d9b2c847af62bbda48eefbef9b6d2643e35d6ab39d07d30c3fc9beb",
+  "rapor.md": "6fff10d2435efbb867d2e13dd55e284f1ae001c95cdbbc4a01f201451eab77e9",
+  "sonuc.json": "64602b9c909406b1aaff9f46024f7b974e557ce24149e1ed04c76240082d6247",
+  "soru_cevap.md": "f478b129bb0b5d13608117fdcf57665b8dd3b2d35f2c06d9c3ea0d5721bcd982",
+  "kanit/gercek/asama_3_kalite_ozeti_raporu.txt": "54f24b3f56cf1dd4679fc06639d9570927082f2807780c036f09fb49f59a2b95",
+  "kanit/gercek/komut_ve_cikis.txt": "89dc5ea6474cdc609a89923538c432d69882da9553a4aa9679a7e180e04e0004",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "54e7c2f859c9aef5b85e528a146345a66eb14898a94eb11191f6fb7d34933cdf",
+  "kanit/gercek/test_sonuclari.txt": "329c1c7a71c1c18236c5f749bac3d26d18813108071b5221b04f24f2f882da4b",
+  "kanit/temsili/asama_3_kalite_mimarisi.txt": "ed438fea2726a8a2e00c8f6de1e93d2d0c68290760c49f5d49b380a5cadd1444",
+  "ornek_veri/asama_3_gunluk_metrikleri.json": "0f6a3ef365d91d251188ff8e06ce12d4325553852504a2587f2a329c4c80c872",
+  "ornek_veri/invalid_asama_3_inputs.json": "c8068ae3a597f361e528c732b0c058b4b76acfb68a532023cc3fb8d2b140680d",
+  "tests/__init__.py": "430afc747b97a0298d4892438e8500f8d27afe4bdd80305d9f97df6bcca699a0",
+  "tests/test_asama_3_kalite_ozeti_analizor.py": "c269b04991c8112dc8225b3b851b45ada167cc52f43b4ff7d113dd355f2aa4d1",
+  "uygulama/__init__.py": "b0ecdb0aaed859a91ab213f72c5814f8fbada75178be9f5021a77d90e07aa545",
+  "uygulama/asama_3_kalite_ozeti_analizor.py": "7486916a906934a9cd0ed2b68e1dc647d030bee6db89ed6ba63b1ddbfa7e1256"
+}

@@ -1,0 +1,63 @@
+<!--
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Bu yazılım ve ilgili tüm dosyalar ('Yazılım') yalnızca görüntüleme ve eğitim amaçlı olarak paylaşılmıştır.
+-->
+
+# Disk Bölümleri ve Dosya Sistemleri Güvenlik Denetim Raporu
+
+**Ana Makine Adı:** `sec-srv-node01.corp.internal`  
+**İşletim Sistemi:** `Linux 6.8.0-generic`  
+**Denetim Tarihi:** `2026-10-27T08:47:29.891038+00:00`  
+**Güvenlik Puanı:** `53 / 100`  
+**Genel Durum:** `CRITICAL`
+
+## 📊 Denetim Metrikleri Özeti
+
+| Metrik | Değer |
+| :--- | :---: |
+| İncelenen Disk Sayısı | 2 |
+| İncelenen Bölüm Sayısı | 6 |
+| Kritik (CRITICAL) Bulgular | 0 |
+| Yüksek (HIGH) Seviye Bulgular | 4 |
+| Orta (MEDIUM) Seviye Bulgular | 1 |
+| Uyarı (WARNING) Bulgular | 1 |
+| **Toplam Güvenlik Bulgusu** | **6** |
+
+## 🔍 Güvenlik Bulguları ve İyileştirme Reçetesi
+
+### 1. [MEDIUM] Eski MBR (Master Boot Record) Bölüm Tablosu Tespit Edildi
+- **Hedef:** `/dev/sdb`
+- **Kategori:** `PARTITION_TABLE_SECURITY`
+- **Açıklama:** '/dev/sdb' diski eski tip MBR tablosu kullanmaktadır. MBR, yedek tablo başlığı barındırmaz, CRC32 veri bütünlüğü doğrulaması sunmaz ve sektör 0 bootkit/rootkit manipülasyonlarına karşı savunmasızdır.
+- **🛡️ İyileştirme:** Modern UEFI sistemlerde güvenli önyükleme (Secure Boot) ve GPT (GUID Partition Table) mimarisine geçilmelidir.
+
+### 2. [HIGH] Şifrelenmemiş Sabit Disk Bölümü (Unencrypted At-Rest Volume)
+- **Hedef:** `/dev/nvme0n1p4`
+- **Kategori:** `ENCRYPTION_AT_REST`
+- **Açıklama:** '/dev/nvme0n1p4' (/tmp) sabit disk bölümü şifrelenmemiştir (is_encrypted: false). Fiziksel aygıt çalındığında, soğuk önyükleme (cold boot) veya harici canlı USB ile erişildiğinde tüm veriler açık metin olarak kopyalanabilir.
+- **🛡️ İyileştirme:** Linux'ta LUKS2 (dm-crypt), Windows'ta BitLocker ile tam disk şifrelemesi (FDE) uygulayın.
+
+### 3. [HIGH] İzin Desteği Olmayan Güvensiz Dosya Sistemi (FAT32/VFAT) Tespiti
+- **Hedef:** `/dev/sdb1`
+- **Kategori:** `FILESYSTEM_PERMISSIONS_SECURITY`
+- **Açıklama:** '/dev/sdb1' (/mnt/legacy_storage) üzerinde 'fat32' kullanılmaktadır. FAT32 dosya sistemi; POSIX dosya izinlerini (DAC), Windows ACL erişim kontrol listelerini ve dosya güvenlik niteliklerini desteklemez. Herkes her dosyayı okuyabilir ve değiştirebilir.
+- **🛡️ İyileştirme:** Veri bütünlüğü ve erişim denetimi için Linux'ta ext4/XFS, Windows'ta NTFS dosya sistemine dönüştürün.
+
+### 4. [HIGH] Şifrelenmemiş Sabit Disk Bölümü (Unencrypted At-Rest Volume)
+- **Hedef:** `/dev/sdb1`
+- **Kategori:** `ENCRYPTION_AT_REST`
+- **Açıklama:** '/dev/sdb1' (/mnt/legacy_storage) sabit disk bölümü şifrelenmemiştir (is_encrypted: false). Fiziksel aygıt çalındığında, soğuk önyükleme (cold boot) veya harici canlı USB ile erişildiğinde tüm veriler açık metin olarak kopyalanabilir.
+- **🛡️ İyileştirme:** Linux'ta LUKS2 (dm-crypt), Windows'ta BitLocker ile tam disk şifrelemesi (FDE) uygulayın.
+
+### 5. [HIGH] '/tmp' Bağlama Noktasında Eksik Güvenlik Bayrakları
+- **Hedef:** `/dev/nvme0n1p4 (/tmp)`
+- **Kategori:** `MOUNT_SECURITY_HARDENING`
+- **Açıklama:** '/tmp' dizininde zorunlu güvenlik bayrakları eksik: ['noexec', 'nosuid', 'nodev']. Özellikle 'noexec' eksikliği, saldırganların dünya tarafından yazılabilir geçici dizinlere zararlı ELF ikili dosyaları indirip doğrudan çalıştırmasına imkan tanır. 'nosuid' eksikliği ise yetki yükseltme (privilege escalation) saldırılarına zemin hazırlar.
+- **🛡️ İyileştirme:** /etc/fstab dosyasına 'noexec, nosuid, nodev' seçeneklerini ekleyerek 'mount -o remount' yapın.
+
+### 6. [WARNING] Yüksek Disk Doluluğu Tespiti
+- **Hedef:** `/dev/sdb1 (/mnt/legacy_storage)`
+- **Kategori:** `DISK_CAPACITY_EXHAUSTION`
+- **Açıklama:** '/dev/sdb1' (/mnt/legacy_storage) doluluk oranı %93.3 seviyesindedir (1820.0 / 1950.0 GB).
+- **🛡️ İyileştirme:** Disk büyüme eğilimini izleyin ve gereksiz geçici dosyaları temizleyin.

@@ -1,0 +1,147 @@
+[
+  {
+    "id": "NEG_01",
+    "tanim": "Tip Karışıklığı (Type Confusion) - Port alanı tamsayı yerine metin girilmiş",
+    "girdi": {
+      "asset_id": "AST-ERR-01",
+      "ipv4_address": "192.168.1.1",
+      "mac_address": "00:11:22:33:44:55",
+      "port": "443-HTTPS-PORT",
+      "hostname": "test-srv.corp.local",
+      "protocol": "TCP",
+      "sha256_checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "risk_score": 1.0
+    },
+    "beklenen_hata": "TypeValidationError",
+    "cwe_kodu": "CWE-843: Access of Resource Using Incompatible Type ('Type Confusion')"
+  },
+  {
+    "id": "NEG_02",
+    "tanim": "Geçersiz IPv4 Adresi (Aralık dışı oktet 300)",
+    "girdi": {
+      "asset_id": "AST-ERR-02",
+      "ipv4_address": "192.168.1.300",
+      "mac_address": "00:11:22:33:44:55",
+      "port": 443,
+      "hostname": "test-srv.corp.local",
+      "protocol": "TCP",
+      "sha256_checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "risk_score": 1.0
+    },
+    "beklenen_hata": "InvalidIpAddressError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_03",
+    "tanim": "Sayısal Sınır Aşımı (Port numarası 65535'ten büyük veya 0)",
+    "girdi": {
+      "asset_id": "AST-ERR-03",
+      "ipv4_address": "10.0.0.1",
+      "mac_address": "00:11:22:33:44:55",
+      "port": 70000,
+      "hostname": "test-srv.corp.local",
+      "protocol": "TCP",
+      "sha256_checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "risk_score": 1.0
+    },
+    "beklenen_hata": "PortRangeError",
+    "cwe_kodu": "CWE-1284: Improper Validation of Specified Quantity in Input"
+  },
+  {
+    "id": "NEG_04",
+    "tanim": "Geçersiz MAC Adresi Biçimi (Hexadecimal olmayan karakter veya eksik oktet)",
+    "girdi": {
+      "asset_id": "AST-ERR-04",
+      "ipv4_address": "10.0.0.1",
+      "mac_address": "00:GG:22:33:44",
+      "port": 80,
+      "hostname": "test-srv.corp.local",
+      "protocol": "TCP",
+      "sha256_checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "risk_score": 1.0
+    },
+    "beklenen_hata": "InvalidMacAddressError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_05",
+    "tanim": "RFC-1123 Hostname İhlali / Komut Enjeksiyonu karakterleri (; | & `)",
+    "girdi": {
+      "asset_id": "AST-ERR-05",
+      "ipv4_address": "10.0.0.1",
+      "mac_address": "00:11:22:33:44:55",
+      "port": 80,
+      "hostname": "srv;rm -rf /",
+      "protocol": "TCP",
+      "sha256_checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "risk_score": 1.0
+    },
+    "beklenen_hata": "InvalidHostnameError",
+    "cwe_kodu": "CWE-88: Improper Neutralization of Argument Delimiters in a Command"
+  },
+  {
+    "id": "NEG_06",
+    "tanim": "Null-Byte (\\x00) Enjeksiyonu Saldırısı",
+    "girdi": {
+      "asset_id": "AST-ERR-06\u0000MALICIOUS",
+      "ipv4_address": "10.0.0.1",
+      "mac_address": "00:11:22:33:44:55",
+      "port": 80,
+      "hostname": "normal-srv.corp.local",
+      "protocol": "TCP",
+      "sha256_checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "risk_score": 1.0
+    },
+    "beklenen_hata": "NullByteInjectionError",
+    "cwe_kodu": "CWE-158: Improper Neutralization of Null Byte or Special Characters"
+  },
+  {
+    "id": "NEG_07",
+    "tanim": "Bozuk SHA-256 Sağlama Toplamı (63 karakter veya geçersiz hex)",
+    "girdi": {
+      "asset_id": "AST-ERR-07",
+      "ipv4_address": "10.0.0.1",
+      "mac_address": "00:11:22:33:44:55",
+      "port": 80,
+      "hostname": "normal-srv.corp.local",
+      "protocol": "TCP",
+      "sha256_checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b85",
+      "risk_score": 1.0
+    },
+    "beklenen_hata": "InvalidHashChecksumError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_08",
+    "tanim": "Sayısal Aralık İhlali (Risk skoru 0.0 - 10.0 aralığı dışında: 15.5)",
+    "girdi": {
+      "asset_id": "AST-ERR-08",
+      "ipv4_address": "10.0.0.1",
+      "mac_address": "00:11:22:33:44:55",
+      "port": 80,
+      "hostname": "normal-srv.corp.local",
+      "protocol": "TCP",
+      "sha256_checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "risk_score": 15.5
+    },
+    "beklenen_hata": "ValueRangeError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_09",
+    "tanim": "Aşırı Uzun Girdi / DoS Bellek Tüketim Saldırısı (>4096 karakter)",
+    "girdi": {
+      "asset_id": "AST-ERR-09",
+      "ipv4_address": "10.0.0.1",
+      "mac_address": "00:11:22:33:44:55",
+      "port": 80,
+      "hostname": "normal-srv.corp.local",
+      "protocol": "TCP",
+      "sha256_checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "risk_score": 1.0,
+      "large_field_dos": "DOS_OVERSIZED_TRIGGER"
+    },
+    "beklenen_hata": "PayloadTooLargeError",
+    "cwe_kodu": "CWE-400: Uncontrolled Resource Consumption"
+  }
+]

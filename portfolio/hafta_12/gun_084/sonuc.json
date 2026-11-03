@@ -1,0 +1,16 @@
+{
+  "gun": 84,
+  "hafta": 12,
+  "asama": "04",
+  "konu": "Mini proje 11: test edilen log aracı",
+  "kategori": "Haftalık mini proje",
+  "seviye": "Temel",
+  "puan": 100,
+  "durum": "YETERLİ / PASS",
+  "tamamlanma_tarihi": "2026-11-01",
+  "birim_test_sayisi": 26,
+  "birim_test_basarili": 26,
+  "negatif_kontrol_sayisi": 9,
+  "negatif_kontrol_basarili": 9,
+  "lisans": "Özel Lisans — Tüm Hakları Saklıdır (Telif Hakkı (c) 2026 Seydi Eryılmaz)"
+}

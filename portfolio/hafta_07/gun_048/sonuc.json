@@ -1,0 +1,40 @@
+{
+  "gun": 48,
+  "gun_id": "G048",
+  "asama": "03",
+  "hafta": "07",
+  "baslik": "ICMP ve ağ teşhisi",
+  "tarih": "2026-10-27",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kavramsal_derinlik": 20,
+    "uygulama_gelistirme": 40,
+    "test_kapsami": 25,
+    "savunma_sikilastirma": 15
+  },
+  "test_ozeti": {
+    "toplam": 14,
+    "basarili": 14,
+    "hatali": 0,
+    "sure_saniye": 0.05
+  },
+  "kod_aciklama_satirlari_tamamlandi": true,
+  "kanitlar": {
+    "gercek": [
+      "kanit/gercek/test_sonuclari.txt",
+      "kanit/gercek/komut_ve_cikis.txt",
+      "kanit/gercek/icmp_teshis_raporu.txt",
+      "kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "kanit/temsili/icmp_traceroute_ve_covert_channel_mimarisi.txt"
+    ]
+  },
+  "soru_bankasi_eslesmesi": [
+    "G048-SC1",
+    "G048-SC2",
+    "G048-SC3"
+  ],
+  "notlar": "RFC 792 ikili paket ayrıştırma, RFC 1071 1's complement sağlama toplamı motoru, Ping, Traceroute simülasyonu, PMTUD analizi ve ICMP Covert Channel anomali tespiti eksiksiz tamamlandı; 14 test PASS oldu."
+}

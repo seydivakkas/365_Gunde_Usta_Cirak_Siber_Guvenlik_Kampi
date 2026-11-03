@@ -1,0 +1,48 @@
+======================================================================
+GÜN 127: UÇ NOKTA TEHDİT MODELİ - BİRİM TEST RAPORU
+Tarih/Saat: 2026-11-02T09:30:46.218526
+Standartlar: MITRE ATT&CK for Enterprise, CIS Benchmarks, Microsoft Security Baselines
+======================================================================
+
+Çalıştırılan Test Sayısı: 15
+Hata Sayısı (Errors): 0
+Başarısızlık Sayısı (Failures): 0
+Genel Durum: BAŞARILI (100% PASS)
+
+------------------- AYRINTILI TEST ÇIKTISI -------------------
+test_01_fully_hardened_endpoint_scores_low_threat (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_01_fully_hardened_endpoint_scores_low_threat)
+Tüm güvenlik kontrolleri tam olan bir sistemde tehdit skoru sıfır olmalı ve GÜVENLİ dönmelidir. ... ok
+test_02_missing_credential_guard_detected_on_windows (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_02_missing_credential_guard_detected_on_windows)
+Windows sistemde LSA koruması eksikliği CWE-311 ve MITRE T1003.001 ile yakalanmalıdır. ... ok
+test_03_domain_controller_escalates_credential_guard_to_critical (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_03_domain_controller_escalates_credential_guard_to_critical)
+Domain Controller rolünde Credential Guard eksikliği CRITICAL ciddiyet almalıdır. ... ok
+test_04_unquoted_service_path_detected (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_04_unquoted_service_path_detected)
+Tırnaksız servis yolları CWE-428 ve MITRE T1574.009 ile raporlanmalıdır. ... ok
+test_05_linux_suid_misconfiguration_detected (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_05_linux_suid_misconfiguration_detected)
+Linux ortamında güvensiz SUID ikili dosyaları CWE-250 ve CRITICAL ciddiyet ile raporlanmalıdır. ... ok
+test_06_missing_edr_triggers_critical_threat (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_06_missing_edr_triggers_critical_threat)
+EDR ajanı eksikliği CRITICAL ciddiyet ve CWE-693 ile raporlanmalıdır. ... ok
+test_07_tamper_protection_disabled_triggers_high_threat (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_07_tamper_protection_disabled_triggers_high_threat)
+EDR aktif ancak Kurcalama Koruması (Tamper Protection) kapalıysa HIGH ciddiyet üretilmelidir. ... ok
+test_08_missing_telemetry_sysmon_auditd_detected (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_08_missing_telemetry_sysmon_auditd_detected)
+Sysmon veya Auditd telemetrisi eksikse CWE-778 ve MEDIUM ciddiyet üretilmelidir. ... ok
+test_09_powershell_full_language_mode_detected (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_09_powershell_full_language_mode_detected)
+Windows üzerinde PowerShell CLM kapalıysa CWE-284 ile betik çalıştırma riski raporlanmalıdır. ... ok
+test_10_insecure_open_ports_detected (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_10_insecure_open_ports_detected)
+SMBv1 veya NLA'sız RDP gibi güvensiz portlar CWE-319 ve MITRE T1021 ile yakalanmalıdır. ... ok
+test_11_missing_disk_encryption_on_workstation (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_11_missing_disk_encryption_on_workstation)
+İş istasyonunda disk şifrelemesi (BitLocker/LUKS) kapalıysa HIGH ciddiyet raporlanmalıdır. ... ok
+test_12_weak_registry_autoruns_detected (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_12_weak_registry_autoruns_detected)
+Zayıf izinli Kayıt Defteri Run anahtarları CWE-732 ve MITRE T1547.001 ile yakalanmalıdır. ... ok
+test_13_domain_controller_multiplier_increases_risk (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_13_domain_controller_multiplier_increases_risk)
+Aynı zafiyet kümesi Domain Controller üzerinde Workstation'a göre daha yüksek skor üretmelidir. ... ok
+test_14_hardening_roadmap_prioritizes_critical_remediations (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_14_hardening_roadmap_prioritizes_critical_remediations)
+Sıkılaştırma yol haritası en kritik zafiyetleri 1. sıraya koyarak önceliklendirmelidir. ... ok
+test_15_export_markdown_report_structure (test_endpoint_threat_model.TestEndpointThreatModelEngine.test_15_export_markdown_report_structure)
+Dışa aktarılan Markdown raporu başlıkları, tabloyu ve referans standartları içermelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+

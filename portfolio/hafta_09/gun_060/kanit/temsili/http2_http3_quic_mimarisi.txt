@@ -1,0 +1,104 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+==============================================================================
+HTTP/2 VE HTTP/3 (QUIC) MİMARİSİ VE GÜVENLİK TEHDİT MODELLERİ İLLÜSTRASYONU
+==============================================================================
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Tüm Hakları Saklıdır.
+ÖZEL LİSANS — Yalnızca görüntüleme ve eğitim amaçlıdır. Ticari kullanılamaz.
+
++----------------------------------------------------------------------------+
+| 1. BÖLÜM: HTTP PROTOKOLLERİNİN EVRİMİ VE ÇOKLAMA (MULTIPLEXING) FARKI      |
++----------------------------------------------------------------------------+
+
+  [A] HTTP/1.1 (Tekil İstek-Yanıt / 6 Ayrı TCP Bağlantısı):
+  Tarayıcı ====== TCP 1 ====== İstek 1 (HTML) ----> [Bekler] ----> Yanıt 1
+  Tarayıcı ====== TCP 2 ====== İstek 2 (CSS)  ----> [Bekler] ----> Yanıt 2
+  Tarayıcı ====== TCP 3 ====== İstek 3 (JS)   ----> [Bekler] ----> Yanıt 3
+  * Sorun: Her istek için ayrı TCP + TLS el sıkışması; soket tüketimi tavan yapar.
+
+  [B] HTTP/2 (Tek TCP Bağlantısı Üzerinde İkili Çerçeve Çoklama):
+  Tarayıcı ========================= TEK TCP BAĞLANTISI =======================> Sunucu
+             [Frame Akış 1] [Frame Akış 3] [Frame Akış 1] [Frame Akış 5]
+  * Yenilik: Tek TCP bağlantısında yüzlerce eşzamanlı akış (Stream).
+  * Zayıflık: TCP seviyesinde 1 paket kaybolursa TÜM akışlar kilitlenir!
+
+  [C] HTTP/3 / QUIC (UDP Üzerinde Bağımsız Kriptografik Akışlar):
+  Tarayıcı ------------------------- UDP / QUIC -----------------------------> Sunucu
+             [Akış 1 (Bağımsız)]   [Akış 3 (Bağımsız)]   [Akış 5 (Bağımsız)]
+  * Devrim: Akış 3'ün paketi kaybolsa dahi Akış 1 ve Akış 5 sıfır gecikmeyle akar!
+
++----------------------------------------------------------------------------+
+| 2. BÖLÜM: HTTP/2 İKİLİ ÇERÇEVE (BINARY FRAME) DÜZENİ (9 BAYT BAŞLIK)       |
++----------------------------------------------------------------------------+
+
+   0                   1                   2                   3
+   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  |                 Length (24-bit, Maks 16384)                   |
+  +---------------+---------------+---------------+---------------+
+  |   Type (8)    |   Flags (8)   |
+  +-+-------------+---------------+-------------------------------+
+  |R|                 Stream Identifier (31-bit)                  |
+  +=+=============================================================+
+  |                   Frame Payload (0...16384 bayt)             |
+  +---------------------------------------------------------------+
+
+  * Type 0x0 (DATA)        : Gövde verisi (Akış ID > 0 zorunlu)
+  * Type 0x1 (HEADERS)     : Başlık blokları (END_STREAM, END_HEADERS)
+  * Type 0x3 (RST_STREAM)  : Akış iptali (Tam 4 bayt hata kodu)
+  * Type 0x4 (SETTINGS)    : Bağlantı parametreleri (Akış ID = 0 zorunlu)
+  * Type 0x6 (PING)        : Canlılık kontrolü (Tam 8 bayt yük)
+
++----------------------------------------------------------------------------+
+| 3. BÖLÜM: HAT BAŞI TIKANMASI (HEAD-OF-LINE BLOCKING) KARŞILAŞTIRMASI       |
++----------------------------------------------------------------------------+
+
+  SENARYO: Akış 2'ye ait 1 adet ağ paketi yönlendiricide düştü (Drop).
+
+  [HTTP/2 Üzerinde TCP Davranışı]:
+  TCP Alıcı Tamponu: [Paket 1: Akış 1] -> [KAYIP: Akış 2] -> [Paket 3: Akış 3]
+  TCP Kararı: "Akış 2'nin paketi gelene kadar Akış 3'ü uygulama katmanına veremem!"
+  SONUÇ: Akış 1, 2 ve 3 TAMAMEN DURUR! (TCP Head-of-Line Blocking Tuzağı)
+
+  [HTTP/3 Üzerinde QUIC Davranışı]:
+  QUIC UDP Alıcısı:
+    - Akış 1 Verisi: Hemen HTTP/3 ayrıştırıcısına teslim edildi! (Çalışıyor)
+    - Akış 2 Verisi: Bekliyor (Yalnızca Akış 2 yeniden iletimi talep edildi)
+    - Akış 3 Verisi: Hemen HTTP/3 ayrıştırıcısına teslim edildi! (Çalışıyor)
+  SONUÇ: Sıfır gecikme; diğer akışlar kayıptan kesinlikle ETKİLENMEZ!
+
++----------------------------------------------------------------------------+
+| 4. BÖLÜM: CVE-2023-44487 RAPID RESET DDoS SALDIRISI VE SAVUNMASI           |
++----------------------------------------------------------------------------+
+
+  Saldırgan (DDoS Botu)                                  Kurban Web Sunucusu
+          |                                                        |
+          | ----- 1. HEADERS (Stream 1: GET /buyuk-dosya) -------> | Sunucu thread ayırır,
+          | ----- 2. RST_STREAM (Stream 1: CANCEL) --------------> | DB sorgusu başlatır!
+          |                                                        | İptal geldi! Thread çöpe.
+          | ----- 3. HEADERS (Stream 3: GET /buyuk-dosya) -------> | Sunucu tekrar RAM açar!
+          | ----- 4. RST_STREAM (Stream 3: CANCEL) --------------> | İptal!
+          | ----- ... [Saniyede 100,000 kez tekrar eder] ... ----> |
+          |                                                        |
+  [ETKİ]: Sunucu CPU'su %100 olur, RAM tükenir, meşru kullanıcılar 502/503 alır!
+  [SAVUNMA]: RST_STREAM frekans sınırlayıcı (Rate Limiter).
+             Belirli pencerede eşiği (ör. >100 iptal/sn) aşan istemci GOAWAY ile atılır!
+
++----------------------------------------------------------------------------+
+| 5. BÖLÜM: QUIC BAĞLANTI GÖÇÜ (CONNECTION MIGRATION) VE 3X SINIRI           |
++----------------------------------------------------------------------------+
+
+  [A] Bağlantı Göçü:
+  Kullanıcı Evde (Wi-Fi): IP: 192.168.1.50:43210 === CID: 0xABCD ===> Sunucu
+  Kullanıcı Dışarı Çıktı (5G): IP: 10.20.30.40:55555 === CID: 0xABCD ===> Sunucu
+  * TCP bağlantısı ölür; ancak QUIC Connection ID (CID) sayesinde akış 0 ms kesintiyle sürer!
+
+  [B] RFC 9000 3x Anti-Amplification Sınırı:
+  Saldırgan sahte IP ile Sunucuya 1200 bayt Initial gönderir.
+  Sunucu, istemcinin kaynak IP'sini (Path Validation) onaylayana kadar
+  en fazla 1200 * 3 = 3600 bayt gönderebilir.
+  Böylece sunucu interneti vuran bir UDP Amplification silahına dönüştürülemez!
+
+==============================================================================
+BU BELGE BİR EĞİTİM İLLÜSTRASYONUDUR. GERÇEK ÇALIŞTIRMA KANITI DEĞİLDİR.
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Tüm Hakları Saklıdır.

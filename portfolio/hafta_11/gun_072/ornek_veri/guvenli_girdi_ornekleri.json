@@ -1,0 +1,26 @@
+{
+  "scanner_task": {
+    "target_ip": "192.168.1.100",
+    "target_port": 443,
+    "hostname": "gateway.kurum.local",
+    "timeout_sec": 5,
+    "verbose": true,
+    "packet_count": 100,
+    "log_filename": "tarama_20261031.log"
+  },
+  "firewall_rule": {
+    "source_ip": "10.0.0.15",
+    "destination_ip": "172.16.0.50",
+    "destination_port": 22,
+    "protocol": "TCP",
+    "is_active": "true",
+    "priority": 10
+  },
+  "forensic_extractor": {
+    "source_directory": "logs/pcap",
+    "archive_filename": "adli_delil_072.pcap",
+    "max_records": 50000,
+    "verify_hash": true,
+    "operator_name": "seydi_eryilmaz"
+  }
+}

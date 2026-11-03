@@ -1,0 +1,18 @@
+=== NEGAT¦F KONTROL VE HATA YAKALAMA SONUÃLARI ===
+
+Test 1: corrupted_negative_disk_size
+  DURUM: BAÌARILI (Beklenen hata yakaland²)
+  HATA MESAJI: Disk '/dev/sda' iin 'size_gb' pozitif olmal²d²r: -500.0
+
+Test 2: corrupted_used_exceeds_total_partition
+  DURUM: BAÌARILI (Beklenen hata yakaland²)
+  HATA MESAJI: B÷l³m '/dev/sda1' kullan²lan alan (150.0 GB) toplam alan² (100.0 GB) a■amaz.
+
+Test 3: corrupted_missing_disks_section
+  DURUM: BAÌARILI (Beklenen hata yakaland²)
+  HATA MESAJI: Telemetri verisinde zorunlu 'disks' anahtar² bulunamad².
+
+Test 4: corrupted_non_string_filesystem_type
+  DURUM: BAÌARILI (Beklenen hata yakaland²)
+  HATA MESAJI: B÷l³m '/dev/sda1' iin 'filesystem' metin olmal²d²r.
+

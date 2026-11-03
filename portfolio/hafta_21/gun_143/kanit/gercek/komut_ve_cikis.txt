@@ -1,0 +1,39 @@
+=== GÜN 143 / ACTIVE DIRECTORY: CLI KOMUT YÜRÜTME GÜNLÜĞÜ ===
+Tarih/Saat: 2026-11-02T19:09:12.624854
+
+$ python uygulama/ad_domain_cli.py audit ornek_veri/enterprise_ad_domain_spec.json
+==============================================================================
+ ACTIVE DIRECTORY GÜVENLİK DENETİM RAPORU — corp.internal
+==============================================================================
+Orman Adı (Forest)    : corp.internal
+Fonksiyonel Seviye    : WindowsServer2016Domain
+AD Güvenlik Puanı     : 100.0 / 100
+Genel Durum           : SECURE
+Toplam Kontrol        : 11
+Başarılı (PASS)       : 11
+Başarısız (FAIL)      : 0
+Kritik Bulgu Sayısı   : 0
+------------------------------------------------------------------------------
+TESPİT EDİLEN BULGULAR:
+KURAL ID      | KATEGORİ       | ŞİDDET    | DURUM  | BAŞLIK
+------------------------------------------------------------------------------
+AD-ARCH-01    | ARCHITECTURE   | HIGH      | PASS   | Orman ve Etki Alanı Fonksiyonel Seviyesi
+AD-ARCH-02    | ARCHITECTURE   | MEDIUM    | PASS   | FSMO Operasyon Rolleri Dağılımı
+AD-KERB-01    | KERBEROS       | CRITICAL  | PASS   | Kerberos Şifreleme Algoritmaları (AES Zorunluluğu)
+AD-KERB-02    | KERBEROS       | HIGH      | PASS   | krbtgt Hesap Parola Yaşı ve Rotasyon Durumu
+AD-KERB-03    | KERBEROS       | MEDIUM    | PASS   | Kerberos TGT Maksimum Bilet Ömrü
+AD-NTLM-01    | NTLM           | CRITICAL  | PASS   | NTLMv1 Engelleme ve NTLMv2 Zorunluluğu
+AD-LDAP-01    | LDAP_SMB       | HIGH      | PASS   | LDAP Sunucu Bütünlük Denetimi ve İmzalama
+AD-LDAP-02    | LDAP_SMB       | HIGH      | PASS   | LDAP Kanal Bağlama (LdapEnforceChannelBinding)
+AD-SMB-01     | LDAP_SMB       | HIGH      | PASS   | SMB İmzalama ve SMBv1 Protokol İzolasyonu
+AD-ACC-01     | ACCOUNTS       | CRITICAL  | PASS   | Ayrıcalıklı Hesaplarda Kerberoasting İncelemesi
+AD-ACC-02     | ACCOUNTS       | HIGH      | PASS   | Kerberos Ön Kimlik Doğrulama Koruması
+AD-ACC-03     | ACCOUNTS       | CRITICAL  | PASS   | Kerberos Delegasyon Modeli (Unconstrained Engeli)
+AD-TRUST-01   | TRUSTS         | CRITICAL  | PASS   | Güven İlişkilerinde SID Filtering Zorunluluğu
+------------------------------------------------------------------------------
+
+$ python uygulama/ad_domain_cli.py verify ornek_veri/enterprise_ad_domain_spec.json
+[PASS] Active Directory etki alanı güvenli. Puan: 100.0/100 (Çıkış Kodu: 0)
+
+$ python uygulama/ad_domain_cli.py generate-powershell ornek_veri/enterprise_ad_domain_spec.json --output kanit/gercek/ad_sertlestirme_gpo.ps1
+[+] PowerShell sertleştirme betiği oluşturuldu: kanit/gercek/ad_sertlestirme_gpo.ps1 (2140 bayt)

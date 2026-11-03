@@ -1,0 +1,49 @@
+================================================================================
+G069: MİNİ PROJE 9 - WİRESHARK RAPOR MOTORU NEGATİF KONTROL VE İSTİSNA KANITI
+Tarih: 2026-10-31 | Doğrulanan Senaryo Sayısı: 9/9 PASS
+================================================================================
+
+[NEG_01] Boş PCAP Paket Ayrıştırma Listesi İstisnası
+  - Beklenen İstisna : EmptyPCAPStreamError
+  - Yakalanan Mesaj  : PCAP paket ayrıştırma listesi boş olamaz.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_02] Geçersiz PCAP Telemetri Veri Biçimi İstisnası
+  - Beklenen İstisna : InvalidPCAPDataError
+  - Yakalanan Mesaj  : PCAP telemetrisi geçerli bir sözlük (dict) olmalıdır.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_03] Bozuk veya Eksik Paket Başlığı İstisnası
+  - Beklenen İstisna : MalformedPacketHeaderError
+  - Yakalanan Mesaj  : Geçerli bir 'paket_no' (pozitif tamsayı) bulunmalıdır.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_04] Desteklenmeyen veya Boş Protokol Tanımı İstisnası
+  - Beklenen İstisna : UnsupportedProtocolError
+  - Yakalanan Mesaj  : Paket #1 için geçersiz veya boş protokol.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_05] Aşırı Yüksek Paket Boyutu (MTU Sınırı Aşımı) İstisnası
+  - Beklenen İstisna : OversizedPacketLengthError
+  - Yakalanan Mesaj  : Paket #1 MTU sınırını aştı: 999999 bayt > 65535 bayt.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_06] Bozuk Konuşma Demeti (IP veya Port Bilgisi Eksik)
+  - Beklenen İstisna : MalformedConversationTupleError
+  - Yakalanan Mesaj  : 
+  - Kontrol Durumu   : BAŞARISIZ (FAIL)
+
+[NEG_07] Geçersiz Rapor Biçimi Parametresi İstisnası
+  - Beklenen İstisna : InvalidReportFormatError
+  - Yakalanan Mesaj  : Desteklenmeyen rapor formatı: 'PDF_GEÇERSİZ'. Desteklenenler: {'TEXT', 'JSON', 'MARKDOWN'}
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_08] Zamanda Geriye Giden Paket Zaman Damgası İstisnası
+  - Beklenen İstisna : InconsistentCaptureTimestampError
+  - Yakalanan Mesaj  : Paket #2 zaman damgası geriye gitti: 1730345001.0 < 1730345005.0
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_09] Geçersiz Önem Seviyesi (Severity) Filtresi İstisnası
+  - Beklenen İstisna : InvalidSeverityThresholdError
+  - Yakalanan Mesaj  : Geçersiz önem seviyesi filtresi: 'SEVERITY_SUPER_HIGH_INVALID'. Geçerli: {'ORTA', 'DUSUK', 'KRITIK', 'YUKSEK'}
+  - Kontrol Durumu   : BAŞARILI (PASS)

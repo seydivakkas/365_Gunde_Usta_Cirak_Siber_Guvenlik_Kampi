@@ -1,0 +1,40 @@
+{
+  "gun": 43,
+  "gun_id": "G043",
+  "asama": "03",
+  "hafta": "07",
+  "baslik": "OSI ve TCP/IP modelinin katmanları",
+  "tarih": "2026-10-27",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kavramsal_derinlik": 20,
+    "uygulama_gelistirme": 40,
+    "test_kapsami": 25,
+    "savunma_sikilastirma": 15
+  },
+  "test_ozeti": {
+    "toplam": 14,
+    "basarili": 14,
+    "hatali": 0,
+    "sure_saniye": 0.003
+  },
+  "kod_aciklama_satirlari_tamamlandi": true,
+  "kanitlar": {
+    "gercek": [
+      "kanit/gercek/test_sonuclari.txt",
+      "kanit/gercek/komut_ve_cikis.txt",
+      "kanit/gercek/katman_ve_paket_ayristirma_raporu.txt",
+      "kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "kanit/temsili/osi_tcpip_kapsulleme_mimarisi.txt"
+    ]
+  },
+  "soru_bankasi_eslesmesi": [
+    "G043-SC1",
+    "G043-SC2",
+    "G043-SC3"
+  ],
+  "notlar": "Aşama 03 (Ağ Temelleri) başlatıldı; 7 OSI ve 4 TCP/IP katmanı HTTPS kapsüllemesi üzerinden ayrıştırıldı; 14 test PASS oldu."
+}

@@ -1,0 +1,47 @@
+=== G094 NEGATİF KONTROL VE ENJEKSİYON SAVUNMA KANITLARI (9 SENARYO) ===
+Tarih: 2026-11-01 23:47:53
+
+[BAŞARILI (ENGELLEDİ)] NEG_01_LUHN_CHECKSUM_FAILURE
+  Tanım: Luhn algoritması kontrolünden geçmeyen 16 basamaklı geçersiz kart numarası
+  CWE: CWE-20: Improper Input Validation
+  Beklenen: LuhnChecksumError | Alınan: LuhnChecksumError
+
+[BAŞARILI (ENGELLEDİ)] NEG_02_TCKN_CHECKSUM_FAILURE
+  Tanım: 10. ve 11. hane algoritmik kontrolü tutmayan sahte TCKN
+  CWE: CWE-20: Improper Input Validation
+  Beklenen: TCKNChecksumError | Alınan: TCKNChecksumError
+
+[BAŞARILI (ENGELLEDİ)] NEG_03_TCKN_LEADING_ZERO
+  Tanım: Sıfır ile başlayan 11 haneli geçersiz kimlik dizisi
+  CWE: CWE-20: Improper Input Validation
+  Beklenen: TCKNLeadingZeroError | Alınan: TCKNLeadingZeroError
+
+[BAŞARILI (ENGELLEDİ)] NEG_04_IBAN_MOD97_FAILURE
+  Tanım: ISO 7064 MOD-97 doğrulamasından geçmeyen sahte TR IBAN
+  CWE: CWE-20: Improper Input Validation
+  Beklenen: IBANChecksumError | Alınan: IBANChecksumError
+
+[BAŞARILI (ENGELLEDİ)] NEG_05_REDOS_CATASTROPHIC_ATTACK
+  Tanım: Düzenli ifade karmaşıklığı ile DoS tetiklemeyi amaçlayan ReDoS saldırı dizgisi
+  CWE: CWE-1333: Inefficient Regular Expression Complexity
+  Beklenen: ReDoSProtectionTriggered | Alınan: ReDoSProtectionTriggered
+
+[BAŞARILI (ENGELLEDİ)] NEG_06_NULL_BYTE_INJECTION
+  Tanım: Log ayrıştırıcılarını zehirlemeyi hedefleyen Null-Byte enjeksiyonu
+  CWE: CWE-158: Improper Neutralization of Null Byte or Special Characters
+  Beklenen: NullByteInjectionError | Alınan: NullByteInjectionError
+
+[BAŞARILI (ENGELLEDİ)] NEG_07_OVERSIZED_PAYLOAD_DOS
+  Tanım: Bellek tüketimi ve CPU kilitlenmesi amaçlı 1 MB üzeri aşırı büyük log girdisi
+  CWE: CWE-400: Uncontrolled Resource Consumption
+  Beklenen: PayloadLimitExceededError | Alınan: PayloadLimitExceededError
+
+[BAŞARILI (ENGELLEDİ)] NEG_08_INVALID_RULE_TYPE
+  Tanım: Maskeleme motoruna tanımlı olmayan kural tipi iletilmesi
+  CWE: CWE-20: Improper Input Validation
+  Beklenen: InvalidRuleError | Alınan: InvalidRuleError
+
+[BAŞARILI (ENGELLEDİ)] NEG_09_MALFORMED_NON_STRING_TYPE
+  Tanım: Metin maskeleme fonksiyonuna geçersiz veri tipi gönderilmesi
+  CWE: CWE-843: Access of Resource Using Incompatible Type
+  Beklenen: TypeValidationError | Alınan: TypeValidationError

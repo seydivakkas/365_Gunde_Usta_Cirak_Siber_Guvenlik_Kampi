@@ -1,0 +1,33 @@
+test_01_load_valid_trace_and_count_events (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_01_load_valid_trace_and_count_events)
+Standart veri setinden olaylar²n do­ru say²da ve eksiksiz y³klendi­ini test eder. ... ok
+test_02_validate_and_sort_chronological_order (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_02_validate_and_sort_chronological_order)
+Olaylar²n zaman s²ras²na dizildi­ini ve milisaniye deltalar²n²n hesapland²­²n² test eder. ... ok
+test_03_tcp_three_way_handshake_rtt_calculation (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_03_tcp_three_way_handshake_rtt_calculation)
+TCP SYN -> SYN-ACK -> ACK ak²■²n² ve RTT gecikme s³resini test eder. ... ok
+test_04_tls_handshake_completion_state (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_04_tls_handshake_completion_state)
+TLS ClientHello ve ServerHello sonras² g³venli t³nelin kuruldu­unu test eder. ... ok
+test_05_http2_multiplexed_stream_tracking (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_05_http2_multiplexed_stream_tracking)
+HTTP/2 erevelerinde ak²m kimliklerinin (Stream 1 ve Stream 3) ayr²■t²r²ld²­²n² test eder. ... ok
+test_06_connection_teardown_fin_ack_sequence (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_06_connection_teardown_fin_ack_sequence)
+Ãift y÷nl³ FIN ve ACK paketleriyle ba­lant²n²n CLOSED durumuna geldi­ini test eder. ... ok
+test_07_generate_ascii_timeline_output (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_07_generate_ascii_timeline_output)
+ASCII format²nda izilen zaman izelgesinin t³m protokol ve ba■l²klar² ierdi­ini test eder. ... ok
+test_08_neg01_timeline_order_error_clock_skew (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_08_neg01_timeline_order_error_clock_skew)
+Kronolojik gerileme oldu­unda TimelineOrderError f²rlat²ld²­²n² test eder. ... ok
+test_09_neg02_timestamp_format_error (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_09_neg02_timestamp_format_error)
+Bozuk tarih/zaman dizgisi verildi­inde TimestampFormatError f²rlat²ld²­²n² test eder. ... ok
+test_10_neg03_handshake_violation_premature_data (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_10_neg03_handshake_violation_premature_data)
+TCP el s²k²■mas² tamamlanmadan veri g÷nderildi­inde HandshakeViolationError f²rlat²ld²­²n² test eder. ... ok
+test_11_neg04_sequence_anomaly_tcp_jump (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_11_neg04_sequence_anomaly_tcp_jump)
+A²klanamayan s²ra numaras² s²ramas²nda SequenceAnomalyError f²rlat²ld²­²n² test eder. ... ok
+test_12_neg05_slowloris_drip_attack_detection (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_12_neg05_slowloris_drip_attack_detection)
+25 saniyelik yapay ba■l²k gecikmesinde SlowlorisAnomalyError f²rlat²ld²­²n² test eder. ... ok
+test_13_neg06_rapid_port_scan_syn_burst (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_13_neg06_rapid_port_scan_syn_burst)
+K²sa s³rede 6 farkl² porta SYN g÷nderildi­inde PortScanAnomalyError f²rlat²ld²­²n² test eder. ... ok
+test_14_neg07_to_neg09_tunneling_missing_fields_illegal_state (portfolio.hafta_09.gun_063.tests.test_protocol_timeline_analyzer.TestProtocolTimelineAnalyzer.test_14_neg07_to_neg09_tunneling_missing_fields_illegal_state)
+DNS t³nelleme, eksik alanlar, geersiz durum gei■i ve ÷zet rapor do­rulan²r. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.015s
+
+OK

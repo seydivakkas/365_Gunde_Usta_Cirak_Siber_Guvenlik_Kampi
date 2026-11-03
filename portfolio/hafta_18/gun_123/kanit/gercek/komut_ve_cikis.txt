@@ -1,0 +1,23 @@
+=== GÜN 123 KOMUT VE ÇIKIŞ KANITI ===
+Tarih: 2026-11-02T08:15:24.619063
+
+$ python uygulama/failsafe_cli.py audit C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_123\ornek_veri\system_failsafe_config.json
+=== Atlas Kurumsal Kimlik ve Yetki Altyapısı (Secure by Default) Güvenli Varsayılanlar Denetimi ===
+[+] MİMARİ UYUMLU: Tüm bileşenler 'Secure by Default' prensiplerine uygundur.
+
+$ python uygulama/failsafe_cli.py evaluate C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_123\ornek_veri\system_failsafe_config.json --role admin --resource-id RES-AUTH-API --action manage
+=== Erişim Kararı: [İZİN_VERİLDİ] ===
+Talep ID: REQ-CLI-01
+Gerekçe: Açık kural eşleşti: [RULE-ADMIN-FULL]. Rol: 'admin', Eylem: 'manage'.
+Eşleşen Kural: RULE-ADMIN-FULL
+
+$ python uygulama/failsafe_cli.py evaluate C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_123\ornek_veri\system_failsafe_config.json --role admin --resource-id RES-AUTH-API --action manage --simulate-failure DATABASE_DOWN
+=== Erişim Kararı: [REDDEDİLDİ] ===
+Talep ID: REQ-CLI-01
+Gerekçe: Sistem arızası tespit edildi (Veritabanı Bağlantısı Kesildi). Fail-Secure ilkesi gereğince tüm erişimler derhal BLOKE EDİLDİ (CWE-636 Koruması).
+[GÜVENCE] Fail-Secure mekanizması arıza anında erişimi güvenli kesti (CWE-636 Koruması).
+
+$ python uygulama/failsafe_cli.py evaluate C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_123\ornek_veri\system_failsafe_config.json --role unknown_guest --resource-id RES-CUSTOMER-DB --action delete_all
+=== Erişim Kararı: [REDDEDİLDİ] ===
+Talep ID: REQ-CLI-03
+Gerekçe: Açıkça tanımlanmış bir izin kuralı bulunamadı. Saltzer-Schroeder 'Fail-Safe Defaults' prensibi gereği talep REDDEDİLDİ.

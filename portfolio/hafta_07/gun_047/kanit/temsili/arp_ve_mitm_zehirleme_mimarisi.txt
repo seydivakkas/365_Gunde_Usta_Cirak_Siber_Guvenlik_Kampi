@@ -1,0 +1,75 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+G047: ARP Protokol Mekanizması, Zehirleme (Cache Poisoning) ve DAI Savunma Mimarisi
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) - Tüm Hakları Saklıdır
+================================================================================
+
+1. MEŞRU ARP ÇÖZÜMLEME DÖNGÜSÜ (NORMAL OPERATION)
+--------------------------------------------------------------------------------
+   İstemci A (192.168.1.50)                                       Ağ Geçidi (192.168.1.1)
+   MAC: 52:54:00:12:34:56                                         MAC: 00:1A:2B:3C:4D:01
+          |                                                                 |
+          |--- (1) ARP Request (Broadcast: FF:FF:FF:FF:FF:FF) ------------->|
+          |    "192.168.1.1 kimde? 192.168.1.50'ye haber ver!"              |
+          |                                                                 |
+          |<-- (2) ARP Reply (Unicast: 52:54:00:12:34:56) ------------------|
+          |    "192.168.1.1 bende, MAC adresim: 00:1A:2B:3C:4D:01"          |
+          |                                                                 |
+   [Önbellek Güncellenir: 192.168.1.1 -> 00:1A:2B:3C:4D:01]
+
+
+2. ARP ZEHİRLEME (CACHE POISONING / SPOOFING) SALDIRISI
+--------------------------------------------------------------------------------
+                      +-----------------------------+
+                      |     Saldırgan (Attacker)    |
+                      |     IP:  192.168.1.66       |
+                      |     MAC: AA:BB:CC:DD:EE:FF  |
+                      +-----------------------------+
+                                /         \
+       Sahte ARP Reply (Zehirleme)       Sahte ARP Reply (Zehirleme)
+      "192.168.1.1 benim MAC'imdir"     "192.168.1.50 benim MAC'imdir"
+                              /             \
+                             v               v
+           +--------------------+         +--------------------+
+           | Kurban İstemci A   |         | Ağ Geçidi (Router) |
+           | 192.168.1.50       |         | 192.168.1.1        |
+           +--------------------+         +--------------------+
+           [Zehirlenmiş Önbellek]         [Zehirlenmiş Önbellek]
+           192.168.1.1 -> [AA:BB:CC]      192.168.1.50 -> [AA:BB:CC]
+                     \                           /
+                      ====== TÜM TRAFİK ========
+                             SALDIRGANDAN GEÇER! (Man-in-the-Middle)
+
+
+3. KATMAN-2 SAVUNMA: DYNAMIC ARP INSPECTION (DAI) & DHCP SNOOPING
+--------------------------------------------------------------------------------
+                              +---------------------------+
+                              | Güvenilir DHCP Sunucusu   |
+                              +---------------------------+
+                                            |
+                                            v
+                 +-------------------------------------------------+
+                 |  Yönetilebilir Anahtar (Switch)                 |
+                 |                                                 |
+                 |  [DHCP Snooping Bağlama Veritabanı]             |
+                 |  IP: 192.168.1.50 <-> MAC: 52:54:00:12:34:56    |
+                 |  IP: 192.168.1.1  <-> MAC: 00:1A:2B:3C:4D:01    |
+                 +-------------------------------------------------+
+                                      |
+                     [Gelen ARP Paketini İncele (DAI)]
+                                      |
+                     Paketteki IP/MAC eşleşmesi DHCP Snooping
+                     tablosu veya Statik ARP ile uyuşuyor mu?
+                                    /   \
+                             EVET  /     \  HAYIR (Sahte Paket)
+                                  /       \
+                                 v         v
+                      +-------------+   +-------------------------------+
+                      | İlet (PASS) |   | AT (DROP) + Güvenlik Alarmı   |
+                      +-------------+   | (Port Kapatma / Log / SIEM)   |
+                                        +-------------------------------+
+
+================================================================================
+NOT: Bu diyagram eğitim ve zihinsel modelleme amaçlı üretilmiş kavramsal bir şemadır.
+================================================================================

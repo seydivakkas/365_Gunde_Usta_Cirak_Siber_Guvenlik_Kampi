@@ -1,0 +1,38 @@
+# G069: MİNİ PROJE 9: WİRESHARK ANALİZ RAPORU - KOMUT VE ÇIKIŞ KANITI
+# Tarih: 2026-10-31
+# Komut: python -m unittest portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator -v
+
+$ python -m unittest portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator -v
+test_01_pcap_veri_seti_yukleme_ve_dogrulama (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_01_pcap_veri_seti_yukleme_ve_dogrulama)
+PCAP dosyasının meta-verilerini ve 15 adet paketi eksiksiz içerdiğini teyit eder. ... ok
+test_02_protokol_hiyerarsisi_dagilimi (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_02_protokol_hiyerarsisi_dagilimi)
+Paketlerin protokollere göre ayrıştırılıp bayt ve paket oranlarının doğru hesaplandığını test eder. ... ok
+test_03_en_cok_konusan_uc_noktalar (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_03_en_cok_konusan_uc_noktalar)
+Uç noktalar arası konuşma trafiğinin bayt hacmine göre doğru sıralandığını test eder. ... ok
+test_04_tcp_saglik_metrikleri_ve_anomalileri (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_04_tcp_saglik_metrikleri_ve_anomalileri)
+Zero Window ve Retransmission gibi TCP sağlık sorunlarının yakalandığını test eder. ... ok
+test_05_sqli_ve_otomatik_tarayici_tespiti (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_05_sqli_ve_otomatik_tarayici_tespiti)
+sqlmap User-Agent ve URL'deki SQLi enjeksiyonunun yakalandığını doğrular. ... ok
+test_06_dns_tunelleme_veri_sizintisi_tespiti (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_06_dns_tunelleme_veri_sizintisi_tespiti)
+TXT sorgulu uzun Base64 alan adının tünelleme olarak yakalandığını doğrular. ... ok
+test_07_acik_metin_parola_ifsa_tespiti (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_07_acik_metin_parola_ifsa_tespiti)
+FTP oturumunda geçen açık metin kimlik ve şifrelerin yakalandığını doğrular. ... ok
+test_08_http_crlf_enjeksiyon_tespiti (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_08_http_crlf_enjeksiyon_tespiti)
+URI içindeki CRLF karakterlerinin ve Set-Cookie enjeksiyonunun tespitini doğrular. ... ok
+test_09_guvenlik_bulgulari_onem_filtreleme (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_09_guvenlik_bulgulari_onem_filtreleme)
+filter_findings_by_severity metodunun yalnızca belirtilen seviye ve üzerini getirdiğini teyit eder. ... ok
+test_10_tam_rapor_metin_formati_uretimi (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_10_tam_rapor_metin_formati_uretimi)
+Metin tabanlı Wireshark analiz raporunun 7 ana bölümü eksiksiz içerdiğini teyit eder. ... ok
+test_11_tam_rapor_json_formati_uretimi (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_11_tam_rapor_json_formati_uretimi)
+JSON tabanlı Wireshark analiz raporunun şemaya uygun sözlük olarak üretildiğini teyit eder. ... ok
+test_12_temiz_trafik_yuksek_guvenlik_skoru (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_12_temiz_trafik_yuksek_guvenlik_skoru)
+Zararlı aktivite içermeyen meşru trafikte 100 tam puan alındığını test eder. ... ok
+test_13_negatif_sinir_senaryolari_grup_1 (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_13_negatif_sinir_senaryolari_grup_1)
+NEG_01'den NEG_04'e kadar olan boş akış, biçim, başlık ve protokol hatalarını doğrular. ... ok
+test_14_negatif_sinir_senaryolari_grup_2 (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_14_negatif_sinir_senaryolari_grup_2)
+NEG_05'ten NEG_09'a kadar olan MTU aşımı, zaman bozulması ve geçersiz filtre testlerini doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.008s
+
+OK

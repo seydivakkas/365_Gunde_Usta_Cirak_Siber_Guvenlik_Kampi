@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "title": "Windows Olay Günlüğü Güvenlik Referans Kataloğu",
+    "version": "1.0.0",
+    "standard": "MITRE ATT&CK / NIST SP 800-92",
+    "created_at": "2026-10-27T08:00:00Z"
+  },
+  "event_definitions": [
+    {
+      "event_id": 4624,
+      "name": "An account was successfully logged on",
+      "channel": "Security",
+      "category": "Logon / Authentication",
+      "mitre_technique": "T1078 - Valid Accounts",
+      "severity": "Low",
+      "context_rule": "Tek başına normaldir. Logontype (2: Yerel, 3: Ağ, 10: RDP) ve saat aralığı ile korele edilmelidir."
+    },
+    {
+      "event_id": 4625,
+      "name": "An account failed to log on",
+      "channel": "Security",
+      "category": "Logon / Authentication",
+      "mitre_technique": "T1110 - Brute Force / Password Spraying",
+      "severity": "Medium-High",
+      "context_rule": "Tek bir 4625 kullanıcı yazım hatası olabilir. Kısa sürede yüksek frekansta gelmesi veya çoklu hesaplarda denenmesi saldırı kanıtıdır (G029-SC1)."
+    },
+    {
+      "event_id": 4688,
+      "name": "A new process has been created",
+      "channel": "Security",
+      "category": "Process Creation",
+      "mitre_technique": "T1059 - Command and Scripting Interpreter",
+      "severity": "Medium",
+      "context_rule": "ParentProcessName ve CommandLine argümanları incelenmeli; powershell.exe veya cmd.exe çağrıları takip edilmelidir."
+    },
+    {
+      "event_id": 7045,
+      "name": "A service was installed in the system",
+      "channel": "System",
+      "category": "Persistence / Privilege Escalation",
+      "mitre_technique": "T1543.003 - Windows Service",
+      "severity": "High",
+      "context_rule": "ImagePath ve ServiceName alanları meşru yazılım dizinleriyle karşılaştırılmalıdır. Temp dizininden çalışan servisler alarm üretir."
+    },
+    {
+      "event_id": 1102,
+      "name": "The audit log was cleared",
+      "channel": "Security",
+      "category": "Defense Evasion",
+      "mitre_technique": "T1070.001 - Clear Windows Event Logs",
+      "severity": "Critical",
+      "context_rule": "Güvenlik günlüğünün silinmesi istisnasız şüpheli kabul edilmeli ve olayı tetikleyen kullanıcı hesabı derhal izole edilmelidir."
+    },
+    {
+      "event_id": 6005,
+      "name": "The Event log service was started",
+      "channel": "System",
+      "category": "System Boot / Availability",
+      "mitre_technique": "N/A - System Baseline",
+      "severity": "Low",
+      "context_rule": "Sistemin önyüklendiği anı belirler. 6006 (servis durduruldu) olayı ile eşleştirilerek plansız kesintiler bulunur."
+    },
+    {
+      "event_id": 1074,
+      "name": "System shutdown or restart initiated",
+      "channel": "System",
+      "category": "System Availability",
+      "mitre_technique": "T1529 - System Shutdown/Reboot",
+      "severity": "Low-Medium",
+      "context_rule": "Kapatmayı başlatan kullanıcı ve süreç adli zaman çizelgesine işlenmelidir."
+    }
+  ]
+}

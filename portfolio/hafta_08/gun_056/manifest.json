@@ -1,0 +1,18 @@
+{
+  "README.md": "e199d9f24571a371d908f0d00abec329ad8cc20189ff2051c009100019824ec9",
+  "ders.md": "60c351d30589f1d91feb3c01372e2d3275a6effecb29b5b1a98f9ee43f700867",
+  "rapor.md": "39a09d4bc41c90a830ff5e4d326e3cbbc6198e2cb51ea51259b0162ec7e28d1e",
+  "sonuc.json": "8c224b64769d76b317668145b60cd52a30297344a047223bcaf68f184d97cd07",
+  "soru_cevap.md": "002f454409579c89cab5e2883c792c517fe8b72165824e46350ae8d4e788ad26",
+  "kanit/gercek/komut_ve_cikis.txt": "421dbadcb4bd2006b02ae032101e7277e1b456ab66d4880bfb814b8cda0668bf",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "84677b6dd449bd12a8593b0c8e8f83e28bff739b61ea36c9579e6ac0bed3e916",
+  "kanit/gercek/protokol_haritasi_ve_analiz_raporu.txt": "badc9eea1b83f37a8e5953a71143daa5e58e4bffd7359a4292cd1c92f5d3ccc0",
+  "kanit/gercek/test_sonuclari.txt": "d0df4396b96cee97ecd43c9c7a5063138652d5c4e22bfadcc8ad71642477bd59",
+  "kanit/temsili/protokol_hiyerarsisi_ve_is_akisi.txt": "ba35f1e60f0c99447ad491b31df25476765dba5920e697b2964530fcf30eba7a",
+  "ornek_veri/invalid_protocol_inputs.json": "86769849cb3757ebc525130010b8857dc1ff5418ccf5acee13eb66fd85f23fee",
+  "ornek_veri/sample_pcap_frames.json": "4170c29754224fe127bbee365c30cf815c7aaede2e1111a5c35f0a76282a87d2",
+  "tests/__init__.py": "2a2e4da62b9f929b137128ca66db3e3b6e0f62d7bfc758482fd621bfa777f56e",
+  "tests/test_protocol_map_analyzer.py": "843f54f49a8f19417d673524866260e1e7c0db2002ed4e9b7c31fe2acdb5503f",
+  "uygulama/__init__.py": "c46a7b6ae2ed06f5b3022c177c883f6c6b3352861a145d5444392b4e9cdccaae",
+  "uygulama/protocol_map_analyzer.py": "758806c7a24c42c5978b1a162bdf407aeff27f6c8c9f31539973e346eeb4b2a3"
+}

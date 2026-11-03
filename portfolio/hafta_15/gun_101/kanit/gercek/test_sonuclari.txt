@@ -1,0 +1,43 @@
+=== GÜN 101: HASH FONKSİYONLARI VE ÇAKIŞMA BİRİM TEST RAPORU ===
+Tarih/Saat : 2026-11-02 01:57:28
+Komut      : C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_101\tests\test_hash_collision.py -v
+Çıkış Kodu : 0
+--------------------------------------------------------------------------------
+test_01_sha256_reference_vector (tests.test_hash_collision.TestHashCollision.test_01_sha256_reference_vector)
+NIST FIPS 180-4 standardı 'abc' girdi vektörünün beklenen SHA-256 özetini doğruladığını test eder. ... ok
+test_02_sha512_and_blake2b_support (tests.test_hash_collision.TestHashCollision.test_02_sha512_and_blake2b_support)
+SHA-512 ve BLAKE2b algoritmalarının beklenen çıktı uzunluklarında özet ürettiğini doğrular. ... ok
+test_03_prohibited_md5_rejection (tests.test_hash_collision.TestHashCollision.test_03_prohibited_md5_rejection)
+Varsayılan güvenli modda kırılmış MD5 algoritmasının engellendiğini doğrular (CWE-328). ... ok
+test_04_prohibited_sha1_rejection (tests.test_hash_collision.TestHashCollision.test_04_prohibited_sha1_rejection)
+Varsayılan güvenli modda çakışmalı SHA-1 algoritmasının engellendiğini doğrular (CWE-328). ... ok
+test_05_allow_insecure_flag_md5 (tests.test_hash_collision.TestHashCollision.test_05_allow_insecure_flag_md5)
+allow_insecure=True bayrağı ile deneysel amaçlı MD5 üretilebildiğini doğrular. ... ok
+test_06_avalanche_effect_ideal_range (tests.test_hash_collision.TestHashCollision.test_06_avalanche_effect_ideal_range)
+1 bitlik girdi farkının SHA-256 çıktısında %40 ile %60 arasında bit değişimi sağladığını doğrular. ... ok
+test_07_avalanche_strict_failure (tests.test_hash_collision.TestHashCollision.test_07_avalanche_strict_failure)
+Kusurlu çığ etkisi oranının sıkı modda AvalancheEffectFailureError fırlattığını doğrular. ... ok
+test_08_birthday_collision_simulation_16bit (tests.test_hash_collision.TestHashCollision.test_08_birthday_collision_simulation_16bit)
+16-bitlik kırpılmış hash üzerinde Doğum Günü çakışmasının başarıyla bulunduğunu doğrular. ... ok
+test_09_constant_time_verification_pass (tests.test_hash_collision.TestHashCollision.test_09_constant_time_verification_pass)
+Doğru özet değerinin sabit zamanlı doğrulamadan başarıyla geçtiğini test eder. ... ok
+test_10_constant_time_verification_fail_strict (tests.test_hash_collision.TestHashCollision.test_10_constant_time_verification_fail_strict)
+Tahrif edilmiş özetin sıkı modda HashVerificationError fırlattığını doğrular (CWE-208/CWE-345). ... ok
+test_11_payload_limit_dos_rejection (tests.test_hash_collision.TestHashCollision.test_11_payload_limit_dos_rejection)
+1 MB tavanını aşan verilerin DoS korumasıyla engellendiğini doğrular (CWE-400). ... ok
+test_12_null_byte_rejection (tests.test_hash_collision.TestHashCollision.test_12_null_byte_rejection)
+Algoritma adında veya metinde Null-Byte zehirlemesinin engellendiğini doğrular (CWE-158). ... ok
+test_13_invalid_truncation_bit_size (tests.test_hash_collision.TestHashCollision.test_13_invalid_truncation_bit_size)
+Doğum günü simülasyonunda geçersiz bit boyutlarının TypeValidationError fırlattığını doğrular (CWE-1284). ... ok
+test_14_type_validation_rejection (tests.test_hash_collision.TestHashCollision.test_14_type_validation_rejection)
+Uyumsuz tiplerin (int, liste) TypeValidationError fırlattığını doğrular (CWE-843). ... ok
+test_15_negative_inputs_json_suite (tests.test_hash_collision.TestHashCollision.test_15_negative_inputs_json_suite)
+invalid_hash_inputs.json dosyasındaki 9 negatif senaryonun tamamını doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.006s
+
+OK
+
+================================================================================
+DURUM: 15/15 BİRİM TESTİ BAŞARIYLA GEÇTİ (100% PASS)

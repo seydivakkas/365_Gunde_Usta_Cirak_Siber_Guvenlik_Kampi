@@ -1,0 +1,39 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+======================================================================
+HİBRİT RBAC + ABAC ERİŞİM KONTROL VE KARAR AKIŞ MİMARİSİ
+======================================================================
+
+   [İSTEMCİ / KULLANICI / SERVİS]
+                 │
+                 ▼ Erişim İsteği (Subject, Resource, Action, Env)
+   ┌──────────────────────────────────────────────┐
+   │    PEP (Policy Enforcement Point) - Giriş    │
+   └──────────────────────┬───────────────────────┘
+                          │
+                          ▼
+   ┌──────────────────────────────────────────────┐
+   │ 1. AŞAMA: RBAC MOTORU (Kaba Taneli Kapıcı)   │
+   │  - Rol Hiyerarşisi Miras Çözümlemesi         │
+   │  - SoD (Görevler Ayrılığı) Çatışma Kontrolü  │
+   │  - Gerekli İzin: resource:action             │
+   └──────────────┬───────────────────────────────┘
+                  │ [PASS]
+                  ▼
+   ┌──────────────────────────────────────────────┐
+   │ 2. AŞAMA: ABAC MOTORU (İnce Taneli Bağlam)   │
+   │  - Çok Kiracılı Sınır (Tenant_ID == Tenant)  │
+   │  - Gizlilik vs Yetki Derecesi (Clearance)   │
+   │  - Departman Sahipliği ve IDOR İzolasyonu    │
+   │  - MFA Teyidi (Kritik Eylemler İçin)         │
+   │  - Çevresel Kısıtlar (Mesai Saati / IP CIDR) │
+   │  * Deny-Overrides Karar Mantığı              │
+   └──────────────┬───────────────────────────────┘
+                  │ [PASS]
+                  ▼
+   ┌──────────────────────────────────────────────┐
+   │    NİHAİ KARAR: PERMITTED                    │
+   │    - Yapılandırılmış JSON Audit Log Kaydı    │
+   │    - Kaynağa Yetkili Erişim Teslimi          │
+   └──────────────────────────────────────────────┘
+
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

@@ -1,0 +1,98 @@
+{
+  "gun": 123,
+  "konu": "Güvenli varsayılanlar ve fail-safe",
+  "uretildi": "2026-11-02T08:17:19.445651",
+  "toplam_dosya": 18,
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "82fce9e4742c2813aaecbae11a28aee35a8161baf7db8e1c901ff4fb15f05511",
+      "boyut_byte": 4614
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "6f50161d58988e76d24f7fe5a02b29f90dc4337d111534afe2058bc4f272e675",
+      "boyut_byte": 6397
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "f4eb2969f9dae8b4a42a471d4db2b01774e47c7f1a977a01961e2b35c9d0d2aa",
+      "boyut_byte": 14106
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "6e8aab6bc10a95a868d81f6f4f381f639ecff505789a92a72f9164cee55227bb",
+      "boyut_byte": 5233
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "fd6d6604cde0aaa8cd54ca9b715d9bac021cc74e6c1d4ad1c4a3410200bfbb36",
+      "boyut_byte": 727
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "362fa8ee7acfd178fed90b9041317d6b1bdf3da8be6020580175e89d196b7e6c",
+      "boyut_byte": 10081
+    },
+    {
+      "dosya": "kanit\\gercek\\failsafe_analiz_raporu.txt",
+      "sha256": "69249bcfdf0a7558cac84524c0230dfef9cd4f065a4473177d66593555d95983",
+      "boyut_byte": 1742
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "4a216b1cc1065c3135c1527b20dc5d2b7dc9107591800131d4ef0d1125c26c05",
+      "boyut_byte": 1971
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "f049aa2022bbd705fb4e4b5a946cf87374e1a66104ed7b64e10c904c7a43cb3f",
+      "boyut_byte": 4109
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "8606597ef912f375c0aae825afdfe438d0d34faba6a8cae2832b0944da6d9f65",
+      "boyut_byte": 3885
+    },
+    {
+      "dosya": "kanit\\temsili\\failsafe_mimarisi.txt",
+      "sha256": "e81d554c402b459a8b6d5691d29e9fb49e3dbee2f3cf83c39d32a830195de881",
+      "boyut_byte": 2594
+    },
+    {
+      "dosya": "ornek_veri\\invalid_failsafe_scenarios.json",
+      "sha256": "f662d4fc0533246cbc88fdeef9b01fcc9eee1858ef9355d4542b993dc9170ab5",
+      "boyut_byte": 3529
+    },
+    {
+      "dosya": "ornek_veri\\system_failsafe_config.json",
+      "sha256": "ebb1893c9f4d28051ef3ccccd5e7e0c47a5f963d13708322f675cdb162923049",
+      "boyut_byte": 2140
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "7e98f3a70e64e99ed79e0c859f25164ebca55377a6a6d64a11b3388a6702a80e",
+      "boyut_byte": 577
+    },
+    {
+      "dosya": "tests\\test_secure_defaults_failsafe.py",
+      "sha256": "9f74021e3da08e76a2786508e842768e57ae0b10e9266f0a68b341a014c8e815",
+      "boyut_byte": 11011
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "ce302b8638a171eb447d82f8e22e27f84ec93ff0f090e03b009d649ea5ed3f09",
+      "boyut_byte": 754
+    },
+    {
+      "dosya": "uygulama\\failsafe_cli.py",
+      "sha256": "09e73cde15c89c1f8388a8fa06d86cadcab1b28a989f49f9b690920fc582850d",
+      "boyut_byte": 7142
+    },
+    {
+      "dosya": "uygulama\\secure_defaults_failsafe_engine.py",
+      "sha256": "be339957c030ece70caa5c401f2c0f65157a65d3d9303f2bf0452684b41487b6",
+      "boyut_byte": 23072
+    }
+  ]
+}

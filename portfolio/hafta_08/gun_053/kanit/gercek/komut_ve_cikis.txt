@@ -1,0 +1,11 @@
+================================================================================
+G053: YURUTULEN KOMUTLAR VE CIKIS KAYITLARI
+================================================================================
+
+[KOMUT 1]: python -m unittest portfolio/hafta_08/gun_053/tests/test_port_socket_state_analyzer.py -v
+[CIKIS 1]: Ran 14 tests in 0.001s -> OK (14/14 PASS)
+[DURUM 1]: Cikis Kodu = 0
+
+[KOMUT 2]: python scratch/generate_evidence_g053.py
+[CIKIS 2]: 8 soket analiz edildi, 0.0.0.0 Redis ifşası ve Metasploit Reverse Shell yakalandı, 8/8 negatif girdi engellendi.
+[DURUM 2]: Cikis Kodu = 0

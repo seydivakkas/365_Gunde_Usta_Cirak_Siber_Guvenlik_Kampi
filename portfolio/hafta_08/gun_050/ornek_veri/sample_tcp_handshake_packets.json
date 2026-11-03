@@ -1,0 +1,170 @@
+[
+  {
+    "paket_id": "TCP-PKT-01",
+    "aciklama": "Üçlü El Sıkışma 1. Adım: İstemci Bağlantı Başlatma İsteği (SYN)",
+    "kaynak_ip": "192.168.30.15",
+    "hedef_ip": "172.16.20.10",
+    "kaynak_port": 54321,
+    "hedef_port": 80,
+    "seq_no": 1000000,
+    "ack_no": 0,
+    "data_offset": 5,
+    "flags": {
+      "SYN": 1,
+      "ACK": 0,
+      "FIN": 0,
+      "RST": 0,
+      "PSH": 0,
+      "URG": 0
+    },
+    "window_size": 64240,
+    "payload_hex": ""
+  },
+  {
+    "paket_id": "TCP-PKT-02",
+    "aciklama": "Üçlü El Sıkışma 2. Adım: Sunucu Bağlantı Kabul ve Onay Yanıtı (SYN-ACK)",
+    "kaynak_ip": "172.16.20.10",
+    "hedef_ip": "192.168.30.15",
+    "kaynak_port": 80,
+    "hedef_port": 54321,
+    "seq_no": 5000000,
+    "ack_no": 1000001,
+    "data_offset": 5,
+    "flags": {
+      "SYN": 1,
+      "ACK": 1,
+      "FIN": 0,
+      "RST": 0,
+      "PSH": 0,
+      "URG": 0
+    },
+    "window_size": 65535,
+    "payload_hex": ""
+  },
+  {
+    "paket_id": "TCP-PKT-03",
+    "aciklama": "Üçlü El Sıkışma 3. Adım: İstemci Nihai Onay Yanıtı (ACK) - Oturum Kuruldu",
+    "kaynak_ip": "192.168.30.15",
+    "hedef_ip": "172.16.20.10",
+    "kaynak_port": 54321,
+    "hedef_port": 80,
+    "seq_no": 1000001,
+    "ack_no": 5000001,
+    "data_offset": 5,
+    "flags": {
+      "SYN": 0,
+      "ACK": 1,
+      "FIN": 0,
+      "RST": 0,
+      "PSH": 0,
+      "URG": 0
+    },
+    "window_size": 64240,
+    "payload_hex": ""
+  },
+  {
+    "paket_id": "TCP-PKT-04",
+    "aciklama": "Oturum Sonrası Veri İletimi: İstemci HTTP GET İsteği (PSH-ACK)",
+    "kaynak_ip": "192.168.30.15",
+    "hedef_ip": "172.16.20.10",
+    "kaynak_port": 54321,
+    "hedef_port": 80,
+    "seq_no": 1000001,
+    "ack_no": 5000001,
+    "data_offset": 5,
+    "flags": {
+      "SYN": 0,
+      "ACK": 1,
+      "FIN": 0,
+      "RST": 0,
+      "PSH": 1,
+      "URG": 0
+    },
+    "window_size": 64240,
+    "payload_hex": "474554202f20485454502f312e310d0a486f73743a207372762d7765620d0a0d0a"
+  },
+  {
+    "paket_id": "TCP-PKT-05",
+    "aciklama": "Güvenlik İhlali: SYN Flood DoS Girişimi (Sahte Kaynak IP)",
+    "kaynak_ip": "198.51.100.44",
+    "hedef_ip": "172.16.20.10",
+    "kaynak_port": 49152,
+    "hedef_port": 80,
+    "seq_no": 2222222,
+    "ack_no": 0,
+    "data_offset": 5,
+    "flags": {
+      "SYN": 1,
+      "ACK": 0,
+      "FIN": 0,
+      "RST": 0,
+      "PSH": 0,
+      "URG": 0
+    },
+    "window_size": 1024,
+    "payload_hex": ""
+  },
+  {
+    "paket_id": "TCP-PKT-06",
+    "aciklama": "Port Tarama Anomalisi: Gizli SYN Taraması (SYN-ACK Sonrası RST Gönderimi)",
+    "kaynak_ip": "192.168.30.99",
+    "hedef_ip": "172.16.20.10",
+    "kaynak_port": 55555,
+    "hedef_port": 443,
+    "seq_no": 3333333,
+    "ack_no": 0,
+    "data_offset": 5,
+    "flags": {
+      "SYN": 0,
+      "ACK": 0,
+      "FIN": 0,
+      "RST": 1,
+      "PSH": 0,
+      "URG": 0
+    },
+    "window_size": 0,
+    "payload_hex": ""
+  },
+  {
+    "paket_id": "TCP-PKT-07",
+    "aciklama": "Kural Dışı Bayrak Anomalisi: XMAS Port Taraması (FIN+PSH+URG)",
+    "kaynak_ip": "192.168.30.99",
+    "hedef_ip": "172.16.20.10",
+    "kaynak_port": 55556,
+    "hedef_port": 80,
+    "seq_no": 4444444,
+    "ack_no": 0,
+    "data_offset": 5,
+    "flags": {
+      "SYN": 0,
+      "ACK": 0,
+      "FIN": 1,
+      "RST": 0,
+      "PSH": 1,
+      "URG": 1
+    },
+    "window_size": 1024,
+    "payload_hex": ""
+  },
+  {
+    "paket_id": "TCP-PKT-08",
+    "aciklama": "Protokol Çelişkisi Anomalisi: SYN ve FIN Bayraklarının Aynı Anda Set Edilmesi",
+    "kaynak_ip": "192.168.30.99",
+    "hedef_ip": "172.16.20.10",
+    "kaynak_port": 55557,
+    "hedef_port": 80,
+    "seq_no": 5555555,
+    "ack_no": 0,
+    "data_offset": 5,
+    "flags": {
+      "SYN": 1,
+      "ACK": 0,
+      "FIN": 1,
+      "RST": 0,
+      "PSH": 0,
+      "URG": 0
+    },
+    "window_size": 1024,
+    "payload_hex": ""
+  }
+]

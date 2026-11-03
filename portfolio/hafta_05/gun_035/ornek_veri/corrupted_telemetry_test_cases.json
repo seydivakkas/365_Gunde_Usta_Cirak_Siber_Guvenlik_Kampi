@@ -1,0 +1,29 @@
+[
+  {
+    "description": "Corrupted Snapshot: Missing required top-level keys",
+    "invalid_data": {
+      "system_info": {}
+    }
+  },
+  {
+    "description": "Corrupted Snapshot: Processes is not a list",
+    "invalid_data": {
+      "system_info": { "hostname": "TEST" },
+      "processes": "not_a_valid_list_of_processes",
+      "services": []
+    }
+  },
+  {
+    "description": "Corrupted Snapshot: Services is not a list",
+    "invalid_data": {
+      "system_info": { "hostname": "TEST" },
+      "processes": [],
+      "services": 12345
+    }
+  },
+  {
+    "description": "Corrupted Snapshot: Null payload",
+    "invalid_data": null
+  },
+  "invalid_string_entry_not_dict"
+]

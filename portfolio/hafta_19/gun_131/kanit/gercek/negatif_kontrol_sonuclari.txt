@@ -1,0 +1,54 @@
+================================================================================
+GÜN 131: WINDOWS FIREWALL NEGATİF KONTROL VE ENGELLENEN SENARYOLAR RAPORU
+Tarih: 2026-11-02T10:21:52.984066
+================================================================================
+
+Senaryo [NEG-FW-01]: Public (Genel Ağ) Güvenlik Duvarı Profili Kapalı
+  - Beklenen CWE: CWE-693 | Beklenen MITRE: T1562.004
+  - Skor: 30.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-FW-02]: Domain (Etki Alanı) Güvenlik Duvarı Profili Kapalı
+  - Beklenen CWE: CWE-693 | Beklenen MITRE: T1562.004
+  - Skor: 30.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-FW-03]: Private Profilinde Varsayılan Gelen Eylem 'Allow'
+  - Beklenen CWE: CWE-284 | Beklenen MITRE: T1562.004
+  - Skor: 25.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-FW-04]: Tehlikeli Any-Any Gelen İzin Kuralı
+  - Beklenen CWE: CWE-284 | Beklenen MITRE: T1562.004
+  - Skor: 5.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-FW-05]: Public Profilde Uzak Masaüstü (RDP Port 3389) Açık
+  - Beklenen CWE: CWE-284 | Beklenen MITRE: T1021.001
+  - Skor: 10.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-FW-06]: Public Profilde SMB Dosya Paylaşımı (Port 445) Açık
+  - Beklenen CWE: CWE-284 | Beklenen MITRE: T1021.002
+  - Skor: 10.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-FW-07]: Public Profilde WinRM Yönetim Portu (Port 5985) Açık
+  - Beklenen CWE: CWE-284 | Beklenen MITRE: T1021.006
+  - Skor: 10.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-FW-08]: Domain Profilinde Engellenen Paket Kütüklemesi Kapalı
+  - Beklenen CWE: CWE-778 | Beklenen MITRE: T1562.004
+  - Skor: 40.0/100 | Duruş: KRİTİK_ZAFİYET (SAVUNMASIZ DURUMDA)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+Senaryo [NEG-FW-09]: Public Profilinde Kütük Dosya Boyutu Yetersiz (< 16 MB)
+  - Beklenen CWE: CWE-778 | Beklenen MITRE: T1562.004
+  - Skor: 55.0/100 | Duruş: ORTA_RİSK (İYİLEŞTİRME GEREKLİ)
+  - Sonuç: ENGEL_VE_TESPIT_BASARILI (PASS)
+
+--------------------------------------------------------------------------------
+Toplam Negatif Senaryo: 9 | Başarılı Tespit: 9 / 9
+Genel Negatif Kontrol Değerlendirmesi: TAM UYUMLU (PASS)
+--------------------------------------------------------------------------------

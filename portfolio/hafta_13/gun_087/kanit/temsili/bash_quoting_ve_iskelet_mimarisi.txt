@@ -1,0 +1,59 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+========================================================================================
+            BASH BETİK İSKELETİ VE GÜVENLİ QUOTING MİMARİSİ
+========================================================================================
+
++--------------------------------------------------------------------------------------+
+|                           DIŞ DÜNYA / KULLANICI GİRDİLERİ                             |
+|  - CLI Parametreleri ($1, $2, "$@")                                                  |
+|  - Boşluklu Dosya Adları ("Rapor 2026.pdf", "data 01.csv")                           |
+|  - Tehlikeli Karakterler (;, &&, |, `, $, -rf, *)                                    |
++--------------------------------------------------------------------------------------+
+                                          |
+                                          v
++--------------------------------------------------------------------------------------+
+|                     KATMAN 1: GÜVENLİ İSKELET VE KATI KİP                            |
+|   #!/usr/bin/env bash                                                                |
+|   set -euo pipefail                                                                  |
+|   -e: Hata anında dur (No silent failures)                                           |
+|   -u: Tanımsız değişken yasak (No unset variables)                                   |
+|   -o pipefail: Boru hattı hatalarını yutma                                           |
+|   IFS=$'\n\t': Boşlukla kelime bölünmesini (Word Splitting) önle                     |
+|   trap 'cleanup "$?" "$LINENO"' EXIT ERR                                             |
++--------------------------------------------------------------------------------------+
+                                          |
+                                          v
++--------------------------------------------------------------------------------------+
+|                     KATMAN 2: TIRNAK (QUOTING) DİSİPLİNİ                             |
+|                                                                                      |
+|   [-] TEHLİKELİ GENİŞLEME:                                                           |
+|       rm -rf $TARGET_DIR/*   --> Boşsa "rm -rf /*" felaketi! (CWE-732)               |
+|       eval $USER_INPUT       --> Komut Enjeksiyonu (CWE-78)                          |
+|       echo $*                --> Kelime bölünmesi ve globbing (CWE-88)               |
+|       for f in $(ls); do     --> Boşluklu dosyalarda patlama                         |
+|                                                                                      |
+|   [+] GÜVENLİ SAVUNMA:                                                               |
+|       rm -rf "${TARGET_DIR:?Hedef dizin boş olamaz}/*"                               |
+|       "${@}"                 --> Argüman sınırlarını koru                            |
+|       for f in *; do         --> Yerel kabuk globbingi                               |
++--------------------------------------------------------------------------------------+
+                                          |
+                                          v
++--------------------------------------------------------------------------------------+
+|                 KATMAN 3: PATHNAME EXPANSION & ARGÜMAN AYRIŞTIRMA                    |
+|                                                                                      |
+|   - Dosya adının "-" ile başlaması riski: touch -- "-rf"                             |
+|   - Çözüm: Komut bayrak sonlandırıcısı kullanımı:                                    |
+|       rm -- "${FILE}"                                                                |
+|       grep -- "${PATTERN}" "${FILE}"                                                 |
+|   - getopts ile katı parametre doğrulama ve beyaz liste regex denetimi               |
++--------------------------------------------------------------------------------------+
+                                          |
+                                          v
++--------------------------------------------------------------------------------------+
+|                   KATMAN 4: GÜVENLİ TEMİZLİK & ÇIKIŞ (TRAP)                          |
+|   - mktemp ile tahmin edilemeyen geçici dosyalar (/tmp/sec_XXXXXX)                   |
+|   - EXIT ve ERR sinyallerinde otomatik temizlik (Zero Footprint)                     |
+|   - Deterministik hata kodları ve SIEM denetim logu                                  |
++--------------------------------------------------------------------------------------+

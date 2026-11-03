@@ -1,0 +1,38 @@
+=== GÜN 124 BİRİM TEST RAPORU ===
+Tarih: 2026-11-03T09:36:03.221301
+
+test_01_store_and_retrieve_secret_success (test_secrets_management.TestSecretsManagementEngine.test_01_store_and_retrieve_secret_success)
+Yetkili rol ile zarflı şifrelenmiş secret başarıyla okunabilmelidir. ... ok
+test_02_unauthorized_role_access_denied (test_secrets_management.TestSecretsManagementEngine.test_02_unauthorized_role_access_denied)
+Yetkisiz rol erişmeye çalıştığında SecretAccessDeniedError fırlatılmalıdır (CWE-285). ... ok
+test_03_ttl_expiration_blocks_access (test_secrets_management.TestSecretsManagementEngine.test_03_ttl_expiration_blocks_access)
+Süresi (TTL) dolmuş secret çağrıldığında SecretExpiredError fırlatılmalıdır (CWE-613). ... ok
+test_04_revoked_secret_blocks_access (test_secrets_management.TestSecretsManagementEngine.test_04_revoked_secret_blocks_access)
+İptal edilmiş (revoked) bir gizli anahtara erişim engellenmelidir. ... ok
+test_05_secret_rotation_generates_new_version (test_secrets_management.TestSecretsManagementEngine.test_05_secret_rotation_generates_new_version)
+Secret rotasyonu yapıldığında versiyon artmalı ve yeni değer şifrelenmelidir. ... ok
+test_06_envelope_encryption_tamper_detection (test_secrets_management.TestSecretsManagementEngine.test_06_envelope_encryption_tamper_detection)
+Şifreli metin veya HMAC etiketi tahrif edildiğinde bütünlük hatası verilmelidir. ... ok
+test_07_shannon_entropy_calculation_accuracy (test_secrets_management.TestSecretsManagementEngine.test_07_shannon_entropy_calculation_accuracy)
+Shannon entropi hesaplaması düşük ve yüksek karmaşıklıktaki dizgileri ayırt etmelidir. ... ok
+test_08_scanner_detects_aws_key_pattern (test_secrets_management.TestSecretsManagementEngine.test_08_scanner_detects_aws_key_pattern)
+Statik tarayıcı AWS erişim anahtarı kalıbını (AKIA...) doğru tespit etmelidir. ... ok
+test_09_scanner_detects_github_token_pattern (test_secrets_management.TestSecretsManagementEngine.test_09_scanner_detects_github_token_pattern)
+Statik tarayıcı GitHub kişisel erişim belirtecini (ghp_...) yakalamalıdır. ... ok
+test_10_scanner_detects_stripe_key_pattern (test_secrets_management.TestSecretsManagementEngine.test_10_scanner_detects_stripe_key_pattern)
+Statik tarayıcı Stripe gizli anahtarını (sk_live_...) yakalamalıdır. ... ok
+test_11_scanner_detects_high_entropy_token (test_secrets_management.TestSecretsManagementEngine.test_11_scanner_detects_high_entropy_token)
+Statik tarayıcı yüksek entropili tırnak içi token'ı yakalamalıdır. ... ok
+test_12_clean_code_scan_yields_zero_findings (test_secrets_management.TestSecretsManagementEngine.test_12_clean_code_scan_yields_zero_findings)
+Gizli anahtar içermeyen temiz kodda hiçbir bulgu üretilmemelidir. ... ok
+test_13_log_masking_redacts_stored_secrets (test_secrets_management.TestSecretsManagementEngine.test_13_log_masking_redacts_stored_secrets)
+Log maskeleyici kasada saklanan aktif bir parolayı günlükten temizlemelidir (CWE-532). ... ok
+test_14_log_masking_redacts_regex_patterns (test_secrets_management.TestSecretsManagementEngine.test_14_log_masking_redacts_regex_patterns)
+Log maskeleyici metindeki AWS veya Stripe anahtar kalıplarını maskelemelidir. ... ok
+test_15_duplicate_secret_id_rejection (test_secrets_management.TestSecretsManagementEngine.test_15_duplicate_secret_id_rejection)
+Aynı ID'ye sahip iki farklı secret kaydedilmeye çalışıldığında DuplicateSecretError verilmelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 2.274s
+
+OK

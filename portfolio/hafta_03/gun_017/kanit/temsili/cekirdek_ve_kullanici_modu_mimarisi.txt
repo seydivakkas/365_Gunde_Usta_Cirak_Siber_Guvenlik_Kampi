@@ -1,0 +1,49 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+İşletim Sistemi Çekirdeği (Kernel Mode / Ring 0) ve Kullanıcı Kipi (User Mode / Ring 3) Mimarisi
+================================================================================
+
++------------------------------------------------------------------------------+
+|                   KULLANICI KİPİ (USER MODE - RING 3)                        |
+|                                                                              |
+|  [Standart Uygulamalar: Tarayıcı, Python, Ofis, Web Sunucusu]               |
+|  - Bellek Sınırı: 0x0000000000000000 - 0x00007FFFFFFFFFFF (Kullanıcı Alanı)  |
+|  - Ayrıcalık: Sınırlı CPU Komut Seti (CLI/STI, HLT, MOV CR3 YASAK)           |
+|  - Bütünlük Seviyeleri: Low, Medium (Standart), High (Yönetici)              |
+|                                                                              |
+|       +-------------------+              +-------------------+               |
+|       | Normal Kullanıcı  |              | Yönetici Süreci   |               |
+|       | Süreci (Medium)   |              | (High / Elevated) |               |
+|       +-------------------+              +-------------------+               |
++------------------------------------------------------------------------------+
+         |                                          |
+         |  Sistem Çağrısı (syscall / sysenter)      |  Sürücü Yükleme İsteği
+         v                                          v
+======================== GÜVENLİK SINIRI (BOUNDARY) ============================
+  [Sistem Çağrısı Girişi (MSR LSTAR / KiSystemCall64)]
+  [Doğrulama: ProbeForRead / ProbeForWrite / access_ok]
+  [Donanım İzolasyonu: SMEP (Execution Prev.) / SMAP (Access Prev.)]
+================================================================================
+         |                                          |
+         v                                          v
++------------------------------------------------------------------------------+
+|                 ÇEKİRDEK KİPİ (KERNEL MODE - RING 0)                         |
+|                                                                              |
+|  [İşletim Sistemi Çekirdeği: ntoskrnl.exe / vmlinuz]                         |
+|  [Aygıt Sürücüleri: Disk, Ağ, Ekran Kartı, Güvenlik Filtreleri]              |
+|  - Bellek Sınırı: 0xFFFF800000000000 - 0xFFFFFFFFFFFFFFFF (Çekirdek Alanı)  |
+|  - Ayrıcalık: Sınırsız Donanım Denetimi, Tüm Bellek, MSR ve CRx Kayıtçıları |
+|                                                                              |
+|  +---------------------------+   +---------------------------------------+   |
+|  | Çekirdek Havuzu (Pool)    |   | Savunmasız Sürücüler (BYOVD Tehdidi)   |   |
+|  | - Non-Paged Pool (DRAM)   |   | - RTCore64.sys, gdrv.sys              |   |
+|  | - Paged Pool (Takaslanır) |   | [Saldırgan Yönetici Hakkıyla Yükler;  |   |
+|  | - Sayfa Tabloları (CR3)   |   |  Çekirdek Belleğini Keyfi Ezer!]      |   |
+|  +---------------------------+   +---------------------------------------+   |
+|                                                                              |
+|  SAVUNMA MEKANİZMALARI:                                                      |
+|  - DSE (Driver Signature Enforcement): Yalnızca geçerli imzalı sürücüler     |
+|  - HVCI / VBS (Hipervizör Korumalı Bellek Bütünlüğü): Kod sayfaları kilitli  |
+|  - Microsoft Recommended Driver Blocklist: Bilinen BYOVD sürücüleri engelli  |
+|  - KASLR (Kernel ASLR) & KPTI (Kernel Page Table Isolation)                  |
++------------------------------------------------------------------------------+

@@ -1,0 +1,71 @@
+===============================================================================
+GÜN 103: NEGATİF KONTROL VE ZAFİYET ENGELLEME KANITLARI
+Tarih/Saat: 2026-11-02 02:13:21
+Toplam Negatif Senaryo: 9
+Standart: NIST FIPS 197 & NIST SP 800-38A
+===============================================================================
+
+[NEG_01_INSECURE_ECB_MODE_USAGE]
+  Tanım         : Güvensiz ECB modunun katı güvenlik modunda reddedilmesi (Desen Sızıntısı)
+  Güvenlik Eşiği: CWE-327: Use of a Broken or Risky Cryptographic Algorithm
+  Beklenen Hata : InsecureCipherModeError
+  Yakalana Hata : InsecureCipherModeError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_02_INSUFFICIENT_KEY_LENGTH]
+  Tanım         : 128-bit (16 bayt) sınırının altında kalan yetersiz anahtar uzunluğu (Örn: 8 bayt)
+  Güvenlik Eşiği: CWE-326: Inadequate Encryption Strength
+  Beklenen Hata : InvalidKeyLengthError
+  Yakalana Hata : InvalidKeyLengthError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_03_INVALID_KEY_LENGTH]
+  Tanım         : AES standartlarına uymayan geçersiz anahtar uzunluğu (Örn: 20 bayt)
+  Güvenlik Eşiği: CWE-326: Inadequate Encryption Strength
+  Beklenen Hata : InvalidKeyLengthError
+  Yakalana Hata : InvalidKeyLengthError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_04_PREDICTABLE_STATIC_IV]
+  Tanım         : CBC modunda statik, ardışık veya tamamı sıfırdan oluşan tahmin edilebilir IV kullanımı
+  Güvenlik Eşiği: CWE-329: Generation of Predictable IV with CBC Mode
+  Beklenen Hata : PredictableIVError
+  Yakalana Hata : PredictableIVError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_05_INVALID_IV_LENGTH]
+  Tanım         : CBC modunda 16 bayt (128-bit) blok boyutundan farklı IV uzunluğu iletilmesi
+  Güvenlik Eşiği: CWE-329: Not Using a Proper IV with CBC Mode
+  Beklenen Hata : InvalidIVLengthError
+  Yakalana Hata : InvalidIVLengthError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_06_PKCS7_CORRUPT_PADDING]
+  Tanım         : Şifre çözme aşamasında bozuk, manipüle edilmiş veya geçersiz PKCS#7 dolgusu
+  Güvenlik Eşiği: CWE-347: Improper Verification of Cryptographic Signature
+  Beklenen Hata : InvalidPaddingError
+  Yakalana Hata : InvalidPaddingError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_07_CIPHERTEXT_TAMPERING_AEAD]
+  Tanım         : Şifreli metnin iletim sırasında kurcalanması veya kimlik doğrulama etiketi uyuşmazlığı
+  Güvenlik Eşiği: CWE-353: Missing Support for Integrity Check
+  Beklenen Hata : AuthenticationTagMismatchError
+  Yakalana Hata : AuthenticationTagMismatchError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_08_OVERSIZED_PLAINTEXT_DOS]
+  Tanım         : 1 MB tavanını aşan devasa düz metin girdisi ile bellek tüketimi saldırısı (DoS)
+  Güvenlik Eşiği: CWE-400: Uncontrolled Resource Consumption
+  Beklenen Hata : PayloadLimitExceededError
+  Yakalana Hata : PayloadLimitExceededError
+  Sonuç         : PASS (ENGELLENDİ)
+
+[NEG_09_TYPE_CONFUSION]
+  Tanım         : Anahtar veya metin yerine tamsayı, liste veya geçersiz veri tipi iletilmesi
+  Güvenlik Eşiği: CWE-843: Access of Resource Using Incompatible Type
+  Beklenen Hata : TypeValidationError
+  Yakalana Hata : TypeValidationError
+  Sonuç         : PASS (ENGELLENDİ)
+
+ÖZET: 9/9 Negatif Kontrol Başarıyla Doğrulandı.

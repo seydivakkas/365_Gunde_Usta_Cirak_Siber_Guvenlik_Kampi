@@ -1,0 +1,64 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+================================================================================
+G085: POWERSHELL NESNE BORU HATTI (OBJECT PIPELINE) GÜVENLİK MİMARİSİ
+================================================================================
+
+Bu şema, Unix bayt/metin boru hattı ile PowerShell .NET Nesne Boru Hattı arasındaki
+farkı, nesne akışının adli bilişim ve tehdit avcılığında (threat hunting) nasıl
+kullanıldığını ve boru hattı güvenlik zafiyetlerini modeller.
+
++-------------------------------------------------------------------------------+
+|                       UNIX vs. POWERSHELL BORU HATTI FARKI                   |
+|                                                                               |
+|  UNIX (Metin / Bayt Akışı):                                                   |
+|  $ ps aux | grep "mimikatz" | awk '{print $2}'                                |
+|  [ Ham Metin ] ---> [ Düzensiz Boşluklar ] ---> [ Kırılgan Regex Ayrıştırma ] |
+|                                                                               |
+|  POWERSHELL (Yapılandırılmış .NET Nesne Akışı):                               |
+|  PS> Get-Process | Where-Object { $_.CPU -gt 10 } | Select-Object -Property Id|
+|  [ System.Diagnostics.Process Nesnesi ] ===> Tip Güvenli Özellikler ($_.CPU)  |
++---------------------------------------+---------------------------------------+
+                                        |
+                                        v
++-------------------------------------------------------------------------------+
+| 1. STATİK BETİK VE BORU HATTI DENETİMİ (PipelineSyntaxAuditor)                |
+|    - Null-Byte Denetimi: 0x00 (\x00) Enjeksiyonunun Engellenmesi (CWE-158)    |
+|    - Sözdizimi Doğrulama: Boş pipe (| |) ve havada kalan pipe denetimi (CWE-20)|
+|    - IEX Tespiti: ... | Invoke-Expression veya ... | iex Engelleme (CWE-95)   |
+|    - Download Cradle: WebClient.DownloadString(...) | iex Tespiti (CWE-829)   |
+|    - Obfuscated Base64: -EncodedCommand veya FromBase64String Tespiti (CWE-116)|
+|    - Unquoted Path: C:\Program Files\Insecure\... Boşluklu Yol Tespiti (CWE-428)|
++---------------------------------------+---------------------------------------+
+                                        |
+                                        v
++-------------------------------------------------------------------------------+
+| 2. BORU HATTI AKIŞ KONTROLÜ VE DoS KORUMASI                                   |
+|    - Maksimum Nesne Sınırı: MAX_PIPELINE_OBJECTS = 5000 (CWE-400)             |
+|    - Bellek Tükenmesi (Pipeline Bomb DoS) Koruması                            |
++---------------------------------------+---------------------------------------+
+                                        |
+                                        v
++-------------------------------------------------------------------------------+
+| 3. TEHDİT AVCILIĞI VE ADLİ KORELASYON MOTORU                                  |
+|    +--------------------------------------------------------------------+     |
+|    | A. Süreç Nesnesi Analizi (ProcessPipelineHunter)                   |     |
+|    |    - Bilinen Zararlılar: mimikatz, rubeus, chisel, nc              |     |
+|    |    - LOLBins Anormal Ebeveyn-Çocuk: WINWORD.EXE -> powershell.exe  |     |
+|    |    - İmzasız Dosya Konumu: \Users\Public, \Temp, \AppData          |     |
+|    +--------------------------------------------------------------------+     |
+|    | B. Ağ Soket Analizi (NetworkPipelineCorrelator)                    |     |
+|    |    - IP Adresi Doğrulaması (RFC Standartları / CWE-20)             |     |
+|    |    - Şüpheli Port Dinleme: 4444 (Metasploit), 1337, 8888, 9001     |     |
+|    |    - Soket -> Süreç PID Eşleştirmesi                               |     |
+|    +--------------------------------------------------------------------+     |
++---------------------------------------+---------------------------------------+
+                                        |
+                                        v
++-------------------------------------------------------------------------------+
+| 4. ADLİ RAPORLAMA VE ÇIKTI (PipelineAuditReport)                              |
+|    - Toplam İşlenen: 5 Nesne | Toplam Tehdit: 2                               |
+|    - Şüpheli Süreç: mimikatz.exe (PID 9912)                                   |
+|    - Şüpheli Ağ Soketi: 0.0.0.0:4444 (Listen, PID 9912)                       |
+|    - Boru Hattı Durumu: TEHDİT TESPİT EDİLDİ (pipeline_safe = False)          |
++-------------------------------------------------------------------------------+

@@ -1,0 +1,100 @@
+{
+  "aciklama": "Gün 116 JWT Yapısı ve Doğrulama 9 Adet Negatif Kontrol Senaryosu",
+  "versiyon": "1.0.0",
+  "senaryolar": [
+    {
+      "id": "NEG_01",
+      "baslik": "'alg: none' İmzasız Belirteç Enjeksiyonu Saldırısı",
+      "hedef_zafiyet": "CWE-347: Improper Verification of Cryptographic Signature",
+      "beklenen_istisna": "AlgorithmNoneAttackError",
+      "girdi": {
+        "header": {"typ": "JWT", "alg": "none"},
+        "payload": {"sub": "attacker", "rol": "super_admin", "exp": 9999999999}
+      },
+      "beklenen_davranis": "Başlıkta alg: none tespit edildiğinde doğrulama anında AlgorithmNoneAttackError ile kesilmelidir."
+    },
+    {
+      "id": "NEG_02",
+      "baslik": "Algoritma Karışıklığı (RS256 Bekleyen Sunucuya HS256 Gönderilmesi)",
+      "hedef_zafiyet": "CWE-327: Use of a Broken or Risky Cryptographic Algorithm",
+      "beklenen_istisna": "AlgorithmConfusionError",
+      "girdi": {
+        "algoritma": "HS256",
+        "beklenen_politika": ["RS256"]
+      },
+      "beklenen_davranis": "Politika beyaz listesinde olmayan algoritma sunulduğunda AlgorithmConfusionError fırlatılmalıdır."
+    },
+    {
+      "id": "NEG_03",
+      "baslik": "Tahrif Edilmiş Payload ve Geçersiz Dijital İmza",
+      "hedef_zafiyet": "CWE-347: Improper Verification of Cryptographic Signature",
+      "beklenen_istisna": "InvalidSignatureError",
+      "girdi": {
+        "rol_degisikligi": "admin",
+        "imza_guncellendi_mi": false
+      },
+      "beklenen_davranis": "Payload verisi değiştirilmiş fakat imza eski kalmış token InvalidSignatureError ile reddedilmelidir."
+    },
+    {
+      "id": "NEG_04",
+      "baslik": "Hatalı Simetrik Gizli Anahtarla Doğrulama Teşebbüsü",
+      "hedef_zafiyet": "CWE-347: Improper Verification of Cryptographic Signature",
+      "beklenen_istisna": "InvalidSignatureError",
+      "girdi": {
+        "sahte_anahtar": "YanlisVeUydurmaGizliAnahtar999!"
+      },
+      "beklenen_davranis": "Yanlış anahtarla hesaplanan HMAC uyuşmayacağı için InvalidSignatureError verilmelidir."
+    },
+    {
+      "id": "NEG_05",
+      "baslik": "Geçerlilik Süresi Dolan (Expired) Belirteç Sunulması",
+      "hedef_zafiyet": "CWE-298: Improper Validation of Certificate Expiration",
+      "beklenen_istisna": "TokenExpiredError",
+      "girdi": {
+        "ttl_saniye": 10,
+        "gecen_sure_saniye": 30
+      },
+      "beklenen_davranis": "Leeway toleransını aşan süresi dolmuş token TokenExpiredError ile engellenmelidir."
+    },
+    {
+      "id": "NEG_06",
+      "baslik": "Geçerlilik Tarihi Henüz Gelmemiş (nbf) Belirteç",
+      "hedef_zafiyet": "CWE-298: Improper Validation of Certificate Expiration",
+      "beklenen_istisna": "TokenNotYetValidError",
+      "girdi": {
+        "nbf_ofset_saniye": 120
+      },
+      "beklenen_davranis": "Gelecek tarihli nbf claim'ine sahip token TokenNotYetValidError fırlatmalıdır."
+    },
+    {
+      "id": "NEG_07",
+      "baslik": "Bilinmeyen veya Sahte Kimlik Sağlayıcı (Issuer Uyuşmazlığı)",
+      "hedef_zafiyet": "CWE-287: Improper Authentication",
+      "beklenen_istisna": "InvalidIssuerError",
+      "girdi": {
+        "sahte_issuer": "https://attacker-fake-idp.com"
+      },
+      "beklenen_davranis": "Politikadaki beklenen iss ile uyuşmayan token InvalidIssuerError ile reddedilmelidir."
+    },
+    {
+      "id": "NEG_08",
+      "baslik": "Farklı Servis İçin Üretilmiş Belirteç (Audience Uyuşmazlığı)",
+      "hedef_zafiyet": "CWE-287: Improper Authentication",
+      "beklenen_istisna": "InvalidAudienceError",
+      "girdi": {
+        "sahte_audience": "farkli_ve_yetkisiz_api_servisi"
+      },
+      "beklenen_davranis": "Servise ait olmayan aud değerine sahip token InvalidAudienceError ile reddedilmelidir."
+    },
+    {
+      "id": "NEG_09",
+      "baslik": "İptal Edilmiş (Kara Listedeki jti) Belirtecin Tekrar Sunulması",
+      "hedef_zafiyet": "CWE-294: Authentication Bypass by Capture-replay",
+      "beklenen_istisna": "TokenRevokedError",
+      "girdi": {
+        "jti": "jti_iptal_edilen_belirtec_999"
+      },
+      "beklenen_davranis": "Kara listede kayıtlı jti ile gelen istek TokenRevokedError ile anında kesilmelidir."
+    }
+  ]
+}

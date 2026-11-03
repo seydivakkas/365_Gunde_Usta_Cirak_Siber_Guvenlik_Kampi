@@ -1,0 +1,41 @@
+================================================================================
+GERÇEK KANIT — UNITTEST TEST SONUÇLARI
+Tarih: 2026-10-27
+Aşama 02: Sistem, Bellek ve Düşük Seviyeli Güvenlik
+Hafta 03, Gün 016: CPU, RAM ve Depolama Ayrımı
+Komut: python -m unittest portfolio/hafta_03/gun_016/tests/test_system_hardware_boundary_auditor.py -v
+================================================================================
+
+test_01_init_ve_katman_hiyerarsisi (portfolio.hafta_03.gun_016.tests.test_system_hardware_boundary_auditor.TestSystemHardwareBoundaryAuditor.test_01_init_ve_katman_hiyerarsisi)
+Test 01: Sınıf başlatma ve donanım katman hiyerarşisi doğrulaması. ... ok
+test_02_canli_donanim_envanteri_cpu_katmani (portfolio.hafta_03.gun_016.tests.test_system_hardware_boundary_auditor.TestSystemHardwareBoundaryAuditor.test_02_canli_donanim_envanteri_cpu_katmani)
+Test 02: Canlı sistemden CPU katmanı metriklerinin toplanması doğrulaması. ... ok
+test_03_canli_donanim_envanteri_ram_katmani (portfolio.hafta_03.gun_016.tests.test_system_hardware_boundary_auditor.TestSystemHardwareBoundaryAuditor.test_03_canli_donanim_envanteri_ram_katmani)
+Test 03: Canlı sistemden RAM katmanı bellek adres genişliğinin sorgulanması. ... ok
+test_04_canli_donanim_envanteri_depolama_katmani (portfolio.hafta_03.gun_016.tests.test_system_hardware_boundary_auditor.TestSystemHardwareBoundaryAuditor.test_04_canli_donanim_envanteri_depolama_katmani)
+Test 04: Canlı sistem depolama katmanı alan boyutlarının pozitif değer kontrolü. ... ok
+test_05_dosya_yukleme_gecerli_json (portfolio.hafta_03.gun_016.tests.test_system_hardware_boundary_auditor.TestSystemHardwareBoundaryAuditor.test_05_dosya_yukleme_gecerli_json)
+Test 05: Geçerli bir JSON dosyasının UTF-8 ile hatasız yüklenmesi. ... ok
+test_06_dosya_yukleme_bulunamadi_negatif_kontrol (portfolio.hafta_03.gun_016.tests.test_system_hardware_boundary_auditor.TestSystemHardwareBoundaryAuditor.test_06_dosya_yukleme_bulunamadi_negatif_kontrol)
+Test 06: Var olmayan bir dosya istendiğinde FileNotFoundError fırlatılması (Negatif Test). ... ok
+test_07_ram_nesnesi_guvensiz_kalinti_degerlendirmesi (portfolio.hafta_03.gun_016.tests.test_system_hardware_boundary_auditor.TestSystemHardwareBoundaryAuditor.test_07_ram_nesnesi_guvensiz_kalinti_degerlendirmesi)
+Test 07: RAM'de açık metin tutulan ve sıfırlanmayan nesnede KRİTİK risk tespiti. ... ok
+test_08_ram_nesnesi_guvenli_sifirlama_degerlendirmesi (portfolio.hafta_03.gun_016.tests.test_system_hardware_boundary_auditor.TestSystemHardwareBoundaryAuditor.test_08_ram_nesnesi_guvenli_sifirlama_degerlendirmesi)
+Test 08: Güvenli sıfırlama (SecureZeroMemory) ve mlock uygulanan nesnede DÜŞÜK risk tespiti. ... ok
+test_09_depolama_nesnesi_silinmeyen_kalinti_degerlendirmesi (portfolio.hafta_03.gun_016.tests.test_system_hardware_boundary_auditor.TestSystemHardwareBoundaryAuditor.test_09_depolama_nesnesi_silinmeyen_kalinti_degerlendirmesi)
+Test 09: Depolamada güvenli silinmeyen (shred edilmeyen) dosyada kalıntı riski tespiti. ... ok
+test_10_cpu_yazmac_nesnesi_degerlendirmesi (portfolio.hafta_03.gun_016.tests.test_system_hardware_boundary_auditor.TestSystemHardwareBoundaryAuditor.test_10_cpu_yazmac_nesnesi_degerlendirmesi)
+Test 10: CPU yazmacında tutulan hassas verinin kaza/çökme dökümü risk kontrolü. ... ok
+test_11_donanim_taban_cizgisi_denetimi_ihlal_tespiti (portfolio.hafta_03.gun_016.tests.test_system_hardware_boundary_auditor.TestSystemHardwareBoundaryAuditor.test_11_donanim_taban_cizgisi_denetimi_ihlal_tespiti)
+Test 11: Donanım güvenlik taban çizgisi uyumluluk denetiminin ihlalleri yakalaması. ... ok
+test_12_bellek_yasam_dongusu_guvenli_sifirlama_simulasyonu (portfolio.hafta_03.gun_016.tests.test_system_hardware_boundary_auditor.TestSystemHardwareBoundaryAuditor.test_12_bellek_yasam_dongusu_guvenli_sifirlama_simulasyonu)
+Test 12: Güvenli bellek sıfırlama (SecureZeroMemory) simülasyonunda sıfır kalıntı testi. ... ok
+test_13_bellek_yasam_dongusu_guvensiz_birakma_kalinti_simulasyonu (portfolio.hafta_03.gun_016.tests.test_system_hardware_boundary_auditor.TestSystemHardwareBoundaryAuditor.test_13_bellek_yasam_dongusu_guvensiz_birakma_kalinti_simulasyonu)
+Test 13: Güvensiz serbest bırakmada (plain free) verinin bellekte aynen kalması testi (Negatif Kontrol). ... ok
+test_14_cli_alt_surec_ve_entegrasyon_dogrulamasi (portfolio.hafta_03.gun_016.tests.test_system_hardware_boundary_auditor.TestSystemHardwareBoundaryAuditor.test_14_cli_alt_surec_ve_entegrasyon_dogrulamasi)
+Test 14: Komut satırı (CLI) aracının harici alt süreç (subprocess) olarak yürütülmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.242s
+
+OK (14/14 PASS — %100 Başarı)

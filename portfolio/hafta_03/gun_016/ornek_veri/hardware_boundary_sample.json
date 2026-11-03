@@ -1,0 +1,119 @@
+{
+  "aciklama": "GÜN 016 - CPU, RAM ve Depolama Donanım Sınırları ve Veri Kalıntısı Güvenlik Örnek Veri Seti",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "surum": "1.0.0",
+  "tarih": "2026-10-27",
+  "donanim_bilesenleri": {
+    "cpu": {
+      "mimari": "x86_64",
+      "cekirdek_sayisi": 8,
+      "l1_onbellek_kb": 256,
+      "l2_onbellek_kb": 2048,
+      "l3_onbellek_mb": 16,
+      "halka_seviyesi": "Ring 3 (Kullanıcı Kipi) / Ring 0 (Çekirdek Kipi)",
+      "koruma_ozellikleri": {
+        "sme_smap_destegi": true,
+        "spec_ctrl_meltdown_spectre_yamalari": true,
+        "nx_dep_destegi": true
+      }
+    },
+    "ram": {
+      "toplam_boyut_mb": 16384,
+      "kullanilan_boyut_mb": 8420,
+      "ucuculuk_tipi": "Volatile (Uçucu - Güç kesildiğinde içerik kaybolur)",
+      "aslr_etkin": true,
+      "dep_nx_etkin": true,
+      "bellek_bolgeleri": [
+        {
+          "bolge_adi": "Stack (Yığıt)",
+          "adres_araligi": "0x7ffd0000 - 0x7ffdffff",
+          "erisim": "RW-",
+          "veri_tipi": "Yerel değişkenler, fonksiyon dönüş adresleri, çağrı çerçeveleri"
+        },
+        {
+          "bolge_adi": "Heap (Öbek)",
+          "adres_araligi": "0x55a00000 - 0x55afffff",
+          "erisim": "RW-",
+          "veri_tipi": "Dinamik ayrılan nesneler, kullanıcı oturum belirteçleri"
+        },
+        {
+          "bolge_adi": "Text / Code",
+          "adres_araligi": "0x40000000 - 0x40050000",
+          "erisim": "R-X",
+          "veri_tipi": "Yürütülebilir makine kodları"
+        },
+        {
+          "bolge_adi": "Data / BSS",
+          "adres_araligi": "0x40060000 - 0x40070000",
+          "erisim": "RW-",
+          "veri_tipi": "Başlatılmış ve başlatılmamış genel / statik değişkenler"
+        }
+      ]
+    },
+    "depolama": {
+      "surucu_tipi": "NVMe SSD",
+      "dosya_sistemi": "NTFS",
+      "toplam_kapasite_gb": 512,
+      "kullanilan_alan_gb": 240,
+      "ucuculuk_tipi": "Non-Volatile (Kalıcı - Güç kesilse de veri saklanır)",
+      "tam_disk_sifreleme": true,
+      "sifreleme_mekanizmasi": "BitLocker XTS-AES-256",
+      "sayfalama_ve_takas": {
+        "pagefile_sys_mevcut": true,
+        "pagefile_boyut_mb": 4096,
+        "kapanista_pagefile_temizleme": false,
+        "hiberfil_sys_mevcut": true,
+        "hiberfil_sifreli": false
+      }
+    }
+  },
+  "islem_ve_bellek_nesneleri": [
+    {
+      "nesne_id": "MEM-OBJ-001",
+      "aciklama": "Açık metin veritabanı bağlantı parolası",
+      "mevcut_katman": "RAM",
+      "bellek_bolgesi": "Heap",
+      "boyut_byte": 32,
+      "sifrelenmis": false,
+      "mlock_kullanildi": false,
+      "temizleme_yontemi": "plain_free",
+      "guvenli_sifirlama_yapildi": false,
+      "sayfalamaya_dusme_riski": "YUKSEK",
+      "risk_puani": 9.2
+    },
+    {
+      "nesne_id": "MEM-OBJ-002",
+      "aciklama": "Kriptografik oturum anahtarı (AES-GCM)",
+      "mevcut_katman": "RAM",
+      "bellek_bolgesi": "Heap",
+      "boyut_byte": 64,
+      "sifrelenmis": true,
+      "mlock_kullanildi": true,
+      "temizleme_yontemi": "secure_zero_memory",
+      "guvenli_sifirlama_yapildi": true,
+      "sayfalamaya_dusme_riski": "YOK",
+      "risk_puani": 1.5
+    },
+    {
+      "nesne_id": "MEM-OBJ-003",
+      "aciklama": "Geçici kimlik doğrulama belirteci (JWT)",
+      "mevcut_katman": "Depolama",
+      "depolama_yolu": "C:\\Windows\\Temp\\session_token.tmp",
+      "boyut_byte": 512,
+      "sifrelenmis": false,
+      "dosya_guvenli_silindi": false,
+      "unallocated_alanda_kalinti_riski": "YUKSEK",
+      "risk_puani": 8.5
+    },
+    {
+      "nesne_id": "MEM-OBJ-004",
+      "aciklama": "CPU Yazmacında işlenen işlemci pin doğrulaması",
+      "mevcut_katman": "CPU",
+      "yazmac_adi": "RAX",
+      "boyut_byte": 8,
+      "sifrelenmis": false,
+      "core_dump_dahil_olma_riski": "ORTA",
+      "risk_puani": 5.0
+    }
+  ]
+}

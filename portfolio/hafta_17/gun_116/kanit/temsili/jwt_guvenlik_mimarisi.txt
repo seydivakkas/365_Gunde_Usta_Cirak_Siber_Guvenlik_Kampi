@@ -1,0 +1,42 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
++------------------------------------------------------------------------------+
+|            GÜN 116: JSON WEB TOKEN (JWT) YAPISI VE DOĞRULAMA MİMARİSİ        |
+|               ÜÇ PARÇALI YAPI VE KATI GÜVENLİK FİLTRE ZİNCİRİ                |
++------------------------------------------------------------------------------+
+
+    [Header Base64URL]  .  [Payload Base64URL]  .  [Signature Base64URL]
+  {"typ":"JWT","alg":"HS256"} {"sub":"user","exp":...} HMAC-SHA256(Header.Payload)
+            |                       |                       |
+            +-----------------------+-----------------------+
+                                    |
+                                    v
+     +--------------------------------------------------------------+
+     |   KATI DOĞRULAMA FİLTRE ZİNCİRİ (JWT VALIDATOR PIPELINE)     |
+     +--------------------------------------------------------------+
+     | 1. PARÇA SAYISI DENETİMİ: Tam olarak 3 parça olmalıdır.      |
+     | 2. 'alg: none' KONTROLÜ: alg=='none' ise ANINDA İMHA!       |
+     | 3. ALGORİTMA BEYAZ LİSTESİ: İzin verilmeyen alg reddedilir.  |
+     | 4. KRİPTOGRAFİK İMZA DOĞRULAMA: secrets.compare_digest       |
+     | 5. ZAMAN DENETİMLERİ:                                        |
+     |    - now <= exp + leeway (Süresi dolmuş mu?)                 |
+     |    - now >= nbf - leeway (Henüz geçerli değil mi?)           |
+     | 6. KİMLİK SINIRLARI:                                         |
+     |    - iss == expected_issuer (Üretici doğrulaması)            |
+     |    - aud == expected_audience (Hedef kitle doğrulaması)      |
+     | 7. REPLAY & İPTAL KONTROLÜ:                                  |
+     |    - jti in revocation_blacklist? (İptal edilmiş mi?)        |
+     +------------------------------+-------------------------------+
+                                    |
+                        [Doğrulama: BAŞARILI]
+                                    |
+                                    v
+     +--------------------------------------------------------------+
+     |   GÜVENİLİR KULLANICI BAĞLAMI (AUTHENTICATED CLAIMS)          |
+     +--------------------------------------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

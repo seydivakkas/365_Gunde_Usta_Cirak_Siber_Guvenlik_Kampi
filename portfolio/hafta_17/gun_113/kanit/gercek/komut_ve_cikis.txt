@@ -1,0 +1,23 @@
+=== GÜN 113: IAM CLI ÇALIŞTIRMA KOMUTLARI VE ÇIKTILARI ===
+
+1. Kullanıcı Girişi (Alice - Doğru Parola):
+$ python uygulama/iam_cli.py giris --kullanici alice --parola AliceGizliParola!2026
+[BAŞARILI] Kimlik Doğrulama Geçerli!
+Kullanıcı: alice | Kiracı: TENANT_A | Roller: ['analyst']
+Oturum Belirteci: 9b2F0a...kE9
+Bitiş Zamanı: 2026-11-02T06:00:00+00:00
+
+2. Korumalı Kaynağa Yetkili Erişim (Alice Kendi Raporunu Okuyor):
+$ python uygulama/iam_cli.py eris --belirtec 9b2F0a...kE9 --kaynak finans_raporu_2026 --eylem read
+[ERİŞİM ONAYLANDI] Erişim onaylandı: Özne 'alice', 'READ_DOCUMENT' izni ve nesne sahipliği doğrulandı.
+
+3. IDOR Teşebbüsü (Bob Alice'in Raporunu Okumaya Çalışıyor):
+$ python uygulama/iam_cli.py eris --belirtec BobToken123 --kaynak finans_raporu_2026 --eylem read
+[ERİŞİM ENGELLENDİ] [CWE-639] IDOR_VIOLATION: Nesne düzeyinde erişim reddedildi: Kaynak sahibi değilsiniz.
+
+4. Denetim Günlüğü Dökümü:
+$ python uygulama/iam_cli.py denetim
+--- Toplam 3 Adet Denetim Kaydı Bulundu ---
+[2026-11-02T05:10:00Z] AUTHN_SUCCESS - Özne: alice -> Hedef: LOGIN | Sonuç: SUCCESS
+[2026-11-02T05:10:02Z] AUTHZ_ALLOWED - Özne: alice -> Hedef: finans_raporu_2026 | Sonuç: SUCCESS
+[2026-11-02T05:10:05Z] AUTHZ_DENIED - Özne: bob -> Hedef: finans_raporu_2026 | Sonuç: FAILURE | Güvenlik: CWE-639

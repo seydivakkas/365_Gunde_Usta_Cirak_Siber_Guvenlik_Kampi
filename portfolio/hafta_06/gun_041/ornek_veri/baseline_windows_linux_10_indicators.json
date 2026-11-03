@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "project": "Mini Proje 5 - Windows ve Linux Karşılaştırmalı Güvenlik Raporu",
+    "version": "1.0",
+    "assessment_date": "2026-10-27",
+    "assessor": "Usta Güvenlik Denetçisi & Çırak",
+    "scope": "10 Göstergeli Sistem Güvenlik Envanteri ve Karşılaştırmalı Analiz",
+    "target_systems": {
+      "windows": "Microsoft Windows Server 2022 Datacenter",
+      "linux": "Ubuntu Server 22.04 LTS"
+    }
+  },
+  "indicators": [
+    {
+      "indicator_id": "IND-01",
+      "name": "Kimlik Doğrulama ve Parola Politikası",
+      "category": "Identity & Access",
+      "windows": {
+        "status": "COMPLIANT",
+        "score": 9,
+        "mechanism": "Active Directory Domain Services, Kerberos v5, LAPS v2, GPO Parola Karmaşıklık İlkesi",
+        "finding": "LAPS ile yerel yönetici parolaları dinamik ve benzersiz; Kerberos bilet ömürleri sınırlandırılmış."
+      },
+      "linux": {
+        "status": "COMPLIANT",
+        "score": 9,
+        "mechanism": "PAM (Pluggable Authentication Modules), pam_pwquality, Ed25519 SSH Public Key",
+        "finding": "Parola ile SSH oturumu tamamen kapalı; pam_faillock ile 5 başarısız denemede kilitlenme aktif."
+      }
+    },
+    {
+      "indicator_id": "IND-02",
+      "name": "Erişim Kontrolü ve Yetkilendirme Modeli",
+      "category": "Authorization & DAC/MAC",
+      "windows": {
+        "status": "COMPLIANT",
+        "score": 8,
+        "mechanism": "NTFS DACL / SACL, Windows Güvenlik Tanımlayıcıları (Security Identifiers - SID)",
+        "finding": "Gelişmiş DACL izinleri tanımlı; kalıtım (inheritance) kritik dizinlerde kontrollü kırılmış."
+      },
+      "linux": {
+        "status": "COMPLIANT",
+        "score": 9,
+        "mechanism": "POSIX Standart İzinleri (rwx), POSIX ACL, AppArmor Zorunlu Erişim Kontrolü (MAC)",
+        "finding": "AppArmor varsayılan olarak zorlayıcı (enforce) kipte; kritik servislere özel profiller bağlı."
+      }
+    },
+    {
+      "indicator_id": "IND-03",
+      "name": "Ayrıcalık Yönetimi ve Yetki Yükseltme",
+      "category": "Privilege Elevation",
+      "windows": {
+        "status": "PARTIAL",
+        "score": 7,
+        "mechanism": "Kullanıcı Hesabı Denetimi (UAC), Belirteç Ayrıcalıkları (SeDebugPrivilege vb.)",
+        "finding": "UAC en yüksek seviyede; ancak yerel yöneticiler grubu yetkileri geniş saldırı yüzeyine sahip."
+      },
+      "linux": {
+        "status": "COMPLIANT",
+        "score": 9,
+        "mechanism": "Sudoers Granüler Kuralları (/etc/sudoers.d/), Polkit İlke Mekanizması, No-Root Login",
+        "finding": "Doğrudan root girişi yasak; sudoers dosyasında komut bazlı kısıtlama ve parola zorunluluğu var."
+      }
+    },
+    {
+      "indicator_id": "IND-04",
+      "name": "Çekirdek ve Bellek Bütünlüğü Koruması",
+      "category": "Kernel & Memory Protection",
+      "windows": {
+        "status": "COMPLIANT",
+        "score": 9,
+        "mechanism": "Sanallaştırma Tabanlı Güvenlik (VBS), Çekirdek İzolasyonu (Core Isolation), HVCI, DEP/ASLR",
+        "finding": "HVCI ve Bellek Bütünlüğü aktif; imzasız çekirdek sürücüsü yüklenmesi engellenmiş durumda."
+      },
+      "linux": {
+        "status": "COMPLIANT",
+        "score": 8,
+        "mechanism": "KASLR, Yama Korumalı Çekirdek Kilitleme (Kernel Lockdown), sysctl fs.protected_* bayrakları",
+        "finding": "Çekirdek modül imzalama aktif; dmesg kısıtlaması (kernel.dmesg_restrict=1) devrede."
+      }
+    },
+    {
+      "indicator_id": "IND-05",
+      "name": "Servis ve Süreç İzolasyonu / Kum Havuzu",
+      "category": "Process Sandboxing",
+      "windows": {
+        "status": "PARTIAL",
+        "score": 7,
+        "mechanism": "Hizmet Yalıtımı (Service Isolation - NT SERVICE\\SID), AppContainer, Korumalı Süreçler (PPL)",
+        "finding": "LSASS korumalı süreç (PPL) kipinde; ancak bazı üçüncü taraf servisler SYSTEM altında çalışıyor."
+      },
+      "linux": {
+        "status": "COMPLIANT",
+        "score": 9,
+        "mechanism": "systemd Kum Havuzu Yönergeleri (ProtectSystem, ProtectHome, PrivateTmp), Linux cgroups/namespaces",
+        "finding": "Tüm ağ servisleri kısıtlı systemd birim dosyalarında PrivateTmp=true ve NoNewPrivileges=true ile izole."
+      }
+    },
+    {
+      "indicator_id": "IND-06",
+      "name": "Ağ Güvenlik Duvarı ve Port Sınırlandırması",
+      "category": "Network Security",
+      "windows": {
+        "status": "COMPLIANT",
+        "score": 8,
+        "mechanism": "Gelişmiş Güvenlik Özellikli Windows Defender Güvenlik Duvarı (WFAS)",
+        "finding": "Etki alanı, Özel ve Ortak profiller ayrı yönetiliyor; varsayılan gelen tüm bağlantılar engelli."
+      },
+      "linux": {
+        "status": "COMPLIANT",
+        "score": 9,
+        "mechanism": "nftables Paket Filtreleme Çekirdek Çatısı, fail2ban Dinamik Kural Motoru",
+        "finding": "nftables girdi zincirinde varsayılan DROP politikası; yalnızca belirli yönetim IP'lerine izin verilmiş."
+      }
+    },
+    {
+      "indicator_id": "IND-07",
+      "name": "Dosya Sistemi Bütünlüğü ve Şifreleme",
+      "category": "Data at Rest & Integrity",
+      "windows": {
+        "status": "COMPLIANT",
+        "score": 8,
+        "mechanism": "BitLocker Sürücü Şifreleme (TPM 2.0 korumalı), NTFS Dosya Erişim Denetimi",
+        "finding": "İşletim sistemi ve veri diskleri BitLocker XTS-AES 256 ile tam disk şifrelemeye tabi tutulmuş."
+      },
+      "linux": {
+        "status": "COMPLIANT",
+        "score": 8,
+        "mechanism": "LUKS2 (Linux Unified Key Setup) dm-crypt, dm-verity, Aide / Tripwire bütünlük denetleyicisi",
+        "finding": "Kök dizin LUKS2 AES-XTS ile şifreli; AIDE periyodik dosya karması (hash) kontrolü yapıyor."
+      }
+    },
+    {
+      "indicator_id": "IND-08",
+      "name": "Güvenlik Olay Günlükleme ve Denetim",
+      "category": "Auditing & Visibility",
+      "windows": {
+        "status": "COMPLIANT",
+        "score": 9,
+        "mechanism": "Gelişmiş Denetim İlkesi (Advanced Audit Policy), Sysmon v15, Winlogbeat SIEM Aktarımı",
+        "finding": "Event ID 4688 komut satırı argümanlarıyla kaydediliyor; Sysmon ile derinlemesine işlem takibi var."
+      },
+      "linux": {
+        "status": "COMPLIANT",
+        "score": 8,
+        "mechanism": "Linux Denetim Sistemi (auditd), systemd-journald, Syslog-ng TLS Aktarımı",
+        "finding": "auditd çekirdek kural seti ile kritik sistem çağrıları (execve, setuid) izlenip SIEM'e gönderiliyor."
+      }
+    },
+    {
+      "indicator_id": "IND-09",
+      "name": "Yama ve Güvenlik Açığı Yönetimi",
+      "category": "Vulnerability Management",
+      "windows": {
+        "status": "PARTIAL",
+        "score": 7,
+        "mechanism": "Windows Server Update Services (WSUS), Kalite ve Güvenlik Güncelleştirmeleri",
+        "finding": "Güncellemeler test ring'leri sonrası uygulanıyor; ancak yeniden başlatma bağımlılığı gecikmeye yol açabiliyor."
+      },
+      "linux": {
+        "status": "COMPLIANT",
+        "score": 9,
+        "mechanism": "APT Paket Yöneticisi, unattended-upgrades Otomatik Güvenlik Yamalama, Canonical Livepatch",
+        "finding": "Canlı çekirdek yamalama (Livepatch) ile sıfır kesinti; kritik güvenlik paketleri 24 saat içinde güncelleniyor."
+      }
+    },
+    {
+      "indicator_id": "IND-10",
+      "name": "Zararlı Yazılım ve Uç Nokta (EDR) Savunması",
+      "category": "Endpoint Defense",
+      "windows": {
+        "status": "COMPLIANT",
+        "score": 9,
+        "mechanism": "Microsoft Defender Antivirus, Saldırı Yüzeyi Azaltma (ASR) Kuralları, Defender for Endpoint",
+        "finding": "ASR kuralları bloklama kipinde; AMSI ile PowerShell ve betik çalıştırma bellek seviyesinde taranıyor."
+      },
+      "linux": {
+        "status": "PARTIAL",
+        "score": 7,
+        "mechanism": "ClamAV İmzalı Tarayıcı, Rootkit Hunter (rkhunter), Wazuh EDR / XDR Ajanı",
+        "finding": "Wazuh ajanı dosya bütünlüğü ve rootkit taraması yapıyor; ancak yerel gerçek zamanlı engelleme sınırlı."
+      }
+    }
+  ]
+}

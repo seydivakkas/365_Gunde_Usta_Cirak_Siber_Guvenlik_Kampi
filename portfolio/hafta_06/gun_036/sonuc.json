@@ -1,0 +1,27 @@
+{
+  "gun": 36,
+  "gun_id": "G036",
+  "baslik": "Bellek, sanal bellek ve swap",
+  "asama": 2,
+  "hafta": 6,
+  "tarih": "2026-10-27",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kod_tasarimi": 20,
+    "test_dogrulama": 40,
+    "guvenlik_derinligi": 25,
+    "belgelendirme_standart": 15
+  },
+  "test_toplam": 14,
+  "test_basarili": 14,
+  "test_basarisiz": 0,
+  "kanitlar": [
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/bellek_ve_swap_denetim_raporu.txt",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "kanit/temsili/bellek_sanal_bellek_ve_swap_mimarisi.txt"
+  ],
+  "ozet": "G036 kapsamında sanal bellek mimarisi, MMU, sayfa tabloları, sayfalama ve swap güvenliği incelendi. MemoryVirtualSwapAuditor ile telemetri analizi, unencrypted swap tespiti, VSS/RSS sızıntı analizi ve swap içi hassas veri tespiti yapıldı. 14 birim test %100 başarıyla tamamlandı."
+}

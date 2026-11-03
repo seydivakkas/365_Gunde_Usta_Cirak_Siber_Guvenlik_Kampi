@@ -1,0 +1,73 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+WINDOWS SÜREÇ AĞACI (PROCESS TREE) HİYERARŞİSİ VE TEHDİT MİMARİSİ
+========================================================================================
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Özel Lisans — Tüm Hakları Saklıdır
+
+Bu şema, modern Windows işletim sistemlerindeki süreç hiyerarşisini (PPID -> PID),
+meşru karmaşık süreç ağaçlarını (Google Chrome çoklu süreçleri) ve siber saldırganların
+başvurduğu şüpheli yürütme zincirlerini (T1204 / T1059 / T1036) temsilî olarak modeller.
+
+----------------------------------------------------------------------------------------
+1. MEŞRU SİSTEM VE UYGULAMA SÜREÇ HİYERARŞİSİ (NORMAL BASELINE)
+----------------------------------------------------------------------------------------
+
+ [System (PID 4)] (Çekirdek - ntoskrnl.exe)
+        │
+        └── [smss.exe (PID 340)] (Oturum Yöneticisi)
+                │
+                ├── [csrss.exe (PID 450)] (İstemci/Sunucu Çalışma Zamanı)
+                └── [wininit.exe (PID 520)] (Windows Başlatma Süreci)
+                        │
+                        ├── [services.exe (PID 610)] (Hizmet Denetim Yöneticisi - SCM)
+                        │       ├── [svchost.exe (PID 780)] (DcomLaunch - NT AUTHORITY\SYSTEM)
+                        │       └── [svchost.exe (PID 790)] (RPCSS - NETWORK SERVICE)
+                        │
+                        ├── [lsass.exe (PID 620)] (Yerel Güvenlik Otoritesi - LSA)
+                        │
+                        └── [explorer.exe (PID 1040)] (Masaüstü Kabuğu - SEC-CORP\analyst)
+                                │
+                                └── [chrome.exe (PID 2100)] (Tarayıcı Ana Süreci)
+                                        ├── [chrome.exe (PID 2110)] (--type=gpu-process)
+                                        ├── [chrome.exe (PID 2120)] (--type=renderer - Sekme 1)
+                                        └── [chrome.exe (PID 2130)] (--type=utility - Ağ)
+
+ * NOT (G031-SC1 Prensibi):
+   Google Chrome gibi modern yazılımlar güvenlik izolasyonu (sandboxing) için onlarca
+   çocuk süreç üretir. Bu karmaşık ağaç tek başına bir saldırı göstergesi DEĞİLDİR!
+
+----------------------------------------------------------------------------------------
+2. SALDIRI VE ANOMALİ YÜRÜTME ZİNCİRİ (ATTACK CHAIN DETECTION)
+----------------------------------------------------------------------------------------
+
+ [explorer.exe (PID 1040)]
+        │
+        └── [winword.exe (PID 3100)] (Zararlı Makrolu Word Belgesi - Phishing)
+                │
+                └── [cmd.exe (PID 3150)]  <== ALARM! (CRITICAL - T1204.002 / T1059)
+                        │                  Ofis uygulamaları asla doğrudan komut
+                        │                  kabuğu başlatmamalıdır!
+                        │
+                        └── [powershell.exe (PID 3160)]  <== ALARM! (HIGH - T1059.001)
+                                │                         Base64 kodlanmış (-enc)
+                                │                         komut satırı ile gizleme!
+                                │
+                                └── [svchost.exe (PID 4050)]  <== ALARM! (CRITICAL - T1036.005)
+                                                          * Ebeveyni services.exe DEĞİL!
+                                                          * Yolu: AppData\Local\Temp\
+                                                          * Dijital İmzası: GEÇERSİZ / İMZASIZ!
+                                                          (Süreç Taklidi / Masquerading)
+
+----------------------------------------------------------------------------------------
+3. ADLİ SÜREÇ DENETİMİNDE KONTROL LİSTESİ (CHECKLIST)
+----------------------------------------------------------------------------------------
+Kontrol Noktası       | Meşru Durum                         | Şüpheli Durum
+----------------------+-------------------------------------+---------------------------
+Ebeveyn Doğrulaması   | svchost.exe ebeveyni services.exe   | svchost ebeveyni cmd/powershell
+Dosya Yolu (Path)     | System32, Program Files             | AppData\Local\Temp, C:\Users\
+Dijital İmza          | Doğrulanmış Microsoft / Satıcı İmzası| İmzasız veya geçersiz sertifika
+Komut Satırı          | Standart parametreler               | Base64 (-enc), gizli argümanlar
+Kullanıcı Hesabı      | SYSTEM, NETWORK SERVICE veya Oturum | Beklenmeyen yetkili hesap
+========================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

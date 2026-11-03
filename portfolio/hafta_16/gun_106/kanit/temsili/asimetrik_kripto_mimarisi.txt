@@ -1,0 +1,107 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 106: ASİMETRİK KRİPTOGRAFİ, RSA MATEMATİĞİ VE RSA-OAEP GÜVENLİK MİMARİSİ
+================================================================================
+
+[ 1. RSA ANAHTAR ÇİFTİ ÜRETİMİ (FIPS 186-4 & RFC 8017) ]
+
+  Kriptografik Kaynak: secrets.randbits
+           │
+           ▼
+  ┌─────────────────────────────────────────────────────────────┐
+  │ 1. Asal Sayı Üretimi: p ve q (N/2 bit, Tek Sayı)            │
+  │    Miller-Rabin Asallık Testi (k=40 Tur tanık denetimi)     │
+  └─────────────────────────────────────────────────────────────┘
+           │
+           ▼
+  ┌─────────────────────────────────────────────────────────────┐
+  │ 2. Modül Hesabı:                                            │
+  │    n = p * q (Örn: 2048 bit / 256 bayt)                     │
+  │    Euler Totient: phi(n) = (p - 1) * (q - 1)                │
+  └─────────────────────────────────────────────────────────────┘
+           │
+           ▼
+  ┌─────────────────────────────────────────────────────────────┐
+  │ 3. Standart Genel Üs Seçimi (F4 Fermat Asalı):              │
+  │    e = 65537 = 2^16 + 1 (gcd(e, phi) == 1)                  │
+  └─────────────────────────────────────────────────────────────┘
+           │
+           ▼
+  ┌─────────────────────────────────────────────────────────────┐
+  │ 4. Özel Üs Hesabı (Genişletilmiş Öklid Algoritması):         │
+  │    d = e^(-1) mod phi  ==> (e * d ≡ 1 mod phi)              │
+  └─────────────────────────────────────────────────────────────┘
+           │
+           ├──────────────────────────────┐
+           ▼                              ▼
+    [ GENEL ANAHTAR ]              [ ÖZEL ANAHTAR ]
+       (e, n)                         (d, n, p, q)
+     (Herkese Açık)                 (Çok Gizli / KMS)
+
+
+--------------------------------------------------------------------------------
+[ 2. GÜVENLİ RSA-OAEP DOLGULAMA AKIŞI (PKCS#1 v2.2 / RFC 8017) ]
+
+    Mesaj (M)            İsteğe Bağlı Etiket (Label)
+        │                             │
+        │                             ▼
+        │                    SHA-256 (lHash)
+        │                             │
+        ▼                             ▼
+    ┌─────────────────────────────────────────────────────────┐
+    │ DB = lHash || 0x00...00 (PS) || 0x01 || Mesaj (M)       │
+    └─────────────────────────────────────────────────────────┘
+        │                                  ▲
+        │                                  │ dbMask
+        │                                  │
+        │                           ┌──────────────┐
+        │                           │ MGF1(SHA-256)│ ◄─── Rastgele Tohum (Seed)
+        │                           └──────────────┘          (32 Bayt)
+        │                                  │                     │
+        ▼                                  │                     │
+     [ XOR ] ◄─────────────────────────────┘                     │
+        │                                                        │
+        ▼                                                        ▼
+    maskedDB ──────────────────────► ┌──────────────┐         [ XOR ]
+        │                            │ MGF1(SHA-256)│            ▲
+        │                            └──────────────┘            │
+        │                                   │ seedMask           │
+        │                                   └────────────────────┘
+        │                                                        │
+        │                                                        ▼
+        │                                                   maskedSeed
+        │                                                        │
+        ▼                                                        ▼
+    ┌─────────────────────────────────────────────────────────────────┐
+    │ EM (Enkapsüle Blok) = 0x00 || maskedSeed || maskedDB            │
+    └─────────────────────────────────────────────────────────────────┘
+                                   │
+                                   ▼
+             Modüler Üs Alma: c = EM^e mod n (Tam Boyut)
+                                   │
+                                   ▼
+                        [ ŞİFRELİ METİN (Hex) ]
+                   (IND-CCA2 Semantik Güvenlik Sağlar)
+
+--------------------------------------------------------------------------------
+[ 3. ÖNLENEN ZAFİYETLER VE SAVUNMA KALKANLARI ]
+
+  * CWE-327 (Textbook RSA Homomorfizmi):
+    Düz RSA'da c1 * c2 mod n doğrudan m1 * m2 mod n verir.
+    OAEP rastgele tohumla determinizmi kırarak saldırıyı imkansız kılar.
+
+  * CWE-327 (Küçük Üs e=3 ve Küp Kök Açığı):
+    m^3 < n durumunda mesaj doğrudan tam sayı küp köküyle kırılır.
+    e=65537 ve OAEP dolgusu ile blok her zaman n mertebesine taşınır.
+
+  * CWE-780 (Dolgu Kahini ve Tahrifat - Padding Oracle):
+    oaep_decode sabit zamanlı karşılaştırma (hmac.compare_digest) ile
+    zamanlama ve hata sızıntılarını (Bleichenbacher) engeller.
+
+  * CWE-326 (Zayıf Anahtar Boyutu):
+    Motor 512 bit altını kesinlikle reddeder; üretim için 2048+ bit zorunludur.
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

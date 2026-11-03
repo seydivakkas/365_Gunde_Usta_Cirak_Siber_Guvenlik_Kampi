@@ -1,0 +1,39 @@
+{
+  "aciklama": "NIST ANSI/INCITS 359-2004 Kurumsal Rol Tabanlı Erişim Modeli ve SoD Kuralları",
+  "versiyon": "1.0.0",
+  "telif_hakki": "© 2026 Seydi Eryılmaz (@seydivakkas) — Tüm Hakları Saklıdır",
+  "roller": {
+    "admin": ["*:*"],
+    "sec_officer": ["audit_log:read", "policy:write", "policy:read"],
+    "finance_director": ["budget:approve", "financial_report:read", "financial_report:write"],
+    "accountant": ["invoice:create", "invoice:read", "financial_report:read"],
+    "cashier": ["payment:execute", "invoice:read"],
+    "developer": ["repo:read", "repo:write", "ci_build:trigger"],
+    "auditor": ["audit_log:read", "compliance:read"],
+    "employee": ["profile:read", "public_wiki:read"]
+  },
+  "hiyerarsi_miras_agaci": [
+    {"ust_rol": "finance_director", "alt_rol": "accountant"},
+    {"ust_rol": "accountant", "alt_rol": "employee"},
+    {"ust_rol": "developer", "alt_rol": "employee"},
+    {"ust_rol": "sec_officer", "alt_rol": "auditor"}
+  ],
+  "statik_sod_ssd_kurallari": [
+    {
+      "rol_a": "accountant",
+      "rol_b": "cashier",
+      "gerekce": "Fatura düzenleyen personel ödeme icra edemez (CWE-863 Dolandırıcılık Engeli)."
+    }
+  ],
+  "dinamik_sod_dsd_kurallari": [
+    {
+      "rol_a": "sec_officer",
+      "rol_b": "developer",
+      "gerekce": "Güvenlik politikası yazan kişi aynı oturumda yazılım geliştirici rolü açamaz."
+    }
+  ],
+  "guvenlik_parametreleri": {
+    "azami_rol_sayisi_kullanici_basi": 4,
+    "varsayilan_kural": "DENY (Fail-Closed Default Deny)"
+  }
+}

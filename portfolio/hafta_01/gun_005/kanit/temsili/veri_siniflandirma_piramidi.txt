@@ -1,0 +1,50 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+              KURUMSAL VERİ SINIFLANDIRMA VE VARLIK HİYERARŞİSİ
+================================================================================
+
+                           /\
+                          /  \
+                         /    \
+                        / ÇOK  \        [SEVİYE 4 - ÇOK GİZLİ / SIR]
+                       / GİZLİ  \       - Kredi Kartı (PCI-DSS), Biyometri, PII
+                      /   SIR    \      - Zorunlu: AES-256 + FIDO2 MFA + PAM
+                     /------------\     - 'Crown Jewels' (İflas / Yasal Ceza Riski)
+                    /              \
+                   /     GİZLİ      \   [SEVİYE 3 - GİZLİ]
+                  /                  \  - Kaynak Kodlar, Ticari Sırlar, AD Verisi
+                 /--------------------\ - Zorunlu: Şifreli Depolama + RBAC
+                /                      \
+               /        DAHİLİ          \ [SEVİYE 2 - DAHİLİ / İÇ KULLANIM]
+              /                          \ - İç Prosedürler, Ağ Şemaları, Yazışmalar
+             /----------------------------\ - Zorunlu: Kimlik Doğrulama + İç Ağ
+            /                              \
+           /          KAMUYA AÇIK           \ [SEVİYE 1 - KAMUYA AÇIK]
+          /                                  \ - Pazarlama Sitesi, Basın Bültenleri
+         /------------------------------------\ - Kontrol: Bütünlük (WAF, TLS, DDoS)
+
+================================================================================
+VARLIK TÜRLERİ VE ÖZEL KORUMA GEREKSİNİMLERİ (NIST CSF ID.AM / PR.DS):
+--------------------------------------------------------------------------------
+1. VERİ (Data):
+   - Durağan (At-Rest) ve Aktarımda (In-Transit) Kriptografik Şifreleme (AES-256, TLS 1.3)
+   - Veri Sızıntısı Önleme (DLP) ajanları ve Tokenizasyon
+2. UYGULAMA (Application):
+   - Statik ve Dinamik Kod Güvenliği (SAST/DAST)
+   - WAF Koruması, Bağımlılık Güvenliği (SCA) ve Güvenli CI/CD Boru Hatları
+3. KİMLİK (Identity):
+   - Ayrıcalıklı Erişim Yönetimi (PAM), Çok Faktörlü Doğrulama (FIDO2 MFA)
+   - En Az Yetki Prensibi (Least Privilege) ve Rol Tabanlı Erişim (RBAC)
+4. CİHAZ / DONANIM (Hardware/Device):
+   - Donanım Sıkılaştırma (CIS Benchmarks), Tam Disk Şifreleme (BitLocker/LUKS)
+   - EDR Ajanları ve Ağ Erişim Kontrolü (802.1X / NAC)
+5. AĞ ALTYAPISI (Network):
+   - Ağ Segmentasyonu (VLAN, DMZ, Mikro-segmentasyon)
+   - Yeni Nesil Güvenlik Duvarı (NGFW), IDS/IPS ve Şifreli Yönetim Kanalları (SSHv2)
+================================================================================
+ALTIN KURAL: Donanım Fiyatı != Varlık Değeri!
+(,500'lık sunucu donanımı, barındırdığı ,000,000'lık müşteri verisiyle korunur!)
+================================================================================

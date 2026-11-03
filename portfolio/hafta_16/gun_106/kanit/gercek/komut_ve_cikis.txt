@@ -1,0 +1,57 @@
+=== GÜN 106 CLI KOMUT VE ÇIKIŞ GÜNLÜĞÜ ===
+Tarih/Saat: 2026-11-02 02:40:54
+================================================================================
+
+--- 1. 1024-bit RSA Anahtar Çifti Üretimi ---
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_106\uygulama\asymmetric_cli.py --keygen --bits 1024 --pub-out C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_106\kanit\gercek\temp_pub.json --priv-out C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_106\kanit\gercek\temp_priv.json --json
+Çıkış Kodu: 0
+Çıktı:
+{
+  "status": "SUCCESS",
+  "bits": 1024,
+  "public_key_file": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_16\\gun_106\\kanit\\gercek\\temp_pub.json",
+  "private_key_file": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_16\\gun_106\\kanit\\gercek\\temp_priv.json",
+  "modulus_sample": "0x846aac18034d369874a8b75f171fa4..."
+}
+
+
+--- 2. RSA-OAEP ile Güvenli Şifreleme ---
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_106\uygulama\asymmetric_cli.py --encrypt --pubkey C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_106\kanit\gercek\temp_pub.json --message Kriptografik Asimetrik Guvenlik Mesaji 2026 --label auth_v1 --json
+Çıkış Kodu: 0
+Çıktı:
+{
+  "status": "SUCCESS",
+  "algorithm": "RSA-OAEP-SHA256",
+  "message_length": 43,
+  "ciphertext_hex": "5a7b25ef6bd2cf46035980eea5e4da2a1cdbefba6d81e8606f0ee400cc1123c437a3ce503fde3e59e27eba429b23522164527408caa9cde91d267c2b05f4ae70e1e58bb136fa272cebc8b5228f0d0a01cb87ea44d50d954690c5e3ab1dc88b97a71885c8965573e3b5bf3a923c46baf1b69b289655e0690874d4d8acff3f553b",
+  "ciphertext_length_bytes": 128
+}
+
+
+--- 3. Textbook RSA Homomorfizm ve Küçük Üs Zafiyet Gösterimi ---
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_106\uygulama\asymmetric_cli.py --demo-flaws --json
+Çıkış Kodu: 0
+Çıktı:
+{
+  "textbook_malleability_detected": true,
+  "malleability_explanation": "Textbook RSA manip�lasyonu ba�ar�l�! �ifreli metin �arp�m� do�rudan d�z metin �arp�m�na (420) d�n��t�. Dolgu (OAEP) zorunludur!",
+  "small_exponent_cube_root_vulnerability": {
+    "vulnerable": true,
+    "ciphertext": 1881365963625,
+    "recovered_message": 12345,
+    "original_message": 12345,
+    "success": true
+  }
+}
+
+
+--- 4. RSA-OAEP ile Şifre Çözme ---
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_106\uygulama\asymmetric_cli.py --decrypt --privkey C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_106\kanit\gercek\temp_priv.json --ciphertext 5a7b25ef6bd2cf46035980eea5e4da2a1cdbefba6d81e8606f0ee400cc1123c437a3ce503fde3e59e27eba429b23522164527408caa9cde91d267c2b05f4ae70e1e58bb136fa272cebc8b5228f0d0a01cb87ea44d50d954690c5e3ab1dc88b97a71885c8965573e3b5bf3a923c46baf1b69b289655e0690874d4d8acff3f553b --label auth_v1 --json
+Çıkış Kodu: 0
+Çıktı:
+{
+  "status": "SUCCESS",
+  "algorithm": "RSA-OAEP-SHA256",
+  "decrypted_text": "Kriptografik Asimetrik Guvenlik Mesaji 2026"
+}
+

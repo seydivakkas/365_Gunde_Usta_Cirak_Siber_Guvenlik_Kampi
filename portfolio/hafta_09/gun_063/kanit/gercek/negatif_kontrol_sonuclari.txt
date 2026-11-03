@@ -1,0 +1,54 @@
+================================================================================
+G063 MINI PROJE 8: NEGATIF SINIR VE ANOMALI TEST SONUCLARI
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas) - Tum Haklari Saklidir
+================================================================================
+
+[BASARILI / PASS] NEG_01 - Zaman Gerilemesi / Negatif Delta Manipulasyonu
+  * Beklenen Hata   : TimelineOrderError
+  * Yakalanan Hata  : TimelineOrderError
+  * Beklenen Tespit : NEGATIF_DELTA_ZAMAN_GERILEMESI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_02 - Bozuk Zaman Damgası Formatı
+  * Beklenen Hata   : TimestampFormatError
+  * Yakalanan Hata  : TimestampFormatError
+  * Beklenen Tespit : GECERSIZ_ISO8601_FORMATI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_03 - El Sıkışma Tamamlanmadan Erken Veri Gönderimi
+  * Beklenen Hata   : HandshakeViolationError
+  * Yakalanan Hata  : HandshakeViolationError
+  * Beklenen Tespit : ERKEN_VERI_ENJEKSIYONU
+------------------------------------------------------------
+[BASARILI / PASS] NEG_04 - TCP Sıra Numarası Sıçraması (Session Hijacking Şüphesi)
+  * Beklenen Hata   : SequenceAnomalyError
+  * Yakalanan Hata  : SequenceAnomalyError
+  * Beklenen Tespit : TCP_SIRA_NUMARASI_SICRAMASI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_05 - Slowloris Yavaş Başlık Damlatma Saldırısı
+  * Beklenen Hata   : SlowlorisAnomalyError
+  * Yakalanan Hata  : SlowlorisAnomalyError
+  * Beklenen Tespit : SLOWLORIS_YAVAS_BASLIK_DAMLATMA
+------------------------------------------------------------
+[BASARILI / PASS] NEG_06 - Hızlı Port Taraması (SYN Burst)
+  * Beklenen Hata   : PortScanAnomalyError
+  * Yakalanan Hata  : PortScanAnomalyError
+  * Beklenen Tespit : HIZLI_PORT_TARAMA_BURST
+------------------------------------------------------------
+[BASARILI / PASS] NEG_07 - DNS Tünelleme Patlaması (Yüksek Entropili Seri Sorgu)
+  * Beklenen Hata   : DnsTunnelingAnomalyError
+  * Yakalanan Hata  : DnsTunnelingAnomalyError
+  * Beklenen Tespit : DNS_TUNELLEME_PATLAMASI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_08 - Eksik Zorunlu Olay Alanları
+  * Beklenen Hata   : MissingEventFieldError
+  * Yakalanan Hata  : MissingEventFieldError
+  * Beklenen Tespit : EKSIK_ZORUNLU_ALAN
+------------------------------------------------------------
+[BASARILI / PASS] NEG_09 - Geçersiz TCP Durum Geçişi (Tanımsız Akışta Erken FIN)
+  * Beklenen Hata   : IllegalStateTransitionError
+  * Yakalanan Hata  : IllegalStateTransitionError
+  * Beklenen Tespit : GECERSIZ_DURUM_GECISI
+------------------------------------------------------------
+
+TOPLAM NEGATIF TEST: 9
+BASARILI YAKALANAN : 9
+SONUC              : %100 BASARILI / TAM UYUM

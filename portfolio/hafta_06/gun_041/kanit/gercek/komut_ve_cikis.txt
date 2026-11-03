@@ -1,0 +1,64 @@
+=== KOMUT SATIRI YÜRÜTME KAYDI ===
+Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe portfolio/hafta_06/gun_041/uygulama/windows_linux_security_comparator.py --matrix portfolio/hafta_06/gun_041/ornek_veri/baseline_windows_linux_10_indicators.json --output portfolio/hafta_06/gun_041/kanit/gercek/windows_linux_karsilastirma_raporu.txt
+Çıkış Kodu: 0
+
+--- STDOUT ÇIKTISI ---
+# G041: Mini Proje 5 — Windows ve Linux Karşılaştırmalı Güvenlik Raporu
+
+> **ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR**  
+> **Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)**  
+> Bu yazılım ve eğitim içeriği yalnızca görüntüleme ve kişisel öğrenim amaçlıdır.
+
+---
+
+## 1. Yönetici Özeti ve Kapsam
+- **Proje Adı:** Mini Proje 5 - Windows ve Linux Karşılaştırmalı Güvenlik Raporu
+- **Değerlendirme Tarihi:** 2026-10-27
+- **Hedef Sistemler:**
+  - Windows: Microsoft Windows Server 2022 Datacenter
+  - Linux: Ubuntu Server 22.04 LTS
+- **İncelenen Gösterge Sayısı:** 10 Standart Güvenlik Göstergesi
+
+## 2. Karşılaştırmalı Güvenlik Duruşu ve Skor Tablosu
+
+| Metrik / Ölçüt | Windows Server 2022 | Ubuntu 22.04 LTS | Değerlendirme / Fark |
+|---|---|---|---|
+| **Toplam Güvenlik Puanı (100 Üzerinden)** | **81.0 / 100.0** | **85.0 / 100.0** | Fark: 4.0 puan |
+| **Uyumluluk Yüzdesi** | **%81.0** | **%85.0** | Normalleştirilmiş Oran |
+| **Kurumsal Risk Seviyesi** | MEDIUM (Orta Risk / Sıkılaştırma İhtiyacı) | LOW (Düşük Risk / Güçlü Savunma) | Posture Durumu |
+| **Tam Uyumlu Göstergeler (COMPLIANT)** | 7 / 10 | 9 / 10 | Sıkılaştırılmış Alanlar |
+| **Kısmi Uyumlu Göstergeler (PARTIAL)** | 3 / 10 | 1 / 10 | İyileştirme Gereken Alanlar |
+| **Uyumsuz Göstergeler (NON_COMPLIANT)** | 0 / 10 | 0 / 10 | Kritik Açıklar |
+
+## 3. 10 Standart Güvenlik Göstergesi Ayrıntılı Analiz Matrisi
+
+| No | Gösterge Adı | Kategori | Windows Puan / Mekanizma | Linux Puan / Mekanizma |
+|---|---|---|---|---|
+| IND-01 | **Kimlik Doğrulama ve Parola Politikası** | Identity & Access | **9/10** - Active Directory Domain Services, Kerberos v5, LAPS v2, GPO Parola Karmaşıklık İlkesi | **9/10** - PAM (Pluggable Authentication Modules), pam_pwquality, Ed25519 SSH Public Key |
+| IND-02 | **Erişim Kontrolü ve Yetkilendirme Modeli** | Authorization & DAC/MAC | **8/10** - NTFS DACL / SACL, Windows Güvenlik Tanımlayıcıları (Security Identifiers - SID) | **9/10** - POSIX Standart İzinleri (rwx), POSIX ACL, AppArmor Zorunlu Erişim Kontrolü (MAC) |
+| IND-03 | **Ayrıcalık Yönetimi ve Yetki Yükseltme** | Privilege Elevation | **7/10** - Kullanıcı Hesabı Denetimi (UAC), Belirteç Ayrıcalıkları (SeDebugPrivilege vb.) | **9/10** - Sudoers Granüler Kuralları (/etc/sudoers.d/), Polkit İlke Mekanizması, No-Root Login |
+| IND-04 | **Çekirdek ve Bellek Bütünlüğü Koruması** | Kernel & Memory Protection | **9/10** - Sanallaştırma Tabanlı Güvenlik (VBS), Çekirdek İzolasyonu (Core Isolation), HVCI, DEP/ASLR | **8/10** - KASLR, Yama Korumalı Çekirdek Kilitleme (Kernel Lockdown), sysctl fs.protected_* bayrakları |
+| IND-05 | **Servis ve Süreç İzolasyonu / Kum Havuzu** | Process Sandboxing | **7/10** - Hizmet Yalıtımı (Service Isolation - NT SERVICE\SID), AppContainer, Korumalı Süreçler (PPL) | **9/10** - systemd Kum Havuzu Yönergeleri (ProtectSystem, ProtectHome, PrivateTmp), Linux cgroups/namespaces |
+| IND-06 | **Ağ Güvenlik Duvarı ve Port Sınırlandırması** | Network Security | **8/10** - Gelişmiş Güvenlik Özellikli Windows Defender Güvenlik Duvarı (WFAS) | **9/10** - nftables Paket Filtreleme Çekirdek Çatısı, fail2ban Dinamik Kural Motoru |
+| IND-07 | **Dosya Sistemi Bütünlüğü ve Şifreleme** | Data at Rest & Integrity | **8/10** - BitLocker Sürücü Şifreleme (TPM 2.0 korumalı), NTFS Dosya Erişim Denetimi | **8/10** - LUKS2 (Linux Unified Key Setup) dm-crypt, dm-verity, Aide / Tripwire bütünlük denetleyicisi |
+| IND-08 | **Güvenlik Olay Günlükleme ve Denetim** | Auditing & Visibility | **9/10** - Gelişmiş Denetim İlkesi (Advanced Audit Policy), Sysmon v15, Winlogbeat SIEM Aktarımı | **8/10** - Linux Denetim Sistemi (auditd), systemd-journald, Syslog-ng TLS Aktarımı |
+| IND-09 | **Yama ve Güvenlik Açığı Yönetimi** | Vulnerability Management | **7/10** - Windows Server Update Services (WSUS), Kalite ve Güvenlik Güncelleştirmeleri | **9/10** - APT Paket Yöneticisi, unattended-upgrades Otomatik Güvenlik Yamalama, Canonical Livepatch |
+| IND-10 | **Zararlı Yazılım ve Uç Nokta (EDR) Savunması** | Endpoint Defense | **9/10** - Microsoft Defender Antivirus, Saldırı Yüzeyi Azaltma (ASR) Kuralları, Defender for Endpoint | **7/10** - ClamAV İmzalı Tarayıcı, Rootkit Hunter (rkhunter), Wazuh EDR / XDR Ajanı |
+
+## 4. Savunma, Tespit ve Sıkılaştırma Kılavuzu
+### Windows Server Öncelikli İyileştirmeler:
+1. **Yerel Yönetici Yetkileri:** Yerel Administrator haklarını LAPS v2 ile dinamikleştirin ve üçüncü taraf servis hesaplarının SYSTEM yerine `NT SERVICE\` SID'leri ile çalışmasını sağlayın.
+2. **UAC ve ASR Kuralları:** PowerShell ve Office makrolarını hedefleyen Saldırı Yüzeyi Azaltma (ASR) kurallarını aktif denetimden bloklama moduna geçirin.
+
+### Linux Server Öncelikli İyileştirmeler:
+1. **Zararlı Yazılım ve EDR Takibi:** Yalnızca statik tarama yerine Wazuh/Auditd ile gerçek zamanlı süreç izleme ve SIEM korelasyonunu devreye alın.
+2. **AppArmor Zorlaması:** Tüm ağ servisleri için profilleri `complain` kipinden `enforce` kipine çekerek yetkisiz sistem çağrılarını engelleyin.
+
+---
+*Rapor Antigravity Didaktik Güvenlik Denetim Motoru tarafından otomatik üretilmiştir.*
+
+[+] Rapor başarıyla kaydedildi: portfolio/hafta_06/gun_041/kanit/gercek/windows_linux_karsilastirma_raporu.txt
+
+
+--- STDERR ÇIKTISI ---
+

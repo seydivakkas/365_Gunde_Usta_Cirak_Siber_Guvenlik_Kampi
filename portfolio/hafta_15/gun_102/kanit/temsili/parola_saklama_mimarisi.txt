@@ -1,0 +1,57 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+====================================================================================================
+GÜN 102: SALT, PEPPER VE KDF TABANLI GÜVENLİ PAROLA SAKLAMA MİMARİSİ
+====================================================================================================
+
+[ KULLANICI ]                                   [ UYGULAMA SUNUCUSU / KİMLİK DOĞRULAMA ]
+      |                                                             |
+      | 1. Parola Gönderimi ("P@ssw0rd2026!")                       |
+      +------------------------------------------------------------>|
+                                                                    |
+                                        +---------------------------+---------------------------+
+                                        |                                                       |
+                                        | 2. Kriptografik Rastgele Tuz Üretimi                 |
+                                        |    secrets.token_bytes(16) -> 128-bit Eşsiz Salt      |
+                                        |                                                       |
+                                        | 3. Sistem Biberi (Pepper) Entegrasyonu                |
+                                        |    HMAC-SHA256(Pepper, Parola)                         |
+                                        |    (Biber HSM/KMS içinde saklanır, DB'de ASLA tutulmaz)|
+                                        |                                                       |
+                                        | 4. PBKDF2-HMAC-SHA256 Anahtar Türetimi (KDF)          |
+                                        |    İterasyon: >= 100.000 döngü                         |
+                                        |    Amaç: Hesaplama maliyetini ~50ms seviyesine çekmek  |
+                                        |                                                       |
+                                        +---------------------------+---------------------------+
+                                                                    |
+                                                                    | 5. Serileştirilmiş Kayıt Formatı
+                                                                    v
+                  $pbkdf2-sha256$i=100000$s=7f83b165...$p=1$74f5d6f1...
+                                                                    |
+                                                                    | 6. Veritabanına Yazma
+                                                                    v
+                                                     +-----------------------------+
+                                                     |      POSTGRESQL / MYSQL     |
+                                                     |       KULLANICI TABLOSU     |
+                                                     |  id | username | pw_record  |
+                                                     +-----------------------------+
+
+====================================================================================================
+TEHDİT MODELİ VE SAVUNMA KATMANLARI KARŞILAŞTIRMASI:
+====================================================================================================
+
++----------------------------+-----------------------+---------------------------------------------+
+| TEHDİT / SALDIRI TÜRÜ      | SAVUNMASIZ SİSTEM     | GÜN 102 KORUMALI SİSTEM                     |
++----------------------------+-----------------------+---------------------------------------------+
+| Gökkuşağı Tabloları        | md5(pw) / sha1(pw)    | secrets.token_bytes(16) TUZ                 |
+| (Rainbow Tables)           | -> Saniyede kırılır   | -> Her parolanın tuzu farklı, tablo çöker   |
++----------------------------+-----------------------+---------------------------------------------+
+| Çevrimdışı GPU Kaba Kuvvet | sha256(pw) tek geçiş  | PBKDF2 100.000 İTERASYON                    |
+| (Offline Dictionary/Brute) | -> Saniyede 10 milyar | -> Saniyede ~20 deneme (İşlemci boğulur)    |
++----------------------------+-----------------------+---------------------------------------------+
+| Veritabanı Sızıntısı       | Salt + Hash sızar     | BİBER (PEPPER) HSM/KMS İÇİNDE İZOLEDİR      |
+| (SQLi ile DB dump çalınması)| -> GPU ile denenir   | -> Biber olmadan çevrimdışı kırma İMKANSIZ  |
++----------------------------+-----------------------+---------------------------------------------+
+| Zamanlama Analizi          | if hash == candidate  | hmac.compare_digest() SABİT ZAMANLI KIYAS   |
+| (Timing Attacks)           | -> İlk byte farkından | -> Süre byte eşleşmesine göre değişmez      |
+|                            |    sızıntı (CWE-208)  |                                             |
++----------------------------+-----------------------+---------------------------------------------+

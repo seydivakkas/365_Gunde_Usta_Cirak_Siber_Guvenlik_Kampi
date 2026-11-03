@@ -1,0 +1,111 @@
+{
+  "aciklama": "G055 DHCP ve IP Atamasi - Sinir Durumlari ve Negatif Guvenlik Test Girdileri",
+  "versiyon": "1.0.0",
+  "negatif_testler": [
+    {
+      "test_id": "NEG-01-OPCODE",
+      "hata_tipi": "GecersizOpCode",
+      "beklenen_hata": "Gecersiz BOOTP op kodu: 99. Yalnizca 1 (BOOTREQUEST) veya 2 (BOOTREPLY) desteklenir.",
+      "veri": {
+        "op": 99,
+        "htype": 1,
+        "hlen": 6,
+        "chaddr": "00:11:22:33:44:55"
+      }
+    },
+    {
+      "test_id": "NEG-02-HTYPE",
+      "hata_tipi": "GecersizDonanimTipi",
+      "beklenen_hata": "Gecersiz donanim tipi: 0. Standart Ethernet icin 1 olmalidir.",
+      "veri": {
+        "op": 1,
+        "htype": 0,
+        "hlen": 6,
+        "chaddr": "00:11:22:33:44:55"
+      }
+    },
+    {
+      "test_id": "NEG-03-HLEN",
+      "hata_tipi": "GecersizDonanimUzunlugu",
+      "beklenen_hata": "Gecersiz donanim adresi uzunlugu: 12. Ethernet icin tam 6 bayt olmalidir.",
+      "veri": {
+        "op": 1,
+        "htype": 1,
+        "hlen": 12,
+        "chaddr": "00:11:22:33:44:55"
+      }
+    },
+    {
+      "test_id": "NEG-04-COOKIE",
+      "hata_tipi": "GecersizMagicCookie",
+      "beklenen_hata": "Gecersiz DHCP Magic Cookie: 0x11223344. Standart BOOTP/DHCP tanimlayici 0x63825363 olmalidir.",
+      "veri": {
+        "op": 1,
+        "htype": 1,
+        "hlen": 6,
+        "magic_cookie": "11223344",
+        "chaddr": "00:11:22:33:44:55"
+      }
+    },
+    {
+      "test_id": "NEG-05-MAC",
+      "hata_tipi": "BozukMacAdresi",
+      "beklenen_hata": "Gecersiz MAC adresi: '00:11:ZZ:44:55:66'. 6 baytlik heksadesimal olmalidir.",
+      "veri": {
+        "op": 1,
+        "htype": 1,
+        "hlen": 6,
+        "chaddr": "00:11:ZZ:44:55:66"
+      }
+    },
+    {
+      "test_id": "NEG-06-OPTION53",
+      "hata_tipi": "EksikMesajTipi",
+      "beklenen_hata": "DHCP paketinde zorunlu Secenek 53 (Mesaj Tipi) bulunamadi.",
+      "veri": {
+        "op": 1,
+        "htype": 1,
+        "hlen": 6,
+        "magic_cookie": "63825363",
+        "options": {
+          "55": [1, 3, 6]
+        },
+        "chaddr": "00:11:22:33:44:55"
+      }
+    },
+    {
+      "test_id": "NEG-07-LEASE",
+      "hata_tipi": "GecersizKiraSuresi",
+      "beklenen_hata": "Gecersiz kira suresi: -3600. Sure pozitif bir tamsayi olmalidir.",
+      "veri": {
+        "op": 2,
+        "htype": 1,
+        "hlen": 6,
+        "magic_cookie": "63825363",
+        "options": {
+          "53": 2,
+          "51": -3600
+        },
+        "chaddr": "00:11:22:33:44:55"
+      }
+    },
+    {
+      "test_id": "NEG-08-TRUNCATED",
+      "hata_tipi": "KirpikliPaketUzunlugu",
+      "beklenen_hata": "Paket uzunlugu yetersiz: 120 bayt. Minimum BOOTP basligi 236 bayt olmalidir.",
+      "veri": {
+        "ham_bayt_uzunlugu": 120
+      }
+    },
+    {
+      "test_id": "NEG-09-SNOOPING",
+      "hata_tipi": "GuvenilmeyenPortIhlali",
+      "beklenen_hata": "DHCP Snooping Guvenlik Alarmi: Guvenilmeyen (untrusted) port uzerinden sunucu yanit paketi (Offer/ACK) alindi!",
+      "veri": {
+        "port_tipi": "untrusted",
+        "mesaj_tipi": "OFFER",
+        "sunucu_ip": "192.168.1.199"
+      }
+    }
+  ]
+}

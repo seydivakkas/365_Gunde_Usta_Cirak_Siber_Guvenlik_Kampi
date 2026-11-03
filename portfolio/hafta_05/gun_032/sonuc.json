@@ -1,0 +1,53 @@
+{
+  "gun": 32,
+  "tarih": "2026-10-27",
+  "baslik": "Başlangıç uygulamaları ve hizmet yönetimi",
+  "asama": "Aşama 02 — Sistem ve Ağ Güvenliği Temelleri",
+  "hafta": 5,
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "puan_detay": {
+    "kriter_1": 20,
+    "kriter_2": 40,
+    "kriter_3": 25,
+    "kriter_4": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "kanitlar": {
+    "gercek": [
+      "portfolio/hafta_05/gun_032/kanit/gercek/test_sonuclari.txt",
+      "portfolio/hafta_05/gun_032/kanit/gercek/komut_ve_cikis.txt",
+      "portfolio/hafta_05/gun_032/kanit/gercek/baslangic_ve_servis_denetim_raporu.txt",
+      "portfolio/hafta_05/gun_032/kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "portfolio/hafta_05/gun_032/kanit/temsili/baslangic_ve_hizmet_mimarisi.txt"
+    ]
+  },
+  "kod_dosyalari": [
+    "portfolio/hafta_05/gun_032/uygulama/startup_service_auditor.py",
+    "portfolio/hafta_05/gun_032/tests/test_startup_service_auditor.py"
+  ],
+  "dokumanlar": [
+    "portfolio/hafta_05/gun_032/ders.md",
+    "portfolio/hafta_05/gun_032/soru_cevap.md",
+    "portfolio/hafta_05/gun_032/rapor.md",
+    "portfolio/hafta_05/gun_032/README.md"
+  ],
+  "kazanimlar": [
+    "Başlangıç mekanizmaları (Registry Run/RunOnce, Startup Folder, SCM Services, systemd, cron) derinlemesine kavrandı.",
+    "G032-SC1 gereğince otomatik başlayan uygulamaların sistem saldırı yüzeyini büyüttüğü ve gerekli hizmetlerin gelişigüzel kapatılmaması gerektiği temellendirildi.",
+    "G032-SC2 gereğince bağımsız laboratuvarda kontrollü girdi, analiz süreci, beklenen çıktı ve negatif kontrol metodolojisi uygulandı.",
+    "G032-SC3 gereğince tırnaksız servis yolları (Unquoted Service Path T1574.009), zayıf izinler ve yanlış servis yapılandırması riskleri tespit edilip savunma kılavuzu oluşturuldu.",
+    "İsim taklidi (Masquerading T1036) ve güvenlik servislerinin devre dışı bırakılması (Impair Defenses T1562.001) otomatik tespit edildi.",
+    "Bozuk şema içeren negatif veri setinde 7 hatalı kayıt %100 güvenle reddedildi.",
+    "14 birim test 0.020 saniyede %100 başarıyla tamamlandı, 100/100 tam puan tescillendi."
+  ],
+  "ozel_not": "G032-SC1, SC2 ve SC3 isterleri tırnaksız yol analizi, servis güvenliği ve savunma kılavuzu ile başarıyla tamamlandı."
+}

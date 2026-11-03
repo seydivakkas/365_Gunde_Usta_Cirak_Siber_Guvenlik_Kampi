@@ -1,0 +1,46 @@
+{
+  "gun": 99,
+  "hafta": 15,
+  "asama": 5,
+  "baslik": "CIA ve güvenlik özellikleri tekrar",
+  "tarih": "2026-11-02",
+  "durum": "Tamamlandı",
+  "toplam_puan": 100,
+  "rubrik": {
+    "kod_guvenligi_ve_kriptografik_tasarim": 40,
+    "test_dayaniklilik_ve_hata_yonetimi": 25,
+    "mimari_prensipler_ve_standartlar": 20,
+    "dokumantasyon_ve_lisans_butunlugu": 15
+  },
+  "birim_testler": {
+    "toplam": 15,
+    "gecen": 15,
+    "kalan": 0,
+    "basari_orani": 100.0,
+    "sure_saniye": 0.002
+  },
+  "negatif_kontroller": {
+    "toplam": 9,
+    "basarili": 9,
+    "basari_orani": 100.0
+  },
+  "cwe_kapsami": [
+    "CWE-311",
+    "CWE-353",
+    "CWE-345",
+    "CWE-770",
+    "CWE-400",
+    "CWE-778",
+    "CWE-158",
+    "CWE-326",
+    "CWE-843",
+    "CWE-208"
+  ],
+  "kanitlar": {
+    "birim_test_raporu": "kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_raporu": "kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "cia_degerlendirme_raporu": "kanit/gercek/cia_guvenlik_degerlendirme_raporu.txt",
+    "cli_komut_cikisi": "kanit/gercek/komut_ve_cikis.txt",
+    "mimari_semasi": "kanit/temsili/cia_triad_mimarisi.txt"
+  }
+}

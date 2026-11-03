@@ -1,0 +1,62 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Bu dosya Siber Güvenlik 365 Gün Müfredatı kapsamında üretilmiştir.
+# Gün 022: PowerShell Nesne Akışı (Object Pipeline) ve Güvenlik Denetim Mimarisi
+
+========================================================================================
+POWERSHELL .NET NESNE BORU HATTI vs GELENEKSEL METİN BORU HATTI
+========================================================================================
+
+  GELENEKSEL KABUK (Bash / Sh):
+  [ ps aux ]  ---- (Salt Metin Akışı / String Stream) ---->  [ grep / awk / sed ]
+  * Karakter ayrıştırma (parsing) kırılgan ve hataya açıktır.
+
+  POWERSHELL MİMARİSİ (PSObject):
+  [ Get-Process ] ---- (.NET System.Diagnostics.Process Nesneleri) ----> [ Where-Object ]
+       |                                                                       |
+       +--> { Name: "powershell", Id: 4820, CPU: 2.45, Handles: 620 }         +--> Özellik bazlı filtreleme
+       +--> { Name: "explorer",   Id: 3290, CPU: 112.3, Handles: 2840 }              (Metin parse etmeye gerek yok!)
+
+========================================================================================
+GÜVENLİK BORU HATTI DENETİM AKIŞI (G022-SC2)
+========================================================================================
+
+  +-----------------------+              +-----------------------+
+  |      Get-Process      |              |      Get-Service      |
+  |  (Süreç Nesne Akışı)  |              |  (Servis Nesne Akışı) |
+  +-----------+-----------+              +-----------+-----------+
+              |                                      |
+              +------------------+-------------------+
+                                 |
+                                 v
+               +-----------------------------------+
+               |        Where-Object / Filter      |
+               | - Şüpheli Bayrak: -enc, -w hidden |
+               | - Aşırı Kaynak: Handles > 2000    |
+               | - Güvensiz Servis: TlntSvr        |
+               | - Tırnaksız Servis Yolu: CWE-428  |
+               +-----------------+-----------------+
+                                 |
+                                 v
+               +-----------------------------------+
+               |           Select-Object           |
+               | Nesne_Tipi, Isim, ID, Risk, Neden |
+               +-----------------+-----------------+
+                                 |
+                                 v
+               +-----------------------------------+
+               |             Export-Csv            |
+               |  filtrelenmis_surec_servisler.csv |
+               +-----------------------------------+
+
+========================================================================================
+POWERSHELL GÜVENLİK SERTLEŞTİRME VE TELEMETRİ KATMANLARI
+========================================================================================
+1. Execution Policy (Restricted / RemoteSigned) -> Kullanıcıyı kazara çalıştırmaktan korur.
+2. Script Block Logging (Event ID 4104)         -> Obfuscate edilmiş kodları deobfuscate eder.
+3. Module Logging (Event ID 4103)               -> Çağrılan cmdlet'leri ve parametreleri kaydeder.
+4. Transcription (Diske Loglama)               -> Tüm komut satırı oturumunu diske yazar.
+5. AMSI (Antimalware Scan Interface)            -> Bellekte çalışan betikleri antivirüse taratır.
+6. Constrained Language Mode (CLM)              -> Win32 API ve COM doğrudan erişimini yasaklar.

@@ -1,0 +1,38 @@
+=== G043: OSI VE TCP/IP KATMANLARI — NEGATİF KONTROL VE HATA YÖNETİMİ DOĞRULAMA GÜNLÜĞÜ ===
+Tarih: 2026-10-27
+Mekanizma: Hatalı, sınır dışı ve bozuk paket senaryolarının denetim motoru tarafından yakalanması.
+
+[*] Senaryo: invalid_ipv4_octet_overflow
+    Açıklama: IPv4 adresinde oktet değerinin 255 sınırını aşması (Örn: 999.300.1.1)
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Geçersiz kaynak IPv4 adresi: '999.300.1.1'
+
+[*] Senaryo: invalid_mac_address_format
+    Açıklama: Ethernet MAC adresinin onaltılık olmayan karakterler içermesi (Örn: 00:1A:2B:3C:GG:ZZ)
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Geçersiz kaynak MAC adresi: '00:1A:2B:3C:GG:ZZ'
+
+[*] Senaryo: port_overflow
+    Açıklama: Taşıma katmanı hedef portunun 65535 sınırını aşması (Örn: 70000)
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Hedef port (destination_port) 1-65535 aralığında olmalıdır, alınan: 70000
+
+[*] Senaryo: negative_port
+    Açıklama: Port numarasının negatif bir tam sayı olması (Örn: -443)
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Kaynak port (source_port) 1-65535 aralığında olmalıdır, alınan: -443
+
+[*] Senaryo: missing_transport_layer
+    Açıklama: Kapsülleme hiyerarşisinde zorunlu layer_4_transport katmanının bulunmaması
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Zorunlu katman verisi eksik: 'layer_4_transport'
+
+[*] Senaryo: invalid_tcp_flag
+    Açıklama: TCP bayrakları listesinde standart dışı veya geçersiz bayrak dizesi bulunması
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Geçersiz TCP bayrağı: 'INVALID_FLAG_XYZ'. Beklenen küme: {'ACK', 'RST', 'FIN', 'PSH', 'SYN', 'ECE', 'CWR', 'URG'}
+
+[*] Senaryo: non_dict_layer_data
+    Açıklama: Bir katman düğümünün sözlük yerine dize veya sayı olması
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Katman 'layer_7_application' bir sözlük olmalıdır.

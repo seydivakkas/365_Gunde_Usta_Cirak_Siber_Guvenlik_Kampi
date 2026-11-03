@@ -1,0 +1,21 @@
+{
+  "dosyalar": {
+    "README.md": "d17ce9d0f75fbf5b80a4c1a086860cd9c90b6c2d784b43e14a9722b81d8329c0",
+    "ders.md": "d38e6bfe9627ec2d62b001aa2097c8874bf0c2849316076b96ddb910e64627d3",
+    "rapor.md": "da7dfc3e4b24a85bc2e63ff801f9ac51a2520bbdf54eea57d94c0677330c2682",
+    "sonuc.json": "3abea47a34cc75b337054428e0b1105935669b7ebcbbe8fd02f123af9d0c253f",
+    "soru_cevap.md": "2fd9f49c8fd9bd32397bb8079959f467a1a599af6d195bd0dd162730e28d4e1b",
+    "kanit/gercek/komut_ve_cikis.txt": "227088d3c71535297b2b78b0a2ae1a7d4cecdb8044bb70f297c5ef9e8533e834",
+    "kanit/gercek/test_sonuclari.txt": "241a29610c35acd497a5206b5fb8d5a7d7f2b0cbee081250c7e770d3a4833566",
+    "kanit/temsili/cekirdek_ve_kullanici_modu_mimarisi.txt": "30a9aa75499a7415a1f990a2b0f56dc4b3b71d72a4e08af3dc0ee07eade6da90",
+    "ornek_veri/kernel_security_baseline.json": "4c85249b853ac78a294e6ada52195a20c36898008f78d672741164d9e1e87cb9",
+    "ornek_veri/kernel_user_privilege_matrix.json": "14fc5bf1832b4009c4614d67d34f97dcd5297ab079db43acdfa4ef56b2afbf18",
+    "tests/test_kernel_user_mode_boundary_analyzer.py": "ad813afa10a8023eff5733ac11137222aedce0ff22cf20bfaea873922c9de244",
+    "uygulama/kernel_user_mode_boundary_analyzer.py": "3c1e9f32605d23385f833bc66b60a61fa4a7a88bbe7360611c4498602597976c"
+  },
+  "ozet": {
+    "toplam_dosya": 12,
+    "gun": 17,
+    "durum": "DOGRULANDI_PASS"
+  }
+}

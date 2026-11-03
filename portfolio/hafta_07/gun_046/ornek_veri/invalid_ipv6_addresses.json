@@ -1,0 +1,53 @@
+{
+  "aciklama": "G046 - Geçersiz IPv6 Adresleri ve CIDR Biçimleri (Negatif Test Seti)",
+  "gecersiz_ornekler": [
+    {
+      "id": "IPV6-ERR-01",
+      "girdi": "2001::db8::1",
+      "hata_turu": "MultipleDoubleColonError",
+      "beklenen_mesaj": "Bir IPv6 adresinde en fazla bir adet '::' çift iki nokta bulunabilir"
+    },
+    {
+      "id": "IPV6-ERR-02",
+      "girdi": "2001:0db8:85g3::1",
+      "hata_turu": "InvalidHexCharacter",
+      "beklenen_mesaj": "Geçersiz onaltılık (hex) karakter içeriyor: '85g3'"
+    },
+    {
+      "id": "IPV6-ERR-03",
+      "girdi": "2001:00db8::1",
+      "hata_turu": "HextetTooLong",
+      "beklenen_mesaj": "Hextet 1 ila 4 onaltılık karakterden oluşmalıdır: '00db8' (5 karakter)"
+    },
+    {
+      "id": "IPV6-ERR-04",
+      "girdi": "1:2:3:4:5:6:7:8:9",
+      "hata_turu": "TooManyHextets",
+      "beklenen_mesaj": "'::' içermeyen adres tam olarak 8 hextet içermelidir, bulunan: 9"
+    },
+    {
+      "id": "IPV6-ERR-05",
+      "girdi": "1:2:3:4:5:6:7",
+      "hata_turu": "TooFewHextets",
+      "beklenen_mesaj": "'::' içermeyen adres tam olarak 8 hextet içermelidir, bulunan: 7"
+    },
+    {
+      "id": "IPV6-ERR-06",
+      "girdi": "2001:db8::1/129",
+      "hata_turu": "PrefixOutOfRange",
+      "beklenen_mesaj": "IPv6 önek uzunluğu 0 ile 128 arasında olmalıdır: 129"
+    },
+    {
+      "id": "IPV6-ERR-07",
+      "girdi": "2001:db8::1/-1",
+      "hata_turu": "PrefixOutOfRange",
+      "beklenen_mesaj": "IPv6 önek uzunluğu 0 ile 128 arasında olmalıdır: -1"
+    },
+    {
+      "id": "IPV6-ERR-08",
+      "girdi": "2001:db8::1/abc",
+      "hata_turu": "InvalidPrefixFormat",
+      "beklenen_mesaj": "IPv6 önek uzunluğu sayısal bir tam sayı olmalıdır: abc"
+    }
+  ]
+}

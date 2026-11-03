@@ -1,0 +1,102 @@
+{
+  "aciklama": "G053 Port, Soket ve Bağlantı Durumu Negatif Kontrol Girdileri",
+  "lisans": "Özel Lisans — Tüm Hakları Saklıdır (c) 2026 Seydi Eryılmaz",
+  "gecersiz_girdiler": [
+    {
+      "id": "NEG-SOCK-01",
+      "hata_kodu": "ERR_PORT_NEGATIVE",
+      "protokol": "TCP",
+      "yerel_ip": "127.0.0.1",
+      "yerel_port": -1,
+      "uzak_ip": "0.0.0.0",
+      "uzak_port": 0,
+      "durum": "LISTEN",
+      "pid": 1000,
+      "beklenen_hata": "Port numarası 0 ile 65535 arasında olmalıdır."
+    },
+    {
+      "id": "NEG-SOCK-02",
+      "hata_kodu": "ERR_PORT_OVERFLOW",
+      "protokol": "TCP",
+      "yerel_ip": "127.0.0.1",
+      "yerel_port": 70000,
+      "uzak_ip": "0.0.0.0",
+      "uzak_port": 0,
+      "durum": "LISTEN",
+      "pid": 1000,
+      "beklenen_hata": "Port numarası 0 ile 65535 arasında olmalıdır."
+    },
+    {
+      "id": "NEG-SOCK-03",
+      "hata_kodu": "ERR_REMOTE_PORT_OVERFLOW",
+      "protokol": "TCP",
+      "yerel_ip": "192.168.1.5",
+      "yerel_port": 50000,
+      "uzak_ip": "8.8.8.8",
+      "uzak_port": 65536,
+      "durum": "ESTABLISHED",
+      "pid": 1000,
+      "beklenen_hata": "Port numarası 0 ile 65535 arasında olmalıdır."
+    },
+    {
+      "id": "NEG-SOCK-04",
+      "hata_kodu": "ERR_INVALID_TCP_STATE",
+      "protokol": "TCP",
+      "yerel_ip": "0.0.0.0",
+      "yerel_port": 80,
+      "uzak_ip": "0.0.0.0",
+      "uzak_port": 0,
+      "durum": "INVALID_STATE_XYZ",
+      "pid": 1000,
+      "beklenen_hata": "Geçersiz TCP bağlantı durumu."
+    },
+    {
+      "id": "NEG-SOCK-05",
+      "hata_kodu": "ERR_MALFORMED_LOCAL_IP",
+      "protokol": "TCP",
+      "yerel_ip": "300.1.2.3",
+      "yerel_port": 80,
+      "uzak_ip": "0.0.0.0",
+      "uzak_port": 0,
+      "durum": "LISTEN",
+      "pid": 1000,
+      "beklenen_hata": "Geçersiz IPv4 yerel adresi biçimi."
+    },
+    {
+      "id": "NEG-SOCK-06",
+      "hata_kodu": "ERR_MALFORMED_REMOTE_IP",
+      "protokol": "TCP",
+      "yerel_ip": "192.168.1.10",
+      "yerel_port": 50000,
+      "uzak_ip": "not_an_ip",
+      "uzak_port": 443,
+      "durum": "ESTABLISHED",
+      "pid": 1000,
+      "beklenen_hata": "Geçersiz IPv4 uzak adresi biçimi."
+    },
+    {
+      "id": "NEG-SOCK-07",
+      "hata_kodu": "ERR_UNSUPPORTED_PROTOCOL",
+      "protokol": "SCTP",
+      "yerel_ip": "0.0.0.0",
+      "yerel_port": 80,
+      "uzak_ip": "0.0.0.0",
+      "uzak_port": 0,
+      "durum": "LISTEN",
+      "pid": 1000,
+      "beklenen_hata": "Desteklenmeyen soket protokolü (Yalnızca TCP veya UDP)."
+    },
+    {
+      "id": "NEG-SOCK-08",
+      "hata_kodu": "ERR_NEGATIVE_PID",
+      "protokol": "TCP",
+      "yerel_ip": "127.0.0.1",
+      "yerel_port": 8080,
+      "uzak_ip": "0.0.0.0",
+      "uzak_port": 0,
+      "durum": "LISTEN",
+      "pid": -10,
+      "beklenen_hata": "PID (Süreç Kimliği) negatif olamaz."
+    }
+  ]
+}

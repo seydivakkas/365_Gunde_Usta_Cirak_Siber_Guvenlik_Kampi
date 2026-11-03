@@ -1,0 +1,87 @@
+{
+  "gun": 96,
+  "baslik": "Guvenli betik kullanim belgeleri",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "040a69c0769071e88b98af949f27ad512f698e26f60e1b7e7b04aec9703b1bdb",
+      "size": 5639
+    },
+    "ders.md": {
+      "sha256": "0b013e1b962c1384ee093123a6db2dc6d5a436dcb855c973a9bb592bb503326b",
+      "size": 5910
+    },
+    "kanit_uretici.py": {
+      "sha256": "c420ac588f87ec9178ffefd77e4fabf21d5673a7587bb13a29551b3a4442ff56",
+      "size": 8772
+    },
+    "rapor.md": {
+      "sha256": "01a0d0eff6e23969eb9a7b238607a4231e4863eba1769d4828aa4a8ac09fd176",
+      "size": 3113
+    },
+    "sonuc.json": {
+      "sha256": "3be45444a4c0450a98220d42da9293ece36a57790d388b9383c2c684e8eeeee3",
+      "size": 1937
+    },
+    "soru_cevap.md": {
+      "sha256": "f1fb93c77cd06fae8d376e18304711706da21508438d64ec679cdb1caa553b77",
+      "size": 9138
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "sha256": "ff07bc20f5dbeb83123a591cea367d7ddb9bbdc2ba6c72b7a030ecfc5e6dd997",
+      "size": 6511
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "sha256": "5d32a0fa514175688af8b3fc5432f8fe844e6406ec07880e6fa96509865aab7f",
+      "size": 2403
+    },
+    "kanit\\gercek\\ornek_betik_kilavuzu.md": {
+      "sha256": "0d4984c99c4af30d664262e0b17d44fe00ddbc91c3e40a94933bed37a2d58e35",
+      "size": 3030
+    },
+    "kanit\\gercek\\ornek_betik_yardim_metni.txt": {
+      "sha256": "c6f8fa7c6bb3e0937bf7626031cf2742eb3e05fbc64716df3f9a35b098805bb1",
+      "size": 998
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "sha256": "d6ea0fbfb74c735b017c47b9a029350cecaacffaadf67f56667fc8ff6a78d4f6",
+      "size": 3336
+    },
+    "kanit\\temsili\\guvenli_belgeleme_mimarisi.txt": {
+      "sha256": "eed3991359d10e57a9515359399606e00297109f8781b3c92db794c72d6e976a",
+      "size": 5118
+    },
+    "ornek_veri\\invalid_doc_inputs.json": {
+      "sha256": "8d79dc2e6708555d5743dfdabbaad913594edf4c92dd949f64b90e9556323212",
+      "size": 2699
+    },
+    "ornek_veri\\sample_security_script.py": {
+      "sha256": "2d5aef2121f1a5c4cb5c97b23b2482795b7ab9c353652c219219634b356eb27a",
+      "size": 2266
+    },
+    "ornek_veri\\script_security_schema.json": {
+      "sha256": "f4ee0b7ad3c539e3e05f26aa07b6e5c2677b3f0d10e53274058fc6b5dfbfcbc1",
+      "size": 2953
+    },
+    "tests\\__init__.py": {
+      "sha256": "2020e1458864a015191e585ad7142af06df42ff5983439e240a0bc124ce8f263",
+      "size": 563
+    },
+    "tests\\test_security_doc_generator.py": {
+      "sha256": "b4e90647982cff69db7746b4fdd7dec4ea33803b8aed72165e4a955a5d8215e5",
+      "size": 8351
+    },
+    "uygulama\\__init__.py": {
+      "sha256": "ac4bbce6ea885e66c4ffe29c931de7e21e4a97c4ee8ab6135bda84189f9d2494",
+      "size": 699
+    },
+    "uygulama\\docgen_cli.py": {
+      "sha256": "c9722e25fb85849313a2200197d81132f525b02f9a690e12c91bde74f3e7d1aa",
+      "size": 5028
+    },
+    "uygulama\\security_doc_generator.py": {
+      "sha256": "6eab1f0e2098c0ba264546fe7bf1e39cf50e9761e7df2d4c4e3c5e1bb0db7f47",
+      "size": 16016
+    }
+  }
+}

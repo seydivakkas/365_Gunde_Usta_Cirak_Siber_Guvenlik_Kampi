@@ -1,0 +1,53 @@
+================================================================================
+G063 MINI PROJE 8: PROTOKOL ZAMAN CIZELGESI ANALIZ RAPORU
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas) - Tum Haklari Saklidir
+================================================================================
+
+1. ADLI KRONOLOJI VE MERDIVEN SEMASI:
+================================================================================
+                      PROTOKOL ZAMAN CIZELGESI (TIMELINE)
+================================================================================
+ZAMAN (UTC)                | DELTA     | PROT   | KAYNAK -> HEDEF           | EYLEM
+--------------------------------------------------------------------------------
+2026-10-31T01:00:00.000000Z |    0.00ms | DNS    | 192.168.1.100:53530 -> 1.1.1.1:53 | DNS_QUERY (api.kurumsal.local)
+2026-10-31T01:00:00.015200Z | + 15.20ms | DNS    | 1.1.1.1:53 -> 192.168.1.100:53530 | DNS_RESPONSE (api.kurumsal.local)
+2026-10-31T01:00:00.025000Z | +  9.80ms | TCP    | 192.168.1.100:49152 -> 10.10.20.50:443 | TCP_SYN [Seq:1000 Ack:0]
+2026-10-31T01:00:00.045000Z | + 20.00ms | TCP    | 10.10.20.50:443 -> 192.168.1.100:49152 | TCP_SYN_ACK [Seq:5000 Ack:1001]
+2026-10-31T01:00:00.065000Z | + 20.00ms | TCP    | 192.168.1.100:49152 -> 10.10.20.50:443 | TCP_ACK [Seq:1001 Ack:5001]
+2026-10-31T01:00:00.070000Z | +  5.00ms | TLS    | 192.168.1.100:49152 -> 10.10.20.50:443 | TLS_CLIENT_HELLO [Seq:1001 Ack:5001]
+2026-10-31T01:00:00.095000Z | + 25.00ms | TLS    | 10.10.20.50:443 -> 192.168.1.100:49152 | TLS_SERVER_HELLO [Seq:5001 Ack:1513]
+2026-10-31T01:00:00.115000Z | + 20.00ms | HTTP2  | 192.168.1.100:49152 -> 10.10.20.50:443 | HTTP2_SETTINGS [SETTINGS Stream:0]
+2026-10-31T01:00:00.120000Z | +  5.00ms | HTTP2  | 192.168.1.100:49152 -> 10.10.20.50:443 | HTTP2_HEADERS [HEADERS Stream:1]
+2026-10-31T01:00:00.122000Z | +  2.00ms | HTTP2  | 192.168.1.100:49152 -> 10.10.20.50:443 | HTTP2_HEADERS [HEADERS Stream:3]
+2026-10-31T01:00:00.145000Z | + 23.00ms | HTTP2  | 10.10.20.50:443 -> 192.168.1.100:49152 | HTTP2_DATA [DATA Stream:3]
+2026-10-31T01:00:00.160000Z | + 15.00ms | HTTP2  | 10.10.20.50:443 -> 192.168.1.100:49152 | HTTP2_DATA [DATA Stream:1]
+2026-10-31T01:00:00.180000Z | + 20.00ms | TCP    | 192.168.1.100:49152 -> 10.10.20.50:443 | TCP_FIN_ACK [Seq:1868 Ack:7589]
+2026-10-31T01:00:00.200000Z | + 20.00ms | TCP    | 10.10.20.50:443 -> 192.168.1.100:49152 | TCP_ACK [Seq:7589 Ack:1869]
+2026-10-31T01:00:00.205000Z | +  5.00ms | TCP    | 10.10.20.50:443 -> 192.168.1.100:49152 | TCP_FIN_ACK [Seq:7589 Ack:1869]
+2026-10-31T01:00:00.225000Z | + 20.00ms | TCP    | 192.168.1.100:49152 -> 10.10.20.50:443 | TCP_ACK [Seq:1869 Ack:7590]
+================================================================================
+
+2. AKIS VE GECIKME METRIKLERI (SUMMARY):
+  * Toplam Olay Sayisi        : 16
+  * Toplam Akis Sayisi        : 2
+  * Toplam Sure               : 225.0 ms
+  * Ortalama Paket Deltasi    : 15.0 ms
+  * Guvenlik Posturu          : TEMIZ
+
+3. DETAYLI AKIS TABLOSU:
+  - Akis ID          : 1.1.1.1:53<->192.168.1.100:53530
+    Protokol         : DNS
+    Paket / Bayt     : 2 paket / 144 bayt
+    TCP Durumu       : CLOSED
+    El Sikisma RTT   : None ms
+    TLS Kuruldu mu   : False
+    HTTP/2 Akimlari  : 0 adet akim
+----------------------------------------
+  - Akis ID          : 10.10.20.50:443<->192.168.1.100:49152
+    Protokol         : TCP
+    Paket / Bayt     : 14 paket / 3833 bayt
+    TCP Durumu       : CLOSED
+    El Sikisma RTT   : 40.0 ms
+    TLS Kuruldu mu   : True
+    HTTP/2 Akimlari  : 3 adet akim
+----------------------------------------

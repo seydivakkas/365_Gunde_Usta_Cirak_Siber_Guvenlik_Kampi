@@ -1,0 +1,52 @@
+{
+  "gun": 29,
+  "tarih": "2026-10-27",
+  "baslik": "Windows Event Viewer'a giriş",
+  "asama": "Aşama 02 — Sistem ve Ağ Güvenliği Temelleri",
+  "hafta": 5,
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "puan_detay": {
+    "kriter_1": 20,
+    "kriter_2": 40,
+    "kriter_3": 25,
+    "kriter_4": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "kanitlar": {
+    "gercek": [
+      "portfolio/hafta_05/gun_029/kanit/gercek/test_sonuclari.txt",
+      "portfolio/hafta_05/gun_029/kanit/gercek/komut_ve_cikis.txt",
+      "portfolio/hafta_05/gun_029/kanit/gercek/sistem_olay_analiz_kaydi.txt",
+      "portfolio/hafta_05/gun_029/kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "portfolio/hafta_05/gun_029/kanit/temsili/windows_event_log_mimarisi.txt"
+    ]
+  },
+  "kod_dosyalari": [
+    "portfolio/hafta_05/gun_029/uygulama/windows_event_viewer_analyzer.py",
+    "portfolio/hafta_05/gun_029/tests/test_windows_event_viewer_analyzer.py"
+  ],
+  "dokumanlar": [
+    "portfolio/hafta_05/gun_029/ders.md",
+    "portfolio/hafta_05/gun_029/soru_cevap.md",
+    "portfolio/hafta_05/gun_029/rapor.md",
+    "portfolio/hafta_05/gun_029/README.md"
+  ],
+  "kazanimlar": [
+    "Windows Event Log mimarisi (EVTX, ETW, Security, System kanalları) adli derinlikte incelendi.",
+    "G029-SC1'in 'Tek bir olay kimliği bağlam olmadan saldırı kanıtı değildir' ilkesi kodlandı ve doğrulandı.",
+    "G029-SC2 gereğince gizli veri içermeyen 3 sistem olayı (Event 6005, 7045, 1074) tüm alanlarıyla analiz edildi.",
+    "Her olay kaydı için 64 karakterlik SHA-256 kriptografik bütünlük mühürlemesi uygulandı.",
+    "Negatif kontrolde 4 bozuk olay kaydı (eksik sağlayıcı, geçersiz ID, bozuk tarih, eksik üstveri) %100 başarıyla reddedildi.",
+    "14 birim test %100 başarıyla tamamlandı, 100/100 tam puan tescillendi."
+  ],
+  "ozel_not": "Aşama 02 Hafta 05'in ilk günü olan G029, bağımsız girdi, gözlenebilir çıktı, negatif kontrol ve SHA-256 adli hash doğrulamasıyla tamamlandı."
+}

@@ -1,0 +1,14 @@
+{
+  "portfolio/hafta_02/gun_012/README.md": "137086b0b6b98f19258af8a60c444a59da0ab8442038dbb79defabf2764e1106",
+  "portfolio/hafta_02/gun_012/ders.md": "9b9f04784b0b6b75de8032c19175e23726118e2fc36d344379786522c4f6a688",
+  "portfolio/hafta_02/gun_012/rapor.md": "ea8dd086506f162ac1289c772d1c6569eb4cde18f983750e41fff37b7a510534",
+  "portfolio/hafta_02/gun_012/sonuc.json": "e904cc21d7b8775e2d613a5224db4f6cbb98ace18b2351929abe263c3369870a",
+  "portfolio/hafta_02/gun_012/soru_cevap.md": "064749b1691c20a275c0cae1f619fd77348f60bd686ddc7f92a528e558a55c0f",
+  "portfolio/hafta_02/gun_012/kanit/gercek/komut_ve_cikis.txt": "9b69a1639c7ef69a831392724ddd353488dc5a75c7dfa95e7b5dfd8da9ea6ccd",
+  "portfolio/hafta_02/gun_012/kanit/gercek/test_sonuclari.txt": "8bdc8a164c4d7ad350f72e19d650987b414b13c7a9c3aca16843e7a9d5fce401",
+  "portfolio/hafta_02/gun_012/kanit/temsili/snapshot_ve_yedek_mimarisi.txt": "7e9a035416e57ef9896b18da2349e1ae8238668aa3456f8c49e88d90d1f396e0",
+  "portfolio/hafta_02/gun_012/ornek_veri/restore_drill_policy.json": "4fcdee2b8e40cb36ff561ccbb38ba957564f78632118bbae5aeeaf7a0c7095af",
+  "portfolio/hafta_02/gun_012/ornek_veri/vm_lab_envanteri.json": "e2c4891e32fa3f1d803435ec6bb0ac68c7d7fca6b827cf269d1fb855e0874a3d",
+  "portfolio/hafta_02/gun_012/tests/test_vm_snapshot_backup_manager.py": "4a3deb918829f1070f1d77663c5f17a1f086a9bdb172daa957f3e9259c60adbe",
+  "portfolio/hafta_02/gun_012/uygulama/vm_snapshot_backup_manager.py": "3f67331caa6ecf35801f78018083a77337c81a751dbe1c3293f6be49573aee6e"
+}

@@ -1,0 +1,42 @@
+=== MINI PROJE 18: NEGATİF KONTROL VE SINIR DURUM TEST SONUÇLARI ===
+Tarih / Saat       : 2026-11-02T07:54:57.412215+00:00
+Toplam Senaryo     : 9
+Genel Başarı Durumu: BAŞARILI (100% PASS)
+===========================================================================
+
+[PASS] NEG-AUDIT-01 (DEFENDER): Defender Real-Time Protection Devre Dışı
+    Beklenen CWE   : CWE-693 | Tespit: ['CWE-693']
+    Beklenen MITRE : T1562.001 | Tespit: ['T1562.001']
+---------------------------------------------------------------------------
+[PASS] NEG-AUDIT-02 (DEFENDER): Defender Tamper Protection Kapalı
+    Beklenen CWE   : CWE-693 | Tespit: ['CWE-693']
+    Beklenen MITRE : T1562.001 | Tespit: ['T1562.001']
+---------------------------------------------------------------------------
+[PASS] NEG-AUDIT-03 (UAC): UAC EnableLUA=0 Tamamen Devre Dışı
+    Beklenen CWE   : CWE-250 | Tespit: ['CWE-250']
+    Beklenen MITRE : T1548.002 | Tespit: ['T1548.002']
+---------------------------------------------------------------------------
+[PASS] NEG-AUDIT-04 (UAC): UAC ConsentPromptBehaviorAdmin=0 Sessiz Yükseltme
+    Beklenen CWE   : CWE-250 | Tespit: ['CWE-250']
+    Beklenen MITRE : T1548.002 | Tespit: ['T1548.002']
+---------------------------------------------------------------------------
+[PASS] NEG-AUDIT-05 (NTFS): NTFS Sistem Dizininde Standart Kullanıcı Yazma İzni
+    Beklenen CWE   : CWE-732 | Tespit: ['CWE-732']
+    Beklenen MITRE : T1574.009 | Tespit: ['T1574.009']
+---------------------------------------------------------------------------
+[PASS] NEG-AUDIT-06 (FIREWALL): Firewall Public Profili Devre Dışı
+    Beklenen CWE   : CWE-284 | Tespit: ['CWE-284']
+    Beklenen MITRE : T1562.004 | Tespit: ['T1562.004']
+---------------------------------------------------------------------------
+[PASS] NEG-AUDIT-07 (FIREWALL): Firewall Public Profilde 3389 RDP Port Maruziyeti
+    Beklenen CWE   : CWE-284 | Tespit: ['CWE-284']
+    Beklenen MITRE : T1021.001 | Tespit: ['T1021.001']
+---------------------------------------------------------------------------
+[PASS] NEG-AUDIT-08 (SERVICE): Servis Tırnaksız ImagePath Boşluklu Dizin
+    Beklenen CWE   : CWE-428 | Tespit: ['CWE-428']
+    Beklenen MITRE : T1574.009 | Tespit: ['T1574.009']
+---------------------------------------------------------------------------
+[PASS] NEG-AUDIT-09 (SERVICE): Servis Zayıf DACL BUILTIN\Users ChangeConfig (DC)
+    Beklenen CWE   : CWE-732 | Tespit: ['CWE-732']
+    Beklenen MITRE : T1543.003 | Tespit: ['T1543.003']
+---------------------------------------------------------------------------

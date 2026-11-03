@@ -1,0 +1,37 @@
+{
+  "kural_seti": "Linux Kabuk Komutları ve Yol Güvenliği Kuralları",
+  "surum": "1.0.0",
+  "standart_referanslari": [
+    "POSIX IEEE Std 1003.1 (Shell & Utilities: pwd, cd, ls, cat, head)",
+    "CWE-426: Untrusted Search Path",
+    "CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+    "CIS Linux Benchmark (Section 6.2: Ensure PATH integrity)"
+  ],
+  "desteklenen_temel_komutlar": [
+    "pwd",
+    "cd",
+    "ls",
+    "cat",
+    "head"
+  ],
+  "tehlikeli_yol_kaliplari": [
+    "../",
+    "..\\",
+    "/../",
+    "../../"
+  ],
+  "guvensiz_path_dizinleri": [
+    ".",
+    "",
+    "/tmp",
+    "/var/tmp",
+    "/dev/shm"
+  ],
+  "kritik_dosya_erisim_kurallari": {
+    "/etc/shadow": {
+      "gerekli_izin_oktal": "0640",
+      "yetkili_gruplar": ["root", "shadow"],
+      "risk": "CWE-732 Yetkisiz Parola Hash Okuma"
+    }
+  }
+}

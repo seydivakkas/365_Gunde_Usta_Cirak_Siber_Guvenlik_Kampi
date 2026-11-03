@@ -1,0 +1,79 @@
+{
+  "aciklama": "Gün 078: Dosya okuma ve Pathlib için 9 adet negatif kontrol ve sınır durumu test senaryosu",
+  "negatif_testler": [
+    {
+      "id": "NEG_01_PATH_TRAVERSAL_RELATIVE_DOTS",
+      "tanim": "Göreceli dizin atlama (../../) karakterleri ile sandbox deposundan dışarı sızma girişimi (CWE-22)",
+      "girdi": {
+        "talep_edilen_yol": "../../Windows/System32/cmd.exe"
+      },
+      "beklenen_hata_veya_davranis": "PermissionError veya ValueError: Hedef dosya sandbox sınırları dışındadır (Path Traversal engellendi)"
+    },
+    {
+      "id": "NEG_02_ABSOLUTE_PATH_WINDOWS_ESCAPE",
+      "tanim": "Windows mutlak sürücü yolu (C:\\Windows\\System32\\drivers\\etc\\hosts) verilerek sandbox dışına çıkma",
+      "girdi": {
+        "talep_edilen_yol": "C:\\Windows\\System32\\drivers\\etc\\hosts"
+      },
+      "beklenen_hata_veya_davranis": "PermissionError: Mutlak yol enjeksiyonu ile sandbox atlatması engellendi"
+    },
+    {
+      "id": "NEG_03_ABSOLUTE_PATH_POSIX_ESCAPE",
+      "tanim": "POSIX kök dizin mutlak yolu (/etc/passwd) verilerek sandbox dışına çıkma girişimi",
+      "girdi": {
+        "talep_edilen_yol": "/etc/passwd"
+      },
+      "beklenen_hata_veya_davranis": "PermissionError: POSIX mutlak yol ile sandbox dışına çıkış engellendi"
+    },
+    {
+      "id": "NEG_04_NULL_BYTE_PATH_POISONING",
+      "tanim": "Dosya yolu dizesine Null-Byte (\\x00) enjekte edilerek uzantı filtresini atlatma girişimi",
+      "girdi": {
+        "talep_edilen_yol": "config.json\u0000.exe"
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Dosya yolunda zararlı Null-Byte tespit edildi"
+    },
+    {
+      "id": "NEG_05_FORBIDDEN_FILE_EXTENSION",
+      "tanim": "İzin verilmeyen zararlı veya çalıştırılabilir dosya uzantısı (.sh, .exe, .py) talep edilmesi",
+      "girdi": {
+        "talep_edilen_yol": "malicious_script.sh"
+      },
+      "beklenen_hata_veya_davranis": "ValueError: İzin verilmeyen dosya uzantısı (.sh)"
+    },
+    {
+      "id": "NEG_06_EXCESSIVE_FILE_SIZE_LIMIT_EXCEEDED",
+      "tanim": "Maksimum izin verilen dosya boyutu tavanını aşan dosyayı okumaya çalışarak bellek tüketimi (CWE-400)",
+      "girdi": {
+        "max_size_bayt": 100,
+        "dosya": "security_audit.log"
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Dosya boyutu izin verilen güvenlik tavanını aştı"
+    },
+    {
+      "id": "NEG_07_OPENING_DIRECTORY_AS_FILE",
+      "tanim": "Normal dosya yerine bir dizin yolunu okumaya çalışarak sistem hatası üretme girişimi",
+      "girdi": {
+        "talep_edilen_yol": "."
+      },
+      "beklenen_hata_veya_davranis": "IsADirectoryError veya ValueError: Belirtilen yol normal bir dosya değil, dizindir"
+    },
+    {
+      "id": "NEG_08_NON_EXISTENT_FILE_SAFE_HANDLING",
+      "tanim": "Depo içinde yer almayan hayali bir dosya talep edildiğinde kontrollü hata yönetimi",
+      "girdi": {
+        "talep_edilen_yol": "non_existent_vault.json"
+      },
+      "beklenen_hata_veya_davranis": "FileNotFoundError düzgün şekilde yakalanıp yönetilmelidir"
+    },
+    {
+      "id": "NEG_09_ATOMIC_WRITE_DIRECTORY_TRAVERSAL",
+      "tanim": "Atomik yazma fonksiyonu ile sandbox dışına dosya yazma veya zararlı dosya oluşturma girişimi",
+      "girdi": {
+        "hedef_yol": "../evil_backdoor.php",
+        "icerik": "<?php phpinfo(); ?>"
+      },
+      "beklenen_hata_veya_davranis": "PermissionError: Sandbox dışına dosya yazma girişimi engellendi"
+    }
+  ]
+}

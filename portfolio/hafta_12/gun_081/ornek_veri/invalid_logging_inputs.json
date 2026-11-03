@@ -1,0 +1,60 @@
+{
+  "aciklama": "G081 Python Logging Modulu Negatif Guvenlik Kontrolleri ve Zararli Log Girdisi Test Paketi",
+  "olusturma_tarihi": "2026-11-01",
+  "negatif_testler": [
+    {
+      "test_id": "NEG_01_LOG_INJECTION_CRLF",
+      "aciklama": "Log dosyasina sahte satir eklemeyi hedefleyen CRLF (\\r\\n) log enjeksiyonu (CWE-117)",
+      "girdi": "Kullanici bulunamadi\r\n[AUDIT] 2026-11-01 Administrator session opened successfully",
+      "beklenen_savunma": "Log mesajindaki tum CRLF karakterleri filtrelenir ve tek bir guvenli satira indirgenir."
+    },
+    {
+      "test_id": "NEG_02_SENSITIVE_CREDENTIAL_LEAK",
+      "aciklama": "Hata loguna kazara veya kasitli olarak parola ve gizli anahtar yazilmasi (CWE-532)",
+      "girdi": "Veritabani baglanti hatasi: db_user=postgres password=SuperSecretP@ss99! host=10.0.0.1",
+      "beklenen_savunma": "password= parametresi regex filtresi tarafindan tespit edilip [REDACTED] ile maskelenir."
+    },
+    {
+      "test_id": "NEG_03_BEARER_TOKEN_EXPOSURE",
+      "aciklama": "API istek basligindaki Bearer JWT yetki belirtecinin loga ifsa edilmesi (CWE-359)",
+      "girdi": "HTTP 401 Unauthorized: Header Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.evil_sig",
+      "beklenen_savunma": "Bearer token degeri [REDACTED_JWT] olarak maskelenir."
+    },
+    {
+      "test_id": "NEG_04_ANSI_TERMINAL_ESCAPE_POISONING",
+      "aciklama": "SIEM veya terminal log izleyicilerini yaniltmaya yonelik ANSI kacis dizisi enjeksiyonu",
+      "girdi": "Islem tamamlandi \u001b[31;1m[CRITICAL] SALDIRI ALGILANDI\u001b[0m",
+      "beklenen_savunma": "ANSI terminal kontrol karakterleri temizlenerek yalnizca duz metin loglanir."
+    },
+    {
+      "test_id": "NEG_05_NULL_BYTE_POISONING_IN_MESSAGE",
+      "aciklama": "C-tabanli log parser'larini yaniltmaya yonelik null-byte (\\x00) enjeksiyonu",
+      "girdi": "Kullanici adi: admin\u0000.saldirgan.com giris yapti",
+      "beklenen_savunma": "Dize icindeki null-byte karakteri bosluk veya ozel belirtec ile degistirilir."
+    },
+    {
+      "test_id": "NEG_06_OVERSIZED_MESSAGE_DOS",
+      "aciklama": "Log depolama alanini ve bellegi doldurmaya yonelik tavan boyutu asan devasa log iletisi",
+      "girdi": "A_COK_BUYUK_LOG_METNI",
+      "beklenen_savunma": "max_message_length (or. 4096 karakter) tavani uygulanarak fazlalik kesilir (...[TRUNCATED])."
+    },
+    {
+      "test_id": "NEG_07_INVALID_LOG_LEVEL_SPEC",
+      "aciklama": "Gecersiz veya sahte log seviyesi atama girisimi",
+      "girdi": "SAHTE_LEVEL_99",
+      "beklenen_savunma": "Gecersiz log seviyeleri reddedilir veya guvenli varsayilan seviyeye (INFO/WARNING) atanir."
+    },
+    {
+      "test_id": "NEG_08_CREDIT_CARD_PAN_EXPOSURE",
+      "aciklama": "Odeme islemi loglarina 16 haneli kredi karti numarasinin (PAN) acik metin sizmasi",
+      "girdi": "Odeme basarisiz oldu: Kart no: 4111-2222-3333-4444 tutar: 1500 TL",
+      "beklenen_savunma": "Kredi karti desenleri tespit edilerek son 4 hane haric maskelenir (****-****-****-4444)."
+    },
+    {
+      "test_id": "NEG_09_MALFORMED_JSON_LOG_CONTEXT",
+      "aciklama": "Yapilandirilmis JSON formatlayiciya serilestirilemeyen veya dongusel veri nesnesi aktarimi",
+      "girdi": {"unserializable_key": "CIRCULAR_REF_OBJECT"},
+      "beklenen_savunma": "JSON serilestirme hatasi durumunda guvenli geri donus (fallback) formati kullanilir."
+    }
+  ]
+}

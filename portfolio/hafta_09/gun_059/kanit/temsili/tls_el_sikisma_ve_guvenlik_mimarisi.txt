@@ -1,0 +1,117 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+==============================================================================
+HTTPS VE TLS EL SIKIŞMASI (HANDSHAKE) GÜVENLİK VE MİMARİ İLLÜSTRASYONU
+==============================================================================
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Tüm Hakları Saklıdır.
+ÖZEL LİSANS — Yalnızca görüntüleme ve eğitim amaçlıdır. Ticari kullanılamaz.
+
++----------------------------------------------------------------------------+
+| 1. BÖLÜM: KATMANLI MİMARİ VE TCP -> TLS -> HTTP ENKAPSÜLASYONU            |
++----------------------------------------------------------------------------+
+
+  İstemci (Web Tarayıcı)                               Sunucu (HTTPS Web Server)
+         |                                                       |
+         |------------------- 1. TCP SYN ----------------------->| (Port 443)
+         |<------------------ 2. TCP SYN + ACK ------------------|
+         |------------------- 3. TCP ACK ----------------------->| [TCP Bağlantısı Kuruldu]
+         |                                                       |
+         | [Katman 4 - Aktarım Katmanı Hazır]                   |
+         |                                                       |
+         | >>>>>>>>>>>> TLS PROTOKOLÜ BURADA BAŞLAR <<<<<<<<<<<< |
+         |                                                       |
+         | +---------------------------------------------------+ |
+         | | TLS Record Layer (5 Bayt Başlık)                  | |
+         | | [Content-Type: 22] [Version: 0x0303] [Length: N] | |
+         | +---------------------------------------------------+ |
+         | | El Sıkışma Mesajı (Handshake Message)             | |
+         | | [Type: 1 (ClientHello)] [Uzunluk: 24-bit]         | |
+         | +---------------------------------------------------+ |
+         |                                                       |
+
++----------------------------------------------------------------------------+
+| 2. BÖLÜM: TLS 1.2 VS TLS 1.3 EL SIKIŞMA DÖNGÜSÜ (RTT KARŞILAŞTIRMASI)      |
++----------------------------------------------------------------------------+
+
+  [A] TLS 1.2 EL SIKIŞMASI (2 Tam Gidiş-Dönüş / 2-RTT Gecikme):
+  -----------------------------------------------------------------------------
+  İSTEMCİ                                                      SUNUCU
+     |                                                           |
+     | ----- 1. ClientHello (Ciphers, Extensions, SNI) --------> | [RTT 1 Başlar]
+     |                                                           |
+     | <---- 2. ServerHello (Seçilen Cipher, Server Random) ---- |
+     | <---- 3. Certificate (Sunucu X.509 Sertifikası) --------- |
+     | <---- 4. ServerKeyExchange (Geçici ECDHE parametreleri) - |
+     | <---- 5. ServerHelloDone -------------------------------- | [RTT 1 Biter]
+     |                                                           |
+     | ----- 6. ClientKeyExchange (Geçici ECDHE açık anahtarı) -> | [RTT 2 Başlar]
+     | ----- 7. [ChangeCipherSpec] ----------------------------> |
+     | ----- 8. Finished (Doğrulama Özeti) --------------------> |
+     |                                                           |
+     | <---- 9. [ChangeCipherSpec] ----------------------------- |
+     | <---- 10. Finished (Doğrulama Özeti) -------------------- | [RTT 2 Biter]
+     |                                                           |
+     | ===== ARTIK ŞİFRELİ VERİ (HTTPS GET / POST) AKABİLİR ==== | (2-RTT Sonrası)
+     | ----- 11. Application Data (Encrypted HTTP) ------------> |
+
+  -----------------------------------------------------------------------------
+  [B] TLS 1.3 MODERN EL SIKIŞMASI (1 Tek Gidiş-Dönüş / 1-RTT Gecikme):
+  -----------------------------------------------------------------------------
+  İSTEMCİ                                                      SUNUCU
+     |                                                           |
+     | ----- 1. ClientHello + key_share (X25519) + SNI --------> | [RTT 1 Başlar]
+     |          (İstemci ilk pakette geçici anahtarını yollar)   |
+     |                                                           |
+     | <---- 2. ServerHello + key_share (Sunucu X25519) -------- |
+     |       {3. EncryptedExtensions} (ŞİFRELİ) ---------------- |
+     |       {4. Certificate} (ŞİFRELİ - Dinlenemez!) ---------- |
+     |       {5. CertificateVerify} (ŞİFRELİ) ------------------ |
+     |       {6. Finished} (ŞİFRELİ) --------------------------- | [RTT 1 Biter]
+     |                                                           |
+     | ===== MASTER SECRET HESAPLANDI! HEMEN UYGULAMA VERİSİ =====| (1-RTT!)
+     | ----- 7. {Finished} + Application Data (HTTP/2, HTTP/3) > |
+
++----------------------------------------------------------------------------+
+| 3. BÖLÜM: SÜRÜM DÜŞÜRME (DOWNGRADE MitM) VE SENTINEL SAVUNMASI             |
++----------------------------------------------------------------------------+
+
+      İstemci                         Saldırgan (MitM)                    Sunucu
+   (TLS 1.3 Destekli)               (Ortadaki Adam)                 (TLS 1.3 Destekli)
+          |                               |                                 |
+          |--- ClientHello (TLS 1.3) ---->|                                 |
+          |                               |-- ClientHello (TLS 1.2 HİLESİ)->| (Saldırgan sürümü düşürdü)
+          |                               |                                 |
+          |                               |<-- ServerHello (TLS 1.2) -------| Sunucu: "İstemci 1.2 istedi,
+          |                               |    Random[-8:] = DOWNGRD\x01   | ama ben 1.3 biliyorum!
+          |                               |                                 | O halde sentinel basarım!"
+          |<-- ServerHello (TLS 1.2) -----|                                 |
+          |    Random[-8:] = DOWNGRD\x01  |                                 |
+          |                               |                                 |
+     [İSTEMCİ KONTROLÜ]:
+     "Ben TLS 1.3 destekliyordum! Sunucu bana TLS 1.2 döndü ama Random içinde
+      RFC 8446 DOWNGRD\\x01 sentineli var!
+      DEMEK Kİ AĞDA BİR SALDIRGAN PAKETİ DEĞİŞTİRDİ!"
+          |
+          X ====> TLS ALERT: illegal_parameter (BAĞLANTI DERHAL KOPARILIR!)
+
++----------------------------------------------------------------------------+
+| 4. BÖLÜM: CRIME SALDIRISI (CVE-2012-4929) VE TLS SIKIŞTIRMA TEHLİKESİ      |
++----------------------------------------------------------------------------+
+
+  1. Saldırgan kurbana zararlı JavaScript çalıştırır:
+     İstek: POST /gizli HTTP/1.1
+     Cookie: secret=A9F8B2...
+     Gövde:  data=secret=A
+  2. TLS Seviyesinde DEFLATE Sıkıştırması Aktifse:
+     Eğer saldırganın tahmini (secret=A) cookie içindekiyle eşleşirse,
+     DEFLATE LZ77 algoritması tekrar eden dizgileri tek bir referansa indirger.
+  3. Şifreli TLS Record Uzunluğu 1 bayt KISALIR!
+  4. Saldırgan ağdaki şifreli paketin boyutuna bakarak (Boyut Analizi - Side Channel)
+     Cookie karakterini tek tek deşifre eder (Byte-by-byte exfiltration).
+  
+  ÇÖZÜM: TLS seviyesinde sıkıştırma (CompressionMethods) KESİNLİKLE YASAKLANMALIDIR!
+         Yalnızca 0x00 (Null / Sıkıştırmasız) kabul edilir.
+
+==============================================================================
+BU BELGE BİR EĞİTİM İLLÜSTRASYONUDUR. GERÇEK ÇALIŞTIRMA KANITI DEĞİLDİR.
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Tüm Hakları Saklıdır.

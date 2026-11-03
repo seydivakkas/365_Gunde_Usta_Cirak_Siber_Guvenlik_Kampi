@@ -1,0 +1,33 @@
+test_01_valid_settings_frame_header_parsing (portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer.TestHTTP2HTTP3Analyzer.test_01_valid_settings_frame_header_parsing)
+Pozitif Test 1: Ba­lant² seviyesi SETTINGS ereve ba■l²­²n²n ba■ar²yla ayr²■t²r²lmas². ... ok
+test_02_valid_headers_frame_parsing (portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer.TestHTTP2HTTP3Analyzer.test_02_valid_headers_frame_parsing)
+Pozitif Test 2: Ak²■ seviyesi HEADERS erevesinin ayr²■t²r²lmas². ... ok
+test_03_negative_truncated_frame_header (portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer.TestHTTP2HTTP3Analyzer.test_03_negative_truncated_frame_header)
+Negatif Test 3: 9 bayttan k²sa kesilmi■ ereve ba■l²­²nda HTTP2MalformedFrameError. ... ok
+test_04_negative_unknown_frame_type (portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer.TestHTTP2HTTP3Analyzer.test_04_negative_unknown_frame_type)
+Negatif Test 4: RFC 7540 standard²nda tan²ms²z ereve tipinde HTTP2ValidationError. ... ok
+test_05_negative_frame_length_overflow (portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer.TestHTTP2HTTP3Analyzer.test_05_negative_frame_length_overflow)
+Negatif Test 5: 16384 bayt s²n²r²n² a■an y³k uzunlu­unda HTTP2ValidationError. ... ok
+test_06_negative_payload_length_mismatch (portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer.TestHTTP2HTTP3Analyzer.test_06_negative_payload_length_mismatch)
+Negatif Test 6: Bildirilen boyuttan daha k²sa g÷vde ak²■²nda HTTP2MalformedFrameError. ... ok
+test_07_negative_data_frame_on_stream_zero (portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer.TestHTTP2HTTP3Analyzer.test_07_negative_data_frame_on_stream_zero)
+Negatif Test 7: DATA erevesinin Ak²■ ID 0 ile g÷nderilmesi ihlalinin reddi. ... ok
+test_08_negative_settings_frame_on_stream_positive (portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer.TestHTTP2HTTP3Analyzer.test_08_negative_settings_frame_on_stream_positive)
+Negatif Test 8: SETTINGS erevesinin Ak²■ ID > 0 ile g÷nderilmesi ihlalinin reddi. ... ok
+test_09_rst_stream_payload_validation (portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer.TestHTTP2HTTP3Analyzer.test_09_rst_stream_payload_validation)
+Pozitif ve Negatif Test 9: RST_STREAM y³k³n³n tam 4 bayt olmas²n²n denetimi. ... ok
+test_10_ping_payload_validation (portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer.TestHTTP2HTTP3Analyzer.test_10_ping_payload_validation)
+Pozitif ve Negatif Test 10: PING y³k³n³n tam 8 bayt olmas²n²n denetimi. ... ok
+test_11_settings_payload_multiple_of_six (portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer.TestHTTP2HTTP3Analyzer.test_11_settings_payload_multiple_of_six)
+Pozitif ve Negatif Test 11: SETTINGS y³k³n³n 6 bayt²n kat² olmas² kural²n²n denetimi. ... ok
+test_12_rapid_reset_ddos_detection (portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer.TestHTTP2HTTP3Analyzer.test_12_rapid_reset_ddos_detection)
+Pozitif ve Negatif Test 12: CVE-2023-44487 HTTP/2 Rapid Reset DDoS tespiti. ... ok
+test_13_quic_anti_amplification_limit (portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer.TestHTTP2HTTP3Analyzer.test_13_quic_anti_amplification_limit)
+Pozitif ve Negatif Test 13: RFC 9000 3x Anti-Amplification kural²n²n denetimi. ... ok
+test_14_hol_blocking_simulation_and_matrix_comparison (portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer.TestHTTP2HTTP3Analyzer.test_14_hol_blocking_simulation_and_matrix_comparison)
+Pozitif Test 14: HTTP/2 ve HTTP/3 HoL blokaj² davran²■ sim³lasyonu ve kar■²la■t²rma matrisi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK

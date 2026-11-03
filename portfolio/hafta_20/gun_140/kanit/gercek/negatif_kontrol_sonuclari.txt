@@ -1,0 +1,49 @@
+=== GÜN 140 / MINIPROJE 19: 9 NEGATİF KONTROL VE ZAFİYET SENARYO RAPORU ===
+Tarih: 2026-11-02T15:05:18.242803
+Hedef Standart: CIS Linux Benchmark v2.0.0 (Week 20 Full Scope)
+
+Senaryo ID   : SCENARIO-HARDEN-01
+Başlık        : Sudoers Dosya İzinleri Kritik Düzeyde Açık (0777)
+Hedef Domain  : SUDO (Kural: CIS-1.3.1)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE REDDEDİLDİ (PASS)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-HARDEN-02
+Başlık        : Tehlikeli NOPASSWD ile Kabuk Yetki Yükseltme Riski (/bin/bash)
+Hedef Domain  : SUDO (Kural: CIS-1.3.4)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE REDDEDİLDİ (PASS)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-HARDEN-03
+Başlık        : Yetersiz PAM Parola Uzunluğu ve Karakter Politikası
+Hedef Domain  : PAM (Kural: CIS-5.4.1)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE REDDEDİLDİ (PASS)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-HARDEN-04
+Başlık        : Yasaklanmış Güvensiz Servislerin Çalıştırılması (telnet, vsftpd)
+Hedef Domain  : SYSTEMD (Kural: CIS-2.1.1)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE REDDEDİLDİ (PASS)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-HARDEN-05
+Başlık        : Systemd Servis Kum Havuzu (Sandboxing) Eksikliği
+Hedef Domain  : SYSTEMD (Kural: CIS-2.2.1)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE REDDEDİLDİ (PASS)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-HARDEN-06
+Başlık        : SSH Root Girişi ve Parolalı Doğrulama Açık
+Hedef Domain  : SSH (Kural: CIS-5.2.1)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE REDDEDİLDİ (PASS)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-HARDEN-07
+Başlık        : Firewall Varsayılan Politikası ACCEPT ve Durumsuz Filtre
+Hedef Domain  : FIREWALL (Kural: CIS-3.4.2)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE REDDEDİLDİ (PASS)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-HARDEN-08
+Başlık        : Audit Kuralları Kilitlenmemiş ve /etc/shadow İzlenmiyor
+Hedef Domain  : AUDIT (Kural: CIS-4.1.18)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE REDDEDİLDİ (PASS)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-HARDEN-09
+Başlık        : Journald Geçici Depolama ve İleri Mühürleme Kapalı
+Hedef Domain  : JOURNAL (Kural: CIS-4.2.1)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE REDDEDİLDİ (PASS)
+---------------------------------------------------------------------------

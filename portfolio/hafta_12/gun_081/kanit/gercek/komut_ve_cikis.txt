@@ -1,0 +1,43 @@
+================================================================================
+G081: PYTHON LOGGING MODÜLÜ — KOMUT VE YÜRÜTME ÇIKILARI
+================================================================================
+
+[KOMUT 1: Birim Testlerin Yürütülmesi]
+$ python -m unittest portfolio.hafta_12.gun_081.tests.test_secure_logger_and_audit_engine -v
+----------------------------------------------------------------------
+test_01_filter_crlf_log_injection_neutralization ... ok
+test_02_filter_ansi_escape_code_removal ... ok
+test_03_filter_secret_credential_redaction ... ok
+test_04_filter_bearer_jwt_token_redaction ... ok
+test_05_filter_credit_card_masking ... ok
+test_06_filter_null_byte_replacement ... ok
+test_07_filter_oversized_message_truncation ... ok
+test_08_json_formatter_produces_valid_json ... ok
+test_09_json_formatter_includes_context ... ok
+test_10_json_formatter_handles_unserializable_context_fallback ... ok
+test_11_manager_log_event_records_to_stream ... ok
+test_12_manager_invalid_level_falls_back_to_warning ... ok
+test_13_manager_log_security_alert_critical ... ok
+test_14_manager_isolated_logger_does_not_propagate ... ok
+
+Ran 14 tests in 0.002s
+OK
+
+[KOMUT 2: Uygulamanın Bağımsız Yürütülmesi]
+$ python portfolio/hafta_12/gun_081/uygulama/secure_logger_and_audit_engine.py
+[+] G081: Python Logging ve Güvenli SIEM Boru Hattı Başlatılıyor...
+[+] Normal Log Kaydedildi: Level=INFO | Mesaj=Sistem oturum açma işlemi başarıyla tamamlandı.
+[+] Filtrelenmiş Log: Giriş başarısız: username=admin password=[REDACTED] [CRITICAL] 2026-11-01 Sahte Log Satırı
+[+] Güvenlik Alarmı Kaydedildi: CRITICAL - GÜVENLİK ALARMI [SQL_INJECTION_DETECTED]: Parametre içinde 'UNION SELECT' imzası tespit edildi.
+[+] Güvenli loglama raporu kaydedildi: .../kanit/gercek/guvenli_loglama_raporu.txt
+
+[KOMUT 3: Negatif Güvenlik Kontrollerinin Yürütülmesi (9 Senaryo)]
+[PASS] NEG_01_LOG_INJECTION_CRLF -> CRLF filtrelendi ve tek satira indirgendi: Kullanici bulunamadi [AUDIT] 2026-11-01 Administrator session opened successfully
+[PASS] NEG_02_SENSITIVE_CREDENTIAL_LEAK -> Parola basariyla maskelendi: Veritabani baglanti hatasi: db_user=postgres password=[REDACTED] host=10.0.0.1
+[PASS] NEG_03_BEARER_TOKEN_EXPOSURE -> Bearer JWT basariyla maskelendi: HTTP 401 Unauthorized: Header Authorization: Bearer [REDACTED_JWT]
+[PASS] NEG_04_ANSI_TERMINAL_ESCAPE_POISONING -> ANSI kacis kodlari temizlendi: Islem tamamlandi [CRITICAL] SALDIRI ALGILANDI
+[PASS] NEG_05_NULL_BYTE_POISONING_IN_MESSAGE -> Null-byte karakteri temizlendi: Kullanici adi: admin .saldirgan.com giris yapti
+[PASS] NEG_06_OVERSIZED_MESSAGE_DOS -> Devasa mesaj kesildi (uzunluk: 114): XXXXXX...[TRUNCATED]
+[PASS] NEG_07_INVALID_LOG_LEVEL_SPEC -> Gecersiz seviye 'SAHTE_LEVEL_99' guvenli 'WARNING' seviyesine normalizasyon yapildi.
+[PASS] NEG_08_CREDIT_CARD_PAN_EXPOSURE -> Kredi karti numarasi maskelendi: Odeme basarisiz oldu: Kart no: ****-****-****-4444 tutar: 1500 TL
+[PASS] NEG_09_MALFORMED_JSON_LOG_CONTEXT -> Bozuk/dongusel nesnede sistem cokmedi, fallback JSON uretildi.

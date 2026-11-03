@@ -1,0 +1,46 @@
+===============================================================================
+ TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+===============================================================================
+ GÜN 143: ACTIVE DIRECTORY ETKİ ALANI GÜVENLİK VE KERBEROS MİMARİSİ
+===============================================================================
+
+                               [ SALDIRGAN / İÇ TEHDİT ]
+                                           │
+             ┌─────────────────────────────┼─────────────────────────────┐
+             ▼                             ▼                             ▼
+     [ KERBEROASTING ]             [ AS-REP ROASTING ]           [ UNCONSTRAINED DELEGATION ]
+    Yönetici SPN İsteği           DONT_REQ_PREAUTH Açık          TGT Bilet Çalma Girişimi
+             │                             │                             │
+             ▼                             ▼                             ▼
+  ┌─────────────────────────────────────────────────────────────────────────────┐
+  │ KATMAN 1: KERBEROS VE KİMLİK KORUMA KALKANI                                 │
+  │  - SupportedEncryptionTypes: Yalnızca AES-128 / AES-256 (RC4/DES YASAK)     │
+  │  - krbtgt Parolası: 180 günde bir çift rotasyon (Golden Ticket İmkansız)    │
+  │  - TGT Bilet Ömrü: Maksimum 10 saat (Bilet geçerlilik sınırlandırması)       │
+  └──────────────────────────────────────┬──────────────────────────────────────┘
+                                         │
+                                         ▼
+  ┌─────────────────────────────────────────────────────────────────────────────┐
+  │ KATMAN 2: PROTOKOL VE BÜTÜNLÜK SERTLEŞTİRMESİ                               │
+  │  - NTLMv1 Devre Dışı: LmCompatibilityLevel = 5 (Yalnızca NTLMv2)            │
+  │  - LDAP İmzalama (LDAPServerIntegrity = 2) & Kanal Bağlama                  │
+  │  - SMBv1 Protokolü Kapalı & SMB Signing Zorunlu                             │
+  └──────────────────────────────────────┬──────────────────────────────────────┘
+                                         │
+                                         ▼
+  ┌─────────────────────────────────────────────────────────────────────────────┐
+  │ KATMAN 3: HESAP VE AYRICALIK HİYERARŞİSİ (TIER MODELİ)                      │
+  │  - Tier 0: Domain Controller, PKI, krbtgt (Protected Users Grubu)           │
+  │  - Servis Hesaplarında Kısıtlı Delegasyon (Constrained / RBCD)               │
+  │  - Yönetici Hesaplarında Asla SPN (Service Principal Name) Tanımlanmaz      │
+  └──────────────────────────────────────┬──────────────────────────────────────┘
+                                         │
+                                         ▼
+  ┌─────────────────────────────────────────────────────────────────────────────┐
+  │ KATMAN 4: GÜVEN İLİŞKİLERİ VE ORMAN SINIRLARI (TRUSTS)                      │
+  │  - Dış Güvenlerde SID Filtering (netdom trust /quarantine:yes)              │
+  │  - Sahte SID History Enjeksiyonu ve Ormanlar Arası Sıçrama Engelli          │
+  └─────────────────────────────────────────────────────────────────────────────┘
+===============================================================================
+ TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+===============================================================================

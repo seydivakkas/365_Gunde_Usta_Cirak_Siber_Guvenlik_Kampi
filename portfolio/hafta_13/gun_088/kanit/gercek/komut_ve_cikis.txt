@@ -1,0 +1,51 @@
+================================================================================
+G088: GERCEK TERMINAL KOMUTLARI VE CALISTIRMA CIKTILARI
+Zaman: 2026-11-01T20:06:57.598370+00:00
+================================================================================
+
+KOMUT 1: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor -v
+CIKIS 1:
+
+test_01_successful_command_exit_zero (portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor.TestCommandExitStderrSecurityAuditor.test_01_successful_command_exit_zero)
+Basarili bir komutun cikis kodunun 0 ve is_success=True oldugunu test eder. ... ok
+test_02_detect_nonzero_exit_code (portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor.TestCommandExitStderrSecurityAuditor.test_02_detect_nonzero_exit_code)
+Sifir disi cikis kodu (ornek: 42) uretildiginde basarisiz durumunun yakalandigini test eder. ... ok
+test_03_detect_silent_error_suppression_dev_null (portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor.TestCommandExitStderrSecurityAuditor.test_03_detect_silent_error_suppression_dev_null)
+2> /dev/null ile hata yutulmasinin HIGH seviyeli bulgu olarak tespit edildigini test eder. ... ok
+test_04_detect_silent_error_suppression_strict_exception (portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor.TestCommandExitStderrSecurityAuditor.test_04_detect_silent_error_suppression_strict_exception)
+strict=True modunda 2> /dev/null tespit edildiginde SilentErrorSuppressionException firlatildigini test eder. ... ok
+test_05_detect_stderr_password_leakage (portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor.TestCommandExitStderrSecurityAuditor.test_05_detect_stderr_password_leakage)
+stderr akisina parola yazdirilmasinin CRITICAL olarak yakalandigini test eder. ... ok
+test_06_detect_stderr_password_leakage_strict_exception (portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor.TestCommandExitStderrSecurityAuditor.test_06_detect_stderr_password_leakage_strict_exception)
+strict=True modunda stderr parolasinda SensitiveDataInStderrException firlatildigini test eder. ... ok
+test_07_detect_stderr_db_uri_leakage (portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor.TestCommandExitStderrSecurityAuditor.test_07_detect_stderr_db_uri_leakage)
+stderr akisinda veritabani kimlikli baglanti URI'sinin tespit edildigini test eder. ... ok
+test_08_detect_fraudulent_fake_exit_zero (portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor.TestCommandExitStderrSecurityAuditor.test_08_detect_fraudulent_fake_exit_zero)
+set -e olmadan en sonda 'exit 0' donulmesinin sahte basari (CWE-390) olarak yakalandigini test eder. ... ok
+test_09_command_not_found_127_handling (portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor.TestCommandExitStderrSecurityAuditor.test_09_command_not_found_127_handling)
+Sistemde bulunamayan bir komut calistirildiginda CommandNotFoundSecurityException firlatildigini test eder. ... ok
+test_10_execution_timeout_detection (portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor.TestCommandExitStderrSecurityAuditor.test_10_execution_timeout_detection)
+Surecin zaman asimina ugramasi durumunda ProcessExecutionTimeoutException firlatildigini test eder. ... ok
+test_11_reject_null_byte_in_command (portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor.TestCommandExitStderrSecurityAuditor.test_11_reject_null_byte_in_command)
+Komut argumaninda null byte (0x00) bulunmasi durumunda NullByteForbiddenException firlatildigini dogrular. ... ok
+test_12_reject_null_byte_in_script_text (portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor.TestCommandExitStderrSecurityAuditor.test_12_reject_null_byte_in_script_text)
+Betik metninde null-byte tespit edildiginde NullByteForbiddenException firlatildigini test eder. ... ok
+test_13_reject_oversized_stderr_payload (portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor.TestCommandExitStderrSecurityAuditor.test_13_reject_oversized_stderr_payload)
+64 KB limitini asan stderr ciktisinda OversizedStderrPayloadException firlatildigini test eder. ... ok
+test_14_audit_vulnerable_script_full_report (portfolio.hafta_13.gun_088.tests.test_command_exit_stderr_security_auditor.TestCommandExitStderrSecurityAuditor.test_14_audit_vulnerable_script_full_report)
+Zaafiyetli ornek betigin tum aciklarinin tespit edildigini ve is_secure=False dondugunu dogrular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.274s
+
+OK
+
+--------------------------------------------------------------------------------
+
+KOMUT 2: C:\Program Files\Git\bin\bash.exe ./portfolio/hafta_13/gun_088/uygulama/secure_exit_handling.sh audit_test.log
+CIKIS 2:
+STATUS=SUCCESS;EXIT_CODE=0;TARGET=audit_test.log
+
+[2026-11-01T20:06:57Z] [UYARI] Dosya mevcut deÄŸil, sentetik denetim yapÄ±lÄ±yor: audit_test.log
+
+================================================================================

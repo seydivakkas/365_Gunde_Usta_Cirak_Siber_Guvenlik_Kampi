@@ -1,0 +1,35 @@
+test_01_hardened_cis_baseline (tests.test_ntfs_acl.TestNTFSACLEngine.test_01_hardened_cis_baseline)
+Test 01: Kusursuz CIS uyumlu NTFS yap�land�rmas� 100/100 tam puan ve s�f�r bulgu �retmelidir. ... ok
+test_02_dangerous_write_on_system32_cwe_732 (tests.test_ntfs_acl.TestNTFSACLEngine.test_02_dangerous_write_on_system32_cwe_732)
+Test 02: Everyone grubuna sistem ikilisinde FullControl verilmesi kritik CWE-732 bulgusu �retmelidir. ... ok
+test_03_dangerous_modify_on_program_files_cwe_732 (tests.test_ntfs_acl.TestNTFSACLEngine.test_03_dangerous_modify_on_program_files_cwe_732)
+Test 03: BUILTIN\Users grubuna Program Files alt�nda Modify hakk� verilmesi 25 puan k�rmal�d�r. ... ok
+test_04_unprivileged_owner_on_critical_binary_cwe_284 (tests.test_ntfs_acl.TestNTFSACLEngine.test_04_unprivileged_owner_on_critical_binary_cwe_284)
+Test 04: Standart bir kullan�c�n�n sistem dosyas�n�n sahibi olmas� CWE-284 uyar�s� �retmelidir. ... ok
+test_05_unquoted_service_path_vulnerability_cwe_428 (tests.test_ntfs_acl.TestNTFSACLEngine.test_05_unquoted_service_path_vulnerability_cwe_428)
+Test 05: Bo�luklu servis yolunda yaz�labilir �st dizin olmas� kritik CWE-428 bulgusu �retmelidir. ... ok
+test_06_non_canonical_ace_ordering_cwe_284 (tests.test_ntfs_acl.TestNTFSACLEngine.test_06_non_canonical_ace_ordering_cwe_284)
+Test 06: Explicit Allow'un Explicit Deny'den �nce gelmesi bozuk kural s�ralamas� bulgusu �retmelidir. ... ok
+test_07_authenticated_users_dangerous_write_cwe_732 (tests.test_ntfs_acl.TestNTFSACLEngine.test_07_authenticated_users_dangerous_write_cwe_732)
+Test 07: Authenticated Users grubunun sistem dizininde Write iznine sahip olmas� zafiyettir. ... ok
+test_08_read_and_execute_permission_passes (tests.test_ntfs_acl.TestNTFSACLEngine.test_08_read_and_execute_permission_passes)
+Test 08: Standart kullan�c�ya yaln�zca ReadAndExecute verilmesi g�venlik a���� olu�turmamal�d�r. ... ok
+test_09_general_weak_permission_on_data_path_cwe_276 (tests.test_ntfs_acl.TestNTFSACLEngine.test_09_general_weak_permission_on_data_path_cwe_276)
+Test 09: Sistem dizinleri d���ndaki genel bir yolda zay�f izin bulunmas� CWE-276 olarak etiketlenmelidir. ... ok
+test_10_multiple_violations_cumulative_penalty (tests.test_ntfs_acl.TestNTFSACLEngine.test_10_multiple_violations_cumulative_penalty)
+Test 10: Birden �ok kritik a����n puan� k�m�latif olarak d���rd��� ve s�f�r�n alt�na inemeyece�i do�rulanmal�d�r. ... ok
+test_11_icacls_remediation_generation (tests.test_ntfs_acl.TestNTFSACLEngine.test_11_icacls_remediation_generation)
+Test 11: Otomatik d�zeltme beti�inin do�ru icacls /remove komutlar�n� i�erdi�i do�rulanmal�d�r. ... ok
+test_12_markdown_report_structure (tests.test_ntfs_acl.TestNTFSACLEngine.test_12_markdown_report_structure)
+Test 12: Markdown raporunun ba�l�k, bulgu tablosu ve icacls kod blo�unu i�erdi�i do�rulanmal�d�r. ... ok
+test_13_cli_dict_parsing_accuracy (tests.test_ntfs_acl.TestNTFSACLEngine.test_13_cli_dict_parsing_accuracy)
+Test 13: JSON s�zl�k yap�s�n�n NTFSSecurityDescriptor nesnelerine do�ru d�n��t��� s�nanmal�d�r. ... ok
+test_14_takeown_and_setowner_remediation (tests.test_ntfs_acl.TestNTFSACLEngine.test_14_takeown_and_setowner_remediation)
+Test 14: Sahiplik zafiyetinde takeown ve icacls /setowner komutlar�n�n �retildi�i do�rulanmal�d�r. ... ok
+test_15_cli_parser_and_subcommands (tests.test_ntfs_acl.TestNTFSACLEngine.test_15_cli_parser_and_subcommands)
+Test 15: CLI arg�man ayr��t�r�c�s�n�n audit, remediate ve ace-help alt komutlar�n� tan�d��� do�rulanmal�d�r. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.002s
+
+OK

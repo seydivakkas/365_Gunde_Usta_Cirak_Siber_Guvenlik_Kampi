@@ -1,0 +1,76 @@
+==============================================================================
+G060: HTTP/2 VE HTTP/3 FARKLARI — PROTOKOL VE GUVENLIK KARSILASTIRMA RAPORU
+==============================================================================
+Tarih: 2026-10-29 22:28:00 UTC+3
+Standartlar: RFC 7540/RFC 9113 (HTTP/2), RFC 9000 (QUIC), RFC 9114 (HTTP/3)
+Analiz Motoru: portfolio.hafta_09.gun_060.uygulama.http2_http3_analyzer
+
+1. HTTP/2 IKILI CERCEVELEME (BINARY FRAMING) ANALIZI
+------------------------------------------------------------------------------
+  * SETTINGS Frame (Baglanti Seviyesi):
+    - Cerceve Tipi   : SETTINGS (4)
+    - Bayraklar      : 0x00
+    - Akis ID        : 0
+    - Yuk Boyutu     : 6 bayt (Toplam Cerceve: 15 bayt)
+
+  * HEADERS Frame (Akis 1, END_HEADERS|END_STREAM):
+    - Cerceve Tipi   : HEADERS (1)
+    - Bayraklar      : 0x05
+    - Akis ID        : 1
+    - Yuk Boyutu     : 20 bayt (Toplam Cerceve: 29 bayt)
+
+  * DATA Frame (Akis 1, END_STREAM):
+    - Cerceve Tipi   : DATA (0)
+    - Bayraklar      : 0x01
+    - Akis ID        : 1
+    - Yuk Boyutu     : 18 bayt (Toplam Cerceve: 27 bayt)
+
+  * PING Frame (Baglanti Seviyesi ACK):
+    - Cerceve Tipi   : PING (6)
+    - Bayraklar      : 0x01
+    - Akis ID        : 0
+    - Yuk Boyutu     : 8 bayt (Toplam Cerceve: 17 bayt)
+
+2. HAT BASI TIKANMASI (HEAD-OF-LINE BLOCKING) SIMULASYON SONUCLARI
+------------------------------------------------------------------------------
+Senaryo: Akis 2 uzerinde TCP/UDP paket kaybi yasandi.
+HTTP/2 (TCP Uzerinde Coklama):
+  - Etki: Tum akislar durdu (TCP Head-of-Line Blocking)
+    Akis 1: BLOKLANDI (TCP Kuyruk Beklemesi)
+    Akis 2: BLOKLANDI (TCP Kuyruk Beklemesi)
+    Akis 3: BLOKLANDI (TCP Kuyruk Beklemesi)
+HTTP/3 (QUIC / UDP Uzerinde Bagimsiz Akislar):
+  - Etki: Diger tum akislar kesintisiz calisti (Bagimsiz Akis Mimarisi)
+    Akis 1: AKIS DEVAM EDIYOR (Sifir Blokaj - Bagimsiz QUIC Akisi)
+    Akis 2: BEKLIYOR (Yalnizca bu akisin yeniden iletimi bekleniyor)
+    Akis 3: AKIS DEVAM EDIYOR (Sifir Blokaj - Bagimsiz QUIC Akisi)
+
+3. KAPSAMLI PROTOKOL KARSILASTIRMA MATRISI
+------------------------------------------------------------------------------
+[TASIMA_KATMANI]
+  - HTTP_1_1                 : TCP (Metin tabanli istek/yanit)
+  - HTTP_2                   : TCP (Ikili cerceveleme ve akis coklama)
+  - HTTP_3                   : QUIC uzerinde UDP (Kullanici alaninda guvenli tasıma)
+[HEAD_OF_LINE_BLOCKING]
+  - HTTP_1_1                 : Uygulama katmaninda tam blokaj (1 baglanti = 1 istek)
+  - HTTP_2                   : Uygulama katmaninda cozuldu, ancak TCP katmaninda blokaj devam eder
+  - HTTP_3                   : Tamamen cozuldu (QUIC bagimsiz akis yonetimi)
+[BASLIK_SIKISTIRMA]
+  - HTTP_1_1                 : Yok (Her istekte tum basliklar acikca tekrar gonderilir)
+  - HTTP_2                   : HPACK (Statik ve Dinamik tablo - Akislar arasi senkronizasyon gerektirir)
+  - HTTP_3                   : QPACK (Sirali olmayan baslik acma - HoL blokaji onler)
+[BAGLANTI_KURULUM_GECIKMESI]
+  - HTTP_1_1                 : TCP (1-RTT) + TLS (1-2 RTT) = 2-3 RTT
+  - HTTP_2                   : TCP (1-RTT) + TLS (1-2 RTT) = 2-3 RTT
+  - HTTP_3                   : QUIC + TLS 1.3 Birlesik El Sikismasi = 1-RTT veya 0-RTT
+[BAGLANTI_GOCU_CONNECTION_MIGRATION]
+  - HTTP_1_1                 : Desteklenmez (IP degisince baglanti kopar)
+  - HTTP_2                   : Desteklenmez (IP degisince TCP baglantisi sonlanir)
+  - HTTP_3                   : Desteklenir (Connection ID sayesinde ag degisimi kesintisizdir)
+[ANA_GUVENLIK_TEHDITLERI]
+  - HTTP_1_1                 : Request Smuggling, Eavesdropping, Pipelining aciklari
+  - HTTP_2                   : Rapid Reset (CVE-2023-44487), HPACK Bomb, Ping Flood
+  - HTTP_3                   : UDP Amplification DDoS, Algoritmik Islem Yuklenmesi
+
+==============================================================================
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Ozel Lisans — Tum Haklari Saklidir.

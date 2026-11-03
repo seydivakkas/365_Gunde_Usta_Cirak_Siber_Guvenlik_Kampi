@@ -1,0 +1,126 @@
+{
+  "aciklama": "Kurumsal Linux Sunucu Güvenlik Envanteri Örnek Verisi",
+  "toplayici_surumu": "1.0.0",
+  "toplama_zamani": "2026-10-27T01:00:00Z",
+  "platform": "Linux",
+  "os_bilgisi": {
+    "isletim_sistemi": "Ubuntu Linux",
+    "dagitim": "Ubuntu 24.04 LTS (Noble Numbat)",
+    "surum": "24.04",
+    "cekirdek_surumu": "6.8.0-45-generic",
+    "mimari": "x86_64",
+    "bilgisayar_adi": "srv-corp-lnx01",
+    "etki_alani": "corp.local",
+    "kurulum_tarihi": "2024-05-10T08:15:00Z"
+  },
+  "donanim": {
+    "islemci_modeli": "AMD EPYC 7763 64-Core Processor",
+    "cekirdek_sayisi": 32,
+    "toplam_ram_gb": 128.0,
+    "diskler": [
+      {
+        "aygit": "/dev/sda1",
+        "baglanti_noktasi": "/",
+        "dosya_sistemi": "ext4",
+        "toplam_gb": 100.0,
+        "bos_gb": 64.2,
+        "sifreleme": "LUKS2 Etkin"
+      },
+      {
+        "aygit": "/dev/sdb1",
+        "baglanti_noktasi": "/var/log",
+        "dosya_sistemi": "ext4",
+        "toplam_gb": 500.0,
+        "bos_gb": 410.0,
+        "sifreleme": "LUKS2 Etkin"
+      }
+    ]
+  },
+  "hesaplar": [
+    {
+      "kullanici_adi": "root",
+      "uid": 0,
+      "yonetici_mi": true,
+      "aktif_mi": true,
+      "kabuk": "/bin/bash",
+      "parola_son_degisiklik": "2026-08-01T12:00:00Z",
+      "aciklama": "Süper kullanıcı hesabı (Doğrudan SSH oturumu kapalı - PermitRootLogin no)"
+    },
+    {
+      "kullanici_adi": "nobody",
+      "uid": 65534,
+      "yonetici_mi": false,
+      "aktif_mi": true,
+      "kabuk": "/usr/sbin/nologin",
+      "parola_son_degisiklik": "2024-05-10T08:15:00Z",
+      "aciklama": "Ayrıcalıksız sistem hesabı"
+    },
+    {
+      "kullanici_adi": "seydi",
+      "uid": 1000,
+      "yonetici_mi": true,
+      "aktif_mi": true,
+      "kabuk": "/bin/bash",
+      "parola_son_degisiklik": "2026-10-14T16:45:00Z",
+      "aciklama": "Sistem yöneticisi (sudo grubu üyesi, MFA zorunlu)"
+    },
+    {
+      "kullanici_adi": "deploy_runner",
+      "uid": 1001,
+      "yonetici_mi": false,
+      "aktif_mi": true,
+      "kabuk": "/bin/bash",
+      "parola_son_degisiklik": "2026-09-20T10:00:00Z",
+      "aciklama": "CI/CD dağıtım otomasyon hesabı"
+    }
+  ],
+  "servisler": [
+    {
+      "servis_adi": "sshd.service",
+      "gorunen_ad": "OpenSSH Daemon",
+      "durum": "Running",
+      "baslangic_turu": "Automatic",
+      "calistiran_hesap": "root",
+      "guvenlik_durumu": "GUVENLI"
+    },
+    {
+      "servis_adi": "systemd-journald.service",
+      "gorunen_ad": "Journal Service",
+      "durum": "Running",
+      "baslangic_turu": "Automatic",
+      "calistiran_hesap": "root",
+      "guvenlik_durumu": "GUVENLI"
+    },
+    {
+      "servis_adi": "ufw.service",
+      "gorunen_ad": "Uncomplicated Firewall",
+      "durum": "Running",
+      "baslangic_turu": "Automatic",
+      "calistiran_hesap": "root",
+      "guvenlik_durumu": "GUVENLI"
+    },
+    {
+      "servis_adi": "auditd.service",
+      "gorunen_ad": "Security Audit Daemon",
+      "durum": "Running",
+      "baslangic_turu": "Automatic",
+      "calistiran_hesap": "root",
+      "guvenlik_durumu": "GUVENLI"
+    },
+    {
+      "servis_adi": "telnet.service",
+      "gorunen_ad": "Insecure Telnet Daemon",
+      "durum": "Stopped",
+      "baslangic_turu": "Disabled",
+      "calistiran_hesap": "root",
+      "guvenlik_durumu": "GUVENSIZ_SERVIS_DEVRE_DISI"
+    }
+  ],
+  "guncellemeler": {
+    "son_basarili_guncelleme": "2026-10-22T04:00:00Z",
+    "yuklu_paket_sayisi": 1420,
+    "bekleyen_guvenlik_guncellemesi_sayisi": 0,
+    "bekleyen_kritik_guncelleme_sayisi": 0,
+    "yeniden_baslatma_gerekli_mi": false
+  }
+}

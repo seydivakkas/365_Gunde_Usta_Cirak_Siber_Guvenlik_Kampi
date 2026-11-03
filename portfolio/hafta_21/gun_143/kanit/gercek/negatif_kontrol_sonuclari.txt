@@ -1,0 +1,58 @@
+=== GÜN 143 / ACTIVE DIRECTORY: 9 NEGATİF KONTROL VE ZAFİYET SENARYOSU ===
+Tarih: 2026-11-02T19:09:12.621616
+Standartlar: Microsoft AD DS Hardening, CIS Benchmark, MITRE ATT&CK
+
+Senaryo ID   : SCENARIO-AD-01
+Başlık        : Eski Orman ve Etki Alanı Fonksiyonel Seviyesi (Windows Server 2008 R2)
+Hedef Kural   : AD-ARCH-01 (ARCHITECTURE)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : Kural ihlali yakalandı: Eski Fonksiyonel Seviye (Legacy DFL/FFL) (Önem: HIGH)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-AD-02
+Başlık        : Zayıf Kerberos Şifreleme Türleri Açık (RC4-HMAC ve DES)
+Hedef Kural   : AD-KERB-01 (KERBEROS)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : Kural ihlali yakalandı: Kerberos Zayıf Şifreleme Türleri Açık (RC4 / DES Riski) (Önem: CRITICAL)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-AD-03
+Başlık        : krbtgt Parolası 450 Gündür Sıfırlanmamış (Golden Ticket Kalıcılık)
+Hedef Kural   : AD-KERB-02 (KERBEROS)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : Kural ihlali yakalandı: krbtgt Parolası Çok Eski (Golden Ticket Kalıcılık Riski) (Önem: CRITICAL)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-AD-04
+Başlık        : Güvensiz NTLMv1 İletişimi Aktif (LmCompatibilityLevel 1)
+Hedef Kural   : AD-NTLM-01 (NTLM)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : Kural ihlali yakalandı: Güvensiz NTLMv1 Protokolü Aktif (Pass-the-Hash / Kaba Kuvvet Riski) (Önem: CRITICAL)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-AD-05
+Başlık        : LDAP İmzalama Devre Dışı (LDAPServerIntegrity = 0)
+Hedef Kural   : AD-LDAP-01 (LDAP_SMB)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : Kural ihlali yakalandı: LDAP İmzalama Zorunlu Değil (LDAP Relay / MitM Riski) (Önem: HIGH)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-AD-06
+Başlık        : SMB İmzalama Kapalı ve SMBv1 Aktif
+Hedef Kural   : AD-SMB-01 (LDAP_SMB)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : Kural ihlali yakalandı: SMB İmzalama Eksik veya SMBv1 Protokolü Açık (Önem: CRITICAL)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-AD-07
+Başlık        : Domain Admin Hesabında SPN Tanımlı (Kerberoasting Zafiyeti)
+Hedef Kural   : AD-ACC-01 (ACCOUNTS)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : Kural ihlali yakalandı: Yönetici Hesaplarında Kerberoasting Riski Tespit Edildi (Önem: CRITICAL)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-AD-08
+Başlık        : Kerberos Ön Kimlik Doğrulama Kapalı (AS-REP Roasting Riski)
+Hedef Kural   : AD-ACC-02 (ACCOUNTS)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : Kural ihlali yakalandı: Ön Kimlik Doğrulaması Devre Dışı Hesaplar (AS-REP Roasting Riski) (Önem: HIGH)
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-AD-09
+Başlık        : Sınırsız Delegasyon (Unconstrained Delegation) Aktif Nesne
+Hedef Kural   : AD-ACC-03 (ACCOUNTS)
+Test Sonucu   : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : Kural ihlali yakalandı: Tehlikeli Sınırsız Delegasyon (Unconstrained Delegation) Tespit Edildi (Önem: CRITICAL)
+---------------------------------------------------------------------------

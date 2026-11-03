@@ -1,0 +1,63 @@
+================================================================================
+G085: POWERSHELL NESNE BORU HATTI - NEGATIF KONTROLLER RAPORU
+Tarih: 2026-11-01T22:24:00+03:00
+Toplam Senaryo: 9 Adet Guvenlik Saldiri / Bozuk Girdi Senaryosu
+================================================================================
+
+[PASS] NEG_01_IEX_COMMAND_INJECTION
+  Baslik: Boru Hattinda Invoke-Expression (IEX) Dinamik Kod Calistirma Enjeksiyonu
+  Zafiyet Referansi: CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code
+  Beklenen Istisna: DangerousPipelineInvocationException
+  Sonuc: BASARILI: Beklenen DangerousPipelineInvocationException yakalandi -> Boru hattina gelen dinamik veri dogrudan Invoke-Expression (IEX) uzeri
+
+[PASS] NEG_02_OBFUSCATED_BASE64_EXECUTION
+  Baslik: Boru Hatti Parametresinde Gizlenmis (Obfuscated) Base64 Komut Calistirma
+  Zafiyet Referansi: CWE-116: Improper Encoding or Escaping of Output
+  Beklenen Istisna: ObfuscatedPayloadDetectedException
+  Sonuc: BASARILI: Beklenen ObfuscatedPayloadDetectedException yakalandi -> Boru hatti parametresinde gizlenmis Base64 calistirma anahtari (-Encod
+
+[PASS] NEG_03_UNQUOTED_SERVICE_PATH
+  Baslik: Servis Boru Hattinda Tirnak Icine Alinmamis Bosluklu Servis Yolu
+  Zafiyet Referansi: CWE-428: Unquoted Search Path or Element
+  Beklenen Istisna: UnquotedServicePathException
+  Sonuc: BASARILI: Beklenen UnquotedServicePathException yakalandi -> Bosluk iceren servis calistirma yolu cift tirnak icine alinmamis (ayri
+
+[PASS] NEG_04_DOWNLOAD_CRADLE_PIPELINE
+  Baslik: Boru Hattinda Ag Uzerinden Indir ve Calistir (Download Cradle)
+  Zafiyet Referansi: CWE-829: Inclusion of Functionality from Untrusted Control Sphere
+  Beklenen Istisna: DownloadCradleDetectedException
+  Sonuc: BASARILI: Beklenen DownloadCradleDetectedException yakalandi -> Ag uzerinden WebClient ile harici kod indirip boru hattinda calistiran
+
+[PASS] NEG_05_OVERSIZED_PIPELINE_BOMB_DOS
+  Baslik: Asiri Nesne Uretimi ile Bellek Tukenmesi (Pipeline Bomb DoS)
+  Zafiyet Referansi: CWE-400: Uncontrolled Resource Consumption
+  Beklenen Istisna: PipelineObjectLimitExceededException
+  Sonuc: BASARILI: Beklenen PipelineObjectLimitExceededException yakalandi -> Boru hatti nesne sayisi (5500) izin verilen guvenlik limitini (5000) a
+
+[PASS] NEG_06_NULL_BYTE_IN_SCRIPT_OR_NAME
+  Baslik: Boru Hatti Nesnesinde veya Betikte Null-Byte (0x00) Enjeksiyonu
+  Zafiyet Referansi: CWE-158: Improper Neutralization of Null Byte or Special Characters
+  Beklenen Istisna: NullByteForbiddenException
+  Sonuc: BASARILI: Beklenen NullByteForbiddenException yakalandi -> PowerShell betiginde zararli null-byte (0x00) tespit edildi.
+
+[PASS] NEG_07_SUSPICIOUS_PARENT_CHILD_ANOMALY
+  Baslik: Ofis veya Tarayici Tarafindan Baslatilan Supheli PowerShell Sureci
+  Zafiyet Referansi: CWE-250: Execution with Unnecessary Privileges / LOLBins Execution
+  Beklenen Istisna: AnomalousProcessLineageException
+  Sonuc: BASARILI: Beklenen AnomalousProcessLineageException yakalandi -> Tehlikeli ebeveyn-cocuk iliskisi: ANOMALOUS_PARENT_CHILD: WINWORD.EXE 
+
+[PASS] NEG_08_MALFORMED_PIPELINE_SYNTAX
+  Baslik: Bozuk veya Gecersiz Boru Hatti Sozdizimi (Bos Pipe Segmenti)
+  Zafiyet Referansi: CWE-20: Improper Input Validation
+  Beklenen Istisna: MalformedPipelineSyntaxException
+  Sonuc: BASARILI: Beklenen MalformedPipelineSyntaxException yakalandi -> Gecersiz boru hatti sozdizimi: Bos boru hatti segmenti tespit edildi.
+
+[PASS] NEG_09_INVALID_IP_SOCKET_IN_PIPELINE
+  Baslik: Ag Baglanti Nesnesinde Gecersiz IP Adresi (Bozuk Nesne)
+  Zafiyet Referansi: CWE-20: Improper Input Validation for Network Entities
+  Beklenen Istisna: InvalidPipelineSocketException
+  Sonuc: BASARILI: Beklenen InvalidPipelineSocketException yakalandi -> Gecersiz IP adresi tespit edildi: '999.999.999.999' does not appear to
+
+================================================================================
+OZET: 9/9 Negatif Guvenlik Testi Eksiksiz Olarak Basariyla Tamamlandi (PASS).
+================================================================================

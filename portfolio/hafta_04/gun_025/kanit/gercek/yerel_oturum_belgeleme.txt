@@ -1,0 +1,76 @@
+==============================================================================
+G025-SC2: KULLANICI, GRUP VE ETKIN OTURUM BELGELEME KANITI
+Tarih / Saat : 2026-10-27 07:00:11
+Ortam        : Yerel Laboratuvar Calisma Alani (Etik Sinir & Bagimsiz Girdi)
+==============================================================================
+
+--- 1. UYGULAMA MOTORU ILE CANLI OTURUM KEŞFİ (--live-session) ---
+=================================================================
+G025-SC2: GE├çERL─░ ├çALI┼ŞAN OTURUM BELGELEME RAPORU
+=================================================================
+Kullan─▒c─▒ Kimli─şi : seydieryilmaz
+Bilgisayar Ad─▒    : SeydiV
+─░┼şletim Sistemi   : Windows
+S├╝re├ğ Kimli─şi(PID): 5216
+Oturum Zaman─▒     : 2026-10-27T04:00:11Z
+-----------------------------------------------------------------
+Platform ├ûzel Verileri:
+ - kullanici_alani: SEYDIV
+ - oturum_sunucusu: \\SEYDIV
+ - profil_dizini: C:\Users\seydieryilmaz
+ - whoami_user_raw: USER INFORMATION
+----------------
+
+User Name            SID                                           
+==================== ==============================================
+seydiv\seydieryilmaz S-1-5-21-4251509839-2239028382-1546434742-1006
+=================================================================
+
+--- 2. CANLI OTURUM JSON ÇIKTISI (--live-session --json) ---
+{
+  "kullanici_adi": "seydieryilmaz",
+  "bilgisayar_adi": "SeydiV",
+  "isletim_sistemi": "Windows",
+  "surec_pid": 44872,
+  "oturum_zamani": "2026-10-27T04:00:11Z",
+  "platform_verileri": {
+    "kullanici_alani": "SEYDIV",
+    "oturum_sunucusu": "\\\\SEYDIV",
+    "profil_dizini": "C:\\Users\\seydieryilmaz",
+    "whoami_user_raw": "USER INFORMATION\n----------------\n\nUser Name            SID                                           \n==================== ==============================================\nseydiv\\seydieryilmaz S-1-5-21-4251509839-2239028382-1546434742-1006"
+  }
+}
+
+--- 3. YEREL İŞLETİM SİSTEMİ HESAP VE KİMLİK KOMUTLARI ---
+$ whoami
+seydiv\seydieryilmaz
+
+$ whoami /user
+
+USER INFORMATION
+----------------
+
+User Name            SID                                           
+==================== ==============================================
+seydiv\seydieryilmaz S-1-5-21-4251509839-2239028382-1546434742-1006
+
+$ whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                        State   
+============================= ================================== ========
+SeShutdownPrivilege           Sistemi kapat                      Disabled
+SeChangeNotifyPrivilege       Çapraz geçiş denetimini atla       Enabled 
+SeUndockPrivilege             Bilgisayarı takma biriminden çıkar Disabled
+SeIncreaseWorkingSetPrivilege İşlem çalışma kümesini artır       Disabled
+SeTimeZonePrivilege           Saat dilimini değiştir             Disabled
+
+--- 4. DOĞRULAMA VE METODOLOJİ BİLGİSİ ---
+Kontrollü Girdi  : Sistemdeki mevcut oturum kimlik meta verileri ve yetki belirteçleri.
+Gözlenebilir Çıktı: Kullanıcı adı, SID, işletim sistemi, oturum sunucusu ve PID listelendi.
+Olumlu Kontrol   : Etkin oturum bilgileri eksiksiz ayrıştırıldı (test_01, test_02, test_14).
+Negatif Kontrol  : Geçersiz dosya ve bozuk JSON durumlarında sistem kontrollü hata üretti (test_12, test_13).
+Etik Sınır       : Yalnızca oturum açmış yerel analist hesabı sorgulandı, yetki aşımı yapılmadı.
+==============================================================================

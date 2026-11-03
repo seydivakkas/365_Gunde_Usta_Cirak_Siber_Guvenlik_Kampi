@@ -1,0 +1,62 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+GÜN 096: GÜVENLİ BETİK KULLANIM BELGELERİ VE DOKÜMANTASYON MİMARİSİ
+========================================================================================
+
++--------------------------------------------------------------------------------------+
+|             GÜVENLİK BETİĞİ KAYNAK KODU (PYTHON / SHELL / POWERSHELL)                |
+|            - Argparse CLI argümanları (-i, -o, --purge-original vb.)                 |
+|            - Kurumsal Özel Lisans Başlığı (ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR)        |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           | (Statik AST / Regex Kod Ayrıştırma)
+                                           v
++--------------------------------------------------------------------------------------+
+|                 STATİK GÜVENLİK BELGE LİNTER'I (SecurityDocLinter)                   |
+|                                                                                      |
+|   [Lisans Denetimi]       ---> Kodda Özel Lisans Başlığı yoksa:                      |
+|                                MissingLicenseHeaderError (CWE-16 İhlali)             |
+|                                                                                      |
+|   [Gizli Parametre Kontrolü]-> Kodda var olup belgede olmayan bayrak varsa:          |
+|                                UndocumentedArgumentError (CWE-1188 Arka Kapı Engeli) |
+|                                                                                      |
+|   [Girdi ve Yol Koruması] ---> Null-Byte (\x00) ve Tip Denetimleri                   |
+|                                NullByteInjectionError / TypeValidationError          |
++--------------------------------------------------------------------------------------+
+                                           ^
+                                           | (Şema Doğrulama & Eşleştirme)
++--------------------------------------------------------------------------------------+
+|               YAPILANDIRILMIŞ GÜVENLİK VE METAVERİ ŞEMASI (JSON)                     |
+|  - Betik Adı, Versiyon, Yazar                                                        |
+|  - Yetki Matrisi (Privilege Level / Least Privilege - CWE-250)                       |
+|  - Tehdit Modeli ve Savunulan CWE Kodları                                            |
+|  - Parametre Tablosu (Tipler, Varsayılanlar, Güvenlik Notları)                       |
+|  - Standart Çıkış Kodları Sözlüğü (Exit Codes: 0, 1, 2)                              |
+|  - Kritik Güvenlik Uyarıları (Safety Warnings)                                       |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|               ÇOK FORMATLI BELGE ÜRETİM MOTORU (DocGenerator)                        |
+|                                                                                      |
+|   [Format 1: Markdown]    ---> Operatör Kılavuzu (RUNBOOK.md)                        |
+|                                Uyarı kutuları, parametre tabloları, tehdit modeli    |
+|                                                                                      |
+|   [Format 2: CLI Help]    ---> Standart POSIX Terminal --help Metni                  |
+|                                Terminalde hızlı okuma ve operatör yönlendirmesi       |
+|                                                                                      |
+|   [Format 3: Man Page]    ---> Unix ROFF Formatı (man page)                          |
+|                                Sistem seviyesinde man betik_adi entegrasyonu         |
+|                                                                                      |
+|   [Format 4: JSON Schema] ---> SOAR ve CI/CD Pipeline Makine Telemetrisi             |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                       GÜVENLİ VE DENETLENEBİLİR ÇIKTI                                |
+|  - Sıfır Belgelenmemiş Parametre (Zero Undocumented Arguments)                       |
+|  - Tam Uyumlu Çıkış Kodları (POSIX Standard)                                         |
+|  - Hata Engelleme: 0 (Başarılı), 1 (Linter İhlali), 2 (Girdi / Şema Hatası)          |
++--------------------------------------------------------------------------------------+
+========================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

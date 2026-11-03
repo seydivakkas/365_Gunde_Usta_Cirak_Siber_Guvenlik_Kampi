@@ -1,0 +1,38 @@
+=== G096 BİRİM TEST SONUÇLARI (14 SENARYO) ===
+Tarih: 2026-11-02 01:08:36
+
+test_01_schema_loading_valid (test_security_doc_generator.TestSecurityDocGenerator.test_01_schema_loading_valid)
+Test 01: Geçerli JSON şemasının başarıyla yüklendiğini doğrular. ... ok
+test_02_schema_missing_mandatory_field (test_security_doc_generator.TestSecurityDocGenerator.test_02_schema_missing_mandatory_field)
+Test 02: Zorunlu alan eksik olduğunda MissingMandatoryDocumentationError fırlatıldığını doğrular. ... ok
+test_03_schema_empty_privilege_level (test_security_doc_generator.TestSecurityDocGenerator.test_03_schema_empty_privilege_level)
+Test 03: Yetki seviyesi boş olduğunda InvalidPrivilegeLevelError fırlatıldığını doğrular. ... ok
+test_04_schema_empty_exit_codes (test_security_doc_generator.TestSecurityDocGenerator.test_04_schema_empty_exit_codes)
+Test 04: Çıkış kodları sözlüğü boş olduğunda MissingExitCodesDocumentationError fırlatıldığını doğrular. ... ok
+test_05_schema_null_byte_path (test_security_doc_generator.TestSecurityDocGenerator.test_05_schema_null_byte_path)
+Test 05: Dosya yolunda Null-Byte tespit edildiğinde engellendiğini doğrular (CWE-158). ... ok
+test_06_schema_oversized_payload (test_security_doc_generator.TestSecurityDocGenerator.test_06_schema_oversized_payload)
+Test 06: DoS amaçlı aşırı büyük şemanın engellendiğini doğrular (CWE-400). ... ok
+test_07_markdown_generation (test_security_doc_generator.TestSecurityDocGenerator.test_07_markdown_generation)
+Test 07: Markdown operatör kılavuzunun tüm başlık ve tabloları içerdiğini doğrular. ... ok
+test_08_help_text_generation (test_security_doc_generator.TestSecurityDocGenerator.test_08_help_text_generation)
+Test 08: Standart POSIX CLI --help metninin doğru üretildiğini doğrular. ... ok
+test_09_man_page_generation (test_security_doc_generator.TestSecurityDocGenerator.test_09_man_page_generation)
+Test 09: Unix man-sayfası (ROFF) formatının doğru üretildiğini doğrular. ... ok
+test_10_linter_success (test_security_doc_generator.TestSecurityDocGenerator.test_10_linter_success)
+Test 10: Uyumlu kaynak kod ile şema kıyaslamasının PASS verdiğini doğrular. ... ok
+test_11_linter_undocumented_argument (test_security_doc_generator.TestSecurityDocGenerator.test_11_linter_undocumented_argument)
+Test 11: Kodda olup belgede yer almayan gizli/tehlikeli parametrenin tespit edildiğini doğrular (CWE-1188). ... ok
+test_12_linter_missing_license (test_security_doc_generator.TestSecurityDocGenerator.test_12_linter_missing_license)
+Test 12: Kaynak kodda zorunlu kurumsal lisans başlığı yoksa hata fırlatıldığını doğrular. ... ok
+test_13_linter_null_byte_path (test_security_doc_generator.TestSecurityDocGenerator.test_13_linter_null_byte_path)
+Test 13: Linter'a verilen yolda Null-Byte varsa engellendiğini doğrular (CWE-158). ... ok
+test_14_type_validation_error (test_security_doc_generator.TestSecurityDocGenerator.test_14_type_validation_error)
+Test 14: Linter ve şema yapıcısına geçersiz tip iletildiğinde TypeValidationError fırlatıldığını doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.003s
+
+OK
+
+Toplam: 14, Başarılı: 14, Hata: 0, Başarısız: 0

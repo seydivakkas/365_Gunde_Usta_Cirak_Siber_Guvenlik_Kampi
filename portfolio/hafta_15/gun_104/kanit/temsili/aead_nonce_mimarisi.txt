@@ -1,0 +1,63 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+====================================================================================================
+GÜN 104: AEAD (AUTHENTICATED ENCRYPTION) VE NONCE TEKRARI SAVUNMA MİMARİSİ
+====================================================================================================
+
+                     +---------------------------------------+
+                     | Düz Metin (Plaintext) + AAD (Metadata)|
+                     +---------------------------------------+
+                                         |
+     [ GÜVENLİ CSPRNG ]                  |
+             |                           |
+             v                           v
+     +---------------+          +------------------+
+     | Nonce (96-bit)| -------> | Nonce Tracker    | ---> (Daha önce kullanıldıysa: CWE-323 ENGELLENDİ!)
+     +---------------+          +------------------+
+             |
+             +---------------------------+
+             |                           |
+             v                           v
+     +-----------------+        +------------------+
+     | AES-CTR Motoru  |        | HMAC-SHA256 /    |
+     | (Keystream Ks)  |        | GHASH Doğrulayıcı|
+     +-----------------+        +------------------+
+             |                           |
+             v                           v
+     +-----------------+        +------------------+
+     | Şifreli Metin   | -----> | AEAD Etiketi     |
+     | (Ciphertext)    |        | (Auth Tag)       |
+     +-----------------+        +------------------+
+             |                           |
+             +-------------+-------------+
+                           |
+                           v
+     [ GÜVENLİ PAKET: Nonce || Ciphertext || Auth Tag || AAD ]
+
+====================================================================================================
+TWO-TIME PAD (NONCE YENİDEN KULLANIMI) SALDIRI MEKANİZMASI:
+====================================================================================================
+
+      Aynı (Anahtar, Nonce) Çifti Kullanıldığında:
+      --------------------------------------------
+      C1 = P1 ⊕ Ks   (Ks: Üretilen gizli anahtar akışı)
+      C2 = P2 ⊕ Ks
+
+      Saldırgan Ağ Trafiğini Dinler ve C1 ile C2'yi XOR'lar:
+      C1 ⊕ C2 = (P1 ⊕ Ks) ⊕ (P2 ⊕ Ks) = P1 ⊕ P2
+      
+      SONUÇ: GİZLİ ANAHTAR AKIŞI (Ks) TAMAMEN YOK OLUR!
+      Saldırgan anahtarı hiç bilmeden "Crib Dragging" (tahmin kelimesi kaydırma)
+      yöntemiyle hem P1'i hem P2'yi tamamen deşifre eder.
+
+====================================================================================================
+SAVUNMA KATMANLARI VE SIV (SYNTHETIC IV) MİMARİSİ:
+====================================================================================================
+
+1. Stateful Nonce Tracker:
+   - Bellekte `(hash(Key), Nonce)` çiftlerini takip eder.
+   - Aynı anahtarla aynı Nonce gelirse `NonceReuseDetectedError` fırlatır (CWE-323).
+
+2. SIV (Synthetic IV - RFC 5297) Deterministik AEAD:
+   - Nonce = HMAC(Key, Plaintext || AAD)[:12]
+   - Nonce rastgele üretilmez; içeriğin kriptografik özetine bağlanır.
+   - Nonce çakışması veya tekrarı durumunda bile anahtar akışı sızıntısı oluşmaz!

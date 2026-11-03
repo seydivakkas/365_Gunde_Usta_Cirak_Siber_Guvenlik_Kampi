@@ -1,0 +1,82 @@
+================================================================================
+GERÇEK YÜRÜTME KANITI — KOMUT VE ÇIKIŞ
+================================================================================
+Tarih/Saat : 2026-10-26T19:36:56.314245
+İşletim Sis: Windows-11-10.0.26300-SP0
+Python     : 3.14.3
+Komut      : C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe portfolio/hafta_02/gun_008/uygulama/vm_security_auditor.py --profile portfolio/hafta_02/gun_008/ornek_veri/vm_guvenlik_profili.json
+Çıkış Kodu : 2
+--------------------------------------------------------------------------------
+STDOUT:
+================================================================================
+   SANAL MAK�NE G�VENL�K VE �ZOLASYON DENET�M RAPORU (VM SECURITY AUDITOR)
+================================================================================
+�ncelenen Dosya: portfolio/hafta_02/gun_008/ornek_veri/vm_guvenlik_profili.json
+Toplam Profil Say�s�: 3
+--------------------------------------------------------------------------------
+
+[+] VM ID: VM-SEC-01 | Ad�: Sertlestirilmis_Zararli_Yazilim_Analiz_VM
+    G�venlik Seviyesi : KRITIK_IZOLE
+    G�venlik Skoru    : 100/100
+    Risk Durumu       : G�VENL� (SERTLE�T�R�LM��)
+    Toplam Bulgu      : 0
+    -> TEBR�KLER: S�f�r g�venlik a����! Tam izole ve sertle�tirilmi� profil.
+
+[+] VM ID: VM-RISK-99 | Ad�: Tehlikeli_Guvenliksiz_Gelistirici_VM
+    G�venlik Seviyesi : YUKSEK_RISK
+    G�venlik Skoru    : 0/100
+    Risk Durumu       : KR�T�K FELAKET (AC�L M�DAHALE)
+    Toplam Bulgu      : 10
+    -> TESP�T ED�LEN R�SK VE ZAF�YETLER:
+       * [KRITIK] K�pr�lenmi� (Bridged) A� Adapt�r� A��k (-40 Puan)
+         Risk : VM do�rudan fiziksel yerel a�a ba�l�d�r. Zararl� yaz�l�m konak i�letim sistemine ve kurum i�i sunuculara yay�labilir (Lateral Movement).
+         ��z�m: Adapt�r tipini 'Internal_Isolated' veya 'Host_Only' olarak de�i�tirin.
+       * [YUKSEK] A� Adapt�r�nde Promiscuous Mod �zinli (-25 Puan)
+         Risk : Sanal makine di�er izole sanal makinelerin a� paketlerini koklayabilir (Virtual Network Sniffing).
+         ��z�m: Promiscuous mod ayar�n� kesinlikle 'Deny' (Reddet) yap�n.
+       * [KRITIK] Konak Y�n�nde Pano Payla��m� A��k (Clipboard Leak/Escape) (-30 Puan)
+         Risk : Misafir i�letim sistemindeki zararl� yaz�l�m, panodaki hassas verileri (parolalar, tokenlar) �alabilir veya pano ayr��t�rma a��klar�yla konakta kod �al��t�rabilir.
+         ��z�m: Pano payla��m�n� 'Disabled' (Devre D���) durumuna getirin.
+       * [KRITIK] Konak Y�n�nde S�r�kle-B�rak A��k (Drag & Drop Escape) (-30 Puan)
+         Risk : Zararl� yaz�l�m sahte IPC �a�r�lar� ile konak i�letim sisteminin ba�lang�� klas�r�ne veya masa�st�ne zararl� dosya enjekte edebilir.
+         ��z�m: S�r�kle-b�rak entegrasyonunu 'Disabled' yap�n.
+       * [FELAKET] G�vensiz Payla��lan Klas�r Tan�ml�: Host_C_Drive (-50 Puan)
+         Risk : Konak sistemin kritik dizini (C:\) yazma izniyle misafire a��lm��t�r. Bir fidye yaz�l�m� do�rudan konak sistemi �ifreleyebilir.
+         ��z�m: Payla��lan klas�rleri tamamen kald�r�n; test dosyas� aktar�m� gerekiyorsa salt-okunur (ReadOnly) izole ge�ici klas�r kullan�n.
+       * [ORTA] 3D Grafik Donan�m H�zland�rma A��k (-15 Puan)
+         Risk : Hypervisor grafik s�r�c�s� em�lasyon katman�, ge�mi�te bir�ok VM Escape (sanal makineden ka���) zafiyetine sahne olmu�tur.
+         ��z�m: Analiz ve test sanal makinelerinde 3D h�zland�rmay� devre d��� b�rak�n.
+       * [YUKSEK] Anl�k G�r�nt� (Snapshot) Politikas� Tan�ms�z (-25 Puan)
+         Risk : Zararl� analiz edildikten sonra sistem orijinal temiz taban �izgisine (baseline) geri d�nd�r�lemez; analiz ortam� kirlenir.
+         ��z�m: Analiz �ncesi 'Clean_Baseline' anl�k g�r�nt�s� al�nmal� ve her analiz sonras� geri y�kleme zorunlu k�l�nmal�d�r.
+       * [ORTA] Disk Modu Kal�c� (Persistent) Olarak Ayarlanm�� (-15 Puan)
+         Risk : Misafir i�letim sisteminde yap�lan de�i�iklikler kal�c� diske yaz�lmaktad�r. Kapat�p a�ma s�ras�nda sistem temizlenmez.
+         ��z�m: Disk modunu 'Non_Persistent' veya 'Immutable' (De�i�tirilemez) yap�n.
+       * [ORTA] A��k Sanalla�t�rma MAC Adresi: 08:00:27:AB:CD:EF (Oracle VirtualBox) (-10 Puan)
+         Risk : Geli�mi� zararl� yaz�l�mlar bu MAC �nekini g�rd��� anda sanal ortamda oldu�unu anlay�p uyku moduna ge�er (Evasion).
+         ��z�m: MAC adresini fiziksel bir �reticiye (�r. Intel, Realtek) ait OUI ile maskeleyin (MAC Spoofing).
+       * [DUSUK] CPUID Hypervisor Varl��� Gizlenmemi� (-5 Puan)
+         Risk : Zararl� yaz�l�m CPUID komutunun 31. bitine (Hypervisor Present Bit) bakarak sanalla�t�rmay� an�nda tespit edebilir.
+         ��z�m: Hypervisor ayarlar�ndan CPUID hypervisor bayra��n� maskeleyin (�r. KVM'de 'hv_vendor_id' veya VBox'ta 'cpuidset').
+
+[+] VM ID: VM-HONEY-03 | Ad�: Kontrollu_Bal_Kupu_HoneyVM
+    G�venlik Seviyesi : KONTROLLU_ALDATMA
+    G�venlik Skoru    : 85/100
+    Risk Durumu       : ORTA R�SK (�Y�LE�T�RME GEREKL�)
+    Toplam Bulgu      : 2
+    -> TESP�T ED�LEN R�SK VE ZAF�YETLER:
+       * [ORTA] A��k Sanalla�t�rma MAC Adresi: 00:15:5D:88:99:AA (Microsoft Hyper-V) (-10 Puan)
+         Risk : Geli�mi� zararl� yaz�l�mlar bu MAC �nekini g�rd��� anda sanal ortamda oldu�unu anlay�p uyku moduna ge�er (Evasion).
+         ��z�m: MAC adresini fiziksel bir �reticiye (�r. Intel, Realtek) ait OUI ile maskeleyin (MAC Spoofing).
+       * [DUSUK] CPUID Hypervisor Varl��� Gizlenmemi� (-5 Puan)
+         Risk : Zararl� yaz�l�m CPUID komutunun 31. bitine (Hypervisor Present Bit) bakarak sanalla�t�rmay� an�nda tespit edebilir.
+         ��z�m: Hypervisor ayarlar�ndan CPUID hypervisor bayra��n� maskeleyin (�r. KVM'de 'hv_vendor_id' veya VBox'ta 'cpuidset').
+
+================================================================================
+Denetim Bitti. T�m haklar� sakl�d�r (c) 2026 Seydi Ery�lmaz.
+================================================================================
+
+--------------------------------------------------------------------------------
+STDERR:
+
+================================================================================

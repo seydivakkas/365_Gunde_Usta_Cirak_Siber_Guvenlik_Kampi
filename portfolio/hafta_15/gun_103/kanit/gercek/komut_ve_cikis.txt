@@ -1,0 +1,37 @@
+===============================================================================
+GÜN 103: CLI KOMUT VE ÇIKIŞ KANITLARI
+Tarih/Saat: 2026-11-02 02:13:21
+===============================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_103\uygulama\aes_cli.py --verify-nist
+Çıkış Kodu: 0
+=== NIST FIPS 197 / SP 800-38A TEST VEKTÖRLERİ DENETİMİ ===
+FIPS 197 Tek Blok Doğrulaması : PASS
+SP 800-38A CBC Doğrulaması    : PASS
+SP 800-38A CTR Doğrulaması    : PASS
+Standart Uyumluluk Durumu     : ONAYLANDI
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_103\uygulama\aes_cli.py --compare-modes
+Çıkış Kodu: 0
+=== ECB vs CBC DESEN SIZINTISI DENEYİ ===
+Test Metni   : GIZLI_PAROLA_123GIZLI_PAROLA_123
+1. ECB Modu  : Blok 1 ve Blok 2 Eşit mi? -> EVET (DESEN SIZINTISI - KRİTİK ZAAF)
+   Açıklama  : CWE-327: Özdeş bloklar aynı şifreli çıktıyı üretti! Veri deseni doğrudan sızıyor (ECB Penguin etkisi).
+2. CBC Modu  : Blok 1 ve Blok 2 Eşit mi? -> HAYIR (TAM DİFÜZYON - GÜVENLİ)
+   Açıklama  : CBC zincirleme XOR sayesinde özdeş bloklar tamamen farklı ve rassal çıktılar üretti.
+Ustanın Dersi: ECB modunu kurumsal üretim sistemlerinde ASLA kullanmayın; daima rastgele IV ile CBC, CTR veya AEAD (GCM/EtM) tercih edin.
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_103\uygulama\aes_cli.py --encrypt --plaintext GizliKurumsalVeri2026 --key 2b7e151628aed2a6abf7158809cf4f3c --mode cbc
+Çıkış Kodu: 0
+=== AES ŞİFRELEME BAŞARILI ===
+İşletim Modu     : CBC
+Anahtar Boyutu   : 128 bit
+Şifreli Metin    : bd36d337cda382e843cda0c7d97554122ab495733f788c630ab227c2687ce40f
+Başlangıç Vektörü: 27d5cb1707a077a3e3f2f0eb26e080e0
+AEAD Etiketi     : Kullanılmadı
+İşlem Süresi     : 0.708 ms
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_103\uygulama\aes_cli.py --decrypt --ciphertext bd36d337cda382e843cda0c7d97554122ab495733f788c630ab227c2687ce40f --key 2b7e151628aed2a6abf7158809cf4f3c --mode cbc --iv 27d5cb1707a077a3e3f2f0eb26e080e0
+Çıkış Kodu: 2
+=== AES ŞİFRE ÇÖZME BAŞARILI ===
+Mod             : CBC

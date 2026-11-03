@@ -1,0 +1,40 @@
+{
+  "gun": 52,
+  "gun_id": "G052",
+  "asama": "03",
+  "hafta": "08",
+  "baslik": "UDP ve kullanım alanları",
+  "tarih": "2026-10-29",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kavramsal_derinlik": 20,
+    "uygulama_gelistirme": 40,
+    "test_kapsami": 25,
+    "savunma_sikilastirma": 15
+  },
+  "test_ozeti": {
+    "toplam": 14,
+    "basarili": 14,
+    "hatali": 0,
+    "sure_saniye": 0.002
+  },
+  "kod_aciklama_satirlari_tamamlandi": true,
+  "kanitlar": {
+    "gercek": [
+      "kanit/gercek/test_sonuclari.txt",
+      "kanit/gercek/komut_ve_cikis.txt",
+      "kanit/gercek/udp_protokol_ve_guvenlik_raporu.txt",
+      "kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "kanit/temsili/udp_datagram_amplification_ve_savunma_mimarisi.txt"
+    ]
+  },
+  "soru_bankasi_eslesmesi": [
+    "G052-SC1",
+    "G052-SC2",
+    "G052-SC3"
+  ],
+  "notlar": "RFC 768 ikili 8 baytlık UDP başlığı paketleme ve ayrıştırma, IPv4 sahte başlığı ile 16-bit birin tümleyeni sağlama toplamı hesaplama, DNS ve NTP yüklerinin derinlemesine ayrıştırılması, NTP monlist ve DNS ANY kaynaklı Amplifikasyon / Yansıtma (Reflection DDoS) risk modellemesi, UDP Flood ve UDP Port Sweep anomali tespiti ile Kaminsky DNS zehirleme savunması için kaynak port entropisi denetimi eksiksiz tamamlandı; 14 birim testi ve 8 negatif kontrol testi %100 PASS oldu."
+}

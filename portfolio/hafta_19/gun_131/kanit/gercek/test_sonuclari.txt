@@ -1,0 +1,35 @@
+test_01_hardened_cis_baseline (tests.test_windows_firewall.TestWindowsFirewallEngine.test_01_hardened_cis_baseline)
+Test 01: Kusursuz CIS uyumlu yap�land�rma 100/100 tam puan ve s�f�r bulgu �retmelidir. ... ok
+test_02_public_profile_disabled_cwe_693 (tests.test_windows_firewall.TestWindowsFirewallEngine.test_02_public_profile_disabled_cwe_693)
+Test 02: Public profilin kapal� olmas� kritik CWE-693 bulgusu ve 30 puan d����� olu�turmal�d�r. ... ok
+test_03_domain_profile_disabled_cwe_693 (tests.test_windows_firewall.TestWindowsFirewallEngine.test_03_domain_profile_disabled_cwe_693)
+Test 03: Domain profilinin kapal� olmas� 20 puan ceza ve y�ksek risk olu�turmal�d�r. ... ok
+test_04_default_inbound_allow_cwe_284 (tests.test_windows_firewall.TestWindowsFirewallEngine.test_04_default_inbound_allow_cwe_284)
+Test 04: Varsay�lan gelen eylemin Allow olmas� kritik CWE-284 bulgusu �retmelidir. ... ok
+test_05_log_blocked_disabled_cwe_778 (tests.test_windows_firewall.TestWindowsFirewallEngine.test_05_log_blocked_disabled_cwe_778)
+Test 05: Engellenen paket k�t�klemesinin kapal� olmas� 10 puan ceza ve CWE-778 getirmelidir. ... ok
+test_06_log_size_below_minimum_cwe_778 (tests.test_windows_firewall.TestWindowsFirewallEngine.test_06_log_size_below_minimum_cwe_778)
+Test 06: K�t�k dosya boyutunun 16 MB alt�nda olmas� d���k ciddiyetli bulgu �retmelidir. ... ok
+test_07_inbound_any_any_rule_cwe_284 (tests.test_windows_firewall.TestWindowsFirewallEngine.test_07_inbound_any_any_rule_cwe_284)
+Test 07: Any-Any gelen izin kural� tan�mlanmas� kritik 25 puan d����� olu�turmal�d�r. ... ok
+test_08_public_profile_rdp_port_open_cwe_284 (tests.test_windows_firewall.TestWindowsFirewallEngine.test_08_public_profile_rdp_port_open_cwe_284)
+Test 08: Public profil �zerinde 3389 (RDP) portunun a��k olmas� kritik T1021.001 uyar�s� �retmelidir. ... ok
+test_09_public_profile_smb_port_open_cwe_284 (tests.test_windows_firewall.TestWindowsFirewallEngine.test_09_public_profile_smb_port_open_cwe_284)
+Test 09: Public profilde 445 (SMB) portunun a��k olmas� 20 puan ceza getirmelidir. ... ok
+test_10_public_profile_winrm_port_open_cwe_284 (tests.test_windows_firewall.TestWindowsFirewallEngine.test_10_public_profile_winrm_port_open_cwe_284)
+Test 10: Public profilde WinRM (5985) portunun a��k olmas� kritik zaaf olarak yakalanmal�d�r. ... ok
+test_11_private_profile_isolated_rule_passes (tests.test_windows_firewall.TestWindowsFirewallEngine.test_11_private_profile_isolated_rule_passes)
+Test 11: Yaln�zca Private profilde a��k olan bir kural Public profil uyar�s� tetiklememelidir. ... ok
+test_12_cumulative_penalty_and_floor (tests.test_windows_firewall.TestWindowsFirewallEngine.test_12_cumulative_penalty_and_floor)
+Test 12: Birden fazla kritik a����n puan� s�f�r�n alt�na d���rmeden KR�T�K_ZAF�YET seviyesine indirdi�i s�nanmal�d�r. ... ok
+test_13_markdown_report_structure (tests.test_windows_firewall.TestWindowsFirewallEngine.test_13_markdown_report_structure)
+Test 13: Markdown raporunun ba�l�k, bulgu tablosu ve Set-NetFirewallProfile kod blo�unu i�erdi�i do�rulanmal�d�r. ... ok
+test_14_cli_spec_parsing_and_conversion (tests.test_windows_firewall.TestWindowsFirewallEngine.test_14_cli_spec_parsing_and_conversion)
+Test 14: JSON s�zl�k yap�s�n�n SystemFirewallSpec nesnesine hatas�z d�n��t��� s�nanmal�d�r. ... ok
+test_15_cli_parser_and_subcommands (tests.test_windows_firewall.TestWindowsFirewallEngine.test_15_cli_parser_and_subcommands)
+Test 15: CLI arg�man ayr��t�r�c�s�n�n audit, remediate ve profiles-info alt komutlar�n� tan�d��� do�rulanmal�d�r. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.002s
+
+OK

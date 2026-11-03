@@ -1,0 +1,69 @@
+{
+  "aciklama": "G082 pytest ile Birim Testleri Negatif Guvenlik Kontrolleri Test Paketi",
+  "olusturma_tarihi": "2026-11-01",
+  "negatif_testler": [
+    {
+      "test_id": "NEG_01_PASSWORD_TOO_SHORT",
+      "aciklama": "Kurumsal parola politikasinda belirlenen 12 karakter asgari uzunluk sinirinin altinda parola girisi",
+      "girdi": "Kisa1!",
+      "beklenen_hata": "PolicyViolationException",
+      "savunma": "Parola uzunlugu denetlenerek 12 karakterden kisa girdiler PolicyViolationException ile reddedilir."
+    },
+    {
+      "test_id": "NEG_02_PASSWORD_NO_SPECIAL_CHAR",
+      "aciklama": "Karmaşıklık kuralını çiğneyerek özel karakter barındırmayan parola denemesi",
+      "girdi": "GuvenliParola12345",
+      "beklenen_hata": "PolicyViolationException",
+      "savunma": "En az bir ozel karakter bulunmasi zorunlu tutulur."
+    },
+    {
+      "test_id": "NEG_03_PASSWORD_COMMON_DICTIONARY",
+      "aciklama": "Bilinen en yaygin ve tahmin edilebilir sozluk parolasi girisi",
+      "girdi": "Password123!@#",
+      "beklenen_hata": "PolicyViolationException",
+      "savunma": "Sozluk engelleme listesi (blacklist) taranarak yaygin parolalar reddedilir."
+    },
+    {
+      "test_id": "NEG_04_SEVERITY_SCORE_OUT_OF_BOUNDS_HIGH",
+      "aciklama": "Tehdit ciddiyet skorunun 0-100 araligini asacak sekilde yuksek gonderilmesi",
+      "girdi": 150,
+      "beklenen_hata": "ValueError",
+      "savunma": "Sinir denetimi yapilarak 100'den buyuk skorlar ValueError ile engellenir."
+    },
+    {
+      "test_id": "NEG_05_SEVERITY_SCORE_OUT_OF_BOUNDS_NEGATIVE",
+      "aciklama": "Tehdit ciddiyet skorunun negatif tamsayi olarak gonderilmesi",
+      "girdi": -25,
+      "beklenen_hata": "ValueError",
+      "savunma": "Sinir denetimi yapilarak 0'dan kucuk skorlar ValueError ile engellenir."
+    },
+    {
+      "test_id": "NEG_06_DOMAIN_PATH_TRAVERSAL_INJECTION",
+      "aciklama": "Hedef alan adi parametresine enjekte edilen yol gecisi ve protokol dizgisi",
+      "girdi": "https://evil.com/../../etc/passwd",
+      "beklenen_hata": "PolicyViolationException",
+      "savunma": "Alan adi kanoniklestirilerek protokol ve yol gecisi karakterleri tespit edildiginde islem reddedilir."
+    },
+    {
+      "test_id": "NEG_07_DOMAIN_NULL_BYTE_POISONING",
+      "aciklama": "Hedef alan adi icerisine yerlestirilmis null-byte (\\x00) zehirleme karakteri",
+      "girdi": "target.corp\u0000.evil.com",
+      "beklenen_hata": "PolicyViolationException",
+      "savunma": "Null-byte tespiti durumunda alan adi guvensiz ilan edilip islem durdurulur."
+    },
+    {
+      "test_id": "NEG_08_FIREWALL_RULE_INVALID_PORT",
+      "aciklama": "Gecerli TCP/UDP port araligini (1-65535) asan guvenlik duvari kural tanimi",
+      "girdi": {"source_ip": "10.0.0.1", "dest_port": 70000, "protocol": "TCP"},
+      "beklenen_hata": "PolicyViolationException",
+      "savunma": "Hedef port 1-65535 araliginda dogrulanir, disindaki degerler reddedilir."
+    },
+    {
+      "test_id": "NEG_09_RATE_LIMIT_BURST_ATTACK",
+      "aciklama": "Kisa surede ayni istemciden gelen esik ustu kural degerlendirme istegi",
+      "girdi": {"client_ip": "198.51.100.99", "request_burst": 6},
+      "beklenen_hata": "PolicyViolationException",
+      "savunma": "Kayan pencere sayaci ile istemci basina izin verilen istek sayisi sinirlandirilir."
+    }
+  ]
+}

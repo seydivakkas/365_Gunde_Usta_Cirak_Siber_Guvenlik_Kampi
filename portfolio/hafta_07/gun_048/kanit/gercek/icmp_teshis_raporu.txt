@@ -1,0 +1,43 @@
+# ICMP Protokolü, Ağ Teşhisi ve Tünelleme Güvenlik Raporu
+
+Bu rapor, analiz edilen ICMP paketlerinin tip/kod doğrulamalarını, sağlama toplamı (checksum)
+bütünlüğünü, Traceroute TTL akışını ve ICMP Covert Channel / Tünelleme anomali alarmlarını belgeler.
+
+## 1. Analiz Edilen ICMP Paketleri
+
+| Paket ID | Kaynak IP -> Hedef IP | Tip / Kod | Tanım | Boyut | Güvenlik Durumu |
+|---|---|---|---|---|---|
+| `ICMP-01` | `192.168.1.50` -> `8.8.8.8` | Type 8 / Code 0 | Echo Request | 32 B | ✅ Meşru / Normal |
+| `ICMP-02` | `8.8.8.8` -> `192.168.1.50` | Type 0 / Code 0 | Echo Reply | 32 B | ✅ Meşru / Normal |
+| `ICMP-03` | `192.168.1.1` -> `192.168.1.50` | Type 3 / Code 1 | Host Unreachable | 31 B | ✅ Meşru / Normal |
+| `ICMP-04` | `192.168.1.10` -> `192.168.1.50` | Type 3 / Code 3 | Port Unreachable | 20 B | ✅ Meşru / Normal |
+| `ICMP-05` | `10.0.0.1` -> `192.168.1.50` | Type 3 / Code 4 | Fragmentation Needed and DF set | 26 B | ✅ Meşru / Normal |
+| `ICMP-06` | `172.16.1.1` -> `192.168.1.50` | Type 11 / Code 0 | Time to Live exceeded in Transit | 20 B | ✅ Meşru / Normal |
+| `ICMP-07` | `192.168.1.1` -> `192.168.1.50` | Type 5 / Code 1 | Redirect Datagram for the Host | 33 B | ⚠️ ANOMALİ / ALARM |
+| `ICMP-08` | `192.168.1.50` -> `203.0.113.88` | Type 8 / Code 0 | Echo Request | 97 B | ⚠️ ANOMALİ / ALARM |
+
+## 2. Tespit Edilen Güvenlik Anomalileri ve Tünelleme Alarmları
+
+### [ALARM: ICMP-07] 192.168.1.1 -> 192.168.1.50 (Redirect Datagram for the Host)
+- 🚨 **Tehdit:** ICMP Redirect (Type 5): Rotalama manipülasyonu ve MitM saldırı vektörü olabilir!
+- **Payload İçeriği:** `REDIRECT_TO_GATEWAY_192.168.1.254...`
+
+### [ALARM: ICMP-08] 192.168.1.50 -> 203.0.113.88 (Echo Request)
+- 🚨 **Tehdit:** Aşırı büyük ICMP Payload (97 bayt > 64 bayt): Olası veri sızıntısı veya tampon!
+- 🚨 **Tehdit:** ICMP Tünelleme / Veri Sızıntısı Şüphesi: Payload içinde kritik anahtar kelime 'EXFILTRATED' bulundu!
+- **Payload İçeriği:** `EXFILTRATED_DATA:USER=admin;PASS=S3cr3tP@ss;API_KEY=AKIAIOSFODNN7EXAMPLE_OVERSIZ...`
+
+## 3. Traceroute TTL Tükenme Mekanizması Simülasyonu
+
+| Sekme (Hop) | Yanıt Veren IP | Dönen ICMP Tipi | Durum |
+|---|---|---|---|
+| 1 | `192.168.1.1` | 11 (Time Exceeded) | TTL=1 Süresi Doldu (Transit) |
+| 2 | `10.0.0.1` | 11 (Time Exceeded) | TTL=2 Süresi Doldu (Transit) |
+| 3 | `172.16.1.1` | 11 (Time Exceeded) | TTL=3 Süresi Doldu (Transit) |
+| 4 | `8.8.8.8` | 0 (Echo Reply) | Hedefe Ulaşıldı (Success) |
+
+## 4. ICMP Sertleştirme ve Güvenlik Tavsiyeleri
+- **Körlemesine Drop Hatası:** ICMP'yi tamamen engellemek Path MTU Discovery (Type 3 Code 4) mekanizmasını kırar ve TCP performansını düşürür; MTU hata mesajlarına izin verilmelidir.
+- **ICMP Redirect Engelleme (Type 5):** Ağ yönlendirme tablolarının manipüle edilmesini önlemek için Type 5 paketleri sınırda ve iç anahtarlarda engellenmelidir.
+- **Covert Channel Önleme (DPI):** Güvenlik duvarlarında ICMP yükü (payload) boyutu sınırlandırılmalı (>64 bayt atılmalı) ve veri alanı derinlemesine taranmalıdır.
+- **Hız Sınırlaması (Rate Limiting):** ICMP Flood ve Ping of Death DoS saldırılarına karşı arayüz seviyesinde hız sınırlaması uygulanmalıdır.

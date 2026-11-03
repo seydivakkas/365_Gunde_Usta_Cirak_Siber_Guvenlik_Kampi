@@ -1,0 +1,69 @@
+=== GÜN 100: ENTROPİ VE RASTGELELİK NEGATİF KONTROL VE ZAFİYET RAPORU ===
+Tarih/Saat : 2026-11-02 01:48:33
+Toplam Vaka: 9
+=====================================================================================
+[1/9] Senaryo ID : NEG_01_WEAK_PRNG_KEYGEN
+      Tanım       : Kriptografik anahtar üretiminde zayıf Mersenne Twister (random modülü) kullanımı
+      CWE         : CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator
+      Beklenen    : WeakPRNGDetectedError
+      Yakalanan   : WeakPRNGDetectedError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[2/9] Senaryo ID : NEG_02_INSUFFICIENT_ENTROPY_KEY
+      Tanım       : Kriptografik kabul eşiğinin (7.0 bit/bayt) altında kalan düşük entropili anahtar iletimi
+      CWE         : CWE-331: Insufficient Entropy
+      Beklenen    : InsufficientEntropyError
+      Yakalanan   : InsufficientEntropyError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[3/9] Senaryo ID : NEG_03_PREDICTABLE_TIME_SEED
+      Tanım       : Üretecin sistem zaman damgası (timestamp) gibi tahmin edilebilir tohumla başlatılması
+      CWE         : CWE-337: Predictable Seed in Pseudo-Random Number Generator
+      Beklenen    : PredictableSeedError
+      Yakalanan   : PredictableSeedError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[4/9] Senaryo ID : NEG_04_SMALL_ENTROPY_SPACE
+      Tanım       : Brute-force saldırılarına açık, 64-bitin altında kalan aşırı küçük rastgele alan
+      CWE         : CWE-334: Small Space of Random Values
+      Beklenen    : SmallEntropySpaceError
+      Yakalanan   : SmallEntropySpaceError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[5/9] Senaryo ID : NEG_05_EMPTY_PAYLOAD_EVAL
+      Tanım       : Boş (0 baytlık) veri dizgisi ile entropi hesaplama denemesi
+      CWE         : CWE-20: Improper Input Validation
+      Beklenen    : InsufficientEntropyError
+      Yakalanan   : InsufficientEntropyError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[6/9] Senaryo ID : NEG_06_OVERSIZED_BUFFER_DOS
+      Tanım       : 1 MB tavanını aşan devasa veri ile bellek tüketimi saldırısı (DoS)
+      CWE         : CWE-400: Uncontrolled Resource Consumption
+      Beklenen    : PayloadLimitExceededError
+      Yakalanan   : PayloadLimitExceededError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[7/9] Senaryo ID : NEG_07_NULL_BYTE_INJECTION
+      Tanım       : Üreteç etiketinde veya tohum parametresinde Null-Byte (0x00) zehirlemesi
+      CWE         : CWE-158: Improper Neutralization of Null Byte or Special Characters
+      Beklenen    : NullByteInjectionError
+      Yakalanan   : NullByteInjectionError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[8/9] Senaryo ID : NEG_08_INVALID_TOKEN_LENGTH
+      Tanım       : Geçersiz (sıfır veya negatif) anahtar/token uzunluğu talebi
+      CWE         : CWE-1284: Improper Input Handling
+      Beklenen    : TypeValidationError
+      Yakalanan   : TypeValidationError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[9/9] Senaryo ID : NEG_09_TYPE_CONFUSION
+      Tanım       : Bayt dizisi beklenen entropi motoruna sayısal (int) tip iletilmesi
+      CWE         : CWE-843: Access of Resource Using Incompatible Type
+      Beklenen    : TypeValidationError
+      Yakalanan   : TypeValidationError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+ÖZET: 9/9 NEGATİF KONTROL SENARYOSU BAŞARIYLA YAKALANDI (100% GÜVENLİK GÜVENCESİ)
+=====================================================================================

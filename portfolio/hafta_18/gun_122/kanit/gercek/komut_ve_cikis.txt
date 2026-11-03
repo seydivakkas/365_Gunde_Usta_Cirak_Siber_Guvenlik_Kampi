@@ -1,0 +1,28 @@
+=== GÜN 122 KOMUT VE ÇIKIŞ KANITI ===
+Tarih: 2026-11-02T06:12:47.481996
+
+$ python uygulama/defense_cli.py audit C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_122\ornek_veri\defense_architecture_config.json
+=== Atlas Kurumsal Savunma Derinliği Mimarisi (7 Katman) Savunma Derinliği Denetimi ===
+[+] MİMARİ DAYANIKLILIK DURUMU: BAŞARILI (Tüm katmanlar korumalı ve izleniyor).
+
+$ python uygulama/defense_cli.py simulate C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_122\ornek_veri\defense_architecture_config.json SCN-RANSOM-01
+=== Saldırı Simülasyonu: [SCN-RANSOM-01] ===
+Saldırı Durduruldu mu?: EVET
+Püskürtüldüğü Katman: 2_Cevre_ve_Dis_Ag
+Delinen Katman Sayısı: 0
+Veri İhlal Edildi mi?: HAYIR
+--- Katman Bazlı Olay Detayları ---
+Katman [2_Cevre_ve_Dis_Ag]: DURDURULDU
+   [ALARM] 'Ağ Tabanlı Saldırı Tespit Sistemi (NIDS / Zeek)' kontrolü şüpheli saldırıyı tespit etti (VPN Zafiyeti Üzerinden Giriş).
+   [ENGELLEME] 'Yeni Nesil Güvenlik Duvarı (NGFW / Statefull Inspection)' kontrolü saldırıyı başarıyla bloke etti.
+
+$ python uygulama/defense_cli.py simulate C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_122\ornek_veri\defense_architecture_config.json SCN-SQLI-01
+=== Saldırı Simülasyonu: [SCN-SQLI-01] ===
+Saldırı Durduruldu mu?: EVET
+Püskürtüldüğü Katman: 5_Uygulama_ve_API
+Delinen Katman Sayısı: 0
+Veri İhlal Edildi mi?: HAYIR
+--- Katman Bazlı Olay Detayları ---
+Katman [5_Uygulama_ve_API]: DURDURULDU
+   [ALARM] 'API Ağ Geçidi Hız Sınırlama ve İstek Günlükleme' kontrolü şüpheli saldırıyı tespit etti (WAF Evasion Karakter Kodlamalı SQLi).
+   [ENGELLEME] 'Web Uygulama Güvenlik Duvarı (WAF - ModSecurity / Cloudflare)' kontrolü saldırıyı başarıyla bloke etti.

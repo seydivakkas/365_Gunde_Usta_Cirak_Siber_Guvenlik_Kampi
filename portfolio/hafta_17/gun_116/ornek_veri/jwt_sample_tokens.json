@@ -1,0 +1,21 @@
+{
+  "aciklama": "Gün 116 JWT Yapısı ve Doğrulama Örnek Belirteç ve Politika Verisi",
+  "versiyon": "1.0.0",
+  "varsayilan_dogrulama_politikasi": {
+    "allowed_algorithms": ["HS256", "RS256"],
+    "expected_issuer": "https://idp.siber.local",
+    "expected_audience": "siber_api_servisi",
+    "leeway_seconds": 5,
+    "reject_none_algorithm": true
+  },
+  "ornek_kullanici_talepleri": {
+    "sub": "seydi_kullanici",
+    "rol": "security_engineer",
+    "tenant_id": "TENANT_ALPHA",
+    "yetkiler": [
+      "READ_AUDIT",
+      "WRITE_POLICY",
+      "EXECUTE_SCAN"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+test_01_safe_methods_semantics (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_01_safe_methods_semantics)
+Test 1: RFC 7231 ğ4.2.1 uyar²nca G³venli (Safe) metotlar²n do­rulanmas². ... ok
+test_02_idempotent_methods_semantics (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_02_idempotent_methods_semantics)
+Test 2: RFC 7231 ğ4.2.2 uyar²nca E■g³l³ (Idempotent) metotlar²n do­rulanmas². ... ok
+test_03_put_vs_patch_distinction (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_03_put_vs_patch_distinction)
+Test 3: PUT (tam temsil - idempotent) ve PATCH (k²smi g³ncelleme) anlamsal ayr²m². ... ok
+test_04_idempotency_key_first_execution (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_04_idempotency_key_first_execution)
+Test 4: Idempotency-Key ile ilk ÷deme a­r²s²nda bakiyeden d³■³m ve i■lem kayd². ... ok
+test_05_idempotency_key_replay_cached_response (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_05_idempotency_key_replay_cached_response)
+Test 5: A­ kopmas² nedeniyle yinelenen POST iste­inde ifte ekimin ÷nlenmesi ve ÷nbellek d÷n³■³. ... ok
+test_06_idempotency_key_payload_conflict (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_06_idempotency_key_payload_conflict)
+Test 6: Ayn² Idempotency-Key ile farkl² tutar/veri g÷nderildi­inde 409/422 uyu■mazl²k hatas². ... ok
+test_07_idempotency_key_ttl_cleanup (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_07_idempotency_key_ttl_cleanup)
+Test 7: Ya■am s³resi (TTL) dolan idempotency kay²tlar²n²n bellekten temizlenmesi. ... ok
+test_08_verb_tampering_head_bypass_prevention (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_08_verb_tampering_head_bypass_prevention)
+Test 8: HTTP Verb Tampering ile korumal² y÷netici yolunun HEAD ile atlat²lmas²n²n engellenmesi. ... ok
+test_09_trace_method_xst_security_audit (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_09_trace_method_xst_security_audit)
+Test 9: TRACE metodunun XST sald²r² tehdidi olarak i■aretlenmesi. ... ok
+test_10_negative_invalid_method_syntax (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_10_negative_invalid_method_syntax)
+Test 10 (Negatif): K³³k harfli metot ('get') veya standart d²■² metot ('PURGE') reddi. ... ok
+test_11_negative_empty_or_too_long_idempotency_key (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_11_negative_empty_or_too_long_idempotency_key)
+Test 11 (Negatif): Bo■ veya 128 karakteri a■an Idempotency-Key ba■l²­²n²n reddedilmesi. ... ok
+test_12_negative_unsafe_get_modification (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_12_negative_unsafe_get_modification)
+Test 12 (Negatif): GET metoduyla para transferi veya silme yap²lmaya al²■²ld²­²nda hata verilmesi. ... ok
+test_13_negative_put_without_body (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_13_negative_put_without_body)
+Test 13 (Negatif): G÷vdesi bo■ b²rak²lan PUT isteklerinin reddedilmesi. ... ok
+test_14_delete_idempotent_state_consistency (portfolio.hafta_09.gun_058.tests.test_http_methods_idempotency.TestHTTPMethodsIdempotency.test_14_delete_idempotent_state_consistency)
+Test 14: DELETE metodunun e■g³l³l³­³ ve ard²■²k silme isteklerinde durum tutarl²l²­². ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK

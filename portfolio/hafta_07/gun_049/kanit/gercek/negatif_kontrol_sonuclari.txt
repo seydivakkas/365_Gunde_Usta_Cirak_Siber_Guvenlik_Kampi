@@ -1,0 +1,39 @@
+================================================================================
+G049: AĞ ADRESLEME ÇALIŞMA KİTABI - NEGATİF KONTROL VE HATA DOĞRULAMA KANITI
+================================================================================
+
+[1/8] [ENGELLENDİ / BLOCKED] ERR_INVALID_CIDR_PREFIX
+     Açıklama      : Geçersiz CIDR önek değeri (33 > 32)
+     Yakalanan Hata: IPv4 CIDR öneki 0-32 arasında olmalıdır: 33
+--------------------------------------------------------------------------------
+[2/8] [ENGELLENDİ / BLOCKED] ERR_INVALID_OCTET_RANGE
+     Açıklama      : Geçersiz oktet değeri (300 > 255)
+     Yakalanan Hata: Oktet 0-255 aralığında olmalıdır: 300
+--------------------------------------------------------------------------------
+[3/8] [ENGELLENDİ / BLOCKED] ERR_INVALID_MAC_FORMAT
+     Açıklama      : Geçersiz hex karakterler içeren MAC adresi
+     Yakalanan Hata: Cihaz tanımında zorunlu alan eksik: 'alt_ag_id'
+--------------------------------------------------------------------------------
+[4/8] [ENGELLENDİ / BLOCKED] ERR_INVALID_IPV6_FORMAT
+     Açıklama      : Birden fazla çift iki nokta içeren hatalı IPv6
+     Yakalanan Hata: IPv6 adresinde birden fazla '::' bulunamaz: 2001::db8::1/64
+--------------------------------------------------------------------------------
+[5/8] [ENGELLENDİ / BLOCKED] ERR_MISSING_REQUIRED_FIELD
+     Açıklama      : Zorunlu ipv4_cidr alanı eksik
+     Yakalanan Hata: Alt ağ tanımında zorunlu alan eksik: 'ipv4_cidr'
+--------------------------------------------------------------------------------
+[6/8] [ENGELLENDİ / BLOCKED] ERR_INVALID_VLAN_ID
+     Açıklama      : Geçersiz VLAN kimliği (5000 > 4094)
+     Yakalanan Hata: VLAN kimliği 1-4094 aralığında olmalıdır: 5000
+--------------------------------------------------------------------------------
+[7/8] [ENGELLENDİ / BLOCKED] ERR_EMPTY_TOPOLOGY
+     Açıklama      : Boş topoloji verisi veya None
+     Yakalanan Hata: Topoloji verisi bir JSON nesnesi (dict) olmalıdır.
+--------------------------------------------------------------------------------
+[8/8] [ENGELLENDİ / BLOCKED] ERR_NON_STRING_IP
+     Açıklama      : IP adresi string yerine integer tipi verilmiş
+     Yakalanan Hata: Cihaz tanımında zorunlu alan eksik: 'alt_ag_id'
+--------------------------------------------------------------------------------
+
+ÖZET: Toplam 8 negatif kontrol senaryosundan 8 tanesi başarıyla engellendi.
+SONUÇ: %100 DOĞRULAMA BAŞARILI (WorkbookValidationError ile güvenli yakalama).

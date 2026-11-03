@@ -1,0 +1,121 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+==============================================================================
+PROXY, NAT VE GÜVENLİK DUVARI MİMARİSİ VE TEHDİT MODELLERİ İLLÜSTRASYONU
+==============================================================================
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Tüm Hakları Saklıdır.
+ÖZEL LİSANS — Yalnızca görüntüleme ve eğitim amaçlıdır. Ticari kullanılamaz.
+
++----------------------------------------------------------------------------+
+| 1. BÖLÜM: UÇTAN UCA KURUMSAL AĞ GÜVENLİK TOPOLOJİSİ                        |
++----------------------------------------------------------------------------+
+
+  [İÇ KURUMSAL AĞ (RFC 1918)]
+   İstemci 1 (192.168.1.50) ----+
+   İstemci 2 (192.168.1.51) ----+----> [ FORWARD PROXY ]
+                                          (İçerik/URL Filtreleme, Cache)
+                                                  |
+                                                  v
+                                      [ PAT / NAT ROUTER (L3/L4) ]
+                                      Genel IP: 203.0.113.10
+                                      (Port Havuzu: 10000 - 65535)
+                                                  |
+                                                  v
+   ============================== [ GENEL İNTERNET ] =========================
+                                                  |
+                                                  v
+                                      [ REVERSE PROXY / WAF / LB ]
+                                      (SSL Termination, Yük Dengeleme, XFF)
+                                                  |
+                                                  v
+                                      [ DURUM TAKİPLİ GÜVENLİK DUVARI ]
+                                      (Conntrack: Ingress 443 -> DMZ)
+                                                  |
+                                                  v
+                                      [ DMZ / ARKA UÇ SUNUCULARI ]
+                                      Sunucu 1 (10.0.0.11:8080)
+                                      Sunucu 2 (10.0.0.12:8080)
+
++----------------------------------------------------------------------------+
+| 2. BÖLÜM: FORWARD PROXY VS REVERSE PROXY KARŞILAŞTIRMASI                   |
++----------------------------------------------------------------------------+
+
+  FORWARD PROXY (İstemci Vekili):
+  İstemci --------> [ Forward Proxy ] --------> İnternet Sunucusu
+  * İstemciyi temsil eder; iç istemcilerin IP'sini gizler.
+  * Kurumsal politikalara göre siteleri engeller (Ör. Kumar, Sosyal Medya).
+  * HTTPS trafiği için "CONNECT host:443 HTTP/1.1" tüneli açar.
+
+  REVERSE PROXY (Sunucu Vekili):
+  İnternet İstemcisi --------> [ Reverse Proxy ] --------> Arka Uç Sunucuları
+  * Sunucuları temsil eder; arka uç sunucuların iç IP'lerini gizler.
+  * SSL/TLS şifre çözme yükünü sunuculardan alır (SSL Offloading).
+  * İstemcinin gerçek IP'sini arka uca iletmek için X-Forwarded-For ekler.
+
++----------------------------------------------------------------------------+
+| 3. BÖLÜM: PORT ADRES DÖNÜŞÜMÜ (PAT / NAPT / NAT OVERLOAD) MEKANİZMASI      |
++----------------------------------------------------------------------------+
+
+  İç İstemci                       PAT Yönlendirici                     Hedef Web Sunucu
+  (192.168.1.55:48912)            (203.0.113.10)                       (142.250.185.206:443)
+          |                               |                                      |
+          | ---- 1. Giden Paket --------> | [PAT ÇEVİRİM TABLOSU]                |
+          |    (192.168.1.55:48912)       | 192.168.1.55:48912 <-> 203.0.113.10:10001
+          |                               |                                      |
+          |                               | ---- 2. Dönüştürülmüş Paket (SNAT)-> |
+          |                               |    (203.0.113.10:10001)              |
+          |                               |                                      |
+          |                               | <--- 3. Gelen Yanıt (Hedef Port:10001)
+          |                               | [Tablodan 192.168.1.55:48912 bulundu]|
+          | <--- 4. İstemciye Yanıt (DNAT)|                                      |
+          |    (192.168.1.55:48912)       |                                      |
+
++----------------------------------------------------------------------------+
+| 4. BÖLÜM: DURUM TAKİPLİ GÜVENLİK DUVARI (CONNTRACK STATE MACHINE)          |
++----------------------------------------------------------------------------+
+
+       +-------------------------------------------------------+
+       | TCP SYN (Kural İzin Veriyorsa)                        |
+       | Tabloda yeni akış oluşturulur                         |
+       +---------------------------+---------------------------+
+                                   |
+                                   v
+                             [ DURUM: NEW ]
+                                   |
+       +---------------------------+---------------------------+
+       | Karşı Taraf SYN-ACK döner, İstemci ACK ile onaylar    |
+       +---------------------------+---------------------------+
+                                   |
+                                   v
+                        [ DURUM: ESTABLISHED ]
+                 (Tüm iki yönlü veri paketleri akar)
+                                   |
+       +---------------------------+---------------------------+
+       | Bağlantı FIN veya RST bayrağı ile sonlanır            |
+       +---------------------------+---------------------------+
+                                   |
+                                   v
+                          [ DURUM: CLOSED ]
+                     (Tablodan silinir / Temizlenir)
+
+  * INVALID DURUMU: Tabloda olmayan sahte ACK/FIN paketleri = DERHAL DROP!
+
++----------------------------------------------------------------------------+
+| 5. BÖLÜM: X-FORWARDED-FOR (XFF) SAHTECİLİĞİ VE GÜVENLİK POLİTİKASI         |
++----------------------------------------------------------------------------+
+
+  [A] ZAAFİYETLİ DURUM (Kötü Niyetli XFF İstismarı):
+  Saldırgan (198.51.100.5) ---> HTTP GET /admin
+                                X-Forwarded-For: 127.0.0.1  <-- Sahte IP!
+  Vekil Sunucu safça bu başlığı arka uç sunucuya geçirirse:
+  Arka uç: "İstek 127.0.0.1'den gelmiş, admin paneline tam yetki ver!" (YETKİ ATLATMA!)
+
+  [B] GÜVENLİ DURUM (Sanitize / Overwrite Politikası):
+  Vekil Sunucu: "198.51.100.5 benim güvenilir iç vekilim DEĞİL!"
+  Vekil Sunucu saldırganın XFF başlığını siler ve GERÇEK soket IP'sini yazar:
+  Arka Uç Sunucuya İletilen: X-Forwarded-For: 198.51.100.5
+  Arka Uç: "Bu dışarıdan gelen bir istek! Erişim reddedildi 403 Forbidden!"
+
+==============================================================================
+BU BELGE BİR EĞİTİM İLLÜSTRASYONUDUR. GERÇEK ÇALIŞTIRMA KANITI DEĞİLDİR.
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Tüm Hakları Saklıdır.

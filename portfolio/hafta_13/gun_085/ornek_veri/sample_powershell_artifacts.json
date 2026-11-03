@@ -1,0 +1,82 @@
+{
+  "aciklama": "G085: PowerShell nesne boru hatti tehdit avciligi icin ornek sistem nesneleri.",
+  "processes": [
+    {
+      "ProcessName": "powershell",
+      "Id": 4820,
+      "Path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+      "CPU": 1.25,
+      "WorkingSet64": 85983232,
+      "CommandLine": "pwsh.exe -NoProfile -ExecutionPolicy Bypass",
+      "ParentProcessId": 1024,
+      "ParentProcessName": "explorer.exe",
+      "Company": "Microsoft Corporation",
+      "Signed": true
+    },
+    {
+      "ProcessName": "svchost",
+      "Id": 1420,
+      "Path": "C:\\Windows\\System32\\svchost.exe",
+      "CPU": 0.45,
+      "WorkingSet64": 34520000,
+      "CommandLine": "svchost.exe -k netsvcs -p",
+      "ParentProcessId": 680,
+      "ParentProcessName": "services.exe",
+      "Company": "Microsoft Corporation",
+      "Signed": true
+    },
+    {
+      "ProcessName": "mimikatz",
+      "Id": 9912,
+      "Path": "C:\\Users\\Public\\mimikatz.exe",
+      "CPU": 12.8,
+      "WorkingSet64": 120450000,
+      "CommandLine": "mimikatz.exe \"privilege::debug\" \"sekurlsa::logonpasswords\" exit",
+      "ParentProcessId": 4820,
+      "ParentProcessName": "powershell.exe",
+      "Company": "Unknown Hacker",
+      "Signed": false
+    }
+  ],
+  "network_connections": [
+    {
+      "LocalAddress": "192.168.1.50",
+      "LocalPort": 49820,
+      "RemoteAddress": "20.112.52.29",
+      "RemotePort": 443,
+      "State": "Established",
+      "OwningProcess": 4820
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 4444,
+      "RemoteAddress": "0.0.0.0",
+      "RemotePort": 0,
+      "State": "Listen",
+      "OwningProcess": 9912
+    }
+  ],
+  "event_logs": [
+    {
+      "EventId": 4624,
+      "TimeCreated": "2026-11-01T22:00:00Z",
+      "ProviderName": "Microsoft-Windows-Security-Auditing",
+      "LevelDisplayName": "Information",
+      "Message": "An account was successfully logged on. TargetUserName: admin, LogonType: 2"
+    },
+    {
+      "EventId": 4625,
+      "TimeCreated": "2026-11-01T22:01:00Z",
+      "ProviderName": "Microsoft-Windows-Security-Auditing",
+      "LevelDisplayName": "Warning",
+      "Message": "An account failed to log on. TargetUserName: administrator, FailureReason: Bad password"
+    },
+    {
+      "EventId": 4104,
+      "TimeCreated": "2026-11-01T22:02:00Z",
+      "ProviderName": "Microsoft-Windows-PowerShell",
+      "LevelDisplayName": "Warning",
+      "Message": "Creating Scriptblock text (1 of 1): Get-Process | Where-Object { $_.CPU -gt 10 }"
+    }
+  ]
+}

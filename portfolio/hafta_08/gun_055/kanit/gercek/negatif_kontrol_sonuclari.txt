@@ -1,0 +1,59 @@
+================================================================================
+G055 - DHCP VE IP ATAMASI: NEGATIF VE SINIR KONTROL TEST SONUCLARI
+Tarih: 2026-10-29 17:58:30
+Toplam Negatif Test Senaryosu: 9
+================================================================================
+
+[NEG-01-OPCODE] GecersizOpCode:
+    Girdi: op=99 (Standart disi operasyon kodu)
+    Beklenen Istisna: DHCPValidationError
+    Hata Mesaji: "Gecersiz BOOTP op kodu: 99. Yalnizca 1 (BOOTREQUEST) veya 2 (BOOTREPLY) desteklenir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-02-HTYPE] GecersizDonanimTipi:
+    Girdi: htype=0 (Desteklenmeyen donanim tipi)
+    Beklenen Istisna: DHCPValidationError
+    Hata Mesaji: "Gecersiz donanim tipi: 0. Standart Ethernet icin 1 olmalidir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-03-HLEN] GecersizDonanimUzunlugu:
+    Girdi: hlen=12 (Ethernet icin 6 harici uzunluk)
+    Beklenen Istisna: DHCPValidationError
+    Hata Mesaji: "Gecersiz donanim adresi uzunlugu: 12. Ethernet icin 6 olmalidir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-04-COOKIE] GecersizMagicCookie:
+    Girdi: magic_cookie=0x11223344
+    Beklenen Istisna: DHCPValidationError
+    Hata Mesaji: "Gecersiz DHCP Magic Cookie: 0x11223344. Standart 0x63825363 olmalidir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-05-MAC] BozukMacAdresi:
+    Girdi: chaddr="00:11:ZZ:44:55:66" (Hex disi karakterler)
+    Beklenen Istisna: DHCPValidationError
+    Hata Mesaji: "Bozuk MAC adresi formati: '00:11:ZZ:44:55:66'. 6 baytlik hex olmalidir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-06-OPTION53] EksikMesajTipi:
+    Girdi: Options icinde Option 53 (Mesaj Tipi) bulunmuyor
+    Beklenen Istisna: DHCPValidationError
+    Hata Mesaji: "Beklenen mesaj tipi DISCOVER (1), alinan: None"
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-07-LEASE] GecersizKiraSuresi:
+    Girdi: Option 51 = -3600 (Negatif kiralama suresi)
+    Beklenen Istisna: DHCPValidationError
+    Hata Mesaji: "Gecersiz kira suresi: -3600. Sure pozitif bir tamsayi olmalidir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-08-TRUNCATED] KirpikliPaketUzunlugu:
+    Girdi: 40 baytlik bozuk ham veri akisi (< 236 bayt BOOTP)
+    Beklenen Istisna: DHCPValidationError
+    Hata Mesaji: "Paket uzunlugu yetersiz: 40 bayt. Minimum BOOTP basligi 236 bayt olmalidir."
+    Sonuc: BASARILI (Hata firlatildi ve yakalandi)
+
+[NEG-09-SNOOPING] GuvenilmeyenPortIhlali:
+    Girdi: Untrusted (Fa0/1) portundan gelen DHCP Offer/ACK paketi
+    Beklenen Istisna: DHCPSecurityAlert
+    Hata Mesaji: "DHCP Snooping Guvenlik Alarmi: Port Fa0/1 (untrusted) uzerinden sunucu yanit paketi (2) engellendi!"
+    Sonuc: BASARILI (Hata firlatildi ve saldiri durduruldu)

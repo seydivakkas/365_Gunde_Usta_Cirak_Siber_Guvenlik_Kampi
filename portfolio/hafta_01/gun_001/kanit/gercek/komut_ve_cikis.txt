@@ -1,0 +1,44 @@
+================================================================================
+GERÇEK KOMUT VE ÇALIŞTIRMA KANITI (GÜN 001)
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) | ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+================================================================================
+Komut: python portfolio/hafta_01/gun_001/uygulama/cia_triad_lab.py --audit
+Çalışma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Ortam: Windows 11 Enterprise (Physical / Localhost)
+Araç Sürümü: Python 3.14.0 (CPython, Standard Library)
+Tarih ve Saat: 2026-10-26 16:34:18 +03:00
+Çıkış Kodu (Exit Code): 0 (BAŞARILI)
+================================================================================
+STANDART ÇIKTI (STDOUT):
+================================================================================
+======================================================================
+SİBER GÜVENLİK 365: GÜN 001 — CIA ÜÇLÜSÜ TAM SİSTEM DENETİMİ
+======================================================================
+[*] Hedef Veri Kütüğü: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_01\gun_001\ornek_veri\okul_not_sistemi.txt
+[*] Referans Güvenli SHA-256 Özeti: 2e5462450ae63eab2d21a315636aa3e9a9a82ed85406ec624bc4cff195dc4c2f
+
+--- [1. TEST BÖLÜMÜ: GİZLİLİK (CONFIDENTIALITY)] ---
+  [+] POZİTİF KONTROL: Öğretmen yetkisiyle okuma başarılı. Toplam kayıt: 5
+  [+] POZİTİF KONTROL: Öğrenci (101) sadece kendi notunu gördü: Ali Yılmaz -> 45/55
+  [+] NEGATİF KONTROL BAŞARILI: Misafir engellendi -> Misafir kullanıcıların not kütüğüne erişim hakkı yoktur!
+
+--- [2. TEST BÖLÜMÜ: BÜTÜNLÜK (INTEGRITY)] ---
+  [+] POZİTİF KONTROL: Veri bütünlüğü doğrulandı (Hash eşleşti).
+  [*] Tahrifat Simülasyonu: Öğrenci 101'in notu 45'ten 95'e çıkarılıyor...
+  [*] Yeni Tahrif Edilmiş Hash: 5e15d0354f3b287b84c153a0f616c93f0b3998d07618cd9aaa2334b09258ae43
+  [*] Çığ Etkisi (Avalanche Effect) Gözlendi: Tek not değişti, hash baştan aşağı farklı!
+  [+] NEGATİF KONTROL BAŞARILI: Bütünlük ihlali derhal yakalandı ve alarm verildi!
+  [*] Temizlik: Orijinal veri kütüğü geri yüklendi.
+
+--- [3. TEST BÖLÜMÜ: ERİŞİLEBİLİRLİK (AVAILABILITY)] ---
+  [+] POZİTİF KONTROL: Sistem aktif, hizmet yanıt veriyor.
+  [+] NEGATİF KONTROL BAŞARILI: Servis kesintisi tespit edildi -> HİZMET KESİNTİSİ! Not sistemine şu anda erişilemiyor (DoS / Kaynak Kilidi).
+
+======================================================================
+[SONUÇ] TÜM CIA BİLEŞENLERİ (GİZLİLİK, BÜTÜNLÜK, ERİŞİLEBİLİRLİK) TESTLERİ BAŞARIYLA GEÇTİ!
+======================================================================
+
+================================================================================
+STANDART HATA (STDERR):
+================================================================================
+(Hata çıktısı yoktur, işlem temiz şekilde 0 kodu ile tamamlanmıştır.)

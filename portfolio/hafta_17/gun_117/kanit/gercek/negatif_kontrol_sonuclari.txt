@@ -1,0 +1,52 @@
+======================================================================
+GÜN 117: NEGATİF KONTROL VE ZAFİYET ENGELLEME RAPORU
+Tarih / Saat: 2026-11-02T05:36:53.129380
+======================================================================
+
+[NEG_01] RBAC Rol Yetki Eksikliği İhlali (CWE-862)
+  Beklenen Güvenlik Hatası : RBACPermissionDeniedError
+  Yakalanan İstisna        : RBACPermissionDeniedError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_02] SoD Görevler Ayrılığı Toksik Rol Kombinasyonu (CWE-863)
+  Beklenen Güvenlik Hatası : RBACSoDRuleConflictError
+  Yakalanan İstisna        : RBACSoDRuleConflictError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_03] Çok Kiracılı Mimari (Multi-Tenant) İzolasyon Sınırı İhlali (CWE-284)
+  Beklenen Güvenlik Hatası : MultiTenantIsolationBreachError
+  Yakalanan İstisna        : MultiTenantIsolationBreachError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_04] Yetersiz Güvenlik Yetki Derecesi (Classification vs Clearance) (CWE-285)
+  Beklenen Güvenlik Hatası : ClassificationClearanceInsufficientError
+  Yakalanan İstisna        : ClassificationClearanceInsufficientError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_05] Departman İzolasyonu ve IDOR Veri Sızıntısı Engeli (CWE-639)
+  Beklenen Güvenlik Hatası : ABACPolicyDeniedError
+  Yakalanan İstisna        : ABACPolicyDeniedError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_06] Kilitli veya Arşivlenmiş Kaynağı Değiştirme Engeli (CWE-863)
+  Beklenen Güvenlik Hatası : ABACPolicyDeniedError
+  Yakalanan İstisna        : ABACPolicyDeniedError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_07] Kritik Kaynak Silme İşleminde MFA Eksikliği (CWE-308)
+  Beklenen Güvenlik Hatası : ABACPolicyDeniedError
+  Yakalanan İstisna        : ABACPolicyDeniedError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_08] Mesai Saatleri Dışında Finansal Defter Yazma Engeli (CWE-284)
+  Beklenen Güvenlik Hatası : EnvironmentalConstraintError
+  Yakalanan İstisna        : EnvironmentalConstraintError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_09] Dış Ağdan Yüksek Risk Puanlı Yetkisiz Erişim (CWE-284)
+  Beklenen Güvenlik Hatası : EnvironmentalConstraintError
+  Yakalanan İstisna        : EnvironmentalConstraintError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+
+TOPLAM TEST EDİLEN: 9, HEPSİ BAŞARILI MI: True

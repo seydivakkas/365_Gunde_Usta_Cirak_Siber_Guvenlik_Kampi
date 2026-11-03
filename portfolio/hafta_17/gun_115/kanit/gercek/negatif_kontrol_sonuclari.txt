@@ -1,0 +1,45 @@
+[PASS] NEG_01: Açık Yönlendirici (Open Redirector) Saldırısı — Beyaz Liste Dışı redirect_uri
+  Hedef Zafiyet : CWE-601: URL Redirection to Untrusted Site ('Open Redirector')
+  Beklenen Hata : InvalidRedirectURIError
+  Yakalanan Hata: InvalidRedirectURIError
+
+[PASS] NEG_02: PKCE Doğrulama Başarısızlığı (Çalıntı Kod ile Sahte Verifier Takası)
+  Hedef Zafiyet : CWE-287: Improper Authentication (Authorization Code Interception)
+  Beklenen Hata : PKCEVerificationFailedError
+  Yakalanan Hata: PKCEVerificationFailedError
+
+[PASS] NEG_03: Daha Önce Kullanılmış Yetkilendirme Kodunun Tekrar Sunulması (Replay)
+  Hedef Zafiyet : CWE-294: Authentication Bypass by Capture-replay
+  Beklenen Hata : AuthorizationCodeExpiredOrUsedError
+  Yakalanan Hata: AuthorizationCodeExpiredOrUsedError
+
+[PASS] NEG_04: Süresi Dolmuş Yetkilendirme Kodu ile Belirteç Takası
+  Hedef Zafiyet : CWE-294: Authentication Bypass by Capture-replay
+  Beklenen Hata : AuthorizationCodeExpiredOrUsedError
+  Yakalanan Hata: AuthorizationCodeExpiredOrUsedError
+
+[PASS] NEG_05: CSRF Saldırısı — İstemci Tarafında State Parametresi Uyuşmazlığı
+  Hedef Zafiyet : CWE-352: Cross-Site Request Forgery (CSRF)
+  Beklenen Hata : StateMismatchCSRFError
+  Yakalanan Hata: StateMismatchCSRFError
+
+[PASS] NEG_06: OIDC ID Token Nonce Uyuşmazlığı (Replay Saldırısı)
+  Hedef Zafiyet : CWE-294: Authentication Bypass by Capture-replay
+  Beklenen Hata : OIDCNonceMismatchError
+  Yakalanan Hata: OIDCNonceMismatchError
+
+[PASS] NEG_07: Yetersiz Kapsam (Scope) ile Korumalı API'ye Yetkisiz Erişim
+  Hedef Zafiyet : CWE-285: Improper Authorization (Insufficient Scope)
+  Beklenen Hata : InsufficientScopeError
+  Yakalanan Hata: InsufficientScopeError
+
+[PASS] NEG_08: Kayıtlı Olmayan Sahte İstemci Kimliği ile Yetkilendirme Talebi
+  Hedef Zafiyet : CWE-287: Improper Authentication
+  Beklenen Hata : InvalidClientError
+  Yakalanan Hata: InvalidClientError
+
+[PASS] NEG_09: Geçersiz veya Sahte Bearer Erişim Belirteci ile API Çağrısı
+  Hedef Zafiyet : CWE-287: Improper Authentication
+  Beklenen Hata : InvalidAccessTokenError
+  Yakalanan Hata: InvalidAccessTokenError
+

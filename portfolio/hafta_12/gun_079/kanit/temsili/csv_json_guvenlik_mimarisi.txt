@@ -1,0 +1,53 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
+Bu şema, G079 günü kapsamında geliştirilen güvenli CSV ve JSON veri işleme motorunun
+mimari savunma hatlarını, girdi filtrelerini ve enjeksiyon nötralizasyon adımlarını
+temsil eden kavramsal ASCII akış diyagramıdır.
+
+                        +------------------------------------+
+                        |  DIŞ DÜNYADAN GELEN GÜVENSİZ VERİ  |
+                        |   (CSV / JSON Tehdit Akışları)     |
+                        +------------------------------------+
+                                          |
+                                          v
+               +----------------------------------------------------+
+               |           1. STATİK GİRDİ VE TAVAN SÜZGECİ          |
+               |  - Max Payload Boyutu (max_payload_bytes / DoS)    |
+               |  - Null-Byte Filtresi (\x00 enjeksiyon koruması)   |
+               |  - Katı UTF-8 Karakter Kodlama Denetimi            |
+               +----------------------------------------------------+
+                                          |
+                     +--------------------+--------------------+
+                     |                                         |
+                     v                                         v
+       [ CSV İŞLEME VE NÖTRALİZASYON ]             [ JSON İŞLEME VE ŞEMA DENETİMİ ]
+   +---------------------------------------+   +---------------------------------------+
+   | - Başlık ve Sütun Sayısı Doğrulama    |   | - Mükerrer Anahtar Kancası             |
+   | - Alan Boyutu Tavanı (max_field_size) |   |   (object_pairs_hook Duplicate Key)   |
+   | - Formula Injection Taraması          |   | - Özyinelemeli Derinlik Sınırı        |
+   |   Prefixler: [=, +, -, @, \t, \r]     |   |   (max_depth JSON Bomb koruması)      |
+   | - Güvenli Tek Tırnak Nötralizasyonu   |   | - Katı Tip ve Değer Şeması             |
+   |   '=cmd|'/C calc'!A0' -> ''=cmd...'   |   |   (validate_schema: int, str, bool)   |
+   +---------------------------------------+   +---------------------------------------+
+                     |                                         |
+                     +--------------------+--------------------+
+                                          |
+                                          v
+               +----------------------------------------------------+
+               |         SECURITY DATA INGESTION ENGINE (FAÇADE)    |
+               |  - Temizlenmiş ve Doğrulanmış Kayıt Havuzu         |
+               |  - Kritiklik / Tehdit Skoru Filtreleme             |
+               |  - Adli Denetim Raporu Üretimi (Adli İspat)        |
+               +----------------------------------------------------+
+                                          |
+                                          v
+                        +------------------------------------+
+                        |    GÜVENLİ İŞLENMİŞ RAPOR & ÇIKTI  |
+                        | (SIEM / SOC / Adli Analiz Formatı) |
+                        +------------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

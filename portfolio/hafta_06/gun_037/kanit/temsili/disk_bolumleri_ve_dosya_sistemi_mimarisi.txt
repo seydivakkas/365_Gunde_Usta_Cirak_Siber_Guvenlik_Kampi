@@ -1,0 +1,71 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Bu yazılım ve ilgili tüm dosyalar ("Yazılım") yalnızca görüntüleme ve eğitim amaçlı olarak paylaşılmıştır.
+================================================================================
+
+DISK BÖLÜMLERİ, BÖLÜM TABLOLARI (MBR vs GPT) VE DOSYA SİSTEMİ MİMARİSİ
+--------------------------------------------------------------------------------
+
+1. BÖLÜMLEME MİMARİLERİ KARŞILAŞTIRMASI (MBR vs GPT)
+--------------------------------------------------------------------------------
+
+   A) ESKİ MBR (Master Boot Record) MİMARİSİ (Zayıf Güvenlik):
+   +---------------------------------------------------------------------------+
+   | Sektör 0 (LBA 0): 512 Bayt                                                |
+   | [ Önyükleme Kodu (Boot Code): 446 B ] [ 4x Bölüm Tablosu: 64 B ] [0x55AA]  |
+   +---------------------------------------------------------------------------+
+   | Bölüm 1 (Primary)   | Bölüm 2 (Primary)   | Bölüm 3 (Primary) | Bölüm 4  |
+   | (Maks. 2 TB adres)  | (Genişletilmiş)     | (Maks. 4 bölüm)   |          |
+   +---------------------+---------------------+-------------------+----------+
+   * Risk: Yedek tablo yok, CRC32 sağlama toplamı yok, Sektör 0 bootkit hedefi!
+
+   B) MODERN GPT (GUID Partition Table) MİMARİSİ (Güvenli ve Bütünlüklü):
+   +---------------------------------------------------------------------------+
+   | LBA 0: Protective MBR (Eski BIOS araçlarının diski ezmesini engeller)     |
+   +---------------------------------------------------------------------------+
+   | LBA 1: Birincil GPT Başlığı (Primary GPT Header - Disk GUID, CRC32, Boyut)|
+   +---------------------------------------------------------------------------+
+   | LBA 2-33: Bölüm Girdileri (128 Adet Bağımsız Bölüm, Her biri 128 Bayt)    |
+   +---------------------------------------------------------------------------+
+   | LBA 34 ... Disk Sonu - 34: Gerçek Veri Bölümleri                          |
+   | [ /boot/efi ] [ LUKS2 Şifreli Kök / ] [ /var (nosuid) ] [ /tmp (noexec) ] |
+   +---------------------------------------------------------------------------+
+   | Disk Sonu - 33 ... Disk Sonu - 2: Yedek Bölüm Girdileri (Backup Entries)  |
+   +---------------------------------------------------------------------------+
+   | Disk Sonu - 1: İkincil / Yedek GPT Başlığı (Secondary GPT Header)         |
+   +---------------------------------------------------------------------------+
+   * Güvenlik: CRC32 bütünlük denetimi, çift yedekli başlık, 128+ bölüm desteği!
+
+--------------------------------------------------------------------------------
+2. İŞLETİM SİSTEMİ BAĞLAMA (VFS) VE GÜVENLİK BAYRAKLARI KATMANI
+--------------------------------------------------------------------------------
+
+   Kullanıcı Alanı (User Space):  /bin/bash, curl, python, cat
+                                      │
+                                      ▼ Sistem Çağrıları (open, read, execve)
+   ┌───────────────────────────────────────────────────────────────────────────┐
+   │ Çekirdek (Kernel) VFS (Virtual File System) Soyutlama Katmanı              │
+   └───────────────────────────────────┬───────────────────────────────────────┘
+                                       │
+                ┌──────────────────────┴──────────────────────┐
+                ▼                                             ▼
+   ┌───────────────────────────────┐             ┌─────────────────────────────┐
+   │ /tmp Bağlama Noktası          │             │ /mnt/legacy_storage         │
+   │ FS: tmpfs / ext4              │             │ FS: FAT32 (İzin desteği YOK)│
+   ├───────────────────────────────┤             ├─────────────────────────────┤
+   │ Güvenlik Bayrakları:          │             │ Bayraklar: rw, exec, suid   │
+   │ [X] noexec (Zararlı ELF YASAK)│             │ [!] İzinler yok (777 gibi)  │
+   │ [X] nosuid (Yetki yüksel. ENG)│             │ [!] SUID saldırısına açık   │
+   │ [X] nodev  (Aygıt düğümü ENG) │             │ [!] Şifresiz disk kalıntısı │
+   └───────────────┬───────────────┘             └──────────────┬──────────────┘
+                   │                                            │
+                   ▼                                            ▼
+   ┌───────────────────────────────┐             ┌─────────────────────────────┐
+   │ LUKS2 / dm-crypt Şifreleme     │             │ Fiziksel Disk Sektörleri    │
+   │ (AES-XTS-512 Şifrelenmiş Blok)│             │ (Açık Metin / Ham Veri)     │
+   └───────────────────────────────┘             └─────────────────────────────┘
+
+--------------------------------------------------------------------------------
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

@@ -1,0 +1,45 @@
+[PASS] NEG_01: 'alg: none' İmzasız Belirteç Enjeksiyonu Saldırısı
+  Hedef Zafiyet : CWE-347: Improper Verification of Cryptographic Signature
+  Beklenen Hata : AlgorithmNoneAttackError
+  Yakalanan Hata: AlgorithmNoneAttackError
+
+[PASS] NEG_02: Algoritma Karışıklığı (RS256 Bekleyen Sunucuya HS256 Gönderilmesi)
+  Hedef Zafiyet : CWE-327: Use of a Broken or Risky Cryptographic Algorithm
+  Beklenen Hata : AlgorithmConfusionError
+  Yakalanan Hata: AlgorithmConfusionError
+
+[PASS] NEG_03: Tahrif Edilmiş Payload ve Geçersiz Dijital İmza
+  Hedef Zafiyet : CWE-347: Improper Verification of Cryptographic Signature
+  Beklenen Hata : InvalidSignatureError
+  Yakalanan Hata: InvalidSignatureError
+
+[PASS] NEG_04: Hatalı Simetrik Gizli Anahtarla Doğrulama Teşebbüsü
+  Hedef Zafiyet : CWE-347: Improper Verification of Cryptographic Signature
+  Beklenen Hata : InvalidSignatureError
+  Yakalanan Hata: InvalidSignatureError
+
+[PASS] NEG_05: Geçerlilik Süresi Dolan (Expired) Belirteç Sunulması
+  Hedef Zafiyet : CWE-298: Improper Validation of Certificate Expiration
+  Beklenen Hata : TokenExpiredError
+  Yakalanan Hata: TokenExpiredError
+
+[PASS] NEG_06: Geçerlilik Tarihi Henüz Gelmemiş (nbf) Belirteç
+  Hedef Zafiyet : CWE-298: Improper Validation of Certificate Expiration
+  Beklenen Hata : TokenNotYetValidError
+  Yakalanan Hata: TokenNotYetValidError
+
+[PASS] NEG_07: Bilinmeyen veya Sahte Kimlik Sağlayıcı (Issuer Uyuşmazlığı)
+  Hedef Zafiyet : CWE-287: Improper Authentication
+  Beklenen Hata : InvalidIssuerError
+  Yakalanan Hata: InvalidIssuerError
+
+[PASS] NEG_08: Farklı Servis İçin Üretilmiş Belirteç (Audience Uyuşmazlığı)
+  Hedef Zafiyet : CWE-287: Improper Authentication
+  Beklenen Hata : InvalidAudienceError
+  Yakalanan Hata: InvalidAudienceError
+
+[PASS] NEG_09: İptal Edilmiş (Kara Listedeki jti) Belirtecin Tekrar Sunulması
+  Hedef Zafiyet : CWE-294: Authentication Bypass by Capture-replay
+  Beklenen Hata : TokenRevokedError
+  Yakalanan Hata: TokenRevokedError
+

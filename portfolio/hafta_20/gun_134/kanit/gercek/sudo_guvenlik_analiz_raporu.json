@@ -1,0 +1,111 @@
+{
+  "audit_metadata": {
+    "standard": "CIS Linux Benchmark (Section 5.3) & GTFOBins Privilege Escalation Matrix",
+    "auditor": "Seydi Eryılmaz (@seydivakkas)",
+    "timestamp": "2026-11-02T13:10:00Z"
+  },
+  "summary": {
+    "score": 0.0,
+    "max_score": 100.0,
+    "status": "CRITICAL",
+    "total_vulnerabilities": 9,
+    "severity_breakdown": {
+      "CRITICAL": 7,
+      "HIGH": 1,
+      "MEDIUM": 1,
+      "LOW": 0
+    }
+  },
+  "findings_detail": [
+    {
+      "target": "Rule: devops -> /usr/bin/vim /etc/nginx/nginx.conf",
+      "cwe_id": "CWE-250",
+      "mitre_id": "T1548.003",
+      "severity": "CRITICAL",
+      "title": "GTFOBins Kabuk Kaçışı Zafiyeti (vim) [devops]",
+      "description": "'devops' kullanıcısına '/usr/bin/vim /etc/nginx/nginx.conf' komutunu sudo ile çalıştırma izni verilmiş. Vim editörü (:!/bin/sh veya :set shell=/bin/sh ile root kabuğu açar). Bu ikili dosya kısıtlamasız çalıştırılarak root kabuğu elde edilebilir.",
+      "remediation": "'vim' ikili dosyasını doğrudan sudoers içerisine eklemeyin. İhtiyaç duyulan işlevi özel bir kısıtlı script içerisine alarak NOEXEC etiketi uygulayın.",
+      "penalty": 25.0
+    },
+    {
+      "target": "Rule: operator -> /usr/bin/find /var/log/",
+      "cwe_id": "CWE-250",
+      "mitre_id": "T1548.003",
+      "severity": "CRITICAL",
+      "title": "GTFOBins Kabuk Kaçışı Zafiyeti (find) [operator]",
+      "description": "'operator' kullanıcısına '/usr/bin/find /var/log/' komutunu sudo ile çalıştırma izni verilmiş. Find komutu (-exec /bin/sh \\; parametresiyle doğrudan root kabuğu açar). Bu ikili dosya kısıtlamasız çalıştırılarak root kabuğu elde edilebilir.",
+      "remediation": "'find' ikili dosyasını doğrudan sudoers içerisine eklemeyin. İhtiyaç duyulan işlevi özel bir kısıtlı script içerisine alarak NOEXEC etiketi uygulayın.",
+      "penalty": 25.0
+    },
+    {
+      "target": "Rule: intern -> ALL",
+      "cwe_id": "CWE-250",
+      "mitre_id": "T1548.003",
+      "severity": "CRITICAL",
+      "title": "Şifresiz Tam Root Yetkisi (NOPASSWD: ALL) [intern]",
+      "description": "'intern' kullanıcısı/grubuna parola girmeden tüm komutları root olarak çalıştırma izni verilmiş. Bu durum parola bariyerini kaldırarak anında root yükseltmesi sağlar.",
+      "remediation": "/etc/sudoers dosyasında 'intern' için NOPASSWD etiketini kaldırın ve komutları kısıtlayın.",
+      "penalty": 30.0
+    },
+    {
+      "target": "Rule: support -> /bin/cat /var/log/*",
+      "cwe_id": "CWE-88",
+      "mitre_id": "T1548.003",
+      "severity": "MEDIUM",
+      "title": "Komut Yolunda Denetimsiz Wildcard (*) Kullanımı [support]",
+      "description": "'/bin/cat /var/log/*' komutunda joker karakter (*) kullanılmış. Saldırgan araya parametre veya dosya adı enjeksiyonu yaparak yetkisiz dizinleri veya komut satırı anahtarlarını tetikleyebilir.",
+      "remediation": "Wildcard yerine tam ve kesin dosya yolları tanımlayın veya regex doğrulayıcı wrapper script kullanın.",
+      "penalty": 10.0
+    },
+    {
+      "target": "Defaults env_reset",
+      "cwe_id": "CWE-250",
+      "mitre_id": "T1548.003",
+      "severity": "HIGH",
+      "title": "Defaults env_reset Direktifi Kapalı",
+      "description": "env_reset direktifinin devre dışı olması, kullanıcının çağıran kabuk çevre değişkenlerini root sürecine aktarmasına imkan tanır. Bu durum çevre değişkeni manipülasyonuyla yetki yükseltmeye yol açar.",
+      "remediation": "/etc/sudoers dosyasına 'Defaults env_reset' satırını ekleyin.",
+      "penalty": 15.0
+    },
+    {
+      "target": "Defaults env_keep += 'LD_PRELOAD'",
+      "cwe_id": "CWE-426",
+      "mitre_id": "T1574.006",
+      "severity": "CRITICAL",
+      "title": "Tehlikeli Çevre Değişkeni Koruması (env_keep Injection)",
+      "description": "env_keep listesinde şu ölümcül kütüphane değişkenleri korunmaktadır: LD_PRELOAD. Saldırgan LD_PRELOAD ile kendi derlediği .so kütüphanesini root sürecine enjekte ederek anında root olur.",
+      "remediation": "env_keep listesinden LD_PRELOAD değişkenlerini derhal kaldırın.",
+      "penalty": 25.0
+    },
+    {
+      "target": "/etc/sudoers",
+      "cwe_id": "CWE-732",
+      "mitre_id": "T1548.003",
+      "severity": "CRITICAL",
+      "title": "Gevşek Sudoers Dosya İzni (/etc/sudoers - Mod: 0666)",
+      "description": "'/etc/sudoers' dosyasının izin modu 0666 olarak ayarlanmış. Dosya yetkisiz kullanıcılar tarafından değiştirilebilir ve kalıcı root ayrıcalığı elde edilebilir.",
+      "remediation": "chmod 0440 /etc/sudoers",
+      "penalty": 30.0
+    },
+    {
+      "target": "/etc/sudoers.d/01-devops",
+      "cwe_id": "CWE-732",
+      "mitre_id": "T1548.003",
+      "severity": "CRITICAL",
+      "title": "Sudoers Dosyası Root Sahipliğinde Değil (/etc/sudoers.d/01-devops)",
+      "description": "'/etc/sudoers.d/01-devops' dosyasının sahibi devops:devops olarak ayarlanmış. Dosya mutlaka root:root olmalıdır.",
+      "remediation": "chown root:root /etc/sudoers.d/01-devops",
+      "penalty": 30.0
+    },
+    {
+      "target": "/etc/sudoers.d/01-devops",
+      "cwe_id": "CWE-732",
+      "mitre_id": "T1548.003",
+      "severity": "CRITICAL",
+      "title": "Gevşek Sudoers Dosya İzni (/etc/sudoers.d/01-devops - Mod: 0644)",
+      "description": "'/etc/sudoers.d/01-devops' dosyasının izin modu 0644 olarak ayarlanmış. Dosya yetkisiz kullanıcılar tarafından değiştirilebilir ve kalıcı root ayrıcalığı elde edilebilir.",
+      "remediation": "chmod 0440 /etc/sudoers.d/01-devops",
+      "penalty": 30.0
+    }
+  ]
+}

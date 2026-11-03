@@ -1,0 +1,18 @@
+{
+  "README.md": "d3763836c7ca87815016c4dec1c29bca3018e77a8fe82b59fbd573eebd210f97",
+  "ders.md": "685900111750dca5e756509a7df0f6631efe7de8cef8a535144cd1b454b417c3",
+  "rapor.md": "efce40c08d9e25451ef64564261da5d779d497ad78a50047fe0125a8a4ebc246",
+  "sonuc.json": "642e0f5a25045422a25380b7f47dd705456589b8b581fd9e062c58aac8506741",
+  "soru_cevap.md": "83acce0128a57438b590d43b0a82f0d1092882b6f4dbe5d58eccba44682441d8",
+  "kanit/gercek/komut_ve_cikis.txt": "766672bef6174486e0a80912920a396640f09fb2a144cbb35309fced27a7061d",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "853ad5959d0c05212dacd5ff42d976e06946a9cae1683f30668cf1e418785955",
+  "kanit/gercek/test_sonuclari.txt": "c50faaaf5f1fe31f2a5625dcc2350b5c2a0632898a68f84432a5401e3bae5e7a",
+  "kanit/gercek/uzaktan_yonetim_denetim_raporu.txt": "f87e2f0205e9e5b49a832715357a34d7ca210fd93196eef4f21264e56b9a377f",
+  "kanit/temsili/guvenli_uzaktan_yonetim_mimarisi.txt": "c5194947714cfe1c05978c69f5ca6dd83b8e6ab9c733f2cb69b9b4e4bfd448ea",
+  "ornek_veri/corrupted_remote_access_matrix_test_cases.json": "d237957826af239ac9c3a52e792119d3533e33aac6f2f7779c5660c58cf310b5",
+  "ornek_veri/sample_remote_access_matrix.json": "aac8cdd198d24fb9bb1af1025b9f5bef06dac62112302b513ba0a5e8adea50d7",
+  "tests/__init__.py": "ed02987799c234f68647f82dc6647f7a5c3ffc805d6a318180b6e97b911bbfad",
+  "tests/test_secure_remote_management_auditor.py": "c7d5148b674cd354b47d69ace23426a3155fea8a0e030c176e665ed6f7056cd2",
+  "uygulama/__init__.py": "e231b31783e33e746ba5cc0e830656c480b4257a414fa5e6888606a71bf446dc",
+  "uygulama/secure_remote_management_auditor.py": "e259a56be8d0e5dc1a659df3f2b9823c3da970666d79c9a35e86a0519c7fdbc4"
+}

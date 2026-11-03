@@ -1,0 +1,59 @@
+{
+  "target_host": "CORP-LAPTOP-042",
+  "operating_system": "Windows 11 Enterprise 23H2",
+  "audit_standard": "CIS_Microsoft_Windows_11_Benchmark_v3.0.0_Sec9",
+  "profiles": {
+    "Domain": {
+      "enabled": true,
+      "default_inbound_action": "Block",
+      "default_outbound_action": "Allow",
+      "allow_inbound_rules": true,
+      "allow_local_firewall_rules": false,
+      "log_blocked": true,
+      "log_allowed": false,
+      "log_file_size_kb": 16384
+    },
+    "Private": {
+      "enabled": true,
+      "default_inbound_action": "Block",
+      "default_outbound_action": "Allow",
+      "allow_inbound_rules": true,
+      "allow_local_firewall_rules": false,
+      "log_blocked": false,
+      "log_allowed": false,
+      "log_file_size_kb": 8192
+    },
+    "Public": {
+      "enabled": true,
+      "default_inbound_action": "Block",
+      "default_outbound_action": "Allow",
+      "allow_inbound_rules": true,
+      "allow_local_firewall_rules": false,
+      "log_blocked": true,
+      "log_allowed": false,
+      "log_file_size_kb": 16384
+    }
+  },
+  "rules": [
+    {
+      "rule_name": "CoreNetworking-DNS",
+      "direction": "Outbound",
+      "action": "Allow",
+      "enabled": true,
+      "profiles": ["Domain", "Private", "Public"],
+      "protocol": "UDP",
+      "local_port": "Any",
+      "remote_address": "Any"
+    },
+    {
+      "rule_name": "Insecure-Public-RDP",
+      "direction": "Inbound",
+      "action": "Allow",
+      "enabled": true,
+      "profiles": ["Public"],
+      "protocol": "TCP",
+      "local_port": "3389",
+      "remote_address": "Any"
+    }
+  ]
+}

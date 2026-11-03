@@ -1,0 +1,90 @@
+{
+  "aciklama": "G058 HTTP Yontemleri ve Idempotency - Sinir Durumlari ve Negatif Guvenlik Girdileri",
+  "versiyon": "1.0.0",
+  "negatif_testler": [
+    {
+      "test_id": "NEG-01-INVALID-METHOD-NAME",
+      "hata_tipi": "GecersizMetotAdi",
+      "beklenen_hata": "Gecersiz veya standart disi HTTP metodu: 'PURGE'. Yalnizca RFC 7231 metotlari desteklenir.",
+      "veri": {
+        "method": "PURGE",
+        "path": "/api/v1/cache"
+      }
+    },
+    {
+      "test_id": "NEG-02-LOWERCASE-METHOD",
+      "hata_tipi": "KucukHarfMetotHatasi",
+      "beklenen_hata": "RFC 7231 geregi HTTP metotlari buyuk harfle yazilmalidir: 'get'.",
+      "veri": {
+        "method": "get",
+        "path": "/index.html"
+      }
+    },
+    {
+      "test_id": "NEG-03-EMPTY-IDEMPOTENCY-KEY",
+      "hata_tipi": "BosIdempotencyAnahtari",
+      "beklenen_hata": "Idempotency-Key basligi bos veya yalnizca bosluk karakterlerinden olusamaz.",
+      "veri": {
+        "method": "POST",
+        "path": "/api/v1/orders",
+        "idempotency_key": "   "
+      }
+    },
+    {
+      "test_id": "NEG-04-MALFORMED-IDEMPOTENCY-KEY",
+      "hata_tipi": "GecersizIdempotencyFormati",
+      "beklenen_hata": "Gecersiz Idempotency-Key formati: Uzunluk 128 karakteri asamaz veya gecersiz karakterler iceremez.",
+      "veri": {
+        "method": "POST",
+        "path": "/api/v1/orders",
+        "idempotency_key": "very_long_key_exceeding_the_standard_maximum_length_limit_of_one_hundred_and_twenty_eight_characters_which_violates_rfc_and_api_specifications_completely"
+      }
+    },
+    {
+      "test_id": "NEG-05-PAYLOAD-HASH-MISMATCH",
+      "hata_tipi": "IdempotencyGovdeUyusmazligi",
+      "beklenen_hata": "Idempotency-Key Cakismasi: Ayni anahtar ('key-101') farkli bir istek govdesiyle yeniden kullanilamaz (422 Unprocessable Entity / 409 Conflict).",
+      "veri": {
+        "idempotency_key": "key-101",
+        "ilk_govde": "{\"amount\": 100}",
+        "ikinci_govde": "{\"amount\": 500}"
+      }
+    },
+    {
+      "test_id": "NEG-06-UNSAFE-GET-MODIFICATION",
+      "hata_tipi": "GuvenliMetotDurumDegisikligi",
+      "beklenen_hata": "RFC 7231 Ihlali: GET metodu sunucu durumunu degistiren islemler (para transferi, silme) icin kullanilamaz.",
+      "veri": {
+        "method": "GET",
+        "path": "/api/v1/transfer?from=acc1&to=acc2&amount=1000"
+      }
+    },
+    {
+      "test_id": "NEG-07-EXPIRED-KEY-LOOKUP",
+      "hata_tipi": "SuresiDolmusAnahtar",
+      "beklenen_hata": "Idempotency kaydinin gecerlilik suresi (TTL) dolmus.",
+      "veri": {
+        "idempotency_key": "expired-key-99"
+      }
+    },
+    {
+      "test_id": "NEG-08-PUT-WITHOUT-BODY",
+      "hata_tipi": "GovdesizPutIstegi",
+      "beklenen_hata": "PUT metodu kaynagin tam temsilini gerektirir; istek govdesi bos olamaz.",
+      "veri": {
+        "method": "PUT",
+        "path": "/api/v1/users/5",
+        "body": ""
+      }
+    },
+    {
+      "test_id": "NEG-09-VERB-TAMPERING-BYPASS",
+      "hata_tipi": "MetotAtlatmaSaldirisi",
+      "beklenen_hata": "HTTP Verb Tampering Tehdidi: '/admin/delete' kaynagi yalnizca POST ile silinebilir; 'HEAD' metodu ile guvenlik filtresi atlatilamaz (403 Forbidden).",
+      "veri": {
+        "method": "HEAD",
+        "path": "/admin/delete"
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+test_01_csv_has_formula_injection_risk_detection (portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor.TestSecureCsvJsonProcessor.test_01_csv_has_formula_injection_risk_detection)
+Excel form³l enjeksiyonu riski ta■²yan karakterlerin do­ru tespit edildi­ini s²nar. ... ok
+test_02_csv_sanitize_cell_neutralization (portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor.TestSecureCsvJsonProcessor.test_02_csv_sanitize_cell_neutralization)
+Riskli h³crelerin ba■²na tek t²rnak eklenerek form³l³n metne d÷n³■t³r³ld³­³n³ s²nar. ... ok
+test_03_csv_read_valid_records (portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor.TestSecureCsvJsonProcessor.test_03_csv_read_valid_records)
+Geerli bir CSV dosyas²n²n ba■ar²yla ayr²■t²r²ld²­²n² ve kay²tlar²n al²nd²­²n² do­rular. ... ok
+test_04_csv_read_nonexistent_file_raises (portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor.TestSecureCsvJsonProcessor.test_04_csv_read_nonexistent_file_raises)
+Var olmayan bir CSV dosyas² istendi­inde FileNotFoundError f²rlat²ld²­²n² do­rular. ... ok
+test_05_csv_read_column_count_mismatch_raises (portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor.TestSecureCsvJsonProcessor.test_05_csv_read_column_count_mismatch_raises)
+Sat²rdaki s³tun say²s² ba■l²k say²s²yla uyu■mad²­²nda ValueError f²rlat²ld²­²n² test eder. ... ok
+test_06_csv_read_oversized_field_raises (portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor.TestSecureCsvJsonProcessor.test_06_csv_read_oversized_field_raises)
+H³cre boyutu tan²mlanan tavan² a■t²­²nda ValueError f²rlat²ld²­²n² test eder. ... ok
+test_07_csv_read_null_byte_raises (portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor.TestSecureCsvJsonProcessor.test_07_csv_read_null_byte_raises)
+CSV h³cresinde null-byte enjeksiyonu tespit edildi­inde ValueError f²rlat²ld²­²n² do­rular. ... ok
+test_08_csv_write_safely_with_neutralization (portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor.TestSecureCsvJsonProcessor.test_08_csv_write_safely_with_neutralization)
+CSV yaz²l²rken tehlikeli form³l karakterlerinin tek t²rnakla n÷tralize edildi­ini do­rular. ... ok
+test_09_json_parse_valid_object (portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor.TestSecureCsvJsonProcessor.test_09_json_parse_valid_object)
+Geerli bir JSON nesnesinin do­ru biimde s÷zl³­e d÷n³■t³r³ld³­³n³ s²nar. ... ok
+test_10_json_duplicate_key_collision_raises (portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor.TestSecureCsvJsonProcessor.test_10_json_duplicate_key_collision_raises)
+Ayn² JSON nesnesinde m³kerrer anahtar geti­inde ValueError f²rlat²ld²­²n² do­rular. ... ok
+test_11_json_deep_recursion_bomb_raises (portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor.TestSecureCsvJsonProcessor.test_11_json_deep_recursion_bomb_raises)
+Azami derinli­i a■an JSON Bomb DoS giri■imlerinin ValueError ile durduruldu­unu test eder. ... ok
+test_12_json_null_byte_in_string_raises (portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor.TestSecureCsvJsonProcessor.test_12_json_null_byte_in_string_raises)
+JSON dize de­erinde null-byte tespit edildi­inde ValueError f²rlat²ld²­²n² test eder. ... ok
+test_13_json_schema_validation_success_and_failures (portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor.TestSecureCsvJsonProcessor.test_13_json_schema_validation_success_and_failures)
+JSON ■ema do­rulamas²nda tip uyumunu ve zorunlu alan eksikli­ini test eder. ... ok
+test_14_engine_threat_feed_and_events_ingestion (portfolio.hafta_12.gun_079.tests.test_secure_csv_json_processor.TestSecureCsvJsonProcessor.test_14_engine_threat_feed_and_events_ingestion)
+SecurityDataIngestionEngine s²n²f²n²n utan uca besleme analizini do­rulad²­²n² test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.025s
+
+OK

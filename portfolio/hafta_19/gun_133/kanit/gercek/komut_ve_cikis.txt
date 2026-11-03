@@ -1,0 +1,54 @@
+=== MINI PROJE 18: CLI ÇALIŞTIRMA VE KANIT KAYITLARI ===
+Tarih / Saat : 2026-11-02T07:54:58.134925+00:00
+
+[KOMUT 1] C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama\windows_audit_cli.py audit -i C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_19\gun_133\ornek_veri\enterprise_windows_spec.json -o C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_19\gun_133\kanit\gercek\windows_denetim_raporu.json
+[*] B�t�nle�ik Windows G�venlik Denetimi Y�r�t�l�yor: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_19\gun_133\ornek_veri\enterprise_windows_spec.json
+
+======================================================================
+           B�T�NLE��K WINDOWS G�VENL�K DENET�M SONU�LARI           
+======================================================================
+Genel G�venlik Skoru : 74.0 / 100.0
+Genel Uyum Durumu    : WARNING
+Toplam Zafiyet       : 6
+�nem Da��l�m�        : {'CRITICAL': 2, 'HIGH': 3, 'MEDIUM': 1, 'LOW': 0}
+----------------------------------------------------------------------
+ALAN BAZINDA PUAN VE DURUM DA�ILIMI:
+  * Windows Defender ve U� Nokta Korumas�  :  17.0 / 20.0 [COMPLIANT] (Zafiyet: 1)
+  * Yerel Hesaplar, Gruplar ve UAC         :  17.0 / 20.0 [COMPLIANT] (Zafiyet: 1)
+  * NTFS Eri�im Kontrol Listeleri          :  14.0 / 20.0 [WARNING] (Zafiyet: 1)
+  * Windows Firewall Profilleri            :  15.0 / 20.0 [WARNING] (Zafiyet: 1)
+  * Windows Hizmet G�venli�i               :  11.0 / 20.0 [CRITICAL] (Zafiyet: 2)
+======================================================================
+[+] Detayl� denetim raporu kaydedildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_19\gun_133\kanit\gercek\windows_denetim_raporu.json
+
+---------------------------------------------------------------------------
+
+[KOMUT 2] C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama\windows_audit_cli.py remediate -i C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_19\gun_133\ornek_veri\enterprise_windows_spec.json -o C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_19\gun_133\kanit\gercek\master_remediation.ps1
+[*] PowerShell Master S�k�la�t�rma Beti�i �retiliyor: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_19\gun_133\ornek_veri\enterprise_windows_spec.json
+[+] Master S�k�la�t�rma Beti�i ba�ar�yla kaydedildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_19\gun_133\kanit\gercek\master_remediation.ps1
+
+---------------------------------------------------------------------------
+
+[KOMUT 3] C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama\windows_audit_cli.py report -i C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_19\gun_133\ornek_veri\enterprise_windows_spec.json -o C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_19\gun_133\kanit\gercek\windows_denetim_raporu.md
+[*] Y�netici D�zeyinde Markdown Raporu �retiliyor: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_19\gun_133\ornek_veri\enterprise_windows_spec.json
+[+] Markdown denetim raporu ba�ar�yla kaydedildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_19\gun_133\kanit\gercek\windows_denetim_raporu.md
+
+---------------------------------------------------------------------------
+
+[KOMUT 4] C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama\windows_audit_cli.py audit-help
+
+===================================================================
+MINI PROJE 18: B�T�NLE��K WINDOWS G�VENL�K DENET�M REHBER�
+===================================================================
+Kapsanan 5 Temel Alan:
+1. Windows Defender: RTP, Davran�� �zleme, Tamper Protection, PUA.
+2. Hesaplar & UAC: EnableLUA, ConsentPromptBehaviorAdmin, LAPS.
+3. NTFS ACL: Sistem dizinlerinde kullan�c� yazma yetkisi, SACL.
+4. Firewall: Domain/Private/Public profilleri, Block Inbound, Port maruziyeti.
+5. Windows Services: T�rnaks�z servis yollar�, Zay�f DACL, Zay�f binary izinleri.
+
+A��rl�kland�rma: Her alan 20 puan, Toplam 100.0 tam puan.
+===================================================================
+    
+
+---------------------------------------------------------------------------

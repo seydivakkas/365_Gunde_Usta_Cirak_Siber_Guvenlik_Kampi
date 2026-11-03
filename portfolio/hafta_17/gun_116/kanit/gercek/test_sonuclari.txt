@@ -1,0 +1,35 @@
+test_01_hs256_token_generation_and_validation (test_jwt_security.TestJWTSecurityEngine.test_01_hs256_token_generation_and_validation)
+Test 1: Meşru HS256 JWT üretimi ve başarılı imza/claim doğrulaması denetlenir. ... ok
+test_02_rs256_token_generation_and_validation (test_jwt_security.TestJWTSecurityEngine.test_02_rs256_token_generation_and_validation)
+Test 2: Asimetrik RS256 JWT üretimi ve genel anahtarla başarılı doğrulanması denetlenir. ... ok
+test_03_alg_none_attack_prevention_cwe_347 (test_jwt_security.TestJWTSecurityEngine.test_03_alg_none_attack_prevention_cwe_347)
+Test 3: 'alg: none' imzasız belirteç saldırısında AlgorithmNoneAttackError (CWE-347) denetlenir. ... ok
+test_04_tampered_payload_signature_failure_cwe_347 (test_jwt_security.TestJWTSecurityEngine.test_04_tampered_payload_signature_failure_cwe_347)
+Test 4: Payload üzerinde yetki tahrifatı yapıldığında InvalidSignatureError (CWE-347) denetlenir. ... ok
+test_05_wrong_secret_signature_failure (test_jwt_security.TestJWTSecurityEngine.test_05_wrong_secret_signature_failure)
+Test 5: Yanlış gizli anahtarla doğrulamada InvalidSignatureError fırlatıldığı teyit edilir. ... ok
+test_06_token_expiration_cwe_298_cwe_613 (test_jwt_security.TestJWTSecurityEngine.test_06_token_expiration_cwe_298_cwe_613)
+Test 6: Geçerlilik süresi (exp) dolan belirteçte TokenExpiredError (CWE-298) denetlenir. ... ok
+test_07_token_not_yet_valid_cwe_298 (test_jwt_security.TestJWTSecurityEngine.test_07_token_not_yet_valid_cwe_298)
+Test 7: nbf (Not Before) tarihi henüz gelmemiş belirteçte TokenNotYetValidError denetlenir. ... ok
+test_08_leeway_clock_skew_tolerance (test_jwt_security.TestJWTSecurityEngine.test_08_leeway_clock_skew_tolerance)
+Test 8: Leeway toleransı dahilindeki (+3 saniye) küçük saat kaymalarının kabul edilmesi denetlenir. ... ok
+test_09_invalid_issuer_rejection_cwe_287 (test_jwt_security.TestJWTSecurityEngine.test_09_invalid_issuer_rejection_cwe_287)
+Test 9: Beklenmeyen bir Issuer ile gelen token'da InvalidIssuerError denetlenir. ... ok
+test_10_invalid_audience_rejection_cwe_287 (test_jwt_security.TestJWTSecurityEngine.test_10_invalid_audience_rejection_cwe_287)
+Test 10: Başka bir servis için üretilmiş Audience token'ında InvalidAudienceError denetlenir. ... ok
+test_11_token_revocation_blacklist_cwe_294 (test_jwt_security.TestJWTSecurityEngine.test_11_token_revocation_blacklist_cwe_294)
+Test 11: İptal edilmiş (kara listedeki jti) belirteçte TokenRevokedError (CWE-294) denetlenir. ... ok
+test_12_algorithm_confusion_rs256_to_hs256_cwe_327 (test_jwt_security.TestJWTSecurityEngine.test_12_algorithm_confusion_rs256_to_hs256_cwe_327)
+Test 12: Sadece RS256 bekleyen sunucuya HS256 sunulduğunda AlgorithmConfusionError denetlenir. ... ok
+test_13_malformed_jwt_parts_count_cwe_20 (test_jwt_security.TestJWTSecurityEngine.test_13_malformed_jwt_parts_count_cwe_20)
+Test 13: 3 parça içermeyen (örneğin 2 parçalı) bozuk belirteçte MalformedJWTError denetlenir. ... ok
+test_14_corrupted_base64url_in_payload_cwe_20 (test_jwt_security.TestJWTSecurityEngine.test_14_corrupted_base64url_in_payload_cwe_20)
+Test 14: Base64URL karakter kümesi dışında bozuk veri içeren token'da MalformedJWTError denetlenir. ... ok
+test_15_constant_time_hmac_comparison_cwe_208 (test_jwt_security.TestJWTSecurityEngine.test_15_constant_time_hmac_comparison_cwe_208)
+Test 15: İmza doğrulamasında sabit zamanlı karşılaştırma mekanizması teyit edilir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.002s
+
+OK

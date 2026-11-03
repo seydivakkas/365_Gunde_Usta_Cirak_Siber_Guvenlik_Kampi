@@ -1,0 +1,61 @@
+# MICROSOFT DEFENDER VE G�VENL�K MERKEZ� DENET�M RAPORU
+**Hedef Sistem:** `LOCAL-WORKSTATION`  
+**Denetim Kimli�i:** `AUD-DEF-053288A3`  
+**Tarih / Saat:** `2026-11-02T09:45:08.196203`  
+**Denet�i Otoritesi:** `Enterprise Defender Hardener`  
+
+---
+
+## 1. Y�netici �zeti ve Defender G�venlik Skoru
+
+- **Defender G�venlik Skoru:** `43.0 / 100`
+- **Duru� Durumu:** **KR�T�K_ZAF�YET (SAVUNMASIZ DURUMDA)**
+- **Tespit Edilen Zafiyet/A��kl�k:** `5 Adet`
+
+---
+
+## 2. Tespit Edilen G�venlik A��kl�klar�
+
+| No | Ciddiyet | Zafiyet Ba�l��� | CWE | MITRE ATT&CK | Mevcut De�er | �nerilen De�er |
+|---|---|---|---|---|---|---|
+| 1 | **Orta** | Bulut Teslimatl� Koruma Seviyesi Yetersiz | `CWE-1188` | `T1027` | `Basic` | `HighPlus` |
+| 2 | **Orta** | �stenmeyen Yaz�l�m Korumas� (PUA Protection) Kapal� | `CWE-1188` | `T1489` | `Disabled` | `Enabled` |
+| 3 | **Orta** | A� Korumas� (Network Protection) Etkin De�il | `CWE-319` | `T1071` | `Disabled` | `Enabled` |
+| 4 | **Y�ksek** | Denetimli Klas�r Eri�imi (Fidye Yaz�l�m� Korumas�) Kapal� | `CWE-693` | `T1486 (Data Encrypted for Impact)` | `Disabled` | `Enabled` |
+| 5 | **Y�ksek** | ASR Kurallar� Eksik veya Blok Modunda De�il (3 Kural) | `CWE-358` | `T1566 / T1059 / T1003` | `4 / 7 Aktif` | `T�m Kritik ASR Kurallar� Block (1) Modunda Olmal�d�r` |
+
+---
+
+## 3. PowerShell Otomatik S�k�la�t�rma (Hardening) Beti�i
+
+```powershell
+# ====================================================================
+# MICROSOFT DEFENDER CIS BENCHMARK SERTLE�T�RME BET���
+# Hedef Sistem: LOCAL-WORKSTATION | Olu�turulma: 2026-11-02T09:45:08.196203
+# ====================================================================
+
+# 1. Temel Koruma ve Davran��sal �zleme Etkinle�tirme
+Set-MpPreference -DisableRealtimeMonitoring $false
+Set-MpPreference -DisableBehaviorMonitoring $false
+Set-MpPreference -DisableIOAVProtection $false
+
+# 2. Bulut Korumas�, PUA ve A� Korumas� S�k�la�t�rma
+Set-MpPreference -MAPSReporting Advanced
+Set-MpPreference -CloudBlockLevel HighPlus
+Set-MpPreference -SubmitSamplesConsent SendSafeSamples
+Set-MpPreference -PUAProtection Enabled
+Set-MpPreference -EnableNetworkProtection Enabled
+Set-MpPreference -EnableControlledFolderAccess Enabled
+
+# 4. Kritik Attack Surface Reduction (ASR) Kurallar�n� Blok Moduna Alma
+$asrGuids = @('D4F940AB-401B-4EFC-AADC-AD5F3C50688A', '9E6C4E1F-7D60-472F-BA1A-A39EF669E4B2', 'BE9BA2D9-53EA-4CDC-84E5-9B1EEEE46550', '3B576C88-A8D9-4467-9781-CE450E586364', '5BEB8E28-82E8-4337-BCB8-D4CB72E45278', 'D3E037E1-3EB8-44C8-A917-57927947596D', 'C1DB55AB-C21A-4637-BB3F-A12568109D35')
+$asrActions = @(1,1,1,1,1,1,1)
+Set-MpPreference -AttackSurfaceReductionRules_Ids $asrGuids -AttackSurfaceReductionRules_Actions $asrActions
+
+Write-Host '[+] Microsoft Defender CIS S�k�la�t�rmas� Ba�ar�yla Tamamland�!' -ForegroundColor Green
+```
+
+---
+
+> [!NOTE]
+> Bu denetim raporu **CIS Microsoft Windows 11 Benchmark v3.0.0** ve **Microsoft Security Baselines** tavsiyelerine dayal� olarak �retilmi�tir.

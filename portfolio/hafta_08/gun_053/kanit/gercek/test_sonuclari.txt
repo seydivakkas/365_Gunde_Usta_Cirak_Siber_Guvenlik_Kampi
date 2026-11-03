@@ -1,0 +1,33 @@
+test_negative_invalid_ports_and_negative_pid (portfolio.hafta_08.gun_053.tests.test_port_socket_state_analyzer.TestPortSocketStateAnalyzer.test_negative_invalid_ports_and_negative_pid)
+Test 13: Negatif kontrol: Aral²k d²■² port (-1, 70000) ve negatif PID reddedildi­ini do­rular. ... ok
+test_negative_malformed_ip_and_unsupported_protocol (portfolio.hafta_08.gun_053.tests.test_port_socket_state_analyzer.TestPortSocketStateAnalyzer.test_negative_malformed_ip_and_unsupported_protocol)
+Test 14: Negatif kontrol: Geersiz IP adresi ve desteklenmeyen protokol³n reddedildi­ini do­rular. ... ok
+test_port_classification_dynamic_ephemeral (portfolio.hafta_08.gun_053.tests.test_port_socket_state_analyzer.TestPortSocketStateAnalyzer.test_port_classification_dynamic_ephemeral)
+Test 3: 49152-65535 aras²ndaki portlar²n DYNAMIC_PRIVATE (ephemeral) oldu­unu do­rular. ... ok
+test_port_classification_registered (portfolio.hafta_08.gun_053.tests.test_port_socket_state_analyzer.TestPortSocketStateAnalyzer.test_port_classification_registered)
+Test 2: 1024-49151 aras²ndaki portlar²n REGISTERED ve hassas servis olarak tan²nd²­²n² do­rular. ... ok
+test_port_classification_well_known (portfolio.hafta_08.gun_053.tests.test_port_socket_state_analyzer.TestPortSocketStateAnalyzer.test_port_classification_well_known)
+Test 1: 0-1023 aras²ndaki portlar²n WELL_KNOWN olarak s²n²fland²r²ld²­²n² do­rular. ... ok
+test_security_audit_insecure_bind_redis_exposure (portfolio.hafta_08.gun_053.tests.test_port_socket_state_analyzer.TestPortSocketStateAnalyzer.test_security_audit_insecure_bind_redis_exposure)
+Test 10: 0.0.0.0'a ba­lanan hassas veritaban²n²n CRITICAL_EXPOSURE olarak yakaland²­²n² do­rular. ... ok
+test_security_audit_reverse_shell_detection (portfolio.hafta_08.gun_053.tests.test_port_socket_state_analyzer.TestPortSocketStateAnalyzer.test_security_audit_reverse_shell_detection)
+Test 11: PowerShell s³recinin ■³pheli porta giden ba­lant²s²n²n REVERSE_SHELL_DETECTED olarak yakaland²­²n² do­rular. ... ok
+test_security_audit_syn_flood_and_time_wait_cluster (portfolio.hafta_08.gun_053.tests.test_port_socket_state_analyzer.TestPortSocketStateAnalyzer.test_security_audit_syn_flood_and_time_wait_cluster)
+Test 12: A■²r² SYN_RECEIVED ve TIME_WAIT y²­²lmalar²n²n anomali olarak yakaland²­²n² do­rular. ... ok
+test_socket_endpoint_udp_support (portfolio.hafta_08.gun_053.tests.test_port_socket_state_analyzer.TestPortSocketStateAnalyzer.test_socket_endpoint_udp_support)
+Test 5: Durumsuz UDP soketlerinin NONE durumuyla g³venle modellendi­ini do­rular. ... ok
+test_socket_endpoint_valid_creation (portfolio.hafta_08.gun_053.tests.test_port_socket_state_analyzer.TestPortSocketStateAnalyzer.test_socket_endpoint_valid_creation)
+Test 4: Geerli bir TCP soket u noktas²n²n ÷zelliklerinin do­ru hesapland²­²n² do­rular. ... ok
+test_tcp_state_transition_active_close_to_closed (portfolio.hafta_08.gun_053.tests.test_port_socket_state_analyzer.TestPortSocketStateAnalyzer.test_tcp_state_transition_active_close_to_closed)
+Test 8: Aktif kapan²■ ve TIME_WAIT gei■ini do­rular. ... ok
+test_tcp_state_transition_active_open_to_established (portfolio.hafta_08.gun_053.tests.test_port_socket_state_analyzer.TestPortSocketStateAnalyzer.test_tcp_state_transition_active_open_to_established)
+Test 6: ¦stemci aktif a²l²■ gei■ini (CLOSED -> SYN_SENT -> ESTABLISHED) do­rular. ... ok
+test_tcp_state_transition_invalid_rejected (portfolio.hafta_08.gun_053.tests.test_port_socket_state_analyzer.TestPortSocketStateAnalyzer.test_tcp_state_transition_invalid_rejected)
+Test 9: RFC 793 kural d²■² do­rudan durum atlamalar²n²n reddedildi­ini do­rular. ... ok
+test_tcp_state_transition_passive_open_to_established (portfolio.hafta_08.gun_053.tests.test_port_socket_state_analyzer.TestPortSocketStateAnalyzer.test_tcp_state_transition_passive_open_to_established)
+Test 7: Sunucu pasif a²l²■ gei■ini (CLOSED -> LISTEN -> SYN_RECEIVED -> ESTABLISHED) do­rular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK

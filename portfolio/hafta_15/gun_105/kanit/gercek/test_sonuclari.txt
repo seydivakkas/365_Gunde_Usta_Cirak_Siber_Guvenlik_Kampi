@@ -1,0 +1,45 @@
+===============================================================================
+GÜN 105: BİRİM TEST SONUÇLARI RAPORU
+Tarih/Saat: 2026-11-02 02:33:00
+Konu: Mini Proje 14 - Kriptografik Hash Bütünlük Manifesti Motoru
+Çalıştırılan Test Sayısı: 15
+Hata / Başarısızlık: 0 / 0
+Durum: 100/100 PASS (BAŞARILI)
+===============================================================================
+
+test_01_create_manifest_structure (tests.test_hash_manifest.TestHashManifestEngine.test_01_create_manifest_structure)
+Test 1: Manifest oluşturulması ve temel alanların doğruluğu. ... ok
+test_02_manifest_hmac_seal (tests.test_hash_manifest.TestHashManifestEngine.test_02_manifest_hmac_seal)
+Test 2: İmzalı manifestoda geçerli HMAC-SHA256 mührünün bulunması. ... ok
+test_03_verify_manifest_clean (tests.test_hash_manifest.TestHashManifestEngine.test_03_verify_manifest_clean)
+Test 3: Değişiklik yapılmamış temiz dizinde denetimin tam puanla geçmesi. ... ok
+test_04_detect_modified_file (tests.test_hash_manifest.TestHashManifestEngine.test_04_detect_modified_file)
+Test 4: Bir dosyanın içeriği değiştiğinde MODIFIED olarak yakalanması. ... ok
+test_05_detect_deleted_file (tests.test_hash_manifest.TestHashManifestEngine.test_05_detect_deleted_file)
+Test 5: Manifestte olan ancak diskte bulunmayan dosyanın DELETED tespiti. ... ok
+test_06_detect_added_file (tests.test_hash_manifest.TestHashManifestEngine.test_06_detect_added_file)
+Test 6: Diskte olup manifestte listelenmeyen izinsiz dosyanın ADDED tespiti. ... ok
+test_07_tampered_hmac_seal_raises_cwe353 (tests.test_hash_manifest.TestHashManifestEngine.test_07_tampered_hmac_seal_raises_cwe353)
+Test 7: Manifest HMAC mührü tahrif edildiğinde katı modda hata fırlatılması (CWE-353). ... ok
+test_08_broken_hash_algorithm_md5_raises_cwe328 (tests.test_hash_manifest.TestHashManifestEngine.test_08_broken_hash_algorithm_md5_raises_cwe328)
+Test 8: Güvensiz MD5 algoritması ile manifest üretimi denemesinin engellenmesi (CWE-328). ... ok
+test_09_broken_hash_algorithm_sha1_raises_cwe328 (tests.test_hash_manifest.TestHashManifestEngine.test_09_broken_hash_algorithm_sha1_raises_cwe328)
+Test 9: Güvensiz SHA-1 algoritması ile manifest üretimi denemesinin engellenmesi (CWE-328). ... ok
+test_10_path_traversal_in_manifest_raises_cwe22 (tests.test_hash_manifest.TestHashManifestEngine.test_10_path_traversal_in_manifest_raises_cwe22)
+Test 10: Manifest içinde üst dizinlere sızma girişiminin engellenmesi (CWE-22). ... ok
+test_11_null_byte_in_path_raises_cwe158 (tests.test_hash_manifest.TestHashManifestEngine.test_11_null_byte_in_path_raises_cwe158)
+Test 11: Dosya yolunda Null-Byte zehirlemesi denemesinin engellenmesi (CWE-158). ... ok
+test_12_nonexistent_root_dir_raises_cwe73 (tests.test_hash_manifest.TestHashManifestEngine.test_12_nonexistent_root_dir_raises_cwe73)
+Test 12: Olmayan kök dizin yolunda DirectoryNotFoundError fırlatılması (CWE-73). ... ok
+test_13_oversized_file_raises_cwe400 (tests.test_hash_manifest.TestHashManifestEngine.test_13_oversized_file_raises_cwe400)
+Test 13: 1 MB tavanını aşan büyük dosyanın taranmasının engellenmesi (CWE-400). ... ok
+test_14_type_confusion_manifest_raises_cwe843 (tests.test_hash_manifest.TestHashManifestEngine.test_14_type_confusion_manifest_raises_cwe843)
+Test 14: Manifest parametresi yerine int tipi iletildiğinde tip hatası (CWE-843). ... ok
+test_15_negative_json_cases_verification (tests.test_hash_manifest.TestHashManifestEngine.test_15_negative_json_cases_verification)
+Test 15: ornek_veri/invalid_manifest_inputs.json içindeki 9 negatif senaryonun yürütülmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.024s
+
+OK
+

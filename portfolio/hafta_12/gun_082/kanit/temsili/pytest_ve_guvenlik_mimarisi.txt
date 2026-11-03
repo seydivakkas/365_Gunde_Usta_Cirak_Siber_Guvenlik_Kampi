@@ -1,0 +1,57 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
+Bu şema, G082 günü kapsamında geliştirilen pytest birim test altyapısının,
+parametre matrislerinin ve güvenlik politikası yürütme motorunun mimari
+doğrulama döngüsünü temsil eden kavramsal ASCII diyagramıdır.
+
+                        +------------------------------------+
+                        |     PYTEST TEST ÇERÇEVESİ          |
+                        | (Fixtures, Parametrize, Assertions)|
+                        +------------------------------------+
+                                          |
+                                          v
+              +------------------------------------------------------+
+              |            DETERMİNİSTİK TEST FİKSTÜRLERİ            |
+              |  - @pytest.fixture policy_enforcer (İzole Motor)     |
+              |  - @pytest.fixture valid_firewall_payload (Kural)    |
+              |  - conftest.py: @pytest.mark.security & negative     |
+              +------------------------------------------------------+
+                                          |
+                     +--------------------+--------------------+
+                     |                                         |
+                     v                                         v
+       [ POZİTİF DOĞRULAMA HATTI ]               [ NEGATİF SALDIRI MATRİSİ ]
+  +------------------------------------+   +------------------------------------+
+  | - Güçlü Karmaşık Parola Doğrulama  |   | - @pytest.mark.parametrize matrisi |
+  | - FQDN Alan Adı Kanonikleştirme    |   | - 12 Karakter Altı Kısa Parolalar  |
+  | - 0-100 Tehdit Derecelendirme      |   | - Eksik Karakter Sınıfları         |
+  | - Meşru Güvenlik Duvarı Kuralları  |   | - Sözlük Engelleme Kara Listesi    |
+  | - Denetim Günlüğü Yazımı (Audit)   |   | - Path Traversal (../../etc/passwd)|
+  +------------------------------------+   | - Null-Byte (\x00) Enjeksiyonu     |
+                     |                     | - Sınır Dışı Portlar (70000, 0, -1)|
+                     |                     | - Hız Sınırı Taşırma (Burst Flood) |
+                     |                     +------------------------------------+
+                     |                                         |
+                     +--------------------+--------------------+
+                                          |
+                                          v
+              +------------------------------------------------------+
+              |          SECURITY POLICY ENFORCER ENGINE             |
+              |  - validate_password_complexity                      |
+              |  - classify_security_incident                        |
+              |  - sanitize_target_domain                            |
+              |  - evaluate_firewall_rule                            |
+              |  - enforce_rate_limit (Stateful IP Tracking)         |
+              +------------------------------------------------------+
+                                          |
+                                          v
+                        +------------------------------------+
+                        |  %100 KAPSAMLI ADLİ TEST RAPORU    |
+                        | (39 Assertion PASS / Sıfır Zafiyet)|
+                        +------------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

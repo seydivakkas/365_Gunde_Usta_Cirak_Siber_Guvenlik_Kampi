@@ -1,0 +1,38 @@
+{
+  "NEG_01_CORRUPT_PYVENV_CFG": {
+    "cfg_content": "invalid_line_without_equals_sign\ncorrupt_data",
+    "expected_error": "pyvenv.cfg biçimi geçersiz: ayrıştırılamayan anahtar-değer satırı."
+  },
+  "NEG_02_SYSTEM_PACKAGES_LEAK": {
+    "cfg_content": "home = C:\\Python312\ninclude-system-site-packages = true\nversion = 3.12.2",
+    "expected_error": "Yalıtım ihlali: include-system-site-packages değeri 'false' olmalıdır."
+  },
+  "NEG_03_OBSOLETE_PYTHON_VERSION": {
+    "cfg_content": "home = C:\\Python27\ninclude-system-site-packages = false\nversion = 2.7.18",
+    "expected_error": "Güvensiz/Miras Python sürümü tespit edildi: 2.7.18 (Asgari 3.10 gereklidir)."
+  },
+  "NEG_04_UNPINNED_PACKAGE": {
+    "req_line": "requests",
+    "expected_error": "Sabitlenmemiş paket tespiti: 'requests' sürüm belirtilmeden kullanılamaz."
+  },
+  "NEG_05_LOOSELY_PINNED_PACKAGE": {
+    "req_line": "scapy>=2.0.0",
+    "expected_error": "Gevşek sürüm sabitleme: 'scapy' için kesin sürüm ('==') zorunludur, alınan: >="
+  },
+  "NEG_06_TYPOSQUATTING_ATTACK": {
+    "req_line": "reqeusts==2.31.0 --hash=sha256:58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f",
+    "expected_error": "Tedarik zinciri saldırısı (Typosquatting) şüphesi: 'reqeusts' ('requests' taklidi)."
+  },
+  "NEG_07_KNOWN_VULNERABILITY": {
+    "req_line": "urllib3==1.26.5 --hash=sha256:a921822501306b3e8e66e7440938ffeaef2ccfef8fa593847ffb76ce4e89fe87",
+    "expected_error": "Bilinen güvenlik zafiyeti (CVE) tespit edildi: urllib3==1.26.5 (CVE-2023-45803)"
+  },
+  "NEG_08_MISSING_HASH_PINNING": {
+    "req_line": "paramiko==3.4.0",
+    "expected_error": "Kriptografik bütünlük eksikliği: 'paramiko' paketi için SHA-256 hash sabitlemesi bulunamadı."
+  },
+  "NEG_09_MALFORMED_HASH": {
+    "req_line": "cryptography==42.0.5 --hash=sha256:not_a_valid_sha256_hash_value",
+    "expected_error": "Geçersiz SHA-256 hash biçimi: tam 64 karakterli onaltılık (hex) dize olmalıdır."
+  }
+}

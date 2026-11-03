@@ -1,0 +1,95 @@
+{
+  "gun": 103,
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "boyut": 4173,
+      "sha256": "5b7e95d4e0d513b085e7f55ba97b7f174a32011c68e3a431bf3171d8e1f70ac4"
+    },
+    {
+      "dosya": "ders.md",
+      "boyut": 8095,
+      "sha256": "019fdfd0f10fb83474647455063f97f309896e9814b2bd4e04043b6825365411"
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "boyut": 12629,
+      "sha256": "4f918b6b17953f126765c75cd548138e28d0ca6b176bb6d0204fda62f0f034f1"
+    },
+    {
+      "dosya": "rapor.md",
+      "boyut": 5867,
+      "sha256": "5cdb82c5030d1111ad20d18fcfedcefb7270d6dba1599de23283813912c6a0ab"
+    },
+    {
+      "dosya": "sonuc.json",
+      "boyut": 1770,
+      "sha256": "98884fe663ea86476fd32eecc4ee4d0b0320ab574ac6b9eadff711f74b6e6a00"
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "boyut": 12259,
+      "sha256": "d67eab2258560f52271b0f254d434c1286c6ee6d77c6bb3054e95b80fa5ee78c"
+    },
+    {
+      "dosya": "kanit/gercek/aes_guvenlik_analiz_raporu.txt",
+      "boyut": 2436,
+      "sha256": "1fdc855214cb9e74a97b32551eb85864fcd71276f76de194c40d7d23f6f8cc08"
+    },
+    {
+      "dosya": "kanit/gercek/komut_ve_cikis.txt",
+      "boyut": 2687,
+      "sha256": "0effdac484ddf5b6905e4676169c6405eb64d408251955af6eb8fd71aad68862"
+    },
+    {
+      "dosya": "kanit/gercek/negatif_kontrol_sonuclari.txt",
+      "boyut": 3357,
+      "sha256": "c2241f4599b074e68b86703e7b8faffe4ed7c77305d2e6da8bbc3bd60105ed83"
+    },
+    {
+      "dosya": "kanit/gercek/test_sonuclari.txt",
+      "boyut": 3753,
+      "sha256": "f24684c6e3af3f31901e8c6fea1e6dd3a6b04b9555ccf3536f3d132914bd7c1c"
+    },
+    {
+      "dosya": "kanit/temsili/aes_mimarisi.txt",
+      "boyut": 3390,
+      "sha256": "8a20bc7ec6d1ce3a406690b30ff04cef7a171768fc884abc081883eea1f16426"
+    },
+    {
+      "dosya": "ornek_veri/aes_known_vectors.json",
+      "boyut": 1053,
+      "sha256": "76a2a753dce9fc99a8fd321ee98d53b0569944aba53d7014f5b4ea3d193bc6a8"
+    },
+    {
+      "dosya": "ornek_veri/invalid_aes_inputs.json",
+      "boyut": 2592,
+      "sha256": "0476eb07df9b6c97bfcebcf494f38e2d83e190a8d8f5d648a42344cabb9b0498"
+    },
+    {
+      "dosya": "tests/__init__.py",
+      "boyut": 587,
+      "sha256": "4a8e55ebf2e150a198448e38153292a9a143aac85526806b4cd6ea48b3319085"
+    },
+    {
+      "dosya": "tests/test_aes_cipher.py",
+      "boyut": 12441,
+      "sha256": "ea1168d65ab60b9dcb08ab1874676f49196ec0ffb6e4502d38ac93803b38e6f2"
+    },
+    {
+      "dosya": "uygulama/__init__.py",
+      "boyut": 602,
+      "sha256": "5d35d85c76a2dbaf7dc93469918597cbfec2e296cfb3b224f67fc9d8f38793e7"
+    },
+    {
+      "dosya": "uygulama/aes_cipher_engine.py",
+      "boyut": 26117,
+      "sha256": "1e7f35a92214ef54c1f2b0c72a009f9b6ae96f5f4e707333f2e31675ae67fc4f"
+    },
+    {
+      "dosya": "uygulama/aes_cli.py",
+      "boyut": 13879,
+      "sha256": "eba98f15bd022b7793c3d0909a802afc43bb55871d44bca3d5fe29542f81de10"
+    }
+  ]
+}

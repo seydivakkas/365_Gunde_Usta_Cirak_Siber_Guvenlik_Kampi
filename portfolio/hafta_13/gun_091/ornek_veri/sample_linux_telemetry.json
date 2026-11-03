@@ -1,0 +1,27 @@
+{
+  "platform": "linux",
+  "hostname": "LNX-PROD-WEB-02",
+  "os_surumu": "Ubuntu 24.04 LTS (Linux 6.8.0-generic)",
+  "zaman_damgasi_utc": "2026-11-01T20:25:30Z",
+  "calisma_suresi_saat": 288.0,
+  "acik_portlar": [22, 80, 443, 6379],
+  "calisan_servisler": [
+    {"ad": "sshd", "durum": "active (running)", "pid": 1045},
+    {"ad": "nginx", "durum": "active (running)", "pid": 1120},
+    {"ad": "redis-server", "durum": "active (running)", "pid": 1205},
+    {"ad": "cron", "durum": "active (running)", "pid": 890}
+  ],
+  "dosya_izinleri": [
+    {"dosya_yolu": "/etc/shadow", "izin": "0644", "sahip": "root:root"},
+    {"dosya_yolu": "/etc/passwd", "izin": "0644", "sahip": "root:root"},
+    {"dosya_yolu": "/var/log/auth.log", "izin": "0640", "sahip": "root:adm"}
+  ],
+  "sudo_yapilandirmasi": {
+    "nopasswd_kullanicilari": ["guest_temp"]
+  },
+  "guvenlik_duvari": {
+    "durum": "active",
+    "varsayilan_politika": "deny (incoming), allow (outgoing)"
+  },
+  "stderr_gunlukleri": "Denetim betigi tamamlandi. 0 uyarisi."
+}

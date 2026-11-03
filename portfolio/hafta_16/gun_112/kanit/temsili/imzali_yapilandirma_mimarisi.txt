@@ -1,0 +1,59 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+==================================================================================================
+        MİNİ PROJE 15: İMZALI YAPILANDIRMA VE KURCALAMAYA KARŞI KORUMA (TAMPER-EVIDENCE) MİMARİSİ
+==================================================================================================
+
+  +--------------------------------------------------------------------------------------------+
+  | 1. KANONİKLEŞTİRME VE İMZALAMA HATTI (SIGNING PIPELINE - RFC 8785)                         |
+  +--------------------------------------------------------------------------------------------+
+  |                                                                                            |
+  |   [ Ham Yapılandırma JSON ]                                                                |
+  |            |                                                                               |
+  |            v                                                                               |
+  |   [ RFC 8785 JCS Kanonikleştirici ]  ===> Deterministik Anahtar Sıralama & Boşluk Temizliği |
+  |            |                                                                               |
+  |            v                                                                               |
+  |   [ SHA-256 Payload Hash ]                                                                 |
+  |            |                                                                               |
+  |            v                                                                               |
+  |   [ İmzalanacak Blok: Epoch + CreatedAt + ExpiresAt + PayloadHash ]                        |
+  |            |                                                                               |
+  |            +--------> Yetkili 1 (SecOps Lead) Özel Anahtarı   ===> İmza 1 (RSA-SHA256)     |
+  |            |                                                                               |
+  |            +--------> Yetkili 2 (Infra Director) Özel Anahtarı ===> İmza 2 (Dual Signing)   |
+  +--------------------------------------------------------------------------------------------+
+                                                |
+                                                v
+  +--------------------------------------------------------------------------------------------+
+  | 2. MÜHÜRLÜ ZARF YAPISI (SIGNED CONFIGURATION ENVELOPE)                                     |
+  +--------------------------------------------------------------------------------------------+
+  |                                                                                            |
+  |   {                                                                                        |
+  |     "format": "SEC-SIGNED-CONFIG-V1",                                                      |
+  |     "epoch": 5,                                  <--- Monotonik Sayaç (Anti-Rollback)      |
+  |     "created_at": "2026-11-02T05:00:00Z",                                                  |
+  |     "expires_at": "2027-02-02T05:00:00Z",        <--- Geçerlilik Sınırı (CWE-298)          |
+  |     "payload": { ... Güvenlik Politikası ... },  <--- Açık Yapılandırma                    |
+  |     "payload_sha256": "910940c9fca1...",         <--- Tahrifat Kalkanı (CWE-353)           |
+  |     "signatures": [                                                                        |
+  |       { "signer_id": "secops_lead_01", "sig": "4321b7c..." },                             |
+  |       { "signer_id": "infra_director_02", "sig": "887a12b..." }                            |
+  |     ]                                                                                      |
+  |   }                                                                                        |
+  +--------------------------------------------------------------------------------------------+
+                                                |
+                                                v
+  +--------------------------------------------------------------------------------------------+
+  | 3. SİSTEM DOĞRULAYICISI (BOOTSTRAP & RUNTIME VERIFIER)                                     |
+  +--------------------------------------------------------------------------------------------+
+  |  - KONTROL 1: Format & JSON Geçerliliği (CWE-20)                                           |
+  |  - KONTROL 2: Monotonik Epoch >= Mevcut Epoch (Rollback Koruması / CWE-294)                |
+  |  - KONTROL 3: Zaman Sınırları: CreatedAt <= Şimdi <= ExpiresAt (CWE-298)                   |
+  |  - KONTROL 4: Payload Kanonik Hash Doğrulaması (Tek Bayt Tahrifat Tespiti / CWE-353)        |
+  |  - KONTROL 5: Güven Deposu (Trust Store) & Çift İmza Eşik Doğrulaması (2-of-2 / CWE-285)   |
+  |                                                                                            |
+  |  >>> SONUÇ: Tüm kontroller geçerse politika belleğe yüklenir; tek bir hata varsa SİSTEM   |
+  |             AÇILIŞI DERHAL DURDURULUR (FAIL-SAFE SHUTDOWN)!                                |
+  +--------------------------------------------------------------------------------------------+
+
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

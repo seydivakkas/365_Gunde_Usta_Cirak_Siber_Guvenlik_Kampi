@@ -1,0 +1,12 @@
+======================================================================
+NEGATİF KONTROL VE BOZUK VERİ DOĞRULAMA TESTİ (G030-SC2)
+======================================================================
+Toplam Test Edilen Hatalı Kayıt: 4
+Başarıyla Reddedilen Kayıt     : 4
+Sonuç                          : TAM BAŞARILI (PASS)
+----------------------------------------------------------------------
+[REJECTED_AS_EXPECTED] JOURNAL-ERR-01 -> Günlük mesajı (MESSAGE) boş veya tanımsız!
+[REJECTED_AS_EXPECTED] JOURNAL-ERR-02 -> Öncelik düzeyi 0-7 aralığında olmalıdır, gelen değer: 99.
+[REJECTED_AS_EXPECTED] JOURNAL-ERR-03 -> Zaman damgası geçerli ISO 8601 formatında değil: 'INVALID_TIMESTAMP_2026'.
+[REJECTED_AS_EXPECTED] JOURNAL-ERR-04 -> Günlükler geçici bellekte (/run/log/journal) tutuluyor! Yeniden başlatmada silinme riski (CWE-778).
+======================================================================

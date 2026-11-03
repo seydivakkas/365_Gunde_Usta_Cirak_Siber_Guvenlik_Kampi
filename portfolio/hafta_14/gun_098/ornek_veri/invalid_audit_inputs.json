@@ -1,0 +1,66 @@
+[
+  {
+    "id": "NEG_01_EVAL_EXEC_INJECTION",
+    "tanim": "Kaynak kodda dinamik kod yürütme fonksiyonları (eval/exec) tespiti",
+    "kod_icerigi": "def run_code(val):\n    eval(val)\n",
+    "beklenen_hata": "CodeInjectionRiskError",
+    "cwe": "CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"
+  },
+  {
+    "id": "NEG_02_HARDCODED_SECRET_DETECTED",
+    "tanim": "Kaynak kodda sabit gizli anahtar/parola tanımlaması tespiti",
+    "kod_icerigi": "API_SECRET = 'live_secret_token_1234567890'\n",
+    "beklenen_hata": "HardcodedSecretDetectedError",
+    "cwe": "CWE-798: Use of Hard-coded Credentials"
+  },
+  {
+    "id": "NEG_03_BARE_EXCEPT_BLOCK",
+    "tanim": "Hataları sessizce yutan çıplak except: bloğu tespiti",
+    "kod_icerigi": "try:\n    do_something()\nexcept:\n    pass\n",
+    "beklenen_hata": "BareExceptBlockError",
+    "cwe": "CWE-391: Unchecked Error Condition"
+  },
+  {
+    "id": "NEG_04_MISSING_LICENSE_HEADER",
+    "tanim": "Kaynak kodda zorunlu kurumsal Özel Lisans başlığı eksikliği",
+    "kod_icerigi": "# Telifsiz rastgele betik\nprint('hello world')\n",
+    "beklenen_hata": "LicenseComplianceError",
+    "cwe": "CWE-16: Configuration"
+  },
+  {
+    "id": "NEG_05_NULL_BYTE_IN_AUDIT_PATH",
+    "tanim": "Denetlenecek betik yolunda Null-Byte zehirlemesi denemesi",
+    "yol": "safe_script.py\u0000malicious.py",
+    "beklenen_hata": "NullByteInjectionError",
+    "cwe": "CWE-158: Improper Neutralization of Null Byte or Special Characters"
+  },
+  {
+    "id": "NEG_06_OVERSIZED_SCRIPT_DOS",
+    "tanim": "1 MB tavanını aşan aşırı büyük betik ile DoS denemesi",
+    "icerik": "OVERSIZED_SCRIPT_BUFFER_EXCEEDING_1MB_LIMIT",
+    "beklenen_hata": "PayloadLimitExceededError",
+    "cwe": "CWE-400: Uncontrolled Resource Consumption"
+  },
+  {
+    "id": "NEG_07_SCORE_THRESHOLD_VIOLATION",
+    "tanim": "Kalite skoru belirlenen kabul eşiğinin altında kalan betiğin reddi",
+    "skor": 65.0,
+    "esik": 80.0,
+    "beklenen_hata": "QualityScoreThresholdError",
+    "cwe": "CWE-16: Configuration"
+  },
+  {
+    "id": "NEG_08_NON_EXISTENT_AUDIT_TARGET",
+    "tanim": "Disk üzerinde bulunmayan sahte dosya yolu iletimi",
+    "yol": "non_existent_fake_script_xyz.py",
+    "beklenen_hata": "FileNotFoundError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_09_NON_STRING_PATH_TYPE",
+    "tanim": "Denetim motoruna dosya yolu yerine geçersiz tip gönderilmesi",
+    "yol": 987654321,
+    "beklenen_hata": "TypeValidationError",
+    "cwe": "CWE-843: Access of Resource Using Incompatible Type"
+  }
+]

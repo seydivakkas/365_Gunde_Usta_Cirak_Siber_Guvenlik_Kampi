@@ -1,0 +1,41 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Gerçek Birim Test Yürütme Kanıtı
+
+[METADATA]
+Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest portfolio\hafta_01\gun_007\tests\test_lab_contract_validator.py -v
+Çalışma Dizini: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Ortam: Python unittest / Python 3.14.3
+Zaman Damgası: 2026-10-26T19:35:00+03:00
+Çıkış Kodu: 0
+
+[TEST ÇIKTISI]
+test_eksik_imza_negatif_kontrol (portfolio.hafta_01.gun_007.tests.test_lab_contract_validator.TestLabContractValidator.test_eksik_imza_negatif_kontrol)
+NEGATİF KONTROL: CISO veya Baş Araştırmacı imzası eksik olduğunda ... ok
+test_esnek_mod_hata_toplama (portfolio.hafta_01.gun_007.tests.test_lab_contract_validator.TestLabContractValidator.test_esnek_mod_hata_toplama)
+ESNEK MOD: katilik_modu=False iken programın çökmeyip hataları döndüğü test edilir. ... ok
+test_gecerli_sozlesme_pozitif_kontrol (portfolio.hafta_01.gun_007.tests.test_lab_contract_validator.TestLabContractValidator.test_gecerli_sozlesme_pozitif_kontrol)
+POZİTİF KONTROL: Onaylı ve tam izole referans sözleşmenin sıfır bulgu ... ok
+test_genel_internet_kapsam_ihlali_negatif_kontrol (portfolio.hafta_01.gun_007.tests.test_lab_contract_validator.TestLabContractValidator.test_genel_internet_kapsam_ihlali_negatif_kontrol)
+NEGATİF KONTROL: İzinli kapsama genel internet bloğu (0.0.0.0/0) eklenirse, ... ok
+test_guvensiz_kopru_adaptor_negatif_kontrol (portfolio.hafta_01.gun_007.tests.test_lab_contract_validator.TestLabContractValidator.test_guvensiz_kopru_adaptor_negatif_kontrol)
+AĞ SIZINTISI KURALI: Dış internet izni yokken bir düğüme 'Bridged' (Köprü) ... ok
+test_kapsam_disi_dugum_ip_negatif_kontrol (portfolio.hafta_01.gun_007.tests.test_lab_contract_validator.TestLabContractValidator.test_kapsam_disi_dugum_ip_negatif_kontrol)
+AĞ SEGMENTASYONU: Bir düğümün IP adresi izinli alt ağ bloğunun dışında kalırsa ... ok
+test_mukerrer_ip_cakismasi_negatif_kontrol (portfolio.hafta_01.gun_007.tests.test_lab_contract_validator.TestLabContractValidator.test_mukerrer_ip_cakismasi_negatif_kontrol)
+TOPOLOJİ BÜTÜNLÜĞÜ: İki farklı sanal makineye aynı IP adresi atanırsa ... ok
+test_onaylanmamis_sozlesme_negatif_kontrol (portfolio.hafta_01.gun_007.tests.test_lab_contract_validator.TestLabContractValidator.test_onaylanmamis_sozlesme_negatif_kontrol)
+NEGATİF KONTROL: Sözleşme durumu 'TASLAK' veya 'BEKLEMEDE' iken ... ok
+test_ortak_klasor_acik_negatif_kontrol (portfolio.hafta_01.gun_007.tests.test_lab_contract_validator.TestLabContractValidator.test_ortak_klasor_acik_negatif_kontrol)
+MİMARİ İZOLASYON KURALI: Ana makine ile ortak klasör (Shared Folders) ... ok
+test_pano_paylasimi_acik_negatif_kontrol (portfolio.hafta_01.gun_007.tests.test_lab_contract_validator.TestLabContractValidator.test_pano_paylasimi_acik_negatif_kontrol)
+MİMARİ İZOLASYON KURALI: Pano paylaşımı (Clipboard) 'ETKİN' yapılırsa, ... ok
+test_yasakli_ip_cakismasi_negatif_kontrol (portfolio.hafta_01.gun_007.tests.test_lab_contract_validator.TestLabContractValidator.test_yasakli_ip_cakismasi_negatif_kontrol)
+NEGATİF KONTROL: İzinli kapsama yasaklı listedeki genel bir DNS (8.8.8.8) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.004s
+
+OK
+
+

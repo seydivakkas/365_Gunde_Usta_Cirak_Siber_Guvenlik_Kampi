@@ -1,0 +1,20 @@
+# IPv6 Temel Kavramlar, Sıkıştırma ve Adres Güvenliği Analiz Raporu
+
+Bu rapor, analiz edilen IPv6 adreslerinin 128-bit açılımını, RFC 5952 kanonik sıkıştırma
+durumunu, IETF standartları çerçevesindeki etki alanlarını ve komşu keşfi (NDP) adreslerini listeler.
+
+| ID / Girdi | Kanonik Sıkıştırılmış | Tür | Kapsam (Scope) | Solicited Multicast | Önek |
+|---|---|---|---|---|---|
+| `2001:0db8:85a3:0000:0000:8a2e:0370:7334/64` | `2001:db8:85a3::8a2e:370:7334` | Global Unicast (GUA) | Global | `ff02::1:ff70:7334` | `/64` |
+| `fe80:0000:0000:0000:021a:2bff:fe3c:4d5e/64` | `fe80::21a:2bff:fe3c:4d5e` | Link-Local Unicast | Link-Local | `ff02::1:ff3c:4d5e` | `/64` |
+| `fd00:0000:0000:0001:0000:0000:0000:0005/64` | `fd00:0:0:1::5` | Unique Local Address (ULA) | Unique Local | `ff02::1:ff00:0005` | `/64` |
+| `0000:0000:0000:0000:0000:0000:0000:0001/128` | `::1` | Loopback | Node-Local | `ff02::1:ff00:0001` | `/128` |
+| `0000:0000:0000:0000:0000:0000:0000:0000/128` | `::` | Unspecified Address | Reserved | `ff02::1:ff00:0000` | `/128` |
+| `ff02:0000:0000:0000:0000:0000:0000:0001/16` | `ff02::1` | Multicast (All Nodes) | Link-Local Multicast | `ff02::1:ff00:0001` | `/16` |
+| `0000:0000:0000:0000:0000:ffff:c000:0280/96` | `::ffff:c000:280` | IPv4-Mapped IPv6 | Transition/Dual-Stack | `ff02::1:ff00:0280` | `/96` |
+
+## IPv6 Güvenlik ve Savunma Tavsiyeleri
+- **Rogue RA ve RA Guard (RFC 6105):** Anahtarlar (Switch) üzerinde RA Guard aktifleştirilerek yetkisiz yönlendirici duyuruları engellenmeli, MitM atakları durdurulmalıdır.
+- **Gizlilik Eklentileri (RFC 4941):** İstemcilerde donanım MAC adresini sızdıran EUI-64 yerine rastgele geçici adresler (Privacy Extensions) zorunlu tutulmalıdır.
+- **Gölge Ağ (Dual-Stack Shadow Network) Tehlikesi:** Ağda IPv4 için güvenlik duvarı ve IPS varken IPv6 trafiği denetimsiz bırakılmamalı; tüm güvenlik kuralları IPv6 için de eşit sıkılıkta uygulanmalıdır.
+- **ICMPv6 Filtreleme Hassasiyeti:** ICMPv6 körlemesine engellenmemelidir. Komşu Keşfi (NDP - Type 133-136) engellenirse IPv6 iletişimi tamamen çöker; yalnızca sınır arayüzlerinde gerekli filtreler konmalıdır.

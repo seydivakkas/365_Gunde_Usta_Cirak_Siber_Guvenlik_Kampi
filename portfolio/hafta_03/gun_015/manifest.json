@@ -1,0 +1,21 @@
+{
+  "dosyalar": {
+    "README.md": "6a40e19950036b310327d0a657848dbef3c858d0651d7f3513807f51a3b6ec2e",
+    "ders.md": "be6ce2a34aacaca170cd77527c4875fbd741a45f54635ef07bc44dd5a9ad6e87",
+    "rapor.md": "8096fb2e177cbf155ab447bf767b99cfb2b06e2caca8e1377f36662eefb480b4",
+    "sonuc.json": "5dc44aebb56ce2b6bde2ea9621e7f0d9f333e716bf3687004919169b9c5e6193",
+    "soru_cevap.md": "2ff9f8fb5be7f1ef812cfffae04ee45a59414b0caa9b0219e53a6ba491737d35",
+    "kanit/gercek/komut_ve_cikis.txt": "5e3f1a5752eb9ecaaa39d334ac0b2ea396a43162b897bfd32a8dc94acaff2c03",
+    "kanit/gercek/test_sonuclari.txt": "a3124929e3e20e2b4ec6c9b52e40399f3a62a84796aa3b4ecdd41aff3b3dd8dd",
+    "kanit/temsili/ikili_ve_karakter_kodlama_mimarisi.txt": "29ff5e5ccad84499d131aeae8b5b8c66230cb3678bb2b2428a13852e14980fdd",
+    "ornek_veri/encoding_security_baseline.json": "5c07e800f18a863feeb2130be6e91be4fa80a9b6427ec7097505b81352465413",
+    "ornek_veri/karakter_kodlama_ornekleri.json": "143d19dba751cb392fb1cf493fc822266c16c2031c7ebc2fa3bfc2a925e8c02e",
+    "tests/test_binary_byte_encoding_inspector.py": "97232d6939b4297c48f38007ba6c92919433b22e074f494d45349a745eef9461",
+    "uygulama/binary_byte_encoding_inspector.py": "09c9932113396130109f264f78092b5a93894f78e7c11c8b10883a313a146d95"
+  },
+  "ozet": {
+    "toplam_dosya": 12,
+    "gun": 15,
+    "durum": "DOGRULANDI_PASS"
+  }
+}

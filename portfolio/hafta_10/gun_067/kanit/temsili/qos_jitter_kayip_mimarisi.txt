@@ -1,0 +1,53 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+================================================================================
+G067: PAKET KAYBI, GECİKME (LATENCY/RTT) VE JİTTER HESAPLAMA PİPELINE MİMARİSİ
+================================================================================
+
+                                    +-----------------------+
+                                    |   AĞ TELEMETRİSİ      |
+                                    | (PCAP / NetFlow / IPFIX)
+                                    +-----------------------+
+                                                |
+                                                v
+                                    +-----------------------+
+                                    |  KRONOLOJİ & ZAMAN    |
+                                    |  DOĞRULAMA (NTP CHECK)|
+                                    +-----------------------+
+                                                |
+                       +------------------------+------------------------+
+                       |                                                 |
+                       v                                                 v
+           [UDP / RTP AKIŞLARI]                                [TCP SEGMENT AKIŞLARI]
+                       |                                                 |
+                       v                                                 v
+           +-----------------------+                         +-----------------------+
+           | 1. Sıra No Analizi    |                         | 1. RTT (Round Trip)   |
+           |    - Seq Gaps (Kayıp) |                         |    - RTT = Tack - Tsnd|
+           |    - Kayıp Oranı %    |                         |                       |
+           |                       |                         | 2. Retransmission     |
+           | 2. Tek Yönlü Gecikme  |                         |    - Fast Retransmit  |
+           |    - OWD = Trcv - Tsnd|                         |    - RTO Timeout      |
+           |                       |                         |                       |
+           | 3. Jitter Hesaplama   |                         | 3. Tıkanıklık Analizi |
+           |    - RFC 3393 (IPDV)  |                         |    - CWND / Dup ACK   |
+           |    - RFC 3550 Filtresi|                         +-----------------------+
+           +-----------------------+                                     |
+                       |                                                 |
+                       +------------------------+------------------------+
+                                                |
+                                                v
+                                    +-----------------------+
+                                    |  QoS & SLA DEĞERLENDİRME
+                                    | - VoIP (Jitter <= 30ms)
+                                    | - Video (Loss <= 1%)   |
+                                    | - Web (RTT <= 150ms)  |
+                                    +-----------------------+
+                                                |
+                                                v
+                                    +-----------------------+
+                                    | SİBER TEHDİT KORELASYONU
+                                    | - SYN Flood / DoS     |
+                                    | - Covert Timing Chnl  |
+                                    | - BGP Hijack / Reroute|
+                                    +-----------------------+

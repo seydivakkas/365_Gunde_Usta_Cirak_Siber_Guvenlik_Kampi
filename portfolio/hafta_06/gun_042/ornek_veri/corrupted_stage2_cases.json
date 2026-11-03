@@ -1,0 +1,41 @@
+{
+  "corrupted_test_cases": [
+    {
+      "test_name": "missing_pillar_hashes",
+      "description": "6 zorunlu kabul sütunundan biri olan 'hashes' bölümünün envanterden tamamen eksik olması",
+      "omitted_pillar": "hashes"
+    },
+    {
+      "test_name": "invalid_permission_octal",
+      "description": "Dosya izninin geçersiz sekizli (octal) değer veya aralık dışı rakam içermesi (Örn: '0999')",
+      "file_sample": {
+        "path": "/etc/shadow",
+        "owner": "root",
+        "group": "shadow",
+        "permission_octal": "0999"
+      }
+    },
+    {
+      "test_name": "invalid_sha256_hash",
+      "description": "Bütünlük karmasının 64 karakterli onaltılık (hex) dize yerine bozuk formatta olması",
+      "hash_sample": {
+        "file": "/bin/login",
+        "sha256": "gecersiz_kisa_hash_degeri"
+      }
+    },
+    {
+      "test_name": "negative_pid_process",
+      "description": "Süreç PID değerinin negatif sayı olması",
+      "process_sample": {
+        "pid": -99,
+        "user": "root",
+        "name": "malicious_proc"
+      }
+    },
+    {
+      "test_name": "non_dict_pillar_entry",
+      "description": "Bir sütun düğümünün (Örn: backups) sözlük yerine dize veya sayı olması",
+      "invalid_node": "Bu bir sutun degil gecersiz metindir"
+    }
+  ]
+}

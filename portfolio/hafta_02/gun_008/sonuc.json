@@ -1,0 +1,40 @@
+{
+  "gun_no": 8,
+  "gun_kimligi": "G008",
+  "asama": "01",
+  "hafta": 2,
+  "konu": "Sanallaştırmanın güvenlikteki rolü",
+  "tarih": "2026-10-26",
+  "durum": "PASS",
+  "puan": 100,
+  "degerlendirme_detayi": {
+    "teori": 20,
+    "uygulama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "kanit_durumu": "TAM",
+  "tamamlanan_gorevler": [
+    "Sanallaştırmanın güvenlikteki rolü (Ring -1 VMM, Intel VT-x/AMD-V, Tip-1 vs Tip-2 hypervisor) Usta-Çırak derinliğinde açıklandı.",
+    "BSL-4 eldivenli cam kabin analojisi ile patlatma alanı (blast radius) ve geri alma (rollback) zihinsel modeli kuruldu.",
+    "Sanal makineden kaçış (VM Escape), yerel ağ yayılması (Lateral Movement) ve tespitten kaçınma (Anti-VM Evasion) vektörleri modellendi.",
+    "Her kod satırı eğitsel açıklamalarla donatılmış vm_security_auditor.py CLI aracı geliştirildi.",
+    "Ağ izolasyonu, çift yönlü pano, sürükle-bırak, paylaşılan C:\\ kök dizini, snapshot ve MAC/CPUID gizleme denetimleri kodlandı.",
+    "12 birim test ile pozitif, negatif ve güvenlik sınır durumları 0.040 saniyede %100 başarıyla doğrulandı.",
+    "Gerçek CLI yürütme, unittest çıktısı ve temsilî ASCII hypervisor mimari şeması kanıt olarak üretildi.",
+    "Soru bankasındaki 3 soru katı 4 bölümlü formatta cevaplandı."
+  ],
+  "pozitif_negatif_kontrol_sonuclari": {
+    "pozitif_kontrol": "Tam izole analiz VM'inde 100/100 skor, 0 açık bulgu ve GÜVENLİ durumu başarıyla teyit edildi",
+    "negatif_kontrol_bridged_ag": "Bridged ağ adaptörü tespit edilip fiziksel ağa yayılma riskiyle 40 ceza puanı kesildi",
+    "negatif_kontrol_promiscuous": "Promiscuous mod 'Allow_All' sanal ağ koklama riskiyle YÜKSEK seviye olarak raporlandı",
+    "negatif_kontrol_pano_escape": "Çift yönlü pano paylaşımı konak kod yürütme riskiyle KRİTİK VM Escape olarak yakalandı",
+    "negatif_kontrol_surukle_birak": "Çift yönlü sürükle-bırak dosya enjeksiyon riskiyle KRİTİK olarak yakalandı",
+    "negatif_kontrol_paylasilan_klasor": "Konak C:\\ dizininin misafirle yazılabilir paylaşılması FELAKET seviyesinde 50 ceza puanı aldı",
+    "negatif_kontrol_eksik_snapshot": "Anlık görüntü politikası yokluğu kirlenme riskiyle YÜKSEK seviye olarak raporlandı",
+    "negatif_kontrol_anti_vm_mac": "08:00:27 VirtualBox MAC öneki Evasion riskiyle ORTA seviye olarak raporlandı",
+    "hata_yonetimi_eksik_alan": "Zorunlu konfigürasyon alanı eksikliğinde VMSecurityValidationError fırlatıldı"
+  },
+  "onceki_gun_bagimliligi": "YOK (Tamamen bağımsız)",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ."
+}

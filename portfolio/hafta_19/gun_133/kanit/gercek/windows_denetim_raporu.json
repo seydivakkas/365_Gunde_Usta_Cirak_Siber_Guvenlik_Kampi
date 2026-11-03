@@ -1,0 +1,125 @@
+{
+  "audit_metadata": {
+    "project_name": "Mini Proje 18: Windows Denetim Raporu Platformu",
+    "auditor": "Seydi Eryılmaz (@seydivakkas)",
+    "audit_date": "2026-11-02T07:54:57.577361+00:00",
+    "benchmark": "CIS Microsoft Windows Server 2022 / Windows 11 Enterprise"
+  },
+  "overall_summary": {
+    "total_score": 74.0,
+    "max_score": 100.0,
+    "overall_status": "WARNING",
+    "total_vulnerabilities": 6,
+    "severity_breakdown": {
+      "CRITICAL": 2,
+      "HIGH": 3,
+      "MEDIUM": 1,
+      "LOW": 0
+    }
+  },
+  "domain_breakdown": {
+    "DEFENDER": {
+      "domain_name": "Windows Defender ve Uç Nokta Koruması",
+      "score": 17.0,
+      "max_score": 20.0,
+      "vulnerabilities": 1,
+      "status": "COMPLIANT"
+    },
+    "UAC": {
+      "domain_name": "Yerel Hesaplar, Gruplar ve UAC",
+      "score": 17.0,
+      "max_score": 20.0,
+      "vulnerabilities": 1,
+      "status": "COMPLIANT"
+    },
+    "NTFS": {
+      "domain_name": "NTFS Erişim Kontrol Listeleri",
+      "score": 14.0,
+      "max_score": 20.0,
+      "vulnerabilities": 1,
+      "status": "WARNING"
+    },
+    "FIREWALL": {
+      "domain_name": "Windows Firewall Profilleri",
+      "score": 15.0,
+      "max_score": 20.0,
+      "vulnerabilities": 1,
+      "status": "WARNING"
+    },
+    "SERVICE": {
+      "domain_name": "Windows Hizmet Güvenliği",
+      "score": 11.0,
+      "max_score": 20.0,
+      "vulnerabilities": 2,
+      "status": "CRITICAL"
+    }
+  },
+  "findings_detail": [
+    {
+      "domain": "DEFENDER",
+      "target": "TamperProtection",
+      "cwe_id": "CWE-693",
+      "mitre_id": "T1562.001",
+      "severity": "HIGH",
+      "title": "Kurcalama Koruması (Tamper Protection) Kapalı",
+      "description": "Saldırganlar kayıt defterinden güvenlik ayarlarını değiştirebilir.",
+      "remediation": "Windows Güvenlik Merkezi üzerinden Tamper Protection özelliğini aktifleştirin.",
+      "penalty": 3.0
+    },
+    {
+      "domain": "UAC",
+      "target": "GuestAccount",
+      "cwe_id": "CWE-284",
+      "mitre_id": "T1078.001",
+      "severity": "MEDIUM",
+      "title": "Yerel Guest (Konuk) Hesabı Etkin",
+      "description": "Konuk hesabı yetkisiz anonim oturumlara imkan tanır.",
+      "remediation": "Disable-LocalUser -Name 'Guest'",
+      "penalty": 3.0
+    },
+    {
+      "domain": "NTFS",
+      "target": "SystemDirectoriesACL",
+      "cwe_id": "CWE-732",
+      "mitre_id": "T1574.009",
+      "severity": "CRITICAL",
+      "title": "Kritik Sistem Dizinlerinde Kullanıcı Yazma İzni",
+      "description": "Standart kullanıcılar şu sistem dizinlerine yazabilmektedir: C:\\Program Files\\LegacySuite",
+      "remediation": "icacls \"C:\\Program Files\\LegacySuite\" /remove:g \"BUILTIN\\Users\" /grant:r \"BUILTIN\\Users:(RX)\"",
+      "penalty": 6.0
+    },
+    {
+      "domain": "FIREWALL",
+      "target": "PublicPortExposure",
+      "cwe_id": "CWE-284",
+      "mitre_id": "T1021.001",
+      "severity": "CRITICAL",
+      "title": "Public Profilde Tehlikeli Yönetim Portları Açık",
+      "description": "Kamusal ağda şu kritik servis portları açıktır: 3389 (RDP)",
+      "remediation": "Disable-NetFirewallRule -DisplayGroup 'Remote Desktop' -Profile Public",
+      "penalty": 5.0
+    },
+    {
+      "domain": "SERVICE",
+      "target": "BackupAgentSvc",
+      "cwe_id": "CWE-428",
+      "mitre_id": "T1574.009",
+      "severity": "HIGH",
+      "title": "Tırnaksız Servis Yolu (BackupAgentSvc)",
+      "description": "'BackupAgentSvc' hizmetinin yolu tırnaksızdır ve boşluk içerir: C:\\Program Files\\Enterprise Backup\\agent.exe -run",
+      "remediation": "sc.exe config \"BackupAgentSvc\" binPath= \"\\\"C:\\Program Files\\Enterprise Backup\\agent.exe -run\\\"\"",
+      "penalty": 5.0
+    },
+    {
+      "domain": "SERVICE",
+      "target": "RemoteRegistry",
+      "cwe_id": "CWE-16",
+      "mitre_id": "T1003.002",
+      "severity": "HIGH",
+      "title": "Riskli RemoteRegistry Servisi Aktif",
+      "description": "Uzaktan kayıt defteri manipülasyonu riski oluşturan servis etkindir.",
+      "remediation": "Set-Service -Name \"RemoteRegistry\" -StartupType Disabled; Stop-Service -Name \"RemoteRegistry\" -Force",
+      "penalty": 4.0
+    }
+  ]
+}

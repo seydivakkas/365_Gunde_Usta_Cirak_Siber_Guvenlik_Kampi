@@ -1,0 +1,75 @@
+=== G094 KURUMSAL KİŞİSEL VERİ MASKELEME VE DLP DENETİM RAPORU ===
+Denetim Zamanı: 2026-11-01 23:47:53
+
+--- 1. HAM TELEMETRİ GİRDİSİ (HASSAS VERİLER İÇERİR) ---
+2026-11-01 10:14:02.124 INFO  [auth-service] User login attempt: email="ahmet.yilmaz@kurumsal-banka.com.tr" ip=192.168.10.45 tckn=12345678950 status=SUCCESS
+2026-11-01 10:14:15.541 WARN  [payment-gw] Payment processed: customer_id=8921 pan=4532-0151-1283-0366 amount=1450.50 TRY phone=+90-532-444-2211
+2026-11-01 10:14:22.880 INFO  [transfer-api] Wire transfer initiated: sender_iban="TR78 0006 1005 1978 6457 8410 01" recipient="Zeynep Kaya" tckn=10000000146
+2026-11-01 10:15:01.002 ERROR [billing-core] Card declined for user: email=mehmet_demir@guvenlik-arge.org card_pan=5425 2334 3010 9903 phone=05559876543
+2026-11-01 10:16:45.312 DEBUG [admin-portal] Config reload token="secret_api_key_live_998877665544332211" by user=root@internal-monitor.local
+
+--- 2. MASKELEME SONUCU (STİL: MASK - KISMİ YILDIZLAMA) ---
+2026-11-01 10:14:02.124 INFO  [auth-service] User login attempt: email="ah***@kurumsal-banka.com.tr" ip=192.168.10.45 tckn=123******50 status=SUCCESS
+2026-11-01 10:14:15.541 WARN  [payment-gw] Payment processed: customer_id=8921 pan=453201******0366 amount=1450.50 TRY phone=905324 *** ** 11
+2026-11-01 10:14:22.880 INFO  [transfer-api] Wire transfer initiated: sender_iban="TR78 **** **** **** **** **** 01" recipient="Zeynep Kaya" tckn=100******46
+2026-11-01 10:15:01.002 ERROR [billing-core] Card declined for user: email=me***@guvenlik-arge.org card_pan=542523******9903 phone=05559 *** ** 43
+2026-11-01 10:16:45.312 DEBUG [admin-portal] Config reload token=**************** by user=ro***@internal-monitor.local
+
+--- 3. TAM GİZLEME SONUCU (STİL: REDACT - ETİKETLEME) ---
+2026-11-01 10:14:02.124 INFO  [auth-service] User login attempt: email="[REDACTED_EMAIL]" ip=192.168.10.45 tckn=[REDACTED_TCKN] status=SUCCESS
+2026-11-01 10:14:15.541 WARN  [payment-gw] Payment processed: customer_id=8921 pan=[REDACTED_CARD] amount=1450.50 TRY phone=[REDACTED_PHONE]
+2026-11-01 10:14:22.880 INFO  [transfer-api] Wire transfer initiated: sender_iban="[REDACTED_IBAN]" recipient="Zeynep Kaya" tckn=[REDACTED_TCKN]
+2026-11-01 10:15:01.002 ERROR [billing-core] Card declined for user: email=[REDACTED_EMAIL] card_pan=[REDACTED_CARD] phone=[REDACTED_PHONE]
+2026-11-01 10:16:45.312 DEBUG [admin-portal] Config reload token=[REDACTED_SECRET] by user=[REDACTED_EMAIL]
+
+--- 4. KRİPTOGRAFİK ÖZET SONUCU (STİL: HASH - PSEUDONYM) ---
+2026-11-01 10:14:02.124 INFO  [auth-service] User login attempt: email="EMAIL#2f93c2983a29" ip=192.168.10.45 tckn=TCKN#c57d48b9ae3f status=SUCCESS
+2026-11-01 10:14:15.541 WARN  [payment-gw] Payment processed: customer_id=8921 pan=CC#291aa75b34ae amount=1450.50 TRY phone=PHONE#ca5ce988f92b
+2026-11-01 10:14:22.880 INFO  [transfer-api] Wire transfer initiated: sender_iban="IBAN#0811a7f40e60" recipient="Zeynep Kaya" tckn=TCKN#5656af13d829
+2026-11-01 10:15:01.002 ERROR [billing-core] Card declined for user: email=EMAIL#55485a10e01e card_pan=CC#77ea5431d1fe phone=PHONE#71d2c71a1c5f
+2026-11-01 10:16:45.312 DEBUG [admin-portal] Config reload token=**************** by user=EMAIL#c758a29e0378
+
+--- 5. YAPILANDIRILMIŞ JSON VERİSİ MASKELEME ÇIKTISI ---
+[
+  {
+    "user_id": "USR-1001",
+    "ad_soyad": "Ahmet Yılmaz",
+    "tckn": "123******50",
+    "email": "ah***@kurumsal-banka.com.tr",
+    "telefon": "905324 *** ** 11",
+    "iban": "TR78 **** **** **** **** **** 01",
+    "kredi_karti": "453201******0366",
+    "rol": "Kurumsal Müşteri",
+    "aktif": true
+  },
+  {
+    "user_id": "USR-1002",
+    "ad_soyad": "Zeynep Kaya",
+    "tckn": "100******46",
+    "email": "ze***@guvenlik-arge.org",
+    "telefon": "05559 *** ** 43",
+    "iban": "TR78 **** **** **** **** **** 01",
+    "kredi_karti": "542523******9903",
+    "rol": "Kıdemli Güvenlik Analisti",
+    "aktif": true
+  }
+]
+
+--- 6. DLP İSTATİSTİK VE TESPİT METRİKLERİ ---
+{
+  "mask_style": "MASK",
+  "active_rules": [
+    "all"
+  ],
+  "duration_ms": 0.267,
+  "stats": {
+    "tckn_count": 2,
+    "credit_card_count": 2,
+    "email_count": 3,
+    "iban_count": 1,
+    "phone_count": 2,
+    "secret_count": 1
+  },
+  "total_pii_detected": 11,
+  "status": "SUCCESS"
+}

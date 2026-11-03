@@ -1,0 +1,33 @@
+test_01_live_path_read_only_inspection (test_path_environment_security_auditor.TestPathEnvironmentSecurityAuditor.test_01_live_path_read_only_inspection)
+Yerel canl² PATH de­erinin salt-okunur incelenmesini test eder (G026-SC2). ... ok
+test_02_parse_path_entries_standard (test_path_environment_security_auditor.TestPathEnvironmentSecurityAuditor.test_02_parse_path_entries_standard)
+Standart POSIX PATH dizesinin do­ru s²rada ayr²■t²r²lmas²n² test eder. ... ok
+test_03_detect_relative_path_dot (test_path_environment_security_auditor.TestPathEnvironmentSecurityAuditor.test_03_detect_relative_path_dot)
+PATH iinde a²ka '.' (mevcut dizin) bulunmas²n²n CWE-426 ihlali say²lmas²n² test eder. ... ok
+test_04_detect_empty_path_entry_equivalent_to_dot (test_path_environment_security_auditor.TestPathEnvironmentSecurityAuditor.test_04_detect_empty_path_entry_equivalent_to_dot)
+PATH iinde '::' bo■ ayra olmas²n²n ÷rt³l³ '.' olarak tespitini test eder. ... ok
+test_05_detect_world_writable_directory_in_path (test_path_environment_security_auditor.TestPathEnvironmentSecurityAuditor.test_05_detect_world_writable_directory_in_path)
+PATH iinde /tmp bulunmas²n²n CWE-427 ihlali say²lmas²n² test eder. ... ok
+test_06_detect_dangerous_linker_preload (test_path_environment_security_auditor.TestPathEnvironmentSecurityAuditor.test_06_detect_dangerous_linker_preload)
+LD_PRELOAD de­i■keninin aktif olmas²n²n CWE-114 kritik riski olarak tespitini test eder. ... ok
+test_07_detect_sensitive_credential_exposure_in_env (test_path_environment_security_auditor.TestPathEnvironmentSecurityAuditor.test_07_detect_sensitive_credential_exposure_in_env)
+Ortam de­i■kenlerinde a²k parola saklanmas²n²n CWE-526 riski say²lmas²n² test eder. ... ok
+test_08_audit_fully_compliant_baseline_path (test_path_environment_security_auditor.TestPathEnvironmentSecurityAuditor.test_08_audit_fully_compliant_baseline_path)
+G³venli ve temiz bir ortam profilinin 0 ihlal ve %100 uyumluluk almas²n² test eder. ... ok
+test_09_audit_vulnerable_developer_profile (test_path_environment_security_auditor.TestPathEnvironmentSecurityAuditor.test_09_audit_vulnerable_developer_profile)
+Birden ok zafiyet bar²nd²ran g³vensiz profilin do­ru raporlanmas²n² test eder. ... ok
+test_10_path_precedence_hijack_analysis (test_path_environment_security_auditor.TestPathEnvironmentSecurityAuditor.test_10_path_precedence_hijack_analysis)
+Kullan²c² ev dizininin sistem dizinlerinden ÷nce gelmesi riskini test eder. ... ok
+test_11_security_note_structure (test_path_environment_security_auditor.TestPathEnvironmentSecurityAuditor.test_11_security_note_structure)
+Canl² PATH incelemesinde ³retilen g³venlik notlar²n²n okunabilirli­ini test eder. ... ok
+test_12_negative_control_missing_file_cli (test_path_environment_security_auditor.TestPathEnvironmentSecurityAuditor.test_12_negative_control_missing_file_cli)
+CLI'ye var olmayan dosya verildi­inde hata f²rlatmas²n² test eder. ... ok
+test_13_negative_control_corrupted_rules_json (test_path_environment_security_auditor.TestPathEnvironmentSecurityAuditor.test_13_negative_control_corrupted_rules_json)
+Bozuk JSON kural dosyas²nda sistemin istisna f²rlatmas²n² test eder. ... ok
+test_14_cli_subprocess_live_path_execution (test_path_environment_security_auditor.TestPathEnvironmentSecurityAuditor.test_14_cli_subprocess_live_path_execution)
+CLI ³zerinden --live-path --json komutunun 0 koduyla JSON ³retmesini test eder (G026-SC2). ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.299s
+
+OK

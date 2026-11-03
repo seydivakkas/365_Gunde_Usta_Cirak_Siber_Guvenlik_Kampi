@@ -1,0 +1,77 @@
+{
+  "aciklama": "G089: Argparse ve CLI guvenlik motoru icin 9 adet negatif kontrol senaryosu.",
+  "negatif_testler": [
+    {
+      "test_id": "NEG_01_PATH_TRAVERSAL_ARG",
+      "baslik": "Dosya Parametresinde Dizin Atlama (Path Traversal) Denemesi",
+      "beklenen_hata": "CliPathTraversalException",
+      "zafiyet_turu": "CWE-22: Improper Limitation of a Pathname to a Restricted Directory",
+      "args": ["audit", "--file", "../../etc/shadow"],
+      "parametre": "--file"
+    },
+    {
+      "test_id": "NEG_02_PORT_OUT_OF_RANGE",
+      "baslik": "Port Parametresinde Sinir Disi Sayisal Deger (1-65535 Disinda)",
+      "beklenen_hata": "CliPortOutOfRangeException",
+      "zafiyet_turu": "CWE-20: Improper Input Validation (Port Range Violation)",
+      "args": ["scan", "--host", "127.0.0.1", "--port", "70000"],
+      "parametre": "--port"
+    },
+    {
+      "test_id": "NEG_03_INVALID_MUTUALLY_EXCLUSIVE",
+      "baslik": "Karsilikli Dislayan Parametrelerin (--fast ve --deep) Birlikte Girilmesi",
+      "beklenen_hata": "CliMutuallyExclusiveConflictException",
+      "zafiyet_turu": "CWE-20: Mutually Exclusive Parameter Conflict",
+      "args": ["scan", "--host", "localhost", "--port", "80", "--fast", "--deep"],
+      "parametre": "MutuallyExclusiveGroup"
+    },
+    {
+      "test_id": "NEG_04_MISSING_REQUIRED_SUBCOMMAND",
+      "baslik": "Zorunlu Alt Komutun (scan/audit/hash) Belirtilmemesi",
+      "beklenen_hata": "CliMissingRequiredSubcommandException",
+      "zafiyet_turu": "CWE-20: Missing Required Subcommand",
+      "args": [],
+      "parametre": "subcommand"
+    },
+    {
+      "test_id": "NEG_05_NULL_BYTE_IN_ARGUMENT",
+      "baslik": "CLI Argumaninda Zararli Null Byte (0x00) Enjeksiyonu",
+      "beklenen_hata": "CliNullByteException",
+      "zafiyet_turu": "CWE-158: Improper Neutralization of Null Byte or Special Characters",
+      "args": ["scan", "--host", "host\u0000.evil.com", "--port", "80"],
+      "parametre": "--host"
+    },
+    {
+      "test_id": "NEG_06_OVERSIZED_CLI_ARGUMENT",
+      "baslik": "Asiri Boyutlu Arguman Degeri ile Bellek Tukenmesi (DoS)",
+      "beklenen_hata": "CliOversizedPayloadException",
+      "zafiyet_turu": "CWE-400: Uncontrolled Resource Consumption in CLI Input",
+      "args": ["scan", "--host", "OVERSIZED_HOST_MARKER", "--port", "80"],
+      "parametre": "--host"
+    },
+    {
+      "test_id": "NEG_07_INVALID_CHOICE_ALGORITHM",
+      "baslik": "Guvenlik Kuralina Uymayan Zayif Ozet Algoritmasi Girisi (MD5)",
+      "beklenen_hata": "InvalidCliArgumentException",
+      "zafiyet_turu": "CWE-327: Use of a Broken or Risky Cryptographic Algorithm",
+      "args": ["hash", "--file", "portfolio/hafta_13/gun_089/ornek_veri/sample_cli_commands.json", "--algo", "md5"],
+      "parametre": "--algo"
+    },
+    {
+      "test_id": "NEG_08_INVALID_HOSTNAME_PATTERN",
+      "baslik": "Host Parametresinde Komut Enjeksiyonu Karakterleri (;, &&, |)",
+      "beklenen_hata": "InvalidCliArgumentException",
+      "zafiyet_turu": "CWE-88: Improper Neutralization of Argument Delimiters in a Command",
+      "args": ["scan", "--host", "srv; rm -rf /", "--port", "80"],
+      "parametre": "--host"
+    },
+    {
+      "test_id": "NEG_09_TOO_MANY_ARGUMENTS_DOS",
+      "baslik": "100'den Fazla Arguman ile Parametre Bombalamasi (CLI DoS)",
+      "beklenen_hata": "CliOversizedPayloadException",
+      "zafiyet_turu": "CWE-400: Denial of Service via Argument Flooding",
+      "args": ["TOO_MANY_ARGS_MARKER"],
+      "parametre": "ArgCount"
+    }
+  ]
+}

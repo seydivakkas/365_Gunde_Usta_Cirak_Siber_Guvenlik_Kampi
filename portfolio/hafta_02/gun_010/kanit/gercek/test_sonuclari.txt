@@ -1,0 +1,46 @@
+================================================================================
+GERÇEK YÜRÜTME KANITI — KOMUT VE ÇIKIŞ
+================================================================================
+Tarih/Saat : 2026-10-27T00:04:35.594938
+İşletim Sis: Windows-11-10.0.26300-SP0
+Python     : 3.14.3
+Komut      : C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest portfolio/hafta_02/gun_010/tests/test_linux_baseline_auditor.py -v
+Çıkış Kodu : 0
+--------------------------------------------------------------------------------
+STDOUT:
+
+--------------------------------------------------------------------------------
+STDERR:
+test_01_cis_seviye_1_pozitif_kontrol (portfolio.hafta_02.gun_010.tests.test_linux_baseline_auditor.TestLinuxBaselineAuditor.test_01_cis_seviye_1_pozitif_kontrol)
+POZ�T�F KONTROL: CIS Seviye 1 standartlar�nda sertle�tirilmi� sistem ... ok
+test_02_permit_root_login_negatif_kontrol (portfolio.hafta_02.gun_010.tests.test_linux_baseline_auditor.TestLinuxBaselineAuditor.test_02_permit_root_login_negatif_kontrol)
+NEGAT�F KONTROL: SSH'ta 'PermitRootLogin yes' a��ld���nda, ... ok
+test_03_password_authentication_negatif_kontrol (portfolio.hafta_02.gun_010.tests.test_linux_baseline_auditor.TestLinuxBaselineAuditor.test_03_password_authentication_negatif_kontrol)
+NEGAT�F KONTROL: SSH'ta 'PasswordAuthentication yes' yap�ld���nda, ... ok
+test_04_sudoers_nopasswd_felaket_kontrol (portfolio.hafta_02.gun_010.tests.test_linux_baseline_auditor.TestLinuxBaselineAuditor.test_04_sudoers_nopasswd_felaket_kontrol)
+NEGAT�F KONTROL: /etc/sudoers dosyas�nda 'NOPASSWD' a��ld���nda, ... ok
+test_05_etc_shadow_izin_felaket_kontrol (portfolio.hafta_02.gun_010.tests.test_linux_baseline_auditor.TestLinuxBaselineAuditor.test_05_etc_shadow_izin_felaket_kontrol)
+NEGAT�F KONTROL: /etc/shadow dosyas�n�n izinleri '0644' yap�ld���nda, ... ok
+test_06_etc_passwd_yazilabilir_felaket_kontrol (portfolio.hafta_02.gun_010.tests.test_linux_baseline_auditor.TestLinuxBaselineAuditor.test_06_etc_passwd_yazilabilir_felaket_kontrol)
+NEGAT�F KONTROL: /etc/passwd dosyas� '0777' (herkes yazabilir) yap�ld���nda, ... ok
+test_07_ufw_kapali_negatif_kontrol (portfolio.hafta_02.gun_010.tests.test_linux_baseline_auditor.TestLinuxBaselineAuditor.test_07_ufw_kapali_negatif_kontrol)
+NEGAT�F KONTROL: UFW g�venlik duvar� kapat�ld���nda ('etkin=False'), ... ok
+test_08_ufw_varsayilan_gelen_allow_negatif_kontrol (portfolio.hafta_02.gun_010.tests.test_linux_baseline_auditor.TestLinuxBaselineAuditor.test_08_ufw_varsayilan_gelen_allow_negatif_kontrol)
+NEGAT�F KONTROL: UFW varsay�lan gelen politika 'ALLOW' yap�ld���nda, ... ok
+test_09_yasakli_servis_telnet_negatif_kontrol (portfolio.hafta_02.gun_010.tests.test_linux_baseline_auditor.TestLinuxBaselineAuditor.test_09_yasakli_servis_telnet_negatif_kontrol)
+NEGAT�F KONTROL: �ifresiz telnetd servisi aktif listede yer ald���nda, ... ok
+test_10_guvensiz_umask_negatif_kontrol (portfolio.hafta_02.gun_010.tests.test_linux_baseline_auditor.TestLinuxBaselineAuditor.test_10_guvensiz_umask_negatif_kontrol)
+NEGAT�F KONTROL: Varsay�lan umask '000' yap�ld���nda, ... ok
+test_11_sshd_ve_sudoers_dosya_uretim_kontrol (portfolio.hafta_02.gun_010.tests.test_linux_baseline_auditor.TestLinuxBaselineAuditor.test_11_sshd_ve_sudoers_dosya_uretim_kontrol)
+��LEVSELL�K KONTROL�: urete_guvenli_sshd_config ve urete_guvenli_sudoers ... ok
+test_12_gecersiz_sema_ve_alan_eksikligi (portfolio.hafta_02.gun_010.tests.test_linux_baseline_auditor.TestLinuxBaselineAuditor.test_12_gecersiz_sema_ve_alan_eksikligi)
+HATA Y�NET�M�: Zorunlu alan eksik oldu�unda LinuxSecurityValidationError f�rlat�lmal�d�r. ... ok
+test_13_olmayan_dosya_hatasi (portfolio.hafta_02.gun_010.tests.test_linux_baseline_auditor.TestLinuxBaselineAuditor.test_13_olmayan_dosya_hatasi)
+HATA Y�NET�M�: Olmayan dosya yolu verildi�inde FileNotFoundError f�rlat�lmal�d�r. ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.033s
+
+OK
+
+================================================================================

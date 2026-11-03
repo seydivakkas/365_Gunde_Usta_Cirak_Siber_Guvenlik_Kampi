@@ -1,0 +1,85 @@
+{
+  "gun": 98,
+  "hafta": 14,
+  "konu": "Aşama 4 kalite özeti: otomasyon",
+  "olusturma_tarihi": "2026-11-02 01:38:10",
+  "toplam_dosya": 19,
+  "dosyalar": {
+    "README.md": {
+      "boyut_bayt": 4629,
+      "sha256": "25b90bf93d9a225feb2456d3d3e3b3695beaf09e2de86aafd47cfe984843e47a"
+    },
+    "ders.md": {
+      "boyut_bayt": 6996,
+      "sha256": "7b70f2069b8c1a084be5829ea19454288439e4dd5a9aec20c5e16c135177001b"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 11845,
+      "sha256": "91fa79faf9a83bb6629526eb1b949544b5e0692eed26d0ff1b3af2c3f205de13"
+    },
+    "rapor.md": {
+      "boyut_bayt": 3645,
+      "sha256": "3447a07b231dc597ea140a353f100cf1755f5b6508b081597416c79c1261acdc"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1142,
+      "sha256": "05b352188180b2733cc51ae041e871268ec8601b39459fdf560ca65d3f00ec8e"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 8172,
+      "sha256": "c4926be1aee93e43772a6e5cbdddb91c6f8730fb66312f51c7ef30046893ed8e"
+    },
+    "kanit\\gercek\\asama4_kalite_denetim_raporu.txt": {
+      "boyut_bayt": 2706,
+      "sha256": "95e1bb8d19f726eb8a42e88d37cd07d8a3e0b795dfd96c84536a42fb21514d98"
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "boyut_bayt": 5683,
+      "sha256": "ec1fe9bffc514968b2ba271d0158de04acfcc3e6d0bcaaccfc85a69d7eed9aef"
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 4112,
+      "sha256": "ed27f7c4c1df4d4d366412ec7607aeb65f1d857bce02ecc69db52c1d20d0faa2"
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "boyut_bayt": 4098,
+      "sha256": "771184bd0f0d4d9f6b2cfdfee1818b89a2173abb8deca1d32b277cd4a57f4323"
+    },
+    "kanit\\temsili\\asama4_kalite_mimarisi.txt": {
+      "boyut_bayt": 4728,
+      "sha256": "ec9dd856dab74b7c108b506f8a0246c515cc1d48970958c1714be33a0a2627ad"
+    },
+    "ornek_veri\\invalid_audit_inputs.json": {
+      "boyut_bayt": 2604,
+      "sha256": "0d8b9eb123f5a32656f0c35bbb27c665289763f6828fc9bc853523fd5c281f21"
+    },
+    "ornek_veri\\sample_compliant_script.py": {
+      "boyut_bayt": 2076,
+      "sha256": "f2556d5125092b9539ed047c111824f084247c209f39f4fc2c4476c35e278d22"
+    },
+    "ornek_veri\\sample_vulnerable_script.py": {
+      "boyut_bayt": 390,
+      "sha256": "1e0f6b388220bbd5557cd13a51bd6cfde5ee6b6271488e71224117c8d3db129e"
+    },
+    "tests\\__init__.py": {
+      "boyut_bayt": 563,
+      "sha256": "b4952a379d8a9bc2ffca1f3ecff8796fd972b1b5f89cdc78312b0689b65eb9e2"
+    },
+    "tests\\test_stage4_quality_auditor.py": {
+      "boyut_bayt": 14288,
+      "sha256": "8a8ba1f90803223955264a365c3821cd287d08ced7bed5ecd0dad3f183ed9893"
+    },
+    "uygulama\\__init__.py": {
+      "boyut_bayt": 690,
+      "sha256": "5cecc531543c12c8ed5f3501c217c633c3e2bc36f89d5b05c4711dc28e17c4f2"
+    },
+    "uygulama\\auditor_cli.py": {
+      "boyut_bayt": 5371,
+      "sha256": "36bb874046bf7912cbfb614a0773b29e81b2d238319de74a141ef1efa1a180d5"
+    },
+    "uygulama\\stage4_quality_auditor.py": {
+      "boyut_bayt": 13561,
+      "sha256": "7253df6acc8331a3d93fb0f8df141ea46ce62bf63bb3cd093dc1fccf5c59b78f"
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "aciklama": "Hafta 20 / Gün 140 Mini Proje 19 için 9 adet negatif kontrol ve kural ihlali test senaryosu.",
+  "senaryolar": [
+    {
+      "senaryo_id": "SCENARIO-HARDEN-01",
+      "baslik": "Sudoers Dosya İzinleri Kritik Düzeyde Açık (0777)",
+      "beklenen_alan": "SUDO",
+      "beklenen_kural": "CIS-1.3.1",
+      "beklenen_durum": "FAIL",
+      "envanter_yamasi": {
+        "sudo_spec": {
+          "file_mode": "0777",
+          "defaults": ["env_reset", "secure_path=/bin"],
+          "rules": ["%sudo ALL=(ALL) ALL"]
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-HARDEN-02",
+      "baslik": "Tehlikeli NOPASSWD ile Kabuk Yetki Yükseltme Riski (/bin/bash)",
+      "beklenen_alan": "SUDO",
+      "beklenen_kural": "CIS-1.3.4",
+      "beklenen_durum": "FAIL",
+      "envanter_yamasi": {
+        "sudo_spec": {
+          "file_mode": "0440",
+          "defaults": ["env_reset", "secure_path=/bin"],
+          "rules": ["developer ALL=(ALL) NOPASSWD: /bin/bash"]
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-HARDEN-03",
+      "baslik": "Yetersiz PAM Parola Uzunluğu ve Karakter Politikası",
+      "beklenen_alan": "PAM",
+      "beklenen_kural": "CIS-5.4.1",
+      "beklenen_durum": "FAIL",
+      "envanter_yamasi": {
+        "pam_spec": {
+          "pwquality": {"minlen": 6, "dcredit": 0, "ucredit": 0, "lcredit": 0, "ocredit": 0},
+          "faillock": {"deny": 10, "unlock_time": 60},
+          "tmout_seconds": 3600
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-HARDEN-04",
+      "baslik": "Yasaklanmış Güvensiz Servislerin Çalıştırılması (telnet, vsftpd)",
+      "beklenen_alan": "SYSTEMD",
+      "beklenen_kural": "CIS-2.1.1",
+      "beklenen_durum": "FAIL",
+      "envanter_yamasi": {
+        "systemd_spec": {
+          "running_services": ["sshd", "telnet", "vsftpd"],
+          "monitored_units": {}
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-HARDEN-05",
+      "baslik": "Systemd Servis Kum Havuzu (Sandboxing) Eksikliği",
+      "beklenen_alan": "SYSTEMD",
+      "beklenen_kural": "CIS-2.2.1",
+      "beklenen_durum": "FAIL",
+      "envanter_yamasi": {
+        "systemd_spec": {
+          "running_services": ["sshd"],
+          "monitored_units": {
+            "webapp.service": {
+              "NoNewPrivileges": false,
+              "ProtectSystem": "no",
+              "PrivateTmp": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-HARDEN-06",
+      "baslik": "SSH Root Girişi ve Parolalı Doğrulama Açık",
+      "beklenen_alan": "SSH",
+      "beklenen_kural": "CIS-5.2.1",
+      "beklenen_durum": "FAIL",
+      "envanter_yamasi": {
+        "ssh_spec": {
+          "sshd_config": {
+            "PermitRootLogin": "yes",
+            "PasswordAuthentication": "yes",
+            "MaxAuthTries": 10
+          },
+          "private_key_mode": "0644"
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-HARDEN-07",
+      "baslik": "Firewall Varsayılan Politikası ACCEPT ve Durumsuz Filtre",
+      "beklenen_alan": "FIREWALL",
+      "beklenen_kural": "CIS-3.4.2",
+      "beklenen_durum": "FAIL",
+      "envanter_yamasi": {
+        "firewall_spec": {
+          "active": true,
+          "backend": "nftables",
+          "default_input_policy": "ACCEPT",
+          "stateful_conntrack": false,
+          "listening_ports": [22, 23]
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-HARDEN-08",
+      "baslik": "Audit Kuralları Kilitlenmemiş ve /etc/shadow İzlenmiyor",
+      "beklenen_alan": "AUDIT",
+      "beklenen_kural": "CIS-4.1.18",
+      "beklenen_durum": "FAIL",
+      "envanter_yamasi": {
+        "audit_spec": {
+          "immutable_flag_enabled": false,
+          "watched_files": ["/var/log/messages"],
+          "monitored_syscalls": []
+        }
+      }
+    },
+    {
+      "senaryo_id": "SCENARIO-HARDEN-09",
+      "baslik": "Journald Geçici Depolama ve İleri Mühürleme Kapalı",
+      "beklenen_alan": "JOURNAL",
+      "beklenen_kural": "CIS-4.2.1",
+      "beklenen_durum": "FAIL",
+      "envanter_yamasi": {
+        "journal_spec": {
+          "Storage": "volatile",
+          "Compress": false,
+          "Seal": false
+        }
+      }
+    }
+  ]
+}

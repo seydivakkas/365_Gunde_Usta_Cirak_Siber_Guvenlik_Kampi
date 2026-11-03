@@ -1,0 +1,80 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "gun": 126,
+  "hafta": 18,
+  "konu": "Aşama 5 kalite özeti: kriptografi ve mimari",
+  "dosyalar": {
+    "ders.md": {
+      "boyut_bayt": 5738,
+      "sha256": "72803e118ff55679a967409dd3ce15107625948ecbcbd3308fb74da5374958f5"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 20312,
+      "sha256": "d8b15b21066a894b70679af3e4c3d5345b7919913c8c09eb0f69f6f402efe7cd"
+    },
+    "rapor.md": {
+      "boyut_bayt": 4696,
+      "sha256": "2343d7d12199a160af2791562a82837e13d4f88ffa36f4d8b49247c2f0848574"
+    },
+    "README.md": {
+      "boyut_bayt": 4934,
+      "sha256": "d3e7c4fecf6dee26cdf28949e598aa98844f102333b40ffd958bfa1d4e311ed1"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1145,
+      "sha256": "21f3c8a52911faea13286ff239af5f9c9dab64e2a23ed0d16dde42e32266ea54"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 9239,
+      "sha256": "58a9ab77026f715bea9a8fe3ff9c823c61ce3f9c2643ff57ff8a80dde82e72d2"
+    },
+    "kanit/gercek/asama5_kalite_denetim_raporu.json": {
+      "boyut_bayt": 1010,
+      "sha256": "e8c731778b2f4b9d5df27aae1cc5c36c12989df18eadf1ef2eda6f3b9e6ffe27"
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "boyut_bayt": 3377,
+      "sha256": "160519943018289639723a6fac85269bc910c95876b0d80debd573a50ff6ee40"
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 2881,
+      "sha256": "a81ff653937f19c02ba51cd987d7982cdd2e54ff815114e5405799fd4168e710"
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "boyut_bayt": 4186,
+      "sha256": "c3e82606ec328648217360f4e76f62d41ce264429dcf25b31d4e06752b346e3b"
+    },
+    "kanit/temsili/asama5_kalite_mimarisi.txt": {
+      "boyut_bayt": 2700,
+      "sha256": "d16e0d11ce27edf84dcffd7d2452797025d64765114ffc55de80fcf129eb204e"
+    },
+    "ornek_veri/invalid_stage5_scenarios.json": {
+      "boyut_bayt": 4745,
+      "sha256": "e6d68cd42b0a760c23d03829e6b5d6599c791f2bac43a8b540253fbedb189dd2"
+    },
+    "ornek_veri/sample_crypto_architecture_spec.json": {
+      "boyut_bayt": 1684,
+      "sha256": "a113599e8ce9408f8fc6a2a9f329d0a1e94f3d26918842bac955eb15a578025c"
+    },
+    "tests/test_stage5_quality.py": {
+      "boyut_bayt": 16159,
+      "sha256": "fa1ddd2300f0ec9dbdaeb3b82cfc43a8e39c32a90a5b3dc6bb38990288bd976b"
+    },
+    "tests/__init__.py": {
+      "boyut_bayt": 508,
+      "sha256": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4"
+    },
+    "uygulama/stage5_cli.py": {
+      "boyut_bayt": 8629,
+      "sha256": "1d8ed9327b8a869e5c3ceb18984c4b4816d856d01eb28a2fc889c59ed9b4499b"
+    },
+    "uygulama/stage5_quality_engine.py": {
+      "boyut_bayt": 25081,
+      "sha256": "abdd579875744cbd99d9ede5e9e872e2af7bc1ab58a64fcbf14aed2f512d59d2"
+    },
+    "uygulama/__init__.py": {
+      "boyut_bayt": 508,
+      "sha256": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4"
+    }
+  }
+}

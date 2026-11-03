@@ -1,0 +1,69 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+Windows Dosya Sistemi, NTFS Ana Dosya Tablosu (MFT), ACL ve ADS Mimarisi
+================================================================================
+
++------------------------------------------------------------------------------+
+|               NTFS BİRİM YAPISI (VOLUME ARCHITECTURE)                        |
+|                                                                              |
+|  [VBR / Boot Sektörü] ---> [$MFT (Master File Table)] ---> [Veri Kümeleri]  |
+|                                                                              |
+|  $MFT KAYIT YAPISI (1024 Baytlık Her Dosya Kaydı):                          |
+|  +------------------------------------------------------------------------+  |
+|  | $STANDARD_INFORMATION : Zaman damgaları ($MACE: Modify, Access, Create)|  |
+|  | $FILE_NAME            : Dosya adı, ebeveyn dizin göstericisi           |  |
+|  | $SECURITY_DESCRIPTOR  : Sahip SID, DACL (Erişim), SACL (Denetim)      |  |
+|  | $DATA (Adsız Akış)    : Dosyanın birincil içeriği (Default Stream)     |  |
+|  | $DATA (ADS Akışı)     : İkincil gizli akışlar (örn: dosya.txt:payload) |  |
+|  +------------------------------------------------------------------------+  |
++------------------------------------------------------------------------------+
+                                       |
+                   ERİŞİM KONTROL MEKANİZMASI (SECURITY DESCRIPTOR)
+                                       v
++------------------------------------------------------------------------------+
+|                         DACL DEĞERLENDİRME SIRASI                            |
+|                                                                              |
+|  Kullanıcı veya Süreç Dosyaya Erişmek İstediğinde:                           |
+|                                                                              |
+|     [1. AÇIKÇA REDDET (Explicit Deny)]   ---> EŞLEŞİRSE: DERHAL ENGELLE!     |
+|                    |                                                         |
+|                    v (Eşleşmezse)                                            |
+|     [2. AÇIKÇA İZİN VER (Explicit Allow)] ---> EŞLEŞİRSE: ERİŞİMİ ONAYLA!    |
+|                    |                                                         |
+|                    v (Eşleşmezse)                                            |
+|     [3. MİRAS ALINAN REDDET (Inherited Deny)]                                |
+|                    |                                                         |
+|                    v (Eşleşmezse)                                            |
+|     [4. MİRAS ALINAN İZİN VER (Inherited Allow)]                             |
+|                    |                                                         |
+|                    v (Hiçbiri yoksa)                                         |
+|     [VARSAYILAN: ERİŞİMİ REDDET (Implicit Deny)]                             |
++------------------------------------------------------------------------------+
+                                       |
+                 ALTERNATİF VERİ AKIŞLARI (ADS - MITRE T1564.004)
+                                       v
++------------------------------------------------------------------------------+
+|  DOSYA: masum_not.txt                                                        |
+|                                                                              |
+|  1. Birincil Akış (masum_not.txt:$DATA)                                      |
+|     Boyut: 128 Bayt | İçerik: "Toplantı notları..." (Gezginde Görünen)       |
+|                                                                              |
+|  2. İkincil Akış (masum_not.txt:hidden_payload.ps1)                          |
+|     Boyut: 4096 Bayt | İçerik: Powershell Ters Kabuk (Gezginde Görünmez!)   |
+|     Çalıştırma: powershell -ep bypass - < masum_not.txt:hidden_payload.ps1   |
+|                                                                              |
+|  3. Mark-of-the-Web Akışı (masum_not.txt:Zone.Identifier)                    |
+|     İçerik: [ZoneTransfer] ZoneId=3 (İnternetten indirildi bayrağı)          |
++------------------------------------------------------------------------------+
+                                       |
+               SİHİRLİ BAYTLAR (MAGIC BYTES) VS UZANTI ALDATMACASI
+                                       v
++------------------------------------------------------------------------------+
+|  Görünen Dosya Adı : kurumsal_fatura.pdf  (İkon: Adobe Acrobat PDF)          |
+|  Dosya Başlığı Hex : 4D 5A 90 00 ...     (ASCII: MZ... -> PE/EXE İmzası!)    |
+|                                                                              |
+|  GÜVENLİK ANALİZİ:                                                           |
+|  - Dosya uzantısı bir güvenlik mekanizması DEĞİLDİR; yalnızca GUI ipucudur. |
+|  - Saldırgan PE dosyasını .pdf yaparak e-posta filtrelerini atlatmayı dener! |
+|  - Savunma: Dosya başlık baytları doğrulanmalı (Magic Byte Inspection).     |
++------------------------------------------------------------------------------+

@@ -1,0 +1,22 @@
+========================================================================
+  NIST SP 800-57 ANAHTAR YÖNETİMİ VE ROTASYON ANALİZ RAPORU
+========================================================================
+
+1. NIST SP 800-57 YAŞAM DÖNGÜSÜ VE DURUM GEÇİŞLERİ:
+   - Pre-Activation: Üretilmiş fakat henüz şifrelemede aktif edilmemiş durum.
+   - Active: Hem şifreleme hem de deşifre için yetkilendirilmiş anahtar.
+   - Deprecated: Yeni şifreleme yapamaz (CWE-320); yalnızca geçmiş veriyi deşifre edebilir.
+   - Compromised: Sızmış/ihlal edilmiş anahtar; derhal bloke edilir ve tüm operasyonlar durdurulur.
+   - Destroyed: Kriptografik Sıfırlama (Zeroization / CWE-226) ile bellekten silinmiş durum.
+
+2. ZARF ŞİFRELEME (ENVELOPE ENCRYPTION - KEK VS DEK) VE RE-WRAPPING:
+   - Hiyerarşi: KEK (Key Encryption Key) anahtarları HSM/KMS içinde saklanır; DEK (Data Encryption
+     Key) ise doğrudan veriyi şifreler ve KEK ile sarılarak şifreli verinin başlığına eklenir.
+   - O(1) Re-wrapping: Milyonlarca gigabayt veriyi yeniden şifrelemek yerine SADECE DEK'ler yeni
+     KEK ile yeniden sarılır. Bu sayede sıfır kesintiyle anında anahtar rotasyonu sağlanır.
+
+3. GÜVENLİK VE ÇİFT KONTROL (DUAL CONTROL / ZEROIZATION):
+   - Dual Control / Split Knowledge: Tek bir yöneticinin tek başına master anahtara sahip olmasını
+     engelleyen 2-of-2 eşik paylaşımı (CWE-320 savunması).
+   - Kriptografik Sıfırlama (Zeroization): Emekliye ayrılan anahtarların üzerine 0x00, 0xFF ve
+     CSPRNG rastgele baytları yazılarak bellek ve disk kalıntılarından sızıntı önlendi (CWE-226).

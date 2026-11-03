@@ -1,0 +1,82 @@
+{
+  "metadata": {
+    "title": "Windows Olay Günlüğü Örnek Sistem Olayları (Non-Confidential)",
+    "description": "Gizli veri içermeyen, adli ve operasyonel inceleme için hazırlanmış 3 sistem olayı (G029-SC2)",
+    "channel": "System",
+    "total_events": 3,
+    "created_at": "2026-10-27T08:00:00Z"
+  },
+  "events": [
+    {
+      "record_id": 104201,
+      "provider_name": "EventLog",
+      "event_id": 6005,
+      "level": "Information",
+      "level_code": 4,
+      "channel": "System",
+      "time_created": "2026-10-27T07:15:30.124500Z",
+      "computer": "SEC-CORP-WS01",
+      "user_sid": "S-1-5-18",
+      "user_name": "NT AUTHORITY\\SYSTEM",
+      "event_data": {
+        "MessageDetail": "The Event log service was started."
+      },
+      "raw_message": "The Event log service was started.",
+      "security_context": {
+        "category": "Audit / Boot Timeline",
+        "mitre_technique": "N/A - System Normal Baseline",
+        "significance": "Sistem önyükleme zaman çizgisini belirler. Günlük kaydının başlangıcını belgeler."
+      }
+    },
+    {
+      "record_id": 104205,
+      "provider_name": "Service Control Manager",
+      "event_id": 7045,
+      "level": "Information",
+      "level_code": 4,
+      "channel": "System",
+      "time_created": "2026-10-27T07:22:15.891200Z",
+      "computer": "SEC-CORP-WS01",
+      "user_sid": "S-1-5-18",
+      "user_name": "NT AUTHORITY\\SYSTEM",
+      "event_data": {
+        "ServiceName": "SysmonAgentService",
+        "ImagePath": "C:\\Program Files\\Sysinternals\\sysmon64.exe -i -accepteula",
+        "ServiceType": "user mode service",
+        "StartType": "auto start",
+        "AccountName": "LocalSystem"
+      },
+      "raw_message": "A service was installed in the system. Service Name: SysmonAgentService, Image Path: C:\\Program Files\\Sysinternals\\sysmon64.exe -i -accepteula, Service Type: user mode service, Start Type: auto start, Account Name: LocalSystem.",
+      "security_context": {
+        "category": "Persistence / Privilege Escalation",
+        "mitre_technique": "T1543.003 - Create or Modify System Process: Windows Service",
+        "significance": "Sistemde yeni bir servisin kurulduğunu belgeler. Zararlı yazılımların kalıcılık sağlama girişimlerini yakalamada en kritik olaydır."
+      }
+    },
+    {
+      "record_id": 104210,
+      "provider_name": "USER32",
+      "event_id": 1074,
+      "level": "Information",
+      "level_code": 4,
+      "channel": "System",
+      "time_created": "2026-10-27T08:05:10.450120Z",
+      "computer": "SEC-CORP-WS01",
+      "user_sid": "S-1-5-21-3623811015-3361044348-30300820-1001",
+      "user_name": "SEC-CORP\\administrator",
+      "event_data": {
+        "ProcessName": "C:\\Windows\\System32\\shutdown.exe",
+        "Reason": "Operating System: Upgrade (Planned)",
+        "ReasonCode": "0x40003",
+        "ShutdownType": "restart",
+        "InitiatingUser": "SEC-CORP\\administrator"
+      },
+      "raw_message": "The process C:\\Windows\\System32\\shutdown.exe has initiated the restart of computer SEC-CORP-WS01 on behalf of user SEC-CORP\\administrator for the following reason: Operating System: Upgrade (Planned). Reason Code: 0x40003.",
+      "security_context": {
+        "category": "System Availability / Forensic Timeline",
+        "mitre_technique": "T1529 - System Shutdown/Reboot",
+        "significance": "Sistemin kim tarafından, hangi süreçle ve ne sebeple yeniden başlatıldığını adli olarak kanıtlar."
+      }
+    }
+  ]
+}

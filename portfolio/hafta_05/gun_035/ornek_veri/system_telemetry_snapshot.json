@@ -1,0 +1,160 @@
+{
+  "system_info": {
+    "hostname": "SEC-AUDIT-WKS01",
+    "os_version": "Windows 11 Pro 64-bit (Build 22631)",
+    "scan_timestamp": "2026-10-27T11:30:00Z",
+    "scan_mode": "READ_ONLY_OBSERVER",
+    "operator": "Auditor_Standard_User"
+  },
+  "processes": [
+    {
+      "pid": 4,
+      "ppid": 0,
+      "name": "System",
+      "executable_path": "C:\\Windows\\System32\\ntoskrnl.exe",
+      "user": "NT AUTHORITY\\SYSTEM",
+      "command_line": "System"
+    },
+    {
+      "pid": 680,
+      "ppid": 4,
+      "name": "smss.exe",
+      "executable_path": "C:\\Windows\\System32\\smss.exe",
+      "user": "NT AUTHORITY\\SYSTEM",
+      "command_line": "\\SystemRoot\\System32\\smss.exe"
+    },
+    {
+      "pid": 850,
+      "ppid": 680,
+      "name": "services.exe",
+      "executable_path": "C:\\Windows\\System32\\services.exe",
+      "user": "NT AUTHORITY\\SYSTEM",
+      "command_line": "C:\\Windows\\system32\\services.exe"
+    },
+    {
+      "pid": 1024,
+      "ppid": 850,
+      "name": "svchost.exe",
+      "executable_path": "C:\\Windows\\System32\\svchost.exe",
+      "user": "NT AUTHORITY\\SYSTEM",
+      "command_line": "C:\\Windows\\system32\\svchost.exe -k DcomLaunch -p"
+    },
+    {
+      "pid": 4500,
+      "ppid": 1024,
+      "name": "explorer.exe",
+      "executable_path": "C:\\Windows\\explorer.exe",
+      "user": "SEC-AUDIT-WKS01\\StandardUser",
+      "command_line": "C:\\Windows\\Explorer.EXE"
+    },
+    {
+      "pid": 7120,
+      "ppid": 4500,
+      "name": "chrome.exe",
+      "executable_path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "user": "SEC-AUDIT-WKS01\\StandardUser",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\""
+    },
+    {
+      "pid": 8810,
+      "ppid": 4500,
+      "name": "winword.exe",
+      "executable_path": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+      "user": "SEC-AUDIT-WKS01\\StandardUser",
+      "command_line": "\"C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE\" /n C:\\Users\\StandardUser\\Downloads\\invoice.docx"
+    },
+    {
+      "pid": 8820,
+      "ppid": 8810,
+      "name": "powershell.exe",
+      "executable_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "user": "SEC-AUDIT-WKS01\\StandardUser",
+      "command_line": "powershell.exe -ExecutionPolicy Bypass -NoProfile -WindowStyle Hidden -EncodedCommand SQBFAFgA"
+    },
+    {
+      "pid": 9900,
+      "ppid": 1,
+      "name": "svch0st.exe",
+      "executable_path": "C:\\Windows\\Temp\\svch0st.exe",
+      "user": "NT AUTHORITY\\SYSTEM",
+      "command_line": "C:\\Windows\\Temp\\svch0st.exe --backdoor"
+    }
+  ],
+  "services": [
+    {
+      "name": "WinDefend",
+      "display_name": "Microsoft Defender Antivirus Service",
+      "status": "Running",
+      "start_mode": "Automatic",
+      "account": "NT AUTHORITY\\SYSTEM",
+      "binary_path": "\"C:\\Program Files\\Windows Defender\\MsMpEng.exe\""
+    },
+    {
+      "name": "EventLog",
+      "display_name": "Windows Event Log",
+      "status": "Running",
+      "start_mode": "Automatic",
+      "account": "NT AUTHORITY\\LocalService",
+      "binary_path": "C:\\Windows\\System32\\svchost.exe -k LocalServiceNetworkRestricted"
+    },
+    {
+      "name": "MpsSvc",
+      "display_name": "Windows Defender Firewall",
+      "status": "Stopped",
+      "start_mode": "Disabled",
+      "account": "NT AUTHORITY\\LocalService",
+      "binary_path": "C:\\Windows\\System32\\svchost.exe -k LocalServiceNoNetwork"
+    },
+    {
+      "name": "CloudBackupSvc",
+      "display_name": "Corporate Cloud Backup Agent",
+      "status": "Running",
+      "start_mode": "Automatic",
+      "account": "LocalSystem",
+      "binary_path": "C:\\Program Files\\Enterprise Cloud Backup\\agent.exe -run"
+    }
+  ],
+  "file_integrity": [
+    {
+      "file_path": "C:\\Windows\\System32\\drivers\\etc\\hosts",
+      "expected_sha256": "8a31e1a53303f84f09d845e0a6d0c6ec621d960f4eb80d0d8fb5a289b431efaa",
+      "actual_sha256": "8a31e1a53303f84f09d845e0a6d0c6ec621d960f4eb80d0d8fb5a289b431efaa",
+      "status": "MATCH"
+    },
+    {
+      "file_path": "C:\\ProgramData\\App\\security_policy.cfg",
+      "expected_sha256": "5b73db061e0757260a4dedbadfcf57191864c64727b42b3d375f96337472ed6c",
+      "actual_sha256": "91a7743b52a28d0b1f2f9ac03d848dca744ee0b9fe8d9f62608de3870e363d3c",
+      "status": "MISMATCH"
+    },
+    {
+      "file_path": "C:\\ProgramData\\App\\missing_baseline_file.bin",
+      "expected_sha256": "0c7cedf21756e8a6982e5303ed4ccf4c931c9b38923348ecc245746a73728853",
+      "actual_sha256": "FILE_NOT_FOUND",
+      "status": "MISSING"
+    }
+  ],
+  "file_signatures": [
+    {
+      "file_name": "legit_report.pdf",
+      "claimed_extension": ".pdf",
+      "header_hex": "25 50 44 46 2D 31 2E 37",
+      "detected_format": "PDF Document",
+      "is_mismatch": false
+    },
+    {
+      "file_name": "invoice_receipt.pdf",
+      "claimed_extension": ".pdf",
+      "header_hex": "4D 5A 90 00 03 00 00 00",
+      "detected_format": "Windows PE Executable",
+      "is_mismatch": true
+    },
+    {
+      "file_name": "statement.pdf.exe",
+      "claimed_extension": ".pdf.exe",
+      "header_hex": "4D 5A 90 00 03 00 00 00",
+      "detected_format": "Windows PE Executable",
+      "is_mismatch": true
+    }
+  ]
+}

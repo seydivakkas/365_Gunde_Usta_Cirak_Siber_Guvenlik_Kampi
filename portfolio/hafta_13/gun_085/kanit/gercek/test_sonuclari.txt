@@ -1,0 +1,33 @@
+test_01_safe_script_audit_passes (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_01_safe_script_audit_passes)
+Guvenli PowerShell boru hatti komutlarinin hicbir tehdit uretmedigini dogrular. ... ok
+test_02_detect_iex_pipeline_invocation (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_02_detect_iex_pipeline_invocation)
+Boru hattina gelen verinin Invoke-Expression (IEX) ile calistirilmasinin CRITICAL olarak yakalandigini test eder. ... ok
+test_03_detect_obfuscated_encoded_command (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_03_detect_obfuscated_encoded_command)
+Boru hatti parametresinde gizlenmis Base64 EncodedCommand calistirilmasinin tespitini dogrular. ... ok
+test_04_detect_download_cradle_pipeline (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_04_detect_download_cradle_pipeline)
+WebClient download string ile agdan kod cekip pipe ile calistiran download cradle tespitini dogrular. ... ok
+test_05_detect_unquoted_service_path (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_05_detect_unquoted_service_path)
+Tirnaksiz ve bosluk iceren calistirilabilir servis yolunun HIGH olarak tespit edildigini dogrular. ... ok
+test_06_reject_null_byte_in_script (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_06_reject_null_byte_in_script)
+Betik metnine enjekte edilen null-byte (0x00) karakterinin NullByteForbiddenException ile engellendigini dogrular. ... ok
+test_07_reject_malformed_pipeline_empty_pipe (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_07_reject_malformed_pipeline_empty_pipe)
+Ardisik bos boru hatti operatorlerinin (| |) MalformedPipelineSyntaxException ile reddini dogrular. ... ok
+test_08_reject_malformed_pipeline_trailing_pipe (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_08_reject_malformed_pipeline_trailing_pipe)
+Boru hatti operatorunun (|) havada kaldigi tek satirlik betiklerin reddedildigini dogrular. ... ok
+test_09_process_hunting_known_malicious_tool (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_09_process_hunting_known_malicious_tool)
+Boru hattindan gecen mimikatz gibi bilinen saldiri araclarinin CRITICAL olarak yakalandigini dogrular. ... ok
+test_10_process_hunting_anomalous_parent_child (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_10_process_hunting_anomalous_parent_child)
+Word veya Excel gibi ofis yazilimlarinin PowerShell baslatmasinin anomali olarak yakalandigini test eder. ... ok
+test_11_process_hunting_strict_mode_lineage_exception (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_11_process_hunting_strict_mode_lineage_exception)
+strict=True durumunda supheli ebeveyn-cocuk iliskisinde AnomalousProcessLineageException firlatildigini test eder. ... ok
+test_12_network_socket_suspicious_port (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_12_network_socket_suspicious_port)
+Port 4444 (Metasploit varsayilan) dinleyen soket nesnesinin supheli olarak isaretlendigini test eder. ... ok
+test_13_network_socket_invalid_ip_rejection (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_13_network_socket_invalid_ip_rejection)
+Bozuk IP adresi iceren soket nesnesinin strict modda InvalidPipelineSocketException firlattigini test eder. ... ok
+test_14_oversized_pipeline_object_limit_dos (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_14_oversized_pipeline_object_limit_dos)
+Boru hattina izin verilen tavanin (5000 nesne) uzerinde veri aktiginda DoS korumasiyla engellendigini dogrular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.005s
+
+OK

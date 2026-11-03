@@ -1,0 +1,31 @@
+{
+  "standart": "CIS Linux Benchmark & NIST SP 800-53 IA-2 / AC-2 / AC-10",
+  "surum": "2026.1",
+  "aciklama": "Kurumsal isletim sistemi kullanici, grup ve oturum guvenlik kurallari",
+  "sistem_uid_esigi": 1000,
+  "servis_hesaplari_yasakli_kabuklar": [
+    "/bin/bash",
+    "/bin/sh",
+    "/bin/zsh",
+    "/bin/dash"
+  ],
+  "servis_hesaplari_gecerli_kabuklar": [
+    "/usr/sbin/nologin",
+    "/sbin/nologin",
+    "/bin/false"
+  ],
+  "idari_gruplar": [
+    "root",
+    "wheel",
+    "sudo",
+    "adm",
+    "Administrators"
+  ],
+  "maksimum_bosta_kalma_suresi_saniye": 900,
+  "hesap_hareketsizlik_esigi_gun": 90,
+  "ortak_hesap_politika_kurali": {
+    "izin_verilen_es_zamanli_oturum_idari": 1,
+    "izin_verilen_es_zamanli_oturum_standart": 3,
+    "aciklama": "Ortak ve idari hesaplarda birden fazla es zamanli oturum inkar edilemezligi zayiflatir."
+  }
+}

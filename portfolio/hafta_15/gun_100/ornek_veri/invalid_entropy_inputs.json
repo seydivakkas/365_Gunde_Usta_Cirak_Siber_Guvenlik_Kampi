@@ -1,0 +1,65 @@
+[
+  {
+    "id": "NEG_01_WEAK_PRNG_KEYGEN",
+    "tanim": "Kriptografik anahtar üretiminde zayıf Mersenne Twister (random modülü) kullanımı",
+    "algoritma": "random.MT19937",
+    "beklenen_hata": "WeakPRNGDetectedError",
+    "cwe": "CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator"
+  },
+  {
+    "id": "NEG_02_INSUFFICIENT_ENTROPY_KEY",
+    "tanim": "Kriptografik kabul eşiğinin (7.0 bit/bayt) altında kalan düşük entropili anahtar iletimi",
+    "veri_hex": "41414141414141414141414141414141",
+    "beklenen_hata": "InsufficientEntropyError",
+    "cwe": "CWE-331: Insufficient Entropy"
+  },
+  {
+    "id": "NEG_03_PREDICTABLE_TIME_SEED",
+    "tanim": "Üretecin sistem zaman damgası (timestamp) gibi tahmin edilebilir tohumla başlatılması",
+    "tohum_tipi": "SYSTEM_TIMESTAMP",
+    "beklenen_hata": "PredictableSeedError",
+    "cwe": "CWE-337: Predictable Seed in Pseudo-Random Number Generator"
+  },
+  {
+    "id": "NEG_04_SMALL_ENTROPY_SPACE",
+    "tanim": "Brute-force saldırılarına açık, 64-bitin altında kalan aşırı küçük rastgele alan",
+    "bit_uzunlugu": 16,
+    "beklenen_hata": "SmallEntropySpaceError",
+    "cwe": "CWE-334: Small Space of Random Values"
+  },
+  {
+    "id": "NEG_05_EMPTY_PAYLOAD_EVAL",
+    "tanim": "Boş (0 baytlık) veri dizgisi ile entropi hesaplama denemesi",
+    "veri": "",
+    "beklenen_hata": "InsufficientEntropyError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_06_OVERSIZED_BUFFER_DOS",
+    "tanim": "1 MB tavanını aşan devasa veri ile bellek tüketimi saldırısı (DoS)",
+    "boyut_bayt": 2000000,
+    "beklenen_hata": "PayloadLimitExceededError",
+    "cwe": "CWE-400: Uncontrolled Resource Consumption"
+  },
+  {
+    "id": "NEG_07_NULL_BYTE_INJECTION",
+    "tanim": "Üreteç etiketinde veya tohum parametresinde Null-Byte (0x00) zehirlemesi",
+    "etiket": "CSPRNG_KEY\u0000MALICIOUS",
+    "beklenen_hata": "NullByteInjectionError",
+    "cwe": "CWE-158: Improper Neutralization of Null Byte or Special Characters"
+  },
+  {
+    "id": "NEG_08_INVALID_TOKEN_LENGTH",
+    "tanim": "Geçersiz (sıfır veya negatif) anahtar/token uzunluğu talebi",
+    "uzunluk": -16,
+    "beklenen_hata": "TypeValidationError",
+    "cwe": "CWE-1284: Improper Input Handling"
+  },
+  {
+    "id": "NEG_09_TYPE_CONFUSION",
+    "tanim": "Bayt dizisi beklenen entropi motoruna sayısal (int) tip iletilmesi",
+    "girdi": 987654321,
+    "beklenen_hata": "TypeValidationError",
+    "cwe": "CWE-843: Access of Resource Using Incompatible Type"
+  }
+]

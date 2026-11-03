@@ -1,0 +1,76 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+G048: ICMP Protokol Mimarisi, Traceroute TTL ve Tünelleme (Covert Channel) Şeması
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) - Tüm Hakları Saklıdır
+================================================================================
+
+1. RFC 792 ICMP BAŞLIK YAPISI (HEADER ARCHITECTURE)
+--------------------------------------------------------------------------------
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     Type      |     Code      |          Checksum             | (4 Bayt)
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|          Identifier           |        Sequence Number        | (4 Bayt)
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     Data / Payload (Standart: 32/56B | Covert Channel: >64B)   | (Değişken)
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+2. TRACEROUTE ÇALIŞMA MANTIĞI: TTL TÜKENME GERİ BİLDİRİMİ
+--------------------------------------------------------------------------------
+ İstemci (Host)            Yönlendirici 1            Yönlendirici 2           Hedef Sunucu
+  (192.168.1.50)            (192.168.1.1)             (10.0.0.1)               (8.8.8.8)
+       |                          |                         |                      |
+  (1)  |--- IP (TTL=1) ---------->|                         |                      |
+       |<-- ICMP Type 11 Code 0---| (Time Exceeded)         |                      |
+       |    "Hop 1: 192.168.1.1"  |                         |                      |
+       |                          |                         |                      |
+  (2)  |--- IP (TTL=2) ----------->------------------------>|                      |
+       |<-- ICMP Type 11 Code 0-----------------------------| (Time Exceeded)      |
+       |    "Hop 2: 10.0.0.1"                               |                      |
+       |                                                    |                      |
+  (3)  |--- IP (TTL=3) ------------------------------------->--------------------->|
+       |<-- ICMP Type 0 Code 0 (Echo Reply) ---------------------------------------|
+            "Hedefe Ulaşıldı: 8.8.8.8"
+
+
+3. SİBER TEHDİT: ICMP TÜNELLEME (COVERT CHANNEL DATA EXFILTRATION)
+--------------------------------------------------------------------------------
+ İç Ağ İstemcisi / Ajan                                       Saldırgan C2 Sunucusu
+    (Zararlı Yazılım)                                          (İnternet / WAN)
+           |                                                          |
+           |====== Standart Güvenlik Duvarı (Firewall) ===============|
+           |    [Kural: "TCP/UDP dışa kapalı, PING (ICMP) SERBEST"]   |
+           |                                                          |
+           |--- ICMP Echo Request (Type 8 Code 0) ------------------->|
+           |    [IP Başlığı: Meşru Ping Görünümü]                     |
+           |    [ICMP Payload]: "EXFILTRATED:API_KEY=AKIAIOSFODNN..." | (Veri Sızıntısı!)
+           |                                                          |
+           |<-- ICMP Echo Reply (Type 0 Code 0) ----------------------|
+                [ICMP Payload]: "CMD=WHOAMI;DOWNLOAD_PAYLOAD..."      | (Gizli C2 Komutu!)
+
+
+4. KURUMSAL SAVUNMA VE DERİNLEMESİNE İNCELEME (DPI)
+--------------------------------------------------------------------------------
+                   +---------------------------------------+
+                   | Yeni Nesil Güvenlik Duvarı (NGFW/DPI) |
+                   +---------------------------------------+
+                                      |
+                     [Gelen / Çıkan ICMP Trafik Denetimi]
+                                      |
+        +-----------------------------+-----------------------------+
+        |                                                           |
+   [MTU Kontrolü]                                             [Payload Analizi]
+   Type 3 Code 4                                              Type 8 / Type 0
+   (PMTUD) mi?                                                Payload > 64 Bayt mı?
+        |                                                     Veya base64/ascii veri mi?
+        v                                                           |
+  [✅ GEÇİR]                                                        v
+  (TCP Sağlığı İçin Şart)                                     [🚨 BLOKE ET (DROP)]
+                                                              (Covert Channel Engellendi)
+
+================================================================================
+NOT: Bu diyagram eğitim ve kavramsal modelleme amaçlı hazırlanmış mimari şemadır.
+================================================================================

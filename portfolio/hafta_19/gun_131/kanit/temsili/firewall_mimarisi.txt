@@ -1,0 +1,41 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+WINDOWS DEFENDER GELİŞMİŞ GÜVENLİKLİ GÜVENLİK DUVARI (WFAS) MİMARİSİ
+========================================================================================
+
+                                [ GELEN AĞ TRAFİĞİ (INBOUND) ]
+                                               │
+                                               ▼
+               ┌─────────────────────────────────────────────────────────────┐
+               │           1. AĞ PROFİLİ TESPİTİ VE İLİŞKİLENDİRME           │
+               │  - Domain Profile  : Active Directory Etki Alanı Ağı        │
+               │  - Private Profile : Ev ve Güvenilir Kurumsal Yerel Ağ      │
+               │  - Public Profile  : Kafe, Otel, Doğrudan Açık İnternet     │
+               └──────────────────────────────┬──────────────────────────────┘
+                                               │
+                                               ▼
+               ┌─────────────────────────────────────────────────────────────┐
+               │           2. ÇEKİRDEK FİLTRE MOTORU (BFP / WFP)             │
+               │  - Varsayılan Gelen Eylem: BLOCK (Eşleşmeyenler Engellenir) │
+               │  - Varsayılan Giden Eylem: ALLOW                            │
+               └──────────────────────────────┬──────────────────────────────┘
+                                               │
+                                               ▼
+               ┌─────────────────────────────────────────────────────────────┐
+               │           3. GELEN KURAL VE İSTİSNA DENETİMİ                │
+               │  - Public Profile: RDP (3389), SMB (445), WinRM KAPALI!    │
+               │  - Any-to-Any İzin Kuralları Yasaklanmıştır                 │
+               │  - AllowLocalFirewallRules: FALSE (Merkezi Yönetim)         │
+               └──────────────────────────────┬──────────────────────────────┘
+                                               │
+                                               ▼
+               ┌─────────────────────────────────────────────────────────────┐
+               │           4. GÜVENLİK KÜTÜKLEMESİ (LOGGING - SACL)          │
+               │  - LogBlocked = TRUE (Düşürülen Paketler Kaydedilir)        │
+               │  - LogFilePath = %SystemRoot%\System32\LogFiles\Firewall... │
+               │  - LogMaxSize = >= 16384 KB (16 MB)                         │
+               └─────────────────────────────────────────────────────────────┘
+
+========================================================================================
+NOT: Bu diyagram konsept ve mimari akışı görselleştiren temsili bir şemadır.
+========================================================================================

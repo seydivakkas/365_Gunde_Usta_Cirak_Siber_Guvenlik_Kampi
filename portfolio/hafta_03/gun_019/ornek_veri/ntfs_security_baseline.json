@@ -1,0 +1,81 @@
+{
+  "aciklama": "GÜN 019 - NTFS Güvenlik Taban Çizgisi ve Dosya Bütünlüğü Kuralları",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "surum": "1.0.0",
+  "tarih": "2026-10-27",
+  "standartlar": [
+    {
+      "kod": "CIS Windows NTFS Hardening",
+      "baslik": "NTFS Dosya Sistemi Erişim Denetim Kılavuzu",
+      "onerilen_ayarlar": {
+        "NoEveryoneFullControl": "Everyone veya Authenticated Users gruplarına tam denetim yasaktır",
+        "ExplicitDenyEvaluation": "Açıkça reddetme (Deny) girdileri izin (Allow) girdilerine önceliklidir",
+        "EnableSACLAuditing": "Hassas dizinlerde başarısız ve başarılı yazma denetimi açıktır"
+      }
+    },
+    {
+      "kod": "MITRE ATT&CK T1564.004 & T1036.007",
+      "baslik": "Gizleme ve Maskeleme Tehditleri",
+      "kapsam": "Alternatif Veri Akışları (ADS) ile zararlı gizleme ve dosya uzantısını değiştirerek filtre atlatma tekniklerinin tespiti."
+    },
+    {
+      "kod": "NIST SP 800-53 Rev. 5",
+      "baslik": "Erişim ve Bütünlük Koruması",
+      "kontroller": [
+        "AC-3: Erişim Uygulaması (DACL Kuralları)",
+        "AU-2: Olay Günlüğü Denetimi (SACL Tetikleyicileri)",
+        "SI-7: Bilgi ve Dosya Bütünlüğü (Sihirli Bayt Doğrulaması)"
+      ]
+    }
+  ],
+  "bilinen_sihirli_baytlar": {
+    "pe_executable": {
+      "hex_baslangic": "4d5a",
+      "aciklama": "Windows Çalıştırılabilir Dosyası (PE/COFF - .EXE / .DLL)",
+      "gecerli_uzantilar": [".exe", ".dll", ".sys", ".scr"]
+    },
+    "pdf_document": {
+      "hex_baslangic": "25504446",
+      "aciklama": "Adobe Portable Document Format (.PDF)",
+      "gecerli_uzantilar": [".pdf"]
+    },
+    "png_image": {
+      "hex_baslangic": "89504e47",
+      "aciklama": "Portable Network Graphics (.PNG)",
+      "gecerli_uzantilar": [".png"]
+    },
+    "jpeg_image": {
+      "hex_baslangic": "ffd8ff",
+      "aciklama": "JPEG Resim Dosyası (.JPG / .JPEG)",
+      "gecerli_uzantilar": [".jpg", ".jpeg"]
+    },
+    "zip_archive": {
+      "hex_baslangic": "504b0304",
+      "aciklama": "ZIP Arşivi / Modern Office Belgesi (.ZIP / .DOCX / .XLSX)",
+      "gecerli_uzantilar": [".zip", ".docx", ".xlsx", ".pptx"]
+    }
+  },
+  "guvenlik_denetim_kurallari": [
+    {
+      "kural_id": "RULE-NTFS-001",
+      "kriter": "extension_magic_mismatch",
+      "beklenen_deger": false,
+      "seviye": "KRITIK",
+      "hata_mesaji": "Dosya uzantısı ile gerçek sihirli baytlar (Magic Bytes) uyuşmuyor! Zararlı yazılım maskeleme (T1036) şüphesi."
+    },
+    {
+      "kural_id": "RULE-NTFS-002",
+      "kriter": "hidden_ads_var_mi",
+      "beklenen_deger": false,
+      "seviye": "YUKSEK",
+      "hata_mesaji": "Dosyada gizli Alternatif Veri Akışı (ADS) tespit edildi! T1564.004 zararlı kod saklama riski."
+    },
+    {
+      "kural_id": "RULE-NTFS-003",
+      "kriter": "everyone_full_control",
+      "beklenen_deger": false,
+      "seviye": "KRITIK",
+      "hata_mesaji": "DACL içerisinde 'Everyone' grubuna Full Control izni tanımlanmış! Zayıf NTFS erişim denetimi."
+    }
+  ]
+}

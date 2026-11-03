@@ -1,0 +1,49 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+================================================================================
+G068: AĞ GÜNLÜKLERİ KİŞİSEL VERİ (PII) ARINDIRMA VE GİZLİLİK PİPELINE MİMARİSİ
+================================================================================
+
++-----------------------------------------------------------------------------+
+|               GELEN HAM AĞ TELEMETRİSİ VE GÜNLÜK KAYITLARI                  |
+|          (PCAP Paketleri, NetFlow, Zeek/Bro, Syslog, Web Erişim Logları)     |
++-----------------------------------------------------------------------------+
+                                      |
+                                      v
++-----------------------------------------------------------------------------+
+|                   ŞEMA VE GÜVENLİK POLİTİKASI DENETLEYİCİ                   |
+|     - Zorunlu Kayıt Kimliği & Zaman Damgası                                 |
+|     - Veri Saklama Süresi Denetimi (Log Retention: Max 730 Gün)             |
++-----------------------------------------------------------------------------+
+                                      |
+                                      v
++-----------------------------------------------------------------------------+
+|                 ÇOK KATMANLI PII TESPİT VE ARINDIRMA MOTORU                 |
++-----------------------------------------------------------------------------+
+       |                         |                         |
+       v                         v                         v
+[AĞ KATMANI PII]          [PROTOKOL BAŞLIKLARI]     [UYGULAMA VE GÖVDE PII]
+- IP Adresleri:           - Authorization:          - E-posta Adresleri:
+  * Subnet (/24)            Bearer [TOKEN]            u***z@kurum.com
+  * Salted HMAC-SHA256    - Cookie / Set-Cookie:    - TCKN Kimlik No:
+- MAC Adresleri:            [SESSION_COOKIE]          12*******01
+  * OUI Korumalı          - API / Gizli Anahtarlar: - Kredi Kartı (PCI-DSS):
+    00:1A:2B:XX:XX:XX       [REDACTED_HEADER]         4543 **** **** 9012
+                                                    - Telefon Numaraları:
+                                                      [REDACTED_PHONE]
+       |                         |                         |
+       +-------------------------+-------------------------+
+                                 |
+                                 v
++-----------------------------------------------------------------------------+
+|                  ARINDIRMA SONRASI AÇIK PII DOĞRULAMA (AUDIT)                |
+|        - Regex Denetimi: Ham E-posta, TCKN veya Kart Kaldı mı?              |
+|        - Başarısızlık Durumunda: PolicyViolationError Fırlat                |
++-----------------------------------------------------------------------------+
+                                 |
+                                 v
++-----------------------------------------------------------------------------+
+|                    GÜVENLİ VE UYUMLU LOG ÇIKTI HAVUZU                       |
+|           - SIEM / SOC Analistleri İçin Güvenli Analiz Ortamı               |
+|           - KVKK ve GDPR Madde 32 Uyumlu, Adli Bilişim Değeri Korunmuş      |
++-----------------------------------------------------------------------------+

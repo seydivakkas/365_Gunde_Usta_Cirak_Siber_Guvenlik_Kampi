@@ -1,0 +1,151 @@
+{
+  "description": "Windows Hizmet Güvenliği Denetimi Negatif ve Sınır Durum Test Senaryoları",
+  "generated_at": "2026-11-02T10:45:00Z",
+  "scenarios": [
+    {
+      "scenario_id": "NEG-SVC-01",
+      "test_name": "Tırnaksız Servis Yolu Boşluklu Dizin (CWE-428)",
+      "service": {
+        "service_name": "UnquotedPathSvc",
+        "display_name": "Unquoted Path Service Test",
+        "image_path": "C:\\Program Files\\Vulnerable App\\service.exe -start",
+        "start_type": "Automatic",
+        "run_as_account": "LocalSystem",
+        "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)",
+        "binary_permissions": { "BUILTIN\\Users": ["ReadAndExecute"] },
+        "is_third_party": false
+      },
+      "expected_vulnerability": "CWE-428",
+      "expected_mitre": "T1574.009"
+    },
+    {
+      "scenario_id": "NEG-SVC-02",
+      "test_name": "Zayıf SDDL DACL Everyone SERVICE_CHANGE_CONFIG (CWE-732)",
+      "service": {
+        "service_name": "WeakDaclEveryoneSvc",
+        "display_name": "Weak DACL Everyone Test",
+        "image_path": "\"C:\\Windows\\system32\\calc.exe\"",
+        "start_type": "Automatic",
+        "run_as_account": "LocalSystem",
+        "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;DC;;;WD)",
+        "binary_permissions": { "BUILTIN\\Users": ["ReadAndExecute"] },
+        "is_third_party": false
+      },
+      "expected_vulnerability": "CWE-732",
+      "expected_mitre": "T1543.003"
+    },
+    {
+      "scenario_id": "NEG-SVC-03",
+      "test_name": "Zayıf SDDL DACL BUILTIN\\Users WRITE_DAC (CWE-732)",
+      "service": {
+        "service_name": "WeakDaclUsersWriteDacSvc",
+        "display_name": "Weak DACL Users WriteDAC Test",
+        "image_path": "\"C:\\Windows\\system32\\notepad.exe\"",
+        "start_type": "Automatic",
+        "run_as_account": "LocalSystem",
+        "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;WD;;;BU)",
+        "binary_permissions": { "BUILTIN\\Users": ["ReadAndExecute"] },
+        "is_third_party": false
+      },
+      "expected_vulnerability": "CWE-732",
+      "expected_mitre": "T1543.003"
+    },
+    {
+      "scenario_id": "NEG-SVC-04",
+      "test_name": "Zayıf İkili Dosya İzni Users Modify (CWE-732)",
+      "service": {
+        "service_name": "WeakBinaryUsersModifySvc",
+        "display_name": "Weak Binary File Perms Test",
+        "image_path": "\"C:\\Program Files\\SecureFolder\\app.exe\"",
+        "start_type": "Automatic",
+        "run_as_account": "LocalSystem",
+        "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)",
+        "binary_permissions": { "BUILTIN\\Users": ["Modify", "Write"] },
+        "is_third_party": false
+      },
+      "expected_vulnerability": "CWE-732",
+      "expected_mitre": "T1574.010"
+    },
+    {
+      "scenario_id": "NEG-SVC-05",
+      "test_name": "Zayıf İkili Dosya İzni Everyone Write (CWE-732)",
+      "service": {
+        "service_name": "WeakBinaryEveryoneWriteSvc",
+        "display_name": "Weak Binary Everyone Write Test",
+        "image_path": "\"C:\\Tools\\agent.exe\"",
+        "start_type": "Automatic",
+        "run_as_account": "LocalSystem",
+        "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)",
+        "binary_permissions": { "Everyone": ["Write"] },
+        "is_third_party": false
+      },
+      "expected_vulnerability": "CWE-732",
+      "expected_mitre": "T1574.010"
+    },
+    {
+      "scenario_id": "NEG-SVC-06",
+      "test_name": "CIS İhlali Aktif RemoteRegistry Servisi (CWE-16)",
+      "service": {
+        "service_name": "RemoteRegistry",
+        "display_name": "Remote Registry Service",
+        "image_path": "\"C:\\Windows\\system32\\svchost.exe\" -k regsvc",
+        "start_type": "Automatic",
+        "run_as_account": "NT AUTHORITY\\LocalService",
+        "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)",
+        "binary_permissions": { "BUILTIN\\Users": ["ReadAndExecute"] },
+        "is_third_party": false
+      },
+      "expected_vulnerability": "CWE-16",
+      "expected_mitre": "T1003.002"
+    },
+    {
+      "scenario_id": "NEG-SVC-07",
+      "test_name": "CIS İhlali Aktif Xbox Aksesuar Servisi (CWE-16)",
+      "service": {
+        "service_name": "XboxGipSvc",
+        "display_name": "Xbox Accessory Management Service",
+        "image_path": "\"C:\\Windows\\System32\\svchost.exe\" -k netsvcs",
+        "start_type": "Automatic",
+        "run_as_account": "LocalSystem",
+        "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)",
+        "binary_permissions": { "BUILTIN\\Users": ["ReadAndExecute"] },
+        "is_third_party": false
+      },
+      "expected_vulnerability": "CWE-16",
+      "expected_mitre": "T1003.002"
+    },
+    {
+      "scenario_id": "NEG-SVC-08",
+      "test_name": "Aşırı Yetkili Üçüncü Parti Servis LocalSystem (CWE-250)",
+      "service": {
+        "service_name": "ThirdPartyVendorDaemon",
+        "display_name": "Third Party Cloud Sync Daemon",
+        "image_path": "\"C:\\Vendor\\Cloud\\sync.exe\"",
+        "start_type": "Automatic",
+        "run_as_account": "LocalSystem",
+        "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)",
+        "binary_permissions": { "BUILTIN\\Users": ["ReadAndExecute"] },
+        "is_third_party": true
+      },
+      "expected_vulnerability": "CWE-250",
+      "expected_mitre": "T1078.003"
+    },
+    {
+      "scenario_id": "NEG-SVC-09",
+      "test_name": "Tehlikeli Özel Windows Ayrıcalık Talebi SeDebugPrivilege (CWE-250)",
+      "service": {
+        "service_name": "ThirdPartyDebuggerSvc",
+        "display_name": "Third Party Profiler Agent",
+        "image_path": "\"C:\\Profiler\\profiler.exe\"",
+        "start_type": "Automatic",
+        "run_as_account": "NT SERVICE\\Profiler",
+        "sddl": "D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)",
+        "binary_permissions": { "BUILTIN\\Users": ["ReadAndExecute"] },
+        "required_privileges": ["SeDebugPrivilege"],
+        "is_third_party": true
+      },
+      "expected_vulnerability": "CWE-250",
+      "expected_mitre": "T1134"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "portfolio/hafta_02/gun_013/README.md": "aa2c4b2dc5757bace4d5890a045986e311222c8f30685744d2f1533a87779ea9",
+  "portfolio/hafta_02/gun_013/ders.md": "026f0b808fb14690638c59b4ec0bcfc4325f4335c119dfeb967ca0426913bb69",
+  "portfolio/hafta_02/gun_013/rapor.md": "f0f5f557307d4089b0bd30db57f01b822e14757884de1afd0ab400d8dc1cef5f",
+  "portfolio/hafta_02/gun_013/sonuc.json": "4639276123e56c0aa5c073def7925aee4bf5288f60eec4f1fcdb60fbbdfe3f19",
+  "portfolio/hafta_02/gun_013/soru_cevap.md": "7b3585da7c7364800dca497e62d2b9c09fd09025b92eb3af33b0a367ea8e2046",
+  "portfolio/hafta_02/gun_013/kanit/gercek/komut_ve_cikis.txt": "866aaa8bf2ac1f39e3419f2d60e08b8ba6d9a92781fdffdfce6d7c8235d93ccf",
+  "portfolio/hafta_02/gun_013/kanit/gercek/test_sonuclari.txt": "0dd64e1a6adac3209eec3423ba98ad2a9984c7c5a736c761de44c72f0df06e7f",
+  "portfolio/hafta_02/gun_013/kanit/temsili/guvenli_arastirma_ve_kaynak_hiyerarsisi.txt": "479ced0d365ee34ac419d24fd13dc115dccf49579ad883de92b92e82dd87c9ec",
+  "portfolio/hafta_02/gun_013/ornek_veri/craap_dogrulama_kriterleri.json": "c124153c2b7c9680741a0484d88a79de89fae9ea442ffac2500f83dbc4f5779a",
+  "portfolio/hafta_02/gun_013/ornek_veri/guvenlik_arastirma_kaynaklari.json": "dfc2e8dc41b1fde529c73e473f877cd76b37ad6d7ba629568af26ca59c275875",
+  "portfolio/hafta_02/gun_013/tests/test_security_source_validator.py": "5978f00ffac01b1e860ba45820e4a39357c5dc780df5c3545af47a744eef587b",
+  "portfolio/hafta_02/gun_013/uygulama/security_source_validator.py": "7988f75bc4894f4836f81d58801a7b2d53c7fc0a1c6060d8cb584c64bc6ba5bb"
+}

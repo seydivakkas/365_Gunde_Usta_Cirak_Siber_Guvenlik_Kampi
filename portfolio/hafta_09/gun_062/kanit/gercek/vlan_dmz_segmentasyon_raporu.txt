@@ -1,0 +1,59 @@
+==============================================================================
+G062: VLAN, SEGMENTASYON VE DMZ — PROTOKOL VE GUVENLIK ANALIZ RAPORU
+==============================================================================
+Tarih: 2026-10-31 00:30:00 UTC+3
+Standartlar: IEEE 802.1Q (VLAN Tagging), NIST SP 800-125B (Microsegmentation), Zero Trust
+Analiz Motoru: portfolio.hafta_09.gun_062.uygulama.vlan_segmentation_dmz_engine
+
+1. IEEE 802.1Q ETIKETLEME (TAGGING) VE BASLIK AYRISTIRMA
+------------------------------------------------------------------------------
+  * Kullanici LAN (VLAN 10, Standart Oncelik PCP 0):
+    - Ham Etiket Hex : 8100000A
+    - TPID           : 0x8100 (IEEE 802.1Q Standardi)
+    - PCP (QoS)      : 0 (3-bit)
+    - DEI            : 0 (1-bit)
+    - VLAN ID (VID)  : 10 (12-bit)
+
+  * DMZ Web Sunucusu (VLAN 20, Video/Web Onceligi PCP 4):
+    - Ham Etiket Hex : 81008014
+    - TPID           : 0x8100 (IEEE 802.1Q Standardi)
+    - PCP (QoS)      : 4 (3-bit)
+    - DEI            : 0 (1-bit)
+    - VLAN ID (VID)  : 20 (12-bit)
+
+  * Kritik Veritabani (VLAN 30, Yuksek Oncelik PCP 6):
+    - Ham Etiket Hex : 8100C01E
+    - TPID           : 0x8100 (IEEE 802.1Q Standardi)
+    - PCP (QoS)      : 6 (3-bit)
+    - DEI            : 0 (1-bit)
+    - VLAN ID (VID)  : 30 (12-bit)
+
+  * Guvenli Native Yonetim VLAN (VLAN 99, Ag Yonetim Onceligi PCP 7):
+    - Ham Etiket Hex : 8100E063
+    - TPID           : 0x8100 (IEEE 802.1Q Standardi)
+    - PCP (QoS)      : 7 (3-bit)
+    - DEI            : 0 (1-bit)
+    - VLAN ID (VID)  : 99 (12-bit)
+
+2. L2 ANAHTARLAMA VE YAYIN ETKI ALANI (BROADCAST DOMAIN) IZOLASYONU
+------------------------------------------------------------------------------
+  * Kaynak Port      : Fa0/1 (VLAN 10)
+  * Broadcast Alan   : ['Fa0/2', 'Gi0/1'] (Yalnizca ayni VLAN 10'daki portlar)
+  * Izole Edilenler  : ['Fa0/3', 'Fa0/4'] (Diger VLAN portlarina sifir sizinti!)
+
+3. INTER-VLAN GUVENLIK DUVARI VE DMZ YANAL YAYILIM (LATERAL MOVEMENT) KONTROLU
+------------------------------------------------------------------------------
+  * Istek 1 (DMZ -> DB : 5432)        : Karar: ACCEPT (Matched: RULE_DMZ_TO_DB)
+  * Istek 2 (User -> DMZ : 443)       : Karar: ACCEPT (Matched: RULE_USER_TO_DMZ)
+  * Istek 3 (DMZ -> User : 445 SMB)   : Karar: ENGELLENDI (InterVLANPolicyViolationError)
+    -> Aciklama: DMZ'deki ele gecirilmis sunucunun ic kullanici agina yayilmasi sifir toleransla bloklanir.
+
+4. SIBER GUVENLIK TEHDIT MODELLERI VE SAVUNMA MATRISI
+------------------------------------------------------------------------------
+  - Double Tagging VLAN Hopping: Access portlarda etiketli paket kabul edilmez; Native VLAN kullanici trafiginden ayirilir.
+  - Switch Spoofing (DTP)      : Tum kullanici portlarinda 'switchport nonegotiate' zorunlu kilinir.
+  - DMZ Lateral Movement        : DMZ'den ic aga dogru sifir izin politikasi (Default Deny) uygulanir.
+  - Broadcast Storms           : VLAN sinirlari yayin paketlerini hapsederek ag cokusunu onler.
+
+==============================================================================
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Ozel Lisans — Tum Haklari Saklidir.

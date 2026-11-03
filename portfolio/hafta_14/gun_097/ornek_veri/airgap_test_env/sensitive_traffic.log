@@ -1,0 +1,3 @@
+2026-11-02 02:00:10 [SCADA_OP] Operator login auth: user="ahmet.operator@airgap-defense.local" tckn=12345678950 ip=10.20.30.40
+2026-11-02 02:00:25 [AUDIT_SEC] Hardware key verified: token="secret_airgap_hsm_key_998877665544" status=PASSED
+2026-11-02 02:01:05 [ALERT_PAY] Emergency procurement card: pan=4532-0151-1283-0366 phone=+90-532-444-2211

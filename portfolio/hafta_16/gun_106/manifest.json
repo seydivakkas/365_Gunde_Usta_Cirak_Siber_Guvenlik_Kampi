@@ -1,0 +1,96 @@
+{
+  "gun": 106,
+  "baslik": "Asimetrik kriptografi",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "4bff94ef08de928c183b9ad6f89a193e1923959e944f93cc0834337615a2a86d",
+      "boyut": 5516
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "066908f880c6977271015d7b9bd0d6e827a009b1f90238b51a85ed12309a9e53",
+      "boyut": 8243
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "baf76fe0ca450ead646a6cab0487d14b8b22bd502db1abf662d1312f602a6386",
+      "boyut": 13864
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "3e4d5560bf57242285ba1165d5f80dee05a3b0825dc29de498eab543ed76cd8e",
+      "boyut": 4777
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "792736f3e3781abcd9a8a82a4827f9a01f926807234df8e34665b6ded69c20b4",
+      "boyut": 747
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "5e73e7d9f51c7e4ec74fc740256cf49422bcd637542af4342a33249c3f2b3e73",
+      "boyut": 10842
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "75fc001632b6975e3f6512e097aa54e7c3091616e27d614702634f327a7a82c7",
+      "boyut": 3943
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "662755610d02b8aab5a9023ea0df130fe7c99e118f3d738eb7b2870a3801b3e9",
+      "boyut": 2364
+    },
+    {
+      "dosya": "kanit\\gercek\\rsa_guvenlik_analiz_raporu.txt",
+      "sha256": "a341fe7b8fb98904d93525904a1e13288b92fde8cfee7e68d516d68c9ef3f59c",
+      "boyut": 2162
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "fb0e7c410ff768d2e0fabede539899410f479cf4a3d8b020025e29be1eb5508c",
+      "boyut": 4607
+    },
+    {
+      "dosya": "kanit\\temsili\\asimetrik_kripto_mimarisi.txt",
+      "sha256": "dcb9ab8c953b0b196987bfb8ab775ca96a422ceca5a84f18102d586756a6b5da",
+      "boyut": 7603
+    },
+    {
+      "dosya": "ornek_veri\\invalid_asymmetric_inputs.json",
+      "sha256": "afe454c8e7b62267a7bc569d7c484758d60ac9550c025d6ea646c5fd34b6a597",
+      "boyut": 2873
+    },
+    {
+      "dosya": "ornek_veri\\rsa_vectors.json",
+      "sha256": "c8df8a15d09eb125b553101bf092eadf3ba9a6faccbf2ca7e4c80042efbd9f53",
+      "boyut": 877
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+      "boyut": 508
+    },
+    {
+      "dosya": "tests\\test_asymmetric_crypto.py",
+      "sha256": "617c6a97bd5ede1a4b74f4c3f81f5bd2f79e1d07125ce0b39f13adf9b3d24f23",
+      "boyut": 8972
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+      "boyut": 508
+    },
+    {
+      "dosya": "uygulama\\asymmetric_cli.py",
+      "sha256": "0e522ad56d7c177ce5054a4b709e12f82ecee9ac3f1e6c916852bbef0850766d",
+      "boyut": 8141
+    },
+    {
+      "dosya": "uygulama\\asymmetric_crypto_engine.py",
+      "sha256": "b35fb6a625516b04f21e3b88697f9d7e84bbb416928e28731f39f17e55f660d0",
+      "boyut": 21535
+    }
+  ]
+}

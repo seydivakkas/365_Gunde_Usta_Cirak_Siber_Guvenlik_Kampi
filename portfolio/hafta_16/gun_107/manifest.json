@@ -1,0 +1,96 @@
+{
+  "gun": 107,
+  "baslik": "Dijital imza ve doğrulama",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "578dec8e1a13fa3ea9cce89e16e1dca948afacfb8bec7ed5d4eb3d7a0b76c720",
+      "boyut": 5578
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "2646ef2ba4c3765bbc19db7262de6489bc466ab4f29b6154156867017cdbe682",
+      "boyut": 8287
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "0a0aa45e17bebc744266bf1b4c51fd92430eeddd798fcd0b7ad3c2e11d71459c",
+      "boyut": 13748
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "a150d6ae63d670158190b39bbbad6460822346841360bf69f062792c9d1630b6",
+      "boyut": 4717
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "53bacb477389a90c59a5e6e393632fdf3d867adcafbaa051424ffbc8b5d3219e",
+      "boyut": 776
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "7f2ce18cfb9fb081438de8fa317268ddb40711e7b2bd5c99dac9bcd57340fed7",
+      "boyut": 10719
+    },
+    {
+      "dosya": "kanit\\gercek\\dijital_imza_analiz_raporu.txt",
+      "sha256": "55521d78e5f0fdff6923dded8b4088ba842c4b3bed3304c045b131e1f0f9fbe5",
+      "boyut": 2340
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "4860edc4b91ed54d480ecbb3c68f507033fe6a3b639da3255a83e269e400d183",
+      "boyut": 4413
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "e3ad78fa1089e14984a13469d792d7f6f7298a26ea79f4fff1d97b9e3e99fede",
+      "boyut": 2624
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "195c6aa5f95fe703c2d079062ca3fc934503b47e17446a856c8194cd5dcf1c9e",
+      "boyut": 4602
+    },
+    {
+      "dosya": "kanit\\temsili\\dijital_imza_mimarisi.txt",
+      "sha256": "588311688f8e21b8dd0637f96cb3214445b826fda6a9dcd83a9204b84584b2ea",
+      "boyut": 4355
+    },
+    {
+      "dosya": "ornek_veri\\invalid_signature_inputs.json",
+      "sha256": "a02f899904a608c4856f6251e63e244f242c96c2bdc239e3198d5c567bbe70b7",
+      "boyut": 3169
+    },
+    {
+      "dosya": "ornek_veri\\signature_vectors.json",
+      "sha256": "76457341eca326dd7800fe4986cc70de4dc90b03c80f4c38f9e3998a32e2bba3",
+      "boyut": 1120
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+      "boyut": 508
+    },
+    {
+      "dosya": "tests\\test_digital_signature.py",
+      "sha256": "da723791a234757d76e1f76dbda0ca49c4c8282399df33d803271c8a1121921c",
+      "boyut": 8523
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+      "boyut": 508
+    },
+    {
+      "dosya": "uygulama\\digital_signature_engine.py",
+      "sha256": "84b216a87d690c45d168cf6645c06bb1e283ebdda785188b59d300117e37b011",
+      "boyut": 21696
+    },
+    {
+      "dosya": "uygulama\\signature_cli.py",
+      "sha256": "3bea2407a5b4f02e8ae847ac92947cc5e034432f49bef16902bb8c2543d60453",
+      "boyut": 9246
+    }
+  ]
+}

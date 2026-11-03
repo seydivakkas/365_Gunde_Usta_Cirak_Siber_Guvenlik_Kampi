@@ -1,0 +1,34 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "gun": 139,
+  "hafta": 20,
+  "asama": "Aşama 6: Uç Nokta Güvenliği ve Sertleştirme",
+  "konu": "Linux audit ve journal güvenliği",
+  "tarih": "2026-11-02",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "kriterler": {
+    "kod_kalitesi_ve_didaktik_yorumlar": 20,
+    "birim_testler_ve_kapsam": 40,
+    "negatif_kontroller_ve_sinir_durumlari": 25,
+    "mimari_tasarim_guvenlik_belgeleme": 15
+  },
+  "test_sonuclari": {
+    "toplam_test": 15,
+    "basarili_test": 15,
+    "hatali_test": 0,
+    "test_suresi_saniye": 0.001
+  },
+  "negatif_senaryolar": {
+    "toplam_senaryo": 9,
+    "basarili_senaryo": 9,
+    "hatali_senaryo": 0
+  },
+  "guvenlik_standartlari": [
+    "CIS Linux Benchmark v2.0.0 (Section 4.1: Configure System Accounting - auditd)",
+    "CIS Linux Benchmark v2.0.0 (Section 4.2: Configure Logging - systemd-journald)",
+    "MITRE ATT&CK Matrix (T1562.002: Disable Windows/Linux Event Logging, T1070: Indicator Removal)",
+    "Common Weakness Enumeration (CWE-778: Insufficient Logging, CWE-311: Missing Encryption of Sensitive Data)",
+    "RFC 4398 / Bellare-Miner Forward Secure Sealing (FSS)"
+  ]
+}

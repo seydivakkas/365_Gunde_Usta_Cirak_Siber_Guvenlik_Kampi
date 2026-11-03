@@ -1,0 +1,42 @@
+================================================================================
+BİRİM TEST SONUÇLARI KANIT DOSYASI — GÜN 014
+Komut: python -m unittest portfolio/hafta_02/gun_014/tests/test_stage1_security_auditor.py -v
+Çıkış Kodu: 0
+Tarih: 2026-10-27
+Lisans: ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+
+
+test_01_altin_proje_tam_kabul_pozitif_kontrol (portfolio.hafta_02.gun_014.tests.test_stage1_security_auditor.TestStage1SecurityAuditor.test_01_altin_proje_tam_kabul_pozitif_kontrol)
+POZ�T�F TEST: Alt�n laboratuvar projesi 100/100 tam puan almal� ve ASAMA_1_KABUL_PASS olmal�d�r. ... ok
+test_02_kanit_zinciri_butunlugu_pozitif_kontrol (portfolio.hafta_02.gun_014.tests.test_stage1_security_auditor.TestStage1SecurityAuditor.test_02_kanit_zinciri_butunlugu_pozitif_kontrol)
+POZ�T�F TEST: Kan�t zincirindeki t�m halkalar (RoE, Varl�k, CSF, CRAAP) eksiksiz do�rulanmal�d�r. ... ok
+test_03_csf_alti_islev_tam_uyumluluk_pozitif_kontrol (portfolio.hafta_02.gun_014.tests.test_stage1_security_auditor.TestStage1SecurityAuditor.test_03_csf_alti_islev_tam_uyumluluk_pozitif_kontrol)
+POZ�T�F TEST: Govern, Identify, Protect, Detect, Respond, Recover i�levlerinin tamam� aktif olmal�d�r. ... ok
+test_04_kriptografik_sertifika_deterministik_uretim (portfolio.hafta_02.gun_014.tests.test_stage1_security_auditor.TestStage1SecurityAuditor.test_04_kriptografik_sertifika_deterministik_uretim)
+POZ�T�F TEST: Kabul sertifikas� i�in 64 karakterli SHA-256 kriptografik �zeti �retilmelidir. ... ok
+test_05_kusurlu_proje_etik_ve_kapsam_ihlali_kontrol (portfolio.hafta_02.gun_014.tests.test_stage1_security_auditor.TestStage1SecurityAuditor.test_05_kusurlu_proje_etik_ve_kapsam_ihlali_kontrol)
+NEGAT�F TEST: Yaz�l� onays�z veya d�� a�a temas eden projede CRIT-01 etik ihlali yakalanmal�d�r. ... ok
+test_06_tek_onleme_guvenme_yanilgisi_kontrol (portfolio.hafta_02.gun_014.tests.test_stage1_security_auditor.TestStage1SecurityAuditor.test_06_tek_onleme_guvenme_yanilgisi_kontrol)
+NEGAT�F TEST: Sadece g�venlik duvar�na g�venip kurtarma veya tespit plan� yapmayan projede CRIT-04 yakalanmal�d�r. ... ok
+test_07_eksik_varlik_envanteri_kontrol (portfolio.hafta_02.gun_014.tests.test_stage1_security_auditor.TestStage1SecurityAuditor.test_07_eksik_varlik_envanteri_kontrol)
+NEGAT�F TEST: Varl�k envanteri tutulmayan projede WARN-02 uyar�s� verilmelidir. ... ok
+test_08_eksik_csf_islevleri_ceza_kontrol (portfolio.hafta_02.gun_014.tests.test_stage1_security_auditor.TestStage1SecurityAuditor.test_08_eksik_csf_islevleri_ceza_kontrol)
+NEGAT�F TEST: CSF i�levleri eksik olan projede WARN-03 ile i�lev ba��na ceza kesilmelidir. ... ok
+test_09_dogrulanmamis_kaynak_craap_kontrol (portfolio.hafta_02.gun_014.tests.test_stage1_security_auditor.TestStage1SecurityAuditor.test_09_dogrulanmamis_kaynak_craap_kontrol)
+NEGAT�F TEST: CRAAP skoru d���k ve resm� b�ltensiz projede WARN-05 cezas� verilmelidir. ... ok
+test_10_kusurlu_proje_red_karari_kontrol (portfolio.hafta_02.gun_014.tests.test_stage1_security_auditor.TestStage1SecurityAuditor.test_10_kusurlu_proje_red_karari_kontrol)
+NEGAT�F TEST: LAB-SEC-DEFECTIVE-99 projesinin kabul edilmedi�i do�rulanmal�d�r. ... ok
+test_11_tanimsiz_proje_kimligi_hata_yonetimi (portfolio.hafta_02.gun_014.tests.test_stage1_security_auditor.TestStage1SecurityAuditor.test_11_tanimsiz_proje_kimligi_hata_yonetimi)
+HATA Y�NET�M�: Tan�ms�z proje sorguland���nda Stage1AuditError f�rlat�lmal�d�r. ... ok
+test_12_gecersiz_sema_hata_yonetimi (portfolio.hafta_02.gun_014.tests.test_stage1_security_auditor.TestStage1SecurityAuditor.test_12_gecersiz_sema_hata_yonetimi)
+HATA Y�NET�M�: Ge�ersiz �emaya sahip JSON dosyas�nda Stage1AuditError f�rlat�lmal�d�r. ... ok
+test_13_tum_projeleri_toplu_denetleme (portfolio.hafta_02.gun_014.tests.test_stage1_security_auditor.TestStage1SecurityAuditor.test_13_tum_projeleri_toplu_denetleme)
+��LEVSELL�K: T�m projeler d�ng�de ba�ar�yla denetlenmeli ve rapor �retilmelidir. ... ok
+test_14_olmayan_dosya_hatasi (portfolio.hafta_02.gun_014.tests.test_stage1_security_auditor.TestStage1SecurityAuditor.test_14_olmayan_dosya_hatasi)
+��LEVSELL�K & HATA Y�NET�M�: Olmayan dosya yolunda FileNotFoundError f�rlat�lmal�d�r. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.006s
+
+OK

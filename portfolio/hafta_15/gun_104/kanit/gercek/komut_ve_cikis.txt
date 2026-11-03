@@ -1,0 +1,38 @@
+===============================================================================
+GÜN 104: CLI KOMUT VE ÇIKIŞ KANITLARI
+Tarih/Saat: 2026-11-02 02:24:56
+===============================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_104\uygulama\aead_cli.py --test-tracker
+Çıkış Kodu: 2
+1. İlk Şifreleme   : BAŞARILI (Nonce kaydedildi)
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_104\uygulama\aead_cli.py --simulate-nonce-reuse
+Çıkış Kodu: 2
+=== TWO-TIME PAD NONCE TEKRARI SİMÜLASYONU ===
+Düz Metin 1   : KREDI_KARTI_NO=4111222233334444_CVV=999
+Düz Metin 2   : TRANSFER_TUTAR=0000500000_TL_ALICI=AHM
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_104\uygulama\aead_cli.py --encrypt --plaintext GizliFinansalVeri2026 --key 2b7e151628aed2a6abf7158809cf4f3c --aad user_id=104;role=auditor
+Çıkış Kodu: 0
+=== AEAD ŞİFRELEME BAŞARILI ===
+Mod              : Standart AEAD (Rastgele Nonce)
+Şifreli Metin    : cd07c42056b90e8272f244f262db6577022bca0cfd
+Nonce (96-bit)   : 15073d9bf1c6bf7f2896fcaa
+Doğrulama Etiketi: 0ee1bac187ac2229f302b2c6bb5ad967fe5ee26e59cd55ed479cd6fa13c9335f
+İlişkili Veri    : user_id=104;role=auditor
+İşlem Süresi     : 1.047 ms
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_104\uygulama\aead_cli.py --decrypt --ciphertext cd07c42056b90e8272f244f262db6577022bca0cfd --key 2b7e151628aed2a6abf7158809cf4f3c --nonce 15073d9bf1c6bf7f2896fcaa --tag 0ee1bac187ac2229f302b2c6bb5ad967fe5ee26e59cd55ed479cd6fa13c9335f --aad user_id=104;role=auditor
+Çıkış Kodu: 2
+=== AEAD ŞİFRE ÇÖZME BAŞARILI ===
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_104\uygulama\aead_cli.py --encrypt --plaintext DeterministikGuvenlik --key 2b7e151628aed2a6abf7158809cf4f3c --siv
+Çıkış Kodu: 0
+=== AEAD ŞİFRELEME BAŞARILI ===
+Mod              : SIV Deterministik AEAD
+Şifreli Metin    : 3972751bf840d9af4d763dc52d49d36c787a0615fb
+Nonce (96-bit)   : 4a7f49ca0eca910dc9371fab
+Doğrulama Etiketi: 9ce8809a7e1d545c5a16f3a5387b99c1b9722c133df5dc9374abe1fadde6bb7d
+İlişkili Veri    : (Boş)
+İşlem Süresi     : 1.013 ms

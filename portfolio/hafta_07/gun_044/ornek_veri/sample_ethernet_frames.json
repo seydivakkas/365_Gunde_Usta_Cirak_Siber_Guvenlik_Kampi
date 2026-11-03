@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "project": "G044 - Ethernet, MAC ve Çerçeve Yapısı Analiz Envanteri",
+    "description": "Yerel ağ (LAN) üzerinde yakalanmış 3 farklı Ethernet çerçeve modeli (Unicast IPv4, Broadcast ARP, 802.1Q VLAN)",
+    "capture_interface": "eth0 (Promiscuous Mode / Ham Çerçeve Dinleme)",
+    "analysis_date": "2026-10-27"
+  },
+  "frames": [
+    {
+      "frame_id": "ETH-001",
+      "frame_type": "Ethernet II",
+      "description": "Standart Tek Noktaya Yayın (Unicast) IPv4 HTTPS Trafik Çerçevesi",
+      "destination_mac": "00:50:56:C0:00:08",
+      "source_mac": "00:0C:29:12:34:56",
+      "ethertype": "0x0800",
+      "ethertype_name": "IPv4 (Internet Protocol v4)",
+      "payload_size_bytes": 60,
+      "padding_bytes": 0,
+      "fcs_crc32": "0x4a12bc90",
+      "total_frame_size": 78
+    },
+    {
+      "frame_id": "ETH-002",
+      "frame_type": "Ethernet II",
+      "description": "Genel Yayın (Broadcast) ARP İstek Çerçevesi (46 Bayt Alt Sınır Dolgulu)",
+      "destination_mac": "FF:FF:FF:FF:FF:FF",
+      "source_mac": "00:0C:29:12:34:56",
+      "ethertype": "0x0806",
+      "ethertype_name": "ARP (Address Resolution Protocol)",
+      "payload_size_bytes": 28,
+      "padding_bytes": 18,
+      "fcs_crc32": "0x89ab12cd",
+      "total_frame_size": 64
+    },
+    {
+      "frame_id": "ETH-003",
+      "frame_type": "Ethernet II (802.1Q Tagged)",
+      "description": "VLAN Etiketli Çok Noktaya Yayın (Multicast) mDNS Çerçevesi",
+      "destination_mac": "01:00:5E:00:00:FB",
+      "source_mac": "00:0C:29:12:34:56",
+      "vlan_tagged": true,
+      "tpid": "0x8100",
+      "vlan_id": 20,
+      "priority_code_point": 3,
+      "ethertype": "0x0800",
+      "ethertype_name": "IPv4 (Internet Protocol v4)",
+      "payload_size_bytes": 64,
+      "padding_bytes": 0,
+      "fcs_crc32": "0xfe32110a",
+      "total_frame_size": 86
+    }
+  ]
+}

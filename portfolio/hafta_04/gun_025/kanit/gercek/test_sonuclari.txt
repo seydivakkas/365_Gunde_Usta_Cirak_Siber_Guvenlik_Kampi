@@ -1,0 +1,33 @@
+test_01_local_session_extraction (test_user_group_session_auditor.TestUserGroupSessionAuditor.test_01_local_session_extraction)
+Yerel canl² oturumdan kullan²c² ad², i■letim sistemi ve PID ekilmesini test eder (G025-SC2). ... ok
+test_02_local_session_data_structure (test_user_group_session_auditor.TestUserGroupSessionAuditor.test_02_local_session_data_structure)
+Canl² oturum veri s÷zl³­³n³n standart ■emaya uygunlu­unu test eder. ... ok
+test_03_audit_compliant_user_and_session (test_user_group_session_auditor.TestUserGroupSessionAuditor.test_03_audit_compliant_user_and_session)
+Tamamen kurallara uyumlu tek bir kullan²c² ve oturumun %100 skor almas²n² test eder. ... ok
+test_04_audit_service_account_interactive_shell_violation (test_user_group_session_auditor.TestUserGroupSessionAuditor.test_04_audit_service_account_interactive_shell_violation)
+Servis hesab²n²n /bin/bash kabu­una sahip olmas²n²n KR¦T¦K ihlal say²lmas²n² test eder. ... ok
+test_05_audit_service_account_admin_group_violation (test_user_group_session_auditor.TestUserGroupSessionAuditor.test_05_audit_service_account_admin_group_violation)
+Servis hesab²n²n idari grupta (sudo/wheel) yer almas² ihlalini test eder. ... ok
+test_06_audit_dormant_account_violation (test_user_group_session_auditor.TestUserGroupSessionAuditor.test_06_audit_dormant_account_violation)
+90 g³nden uzun s³redir giri■ yapmayan at²l (dormant) hesab²n tespitini test eder. ... ok
+test_07_audit_shared_account_concurrent_sessions (test_user_group_session_auditor.TestUserGroupSessionAuditor.test_07_audit_shared_account_concurrent_sessions)
+Ortak idari hesapta birden fazla aktif oturumun inkar edilemezlik kayb² olarak tespitini test eder (G025-SC1). ... ok
+test_08_audit_session_idle_timeout_violation (test_user_group_session_auditor.TestUserGroupSessionAuditor.test_08_audit_session_idle_timeout_violation)
+Oturumun izin verilen maksimum s³reden fazla bo■ta kalmas² ihlalini test eder. ... ok
+test_09_multiple_violations_scoring (test_user_group_session_auditor.TestUserGroupSessionAuditor.test_09_multiple_violations_scoring)
+Birden fazla ihlal durumunda uyumluluk skorunun orant²l² d³■mesini test eder. ... ok
+test_10_remediation_command_generation (test_user_group_session_auditor.TestUserGroupSessionAuditor.test_10_remediation_command_generation)
+Her ihlal bulgusu iin uygulanabilir iyile■tirme komutu ³retilmesini test eder. ... ok
+test_11_empty_inventory_handling (test_user_group_session_auditor.TestUserGroupSessionAuditor.test_11_empty_inventory_handling)
+Bo■ envanter verildi­inde motorun ÷kmeden 0 ihlal ve %100 uyumluluk d÷nmesini test eder. ... ok
+test_12_negative_control_missing_file_cli (test_user_group_session_auditor.TestUserGroupSessionAuditor.test_12_negative_control_missing_file_cli)
+CLI a­r²s²nda bulunmayan dosya verildi­inde FileNotFoundError hata kontrol³n³ test eder. ... ok
+test_13_negative_control_corrupted_json (test_user_group_session_auditor.TestUserGroupSessionAuditor.test_13_negative_control_corrupted_json)
+Bozuk JSON ieren kural dosyas²nda sistemin kontroll³ istisna f²rlatmas²n² test eder. ... ok
+test_14_cli_subprocess_live_session (test_user_group_session_auditor.TestUserGroupSessionAuditor.test_14_cli_subprocess_live_session)
+CLI ³zerinden --live-session --json komutunun al²■mas²n² ve geerli JSON ²kt²s²n² test eder (G025-SC2). ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.504s
+
+OK

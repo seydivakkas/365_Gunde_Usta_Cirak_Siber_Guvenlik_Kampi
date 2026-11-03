@@ -1,0 +1,37 @@
+{
+  "gun": 112,
+  "hafta": 16,
+  "konu": "Mini proje 15: imzalı yapılandırma konsepti",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "tamamlanma_tarihi": "2026-11-02",
+  "kategori": "Asimetrik Kriptografi ve PKI / Mini Proje",
+  "puan_detaylari": {
+    "mimari": 20,
+    "kodlama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "zafiyet_savunmalari": [
+    "CWE-353",
+    "CWE-347",
+    "CWE-294",
+    "CWE-298",
+    "CWE-285",
+    "CWE-327",
+    "CWE-295"
+  ],
+  "test_ozeti": {
+    "toplam_birim_test": 15,
+    "basarili_birim_test": 15,
+    "basarisiz_birim_test": 0,
+    "negatif_senaryolar": 9,
+    "basarili_negatif_senaryolar": 9
+  },
+  "yurutulen_araclar": [
+    "uygulama/signed_config_engine.py",
+    "uygulama/signed_config_cli.py",
+    "tests/test_signed_config.py",
+    "kanit_uretici.py"
+  ]
+}

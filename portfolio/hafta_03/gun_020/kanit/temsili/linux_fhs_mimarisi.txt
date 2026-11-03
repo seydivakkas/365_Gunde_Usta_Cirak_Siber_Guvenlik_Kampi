@@ -1,0 +1,56 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Bu dosya Siber Güvenlik 365 Gün Müfredatı kapsamında üretilmiştir.
+# Gün 020: Linux Dosya Sistemi Hiyerarşisi Standardı (FHS 3.0) ve Güvenlik Sınırları
+
+========================================================================================
+LİNUX FHS 3.0 ÇEKİRDEK HİYERARŞİSİ VE GÜVENLİK İZOLASYON HARİTASI
+========================================================================================
+
+                                       / (KÖK - ROOT)
+                                             |
+    +---------------+-----------------+------+----------------+-----------------+
+    |               |                 |                       |                 |
+  /bin, /sbin     /etc              /home                   /var              /tmp
+(Temel İkililer) (Yapılandırma)  (Kullanıcı Evleri)     (Değişken Veri)   (Geçici Alan)
+    |               |                 |                       |                 |
+ [root:root]     [root:root]      [user:user]             [root:root]       [root:root]
+ [0755, r-x]     [0755/0640]      [0750 / 0700]           [0755 / 0750]     [1777 (Sticky)]
+    |               |                 |                       |                 |
+    |               +-- /passwd (0644)|                       +-- /log (0750)   +-- +t Bayrağı
+    |               +-- /shadow (0640)+-- Ayrı mount         |   Log taşkını   |   Yalnız sahip
+    |               +-- /sudoers(0440)    nodev, nosuid       |   kökü dolduramaz   silebilir!
+    |                                                         |                 |
+    +---------------------------------+-----------------------+                 +-- noexec,nodev
+    |                                 |                                             nosuid mount
+  /dev                              /proc, /sys
+(Aygıt Dosyaları)                 (Sözde Dosya Sistemleri - Çekirdek Durumu)
+    |                                 |
+ [root:disk]                      [root:root]
+ [mknod kısıtlı]                  [hidepid=2 süreç izolasyonu]
+ /dev/null, /dev/sda              Çekirdek parametreleri, süreç bellek alanları
+
+========================================================================================
+GÜVENLİK SERTLEŞTİRME VE İHLAL MATRİSİ (CIS BENCHMARK / NIST SP 800-53)
+========================================================================================
+
++------------+-------------+--------------------+------------------------------------------+
+| Dizin/Dosya| İzin / Mod  | Güvenlik Bayrakları| Karşılaşılan Güvenlik Tehdidi & Çözüm    |
++------------+-------------+--------------------+------------------------------------------+
+| /tmp       | 1777 (rwxrwt)| nodev,nosuid,noexec| Tehdit: Zararlı ELF/betik çalıştırma     |
+|            |             |                    | Çözüm: Sticky bit (+t) + noexec mount    |
++------------+-------------+--------------------+------------------------------------------+
+| /home      | 0755 (rwxr-xr-x)| nodev,nosuid   | Tehdit: Kullanıcı evinde SUID backdoor   |
+|            |             |                    | Çözüm: nosuid bayrağı ile yetki yükseltme|
++------------+-------------+--------------------+------------------------------------------+
+| /var/log   | 0750 (rwxr-x---)| Ayrı Partition | Tehdit: Log taşkını ile disk tüketimi    |
+|            |             |                    | Çözüm: Logrotate + ayrı /var bölümü      |
++------------+-------------+--------------------+------------------------------------------+
+| /etc/shadow| 0640 (rw-r-----)| root:shadow    | Tehdit: CWE-732 Parola hash ifşası       |
+|            |             |                    | Çözüm: Yalnızca root ve shadow grubu     |
++------------+-------------+--------------------+------------------------------------------+
+| /proc      | 0555 (r-xr-xr-x)| hidepid=2      | Tehdit: Süreç ve komut argümanı ifşası   |
+|            |             |                    | Çözüm: Diğer kullanıcıların PID'si gizli |
++------------+-------------+--------------------+------------------------------------------+

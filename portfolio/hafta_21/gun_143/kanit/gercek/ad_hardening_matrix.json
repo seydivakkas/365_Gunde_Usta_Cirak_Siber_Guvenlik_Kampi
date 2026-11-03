@@ -1,0 +1,20 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas).",
+  "framework": "Active Directory Domain Services Security Architecture",
+  "mitre_mappings": {
+    "AD-KERB-01 (AES vs RC4)": "T1558.003 (Kerberoasting)",
+    "AD-KERB-02 (krbtgt rotation)": "T1558.001 (Golden Ticket)",
+    "AD-NTLM-01 (NTLMv1 disable)": "T1557.001 (LLMNR/NBT-NS Poisoning and Relay)",
+    "AD-LDAP-01 (LDAP Signing)": "T1557 (Adversary-in-the-Middle LDAP Relay)",
+    "AD-ACC-01 (Privileged SPN)": "T1558.003 (Steal or Forge Kerberos Tickets: Kerberoasting)",
+    "AD-ACC-02 (Preauth Disabled)": "T1558.004 (AS-REP Roasting)",
+    "AD-ACC-03 (Unconstrained Delegation)": "T1558.002 (Silver Ticket / TGT Delegation Abuse)",
+    "AD-TRUST-01 (SID Filtering)": "T1134.005 (SID-History Injection across Trusts)"
+  },
+  "gpo_registry_keys": {
+    "SupportedEncryptionTypes": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Kerberos\\Parameters (Value: 0x18)",
+    "LmCompatibilityLevel": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa (Value: 5)",
+    "LDAPServerIntegrity": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\NTDS\\Parameters (Value: 2)",
+    "LdapEnforceChannelBinding": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\NTDS\\Parameters (Value: 2)"
+  }
+}

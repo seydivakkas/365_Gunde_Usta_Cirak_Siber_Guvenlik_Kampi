@@ -1,0 +1,50 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "sistem_adi": "Kurumsal Finansal Güvenlik ve Kimlik Platformu (Aşama 5)",
+  "surum": "2.0.0",
+  "asama": "Aşama 5: Kriptografi ve Güvenlik Mimarisi",
+  "birim_testler_mevcut": true,
+  "negatif_kontroller_mevcut": true,
+  "kriptografik_bilesenler": [
+    {
+      "component_name": "Durağan Veri Şifreleme (Database Storage)",
+      "algorithm": "AES-256-GCM",
+      "key_bits": 256,
+      "mode": "GCM",
+      "random_source": "CSPRNG",
+      "constant_time": true
+    },
+    {
+      "component_name": "Kullanıcı Parola Güvenliği (KDF)",
+      "algorithm": "PBKDF2-HMAC-SHA256",
+      "key_bits": 256,
+      "iterations": 100000,
+      "random_source": "CSPRNG",
+      "constant_time": true
+    },
+    {
+      "component_name": "Taşıma Katmanı Güvenliği (TLS / PKI)",
+      "algorithm": "RSA-4096",
+      "key_bits": 4096,
+      "random_source": "CSPRNG",
+      "constant_time": true
+    },
+    {
+      "component_name": "Kayıt Bütünlüğü ve Denetim Özeti",
+      "algorithm": "HMAC-SHA256",
+      "key_bits": 256,
+      "random_source": "CSPRNG",
+      "constant_time": true
+    }
+  ],
+  "mimari_kontroller": {
+    "control_name": "Sıfır Güven (Zero-Trust) Savunma Derinliği Mimarisi",
+    "layers": ["Fiziksel", "Çevre", "Ağ", "Host", "Uygulama", "Veri", "İnsan"],
+    "control_types": ["Önleyici", "Tespit Edici", "Düzeltici", "Telafi Edici", "Caydırıcı"],
+    "default_deny": true,
+    "fail_secure": true,
+    "sod_enforced": true,
+    "wildcard_allowed": false,
+    "log_masking": true
+  }
+}

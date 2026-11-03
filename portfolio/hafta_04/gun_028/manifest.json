@@ -1,0 +1,18 @@
+{
+  "README.md": "9856c95394723a7657b3c981190eb688e16707548df6b29985ab66afee2f5d85",
+  "ders.md": "42315db81780287b552f712137a657759e06b8d6a97d24f8bfa548d6ecf1c537",
+  "rapor.md": "555f02d9c29931707ea6751f7797da188a0b5d373cccc80c9d164087ae08eb08",
+  "sonuc.json": "2d26b3e590d7045898609b55764430687e2061ddac4004931ea6b66816b72763",
+  "soru_cevap.md": "0e53d2157858171df2b4e63733be9ed1ace6ff8dd5c8a5fde1a3d582585c9a5d",
+  "kanit/gercek/calisma_defteri_ornek.md": "7272ed0a468373b28e6cce71e554c68dfe25c979ba1809ad74adbd075e73c423",
+  "kanit/gercek/guvenlik_engelleme_kaydi.txt": "d615185fbaf5cf7904afc6e8a0f6222e8b2c45edb9a45018ef3df6b9c9982993",
+  "kanit/gercek/komut_ve_cikis.txt": "0860b5b86c0cfe2849be2b96f08f64400766c0a7d6aecfa8f1838a41cff554e2",
+  "kanit/gercek/test_sonuclari.txt": "b020a823f23183d58316656df9f438014ff644db288e67479ed109d1d2241aa7",
+  "kanit/temsili/komut_satiri_gozlem_mimarisi.txt": "354034c47b1f12c61918bd448b35d476e8a3aa2f9e5750c5949cdb9c58fd7543",
+  "ornek_veri/prohibited_commands_test.json": "d5222ada202ce31716e721c588096b2f03567e77ac1b3650ba4836d3f4f58155",
+  "ornek_veri/safe_command_catalog.json": "d841a27c88a6457fc5326c8e38927a9d60ebd06d27abb2e84b835e1982900480",
+  "tests/__init__.py": "6081f95cac72f9a0d0382f2e83c42d98fec5be6795972762fae50b4eb8160f01",
+  "tests/test_command_line_notebook_engine.py": "de00608c5e4ba07d360bf06d819f9acee1955b27d0704feeb5a9d1c7b80d21a6",
+  "uygulama/__init__.py": "3b0bd65bfdf7ce2c6a42ef46944c189e7c68c2b19d20ee6d3d9bb64f51289f1c",
+  "uygulama/command_line_notebook_engine.py": "63f7b715bb7c09f6798531dc8941f020473fa8206fdc407177aac0724071afc6"
+}

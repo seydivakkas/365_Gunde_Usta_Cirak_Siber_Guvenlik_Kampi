@@ -1,0 +1,36 @@
+==============================================================================
+G061: PROXY, NAT VE GUVENLIK DUVARI — PROTOKOL VE GUVENLIK ANALIZ RAPORU
+==============================================================================
+Tarih: 2026-10-30 01:06:00 UTC+3
+Standartlar: RFC 793 (TCP), RFC 1918 (Private IP), RFC 3022 (NAT/NAPT), RFC 7239 (Forwarded)
+Analiz Motoru: portfolio.hafta_09.gun_061.uygulama.proxy_nat_firewall_engine
+
+1. DURUM TAKIPLI GUVENLIK DUVARI (STATEFUL FIREWALL / CONNTRACK) ANALIZI
+------------------------------------------------------------------------------
+  * Adim 1 (SYN Paket)      : 198.51.100.10:51234 -> 192.168.1.100:443 | Karar: ACCEPT (NEW)
+  * Adim 2 (SYN-ACK Yanit)  : 192.168.1.100:443 -> 198.51.100.10:51234 | Karar: ACCEPT (ESTABLISHED/REPLY)
+  * Adim 3 (ACK Veri Akisi) : 198.51.100.10:51234 -> 192.168.1.100:443 | Karar: ACCEPT (ESTABLISHED)
+  * Conntrack Tablo Boyutu  : 1 aktif oturum kaydi mevcut.
+
+2. PORT ADRES DONUSUMU (PAT / NAPT OVERLOAD) TABLO DOGRULAMASI
+------------------------------------------------------------------------------
+  * Giden Paket (SNAT/PAT)  : 192.168.1.55:48912 -> DONUSTURULDU -> 203.0.113.10:10000
+  * Gelen Yanit (DNAT)      : 203.0.113.10:10000 -> DONUSTURULDU -> 192.168.1.55:48912
+  * PAT Tablosu Durumu      : 1 aktif esleme, Tahsis edilen portlar: [10000]
+
+3. VEKIL SUNUCU (FORWARD & REVERSE PROXY) GUVENLIK VE DENETIM ANALIZI
+------------------------------------------------------------------------------
+  * Reverse Proxy Yonlendirme: Istemci 198.51.100.22 -> Arka Uc: 10.0.0.11:8080
+    Eklenen Guvenli Baslik   : X-Forwarded-For: 198.51.100.22
+  * Forward Proxy CONNECT    : Hedef secure-bank.com:443 -> Durum: TUNNEL_ESTABLISHED
+
+4. SIBER GUVENLIK TEHDIT MODELLERI VE SAVUNMA MATRISI
+------------------------------------------------------------------------------
+  - TCP Gizli Taramalar (SYN+FIN, Null, Xmas): Bayrak anomali filtresiyle kesinlikle engellenir.
+  - X-Forwarded-For IP Spoofing              : Guvenilmeyen istemcilerden gelen XFF basliklari temizlenir/ezilir.
+  - Conntrack Tablo Tasmasi (SYN Flood)      : Maksimum conntrack kapasitesi ve zaman asimiyla korunur.
+  - PAT Port Tukenmesi                       : Dinamik port havuzu takibi ve bosaltma mekanizmasi ile onlenir.
+  - Forward Proxy Port Istismari             : CONNECT metodu yalnizca 443 portu ile sinirlandirilir.
+
+==============================================================================
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Ozel Lisans — Tum Haklari Saklidir.

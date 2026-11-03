@@ -1,0 +1,47 @@
+================================================================================
+G056 - MINI PROJE 7: PROTOKOL HARITASI: KOMUT VE CIKIS KAYDI
+Calistirilma Zamani: 2026-10-29 18:15:24
+Isletim Sistemi: Windows (pwsh / Python 3.12)
+Calisma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+================================================================================
+
+KOMUT:
+python -m unittest portfolio/hafta_08/gun_056/tests/test_protocol_map_analyzer.py -v
+
+CIKIS:
+test_01_raw_ethernet_dissection (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_01_raw_ethernet_dissection)
+Test 1: 14 baytlik ham ikili Ethernet II basliginin ayrilmasi ve EtherType kontrolu. ... ok
+test_02_raw_ipv4_dissection (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_02_raw_ipv4_dissection)
+Test 2: 20 baytlik ham IPv4 basliginin ayrilmasi ve IP adreslerinin dogrulanmasi. ... ok
+test_03_raw_tcp_dissection (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_03_raw_tcp_dissection)
+Test 3: 20 baytlik ham TCP basliginin ayrilmasi, bayraklar ve portlarin dogrulanmasi. ... ok
+test_04_raw_udp_dissection (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_04_raw_udp_dissection)
+Test 4: 8 baytlik ham UDP basliginin ayrilmasi ve uzunluk dogrulamasi. ... ok
+test_05_sample_pcap_batch_ingestion (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_05_sample_pcap_batch_ingestion)
+Test 5: sample_pcap_frames.json dosyasindaki 15 paketin topluca basariyla ayrilmasi. ... ok
+test_06_protocol_hierarchy_distribution (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_06_protocol_hierarchy_distribution)
+Test 6: Katmanlar arasi protokol dagilim istatistiklerinin (Ethernet, IPv4, TCP, UDP vb.) hesaplanmasi. ... ok
+test_07_flow_matrix_creation_and_state (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_07_flow_matrix_creation_and_state)
+Test 7: 5'li demet (5-tuple) iletisim akislarinin gruplanmasi ve TCP durum gecisleri. ... ok
+test_08_tcp_retransmission_tracking (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_08_tcp_retransmission_tracking)
+Test 8: Paket akisinda yinelenen (yeniden iletilen) TCP segmentinin tespiti. ... ok
+test_09_security_port_scan_detection (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_09_security_port_scan_detection)
+Test 9: Hizli port taramasi (SYN Scan Flood) saldirisinin guvenlik olayi olarak yakalanmasi. ... ok
+test_10_security_dns_tunneling_detection (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_10_security_dns_tunneling_detection)
+Test 10: Yuksek Shannon entropili uzun DNS sorgularinin (DNS Tunneling) tespiti. ... ok
+test_11_security_rogue_dhcp_detection (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_11_security_rogue_dhcp_detection)
+Test 11: Yetkisiz kaynaktan gelen sahte DHCP Offer paketinin guvenlik olayi olarak yakalanmasi. ... ok
+test_12_negative_short_headers (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_12_negative_short_headers)
+Test 12 (Negatif): Kirpilmis Ethernet, IPv4, TCP ve UDP basliklarinda PacketParsingError firlatilmasi. ... ok
+test_13_negative_invalid_protocol_and_version (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_13_negative_invalid_protocol_and_version)
+Test 13 (Negatif): Gecersiz EtherType, gecersiz IP versiyonu ve bilinmeyen L4 protokol hatalari. ... ok
+test_14_negative_malformed_addresses (portfolio.hafta_08.gun_056.tests.test_protocol_map_analyzer.TestProtocolMapAnalyzer.test_14_negative_malformed_addresses)
+Test 14 (Negatif): Hatali formatli MAC adresi ve gecersiz oktetli IPv4 adresi dogrulamasi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.004s
+
+OK
+
+EXIT CODE: 0
+DURUM: 14/14 TEST BASARILI (PASS)

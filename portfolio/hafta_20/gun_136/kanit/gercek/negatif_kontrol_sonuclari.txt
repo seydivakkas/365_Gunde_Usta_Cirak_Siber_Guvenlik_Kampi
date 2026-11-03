@@ -1,0 +1,64 @@
+==============================================================================
+GÜN 136: NEGATİF KONTROL VE SINIR DURUM TEST KANIT RAPORU
+==============================================================================
+Çalıştırma Tarihi: 2026-11-02 14:26:47
+Hedef: Systemd Güvenlik Motorunun Hatalı/Zafiyetli Durumları Tespit Yeteneği
+------------------------------------------------------------------------------
+[1/9] NEG_SYS_01: Boş Servis Listesi Sınır Durumu
+  • Açıklama       : Envanterde hiç servis bulunmaması durumu. Motor çökmeksizin 0.0 puan ve kritik uyarı üretmelidir.
+  • Beklenen Kural : GENEL_SIFIR_PUAN
+  • Üretilen Kural : Bulgu Yok (Skor: 0.0)
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[2/9] NEG_SYS_02: Herkese Yazılabilir Unit Dosyası (0666 / 0777)
+  • Açıklama       : Unit dosyasının yetkisiz kullanıcılar tarafından yazılabilir olması (CWE-732 / T1543.002).
+  • Beklenen Kural : SYS-002
+  • Üretilen Kural : SYS-002
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[3/9] NEG_SYS_03: SUID Bayraklı Servis İkili Dosyası
+  • Açıklama       : Servisin ExecStart hedefinde 4755 izinli veya SUID bayraklı binary bulunması (T1548.001 / CWE-250).
+  • Beklenen Kural : SYS-003
+  • Üretilen Kural : SYS-003
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[4/9] NEG_SYS_04: User= Tanımsız veya Root Olarak Çalıştırma
+  • Açıklama       : Servisin varsayılan olarak root yetkileriyle çalıştırılması (CWE-250 / T1068).
+  • Beklenen Kural : SYS-004
+  • Üretilen Kural : SYS-004
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[5/9] NEG_SYS_05: NoNewPrivileges Sandboxing Eksikliği
+  • Açıklama       : NoNewPrivileges=false olması sebebiyle alt süreçlerin SUID ikili dosyalarıyla yetki yükseltebilmesi (T1548).
+  • Beklenen Kural : SYS-005
+  • Üretilen Kural : SYS-005
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[6/9] NEG_SYS_06: ProtectSystem Eksikliği veya 'no' Değeri
+  • Açıklama       : ProtectSystem direktifinin devre dışı bırakılmasıyla dosya sisteminin tahrifata açık kalması (CWE-732).
+  • Beklenen Kural : SYS-006
+  • Üretilen Kural : SYS-006
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[7/9] NEG_SYS_07: ProtectHome İzolasyon Eksikliği
+  • Açıklama       : ProtectHome boş veya 'no' olması sonucu kullanıcı ana dizinlerine yetkisiz erişim riski (CWE-200 / T1005).
+  • Beklenen Kural : SYS-007
+  • Üretilen Kural : SYS-007
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[8/9] NEG_SYS_08: Tehlikeli Linux Capabilities (CAP_SYS_ADMIN)
+  • Açıklama       : Servise kontrolsüz CAP_SYS_ADMIN veya CAP_SYS_PTRACE verilmesi (CWE-250 / T1548).
+  • Beklenen Kural : SYS-010
+  • Üretilen Kural : SYS-010
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[9/9] NEG_SYS_09: Aktif Güvensiz Legacy Servis (telnet / rsh)
+  • Açıklama       : CIS Benchmark uyarınca yasaklanmış olan telnet.socket servisinin çalışır olması (CIS 2.1).
+  • Beklenen Kural : SYS-001
+  • Üretilen Kural : SYS-001, SYS-004, SYS-005, SYS-006, SYS-007, SYS-008, SYS-009
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+Toplam Senaryo    : 9
+Başarılı Doğrulama: 9 / 9
+Sonuç             : TAM BAŞARILI (%100 PASS)
+==============================================================================

@@ -1,0 +1,65 @@
+================================================================================
+GERÇEK YÜRÜTME KANITI — KOMUT VE ÇIKIŞ
+================================================================================
+Tarih/Saat : 2026-10-27T00:08:13.404493
+İşletim Sis: Windows-11-10.0.26300-SP0
+Python     : 3.14.3
+Komut      : C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe portfolio/hafta_02/gun_011/uygulama/lab_network_boundary_auditor.py --topology portfolio/hafta_02/gun_011/ornek_veri/laboratuvar_ag_topolojisi.json
+Çıkış Kodu : 2
+--------------------------------------------------------------------------------
+STDOUT:
+================================================================================
+   LABORATUVAR A� SINIRLARI VE B�L�MLEME DENET�M RAPORU
+================================================================================
+�ncelenen Dosya: portfolio/hafta_02/gun_011/ornek_veri/laboratuvar_ag_topolojisi.json
+Toplam Topoloji Say�s�: 2
+--------------------------------------------------------------------------------
+
+[+] TOPOLOJ� ID: TOPOLOGY-SEC-01 | Ad�: Sertlestirilmis_Mikro_Segmentasyon_Lab_Agi
+    Mimari Tipi       : Mikro_Segmentasyon_4_Bolge
+    G�venlik Seviyesi : KRITIK_IZOLE_AIRGAPPED
+    G�venlik Skoru    : 100/100
+    Risk Durumu       : G�VENL� (M�KRO-SEGMENTE �ZOLE LAB)
+    Toplam Bulgu      : 0
+    -> TEBR�KLER: S�f�r g�venlik a����! Tam mikro-segmente ve s�z�nt�s�z laboratuvar a��.
+
+[+] TOPOLOJ� ID: TOPOLOGY-RISK-99 | Ad�: Guvenliksiz_Duz_Kacak_Lab_Agi
+    Mimari Tipi       : Duz_Ag_Tek_Segment
+    G�venlik Seviyesi : YUKSEK_RISK_SIZINTI
+    G�venlik Skoru    : 0/100
+    Risk Durumu       : KR�T�K FELAKET (AC�L M�DAHALE GEREKL�)
+    Toplam Bulgu      : 6
+    -> TESP�T ED�LEN R�SK VE ZAF�YETLER:
+       * [YUKSEK] Yetersiz A� Segmentasyonu (D�z A� Riski) (-25 Puan)
+         Kategori: AG_SEGMENTASYONU
+         Risk    : Topolojide yaln�zca 1 adet b�lge tan�ml�. G�venli bir lab en az Karantina, Sald�rgan ve SOC/SIEM b�lgelerini ayr� VLAN'larda tutmal�d�r.
+         ��z�m   : A�� mikro-segmentlere ay�r�n (VLAN 10: Sald�rgan, VLAN 66: Karantina, VLAN 20: SOC/SIEM).
+       * [FELAKET] �l�mc�l S�z�nt�: Karantina B�lgesinde A��k �nternet Eri�imi (ZONE-FLAT) (-50 Puan)
+         Kategori: KARANTINA_SIZINTISI
+         Risk    : Karantina alt�ndaki zararl� yaz�l�m d�� C2 sunucular�na veri s�zd�rabilir veya internetteki sistemlere sald�rabilir.
+         ��z�m   : Karantina b�lgesinin varsay�lan a� ge�idinden internete (0.0.0.0/0) ��k�� rotas�n� tamamen kald�r�n.
+       * [KRITIK] Varsay�lan FORWARD Eylemi 'DROP' De�il (A��k Ge�i�) (-35 Puan)
+         Kategori: GUVENLIK_DUVARI
+         Risk    : G�venlik duvar� b�lgeler aras� ge�i�i varsay�lan olarak engellememektedir (ACCEPT).
+         ��z�m   : 'iptables -P FORWARD DROP' politikas�n� uygulay�n.
+       * [KRITIK] Durum Takipli G�venlik Duvar� (Statefull Conntrack) Devre D��� (-30 Puan)
+         Kategori: GUVENLIK_DUVARI
+         Risk    : Ba�lant� durumlar� (NEW, ESTABLISHED, RELATED) izlenmemektedir. Tersine kabuk (reverse shell) paketleri filtrelenemez.
+         ��z�m   : iptables state / conntrack mod�l�n� etkinle�tirin.
+       * [KRITIK] Kurban B�lgesinden Ba�lat�lan Yeni (NEW) Ba�lant�lar Engellenmemi� (-30 Puan)
+         Kategori: GUVENLIK_DUVARI
+         Risk    : Kurban makine ele ge�irildi�inde sald�rgan veya konak makineye do�ru tersine kabuk (Reverse Shell) ba�latabilir.
+         ��z�m   : Kurban b�lgesinden ��kan paketlerde yaln�zca 'ESTABLISHED,RELATED' durumlar�na izin verin; 'NEW' paketleri d���r�n.
+       * [FELAKET] G�vensiz Geni� �zin Kural�: FW-BAD-ALL (-50 Puan)
+         Kategori: KURAL_MATRISI
+         Risk    : Karantina b�lgesinden d�� internete (INTERNET) do�rudan trafik ge�i�ine izin verilmi�.
+         ��z�m   : Bu kural� derhal silin; karantina asla genel internete eri�emez.
+
+================================================================================
+Denetim Bitti. T�m haklar� sakl�d�r (c) 2026 Seydi Ery�lmaz.
+================================================================================
+
+--------------------------------------------------------------------------------
+STDERR:
+
+================================================================================

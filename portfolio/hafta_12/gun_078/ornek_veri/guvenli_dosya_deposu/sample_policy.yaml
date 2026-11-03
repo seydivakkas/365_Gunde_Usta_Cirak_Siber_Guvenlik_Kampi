@@ -1,0 +1,9 @@
+policy_name: SANDBOX_FILE_RESTRICTIONS
+enforcement: STRICT
+allowed_operations:
+  - READ
+  - ATOMIC_WRITE
+forbidden_targets:
+  - /etc/passwd
+  - /etc/shadow
+  - C:\Windows\System32

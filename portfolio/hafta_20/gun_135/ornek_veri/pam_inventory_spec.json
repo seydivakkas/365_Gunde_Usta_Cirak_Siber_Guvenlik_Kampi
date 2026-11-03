@@ -1,0 +1,48 @@
+{
+  "system_metadata": {
+    "hostname": "srv-linux-auth01",
+    "os_distribution": "RHEL 9 / Rocky Linux 9 / Ubuntu 22.04 LTS",
+    "pam_version": "Linux-PAM 1.5.1",
+    "auditor": "Seydi Eryılmaz (@seydivakkas)",
+    "audit_timestamp": "2026-11-02T14:20:00Z"
+  },
+  "account_lockout": {
+    "enabled": true,
+    "module_name": "pam_faillock",
+    "deny": 5,
+    "unlock_time": 900,
+    "fail_interval": 900,
+    "even_deny_root": false
+  },
+  "password_quality": {
+    "minlen": 12,
+    "dcredit": -1,
+    "ucredit": -1,
+    "lcredit": -1,
+    "ocredit": -1,
+    "retry": 3,
+    "enforce_for_root": true
+  },
+  "session_policy": {
+    "inactivity_timeout_tmout": 1800,
+    "pwhistory_remember": 3,
+    "nullok_present": true,
+    "maxlogins": 10
+  },
+  "file_permissions": [
+    {
+      "file_path": "/etc/pam.d/system-auth",
+      "owner": "root",
+      "group": "root",
+      "mode_octal": "0644",
+      "is_writable_by_others": false
+    },
+    {
+      "file_path": "/etc/security/pwquality.conf",
+      "owner": "root",
+      "group": "root",
+      "mode_octal": "0666",
+      "is_writable_by_others": true
+    }
+  ]
+}

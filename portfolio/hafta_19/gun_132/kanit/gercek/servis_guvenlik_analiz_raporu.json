@@ -1,0 +1,135 @@
+{
+  "total_services_audited": 7,
+  "security_score": 0.0,
+  "system_status": "CRITICAL",
+  "total_vulnerabilities": 6,
+  "severity_breakdown": {
+    "CRITICAL": 2,
+    "HIGH": 2,
+    "MEDIUM": 2,
+    "LOW": 0
+  },
+  "per_service_findings": {
+    "W32Time": [],
+    "EventLog": [],
+    "CorpSecureAgent": [],
+    "InsecureBackupSvc": [
+      {
+        "cwe_id": "CWE-428",
+        "mitre_id": "T1574.009",
+        "severity": "HIGH",
+        "title": "Tırnaksız Servis Yolu (Unquoted Service Path)",
+        "description": "'InsecureBackupSvc' hizmetinin ImagePath değeri (C:\\Program Files\\Enterprise Backup Suite\\backup_engine.exe -daemon) boşluk içermesine rağmen tırnak içine alınmamış. Saldırgan aradaki yollara (C:\\Program.exe, C:\\Program Files\\Enterprise.exe, C:\\Program Files\\Enterprise Backup.exe) yetkisiz dosya bırakarak SYSTEM haklarına yükselebilir.",
+        "remediation": "sc.exe config \"InsecureBackupSvc\" binPath= \"\\\"C:\\Program Files\\Enterprise Backup Suite\\backup_engine.exe -daemon\\\"\"",
+        "penalty": 25.0
+      },
+      {
+        "cwe_id": "CWE-250",
+        "mitre_id": "T1078.003",
+        "severity": "MEDIUM",
+        "title": "Aşırı Yetkili Servis Hesabı (En Az Ayrıcalık Prensibi İhlali)",
+        "description": "Üçüncü parti 'InsecureBackupSvc' hizmeti tam yetkili 'LocalSystem' hesabıyla çalışmaktadır. Uygulamadaki olası bir zafiyet tüm işletim sisteminin tam ele geçirilmesine yol açar.",
+        "remediation": "Servisi 'NT AUTHORITY\\LocalService', 'NT AUTHORITY\\NetworkService' veya bir gMSA hesabı ile çalışacak şekilde yapılandırın.",
+        "penalty": 10.0
+      }
+    ],
+    "LegacyDbAgent": [
+      {
+        "cwe_id": "CWE-732",
+        "mitre_id": "T1543.003",
+        "severity": "CRITICAL",
+        "title": "Zayıf Servis DACL İzni (Hizmet Yapılandırma Yetkisi)",
+        "description": "'LegacyDbAgent' hizmetinin DACL tablosunda Düşük yetkili BU kullanıcısına SERVICE_CHANGE_CONFIG (DC) yetkisi verilmiş!. Standart bir kullanıcı servis komut satırını değiştirip SYSTEM olabilir.",
+        "remediation": "sc.exe sdset \"LegacyDbAgent\" \"D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)\"",
+        "penalty": 30.0
+      },
+      {
+        "cwe_id": "CWE-250",
+        "mitre_id": "T1078.003",
+        "severity": "MEDIUM",
+        "title": "Aşırı Yetkili Servis Hesabı (En Az Ayrıcalık Prensibi İhlali)",
+        "description": "Üçüncü parti 'LegacyDbAgent' hizmeti tam yetkili 'LocalSystem' hesabıyla çalışmaktadır. Uygulamadaki olası bir zafiyet tüm işletim sisteminin tam ele geçirilmesine yol açar.",
+        "remediation": "Servisi 'NT AUTHORITY\\LocalService', 'NT AUTHORITY\\NetworkService' veya bir gMSA hesabı ile çalışacak şekilde yapılandırın.",
+        "penalty": 10.0
+      }
+    ],
+    "CustomLogger": [
+      {
+        "cwe_id": "CWE-732",
+        "mitre_id": "T1574.010",
+        "severity": "CRITICAL",
+        "title": "Zayıf Servis İkili Dosya İzni (Binary Hijacking)",
+        "description": "'CustomLogger' hizmetinin çalıştırdığı ikili dosyada: BUILTIN\\Users grubuna servis ikili dosyası üzerinde yazma/değiştirme yetkisi (Modify, Write) verilmiş! Saldırgan ikili dosyayı kendi zararlı yazılımı ile ezebilir.",
+        "remediation": "icacls \"C:\\CustomApps\\Logger\\logger.exe\" /inheritance:r /grant:r \"SYSTEM:(F)\" /grant:r \"Administrators:(F)\" /grant:r \"Users:(RX)\"",
+        "penalty": 30.0
+      }
+    ],
+    "RemoteRegistry": [
+      {
+        "cwe_id": "CWE-16",
+        "mitre_id": "T1003.002",
+        "severity": "HIGH",
+        "title": "Gereksiz ve Riskli Servis Aktif (RemoteRegistry)",
+        "description": "CIS Windows Benchmark standartlarına göre 'RemoteRegistry' servisi (Uzaktan Kayıt Defteri Erişim Servisi (Yetkisiz reg manipülasyonu riski)) kurumsal sistemlerde devre dışı bırakılmalıdır. Mevcut başlangıç türü: Automatic.",
+        "remediation": "Set-Service -Name \"RemoteRegistry\" -StartupType Disabled; Stop-Service -Name \"RemoteRegistry\" -Force",
+        "penalty": 15.0
+      }
+    ]
+  },
+  "findings_detail": [
+    {
+      "service_name": "InsecureBackupSvc",
+      "cwe_id": "CWE-428",
+      "mitre_id": "T1574.009",
+      "severity": "HIGH",
+      "title": "Tırnaksız Servis Yolu (Unquoted Service Path)",
+      "description": "'InsecureBackupSvc' hizmetinin ImagePath değeri (C:\\Program Files\\Enterprise Backup Suite\\backup_engine.exe -daemon) boşluk içermesine rağmen tırnak içine alınmamış. Saldırgan aradaki yollara (C:\\Program.exe, C:\\Program Files\\Enterprise.exe, C:\\Program Files\\Enterprise Backup.exe) yetkisiz dosya bırakarak SYSTEM haklarına yükselebilir.",
+      "remediation": "sc.exe config \"InsecureBackupSvc\" binPath= \"\\\"C:\\Program Files\\Enterprise Backup Suite\\backup_engine.exe -daemon\\\"\""
+    },
+    {
+      "service_name": "InsecureBackupSvc",
+      "cwe_id": "CWE-250",
+      "mitre_id": "T1078.003",
+      "severity": "MEDIUM",
+      "title": "Aşırı Yetkili Servis Hesabı (En Az Ayrıcalık Prensibi İhlali)",
+      "description": "Üçüncü parti 'InsecureBackupSvc' hizmeti tam yetkili 'LocalSystem' hesabıyla çalışmaktadır. Uygulamadaki olası bir zafiyet tüm işletim sisteminin tam ele geçirilmesine yol açar.",
+      "remediation": "Servisi 'NT AUTHORITY\\LocalService', 'NT AUTHORITY\\NetworkService' veya bir gMSA hesabı ile çalışacak şekilde yapılandırın."
+    },
+    {
+      "service_name": "LegacyDbAgent",
+      "cwe_id": "CWE-732",
+      "mitre_id": "T1543.003",
+      "severity": "CRITICAL",
+      "title": "Zayıf Servis DACL İzni (Hizmet Yapılandırma Yetkisi)",
+      "description": "'LegacyDbAgent' hizmetinin DACL tablosunda Düşük yetkili BU kullanıcısına SERVICE_CHANGE_CONFIG (DC) yetkisi verilmiş!. Standart bir kullanıcı servis komut satırını değiştirip SYSTEM olabilir.",
+      "remediation": "sc.exe sdset \"LegacyDbAgent\" \"D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)\""
+    },
+    {
+      "service_name": "LegacyDbAgent",
+      "cwe_id": "CWE-250",
+      "mitre_id": "T1078.003",
+      "severity": "MEDIUM",
+      "title": "Aşırı Yetkili Servis Hesabı (En Az Ayrıcalık Prensibi İhlali)",
+      "description": "Üçüncü parti 'LegacyDbAgent' hizmeti tam yetkili 'LocalSystem' hesabıyla çalışmaktadır. Uygulamadaki olası bir zafiyet tüm işletim sisteminin tam ele geçirilmesine yol açar.",
+      "remediation": "Servisi 'NT AUTHORITY\\LocalService', 'NT AUTHORITY\\NetworkService' veya bir gMSA hesabı ile çalışacak şekilde yapılandırın."
+    },
+    {
+      "service_name": "CustomLogger",
+      "cwe_id": "CWE-732",
+      "mitre_id": "T1574.010",
+      "severity": "CRITICAL",
+      "title": "Zayıf Servis İkili Dosya İzni (Binary Hijacking)",
+      "description": "'CustomLogger' hizmetinin çalıştırdığı ikili dosyada: BUILTIN\\Users grubuna servis ikili dosyası üzerinde yazma/değiştirme yetkisi (Modify, Write) verilmiş! Saldırgan ikili dosyayı kendi zararlı yazılımı ile ezebilir.",
+      "remediation": "icacls \"C:\\CustomApps\\Logger\\logger.exe\" /inheritance:r /grant:r \"SYSTEM:(F)\" /grant:r \"Administrators:(F)\" /grant:r \"Users:(RX)\""
+    },
+    {
+      "service_name": "RemoteRegistry",
+      "cwe_id": "CWE-16",
+      "mitre_id": "T1003.002",
+      "severity": "HIGH",
+      "title": "Gereksiz ve Riskli Servis Aktif (RemoteRegistry)",
+      "description": "CIS Windows Benchmark standartlarına göre 'RemoteRegistry' servisi (Uzaktan Kayıt Defteri Erişim Servisi (Yetkisiz reg manipülasyonu riski)) kurumsal sistemlerde devre dışı bırakılmalıdır. Mevcut başlangıç türü: Automatic.",
+      "remediation": "Set-Service -Name \"RemoteRegistry\" -StartupType Disabled; Stop-Service -Name \"RemoteRegistry\" -Force"
+    }
+  ]
+}

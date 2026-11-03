@@ -1,0 +1,30 @@
+=== GÜN 108 X.509 VE SERTİFİKA ZİNCİRİ ADLİ ANALİZ RAPORU ===
+Tarih/Saat: 2026-11-02 03:52:46
+Standart Uyumluluğu: RFC 5280 (PKI Path Validation) & RFC 6125 (Hostname Verification)
+--------------------------------------------------------------------------------
+
+1. X.509 v3 SERTİFİKA ANATOMİSİ VE GÜVEN ZİNCİRİ (TRUST CHAIN):
+   - Bir TLS/HTTPS bağlantısında sunucu yalnızca kendi uç sertifikasını (Leaf) sunmaz;
+     aynı zamanda bu sertifikayı imzalayan Ara CA (Intermediate) sertifikasını da iletir.
+   - İstemci (tarayıcı/işletim sistemi), önceden güvenilen Kök CA (Root CA) deposunda
+     zincirin tepesini arar. Zincir güvenilir bir köke bağlanmıyorsa bağlantı anında koparılır (CWE-295).
+
+2. TEMEL KISITLAMALAR (BASIC CONSTRAINTS) VE YETKİSİZ CA SALDIRISI:
+   - BasicConstraints uzantısı is_ca (BOOLEAN) ve pathLenConstraint değerlerini taşır.
+   - Bir web sitesine verilen sertifikada is_ca=False olmak ZORUNDADIR.
+   - Eğer istemci bu bayrağı denetlemezse, herhangi bir meşru web sitesi sahibi kendi sertifikasıyla
+     'google.com' veya 'bank.com' adına yeni bir ara sertifika imzalayarak dünyayı kandırabilir!
+   - Motorumuz BasicConstraints ihlallerini NonCACertificateUsedAsCAError ile anında engeller.
+
+3. ALAN ADI DOĞRULAMA (RFC 6125 - HOSTNAME VERIFICATION) VE MITM (CWE-297):
+   - Geçerli bir CA tarafından imzalanmış olsa dahi, sunulan sertifikanın talep edilen alan adı
+     ile eşleşmesi zorunludur. Aksi halde saldırgan kendi adına aldığı geçerli bir sertifikayı
+     banka trafiğini araya girerek (MITM) dinlemekte kullanabilir.
+   - Modern standartlarda Subject CN yerine Subject Alternative Name (SAN) esas alınır.
+
+4. SERTİFİKA İPTAL LİSTESİ (CRL) VE OCSP (ONLINE CERTIFICATE STATUS PROTOCOL):
+   - Özel anahtar çalındığında veya personel ayrıldığında sertifika süresi bitmeden iptal edilir.
+   - CRL statik ve yavaş bir liste sunarken, OCSP gerçek zamanlı sorgulama sağlar.
+
+--------------------------------------------------------------------------------
+SONUÇ: Motor RFC 5280, RFC 6125 ve FIPS standartlarına tam uyumlu olarak doğrulanmıştır.

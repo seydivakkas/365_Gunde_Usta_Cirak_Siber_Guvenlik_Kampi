@@ -1,0 +1,108 @@
+{
+  "aciklama": "NIST SP 800-57 Anahtar Yönetimi ve Rotasyon Negatif Test Senaryoları (9 Adet)",
+  "senaryolar": [
+    {
+      "id": "NEG_01_SURESI_DOLMUS_ANAHTARLA_SIFRELEME",
+      "baslik": "Kriptoperiyodu (Geçerlilik Süresi) Dolmuş Anahtarla Yeni Veri Şifreleme",
+      "zafiyet_kodu": "CWE-320",
+      "hata_tipi": "KeyExpiredError",
+      "veri": {
+        "anahtar_id": "kek_2023_legacy",
+        "gecerlilik_bitis": "2024-01-01T00:00:00Z",
+        "islem": "ENCRYPT"
+      },
+      "beklenen_sonuc": "Kriptoperiyodu dolmuş anahtar yeni şifreleme işlemlerinde kullanılamamalı, hata fırlatılmalıdır."
+    },
+    {
+      "id": "NEG_02_IPTAL_EDILMIS_ANAHTAR_KULLANIMI",
+      "baslik": "Sızmış / İptal Edilmiş (COMPROMISED) Anahtar ile İşlem Yapılması",
+      "zafiyet_kodu": "CWE-320",
+      "hata_tipi": "KeyCompromisedError",
+      "veri": {
+        "anahtar_id": "kek_compromised_001",
+        "durum": "COMPROMISED",
+        "islem": "DECRYPT"
+      },
+      "beklenen_sonuc": "İhlal edilmiş ve sızmış anahtarla tüm kriptografik operasyonlar derhal bloke edilmelidir."
+    },
+    {
+      "id": "NEG_03_ZAYIF_ANAHTAR_UZUNLUGU",
+      "baslik": "Yetersiz Anahtar Uzunluğu ile Şifreleme (NIST Altı Bit Boyutu)",
+      "zafiyet_kodu": "CWE-326",
+      "hata_tipi": "InadequateKeyLengthError",
+      "veri": {
+        "algoritma": "AES",
+        "bit_uzunlugu": 64,
+        "izin_verilen_minimum_bit": 128
+      },
+      "beklenen_sonuc": "NIST SP 800-57 standartları gereği 128-bit ve 256-bit altındaki simetrik anahtarlar reddedilmelidir."
+    },
+    {
+      "id": "NEG_04_HACIM_LIMITI_ASIMI_NONCE_TUKENMESI",
+      "baslik": "Aynı DEK ile İzin Verilen Azami Şifreleme Hacminin Aşılması",
+      "zafiyet_kodu": "CWE-329",
+      "hata_tipi": "KeyUsageLimitExceededError",
+      "veri": {
+        "mevcut_islem_sayisi": 1000001,
+        "azami_islem_limiti": 1000000
+      },
+      "beklenen_sonuc": "Aynı anahtar ve nonce tükenmesi/çarpışması riskine karşı azami işlem sınırında anahtar rotasyonu zorunlu tutulmalıdır."
+    },
+    {
+      "id": "NEG_05_ZARF_SIFRELEMEDE_TAHRIF_EDILMIS_DEK",
+      "baslik": "Zarf Şifreleme Yükünde Şifreli DEK Tahrifatı (Auth Tag Hatası)",
+      "zafiyet_kodu": "CWE-353",
+      "hata_tipi": "EncryptedDEKIntegrityError",
+      "veri": {
+        "encrypted_dek_hex": "deadbeefcafebabe0102030405060708",
+        "auth_tag_hex": "ffffffffffffffffffffffffffffffff"
+      },
+      "beklenen_sonuc": "KEK ile çözülen şifreli DEK'in kimlik doğrulama etiketi bozulmuşsa işlem durdurulmalıdır."
+    },
+    {
+      "id": "NEG_06_ZEROIZATION_DOGRALAMASI_VE_SIZINTI",
+      "baslik": "Kriptografik Sıfırlama (Zeroization) Sonrası Anahtar Belleğine Erişim",
+      "zafiyet_kodu": "CWE-226",
+      "hata_tipi": "KeyAlreadyDestroyedError",
+      "veri": {
+        "anahtar_id": "kek_shredded_999",
+        "durum": "DESTROYED"
+      },
+      "beklenen_sonuc": "Bellekte ve diskte üzerine rastgele bitler yazılarak imha edilen anahtara erişim engellenmelidir."
+    },
+    {
+      "id": "NEG_07_DUAL_CONTROL_EKSIK_PAYLASIM",
+      "baslik": "Çift Kontrollü (Dual Control) Anahtar Birleştirmede Eksik Parça",
+      "zafiyet_kodu": "CWE-320",
+      "hata_tipi": "InsufficientKeySharesError",
+      "veri": {
+        "gerekli_esik": 2,
+        "sunulan_parca_sayisi": 1
+      },
+      "beklenen_sonuc": "M-of-N eşik kuralı sağlanmadığı sürece anahtar rekonstrüksiyonu engellenmelidir."
+    },
+    {
+      "id": "NEG_08_DEPRECATED_ANAHTARLA_YENI_SIFRELEME",
+      "baslik": "Yalnızca Okuma/Deşifre İznine Sahip (DEPRECATED) Anahtarla Yazma/Şifreleme",
+      "zafiyet_kodu": "CWE-320",
+      "hata_tipi": "KeyDeprecatedError",
+      "veri": {
+        "anahtar_id": "kek_v1_legacy",
+        "durum": "DEPRECATED",
+        "talep_edilen_islem": "ENCRYPT"
+      },
+      "beklenen_sonuc": "Rotasyonla emekliye ayrılan eski anahtar yalnızca eski veriyi çözebilir; yeni veri şifreleyemez."
+    },
+    {
+      "id": "NEG_09_HARDCODED_VEYA_STATIK_ANAHTAR_GIRISI",
+      "baslik": "Statik, Tahmin Edilebilir veya Boşluk İçeren Sabit Anahtar Tespiti",
+      "zafiyet_kodu": "CWE-321",
+      "hata_tipi": "PredictableKeyError",
+      "veri": {
+        "anahtar_deseni": "00000000000000000000000000000000",
+        "dusuk_entropi": true
+      },
+      "beklenen_sonuc": "Sıfırlardan veya sabit kalıplardan oluşan düşük entropili sabit anahtarlar sisteme kaydedilmemelidir."
+    }
+  ]
+}

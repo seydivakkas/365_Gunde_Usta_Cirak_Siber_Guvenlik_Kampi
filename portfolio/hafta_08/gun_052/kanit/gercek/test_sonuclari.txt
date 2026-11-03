@@ -1,0 +1,33 @@
+test_dns_any_amplification_detection (portfolio.hafta_08.gun_052.tests.test_udp_protocol_analyzer.TestUDPProtocolAnalyzer.test_dns_any_amplification_detection)
+Test 8: DNS ANY sorgusu yan²t²ndaki y³ksek BAF ve amplifikasyon DDoS riskini do­rular. ... ok
+test_dns_datagram_inspection_and_classification (portfolio.hafta_08.gun_052.tests.test_udp_protocol_analyzer.TestUDPProtocolAnalyzer.test_dns_datagram_inspection_and_classification)
+Test 5: DNS sorgu paketinin tespiti ve DNS ba■l²k alanlar²n²n ayr²■t²r²lmas²n² do­rular. ... ok
+test_kaminsky_source_port_randomization_check (portfolio.hafta_08.gun_052.tests.test_udp_protocol_analyzer.TestUDPProtocolAnalyzer.test_kaminsky_source_port_randomization_check)
+Test 11: Tahmin edilebilir s²ral² portlar ile rastgele portlar²n ay²rt edildi­ini do­rular. ... ok
+test_negative_invalid_ports_and_length_underflow (portfolio.hafta_08.gun_052.tests.test_udp_protocol_analyzer.TestUDPProtocolAnalyzer.test_negative_invalid_ports_and_length_underflow)
+Test 12: Negatif kontrol: Aral²k d²■² port ve yetersiz ba■l²k uzunlu­unun reddedildi­ini do­rular. ... ok
+test_negative_length_payload_mismatch (portfolio.hafta_08.gun_052.tests.test_udp_protocol_analyzer.TestUDPProtocolAnalyzer.test_negative_length_payload_mismatch)
+Test 13: Negatif kontrol: Ba■l²k uzunlu­u ile y³k boyutu uyu■mad²­²nda paketin reddedildi­ini do­rular. ... ok
+test_negative_malformed_pseudo_header_ip (portfolio.hafta_08.gun_052.tests.test_udp_protocol_analyzer.TestUDPProtocolAnalyzer.test_negative_malformed_pseudo_header_ip)
+Test 14: Negatif kontrol: Sahte ba■l²k hesaplamas²nda geersiz IP format²n²n reddedildi­ini do­rular. ... ok
+test_ntp_datagram_inspection_mode_classification (portfolio.hafta_08.gun_052.tests.test_udp_protocol_analyzer.TestUDPProtocolAnalyzer.test_ntp_datagram_inspection_mode_classification)
+Test 6: NTP ¦stemci iste­i (Mode 3) ve Sunucu yan²t² (Mode 4) ayr²■t²rmas²n² do­rular. ... ok
+test_ntp_monlist_amplification_detection (portfolio.hafta_08.gun_052.tests.test_udp_protocol_analyzer.TestUDPProtocolAnalyzer.test_ntp_monlist_amplification_detection)
+Test 7: NTP Mode 7 'monlist' sorgusunun ve y³ksek BAF amplifikasyon riskinin tespitini do­rular. ... ok
+test_udp_checksum_calculation_with_pseudo_header (portfolio.hafta_08.gun_052.tests.test_udp_protocol_analyzer.TestUDPProtocolAnalyzer.test_udp_checksum_calculation_with_pseudo_header)
+Test 2: IPv4 Sahte Ba■l²­² (Pseudo-Header) ile sa­lama toplam² hesaplamas²n² do­rular. ... ok
+test_udp_checksum_verification_valid_and_corrupt (portfolio.hafta_08.gun_052.tests.test_udp_protocol_analyzer.TestUDPProtocolAnalyzer.test_udp_checksum_verification_valid_and_corrupt)
+Test 3: Bozulmam²■ datagramda checksum onay²n², de­i■tirilmi■ veride ise hata tespitini do­rular. ... ok
+test_udp_flood_anomaly_detection (portfolio.hafta_08.gun_052.tests.test_udp_protocol_analyzer.TestUDPProtocolAnalyzer.test_udp_flood_anomaly_detection)
+Test 9: Y³ksek paket h²z²na (PPS) sahip UDP Flood anomalisinin tespit edildi­ini do­rular. ... ok
+test_udp_header_binary_pack_and_unpack (portfolio.hafta_08.gun_052.tests.test_udp_protocol_analyzer.TestUDPProtocolAnalyzer.test_udp_header_binary_pack_and_unpack)
+Test 1: RFC 768 8 baytl²k ba■l²­²n ikili paketlenmesi ve geri a²lmas²n² do­rular. ... ok
+test_udp_port_sweep_detection (portfolio.hafta_08.gun_052.tests.test_udp_protocol_analyzer.TestUDPProtocolAnalyzer.test_udp_port_sweep_detection)
+Test 10: Tek bir kaynaktan ok say²da farkl² porta yap²lan UDP Port Taramas² (Sweep) tespitini do­rular. ... ok
+test_udp_zero_checksum_ipv4_allowed (portfolio.hafta_08.gun_052.tests.test_udp_protocol_analyzer.TestUDPProtocolAnalyzer.test_udp_zero_checksum_ipv4_allowed)
+Test 4: RFC 768 gere­ince IPv4'te checksum=0x0000 durumunun geerli kabul edildi­ini do­rular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK

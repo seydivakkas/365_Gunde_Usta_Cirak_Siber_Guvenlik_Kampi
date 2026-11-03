@@ -1,0 +1,64 @@
+================================================================================
+GERÇEK KOMUT ÇALIŞTIRMA VE KANIT KAYDI — GÜN 012
+Tarih: 2026-10-27
+Platform: Windows 11 (10.0.26300)
+Python Sürümü: 3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]
+Çalışma Dizini: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Lisans: ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+
+>>> KOMUT: python portfolio/hafta_02/gun_012/uygulama/vm_snapshot_backup_manager.py --envanter portfolio/hafta_02/gun_012/ornek_veri/vm_lab_envanteri.json
+Çıkış Kodu: 0
+[STDOUT]:
+[*] T�m Sanal Makineler Denetleniyor...
+    - VM: VM-SEC-WIN-01 (Windows-11-Analiz-Hostu) -> Skor: 30 | Durum: TEHLIKELI | Bulgu: 3
+    - VM: VM-SEC-LNX-01 (Ubuntu-SIEM-Log-Sunucusu) -> Skor: 100 | Durum: GUVENLI | Bulgu: 0
+    - VM: VM-VULN-SRV-99 (Legacy-Web-Uygulama-Sunucusu) -> Skor: 0 | Durum: TEHLIKELI | Bulgu: 5
+
+--------------------------------------------------------------------------------
+>>> KOMUT: python portfolio/hafta_02/gun_012/uygulama/vm_snapshot_backup_manager.py --envanter portfolio/hafta_02/gun_012/ornek_veri/vm_lab_envanteri.json --vm-id VM-SEC-WIN-01 --denetle
+Çıkış Kodu: 0
+[STDOUT]:
+[*] Sanal Makine Denetimi Ba�lat�l�yor: VM-SEC-WIN-01
+[+] Denetim Skoru: 30 / 100 (TEHLIKELI)
+[+] Toplam Risk Bulgusu: 3
+    - [KRITIK] Snapshot-as-Backup (Anl�k G�r�nt�y� Yedek Sanma) Yan�lg�s� (-30 puan)
+    - [YUKSEK] Snapshot Ya� S�n�r� A��ld� (En eski: 73.5 saat) (-20 puan)
+    - [YUKSEK] De�i�mezlik (WORM / Object Lock) Kilidi Bulunmuyor (-20 puan)
+
+--------------------------------------------------------------------------------
+>>> KOMUT: python portfolio/hafta_02/gun_012/uygulama/vm_snapshot_backup_manager.py --envanter portfolio/hafta_02/gun_012/ornek_veri/vm_lab_envanteri.json --vm-id VM-SEC-LNX-01 --denetle
+Çıkış Kodu: 0
+[STDOUT]:
+[*] Sanal Makine Denetimi Ba�lat�l�yor: VM-SEC-LNX-01
+[+] Denetim Skoru: 100 / 100 (GUVENLI)
+[+] Toplam Risk Bulgusu: 0
+
+--------------------------------------------------------------------------------
+>>> KOMUT: python portfolio/hafta_02/gun_012/uygulama/vm_snapshot_backup_manager.py --envanter portfolio/hafta_02/gun_012/ornek_veri/vm_lab_envanteri.json --vm-id VM-VULN-SRV-99 --denetle
+Çıkış Kodu: 0
+[STDOUT]:
+[*] Sanal Makine Denetimi Ba�lat�l�yor: VM-VULN-SRV-99
+[+] Denetim Skoru: 0 / 100 (TEHLIKELI)
+[+] Toplam Risk Bulgusu: 5
+    - [KRITIK] Snapshot-as-Backup (Anl�k G�r�nt�y� Yedek Sanma) Yan�lg�s� (-30 puan)
+    - [YUKSEK] Snapshot Ya� S�n�r� A��ld� (En eski: 3550.0 saat) (-20 puan)
+    - [ORTA] A��r� Snapshot Zincir Derinli�i (Derinlik: 4) (-15 puan)
+    - [YUKSEK] De�i�mezlik (WORM / Object Lock) Kilidi Bulunmuyor (-20 puan)
+    - [YUKSEK] G�lge Kopyalar (VSS) Fidye Yaz�l�m� Sald�r�s�na A��k (-15 puan)
+
+--------------------------------------------------------------------------------
+>>> KOMUT: python portfolio/hafta_02/gun_012/uygulama/vm_snapshot_backup_manager.py --envanter portfolio/hafta_02/gun_012/ornek_veri/vm_lab_envanteri.json --vm-id VM-SEC-WIN-01 --snapshot-al Post_Exploit_Rollback_Point
+Çıkış Kodu: 0
+[STDOUT]:
+[*] Snapshot Al�n�yor: VM=VM-SEC-WIN-01, Ad=Post_Exploit_Rollback_Point
+[+] Snapshot Ba�ar�yla Olu�turuldu: SNAP-VM-SEC-WIN-01-02
+
+--------------------------------------------------------------------------------
+>>> KOMUT: python portfolio/hafta_02/gun_012/uygulama/vm_snapshot_backup_manager.py --envanter portfolio/hafta_02/gun_012/ornek_veri/vm_lab_envanteri.json --vm-id VM-SEC-WIN-01 --rollback SNAP-WIN-01
+Çıkış Kodu: 0
+[STDOUT]:
+[*] Rollback �cra Ediliyor: VM=VM-SEC-WIN-01, Hedef Snapshot=SNAP-WIN-01
+[+] Rollback Tamamland�: Delta diski temizlendi. Sistem snapshot an�ndaki temiz durumuna saniyeler i�inde geri d�nd�r�ld�.
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,45 @@
+[PASS] NEG_01: Geçersiz Parola ile Kimlik Doğrulama Girişimi
+  Hedef Zafiyet : CWE-287: Improper Authentication
+  Beklenen Hata : InvalidCredentialsError
+  Yakalanan Hata: InvalidCredentialsError
+
+[PASS] NEG_02: Kaba Kuvvet (Brute-Force) ile Hesap Kilitleme Eşiğinin Aşılması
+  Hedef Zafiyet : CWE-307: Improper Restriction of Excessive Authentication Attempts
+  Beklenen Hata : AccountLockedError
+  Yakalanan Hata: AccountLockedError
+
+[PASS] NEG_03: Süresi Dolmuş (Expired) Oturum Belirteci ile Yetkili Kaynağa Erişim
+  Hedef Zafiyet : CWE-613: Insufficient Session Expiration
+  Beklenen Hata : SessionExpiredError
+  Yakalanan Hata: SessionExpiredError
+
+[PASS] NEG_04: İptal Edilmiş (Revoked / Logged Out) Oturum Belirteci ile Yeniden Erişim
+  Hedef Zafiyet : CWE-384: Session Fixation / Improper Session Invalidation
+  Beklenen Hata : SessionInvalidError
+  Yakalanan Hata: SessionInvalidError
+
+[PASS] NEG_05: Kimlik Doğrulama Belirteci Olmadan Doğrudan Korumalı Kaynağa Erişim
+  Hedef Zafiyet : CWE-306: Missing Authentication for Critical Function
+  Beklenen Hata : MissingAuthenticationError
+  Yakalanan Hata: MissingAuthenticationError
+
+[PASS] NEG_06: Rol Tabanlı Yetkisiz Eylem Girişimi (Analistin Silme Yapmaya Çalışması)
+  Hedef Zafiyet : CWE-862: Missing Authorization / Broken Access Control
+  Beklenen Hata : AccessDeniedError
+  Yakalanan Hata: AccessDeniedError
+
+[PASS] NEG_07: IDOR (Insecure Direct Object Reference) Başka Kullanıcının Kaynağına Erişim
+  Hedef Zafiyet : CWE-639: Authorization Bypass Through User-Controlled Key (IDOR)
+  Beklenen Hata : InsecureDirectObjectReferenceError
+  Yakalanan Hata: InsecureDirectObjectReferenceError
+
+[PASS] NEG_08: Çapraz Kiracı (Cross-Tenant) Veri Erişim ve İzolasyon İhlali Teşebbüsü
+  Hedef Zafiyet : CWE-284: Improper Access Control (Tenant Leakage)
+  Beklenen Hata : TenantMismatchError
+  Yakalanan Hata: TenantMismatchError
+
+[PASS] NEG_09: Tanımsız veya Politika Dışı Eylem Çalıştırma (Default Deny İlkesi)
+  Hedef Zafiyet : CWE-285: Improper Authorization (Default Deny Enforcement)
+  Beklenen Hata : AccessDeniedError
+  Yakalanan Hata: AccessDeniedError
+

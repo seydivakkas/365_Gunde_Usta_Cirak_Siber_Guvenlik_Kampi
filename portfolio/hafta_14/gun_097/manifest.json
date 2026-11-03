@@ -1,0 +1,87 @@
+{
+  "gun": 97,
+  "baslik": "Mini proje 13: offline guvenlik arac seti",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "c290f5173ea6bf3f0e168879171e0ff211e2dfb2ae5ce40eb647cb5b70a2af57",
+      "size": 5246
+    },
+    "ders.md": {
+      "sha256": "67eff144876819320999c761d58fe684fc8cbdc27c0bf1a67823be073e5622fe",
+      "size": 5761
+    },
+    "kanit_uretici.py": {
+      "sha256": "3df931e0e40e5713c6ad0f81d8cf6427ba2e6ac3be328b89a7f7b5e172a226ee",
+      "size": 10669
+    },
+    "rapor.md": {
+      "sha256": "50c2541cebb6a4b82b383bce7a435d480566c2cec7eed25d0a7124dcec545758",
+      "size": 3398
+    },
+    "sonuc.json": {
+      "sha256": "9637d7b37928a81520de70f2471fd96e00a38080455548a75d84c74f5814e84e",
+      "size": 2415
+    },
+    "soru_cevap.md": {
+      "sha256": "9829627006d45db8629492df3eedfc26235025781f64cbf903709621a43d8317",
+      "size": 9939
+    },
+    "kanit\\gercek\\cevrimdisi_arac_seti_raporu.txt": {
+      "sha256": "506e8a503f2e9958abd186aca8fed283a6fd8587efbafb753f65f57d6e338434",
+      "size": 1663
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "sha256": "3b506df860a55ebfd036d09ff7e2f940f81102bcf16fdd53bab7c07530549fec",
+      "size": 2164
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "sha256": "0decca36673d5085b7380b481cb6ca14449c711005112a85e88646ac9d2c4515",
+      "size": 2538
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "sha256": "a8f0d250cf90a8e85ed3381cf1631aa15f3e5fa6f6551405f3b4f091cfd624ff",
+      "size": 3285
+    },
+    "kanit\\temsili\\cevrimdisi_arac_seti_mimarisi.txt": {
+      "sha256": "41696ee60ccd51bc207f858a8d319a776a22504c0f51ac38098809b938423ee1",
+      "size": 4586
+    },
+    "ornek_veri\\invalid_toolkit_inputs.json": {
+      "sha256": "73472d7a4c87933f90fb644b6a441918e571bceef2cf7c1c504e7b675838c5eb",
+      "size": 2822
+    },
+    "ornek_veri\\airgap_test_env\\assets.json": {
+      "sha256": "f2009424f08f3a17508e7ecb578673ba1659e47cea0ed13026bdc4bb4eca1231",
+      "size": 462
+    },
+    "ornek_veri\\airgap_test_env\\sensitive_traffic.log": {
+      "sha256": "e01b19110846a62eb5775c71435cf545f0fa5d8a95d6850cf95e30bb93eb36bb",
+      "size": 346
+    },
+    "ornek_veri\\airgap_test_env\\system_conf.ini": {
+      "sha256": "969df690581ff6f411a2510d4e3a26d531cda925a7a4fe0e0a6eea935aaf8155",
+      "size": 157
+    },
+    "tests\\__init__.py": {
+      "sha256": "eeffb822c4b59952257959b6b497ab3905cbee05f6fe9a742002f4e4927cf078",
+      "size": 563
+    },
+    "tests\\test_offline_security_toolkit.py": {
+      "sha256": "e022e6d584bce00e9fcbe2d62a0ce69f662f8fd4ea5a244909d8720124f920a2",
+      "size": 7319
+    },
+    "uygulama\\__init__.py": {
+      "sha256": "000a2072c7108e04431a289714e5cfe09ea57e15d959e9d56190a7f7c291a729",
+      "size": 730
+    },
+    "uygulama\\offline_security_toolkit.py": {
+      "sha256": "d906d759f26e9acb5aed602f8d4d838377618ff637691661a1cbebe0fa5efce2",
+      "size": 15156
+    },
+    "uygulama\\sec_toolkit_cli.py": {
+      "sha256": "8a919289f665cfd5785e18d7eb7b5d533727aa0d5e2d8aab9501352b829f7568",
+      "size": 7729
+    }
+  }
+}

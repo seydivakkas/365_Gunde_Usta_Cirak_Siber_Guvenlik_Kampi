@@ -1,0 +1,37 @@
+================================================================================
+DOSYA HASH VE KR¦PTOGRAF¦K B▄T▄NL▄K DENET¦M RAPORU (FIM)
+================================================================================
+Taban Ãizgisindeki Yetkili Dosya Say²s²: 3
+Reddedilen Bozuk Taban Ãizgisi Kayd²   : 0
+Toplam Tespit Edilen B³t³nl³k ¦hlali    : 4
+--------------------------------------------------------------------------------
+BULGULAR VE ¦HLAL DETAYLARI:
+
+[1] [MEDIUM] NEW_UNAUTHORIZED_FILE
+    Dosya Yolu      : corrupted_hash_test_cases.json
+    Beklenen Hash   : NONE (UNTRACKED)
+    Hesaplanan Hash : c738650231554b146fca00fb3eba3b5a132698b9d0458450722cccf5bcfca52c
+    A²klama        : Taban cizgisinde tanimli olmayan yeni ve yetkisiz dosya saptandi: 'corrupted_hash_test_cases.json'
+    Ínerilen Ad²m   : Yeni dosyayi analiz edin; yetkili ise taban cizgisine ekleyin, supheli ise karantinaya alin.
+
+[2] [MEDIUM] NEW_UNAUTHORIZED_FILE
+    Dosya Yolu      : sample_baseline_manifest.json
+    Beklenen Hash   : NONE (UNTRACKED)
+    Hesaplanan Hash : cca6233d2d998cf62528cb4895db738b97a49cc339e8219a7778fa5dbc6672dd
+    A²klama        : Taban cizgisinde tanimli olmayan yeni ve yetkisiz dosya saptandi: 'sample_baseline_manifest.json'
+    Ínerilen Ad²m   : Yeni dosyayi analiz edin; yetkili ise taban cizgisine ekleyin, supheli ise karantinaya alin.
+
+[3] [MEDIUM] NEW_UNAUTHORIZED_FILE
+    Dosya Yolu      : sample_files/malicious_payload.sh
+    Beklenen Hash   : NONE (UNTRACKED)
+    Hesaplanan Hash : dcd59f2408108885c608ad1b49cd1b876be59aef496a2cdca473129823dea6b4
+    A²klama        : Taban cizgisinde tanimli olmayan yeni ve yetkisiz dosya saptandi: 'sample_files/malicious_payload.sh'
+    Ínerilen Ad²m   : Yeni dosyayi analiz edin; yetkili ise taban cizgisine ekleyin, supheli ise karantinaya alin.
+
+[4] [MEDIUM] NEW_UNAUTHORIZED_FILE
+    Dosya Yolu      : sample_files/tampered_config.json
+    Beklenen Hash   : NONE (UNTRACKED)
+    Hesaplanan Hash : 91a7743b52a28d0b1f2f9ac03d848dca744ee0b9fe8d9f62608de3870e363d3c
+    A²klama        : Taban cizgisinde tanimli olmayan yeni ve yetkisiz dosya saptandi: 'sample_files/tampered_config.json'
+    Ínerilen Ad²m   : Yeni dosyayi analiz edin; yetkili ise taban cizgisine ekleyin, supheli ise karantinaya alin.
+================================================================================

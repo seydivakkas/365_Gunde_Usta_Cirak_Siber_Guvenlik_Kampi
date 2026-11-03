@@ -1,0 +1,50 @@
+# TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+# =========================================================================
+# Linux Sudo, Ayrıcalık Devri ve Güvenlik Sınırları Mimarisi
+# =========================================================================
+
++-------------------------------------------------------------------------+
+|                  KULLANICI ALANI (UNPRIVILEGED USER)                    |
++-------------------------------------------------------------------------+
+|  Standart Kullanıcı (john / devops / %wheel)                            |
+|  Komut: sudo <komut> [argümanlar]                                       |
++------------------------------------+------------------------------------+
+                                     |
+                                     v
++-------------------------------------------------------------------------+
+|                    SUDO İKİLİSİ (/usr/bin/sudo - SUID Root)             |
+|                                                                         |
+|  1. Kimlik Doğrulama (Authentication):                                  |
+|     - PAM (Pluggable Authentication Modules) doğrulaması (/etc/pam.d/sudo|
+|     - NOPASSWD etiketi kontrolü (Parola istemini atlama)                |
+|                                                                         |
+|  2. Yetkilendirme ve Kural Denetimi (Authorization):                    |
+|     - /etc/sudoers ve /etc/sudoers.d/* ayrıştırması                     |
+|     - İzin verilen komut (Cmnd_Alias), kullanıcı ve host eşleşmesi      |
+|                                                                         |
+|  3. Ortam Sıkılaştırması (Environment Hardening):                       |
+|     - Defaults env_reset -> Çağıran kabuğun değişkenlerini temizle      |
+|     - Defaults secure_path -> Güvenli arama yolu uygula                 |
+|     - env_keep filtreleme -> LD_PRELOAD ve PYTHONPATH engelle!          |
+|                                                                         |
+|  4. Yürütme ve Yalıtım (Execution):                                     |
+|     - setuid(0) & setgid(0) çağrılarıyla root kimliğine geçiş           |
+|     - use_pty -> Terminal girdi enjeksiyonunu engelle                   |
+|     - logfile -> /var/log/sudo.log dosyasına işlem günlüğü yaz          |
++------------------------------------+------------------------------------+
+                                     |
+                                     v
++-------------------------------------------------------------------------+
+|                  KRİTİK GÜVENLİK TEHDİTLERİ VE SALDIRI VEKTÖRLERİ       |
+|                                                                         |
+|  [GTFOBins Kabuk Kaçışı]                                                |
+|  - Sudo ile yetki verilen vim, find, awk, python doğrudan root kabuğu   |
+|    üretir (:!/bin/sh, -exec /bin/sh \; pty.spawn) -> LPE               |
+|                                                                         |
+|  [env_keep Kütüphane Enjeksiyonu - CWE-426]                             |
+|  - LD_PRELOAD=/tmp/evil.so sudo <komut> -> Root sürecine zararlı SO     |
+|                                                                         |
+|  [Sudoers Dosya İzni Zafiyeti - CWE-732]                                |
+|  - /etc/sudoers chmod 0666 ise saldırgan 'user ALL=(ALL) ALL' yazar!    |
+|    Doğrusu: chmod 0440, chown root:root ve daima 'visudo' kullanımı    |
++-------------------------------------------------------------------------+

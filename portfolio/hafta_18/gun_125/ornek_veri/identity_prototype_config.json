@@ -1,0 +1,87 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "system_name": "Kurumsal Güvenli Kimlik ve Rol Prototipi (Week 18 Capstone)",
+  "version": "1.0.0",
+  "roles": [
+    {
+      "name": "guest",
+      "description": "Misafir rolü - sadece kamuya açık dokümanları okur",
+      "permissions": ["public:read", "public_docs:read"],
+      "parents": [],
+      "requires_mfa": false
+    },
+    {
+      "name": "employee",
+      "description": "Çalışan rolü - kendi profilini görüntüler ve düzenler",
+      "permissions": ["profile:read", "profile:edit"],
+      "parents": ["guest"],
+      "requires_mfa": false
+    },
+    {
+      "name": "auditor",
+      "description": "Denetçi rolü - sistem günlüklerini ve raporları okur",
+      "permissions": ["audit_logs:read", "reports:read"],
+      "parents": ["guest"],
+      "requires_mfa": false
+    },
+    {
+      "name": "payment_maker",
+      "description": "Ödeme Hazırlayıcı - SoD kısıtına tabidir",
+      "permissions": ["ledger:create", "payment:create"],
+      "parents": ["employee"],
+      "requires_mfa": false
+    },
+    {
+      "name": "payment_checker",
+      "description": "Ödeme Onaylayıcı - SoD kısıtına tabidir",
+      "permissions": ["ledger:approve", "payment:approve"],
+      "parents": ["employee"],
+      "requires_mfa": true
+    },
+    {
+      "name": "super_admin",
+      "description": "Süper Yönetici - tüm sistem üzerinde tam yetki",
+      "permissions": ["system:*", "database:*", "audit_logs:manage"],
+      "parents": ["auditor"],
+      "requires_mfa": true
+    }
+  ],
+  "toxic_role_pairs": [
+    ["payment_maker", "payment_checker"],
+    ["auditor", "super_admin"]
+  ],
+  "users": [
+    {
+      "user_id": "USR-101",
+      "username": "denetci_merve",
+      "password": "MerveStrongPassword2026!#",
+      "roles": ["auditor"],
+      "department": "Internal Audit",
+      "mfa_secret": "778899"
+    },
+    {
+      "user_id": "USR-102",
+      "username": "finans_ali",
+      "password": "AliStrongPassword2026!#",
+      "roles": ["payment_maker"],
+      "department": "Finance",
+      "mfa_secret": "112233"
+    },
+    {
+      "user_id": "USR-103",
+      "username": "finans_ayse",
+      "password": "AyseStrongPassword2026!#",
+      "roles": ["payment_checker"],
+      "department": "Finance",
+      "mfa_secret": "445566"
+    },
+    {
+      "user_id": "USR-104",
+      "username": "sistem_kemal",
+      "password": "KemalStrongAdmin2026!#",
+      "roles": ["super_admin"],
+      "department": "Security Ops",
+      "mfa_secret": "998877"
+    }
+  ]
+}

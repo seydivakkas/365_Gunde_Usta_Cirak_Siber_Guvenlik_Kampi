@@ -1,0 +1,15 @@
+# Siber Güvenlik Otomasyonu - Güvenli ve Kriptografik Sabitlenmiş Bağımlılık Listesi
+# Lisans: Özel Lisans — Tüm Haklar Saklıdır (c) 2026 Seydi Eryılmaz
+
+cryptography==42.0.5 \
+    --hash=sha256:7c7c3ec5bfb7d87bc4ec94bfa24b077a28b0561571efc5b36e8b2b73bc2a3a12
+dnspython==2.6.1 \
+    --hash=sha256:f5264b6e56d7729f635677d206f4ee5e2d6b38c35d97f5370d0b0b8c4c776092
+paramiko==3.4.0 \
+    --hash=sha256:e640cfd6878b668615c464bf27694f4544d6db3a34a87c1cb3833b3a3c114389
+requests==2.31.0 \
+    --hash=sha256:58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f
+scapy==2.5.0 \
+    --hash=sha256:9f64bf77699709289ee76742111d4e08c6c5bf7695ff53018e268a0c21625902
+urllib3==2.2.1 \
+    --hash=sha256:a921822501306b3e8e66e7440938ffeaef2ccfef8fa593847ffb76ce4e89fe87

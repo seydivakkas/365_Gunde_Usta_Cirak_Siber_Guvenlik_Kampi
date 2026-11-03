@@ -1,0 +1,66 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+Konu: Gün 36 — Bellek, Sanal Bellek Adresleme, Sayfalama (Paging) ve Swap Mimarisi
+Amaç: Süreçlerin sanal bellek uzaylarının MMU ve sayfa tablolarıyla fiziksel RAM'e
+      eşlenmesi, RAM yetersizliğinde diske (Swap/Pagefile) sayfalama yapılması ve
+      şifresiz takas alanı sebebiyle hassas verilerin kalıcı depoya sızma riskinin
+      kavramsal mimari şeması.
+
++---------------------------------------------------------------------------------------+
+|              SANAL BELLEK, SAYFALAMA VE SWAP GÜVENLİK MİMARİSİ                        |
++---------------------------------------------------------------------------------------+
+
+  [ SÜREÇ A (PID 3310: Crypto Wallet) ]         [ SÜREÇ B (PID 6640: Malicious Scraper) ]
+  Sanal Adres Uzayı (Virtual Address Space)      Sanal Adres Uzayı (Virtual Address Space)
+  +-----------------------------------+         +-----------------------------------+
+  | 0x00007FFFFFFFFFFF (User Space)   |         | 0x00007FFFFFFFFFFF (User Space)   |
+  | [ Stack ]                         |         | [ Stack ]                         |
+  | [ Heap / Private Keys in RAM ]    |         | [ Heap ]                          |
+  | [ Code (.text) ]                  |         | [ Memory Scraping Logic ]         |
+  | 0x0000000000000000                |         | 0x0000000000000000                |
+  +-----------------+-----------------+         +-----------------+-----------------+
+                    |                                             |
+                    +----------------------+----------------------+
+                                           |
+                                           v
+                       +---------------------------------------+
+                       |   BELLEK YÖNETİM BİRİMİ (MMU & TLB)   |
+                       |         Süreç İzolasyon Katmanı       |
+                       +-------------------+-------------------+
+                                           |
+                    +----------------------+----------------------+
+                    |                                             |
+                    v (Aktif Sayfalar)                            v (İnaktif / Bellek Baskısı)
++---------------------------------------+     +---------------------------------------+
+|       FİZİKSEL BELLEK (RAM)           |     |    SAYFA DOSYASI / TAKAS ALANI (SWAP) |
+|          (Geçici / Volatile)          |     |    (/var/swapfile | pagefile.sys)     |
+|                                       |     |         (Kalıcı / Non-Volatile)       |
+|  [Sayfa 0x1A: db_service (Locked)]    |     |                                       |
+|  [Sayfa 0x1B: System Kernel]          |     |  [!] ŞİFRESİZ SWAP GÜVENLİK AÇIĞI:   |
+|  [Sayfa 0x1C: lsass.exe (Protected)]  |     |  Sayfa 0x9F (Swap-Out Edildi):       |
+|                                       |     |  "API_KEY=sk-live-99a8b7c6d5e4f3a..." |
++---------------------------------------+     |  "DATABASE_URL=postgres://...@db"     |
+                                              |  "PRIVATE_KEY=-----BEGIN RSA..."      |
+                                              +-------------------+-------------------+
+                                                                  |
+                                                                  v
+                                              +---------------------------------------+
+                                              | ADLİ BİLİŞİM / SALDIRGAN İSTİSMARI:   |
+                                              | Bilgisayar kapalı olsa dahi diskten  |
+                                              | 'strings /var/swapfile' veya hex     |
+                                              | editörle tüm sırlar okunabilir!       |
+                                              +---------------------------------------+
+
++---------------------------------------------------------------------------------------+
+| DEFANSİF SIKILAŞTIRMA VE KORUMA MEKANİZMALARI                                         |
++---------------------------------------------------------------------------------------+
+|  1. Swap Şifreleme: Linux'ta dm-crypt / cryptswap, Windows'ta BitLocker zorunlu kılın.|
+|  2. Bellek Sayfası Kilitleme: Yazılım geliştirirken mlock() veya VirtualLock() ile    |
+|     kriptografik anahtar ve parola tutan sayfaların swap'e taşınmasını engelleyin.   |
+|  3. Kapanışta Sıfırlama: Windows ClearPageFileAtShutdown=1 anahtarını aktif edin.     |
+|  4. LSASS Koruması: Credential Guard ve RunAsPPL ile bellek kazımayı bloke edin.     |
++---------------------------------------------------------------------------------------+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

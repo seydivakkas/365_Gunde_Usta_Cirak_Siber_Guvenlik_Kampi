@@ -1,0 +1,44 @@
+========================================================================
+  MİNİ PROJE 15: CLI YÜRÜTME KOMUTU VE ÇIKTI KANITI
+  Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_112\uygulama\signed_config_cli.py
+========================================================================
+
+========================================================================
+  M�N� PROJE 15: �MZALI YAPILANDIRMA KONSEPT� VE DO�RULAMA ARACI
+  RFC 8785 Kanonik JSON / Asimetrik Dijital �mza / Anti-Rollback
+========================================================================
+
+[*] 1. ADIM: G�ven K�k� (Trust Store) ve Yetkili �mzalay�c�lar Kuruluyor...
+[+] G�venilen Otoriteler Kaydedildi: ['secops_lead_01', 'infra_director_02']
+
+[*] 2. ADIM: G�venlik Duvar� Politikas� �mzalan�yor (Epoch: 1)...
+[+] 1. �mza At�ld�: �mzalayan=secops_lead_01
+    - Kanonik Hash: 910940c9fca14495b0dba3de77b7d4899b243166400bc1a21e7e816734096ddb
+    - �mza: 5cdbbfb42006f7910412fb7045a99376...
+
+[*] 3. ADIM: �ift �mza (Dual Signing) Politikas� Gere�i 2. �mza Ekleniyor...
+[+] 2. �mza Eklendi: �mzalayan=infra_director_02
+    - Toplam �mza Say�s�: 2
+
+[*] 4. ADIM: Sistem Do�rulay�c�s� (Verifier) Taraf�ndan Y�kleme Denetleniyor...
+[+] Do�rulama Ba�ar�l�! Yap�land�rma G�venle Y�klendi:
+    - Politika: Prod DMZ Firewall
+    - TLS 1.3 Zorunlu mu? -> True
+
+========================================================================
+  G�VENL�K ZAF�YET� VE SALDIRI SENARYOLARI (CWE ANAL�Z�)
+========================================================================
+
+[!] 1. Test: Yap�land�rma Y�k�nde Tek Baytl�k Tahrifat (CWE-353)...
+    -> Savunma Ba�ar�l�: CWE-353: Yap�land�rma y�k�nde tahrifat tespit edildi! Hesaplanan hash ile beyan edilen hash uyu�muyor.
+
+[!] 2. Test: D���k Epoch ile Rollback Sald�r�s� (CWE-294)...
+    -> Savunma Ba�ar�l�: CWE-294: Rollback sald�r�s� engellendi! Sistem epoch: 2, sunulan epoch: 1
+
+[!] 3. Test: G�ven Deposunda Olmayan Yetkisiz �mza (CWE-295)...
+    -> Savunma Ba�ar�l�: CWE-295: �mzalay�c� (attacker_hacker_99) g�venilen anahtarlar deposunda kay�tl� de�il!
+
+========================================================================
+  M�N� PROJE 15 T�M TEST VE DO�RULAMA S�RE�LER� BA�ARIYLA TAMAMLANDI
+========================================================================
+

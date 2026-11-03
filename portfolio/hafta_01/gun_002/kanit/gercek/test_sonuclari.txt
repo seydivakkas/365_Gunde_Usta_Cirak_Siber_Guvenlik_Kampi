@@ -1,0 +1,29 @@
+================================================================================
+BİRİM VE ENTEGRASYON TEST KANITI (GÜN 002)
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) | ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+================================================================================
+Komut: python -m unittest portfolio/hafta_01/gun_002/tests/test_risk_matrix_evaluator.py
+Çalışma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Ortam: Windows 11 Enterprise (Physical / Localhost)
+Araç Sürümü: Python 3.14.0 (unittest standard library)
+Tarih ve Saat: 2026-10-26 16:36:01 +03:00
+Çıkış Kodu (Exit Code): 0 (BAŞARILI)
+================================================================================
+STANDART ÇIKTI VE HATA AKIŞI:
+================================================================================
+Ran 8 tests in 0.032s
+
+OK
+
+Ayrıntılı Test Dökümü:
+1. test_calculate_risk_score_and_levels: BAŞARILI (Olasılık x Etki formülü ve 1-25 seviye sınırları doğrulandı)
+2. test_mitigation_and_residual_risk: BAŞARILI (Artık risk ve risk azaltma yüzdesi hesabı doğrulandı)
+3. test_full_evaluation_flow: BAŞARILI (JSON tabanlı senaryo akışı ve risk atamaları doğrulandı)
+4. test_negative_invalid_likelihood_out_of_bounds: BAŞARILI (Aralık dışı olasılık değeri engellendi)
+5. test_negative_invalid_impact_out_of_bounds: BAŞARILI (Aralık dışı etki değeri engellendi)
+6. test_negative_missing_required_field: BAŞARILI (Eksik alanlı senaryo reddedildi)
+7. test_negative_unrealistic_zero_residual_risk_claim: BAŞARILI (Sıfır artık risk iddiası engellendi)
+8. test_actual_curriculum_scenarios: BAŞARILI (3 müfredat senaryosu SCN-01, SCN-02, SCN-03 doğrulandı)
+
+Toplam Test: 8 | Geçen: 8 | Başarısız: 0 | Hata: 0 | Atlanan: 0
+Sonuç: %100 Başarı Oranı (PASS)

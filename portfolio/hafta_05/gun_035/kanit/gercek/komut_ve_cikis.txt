@@ -1,0 +1,75 @@
+=====================================================================================
+M¦N¦ PROJE 4: S¦STEM DURUM KONTROL▄ VE SAºLIK DENET¦M RAPORU (MP-04)
+=====================================================================================
+Hedef Makine       : SEC-AUDIT-WKS01
+¦■letim Sistemi    : Windows 11 Pro 64-bit (Build 22631)
+Tarama Kipi        : READ_ONLY_OBSERVER (S²f²r Yan Etki)
+Tarama Zaman²      : 2026-10-27T11:30:00Z
+-------------------------------------------------------------------------------------
+GENEL SAºLIK PUANI : 0 / 100
+G▄VENL¦K DURUÌU    : COMPROMISED_ENVIRONMENT
+Toplam Risk Bulgusu: 10
+Ciddiyet Da­²l²m²  : CRITICAL=5 | HIGH=5 | MEDIUM=0
+=====================================================================================
+ÍNCEL¦KL¦ G▄VENL¦K BULGULARI VE M▄DAHALE KILAVUZU:
+
+[01] [CRITICAL] [PROCESS_HIERARCHY] PID 8820 (powershell.exe)
+     Zafiyet T³r³ : MALICIOUS_OFFICE_SPAWN
+     MITRE Kodu   : T1059.001 (PowerShell) / T1204.002 (Malicious File)
+     A²klama     : Kritik sald²r² zinciri: 'winword.exe' (PID 8810) s³reci taraf²ndan 'powershell.exe' (PID 8820) kabuk s³reci ba■lat²lm²■! Komut Sat²r²: 'powershell.exe -ExecutionPolicy Bypass -NoProfile -WindowStyle Hidden -EncodedCommand SQBFAFgA'
+     Aksiyon      : ¦lgili s³reci derhal sonland²r²n, a­dan izole edin ve belge kayna­²n² EDR ile inceleyin.
+
+[02] [CRITICAL] [PROCESS_SECURITY] PID 9900 (svch0st.exe)
+     Zafiyet T³r³ : PROCESS_MASQUERADING
+     MITRE Kodu   : T1036 (Masquerading)
+     A²klama     : S³re taklidi ve zararl² dizin: 'svch0st.exe' me■ru svchost s³recini taklit ediyor ve ■³pheli geici dizinden ('C:\Windows\Temp\svch0st.exe') y³r³t³l³yor.
+     Aksiyon      : S³reci sonland²r²n, dosya karmas²n² (hash) karantinaya al²n ve kal²c²l²k anahtarlar²n² silin.
+
+[03] [HIGH] [SERVICE_SECURITY] EventLog
+     Zafiyet T³r³ : UNQUOTED_SERVICE_PATH
+     MITRE Kodu   : T1574.009 (Path Interception by Unquoted Path)
+     A²klama     : Servis ikili yolu ('C:\Windows\System32\svchost.exe -k LocalServiceNetworkRestricted') bo■luk iermesine ra­men ift t²rnak iine al²nmam²■. Windows SCM arama zinciri sebebiyle Yerel Yetki Y³kseltme (LPE) riski ta■²maktad²r.
+     Aksiyon      : Servis yolunu t²rnak iine al²n²z: sc.exe config "EventLog" binPath= "\"C:\Windows\System32\svchost.exe -k LocalServiceNetworkRestricted\""
+
+[04] [CRITICAL] [SERVICE_SECURITY] MpsSvc
+     Zafiyet T³r³ : SECURITY_SERVICE_TAMPERED
+     MITRE Kodu   : T1562.001 (Impair Defenses: Disable or Modify Tools)
+     A²klama     : Kritik g³venlik bile■eni 'MpsSvc' beklenen al²■ma durumunda de­ildir! Durum: Stopped, Ba■lang² T³r³: Disabled.
+     Aksiyon      : Servisi otomatik moda al²p derhal ba■lat²n²z: sc.exe config MpsSvc start= auto && sc.exe start MpsSvc
+
+[05] [HIGH] [SERVICE_SECURITY] MpsSvc
+     Zafiyet T³r³ : UNQUOTED_SERVICE_PATH
+     MITRE Kodu   : T1574.009 (Path Interception by Unquoted Path)
+     A²klama     : Servis ikili yolu ('C:\Windows\System32\svchost.exe -k LocalServiceNoNetwork') bo■luk iermesine ra­men ift t²rnak iine al²nmam²■. Windows SCM arama zinciri sebebiyle Yerel Yetki Y³kseltme (LPE) riski ta■²maktad²r.
+     Aksiyon      : Servis yolunu t²rnak iine al²n²z: sc.exe config "MpsSvc" binPath= "\"C:\Windows\System32\svchost.exe -k LocalServiceNoNetwork\""
+
+[06] [HIGH] [SERVICE_SECURITY] CloudBackupSvc
+     Zafiyet T³r³ : UNQUOTED_SERVICE_PATH
+     MITRE Kodu   : T1574.009 (Path Interception by Unquoted Path)
+     A²klama     : Servis ikili yolu ('C:\Program Files\Enterprise Cloud Backup\agent.exe -run') bo■luk iermesine ra­men ift t²rnak iine al²nmam²■. Windows SCM arama zinciri sebebiyle Yerel Yetki Y³kseltme (LPE) riski ta■²maktad²r.
+     Aksiyon      : Servis yolunu t²rnak iine al²n²z: sc.exe config "CloudBackupSvc" binPath= "\"C:\Program Files\Enterprise Cloud Backup\agent.exe -run\""
+
+[07] [CRITICAL] [FILE_INTEGRITY] C:\ProgramData\App\security_policy.cfg
+     Zafiyet T³r³ : INTEGRITY_VIOLATION
+     MITRE Kodu   : T1565.001 (Data Manipulation: Stored Data Manipulation)
+     A²klama     : Kritik konfig³rasyon dosyas² b³t³nl³­³ ihlal edildi! Beklenen SHA-256: 5b73db061e0757260a4dedbadfcf57191864c64727b42b3d375f96337472ed6c | Fiili SHA-256: 91a7743b52a28d0b1f2f9ac03d848dca744ee0b9fe8d9f62608de3870e363d3c.
+     Aksiyon      : Dosyay² temiz yedekten geri y³kleyin ve yetkisiz de­i■iklik yapan oturumu ara■t²r²n.
+
+[08] [HIGH] [FILE_INTEGRITY] C:\ProgramData\App\missing_baseline_file.bin
+     Zafiyet T³r³ : BASELINE_DISRUPTION
+     MITRE Kodu   : T1485 (Data Destruction)
+     A²klama     : Taban izgisinde yer alan zorunlu dosya diskte bulunamad²: 'C:\ProgramData\App\missing_baseline_file.bin'.
+     Aksiyon      : Kay²p dosyay² yetkili yaz²l²m da­²t²m paketinden geri y³kleyiniz.
+
+[09] [CRITICAL] [FILE_SIGNATURE] invoice_receipt.pdf
+     Zafiyet T³r³ : EXTENSION_SPOOFING
+     MITRE Kodu   : T1036.008 (Masquerade File Type)
+     A²klama     : Dosya uzant² aldatmacas²: Dosya '.pdf' uzant²s²yla sunulmas²na kar■²n, ba■l²k sihirli baytlar² 'Windows PE Executable' al²■t²rma biimindedir! Ba■l²k: 4D 5A 90 00 03 00 00 00.
+     Aksiyon      : Dosyay² karantinaya al²n, sandbox ortam²nda dinamik analize tabi tutun.
+
+[10] [HIGH] [FILE_SIGNATURE] statement.pdf.exe
+     Zafiyet T³r³ : DOUBLE_EXTENSION_TROJAN
+     MITRE Kodu   : T1036.008 (Masquerade File Type)
+     A²klama     : Dosya uzant² aldatmacas²: Dosya '.pdf.exe' uzant²s²yla sunulmas²na kar■²n, ba■l²k sihirli baytlar² 'Windows PE Executable' al²■t²rma biimindedir! Ba■l²k: 4D 5A 90 00 03 00 00 00.
+     Aksiyon      : Dosyay² karantinaya al²n, sandbox ortam²nda dinamik analize tabi tutun.
+=====================================================================================

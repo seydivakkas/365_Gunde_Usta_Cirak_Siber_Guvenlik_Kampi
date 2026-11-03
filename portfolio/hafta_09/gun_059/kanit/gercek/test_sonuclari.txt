@@ -1,0 +1,33 @@
+test_01_valid_record_layer_header_parsing (portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer.TestTLSHandshakeAnalyzer.test_01_valid_record_layer_header_parsing)
+Pozitif Test 1: Geerli TLS Record Layer ba■l²­²n²n 5 bayttan ba■ar²yla ayr²■t²r²lmas². ... ok
+test_02_negative_truncated_record_header (portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer.TestTLSHandshakeAnalyzer.test_02_negative_truncated_record_header)
+Negatif Test 2: 5 bayttan daha k²sa ba■l²kta TLSMalformedRecordError f²rlat²lmas². ... ok
+test_03_negative_invalid_content_type (portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer.TestTLSHandshakeAnalyzer.test_03_negative_invalid_content_type)
+Negatif Test 3: Standart d²■² Content Type (÷r. 99) durumunda TLSValidationError f²rlat²lmas². ... ok
+test_04_negative_obsolete_ssl_version (portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer.TestTLSHandshakeAnalyzer.test_04_negative_obsolete_ssl_version)
+Negatif Test 4: G³vensiz SSL 3.0 (0x0300) s³r³m³n³n reddedilmesi. ... ok
+test_05_negative_record_length_overflow (portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer.TestTLSHandshakeAnalyzer.test_05_negative_record_length_overflow)
+Negatif Test 5: 16384 bayt s²n²r²n² a■an y³k uzunlu­unda TLSValidationError f²rlat²lmas². ... ok
+test_06_negative_payload_length_mismatch (portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer.TestTLSHandshakeAnalyzer.test_06_negative_payload_length_mismatch)
+Negatif Test 6: Bildirilen uzunluktan daha k²sa veri ak²■²nda TLSMalformedRecordError. ... ok
+test_07_valid_sni_hostname_validation (portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer.TestTLSHandshakeAnalyzer.test_07_valid_sni_hostname_validation)
+Pozitif Test 7: RFC 6066 uyumlu geerli alan adlar²n²n onaylanmas². ... ok
+test_08_negative_invalid_sni_hostname (portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer.TestTLSHandshakeAnalyzer.test_08_negative_invalid_sni_hostname)
+Negatif Test 8: Null-byte, a■²r² uzun veya geersiz karakterli SNI alan adlar²n²n reddi. ... ok
+test_09_valid_compression_methods_security (portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer.TestTLSHandshakeAnalyzer.test_09_valid_compression_methods_security)
+Pozitif Test 9: Yaln²zca Null (0x00) s²k²■t²rman²n g³venli kabul edilmesi. ... ok
+test_10_negative_insecure_compression_crime_detection (portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer.TestTLSHandshakeAnalyzer.test_10_negative_insecure_compression_crime_detection)
+Negatif Test 10: DEFLATE (0x01) s²k²■t²rma aktif edildi­inde CRIME zaafiyeti tespiti. ... ok
+test_11_valid_downgrade_protection (portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer.TestTLSHandshakeAnalyzer.test_11_valid_downgrade_protection)
+Pozitif Test 11: Normal TLS 1.3 el s²k²■mas²nda s³r³m d³■³rme alarm² verilmemesi. ... ok
+test_12_negative_downgrade_mitm_detection (portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer.TestTLSHandshakeAnalyzer.test_12_negative_downgrade_mitm_detection)
+Negatif Test 12: TLS 1.3 istemciye TLS 1.2 dayat²ld²­²nda sentinel ile MitM tespiti. ... ok
+test_13_cipher_suite_security_assessment (portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer.TestTLSHandshakeAnalyzer.test_13_cipher_suite_security_assessment)
+Pozitif Test 13: Ìifreleme paketi g³venlik ve PFS de­erlendirmesi. ... ok
+test_14_end_to_end_synthetic_client_hello_and_comparison (portfolio.hafta_09.gun_059.tests.test_tls_handshake_analyzer.TestTLSHandshakeAnalyzer.test_14_end_to_end_synthetic_client_hello_and_comparison)
+Pozitif Test 14: ¦kili ClientHello sentezleme, ayr²■t²rma ve TLS 1.2 vs 1.3 kar■²la■t²rmas². ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK

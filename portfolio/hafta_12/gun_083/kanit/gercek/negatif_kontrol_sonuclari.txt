@@ -1,0 +1,63 @@
+================================================================================
+G083: GIT COMMIT VE DEGISIKLIK INCELEMESI - NEGATIF GUVENLIK KONTROLLER RAPORU
+Tarih: 2026-11-01T04:22:00+03:00
+Toplam Senaryo: 9 Adet Guvenlik Saldiri / Bozuk Girdi Senaryosu
+================================================================================
+
+[PASS] NEG_01_AWS_SECRET_KEY
+  Baslik: Diff Icerisinde Gomulu AWS Erisim Anahtari Tespiti
+  Zafiyet Referansi: CWE-798: Use of Hard-coded Credentials
+  Beklenen Istisna: SecretDetectedException
+  Sonuc: BASARILI: Beklenen SecretDetectedException yakalandi -> AWS_ACCESS_KEY tespit edildi: AKIA***MPLE
+
+[PASS] NEG_02_RSA_PRIVATE_KEY
+  Baslik: Diff Icerisinde RSA Ozel Anahtar Blok Ifsasi
+  Zafiyet Referansi: CWE-312: Cleartext Storage of Sensitive Information
+  Beklenen Istisna: SecretDetectedException
+  Sonuc: BASARILI: Beklenen SecretDetectedException yakalandi -> RSA_PRIVATE_KEY tespit edildi: ----***----
+
+[PASS] NEG_03_GITHUB_PAT
+  Baslik: Diff Icerisinde GitHub Kisisel Erisim Belirteci (PAT)
+  Zafiyet Referansi: CWE-798: Use of Hard-coded Credentials
+  Beklenen Istisna: SecretDetectedException
+  Sonuc: BASARILI: Beklenen SecretDetectedException yakalandi -> GITHUB_PAT tespit edildi: ghp_***yzAB
+
+[PASS] NEG_04_HIGH_ENTROPY_TOKEN
+  Baslik: Yuksek Shannon Entropili Gizli Token Tespiti
+  Zafiyet Referansi: CWE-798: High Entropy Secret Detection
+  Beklenen Istisna: HighEntropySecretException
+  Sonuc: BASARILI: Beklenen HighEntropySecretException yakalandi -> Yuksek entropili gizli deger (5.0): s7K9***&cT5
+
+[PASS] NEG_05_TROJAN_SOURCE_BIDI
+  Baslik: Trojan Source / Unicode Bidi Yonlendirme Saldirisi (CVE-2021-42574)
+  Zafiyet Referansi: CVE-2021-42574: Bidirectional Unicode Override in Source Code
+  Beklenen Istisna: TrojanSourceAttackException
+  Sonuc: BASARILI: Beklenen TrojanSourceAttackException yakalandi -> Satirda Bidi karakterleri (U+202E, U+2066, U+2069, U+2066): "access_le
+
+[PASS] NEG_06_DANGEROUS_CALL_EVAL
+  Baslik: Diff Icerisinde Tehlikeli Dinamik Kod Yurutme (eval)
+  Zafiyet Referansi: CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code
+  Beklenen Istisna: InsecureCodePatternException
+  Sonuc: BASARILI: Beklenen InsecureCodePatternException yakalandi -> DANGEROUS_EVAL tespit edildi: result = eval(user_untrusted_input)
+
+[PASS] NEG_07_NULL_BYTE_INJECTION
+  Baslik: Diff Akisinda Null Byte Enjeksiyonu Denemesi
+  Zafiyet Referansi: CWE-158: Improper Neutralization of Null Byte or Special Characters
+  Beklenen Istisna: MalformedDiffException
+  Sonuc: BASARILI: Beklenen MalformedDiffException yakalandi -> Diff akisi icerisinde zararli null-byte (0x00) tespit edildi.
+
+[PASS] NEG_08_OVERSIZED_DIFF_DOS
+  Baslik: Asiri Boyutlu Diff ile Bellek Tukenmesi (DoS / Diff Bomb)
+  Zafiyet Referansi: CWE-400: Uncontrolled Resource Consumption
+  Beklenen Istisna: DiffSizeLimitExceededException
+  Sonuc: BASARILI: Beklenen DiffSizeLimitExceededException yakalandi -> Diff satir sayisi (11001) izin verilen siniri (10000) asti.
+
+[PASS] NEG_09_MALFORMED_DIFF_HEADER
+  Baslik: Bozuk veya Gecersiz Unified Diff Basligi
+  Zafiyet Referansi: CWE-20: Improper Input Validation
+  Beklenen Istisna: MalformedDiffException
+  Sonuc: BASARILI: Beklenen MalformedDiffException yakalandi -> Gecerli bir Unified Diff basligi veya Git commit basligi bulunamadi.
+
+================================================================================
+OZET: 9/9 Negatif Guvenlik Testi Eksiksiz Olarak Basariyla Tamamlandi (PASS).
+================================================================================

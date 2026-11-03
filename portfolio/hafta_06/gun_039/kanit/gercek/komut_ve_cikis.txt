@@ -1,0 +1,123 @@
+<!--
+├ûZEL L─░SANS ÔÇö T├£M HAKLAR SAKLIDIR
+Telif Hakk─▒ (c) 2026 Seydi Ery─▒lmaz (@seydivakkas)
+Bu yaz─▒l─▒m ve ilgili t├╝m dosyalar ('Yaz─▒l─▒m') yaln─▒zca g├Âr├╝nt├╝leme ve e─şitim ama├ğl─▒ olarak payla┼ş─▒lm─▒┼şt─▒r.
+-->
+
+# Yedekleme Stratejisi ve 3-2-1 Kural─▒ G├╝venlik Denetim Raporu
+
+**Denetim Tarihi:** `2026-10-27T08:53:34.931242+00:00`  
+**G├╝venlik Puan─▒:** `0 / 100`  
+**Genel Durum:** `CRITICAL`
+
+## ­şôè Denetim Metrikleri ├ûzeti
+
+| Metrik | De─şer |
+| :--- | :---: |
+| ─░ncelenen Politika Say─▒s─▒ | 3 |
+| Kritik (CRITICAL) Bulgular | 6 |
+| Y├╝ksek (HIGH) Seviye Bulgular | 6 |
+| Orta (MEDIUM) Seviye Bulgular | 4 |
+| Uyar─▒ (WARNING) Bulgular | 0 |
+| **Toplam G├╝venlik Bulgusu** | **16** |
+
+## ­şöı G├╝venlik Bulgular─▒ ve ─░yile┼ştirme Re├ğetesi
+
+### 1. [HIGH] Yetersiz Kopya Say─▒s─▒ (1 / 3) ÔÇö 3-2-1 ─░hlali
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `321_RULE_COPIES_INSUFFICIENT`
+- **A├ğ─▒klama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' i┼ş y├╝k├╝ i├ğin yaln─▒zca 1 adet kopya bulunmaktad─▒r. 3-2-1 kural─▒ gere─şi verinin 1 birincil ├╝retim kopyas─▒ ve en az 2 adet ba─ş─▒ms─▒z yedek kopyas─▒ (toplamda en az 3 kopya) bulunmal─▒d─▒r.
+- **­şøí´©Å ─░yile┼ştirme:** Yedekleme stratejisine en az bir ikincil yedekleme hedefi ekleyerek toplam kopya say─▒s─▒n─▒ 3'e ├ğ─▒kar─▒n.
+
+### 2. [MEDIUM] Medya ├çe┼şitlili─şi Yok ÔÇö Ortak Ar─▒za Alan─▒ (Common Failure Domain) Riski
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `321_RULE_MEDIA_DIVERSITY_MISSING`
+- **A├ğ─▒klama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' i├ğin kopyalar yaln─▒zca ['Local_RAID5_DAS'] t├╝r├╝nde tutulmaktad─▒r. Ayn─▒ medya teknolojisine ba─ş─▒ml─▒l─▒k (├Ârn. yaln─▒zca yerel mekanik diskler veya tek bir depolama ├╝nitesi), ortak bir kontrolc├╝ veya donan─▒m serisi ar─▒zas─▒nda t├╝m kopyalar─▒n ayn─▒ anda kaybedilmesine yol a├ğar.
+- **­şøí´©Å ─░yile┼ştirme:** Yedek kopyalardan en az birini manyetik teyp (LTO), bulut nesne depolama (S3) veya farkl─▒ SAN mimarisine ta┼ş─▒y─▒n.
+
+### 3. [CRITICAL] Tesis D─▒┼ş─▒ (Offsite) Kopya Yok ÔÇö Fiziksel Felaket ve Yang─▒n Riski
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `321_RULE_OFFSITE_MISSING`
+- **A├ğ─▒klama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' i┼ş y├╝k├╝ne ait hi├ğbir kopya ana veri merkezi/bina d─▒┼ş─▒nda tutulmamaktad─▒r (offsite: 0). Yang─▒n, su bask─▒n─▒, deprem veya fiziksel h─▒rs─▒zl─▒k durumunda t├╝m kopyalar tek bir lokasyonda yok olur.
+- **­şøí´©Å ─░yile┼ştirme:** Kopyalardan en az birini co─şrafi olarak farkl─▒ bir ikincil veri merkezine veya genel bulut sa─şlay─▒c─▒s─▒na aktar─▒n.
+
+### 4. [CRITICAL] Fidye Yaz─▒l─▒mlar─▒na (Ransomware) Kar┼ş─▒ De─şi┼ştirilemez/Hava Bo┼şluklu (Air-gapped) Yedek Yok
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `RANSOMWARE_IMMUTABILITY_GAP`
+- **A├ğ─▒klama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' i┼ş y├╝k├╝ i├ğin de─şi┼ştirilemez (immutable / WORM - Write Once Read Many) veya a─şdan tamamen izole edilmi┼ş (air-gapped) bir yedek kopyas─▒ tan─▒mlanmam─▒┼şt─▒r. Etki alan─▒ y├Âneticisi (Domain Admin) yetkisini ele ge├ğiren modern fidye yaz─▒l─▒m─▒ ├ğeteleri (LockBit, BlackCat vb.), ┼şifreleme ├Âncesinde eri┼şebildikleri t├╝m standart yedekleri silmekte veya ┼şifrelemektedir.
+- **­şøí´©Å ─░yile┼ştirme:** Yedekleme havuzlar─▒nda S3 Object Lock (Compliance Mode) veya ├ğevrimd─▒┼ş─▒ teyp (LTO tape air-gap) zorunlu k─▒l─▒nmal─▒d─▒r.
+
+### 5. [HIGH] Yetersiz Kopya Say─▒s─▒ (2 / 3) ÔÇö 3-2-1 ─░hlali
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `321_RULE_COPIES_INSUFFICIENT`
+- **A├ğ─▒klama:** 'VMware_Kurumsal_Sanal_Makineler' i┼ş y├╝k├╝ i├ğin yaln─▒zca 2 adet kopya bulunmaktad─▒r. 3-2-1 kural─▒ gere─şi verinin 1 birincil ├╝retim kopyas─▒ ve en az 2 adet ba─ş─▒ms─▒z yedek kopyas─▒ (toplamda en az 3 kopya) bulunmal─▒d─▒r.
+- **­şøí´©Å ─░yile┼ştirme:** Yedekleme stratejisine en az bir ikincil yedekleme hedefi ekleyerek toplam kopya say─▒s─▒n─▒ 3'e ├ğ─▒kar─▒n.
+
+### 6. [MEDIUM] Medya ├çe┼şitlili─şi Yok ÔÇö Ortak Ar─▒za Alan─▒ (Common Failure Domain) Riski
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `321_RULE_MEDIA_DIVERSITY_MISSING`
+- **A├ğ─▒klama:** 'VMware_Kurumsal_Sanal_Makineler' i├ğin kopyalar yaln─▒zca ['Primary_SAN_Storage'] t├╝r├╝nde tutulmaktad─▒r. Ayn─▒ medya teknolojisine ba─ş─▒ml─▒l─▒k (├Ârn. yaln─▒zca yerel mekanik diskler veya tek bir depolama ├╝nitesi), ortak bir kontrolc├╝ veya donan─▒m serisi ar─▒zas─▒nda t├╝m kopyalar─▒n ayn─▒ anda kaybedilmesine yol a├ğar.
+- **­şøí´©Å ─░yile┼ştirme:** Yedek kopyalardan en az birini manyetik teyp (LTO), bulut nesne depolama (S3) veya farkl─▒ SAN mimarisine ta┼ş─▒y─▒n.
+
+### 7. [CRITICAL] Tesis D─▒┼ş─▒ (Offsite) Kopya Yok ÔÇö Fiziksel Felaket ve Yang─▒n Riski
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `321_RULE_OFFSITE_MISSING`
+- **A├ğ─▒klama:** 'VMware_Kurumsal_Sanal_Makineler' i┼ş y├╝k├╝ne ait hi├ğbir kopya ana veri merkezi/bina d─▒┼ş─▒nda tutulmamaktad─▒r (offsite: 0). Yang─▒n, su bask─▒n─▒, deprem veya fiziksel h─▒rs─▒zl─▒k durumunda t├╝m kopyalar tek bir lokasyonda yok olur.
+- **­şøí´©Å ─░yile┼ştirme:** Kopyalardan en az birini co─şrafi olarak farkl─▒ bir ikincil veri merkezine veya genel bulut sa─şlay─▒c─▒s─▒na aktar─▒n.
+
+### 8. [CRITICAL] Fidye Yaz─▒l─▒mlar─▒na (Ransomware) Kar┼ş─▒ De─şi┼ştirilemez/Hava Bo┼şluklu (Air-gapped) Yedek Yok
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `RANSOMWARE_IMMUTABILITY_GAP`
+- **A├ğ─▒klama:** 'VMware_Kurumsal_Sanal_Makineler' i┼ş y├╝k├╝ i├ğin de─şi┼ştirilemez (immutable / WORM - Write Once Read Many) veya a─şdan tamamen izole edilmi┼ş (air-gapped) bir yedek kopyas─▒ tan─▒mlanmam─▒┼şt─▒r. Etki alan─▒ y├Âneticisi (Domain Admin) yetkisini ele ge├ğiren modern fidye yaz─▒l─▒m─▒ ├ğeteleri (LockBit, BlackCat vb.), ┼şifreleme ├Âncesinde eri┼şebildikleri t├╝m standart yedekleri silmekte veya ┼şifrelemektedir.
+- **­şøí´©Å ─░yile┼ştirme:** Yedekleme havuzlar─▒nda S3 Object Lock (Compliance Mode) veya ├ğevrimd─▒┼ş─▒ teyp (LTO tape air-gap) zorunlu k─▒l─▒nmal─▒d─▒r.
+
+### 9. [CRITICAL] Schr├Âdinger'in Yede─şi ÔÇö Geri Y├╝kleme Testi H─░├ç Yap─▒lmam─▒┼ş!
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `RESTORE_VERIFICATION_NEVER_TESTED`
+- **A├ğ─▒klama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' i├ğin yedekleme al─▒nd─▒─ş─▒ varsay─▒lmakta ancak bug├╝ne kadar H─░├çB─░R geri y├╝kleme testi (restore drill) ger├ğekle┼ştirilmemi┼ştir. Siber g├╝venlikte 'Geri y├╝kleme testi ba┼şar─▒yla do─şrulanmam─▒┼ş hi├ğbir yedek, ger├ğekte var say─▒lmaz.' Bozuk disk bloklar─▒, eksik veritaban─▒ loglar─▒ veya ┼şifreleme anahtar─▒ uyumsuzluklar─▒ ancak felaket an─▒nda anla┼ş─▒l─▒r.
+- **­şøí´©Å ─░yile┼ştirme:** ─░zole bir test ortam─▒nda acilen tam geri y├╝kleme (Full Restore Drill) tatbikat─▒ icra edin.
+
+### 10. [MEDIUM] Kriptografik B├╝t├╝nl├╝k Do─şrulamas─▒ (Checksum) Eksik
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `BACKUP_INTEGRITY_CHECKSUM_MISSING`
+- **A├ğ─▒klama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' yedekleme ar┼şivlerinde SHA256 veya benzeri bir kriptografik sa─şlama toplam─▒ do─şrulamas─▒ bulunmamaktad─▒r. Sessiz veri bozulmalar─▒ (Bit rot / Silent Data Corruption) fark edilemeyebilir.
+- **­şøí´©Å ─░yile┼ştirme:** Yedekleme yaz─▒l─▒m─▒nda ar┼şiv olu┼şturma ve aktar─▒m sonras─▒ SHA256 karma do─şrulamas─▒n─▒ etkinle┼ştirin.
+
+### 11. [HIGH] Geri Y├╝kleme Testi G├╝ncelli─şini Yitirmi┼ş (120 G├╝n ├ûnce)
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `RESTORE_VERIFICATION_OUTDATED`
+- **A├ğ─▒klama:** 'VMware_Kurumsal_Sanal_Makineler' i├ğin son geri y├╝kleme testi 120 g├╝n ├Ânce yap─▒lm─▒┼şt─▒r (Azami kabul edilebilir s├╝re: 90 g├╝n). Ge├ğen s├╝re zarf─▒nda de─şi┼şen veritaban─▒ ┼şemalar─▒, sistem g├╝ncellemeleri veya saklama politikalar─▒ yede─şin ├ğal─▒┼şabilirli─şini bozmu┼ş olabilir.
+- **­şøí´©Å ─░yile┼ştirme:** ├çeyreklik (Quarterly) periyotlarla d├╝zenli otomatik geri y├╝kleme testleri planlay─▒n.
+
+### 12. [MEDIUM] Kriptografik B├╝t├╝nl├╝k Do─şrulamas─▒ (Checksum) Eksik
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `BACKUP_INTEGRITY_CHECKSUM_MISSING`
+- **A├ğ─▒klama:** 'VMware_Kurumsal_Sanal_Makineler' yedekleme ar┼şivlerinde SHA256 veya benzeri bir kriptografik sa─şlama toplam─▒ do─şrulamas─▒ bulunmamaktad─▒r. Sessiz veri bozulmalar─▒ (Bit rot / Silent Data Corruption) fark edilemeyebilir.
+- **­şøí´©Å ─░yile┼ştirme:** Yedekleme yaz─▒l─▒m─▒nda ar┼şiv olu┼şturma ve aktar─▒m sonras─▒ SHA256 karma do─şrulamas─▒n─▒ etkinle┼ştirin.
+
+### 13. [CRITICAL] ├ûl├╝mc├╝l Mimari Hata: RAID Bir Yedekleme De─şildir!
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `ARCHITECTURAL_MISCONCEPTION_RAID`
+- **A├ğ─▒klama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' i┼ş y├╝k├╝nde yerel RAID dizisi tek koruma mekanizmas─▒ olarak kullan─▒lmaktad─▒r. RAID yaln─▒zca donan─▒msal disk ar─▒zalar─▒na kar┼ş─▒ i┼ş s├╝reklili─şi (High Availability) sa─şlar. Kazara dosya silinmesi, fidye yaz─▒l─▒m─▒ ┼şifrelemesi, bozuk yaz─▒l─▒m g├╝ncellemesi veya kontrolc├╝ ar─▒zas─▒ an─▒nda veriyi T├£M disklere ayn─▒ anda e┼şzamanl─▒ siler veya ┼şifreler. RAID ge├ğmi┼şe d├Ân├╝k koruma sa─şlamaz.
+- **­şøí´©Å ─░yile┼ştirme:** RAID'den ba─ş─▒ms─▒z, harici ortamlara (NAS/Cloud/Tape) planl─▒ yedekleme ba┼şlat─▒n.
+
+### 14. [HIGH] Ayn─▒ Depolama Havuzundaki Anl─▒k G├Âr├╝nt├╝ (Snapshot) Yedek Say─▒lmaz
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `ARCHITECTURAL_MISCONCEPTION_SNAPSHOT`
+- **A├ğ─▒klama:** 'VMware_Kurumsal_Sanal_Makineler' i├ğin al─▒nan anl─▒k g├Âr├╝nt├╝ler (snapshots) birincil verinin bulundu─şu ayn─▒ fiziksel depolama havuzunda (SAN/LUN) tutulmaktad─▒r. Depolama havuzunun meta verisi ├ğ├Âkt├╝─ş├╝nde veya fiziksel depolama ├╝nitesi ar─▒zaland─▒─ş─▒nda hem birincil veri hem de snapshot'lar ayn─▒ anda yok olur.
+- **­şøí´©Å ─░yile┼ştirme:** Snapshot'lar─▒ depolama seviyesinde replikasyonla farkl─▒ bir ikincil fiziksel ├╝niteye kopyalay─▒n.
+
+### 15. [HIGH] RPO Hedef Sapmas─▒ ÔÇö Kabul Edilemez Veri Kayb─▒ Riski (72h > 24h)
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `RPO_SLA_BREACH_RISK`
+- **A├ğ─▒klama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' i┼ş y├╝k├╝ i├ğin taahh├╝t edilen azami veri kayb─▒ s├╝resi (RPO) 24.0 saat iken, fiili yedekleme aral─▒─ş─▒ 72.0 saattir. Olas─▒ bir felaket an─▒nda son yedekten bu yana ge├ğen 72.0 saatlik kurumsal veri kal─▒c─▒ olarak kaybolacakt─▒r.
+- **­şøí´©Å ─░yile┼ştirme:** Yedekleme i┼şinin zamanlama s─▒kl─▒─ş─▒n─▒ (schedule) en fazla 24 saatte bir ├ğal─▒┼şacak ┼şekilde art─▒r─▒n.
+
+### 16. [HIGH] RPO Hedef Sapmas─▒ ÔÇö Kabul Edilemez Veri Kayb─▒ Riski (24h > 12h)
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `RPO_SLA_BREACH_RISK`
+- **A├ğ─▒klama:** 'VMware_Kurumsal_Sanal_Makineler' i┼ş y├╝k├╝ i├ğin taahh├╝t edilen azami veri kayb─▒ s├╝resi (RPO) 12.0 saat iken, fiili yedekleme aral─▒─ş─▒ 24.0 saattir. Olas─▒ bir felaket an─▒nda son yedekten bu yana ge├ğen 24.0 saatlik kurumsal veri kal─▒c─▒ olarak kaybolacakt─▒r.
+- **­şøí´©Å ─░yile┼ştirme:** Yedekleme i┼şinin zamanlama s─▒kl─▒─ş─▒n─▒ (schedule) en fazla 12 saatte bir ├ğal─▒┼şacak ┼şekilde art─▒r─▒n.
+
+
+Rapor ba┼şar─▒yla kaydedildi: portfolio/hafta_06/gun_039/kanit/gercek/yedekleme_ve_321_denetim_raporu.txt

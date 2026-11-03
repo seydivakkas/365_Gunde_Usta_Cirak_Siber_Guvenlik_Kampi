@@ -1,0 +1,64 @@
+==============================================================================
+GÜN 137: SSH NEGATİF KONTROL VE SINIR DURUM TEST KANIT RAPORU
+==============================================================================
+Çalıştırma Tarihi: 2026-11-02 14:34:19
+Hedef: SSH Güvenlik Motorunun Hatalı/Zafiyetli Durumları Tespit Yeteneği
+------------------------------------------------------------------------------
+[1/9] NEG_SSH_01: Boş SSH Envanteri Sınır Durumu
+  • Açıklama       : Hiç anahtar ve yetkili kullanıcı bulunmaması durumu. Güvenlik motorunun istisna fırlatmadan varsayılan değerlendirme yapması.
+  • Beklenen Kural : TAM_GÜVENLİ_VEYA_SIFIR_BULGU
+  • Üretilen Kural : Bulgu Yok (Skor: 100.0)
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[2/9] NEG_SSH_02: Gevşek Özel Anahtar Dosya İzinleri (0644)
+  • Açıklama       : Özel anahtarın yetkisiz kullanıcılar tarafından okunabilir olması (CWE-732 / T1552.004).
+  • Beklenen Kural : SSH-001
+  • Üretilen Kural : SSH-001
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[3/9] NEG_SSH_03: Kullanımdan Kaldırılmış Güvensiz DSA Anahtarı
+  • Açıklama       : 1024-bit DSA anahtarının kullanılması (CWE-327 / RFC 4253 / NIST).
+  • Beklenen Kural : SSH-003
+  • Üretilen Kural : SSH-003
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[4/9] NEG_SSH_04: Kısa ve Zayıf RSA Anahtar Uzunluğu (< 2048 bit)
+  • Açıklama       : 1024-bit RSA anahtarının kullanılması (CWE-326 / NIST SP 800-131A).
+  • Beklenen Kural : SSH-004
+  • Üretilen Kural : SSH-004
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[5/9] NEG_SSH_05: Gevşek authorized_keys Dosya İzinleri (0666)
+  • Açıklama       : authorized_keys dosyasının başkalarınca yazılabilir olması (CWE-732 / T1098.004).
+  • Beklenen Kural : SSH-005
+  • Üretilen Kural : SSH-005
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[6/9] NEG_SSH_06: Doğrudan Root Girişine İzin Verilmiş (PermitRootLogin yes)
+  • Açıklama       : Root kullanıcısının SSH ile oturum açabilmesi (CIS 5.2.5 / CWE-250 / T1078.003).
+  • Beklenen Kural : SSH-007
+  • Üretilen Kural : SSH-007
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[7/9] NEG_SSH_07: Parola ile Kimlik Doğrulamanın Açık Olması
+  • Açıklama       : PasswordAuthentication yes yapılandırması (CIS 5.2.9 / CWE-307 / T1110.001).
+  • Beklenen Kural : SSH-008
+  • Üretilen Kural : SSH-008
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[8/9] NEG_SSH_08: Boş Parola ile Giriş İzni (PermitEmptyPasswords yes)
+  • Açıklama       : Parolasız hesapların SSH ile şifresiz oturum açabilmesi (CIS 5.2.11 / CWE-258 / T1078).
+  • Beklenen Kural : SSH-009
+  • Üretilen Kural : SSH-009
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+[9/9] NEG_SSH_09: Aşırı Yüksek Giriş Denemesi Sınırı (MaxAuthTries > 4)
+  • Açıklama       : MaxAuthTries 10 atanması sonucu kaba kuvvet saldırılarına tolerans gösterilmesi (CIS 5.2.7).
+  • Beklenen Kural : SSH-010
+  • Üretilen Kural : SSH-010
+  • Doğrulama      : BAŞARILI (PASS)
+----------------------------------------------------------------------------
+Toplam Senaryo    : 9
+Başarılı Doğrulama: 9 / 9
+Sonuç             : TAM BAŞARILI (%100 PASS)
+==============================================================================

@@ -1,0 +1,62 @@
+==============================================================================
+G061: PROXY, NAT VE GUVENLIK DUVARI — NEGATIF VE SINIR DEGER TEST RAPORU
+==============================================================================
+Toplam Negatif Test Senaryosu: 9
+
+[1/9] NEG_01_INVALID_TCP_FLAGS_SYN_FIN
+  Tanim: RFC 793 standardina aykiri gizli tarama: SYN ve FIN bayraklarinin ayni anda set edilmesi (SYN+FIN Scan).
+  Beklenen Hata: InvalidPacketFlagsError
+  Alinan Hata  : InvalidPacketFlagsError: Gecersiz TCP bayrak kombinasyonu tespit edildi: SYN+FIN saldiri taramasi reddedildi.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[2/9] NEG_02_X_FORWARDED_FOR_SPOOFING
+  Tanim: Guvenilmeyen istemcinin X-Forwarded-For basligina sahte 127.0.0.1 enjekte ederek yetki atlatma girisimi.
+  Beklenen Hata: ProxySecurityViolationError
+  Alinan Hata  : ProxySecurityViolationError: Guvenilmeyen istemciden (198.51.100.77) gelen sahte X-Forwarded-For basligi engellendi.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[3/9] NEG_03_OUT_OF_STATE_UNSOLICITED_PACKET
+  Tanim: Onceden el sikismasi yapilmamis baglantiya sahte ACK paketi gonderilmesi (Durumsuz Sizma Girisimi).
+  Beklenen Hata: FirewallDropError
+  Alinan Hata  : FirewallDropError: Durum takipli guvenlik duvari: Durum tablosunda bulunmayan beklenmedik ['ACK'] paketi engellendi (INVALID State).
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[4/9] NEG_04_BLOCKED_INBOUND_PORT_TELNET
+  Tanim: Guvenlik duvari kural listesinde izin verilmeyen port 23 (Telnet) uzerine gelen SYN paketi.
+  Beklenen Hata: FirewallDropError
+  Alinan Hata  : FirewallDropError: Guvenlik duvari varsayilan DROP politikasi: Port 23 icin erisim kurali bulunamadi.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[5/9] NEG_05_NAT_PORT_EXHAUSTION
+  Tanim: PAT port havuzundaki tum bos portlarin tukenmesi ve yeni cevirme yapilamamasi.
+  Beklenen Hata: NATExhaustionError
+  Alinan Hata  : NATExhaustionError: PAT port havuzu tukendi: 10000-10000 araliginda bos port kalmadi.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[6/9] NEG_06_MALFORMED_IP_ADDRESS
+  Tanim: Gecersiz IP adresi formatina sahip paket (ornek: 999.999.999.999 veya harf iceren IP).
+  Beklenen Hata: NetworkValidationError
+  Alinan Hata  : NetworkValidationError: Gecersiz IPv4 adresi: '999.999.999.999'.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[7/9] NEG_07_FORWARD_PROXY_FORBIDDEN_CONNECT_PORT
+  Tanim: Forward Proxy CONNECT tüneli uzerinden yasakli port 22 (SSH) erisim suistimali.
+  Beklenen Hata: ProxyAccessDeniedError
+  Alinan Hata  : ProxyAccessDeniedError: Forward Proxy CONNECT metoduna yalnizca guvenli portlar ([443]) icin izin verilir. Port 22 engellendi.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[8/9] NEG_08_CONNTRACK_TABLE_OVERFLOW
+  Tanim: Durum tablosunun (Conntrack Table) maksimum kapasitesini asan SYN Flood saldirisi.
+  Beklenen Hata: ConntrackOverflowError
+  Alinan Hata  : ConntrackOverflowError: Guvenlik duvari conntrack durum tablosu maksimum kapasiteye ulasti! Yeni oturum acilamaz.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[9/9] NEG_09_NULL_SCAN_PACKET_DETECTED
+  Tanim: Hicbir TCP bayraginin set edilmedigi (Flags = 0) gizli ag tarama paketi (Null Scan).
+  Beklenen Hata: InvalidPacketFlagsError
+  Alinan Hata  : InvalidPacketFlagsError: Gecersiz TCP bayrak kombinasyonu: Null Scan (Flags = 0) saldirisi tespit edildi ve engellendi.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+==============================================================================
+Negatif Kontrol Ozeti: 9/9 Test Basariyla Engellendi.
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Ozel Lisans — Tum Haklari Saklidir.

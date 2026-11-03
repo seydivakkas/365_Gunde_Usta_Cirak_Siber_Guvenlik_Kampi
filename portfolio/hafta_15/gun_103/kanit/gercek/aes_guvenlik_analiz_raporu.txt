@@ -1,0 +1,39 @@
+===============================================================================
+GÜN 103: AES SİMETRİK ŞİFRELEME GÜVENLİK VE MİMARİ ANALİZ RAPORU
+Tarih/Saat: 2026-11-02 02:13:21
+Analist: Seydi Eryılmaz (@seydivakkas)
+===============================================================================
+
+1. FIPS 197 VE BLOK ŞİFRE MİMARİSİ:
+-------------------------------------------------------------------------------
+- Blok Boyutu: Sabit 128 bit (16 bayt).
+- Anahtar Boyutları: AES-128 (10 tur, 16 bayt), AES-256 (14 tur, 32 bayt).
+- Tur Fonksiyonu Matematiksel Adımları:
+  1. SubBytes   : Doğrusal olmayan S-Box değişimi (Karışıklık - Confusion).
+  2. ShiftRows  : Satırların dairesel kaydırılması (Yayılma - Diffusion).
+  3. MixColumns : GF(2^8) Galois Alanında matris çarpımı (Maksimum Difüzyon).
+  4. AddRoundKey: Tur anahtarı ile XOR işlemi (Anahtar Enjeksiyonu).
+
+2. İŞLETİM MODLARI GÜVENLİK KARŞILAŞTIRMASI:
+-------------------------------------------------------------------------------
+A. ECB (Electronic Codebook) - [CWE-327: KRİTİK GÜVENSİZ]
+   - Her 16 baytlık blok birbirinden bağımsız şifrelenir.
+   - Özdeş düz metin blokları özdeş şifreli bloklar üretir (ECB Penguin etkisi).
+   - Veri yapıları, tekrarlar ve görsel desenler doğrudan dışarı sızar.
+   - Hüküm: Kurumsal sistemlerde KESİNLİKLE YASAKTIR.
+
+B. CBC (Cipher Block Chaining) - [STANDART]
+   - Her blok, şifrelenmeden önce bir önceki şifreli blokla XOR'lanır.
+   - İlk blok için rastgele ve tahmin edilemez IV (Initialization Vector) şarttır.
+   - Desen sızıntısını tamamen yok eder. Ancak dolgu oracle saldırılarına (Padding Oracle)
+     karşı dikkatli uygulanmalı veya sabit zamanlı doğrulanmalıdır.
+
+C. CTR (Counter Mode) - [YÜKSEK PERFORMANS & AKIŞ ŞİFRESİ]
+   - Sayacı (Nonce + Counter) şifreleyerek bir anahtar akışı (keystream) üretir.
+   - Dolgu (padding) gerektirmez; veri bayt bayt XOR'lanır.
+   - Paralel hesaplamaya (multi-core / hardware acceleration) tam uygundur.
+
+D. AEAD (Authenticated Encryption with Associated Data) - [ALTIN STANDART]
+   - Yalnızca gizlilik değil, kurcalanmaya karşı BÜTÜNLÜK (Integrity) sağlar.
+   - Encrypt-then-MAC (EtM) ile şifreli metin HMAC-SHA256 ile mühürlenir.
+   - Saldırgan tek bir biti bile değiştirse şifre çözülmeden anında yakalanır (CWE-353).

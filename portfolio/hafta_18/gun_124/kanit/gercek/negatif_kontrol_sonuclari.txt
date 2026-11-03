@@ -1,0 +1,59 @@
+=== GÜN 124 NEGATİF KONTROL VE HATA DOĞRULAMA RAPORU ===
+Tarih: 2026-11-03T09:36:03.244858
+Toplam Senaryo: 9
+
+Senaryo 1: Sabit Kodlanmış AWS Erişim Anahtarı (CWE-798)
+  Açıklama: Kaynak kod içerisine gömülmüş AKIA ile başlayan AWS Access Key'in statik tarayıcıyla tespiti.
+  Beklenen: HardcodedSecretDetectedError
+  Sonuç: N/A: Statik tarayıcı tespit etti: AWS_ACCESS_KEY
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 2: Sabit Kodlanmış Stripe Canlı API Anahtarı (CWE-798)
+  Açıklama: Kodda yer alan sk_live_ önekli Stripe gizli anahtarının tespit edilmesi.
+  Beklenen: HardcodedSecretDetectedError
+  Sonuç: N/A: Statik tarayıcı tespit etti: STRIPE_SECRET_KEY
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 3: Yüksek Entropili Gizli Token Tespiti (CWE-798)
+  Açıklama: Shannon entropisi 4.2 üzerinde olan rastgele üretilmiş kimlik belirtecinin yakalanması.
+  Beklenen: HardcodedSecretDetectedError
+  Sonuç: N/A: Statik tarayıcı tespit etti: GENERIC_PASSWORD
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 4: Yetkisiz Rol ile Secret Okuma Girişimi (CWE-285)
+  Açıklama: Veritabanı admin parolasına 'guest_user' rolü ile erişmeye çalışıldığında reddedilmesi.
+  Beklenen: SecretAccessDeniedError
+  Sonuç: SecretAccessDeniedError: Rol 'guest_user', 'S-TEST' anahtarına erişim yetkisine sahip değil (CWE-285).
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 5: Kullanım Süresi (TTL) Dolan Secret Erişimi (CWE-613)
+  Açıklama: Yaşam döngüsü sona ermiş ve yenilenmemiş anahtarın kullanımının engellenmesi.
+  Beklenen: SecretExpiredError
+  Sonuç: SecretExpiredError: 'S-EXP' anahtarının kullanım süresi dolmuştur (CWE-613).
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 6: İptal Edilmiş (Revoked) Secret Erişimi
+  Açıklama: Sızıntı şüphesiyle derhal iptal edilmiş bir anahtara erişim talebinin reddedilmesi.
+  Beklenen: SecretRevokedError
+  Sonuç: SecretRevokedError: 'S-REV' anahtarı güvenlik nedeniyle İPTAL EDİLMİŞTİR.
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 7: Tahrif Edilmiş Şifreli Yük (HMAC Doğrulama Başarısızlığı)
+  Açıklama: Depolamadaki şifreli metin değiştirildiğinde bütünlük hatası verilmesi.
+  Beklenen: InvalidSecretPayloadError
+  Sonuç: InvalidSecretPayloadError: Kriptografik bütünlük hatası: Secret tahrif edilmiş veya anahtar yanlış!
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 8: Mükerrer Secret ID ile Kayıt Denemesi
+  Açıklama: Kasadaki mevcut bir ID ile ikinci kez anahtar eklenmeye çalışılmasının engellenmesi.
+  Beklenen: DuplicateSecretError
+  Sonuç: DuplicateSecretError: Bu ID ile gizli anahtar zaten mevcut: S-DUP
+  Durum: [PASS - DOĞRULANDI]
+
+Senaryo 9: Boş Gizli Anahtar Değeri ile Kayıt Denemesi
+  Açıklama: Boş dize veya yalnızca boşluklardan oluşan anahtar değerinin reddedilmesi.
+  Beklenen: InvalidSecretPayloadError
+  Sonuç: InvalidSecretPayloadError: Gizli anahtar değeri boş bırakılamaz.
+  Durum: [PASS - DOĞRULANDI]
+
+Genel Sonuç: 9/9 senaryo başarıyla doğrulandı.

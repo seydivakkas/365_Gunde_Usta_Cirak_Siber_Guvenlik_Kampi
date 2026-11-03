@@ -1,0 +1,10 @@
+# OKUL NOT KÜTÜĞÜ VE ÖĞRENCİ BİLGİ SİSTEMİ
+# Güvenlik Sınıflandırması: HASSAS / KİŞİSEL VERİ (KVKK Korumalı)
+# Son Güncelleme: 2026-10-26 09:00:00
+
+OGRENCI_NO|AD_SOYAD|DERS|VIZE|FINAL|DURUM
+101|Ali Yılmaz|Siber Güvenliğe Giriş|45|55|Kaldı
+102|Ayşe Kaya|Ağ Temelleri|85|90|Geçti
+103|Mehmet Demir|İşletim Sistemleri|70|75|Geçti
+104|Zeynep Çelik|Kriptografi Temelleri|92|96|Geçti
+105|Burak Şahin|Linux Yönetimi|35|40|Kaldı

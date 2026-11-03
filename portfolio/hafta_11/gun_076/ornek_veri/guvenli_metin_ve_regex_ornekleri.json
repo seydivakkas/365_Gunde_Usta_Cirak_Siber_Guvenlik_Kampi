@@ -1,0 +1,44 @@
+{
+  "aciklama": "Gün 076: Metin işleme, düzenli ifadeler ve karakter kodlaması için doğrulanmış örnek veri seti",
+  "ornek_erisim_loglari": [
+    {
+      "id": "LOG_VALID_01",
+      "raw_line": "192.168.1.50 - - [31/Oct/2026:10:15:20 +0300] \"GET /api/v1/auth/login HTTP/1.1\" 200 4520 \"https://portal.kurum.local\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\"",
+      "expected_ip": "192.168.1.50",
+      "expected_method": "GET",
+      "expected_status": 200
+    },
+    {
+      "id": "LOG_VALID_02",
+      "raw_line": "10.0.0.12 - admin [31/Oct/2026:10:15:25 +0300] \"POST /api/v1/admin/users HTTP/1.1\" 201 128 \"-\" \"curl/8.4.0\"",
+      "expected_ip": "10.0.0.12",
+      "expected_method": "POST",
+      "expected_status": 201
+    },
+    {
+      "id": "LOG_VALID_03",
+      "raw_line": "203.0.113.195 - - [31/Oct/2026:10:15:30 +0300] \"GET /robots.txt HTTP/1.1\" 404 162 \"-\" \"Googlebot/2.1\"",
+      "expected_ip": "203.0.113.195",
+      "expected_method": "GET",
+      "expected_status": 404
+    }
+  ],
+  "unicode_ve_homograf_ornekleri": [
+    {
+      "id": "HOMO_CLEAN",
+      "domain": "portal.banka.com.tr",
+      "is_spoofed": false,
+      "canonical_form": "portal.banka.com.tr"
+    },
+    {
+      "id": "HOMO_UNICODE_ACCENT",
+      "text": "Güvenlik Duvarı ve Tehdit İstihbaratı",
+      "encoding": "UTF-8"
+    }
+  ],
+  "guvenli_regex_desenleri": {
+    "ipv4_pattern": "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",
+    "sha256_pattern": "^[a-fA-F0-9]{64}$",
+    "cve_pattern": "^CVE-\\d{4}-\\d{4,7}$"
+  }
+}

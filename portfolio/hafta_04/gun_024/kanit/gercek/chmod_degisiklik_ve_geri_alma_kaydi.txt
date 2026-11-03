@@ -1,0 +1,79 @@
+==============================================================================
+G024-SC2: KONTROLLU CHMOD DEGISIKLIGI VE GERI ALMA (ROLLBACK) DENEY KAYDI
+Tarih / Saat: 2026-10-27 06:55:58
+Ortam       : Yerel Laboratuvar Test Dosyasi (Etik Sinir & Bagimsiz Girdi)
+==============================================================================
+
+--- ADIM 1: ILK IZIN DEGISIKLIGI (0600 KISITLAMA) ---
+============================================================
+CHMOD DE─Ş─░┼Ş─░KL─░─Ş─░ GER├çEKLE┼ŞT─░R─░LD─░ (G024-SC2)
+============================================================
+Hedef Dosya    : C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_04\gun_024\ornek_veri\lab_test_dosyasi.txt
+─░┼şlem ID       : TX-1793073358987
+Eski ─░zin      : 0666 (-rw-rw-rw-)
+Yeni ─░zin      : 0600 (-rw-------)
+G├╝nl├╝k Kayd─▒   : portfolio\hafta_04\gun_024\ornek_veri\chmod_journal.json
+============================================================
+
+--- ADIM 2: IKINCI IZIN DEGISIKLIGI (0644 GECICI OKUMA YETKISI) ---
+============================================================
+CHMOD DE─Ş─░┼Ş─░KL─░─Ş─░ GER├çEKLE┼ŞT─░R─░LD─░ (G024-SC2)
+============================================================
+Hedef Dosya    : C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_04\gun_024\ornek_veri\lab_test_dosyasi.txt
+─░┼şlem ID       : TX-1793073359124
+Eski ─░zin      : 0666 (-rw-rw-rw-)
+Yeni ─░zin      : 0644 (-rw-r--r--)
+G├╝nl├╝k Kayd─▒   : portfolio\hafta_04\gun_024\ornek_veri\chmod_journal.json
+============================================================
+
+--- ADIM 3: GERI ALMA ISLEMI (ROLLBACK) ---
+============================================================
+GER─░ ALMA (ROLLBACK) ─░┼ŞLEM─░ BA┼ŞARILI (G024-SC2)
+============================================================
+Hedef Dosya    : C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_04\gun_024\ornek_veri\lab_test_dosyasi.txt
+Orijinal ─░┼şlem : TX-1793073359124
+Geri Y├╝klenen  : 0666 (-rw-rw-rw-)
+Durum          : BASARIYLA_GERI_ALINDI
+============================================================
+
+--- ADIM 4: GERI ALMA GUNLUGU (JOURNAL) ICERIGI ---
+[
+  {
+    "islem_id": "TX-1793073358987",
+    "zaman_damgasi": "2026-10-27T03:55:58Z",
+    "dosya_yolu": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_04\\gun_024\\ornek_veri\\lab_test_dosyasi.txt",
+    "islem_yapan": "guvenlik-analisti",
+    "gerekce": "guclendirme",
+    "eski_izin_oktal": "0666",
+    "eski_izin_sembolik": "-rw-rw-rw-",
+    "yeni_izin_oktal": "0600",
+    "yeni_izin_sembolik": "-rw-------",
+    "durum": "UYGULANDI"
+  },
+  {
+    "islem_id": "TX-1793073359124",
+    "zaman_damgasi": "2026-10-27T03:55:59Z",
+    "dosya_yolu": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_04\\gun_024\\ornek_veri\\lab_test_dosyasi.txt",
+    "islem_yapan": "guvenlik-analisti",
+    "gerekce": "guclendirme",
+    "eski_izin_oktal": "0666",
+    "eski_izin_sembolik": "-rw-rw-rw-",
+    "yeni_izin_oktal": "0644",
+    "yeni_izin_sembolik": "-rw-r--r--",
+    "durum": "UYGULANDI"
+  },
+  {
+    "orijinal_islem_id": "TX-1793073359124",
+    "geri_alma_zamani": "2026-10-27T03:55:59Z",
+    "dosya_yolu": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_04\\gun_024\\ornek_veri\\lab_test_dosyasi.txt",
+    "geri_yuklenen_izin_oktal": "0666",
+    "geri_yuklenen_sembolik": "-rw-rw-rw-",
+    "durum": "BASARIYLA_GERI_ALINDI"
+  }
+]
+
+--- ADIM 5: DOGRULAMA VE NEGATIF KONTROL BILGISI ---
+Pozitif Kontrol: Izin basariyla 0600 -> 0644 degistirildi ve tekrar 0600 degerine geri alindi.
+Negatif Kontrol: Olmayan dosya veya bos gunluk durumunda sistem kontrollu hata vermektedir (test_13).
+Etik Sinir     : Sadece sahip olunan test dosyasinda calisildi, sistem dosyalari degistirilmedi.
+==============================================================================

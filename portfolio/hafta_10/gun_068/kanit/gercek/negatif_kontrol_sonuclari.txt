@@ -1,0 +1,49 @@
+================================================================================
+G068: AĞ GÜNLÜKLERİ VE KİŞİSEL VERİ ARINDIRMA NEGATİF KONTROL VE İSTİSNA KANITI
+Tarih: 2026-10-31 | Doğrulanan Senaryo Sayısı: 9/9 PASS
+================================================================================
+
+[NEG_01] Boş Günlük Akışı İstisnası
+  - Beklenen İstisna : EmptyLogStreamError
+  - Yakalanan Mesaj  : Arındırılacak günlük listesi boş olamaz.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_02] Geçersiz Günlük Nesne Formatı İstisnası
+  - Beklenen İstisna : InvalidLogFormatError
+  - Yakalanan Mesaj  : Toplu günlük verisi geçerli bir sözlük olmalıdır.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_03] Geçersiz veya Bozuk IP Adresi Formatı İstisnası
+  - Beklenen İstisna : InvalidIPAddressFormatError
+  - Yakalanan Mesaj  : Geçersiz IP adresi biçimi: '999.888.777.666'
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_04] Yetersiz veya Boş Tuzlama (Salt) Anahtarı İstisnası
+  - Beklenen İstisna : InvalidSaltKeyError
+  - Yakalanan Mesaj  : Tuzlama anahtarı en az 8 karakter olmalıdır.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_05] Arındırma Sonrası Açıkta Kalan PII İhlali Tespiti
+  - Beklenen İstisna : UnmaskedPIIDetectedError
+  - Yakalanan Mesaj  : Açık e-posta PII verisi tespit edildi: 'veli.oz@kurum.gov.tr'
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_06] Bozuk Zaman Damgası veya Eksik Zorunlu Kayıt Kimliği
+  - Beklenen İstisna : MalformedRecordDataError
+  - Yakalanan Mesaj  : Günlük kaydında zorunlu 'kayit_id' alanı eksik.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_07] Kritik PCI-DSS / KVKK İhlali (Açık Kredi Kartı Loglama)
+  - Beklenen İstisna : PolicyViolationError
+  - Yakalanan Mesaj  : Kritik PCI-DSS ihlali: Ham kredi kartı tespit edildi: '5412751234567890'
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_08] Veri Saklama Süresi Aşımı (Data Retention Exceeded)
+  - Beklenen İstisna : DataRetentionPolicyError
+  - Yakalanan Mesaj  : Log saklama süresi aşıldı! Kayıt 3823 günlük.
+  - Kontrol Durumu   : BAŞARILI (PASS)
+
+[NEG_09] Bozuk veya Geçersiz MAC Adresi Biçimi İstisnası
+  - Beklenen İstisna : InvalidLogFormatError
+  - Yakalanan Mesaj  : Geçersiz MAC adresi biçimi: 'GE-CE-RS-IZ-MA-C-ADRESI'
+  - Kontrol Durumu   : BAŞARILI (PASS)

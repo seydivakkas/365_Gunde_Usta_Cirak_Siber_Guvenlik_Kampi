@@ -1,0 +1,40 @@
+{
+  "gun": 53,
+  "gun_id": "G053",
+  "asama": "03",
+  "hafta": "08",
+  "baslik": "Port, socket ve bağlantı durumu",
+  "tarih": "2026-10-29",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kavramsal_derinlik": 20,
+    "uygulama_gelistirme": 40,
+    "test_kapsami": 25,
+    "savunma_sikilastirma": 15
+  },
+  "test_ozeti": {
+    "toplam": 14,
+    "basarili": 14,
+    "hatali": 0,
+    "sure_saniye": 0.001
+  },
+  "kod_aciklama_satirlari_tamamlandi": true,
+  "kanitlar": {
+    "gercek": [
+      "kanit/gercek/test_sonuclari.txt",
+      "kanit/gercek/komut_ve_cikis.txt",
+      "kanit/gercek/port_socket_baglanti_raporu.txt",
+      "kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "kanit/temsili/port_socket_baglanti_ve_saldiri_mimarisi.txt"
+    ]
+  },
+  "soru_bankasi_eslesmesi": [
+    "G053-SC1",
+    "G053-SC2",
+    "G053-SC3"
+  ],
+  "notlar": "IANA port aralıkları sınıflandırması, 5-tuple soket modellemesi, RFC 793/9293 TCP bağlantı durum makinesi simülasyonu, 'Açık Port != Zafiyet' ilkesi doğrultusunda 0.0.0.0 Redis ifşası (CRITICAL_EXPOSURE), Metasploit Reverse Shell (Port 4444) tespiti, SYN Flood ve TIME_WAIT yığılması güvenlik denetimi eksiksiz tamamlandı; 14 birim testi ve 8 negatif kontrol testi %100 PASS oldu."
+}

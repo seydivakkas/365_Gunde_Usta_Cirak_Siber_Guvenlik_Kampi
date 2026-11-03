@@ -1,0 +1,18 @@
+{
+  "ders.md": "c261e5f6a5ef15c93c9866fb2daaa0634a69861e3361c5cb41820e3e88b0289d",
+  "kanit/gercek/dns_http_anomali_raporu.txt": "ec279d097c306a6339c12d89d57a473f93cc23425c450962609fd314cd0df9aa",
+  "kanit/gercek/komut_ve_cikis.txt": "1c6e324d35a75e881efe0ddf151c0c564bbae8bd7c28f311bdc350ee18cdd8bd",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "9942298543ae19b60a50675e61bbe9a3863db678885bad9ebf5055c9fb0427e7",
+  "kanit/gercek/test_sonuclari.txt": "f9caaf2f8d34f841bf4e3a7ee21277db724fa51fffd0e224e78f6272dca9e9e7",
+  "kanit/temsili/dns_http_anomali_mimarisi.txt": "4181532f1a318a5311d8612bf9e9368bf286bbaca213f5bcb288d27f67b4510e",
+  "ornek_veri/invalid_anomaly_inputs.json": "6d0e9f8e763c5312129a6aad7948ba8140da82259063b8a577bb61547e5b8717",
+  "ornek_veri/sample_traffic_indicators.json": "02b87265117e99b2aab240bb1622cc600c95a31b86cd23816ac68435bd65ade2",
+  "rapor.md": "4322cdb0d089e90e620fb612248391d7c962adf68678b0ff39fc2e99d72b3bf5",
+  "README.md": "83b251e22e97e7c1f27f95041c716aec8bbb265fc90e68d71ba3948b8342cc3c",
+  "sonuc.json": "be42ab5b2cdc4067515134fb2a9d4843c1268ec8b89c5b42981bd6fdf002cdab",
+  "soru_cevap.md": "bea64648c9e01e86e494cb26f3575d5bb579bb3b759becd38ca2ecb4eee5ad2d",
+  "tests/__init__.py": "fa95dec581d80293fdaf0c4e4727270d22b0b61071c18f7e9d37d4d7ac09d8a9",
+  "tests/test_dns_http_anomaly_detector.py": "27444078f4da18b7e7c2bf4a5870b231486e04d1e5a5d16900b2e9446524904a",
+  "uygulama/__init__.py": "ab1f7e54bd7557a44cea40f373f8c370cf3132934662eb895eca265fc7c0283e",
+  "uygulama/dns_http_anomaly_detector.py": "7c2ff00d7d97de79dc049b396b80baa4725633dd39b6e01891266e14e571e6ea"
+}

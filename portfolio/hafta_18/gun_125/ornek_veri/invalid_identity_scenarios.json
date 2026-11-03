@@ -1,0 +1,109 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "senaryolar": [
+    {
+      "id": "NEG-ID-01",
+      "baslik": "Zayıf Parola ile Kayıt Girişimi",
+      "cwe": "CWE-521",
+      "girdi": {
+        "username": "zayif_kullanici",
+        "password": "123"
+      },
+      "beklenen_hata": "WeakPasswordError",
+      "aciklama": "NIST SP 800-63B standardı gereği 12 karakter altı ve karmaşıklık kurallarına uymayan parola reddedilmelidir."
+    },
+    {
+      "id": "NEG-ID-02",
+      "baslik": "Hatalı Parola ile Kimlik Doğrulama",
+      "cwe": "CWE-307",
+      "girdi": {
+        "username": "denetci_merve",
+        "password": "YanlisParola123!"
+      },
+      "beklenen_hata": "AuthenticationFailedError",
+      "aciklama": "Geçersiz kimlik bilgileriyle oturum açma denemesi anında engellenmeli ve hata loglanmalıdır."
+    },
+    {
+      "id": "NEG-ID-03",
+      "baslik": "Kaba Kuvvet (Brute-Force) Sonrası Hesap Kilitleme",
+      "cwe": "CWE-307",
+      "girdi": {
+        "username": "finans_ali",
+        "ardisik_hatali_deneme": 5
+      },
+      "beklenen_hata": "AccountLockedError",
+      "aciklama": "5 ardışık hatalı parola girişinden sonra hesap kilitlenmeli ve sonraki girişler engellenmelidir."
+    },
+    {
+      "id": "NEG-ID-04",
+      "baslik": "Görevler Ayrılığı (SoD) Çıkar Çatışması Ataması",
+      "cwe": "CWE-863",
+      "girdi": {
+        "username": "finans_ali",
+        "rol_atama": "payment_checker"
+      },
+      "beklenen_hata": "SeparationOfDutiesViolationError",
+      "aciklama": "Ödeme hazırlayıcı (maker) rolüne sahip personele ödeme onaylayıcı (checker) rolü atanamaz."
+    },
+    {
+      "id": "NEG-ID-05",
+      "baslik": "Döngüsel Rol Mirası (Circular Hierarchy)",
+      "cwe": "CWE-674",
+      "girdi": {
+        "rol_a": "guest",
+        "yeni_ust_rol": "super_admin"
+      },
+      "beklenen_hata": "CircularRoleHierarchyError",
+      "aciklama": "Rol hiyerarşisinde döngü (guest -> super_admin -> guest) sonsuz özyinelemeye ve mantıksal zafiyete yol açar."
+    },
+    {
+      "id": "NEG-ID-06",
+      "baslik": "Sahte/Geçersiz Belirteç (Token) ile Yetkilendirme Talebi",
+      "cwe": "CWE-613",
+      "girdi": {
+        "token_id": "sahte_ve_rastgele_token_id_9999",
+        "kaynak": "audit_logs",
+        "eylem": "read"
+      },
+      "beklenen_sonuc": "DENY",
+      "aciklama": "Sistemde kaydı bulunmayan yetkisiz oturum belirteçleri doğrudan reddedilir."
+    },
+    {
+      "id": "NEG-ID-07",
+      "baslik": "Zaman Aşımına Uğramış (Expired TTL) Belirteç ile Erişim",
+      "cwe": "CWE-613",
+      "girdi": {
+        "token_id": "expired_session_token",
+        "kaynak": "reports",
+        "eylem": "read"
+      },
+      "beklenen_sonuc": "DENY",
+      "aciklama": "TTL süresi tükenmiş oturumlar iptal edilmeli ve erişim engellenmelidir."
+    },
+    {
+      "id": "NEG-ID-08",
+      "baslik": "Step-Up MFA Doğrulaması Olmadan Kritik Sistem Eylemi",
+      "cwe": "CWE-308",
+      "girdi": {
+        "rol": "super_admin",
+        "kaynak": "system",
+        "eylem": "reboot",
+        "mfa_yapildi_mi": false
+      },
+      "beklenen_sonuc": "DENY",
+      "aciklama": "Kritik işlemler ve hassas roller için ek kimlik doğrulama katmanı (MFA) zorunludur."
+    },
+    {
+      "id": "NEG-ID-09",
+      "baslik": "Altyapı Kesintisinde Fail-Secure Reddi",
+      "cwe": "CWE-636",
+      "girdi": {
+        "ariza_turu": "DATABASE_TIMEOUT",
+        "kaynak": "public_docs",
+        "eylem": "read"
+      },
+      "beklenen_sonuc": "DENY",
+      "aciklama": "Yetkilendirme altyapısı çöktüğünde güvenlik açık bırakılamaz; sistem fail-closed davranmalıdır."
+    }
+  ]
+}

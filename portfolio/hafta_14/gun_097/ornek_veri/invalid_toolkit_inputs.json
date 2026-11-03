@@ -1,0 +1,70 @@
+[
+  {
+    "id": "NEG_01_AIRGAP_EXTERNAL_DEPENDENCY",
+    "tanim": "Hava boşluklu izole ortam kuralı ihlali: Harici internet bağımlılığı import denemesi",
+    "modul_adi": "requests_unauthorized_external_pkg",
+    "beklenen_hata": "AirGapDependencyViolationError",
+    "cwe": "CWE-16: Configuration"
+  },
+  {
+    "id": "NEG_02_CORRUPTED_FIM_CHECKSUM",
+    "tanim": "Taban çizgisi sonrası dosya içeriğinin tahrif edilmesi ve FIM ihlali",
+    "orijinal_icerik": "guvenli_yapilandirma_v1",
+    "tahrif_edilmis_icerik": "zararli_saldiri_kodu_enjekte_edildi",
+    "beklenen_hata": "IntegrityVerificationError",
+    "cwe": "CWE-345: Insufficient Verification of Data Authenticity"
+  },
+  {
+    "id": "NEG_03_INVALID_LUHN_CARD_INPUT",
+    "tanim": "Luhn mod-10 algoritmasından geçmeyen sahte kartın DLP filtresinde tespiti",
+    "kart_no": "4532015112830367",
+    "beklenen_hata": "LuhnValidationError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_04_PATH_TRAVERSAL_IN_FIM",
+    "tanim": "FIM tarama dizininde dizin dışına çıkma denemesi (Path Traversal)",
+    "yol": "../../../windows/system32/cmd.exe",
+    "beklenen_hata": "PathTraversalSecurityError",
+    "cwe": "CWE-22: Improper Limitation of a Pathname to a Restricted Directory"
+  },
+  {
+    "id": "NEG_05_NULL_BYTE_POISONING",
+    "tanim": "Girdi ve dosya yollarında Null-Byte zehirlemesi denemesi",
+    "girdi": "assets.json\u0000payload.exe",
+    "beklenen_hata": "NullByteInjectionError",
+    "cwe": "CWE-158: Improper Neutralization of Null Byte or Special Characters"
+  },
+  {
+    "id": "NEG_06_PERFORMANCE_SLA_VIOLATION",
+    "tanim": "Güvenlik fonksiyonunun SLA performans eşiğini aşması (DoS uyarısı)",
+    "esik_ms": 0.5,
+    "yapay_gecikme_ms": 15.0,
+    "beklenen_hata": "PerformanceBudgetExceededError",
+    "cwe": "CWE-400: Uncontrolled Resource Consumption"
+  },
+  {
+    "id": "NEG_07_INVALID_ASSET_SCHEMA",
+    "tanim": "Geçersiz port numarası ve octal IP içeren ağ varlığı doğrulama hatası",
+    "gecersiz_varlik": {
+      "ip_address": "10.020.30.40",
+      "port": 99999
+    },
+    "beklenen_hata": "AssetValidationError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_08_UNKNOWN_SUBCOMMAND",
+    "tanim": "Araç setine tanımlı olmayan geçersiz alt komut iletilmesi",
+    "komut": "unauthorized_exploit_subcommand",
+    "beklenen_hata": "UnknownSubcommandError",
+    "cwe": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_09_REDOS_MALICIOUS_INPUT",
+    "tanim": "ReDoS katastrofik geri izleme tetiklemeyi amaçlayan kötücül regex girdisi",
+    "girdi": "girdi: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!@evil.org",
+    "beklenen_hata": "ReDoSProtectionTriggered",
+    "cwe": "CWE-1333: Inefficient Regular Expression Complexity"
+  }
+]

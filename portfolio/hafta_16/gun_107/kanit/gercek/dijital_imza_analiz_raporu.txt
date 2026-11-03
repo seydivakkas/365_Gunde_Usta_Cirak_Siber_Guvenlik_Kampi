@@ -1,0 +1,33 @@
+=== GÜN 107 DİJİTAL İMZA VE DOĞRULAMA ADLİ ANALİZ RAPORU ===
+Tarih/Saat: 2026-11-02 03:32:57
+Standart Uyumluluğu: RFC 8017 (PKCS#1 v2.2), FIPS 186-4 & NIST SP 800-89
+--------------------------------------------------------------------------------
+
+1. DİJİTAL İMZA VS SİMETRİK MAC (HMAC) MİMARİ KARŞILAŞTIRMASI:
+   - HMAC iki tarafın aynı gizli anahtarı paylaştığı durumlarda bütünlük sağlar.
+     Ancak her iki taraf da aynı anahtara sahip olduğundan, Alice'in mesajı gönderdiğini
+     üçüncü bir mahkeme veya hakem önünde kanıtlayamaz (İnkar Edilemezlik - Non-Repudiation YOKTUR).
+   - Dijital İmza (RSA/ECDSA), yalnızca göndericinin bildiği ÖZEL anahtarla üretilir ve
+     dünyadaki herkes tarafından GENEL anahtarla doğrulanabilir. İmza inkar edilemez!
+
+2. DÜZ (TEXTBOOK) RSA İMZA TEHLİKELERİ (CWE-327):
+   - Dolgusuz s = m^d mod n imzasında saldırgan rastgele s seçerek m = s^e mod n hesaplar.
+     Özel anahtarı hiç bilmeden geçerli (m, s) ikilisi üretir (Varoluşsal Sahtecilik).
+   - Çarpımsal homomorfizm sebebiyle s1 ve s2 imzaları çarpılarak m1*m2 mesajının
+     geçerli imzası elde edilir. Bu nedenle düz RSA imza ASLA KULLANILAMAZ.
+
+3. RSASSA-PSS VE RASLANTISAL GÜVENLİK (PROBABILISTIC SIGNATURE SCHEME):
+   - PSS, her imza üretiminde rastgele bir tuz (salt) ekleyerek imzayı olasılıksal kılar.
+   - Aynı mesaj yüz defa imzalansa dahi yüz farklı imza üretilir, hepsi doğrulanır.
+   - Rastgele Kahin Modeli'nde (Random Oracle Model) RSA'nın tek yönlülüğüne dayalı
+     kanıtlanabilir güvenlik (provable security) sağlar.
+
+4. ECDSA NONCE YENİDEN KULLANIMI VE SONY PS3 FELAKETİ (CWE-323 / CVE-2010-4444):
+   - ECDSA imzasında s = k^(-1) * (z + r * d) mod q denklemi kullanılır.
+   - İki farklı mesaj aynı k ile imzalanırsa: (s1 - s2) = k^(-1) * (z1 - z2) mod q olur.
+   - Saldırgan k'yı hemen bulur ve ardından d = (s1*k - z1)*r^(-1) mod q ile
+     kök özel anahtarı (master private key) anında çeker! Sony PS3 bu hatayla kırılmıştır.
+   - Çözüm: RFC 6979 deterministik nonce türetimi zorunludur.
+
+--------------------------------------------------------------------------------
+SONUÇ: Motor RSASSA-PSS, PKCS#1 v1.5 katı kontrol ve RFC 8017 standartlarına %100 uyumludur.

@@ -1,0 +1,28 @@
+=== G042: AŞAMA 2 KALİTE ÖZETİ — NEGATİF KONTROL VE HATA YÖNETİMİ DOĞRULAMA GÜNLÜĞÜ ===
+Tarih: 2026-10-27
+Mekanizma: Hatalı, eksik ve bozuk veri senaryolarının Aşama 2 kabul motoru tarafından yakalanması.
+
+[*] Senaryo: missing_pillar_hashes
+    Açıklama: 6 zorunlu kabul sütunundan biri olan 'hashes' bölümünün envanterden tamamen eksik olması
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Aşama 2 kabulü için zorunlu 'hashes' sütunu envanterde bulunamadı.
+
+[*] Senaryo: invalid_permission_octal
+    Açıklama: Dosya izninin geçersiz sekizli (octal) değer veya aralık dışı rakam içermesi (Örn: '0999')
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Dosya '/etc/shadow' için geçersiz sekizli izin değeri: '0999'
+
+[*] Senaryo: invalid_sha256_hash
+    Açıklama: Bütünlük karmasının 64 karakterli onaltılık (hex) dize yerine bozuk formatta olması
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Dosya '/bin/login' için geçersiz SHA-256 karması: 'gecersiz_kisa_hash_degeri'
+
+[*] Senaryo: negative_pid_process
+    Açıklama: Süreç PID değerinin negatif sayı olması
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: Geçersiz PID değeri tespit edildi: -99. Pozitif tam sayı olmalıdır.
+
+[*] Senaryo: non_dict_pillar_entry
+    Açıklama: Bir sütun düğümünün (Örn: backups) sözlük yerine dize veya sayı olması
+    Sonuç: YAKALANDI (PASS)
+    Hata Mesajı: 'backups' sütun verisi bir sözlük olmalıdır, alınan: str

@@ -1,0 +1,43 @@
+{
+  "aciklama": "NIST SP 800-207 Sıfır Güven (Zero Trust) ve En Az Ayrıcalık (PoLP) Kurumsal Politikaları",
+  "versiyon": "1.0.0",
+  "telif_hakki": "© 2026 Seydi Eryılmaz (@seydivakkas) — Tüm Hakları Saklıdır",
+  "en_az_ayricalik_jit_katalogu": {
+    "db:maintenance_backup": {
+      "azami_ttl_saniye": 3600,
+      "onay_makami": "sec_lead",
+      "aciklama": "Planlı veritabanı yedekleme ve bakım izni"
+    },
+    "server:emergency_patch": {
+      "azami_ttl_saniye": 1800,
+      "onay_makami": "incident_commander",
+      "aciklama": "Kritik zafiyet kapatma acil sunucu yamalama"
+    },
+    "billing:dispute_investigation": {
+      "azami_ttl_saniye": 7200,
+      "onay_makami": "finance_director",
+      "aciklama": "Müşteri itirazı finansal kayıt inceleme izni"
+    },
+    "log:forensics_export": {
+      "azami_ttl_saniye": 900,
+      "onay_makami": "soc_lead",
+      "aciklama": "Siber olay müdahale adli log dışa aktarma"
+    }
+  },
+  "yasakli_kalici_ayricaliklar": [
+    "*:*", "root", "superuser", "admin", "global:write", "db:drop_database"
+  ],
+  "cihaz_saglik_agirliklari": {
+    "yonetimli_kurumsal_cihaz": 40.0,
+    "antivirus_aktif": 30.0,
+    "disk_sifreleme": 20.0,
+    "azami_yama_gecikmesi_gun": 14,
+    "asgari_kabul_puani": 60.0
+  },
+  "mikro_segmentasyon_kurallari": {
+    "management_jumpbox": ["core_banking", "db_tier", "internal_apps"],
+    "workstation_tier": ["internal_apps", "dmz"],
+    "dmz": ["internal_apps"],
+    "guest_wifi": []
+  }
+}

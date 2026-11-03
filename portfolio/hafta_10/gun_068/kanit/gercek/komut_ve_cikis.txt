@@ -1,0 +1,38 @@
+# G068: AĞ GÜNLÜKLERİ VE KİŞİSEL VERİ ARINDIRMA - KOMUT VE ÇIKIŞ KANITI
+# Tarih: 2026-10-31
+# Komut: python -m unittest portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer -v
+
+$ python -m unittest portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer -v
+test_01_ornek_gunluk_veri_seti_yukleme_ve_dogrulama (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_01_ornek_gunluk_veri_seti_yukleme_ve_dogrulama)
+Ham günlük veri setinin 5 farklı ağ günlüğü içerdiğini doğrular. ... ok
+test_02_ip_adresi_alt_ag_maskeleme (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_02_ip_adresi_alt_ag_maskeleme)
+IPv4 adreslerinin son oktetinin sıfırlanıp /24 olarak maskelendiğini doğrular. ... ok
+test_03_ip_adresi_tuzlu_sozde_anonimlestirme (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_03_ip_adresi_tuzlu_sozde_anonimlestirme)
+HMAC-SHA256 ile IP adreslerinin deterministik ve geri döndürülemez hash'lendiğini doğrular. ... ok
+test_04_mac_adresi_oui_korumali_maskeleme (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_04_mac_adresi_oui_korumali_maskeleme)
+MAC adresinin ilk 3 oktetinin korunup son 3 oktetinin XX ile gizlendiğini test eder. ... ok
+test_05_eposta_adresi_maskeleme (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_05_eposta_adresi_maskeleme)
+E-posta adresinin ilk ve son harfi haricinde yıldızlandığını doğrular. ... ok
+test_06_kredi_karti_pci_dss_maskeleme (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_06_kredi_karti_pci_dss_maskeleme)
+Kredi kartının ilk 4 ve son 4 hanesi korunup ortasının yıldızlandığını test eder. ... ok
+test_07_tckn_kimlik_numarasi_maskeleme (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_07_tckn_kimlik_numarasi_maskeleme)
+TC Kimlik numarasının ilk 2 ve son 2 hanesinin korunup aranın yıldızlandığını test eder. ... ok
+test_08_http_baslik_arindirma (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_08_http_baslik_arindirma)
+Authorization ve Cookie başlıklarının temizlenip Host başlığının korunduğunu test eder. ... ok
+test_09_uri_sorgu_parametresi_arindirma (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_09_uri_sorgu_parametresi_arindirma)
+URI query içerisindeki ?email= ve &tckn= parametrelerinin maskelendiğini doğrular. ... ok
+test_10_serbest_metin_ve_syslog_arindirma (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_10_serbest_metin_ve_syslog_arindirma)
+Syslog veya metin gövdesinde geçen e-posta ve telefonun temizlendiğini test eder. ... ok
+test_11_tekil_kayit_arindirma_butunlugu (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_11_tekil_kayit_arindirma_butunlugu)
+Tüm PII alanlarını içeren karmaşık bir web kaydının tamamen arındırıldığını test eder. ... ok
+test_12_toplu_gunluk_arindirma_ve_uyum_raporu (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_12_toplu_gunluk_arindirma_ve_uyum_raporu)
+5 kaydın tamamının topluca arındırıldığını ve KVKK raporunun üretildiğini teyit eder. ... ok
+test_13_negatif_sinir_senaryolari_grup_1 (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_13_negatif_sinir_senaryolari_grup_1)
+NEG_01'den NEG_04'e kadar olan boş akış, biçim, IP ve tuz hatalarını doğrular. ... ok
+test_14_negatif_sinir_senaryolari_grup_2 (portfolio.hafta_10.gun_068.tests.test_network_log_pii_sanitizer.TestNetworkLogPIISanitizer.test_14_negatif_sinir_senaryolari_grup_2)
+NEG_05'ten NEG_09'a kadar olan açık PII, bozuk kayıt, politika ve saklama süresi testlerini doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.008s
+
+OK

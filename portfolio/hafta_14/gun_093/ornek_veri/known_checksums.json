@@ -1,0 +1,17 @@
+{
+  "app_payload.bin": {
+    "sha256": "520edcd1a6bbcc9ed9daf0e1f61443ff38df65ea119686d75c6d7469505c70b6",
+    "sha512": "7fb9cac635d523947971f978a2967c1f5c7f5ffb1b67a071701ce945b78e88cec0a5bea4da17239bd2d7c5557e0e406074266a8efb26ef9b6c9cd51e7cc5ec64",
+    "size_bytes": 264
+  },
+  "policy_doc.txt": {
+    "sha256": "552ff1ced3bdf29bd644b71f38943936e30e54293fc3cceb5dfe549154910238",
+    "sha512": "8d78b16a368323bd31ab1796e8a0a3a1c66b52f9368eb3dd35aafcebe5b8fa3eef4cba1039622b997309fe8a460d94f213fb2da24d99baf5234be91c71908875",
+    "size_bytes": 471
+  },
+  "secure_config.conf": {
+    "sha256": "6ab41d63c809129b15ab6ecb2e98a7b59899dd12bc634a6502a6eb644154e0b9",
+    "sha512": "fb13d2292a8dbacab93adb51240690f20c8a4cbfb8c98b282c6aab20ea2c05b69e4ff38ea0637f9a093c2c96c7f1606df8492314ad88a9b9908823533f2cb521",
+    "size_bytes": 343
+  }
+}

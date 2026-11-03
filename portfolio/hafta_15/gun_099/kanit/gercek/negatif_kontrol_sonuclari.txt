@@ -1,0 +1,69 @@
+=== GÜN 099: CIA TRIAD NEGATİF KONTROL VE ZAFİYET ENGELLEME RAPORU ===
+Tarih/Saat : 2026-11-02 01:41:44
+Toplam Vaka: 9
+=====================================================================================
+[1/9] Senaryo ID : NEG_01_CONFIDENTIALITY_PLAINTEXT_LEAK
+      Tanım       : Şifrelenmemiş hassas parola ve kart verisinin açık kanalda iletilmesi
+      CWE         : CWE-311: Missing Encryption of Sensitive Data
+      Beklenen    : ConfidentialityBreachError
+      Yakalanan   : ConfidentialityBreachError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[2/9] Senaryo ID : NEG_02_INTEGRITY_TAMPERED_PAYLOAD
+      Tanım       : İletim sırasında 1 baytı değiştirilmiş (bit-flip) sahte paket
+      CWE         : CWE-353: Missing Support for Integrity Check
+      Beklenen    : IntegrityVerificationError
+      Yakalanan   : IntegrityVerificationError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[3/9] Senaryo ID : NEG_03_INTEGRITY_INVALID_DIGEST
+      Tanım       : Geçersiz veya sahte HMAC dijital mühür doğrulaması
+      CWE         : CWE-345: Insufficient Verification of Data Authenticity
+      Beklenen    : IntegrityVerificationError
+      Yakalanan   : IntegrityVerificationError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[4/9] Senaryo ID : NEG_04_AVAILABILITY_FLOOD_DOS
+      Tanım       : Hizmet engelleme (DoS) amacıyla saniyede izin verilen hız limitinin aşılması
+      CWE         : CWE-770: Allocation of Resources Without Limits or Throttling
+      Beklenen    : AvailabilityRateLimitExceededError
+      Yakalanan   : AvailabilityRateLimitExceededError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[5/9] Senaryo ID : NEG_05_AVAILABILITY_OVERSIZED_BUFFER
+      Tanım       : Bellek tüketimi saldırısı için 1 MB tavanını aşan devasa veri gönderimi
+      CWE         : CWE-400: Uncontrolled Resource Consumption
+      Beklenen    : PayloadLimitExceededError
+      Yakalanan   : PayloadLimitExceededError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[6/9] Senaryo ID : NEG_06_NON_REPUDIATION_CHAIN_BREAK
+      Tanım       : Denetim günlüğünde geçmiş blok karmasının uyuşmaması (zincir kırılması)
+      CWE         : CWE-778: Insufficient Logging
+      Beklenen    : AuditChainCorruptedError
+      Yakalanan   : AuditChainCorruptedError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[7/9] Senaryo ID : NEG_07_NULL_BYTE_INJECTION
+      Tanım       : Mesaj veya anahtar alanında Null-Byte (0x00) zehirlemesi denemesi
+      CWE         : CWE-158: Improper Neutralization of Null Byte or Special Characters
+      Beklenen    : NullByteInjectionError
+      Yakalanan   : NullByteInjectionError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[8/9] Senaryo ID : NEG_08_INVALID_KEY_LENGTH
+      Tanım       : Kriptografik olarak güvensiz, 16 bayttan kısa anahtar kullanımı
+      CWE         : CWE-326: Inadequate Encryption Strength
+      Beklenen    : InsecureKeyLengthError
+      Yakalanan   : InsecureKeyLengthError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[9/9] Senaryo ID : NEG_09_TYPE_CONFUSION
+      Tanım       : Metin beklenen fonksiyona int tipi iletilerek tip karmaşası üretilmesi
+      CWE         : CWE-843: Access of Resource Using Incompatible Type
+      Beklenen    : TypeValidationError
+      Yakalanan   : TypeValidationError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+ÖZET: 9/9 NEGATİF KONTROL SENARYOSU BAŞARIYLA YAKALANDI (100% GÜVENLİK GÜVENCESİ)
+=====================================================================================

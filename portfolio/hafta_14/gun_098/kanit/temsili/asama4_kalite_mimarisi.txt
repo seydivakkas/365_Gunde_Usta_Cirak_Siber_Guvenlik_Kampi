@@ -1,0 +1,57 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+             AŞAMA 4: SİBER GÜVENLİK OTOMASYONU KALİTE VE YÖNETİŞİM MİMARİSİ
+========================================================================================
+
++--------------------------------------------------------------------------------------+
+|                     GİRDİ: GÜVENLİK OTOMASYONU BETİK VE MODÜLLERİ                     |
+|         (Python Dosyaları, Bash/PowerShell Betikleri, CLI Araçları, JSON/YAML)        |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                           AŞAMA 4 KALİTE VE GÜVENLİK FİLTRESİ                         |
++--------------------------------------------------------------------------------------+
+|  [1. Ön Kontroller (Pre-flight Sanitization)]                                        |
+|      * Tip Doğrulama (CWE-843 Type Confusion Önleme)                                 |
+|      * Null-Byte Zehirlemesi Filtresi (CWE-158 Null Byte Injection)                  |
+|      * Boyut ve Bellek Tavanı (1 MB Max Script Buffer - CWE-400 DoS Önleme)          |
+|                                                                                      |
+|  [2. Kurumsal Lisans ve Uyum Katmanı]                                                |
+|      * "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR" Doğrulaması (CWE-16)                      |
+|      * Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) İmzası                      |
+|                                                                                      |
+|  [3. Statik Analiz & AST Motoru (Abstract Syntax Tree)]                              |
+|      * eval() / exec() Dinamik Kod Çağrısı Tespiti (CWE-95 Eval Injection)           |
+|      * Çıplak except: (Bare Except) Hata Yutma Tespiti (CWE-391 Unchecked Error)     |
+|      * Sabit Gizli Anahtar & Parola Taraması (CWE-798 Hardcoded Secrets)             |
+|      * Argparse & Standart POSIX Çıkış Kodları Denetimi (0, 1, 2)                     |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                   AŞAMA 4 PUANLAMA VE DEĞERLENDİRME RUBRİĞİ (100 PUAN)               |
++--------------------------------------------------------------------------------------+
+|   [40 Puan]  KOD GÜVENLİĞİ VE AST ANALİZİ (Eval/Exec Yok, Gizli Anahtar Yok)        |
+|   [25 Puan]  TEST, DAYANIKLILIK VE HATA YÖNETİMİ (Bare Except Yok, Sys.exit Var)     |
+|   [20 Puan]  MİMARİ PRENSİPLER VE STANDARTLAR (Argparse, Modüler Yapı)               |
+|   [15 Puan]  DOKÜMANTASYON VE LİSANS BÜTÜNLÜĞÜ (Kurumsal Özel Lisans Başlığı)        |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|               ARL (AUTOMATION READINESS LEVEL) VE YÖNETİŞİM KARARI                   |
++--------------------------------------------------------------------------------------+
+|   ARL-4 [90 - 100 Puan] -> ÜRETİM DÜZEYİ / TAM GÜVENLİ OTOMASYON (ONAYLANDI)         |
+|   ARL-3 [80 - 89 Puan]  -> KABUL EDİLEBİLİR / YETERLİ OTOMASYON (ŞARTLI ONAY)        |
+|   ARL-2 [60 - 79 Puan]  -> İYİLEŞTİRME GEREKLİ / RİSKLİ OTOMASYON (REVİZYON)         |
+|   ARL-1 [0 - 59 Puan]   -> GÜVENSİZ / REDDEDİLMİŞ OTOMASYON (ENGELLEME)              |
++--------------------------------------------------------------------------------------+
+                                           |
+                                           v
++--------------------------------------------------------------------------------------+
+|                           ÇIKTI VE RAPORLAMA KANALLARI                               |
+|   * CLI Tablo Formatı (Operatör ve Güvenlik Analisti Arayüzü)                        |
+|   * JSON Çıktısı (CI/CD Pipeline, DevSecOps Entegrasyonu, SIEM/SOAR Besleme)         |
+|   * Standart POSIX Çıkış Kodları (0: Pass, 1: Denetim İhlali, 2: Sistem Hatası)      |
++--------------------------------------------------------------------------------------+

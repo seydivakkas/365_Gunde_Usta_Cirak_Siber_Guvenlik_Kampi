@@ -1,0 +1,155 @@
+[
+  {
+    "scenario_id": "NEG-FW-01",
+    "name": "Public (Genel Ağ) Güvenlik Duvarı Profili Kapalı",
+    "description": "Güvenilmeyen açık ağlarda güvenlik duvarı tamamen kapatılmış, gelen tüm bağlantılara açık bırakılmıştır.",
+    "expected_cwe": "CWE-693",
+    "expected_mitre": "T1562.004",
+    "expected_finding": "Public Profili Devre Dışı",
+    "spec": {
+      "target_host": "TEST-FW-01",
+      "profiles": {
+        "Public": { "enabled": false }
+      }
+    }
+  },
+  {
+    "scenario_id": "NEG-FW-02",
+    "name": "Domain (Etki Alanı) Güvenlik Duvarı Profili Kapalı",
+    "description": "Kurumsal etki alanında güvenlik duvarı kapatılmış, yanal ilerleme saldırılarına zemin hazırlanmıştır.",
+    "expected_cwe": "CWE-693",
+    "expected_mitre": "T1562.004",
+    "expected_finding": "Domain Profili Devre Dışı",
+    "spec": {
+      "target_host": "TEST-FW-02",
+      "profiles": {
+        "Domain": { "enabled": false }
+      }
+    }
+  },
+  {
+    "scenario_id": "NEG-FW-03",
+    "name": "Private Profilinde Varsayılan Gelen Eylem 'Allow'",
+    "description": "Özel ağ profilinde kural eşleşmeyen tüm gelen paketlerin geçişine varsayılan olarak izin verilmiştir.",
+    "expected_cwe": "CWE-284",
+    "expected_mitre": "T1562.004",
+    "expected_finding": "Varsayılan Gelen Eylem 'Allow'",
+    "spec": {
+      "target_host": "TEST-FW-03",
+      "profiles": {
+        "Private": { "enabled": true, "default_inbound_action": "Allow" }
+      }
+    }
+  },
+  {
+    "scenario_id": "NEG-FW-04",
+    "name": "Tehlikeli Any-Any Gelen İzin Kuralı",
+    "description": "Herhangi bir IP adresinden herhangi bir porta gelen trafiğe sorgusuz sualsiz izin verilmiştir.",
+    "expected_cwe": "CWE-284",
+    "expected_mitre": "T1562.004",
+    "expected_finding": "Any-to-Any Gelen İzin Kuralı",
+    "spec": {
+      "target_host": "TEST-FW-04",
+      "rules": [
+        {
+          "rule_name": "DangerAnyAny",
+          "direction": "Inbound",
+          "action": "Allow",
+          "remote_address": "Any",
+          "local_port": "Any"
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "NEG-FW-05",
+    "name": "Public Profilde Uzak Masaüstü (RDP Port 3389) Açık",
+    "description": "Genel internet ağında RDP portu tüm dünyadan gelen bağlantılara açık bırakılmıştır.",
+    "expected_cwe": "CWE-284",
+    "expected_mitre": "T1021.001",
+    "expected_finding": "Public Profilde RDP",
+    "spec": {
+      "target_host": "TEST-FW-05",
+      "rules": [
+        {
+          "rule_name": "OpenPublicRDP",
+          "direction": "Inbound",
+          "action": "Allow",
+          "profiles": ["Public"],
+          "local_port": "3389",
+          "remote_address": "Any"
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "NEG-FW-06",
+    "name": "Public Profilde SMB Dosya Paylaşımı (Port 445) Açık",
+    "description": "Genel ağda SMB portu açılarak WannaCry/EternalBlue türevi saldırılara davetiye çıkarılmıştır.",
+    "expected_cwe": "CWE-284",
+    "expected_mitre": "T1021.002",
+    "expected_finding": "Public Profilde SMB",
+    "spec": {
+      "target_host": "TEST-FW-06",
+      "rules": [
+        {
+          "rule_name": "OpenPublicSMB",
+          "direction": "Inbound",
+          "action": "Allow",
+          "profiles": ["Public"],
+          "local_port": "445",
+          "remote_address": "Any"
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "NEG-FW-07",
+    "name": "Public Profilde WinRM Yönetim Portu (Port 5985) Açık",
+    "description": "Windows Remote Management portu genel ağda internete açık bırakılmıştır.",
+    "expected_cwe": "CWE-284",
+    "expected_mitre": "T1021.006",
+    "expected_finding": "Public Profilde WinRM",
+    "spec": {
+      "target_host": "TEST-FW-07",
+      "rules": [
+        {
+          "rule_name": "OpenPublicWinRM",
+          "direction": "Inbound",
+          "action": "Allow",
+          "profiles": ["Public"],
+          "local_port": "5985",
+          "remote_address": "Any"
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "NEG-FW-08",
+    "name": "Domain Profilinde Engellenen Paket Kütüklemesi Kapalı",
+    "description": "Güvenlik duvarının düşürdüğü paketler kaydedilmemekte, ağ taramaları tespit edilememektedir.",
+    "expected_cwe": "CWE-778",
+    "expected_mitre": "T1562.004",
+    "expected_finding": "Engellenen Paket Kütüklemesi Kapalı",
+    "spec": {
+      "target_host": "TEST-FW-08",
+      "profiles": {
+        "Domain": { "enabled": true, "log_blocked": false }
+      }
+    }
+  },
+  {
+    "scenario_id": "NEG-FW-09",
+    "name": "Public Profilinde Kütük Dosya Boyutu Yetersiz (< 16 MB)",
+    "description": "Log dosyası boyutu çok küçük olduğu için güvenlik kütükleri hızlıca üzerine yazılmaktadır.",
+    "expected_cwe": "CWE-778",
+    "expected_mitre": "T1562.004",
+    "expected_finding": "Kütük Boyutu Yetersiz",
+    "spec": {
+      "target_host": "TEST-FW-09",
+      "profiles": {
+        "Public": { "enabled": true, "log_file_size_kb": 4096 }
+      }
+    }
+  }
+]

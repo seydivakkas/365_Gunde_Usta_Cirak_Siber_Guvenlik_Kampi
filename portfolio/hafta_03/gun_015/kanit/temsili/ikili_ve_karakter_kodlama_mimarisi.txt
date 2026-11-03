@@ -1,0 +1,91 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+GÜN 015: İkili Gösterim, Bayt ve Karakter Kodlaması Mimarisi
+Lisans: ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+
++-------------------------------------------------------------------------------+
+|             1. DONANIMDAN METNE DÖNÜŞÜM HİYERARŞİSİ (UNDER THE HOOD)          |
++-------------------------------------------------------------------------------+
+
+  [Fiziksel Voltaj]   ──► Yüksek Voltaj (3.3V) / Düşük Voltaj (0V)
+                                │
+                                ▼
+  [İkili Bit (Binary)]──► 1 ve 0 (En küçük bilgi atomu)
+                                │
+                                ▼
+  [Nibble (4-bit)]    ──► 0100 0001 (Yarım bayt = 1 Onaltılık / Hex Basamağı: 0-F)
+                                │
+                                ▼
+  [Bayt (8-bit / Byte]──► 8 Bit = 1 Bayt (0x00 - 0xFF / 0 - 255)
+                                │
+                                ▼
+  [Karakter Kodlaması]──► Sayıları sembollere dönüştüren sözlük!
+                          ASCII (7-bit) | ISO-8859-9 (8-bit) | UTF-8 (Değişken)
+
+
++-------------------------------------------------------------------------------+
+|      2. DEĞİŞKEN GENİŞLİKLİ UTF-8 KODLAMA VE BOYUTSAL TUZAK                   |
++-------------------------------------------------------------------------------+
+
+  [Karakter]           [Unicode Kod]   [UTF-8 Bayt Boyutu]   [Hex Karşılığı]
+  ─────────────────────────────────────────────────────────────────────────────
+  'A' (ASCII)          U+0041          1 Bayt                0x41
+  'ş' (Türkçe)         U+015F          2 Bayt (Çok baytlı!)  0xC5 0x9F
+  '€' (Euro)           U+20AC          3 Bayt                0xE2 0x82 0xAC
+  '🛡️' (Emoji)          U+1F6E1         4 Bayt                0xF0 0x9F 0x9B 0xA1
+
+  ÖLÜMCÜL PROGRAMCI HATASI (Buffer Overflow / Truncation):
+  Metin = "Şifre🛡️"
+  Karakter Sayısı (len) = 6 Karakter
+  UTF-8 Bayt Boyutu     = 2 + 1 + 1 + 1 + 1 + 4 = 10 Bayt!
+  Eğer C programı 'char buf[6]' açarsa: BELLEK TAŞMASI (BUFFER OVERFLOW)!
+
+
++-------------------------------------------------------------------------------+
+|           3. SALDIRGAN TUZAĞI: NULL BYTE (\x00) ENJEKSİYONU                    |
++-------------------------------------------------------------------------------+
+
+  [Kullanıcı Girdisi]: "gizli_rapor.pdf\x00.exe"
+
+  ┌────────────────────────────────────────────────────────────────────────┐
+  │ Yüksek Seviyeli Dil (Python / Web WAF):                                │
+  │   - Metin uzunluğunu nesne başlığında tutar.                            │
+  │   - Son 4 karaktere bakar: ".exe" tespit eder ve REDDEDER.             │
+  └──────────────────────────────────┬─────────────────────────────────────┘
+                                     │
+                                     ▼ (Filtre atlatıldı veya tersi)
+  ┌────────────────────────────────────────────────────────────────────────┐
+  │ C Tabanlı İşletim Sistemi Çekirdeği / Dosya Sistemi (fopen / open):    │
+  │   - Metin sonunu 0x00 (NULL terminator) görünce bitti sayar!           │
+  │   - Disk üstünde açılan gerçek dosya: "gizli_rapor.pdf"                │
+  │   - Saldırgan zararlı uzantıyı veya filtreyi atlatmış oldu!            │
+  └────────────────────────────────────────────────────────────────────────┘
+
+
++-------------------------------------------------------------------------------+
+|           4. HOMOGLYPH / IDN ALDATMACA (SPOOFING) SALDIRISI                   |
++-------------------------------------------------------------------------------+
+
+  Görsel Olarak: "paypal.com"  vs  "pаypаl.com" (Birebir aynı görünür!)
+  Arka Planda:
+    - Orijinal 'a' : Latin Küçük Harf (U+0061) -> Hex: 0x61
+    - Sahte    'а' : Kiril Küçük Harf (U+0430) -> Hex: 0xD0 0xB0
+
+  Kullanıcı ekranda 'paypal.com' gördüğünü sanır, ancak tarayıcı sahte bir
+  Kuzey Kore / Rusya sunucusundaki oltalama sayfasına bağlanır!
+
+
++-------------------------------------------------------------------------------+
+| 5. ÖLÜMCÜL HATA: "YÖNETİCİ İZNİNİ OTOMATİK GÜVENLİ DAVRANIŞ SAYMAK"           |
++-------------------------------------------------------------------------------+
+
+  "Ben Root / Administrator yetkisindeyim, her komutum güvenlidir!" ──► YANILGI!
+  Eğer root yetkisiyle çalışan bir servise hatalı kodlanmış/malformed bir bayt
+  dizisi gönderilirse, yetki yüksek olduğu için meydana gelen bellek taşması
+  doğrudan KERNEL CRASH (Mavi Ekran / Kernel Panic) veya SYSTEM LEVEL RCE verir!
+  YETKİ, VERİ DÜZEYİNDEKİ BOZUKLUĞU GÜVENLİ KILMAZ!
+
+================================================================================
+Bitiş Etiketi: TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

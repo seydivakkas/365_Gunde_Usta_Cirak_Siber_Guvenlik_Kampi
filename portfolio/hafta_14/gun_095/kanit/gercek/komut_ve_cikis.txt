@@ -1,0 +1,87 @@
+=== G095 CLI KOMUT KOŞUMLARI VE ÇIKIŞLARI ===
+Tarih: 2026-11-02 01:01:09
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/benchmarker_cli.py --target sha256 --iterations 15 --json
+[Çıkış Kodu: 0]
+[STDOUT]
+[
+  {
+    "target_name": "sha256",
+    "iterations": 12,
+    "wall_times_ms": [
+      0.0552,
+      0.0451,
+      0.0445,
+      0.044,
+      0.044,
+      0.0443,
+      0.0442,
+      0.0441,
+      0.044,
+      0.0441,
+      0.044,
+      0.044
+    ],
+    "cpu_times_ms": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "mean_wall_ms": 0.0451,
+    "median_wall_ms": 0.0441,
+    "stdev_wall_ms": 0.0032,
+    "min_wall_ms": 0.044,
+    "max_wall_ms": 0.0552,
+    "p95_wall_ms": 0.0496,
+    "p99_wall_ms": 0.0541,
+    "peak_memory_bytes": 393,
+    "throughput_ops_per_sec": 22160.66
+  }
+]
+
+---------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/benchmarker_cli.py --target all --iterations 10
+[Çıkış Kodu: 0]
+[STDOUT]
+================================================================================
+HEDEF              | İTER   | ORTALAMA (ms)  | MEDYAN (ms)  | TEPE BELLEK  | OPS/SEC   
+--------------------------------------------------------------------------------
+sha256             | 7      | 0.0455         | 0.0440       | 265      B | 21991.8   
+sha512             | 7      | 0.0975         | 0.0974       | 329      B | 10253.4   
+blake2b            | 7      | 0.1002         | 0.1001       | 345      B | 9978.6    
+string_concat      | 7      | 0.6979         | 0.6943       | 51151    B | 1432.8    
+list_join          | 7      | 0.0070         | 0.0069       | 51058    B | 142566.3  
+regex_compiled     | 7      | 0.0017         | 0.0015       | 1406     B | 578512.2  
+regex_dynamic      | 7      | 0.0022         | 0.0019       | 1406     B | 457516.3  
+================================================================================
+
+---------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/benchmarker_cli.py --target blake2b --threshold-ms 50.0
+[Çıkış Kodu: 0]
+[STDOUT]
+================================================================================
+HEDEF              | İTER   | ORTALAMA (ms)  | MEDYAN (ms)  | TEPE BELLEK  | OPS/SEC   
+--------------------------------------------------------------------------------
+blake2b            | 17     | 0.2494         | 0.2469       | 473      B | 4010.2    
+================================================================================
+
+---------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama/benchmarker_cli.py --target list_join --iterations 20
+[Çıkış Kodu: 0]
+[STDOUT]
+================================================================================
+HEDEF              | İTER   | ORTALAMA (ms)  | MEDYAN (ms)  | TEPE BELLEK  | OPS/SEC   
+--------------------------------------------------------------------------------
+list_join          | 17     | 0.0085         | 0.0081       | 51186    B | 118137.6  
+================================================================================
+
+---------------------------------------------------------------------------

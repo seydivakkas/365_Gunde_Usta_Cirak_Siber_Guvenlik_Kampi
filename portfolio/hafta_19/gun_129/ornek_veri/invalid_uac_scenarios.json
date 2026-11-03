@@ -1,0 +1,110 @@
+[
+  {
+    "scenario_id": "NEG-UAC-01",
+    "name": "Kullanıcı Hesabı Denetimi (UAC) Tamamen Devre Dışı (EnableLUA=0)",
+    "description": "UAC tamamen kapatılmış, tüm süreçler doğrudan en yüksek yetkiyle çalışmaktadır.",
+    "expected_cwe": "CWE-693",
+    "expected_mitre": "T1548.002",
+    "expected_finding": "Kullanıcı Hesabı Denetimi (UAC / EnableLUA) Tamamen Devre Dışı",
+    "spec": {
+      "target_host": "TEST-UAC-01",
+      "uac": { "enable_lua": false }
+    }
+  },
+  {
+    "scenario_id": "NEG-UAC-02",
+    "name": "Yönetici Onay Modu Devre Dışı (FilterAdministratorToken=0)",
+    "description": "Yerleşik Administrator hesabı UAC onayına tabi olmadan doğrudan tam yetki tokenı almaktadır.",
+    "expected_cwe": "CWE-250",
+    "expected_mitre": "T1548.002",
+    "expected_finding": "Yerleşik Yönetici Onay Modu",
+    "spec": {
+      "target_host": "TEST-UAC-02",
+      "uac": { "filter_administrator_token": false }
+    }
+  },
+  {
+    "scenario_id": "NEG-UAC-03",
+    "name": "Güvenli Masaüstü İstemi Kapalı (PromptOnSecureDesktop=0)",
+    "description": "UAC istemi izole masaüstünde açılmamakta, SendKeys ve clickjacking saldırılarına açıktır.",
+    "expected_cwe": "CWE-284",
+    "expected_mitre": "T1548.002",
+    "expected_finding": "UAC Güvenli Masaüstü İstemi",
+    "spec": {
+      "target_host": "TEST-UAC-03",
+      "uac": { "prompt_on_secure_desktop": false }
+    }
+  },
+  {
+    "scenario_id": "NEG-UAC-04",
+    "name": "Yerleşik Konuk (Guest) Hesabı Etkin",
+    "description": "Yerel Guest hesabı etkinleştirilmiş, parolasız oturum açma riski mevcuttur.",
+    "expected_cwe": "CWE-284",
+    "expected_mitre": "T1078.003",
+    "expected_finding": "Yerleşik Konuk (Guest) Hesabı Etkin",
+    "spec": {
+      "target_host": "TEST-UAC-04",
+      "accounts": { "guest_account_enabled": true }
+    }
+  },
+  {
+    "scenario_id": "NEG-UAC-05",
+    "name": "Yerleşik Administrator Hesabı Varsayılan Adda ve Etkin",
+    "description": "SID 500 nolu Administrator hesabı yeniden adlandırılmamış ve açık bırakılmıştır.",
+    "expected_cwe": "CWE-1188",
+    "expected_mitre": "T1078.003",
+    "expected_finding": "Yerleşik Administrator Hesabı Varsayılan Adda ve Etkin",
+    "spec": {
+      "target_host": "TEST-UAC-05",
+      "accounts": { "builtin_admin_name": "Administrator", "builtin_admin_disabled": false }
+    }
+  },
+  {
+    "scenario_id": "NEG-UAC-06",
+    "name": "Hesap Kilitleme Eşiği Sıfır (Kaba Kuvvet Koruması Yok)",
+    "description": "Hesap kilitleme eşiği 0 olarak ayarlanmış, sınırsız parola denemesi mümkündür.",
+    "expected_cwe": "CWE-307",
+    "expected_mitre": "T1110",
+    "expected_finding": "Hatalı Oturum Açma Kilitleme Eşiği Yetersiz",
+    "spec": {
+      "target_host": "TEST-UAC-06",
+      "accounts": { "account_lockout_threshold": 0 }
+    }
+  },
+  {
+    "scenario_id": "NEG-UAC-07",
+    "name": "Yetkisiz Grup Üyeliği: 'Everyone' Yöneticiler Grubunda",
+    "description": "Tüm kimliği doğrulanmamış veya genel kullanıcılar yerel yönetici yapılmıştır.",
+    "expected_cwe": "CWE-250",
+    "expected_mitre": "T1078.003",
+    "expected_finding": "Yerel Yöneticiler Grubunda Yetkisiz Üye",
+    "spec": {
+      "target_host": "TEST-UAC-07",
+      "groups": { "administrators_members": ["Everyone"] }
+    }
+  },
+  {
+    "scenario_id": "NEG-UAC-08",
+    "name": "Aşırı Geniş RDP Üyeliği: 'Users' Uzak Masaüstü Grubunda",
+    "description": "Tüm standart kullanıcılar makineye uzaktan masaüstü oturumu açabilmektedir.",
+    "expected_cwe": "CWE-284",
+    "expected_mitre": "T1021.001",
+    "expected_finding": "Uzak Masaüstü Grubunda Geniş Erişim Üyesi",
+    "spec": {
+      "target_host": "TEST-UAC-08",
+      "groups": { "remote_desktop_members": ["Users"] }
+    }
+  },
+  {
+    "scenario_id": "NEG-UAC-09",
+    "name": "Yöneticiler için Sessiz Yükseltme (ConsentPromptBehaviorAdmin=0)",
+    "description": "Yönetici oturumundaki herhangi bir zararlı yazılım onay sormadan yönetici yetkisine yükselir.",
+    "expected_cwe": "CWE-250",
+    "expected_mitre": "T1548.002",
+    "expected_finding": "Zayıf UAC Yükseltme İstemi Davranışı",
+    "spec": {
+      "target_host": "TEST-UAC-09",
+      "uac": { "consent_prompt_behavior_admin": 0 }
+    }
+  }
+]

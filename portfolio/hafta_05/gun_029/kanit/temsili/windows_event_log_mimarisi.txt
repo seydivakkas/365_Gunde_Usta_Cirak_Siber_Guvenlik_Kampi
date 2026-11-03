@@ -1,0 +1,93 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+WINDOWS OLAY GÜNLÜĞÜ (EVENT LOG) ALTYAPISI VE ADLİ İNCELEME MİMARİSİ
+========================================================================================
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Özel Lisans — Tüm Hakları Saklıdır
+
+Bu şema, modern Windows işletim sistemlerindeki olay günlüğü mimarisini, ETW sağlayıcılarını,
+güvenlik/sistem kanallarını, adli olay alanlarını ve bağlamsal korelasyon işleyişini
+temsilî olarak modeller.
+
+----------------------------------------------------------------------------------------
+1. ETW SAĞLAYICILARI, GÜNLÜK KANALLARI VE MERKEZİ İLETİM
+----------------------------------------------------------------------------------------
+
+ +-----------------------------+  +---------------------------+  +----------------------+
+ | Çekirdek & Sürücüler (ETW)  |  | Windows Servisleri (SCM)  |  | Kullanıcı Süreçleri  |
+ | (Kernel-Power, NTFS, vb.)   |  | (Service Control Manager) |  | (Logon, Process Crt) |
+ +--------------+--------------+  +-------------+-------------+  +----------+-----------+
+                |                               |                           |
+                +-----------------------+-------+---------------------------+
+                                        | Olay Mesajı & XML Yükü
+                                        v
+                       +---------------------------------+
+                       | Windows Event Log Servisi       |
+                       | (eventlog / svchost.exe)        |
+                       +----------------+----------------+
+                                        |
+      +---------------------------------+--------------------------------+
+      |                                 |                                |
+      v                                 v                                v
++------------------+          +------------------+             +------------------+
+| Security.evtx    |          | System.evtx      |             | Application.evtx |
+| - SACL Denetimi  |          | - Sürücüler      |             | - Yazılım Hataları|
+| - Oturumlar      |          | - Servis Kurulumu|             | - Veritabanları  |
+| (4624, 4625,     |          | (7045, 1074,     |             | - Antivirüs      |
+|  4688, 1102)     |          |  6005, 6006)     |             |   Logları        |
++---------+--------+          +--------+---------+             +--------+---------+
+          |                            |                                |
+          +----------------------------+--------------------------------+
+                                       |
+                                       v
+                     +-----------------------------------+
+                     | ADLİ ANALİZ VE KORELASYON MOTORU  |
+                     | (windows_event_viewer_analyzer)   |
+                     |                                   |
+                     | [G029-SC1 Bağlamsal Analiz Kuralı]|
+                     | "Tek bir olay kimliği bağlam     |
+                     |  olmadan saldırı kanıtı değildir" |
+                     +-----------------+-----------------+
+                                       |
+                                       v
+                     +-----------------------------------+
+                     | MERKEZİ SIEM VE LOG İLETİMİ       |
+                     | (WEC / WEF, Splunk, Elastic, vb.) |
+                     | İhlal Tespit & Alarmları          |
+                     +-----------------------------------+
+
+----------------------------------------------------------------------------------------
+2. STANDART WINDOWS OLAY YAPISI VE ALAN ANATOMİSİ (XML / EVTX)
+----------------------------------------------------------------------------------------
+
+ <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+   <System>
+     <Provider Name="Service Control Manager" Guid="{...}"/> -> Olayı Üreten Bileşen
+     <EventID>7045</EventID>                                 -> Olay Türü ve Kimliği
+     <Level>4</Level>                                        -> Bilgi (Information)
+     <TimeCreated SystemTime="2026-10-27T07:22:15.891Z"/>    -> UTC Zaman Damgası
+     <EventRecordID>104205</EventRecordID>                   -> Sıralı Adli Kayıt No
+     <Channel>System</Channel>                               -> Günlük Kanalı
+     <Computer>SEC-CORP-WS01</Computer>                      -> Kaynak Ana Makine
+     <Security UserID="S-1-5-18"/>                           -> İşlemi Yapan SID
+   </System>
+   <EventData>
+     <Data Name="ServiceName">SysmonAgentService</Data>      -> Özel Yük Verileri
+     <Data Name="ImagePath">C:\Program Files\sysmon64.exe</Data>
+   </EventData>
+ </Event>
+
+----------------------------------------------------------------------------------------
+3. ADLİ GÜVENLİK İZLEME REHBERİ (KRİTİK OLAY KİMLİKLERİ)
+----------------------------------------------------------------------------------------
+Olay ID | Kanal    | Açıklama                     | Güvenlik ve Tehdit Önemi
+--------+----------+------------------------------+-------------------------------------
+4624    | Security | Başarılı Oturum Açma         | LogonType (2: Yerel, 3: Ağ, 10: RDP)
+4625    | Security | Başarısız Oturum Açma        | Kaba kuvvet / Parola püskürtme
+4688    | Security | Yeni Süreç Başlatıldı        | Komut satırı ve üst süreç analizi
+7045    | System   | Yeni Servis Kuruldu          | Kalıcılık (Persistence - T1543.003)
+1102    | Security | Güvenlik Günlüğü Silindi     | İz silme (Defense Evasion - T1070)
+1074    | System   | Sistem Kapatıldı / Reset     | Yeniden başlatma gerekçesi ve kullanıcı
+6005    | System   | Event Log Servisi Başlatıldı | Sistem açılış (Boot) zamanı
+========================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

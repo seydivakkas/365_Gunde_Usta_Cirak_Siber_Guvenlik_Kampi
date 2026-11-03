@@ -1,0 +1,36 @@
+{
+  "gun": 67,
+  "proje_kodu": "G067",
+  "baslik": "Paket kaybı, gecikme ve jitter",
+  "asama": "Aşama 03: Ağ Güvenliği ve Protokol Analizi",
+  "hafta": 10,
+  "tarih": "2026-10-31",
+  "durum": "TAMAMLANDI",
+  "puan": 100,
+  "sonuc": "YETERLİ / PASS",
+  "kriter_puanlari": {
+    "kod_kalitesi": 20,
+    "test_kapsami": 40,
+    "dokumantasyon": 25,
+    "butunluk_ve_standart": 15
+  },
+  "test_ozeti": {
+    "toplam_test": 14,
+    "basarili": 14,
+    "hatali": 0,
+    "sure_saniye": 0.021
+  },
+  "negatif_kontrol_ozeti": {
+    "toplam_senaryo": 9,
+    "basarili": 9,
+    "hatali": 0
+  },
+  "kanitlar": [
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "kanit/gercek/ag_performans_qos_raporu.txt",
+    "kanit/temsili/qos_jitter_kayip_mimarisi.txt"
+  ],
+  "dosya_sayisi": 16
+}

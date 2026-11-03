@@ -1,0 +1,58 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
++-----------------------------------------------------------------------------------+
+|            GÜVENLİ VARSAYILANLAR (SECURE BY DEFAULT) VE FAIL-SAFE MİMARİSİ        |
+|             (Saltzer-Schroeder 1975 / CWE-636 Fail-Closed / CWE-1188)            |
++-----------------------------------------------------------------------------------+
+
+     [ İSTEMCİ ERİŞİM TALEBİ ]
+      - Kullanıcı / Servis Kimliği
+      - Rol / Ayrıcalık
+      - Hedef Kaynak & Eylem
+                 |
+                 v
+     +---------------------------------------+
+     |   POLİTİKA KARAR NOKTASI (PDP)        |
+     |   - Saltzer-Schroeder Fail-Safe       |
+     |   - Default: DENY                     |
+     +---------------------------------------+
+                 |
+                 +-----> [ HARİCİ BAĞIMLILIK KONTROLÜ ]
+                 |        (DB, Auth Token Servisi, Ağ)
+                 |
+        +--------+--------+
+        |                 |
+    [ SAĞLIKLI ]     [ ARIZA OLUŞTU! ]
+        |             (Timeout, DB Down, Ağ Bölünmesi)
+        |                 |
+        |                 v
+        |        [ KRİTİK GÜVENLİK YOL AYRIMI ]
+        |        ---------------------------------
+        |        Fail-Open (Açık Geçiş) -> ❌ TEHLİKE (CWE-636)
+        |        Fail-Secure (Kapalı)   -> ✅ GÜVENLİ (Default Deny)
+        |                 |
+        |                 v
+        |        [ ERİŞİM ANINDA KESİLİR / BLOKE EDİLİR ]
+        |        [ DENETİM İZİNE KRİTİK ALARM KAYDEDİLİR ]
+        |
+        v
+  [ AÇIK KURAL EŞLEŞTİRMESİ ]
+   - Rol == Hedef && İzin Var mı?
+        |
+   +----+----+
+   |         |
+[ EVET ]   [ HAYIR ]
+   |         |
+   v         v
+ [ İZİN ]  [ DEFAULT-DENY DEVREYE GİRER ]
+           [ ERİŞİM OTOMATİK REDDEDİLİR ]
+
++-----------------------------------------------------------------------------------+
+|  MİMARİ GÜVENCE: Debug Modu Kapalı, TLS Zorunlu, Varsayılan Şifre Değiştirilmiş! |
++-----------------------------------------------------------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

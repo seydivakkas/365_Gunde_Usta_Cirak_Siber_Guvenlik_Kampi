@@ -1,0 +1,53 @@
+{
+  "aciklama": "G045 - Geçersiz IPv4 ve CIDR Formatları (Negatif Kontrol Test Verileri)",
+  "gecersiz_ornekler": [
+    {
+      "id": "ERR-01",
+      "girdi": "256.1.1.1/24",
+      "hata_turu": "OctetOutOfRange",
+      "beklenen_mesaj": "Oktet değeri 0 ile 255 arasında olmalıdır: 256"
+    },
+    {
+      "id": "ERR-02",
+      "girdi": "192.168.1/24",
+      "hata_turu": "InvalidOctetCount",
+      "beklenen_mesaj": "IPv4 adresi tam olarak 4 oktetten oluşmalıdır, bulunan: 3"
+    },
+    {
+      "id": "ERR-03",
+      "girdi": "192.168.1.1.5/24",
+      "hata_turu": "InvalidOctetCount",
+      "beklenen_mesaj": "IPv4 adresi tam olarak 4 oktetten oluşmalıdır, bulunan: 5"
+    },
+    {
+      "id": "ERR-04",
+      "girdi": "192.168.01.1/24",
+      "hata_turu": "LeadingZeroForbidden",
+      "beklenen_mesaj": "Oktet başında sıfır (leading zero) bulunamaz: 01"
+    },
+    {
+      "id": "ERR-05",
+      "girdi": "192.168.1.1/33",
+      "hata_turu": "PrefixOutOfRange",
+      "beklenen_mesaj": "CIDR önek uzunluğu 0 ile 32 arasında olmalıdır: 33"
+    },
+    {
+      "id": "ERR-06",
+      "girdi": "192.168.1.1/-5",
+      "hata_turu": "PrefixOutOfRange",
+      "beklenen_mesaj": "CIDR önek uzunluğu 0 ile 32 arasında olmalıdır: -5"
+    },
+    {
+      "id": "ERR-07",
+      "girdi": "192.168.1.1/abc",
+      "hata_turu": "InvalidPrefixFormat",
+      "beklenen_mesaj": "CIDR önek uzunluğu sayısal bir tam sayı olmalıdır: abc"
+    },
+    {
+      "id": "ERR-08",
+      "girdi": "192.168.1.1",
+      "hata_turu": "MissingCIDRPrefix",
+      "beklenen_mesaj": "CIDR biçimi eksik, '/' ayracı bulunamadı"
+    }
+  ]
+}

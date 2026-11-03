@@ -1,0 +1,33 @@
+test_01_load_valid_stream_and_handshake (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_01_load_valid_stream_and_handshake)
+TCP 3'l³ el s²k²■mas² ile istemci ve sunucu ISN de­erlerinin kuruldu­unu test eder. ... ok
+test_02_in_order_client_http_request_reassembly (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_02_in_order_client_http_request_reassembly)
+¦stemciden g÷nderilen iki segmentin kesintisiz HTTP GET iste­i olarak birle■ti­ini test eder. ... ok
+test_03_out_of_order_server_response_reassembly (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_03_out_of_order_server_response_reassembly)
+G÷vdesi ba■l²­²ndan ÷nce gelen sunucu segmentlerinin do­ru s²raland²­²n² test eder. ... ok
+test_04_duplicate_retransmission_handling (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_04_duplicate_retransmission_handling)
+Ayn² s²ra numaras²na sahip kopya segmentin veriyi o­altmadan elendi­ini test eder. ... ok
+test_05_clean_connection_teardown_fin_ack (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_05_clean_connection_teardown_fin_ack)
+FIN ve ACK paketleri ile ak²■²n arabellekte para kalmadan kapand²­²n² test eder. ... ok
+test_06_render_follow_stream_format (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_06_render_follow_stream_format)
+Ãift y÷nl³ sohbet d÷k³m³n³n Wireshark diyalog format²nda bas²ld²­²n² test eder. ... ok
+test_07_summary_report_metrics (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_07_summary_report_metrics)
+Bayt hacmi, paket say²lar² ve anomali istatistiklerinin tam do­rulu­unu test eder. ... ok
+test_08_neg01_sequence_gap_stall_error (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_08_neg01_sequence_gap_stall_error)
+Aradaki segment kayboldu­unda SequenceGapError f²rlat²ld²­²n² test eder. ... ok
+test_09_neg02_overlapping_payload_conflict_ids_evasion (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_09_neg02_overlapping_payload_conflict_ids_evasion)
+Írt³■en parada farkl² veri geldi­inde OverlappingPayloadConflictError f²rlat²ld²­²n² test eder. ... ok
+test_10_neg03_corrupted_segment_payload_size (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_10_neg03_corrupted_segment_payload_size)
+Bozuk segment boyutu durumunda CorruptedSegmentError f²rlat²ld²­²n² test eder. ... ok
+test_11_neg04_reassembly_buffer_overflow (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_11_neg04_reassembly_buffer_overflow)
+Ãok fazla da­²n²k segment arabelle­e doldu­unda ReassemblyBufferOverflowError f²rlat²ld²­²n² test eder. ... ok
+test_12_neg05_unreassembled_data_loss_on_rst (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_12_neg05_unreassembled_data_loss_on_rst)
+Arabellekte kopuk para varken RST geldi­inde UnreassembledDataLossError f²rlat²ld²­²n² test eder. ... ok
+test_13_neg06_missing_handshake_syn_error (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_13_neg06_missing_handshake_syn_error)
+Strict modda SYN bulunmad²­²nda MissingHandshakeError f²rlat²ld²­²n² test eder. ... ok
+test_14_neg07_to_neg09_mismatch_empty_and_invalid_protocol (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_14_neg07_to_neg09_mismatch_empty_and_invalid_protocol)
+Yabanc² soket enjeksiyonu, bo■ segment listesi ve TCP d²■² protokol hatalar²n² test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.007s
+
+OK

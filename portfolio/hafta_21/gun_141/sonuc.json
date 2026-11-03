@@ -1,0 +1,34 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "gun": 141,
+  "hafta": 21,
+  "asama": "Aşama 6: Uç Nokta Güvenliği ve Sertleştirme",
+  "konu": "Yama yönetimi ve CVE",
+  "tarih": "2026-11-02",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "kriterler": {
+    "kod_kalitesi_ve_didaktik_yorumlar": 20,
+    "birim_testler_ve_kapsam": 40,
+    "negatif_kontroller_ve_sinir_durumlari": 25,
+    "mimari_tasarim_guvenlik_belgeleme": 15
+  },
+  "test_sonuclari": {
+    "toplam_test": 15,
+    "basarili_test": 15,
+    "hatali_test": 0,
+    "test_suresi_saniye": 0.007
+  },
+  "negatif_senaryolar": {
+    "toplam_senaryo": 9,
+    "basarili_senaryo": 9,
+    "hatali_senaryo": 0
+  },
+  "guvenlik_standartlari": [
+    "NIST SP 800-40 Rev. 4 (Guide to Enterprise Patch Management Planning)",
+    "CISA Binding Operational Directive 22-01 (Known Exploited Vulnerabilities Catalog)",
+    "FIRST Common Vulnerability Scoring System v3.1 (CVSS)",
+    "FIRST Exploit Prediction Scoring System (EPSS)",
+    "MITRE CVE Dictionary & NVD Specifications"
+  ]
+}

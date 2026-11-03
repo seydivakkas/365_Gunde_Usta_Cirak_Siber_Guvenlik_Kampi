@@ -1,0 +1,125 @@
+=== GÜN 100: ENTROPİ CLI YÜRÜTME VE STANDART ÇIKIŞ KODLARI KANITI ===
+Tarih/Saat : 2026-11-02 01:48:33
+Standart   : POSIX Exit Codes (0: Başarılı / Güvenli, 1: Güvenlik İhlali, 2: Girdi Hatası)
+==========================================================================================
+
+--- 1. Yardım Menüsü ve Parametre Doğrulama ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_100\uygulama\entropy_cli.py --help
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+usage: entropy_cli [-h] [-f FILE] [-s STRING] [-g] [--compare-prng]
+                   [-t THRESHOLD] [--strict] [--json] [-o OUTPUT]
+
+G100: Entropi ve Kriptografik Rastgelelik Analiz Aracı
+
+options:
+  -h, --help            show this help message and exit
+  -f, --file FILE       Entropisi analiz edilecek dosya yolu
+  -s, --string STRING   Entropisi analiz edilecek doğrudan metin dizgisi
+  -g, --generate-key    256-bit CSPRNG kriptografik anahtar üretir ve
+                        entropisini raporlar
+  --compare-prng        Standart PRNG (random) ile CSPRNG (secrets) arasındaki
+                        farkı gösterir
+  -t, --threshold THRESHOLD
+                        Minimum kabul edilebilir Shannon entropisi
+                        (varsayılan: 7.0)
+  --strict              Entropi eşiğin altındaysa çıkış kodu 1 döndürür
+  --json                Sonuçları yapılandırılmış JSON formatında stdout'a
+                        yazar
+  -o, --output OUTPUT   Raporun kaydedileceği hedef dosya
+------------------------------------------------------------------------------------------
+
+--- 2. 256-Bit CSPRNG Kriptografik Anahtar Üretimi ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_100\uygulama\entropy_cli.py -g
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+================================================================================
+ÜRETİLEN KRİPTOGRAFİK GÜVENLİ ANAHTAR (256-Bit CSPRNG):
+  Hex     : 27de6752e05c65fb15d4108268a7de087a4d7f8210f73bd52323ff3abb4abd9f
+  Entropi : 4.75 bit/bayt (Max: 8.0)
+  Durum   : GÜVENSİZ
+================================================================================
+------------------------------------------------------------------------------------------
+
+--- 3. PRNG (Mersenne Twister) vs CSPRNG Karşılaştırması ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_100\uygulama\entropy_cli.py --compare-prng
+[ÇIKIŞ KODU] 0
+[STDOUT]:
+=====================================================================================
+GÜN 100: PRNG (Mersenne Twister) VS CSPRNG (OS Entropi Havuzu) KARŞILAŞTIRMASI
+=====================================================================================
+METRİK                         | PRNG (random)          | CSPRNG (secrets)      
+-------------------------------------------------------------------------------------
+Shannon Entropisi (bit/bayt)   | 7.8003                 | 7.7901                
+Min-Entropi (bit/bayt)         | 6.7959                 | 6.5064                
+Ki-Kare Değeri                 | 247.23                 | 271.3                 
+Monobit Oranı (1 Oranı)        | 0.4989                 | 0.5026                
+Monobit p-Değeri               | 0.8405                 | 0.6387                
+Kriptografik Uygunluk          | REDDEDİLDİ (CWE-338)   | ONAYLANDI (CSPRNG)    
+=====================================================================================
+------------------------------------------------------------------------------------------
+
+--- 4. Doğrudan Parola Metni Entropi Analizi ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_100\uygulama\entropy_cli.py -s SuperSecretPassword123456789!
+[ÇIKIŞ KODU] 1
+[STDOUT]:
+================================================================================
+GÜN 100: ENTROPİ ANALİZ RAPORU (inline_input)
+================================================================================
+  Shannon Entropisi     : 4.3921 bit/bayt (Eşik: 7.0)
+  Min-Entropi           : 3.273 bit/bayt
+  Ki-Kare Değeri        : 368.24
+  Monobit 1 Bit Oranı   : 0.4871
+  Monobit p-Değeri      : 0.6936
+  Toplam Bayt / Tekil   : 29 bayt / 23 tekil
+  Güvenlik Derecesi     : DÜŞÜK (Tahmin Edilebilir / Güvensiz)
+  Kriptografik Uygunluk : REDDEDİLDİ (FAIL)
+  UYARILAR:
+    - CWE-331: Shannon entropisi (4.3921 bit/bayt) kabul eşiğinin (7.0) altında!
+================================================================================
+------------------------------------------------------------------------------------------
+
+--- 5. Düşük Entropili Metin Analizi (İhlal Tespiti) ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_100\uygulama\entropy_cli.py -s AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+[ÇIKIŞ KODU] 1
+[STDOUT]:
+================================================================================
+GÜN 100: ENTROPİ ANALİZ RAPORU (inline_input)
+================================================================================
+  Shannon Entropisi     : 0.0 bit/bayt (Eşik: 7.0)
+  Min-Entropi           : -0.0 bit/bayt
+  Ki-Kare Değeri        : 7140.0
+  Monobit 1 Bit Oranı   : 0.25
+  Monobit p-Değeri      : 0.0
+  Toplam Bayt / Tekil   : 28 bayt / 1 tekil
+  Güvenlik Derecesi     : DÜŞÜK (Tahmin Edilebilir / Güvensiz)
+  Kriptografik Uygunluk : REDDEDİLDİ (FAIL)
+  UYARILAR:
+    - CWE-331: Shannon entropisi (0.0 bit/bayt) kabul eşiğinin (7.0) altında!
+    - CWE-330: Monobit frekans testi başarısız (p=0.0 < 0.01). Bit dağılımı tekdüze değil!
+================================================================================
+------------------------------------------------------------------------------------------
+
+--- 6. Yapılandırılmış JSON Çıktı Modu (CI/CD Entegrasyonu) ---
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_100\uygulama\entropy_cli.py -s SuperSecretPassword123456789! --json
+[ÇIKIŞ KODU] 1
+[STDOUT]:
+{
+  "hedef_adi": "inline_input",
+  "metrikler": {
+    "shannon_entropi": 4.3921,
+    "min_entropi": 3.273,
+    "chi_kare": 368.24,
+    "monobit_oran": 0.4871,
+    "monobit_p_degeri": 0.6936,
+    "bayt_sayisi": 29,
+    "tekil_bayt_sayisi": 23,
+    "degerlendirme": "DÜŞÜK (Tahmin Edilebilir / Güvensiz)"
+  },
+  "kriptografik_guvenli_mi": false,
+  "uyarilar": [
+    "CWE-331: Shannon entropisi (4.3921 bit/bayt) kabul eşiğinin (7.0) altında!"
+  ],
+  "tarih": "2026-11-02 01:48:34"
+}
+------------------------------------------------------------------------------------------

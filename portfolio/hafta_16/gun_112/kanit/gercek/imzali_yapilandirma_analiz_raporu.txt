@@ -1,0 +1,18 @@
+========================================================================
+  MİNİ PROJE 15: İMZALI YAPILANDIRMA MİMARİ VE GÜVENLİK ANALİZ RAPORU
+========================================================================
+
+1. GÜVENLİK MODELİ VE KURCALAMAYA KARŞI KORUMA (TAMPER-EVIDENCE):
+   - RFC 8785 JSON Kanonikleştirme: Beyaz boşluklar, sıralamalar ve formatlama
+     farklılıklarının özet değerini bozması engellendi.
+   - Asimetrik İmza (RSA-SHA256): Yapılandırma yükü değiştirilemez şekilde mühürlendi;
+     tek bir baytlık değişiklik (CWE-353) anında yakalanmaktadır.
+
+2. ANTI-ROLLBACK VE MONOTONİK EPOCH SAVUNMASI:
+   - Geçmişte meşru imzalanmış fakat bilinen güvenlik zaafiyeti içeren eski sürümlerin
+     yeniden sisteme yüklenmesi (Rollback Saldırısı / CWE-294), monotonik artan
+     sistem epoch sayacı ile imkansız hale getirildi.
+
+3. ÇOKLU İMZA (DUAL SIGNING) VE YETKİ KONTROLÜ:
+   - Kritik altyapı değişikliklerinde en az 2 bağımsız yetkilinin (SecOps + Infra)
+     onayı zorunlu kılınarak tekil yönetici zaafiyeti ortadan kaldırıldı (CWE-285).

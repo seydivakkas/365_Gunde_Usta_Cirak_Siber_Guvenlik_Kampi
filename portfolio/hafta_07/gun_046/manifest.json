@@ -1,0 +1,18 @@
+{
+  "README.md": "e93a7ac762c778b3dd5d187c2ad69c73fb9854afff4ee02856221e8e683815a7",
+  "ders.md": "f9c9e4d13bf29bc1fa19c9a9e2bb6ffad623dc00a51ca917cf19f28238d25ae7",
+  "rapor.md": "bdeedfc54a10a77d9df0d4d37a4fb8eff2eff4001058c4148a85a5835fcbc996",
+  "sonuc.json": "440acc18739033ff14154f0e9950399dfa01b092429ab4dbf3fc774900bde058",
+  "soru_cevap.md": "d5fc1f8cd0f6ef5562fe7d5683eaa10f6a1b66f7d1c39a480e5e3a6ea4f499fc",
+  "kanit/gercek/ipv6_analiz_raporu.txt": "b31bdf3e2413ec2a3383038de575cebc108e7910e140da0bce103f50d1809869",
+  "kanit/gercek/komut_ve_cikis.txt": "ba0f2e0206840e6cfc0fa90646a4f1def5b15e95c294418ac36c4f77ef7f3293",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "71caf10bea018d9c6e53c09e65eb61548a6498ee9786797e33d697fa1ca44828",
+  "kanit/gercek/test_sonuclari.txt": "eaa86aae3fdd2dfd11f997306769fdb0c61750ec6a9449c1b1e40405b113becf",
+  "kanit/temsili/ipv6_ve_slaac_mimarisi.txt": "6e21ea29cd851b12e137546c07c6a1275591088b6f955d61ad72bf49f17fbd04",
+  "ornek_veri/invalid_ipv6_addresses.json": "e564404e1803809f3f5e8200bb1fed5782a7ccd96cdcac5e451ca1015668f7ec",
+  "ornek_veri/sample_ipv6_addresses.json": "d9ddd7b3b5d1ac39c2ba76fad3f5a3c76cf7ab90c5d880850cad988c3e5da48d",
+  "tests/__init__.py": "b19f49dc710f82ebbb4823ca6cf9f012139744a743bb478b9739ae4e65bacc63",
+  "tests/test_ipv6_analyzer.py": "500c5c27188495fec68c09fbb410c9957434ad86728a6d635159f3a83e79dae7",
+  "uygulama/__init__.py": "b19f49dc710f82ebbb4823ca6cf9f012139744a743bb478b9739ae4e65bacc63",
+  "uygulama/ipv6_analyzer.py": "d2943387ff4797405791dcad39ab8e13d474582e3e51702eea3b7ac543112c62"
+}

@@ -1,0 +1,49 @@
+# TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+# =========================================================================
+# Mini Proje 18: Bütünleşik Windows Güvenlik Denetim Mimarisi
+# =========================================================================
+
++-------------------------------------------------------------------------+
+|      BÜTÜNLEŞİK WINDOWS GÜVENLİK DENETİM VE RAPORLAMA PLATFORMU         |
+|      (Mini Proje 18 - Hafta 19 Windows Güvenliği Kapanış Projesi)       |
++-------------------------------------------------------------------------+
+                                    |
+          +-------------------------+-------------------------+
+          |                                                   |
+          v                                                   v
++-----------------------+                           +---------------------+
+| GİRDİ: SİSTEM METAVERİ |                           | ÇIKTI: RAPORLAR VE  |
+| - Registry Değerleri  |                           |        SIKILAŞTIRMA |
+| - SCM & Servis DACL   |                           | - JSON Denetim Veri |
+| - NTFS Dosya ACL      |                           | - Markdown Rapor    |
+| - WFAS Firewall Rule  |                           | - Master PS Betiği  |
++-----------------------+                           +---------------------+
+          |                                                   ^
+          |                                                   |
+          v                                                   |
++-------------------------------------------------------------------------+
+|                  5 ALANLI DENETİM VE PUANLAMA MOTORU                    |
+|                                                                         |
+|  [Alan 1: Defender & Uç Nokta Koruması]             (Ağırlık: 20 Puan) |
+|   * RTP, Davranış İzleme, Tamper Protection, PUA                        |
+|                                                                         |
+|  [Alan 2: Yerel Hesaplar, Gruplar ve UAC]            (Ağırlık: 20 Puan) |
+|   * EnableLUA, Admin Onay Modu, Secure Desktop, Guest Hesabı            |
+|                                                                         |
+|  [Alan 3: NTFS Erişim Kontrol Listeleri]             (Ağırlık: 20 Puan) |
+|   * Sistem Dizin Yazma Hakları, Kalıtım Bütünlüğü, SACL Denetimi        |
+|                                                                         |
+|  [Alan 4: Windows Firewall Profilleri]               (Ağırlık: 20 Puan) |
+|   * Domain / Private / Public Profilleri, Default Block, Port Maruziyeti|
+|                                                                         |
+|  [Alan 5: Windows Hizmet Güvenliği]                  (Ağırlık: 20 Puan) |
+|   * Tırnaksız Servis Yolları (CWE-428), Zayıf DACL, Zayıf Binary İzni  |
++-------------------------------------------------------------------------+
+                                    |
+                                    v
++-------------------------------------------------------------------------+
+|               KURUMSAL UYUM VE SKOR KARTI BELİRLEME                     |
+|                                                                         |
+|   Toplam Puan : 100.0 Üzerinden Ağırlıklı Toplam                        |
+|   Uyum Durumu : >= 85.0 COMPLIANT | 60 - 84 WARNING | < 60 CRITICAL     |
++-------------------------------------------------------------------------+

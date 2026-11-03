@@ -1,0 +1,40 @@
+=== GÜN 075: BİRİM TEST SONUÇLARI ===
+Toplam Test: 14
+Başarılı: 14
+Başarısız: 0
+Hata: 0
+Durum: OK / PASS
+
+test_01_correlate_threat_feeds_intersection_and_whitelist (test_security_data_structures_engine.TestSecurityDataStructuresEngine.test_01_correlate_threat_feeds_intersection_and_whitelist)
+Test 01: Küme kesişimi ve beyaz liste farkı ile yüksek güvenilirlikli tehditlerin ayrıştırıldığını doğrular. ... ok
+test_02_correlate_threat_feeds_union_and_exclusive (test_security_data_structures_engine.TestSecurityDataStructuresEngine.test_02_correlate_threat_feeds_union_and_exclusive)
+Test 02: Birleşim ve münhasır (exclusive) küme farkı sayılarının doğruluğunu sınar. ... ok
+test_03_correlate_threat_feeds_null_input_raises (test_security_data_structures_engine.TestSecurityDataStructuresEngine.test_03_correlate_threat_feeds_null_input_raises)
+Test 03: Beslemelerden biri None olduğunda TypeError fırlatıldığını doğrular. ... ok
+test_04_correlate_threat_feeds_malformed_ip_raises (test_security_data_structures_engine.TestSecurityDataStructuresEngine.test_04_correlate_threat_feeds_malformed_ip_raises)
+Test 04: Beslemede malforme IP olduğunda ValueError fırlatılarak kümenin zehirlenmesinin engellendiğini doğrular. ... ok
+test_05_correlate_threat_feeds_exceeds_max_limit_raises (test_security_data_structures_engine.TestSecurityDataStructuresEngine.test_05_correlate_threat_feeds_exceeds_max_limit_raises)
+Test 05: Koleksiyon tavanı aşıldığında OverflowError ile bellek DoS saldırısının engellendiğini test eder. ... ok
+test_06_safe_deep_dict_get_existing_path (test_security_data_structures_engine.TestSecurityDataStructuresEngine.test_06_safe_deep_dict_get_existing_path)
+Test 06: Güvenli sözlük okuyucunun var olan derin yolu başarıyla okuduğunu doğrular. ... ok
+test_07_safe_deep_dict_get_missing_key_returns_default (test_security_data_structures_engine.TestSecurityDataStructuresEngine.test_07_safe_deep_dict_get_missing_key_returns_default)
+Test 07: Var olmayan anahtarda KeyError fırlatılmadan varsayılan değerin güvenle döndüğünü test eder. ... ok
+test_08_safe_deep_dict_get_none_intermediate_node (test_security_data_structures_engine.TestSecurityDataStructuresEngine.test_08_safe_deep_dict_get_none_intermediate_node)
+Test 08: Ara düğümlerden biri None olduğunda AttributeError oluşmadan varsayılanın döndüğünü doğrular. ... ok
+test_09_safe_deep_dict_get_invalid_data_type (test_security_data_structures_engine.TestSecurityDataStructuresEngine.test_09_safe_deep_dict_get_invalid_data_type)
+Test 09: Ana veri dict yerine başka bir tip verildiğinde çökmeden varsayılan değer döndüğünü test eder. ... ok
+test_10_defensive_filter_ioc_list_avoids_mutation_skipping (test_security_data_structures_engine.TestSecurityDataStructuresEngine.test_10_defensive_filter_ioc_list_avoids_mutation_skipping)
+Test 10: Liste üzerinde gezinirken eleman atlamayan savunmacı filtrelemenin doğruluğunu test eder. ... ok
+test_11_defensive_filter_ioc_list_invalid_type_raises (test_security_data_structures_engine.TestSecurityDataStructuresEngine.test_11_defensive_filter_ioc_list_invalid_type_raises)
+Test 11: Liste dışı parametrede TypeError fırlatıldığını doğrular. ... ok
+test_12_safe_set_ingest_converts_lists_and_dicts (test_security_data_structures_engine.TestSecurityDataStructuresEngine.test_12_safe_set_ingest_converts_lists_and_dicts)
+Test 12: Kümeye eklenen unhashable list ve dict nesnelerinin güvenli tuple'a çevrilerek eklendiğini doğrular. ... ok
+test_13_detect_rule_shadowing_identifies_conflicts (test_security_data_structures_engine.TestSecurityDataStructuresEngine.test_13_detect_rule_shadowing_identifies_conflicts)
+Test 13: Kural sözlüğü oluşturulurken aynı kural adının mükerrer tanımlanmasını tespit ettiğini doğrular. ... ok
+test_14_benchmark_lookup_performance_set_faster (test_security_data_structures_engine.TestSecurityDataStructuresEngine.test_14_benchmark_lookup_performance_set_faster)
+Test 14: Kümelerde O(1) aramanın listelerdeki O(N) aramadan daha hızlı çalıştığını doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.002s
+
+OK

@@ -1,0 +1,54 @@
+================================================================================
+G064: NEGATIF SINIR VE SOZDIZIM HATASI TEST SONUCLARI
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas) - Tum Haklari Saklidir
+================================================================================
+
+[BASARILI / PASS] NEG_01 - Dengesiz Parantez Sozdizim Hatasi
+  * Beklenen Hata   : FilterSyntaxError
+  * Yakalanan Hata  : FilterSyntaxError
+  * Beklenen Tespit : DENGESIZ_PARANTEZ_HATASI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_02 - Tanimsiz / Desteklenmeyen Protokol Alani
+  * Beklenen Hata   : UnknownFieldError
+  * Yakalanan Hata  : UnknownFieldError
+  * Beklenen Tespit : TANIMSIZ_PROTOKOL_ALANI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_03 - Veri Tipi Uyusmazligi (Sayisal Alana Metin Karsilastirmasi)
+  * Beklenen Hata   : FilterTypeError
+  * Yakalanan Hata  : FilterTypeError
+  * Beklenen Tespit : TIP_UYUSMAZLIK_HATASI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_04 - Gecersiz Bayt Dilimleme Araligi (Slice Out of Bounds)
+  * Beklenen Hata   : SliceOutOfBoundsError
+  * Yakalanan Hata  : SliceOutOfBoundsError
+  * Beklenen Tespit : BAYT_DILIMLEME_ASIMI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_05 - Bozuk Duzenli Ifade (Regex) Sozdizimi
+  * Beklenen Hata   : RegexFilterError
+  * Yakalanan Hata  : RegexFilterError
+  * Beklenen Tespit : GECERSIZ_REGEX_SOZDIZIMI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_06 - Bos / Beyaz Bosluk Filtre Ifadesi
+  * Beklenen Hata   : EmptyFilterError
+  * Yakalanan Hata  : EmptyFilterError
+  * Beklenen Tespit : BOS_FILTRE_GIRDISI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_07 - Gecersiz Karsilastirma Operatoru
+  * Beklenen Hata   : InvalidOperatorError
+  * Yakalanan Hata  : InvalidOperatorError
+  * Beklenen Tespit : GECERSIZ_OPERATOR
+------------------------------------------------------------
+[BASARILI / PASS] NEG_08 - Bozuk veya Gecersiz Paket Formati
+  * Beklenen Hata   : MalformedPacketError
+  * Yakalanan Hata  : MalformedPacketError
+  * Beklenen Tespit : BOZUK_PAKET_NESNESI
+------------------------------------------------------------
+[BASARILI / PASS] NEG_09 - Kapatilmamis Tirnak Isareti (Tokenize Hatasi)
+  * Beklenen Hata   : FilterTokenizeError
+  * Yakalanan Hata  : FilterTokenizeError
+  * Beklenen Tespit : KAPATILMAMIS_TIRNAK
+------------------------------------------------------------
+
+TOPLAM NEGATIF TEST: 9
+BASARILI YAKALANAN : 9
+SONUC              : %100 BASARILI / TAM UYUM

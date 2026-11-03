@@ -1,0 +1,80 @@
+================================================================================
+GÜN 114: ÇOK FAKTÖRLÜ KİMLİK DOĞRULAMA (MFA) VE OLTALAMA DİRENCİ ANALİZ RAPORU
+Rapor Tarihi: 2026-11-02T02:16:51.613893+00:00
+Mühendis: Seydi Eryılmaz (@seydivakkas)
+Standartlar: RFC 6238, W3C WebAuthn Level 2/3, FIDO2, NIST SP 800-63B
+================================================================================
+
+1. TEKNİK KARŞILAŞTIRMA VE OLTALAMA (AiTM) DİRENCİ DEĞERLENDİRMESİ
+--------------------------------------------------------------------------------
+A. SMS / E-posta OTP (NIST Kısıtlı):
+   - SIM-Swapping ve SS7 yönlendirme tehditlerine açıktır.
+   - AiTM ters vekilleri (Evilginx) tarafından anlık yakalanabilir; phishing direnci YOKTUR.
+
+B. RFC 6238 TOTP (Google Authenticator vb.):
+   - Base32 paylaşımlı gizli anahtar ve 30 saniyelik zaman adımları.
+   - Güçlü bir 'Sahip Olunan Şey' faktörüdür; ancak menşe (origin) bilgisi içermez.
+   - Saldırgan kurbanı sahte sitede yakaladığı kodu meşru siteye ileterek aşabilir (CWE-287).
+
+C. FIDO2 / WebAuthn (YubiKey, Passkey, TPM - AAL3):
+   - Kriptografik Menşe Bağlama (Cryptographic Origin Binding - CWE-346 Savunması):
+     Donanım anahtarı tarayıcının bulunduğu menşei (Origin) doğrudan imzalar.
+     Saldırgan sahte oltalama alan adından gelen cevabı meşru sunucuya ilettiğinde,
+     sunucu menşe uyumsuzluğunu tespit ederek isteği anında imha eder.
+   - Tek Kullanımlık Meydan Okuma (Anti-Replay Nonce - CWE-294 Savunması).
+   - Sayaç Takibi (SignCount - CWE-347 Klonlama Tespiti).
+
+2. NEGATİF KONTROL SENARYO TEST SONUÇLARI
+--------------------------------------------------------------------------------
+Toplam Negatif Senaryo: 9 | Başarılı Engelleme: 9 | Başarısız: 0
+
+[PASS] NEG_01: Rastgele veya Hatalı TOTP Kodu Sunulması
+   Zafiyet Kodu : CWE-287: Improper Authentication
+   Beklenen Hata: InvalidTOTPCodeError
+   Yakalanan    : InvalidTOTPCodeError
+
+[PASS] NEG_02: Aynı Zaman Adımındaki TOTP Kodunun Tekrar Sunulması (Replay Saldırısı)
+   Zafiyet Kodu : CWE-294: Authentication Bypass by Capture-replay
+   Beklenen Hata: TOTPReplayError
+   Yakalanan    : TOTPReplayError
+
+[PASS] NEG_03: Zaman Penceresi Dışındaki Eski TOTP Kodu
+   Zafiyet Kodu : CWE-287: Improper Authentication (Time Expiration)
+   Beklenen Hata: InvalidTOTPCodeError
+   Yakalanan    : InvalidTOTPCodeError
+
+[PASS] NEG_04: FIDO2 Oltalama (Phishing) Sitesinde Üretilen Menşe Uyuşmazlığı
+   Zafiyet Kodu : CWE-346: Origin Validation Error
+   Beklenen Hata: PhishingOriginMismatchError
+   Yakalanan    : PhishingOriginMismatchError
+
+[PASS] NEG_05: Daha Önce Tüketilmiş (Used) WebAuthn Challenge ile Giriş Girişimi
+   Zafiyet Kodu : CWE-294: Authentication Bypass by Capture-replay
+   Beklenen Hata: WebAuthnChallengeMismatchError
+   Yakalanan    : WebAuthnChallengeMismatchError
+
+[PASS] NEG_06: Süresi Dolan (Expired) WebAuthn Challenge ile Doğrulama
+   Zafiyet Kodu : CWE-294: Authentication Bypass by Capture-replay
+   Beklenen Hata: WebAuthnChallengeMismatchError
+   Yakalanan    : WebAuthnChallengeMismatchError
+
+[PASS] NEG_07: Bozulmuş veya Yanlış Anahtarla İmzalanmış FIDO2 Assertion İmzası
+   Zafiyet Kodu : CWE-347: Improper Verification of Cryptographic Signature
+   Beklenen Hata: WebAuthnInvalidSignatureError
+   Yakalanan    : WebAuthnInvalidSignatureError
+
+[PASS] NEG_08: Donanım Güvenlik Anahtarı Klon Tespiti (Sayaç Gerilemesi / Tekrarı)
+   Zafiyet Kodu : CWE-347: Improper Verification of Cryptographic Signature (Clone Detection)
+   Beklenen Hata: AuthenticatorCloneDetectedError
+   Yakalanan    : AuthenticatorCloneDetectedError
+
+[PASS] NEG_09: Sistemde Kayıtlı Olmayan Donanım Anahtarı Kimliği
+   Zafiyet Kodu : CWE-287: Improper Authentication
+   Beklenen Hata: WebAuthnInvalidSignatureError
+   Yakalanan    : WebAuthnInvalidSignatureError
+
+3. SONUÇ VE MİMARİ KARNE
+--------------------------------------------------------------------------------
+FIDO2 WebAuthn mimarisi, kimlik avı ve ters vekil saldırılarını matematiksel olarak imkansız kılar.
+Tüm birim testleri ve negatif saldırı senaryoları %100 başarıyla sonuçlanmıştır.
+Genel Değerlendirme: 100/100 (YETERLİ - MÜKEMMEL)

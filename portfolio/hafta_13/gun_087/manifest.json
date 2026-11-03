@@ -1,0 +1,23 @@
+{
+  "dosyalar": {
+    "README.md": "93c38e3ef1191e45dbff3ebd98345e416fb250e549fb28085d00e75c5e67a0d2",
+    "ders.md": "f6c8e443564dd321005caf2e91ded19286df496cff20cec4dbd081c792ba2a06",
+    "kanit_uretici.py": "8655eef7d4cdb6dbac46344ff41bd82af955033d3449ee2756277e024b009c87",
+    "rapor.md": "d1ae27d67a007db4111d4213aeab2c3f5ebbbc82c9d672d4266a178665404a8a",
+    "sonuc.json": "ccb218fe27f7c617f61c23a9825d450f7a5f19bcf5e9d3bb50da8faf1e8f6a09",
+    "soru_cevap.md": "594159ba41fa1d056286e8bea03382f427b73e87cfc4b5b8b262f171eb993b30",
+    "kanit/gercek/bash_guvenlik_denetim_raporu.txt": "7e64bcd4fbabf8587ae863c20cc44eca393851f78d62c752c1a6b5e202ae83fc",
+    "kanit/gercek/komut_ve_cikis.txt": "7ab82623297ce87db3e3f1ae5fb1b90cb363e3bca473d13beae086b0e2153b24",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": "49f635bc0c7834d9bde8aa388b2309c8e52bc4d2f9838a2d1fd163a2a3c9573a",
+    "kanit/gercek/test_sonuclari.txt": "6af46486eca4cd583278fd8a6ae09b1f7582b53b4673ff5bbb99c3cfe5a73d5b",
+    "kanit/temsili/bash_quoting_ve_iskelet_mimarisi.txt": "f266ec329139d42eccc7929fde826fdd8fcbe0a1fd3a39c9158cedc85c5e603e",
+    "ornek_veri/invalid_bash_quoting_inputs.json": "5d5ed21314aec5ab0728ea42e764f2c9121c01ed7a79e911c5585142e4a5ffe7",
+    "ornek_veri/sample_secure_script.sh": "6ea1606dc1b3615edad54fc0e4d03d7e636b0c7e0c03969698aa3ebb5104cb9a",
+    "ornek_veri/sample_vulnerable_script.sh": "4de9b6088646517ee2e565e0fc791968442a053c71e65f2ca72a15e28d957ca6",
+    "tests/__init__.py": "cb1c27562dfa73a8d5e1d830422d1c0de081549713c71798c75e761faa7d2171",
+    "tests/test_bash_skeleton_quoting_auditor.py": "9ff3f3965ec4708e66ffd6a494949a79b169e482fb151c35d963c7d2561f0ebe",
+    "uygulama/__init__.py": "4e61ef493125654404fa8514ab04ab67957711ca5d9d78cc7ed233643ea0c747",
+    "uygulama/bash_skeleton_quoting_auditor.py": "dc682099d64ac0f92f02ee1a09339695c3910f75e327a941c297dd073b2d7941",
+    "uygulama/secure_skeleton.sh": "cbe8adebed5be084494c0c1f67f490adf336c4dcd62eae1aae1e169c3a99f73f"
+  }
+}

@@ -1,0 +1,33 @@
+test_01_telemetri_veri_seti_yukleme_ve_dogrulama (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_01_telemetri_veri_seti_yukleme_ve_dogrulama)
+Telemetri dosyas²n²n 4 ana ak²■² eksiksiz ierdi­ini teyit eder. ... ok
+test_02_referans_temiz_akis_gecikme_ve_sifir_kayip (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_02_referans_temiz_akis_gecikme_ve_sifir_kayip)
+¦deal a­ ortam²nda s²f²r kay²p ve sabit gecikmenin hesapland²­²n² do­rular. ... ok
+test_03_voip_rtp_gecikme_hesaplama (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_03_voip_rtp_gecikme_hesaplama)
+VoIP ak²■²nda ortalama, minimum ve maksimum tek y÷nl³ gecikmeyi test eder. ... ok
+test_04_voip_rtp_jitter_rfc3393_ve_rfc3550 (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_04_voip_rtp_jitter_rfc3393_ve_rfc3550)
+Gecikme de­i■imlerinin (jitter) pozitif ve beklenen aral²kta ²kt²­²n² do­rular. ... ok
+test_05_voip_rtp_paket_kaybi_tespiti (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_05_voip_rtp_paket_kaybi_tespiti)
+Eksik s²ra numaralar²ndan hareketle kaybolan paketlerin ve oran²n²n tespiti do­rulan²r. ... ok
+test_06_tcp_rtt_gecikme_hesaplama (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_06_tcp_rtt_gecikme_hesaplama)
+TCP segmentlerinin ACK geli■ s³relerinden RTT hesaplamas²n²n do­rulu­u test edilir. ... ok
+test_07_tcp_retransmission_ve_kayip_orani (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_07_tcp_retransmission_ve_kayip_orani)
+Tekrarlanan segmentlerden TCP yeniden iletim say²s²n²n ve oran²n²n tespiti do­rulan²r. ... ok
+test_08_dos_saldiri_akisi_asiri_gecikme_ve_kayip (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_08_dos_saldiri_akisi_asiri_gecikme_ve_kayip)
+Trafik patlamas² ve DoS sald²r²s² alt²nda geli■en y³ksek gecikme ve kayb² test eder. ... ok
+test_09_sla_uyumluluk_ve_ihlal_sebepleri (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_09_sla_uyumluluk_ve_ihlal_sebepleri)
+SLA limitleri a■²ld²­²nda ihlal gerekelerinin listelendi­ini do­rular. ... ok
+test_10_ozel_sla_esik_degerleri_enjeksiyonu (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_10_ozel_sla_esik_degerleri_enjeksiyonu)
+Kullan²c² tan²ml² ok s²k² SLA limitleri verildi­inde ihlal tespitini do­rular. ... ok
+test_11_toplu_telemetri_raporlama (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_11_toplu_telemetri_raporlama)
+T³m a­ telemetri veri setinin toplu analizinde ³retilen konsolide raporu do­rular. ... ok
+test_12_tekil_paket_gecikme_sinir_durumu (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_12_tekil_paket_gecikme_sinir_durumu)
+Yaln²zca tek bir pakete sahip u durumda jitter ve kay²p hesaplar²n²n ÷kmedi­ini do­rular. ... ok
+test_13_negatif_sinir_senaryolari_grup_1 (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_13_negatif_sinir_senaryolari_grup_1)
+NEG_01'den NEG_04'e kadar olan istisnalar²n eksiksiz f²rlat²ld²­²n² do­rular. ... ok
+test_14_negatif_sinir_senaryolari_grup_2 (portfolio.hafta_10.gun_067.tests.test_network_performance_qos_analyzer.TestNetworkPerformanceQoSAnalyzer.test_14_negatif_sinir_senaryolari_grup_2)
+NEG_05'ten NEG_09'a kadar olan DoS kayb², s²ra hatas², biim ve saat kaymas² istisnalar²n² test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.009s
+
+OK

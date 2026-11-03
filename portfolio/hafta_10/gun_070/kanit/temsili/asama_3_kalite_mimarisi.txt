@@ -1,0 +1,70 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+====================================================================================================
+           AŞAMA 03: AĞ ANALİZİ VE GÜVENLİĞİ — 6 KALİTE SÜTUNU & KABUL MİMARİSİ
+====================================================================================================
+
+               +-------------------------------------------------------------+
+               |        AŞAMA 03 KABUL MOTORU: Asama3KaliteOzetiAnalizor     |
+               |       (ISO/IEC 27001, NIST SP 800-86, RFC 3393 / 3550)      |
+               +-------------------------------------------------------------+
+                                              |
+                +-----------------------------+-----------------------------+
+                |                                                           |
+                v                                                           v
+   +---------------------------+                               +---------------------------+
+   |   GİRDİ DOĞRULAMA (JSON)  |                               |    6 KALİTE SÜTUNU        |
+   | - Kök Anahtar Teyidi      |                               |    BAŞARI MATRİSİ         |
+   | - Aşama ID = "03"         |                               |    (Tüm Günler 100/100)   |
+   | - Lisans Politikası       |                               +---------------------------+
+   +---------------------------+                                             |
+                |                                                            |
+                +-----------------------------+------------------------------+
+                                              |
+     =========================================v=========================================
+     |                        6 TEMEL AĞ ANALİZİ KALİTE SÜTUNU                        |
+     ===================================================================================
+     |                                                                                 |
+     | [Sütun 1] PAKET YAKALAMA VE EKRAN FİLTRELERİ (Gün 51 - 57)                      |
+     |           └─► PCAP ayrıştırma, filtre sözdizimi, hiyerarşi, uç nokta matrisi    |
+     |                                                                                 |
+     | [Sütun 2] TCP AKIŞ TAKİBİ VE FİLTRE OTOMASYONU (Gün 58 - 60)                    |
+     |           └─► Follow TCP Stream, Boole mantığı, PCAP arındırma / sanitizasyon   |
+     |                                                                                 |
+     | [Sütun 3] TEMEL L2-L4 AĞ PROTOKOLLERİ GÜVENLİĞİ (Gün 61 - 63)                   |
+     |           └─► ARP zehirlenmesi, ICMP keşfi, Rogue DHCP ve DNS çözümleme riskleri|
+     |                                                                                 |
+     | [Sütun 4] UYGULAMA KATMANI VE ŞİFRELEME (Gün 64 - 65)                           |
+     |           └─► HTTP vs TLS 1.3 ayrımı, SNI analizi, protokol zaman çizelgesi     |
+     |                                                                                 |
+     | [Sütun 5] AĞ ANOMALİLERİ VE TEHDİT AVCILIĞI (Gün 66 - 67)                       |
+     |           └─► DGA/Tünelleme, Smuggling, Paket kaybı, RTT, RFC 3393 Jitter       |
+     |                                                                                 |
+     | [Sütun 6] UYUM, GİZLİLİK VE ADLİ RAPORLAMA (Gün 68 - 70)                        |
+     |           └─► PII maskeleme (/24, MAC, TCKN), Wireshark adli skorlama, Kabul    |
+     |                                                                                 |
+     ===================================================================================
+                                              |
+                                              v
+               +-------------------------------------------------------------+
+               |        AŞAMA 03 METRİK TOPLAMA VE DENETİM HESAPLAMASI       |
+               |  - Denetlenen Gün Sayısı     : 20 Gün (%100)                |
+               |  - Çalıştırılan Birim Test   : 280 / 280 PASS (%100)        |
+               |  - Negatif Sınır Kontrolü    : 180 / 180 PASS (%100)        |
+               |  - Toplam Adli Önerme        : 460 Doğrulandı               |
+               |  - Üretilen Toplam Eser      : 320 Eser Dosyası             |
+               |  - Lisans Uyum Oranı         : %100 (Sıfır Açık Kaynak)     |
+               +-------------------------------------------------------------+
+                                              |
+                                              v
+               +-------------------------------------------------------------+
+               |        KRİPTOGRAFİK AŞAMA KABUL SERTİFİKASI (SHA-256)       |
+               |  Seri No: CERT-STAGE03-2026-71755BCF938A                    |
+               |  Sahibi : Seydi Eryılmaz (@seydivakkas)                     |
+               |  Karar  : YETERLİ / KABUL EDİLDİ (PASS)                     |
+               |  İmza   : 71755bcf938aaec99095a69f7d84ad1f6cf3f5addb1...   |
+               +-------------------------------------------------------------+
+
+====================================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+====================================================================================================

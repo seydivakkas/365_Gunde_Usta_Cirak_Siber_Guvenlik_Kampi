@@ -1,0 +1,25 @@
+================================================================================
+G034: NEGATIF KONTROL VE BOZUK METADATA SEMA DOGRULAMA TEST RAPORU
+================================================================================
+Incelenen Bozuk Veri Kaydi Sayisi: 6
+Beklenen Davranis: Butun bozuk kayitlar guvenle reddedilmeli, sistem cokmemelidir.
+--------------------------------------------------------------------------------
+Analiz Edilen Gecerli Kayit Sayisi : 0 (Beklenen: 0)
+Reddedilen Hatali Kayit Sayisi    : 6 (Beklenen: 6)
+--------------------------------------------------------------------------------
+AYRINTILI REDDETME GEREKCELERI:
+[1] Reddetme Nedeni: EKSIK_ALAN: 'file_name' alani zorunludur.
+     Gelen Ham Veri : {'id': 'ERR-001', 'relative_path': 'sample_files/missing_name.pdf', 'claimed_extension': '.pdf', 'reported_mime': 'application/pdf'}
+[2] Reddetme Nedeni: EKSIK_ALAN: 'relative_path' alani zorunludur.
+     Gelen Ham Veri : {'id': 'ERR-002', 'file_name': 'missing_path.pdf', 'claimed_extension': '.pdf', 'reported_mime': 'application/pdf'}
+[3] Reddetme Nedeni: GECERSIZ_ISIM: Dosya adi bos olamaz.
+     Gelen Ham Veri : {'id': 'ERR-003', 'file_name': '   ', 'relative_path': 'sample_files/valid.pdf', 'claimed_extension': '.pdf'}
+[4] Reddetme Nedeni: GECERSIZ_YOL: Dosya yolu bos olamaz.
+     Gelen Ham Veri : {'id': 'ERR-004', 'file_name': 'empty_path.pdf', 'relative_path': '   ', 'claimed_extension': '.pdf'}
+[5] Reddetme Nedeni: KAYIT_SOZLUK_DEGIL: Girdi bir JSON objesi olmalidir.
+     Gelen Ham Veri : invalid_non_dict_string_item
+[6] Reddetme Nedeni: KAYIT_SOZLUK_DEGIL: Girdi bir JSON objesi olmalidir.
+     Gelen Ham Veri : 123456
+--------------------------------------------------------------------------------
+SONUC: Butun negatif kontrol senaryolari %100 basariyla dogrulanmistir.
+================================================================================

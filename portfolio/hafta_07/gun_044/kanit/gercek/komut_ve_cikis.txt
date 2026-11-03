@@ -1,0 +1,57 @@
+=== KOMUT SATIRI YÜRÜTME KAYDI ===
+Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe portfolio/hafta_07/gun_044/uygulama/ethernet_frame_analyzer.py --frames-input portfolio/hafta_07/gun_044/ornek_veri/sample_ethernet_frames.json --output portfolio/hafta_07/gun_044/kanit/gercek/ethernet_cerceve_analiz_raporu.txt
+Çıkış Kodu: 0
+
+--- STDOUT ÇIKTISI ---
+# G044: Ethernet, MAC ve Çerçeve Yapısı Analiz Raporu
+
+> **ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR**  
+> **Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)**  
+> Bu yazılım ve eğitim içeriği yalnızca görüntüleme ve kişisel öğrenim amaçlıdır.
+
+---
+
+## 1. Yönetici Özeti ve Analiz Kapsamı
+- **Proje Başlığı:** G044 - Ethernet, MAC ve Çerçeve Yapısı Analiz Envanteri
+- **Açıklama:** Yerel ağ (LAN) üzerinde yakalanmış 3 farklı Ethernet çerçeve modeli (Unicast IPv4, Broadcast ARP, 802.1Q VLAN)
+- **Yakalama Arayüzü:** eth0 (Promiscuous Mode / Ham Çerçeve Dinleme)
+- **Analiz Edilen Çerçeve Sayısı:** 3 Adet Ethernet Çerçevesi
+- **Tarih:** 2026-10-27
+
+## 2. Ethernet Çerçeveleri Alan Etiketleme ve Ayrıştırma Tablosu
+
+| Çerçeve ID | Tip / Protokol | Hedef MAC & İletim Türü | Kaynak MAC & OUI | EtherType | Boyut (Bayt) | FCS (CRC32) |
+|---|---|---|---|---|---|---|
+| **ETH-001** | Ethernet II | `00:50:56:C0:00:08` (UNICAST (Tek Noktaya Yayın)) | `00:0C:29:12:34:56` (VMware Inc. (Auto-generated Virtual Machine)) | `0x0800` (IPv4 (Internet Protocol Version 4)) | 78 B (Veri: 60, Dolgu: 0) | `0x4a12bc90` |
+| **ETH-002** | Ethernet II | `FF:FF:FF:FF:FF:FF` (BROADCAST (Genel Yayın - Tüm Düğümler)) | `00:0C:29:12:34:56` (VMware Inc. (Auto-generated Virtual Machine)) | `0x0806` (ARP (Address Resolution Protocol)) | 64 B (Veri: 28, Dolgu: 18) | `0x89ab12cd` |
+| **ETH-003** | Ethernet II (802.1Q Tagged) | `01:00:5E:00:00:FB` (MULTICAST (Çok Noktaya Yayın)) | `00:0C:29:12:34:56` (VMware Inc. (Auto-generated Virtual Machine)) | `0x0800` (IPv4 (Internet Protocol Version 4)) | 86 B (Veri: 64, Dolgu: 0) | `0xfe32110a` |
+
+## 3. MAC Adresi Bit Seviyesi Analizi ve Çerçeve Anatomisi
+### I/G (Individual / Group) Biti:
+- MAC adresinin ilk baytının en önemsiz biti (LSB - Least Significant Bit) **I/G biti** olarak adlandırılır.
+- Eğer bu bit **0** ise adres bir **Unicast** (tekil cihaz) adresidir.
+- Eğer bu bit **1** ise adres bir **Multicast** veya **Broadcast** adresidir.
+- **Kritik Güvenlik Kuralı:** IEEE 802.3 standardına göre bir çerçevenin **Kaynak MAC (Source MAC)** adresinde I/G biti kesinlikle 1 olamaz. Kaynak MAC multicast ise paket doğrudan ağ donanımları veya güvenlik duvarları tarafından saldırı/spoofing kabul edilerek düşürülmelidir.
+
+### U/L (Universal / Local) Biti:
+- İlk baytın sondan ikinci biti **U/L biti**dir.
+- **0** ise adres IEEE tarafından üreticiye tescillenmiş küresel benzersiz bir adrestir (OUI).
+- **1** ise adres yerel ağ yöneticisi veya yazılım tarafından dinamik olarak tanımlanmıştır (Locally Administered / MAC Spoofing göstergesi olabilir).
+
+### Asgari Çerçeve Boyutu ve Dolgulama (Padding):
+- Ethernet CSMA/CD çarpışma algılama mekanizması gereği kablo üzerindeki asgari çerçeve boyutu **64 bayttır**.
+- Eğer üst katmandan gelen veri 46 baytın altında kalırsa (örneğin 28 baytlık standart bir ARP paketi), çerçeveye otomatik olarak **dolgu baytları (padding)** eklenerek toplam boyut 64 bayta tamamlanır.
+
+## 4. Savunma ve Tespit Kılavuzu
+1. **Port Security (Bağlantı Noktası Güvenliği):** Ağ anahtarı portlarında MAC adresi sınırlaması (örneğin port başına azami 1 veya 2 MAC) yapılarak MAC Flooding (CAM tablosu taşırma) saldırıları engellenmelidir.
+2. **Dynamic ARP Inspection (DAI):** Anahtar üzerinde DHCP Snooping veritabanı ile gelen ARP isteklerinin IP-MAC eşleşmesi doğrulanmalı; sahte ARP yanıtları (ARP Spoofing) engellenmelidir.
+3. **Runt ve Giant Çerçeve Filtreleme:** Ağ kartı ve switch seviyesinde 64 bayt altı (Runt) veya 1518 bayt üstü standart dışı (Giant) çerçeveler elektriksel gürültü veya saldırı girişimi sayılarak otomatik filtrelenmelidir.
+
+---
+*Rapor Antigravity Didaktik Ethernet Analiz Motoru tarafından otomatik üretilmiştir.*
+
+[+] Ethernet analiz raporu kaydedildi: portfolio/hafta_07/gun_044/kanit/gercek/ethernet_cerceve_analiz_raporu.txt
+
+
+--- STDERR ÇIKTISI ---
+

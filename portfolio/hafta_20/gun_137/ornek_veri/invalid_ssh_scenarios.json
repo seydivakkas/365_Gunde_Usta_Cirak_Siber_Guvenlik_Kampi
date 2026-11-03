@@ -1,0 +1,150 @@
+{
+  "_aciklama": "SSH Anahtar ve Sunucu Güvenliği 9 Adet Negatif ve Sınır Durum Test Senaryosu",
+  "scenarios": [
+    {
+      "id": "NEG_SSH_01",
+      "baslik": "Boş SSH Envanteri Sınır Durumu",
+      "aciklama": "Hiç anahtar ve yetkili kullanıcı bulunmaması durumu. Güvenlik motorunun istisna fırlatmadan varsayılan değerlendirme yapması.",
+      "ssh_keys": [],
+      "authorized_keys": [],
+      "sshd_config": {
+        "permit_root_login": "no",
+        "password_authentication": false,
+        "pubkey_authentication": true,
+        "permit_empty_passwords": false,
+        "x11_forwarding": false,
+        "max_auth_tries": 3,
+        "client_alive_interval": 300,
+        "client_alive_count_max": 2
+      },
+      "beklenen_kural": "TAM_GÜVENLİ_VEYA_SIFIR_BULGU",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SSH_02",
+      "baslik": "Gevşek Özel Anahtar Dosya İzinleri (0644)",
+      "aciklama": "Özel anahtarın yetkisiz kullanıcılar tarafından okunabilir olması (CWE-732 / T1552.004).",
+      "ssh_keys": [
+        {
+          "name": "id_rsa",
+          "path": "/home/dev/.ssh/id_rsa",
+          "key_type": "rsa",
+          "key_bits": 3072,
+          "is_private": true,
+          "is_passphrase_protected": true,
+          "file_mode": "0644"
+        }
+      ],
+      "authorized_keys": [],
+      "sshd_config": { "permit_root_login": "no" },
+      "beklenen_kural": "SSH-001",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SSH_03",
+      "baslik": "Kullanımdan Kaldırılmış Güvensiz DSA Anahtarı",
+      "aciklama": "1024-bit DSA anahtarının kullanılması (CWE-327 / RFC 4253 / NIST).",
+      "ssh_keys": [
+        {
+          "name": "id_dsa",
+          "path": "/home/dev/.ssh/id_dsa",
+          "key_type": "dsa",
+          "key_bits": 1024,
+          "is_private": true,
+          "is_passphrase_protected": true,
+          "file_mode": "0600"
+        }
+      ],
+      "authorized_keys": [],
+      "sshd_config": { "permit_root_login": "no" },
+      "beklenen_kural": "SSH-003",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SSH_04",
+      "baslik": "Kısa ve Zayıf RSA Anahtar Uzunluğu (< 2048 bit)",
+      "aciklama": "1024-bit RSA anahtarının kullanılması (CWE-326 / NIST SP 800-131A).",
+      "ssh_keys": [
+        {
+          "name": "id_rsa",
+          "path": "/home/dev/.ssh/id_rsa",
+          "key_type": "rsa",
+          "key_bits": 1024,
+          "is_private": true,
+          "is_passphrase_protected": true,
+          "file_mode": "0600"
+        }
+      ],
+      "authorized_keys": [],
+      "sshd_config": { "permit_root_login": "no" },
+      "beklenen_kural": "SSH-004",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SSH_05",
+      "baslik": "Gevşek authorized_keys Dosya İzinleri (0666)",
+      "aciklama": "authorized_keys dosyasının başkalarınca yazılabilir olması (CWE-732 / T1098.004).",
+      "ssh_keys": [],
+      "authorized_keys": [
+        {
+          "user": "webmaster",
+          "key_type": "ssh-ed25519",
+          "key_bits": 256,
+          "file_path": "/home/webmaster/.ssh/authorized_keys",
+          "file_mode": "0666"
+        }
+      ],
+      "sshd_config": { "permit_root_login": "no" },
+      "beklenen_kural": "SSH-005",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SSH_06",
+      "baslik": "Doğrudan Root Girişine İzin Verilmiş (PermitRootLogin yes)",
+      "aciklama": "Root kullanıcısının SSH ile oturum açabilmesi (CIS 5.2.5 / CWE-250 / T1078.003).",
+      "ssh_keys": [],
+      "authorized_keys": [],
+      "sshd_config": {
+        "permit_root_login": "yes"
+      },
+      "beklenen_kural": "SSH-007",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SSH_07",
+      "baslik": "Parola ile Kimlik Doğrulamanın Açık Olması",
+      "aciklama": "PasswordAuthentication yes yapılandırması (CIS 5.2.9 / CWE-307 / T1110.001).",
+      "ssh_keys": [],
+      "authorized_keys": [],
+      "sshd_config": {
+        "password_authentication": true
+      },
+      "beklenen_kural": "SSH-008",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SSH_08",
+      "baslik": "Boş Parola ile Giriş İzni (PermitEmptyPasswords yes)",
+      "aciklama": "Parolasız hesapların SSH ile şifresiz oturum açabilmesi (CIS 5.2.11 / CWE-258 / T1078).",
+      "ssh_keys": [],
+      "authorized_keys": [],
+      "sshd_config": {
+        "permit_empty_passwords": true
+      },
+      "beklenen_kural": "SSH-009",
+      "beklenen_sonuc": "PASS"
+    },
+    {
+      "id": "NEG_SSH_09",
+      "baslik": "Aşırı Yüksek Giriş Denemesi Sınırı (MaxAuthTries > 4)",
+      "aciklama": "MaxAuthTries 10 atanması sonucu kaba kuvvet saldırılarına tolerans gösterilmesi (CIS 5.2.7).",
+      "ssh_keys": [],
+      "authorized_keys": [],
+      "sshd_config": {
+        "max_auth_tries": 10
+      },
+      "beklenen_kural": "SSH-010",
+      "beklenen_sonuc": "PASS"
+    }
+  ]
+}

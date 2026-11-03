@@ -1,0 +1,81 @@
+{
+  "gun": 128,
+  "hafta": 19,
+  "konu": "Windows güvenlik merkezi ve Defender",
+  "lisans": "OZEL LISANS - TUM HAKLAR SAKLIDIR (c) 2026 Seydi Eryilmaz",
+  "dosyalar": {
+    "README.md": {
+      "sha256": "09542ed1d0f255030b98294f058da275706acd899593bc23a1527f8716d43201",
+      "boyut_byte": 5019
+    },
+    "ders.md": {
+      "sha256": "481981913af8acab457cfd78525d1cfb049c42bcb6495dc852eb4b7b9b8ad06d",
+      "boyut_byte": 11254
+    },
+    "kanit_uretici.py": {
+      "sha256": "4acfd524068037b3e4d4338454f56ad60eecaaedce88b3b4476d003f9f73b449",
+      "boyut_byte": 13339
+    },
+    "rapor.md": {
+      "sha256": "f1e255538aa599e864ac9acececeddedc98f477d9592af42aec22efff1e878e1",
+      "boyut_byte": 5747
+    },
+    "sonuc.json": {
+      "sha256": "ac33620c1f92ff4be8c28941f3576453c677ceaaca045815e595e162752e2916",
+      "boyut_byte": 1139
+    },
+    "soru_cevap.md": {
+      "sha256": "5223d152e4b54ce99077c53c60774965892bdf1c591c07d59bff20d4c8bcc1ad",
+      "boyut_byte": 9692
+    },
+    "kanit/gercek/defender_denetim_raporu.md": {
+      "sha256": "a990830091f657ee5db8b9dad76f9e492be5885d05640c7fe76fa4a8f6aceaf2",
+      "boyut_byte": 3195
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "sha256": "2d9d5941f077ba1b6bf43d6f42c2eae77afdc194e8b21ba983ce05aae1978dca",
+      "boyut_byte": 5920
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "sha256": "beb3591a9c9be953391c7266f6e437053570322e52a699232794c14c14108ddd",
+      "boyut_byte": 2779
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "sha256": "cc3bbeb467b33f2b38cef3e5f0c2fb707496ca9d69d31493400da01c18d3c6d9",
+      "boyut_byte": 3939
+    },
+    "kanit/temsili/defender_mimarisi.txt": {
+      "sha256": "7b3661298c9bc350f16a3e8edd3ab888d99fc2428b8ba910436715e87d930f88",
+      "boyut_byte": 4881
+    },
+    "ornek_veri/defender_baseline_spec.json": {
+      "sha256": "61f6e0c7793d75adbecc33c0c4e31f4e36d049abcaea457b5c58e24d7765bd6f",
+      "boyut_byte": 973
+    },
+    "ornek_veri/invalid_defender_scenarios.json": {
+      "sha256": "d02367626c77ec9a9875986b178bdac8390bce209a5faff2db34d3ef0ee3d41a",
+      "boyut_byte": 3748
+    },
+    "tests/__init__.py": {
+      "sha256": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+      "boyut_byte": 508
+    },
+    "tests/test_windows_defender.py": {
+      "sha256": "fc5eaf1cbdeb63d2f0d6616ae87db87988b2c12eb99b65dfd7b08518ace48e72",
+      "boyut_byte": 16241
+    },
+    "uygulama/__init__.py": {
+      "sha256": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+      "boyut_byte": 508
+    },
+    "uygulama/defender_cli.py": {
+      "sha256": "06fc1fca9582527cb4f042a36a4ecf015e01fb3c41ca5e3d1726b3f3ae5043eb",
+      "boyut_byte": 8225
+    },
+    "uygulama/windows_defender_engine.py": {
+      "sha256": "4593829a8e21eb3658f212899c5613aafa0a88beab101d92f68cdb6955a9975e",
+      "boyut_byte": 25747
+    }
+  },
+  "toplam_dosya_sayisi": 18
+}

@@ -1,0 +1,52 @@
+======================================================================
+GÜN 120: STRIDE & DREAD NEGATİF KONTROL VE ZAFİYET ENGELLEME RAPORU
+Tarih / Saat: 2026-11-02T05:58:31.166065
+======================================================================
+
+[NEG_01] Tedbirsiz Bırakılan Kritik Tehdit ile Canlıya Geçiş Denetimi (CWE-1025)
+  Beklenen Güvenlik Hatası : UnmitigatedThreatSecurityError
+  Yakalanan İstisna        : UnmitigatedThreatSecurityError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: UnmitigatedThreatSecurityError)
+----------------------------------------------------------------------
+[NEG_02] DREAD Hasar Puanı Üst Sınır Aşımı (Damage > 10) (CWE-20)
+  Beklenen Güvenlik Hatası : InvalidDREADScoreError
+  Yakalanan İstisna        : InvalidDREADScoreError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: InvalidDREADScoreError)
+----------------------------------------------------------------------
+[NEG_03] DREAD Tekrarlanabilirlik Alt Sınır İhlali (Reproducibility < 1) (CWE-20)
+  Beklenen Güvenlik Hatası : InvalidDREADScoreError
+  Yakalanan İstisna        : InvalidDREADScoreError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: InvalidDREADScoreError)
+----------------------------------------------------------------------
+[NEG_04] Veri Akışında Tanımsız Kaynak Uç Noktası (CWE-20)
+  Beklenen Güvenlik Hatası : MissingDataFlowEndpointError
+  Yakalanan İstisna        : MissingDataFlowEndpointError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: MissingDataFlowEndpointError)
+----------------------------------------------------------------------
+[NEG_05] Veri Akışında Tanımsız Hedef Uç Noktası (CWE-20)
+  Beklenen Güvenlik Hatası : MissingDataFlowEndpointError
+  Yakalanan İstisna        : MissingDataFlowEndpointError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: MissingDataFlowEndpointError)
+----------------------------------------------------------------------
+[NEG_06] Modelde Bulunmayan Eleman İçin Tehdit Türetme Girişimi (CWE-20)
+  Beklenen Güvenlik Hatası : MissingDataFlowEndpointError
+  Yakalanan İstisna        : MissingDataFlowEndpointError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: MissingDataFlowEndpointError)
+----------------------------------------------------------------------
+[NEG_07] Tanımsız Tehdit ID İçin Tedbir Kaydetme Girişimi (CWE-1025)
+  Beklenen Güvenlik Hatası : STRIDEModelingSecurityError
+  Yakalanan İstisna        : STRIDEModelingSecurityError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: STRIDEModelingSecurityError)
+----------------------------------------------------------------------
+[NEG_08] Güven Sınırı Aşan Yüksek Riskli Akışın Tedbirsiz Kalması (CWE-1025)
+  Beklenen Güvenlik Hatası : UnmitigatedThreatSecurityError
+  Yakalanan İstisna        : UnmitigatedThreatSecurityError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: UnmitigatedThreatSecurityError)
+----------------------------------------------------------------------
+[NEG_09] Geçersiz Türde (String) DREAD Puan Girişi (CWE-20)
+  Beklenen Güvenlik Hatası : InvalidDREADScoreError
+  Yakalanan İstisna        : InvalidDREADScoreError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: InvalidDREADScoreError)
+----------------------------------------------------------------------
+
+TOPLAM TEST EDİLEN: 9, HEPSİ BAŞARILI MI: True

@@ -1,0 +1,70 @@
+======================================================================
+GÜN 126: CLI ETKİLEŞİM VE YÖNETİM KOMUTLARI KANITI
+Tarih/Saat: 2026-11-02T08:57:35.576634
+======================================================================
+
+--- KOMUT: python stage5_cli.py verify-crypto --algorithm AES-256-GCM --key-bits 256 --mode GCM (Kriptografik Algoritma Doğrulama (AES-256-GCM)) ---
+=== Kriptografik Uyumluluk Doğrulaması ===
+Algoritma: AES-256-GCM
+Anahtar/Özet Boyutu: 256 bit
+Mod: GCM
+Rastgelelik Kaynağı: CSPRNG
+Puan: 100.0 / 100
+
+[+] Algoritma ve parametreler NIST SP 800-131A standartlarına tam uygundur.
+
+----------------------------------------------------------------------
+
+--- KOMUT: python stage5_cli.py verify-crypto --algorithm MD5 --key-bits 128 (Zayıf Kriptografik Algoritma Doğrulama (MD5)) ---
+=== Kriptografik Uyumluluk Doğrulaması ===
+Algoritma: MD5
+Anahtar/Özet Boyutu: 128 bit
+Mod: N/A
+Rastgelelik Kaynağı: CSPRNG
+Puan: 70.0 / 100
+
+[!] TESPİT EDİLEN BULGULAR:
+  - Yasaklı/Zayıf Kriptografik Algoritma (QuickCheck): 'MD5' tespit edildi (CWE-327).
+
+----------------------------------------------------------------------
+
+--- KOMUT: python stage5_cli.py audit C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_126\ornek_veri\sample_crypto_architecture_spec.json --format markdown (Tam Aşama 5 Denetimi ve Kalite Sertifikası) ---
+# AŞAMA 5: KRİPTOGRAFİ VE GÜVENLİK MİMARİSİ KALİTE SERTİFİKASI
+**Denetim Kimliği:** `AUD-STAGE5-BBF2A816`  
+**Tarih / Saat:** `2026-11-02T08:57:35.597360`  
+**Hedef Sistem:** `Kurumsal Finansal Güvenlik ve Kimlik Platformu (Aşama 5)`  
+**Denetçi Otoritesi:** `Aşama 5 Kalite ve Kabul Komitesi`  
+
+---
+
+## 1. Yönetici Kararı ve Skor Özeti
+
+### Nihai Karar: ✅ **AŞAMA 5 KABUL EDİLDİ (PASS)**
+
+| Değerlendirme Boyutu | Ağırlık | Alınan Puan | Durum |
+|---|---|---|---|
+| **1. Kriptografik Güvenlik (NIST SP 800-131A/57)** | %40 | 100.0 / 100 | ✅ Başarılı |
+| **2. Mimari İlkeler (Saltzer-Schroeder/NIST SP 800-160)** | %40 | 100.0 / 100 | ✅ Başarılı |
+| **3. Yönetişim ve Doğrulanabilir Kanıt** | %20 | 100.0 / 100 | ✅ Başarılı |
+| **GENEL AŞAMA 5 KALİTE SKORU** | **%100** | **100.0 / 100** | **STAGE_5_ACCEPTED (PASS)** |
+
+---
+
+## 2. Standartlar ve Tasarım Güvencesi Uyumluluğu
+
+> [!IMPORTANT]
+> **AŞAMA 5 MİMARİ İLKELER VE KRİPTOGRAFİ ONAY BEYANI:**
+> 1. **Kriptografik Algoritmalar:** Kırık/eski algoritmalar (MD5, SHA-1, DES, ECB) sıfır toleransla reddedilmiştir.
+> 2. **Saltzer-Schroeder İlkeleri:** Fail-Safe Defaults (Default-Deny) ve En Az Yetki (PoLP) işletilmektedir.
+> 3. **Fail-Secure Arıza İzolasyonu:** Altyapı çöküşlerinde sistem asla açık kapı (Fail-Open) bırakmamaktadır (CWE-636).
+> 4. **Görevler Ayrılığı (SoD):** Çıkar çatışmasına yol açabilecek zehirli rol çiftleri engellenmiştir (CWE-863).
+> 5. **Secrets ve Log Maskeleme:** Kütüklerdeki tüm parolalar ve tokenlar maskelenmiştir (CWE-532).
+
+## 3. Bulgular ve Tespit Edilen Zafiyetler
+
+✅ **Hiçbir kritik bulgu veya zafiyet tespit edilmemiştir. Sistem üretim düzeyinde güvenlidir.**
+
+**İlişkili CWE Referansları:** Yok (Tam Uyum)
+
+
+----------------------------------------------------------------------

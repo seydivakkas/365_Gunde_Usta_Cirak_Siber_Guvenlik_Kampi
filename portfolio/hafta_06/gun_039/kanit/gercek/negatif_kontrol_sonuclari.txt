@@ -1,0 +1,18 @@
+=== G039 NEGAT¦F KONTROL VE HATA YAKALAMA SONUÃLARI ===
+
+Test 1: corrupted_negative_total_copies
+  DURUM: BAÌARILI (Beklenen hata yakaland²)
+  HATA MESAJI: Politika 'BAD-COPIES' iin 'total_copies' negatif olamaz: -1
+
+Test 2: corrupted_non_numeric_days_since_restore
+  DURUM: BAÌARILI (Beklenen hata yakaland²)
+  HATA MESAJI: Politika 'BAD-DAYS' iin 'days_since_last_restore_test' say²sal veya null olmal²d²r.
+
+Test 3: corrupted_missing_policies_key
+  DURUM: BAÌARILI (Beklenen hata yakaland²)
+  HATA MESAJI: Telemetri verisinde zorunlu 'backup_policies' anahtar² bulunamad².
+
+Test 4: corrupted_policy_entry_non_dict
+  DURUM: BAÌARILI (Beklenen hata yakaland²)
+  HATA MESAJI: Politika indeksi 0 geerli bir JSON nesnesi de­il.
+

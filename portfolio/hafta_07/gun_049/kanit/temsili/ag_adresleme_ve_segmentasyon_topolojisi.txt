@@ -1,0 +1,70 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+Bu görsel şema ve topoloji illüstrasyonu, ağ adresleme çalışma kitabının 
+(Mini Proje 6) Katman-2 ve Katman-3 entegrasyonunu, alt ağ segmentasyonunu ve 
+güvenlik denetim mekanizmalarını göstermek amacıyla kavramsal olarak üretilmiştir.
+Gerçek donanım arayüzü veya canlı paket yakalama kanıtı yerine geçmez.
+================================================================================
+
+              +-------------------------------------------------------+
+              |           İNTERNET / DIŞ DÜNYA (WAN - 0.0.0.0/0)      |
+              +-------------------------------------------------------+
+                                          |
+                                          v
+                    +------------------------------------------+
+                    |       MERKEZİ GÜVENLİK DUVARI / ROUTER   |
+                    |            fw-core-01 (DEV-01)           |
+                    |  - Inter-VLAN Routing & State inspection |
+                    |  - 802.1Q Trunk Port & Sub-interfaces   |
+                    |  - Dynamic ARP Inspection (DAI) Trust    |
+                    +------------------------------------------+
+                                          | (802.1Q Trunk)
+       +----------------------------------+-----------------------------------+
+       |                                  |                                   |
++------v------------------+    +----------v-------------+    +----------------v----------------+
+| VLAN 10: YÖNETİM & GÜV. |    |  VLAN 20: SUNUCU / DMZ |    | VLAN 30: İSTEMCİLER (SUPERNET)  |
+| 10.10.10.0/24 (Mask /24)|    | 172.16.20.0/24         |    | 192.168.30.0/23 (Mask /23)      |
+| GW: 10.10.10.1          |    | GW: 172.16.20.1        |    | GW: 192.168.30.1                |
+| DNS: 10.10.10.2 /1.1.1.1|    | DNS: 10.10.10.2 /8.8.8 |    | Hostlar: 192.168.30.1-31.254    |
++-------------------------+    +------------------------+    +---------------------------------+
+       |                                  |                                   |
+       |-- srv-dc01-dns (DEV-02)          |-- srv-web (DEV-04)                |-- pc-finance-01 (DEV-06)
+       |   IP: 10.10.10.2                 |   IP: 172.16.20.10                |   IP: 192.168.30.15
+       |   MAC: 00:50:56:A1:00:02         |   MAC: 00:50:56:B2:00:10          |   MAC: 00:50:56:C3:00:15
+       |                                  |                                   |
+       |-- srv-siem-log (DEV-03)          |-- srv-db (DEV-05)                 |-- pc-dev-02 (DEV-07)
+       |   IP: 10.10.10.50                |   IP: 172.16.20.20                |   IP: 192.168.31.200 (Geçerli /23)
+       |   MAC: 00:50:56:A1:00:50         |   MAC: 00:50:56:B2:00:20          |   MAC: 00:50:56:C3:02:00
+       |                                  |                                   |
+       X [ENJEKTE ANOMALİ DEV-ERR-04]     X [ENJEKTE ANOMALİ DEV-ERR-02]      X [ENJEKTE ANOMALİ ÇAKIŞAN ALT AĞ]
+         IP: 10.10.10.2 (ÇAKIŞMA!)          IP: 172.16.20.0 (NETWORK ID!)       VLAN 35: 192.168.31.0/24
+         -> IP_CAKISMASI ALARMI!            -> KULLANILAMAZ_IP ALARMI!          -> CAKISAN_ALT_AG ALARMI!
+
+                                          |
+                               +----------v-------------+
+                               | VLAN 40: MİSAFİR Wİ-Fİ  |
+                               | 192.168.100.0/24       |
+                               | GW: 192.168.100.1      |
+                               | İZOLASYON: Tam Karantina|
+                               +------------------------+
+                                          |
+                                          |-- guest-phone-88 (DEV-08)
+                                              IP: 192.168.100.88
+                                              MAC: 00:50:56:D4:00:88
+
+================================================================================
+GÜVENLİK VE DENETİM MOTORU ÇALIŞMA PRENSİBİ:
+================================================================================
+1. CIDR Ayrıştırma ve Doğrulama:
+   - IPv4 adresi ve önek uzunluğu (0-32) bit düzeyinde doğrulanır.
+   - Ağ adresi, alt ağ maskesi, wildcard ve broadcast adresleri hesaplanır.
+   - /31 ve /32 özel durumları RFC 3021 standartlarına göre işlenir.
+
+2. Çakışma ve Güvenlik Anomalileri Tespiti:
+   - CAKISAN_ALT_AG: Bir alt ağın adresi başka bir alt ağın aralığına giriyorsa rota belirsizliği (asymmetric routing / packet blackhole) oluşur.
+   - GECERSIZ_AG_GECIDI: Cihazın varsayılan ağ geçidi kendi alt ağında değilse Layer-2 ARP çözülemez, paketler düşer.
+   - KULLANILAMAZ_IP_ATAMASI: Hostlara Network ID (.0) veya Broadcast (.255) atanması işletim sistemlerinde yığın kilitlenmelerine ve broadcast fırtınalarına neden olur.
+   - IP_CAKISMASI (Duplicate IP): Ağda ARP flapping ve oturum kopmalarına yol açar.
+   - IPV6_EUI64_GIZLILIK_SIZINTISI: Donanım MAC adresi IPv6 içine yerleştirildiğinde istemcinin küresel ölçekte parmak izi çıkarılır (RFC 4941 Privacy Extensions ile önlenir).
+================================================================================

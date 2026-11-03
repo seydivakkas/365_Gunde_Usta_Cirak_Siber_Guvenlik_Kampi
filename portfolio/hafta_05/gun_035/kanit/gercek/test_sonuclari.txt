@@ -1,0 +1,33 @@
+test_01_init_state (portfolio.hafta_05.gun_035.tests.test_system_posture_auditor.TestSystemPostureAuditor.test_01_init_state)
+Denetleyicinin ba■lang² durumunun bo■ ve temiz oldu­unu do­rular. ... ok
+test_02_load_valid_telemetry (portfolio.hafta_05.gun_035.tests.test_system_posture_auditor.TestSystemPostureAuditor.test_02_load_valid_telemetry)
+Geerli telemetri anl²k g÷r³nt³s³n³n ba■ar²yla y³klendi­ini test eder. ... ok
+test_03_audit_process_malicious_office_spawn (portfolio.hafta_05.gun_035.tests.test_system_posture_auditor.TestSystemPostureAuditor.test_03_audit_process_malicious_office_spawn)
+winword.exe s³recinin powershell.exe ba■latmas²n² CRITICAL olarak yakalar. ... ok
+test_04_audit_process_masquerading (portfolio.hafta_05.gun_035.tests.test_system_posture_auditor.TestSystemPostureAuditor.test_04_audit_process_masquerading)
+svch0st.exe s³recinin taklit ve Temp dizininden al²■mas²n² yakalar. ... ok
+test_05_audit_service_tampering (portfolio.hafta_05.gun_035.tests.test_system_posture_auditor.TestSystemPostureAuditor.test_05_audit_service_tampering)
+Durdurulmu■ ve devre d²■² b²rak²lm²■ g³venlik duvar²n² (MpsSvc) yakalar. ... ok
+test_06_audit_service_unquoted_path (portfolio.hafta_05.gun_035.tests.test_system_posture_auditor.TestSystemPostureAuditor.test_06_audit_service_unquoted_path)
+Bo■luk ieren ve t²rnaks²z servis yolunu (CloudBackupSvc) HIGH olarak yakalar. ... ok
+test_07_audit_file_integrity_mismatch (portfolio.hafta_05.gun_035.tests.test_system_posture_auditor.TestSystemPostureAuditor.test_07_audit_file_integrity_mismatch)
+De­i■tirilmi■ konfig³rasyon dosyas²n² (MISMATCH) CRITICAL olarak yakalar. ... ok
+test_08_audit_file_integrity_missing (portfolio.hafta_05.gun_035.tests.test_system_posture_auditor.TestSystemPostureAuditor.test_08_audit_file_integrity_missing)
+Taban izgisinde olup diskte bulunamayan kay²p dosyay² (MISSING) yakalar. ... ok
+test_09_audit_file_signature_spoofing (portfolio.hafta_05.gun_035.tests.test_system_posture_auditor.TestSystemPostureAuditor.test_09_audit_file_signature_spoofing)
+PDF uzant²l² fakat MZ PE al²■t²r²labilir ba■l²kl² dosyay² CRITICAL olarak yakalar. ... ok
+test_10_audit_file_signature_double_extension (portfolio.hafta_05.gun_035.tests.test_system_posture_auditor.TestSystemPostureAuditor.test_10_audit_file_signature_double_extension)
+Ãift uzant²l² dosya hilesini (.pdf.exe) HIGH olarak yakalar. ... ok
+test_11_health_score_calculation (portfolio.hafta_05.gun_035.tests.test_system_posture_auditor.TestSystemPostureAuditor.test_11_health_score_calculation)
+T³m zafiyetler tetiklendi­inde sa­l²k puan²n²n k²r²ld²­²n² ve duru■u do­rular. ... ok
+test_12_clean_healthy_posture (portfolio.hafta_05.gun_035.tests.test_system_posture_auditor.TestSystemPostureAuditor.test_12_clean_healthy_posture)
+Tamamen temiz bir telemetri anl²k g÷r³nt³s³nde sa­l²k puan²n²n 100 oldu­unu do­rular. ... ok
+test_13_negative_control_corrupted_telemetry (portfolio.hafta_05.gun_035.tests.test_system_posture_auditor.TestSystemPostureAuditor.test_13_negative_control_corrupted_telemetry)
+Negatif kontrol: Bozuk ■emal² telemetri dosyalar²n²n g³venle reddedildi­ini test eder. ... ok
+test_14_custom_license_presence (portfolio.hafta_05.gun_035.tests.test_system_posture_auditor.TestSystemPostureAuditor.test_14_custom_license_presence)
+Ízel lisans kural² gere­ince dosyalarda 'Ízel Lisans - T³m Haklar² Sakl²d²r' ibaresini denetler. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.011s
+
+OK

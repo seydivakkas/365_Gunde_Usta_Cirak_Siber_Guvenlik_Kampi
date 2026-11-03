@@ -1,0 +1,46 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 138: LINUX GÜVENLİK DUVARI (NFTABLES / UFW) VE NETFILTER MİMARİSİ
+================================================================================
+
+[GELEN AĞ PAKETİ (INGRESS)]
+           |
+           v
++------------------------------------------------------------------------------+
+|                         LINUX ÇEKİRDEĞİ (NETFILTER HOOKS)                    |
+|                                                                              |
+|  [PREROUTING] ----> [ROUTING DECISION] ----> [FORWARD] ----> [POSTROUTING]   |
+|                            |                                        ^        |
+|                            v                                        |        |
+|                         [INPUT]                                  [OUTPUT]    |
++------------------------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------------------------+
+|            NFTABLES / UFW GÜVENLİK DENETİM VE FİLTRELEME ADIMLARI            |
++------------------------------------------------------------------------------+
+| 1. LOOPBACK & ANTI-SPOOFING KONTROLÜ:                                        |
+|    • iif "lo" accept (Yerel süreçler arası trafik serbest)                  |
+|    • ip saddr 127.0.0.0/8 iif != "lo" drop (Sahte loopback blokajı!)         |
+|                                                                              |
+| 2. DURUM DENETİMLİ (STATEFUL) BAĞLANTI TAKİBİ (CONNTRACK):                   |
+|    • ct state established,related accept (Kurulmuş meşru oturumlar geçer)   |
+|    • ct state invalid drop (Bozuk/sahte TCP/IP bayrakları derhal düşürülür!)|
+|                                                                              |
+| 3. MEŞRU VE YETKİLİ SERVİS KURALLARI (INGRESS WHITELIST):                    |
+|    • tcp dport 22 ip saddr 10.0.10.0/24 limit rate 10/minute accept          |
+|    • tcp dport { 80, 443 } ct state new accept                              |
+|    • Telnet (23), SMB (445), RDP (3389) KESİNLİKLE YASAK!                   |
+|                                                                              |
+| 4. VARSAYILAN POLİTİKA (DEFAULT DENY - CIS 3.4 & 3.5):                       |
+|    • log prefix "[NFTABLES-DROPPED]: " flags all counter drop                |
+|    • input policy: DROP  |  forward policy: DROP                             |
++------------------------------------------------------------------------------+
+                             |
+                             v
+           [GÜVENLİ YEREL SÜREÇ (APPLICATION / DAEMON)]
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

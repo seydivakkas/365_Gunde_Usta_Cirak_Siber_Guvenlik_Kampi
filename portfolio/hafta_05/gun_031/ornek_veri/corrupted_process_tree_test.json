@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "title": "Bozuk ve Döngüsel Süreç Ağaçları Test Veri Kümesi",
+    "description": "Negatif kontrol, döngü tespiti (cycle detection) ve adli doğrulama için hazırlanmış hatalı süreçler (G031-SC2)",
+    "created_at": "2026-10-27T08:00:00Z"
+  },
+  "corrupted_test_cases": [
+    {
+      "case_id": "CYCLE-01",
+      "issue": "Döngüsel Ebeveyn-Çocuk İlişkisi (Circular PPID-PID Loop)",
+      "processes": [
+        {
+          "pid": 5001,
+          "ppid": 5002,
+          "name": "loop_a.exe",
+          "path": "C:\\Windows\\loop_a.exe"
+        },
+        {
+          "pid": 5002,
+          "ppid": 5001,
+          "name": "loop_b.exe",
+          "path": "C:\\Windows\\loop_b.exe"
+        }
+      ],
+      "expected_error": "CIRCULAR_PROCESS_LOOP"
+    },
+    {
+      "case_id": "INVALID-PID-02",
+      "issue": "Negatif veya Geçersiz Süreç Numarası (Negative PID)",
+      "processes": [
+        {
+          "pid": -99,
+          "ppid": 0,
+          "name": "negative_pid.exe",
+          "path": "C:\\Windows\\negative_pid.exe"
+        }
+      ],
+      "expected_error": "INVALID_PID"
+    },
+    {
+      "case_id": "MISSING-NAME-03",
+      "issue": "Eksik Süreç Adı (Process Name Boş)",
+      "processes": [
+        {
+          "pid": 6010,
+          "ppid": 4,
+          "name": "",
+          "path": "C:\\Windows\\unnamed.exe"
+        }
+      ],
+      "expected_error": "MISSING_PROCESS_NAME"
+    },
+    {
+      "case_id": "DUPLICATE-PID-04",
+      "issue": "Mükerrer PID Çakışması (Duplicate PID)",
+      "processes": [
+        {
+          "pid": 7001,
+          "ppid": 4,
+          "name": "first_proc.exe",
+          "path": "C:\\Windows\\first_proc.exe"
+        },
+        {
+          "pid": 7001,
+          "ppid": 4,
+          "name": "second_proc.exe",
+          "path": "C:\\Windows\\second_proc.exe"
+        }
+      ],
+      "expected_error": "DUPLICATE_PID_DETECTED"
+    }
+  ]
+}

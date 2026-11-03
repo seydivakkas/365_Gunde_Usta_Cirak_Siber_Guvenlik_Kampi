@@ -1,0 +1,18 @@
+{
+  "README.md": "9144fe92e5d0302ad736eca553967ef301ae636abd84b9f684f8d8ac14e9cc89",
+  "ders.md": "635e775ae7dfe281516ec819b4da7cd83dc51cfc3e13172a6ad6e383895a21f6",
+  "rapor.md": "b755baedff7bebf1beef03cd5ffad5e38a6930a8002827447193b26bb9ef64fd",
+  "sonuc.json": "2a941b4b1fb7f1c0d55ff111b4a6e0ab0caf911fc3fa20cc3e78be19844b01f5",
+  "soru_cevap.md": "d71b5593536cc11f5d2d255ca79235e27029f2578f1d76e606ee3c9c2bf2890a",
+  "kanit/gercek/komut_ve_cikis.txt": "b32a5db3c3d2db015cebf736b2f8c8312561225fc80548062fda9f59b2925afc",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "c31fc3a62d2d5ae0d54556194854a057c67f8d44bbd03357dd45381b78c4aaf4",
+  "kanit/gercek/test_sonuclari.txt": "f3e0e35d4f2b31ddecd0712497ab2817add19f9b4248c7a572cd888c3f3b3bf4",
+  "kanit/gercek/windows_linux_karsilastirma_raporu.txt": "65c08d072d2b1b85a76452c4e7f8d54071f03fb19e8fb55faf583e032fcb316a",
+  "kanit/temsili/windows_linux_guvenlik_mimarisi.txt": "1370138e46e3b73d308f300e00327e2bebed84945e30ae28fc16be36ab32fd06",
+  "ornek_veri/baseline_windows_linux_10_indicators.json": "cfe916f4c0773e12a68118eebb27a292e9593b1a53cb00d99be4589601a6c51b",
+  "ornek_veri/corrupted_comparison_test_cases.json": "91a50e42bb9e9462011069e4af6fbb4eff878bec4f56b8b19d2ad88beb1b7713",
+  "tests/__init__.py": "4630d441493b0cd2428fe256a143a03c7410865ae215712b0fa878f5c551cc36",
+  "tests/test_windows_linux_security_comparator.py": "8940ca930a9bde5049afcd1b29785d46866b05490b70b09b6f89149bea9e210b",
+  "uygulama/__init__.py": "6634d590c7d65329b4d2732ee508f788aa0a278b750b8ea911afdc1a5b4ed951",
+  "uygulama/windows_linux_security_comparator.py": "9a384a15de08526c377868d1940e7c07a5b9bf62c6240a5b960ca30400f18bd2"
+}

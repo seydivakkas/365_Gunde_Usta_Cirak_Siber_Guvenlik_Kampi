@@ -1,0 +1,106 @@
+================================================================================
+GÜN 090: ADLİ BİLİŞİM VE ZAMAN NORMALİZASYON CLI KOMUT VE ÇIKTILARI
+Kayıt Zamanı (UTC): 2026-11-01T20:20:53Z
+================================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_13\gun_090\uygulama\forensic_timeline_runner.py --input-logs C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_13\gun_090\ornek_veri\sample_multisource_logs.json
+[Çıkış Kodu: 0]
+[STDOUT]:
+=====================================================================================
+ADLİ BİLİŞİM VE OLAY MÜDAHALESİ — UTC ZAMAN DAMGASI NORMALİZASYON RAPORU
+=====================================================================================
+Toplam İncelenen Olay Sayısı: 6
+Rapor Oluşturma Zamanı (UTC): 2026-11-01T20:20:53Z
+-------------------------------------------------------------------------------------
+SIRA  | UTC ZAMAN DAMGASI    | KAYNAK ID          | RİSK     | OLAY TİPİ
+-------------------------------------------------------------------------------------
+1     | 2026-10-25T19:50:05Z | WIN-DC-ROOT-01     | LOW      | KERBEROS_TGS_REQUEST (Servis bileti talep edildi.)
+2     | 2026-11-01T14:29:45Z | SRV-AUTH-NYC-01    | LOW      | TOKEN_ISSUED (OAuth2 Bearer belirteci olusturuldu.)
+3     | 2026-11-01T14:30:00Z | SRV-API-LON-02     | INFO     | DATABASE_QUERY (Kullanici veritabani tablosu okundu.)
+4     | 2026-11-01T14:30:15Z | SRV-WEB-IST-01     | LOW      | AUTHENTICATION_SUCCESS (Kullanici basariyla oturum acti.)
+5     | 2026-11-01T14:30:15Z | IOT-SENSOR-ANR-05  | MEDIUM   | TEMPERATURE_ALERT (Sunucu odasi sicakligi yuksek (28 C).)
+6     | 2026-11-01T14:30:20Z | FW-EDGE-TKY-01     | HIGH     | PACKET_DROP (Port taramasi engellendi (Port 445).)
+=====================================================================================
+--------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_13\gun_090\uygulama\forensic_timeline_runner.py --input-logs C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_13\gun_090\ornek_veri\sample_multisource_logs.json --json-output
+[Çıkış Kodu: 0]
+[STDOUT]:
+[
+  {
+    "kaynak_id": "WIN-DC-ROOT-01",
+    "zaman_damgasi_orijinal": 134374314050000000,
+    "utc_zaman_damgasi": "2026-10-25T19:50:05Z",
+    "unix_epoch_saniye": 1792957805.0,
+    "saat_dilimi_offset_dakika": 0,
+    "is_aware": true,
+    "olay_tipi": "KERBEROS_TGS_REQUEST",
+    "mesaj": "Servis bileti talep edildi.",
+    "risk_seviyesi": "LOW"
+  },
+  {
+    "kaynak_id": "SRV-AUTH-NYC-01",
+    "zaman_damgasi_orijinal": "2026-11-01T10:29:45-04:00",
+    "utc_zaman_damgasi": "2026-11-01T14:29:45Z",
+    "unix_epoch_saniye": 1793543385.0,
+    "saat_dilimi_offset_dakika": -240,
+    "is_aware": true,
+    "olay_tipi": "TOKEN_ISSUED",
+    "mesaj": "OAuth2 Bearer belirteci olusturuldu.",
+    "risk_seviyesi": "LOW"
+  },
+  {
+    "kaynak_id": "SRV-API-LON-02",
+    "zaman_damgasi_orijinal": "2026-11-01T14:30:00Z",
+    "utc_zaman_damgasi": "2026-11-01T14:30:00Z",
+    "unix_epoch_saniye": 1793543400.0,
+    "saat_dilimi_offset_dakika": 0,
+    "is_aware": true,
+    "olay_tipi": "DATABASE_QUERY",
+    "mesaj": "Kullanici veritabani tablosu okundu.",
+    "risk_seviyesi": "INFO"
+  },
+  {
+    "kaynak_id": "SRV-WEB-IST-01",
+    "zaman_damgasi_orijinal": "2026-11-01T17:30:15+03:00",
+    "utc_zaman_damgasi": "2026-11-01T14:30:15Z",
+    "unix_epoch_saniye": 1793543415.0,
+    "saat_dilimi_offset_dakika": 180,
+    "is_aware": true,
+    "olay_tipi": "AUTHENTICATION_SUCCESS",
+    "mesaj": "Kullanici basariyla oturum acti.",
+    "risk_seviyesi": "LOW"
+  },
+  {
+    "kaynak_id": "IOT-SENSOR-ANR-05",
+    "zaman_damgasi_orijinal": 1793543415,
+    "utc_zaman_damgasi": "2026-11-01T14:30:15Z",
+    "unix_epoch_saniye": 1793543415.0,
+    "saat_dilimi_offset_dakika": 0,
+    "is_aware": true,
+    "olay_tipi": "TEMPERATURE_ALERT",
+    "mesaj": "Sunucu odasi sicakligi yuksek (28 C).",
+    "risk_seviyesi": "MEDIUM"
+  },
+  {
+    "kaynak_id": "FW-EDGE-TKY-01",
+    "zaman_damgasi_orijinal": "2026-11-01T23:30:20+09:00",
+    "utc_zaman_damgasi": "2026-11-01T14:30:20Z",
+    "unix_epoch_saniye": 1793543420.0,
+    "saat_dilimi_offset_dakika": 540,
+    "is_aware": true,
+    "olay_tipi": "PACKET_DROP",
+    "mesaj": "Port taramasi engellendi (Port 445).",
+    "risk_seviyesi": "HIGH"
+  }
+]
+--------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_13\gun_090\uygulama\forensic_timeline_runner.py --audit-skew
+[Çıkış Kodu: 0]
+[STDOUT]:
+[+] Saat Sapması (Clock Skew) Denetim Raporu:
+    - İstemci Zamanı:   2026-11-01T14:32:10Z
+    - Referans Zamanı:  2026-11-01T14:30:00Z
+    - Sapma Farkı:      130.0 saniye
+    - Güvenli mi?:      True
+    - Hüküm:            GÜVENLİ: Saat sapması (130.00 sn) izin verilen 300 sn sınırının altındadır.
+--------------------------------------------------------------------------------

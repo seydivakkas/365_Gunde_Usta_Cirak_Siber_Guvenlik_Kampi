@@ -1,0 +1,81 @@
+{
+  "gun": 129,
+  "hafta": 19,
+  "konu": "Yerel hesaplar, gruplar ve UAC",
+  "lisans": "OZEL LISANS - TUM HAKLAR SAKLIDIR (c) 2026 Seydi Eryilmaz",
+  "dosyalar": {
+    "README.md": {
+      "sha256": "03365b7be534932a4ea53953a1c986eee08f6daa5a47fef6aec65bbb1cdc7ec1",
+      "boyut_byte": 5151
+    },
+    "ders.md": {
+      "sha256": "61c71284c987158fc85d0fd57049a740bb09fd172e3743685a6cd8c6729a001a",
+      "boyut_byte": 11995
+    },
+    "kanit_uretici.py": {
+      "sha256": "6a49bff4e5f2f1c898035a73c2921fa8d5aea2e50599b7dbe1a22b43fd768fde",
+      "boyut_byte": 12135
+    },
+    "rapor.md": {
+      "sha256": "dcdd02467cc2406700ef7bc7c063cdc3625d9689f3cb3db4c92feab0eb4db726",
+      "boyut_byte": 6178
+    },
+    "sonuc.json": {
+      "sha256": "33e8983ecf995cbbc3d6fecb0130d6d2d236ff7d27365b5ded64577599cb9222",
+      "boyut_byte": 1115
+    },
+    "soru_cevap.md": {
+      "sha256": "4081930cad8508ac285d6b6b297c422a4db7ffbe2c1cae117575e7361ae878f1",
+      "boyut_byte": 9797
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "sha256": "2ab789514124a28dacd804b9a54f643bc6c5d4d8cd9dafe61b5331a8a719da6f",
+      "boyut_byte": 6411
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "sha256": "1fcc8b6460828ce027de106269f3fb27e6b9b69aefba1b192349b7671168fbf6",
+      "boyut_byte": 2843
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "sha256": "38836cfbbe5c595652babefaf8fff2ba4e54b914c948d64f2d43d537c5063d13",
+      "boyut_byte": 4149
+    },
+    "kanit/gercek/uac_denetim_raporu.md": {
+      "sha256": "122a555c8b14c81d602dd43b148ad4238c230672b7cb2b50510edf0d0b1a07b2",
+      "boyut_byte": 3569
+    },
+    "kanit/temsili/uac_mimarisi.txt": {
+      "sha256": "8ed33895bf610969ea8417fd88b749bf8cf32f711d8170414ae5536ffa840175",
+      "boyut_byte": 4128
+    },
+    "ornek_veri/invalid_uac_scenarios.json": {
+      "sha256": "a9c599506635bf0efa3b449355622f1a439ca1444a98bffd0fde4a3e99839b30",
+      "boyut_byte": 4333
+    },
+    "ornek_veri/uac_account_baseline_spec.json": {
+      "sha256": "f3e3d8a85bbb4ab3e08031cd2afaa2077a8dc7539f2a8bb74eb496c73cf2834d",
+      "boyut_byte": 936
+    },
+    "tests/__init__.py": {
+      "sha256": "f61effdd5dd3024fedbf027d6805013afab142c3fe7307ca160d7e9e78446193",
+      "boyut_byte": 580
+    },
+    "tests/test_uac_account_security.py": {
+      "sha256": "13905027c2e085e3891ca0ffb40a2fd2273e652ca5da48ce3b19e5e0776262fd",
+      "boyut_byte": 13051
+    },
+    "uygulama/__init__.py": {
+      "sha256": "8ea0946f668bb9fa8dac3031196785f2f8d431e54e047e247729a0683a05f106",
+      "boyut_byte": 575
+    },
+    "uygulama/uac_account_security_engine.py": {
+      "sha256": "ae4b8a906d58f4dfb28b22914f14e496b74ed8a5d65787b4347c82ca21670ed7",
+      "boyut_byte": 27970
+    },
+    "uygulama/uac_security_cli.py": {
+      "sha256": "21057569348eb3cc378990326e354440d9267b2555bc5c103421815791f3459c",
+      "boyut_byte": 8327
+    }
+  },
+  "toplam_dosya_sayisi": 18
+}

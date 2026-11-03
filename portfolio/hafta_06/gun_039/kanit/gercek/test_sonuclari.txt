@@ -1,0 +1,33 @@
+test_01_telemetry_schema_validation_success (portfolio.hafta_06.gun_039.tests.test_backup_strategy_321_auditor.TestBackupStrategy321Auditor.test_01_telemetry_schema_validation_success)
+Geerli yedekleme telemetrisinin ■ema do­rulamas²ndan ba■ar²yla geti­ini do­rular. ... ok
+test_02_missing_policies_key_raises_validation_error (portfolio.hafta_06.gun_039.tests.test_backup_strategy_321_auditor.TestBackupStrategy321Auditor.test_02_missing_policies_key_raises_validation_error)
+'backup_policies' anahtar² eksik oldu­unda hata f²rlat²ld²­²n² denetler. ... ok
+test_03_negative_total_copies_raises_validation_error (portfolio.hafta_06.gun_039.tests.test_backup_strategy_321_auditor.TestBackupStrategy321Auditor.test_03_negative_total_copies_raises_validation_error)
+total_copies negatif oldu­unda hata f²rlat²ld²­²n² do­rular. ... ok
+test_04_non_numeric_restore_days_raises_error (portfolio.hafta_06.gun_039.tests.test_backup_strategy_321_auditor.TestBackupStrategy321Auditor.test_04_non_numeric_restore_days_raises_error)
+days_since_last_restore_test string oldu­unda hata f²rlat²ld²­²n² denetler. ... ok
+test_05_negative_restore_days_raises_error (portfolio.hafta_06.gun_039.tests.test_backup_strategy_321_auditor.TestBackupStrategy321Auditor.test_05_negative_restore_days_raises_error)
+days_since_last_restore_test negatif oldu­unda hata f²rlat²ld²­²n² do­rular. ... ok
+test_06_non_string_policy_id_raises_error (portfolio.hafta_06.gun_039.tests.test_backup_strategy_321_auditor.TestBackupStrategy321Auditor.test_06_non_string_policy_id_raises_error)
+policy_id int veya dict oldu­unda hata f²rlat²ld²­²n² do­rular. ... ok
+test_07_insufficient_copies_detected_as_high_severity (portfolio.hafta_06.gun_039.tests.test_backup_strategy_321_auditor.TestBackupStrategy321Auditor.test_07_insufficient_copies_detected_as_high_severity)
+Toplam kopya say²s² 3'ten az oldu­unda HIGH ÷nem derecesinde bulgu ³retildi­ini do­rular. ... ok
+test_08_missing_media_diversity_detected_as_medium (portfolio.hafta_06.gun_039.tests.test_backup_strategy_321_auditor.TestBackupStrategy321Auditor.test_08_missing_media_diversity_detected_as_medium)
+Farkl² medya t³r³ say²s² 2'den az oldu­unda MEDIUM ÷nem derecesinde bulgu ³retildi­ini do­rular. ... ok
+test_09_missing_offsite_copy_detected_as_critical (portfolio.hafta_06.gun_039.tests.test_backup_strategy_321_auditor.TestBackupStrategy321Auditor.test_09_missing_offsite_copy_detected_as_critical)
+Tesis d²■² kopya say²s² 0 oldu­unda CRITICAL bulgu ³retildi­ini do­rular. ... ok
+test_10_missing_immutability_ransomware_detected_as_critical (portfolio.hafta_06.gun_039.tests.test_backup_strategy_321_auditor.TestBackupStrategy321Auditor.test_10_missing_immutability_ransomware_detected_as_critical)
+is_immutable_or_airgapped=False oldu­unda CRITICAL seviyesinde fidye yaz²l²m² a²­² ³retildi­ini do­rular. ... ok
+test_11_schrodingers_backup_untested_restore_detected_as_critical (portfolio.hafta_06.gun_039.tests.test_backup_strategy_321_auditor.TestBackupStrategy321Auditor.test_11_schrodingers_backup_untested_restore_detected_as_critical)
+days_since_last_restore_test=None oldu­unda 'Schr÷dinger'in Yede­i' CRITICAL bulgusu ³retildi­ini do­rular. ... ok
+test_12_relying_on_raid_as_backup_detected_as_critical (portfolio.hafta_06.gun_039.tests.test_backup_strategy_321_auditor.TestBackupStrategy321Auditor.test_12_relying_on_raid_as_backup_detected_as_critical)
+relies_on_raid_as_backup=True oldu­unda 'RAID bir yedekleme de­ildir' CRITICAL bulgusu ³retildi­ini do­rular. ... ok
+test_13_corrupted_test_cases_suite_robustness (portfolio.hafta_06.gun_039.tests.test_backup_strategy_321_auditor.TestBackupStrategy321Auditor.test_13_corrupted_test_cases_suite_robustness)
+corrupted_backup_inventory_test_cases.json dosyas²ndaki t³m testlerin yakaland²­²n² do­rular. ... ok
+test_14_markdown_and_full_audit_workflow (portfolio.hafta_06.gun_039.tests.test_backup_strategy_321_auditor.TestBackupStrategy321Auditor.test_14_markdown_and_full_audit_workflow)
+Tam denetim i■ ak²■²n²n hatas²z al²■t²­²n² ve Markdown raporu ³retti­ini do­rular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.003s
+
+OK

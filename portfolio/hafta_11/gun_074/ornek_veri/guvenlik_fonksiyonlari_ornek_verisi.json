@@ -1,0 +1,71 @@
+{
+  "aciklama": "Gün 074: Temiz kod, saf fonksiyonlar ve güvenlik fonksiyonları için doğrulanmış örnek veri seti",
+  "ornek_loglar": [
+    {
+      "id": "LOG_01",
+      "raw_entry": "2026-10-31 10:15:20 SRC=192.168.1.50 DST=10.0.0.1 ACTION=ALLOW",
+      "initial_tags": ["audit", "internal"]
+    },
+    {
+      "id": "LOG_02",
+      "raw_entry": "2026-10-31 10:15:22 SRC=10.0.2.15 DST=192.168.1.1 ACTION=DENY",
+      "initial_tags": ["firewall", "blocked"]
+    },
+    {
+      "id": "LOG_03",
+      "raw_entry": "2026-10-31 10:15:25 SRC=8.8.8.8 DST=192.168.1.200 ACTION=ALLOW",
+      "initial_tags": ["external", "dns"]
+    }
+  ],
+  "tehdit_skor_parametreleri": [
+    {
+      "senaryo": "KRITIK_TEHDIT",
+      "faktorler": {
+        "c2_iletisim": 0.95,
+        "bilinen_zararli_ip": 0.90,
+        "anomali_skoru": 0.85,
+        "imza_eslesme": 1.00
+      },
+      "beklenen_aralik": [85.0, 100.0]
+    },
+    {
+      "senaryo": "DUSUK_RISK",
+      "faktorler": {
+        "c2_iletisim": 0.05,
+        "bilinen_zararli_ip": 0.00,
+        "anomali_skoru": 0.10,
+        "imza_eslesme": 0.00
+      },
+      "beklenen_aralik": [0.0, 15.0]
+    }
+  ],
+  "dogrulanmis_hash_ornekleri": [
+    {
+      "algoritma": "sha256",
+      "hash_degeri": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "aciklama": "Boş string SHA-256 hash'i"
+    },
+    {
+      "algoritma": "md5",
+      "hash_degeri": "d41d8cd98f00b204e9800998ecf8427e",
+      "aciklama": "Boş string MD5 hash'i"
+    },
+    {
+      "algoritma": "sha1",
+      "hash_degeri": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "aciklama": "Boş string SHA-1 hash'i"
+    }
+  ],
+  "ornek_kural_tanimlari": [
+    {
+      "kural_id": "RULE_HTTP_INSPECTION",
+      "port": 80,
+      "protokol": "TCP",
+      "aksiyon": "INSPECT",
+      "parametreler": {
+        "max_body_size": 1048576,
+        "strip_headers": ["X-Forwarded-For", "Server"]
+      }
+    }
+  ]
+}

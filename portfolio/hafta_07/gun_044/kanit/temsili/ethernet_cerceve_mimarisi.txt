@@ -1,0 +1,56 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Bu mimari illüstrasyon yalnızca eğitim ve kavramsal modelleme amaçlıdır.
+
+================================================================================
+G044: ETHERNET II VE IEEE 802.1Q ÇERÇEVE (FRAME) ANATOMİSİ
+================================================================================
+
++-------------------------------------------------------------------------------+
+|                      STANDART ETHERNET II ÇERÇEVESİ                           |
+|                            (En az 64 Bayt)                                    |
++-------------------------------------------------------------------------------+
+| Preamble & SFD  |  Dest MAC  | Source MAC | EtherType |     Payload / Veri     |  FCS / CRC32  |
+|  (7 + 1 Bayt)   |  (6 Bayt)  |  (6 Bayt)  | (2 Bayt)  | (46 - 1500 Bayt Dolgulu)|  (4 Bayt)    |
++-----------------+------------+------------+-----------+------------------------+---------------+
+         |              |            |            |                 |                   |
+         |              |            |            |                 |                   v
+         |              |            |            |                 |            Hata Denetimi
+         |              |            |            |                 v             (Donanımsal)
+         |              |            |            |           Üst Katman PDU
+         |              |            |            |           (IPv4 / ARP / IPv6)
+         |              |            |            v
+         |              |            |       0x0800: IPv4
+         |              |            |       0x0806: ARP
+         |              |            |       0x86DD: IPv6
+         |              |            v
+         |              |       Kaynak Donanım Adresi
+         |              |       (I/G Biti DAİMA 0 - Unicast)
+         |              v
+         |         Hedef Donanım Adresi
+         |         - Unicast (Tekil Cihaz)
+         |         - Multicast (01:00:5E:...)
+         |         - Broadcast (FF:FF:FF:FF:FF:FF)
+         v
+   Saat Senkronizasyonu (Fiziksel Katman)
+
++-------------------------------------------------------------------------------+
+|                 IEEE 802.1Q VLAN ETİKETLİ ÇERÇEVE                             |
+|                        (İlave 4 Bayt Tag)                                     |
++-------------------------------------------------------------------------------+
+| Dest MAC | Source MAC | TPID (0x8100) | TCI (PCP + DEI + VID) | EtherType | ... |
+| (6 Bayt) |  (6 Bayt)  |   (2 Bayt)    |       (2 Bayt)        | (2 Bayt)  |     |
++-----------------------+---------------+-----------------------+-----------+-----+
+                                                  |
+                                                  +---> VLAN ID (12 Bit: 1-4094)
+                                                  +---> Priority PCP (3 Bit QoS)
+================================================================================
+AÇIKLAMA:
+- Minimum çerçeve boyutu CSMA/CD çarpışma tespiti için 64 bayttır.
+- Eğer veri 46 baytın altındaysa otomatik doldurma (Padding) eklenir.
+- Kaynak MAC adresinin Multicast olması protokol ve güvenlik ihlalidir!
+================================================================================

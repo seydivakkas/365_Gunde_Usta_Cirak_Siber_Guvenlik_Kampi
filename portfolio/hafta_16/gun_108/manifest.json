@@ -1,0 +1,97 @@
+{
+  "gun": 108,
+  "konu": "X.509 ve sertifika zinciri",
+  "olusturma_tarihi": "2026-11-02T03:56:01.529868",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "38f62b4a3983ad72898e3335e70c21916784e8cea49948d371764412469ed90f",
+      "boyut_bayt": 5532
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "5d9551a509221f0d359459ab3f794f557b05c6c3161e6e2e7882d02986e5f7be",
+      "boyut_bayt": 7207
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "8ab24a728eeffc9cf9f4dfb77f79644087406a4a115ca114318c7222ff469813",
+      "boyut_bayt": 13430
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "18f4e5eaddb76614c3564d67dd7a0e7f1b0a4de8dcd927fabcfe04f4e859ec76",
+      "boyut_bayt": 5141
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "0cc032e6f3da42c2b9c3c5b0f5261d47a56d2b538d407595d5f7848a7b1ff4ac",
+      "boyut_bayt": 732
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "a363c201bc2f58a2af3f830295344c1046f769d74e7c9094a5367abfacc82e47",
+      "boyut_bayt": 11636
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "20ac4172c8019d74152884090a623070aa0678c5f057899b354694c6ac4a4899",
+      "boyut_bayt": 3322
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "d0809f7d44eb7725e858c9b67bff296e57f6fce5558ee7d65eec6cdf510aca3a",
+      "boyut_bayt": 2486
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "1eda62c7f7a9418a0400091ee461638b0ce46c391e352ad214c26dbc7e7bb668",
+      "boyut_bayt": 4322
+    },
+    {
+      "dosya": "kanit\\gercek\\x509_guvenlik_analiz_raporu.txt",
+      "sha256": "3d54a0ceb5359e8fc4dd8dcda3ed2c5ab62751bbf64f13fe19236c9e5cf66ecb",
+      "boyut_bayt": 2208
+    },
+    {
+      "dosya": "kanit\\temsili\\sertifika_zinciri_mimarisi.txt",
+      "sha256": "d90e60023f0f544b7603cd53170f65b968f11f72411709a388b6d10ac6fdb4fb",
+      "boyut_bayt": 5296
+    },
+    {
+      "dosya": "ornek_veri\\invalid_certificate_inputs.json",
+      "sha256": "b6d2184b99877f0f41678857a5624bbf04109b19d733d4ef3bf24b8c7abba346",
+      "boyut_bayt": 3103
+    },
+    {
+      "dosya": "ornek_veri\\pki_chain_sample.json",
+      "sha256": "951d6b00efa92c57380f8db3c76ca7d6bd78170866c009d6410bd09bcf03d518",
+      "boyut_bayt": 1417
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+      "boyut_bayt": 508
+    },
+    {
+      "dosya": "tests\\test_x509_chain.py",
+      "sha256": "0fc00be5a18e053e26a5da6201953462b7f42d63389b42a76a525c580318e6ba",
+      "boyut_bayt": 10807
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+      "boyut_bayt": 508
+    },
+    {
+      "dosya": "uygulama\\x509_chain_engine.py",
+      "sha256": "0158114fb3a79572623752372d4570defd563ac83495c513de3ce8f1a2257e9a",
+      "boyut_bayt": 26350
+    },
+    {
+      "dosya": "uygulama\\x509_cli.py",
+      "sha256": "80b912b6b26955842fce0f158f26ee92c3021697c9d6a0e1c54a803857bbf716",
+      "boyut_bayt": 8926
+    }
+  ]
+}

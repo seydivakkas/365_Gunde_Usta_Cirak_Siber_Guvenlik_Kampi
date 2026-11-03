@@ -1,0 +1,90 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "gun": 140,
+  "dosyalar": {
+    "README.md": {
+      "boyut_bayt": 6261,
+      "sha256": "d2e7b471f1fa9733f39107fd3ff4eb8fb68148ab680c7139478af8cbb276b7c8"
+    },
+    "ders.md": {
+      "boyut_bayt": 10418,
+      "sha256": "6233a9d873676a55dfe2c729ea8f86e2995eeb17128d74bde4bda227d851205b"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 20379,
+      "sha256": "7c0f16ebca2b9a843d22c61ccb5d47dc273bb20ad5fe4cce6ca99820905922a6"
+    },
+    "rapor.md": {
+      "boyut_bayt": 4756,
+      "sha256": "46b44c01e39cbea41404c952180e89475c51f9cf611bb560766d6390abeb611e"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1131,
+      "sha256": "e4cdd705b9ac29f365ffa06083586723957f34386e2ed77623df56da57045391"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 11707,
+      "sha256": "08f698c51929e4840abc49b98db77d82a4f756fe63e557ca1f80369770b79f13"
+    },
+    "kanit/gercek/cis_linux_hardening_matrix.json": {
+      "boyut_bayt": 1351,
+      "sha256": "9e41c3b86e98f9bcbef1e63f11b43fbf9b94fc5da79209a9fda4b2d217590644"
+    },
+    "kanit/gercek/hardening_quick_reference.txt": {
+      "boyut_bayt": 1322,
+      "sha256": "683b6bd11dc8abdce40deaf1c6e993953e2d202863a3397de0d253ceb58622e2"
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "boyut_bayt": 1661,
+      "sha256": "ae1fdfa0c860028f64f204e32b863eb6477fa89e6c03abeed18d20b0138c60a8"
+    },
+    "kanit/gercek/linux_hardening_analiz_raporu.json": {
+      "boyut_bayt": 10076,
+      "sha256": "9be753f1b86bd4e57a2af042dc0edcb64ee7aeb5e3afc7ff51fd8444b7cd55ba"
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 2916,
+      "sha256": "b5fc5eb3f834af8a25cdc2627830c0bd64b6cf2332e4b9394d82036130ff3465"
+    },
+    "kanit/gercek/otomatik_sikilastirma.sh": {
+      "boyut_bayt": 542,
+      "sha256": "5cd8784385c5f34eaa80764daa92d806a59c53febd6fb1b46eb9fa564265d261"
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "boyut_bayt": 3984,
+      "sha256": "75bd01fdca159ac12a5e40011a2d97cf2b96b81962c1b756e01be07f662efac9"
+    },
+    "kanit/temsili/hardening_mimarisi.txt": {
+      "boyut_bayt": 6175,
+      "sha256": "3da534a98b8c84611d770ca742823562ea46165ad565ac7ef6bb80075e951ae4"
+    },
+    "ornek_veri/enterprise_linux_audit_inventory.json": {
+      "boyut_bayt": 2568,
+      "sha256": "313e18c1d4ea6874c90b4e913d267a7be978ea964589c19cc65c47a82ead70d0"
+    },
+    "ornek_veri/invalid_hardening_scenarios.json": {
+      "boyut_bayt": 4388,
+      "sha256": "8beabfecff1ac29fd33d1d513b5dcbfd5c855c23a8bf20fa0de2e48bfdc8ff31"
+    },
+    "tests/__init__.py": {
+      "boyut_bayt": 563,
+      "sha256": "fc3827e61aa69c0ed13b8450b0571fb40070e4b754e81105533aac60e875c510"
+    },
+    "tests/test_linux_hardening_audit.py": {
+      "boyut_bayt": 9357,
+      "sha256": "bffcdddd2243f09eff54865e4a53baef573cf205054483b6d9dc89406b4b9c8f"
+    },
+    "uygulama/__init__.py": {
+      "boyut_bayt": 609,
+      "sha256": "ce4fc7964eaac2a42480850644ea103243dc7c528781573de503a225fa993414"
+    },
+    "uygulama/hardening_audit_cli.py": {
+      "boyut_bayt": 5232,
+      "sha256": "08fb5441dce96fd196c1dcd77c66e697c94fd4d079570da175637bf2b0600ba1"
+    },
+    "uygulama/linux_hardening_audit_engine.py": {
+      "boyut_bayt": 40786,
+      "sha256": "a6ad3467d148558156ec13e870ba4e54ed7dc095a5f8f8b5dbde8135935ebd0b"
+    }
+  }
+}

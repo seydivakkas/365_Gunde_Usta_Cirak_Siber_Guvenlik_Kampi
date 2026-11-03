@@ -1,0 +1,33 @@
+test_01_process_validator_accepts_valid_process_list (test_process_tree_explorer_analyzer.TestProcessTreeExplorerAnalyzer.test_01_process_validator_accepts_valid_process_list)
+Hiyerar�ik ve d�ng� i�ermeyen ge�erli s�re� listesinin do�rulanmas�n� test eder. ... ok
+test_02_process_validator_rejects_negative_pid (test_process_tree_explorer_analyzer.TestProcessTreeExplorerAnalyzer.test_02_process_validator_rejects_negative_pid)
+Negatif PID de�erinin INVALID_PID hatas� ile reddedilmesini test eder. ... ok
+test_03_process_validator_rejects_missing_name (test_process_tree_explorer_analyzer.TestProcessTreeExplorerAnalyzer.test_03_process_validator_rejects_missing_name)
+S�re� ad� bo� olan kayd�n MISSING_PROCESS_NAME hatas� vermesini test eder. ... ok
+test_04_process_validator_rejects_duplicate_pid (test_process_tree_explorer_analyzer.TestProcessTreeExplorerAnalyzer.test_04_process_validator_rejects_duplicate_pid)
+Ayn� PID numaras�na sahip iki s�recin DUPLICATE_PID_DETECTED vermesini test eder. ... ok
+test_05_process_validator_detects_circular_loop (test_process_tree_explorer_analyzer.TestProcessTreeExplorerAnalyzer.test_05_process_validator_detects_circular_loop)
+D�ng�sel ebeveyn ili�kisinin (A -> B -> A) CIRCULAR_PROCESS_LOOP �retmesini test eder. ... ok
+test_06_build_tree_hierarchy_roots_and_children (test_process_tree_explorer_analyzer.TestProcessTreeExplorerAnalyzer.test_06_build_tree_hierarchy_roots_and_children)
+D�z s�re� listesinden do�ru ebeveyn-�ocuk a�ac� in�a edildi�ini test eder. ... ok
+test_07_detect_office_spawned_shell (test_process_tree_explorer_analyzer.TestProcessTreeExplorerAnalyzer.test_07_detect_office_spawned_shell)
+Ofis uygulamas�n�n (winword.exe) cmd.exe ba�latmas�n�n CRITICAL anomali �retmesini test eder (T1204/T1059). ... ok
+test_08_detect_invalid_parent_for_svchost (test_process_tree_explorer_analyzer.TestProcessTreeExplorerAnalyzer.test_08_detect_invalid_parent_for_svchost)
+svchost.exe s�recinin services.exe haricinde ba�lat�lmas�n�n HIGH anomali vermesini test eder (T1036.005). ... ok
+test_09_detect_suspicious_system_binary_in_temp (test_process_tree_explorer_analyzer.TestProcessTreeExplorerAnalyzer.test_09_detect_suspicious_system_binary_in_temp)
+Sistem dosyas�n�n (svchost.exe) Temp dizininden �al��t�r�lmas�n�n CRITICAL anomali vermesini test eder. ... ok
+test_10_detect_unsigned_critical_process (test_process_tree_explorer_analyzer.TestProcessTreeExplorerAnalyzer.test_10_detect_unsigned_critical_process)
+Kritik sistem s�recinin dijital imzas�z olmas�n�n UNSIGNED_CRITICAL_PROCESS �retmesini test eder. ... ok
+test_11_detect_encoded_powershell_execution (test_process_tree_explorer_analyzer.TestProcessTreeExplorerAnalyzer.test_11_detect_encoded_powershell_execution)
+PowerShell komut sat�r�nda -enc parametresinin ENCODED_POWERSHELL_EXECUTION �retmesini test eder. ... ok
+test_12_legitimate_complex_process_tree_chrome (test_process_tree_explorer_analyzer.TestProcessTreeExplorerAnalyzer.test_12_legitimate_complex_process_tree_chrome)
+G031-SC1 Prensibi: Chrome �oklu s�re� mimarisinin me�ru karma��k a�a� oldu�unu ve false-positive vermedi�ini test eder. ... ok
+test_13_negative_control_corrupted_dataset (test_process_tree_explorer_analyzer.TestProcessTreeExplorerAnalyzer.test_13_negative_control_corrupted_dataset)
+Bozuk ve d�ng�sel s�re� veri k�mesinin negatif kontrolde %100 reddedilmesini test eder (G031-SC2). ... ok
+test_14_cli_subprocess_execution (test_process_tree_explorer_analyzer.TestProcessTreeExplorerAnalyzer.test_14_cli_subprocess_execution)
+CLI �zerinden --tree ve --audit arg�manlar�yla script �a�r�ld���nda 0 ��k�� koduyla �al��mas�n� test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.177s
+
+OK

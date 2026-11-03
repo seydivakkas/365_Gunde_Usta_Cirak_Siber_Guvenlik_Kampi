@@ -1,0 +1,42 @@
+=== GÜN 134: LINUX SUDO NEGATİF KONTROL VE SINIR DURUM TEST SONUÇLARI ===
+Tarih / Saat       : 2026-11-02T10:11:57.911860+00:00
+Toplam Senaryo     : 9
+Genel Başarı Durumu: BAŞARILI (100% PASS)
+===========================================================================
+
+[PASS] NEG-SUDO-01 (RULES): Şifresiz Tam Root Yetkisi (NOPASSWD: ALL)
+    Beklenen CWE   : CWE-250 | Tespit: ['CWE-250']
+    Beklenen MITRE : T1548.003 | Tespit: ['T1548.003']
+---------------------------------------------------------------------------
+[PASS] NEG-SUDO-02 (RULES): GTFOBins NOPASSWD /usr/bin/vim Kabuk Kaçışı
+    Beklenen CWE   : CWE-250 | Tespit: ['CWE-250']
+    Beklenen MITRE : T1548.003 | Tespit: ['T1548.003']
+---------------------------------------------------------------------------
+[PASS] NEG-SUDO-03 (RULES): GTFOBins NOPASSWD /usr/bin/find Kabuk Kaçışı
+    Beklenen CWE   : CWE-250 | Tespit: ['CWE-250']
+    Beklenen MITRE : T1548.003 | Tespit: ['T1548.003']
+---------------------------------------------------------------------------
+[PASS] NEG-SUDO-04 (RULES): GTFOBins NOPASSWD /usr/bin/python3 Kabuk Kaçışı
+    Beklenen CWE   : CWE-250 | Tespit: ['CWE-250']
+    Beklenen MITRE : T1548.003 | Tespit: ['T1548.003']
+---------------------------------------------------------------------------
+[PASS] NEG-SUDO-05 (DEFAULTS): env_keep İçerisinde Tehlikeli LD_PRELOAD Koruması
+    Beklenen CWE   : CWE-426 | Tespit: ['CWE-426']
+    Beklenen MITRE : T1574.006 | Tespit: ['T1574.006']
+---------------------------------------------------------------------------
+[PASS] NEG-SUDO-06 (DEFAULTS): Defaults env_reset Direktifi Devre Dışı
+    Beklenen CWE   : CWE-250 | Tespit: ['CWE-250']
+    Beklenen MITRE : T1548.003 | Tespit: ['T1548.003']
+---------------------------------------------------------------------------
+[PASS] NEG-SUDO-07 (PERMISSIONS): Sudoers Dosya İzninin 0666 Olması (Dünya Tarafından Yazılabilir)
+    Beklenen CWE   : CWE-732 | Tespit: ['CWE-732']
+    Beklenen MITRE : T1548.003 | Tespit: ['T1548.003']
+---------------------------------------------------------------------------
+[PASS] NEG-SUDO-08 (PERMISSIONS): Sudoers Dosya Sahibinin root Olmaması
+    Beklenen CWE   : CWE-732 | Tespit: ['CWE-732']
+    Beklenen MITRE : T1548.003 | Tespit: ['T1548.003']
+---------------------------------------------------------------------------
+[PASS] NEG-SUDO-09 (RULES): Komut Yolunda Denetimsiz Wildcard (*) Parametre Enjeksiyonu
+    Beklenen CWE   : CWE-88 | Tespit: ['CWE-88']
+    Beklenen MITRE : T1548.003 | Tespit: ['T1548.003']
+---------------------------------------------------------------------------

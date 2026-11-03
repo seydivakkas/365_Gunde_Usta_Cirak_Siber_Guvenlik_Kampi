@@ -1,0 +1,40 @@
+{
+  "gun": 47,
+  "gun_id": "G047",
+  "asama": "03",
+  "hafta": "07",
+  "baslik": "ARP ve yerel ağ komşuluğu",
+  "tarih": "2026-10-27",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kavramsal_derinlik": 20,
+    "uygulama_gelistirme": 40,
+    "test_kapsami": 25,
+    "savunma_sikilastirma": 15
+  },
+  "test_ozeti": {
+    "toplam": 14,
+    "basarili": 14,
+    "hatali": 0,
+    "sure_saniye": 0.04
+  },
+  "kod_aciklama_satirlari_tamamlandi": true,
+  "kanitlar": {
+    "gercek": [
+      "kanit/gercek/test_sonuclari.txt",
+      "kanit/gercek/komut_ve_cikis.txt",
+      "kanit/gercek/arp_analiz_raporu.txt",
+      "kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "kanit/temsili/arp_ve_mitm_zehirleme_mimarisi.txt"
+    ]
+  },
+  "soru_bankasi_eslesmesi": [
+    "G047-SC1",
+    "G047-SC2",
+    "G047-SC3"
+  ],
+  "notlar": "ARP önbellek yönetimi, dinamik vs statik girişler, Gratuitous ARP, ARP Zehirleme (MAC Flip/Multi-IP) tespiti ve Dynamic ARP Inspection (DAI) simülasyonu eksiksiz tamamlandı; 14 test PASS oldu."
+}

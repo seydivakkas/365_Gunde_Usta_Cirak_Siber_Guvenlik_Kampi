@@ -1,0 +1,57 @@
+{
+  "gun": 18,
+  "asama": 2,
+  "hafta": 3,
+  "konu": "Süreç, thread ve hizmet kavramları",
+  "durum": "TAMAMLANDI_PASS",
+  "tarih": "2026-10-27",
+  "puan": 100,
+  "puan_detay": {
+    "teorik_metodolojik_hakimiyet": 20,
+    "kodlama_uygulama_yetkinligi": 40,
+    "test_dogrulama_kapsami": 25,
+    "kanit_dokumantasyon_kalitesi": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "dosyalar": [
+    "uygulama/process_thread_service_security_auditor.py",
+    "tests/test_process_thread_service_security_auditor.py",
+    "ornek_veri/process_thread_service_inventory.json",
+    "ornek_veri/service_security_baseline.json",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/temsili/surec_thread_hizmet_mimarisi.txt",
+    "ders.md",
+    "soru_cevap.md",
+    "rapor.md",
+    "README.md",
+    "sonuc.json"
+  ],
+  "kanitlar": [
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/temsili/surec_thread_hizmet_mimarisi.txt"
+  ],
+  "ogrenilen_standartlar": [
+    "MITRE ATT&CK T1574.009 (Hijack Execution Flow: Unquoted Service Path)",
+    "MITRE ATT&CK T1055 (Process Injection)",
+    "CIS Windows Benchmark (Service Hardening and Least Privilege)",
+    "NIST SP 800-53 Rev. 5 (AC-6 Least Privilege, SC-2 Separation of Roles, SI-16 Memory Protection)"
+  ],
+  "karsilanan_gereksinimler": [
+    "Süreç (VAS, CR3, Token), İş parçacığı (ortak bellek) ve Hizmet mimari ayrımları incelendi",
+    "Canlı sistemden 2 kullanıcı süreci ve 1 sistem hizmeti PID/Ad ile belgelendi (G018-SC2)",
+    "Unquoted Service Path zaafiyeti ve CreateProcess aday tuzak yolları analiz edildi",
+    "Zayıf servis ve klasör izinleri ile SYSTEM yetkisi elde etme senaryosu değerlendirildi",
+    "İş parçacığı yarış durumu (Race Condition) ve Mutex kilitli senkronizasyon simüle edildi",
+    "Tüm kod ve test satırları didaktik açıklamalarla zenginleştirildi",
+    "Özel Lisans (Tüm Hakları Saklıdır) tüm dosyalara uygulandı"
+  ],
+  "notlar": "Gün 018 eksiksiz tamamlanarak 14/14 test PASS ve 100/100 tam puanla sonuçlandırıldı."
+}

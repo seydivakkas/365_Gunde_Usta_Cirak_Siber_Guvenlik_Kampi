@@ -1,0 +1,29 @@
+{
+  "surum": "1.0.0",
+  "olusturma_tarihi": "2026-11-01T23:33:00.371086+00:00",
+  "algoritma": "SHA256",
+  "kok_dizin": "sample_project_tree",
+  "toplam_dosya": 3,
+  "toplam_boyut_bayt": 96,
+  "dosyalar": [
+    {
+      "yol": "app.py",
+      "boyut_bayt": 24,
+      "hash": "2a8c49d5743fac4f7ac4420abef0f384740ccef08830ca3730f862d283725df2",
+      "blake2b": "fcae716854053939be35b4428f6915331cef43784ac26b40bbff53b0e390c6bb79f88bbc0e364eb7ba933ed4c40f664970f8b2dea01fa41b50c9e8c385961ada"
+    },
+    {
+      "yol": "config.json",
+      "boyut_bayt": 41,
+      "hash": "3248ceb9685722b836e451b9c2ae5f788b0c1b307b71c1ad7175f73db32be906",
+      "blake2b": "54e8d13882e9ff2652327b8e163ba3afcb3eeec776f675cbd1dc7672a6d22bf809e4a43d4ab0390cfa8d7a9057738a232cffc2092fa7f1c8825876988b7af346"
+    },
+    {
+      "yol": "docs/guide.md",
+      "boyut_bayt": 31,
+      "hash": "e8cafbbb1ad1d79c3dc5335b33c59cb6f2d837d5a744b1788b4c655f2d11d52a",
+      "blake2b": "8ab520b02828f50b08e7d4837ca63ce55d33d60054e58cc744ade8b7380000c6497aa63a3b0983682ce60e267922e5091680692441bcc26ffe5549cccfbc24d3"
+    }
+  ],
+  "hmac_muhru": "580d0a82e05d4cfed76efcbb215b3a8b9ef1c2a81655cf5b088aff548985dc23"
+}

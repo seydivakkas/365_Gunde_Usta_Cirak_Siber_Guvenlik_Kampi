@@ -1,0 +1,26 @@
+{
+  "aciklama": "TLS Güvenlik Sınırları ve Sertleştirilmiş Yapılandırma Profili (Hardened Profile)",
+  "protokol_surumleri": {
+    "izin_verilen": ["TLSv1.3", "TLSv1.2"],
+    "yasaklanan": ["SSLv2", "SSLv3", "TLSv1.0", "TLSv1.1"]
+  },
+  "guvenli_sifre_paketleri_tls13": [
+    "TLS_AES_256_GCM_SHA384",
+    "TLS_CHACHA20_POLY1305_SHA256",
+    "TLS_AES_128_GCM_SHA256"
+  ],
+  "guvenli_sifre_paketleri_tls12": [
+    "ECDHE-ECDSA-AES256-GCM-SHA384",
+    "ECDHE-RSA-AES256-GCM-SHA384",
+    "ECDHE-ECDSA-CHACHA20-POLY1305",
+    "ECDHE-RSA-CHACHA20-POLY1305"
+  ],
+  "guvenlik_parametreleri": {
+    "forward_secrecy_zorunlu": true,
+    "fallback_scsv_destegi": true,
+    "ocsp_stapling_zorunlu": true,
+    "alpn_protokolleri": ["h2", "http/1.1"],
+    "max_record_fragment_bytes": 16384,
+    "zero_rtt_anti_replay_cache": true
+  }
+}

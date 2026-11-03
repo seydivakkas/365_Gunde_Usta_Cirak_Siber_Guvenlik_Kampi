@@ -1,0 +1,11 @@
+================================================================================
+[+] Gün 051: TCP Sıralama, Akış Kontrolü ve Yeniden İletim Analiz Motoru Başlatılıyor...
+================================================================================
+[*] Toplam İncelenen TCP Akışı Sayısı: 1
+    -> Akış: 192.168.30.15:54321<->172.16.20.10:80
+       Toplam Segment: 14 | Sıra Dışı: 3 | Yeniden İletim: 1
+       Fast Retransmit Olayı: 1 | Sıfır Pencere: 1
+       Güvenlik Alarmları: 2
+
+[+] TCP Sıralama ve Yeniden İletim Raporu Başarıyla Kaydedildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_08\gun_051\kanit\gercek\tcp_siralama_ve_retransmit_raporu.txt
+================================================================================

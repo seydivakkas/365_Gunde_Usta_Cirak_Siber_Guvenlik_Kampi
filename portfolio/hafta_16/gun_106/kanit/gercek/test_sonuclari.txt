@@ -1,0 +1,43 @@
+=== GÜN 106 ASİMETRİK KRİPTOGRAFİ VE RSA BİRİM TEST RAPORU ===
+Tarih/Saat: 2026-11-02 02:40:54
+Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_106\tests\test_asymmetric_crypto.py -v
+Çıkış Kodu: 0
+
+--- TEST ÇIKTISI (STDERR / STDOUT) ---
+test_01_miller_rabin_known_primes_and_composites (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_01_miller_rabin_known_primes_and_composites)
+1. Miller-Rabin algoritmas� bilinen asal ve bile�ik say�lar� do�ru tespit etmelidir. ... ok
+test_02_extended_euclidean_algorithm_identity (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_02_extended_euclidean_algorithm_identity)
+2. Geni�letilmi� �klid algoritmas� a*x + b*y = gcd(a, b) denklemini sa�lamal�d�r. ... ok
+test_03_modular_inverse_correctness (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_03_modular_inverse_correctness)
+3. Mod�ler ters hesaplamas� e * d \u2261 1 (mod phi) e�itli�ini sa�lamal�d�r. ... ok
+test_04_prime_generation_bit_length (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_04_prime_generation_bit_length)
+4. G�venli asal say� �retici hedeflenen bit uzunlu�unda ve asal say�lar �retmelidir. ... ok
+test_05_rsa_keypair_generation_validity (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_05_rsa_keypair_generation_validity)
+5. �retilen RSA anahtar �iftinin matematiksel parametreleri tutarl� olmal�d�r. ... ok
+test_06_rsa_raw_textbook_encryption_decryption (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_06_rsa_raw_textbook_encryption_decryption)
+6. D�z (Textbook) RSA �ifreleme ve ��zme d�ng�s� mesaj� asl�na d�nd�rmelidir. ... ok
+test_07_mgf1_mask_generation (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_07_mgf1_mask_generation)
+7. MGF1 maske �retim fonksiyonu istenen uzunlukta deterministik bayt �retmelidir. ... ok
+test_08_oaep_encode_decode_roundtrip (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_08_oaep_encode_decode_roundtrip)
+8. RSA-OAEP dolgulama ve ��zme d�ng�s� veriyi kay�ps�z kurtarmal�d�r. ... ok
+test_09_oaep_label_binding (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_09_oaep_label_binding)
+9. Farkl� etiket (label) ile OAEP ��z�m� dolgu hatas� f�rlatmal�d�r (CWE-780). ... ok
+test_10_oaep_tamper_detection_in_ciphertext (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_10_oaep_tamper_detection_in_ciphertext)
+10. �ifreli metin baytlar�nda tahrifat yap�ld���nda OAEP ��z�m� ba�ar�s�z olmal�d�r. ... ok
+test_11_key_serialization_to_dict_and_from_dict (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_11_key_serialization_to_dict_and_from_dict)
+11. Anahtarlar s�zl�k (dict) format�na d�n��t�r�l�p hatas�z geri y�klenebilmelidir. ... ok
+test_12_weak_key_size_rejection (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_12_weak_key_size_rejection)
+12. 512 bitin alt�ndaki zay�f anahtar �retimi WeakKeySizeError ile reddedilmelidir (CWE-326). ... ok
+test_13_invalid_public_exponent_rejection (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_13_invalid_public_exponent_rejection)
+13. �ift say� veya 1'e e�it/k���k genel �sler InvalidExponentError f�rlatmal�d�r (CWE-327). ... ok
+test_14_textbook_rsa_malleability_detection (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_14_textbook_rsa_malleability_detection)
+14. D�z RSA'da homomorfik �ifreli �arp�m manip�lasyonu tespit edilip hata f�rlatmal�d�r. ... ok
+test_15_common_modulus_attack_recovery (portfolio.hafta_16.gun_106.tests.test_asymmetric_crypto.TestAsymmetricCrypto.test_15_common_modulus_attack_recovery)
+15. Ortak mod�l kullanan iki anahtarda mesaj�n �zel anahtars�z kurtar�lmas� do�rulanmal�d�r. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.455s
+
+OK
+
+=== DEĞERLENDİRME: 15/15 TEST BAŞARILI (%100 PASS) ===

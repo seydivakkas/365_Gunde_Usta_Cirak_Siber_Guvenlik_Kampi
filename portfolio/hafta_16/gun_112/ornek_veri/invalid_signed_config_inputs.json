@@ -1,0 +1,99 @@
+{
+  "aciklama": "Mini Proje 15: İmzalı Yapılandırma Konsepti Negatif Test Senaryoları (9 Adet)",
+  "senaryolar": [
+    {
+      "id": "NEG_01_PAYLOAD_TAHRIFATI",
+      "baslik": "Yapılandırma Yükünde Tek Baytlık Tahrifat (Hash Uyuşmazlığı)",
+      "zafiyet_kodu": "CWE-353",
+      "hata_tipi": "ConfigTamperingError",
+      "veri": {
+        "orijinal_port": 8443,
+        "tahrif_port": 80,
+        "imza_degistirildi_mi": false
+      },
+      "beklenen_sonuc": "Yapılandırma verisi imzalandıktan sonra tek bir bayt bile değiştirilirse imza doğrulaması başarısız olmalıdır."
+    },
+    {
+      "id": "NEG_02_SAHTE_IMZA",
+      "baslik": "Geçersiz veya Sahte Asimetrik Dijital İmza",
+      "zafiyet_kodu": "CWE-347",
+      "hata_tipi": "InvalidSignatureError",
+      "veri": {
+        "sahte_imza_hex": "deadbeefcafebabe0102030405060708deadbeefcafebabe0102030405060708"
+      },
+      "beklenen_sonuc": "Genel anahtarla yapılan matematiksel imza doğrulaması başarısız olmalı ve konfigürasyon reddedilmelidir."
+    },
+    {
+      "id": "NEG_03_ROLLBACK_SALDIRISI",
+      "baslik": "Eski Sürüm / Düşük Monotonik Epoch ile Geri Alma (Rollback) Saldırısı",
+      "zafiyet_kodu": "CWE-294",
+      "hata_tipi": "RollbackAttackDetectedError",
+      "veri": {
+        "sistem_mevcut_epoch": 5,
+        "sunulan_eski_epoch": 3
+      },
+      "beklenen_sonuc": "Daha önce imzalanmış olsa bile mevcut sistem epoch'undan daha düşük bir epoch'a sahip eski konfigürasyon reddedilmelidir."
+    },
+    {
+      "id": "NEG_04_SURESI_DOLMUS_YAPILANDIRMA",
+      "baslik": "Geçerlilik Bitiş Tarihi (ExpiresAt) Aşılmış Yapılandırma",
+      "zafiyet_kodu": "CWE-298",
+      "hata_tipi": "ConfigExpiredError",
+      "veri": {
+        "gecerlilik_bitis": "2024-01-01T00:00:00Z"
+      },
+      "beklenen_sonuc": "Kullanım ömrü dolmuş imzalı yapılandırma dosyaları güvenlik gereği kabul edilmemelidir."
+    },
+    {
+      "id": "NEG_05_DUAL_SIGNING_EKSIK_IMZA",
+      "baslik": "Çift İmza (Dual Signing) Politikasında Yetersiz İmza Sayısı",
+      "zafiyet_kodu": "CWE-285",
+      "hata_tipi": "InsufficientSignaturesError",
+      "veri": {
+        "gerekli_asgari_imza": 2,
+        "mevcut_imza_sayisi": 1
+      },
+      "beklenen_sonuc": "Kritik politikalarda belirlenen asgari eşik (M-of-N) sağlanmadıkça yapılandırma yürürlüğe girmemelidir."
+    },
+    {
+      "id": "NEG_06_YETKISIZ_IMZALAYICI",
+      "baslik": "Güven Kökünde (Trust Store) Bulunmayan Yetkisiz İmzalayıcı",
+      "zafiyet_kodu": "CWE-295",
+      "hata_tipi": "UntrustedSignerError",
+      "veri": {
+        "imzalayici_id": "saldirgan_yetkisiz_anahtar_99"
+      },
+      "beklenen_sonuc": "İmza matematiksel olarak geçerli olsa bile imzalayan anahtar güvenilen otorite listesinde yoksa reddedilmelidir."
+    },
+    {
+      "id": "NEG_07_BOZUK_KANONIK_JSON",
+      "baslik": "Bozuk veya Kanonik Olmayan Yapılandırma Yükü",
+      "zafiyet_kodu": "CWE-20",
+      "hata_tipi": "MalformedConfigError",
+      "veri": {
+        "bozuk_icerik": "{'invalid_json': True, missing_bracket:"
+      },
+      "beklenen_sonuc": "RFC 8785 kurallarına uygun ayrıştırılamayan geçersiz veri yapıları kabul edilmemelidir."
+    },
+    {
+      "id": "NEG_08_GELECEGE_AIT_GECERSIZ_ZAMAN",
+      "baslik": "Geleceğe Ait İmza Zaman Damgası (Aşırı Saat Kayması)",
+      "zafiyet_kodu": "CWE-298",
+      "hata_tipi": "FutureTimestampError",
+      "veri": {
+        "imza_zamani": "2029-01-01T00:00:00Z"
+      },
+      "beklenen_sonuc": "Sistem zamanının çok ilerisindeki bir tarihte imzalanmış görünen dosyalar zaman anomalisi gerekçesiyle engellenmelidir."
+    },
+    {
+      "id": "NEG_09_ALGORITMA_DUSURME_SALDIRISI",
+      "baslik": "İmza Algoritmasını 'none' veya Zayıf Algoritmaya Düşürme Girişimi",
+      "zafiyet_kodu": "CWE-327",
+      "hata_tipi": "InsecureAlgorithmError",
+      "veri": {
+        "talep_edilen_algoritma": "none"
+      },
+      "beklenen_sonuc": "Yalnızca onaylı asimetrik algoritmalar (RSA-SHA256) kabul edilmeli; 'none' veya kırılmış algoritmalar derhal engellenmelidir."
+    }
+  ]
+}

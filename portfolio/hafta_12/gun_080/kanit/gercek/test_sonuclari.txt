@@ -1,0 +1,33 @@
+test_01_security_exception_base_incident_id (portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler.TestSecureExceptionAndErrorHandler.test_01_security_exception_base_incident_id)
+SecurityException s²n²f²n²n benzersiz olay referans kodu ve zaman damgas² ³retti­ini do­rular. ... ok
+test_02_custom_exception_subclasses_hierarchy (portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler.TestSecureExceptionAndErrorHandler.test_02_custom_exception_subclasses_hierarchy)
+T³m ÷zel g³venlik istisnalar²n²n SecurityException temel s²n²f²ndan t³redi­ini do­rular. ... ok
+test_03_sanitize_log_message_removes_crlf_and_ansi (portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler.TestSecureExceptionAndErrorHandler.test_03_sanitize_log_message_removes_crlf_and_ansi)
+Hata mesaj²ndaki sat²r ba■² ve kontrol karakterlerinin log zehirlenmesine kar■² temizlendi­ini s²nar. ... ok
+test_04_build_sanitized_client_response_suppresses_stack_trace (portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler.TestSecureExceptionAndErrorHandler.test_04_build_sanitized_client_response_suppresses_stack_trace)
+D²■ istemciye d÷nd³r³len yan²tta i dosya yolu veya y²­²n izi bulunmad²­²n² do­rular. ... ok
+test_05_record_forensic_incident_records_details (portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler.TestSecureExceptionAndErrorHandler.test_05_record_forensic_incident_records_details)
+Dahili adli kayd²n istemci IP ve temizlenmi■ mesajla eksiksiz tutuldu­unu test eder. ... ok
+test_06_resource_context_manager_acquires_and_releases (portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler.TestSecureExceptionAndErrorHandler.test_06_resource_context_manager_acquires_and_releases)
+SecureResourceContext y÷neticisinin ba­lama giri■te tahsis, ²k²■ta serbest b²rakt²­²n² do­rular. ... ok
+test_07_resource_context_manager_releases_on_exception (portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler.TestSecureExceptionAndErrorHandler.test_07_resource_context_manager_releases_on_exception)
+Ba­lam blo­u iinde istisna f²rlat²lsa dahi kayna­²n serbest b²rak²ld²­²n² (Fail-Closed) do­rular. ... ok
+test_08_gateway_valid_transaction_success (portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler.TestSecureExceptionAndErrorHandler.test_08_gateway_valid_transaction_success)
+Geerli token ve parametrelerle yap²lan i■lemin ba■ar²yla tamamland²­²n² test eder. ... ok
+test_09_gateway_invalid_token_fails_closed (portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler.TestSecureExceptionAndErrorHandler.test_09_gateway_invalid_token_fails_closed)
+Geersiz belirtele yap²lan istekte eri■imin fail-closed gere­i engellendi­ini s²nar. ... ok
+test_10_gateway_unauthorized_role_denied (portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler.TestSecureExceptionAndErrorHandler.test_10_gateway_unauthorized_role_denied)
+Yetkisiz role sahip kullan²c²n²n i■lem denemesinde AuthorizationDeniedException ile engellendi­ini test eder. ... ok
+test_11_gateway_input_sanitization_violation_caught (portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler.TestSecureExceptionAndErrorHandler.test_11_gateway_input_sanitization_violation_caught)
+Girdi parametresinde yasakl² karakter dizisi oldu­unda i■lemin durduruldu­unu do­rular. ... ok
+test_12_gateway_rate_limit_exceeded (portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler.TestSecureExceptionAndErrorHandler.test_12_gateway_rate_limit_exceeded)
+Ayn² IP'den gelen ard²■²k ba■ar²s²z isteklerin e■ik a■²ld²­²nda h²z s²n²r² ile engellendi­ini s²nar. ... ok
+test_13_gateway_unhandled_system_exception_fails_closed (portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler.TestSecureExceptionAndErrorHandler.test_13_gateway_unhandled_system_exception_fails_closed)
+Bilinmeyen genel bir sistem hatas² durumunda da en d²■ kalkan²n fail-closed al²■t²­²n² do­rular. ... ok
+test_14_gateway_io_error_ensures_resource_released (portfolio.hafta_12.gun_080.tests.test_secure_exception_and_error_handler.TestSecureExceptionAndErrorHandler.test_14_gateway_io_error_ensures_resource_released)
+G/Ã hatas² sim³le edildi­inde kaynak kilidinin g³venle serbest b²rak²ld²­²n² s²nar. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK

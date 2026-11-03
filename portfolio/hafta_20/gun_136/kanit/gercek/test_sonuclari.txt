@@ -1,0 +1,49 @@
+==============================================================================
+GÜN 136: LINUX SERVİSLERİ VE SYSTEMD GÜVENLİĞİ BİRİM TEST RAPORU
+==============================================================================
+Çalıştırma Tarihi : 2026-11-02 14:26:47
+Toplam Test       : 15
+Başarılı Test     : 15
+Hatalı Test       : 0
+Kritik Hata       : 0
+Çalışma Süresi    : 0.0009 saniye
+Genel Durum       : TAM BAŞARILI (100% PASS)
+------------------------------------------------------------------------------
+DETAYLI TEST ÇIKTILARI:
+test_01_fully_hardened_service_score_100 (test_linux_systemd_security.TestLinuxSystemdSecurity.test_01_fully_hardened_service_score_100)
+Test 1: Tam sıkılaştırılmış ve izole edilmiş bir servis 100/100 almalı ve sıfır bulgu üretmelidir. ... ok
+test_02_legacy_insecure_service_detection (test_linux_systemd_security.TestLinuxSystemdSecurity.test_02_legacy_insecure_service_detection)
+Test 2: Aktif telnet.socket veya rsh.service gibi legacy servisler SYS-001 (CIS 2.1) üretmelidir. ... ok
+test_03_legacy_masked_service_no_penalty (test_linux_systemd_security.TestLinuxSystemdSecurity.test_03_legacy_masked_service_no_penalty)
+Test 3: Telnet gibi servisler eğer 'masked=True' yapılmışsa risk üretmemelidir. ... ok
+test_04_loose_unit_file_permissions (test_linux_systemd_security.TestLinuxSystemdSecurity.test_04_loose_unit_file_permissions)
+Test 4: Servis unit dosyası 0666 veya root dışı sahiplikteyse SYS-002 (CWE-732) tetiklenmelidir. ... ok
+test_05_insecure_binary_suid_or_writable (test_linux_systemd_security.TestLinuxSystemdSecurity.test_05_insecure_binary_suid_or_writable)
+Test 5: ExecStart ikili dosyasında SUID bayrağı varsa SYS-003 (CRITICAL / T1548.001) tespit edilmelidir. ... ok
+test_06_running_as_root_or_missing_user (test_linux_systemd_security.TestLinuxSystemdSecurity.test_06_running_as_root_or_missing_user)
+Test 6: Serviste User= tanımlanmamışsa veya doğrudan root atanmışsa SYS-004 (CWE-250) tetiklenmelidir. ... ok
+test_07_missing_no_new_privileges (test_linux_systemd_security.TestLinuxSystemdSecurity.test_07_missing_no_new_privileges)
+Test 7: NoNewPrivileges=false iken SYS-005 (HIGH / T1548) kuralı devreye girmelidir. ... ok
+test_08_missing_protect_system (test_linux_systemd_security.TestLinuxSystemdSecurity.test_08_missing_protect_system)
+Test 8: ProtectSystem tanımsız veya 'no' ise SYS-006 (CWE-732) tespit edilmelidir. ... ok
+test_09_missing_protect_home (test_linux_systemd_security.TestLinuxSystemdSecurity.test_09_missing_protect_home)
+Test 9: ProtectHome tanımsız veya 'no' ise SYS-007 (CWE-200) tespit edilmelidir. ... ok
+test_10_missing_private_tmp_and_devices (test_linux_systemd_security.TestLinuxSystemdSecurity.test_10_missing_private_tmp_and_devices)
+Test 10: PrivateTmp ve PrivateDevices bayrakları eksikse SYS-008 ve SYS-009 üretilmelidir. ... ok
+test_11_dangerous_capabilities_detection (test_linux_systemd_security.TestLinuxSystemdSecurity.test_11_dangerous_capabilities_detection)
+Test 11: CapabilityBoundingSet içinde CAP_SYS_ADMIN veya CAP_SYS_PTRACE varsa SYS-010 üretilmelidir. ... ok
+test_12_unit_file_parser_ini_format (test_linux_systemd_security.TestLinuxSystemdSecurity.test_12_unit_file_parser_ini_format)
+Test 12: Ham .service dosya metnini parse_unit_file fonksiyonu hatasız ayrıştırmalıdır. ... ok
+test_13_remediation_script_generation (test_linux_systemd_security.TestLinuxSystemdSecurity.test_13_remediation_script_generation)
+Test 13: generate_remediation_script fonksiyonu geçerli Bash direktifleri üretmelidir. ... ok
+test_14_secure_template_generation (test_linux_systemd_security.TestLinuxSystemdSecurity.test_14_secure_template_generation)
+Test 14: generate_secure_unit_template CIS uyumlu güvenlik şablonu oluşturmalıdır. ... ok
+test_15_empty_services_boundary_condition (test_linux_systemd_security.TestLinuxSystemdSecurity.test_15_empty_services_boundary_condition)
+Test 15: Boş servis listesi verildiğinde sistem istisna fırlatmadan varsayılan rapor üretmelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+
+==============================================================================

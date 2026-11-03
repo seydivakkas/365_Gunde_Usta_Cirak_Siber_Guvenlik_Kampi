@@ -1,0 +1,37 @@
+{
+  "gun_no": 5,
+  "gun_kimligi": "G005",
+  "asama": "01",
+  "hafta": 1,
+  "konu": "Varlık envanteri ve veri sınıflandırması",
+  "tarih": "2026-10-26",
+  "durum": "PASS",
+  "puan": 100,
+  "degerlendirme_detayi": {
+    "teori": 20,
+    "uygulama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "kanit_durumu": "TAM",
+  "tamamlanan_gorevler": [
+    "Varlık türleri (Veri, Uygulama, Kimlik, Cihaz, Ağ) ve 4 katmanlı veri sınıflandırması hiyerarşisi açıklandı.",
+    "Donanım satın alma bedeli ile iş etki değeri arasındaki ayrım (Crown Jewels Paradoksu) somutlaştırıldı.",
+    "5 farklı varlık türünü içeren gerçekçi kurumsal envanter JSON formatında modellendi.",
+    "Tüm kod satırları zengin eğitsel açıklamalarla donatılmış asset_classifier.py CLI aracı geliştirildi.",
+    "Sahipsiz varlık (Orphan Asset / Gölge BT) ve şifresiz hassas veri tespit algoritmaları kodlandı.",
+    "10 birim test ile pozitif, negatif ve sınır koşulları %100 başarıyla doğrulandı.",
+    "Gerçek CLI yürütme, unittest ve temsilî ASCII veri sınıflandırma piramidi kanıt olarak üretildi.",
+    "Soru bankasındaki 3 soru katı 4 bölümlü formatta cevaplandı."
+  ],
+  "pozitif_negatif_kontrol_sonuclari": {
+    "pozitif_kontrol": "5 varlık eksiksiz doğrulandı (Donanım: $69,500, Risk: $58,050,000, 0 açık bulgu)",
+    "negatif_kontrol_sahipsiz_varlik": "Sahip alanı boş varlık verildiğinde AssetValidationError yakalandı",
+    "negatif_kontrol_gecersiz_veri_sinifi": "Standart dışı sınıf tanımlandığında AssetValidationError yakalandı",
+    "negatif_kontrol_gecersiz_tur": "Bilinmeyen varlık türü reddedildi",
+    "negatif_kontrol_sifresiz_hassas_veri": "Şifresiz COK_GIZLI_SIR veride KRİTİK AÇIK güvenlik uyarısı üretildi",
+    "negatif_kontrol_dmz_riski": "DMZ'de yer alan kritik varlık için YÜKSEK RİSK segmentasyon uyarısı üretildi"
+  },
+  "onceki_gun_bagimliligi": "YOK (Tamamen bağımsız)",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ."
+}

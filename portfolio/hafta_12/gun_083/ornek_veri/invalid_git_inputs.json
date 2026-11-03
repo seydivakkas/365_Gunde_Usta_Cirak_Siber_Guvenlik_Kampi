@@ -1,0 +1,68 @@
+{
+  "aciklama": "G083: Git commit ve degisiklik incelemesi icin 9 adet negatif guvenlik kontrol testi.",
+  "negatif_testler": [
+    {
+      "test_id": "NEG_01_AWS_SECRET_KEY",
+      "baslik": "Diff Icerisinde Gomulu AWS Erisim Anahtari Tespiti",
+      "beklenen_hata": "SecretDetectedException",
+      "zafiyet_turu": "CWE-798: Use of Hard-coded Credentials",
+      "diff_icerik": "diff --git a/config/aws.py b/config/aws.py\n--- a/config/aws.py\n+++ b/config/aws.py\n@@ -1,3 +1,4 @@\n+AWS_KEY = 'AKIAIOSFODNN7EXAMPLE'\n"
+    },
+    {
+      "test_id": "NEG_02_RSA_PRIVATE_KEY",
+      "baslik": "Diff Icerisinde RSA Ozel Anahtar Blok Ifsasi",
+      "beklenen_hata": "SecretDetectedException",
+      "zafiyet_turu": "CWE-312: Cleartext Storage of Sensitive Information",
+      "diff_icerik": "diff --git a/certs/server.key b/certs/server.key\n--- a/certs/server.key\n+++ b/certs/server.key\n@@ -0,0 +1,3 @@\n+-----BEGIN RSA PRIVATE KEY-----\n+MIIEowIBAAKCAQEA0Y1mQv7\n+-----END RSA PRIVATE KEY-----\n"
+    },
+    {
+      "test_id": "NEG_03_GITHUB_PAT",
+      "baslik": "Diff Icerisinde GitHub Kisisel Erisim Belirteci (PAT)",
+      "beklenen_hata": "SecretDetectedException",
+      "zafiyet_turu": "CWE-798: Use of Hard-coded Credentials",
+      "diff_icerik": "diff --git a/scripts/deploy.sh b/scripts/deploy.sh\n--- a/scripts/deploy.sh\n+++ b/scripts/deploy.sh\n@@ -5,2 +5,3 @@\n+GITHUB_TOKEN=\"ghp_1234567890abcdefghijklmnopqrstuvwxyzAB\"\n"
+    },
+    {
+      "test_id": "NEG_04_HIGH_ENTROPY_TOKEN",
+      "baslik": "Yuksek Shannon Entropili Gizli Token Tespiti",
+      "beklenen_hata": "HighEntropySecretException",
+      "zafiyet_turu": "CWE-798: High Entropy Secret Detection",
+      "diff_icerik": "diff --git a/src/secrets.py b/src/secrets.py\n--- a/src/secrets.py\n+++ b/src/secrets.py\n@@ -1,2 +1,3 @@\n+MASTER_KEY = 's7K9#mQ2$vL8!pZ4@wX1%yR3^bN6&cT5'\n"
+    },
+    {
+      "test_id": "NEG_05_TROJAN_SOURCE_BIDI",
+      "baslik": "Trojan Source / Unicode Bidi Yonlendirme Saldirisi (CVE-2021-42574)",
+      "beklenen_hata": "TrojanSourceAttackException",
+      "zafiyet_turu": "CVE-2021-42574: Bidirectional Unicode Override in Source Code",
+      "diff_icerik": "diff --git a/src/admin.py b/src/admin.py\n--- a/src/admin.py\n+++ b/src/admin.py\n@@ -10,3 +10,4 @@\n+access_level = 'user' \u202e } \u2066if isAdmin\u2069 \u2066 begin admin \u2028\n"
+    },
+    {
+      "test_id": "NEG_06_DANGEROUS_CALL_EVAL",
+      "baslik": "Diff Icerisinde Tehlikeli Dinamik Kod Yurutme (eval)",
+      "beklenen_hata": "InsecureCodePatternException",
+      "zafiyet_turu": "CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code",
+      "diff_icerik": "diff --git a/src/evaluator.py b/src/evaluator.py\n--- a/src/evaluator.py\n+++ b/src/evaluator.py\n@@ -8,2 +8,3 @@\n+result = eval(user_untrusted_input)\n"
+    },
+    {
+      "test_id": "NEG_07_NULL_BYTE_INJECTION",
+      "baslik": "Diff Akisinda Null Byte Enjeksiyonu Denemesi",
+      "beklenen_hata": "MalformedDiffException",
+      "zafiyet_turu": "CWE-158: Improper Neutralization of Null Byte or Special Characters",
+      "diff_icerik": "diff --git a/src/core.py b/src/core.py\n--- a/src/core.py\n+++ b/src/core.py\n@@ -1,2 +1,3 @@\n+\u0000malicious_payload()\n"
+    },
+    {
+      "test_id": "NEG_08_OVERSIZED_DIFF_DOS",
+      "baslik": "Asiri Boyutlu Diff ile Bellek Tukenmesi (DoS / Diff Bomb)",
+      "beklenen_hata": "DiffSizeLimitExceededException",
+      "zafiyet_turu": "CWE-400: Uncontrolled Resource Consumption",
+      "diff_icerik": "OVERSIZED_PAYLOAD_MARKER"
+    },
+    {
+      "test_id": "NEG_09_MALFORMED_DIFF_HEADER",
+      "baslik": "Bozuk veya Gecersiz Unified Diff Basligi",
+      "beklenen_hata": "MalformedDiffException",
+      "zafiyet_turu": "CWE-20: Improper Input Validation",
+      "diff_icerik": "INVALID DIFF CONTENT WITHOUT ANY VALID HEADER LINES\nJUST RANDOM GARBAGE TEXT\n@@ corrupt @@\n"
+    }
+  ]
+}

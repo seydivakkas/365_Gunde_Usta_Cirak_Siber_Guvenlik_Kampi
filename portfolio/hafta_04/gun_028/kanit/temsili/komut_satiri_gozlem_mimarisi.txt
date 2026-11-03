@@ -1,0 +1,71 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+KURUMSAL KOMUT SATIRI ÇALIŞMA DEFTERİ VE GÜVENLİK GÖZLEM MİMARİSİ
+========================================================================================
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Özel Lisans — Tüm Hakları Saklıdır
+
+Bu şema, işletim sistemi güvenlik denetimlerinde kullanılan salt-okunur (read-only)
+komut satırı çalışma defteri motorunun (Runbook Engine) mimarisini, güvenlik kapısını,
+kriptografik bütünlük mühürlemesini ve rapor üretim hattını temsilî olarak modeller.
+
+----------------------------------------------------------------------------------------
+1. KOMUT DOĞRULAMA, GÜVENLİK KAPISI VE YÜRÜTME AKIŞI
+----------------------------------------------------------------------------------------
+
+ +------------------------------------------+
+ |  Komut İsteği / Denetim Girdisi          |
+ |  (whoami, ps aux, ss -tulpn, rm -rf /)   |
+ +--------------------+---------------------+
+                      |
+                      v
+ +------------------------------------------+
+ |  GÜVENLİK DOĞRULAYICISI (SAFETY GATE)    |
+ |  1. Aşama: Yıkıcı Desen Taraması         |
+ |     (rm, del, mkfs, dd, kill -9 1, vb.)  |
+ |  2. Aşama: İzin Verilen Kök Komut Testi  |
+ |     (Salt-okunur Beyaz Liste Kontrolü)   |
+ +--------------------+---------------------+
+                      |
+         +------------+------------+
+         |                         |
+     [GÜVENSİZ]                [GÜVENLİ]
+         |                         |
+         v                         v
+ +-------------------+   +------------------------------------+
+ | GÜVENLİK ENGELİ!  |   | YÜRÜTME MOTORU (EXECUTION RUNNER)  |
+ | Yürütme derhal    |   | - Canlı Sistem (subprocess, safe)  |
+ | durdurulur.       |   | - Deterministik Mock Sandboxing    |
+ | Güvenlik günlüğüne|   +-----------------+------------------+
+ | CWE-78/250 yazılır|                     |
+ +-------------------+                     v
+                         +------------------------------------+
+                         | KRİPTOGRAFİK BÜTÜNLÜK MÜHÜRLEME    |
+                         | SHA-256 (ID + Komut + Çıktı + Zaman)|
+                         +-----------------+------------------+
+                                           |
+                                           v
+                         +------------------------------------+
+                         | AÇIKLAMALI ÇALIŞMA DEFTERİ (MD)    |
+                         | - Yönetici Özeti ve Metrikler      |
+                         | - MITRE ATT&CK ve NIST Eşleştirmesi|
+                         | - Terminal Çıktıları ve SHA256 İzi |
+                         | - Analist Gözlemleri ve Tavsiyeler |
+                         +------------------------------------+
+
+----------------------------------------------------------------------------------------
+2. GÜVENLİK DENETİMİ KOMUT KATEGORİLERİ VE EŞLEŞTİRMELERİ
+----------------------------------------------------------------------------------------
+Kategori            | Komutlar               | MITRE ATT&CK Tekniği | Güvenlik Amacı
+--------------------+------------------------+----------------------+-------------------
+Kimlik Yönetimi     | whoami, id             | T1033 (User Disc.)   | Ayrıcalık & grup analizi
+Sistem Bilgisi      | hostname, uname -a     | T1082 (System Info)  | Çekirdek & OS sürümü
+Sistem Durumu       | uptime                 | T1082 (System Info)  | Yük ortalaması & süre
+Süreç Yönetimi      | ps aux, tasklist       | T1057 (Process Disc) | Arka kapı & ters kabuk
+Depolama & Dosya    | df -h, ls -ld /tmp     | T1083 (File Disc.)   | Doluluk & Sticky bit
+Bellek Kaynakları   | free -m                | T1499 (Endpoint DoS) | RAM/Swap tükenme riski
+Ağ Soketleri        | ss -tulpn, netstat     | T1049 (Network Conn) | Açık port & dinleyici
+Ağ Yapılandırması   | ip addr                | T1016 (Network Config| Arayüz & IP tespiti
+Ortam Değişkenleri  | env                    | T1082 (System Info)  | PATH manipülasyonu
+========================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

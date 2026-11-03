@@ -1,0 +1,62 @@
+==============================================================================
+G060: HTTP/2 VE HTTP/3 FARKLARI — NEGATIF VE SINIR DEGER TEST RAPORU
+==============================================================================
+Toplam Negatif Test Senaryosu: 9
+
+[1/9] NEG_01_TRUNCATED_FRAME_HEADER
+  Tanim: 9 bayttan daha kisa kesilmis HTTP/2 cerceve basligi.
+  Beklenen Hata: HTTP2MalformedFrameError
+  Alinan Hata  : HTTP2MalformedFrameError: HTTP/2 cerceve basligi en az 9 bayt uzunlugunda olmalidir. Alinan bayt: 5
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[2/9] NEG_02_UNKNOWN_FRAME_TYPE
+  Tanim: RFC 7540 standardinda tanimsiz cerceve tipi (ornek 0xFF = 255).
+  Beklenen Hata: HTTP2ValidationError
+  Alinan Hata  : HTTP2ValidationError: Bilinmeyen HTTP/2 cerceve tipi: 255. Tanimli tipler: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[3/9] NEG_03_FRAME_LENGTH_OVERFLOW
+  Tanim: Varsayilan 16384 bayt limitini asan cerceve boyutu (SETTINGS_MAX_FRAME_SIZE asimi).
+  Beklenen Hata: HTTP2ValidationError
+  Alinan Hata  : HTTP2ValidationError: HTTP/2 cerceve boyutu izin verilen maksimum siniri (16384 bayt) asamaz. Bildirilen: 20480 bayt.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[4/9] NEG_04_STREAM_ID_ZERO_FOR_DATA_FRAME
+  Tanim: DATA cercevesinin Akis ID 0 uzerinden iletilmesi (RFC 7540 Bolum 6.1 ihlali).
+  Beklenen Hata: HTTP2ValidationError
+  Alinan Hata  : HTTP2ValidationError: DATA cercevesi Akis ID 0 uzerinden gonderilemez. Yalnizca pozitif akislar icindir.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[5/9] NEG_05_NON_ZERO_STREAM_ID_FOR_SETTINGS
+  Tanim: SETTINGS cercevesinin Akis ID > 0 ile gonderilmesi (RFC 7540 Bolum 6.5 ihlali).
+  Beklenen Hata: HTTP2ValidationError
+  Alinan Hata  : HTTP2ValidationError: SETTINGS cercevesi yalnizca baglanti seviyesinde (Akis ID 0) gecerlidir. Gelen Akis ID: 1.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[6/9] NEG_06_INVALID_RST_STREAM_PAYLOAD_SIZE
+  Tanim: RST_STREAM cerceve yukunun tam 4 bayt olmamasi (RFC 7540 Bolum 6.4 ihlali).
+  Beklenen Hata: HTTP2MalformedFrameError
+  Alinan Hata  : HTTP2MalformedFrameError: RST_STREAM cercevesi tam olarak 4 baytlik hata kodu tasimalidir. Alinan: 2 bayt.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[7/9] NEG_07_INVALID_PING_PAYLOAD_SIZE
+  Tanim: PING cerceve yukunun tam 8 bayt olmamasi (RFC 7540 Bolum 6.7 ihlali).
+  Beklenen Hata: HTTP2MalformedFrameError
+  Alinan Hata  : HTTP2MalformedFrameError: PING cercevesi tam olarak 8 baytlik yuk tasimalidir. Alinan: 4 bayt.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[8/9] NEG_08_RAPID_RESET_ATTACK_DETECTED
+  Tanim: CVE-2023-44487 Rapid Reset saldirisi: Cok kisa surede esik degeri asan HEADERS + RST_STREAM dongusu.
+  Beklenen Hata: HTTP2RapidResetAttackError
+  Alinan Hata  : HTTP2RapidResetAttackError: HTTP/2 Rapid Reset Saldirisi (CVE-2023-44487) tespit edildi! RST_STREAM iptal orani: 150.0 iptal/sn (Esik: 100).
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+[9/9] NEG_09_QUIC_ANTI_AMPLIFICATION_VIOLATION
+  Tanim: RFC 9000 Bolum 8.1 ihlali: Dogrulanmamis istemciye 3x katindan fazla veri gonderilmeye calisilmasi.
+  Beklenen Hata: QUICAmplificationError
+  Alinan Hata  : QUICAmplificationError: QUIC Anti-Amplification Limiti (3x) asildi! Dogrulanmamis istemciye en fazla 3600 bayt gonderilebilir. Gonderme girisimi: 4500 bayt.
+  Sonuc        : BASARILI (EXPECTED EXCEPTION YAKALANDI)
+
+==============================================================================
+Negatif Kontrol Ozeti: 9/9 Test Basariyla Engellendi.
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Ozel Lisans — Tum Haklari Saklidir.

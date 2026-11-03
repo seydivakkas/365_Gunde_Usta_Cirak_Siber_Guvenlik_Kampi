@@ -1,0 +1,89 @@
+{
+  "gun": 133,
+  "hafta": 19,
+  "konu": "Mini proje 18: Windows denetim raporu",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR (c) 2026 Seydi Eryılmaz",
+  "dosyalar": {
+    "README.md": {
+      "sha256": "8a506a81964d26a0810f1513a4c52999789ddede100832564b9c46d710bc917e",
+      "boyut_byte": 5200
+    },
+    "ders.md": {
+      "sha256": "57e56c2d67bb100ea56cfdc368adedfbce7168e390fed1e007a176f687d11aca",
+      "boyut_byte": 5510
+    },
+    "kanit_uretici.py": {
+      "sha256": "4768f2a47c6f46aebc6192b165b300eeaebc640deaf85f74f9bda005ff45b9a6",
+      "boyut_byte": 12435
+    },
+    "rapor.md": {
+      "sha256": "926bfed8443d12a57ca420541db6feb76071f20c74d37e093be7f67756422e05",
+      "boyut_byte": 4618
+    },
+    "sonuc.json": {
+      "sha256": "28d08497cf06b3c5b0eefa3ec90f0b560e179db46282b7c37b5ae902001bbaee",
+      "boyut_byte": 1177
+    },
+    "soru_cevap.md": {
+      "sha256": "bcf5e0da712d3daaa4116fcfa44139cb56528f67cc1b4d2ad8220197f9140e76",
+      "boyut_byte": 10673
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "sha256": "40ce332ce98a92f1765141b8dce4109d350e6ba345e50d954d1cec97899adc51",
+      "boyut_byte": 4880
+    },
+    "kanit/gercek/master_remediation.ps1": {
+      "sha256": "7760f12db86156078d340dbc1a6aba7fb84e85a1ebcf3bd590fee93088b7a788",
+      "boyut_byte": 3286
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "sha256": "3aae12e037dcc959e67262e8ae49c835b37c11223daf944672a784e8415d7457",
+      "boyut_byte": 2629
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "sha256": "338c4bc3fc5d671ddc60c47f12d9f3483234396651e35fb0752abb199d36a815",
+      "boyut_byte": 484
+    },
+    "kanit/gercek/windows_denetim_raporu.json": {
+      "sha256": "f6b45e7c01320f16e1bc6589e07db6293a06d77f346e079d31bf7a64dc60d799",
+      "boyut_byte": 4336
+    },
+    "kanit/gercek/windows_denetim_raporu.md": {
+      "sha256": "e4f93246cfe2478fa83877e11e6851bb2658150abe28ce157c7c3af7639c4a86",
+      "boyut_byte": 3548
+    },
+    "kanit/temsili/windows_denetim_mimarisi.txt": {
+      "sha256": "72f190a8006510a758e30456910c8a45b5a7f21bd594f45f04fb64233a3907bd",
+      "boyut_byte": 3549
+    },
+    "ornek_veri/enterprise_windows_spec.json": {
+      "sha256": "8f2255dd4413441a64299dfdf2d7fa7bdf80e521c3efb8a75b7a89fcb65b002b",
+      "boyut_byte": 2129
+    },
+    "ornek_veri/invalid_audit_scenarios.json": {
+      "sha256": "3a202029c06a0de606e89de40b661c999d771db243d4bb3e4aa187847f237bb9",
+      "boyut_byte": 4020
+    },
+    "tests/__init__.py": {
+      "sha256": "8741f6847328a14588f649122a803fc902af43d6a88883af4ca3238a6c49a6e4",
+      "boyut_byte": 602
+    },
+    "tests/test_windows_audit_platform.py": {
+      "sha256": "73bbb76785d16fb5c992fce736a582bf189e3a36a474ef433811f0e4f5e1faf1",
+      "boyut_byte": 11375
+    },
+    "uygulama/__init__.py": {
+      "sha256": "6e61db7ff95bcd1b6424f73f518c78942d5d09916aa753b47f315a1308a73481",
+      "boyut_byte": 842
+    },
+    "uygulama/windows_audit_cli.py": {
+      "sha256": "fbce75a05fbf3f02340058e0742c4b702c103b18646b7c840799ce2d8f62b3b3",
+      "boyut_byte": 7606
+    },
+    "uygulama/windows_audit_platform_engine.py": {
+      "sha256": "d508920e6506f113d505731d2ea4f6f6cfca48c46ba9c76e15792c095348a919",
+      "boyut_byte": 31328
+    }
+  },
+  "toplam_dosya_sayisi": 20
+}

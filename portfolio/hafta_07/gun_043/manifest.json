@@ -1,0 +1,18 @@
+{
+  "README.md": "430f4107fc9544aff5e4fdcd2fafab27106ddc236a01c89f5a9c98342824819c",
+  "ders.md": "9f9e3ba749b5e7a403d340449bc5788559b2946d983d47b0333b50d0f03a8371",
+  "rapor.md": "5d1ac82ec4f13e2673a841ef03e4a1c0b6bf11a8ee6fab443d645f51da534d2d",
+  "sonuc.json": "ed1de60309acacb32b34ba64cde293d57e67c061f1e83054e1d6b721ac709e2b",
+  "soru_cevap.md": "0a76dd79d3cd027aa5c8772e6c70c9991c79e184b1e1f9bda2dffdeadda01bb3",
+  "kanit/gercek/katman_ve_paket_ayristirma_raporu.txt": "be9d40e43d04076a167aae7f120a57722f9c39c9772a328a0474eee8849473ee",
+  "kanit/gercek/komut_ve_cikis.txt": "7e0dc3113efaab750641b220ca253646c139ecfd81f8ed134224acb55a2bd0c1",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "dbe83c5d16eecc599fd4a4432078229c515d0847e83b98a24dad645cdd4a5a65",
+  "kanit/gercek/test_sonuclari.txt": "2c64c53f8659faa79c0b871637e95d046d7289bf9afdfbc817e6b0702a70598b",
+  "kanit/temsili/osi_tcpip_kapsulleme_mimarisi.txt": "9b84aee352ef9d316ff26c28708a0a69a8dd9b3b22db87b0d68879f689a7797c",
+  "ornek_veri/corrupted_encapsulation_cases.json": "22a884682f6b7dc76f2ff37318ef37a1737a7e2d2f9e3b29fd5895bdc96a0cfa",
+  "ornek_veri/sample_https_encapsulation.json": "4dab1c36609de9019ed4f6a112dce9786daa9e7b459aee23fb9458bf4250b3c4",
+  "tests/__init__.py": "494093ee311e5e906b3aa54dda080ab0681e9f1e2fb461ad7a38e29cc6094ce3",
+  "tests/test_osi_tcpip_packet_inspector.py": "435967bc990a9b65af284ae0e2589c5aa6456887139c40c686a74cd725b9bbf1",
+  "uygulama/__init__.py": "56134c1b16f538200fda52ccbf633538e5111f77e187f029020200ab3a8425c1",
+  "uygulama/osi_tcpip_packet_inspector.py": "9c82f640b30286e124a1f9f419c42c7fc964cecc1bc047d3fdaabf3edad1c147"
+}

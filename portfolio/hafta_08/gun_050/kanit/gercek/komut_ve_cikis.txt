@@ -1,0 +1,19 @@
+================================================================================
+[+] Gün 050: TCP Üçlü El Sıkışma Analiz ve Güvenlik Denetim Motoru Başlatılıyor...
+================================================================================
+[*] Toplam İncelenen TCP Oturumu Sayısı: 5
+    -> Oturum: 192.168.30.15:54321->172.16.20.10:80 | Durum: BAŞARILI (ESTABLISHED) (Paket: 4)
+    -> Oturum: 198.51.100.44:49152->172.16.20.10:80 | Durum: YARIM AÇIK / HATA (Paket: 1)
+    -> Oturum: 192.168.30.99:55555->172.16.20.10:443 | Durum: YARIM AÇIK / HATA (Paket: 1)
+    -> Oturum: 192.168.30.99:55556->172.16.20.10:80 | Durum: YARIM AÇIK / HATA (Paket: 1)
+    -> Oturum: 192.168.30.99:55557->172.16.20.10:80 | Durum: YARIM AÇIK / HATA (Paket: 1)
+
+[*] Tespit Edilen Güvenlik Anomalileri ve Tarama Belirtileri: 5
+    [1] YUKSEK | SYN_FLOOD_BELIRTISI | Kaynak: 198.51.100.44:49152 -> Anormal düşük pencere boyutlu izole SYN paketi tespit edildi (SYN Flood DoS belirtisi)!
+    [2] ORTA | GIZLI_SYN_TARAMASI_SUPHESI | Kaynak: 192.168.30.99:55555 -> Şüpheli RST paketi tespit edildi (Stealth SYN Port Taraması belirtisi)!
+    [3] YUKSEK | PORT_TARAMA_XMAS | Kaynak: 192.168.30.99:55556 -> XMAS Port Taraması tespit edildi (FIN+PSH+URG bayrakları aktif)!
+    [4] KRITIK | KURAL_DISI_BAYRAK_SYN_FIN | Kaynak: 192.168.30.99:55557 -> SYN ve FIN bayrakları aynı anda set edilmiş! Güvenlik duvarı baypas veya anomali girişimi.
+    [5] YUKSEK | SYN_FLOOD_BELIRTISI | Kaynak: 192.168.30.99:55557 -> Anormal düşük pencere boyutlu izole SYN paketi tespit edildi (SYN Flood DoS belirtisi)!
+
+[+] TCP El Sıkışma Analiz Raporu Başarıyla Kaydedildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_08\gun_050\kanit\gercek\tcp_el_sikisma_raporu.txt
+================================================================================

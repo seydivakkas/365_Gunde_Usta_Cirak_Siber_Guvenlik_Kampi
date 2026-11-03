@@ -1,0 +1,16 @@
+{
+  "gun": 73,
+  "hafta": 11,
+  "asama": "04",
+  "konu": "Koşullar ve döngüler",
+  "kategori": "Teori + laboratuvar",
+  "seviye": "Temel",
+  "puan": 100,
+  "durum": "YETERLİ / PASS",
+  "tamamlanma_tarihi": "2026-10-31",
+  "birim_test_sayisi": 14,
+  "birim_test_basarili": 14,
+  "negatif_kontrol_sayisi": 9,
+  "negatif_kontrol_basarili": 9,
+  "lisans": "Özel Lisans — Tüm Hakları Saklıdır (Telif Hakkı (c) 2026 Seydi Eryılmaz)"
+}

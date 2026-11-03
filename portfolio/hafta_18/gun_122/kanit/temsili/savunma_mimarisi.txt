@@ -1,0 +1,56 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
++-----------------------------------------------------------------------------------+
+|               7 KATMANLI SAVUNMA DERİNLİĞİ VE KONTROL TİPLERİ MİMARİSİ            |
+|                     (NIST SP 800-53 Rev 5 / NSA Defense in Depth)                 |
++-----------------------------------------------------------------------------------+
+
+     SALDIRGAN (Tehdit Aktörü / Kill Chain Başlangıcı)
+          |
+          v
+  [ KATMAN 1: FİZİKSEL GÜVENLİK ]
+   - Önleyici: Biyometrik Veri Merkezi Girişi & Mantrap (%98)
+   - Tespit: 7/24 CCTV & Hareket Sensörleri (%95)
+          |
+          v
+  [ KATMAN 2: ÇEVRE VE DIŞ AĞ (PERIMETER) ]
+   - Önleyici: NGFW / Stateful Inspection & DDoS Koruması (%90)
+   - Tespit: Zeek NIDS Ağ Tabanlı Saldırı Tespiti (%88)
+          |
+          v
+  [ KATMAN 3: İÇ AĞ VE MİKRO-SEGMENTASYON ]
+   - Önleyici: ZTNA & Yazılım Tanımlı Mikro-Segmentasyon (%92)
+   - Tespit: Doğu-Batı Ağ Trafiği Anomali Analizörü (%85)
+          |
+          v
+  [ KATMAN 4: UÇ NOKTA VE SUNUCU (HOST) ]
+   - Önleyici: EDR/XDR & Process Koruması (%95)
+   - Tespit: FIM / Osquery Dosya Bütünlüğü Denetimi (%90)
+   - Düzeltici: Otomatik Karantina & İmaj Yenileme Playbook (%92)
+          |
+          v
+  [ KATMAN 5: UYGULAMA VE API ]
+   - Önleyici: WAF (Cloudflare/ModSecurity) & Katı Girdi Doğrulama (%99)
+   - Tespit: API Gateway Rate Limit & İstek Günlükleme (%88)
+          |
+          v
+  [ KATMAN 6: VERİ VE DEPOLAMA ]
+   - Önleyici: AES-256 Encryption at Rest & Tokenization (%99)
+   - Tespit: Endpoint & Network DLP Ajanı (%86)
+   - Düzeltici: Değiştirilemez Çevrimdışı Yedekleme (Immutable Backup) (%98)
+          |
+          v
+  [ KATMAN 7: KİMLİK VE İNSAN (IDENTITY & GOVERNANCE) ]
+   - Önleyici: FIDO2 Donanım Tabanlı MFA & Least Privilege (%96)
+   - Tespit: UEBA Kullanıcı Davranış Analitiği (%85)
+   - Caydırıcı: Hukuki Uyarı Banner'ı ve İkaz Metinleri (%40)
+
++-----------------------------------------------------------------------------------+
+|    MİMARİ GÜVENCE: Tek Hata Noktası (SPoF) Yok, Katman Boşluğu (Gap) Yok!        |
++-----------------------------------------------------------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

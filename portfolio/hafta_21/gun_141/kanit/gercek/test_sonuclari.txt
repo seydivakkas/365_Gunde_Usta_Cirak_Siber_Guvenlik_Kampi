@@ -1,0 +1,43 @@
+=== GÜN 141 / YAMA YÖNETİMİ VE CVE: BİRİM TEST SONUÇLARI ===
+Tarih/Saat : 2026-11-02T15:20:56.310371
+Toplam Test: 15
+Başarılı   : 15
+Hatalı     : 0
+Geçen Süre : 0.0056 saniye
+
+--- DETAYLI YÜRÜTME DÖKÜMÜ ---
+test_01_load_inventory_success (test_patch_cve_management.TestPatchCveEngine.test_01_load_inventory_success)
+Test 01: Geçerli yama envanter dosyasının doğru şekilde yüklendiğini doğrular. ... ok
+test_02_load_inventory_missing_file (test_patch_cve_management.TestPatchCveEngine.test_02_load_inventory_missing_file)
+Test 02: Mevcut olmayan bir dosya yüklendiğinde FileNotFoundError fırlatıldığını test eder. ... ok
+test_03_validate_cve_format_valid (test_patch_cve_management.TestPatchCveEngine.test_03_validate_cve_format_valid)
+Test 03: Standart formattaki CVE kimliklerinin başarıyla ayrıştırıldığını doğrular. ... ok
+test_04_validate_cve_format_invalid_raises_error (test_patch_cve_management.TestPatchCveEngine.test_04_validate_cve_format_invalid_raises_error)
+Test 04: Geçersiz formattaki CVE kimliğinde (örn: VULN-2024) ValueError fırlatıldığını doğrular. ... ok
+test_05_validate_cvss_score_range (test_patch_cve_management.TestPatchCveEngine.test_05_validate_cvss_score_range)
+Test 05: CVSS taban skorunun 0.0 - 10.0 sınırları dışında olduğunda hata verdiğini doğrular. ... ok
+test_06_calculate_severity_levels (test_patch_cve_management.TestPatchCveEngine.test_06_calculate_severity_levels)
+Test 06: CVSS puanlarına göre CRITICAL, HIGH, MEDIUM, LOW ve NONE seviyelerinin doğruluğunu test eder. ... ok
+test_07_determine_urgency_cisa_kev_emergency (test_patch_cve_management.TestPatchCveEngine.test_07_determine_urgency_cisa_kev_emergency)
+Test 07: CISA KEV listesinde olan zafiyetlerin doğrudan EMERGENCY ve 3 gün SLA aldığını doğrular. ... ok
+test_08_determine_urgency_high_epss_and_cvss (test_patch_cve_management.TestPatchCveEngine.test_08_determine_urgency_high_epss_and_cvss)
+Test 08: CVSS >= 9.0 ve EPSS >= 0.40 olduğunda KEV olmasa dahi EMERGENCY atandığını test eder. ... ok
+test_09_triage_vulnerabilities_debian_commands (test_patch_cve_management.TestPatchCveEngine.test_09_triage_vulnerabilities_debian_commands)
+Test 09: Debian/Ubuntu ortamında oluşturulan yama ve geri alma komutlarını test eder. ... ok
+test_10_triage_vulnerabilities_rhel_commands (test_patch_cve_management.TestPatchCveEngine.test_10_triage_vulnerabilities_rhel_commands)
+Test 10: RHEL/Rocky sistemlerinde dnf tabanlı yama ve geri alma komutları üretildiğini doğrular. ... ok
+test_11_sla_breach_detection (test_patch_cve_management.TestPatchCveEngine.test_11_sla_breach_detection)
+Test 11: Zafiyet yayınından bu yana geçen gün SLA süresini aştığında sla_breached=True olduğunu doğrular. ... ok
+test_12_patch_hygiene_score_calculation (test_patch_cve_management.TestPatchCveEngine.test_12_patch_hygiene_score_calculation)
+Test 12: Yama hijyen puanı hesaplamasında ceza puanlarının doğru uygulandığını doğrular. ... ok
+test_13_compliance_status_compliant_vs_non_compliant (test_patch_cve_management.TestPatchCveEngine.test_13_compliance_status_compliant_vs_non_compliant)
+Test 13: Temiz bir sistemde COMPLIANT, ihmal edilmiş sistemde NON_COMPLIANT döndüğünü doğrular. ... ok
+test_14_generate_patch_execution_plan_script (test_patch_cve_management.TestPatchCveEngine.test_14_generate_patch_execution_plan_script)
+Test 14: Otomatik yama uygulama betiğinin üretildiğini ve aşamaları içerdiğini doğrular. ... ok
+test_15_generate_rollback_script (test_patch_cve_management.TestPatchCveEngine.test_15_generate_rollback_script)
+Test 15: Acil durum geri alma betiğinin üretildiğini ve downgrade komutlarını içerdiğini doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.006s
+
+OK

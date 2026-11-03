@@ -1,0 +1,30 @@
+{
+  "aciklama": "PKI ve Sertifika Yaşam Döngüsü Örnek Yapılandırma Dosyası",
+  "pki_alani": "Kurumsal İç PKI Altyapısı (Enterprise Internal PKI)",
+  "root_ca": {
+    "common_name": "Ulusal Siber Güvenlik Kök Sertifika Otoritesi",
+    "organization": "Siber Güvenlik Akademisi",
+    "country": "TR",
+    "key_size_bits": 1024,
+    "validity_days": 3650
+  },
+  "intermediate_ca": {
+    "common_name": "Kurumsal Ara Sertifika Otoritesi (Issuing CA G1)",
+    "organization": "Siber Güvenlik Akademisi",
+    "country": "TR",
+    "key_size_bits": 1024,
+    "validity_days": 1825,
+    "crl_url": "http://crl.guvenlik.local/issuing_ca.crl",
+    "ocsp_url": "http://ocsp.guvenlik.local"
+  },
+  "acme_yapilandirmasi": {
+    "challenge_tipi": "HTTP-01",
+    "challenge_yolu": "/.well-known/acme-challenge/",
+    "otomatik_yenileme_esigi_gun": 30
+  },
+  "ct_log_yapilandirmasi": {
+    "log_id": "CT_LOG_ANADOLU_01",
+    "log_operatoru": "Akademi CT Servisi",
+    "merkle_agaci_versiyon": "RFC-6962"
+  }
+}

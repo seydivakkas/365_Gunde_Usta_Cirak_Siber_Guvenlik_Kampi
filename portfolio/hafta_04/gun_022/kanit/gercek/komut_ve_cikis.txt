@@ -1,0 +1,76 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Bu dosya Siber Güvenlik 365 Gün Müfredatı kapsamında üretilmiştir.
+# Gün 022: Komut Satırı: PowerShell Temelleri Gerçek Komut ve Çıktı Kanıtı
+
+================================================================================
+KOMUT 1: powershell_security_pipeline_auditor.py ile Filtreleme ve CSV Üretimi
+================================================================================
+Çalıştırılan Komut:
+python portfolio/hafta_04/gun_022/uygulama/powershell_security_pipeline_auditor.py \
+  --processes portfolio/hafta_04/gun_022/ornek_veri/ps_process_samples.json \
+  --services portfolio/hafta_04/gun_022/ornek_veri/ps_service_samples.json \
+  --rules portfolio/hafta_04/gun_022/ornek_veri/ps_audit_rules.json \
+  --csv portfolio/hafta_04/gun_022/kanit/gercek/filtrelenmis_surec_ve_servisler.csv
+
+Çıktı:
+[+] Filtrelenmiş PowerShell Güvenlik Raporu CSV olarak kaydedildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_04\gun_022\kanit\gercek\filtrelenmis_surec_ve_servisler.csv
+========================================================================
+GÜN 022: POWERSHELL NESNE AKIŞI VE GÜVENLİK DENETİM RAPORU
+========================================================================
+İncelenen Süreç Sayısı : 6
+İncelenen Servis Sayısı: 6
+Toplam Riskli Bulgu    : 9
+------------------------------------------------------------------------
+[KRITIK] Surec: powershell (4820)
+       Gerekçe: Şüpheli PowerShell/süreç parametresi tespit edildi: '-executionpolicy bypass' (MITRE T1059.001)
+[ORTA] Surec: explorer (3290)
+       Gerekçe: Kaynak tüketimi eşik değerleri aşıldı (Eşik: 2000 Handle / 150.0 MB)
+[KRITIK] Surec: mimikatz_test (9924)
+       Gerekçe: Şüpheli PowerShell/süreç parametresi tespit edildi: 'mimikatz' (MITRE T1059.001)
+[YUKSEK] Servis: wuauserv (Running)
+       Gerekçe: Tırnaksız servis yolu zafiyeti (CWE-428): 'C:\Windows\system32\svchost.exe -k netsvcs -p'
+[YUKSEK] Servis: MpsSvc (Running)
+       Gerekçe: Tırnaksız servis yolu zafiyeti (CWE-428): 'C:\Windows\system32\svchost.exe -k LocalServiceNoNetworkFirewall -p'
+[KRITIK] Servis: TlntSvr (Running)
+       Gerekçe: Güvensiz/eski protokol servisi çalışıyor: 'TlntSvr' (CIS İhlali)
+[KRITIK] Servis: RemoteRegistry (Running)
+       Gerekçe: Güvensiz/eski protokol servisi çalışıyor: 'RemoteRegistry' (CIS İhlali)
+[YUKSEK] Servis: RemoteRegistry (Running)
+       Gerekçe: Tırnaksız servis yolu zafiyeti (CWE-428): 'C:\Windows\system32\svchost.exe -k regsvc'
+[YUKSEK] Servis: VulnerableCustomService (Running)
+       Gerekçe: Tırnaksız servis yolu zafiyeti (CWE-428): 'C:\Program Files\Enterprise Software\Legacy Agent\service.exe'
+========================================================================
+
+================================================================================
+KOMUT 2: Canlı Sistemden PowerShell Nesneleri Toplama ve Denetleme (--live)
+================================================================================
+Çalıştırılan Komut:
+python portfolio/hafta_04/gun_022/uygulama/powershell_security_pipeline_auditor.py --live
+
+Çıktı (Özet JSON):
+{
+  "canli_nesneler": {
+    "toplama_zamani": "2026-10-26T23:15:09.785250+00:00",
+    "surecler": [
+      {"ProcessName": "AggregatorHost", "Id": 9320, "WorkingSet64": 19083264, "Handles": 227},
+      {"ProcessName": "Antigravity", "Id": 2628, "WorkingSet64": 485474304, "Handles": 569},
+      {"ProcessName": "Antigravity", "Id": 15488, "WorkingSet64": 31023104, "Handles": 417}
+    ],
+    "servisler": [
+      {"Name": "Appinfo", "DisplayName": "Uygulama Bilgileri", "Status": 4, "StartType": 3},
+      {"Name": "AppXSvc", "DisplayName": "AppX Deployment Service", "Status": 4, "StartType": 2},
+      {"Name": "BFE", "DisplayName": "Temel Filtre Altyapısı", "Status": 4, "StartType": 2}
+    ]
+  },
+  "filtre_ve_denetim_sonuclari": [
+    {
+      "nesne_tipi": "Surec",
+      "isim": "Antigravity",
+      "id_veya_durum": "2628",
+      "metrik_veya_hesap": "569 Handle / 463.0 MB",
+      "risk_seviyesi": "ORTA",
+      "guvenlik_gerekcesi": "Kaynak tüketimi eşik değerleri aşıldı (Eşik: 2000 Handle / 150.0 MB)"
+    }
+  ]
+}

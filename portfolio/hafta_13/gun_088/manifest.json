@@ -1,0 +1,23 @@
+{
+  "dosyalar": {
+    "README.md": "8fc96a56c6284abb9428718ffe1b98efbc332a0b548053c1a9a08c7ab3d43210",
+    "ders.md": "5b38cbfb2d6beb887af36e224e9d16c7e4973d6b1a27dae41886e8e711f5d94b",
+    "kanit_uretici.py": "efe1ceec0680202ca945e598af5d3135f758ae49c1d4d761a1fcb13a1edd3501",
+    "rapor.md": "9f8fce5cd482c75db4646b3a2b92f7153f7fe18d3c08da51ef63a35ecd52ac51",
+    "sonuc.json": "caeea21396300e59ebbeb4eac932d035068175858dfcb2a9e6251c8dc75c59c6",
+    "soru_cevap.md": "761e28c7e3adce783769e8b0a24ee7d0e11647244a63d76d1d90b2bf178f21e0",
+    "kanit/gercek/cikis_ve_stderr_denetim_raporu.txt": "be187e640fd7e6ea0e16f93049ebd03f377dfe974de96e9dfaf8e1e3d3b45ce2",
+    "kanit/gercek/komut_ve_cikis.txt": "2adfd4a1f4aabc67d88a88b766faf4d3cb157bfe77ba421cd8bfb787c97ebb26",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": "212ad2a9b8f547f6865a13ab2be5e495ff04e99346deb7e16f6de7c93d5448ea",
+    "kanit/gercek/test_sonuclari.txt": "b0a3b22e5a0d85ed111469292bed8179e5694153b97497ac63f42f1a5793cad0",
+    "kanit/temsili/komut_cikis_ve_stderr_mimarisi.txt": "79ef8b6385be01a602322d25705e25c75015240a4e11c0988dc32b31cf5e81cc",
+    "ornek_veri/invalid_exit_stderr_inputs.json": "d88a046d7c020b90ed86d0aaec787cc9a162a93bb0aa1539411b71e162c34da4",
+    "ornek_veri/sample_secure_exit_script.sh": "a700817876835b6e2efff88ca492a4bcd0360ef3216c0dfa18f89c11ed74b056",
+    "ornek_veri/sample_vulnerable_exit_script.sh": "e1227124bdfdb6dae049fad17681cea34bfec78d8684e45f04504deafb8bf6d3",
+    "tests/__init__.py": "f0b073d9dfd7f4cf7036715de804ced9bc8e5a22f90f5b78d914bfc62fdc66a6",
+    "tests/test_command_exit_stderr_security_auditor.py": "0c3290df8e7fe2a0b1aebdda2aadb94690cc22bc84e9a7971b3b8850f3dc01b3",
+    "uygulama/__init__.py": "e9f9a6f1e172b6f1c334fc1e9cfaa3cad1ba5f8cddf10b91619c5f05d3ec68fa",
+    "uygulama/command_exit_stderr_security_auditor.py": "5ed37427bcf8ff1f813d15fe8ad85d2c9978f2a25c2ebbba0e0e61c6a38d16e8",
+    "uygulama/secure_exit_handling.sh": "440b1076c20a73c3ff6629391d41773b1285b468afbf9cf45cf1a3033b7ab5e9"
+  }
+}

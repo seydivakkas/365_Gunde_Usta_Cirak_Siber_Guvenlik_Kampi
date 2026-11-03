@@ -1,0 +1,24 @@
+{
+  "dosyalar": {
+    "README.md": "7be44a2678147a59870dc618f215e2397fc0f4af160199a50b5f15309da0ef53",
+    "ders.md": "0b08a5449a081c586706c0e09e4e3a62ffe540102f9f644aa30ec6f6c74e6ae6",
+    "rapor.md": "b0697507c50d8a7be38048d03ccd97f72fc97570f58b4eced6c629868a68277d",
+    "sonuc.json": "2416ae1ca58d1682d9ca4495aa8d28926489cd92afaed815ae2efd42a3198246",
+    "soru_cevap.md": "0eae1ca63236df3e71ca1d6ef19f08d54a9a130dcb94dcf0419965cc134c740f",
+    "kanit/gercek/kabuk_komut_analiz_ciktisi.txt": "e58a9c8d6190938860ff29c74263e52fa47864d6744b541c5931615119fad0ae",
+    "kanit/gercek/komut_ve_cikis.txt": "28e854d0edfd7aef94150d5d3d875a1b0ea127db1978368a37a6f15269aab002",
+    "kanit/gercek/test_sonuclari.txt": "8ad54a581c4b77f1adf7b6bc898b0cefb4f61ef8933e8303482b1d7540500c09",
+    "kanit/temsili/linux_kabuk_mimarisi.txt": "1b6114c13bbefc4dd4533258c62fdff0fff0006f1b47c612f1a6e8de47cdc136",
+    "ornek_veri/shell_security_rules.json": "5aaa43b68739a0decc3eb0bede4de448bae0ec762b5247168b7d56ff3dfe95f3",
+    "ornek_veri/shell_virtual_filesystem.json": "42b3aa0e7950fe7286f7a9de842cf362cbcdaf53a3f76481738cddbb95445564",
+    "tests/__init__.py": "3f58bbfb50bbc1d460e171b2a9f0abba05dcab89bcc2ae485002e2e03b6ea73b",
+    "tests/test_linux_shell_security_simulator.py": "c061dc2cef44448c1bd8a12b4b9845e9327547ce113f6f4f8aa0629cb77c491c",
+    "uygulama/__init__.py": "1cc8d77d256bcb8e71309a80192299bcfd49b5df50f26b8c172fd1e8c71700ad",
+    "uygulama/linux_shell_security_simulator.py": "e2d60d64a6372939d769accfb89083a0a65714affa80f1e904927dd0b1b995ee"
+  },
+  "ozet": {
+    "toplam_dosya": 15,
+    "gun": 23,
+    "durum": "DOGRULANDI_PASS"
+  }
+}

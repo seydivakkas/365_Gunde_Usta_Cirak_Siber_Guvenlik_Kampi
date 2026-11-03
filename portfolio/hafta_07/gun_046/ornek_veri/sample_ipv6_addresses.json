@@ -1,0 +1,82 @@
+{
+  "aciklama": "G046 - IPv6 Temel Kavramlar, Sıkıştırma (RFC 5952), Adres Türleri ve EUI-64 Örnek Veri Seti",
+  "ornekler": [
+    {
+      "id": "IPV6-01",
+      "girdi": "2001:0db8:85a3:0000:0000:8a2e:0370:7334/64",
+      "aciklama": "Genel İnternet Tekil Yayın (Global Unicast - GUA / Belgelendirme)",
+      "beklenen_acik_adres": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+      "beklenen_sikistirilmis": "2001:db8:85a3::8a2e:370:7334",
+      "beklenen_on_ek_uzunlugu": 64,
+      "beklenen_tur": "Global Unicast (GUA)",
+      "beklenen_kapsam": "Global",
+      "beklenen_solicited_multicast": "ff02::1:ff70:7334"
+    },
+    {
+      "id": "IPV6-02",
+      "girdi": "fe80:0000:0000:0000:021a:2bff:fe3c:4d5e/64",
+      "aciklama": "Bağlantı Yerel Adresi (Link-Local / EUI-64 ile Türetilmiş)",
+      "beklenen_acik_adres": "fe80:0000:0000:0000:021a:2bff:fe3c:4d5e",
+      "beklenen_sikistirilmis": "fe80::21a:2bff:fe3c:4d5e",
+      "beklenen_on_ek_uzunlugu": 64,
+      "beklenen_tur": "Link-Local Unicast",
+      "beklenen_kapsam": "Link-Local",
+      "beklenen_solicited_multicast": "ff02::1:ff3c:4d5e"
+    },
+    {
+      "id": "IPV6-03",
+      "girdi": "fd00:0000:0000:0001:0000:0000:0000:0005/64",
+      "aciklama": "Benzersiz Yerel Adres (Unique Local Address - ULA / RFC 4193)",
+      "beklenen_acik_adres": "fd00:0000:0000:0001:0000:0000:0000:0005",
+      "beklenen_sikistirilmis": "fd00:0:0:1::5",
+      "beklenen_on_ek_uzunlugu": 64,
+      "beklenen_tur": "Unique Local Address (ULA)",
+      "beklenen_kapsam": "Unique Local",
+      "beklenen_solicited_multicast": "ff02::1:ff00:0005"
+    },
+    {
+      "id": "IPV6-04",
+      "girdi": "0000:0000:0000:0000:0000:0000:0000:0001/128",
+      "aciklama": "Geri Döngü Adresi (Loopback - ::1)",
+      "beklenen_acik_adres": "0000:0000:0000:0000:0000:0000:0000:0001",
+      "beklenen_sikistirilmis": "::1",
+      "beklenen_on_ek_uzunlugu": 128,
+      "beklenen_tur": "Loopback",
+      "beklenen_kapsam": "Node-Local",
+      "beklenen_solicited_multicast": "ff02::1:ff00:0001"
+    },
+    {
+      "id": "IPV6-05",
+      "girdi": "0000:0000:0000:0000:0000:0000:0000:0000/128",
+      "aciklama": "Belirtilmemiş Adres (Unspecified Address - ::)",
+      "beklenen_acik_adres": "0000:0000:0000:0000:0000:0000:0000:0000",
+      "beklenen_sikistirilmis": "::",
+      "beklenen_on_ek_uzunlugu": 128,
+      "beklenen_tur": "Unspecified Address",
+      "beklenen_kapsam": "Reserved",
+      "beklenen_solicited_multicast": "ff02::1:ff00:0000"
+    },
+    {
+      "id": "IPV6-06",
+      "girdi": "ff02:0000:0000:0000:0000:0000:0000:0001/16",
+      "aciklama": "Tüm Düğümler Çok Noktaya Yayın (All-Nodes Multicast)",
+      "beklenen_acik_adres": "ff02:0000:0000:0000:0000:0000:0000:0001",
+      "beklenen_sikistirilmis": "ff02::1",
+      "beklenen_on_ek_uzunlugu": 16,
+      "beklenen_tur": "Multicast (All Nodes)",
+      "beklenen_kapsam": "Link-Local Multicast",
+      "beklenen_solicited_multicast": "ff02::1:ff00:0001"
+    },
+    {
+      "id": "IPV6-07",
+      "girdi": "0000:0000:0000:0000:0000:ffff:c000:0280/96",
+      "aciklama": "IPv4 Eşlemeli IPv6 Adresi (IPv4-Mapped IPv6 - ::ffff:192.0.2.128)",
+      "beklenen_acik_adres": "0000:0000:0000:0000:0000:ffff:c000:0280",
+      "beklenen_sikistirilmis": "::ffff:c000:280",
+      "beklenen_on_ek_uzunlugu": 96,
+      "beklenen_tur": "IPv4-Mapped IPv6",
+      "beklenen_kapsam": "Transition/Dual-Stack",
+      "beklenen_solicited_multicast": "ff02::1:ff00:0280"
+    }
+  ]
+}

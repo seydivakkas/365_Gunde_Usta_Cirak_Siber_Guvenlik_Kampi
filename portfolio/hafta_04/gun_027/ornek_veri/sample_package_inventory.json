@@ -1,0 +1,85 @@
+{
+  "tarama_zamani": "2026-10-27T08:30:00Z",
+  "sunucu_adi": "srv-prod-app-01",
+  "paket_yoneticisi": "apt",
+  "depolar": [
+    {
+      "depo_adi": "official-security",
+      "url": "https://security.ubuntu.com/ubuntu",
+      "protokol": "https",
+      "gpg_dogrulandi": true,
+      "guvenilir_mi": true
+    },
+    {
+      "depo_adi": "official-main",
+      "url": "https://archive.ubuntu.com/ubuntu",
+      "protokol": "https",
+      "gpg_dogrulandi": true,
+      "guvenilir_mi": true
+    },
+    {
+      "depo_adi": "thirdparty-untrusted-ppa",
+      "url": "http://ppa.unverified-dev.org/tools",
+      "protokol": "http",
+      "gpg_dogrulandi": false,
+      "guvenilir_mi": false
+    }
+  ],
+  "paketler": [
+    {
+      "paket_adi": "openssl",
+      "mevcut_surum": "3.0.2",
+      "sabitlendi_mi": false,
+      "depo": "official-security",
+      "mevcut_guncelleme": "3.0.13",
+      "guncelleme_turu": "security",
+      "bekleyen_cve": "CVE-2024-0727",
+      "cvss_puani": 7.5,
+      "aciklama": "Kritik sifreleme kutuphanesi - Yamasiz zafiyet barindiriyor!"
+    },
+    {
+      "paket_adi": "nginx",
+      "mevcut_surum": "1.18.0",
+      "sabitlendi_mi": true,
+      "depo": "official-main",
+      "mevcut_guncelleme": "1.24.0",
+      "guncelleme_turu": "feature",
+      "bekleyen_cve": null,
+      "cvss_puani": 0.0,
+      "aciklama": "Web sunucusu - Surum kilitli (pinned), yeni ana surum cikmis"
+    },
+    {
+      "paket_adi": "postgresql",
+      "mevcut_surum": "14.9",
+      "sabitlendi_mi": false,
+      "depo": "official-security",
+      "mevcut_guncelleme": "14.11",
+      "guncelleme_turu": "security",
+      "bekleyen_cve": "CVE-2024-0985",
+      "cvss_puani": 8.1,
+      "aciklama": "Veritabani sunucusu - Sabitleme eksik ve kritik guvenlik yamasi bekliyor!"
+    },
+    {
+      "paket_adi": "curl",
+      "mevcut_surum": "7.81.0",
+      "sabitlendi_mi": true,
+      "depo": "official-security",
+      "mevcut_guncelleme": null,
+      "guncelleme_turu": null,
+      "bekleyen_cve": null,
+      "cvss_puani": 0.0,
+      "aciklama": "Ag araci - Guncel ve surum kilitli (Uyumlu)"
+    },
+    {
+      "paket_adi": "untrusted-cli",
+      "mevcut_surum": "0.1.0",
+      "sabitlendi_mi": false,
+      "depo": "thirdparty-untrusted-ppa",
+      "mevcut_guncelleme": "0.2.0",
+      "guncelleme_turu": "feature",
+      "bekleyen_cve": null,
+      "cvss_puani": 0.0,
+      "aciklama": "Guvenilmeyen HTTP deposundan imzasiz yuklenmis paket - Tedarik zinciri riski!"
+    }
+  ]
+}

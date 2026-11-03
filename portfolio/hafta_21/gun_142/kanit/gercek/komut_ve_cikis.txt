@@ -1,0 +1,38 @@
+=== GÜN 142 / CVSS TEMEL METRİKLERİ: CLI KOMUT YÜRÜTME GÜNLÜĞÜ ===
+Tarih/Saat: 2026-11-02T15:32:09.571772
+
+$ python uygulama/cvss_calculator_cli.py calculate 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H'
+==============================================================================
+ FIRST CVSS v3.1 TABAN METRİK HESAPLAMA RAPORU
+==============================================================================
+Vektör Dizesi    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
+CVSS Taban Skoru : 10.0 / 10.0
+Şiddet Seviyesi  : CRITICAL
+Etki Alt Skoru   : 6.0 (Ham ISS: 0.915)
+İstismar Skoru   : 3.9
+------------------------------------------------------------------------------
+METRİK BİLEŞENLERİ:
+  * Attack Vector (AV)         : Network (Ağ Üzerinden)
+  * Attack Complexity (AC)     : Low (Düşük Karmaşıklık)
+  * Privileges Required (PR)   : None (Yetkisiz)
+  * User Interaction (UI)      : None (Kullanıcı Etkileşimi Yok)
+  * Scope (S)                  : Changed (Kapsam Değişti / Sınır Aşıldı)
+  * Confidentiality (C)        : High (Yüksek Gizlilik Kaybı)
+  * Integrity (I)              : High (Yüksek Bütünlük Bozulması)
+  * Availability (A)           : High (Tam Hizmet Kesintisi)
+==============================================================================
+
+$ python uygulama/cvss_calculator_cli.py compare 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H' 'CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H'
+==============================================================================
+ CVSS v3.1 VEKTÖR KARŞILAŞTIRMA VE ETKİ ANALİZİ
+==============================================================================
+Vektör 1: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H -> Skor: 9.8 (CRITICAL)
+Vektör 2: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H -> Skor: 7.2 (HIGH)
+Skor Farkı (Delta): -2.6
+------------------------------------------------------------------------------
+DEĞİŞEN METRİKLER:
+  * PRIVILEGES_REQUIRED  : N -> H
+==============================================================================
+
+$ python uygulama/cvss_calculator_cli.py verify 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H' --max-score 8.9
+[FAIL] Skor izin verilen sınırı aştı: 10.0 > 8.9 (CRITICAL)

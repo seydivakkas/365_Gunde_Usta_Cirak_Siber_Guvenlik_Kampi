@@ -1,0 +1,54 @@
+=== GÜN 107 CLI KOMUT VE ÇIKIŞ GÜNLÜĞÜ ===
+Tarih/Saat: 2026-11-02 03:32:57
+================================================================================
+
+--- 1. 1024-bit RSA İmza Anahtar Çifti Üretimi ---
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_107\uygulama\signature_cli.py --keygen --bits 1024 --pub-out C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_107\kanit\gercek\temp_sig_pub.json --priv-out C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_107\kanit\gercek\temp_sig_priv.json --json
+Çıkış Kodu: 0
+Çıktı:
+{
+  "status": "SUCCESS",
+  "bits": 1024,
+  "public_key_file": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_16\\gun_107\\kanit\\gercek\\temp_sig_pub.json",
+  "private_key_file": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_16\\gun_107\\kanit\\gercek\\temp_sig_priv.json",
+  "modulus_sample": "0xc5ac911c74d450218b30c871a115a3..."
+}
+
+
+--- 2. RSASSA-PSS ile Dijital İmzalama ---
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_107\uygulama\signature_cli.py --sign --privkey C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_107\kanit\gercek\temp_sig_priv.json --message Resmi Odeme Onay Belgesi #2026-11 --scheme pss --json
+Çıkış Kodu: 0
+Çıktı:
+{
+  "status": "SUCCESS",
+  "algorithm": "RSASSA-PSS-SHA256",
+  "message_length": 33,
+  "signature_hex": "560978e1448c98f22699bcaf0c7dd60a49543eac906b62bffbb2cb8fa28fe5131045b0aa748e5b9360c470add040e754e1b527ed12fae98c1d3b258dc3376237deb317ec47215fbe2131ed019cea22e57f0ecce56caf064d5775cc51d4a062b3624e0c7f29a456f6fe3547e8fd7b2bcdea0fe19698322049ed8195b313ab235f",
+  "signature_length_bytes": 128
+}
+
+
+--- 3. İmza Zafiyetleri Simülasyonu (Textbook, Bleichenbacher, ECDSA) ---
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_107\uygulama\signature_cli.py --demo-flaws --json
+Çıkış Kodu: 0
+Çıktı:
+{
+  "existential_forgery_demonstrated": true,
+  "existential_forgery_message": "Varolu�sal Sahtecilik Ba�ar�l�! �zel anahtar olmadan mesaj=5714773095202218700493652521609997831163627490856136093434874768120860236603427825320975612293619170342062503391170005748650193000854151299619806795076109 i�in ge�erli imza=2686747827938376100188687165592661214476894730373913526232292192305388597617162356265851484087378987750922619845256116046872464018003428097388419055424351 �retildi. Dolgusuz (Textbook) RSA imza kabul edilemez!",
+  "bleichenbacher_forgery_demonstrated": false,
+  "bleichenbacher_forgery_message": "",
+  "ecdsa_nonce_leak_demonstrated": true,
+  "ecdsa_nonce_leak_message": "ECDSA Nonce Yeniden Kullan�m� (CWE-323) Tespit Edildi! Sald�rgan ayn� k=555555555 kullan�m�n� tespit ederek �zel anahtar� d=9876543210123456789 saniyeler i�inde kurtard�!"
+}
+
+
+--- 4. RSASSA-PSS ile İmza Doğrulama ---
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_107\uygulama\signature_cli.py --verify --pubkey C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_107\kanit\gercek\temp_sig_pub.json --message Resmi Odeme Onay Belgesi #2026-11 --signature 560978e1448c98f22699bcaf0c7dd60a49543eac906b62bffbb2cb8fa28fe5131045b0aa748e5b9360c470add040e754e1b527ed12fae98c1d3b258dc3376237deb317ec47215fbe2131ed019cea22e57f0ecce56caf064d5775cc51d4a062b3624e0c7f29a456f6fe3547e8fd7b2bcdea0fe19698322049ed8195b313ab235f --scheme pss --json
+Çıkış Kodu: 0
+Çıktı:
+{
+  "status": "VALID",
+  "algorithm": "RSASSA-PSS-SHA256",
+  "verified": true
+}
+

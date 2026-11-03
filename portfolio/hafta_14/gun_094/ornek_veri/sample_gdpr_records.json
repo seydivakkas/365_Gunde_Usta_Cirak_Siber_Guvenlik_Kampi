@@ -1,0 +1,24 @@
+[
+  {
+    "user_id": "USR-1001",
+    "ad_soyad": "Ahmet Yılmaz",
+    "tckn": "12345678950",
+    "email": "ahmet.yilmaz@kurumsal-banka.com.tr",
+    "telefon": "+90 532 444 22 11",
+    "iban": "TR780006100519786457841001",
+    "kredi_karti": "4532015112830366",
+    "rol": "Kurumsal Müşteri",
+    "aktif": true
+  },
+  {
+    "user_id": "USR-1002",
+    "ad_soyad": "Zeynep Kaya",
+    "tckn": "10000000146",
+    "email": "zeynep.kaya@guvenlik-arge.org",
+    "telefon": "05559876543",
+    "iban": "TR78 0006 1005 1978 6457 8410 01",
+    "kredi_karti": "5425-2334-3010-9903",
+    "rol": "Kıdemli Güvenlik Analisti",
+    "aktif": true
+  }
+]

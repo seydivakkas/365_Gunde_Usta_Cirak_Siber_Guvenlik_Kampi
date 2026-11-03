@@ -1,0 +1,63 @@
+================================================================================
+G084: MINI PROJE 11: GU剝ENLIK LOG ARACI - NEGATIF KONTROLLER RAPORU
+Tarih: 2026-11-01T04:31:00+03:00
+Toplam Senaryo: 9 Adet Guvenlik Saldiri / Bozuk Girdi Senaryosu
+================================================================================
+
+[PASS] NEG_01_PATH_TRAVERSAL_LOG_PATH
+  Baslik: Dizin Atlama (Path Traversal) ile Log Disi Dosya Okuma Denemesi
+  Zafiyet Referansi: CWE-22: Improper Limitation of a Pathname to a Restricted Directory
+  Beklenen Istisna: SecurityPathTraversalException
+  Sonuc: BASARILI: Beklenen SecurityPathTraversalException yakalandi -> Path Traversal Engellendi: '../../../Windows/System32/drivers/etc/host
+
+[PASS] NEG_02_SYMLINK_LOG_ATTACK
+  Baslik: Sembolik Bag (Symlink) ile Guvenli Bolge Disina Yonlendirme
+  Zafiyet Referansi: CWE-59: Improper Link Resolution Before File Access
+  Beklenen Istisna: SymlinkViolationException
+  Sonuc: BASARILI: Beklenen SymlinkViolationException yakalandi -> Sembolik bag erisimi guvenlik kurali geregi yasaktir: C:\Users\seydier
+
+[PASS] NEG_03_LOG_INJECTION_CRLF
+  Baslik: Log Enjeksiyonu (CRLF / Log Forgery) Denemesi
+  Zafiyet Referansi: CWE-117: Improper Output Handling for Logs
+  Beklenen Istisna: LogInjectionAttemptException
+  Sonuc: BASARILI: Beklenen LogInjectionAttemptException yakalandi -> Log Injection (CRLF) saldiri girisimi tespit edildi.
+
+[PASS] NEG_04_NULL_BYTE_IN_LOG
+  Baslik: Log Akisinda Null Byte (0x00) Enjeksiyonu
+  Zafiyet Referansi: CWE-158: Improper Neutralization of Null Byte or Special Characters
+  Beklenen Istisna: NullByteForbiddenException
+  Sonuc: BASARILI: Beklenen NullByteForbiddenException yakalandi -> Log satirinda null-byte (0x00) enjeksiyonu tespit edildi.
+
+[PASS] NEG_05_OVERSIZED_LOG_ENTRY_DOS
+  Baslik: Asiri Uzun Log Satiri ile DoS / Bellek Tukenmesi
+  Zafiyet Referansi: CWE-400: Uncontrolled Resource Consumption
+  Beklenen Istisna: LogLineLengthLimitException
+  Sonuc: BASARILI: Beklenen LogLineLengthLimitException yakalandi -> Log satiri maksimum 4096 karakter limitini asti.
+
+[PASS] NEG_06_MALFORMED_JSON_LOG
+  Baslik: Bozuk veya Gecersiz JSON Sentaksi Iceren Log Satiri
+  Zafiyet Referansi: CWE-20: Improper Input Validation
+  Beklenen Istisna: MalformedJsonLogException
+  Sonuc: BASARILI: Beklenen MalformedJsonLogException yakalandi -> Gecersiz JSON log sentaksi: Expecting value: line 1 column 42 (char 41
+
+[PASS] NEG_07_EXCESSIVE_FAIL_COUNT_BRUTE_FORCE
+  Baslik: Ayni IP'den Esik Degeri Asan Basarisiz Giris Denemesi (Kaba Kuvvet)
+  Zafiyet Referansi: CWE-307: Improper Restriction of Excessive Authentication Attempts
+  Beklenen Istisna: BruteForceDetectedException
+  Sonuc: BASARILI: Beklenen BruteForceDetectedException yakalandi -> IP '10.0.0.99' tarafindan 3 basarisiz giris denemesi (Esik: 3)
+
+[PASS] NEG_08_SQL_INJECTION_IN_QUERY
+  Baslik: Log Istek URL veya Parametresinde SQL Enjeksiyon Deseni
+  Zafiyet Referansi: CWE-89: SQL Injection Pattern in Ingested Log Record
+  Beklenen Istisna: SqlInjectionDetectedException
+  Sonuc: BASARILI: Beklenen SqlInjectionDetectedException yakalandi -> Istek icerisinde SQL Injection kaliplari yakalandi: /api/v1/search?q='
+
+[PASS] NEG_09_INVALID_IP_FORMAT
+  Baslik: Gecersiz veya Bozuk Istemci IP Formati (Sahtecilik)
+  Zafiyet Referansi: CWE-20: Improper Input Validation for Network Entities
+  Beklenen Istisna: InvalidIpAddressException
+  Sonuc: BASARILI: Beklenen InvalidIpAddressException yakalandi -> Gecersiz istemci IP adresi formati: '999.999.999.999'
+
+================================================================================
+OZET: 9/9 Negatif Guvenlik Testi Eksiksiz Olarak Basariyla Tamamlandi (PASS).
+================================================================================

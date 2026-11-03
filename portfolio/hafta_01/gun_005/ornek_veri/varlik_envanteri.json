@@ -1,0 +1,121 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ.",
+  "kurum": "Anadolu Finansal Teknolojiler A.Ş.",
+  "envanter_tarihi": "2026-10-26",
+  "gun_no": 5,
+  "gun_kimligi": "G005",
+  "varliklar": [
+    {
+      "varlik_id": "AST-001",
+      "ad": "Müşteri Kredi Kartı ve Finansal Hesap Veritabanı (PostgreSQL Prod)",
+      "tur": "VERI",
+      "sahip": "Veri Yönetişimi ve Uyum Direktörlüğü - Dr. Selin Kaya",
+      "veri_sinifi": "COK_GIZLI_SIR",
+      "kritiklik_derecesi": "KRITIK",
+      "parasal_donanim_degeri_usd": 2500,
+      "is_etki_degeri_usd": 15000000,
+      "cia_gereksinimleri": {
+        "gizlilik": "KRITIK",
+        "butunluk": "KRITIK",
+        "erisilebilirlik": "KRITIK"
+      },
+      "ag_konumu": "PROD-DB-VLAN-10 (İzole İç Ağ)",
+      "mevcut_kontroller": [
+        "AES-256 Şifreleme (At-Rest)",
+        "FIDO2 MFA Zorunluluğu",
+        "Ayrıcalıklı Erişim Yönetimi (PAM)",
+        "Değiştirilemez Çevrimdışı Yedeklilik (Air-Gapped WORM)",
+        "EDR Bellek Koruması"
+      ]
+    },
+    {
+      "varlik_id": "AST-002",
+      "ad": "Dış Web Portalı ve Kurumsal Tanıtım Sunucusu (Nginx Web Cluster)",
+      "tur": "UYGULAMA",
+      "sahip": "Pazarlama ve Kurumsal İletişim Departmanı - Kerem Yılmaz",
+      "veri_sinifi": "KAMUYA_ACIK",
+      "kritiklik_derecesi": "DUSUK",
+      "parasal_donanim_degeri_usd": 12000,
+      "is_etki_degeri_usd": 50000,
+      "cia_gereksinimleri": {
+        "gizlilik": "DUSUK",
+        "butunluk": "YUKSEK",
+        "erisilebilirlik": "ORTA"
+      },
+      "ag_konumu": "DMZ (Demilitarized Zone)",
+      "mevcut_kontroller": [
+        "Web Uygulama Güvenlik Duvarı (WAF)",
+        "HTTPS (TLS 1.3)",
+        "DDoS Sönümleme Kalkanı"
+      ]
+    },
+    {
+      "varlik_id": "AST-003",
+      "ad": "Merkezi Active Directory Etki Alanı Yöneticisi (Domain Controller DC-01)",
+      "tur": "KIMLIK",
+      "sahip": "Altyapı ve Sistem Yönetimi Ekip Lideri - Burak Demir",
+      "veri_sinifi": "GIZLI",
+      "kritiklik_derecesi": "KRITIK",
+      "parasal_donanim_degeri_usd": 4000,
+      "is_etki_degeri_usd": 25000000,
+      "cia_gereksinimleri": {
+        "gizlilik": "KRITIK",
+        "butunluk": "KRITIK",
+        "erisilebilirlik": "KRITIK"
+      },
+      "ag_konumu": "CORP-MGMT-VLAN-01 (Yönetim Katmanı)",
+      "mevcut_kontroller": [
+        "Tiered Administration Modeli (Tier 0)",
+        "Local Administrator Password Solution (LAPS)",
+        "Sysmon Gelişmiş Loglama",
+        "7/24 SIEM Davranışsal Korelasyon Kuralları",
+        "BitLocker / AES-256 Tam Disk Şifreleme"
+      ]
+    },
+    {
+      "varlik_id": "AST-004",
+      "ad": "Ar-Ge Kaynak Kod Deposu ve Dağıtım Sunucusu (GitLab Enterprise)",
+      "tur": "UYGULAMA",
+      "sahip": "Yazılım Geliştirme ve Mühendislik Direktörü - Zeynep Can",
+      "veri_sinifi": "GIZLI",
+      "kritiklik_derecesi": "YUKSEK",
+      "parasal_donanim_degeri_usd": 6000,
+      "is_etki_degeri_usd": 8000000,
+      "cia_gereksinimleri": {
+        "gizlilik": "KRITIK",
+        "butunluk": "KRITIK",
+        "erisilebilirlik": "YUKSEK"
+      },
+      "ag_konumu": "DEV-ZONE-VLAN-50",
+      "mevcut_kontroller": [
+        "Donanım Güvenlik Anahtarı (FIDO2 MFA)",
+        "Otomatik Gizli Anahtar Taraması (Secret Scanner)",
+        "Rol Bazlı Erişim Kontrolü (RBAC)",
+        "GPG İmzalı Commit Doğrulaması",
+        "AES-256 Depolama Şifreleme ve TLS 1.3"
+      ]
+    },
+    {
+      "varlik_id": "AST-005",
+      "ad": "Merkezi Omurga Yönlendiricisi ve Yeni Nesil Güvenlik Duvarı (Core NGFW)",
+      "tur": "CIHAZ",
+      "sahip": "Ağ Operasyonları ve Güvenlik Ekip Lideri - Caner Aydın",
+      "veri_sinifi": "DAHILI",
+      "kritiklik_derecesi": "KRITIK",
+      "parasal_donanim_degeri_usd": 45000,
+      "is_etki_degeri_usd": 10000000,
+      "cia_gereksinimleri": {
+        "gizlilik": "YUKSEK",
+        "butunluk": "KRITIK",
+        "erisilebilirlik": "KRITIK"
+      },
+      "ag_konumu": "NETWORK-CORE-RACK-01",
+      "mevcut_kontroller": [
+        "Aktif/Pasif Yüksek Erişilebilirlik (HA)",
+        "SSHv2 Yalnızca RSA/ED25519 Anahtar Doğrulaması",
+        "Şifreli SNMPv3 İzleme",
+        "Bant Dışı Yönetim Portu (OOB Management)"
+      ]
+    }
+  ]
+}

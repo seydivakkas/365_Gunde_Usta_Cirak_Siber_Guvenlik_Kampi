@@ -1,0 +1,46 @@
+# ==============================================================================
+# TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+# ==============================================================================
+# Gün 090: Tarih-Saat, UTC ve Saat Dilimi Adli Bilişim Mimari Görselleştirmesi
+# Konu: Çok Kaynaklı Heterojen Log Normalizasyonu ve Saat Sapması (Clock Skew) Savunması
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) - Tüm Hakları Saklıdır.
+# ==============================================================================
+
++--------------------------------------------------------------------------------------------------+
+|                            HETEROJEN VE ÇOK SAAT DİLİMLİ LOG KAYNAKLARI                          |
++--------------------------------------------------------------------------------------------------+
+  [ Windows Active Directory ]      [ Istanbul Web API ]      [ New York Auth Server ]    [ Tokyo FW ]
+     Windows FileTime (64-bit)        ISO-8601 (+03:00)           ISO-8601 (-04:00)      Unix Epoch / +09:00
+      (134374314050000000)          (2026-11-01T17:30)         (2026-11-01T10:29)         (1793543415)
+                 \                           |                           |                    /
+                  \                          |                           |                   /
+                   v                         v                           v                  v
++--------------------------------------------------------------------------------------------------+
+|                      UtcTimezoneForensicNormalizer GÜVENLİK VE AYRIŞTIRMA KALKANI                 |
++--------------------------------------------------------------------------------------------------+
+                                                 |
+                   +-----------------------------+-----------------------------+
+                   |                                                           |
+                   v                                                           v
+   [ Girdi & DoS Denetimleri ]                                 [ Zaman Dilimi Farkındalığı ]
+   - Uzunluk <= 128 karakter (CWE-400)                          - Naive DateTime Tespiti (CWE-613)
+   - Mantıklı Yıl Aralığı [1970-2050]                           - 'Z' veya (+/-HH:MM) Zorunluluğu
+   - Takvim ve Zaman Sınırları (CWE-20)                         - tzinfo Yoksa Anında Reddet
+                   |                                                           |
+                   +-----------------------------+-----------------------------+
+                                                 |
+                                                 v
++--------------------------------------------------------------------------------------------------+
+|                        SAAT SAPMASI (CLOCK SKEW) & REPLAY ATTACK SAVUNMASI                        |
+|   - Kerberos / OAuth / JWT Güvenlik Eşiği: Maksimum 300 Saniye (5 Dakika)                        |
+|   - Formül: Delta = |T_istemci - T_referans_UTC|                                                  |
+|   - Delta > 300s -> KRİTİK İHLAL / Replay Attack Riski (CWE-1385)                                |
++--------------------------------------------------------------------------------------------------+
+                                                 |
+                                                 v
++--------------------------------------------------------------------------------------------------+
+|                       STANDARTLAŞTIRILMIŞ ADLİ BİLİŞİM ZAMAN ÇİZGİSİ (TIMELINE)                  |
+|   - Bütün Olaylar Mutlak UTC Saat Dilimine İndirgenir (ISO-8601 UTC / Zulu)                      |
+|   - Olaylar unix_epoch_saniye İndisiyle Kronolojik Olarak Sıralanır                              |
+|   - Olay Müdahalesi (IR) ve Kök Neden Analizi (RCA) Sıfır Belirsizlikle Gerçekleştirilir        |
++--------------------------------------------------------------------------------------------------+

@@ -1,0 +1,47 @@
+=== G097 NEGATİF KONTROL VE HATA ENGELLEME KANITLARI (9 SENARYO) ===
+Tarih: 2026-11-02 01:13:27
+
+[BAŞARILI (ENGELLEDİ)] NEG_01_AIRGAP_EXTERNAL_DEPENDENCY
+  Tanım: Hava boşluklu izole ortam kuralı ihlali: Harici internet bağımlılığı import denemesi
+  CWE: CWE-16: Configuration
+  Beklenen: AirGapDependencyViolationError | Alınan: AirGapDependencyViolationError
+
+[BAŞARILI (ENGELLEDİ)] NEG_02_CORRUPTED_FIM_CHECKSUM
+  Tanım: Taban çizgisi sonrası dosya içeriğinin tahrif edilmesi ve FIM ihlali
+  CWE: CWE-345: Insufficient Verification of Data Authenticity
+  Beklenen: IntegrityVerificationError | Alınan: IntegrityVerificationError
+
+[BAŞARILI (ENGELLEDİ)] NEG_03_INVALID_LUHN_CARD_INPUT
+  Tanım: Luhn mod-10 algoritmasından geçmeyen sahte kartın DLP filtresinde tespiti
+  CWE: CWE-20: Improper Input Validation
+  Beklenen: LuhnValidationError | Alınan: ToolkitSecurityError
+
+[BAŞARILI (ENGELLEDİ)] NEG_04_PATH_TRAVERSAL_IN_FIM
+  Tanım: FIM tarama dizininde dizin dışına çıkma denemesi (Path Traversal)
+  CWE: CWE-22: Improper Limitation of a Pathname to a Restricted Directory
+  Beklenen: PathTraversalSecurityError | Alınan: PathTraversalSecurityError
+
+[BAŞARILI (ENGELLEDİ)] NEG_05_NULL_BYTE_POISONING
+  Tanım: Girdi ve dosya yollarında Null-Byte zehirlemesi denemesi
+  CWE: CWE-158: Improper Neutralization of Null Byte or Special Characters
+  Beklenen: NullByteInjectionError | Alınan: NullByteInjectionError
+
+[BAŞARILI (ENGELLEDİ)] NEG_06_PERFORMANCE_SLA_VIOLATION
+  Tanım: Güvenlik fonksiyonunun SLA performans eşiğini aşması (DoS uyarısı)
+  CWE: CWE-400: Uncontrolled Resource Consumption
+  Beklenen: PerformanceBudgetExceededError | Alınan: PerformanceBudgetExceededError
+
+[BAŞARILI (ENGELLEDİ)] NEG_07_INVALID_ASSET_SCHEMA
+  Tanım: Geçersiz port numarası ve octal IP içeren ağ varlığı doğrulama hatası
+  CWE: CWE-20: Improper Input Validation
+  Beklenen: AssetValidationError | Alınan: AssetValidationError
+
+[BAŞARILI (ENGELLEDİ)] NEG_08_UNKNOWN_SUBCOMMAND
+  Tanım: Araç setine tanımlı olmayan geçersiz alt komut iletilmesi
+  CWE: CWE-20: Improper Input Validation
+  Beklenen: UnknownSubcommandError | Alınan: UnknownSubcommandError
+
+[BAŞARILI (ENGELLEDİ)] NEG_09_REDOS_MALICIOUS_INPUT
+  Tanım: ReDoS katastrofik geri izleme tetiklemeyi amaçlayan kötücül regex girdisi
+  CWE: CWE-1333: Inefficient Regular Expression Complexity
+  Beklenen: ReDoSProtectionTriggered | Alınan: ReDoSProtectionTriggered

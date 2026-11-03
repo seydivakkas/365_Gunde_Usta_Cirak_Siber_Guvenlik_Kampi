@@ -1,0 +1,24 @@
+================================================================================
+G089: KURUMSAL ARGPARSE VE CLI TASARIM GU蕪ENLIK DENETIM RAPORU
+Uretim Tarihi: 2026-11-01T20:13:05.100453+00:00
+================================================================================
+
+--- 1. CLI MIMARI VE ALT KOMUT HIKAYESI ---
+Program Adi          : security_cli
+Tanimli Alt Komutlar : scan, audit, hash
+Ortak Bayraklar      : -v/--verbose, --json-output (Parent Parser ile miras)
+Karsilikli Dislayan  : scan --fast ve scan --deep (Cakisma yasak)
+Girdi Sinirlamalari  : Maksimum 100 arguman, Maksimum 4096 karakter/arguman
+
+--- 2. ORNEK ALT KOMUT CALISTIRMA SENARYOLARI ---
+[+] Senaryo 1 (scan)  : {"action": "scan", "host": "192.168.1.100", "port": 443, "mode": "thorough", "status": "COMPLETED", "message": "Port 443 uzerinde thorough tarama tamamlandi."}
+[+] Senaryo 2 (audit) : {"action": "audit", "file": "C:/Users/seydieryilmaz/Desktop/Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi/portfolio/hafta_13/gun_089/ornek_veri/sample_cli_commands.json", "file_size_bytes": 745, "strict_mode": true, "status": "SECURE", "message": "Dosya 'sample_cli_commands.json' guvenlik denetiminden gecti."}
+[+] Senaryo 3 (hash)  : {"action": "hash", "file": "C:/Users/seydieryilmaz/Desktop/Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi/portfolio/hafta_13/gun_089/ornek_veri/sample_cli_commands.json", "algorithm": "SHA256", "digest": "0644d89bee75526c1e066591b6387761da7c1ebad08fdf88b3a4dcf7eef49ccd", "status": "VERIFIED"}
+
+--- 3. GU蕪ENLIK DEGERLENDIRMESI ---
+[PASS] CWE-20: Girdi dogrulama tam (Port [1-65535], Host Regex)
+[PASS] CWE-22: Path traversal (..) korumasi tam
+[PASS] CWE-88: Komut enjeksiyonu ozel karakterleri engellendi
+[PASS] CWE-158: Null byte (0x00) filtrelemesi tam
+[PASS] CWE-327: Zayif kripto (MD5/SHA1) seceneklerden kaldirildi
+[PASS] CWE-400: DoS tavan korumalari tam

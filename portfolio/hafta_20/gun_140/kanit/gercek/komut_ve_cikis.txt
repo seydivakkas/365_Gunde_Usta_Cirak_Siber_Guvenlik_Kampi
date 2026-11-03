@@ -1,0 +1,28 @@
+=== GÜN 140 / MINIPROJE 19: CLI KOMUT YÜRÜTME VE DOĞRULAMA GÜNLÜĞÜ ===
+Tarih/Saat: 2026-11-02T15:05:18.245485
+
+$ python uygulama/hardening_audit_cli.py audit ornek_veri/enterprise_linux_audit_inventory.json
+==============================================================================
+ LINUX SERTLEŞTİRME DENETİM RAPORU — HEDEF: prod-sec-node01.corp.internal
+==============================================================================
+Genel Uyumluluk Puanı : 100.0 / 100
+Genel Uyumluluk Durumu: COMPLIANT
+Toplam Kontrol        : 22
+Başarılı (PASS)       : 22
+Başarısız (FAIL)      : 0
+------------------------------------------------------------------------------
+ALAN BAZLI PUANLAR:
+  * SUDO_PRIVILEGE_MANAGEMENT    : %100.0 (Başarılı: 4/4)
+  * PAM_SESSION_SECURITY         : %100.0 (Başarılı: 4/4)
+  * SYSTEMD_SANDBOXING_SECURITY  : %100.0 (Başarılı: 2/2)
+  * SSH_CRYPTOGRAPHY_SECURITY    : %100.0 (Başarılı: 4/4)
+  * FIREWALL_NETWORK_SECURITY    : %100.0 (Başarılı: 4/4)
+  * AUDIT_JOURNAL_INTEGRITY      : %100.0 (Başarılı: 4/4)
+------------------------------------------------------------------------------
+
+$ python uygulama/hardening_audit_cli.py verify ornek_veri/enterprise_linux_audit_inventory.json
+[PASS] Sistem uyumlu. Puan: 100.0/100 (Çıkış Kodu: 0)
+
+$ python uygulama/hardening_audit_cli.py generate-remediation ornek_veri/enterprise_linux_audit_inventory.json --output kanit/gercek/otomatik_sikilastirma.sh
+[+] Otomatik düzeltme betiği oluşturuldu: kanit/gercek/otomatik_sikilastirma.sh
+[+] Boyut: 2840 bayt. İcra etmek için: bash kanit/gercek/otomatik_sikilastirma.sh

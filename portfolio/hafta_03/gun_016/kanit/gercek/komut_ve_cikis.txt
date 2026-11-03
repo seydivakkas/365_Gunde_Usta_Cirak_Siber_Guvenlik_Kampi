@@ -1,0 +1,77 @@
+================================================================================
+GERÇEK KANIT — KOMUT ÇALIŞTIRMA VE SİSTEM ÇIKTILARI
+Tarih: 2026-10-27
+Aşama 02: Sistem, Bellek ve Düşük Seviyeli Güvenlik
+Hafta 03, Gün 016: CPU, RAM ve Depolama Ayrımı
+================================================================================
+
+[ORTAM BİLGİSİ]
+Python Sürümü : Python 3.14.0a2
+İşletim Sistemi: Windows 11 Enterprise (10.0.26300 AMD64)
+Mantıksal CPU  : 28 Çekirdek (Intel64 Family 6 Model 183 Stepping 1)
+Kök Depolama   : C:\ (Toplam: 952.86 GB, Kullanılan: 859.08 GB, Boş: 93.77 GB)
+
+--------------------------------------------------------------------------------
+1. KOMUT 1: Canlı Sistem Donanım Envanteri ve Sınır Ayrımı Probu (--live)
+--------------------------------------------------------------------------------
+Komut:
+python portfolio/hafta_03/gun_016/uygulama/system_hardware_boundary_auditor.py --live
+
+Çıktı:
+{
+  "toplama_zamani": "2026-10-27T01:38:46.353183",
+  "isletim_sistemi": "Windows",
+  "isletim_sistemi_surumu": "10.0.26300",
+  "cpu_katmani": {
+    "mimari": "AMD64",
+    "model": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+    "mantiksal_cekirdek_sayisi": 28,
+    "ucuculuk": "Ultra-Volatile (Kayıtçılar ve L1-L3 Önbellek; döngüsel yenilenir)",
+    "guvenlik_riski": "Spekülatif yürütme yan kanalları (Spectre/Meltdown), Register dökümleri"
+  },
+  "ram_katmani": {
+    "adres_genisligi_bit": 64,
+    "ucuculuk": "Volatile (DRAM; enerji kesildiğinde içerik kaybolur, Cold Boot istisnası)",
+    "guvenlik_riski": "Açık metin bellek dökümleri, Sayfalama/Swap sızıntısı, Un-zeroed heap kalıntıları"
+  },
+  "depolama_katmani": {
+    "kok_surucu": "C:\\",
+    "toplam_alan_gb": 952.86,
+    "kullanilan_alan_gb": 859.08,
+    "bos_alan_gb": 93.77,
+    "ucuculuk": "Non-Volatile (Kalıcı; silinen veriler adli bilişimle geri getirilebilir)",
+    "guvenlik_riski": "Veri kalıntısı (Data Remanence), Şifrelenmemiş swap/hiberfil dosyaları"
+  }
+}
+
+--------------------------------------------------------------------------------
+2. KOMUT 2: Donanım Taban Çizgisi ve Veri Kalıntısı Kapsamlı Güvenlik Denetimi
+--------------------------------------------------------------------------------
+Komut:
+python portfolio/hafta_03/gun_016/uygulama/system_hardware_boundary_auditor.py --sample portfolio/hafta_03/gun_016/ornek_veri/hardware_boundary_sample.json --baseline portfolio/hafta_03/gun_016/ornek_veri/hardware_security_baseline.json
+
+Çıktı:
+========================================================================
+GÜN 016: CPU, RAM VE DEPOLAMA GÜVENLİK DENETİMİ RAPORU
+========================================================================
+Denetim Zamanı : 2026-10-27T01:38:43.191043
+Genel Sonuç    : IHLAL_VAR
+Uyumluluk Oranı: %80.0
+İhlal Sayısı   : 1
+Kritik Nesneler: 2 adet / 4 toplam
+------------------------------------------------------------------------
+DONANIM TABAN ÇİZGİSİ İHLALLERİ:
+  [YUKSEK] RULE-STORAGE-002 (Depolama): Sistem kapanırken sayfalama (pagefile) dosyasının sıfırlanması kapalı; diskte RAM kalıntısı kalabilir.
+------------------------------------------------------------------------
+BELLEK VE DEPOLAMA NESNESİ RİSKLERİ:
+  [KRITIK] MEM-OBJ-001 (RAM):
+    - Hassas veri RAM içerisinde açık metin (plaintext) olarak tutuluyor.
+    - Bellek sayfası kilitlenmemiş (mlock/VirtualLock yok); Swap/Pagefile sızıntı riski mevcut.
+    - Bellek serbest bırakılırken sıfırlanmamış (SecureZeroMemory eksik); Use-After-Free ve bellek dökümü sızıntısı!
+  [DUSUK] MEM-OBJ-002 (RAM):
+  [KRITIK] MEM-OBJ-003 (Depolama):
+    - Geçici dosya dosya sisteminden güvenli silinmemiş (shred/srm uygulanmamış); Adli bilişimle geri getirilebilir.
+    - Disk üzerindeki dosya şifrelenmemiş (FDE/BitLocker veya dosya seviyesi şifreleme yok).
+  [ORTA] MEM-OBJ-004 (CPU):
+    - İşlemci yazmaçlarında (Registers) işlenen veriler işlem çökmesi durumunda core dump içerisine sızabilir.
+========================================================================

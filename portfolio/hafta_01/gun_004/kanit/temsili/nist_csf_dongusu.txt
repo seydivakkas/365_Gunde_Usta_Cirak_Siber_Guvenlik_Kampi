@@ -1,0 +1,44 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+          NIST CYBERSECURITY FRAMEWORK (CSF) 2.0 ÇEKİRDEK MİMARİSİ
+================================================================================
+
+                    +------------------------------------+
+                    |             GOVERN (GV)            |
+                    |   (Yönetişim, Strateji, Politika,   |
+                    |    Liderlik, Tedarik Zinciri C-SCRM)|
+                    +-----------------+------------------+
+                                      |
+             +------------------------+------------------------+
+             |                                                 |
+             v                                                 v
+  +--------------------+                             +--------------------+
+  |    IDENTIFY (ID)   |                             |    RECOVER (RC)    |
+  |  - Varlık Yönetimi |                             |  - Geri Yükleme    |
+  |  - Tehdit Analizi  |                             |  - BCP / DRP       |
+  |  - Risk Belirleme  |                             |  - Kriz İletişimi  |
+  +---------+----------+                             +---------^----------+
+            |                                                  |
+            v                                                  |
+  +--------------------+                             +---------+----------+
+  |    PROTECT (PR)    |                             |    RESPOND (RS)    |
+  |  - Kimlik & MFA    |       Gözlem & Sinyal       |  - Triyaj          |
+  |  - Veri Şifreleme  | --------------------------> |  - İzolasyon       |
+  |  - Sıkılaştırma    |                             |  - SOAR / Müdahale |
+  +---------+----------+                             +---------^----------+
+            |                                                  |
+            +------------------> DETECT (DE) ------------------+
+                               - Sürekli İzleme (SIEM/EDR)
+                               - Davranışsal Anomali Analizi
+                               - Tehdit Avcılığı (Hunting)
+
+================================================================================
+KRİTİK GERİ BESLEME VE ORKESTRASYON PRENSİPLERİ:
+1. GOVERN (Yönetişim), CSF 2.0 ile eklenmiş olup tüm döngünün çatısı ve pusulasıdır.
+2. Savunma asla sadece PROTECT değildir: 'Assume Breach' (İhlali Varsay) gereği
+   DETECT ve RESPOND olmadan PROTECT tek başına çöker.
+3. RECOVER olmadan hiçbir kurum fidye yazılımına (Ransomware) karşı hayatta kalamaz.
+================================================================================

@@ -1,0 +1,63 @@
+{
+  "gun": 102,
+  "hafta": 15,
+  "asama": "05",
+  "asama_adi": "Kriptografi Temelleri ve Uygulamaları",
+  "gun_adi": "Salt, pepper ve parola saklama",
+  "tarih": "2026-11-02",
+  "puan": 100,
+  "durum": "YETERLİ / PASS",
+  "skor_karnesi": {
+    "mimari": 20,
+    "kodlama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "test_istatistikleri": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "negatif_kontrol_senaryo": 9,
+    "negatif_kontrol_basarili": 9
+  },
+  "cwe_kapsami": [
+    "CWE-759: Use of a One-Way Hash without a Salt",
+    "CWE-760: Use of a One-Way Hash with a Predictable Salt",
+    "CWE-916: Use of Password Hash With Insufficient Computational Effort",
+    "CWE-326: Inadequate Encryption Strength",
+    "CWE-208: Observable Timing Discrepancy",
+    "CWE-345: Insufficient Verification of Data Authenticity",
+    "CWE-158: Improper Neutralization of Null Byte or Special Characters",
+    "CWE-400: Uncontrolled Resource Consumption",
+    "CWE-843: Access of Resource Using Incompatible Type"
+  ],
+  "dosyalar": {
+    "kod_dosyalari": [
+      "uygulama/__init__.py",
+      "uygulama/secure_password_vault.py",
+      "uygulama/vault_cli.py"
+    ],
+    "test_dosyalari": [
+      "tests/__init__.py",
+      "tests/test_secure_password_vault.py"
+    ],
+    "veri_dosyalari": [
+      "ornek_veri/password_store_samples.json",
+      "ornek_veri/invalid_password_inputs.json"
+    ],
+    "dokumanlar": [
+      "README.md",
+      "ders.md",
+      "soru_cevap.md",
+      "rapor.md",
+      "sonuc.json"
+    ],
+    "kanitlar": [
+      "kanit/gercek/test_sonuclari.txt",
+      "kanit/gercek/negatif_kontrol_sonuclari.txt",
+      "kanit/gercek/parola_guvenlik_analiz_raporu.txt",
+      "kanit/gercek/komut_ve_cikis.txt",
+      "kanit/temsili/parola_saklama_mimarisi.txt"
+    ]
+  }
+}

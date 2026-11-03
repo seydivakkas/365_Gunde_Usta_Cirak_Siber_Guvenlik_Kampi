@@ -1,0 +1,66 @@
+<!--
+├ûZEL L─░SANS ÔÇö T├£M HAKLAR SAKLIDIR
+Telif Hakk─▒ (c) 2026 Seydi Ery─▒lmaz (@seydivakkas)
+Bu yaz─▒l─▒m ve ilgili t├╝m dosyalar ('Yaz─▒l─▒m') yaln─▒zca g├Âr├╝nt├╝leme ve e─şitim ama├ğl─▒ olarak payla┼ş─▒lm─▒┼şt─▒r.
+-->
+
+# Disk B├Âl├╝mleri ve Dosya Sistemleri G├╝venlik Denetim Raporu
+
+**Ana Makine Ad─▒:** `sec-srv-node01.corp.internal`  
+**─░┼şletim Sistemi:** `Linux 6.8.0-generic`  
+**Denetim Tarihi:** `2026-10-27T08:47:29.891038+00:00`  
+**G├╝venlik Puan─▒:** `53 / 100`  
+**Genel Durum:** `CRITICAL`
+
+## ­şôè Denetim Metrikleri ├ûzeti
+
+| Metrik | De─şer |
+| :--- | :---: |
+| ─░ncelenen Disk Say─▒s─▒ | 2 |
+| ─░ncelenen B├Âl├╝m Say─▒s─▒ | 6 |
+| Kritik (CRITICAL) Bulgular | 0 |
+| Y├╝ksek (HIGH) Seviye Bulgular | 4 |
+| Orta (MEDIUM) Seviye Bulgular | 1 |
+| Uyar─▒ (WARNING) Bulgular | 1 |
+| **Toplam G├╝venlik Bulgusu** | **6** |
+
+## ­şöı G├╝venlik Bulgular─▒ ve ─░yile┼ştirme Re├ğetesi
+
+### 1. [MEDIUM] Eski MBR (Master Boot Record) B├Âl├╝m Tablosu Tespit Edildi
+- **Hedef:** `/dev/sdb`
+- **Kategori:** `PARTITION_TABLE_SECURITY`
+- **A├ğ─▒klama:** '/dev/sdb' diski eski tip MBR tablosu kullanmaktad─▒r. MBR, yedek tablo ba┼şl─▒─ş─▒ bar─▒nd─▒rmaz, CRC32 veri b├╝t├╝nl├╝─ş├╝ do─şrulamas─▒ sunmaz ve sekt├Âr 0 bootkit/rootkit manip├╝lasyonlar─▒na kar┼ş─▒ savunmas─▒zd─▒r.
+- **­şøí´©Å ─░yile┼ştirme:** Modern UEFI sistemlerde g├╝venli ├Âny├╝kleme (Secure Boot) ve GPT (GUID Partition Table) mimarisine ge├ğilmelidir.
+
+### 2. [HIGH] ┼Şifrelenmemi┼ş Sabit Disk B├Âl├╝m├╝ (Unencrypted At-Rest Volume)
+- **Hedef:** `/dev/nvme0n1p4`
+- **Kategori:** `ENCRYPTION_AT_REST`
+- **A├ğ─▒klama:** '/dev/nvme0n1p4' (/tmp) sabit disk b├Âl├╝m├╝ ┼şifrelenmemi┼ştir (is_encrypted: false). Fiziksel ayg─▒t ├ğal─▒nd─▒─ş─▒nda, so─şuk ├Âny├╝kleme (cold boot) veya harici canl─▒ USB ile eri┼şildi─şinde t├╝m veriler a├ğ─▒k metin olarak kopyalanabilir.
+- **­şøí´©Å ─░yile┼ştirme:** Linux'ta LUKS2 (dm-crypt), Windows'ta BitLocker ile tam disk ┼şifrelemesi (FDE) uygulay─▒n.
+
+### 3. [HIGH] ─░zin Deste─şi Olmayan G├╝vensiz Dosya Sistemi (FAT32/VFAT) Tespiti
+- **Hedef:** `/dev/sdb1`
+- **Kategori:** `FILESYSTEM_PERMISSIONS_SECURITY`
+- **A├ğ─▒klama:** '/dev/sdb1' (/mnt/legacy_storage) ├╝zerinde 'fat32' kullan─▒lmaktad─▒r. FAT32 dosya sistemi; POSIX dosya izinlerini (DAC), Windows ACL eri┼şim kontrol listelerini ve dosya g├╝venlik niteliklerini desteklemez. Herkes her dosyay─▒ okuyabilir ve de─şi┼ştirebilir.
+- **­şøí´©Å ─░yile┼ştirme:** Veri b├╝t├╝nl├╝─ş├╝ ve eri┼şim denetimi i├ğin Linux'ta ext4/XFS, Windows'ta NTFS dosya sistemine d├Ân├╝┼şt├╝r├╝n.
+
+### 4. [HIGH] ┼Şifrelenmemi┼ş Sabit Disk B├Âl├╝m├╝ (Unencrypted At-Rest Volume)
+- **Hedef:** `/dev/sdb1`
+- **Kategori:** `ENCRYPTION_AT_REST`
+- **A├ğ─▒klama:** '/dev/sdb1' (/mnt/legacy_storage) sabit disk b├Âl├╝m├╝ ┼şifrelenmemi┼ştir (is_encrypted: false). Fiziksel ayg─▒t ├ğal─▒nd─▒─ş─▒nda, so─şuk ├Âny├╝kleme (cold boot) veya harici canl─▒ USB ile eri┼şildi─şinde t├╝m veriler a├ğ─▒k metin olarak kopyalanabilir.
+- **­şøí´©Å ─░yile┼ştirme:** Linux'ta LUKS2 (dm-crypt), Windows'ta BitLocker ile tam disk ┼şifrelemesi (FDE) uygulay─▒n.
+
+### 5. [HIGH] '/tmp' Ba─şlama Noktas─▒nda Eksik G├╝venlik Bayraklar─▒
+- **Hedef:** `/dev/nvme0n1p4 (/tmp)`
+- **Kategori:** `MOUNT_SECURITY_HARDENING`
+- **A├ğ─▒klama:** '/tmp' dizininde zorunlu g├╝venlik bayraklar─▒ eksik: ['noexec', 'nosuid', 'nodev']. ├ûzellikle 'noexec' eksikli─şi, sald─▒rganlar─▒n d├╝nya taraf─▒ndan yaz─▒labilir ge├ğici dizinlere zararl─▒ ELF ikili dosyalar─▒ indirip do─şrudan ├ğal─▒┼şt─▒rmas─▒na imkan tan─▒r. 'nosuid' eksikli─şi ise yetki y├╝kseltme (privilege escalation) sald─▒r─▒lar─▒na zemin haz─▒rlar.
+- **­şøí´©Å ─░yile┼ştirme:** /etc/fstab dosyas─▒na 'noexec, nosuid, nodev' se├ğeneklerini ekleyerek 'mount -o remount' yap─▒n.
+
+### 6. [WARNING] Y├╝ksek Disk Dolulu─şu Tespiti
+- **Hedef:** `/dev/sdb1 (/mnt/legacy_storage)`
+- **Kategori:** `DISK_CAPACITY_EXHAUSTION`
+- **A├ğ─▒klama:** '/dev/sdb1' (/mnt/legacy_storage) doluluk oran─▒ %93.3 seviyesindedir (1820.0 / 1950.0 GB).
+- **­şøí´©Å ─░yile┼ştirme:** Disk b├╝y├╝me e─şilimini izleyin ve gereksiz ge├ğici dosyalar─▒ temizleyin.
+
+
+Rapor ba┼şar─▒yla kaydedildi: portfolio/hafta_06/gun_037/kanit/gercek/disk_ve_dosya_sistemi_denetim_raporu.txt

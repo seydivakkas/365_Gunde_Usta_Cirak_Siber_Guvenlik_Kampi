@@ -1,0 +1,33 @@
+test_01_octal_to_symbolic_standard (test_linux_permission_rwx_auditor.TestLinuxPermissionRwxAuditor.test_01_octal_to_symbolic_standard)
+Standart 0755, 0644 ve 0600 izinlerinin sembolik d÷n³■³m³n³ test eder. ... ok
+test_02_special_permissions_suid_sgid_sticky (test_linux_permission_rwx_auditor.TestLinuxPermissionRwxAuditor.test_02_special_permissions_suid_sgid_sticky)
+SUID (4000), SGID (2000) ve Sticky (1000) bitlerinin sembolik temsilini test eder. ... ok
+test_03_symbolic_to_octal_standard (test_linux_permission_rwx_auditor.TestLinuxPermissionRwxAuditor.test_03_symbolic_to_octal_standard)
+Sembolik dizelerin standart oktal kar■²l²klar²na evrilmesini test eder. ... ok
+test_04_symbolic_to_octal_special_bits (test_linux_permission_rwx_auditor.TestLinuxPermissionRwxAuditor.test_04_symbolic_to_octal_special_bits)
+Sembolik g÷sterimdeki SUID ve Sticky bitlerin oktal de­erini test eder. ... ok
+test_05_umask_022_calculation (test_linux_permission_rwx_auditor.TestLinuxPermissionRwxAuditor.test_05_umask_022_calculation)
+Standart umask 022 iin dosya ve dizin izin t³retimini test eder. ... ok
+test_06_umask_027_hardened_calculation (test_linux_permission_rwx_auditor.TestLinuxPermissionRwxAuditor.test_06_umask_027_hardened_calculation)
+G³lendirilmi■ umask 027 (CIS Benchmark tavsiyesi) hesaplamas²n² test eder. ... ok
+test_07_insecure_umask_detection (test_linux_permission_rwx_auditor.TestLinuxPermissionRwxAuditor.test_07_insecure_umask_detection)
+Tehlikeli umask 000 veya 002 durumunda g³venlik uyar²s² ³retilmesini test eder. ... ok
+test_08_audit_compliant_files (test_linux_permission_rwx_auditor.TestLinuxPermissionRwxAuditor.test_08_audit_compliant_files)
+Denetim motorunun uyumlu dosyalar² do­ru tan²mas²n² test eder. ... ok
+test_09_audit_cwe732_world_writable_violation (test_linux_permission_rwx_auditor.TestLinuxPermissionRwxAuditor.test_09_audit_cwe732_world_writable_violation)
+World-writable dosya tespitinde CWE-732 ihlali ³retilmesini test eder. ... ok
+test_10_audit_shadow_sensitive_leak (test_linux_permission_rwx_auditor.TestLinuxPermissionRwxAuditor.test_10_audit_shadow_sensitive_leak)
+Kritik /etc/shadow dosyas²n²n di­er kullan²c²larca okunabilmesi ihlalini test eder. ... ok
+test_11_execute_permission_change_and_journal (test_linux_permission_rwx_auditor.TestLinuxPermissionRwxAuditor.test_11_execute_permission_change_and_journal)
+Kontroll³ chmod de­i■ikli­i ve g³nl³k (journal) olu■turulmas²n² test eder (G024-SC2). ... ok
+test_12_rollback_permission_change_cycle (test_linux_permission_rwx_auditor.TestLinuxPermissionRwxAuditor.test_12_rollback_permission_change_cycle)
+Chmod de­i■ikli­inin geri al²narak orijinal izne d÷n³lmesini test eder (G024-SC2). ... ok
+test_13_rollback_negative_controls (test_linux_permission_rwx_auditor.TestLinuxPermissionRwxAuditor.test_13_rollback_negative_controls)
+Geri alma g³nl³­³ veya kay²t bulunamad²­²nda negatif kontrol hata y÷netimini test eder. ... ok
+test_14_cli_subprocess_execution (test_linux_permission_rwx_auditor.TestLinuxPermissionRwxAuditor.test_14_cli_subprocess_execution)
+CLI aray³z³n³n subprocess ³zerinden al²■mas²n² ve ²k²■ kodunu test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.178s
+
+OK

@@ -1,0 +1,51 @@
+G048: ICMP Negatif Kontrol ve Hata Yakalama Test Sonuclari
+======================================================================
+Test ID: ICMP-ERR-01
+Girdi  : {'type': 255, 'code': 0, 'identifier': 1, 'sequence': 1}
+Hata   : InvalidICMPType
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Tanımsız veya desteklenmeyen ICMP tipi: 255
+----------------------------------------------------------------------
+Test ID: ICMP-ERR-02
+Girdi  : {'type': 0, 'code': 5, 'identifier': 1, 'sequence': 1}
+Hata   : InvalidICMPCodeForType
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Echo Reply için geçersiz kod: 5
+----------------------------------------------------------------------
+Test ID: ICMP-ERR-03
+Girdi  : {'type': 8, 'code': 1, 'identifier': 1, 'sequence': 1}
+Hata   : InvalidICMPCodeForType
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Echo Request için geçersiz kod: 1
+----------------------------------------------------------------------
+Test ID: ICMP-ERR-04
+Girdi  : {'type': 11, 'code': 9, 'identifier': 0, 'sequence': 0}
+Hata   : InvalidICMPCodeForType
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Time to Live exceeded in Transit için geçersiz kod: 9
+----------------------------------------------------------------------
+Test ID: ICMP-ERR-05
+Girdi  : {'type': 8, 'code': 0, 'identifier': -1, 'sequence': 1}
+Hata   : NegativeIdentifier
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Identifier değeri 0 ile 65535 arasında olmalıdır: -1
+----------------------------------------------------------------------
+Test ID: ICMP-ERR-06
+Girdi  : {'type': 8, 'code': 0, 'identifier': 1, 'sequence': 70000}
+Hata   : SequenceOutOfRange
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Sequence numarası 0 ile 65535 arasında olmalıdır: 70000
+----------------------------------------------------------------------
+Test ID: ICMP-ERR-07
+Girdi  : {'type': 8, 'code': 0, 'kaynak_ip': '999.1.1.1', 'hedef_ip': '8.8.8.8'}
+Hata   : InvalidIPAddress
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Geçersiz IPv4 kaynak/hedef adresi: 999.1.1.1
+----------------------------------------------------------------------
+Test ID: ICMP-ERR-08
+Girdi  : {'raw_hex': '0800F7FF00010001'}
+Hata   : ChecksumMismatch
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : ICMP Checksum doğrulama hatası (Sahte veya bozulmuş paket)
+----------------------------------------------------------------------
+Toplam Negatif Test: 8 | Basarili Engelleme: 8

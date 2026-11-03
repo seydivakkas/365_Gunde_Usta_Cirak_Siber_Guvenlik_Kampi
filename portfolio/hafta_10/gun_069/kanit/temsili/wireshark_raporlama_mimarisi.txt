@@ -1,0 +1,52 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+================================================================================
+G069: MİNİ PROJE 9 - WİRESHARK AĞ ANALİZ RAPORU ÜRETİM PİPELİNE MİMARİSİ
+================================================================================
+
+                                    +-----------------------+
+                                    |    HAM PCAP DOSYASI   |
+                                    | (Ağ Paket Yakalaması) |
+                                    +-----------------------+
+                                                |
+                                                v
+                                    +-----------------------+
+                                    |  DİSSECTOR & AYRIŞTIRICI|
+                                    | (TShark / Wireshark)  |
+                                    +-----------------------+
+                                                |
+                                                v
+                                    +-----------------------+
+                                    |  PCAP DİSSECTİON JSON |
+                                    +-----------------------+
+                                                |
+        +---------------------------------------+---------------------------------------+
+        |                                       |                                       |
+        v                                       v                                       v
++-----------------------+               +-----------------------+               +-----------------------+
+| 1. PROTOKOL           |               | 2. KONUŞMA ANALİZİ    |               | 3. TCP SAĞLIK MOTORU  |
+|    HİYERARŞİSİ        |               |    (CONVERSATIONS)    |               |    - Zero Window      |
+|    - Paket/Bayt Oranı |               |    - Top Talkers      |               |    - Retransmissions  |
+|    - IPv4/TCP/UDP/DNS |               |    - 5-Demet Eşleme   |               |    - Handshake Analizi|
++-----------------------+               +-----------------------+               +-----------------------+
+        |                                       |                                       |
+        +---------------------------------------+---------------------------------------+
+                                                |
+                                                v
+                                    +-----------------------+
+                                    | 4. SİBER TEHDİT MOTORU|
+                                    |    - SQLi & Scanner   |
+                                    |    - DNS Tünelleme    |
+                                    |    - Açık Parola İfşası
+                                    |    - CRLF Enjeksiyonu |
+                                    +-----------------------+
+                                                |
+                                                v
+                                    +-----------------------+
+                                    | 5. KONSOLİDE ADLİ     |
+                                    |    RAPORLAMA KATMANI  |
+                                    | - Güvenlik Skoru      |
+                                    | - IoC Göstergeleri    |
+                                    | - İyileştirme Planı   |
+                                    | - TEXT / JSON Çıktı   |
+                                    +-----------------------+

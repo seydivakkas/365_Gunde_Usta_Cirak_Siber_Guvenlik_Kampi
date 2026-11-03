@@ -1,0 +1,33 @@
+test_01_telemetry_schema_validation_success (portfolio.hafta_06.gun_038.tests.test_ntp_time_sync_auditor.TestNtpTimeSyncAuditor.test_01_telemetry_schema_validation_success)
+Geerli telemetri verisinin ■ema do­rulamas²ndan ba■ar²yla geti­ini do­rular. ... ok
+test_02_missing_systems_key_raises_validation_error (portfolio.hafta_06.gun_038.tests.test_ntp_time_sync_auditor.TestNtpTimeSyncAuditor.test_02_missing_systems_key_raises_validation_error)
+'systems' anahtar² eksik oldu­unda hata f²rlat²ld²­²n² denetler. ... ok
+test_03_invalid_stratum_boundary_raises_error (portfolio.hafta_06.gun_038.tests.test_ntp_time_sync_auditor.TestNtpTimeSyncAuditor.test_03_invalid_stratum_boundary_raises_error)
+Stratum 1'den k³³k veya 16'dan b³y³k oldu­unda hata f²rlat²ld²­²n² do­rular. ... ok
+test_04_non_numeric_offset_raises_validation_error (portfolio.hafta_06.gun_038.tests.test_ntp_time_sync_auditor.TestNtpTimeSyncAuditor.test_04_non_numeric_offset_raises_validation_error)
+offset_ms string veya None oldu­unda hata f²rlat²ld²­²n² do­rular. ... ok
+test_05_negative_jitter_raises_validation_error (portfolio.hafta_06.gun_038.tests.test_ntp_time_sync_auditor.TestNtpTimeSyncAuditor.test_05_negative_jitter_raises_validation_error)
+jitter_ms negatif oldu­unda hata f²rlat²ld²­²n² denetler. ... ok
+test_06_non_string_hostname_raises_error (portfolio.hafta_06.gun_038.tests.test_ntp_time_sync_auditor.TestNtpTimeSyncAuditor.test_06_non_string_hostname_raises_error)
+hostname tamsay² veya liste oldu­unda hata f²rlat²ld²­²n² do­rular. ... ok
+test_07_kerberos_skew_threshold_exceeded_detected_as_critical (portfolio.hafta_06.gun_038.tests.test_ntp_time_sync_auditor.TestNtpTimeSyncAuditor.test_07_kerberos_skew_threshold_exceeded_detected_as_critical)
+Saat fark² 300 saniyeden fazla oldu­unda Kerberos ÷k³■³n³n CRITICAL olarak raporland²­²n² do­rular. ... ok
+test_08_siem_timeline_skew_detected_as_high (portfolio.hafta_06.gun_038.tests.test_ntp_time_sync_auditor.TestNtpTimeSyncAuditor.test_08_siem_timeline_skew_detected_as_high)
+1 saniye ile 5 dakika aras²ndaki sapman²n HIGH seviyesinde SIEM riski ³retti­ini do­rular. ... ok
+test_09_healthy_synchronized_clock_passes_skew_clean (portfolio.hafta_06.gun_038.tests.test_ntp_time_sync_auditor.TestNtpTimeSyncAuditor.test_09_healthy_synchronized_clock_passes_skew_clean)
+2.1 ms gibi mikrosaniyelik sa­l²kl² saat kaymas²n²n temiz geti­ini do­rular. ... ok
+test_10_stratum_16_unsynchronized_detected_as_critical (portfolio.hafta_06.gun_038.tests.test_ntp_time_sync_auditor.TestNtpTimeSyncAuditor.test_10_stratum_16_unsynchronized_detected_as_critical)
+is_synchronized=False veya Stratum 16 durumunun CRITICAL bulgu ³retti­ini do­rular. ... ok
+test_11_insufficient_upstream_servers_detected_as_high (portfolio.hafta_06.gun_038.tests.test_ntp_time_sync_auditor.TestNtpTimeSyncAuditor.test_11_insufficient_upstream_servers_detected_as_high)
+3'ten az ³st sunucu tan²mland²­²nda Byzantine hata tolerans² eksikli­inin HIGH olarak raporland²­²n² do­rular. ... ok
+test_12_monlist_ddos_risk_detected_as_high (portfolio.hafta_06.gun_038.tests.test_ntp_time_sync_auditor.TestNtpTimeSyncAuditor.test_12_monlist_ddos_risk_detected_as_high)
+monlist_enabled=True durumunda DDoS amplifikasyon riskinin HIGH olarak raporland²­²n² do­rular. ... ok
+test_13_corrupted_test_cases_suite_robustness (portfolio.hafta_06.gun_038.tests.test_ntp_time_sync_auditor.TestNtpTimeSyncAuditor.test_13_corrupted_test_cases_suite_robustness)
+corrupted_ntp_telemetry_test_cases.json dosyas²ndaki t³m girdilerin yakaland²­²n² do­rular. ... ok
+test_14_markdown_and_full_audit_workflow (portfolio.hafta_06.gun_038.tests.test_ntp_time_sync_auditor.TestNtpTimeSyncAuditor.test_14_markdown_and_full_audit_workflow)
+Tam denetim ak²■²n²n ve Markdown rapor ³retiminin hatas²z al²■t²­²n² do­rular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.003s
+
+OK

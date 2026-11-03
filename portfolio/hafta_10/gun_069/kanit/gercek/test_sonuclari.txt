@@ -1,0 +1,33 @@
+test_01_pcap_veri_seti_yukleme_ve_dogrulama (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_01_pcap_veri_seti_yukleme_ve_dogrulama)
+PCAP dosyas²n²n meta-verilerini ve 15 adet paketi eksiksiz ierdi­ini teyit eder. ... ok
+test_02_protokol_hiyerarsisi_dagilimi (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_02_protokol_hiyerarsisi_dagilimi)
+Paketlerin protokollere g÷re ayr²■t²r²l²p bayt ve paket oranlar²n²n do­ru hesapland²­²n² test eder. ... ok
+test_03_en_cok_konusan_uc_noktalar (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_03_en_cok_konusan_uc_noktalar)
+U noktalar aras² konu■ma trafi­inin bayt hacmine g÷re do­ru s²raland²­²n² test eder. ... ok
+test_04_tcp_saglik_metrikleri_ve_anomalileri (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_04_tcp_saglik_metrikleri_ve_anomalileri)
+Zero Window ve Retransmission gibi TCP sa­l²k sorunlar²n²n yakaland²­²n² test eder. ... ok
+test_05_sqli_ve_otomatik_tarayici_tespiti (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_05_sqli_ve_otomatik_tarayici_tespiti)
+sqlmap User-Agent ve URL'deki SQLi enjeksiyonunun yakaland²­²n² do­rular. ... ok
+test_06_dns_tunelleme_veri_sizintisi_tespiti (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_06_dns_tunelleme_veri_sizintisi_tespiti)
+TXT sorgulu uzun Base64 alan ad²n²n t³nelleme olarak yakaland²­²n² do­rular. ... ok
+test_07_acik_metin_parola_ifsa_tespiti (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_07_acik_metin_parola_ifsa_tespiti)
+FTP oturumunda geen a²k metin kimlik ve ■ifrelerin yakaland²­²n² do­rular. ... ok
+test_08_http_crlf_enjeksiyon_tespiti (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_08_http_crlf_enjeksiyon_tespiti)
+URI iindeki CRLF karakterlerinin ve Set-Cookie enjeksiyonunun tespitini do­rular. ... ok
+test_09_guvenlik_bulgulari_onem_filtreleme (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_09_guvenlik_bulgulari_onem_filtreleme)
+filter_findings_by_severity metodunun yaln²zca belirtilen seviye ve ³zerini getirdi­ini teyit eder. ... ok
+test_10_tam_rapor_metin_formati_uretimi (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_10_tam_rapor_metin_formati_uretimi)
+Metin tabanl² Wireshark analiz raporunun 7 ana b÷l³m³ eksiksiz ierdi­ini teyit eder. ... ok
+test_11_tam_rapor_json_formati_uretimi (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_11_tam_rapor_json_formati_uretimi)
+JSON tabanl² Wireshark analiz raporunun ■emaya uygun s÷zl³k olarak ³retildi­ini teyit eder. ... ok
+test_12_temiz_trafik_yuksek_guvenlik_skoru (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_12_temiz_trafik_yuksek_guvenlik_skoru)
+Zararl² aktivite iermeyen me■ru trafikte 100 tam puan al²nd²­²n² test eder. ... ok
+test_13_negatif_sinir_senaryolari_grup_1 (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_13_negatif_sinir_senaryolari_grup_1)
+NEG_01'den NEG_04'e kadar olan bo■ ak²■, biim, ba■l²k ve protokol hatalar²n² do­rular. ... ok
+test_14_negatif_sinir_senaryolari_grup_2 (portfolio.hafta_10.gun_069.tests.test_wireshark_analysis_report_generator.TestWiresharkAnalysisReportGenerator.test_14_negatif_sinir_senaryolari_grup_2)
+NEG_05'ten NEG_09'a kadar olan MTU a■²m², zaman bozulmas² ve geersiz filtre testlerini do­rular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.010s
+
+OK

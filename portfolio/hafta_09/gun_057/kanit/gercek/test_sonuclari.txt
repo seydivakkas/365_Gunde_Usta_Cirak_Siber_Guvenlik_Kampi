@@ -1,0 +1,33 @@
+test_01_valid_get_request_parsing_and_serialization (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_01_valid_get_request_parsing_and_serialization)
+Test 1: Standart HTTP/1.1 GET iste­inin ayr²■t²r²lmas² ve geri kablo format²na serile■tirilmesi. ... ok
+test_02_valid_post_request_with_body (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_02_valid_post_request_with_body)
+Test 2: JSON y³k³ ieren POST iste­inin ayr²■t²r²lmas² ve g÷vde uzunlu­unun do­rulanmas². ... ok
+test_03_http_methods_properties (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_03_http_methods_properties)
+Test 3: HTTP metotlar²n²n G³venli (Safe) ve E■g³l³ (Idempotent) ÷zelliklerinin RFC 7231 denetimi. ... ok
+test_04_valid_response_200_ok (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_04_valid_response_200_ok)
+Test 4: 200 OK yan²t mesaj²n²n ayr²■t²r²lmas² ve durum kodunun do­rulanmas². ... ok
+test_05_valid_response_status_codes (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_05_valid_response_status_codes)
+Test 5: Farkl² HTTP durum kodlar²n²n (201, 301, 404, 500) yan²t modellerinde do­rulanmas². ... ok
+test_06_crlf_injection_detection (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_06_crlf_injection_detection)
+Test 6: ¦stemci iste­indeki CRLF enjeksiyonu ve yan²t b÷lme giri■iminin engellenmesi. ... ok
+test_07_request_smuggling_cl_te_detection (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_07_request_smuggling_cl_te_detection)
+Test 7: Content-Length ve Transfer-Encoding at²■mas²yla HTTP Request Smuggling sald²r²s²n²n tespiti. ... ok
+test_08_hardened_response_security_headers_audit (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_08_hardened_response_security_headers_audit)
+Test 8: S²k²la■t²r²lm²■ ve OWASP g³venlik ba■l²klar² tam olan sunucu yan²t²n²n 100 puan almas². ... ok
+test_09_vulnerable_response_banner_leak_audit (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_09_vulnerable_response_banner_leak_audit)
+Test 9: G³vensiz sunucu yan²t²nda eksik ba■l²klar ve afi■ bilgi s²z²nt²s²n²n (Server banner) tespiti. ... ok
+test_10_risky_http_method_detection (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_10_risky_http_method_detection)
+Test 10: XST riskine yol aan TRACE ve dosya manip³lasyonu sa­layan PUT metotlar²n²n tespiti. ... ok
+test_11_negative_empty_or_malformed_request_line (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_11_negative_empty_or_malformed_request_line)
+Test 11 (Negatif): Bo■ mesaj ve 3 paradan olu■mayan bozuk istek sat²r²nda HTTPParsingError f²rlat²lmas². ... ok
+test_12_negative_unsupported_method_and_version (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_12_negative_unsupported_method_and_version)
+Test 12 (Negatif): Standart d²■² HTTP metodu ve desteklenmeyen HTTP versiyonunun reddedilmesi. ... ok
+test_13_negative_missing_host_header_in_http11 (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_13_negative_missing_host_header_in_http11)
+Test 13 (Negatif): RFC 7230 gere­i HTTP/1.1 isteklerinde Host ba■l²­² yoksa 400 Bad Request hatas². ... ok
+test_14_negative_invalid_status_code_and_negative_content_length (portfolio.hafta_09.gun_057.tests.test_http_protocol_analyzer.TestHTTPProtocolAnalyzer.test_14_negative_invalid_status_code_and_negative_content_length)
+Test 14 (Negatif): 100-599 d²■²ndaki geersiz durum kodu ve negatif Content-Length denetimi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.003s
+
+OK

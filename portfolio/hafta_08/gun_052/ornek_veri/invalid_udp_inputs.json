@@ -1,0 +1,94 @@
+{
+  "aciklama": "G052 UDP Negatif Kontrol ve Hata Test Girdileri",
+  "lisans": "Özel Lisans — Tüm Hakları Saklıdır (c) 2026 Seydi Eryılmaz",
+  "gecersiz_girdiler": [
+    {
+      "id": "NEG-UDP-01",
+      "hata_kodu": "ERR_SRC_PORT_NEGATIVE",
+      "src_port": -1,
+      "dst_port": 53,
+      "length": 8,
+      "src_ip": "192.168.1.1",
+      "dst_ip": "8.8.8.8",
+      "payload_hex": "",
+      "beklenen_hata": "Kaynak port 0 ile 65535 arasında olmalıdır."
+    },
+    {
+      "id": "NEG-UDP-02",
+      "hata_kodu": "ERR_SRC_PORT_OVERFLOW",
+      "src_port": 70000,
+      "dst_port": 53,
+      "length": 8,
+      "src_ip": "192.168.1.1",
+      "dst_ip": "8.8.8.8",
+      "payload_hex": "",
+      "beklenen_hata": "Kaynak port 0 ile 65535 arasında olmalıdır."
+    },
+    {
+      "id": "NEG-UDP-03",
+      "hata_kodu": "ERR_DST_PORT_OVERFLOW",
+      "src_port": 54321,
+      "dst_port": 65536,
+      "length": 8,
+      "src_ip": "192.168.1.1",
+      "dst_ip": "8.8.8.8",
+      "payload_hex": "",
+      "beklenen_hata": "Hedef port 0 ile 65535 arasında olmalıdır."
+    },
+    {
+      "id": "NEG-UDP-04",
+      "hata_kodu": "ERR_LENGTH_UNDERFLOW",
+      "src_port": 54321,
+      "dst_port": 53,
+      "length": 7,
+      "src_ip": "192.168.1.1",
+      "dst_ip": "8.8.8.8",
+      "payload_hex": "",
+      "beklenen_hata": "UDP toplam uzunluğu en az 8 bayt (başlık boyutu) olmalıdır."
+    },
+    {
+      "id": "NEG-UDP-05",
+      "hata_kodu": "ERR_LENGTH_OVERFLOW",
+      "src_port": 54321,
+      "dst_port": 53,
+      "length": 65536,
+      "src_ip": "192.168.1.1",
+      "dst_ip": "8.8.8.8",
+      "payload_hex": "",
+      "beklenen_hata": "UDP toplam uzunluğu 65535 baytı aşamaz."
+    },
+    {
+      "id": "NEG-UDP-06",
+      "hata_kodu": "ERR_LENGTH_PAYLOAD_MISMATCH",
+      "src_port": 54321,
+      "dst_port": 53,
+      "length": 20,
+      "src_ip": "192.168.1.1",
+      "dst_ip": "8.8.8.8",
+      "payload_hex": "0102030405",
+      "beklenen_hata": "Belirtilen UDP uzunluğu (20) başlık + yük toplamı (13) ile uyuşmuyor."
+    },
+    {
+      "id": "NEG-UDP-07",
+      "hata_kodu": "ERR_MALFORMED_SRC_IP",
+      "src_port": 54321,
+      "dst_port": 53,
+      "length": 8,
+      "src_ip": "999.1.2.3",
+      "dst_ip": "8.8.8.8",
+      "payload_hex": "",
+      "beklenen_hata": "Geçersiz IPv4 kaynak adresi biçimi."
+    },
+    {
+      "id": "NEG-UDP-08",
+      "hata_kodu": "ERR_MALFORMED_DST_IP",
+      "src_port": 54321,
+      "dst_port": 53,
+      "length": 8,
+      "src_ip": "192.168.1.1",
+      "dst_ip": "not_an_ip_address",
+      "payload_hex": "",
+      "beklenen_hata": "Geçersiz IPv4 hedef adresi biçimi."
+    }
+  ]
+}

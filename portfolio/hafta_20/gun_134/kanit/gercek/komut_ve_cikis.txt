@@ -1,0 +1,104 @@
+=== GÜN 134: CLI ÇALIŞTIRMA VE KANIT KAYITLARI ===
+Tarih / Saat : 2026-11-02T10:11:58.570521+00:00
+
+[KOMUT 1] C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama\sudo_security_cli.py audit -i C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_134\ornek_veri\sudoers_inventory_spec.json -o C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_134\kanit\gercek\sudo_guvenlik_analiz_raporu.json
+[*] Linux Sudo ve Ayr�cal�k Devri Denetimi Ba�lat�l�yor: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_134\ornek_veri\sudoers_inventory_spec.json
+
+======================================================================
+           L�NUX SUDO G�VENL�K DENET�M� RAPOR �ZET�           
+======================================================================
+Genel G�venlik Skoru : 0.0 / 100.0
+Sistem Uyum Durumu   : CRITICAL
+Toplam Zafiyet       : 9
+�nem Da��l�m�        : {'CRITICAL': 7, 'HIGH': 1, 'MEDIUM': 1, 'LOW': 0}
+----------------------------------------------------------------------
+
+[!] TESP�T ED�LEN SUDO G�VENL�K ZAF�YETLER�:
+
+  [1] Hedef : Rule: devops -> /usr/bin/vim /etc/nginx/nginx.conf | �nem: CRITICAL
+      Zafiyet     : GTFOBins Kabuk Ka���� Zafiyeti (vim) [devops] (CWE-250 / T1548.003)
+      A��klama    : 'devops' kullan�c�s�na '/usr/bin/vim /etc/nginx/nginx.conf' komutunu sudo ile �al��t�rma izni verilmi�. Vim edit�r� (:!/bin/sh veya :set shell=/bin/sh ile root kabu�u a�ar). Bu ikili dosya k�s�tlamas�z �al��t�r�larak root kabu�u elde edilebilir.
+      �yile�tirme : 'vim' ikili dosyas�n� do�rudan sudoers i�erisine eklemeyin. �htiya� duyulan i�levi �zel bir k�s�tl� script i�erisine alarak NOEXEC etiketi uygulay�n.
+
+  [2] Hedef : Rule: operator -> /usr/bin/find /var/log/ | �nem: CRITICAL
+      Zafiyet     : GTFOBins Kabuk Ka���� Zafiyeti (find) [operator] (CWE-250 / T1548.003)
+      A��klama    : 'operator' kullan�c�s�na '/usr/bin/find /var/log/' komutunu sudo ile �al��t�rma izni verilmi�. Find komutu (-exec /bin/sh \; parametresiyle do�rudan root kabu�u a�ar). Bu ikili dosya k�s�tlamas�z �al��t�r�larak root kabu�u elde edilebilir.
+      �yile�tirme : 'find' ikili dosyas�n� do�rudan sudoers i�erisine eklemeyin. �htiya� duyulan i�levi �zel bir k�s�tl� script i�erisine alarak NOEXEC etiketi uygulay�n.
+
+  [3] Hedef : Rule: intern -> ALL | �nem: CRITICAL
+      Zafiyet     : �ifresiz Tam Root Yetkisi (NOPASSWD: ALL) [intern] (CWE-250 / T1548.003)
+      A��klama    : 'intern' kullan�c�s�/grubuna parola girmeden t�m komutlar� root olarak �al��t�rma izni verilmi�. Bu durum parola bariyerini kald�rarak an�nda root y�kseltmesi sa�lar.
+      �yile�tirme : /etc/sudoers dosyas�nda 'intern' i�in NOPASSWD etiketini kald�r�n ve komutlar� k�s�tlay�n.
+
+  [4] Hedef : Rule: support -> /bin/cat /var/log/* | �nem: MEDIUM
+      Zafiyet     : Komut Yolunda Denetimsiz Wildcard (*) Kullan�m� [support] (CWE-88 / T1548.003)
+      A��klama    : '/bin/cat /var/log/*' komutunda joker karakter (*) kullan�lm��. Sald�rgan araya parametre veya dosya ad� enjeksiyonu yaparak yetkisiz dizinleri veya komut sat�r� anahtarlar�n� tetikleyebilir.
+      �yile�tirme : Wildcard yerine tam ve kesin dosya yollar� tan�mlay�n veya regex do�rulay�c� wrapper script kullan�n.
+
+  [5] Hedef : Defaults env_reset | �nem: HIGH
+      Zafiyet     : Defaults env_reset Direktifi Kapal� (CWE-250 / T1548.003)
+      A��klama    : env_reset direktifinin devre d��� olmas�, kullan�c�n�n �a��ran kabuk �evre de�i�kenlerini root s�recine aktarmas�na imkan tan�r. Bu durum �evre de�i�keni manip�lasyonuyla yetki y�kseltmeye yol a�ar.
+      �yile�tirme : /etc/sudoers dosyas�na 'Defaults env_reset' sat�r�n� ekleyin.
+
+  [6] Hedef : Defaults env_keep += 'LD_PRELOAD' | �nem: CRITICAL
+      Zafiyet     : Tehlikeli �evre De�i�keni Korumas� (env_keep Injection) (CWE-426 / T1574.006)
+      A��klama    : env_keep listesinde �u �l�mc�l k�t�phane de�i�kenleri korunmaktad�r: LD_PRELOAD. Sald�rgan LD_PRELOAD ile kendi derledi�i .so k�t�phanesini root s�recine enjekte ederek an�nda root olur.
+      �yile�tirme : env_keep listesinden LD_PRELOAD de�i�kenlerini derhal kald�r�n.
+
+  [7] Hedef : /etc/sudoers | �nem: CRITICAL
+      Zafiyet     : Gev�ek Sudoers Dosya �zni (/etc/sudoers - Mod: 0666) (CWE-732 / T1548.003)
+      A��klama    : '/etc/sudoers' dosyas�n�n izin modu 0666 olarak ayarlanm��. Dosya yetkisiz kullan�c�lar taraf�ndan de�i�tirilebilir ve kal�c� root ayr�cal��� elde edilebilir.
+      �yile�tirme : chmod 0440 /etc/sudoers
+
+  [8] Hedef : /etc/sudoers.d/01-devops | �nem: CRITICAL
+      Zafiyet     : Sudoers Dosyas� Root Sahipli�inde De�il (/etc/sudoers.d/01-devops) (CWE-732 / T1548.003)
+      A��klama    : '/etc/sudoers.d/01-devops' dosyas�n�n sahibi devops:devops olarak ayarlanm��. Dosya mutlaka root:root olmal�d�r.
+      �yile�tirme : chown root:root /etc/sudoers.d/01-devops
+
+  [9] Hedef : /etc/sudoers.d/01-devops | �nem: CRITICAL
+      Zafiyet     : Gev�ek Sudoers Dosya �zni (/etc/sudoers.d/01-devops - Mod: 0644) (CWE-732 / T1548.003)
+      A��klama    : '/etc/sudoers.d/01-devops' dosyas�n�n izin modu 0644 olarak ayarlanm��. Dosya yetkisiz kullan�c�lar taraf�ndan de�i�tirilebilir ve kal�c� root ayr�cal��� elde edilebilir.
+      �yile�tirme : chmod 0440 /etc/sudoers.d/01-devops
+
+[+] Detayl� denetim raporu kaydedildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_134\kanit\gercek\sudo_guvenlik_analiz_raporu.json
+
+---------------------------------------------------------------------------
+
+[KOMUT 2] C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama\sudo_security_cli.py remediate -i C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_134\ornek_veri\sudoers_inventory_spec.json -o C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_134\kanit\gercek\otomatik_sikilastirma.sh
+[*] Bash S�k�la�t�rma Beti�i �retiliyor: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_134\ornek_veri\sudoers_inventory_spec.json
+[+] Bash s�k�la�t�rma beti�i kaydedildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_134\kanit\gercek\otomatik_sikilastirma.sh
+
+---------------------------------------------------------------------------
+
+[KOMUT 3] C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama\sudo_security_cli.py config-template -o C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_134\kanit\gercek\ornek_guvenli_sudoers.conf
+[*] S�k�la�t�r�lm�� /etc/sudoers �ablonu �retiliyor...
+[+] G�venli sudoers �ablonu kaydedildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_20\gun_134\kanit\gercek\ornek_guvenli_sudoers.conf
+
+---------------------------------------------------------------------------
+
+[KOMUT 4] C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe uygulama\sudo_security_cli.py sudo-help
+
+===================================================================
+LINUX SUDO VE AYRICALIK DEVR� HIZLI BA�VURU REHBER�
+===================================================================
+1. Sudoers Dosya �zinleri (CWE-732):
+   - /etc/sudoers ve /etc/sudoers.d/* daima chmod 0440 ve root:root olmal�d�r.
+   - D�zenlemeler MUTLAKA 'visudo' ile yap�lmal�d�r.
+
+2. NOPASSWD ve Wildcard Riskleri (CWE-250 / T1548.003):
+   - NOPASSWD: ALL kesinlikle verilmemelidir.
+   - Wildcard (*) parametre enjeksiyonuna (argument injection) a��kt�r.
+
+3. GTFOBins Zafiyetleri:
+   - Sudo ile izin verilen vim, find, awk, python, less vb. ara�lar
+     do�rudan root kabuk ka����na (shell escape) yol a�ar.
+
+4. Defaults S�k�la�t�rmas�:
+   - Defaults env_reset (�evre de�i�kenlerini temizler)
+   - Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+   - Defaults use_pty (TIOCSTI ioctl enjeksiyonunu engeller)
+   - Defaults logfile="/var/log/sudo.log" (Denetim g�nl���)
+===================================================================
+    
+
+---------------------------------------------------------------------------

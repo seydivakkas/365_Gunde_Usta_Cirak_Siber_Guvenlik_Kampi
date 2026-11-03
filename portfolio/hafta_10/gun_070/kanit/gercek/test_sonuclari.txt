@@ -1,0 +1,33 @@
+test_01_full_stage3_audit_success (portfolio.hafta_10.gun_070.tests.test_asama_3_kalite_ozeti_analizor.TestAsama3KaliteOzetiAnalizor.test_01_full_stage3_audit_success)
+Geerli 20 g³nl³k veriyle tam a■ama denetiminin PASS ve 100 puan vermesini s²nar. ... ok
+test_02_acceptance_certificate_verification (portfolio.hafta_10.gun_070.tests.test_asama_3_kalite_ozeti_analizor.TestAsama3KaliteOzetiAnalizor.test_02_acceptance_certificate_verification)
+Kriptografik A■ama 3 kabul sertifikas²n²n geerlili­ini ve imzas²n² s²nar. ... ok
+test_03_text_report_formatting (portfolio.hafta_10.gun_070.tests.test_asama_3_kalite_ozeti_analizor.TestAsama3KaliteOzetiAnalizor.test_03_text_report_formatting)
+¦nsan taraf²ndan okunabilir metin raporunun biimsel gereksinimlerini s²nar. ... ok
+test_04_json_report_serialization (portfolio.hafta_10.gun_070.tests.test_asama_3_kalite_ozeti_analizor.TestAsama3KaliteOzetiAnalizor.test_04_json_report_serialization)
+JSON raporlama format²n²n hatas²z parse edilebildi­ini ve alanlar²n² s²nar. ... ok
+test_05_stage_metrics_calculation (portfolio.hafta_10.gun_070.tests.test_asama_3_kalite_ozeti_analizor.TestAsama3KaliteOzetiAnalizor.test_05_stage_metrics_calculation)
+A■ama 3 toplam test, negatif kontrol ve eser say²lar²n²n hesaplamas²n² s²nar. ... ok
+test_06_neg_01_not_a_dict (portfolio.hafta_10.gun_070.tests.test_asama_3_kalite_ozeti_analizor.TestAsama3KaliteOzetiAnalizor.test_06_neg_01_not_a_dict)
+NEG_01: Girdi JSON s÷zl³­³ olmad²­²nda istisna f²rlat²ld²­²n² s²nar. ... ok
+test_07_neg_02_stage_id_mismatch (portfolio.hafta_10.gun_070.tests.test_asama_3_kalite_ozeti_analizor.TestAsama3KaliteOzetiAnalizor.test_07_neg_02_stage_id_mismatch)
+NEG_02: A■ama kimli­i '03' olmad²­²nda istisna f²rlat²ld²­²n² s²nar. ... ok
+test_08_neg_03_missing_mandatory_pillar (portfolio.hafta_10.gun_070.tests.test_asama_3_kalite_ozeti_analizor.TestAsama3KaliteOzetiAnalizor.test_08_neg_03_missing_mandatory_pillar)
+NEG_03: Zorunlu 6 s³tundan biri eksik oldu­unda hata f²rlat²ld²­²n² s²nar. ... ok
+test_09_neg_04_incomplete_days_count (portfolio.hafta_10.gun_070.tests.test_asama_3_kalite_ozeti_analizor.TestAsama3KaliteOzetiAnalizor.test_09_neg_04_incomplete_days_count)
+NEG_04: 20 g³nden eksik g³n listesi sa­land²­²nda hata f²rlat²ld²­²n² s²nar. ... ok
+test_10_neg_05_subpar_score (portfolio.hafta_10.gun_070.tests.test_asama_3_kalite_ozeti_analizor.TestAsama3KaliteOzetiAnalizor.test_10_neg_05_subpar_score)
+NEG_05: Herhangi bir g³n³n skoru 100'den d³■³k oldu­unda hata verildi­ini s²nar. ... ok
+test_11_neg_06_open_source_license_violation (portfolio.hafta_10.gun_070.tests.test_asama_3_kalite_ozeti_analizor.TestAsama3KaliteOzetiAnalizor.test_11_neg_06_open_source_license_violation)
+NEG_06: A²k kaynak lisans (MIT vb.) tespit edildi­inde hata f²rlat²ld²­²n² s²nar. ... ok
+test_12_neg_07_insufficient_test_count (portfolio.hafta_10.gun_070.tests.test_asama_3_kalite_ozeti_analizor.TestAsama3KaliteOzetiAnalizor.test_12_neg_07_insufficient_test_count)
+NEG_07: Test say²s² 14'³n alt²nda oldu­unda hata verildi­ini s²nar. ... ok
+test_13_neg_08_unverified_backup (portfolio.hafta_10.gun_070.tests.test_asama_3_kalite_ozeti_analizor.TestAsama3KaliteOzetiAnalizor.test_13_neg_08_unverified_backup)
+NEG_08: Yedek do­rulanmad²­²nda (backup_verified=False) hata f²rlat²ld²­²n² s²nar. ... ok
+test_14_neg_09_corrupt_day_number (portfolio.hafta_10.gun_070.tests.test_asama_3_kalite_ozeti_analizor.TestAsama3KaliteOzetiAnalizor.test_14_neg_09_corrupt_day_number)
+NEG_09: G³n numaras² 51-70 aral²­² d²■²nda oldu­unda hata verildi­ini s²nar. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.004s
+
+OK

@@ -1,0 +1,22 @@
+{
+  "versiyon": "2026.1",
+  "standart_adi": "Karakter Kodlamasi ve Bayt Seviyesi Guvenlik Standarti",
+  "lisans": "OZEL LISANS - TUM HAKLARI SAKLIDIR. Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas)",
+  "kurallar": {
+    "izin_verilen_varsayilan_kodlama": "UTF-8",
+    "null_byte_enjeksiyonu_yasak_mi": true,
+    "maksimum_karakter_bayt_genisleme_orani": 4.0,
+    "homoglyph_karisik_alfabe_yasak_mi": true,
+    "kontrol_karakterleri_filtresi": [
+      "\\x00", "\\x01", "\\x02", "\\x03", "\\x04", "\\x05", "\\x06", "\\x07",
+      "\\x08", "\\x0B", "\\x0C", "\\x0E", "\\x0F", "\\x10", "\\x11", "\\x12",
+      "\\x13", "\\x14", "\\x15", "\\x16", "\\x17", "\\x18", "\\x19", "\\x1A",
+      "\\x1B", "\\x1C", "\\x1D", "\\x1E", "\\x1F"
+    ]
+  },
+  "guvenlik_uyarilari": [
+    "Yonetici/Root iznini otomatik olarak guvenli davranis saymayiniz. Gecersiz bayt dizilimi veya bellek tasmasi en yetkili kullanicida bile sistemi cokertir.",
+    "Karakter sayisi (len) ile bayt uzunlugunu (byte length) asla esit kabul etmeyiniz; tampon bellek tahsislerini daima bayt cinsinden yapiniz.",
+    "Kiril ve Latin alfabelerinin karistigi alan adlarini (Homoglyph) guvenilmez kabul ediniz."
+  ]
+}

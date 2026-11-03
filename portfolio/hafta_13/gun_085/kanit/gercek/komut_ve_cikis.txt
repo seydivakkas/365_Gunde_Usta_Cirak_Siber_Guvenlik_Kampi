@@ -1,0 +1,38 @@
+================================================================================
+G085: POWERSHELL NESNE BORU HATTI - KOMUT VE CIKTI DOKUMU
+Tarih: 2026-11-01T22:24:00+03:00
+Ortam: Windows 11 / PowerShell 7.6.9 / Python 3.14.3
+================================================================================
+
+1. Python Birim Test Paketi Calistirma:
+Komut: python -m unittest portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine -v
+
+Cikti:
+test_01_safe_script_audit_passes (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_01_safe_script_audit_passes) ... ok
+test_02_detect_iex_pipeline_invocation (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_02_detect_iex_pipeline_invocation) ... ok
+test_03_detect_obfuscated_encoded_command (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_03_detect_obfuscated_encoded_command) ... ok
+test_04_detect_download_cradle_pipeline (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_04_detect_download_cradle_pipeline) ... ok
+test_05_detect_unquoted_service_path (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_05_detect_unquoted_service_path) ... ok
+test_06_reject_null_byte_in_script (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_06_reject_null_byte_in_script) ... ok
+test_07_reject_malformed_pipeline_empty_pipe (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_07_reject_malformed_pipeline_empty_pipe) ... ok
+test_08_reject_malformed_pipeline_trailing_pipe (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_08_reject_malformed_pipeline_trailing_pipe) ... ok
+test_09_process_hunting_known_malicious_tool (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_09_process_hunting_known_malicious_tool) ... ok
+test_10_process_hunting_anomalous_parent_child (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_10_process_hunting_anomalous_parent_child) ... ok
+test_11_process_hunting_strict_mode_lineage_exception (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_11_process_hunting_strict_mode_lineage_exception) ... ok
+test_12_network_socket_suspicious_port (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_12_network_socket_suspicious_port) ... ok
+test_13_network_socket_invalid_ip_rejection (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_13_network_socket_invalid_ip_rejection) ... ok
+test_14_oversized_pipeline_object_limit_dos (portfolio.hafta_13.gun_085.tests.test_powershell_pipeline_security_engine.TestPowerShellPipelineSecurityEngine.test_14_oversized_pipeline_object_limit_dos) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.011s
+
+OK
+
+2. Native PowerShell 7 Boru Hatti Betik Dogrulamasi:
+Komut: pwsh -NoProfile -Command ". ./portfolio/hafta_13/gun_085/uygulama/SecurityPipelineAuditor.ps1; \$t1 = Test-PipelineScriptSafety -ScriptContent 'Get-Process | Where-Object { \$_.CPU -gt 5 }'; Write-Output \"Test1 Safe: \$(\$t1.IsSafe)\"; \$t2 = Test-PipelineScriptSafety -ScriptContent '\$cmd | iex'; Write-Output \"Test2 Safe: \$(\$t2.IsSafe)\""
+
+Cikti:
+Test1 Safe: True
+Test2 Safe: False
+
+Sonuc: Tum testler basariyla calisti (0 Hata, 0 Basarisizlik).

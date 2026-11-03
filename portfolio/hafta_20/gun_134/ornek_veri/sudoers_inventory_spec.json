@@ -1,0 +1,78 @@
+{
+  "system_metadata": {
+    "hostname": "srv-linux-prod01",
+    "os_distribution": "Ubuntu 22.04 LTS / RHEL 9",
+    "sudo_version": "1.9.9",
+    "auditor": "Seydi Eryılmaz (@seydivakkas)",
+    "audit_timestamp": "2026-11-02T13:15:00Z"
+  },
+  "rules": [
+    {
+      "user_or_group": "root",
+      "hosts": "ALL",
+      "runas_user": "(ALL:ALL)",
+      "tags": ["PASSWD"],
+      "commands": ["ALL"]
+    },
+    {
+      "user_or_group": "%wheel",
+      "hosts": "ALL",
+      "runas_user": "(ALL:ALL)",
+      "tags": ["PASSWD"],
+      "commands": ["ALL"]
+    },
+    {
+      "user_or_group": "devops",
+      "hosts": "ALL",
+      "runas_user": "(ALL)",
+      "tags": ["NOPASSWD"],
+      "commands": ["/usr/bin/vim /etc/nginx/nginx.conf"]
+    },
+    {
+      "user_or_group": "operator",
+      "hosts": "ALL",
+      "runas_user": "(ALL)",
+      "tags": ["NOPASSWD"],
+      "commands": ["/usr/bin/find /var/log/"]
+    },
+    {
+      "user_or_group": "intern",
+      "hosts": "ALL",
+      "runas_user": "(ALL)",
+      "tags": ["NOPASSWD"],
+      "commands": ["ALL"]
+    },
+    {
+      "user_or_group": "support",
+      "hosts": "ALL",
+      "runas_user": "(ALL)",
+      "tags": ["PASSWD"],
+      "commands": ["/bin/cat /var/log/*"]
+    }
+  ],
+  "defaults": {
+    "env_reset": false,
+    "secure_path": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "use_pty": true,
+    "mail_badpass": true,
+    "logfile": "/var/log/sudo.log",
+    "timestamp_timeout": 15,
+    "env_keep": ["LD_PRELOAD", "COLORS", "DISPLAY"]
+  },
+  "file_permissions": [
+    {
+      "file_path": "/etc/sudoers",
+      "owner": "root",
+      "group": "root",
+      "mode_octal": "0666",
+      "is_writable_by_others": true
+    },
+    {
+      "file_path": "/etc/sudoers.d/01-devops",
+      "owner": "devops",
+      "group": "devops",
+      "mode_octal": "0644",
+      "is_writable_by_others": false
+    }
+  ]
+}

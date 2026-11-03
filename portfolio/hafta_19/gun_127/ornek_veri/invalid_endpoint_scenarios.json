@@ -1,0 +1,121 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "senaryolar": [
+    {
+      "id": "NEG-EP-01",
+      "baslik": "Merkezi EDR Ajanı Eksikliği",
+      "os": "WINDOWS",
+      "role": "WORKSTATION",
+      "kontroller": {
+        "edr_active": false
+      },
+      "beklenen_cwe": "CWE-693",
+      "beklenen_mitre": "T1562.001",
+      "aciklama": "EDR ajanı bulunmayan uç noktada saldırgan hareketleri ve fidye yazılımları gerçek zamanlı engellenemez."
+    },
+    {
+      "id": "NEG-EP-02",
+      "baslik": "LSA Koruması (RunAsPPL) Eksikliği",
+      "os": "WINDOWS",
+      "role": "DOMAIN_CONTROLLER",
+      "kontroller": {
+        "edr_active": true,
+        "credential_guard_active": false
+      },
+      "beklenen_cwe": "CWE-311",
+      "beklenen_mitre": "T1003.001",
+      "aciklama": "LSASS bellek alanının korunmaması, Mimikatz gibi araçlarla bellekten açık parola ve biletlerin çalınmasına yol açar."
+    },
+    {
+      "id": "NEG-EP-03",
+      "baslik": "Tırnaksız Servis Yolu (Unquoted Service Path)",
+      "os": "WINDOWS",
+      "role": "APPLICATION_SERVER",
+      "kontroller": {
+        "edr_active": true,
+        "unquoted_service_paths_count": 2
+      },
+      "beklenen_cwe": "CWE-428",
+      "beklenen_mitre": "T1574.009",
+      "aciklama": "Boşluklu servis yolu tırnak içine alınmadığında araya konulan zararlı exe dosyası SYSTEM yetkisiyle çalışır."
+    },
+    {
+      "id": "NEG-EP-04",
+      "baslik": "Linux Güvensiz SUID/SGID Dosyaları",
+      "os": "LINUX",
+      "role": "DATABASE_SERVER",
+      "kontroller": {
+        "edr_active": true,
+        "suid_misconfigurations_count": 4
+      },
+      "beklenen_cwe": "CWE-250",
+      "beklenen_mitre": "T1548.001",
+      "aciklama": "GTFOBins uyumlu SUID ikilileri standart kullanıcının doğrudan root kabuğu almasına zemin hazırlar."
+    },
+    {
+      "id": "NEG-EP-05",
+      "baslik": "Gelişmiş Telemetri (Sysmon / Auditd) Yokluğu",
+      "os": "LINUX",
+      "role": "APPLICATION_SERVER",
+      "kontroller": {
+        "edr_active": true,
+        "telemetry_active": false
+      },
+      "beklenen_cwe": "CWE-778",
+      "beklenen_mitre": "T1070",
+      "aciklama": "Süreç ağacı ve komut satırı argümanları loglanmadığı için saldırganın adımları adli analizde tespit edilemez."
+    },
+    {
+      "id": "NEG-EP-06",
+      "baslik": "PowerShell Kısıtlanmamış Dil Modu",
+      "os": "WINDOWS",
+      "role": "WORKSTATION",
+      "kontroller": {
+        "edr_active": true,
+        "powershell_clm_active": false
+      },
+      "beklenen_cwe": "CWE-284",
+      "beklenen_mitre": "T1059.001",
+      "aciklama": "CLM kapalı olduğunda PowerShell doğrudan .NET API'lerine erişerek bellek içi kod çalıştırmaya izin verir."
+    },
+    {
+      "id": "NEG-EP-07",
+      "baslik": "Ağ Üzerinde Açık Tehlikeli Portlar",
+      "os": "WINDOWS",
+      "role": "BASTION_HOST",
+      "kontroller": {
+        "edr_active": true,
+        "insecure_open_ports": ["SMBv1 (445)", "Telnet (23)"]
+      },
+      "beklenen_cwe": "CWE-319",
+      "beklenen_mitre": "T1021",
+      "aciklama": "Şifresiz veya zafiyetli protokollerin açık olması yanal hareket ve dinleme saldırılarına kapı açar."
+    },
+    {
+      "id": "NEG-EP-08",
+      "baslik": "Dizüstü Cihazda Disk Şifreleme Eksikliği",
+      "os": "WINDOWS",
+      "role": "WORKSTATION",
+      "kontroller": {
+        "edr_active": true,
+        "disk_encryption_active": false
+      },
+      "beklenen_cwe": "CWE-311",
+      "beklenen_mitre": "T1005",
+      "aciklama": "Cihazın çalınması halinde saldırgan diski doğrudan bağlayarak işletim sistemi şifresini atlatabilir."
+    },
+    {
+      "id": "NEG-EP-09",
+      "baslik": "Zayıf İzinli Otomatik Başlatma (Autorun) Anahtarları",
+      "os": "WINDOWS",
+      "role": "WORKSTATION",
+      "kontroller": {
+        "edr_active": true,
+        "weak_registry_autoruns_count": 2
+      },
+      "beklenen_cwe": "CWE-732",
+      "beklenen_mitre": "T1547.001",
+      "aciklama": "Düşük yetkili kullanıcıların değiştirebildiği Run kayıtları kalıcı arka kapı (persistence) yerleştirmeye imkan tanır."
+    }
+  ]
+}

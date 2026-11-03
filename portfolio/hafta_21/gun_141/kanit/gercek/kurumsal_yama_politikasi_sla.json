@@ -1,0 +1,43 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas).",
+  "policy_name": "Kurumsal Zafiyet ve Yama Yönetimi Politikası",
+  "framework_references": [
+    "NIST SP 800-40 Rev. 4 (Guide to Enterprise Patch Management Planning)",
+    "CISA Binding Operational Directive 22-01 (Reducing the Significant Risk of Known Exploited Vulnerabilities)",
+    "FIRST Common Vulnerability Scoring System v3.1 (CVSS)",
+    "FIRST Exploit Prediction Scoring System (EPSS)"
+  ],
+  "sla_tiers": {
+    "EMERGENCY": {
+      "criteria": "CISA KEV Listesinde (Aktif İstismar) VEYA (CVSS >= 9.0 ve EPSS >= 0.40)",
+      "max_allowed_sla_days": 3,
+      "max_allowed_sla_hours": 72,
+      "change_advisory_board": "Acil CAB Onayı (Fast-track)",
+      "canary_testing_window_hours": 6
+    },
+    "CRITICAL": {
+      "criteria": "CVSS Taban Skoru 9.0 - 10.0 (KEV Harici)",
+      "max_allowed_sla_days": 7,
+      "change_advisory_board": "Standart CAB Onayı",
+      "canary_testing_window_hours": 24
+    },
+    "HIGH": {
+      "criteria": "CVSS Taban Skoru 7.0 - 8.9",
+      "max_allowed_sla_days": 14,
+      "change_advisory_board": "Haftalık Yama Döngüsü",
+      "canary_testing_window_hours": 48
+    },
+    "MEDIUM": {
+      "criteria": "CVSS Taban Skoru 4.0 - 6.9",
+      "max_allowed_sla_days": 30,
+      "change_advisory_board": "Aylık Bakım Penceresi",
+      "canary_testing_window_hours": 72
+    },
+    "LOW": {
+      "criteria": "CVSS Taban Skoru 0.1 - 3.9",
+      "max_allowed_sla_days": 60,
+      "change_advisory_board": "Çeyreklik (Quarterly) Güncelleme",
+      "canary_testing_window_hours": 96
+    }
+  }
+}

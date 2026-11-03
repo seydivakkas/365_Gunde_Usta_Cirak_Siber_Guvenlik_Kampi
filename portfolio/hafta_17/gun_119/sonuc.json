@@ -1,0 +1,37 @@
+{
+  "gun": 119,
+  "hafta": 17,
+  "konu": "Mini proje 16: rol tabanlı erişim simülatörü",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "tamamlanma_tarihi": "2026-11-02",
+  "kategori": "Kimlik ve Erişim Yönetimi (IAM)",
+  "puan_detaylari": {
+    "mimari": 20,
+    "kodlama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "zafiyet_savunmalari": [
+    "CWE-862",
+    "CWE-863",
+    "CWE-285",
+    "CWE-674",
+    "CWE-250",
+    "CWE-613",
+    "CWE-287"
+  ],
+  "test_ozeti": {
+    "toplam_birim_test": 15,
+    "basarili_birim_test": 15,
+    "basarisiz_birim_test": 0,
+    "negatif_senaryolar": 9,
+    "basarili_negatif_senaryolar": 9
+  },
+  "yurutulen_araclar": [
+    "uygulama/rbac_simulator_engine.py",
+    "uygulama/rbac_sim_cli.py",
+    "tests/test_rbac_simulator.py",
+    "kanit_uretici.py"
+  ]
+}

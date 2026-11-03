@@ -1,0 +1,11 @@
+================================================================================
+G086: POWERSHELL BETIK PARAMETRELERI GU蕪ENLIK MOTORU TEST RAPORU
+Zaman Damgasi (UTC): 2026-11-01T19:51:58.071112+00:00
+================================================================================
+
+Toplam Test Kosumu : 14
+Basarisizlik (Fail): 0
+Hata (Error)        : 0
+Sonuc Durumu        : 14/14 PASS
+
+[+] Tum 14 birim test basariyla tamamlandi (PASS).

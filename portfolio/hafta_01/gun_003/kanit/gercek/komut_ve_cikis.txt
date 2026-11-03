@@ -1,0 +1,42 @@
+================================================================================
+GERÇEK KOMUT VE ÇALIŞTIRMA KANITI (GÜN 003)
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) | ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+================================================================================
+Komut: python portfolio/hafta_01/gun_003/uygulama/scope_validator.py --audit
+Çalışma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Ortam: Windows 11 Enterprise (Physical / Localhost)
+Araç Sürümü: Python 3.14.0 (CPython, Standard Library)
+Tarih ve Saat: 2026-10-26 16:38:13 +03:00
+Çıkış Kodu (Exit Code): 0 (BAŞARILI)
+================================================================================
+STANDART ÇIKTI (STDOUT):
+================================================================================
+================================================================================
+SİBER GÜVENLİK 365: GÜN 003 — YASAL KAPSAM VE ANGAJMAN KURALLARI DENETİMİ
+================================================================================
+[*] Kurum: Acme Finans ve Teknoloji A.Ş.
+[*] Belge: Sızma Testi Angajman Kuralları ve Yasal Kapsam Belgesi (Rules of Engagement - RoE)
+[*] Yasal Dayanak: TCK Madde 243 ve 244 Kapsamında Çift Taraflı Islak/Dijital İmzalı Yetkilendirme Sözleşmesi
+
+--- [1. TEST BÖLÜMÜ: POZİTİF KONTROLLER (İZİNLİ FAALİYETLER)] ---
+  [+] ONAYLANDI: Hedef: 192.168.10.50                  | Eylem: PORT_SCAN            -> YASAL VE KAPSAM İÇİ
+  [+] ONAYLANDI: Hedef: dev-portal.acme-finans.local   | Eylem: WEB_VULN_SCAN        -> YASAL VE KAPSAM İÇİ
+  [+] ONAYLANDI: Hedef: 192.168.10.51                  | Eylem: SERVICE_BANNER_GRABBING -> YASAL VE KAPSAM İÇİ
+
+--- [2. TEST BÖLÜMÜ: NEGATİF KONTROLLER (YASAKLI/KAPSAM DIŞI)] ---
+  [+] BLOKE EDİLDİ (NEGATİF KONTROL BAŞARILI): [Yasaklı Dış IP (8.8.8.8)] -> ExplicitlyForbiddenTargetError
+  [+] BLOKE EDİLDİ (NEGATİF KONTROL BAŞARILI): [Ağ Omurga Yönlendiricisi] -> ExplicitlyForbiddenTargetError
+  [+] BLOKE EDİLDİ (NEGATİF KONTROL BAŞARILI): [Canlı Ödeme Üretim Sistemi] -> ExplicitlyForbiddenTargetError
+  [+] BLOKE EDİLDİ (NEGATİF KONTROL BAŞARILI): [Tanımsız/Kapsam Dışı IP] -> OutOfScopeTargetError
+  [+] BLOKE EDİLDİ (NEGATİF KONTROL BAŞARILI): [Yıkıcı Hizmet Engelleme Saldırısı] -> ForbiddenActionError
+  [+] BLOKE EDİLDİ (NEGATİF KONTROL BAŞARILI): [Yıkıcı Veri Silme Faaliyeti] -> ForbiddenActionError
+  [+] BLOKE EDİLDİ (NEGATİF KONTROL BAŞARILI): [Sözleşme Dışı Eylem] -> UnauthorizedActionError
+
+================================================================================
+[SONUÇ] TÜM KAPSAM VE YASAL YETKİ KONTROLLERİ EKSİKSİZ DOĞRULANDI!
+================================================================================
+
+================================================================================
+STANDART HATA (STDERR):
+================================================================================
+(Hata çıktısı yoktur, işlem temiz şekilde 0 kodu ile tamamlanmıştır.)

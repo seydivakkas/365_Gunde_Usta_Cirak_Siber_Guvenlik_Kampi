@@ -1,0 +1,47 @@
+{
+  "title": "G074: Temiz Kod ve Fonksiyonel Güvenlik Doğrulama Raporu",
+  "tested_components": [
+    {
+      "test": "validate_log_and_tag",
+      "id": "LOG_01",
+      "tags_count": 3
+    },
+    {
+      "test": "validate_log_and_tag",
+      "id": "LOG_02",
+      "tags_count": 3
+    },
+    {
+      "test": "validate_log_and_tag",
+      "id": "LOG_03",
+      "tags_count": 3
+    },
+    {
+      "test": "pure_calculate_threat_score",
+      "scenario": "KRITIK_TEHDIT",
+      "calculated_score": 92.5
+    },
+    {
+      "test": "pure_calculate_threat_score",
+      "scenario": "DUSUK_RISK",
+      "calculated_score": 3.75
+    },
+    {
+      "test": "contract_enforced_hash_lookup",
+      "algo": "sha256",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "test": "contract_enforced_hash_lookup",
+      "algo": "md5",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "test": "contract_enforced_hash_lookup",
+      "algo": "sha1",
+      "verdict": "CONFIRMED"
+    }
+  ],
+  "status": "ALL_TESTS_PASSED",
+  "total_component_runs": 8
+}

@@ -1,0 +1,12 @@
+=== WINDOWS HİZMET GÜVENLİĞİ BİRİM TEST SONUÇLARI (GÜN 132) ===
+Tarih / Saat : 2026-11-02T07:46:55.414736+00:00
+Komut        : C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest discover tests/
+Çıkış Kodu   : 0
+-----------------------------------------------------------------
+
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+

@@ -1,0 +1,76 @@
+================================================================================
+G056 - MINI PROJE 7: PROTOKOL HARITASI VE PAKET COZUMLEME RAPORU
+Tarih: 2026-10-29 18:15:30
+Kapsam: Hafta 08 Konsolidasyonu (TCP, UDP, Soketler, DNS, DHCP)
+Isletim Modu: Yerel Calistirildi (Local Standalone Engine)
+================================================================================
+
+1. PROTOKOL DAGILIM HIYERARSISI (PROTOCOL HIERARCHY MAP)
+======================================================================
+Protokol        | Paket Sayisi    | Toplam Hacim (Bayt)  | Yuzde (%) 
+----------------------------------------------------------------------
+Ethernet        | 15              | 1503                 | %100.0   
+ARP             | 1               | 42                   | %6.7     
+IPv4            | 14              | 1461                 | %93.3    
+TCP             | 8               | 518                  | %53.3    
+UDP             | 6               | 943                  | %40.0    
+HTTP            | 2               | 192                  | %13.3    
+DNS             | 3               | 262                  | %20.0    
+DHCP            | 3               | 973                  | %20.0    
+======================================================================
+Toplam Incelenen Cerceve: 15 paket (1503 bayt)
+
+2. ILETISIM AKIS MATRISI (COMMUNICATION FLOW MATRIX - 5-TUPLE)
+===============================================================================================
+Kaynak IP:Port            <-> Hedef IP:Port             | Proto | Paket | Bayt    | Durum       
+-----------------------------------------------------------------------------------------------
+192.168.1.100:54321       <-> 192.168.1.10:80           | TCP   | 5     | 354     | ESTABLISHED 
+192.168.1.100:52111       <-> 8.8.8.8:53                | UDP   | 2     | 160     | UDP_STREAM  
+0.0.0.0:68                <-> 255.255.255.255:67        | UDP   | 1     | 289     | UDP_STREAM  
+192.168.1.1:67            <-> 192.168.1.100:68          | UDP   | 1     | 342     | UDP_STREAM  
+10.0.0.99:40001           <-> 192.168.1.10:21           | TCP   | 1     | 54      | HANDSHAKE_INIT
+10.0.0.99:40002           <-> 192.168.1.10:22           | TCP   | 1     | 54      | HANDSHAKE_INIT
+10.0.0.99:40003           <-> 192.168.1.10:23           | TCP   | 1     | 54      | HANDSHAKE_INIT
+192.168.1.100:53000       <-> 198.51.100.4:53           | UDP   | 1     | 102     | UDP_STREAM  
+192.168.1.199:67          <-> 192.168.1.100:68          | UDP   | 1     | 342     | UDP_STREAM  
+===============================================================================================
+
+3. TCP OTURUM VE YENIDEN ILETIM (RETRANSMISSION) ANALIZI
+--------------------------------------------------------------------------------
+- Incelenen TCP Oturumu: 192.168.1.100:54321 <-> 192.168.1.10:80
+- El Sikisma (Handshake): SYN (Pkt 2) -> SYN-ACK (Pkt 3) -> ACK (Pkt 4) [TAMAMLANDI]
+- Veri Segmenti: Pkt 5 (Seq: 1001, Ack: 5001, PSH+ACK, 42 bayt HTTP payload)
+- Yinelenen Segment: Pkt 6 (Seq: 1001, Ack: 5001, PSH+ACK, ayni seq ve payload)
+  -> [ANOMALI TESPITI]: TCP Retransmission tespit edildi.
+  -> Degerlendirme: Agda paket kaybi veya gecikmis ACK nedeniyle istemci tarafindan
+     yeniden iletim tetiklendi. Paket tekilligi korundu.
+
+4. GUVENLIK TEHDITLERI VE ANOMALI AVCILIGI (THREAT HUNTING)
+--------------------------------------------------------------------------------
+[INCIDENT-01] PORT SCAN / SYN FLOOD SALDIRISI
+    - Saldirgan IP: 10.0.0.99
+    - Hedef IP:     192.168.1.10
+    - Taranan Portlar: [21 (FTP), 22 (SSH), 23 (Telnet)]
+    - Tehdit Seviyesi: YUKSEK
+    - Teshis: Tekil bir kaynak IP adresinden arka arkaya ACK bayraksiz salt SYN
+      paketleri gonderildi. Hedef sunucuda acik port kesfi (Reconnaissance) yapiliyor.
+
+[INCIDENT-02] DNS TUNNELING / VERI SIZINTISI (EXFILTRATION)
+    - Kaynak IP: 192.168.1.100
+    - Hedef DNS Sunucu: 198.51.100.4
+    - Supheli Sorgu: "7a810f44bcde77189a2b001fc3.tunnel.c2server.org" (TXT)
+    - Shannon Entropisi: 3.12 bit / karakter (Esik >= 2.8 bit)
+    - Sorgu Karakter Uzunlugu: 46 karakter
+    - Tehdit Seviyesi: KRITIK
+    - Teshis: Iceriden disari komuta kontrol (C2) sunucusuna DNS TXT sorgulari
+      uzerinden heksadesimal sifreli veri sizdiriliyor.
+
+[INCIDENT-03] SAHTE (ROGUE) DHCP SUNUCUSU TESPITI
+    - Sahte Sunucu IP: 192.168.1.199 (Yetkisiz!)
+    - Yetkili Kurumsal Sunucu: 192.168.1.1
+    - Onerilen Sahte Gateway: 192.168.1.199 (MitM Dinleme Girisimi)
+    - Hedef Kurban MAC: 00:0c:29:4f:8e:35
+    - Tehdit Seviyesi: KRITIK
+    - Teshis: Yetkisiz bir cihaz ag uzerinde sahte DHCP Offer basarak kurbanin
+      ag gecidini kendi uzerine yonlendirmeye calisti. Katman-2 DHCP Snooping
+      tarafindan bloke edilmelidir.

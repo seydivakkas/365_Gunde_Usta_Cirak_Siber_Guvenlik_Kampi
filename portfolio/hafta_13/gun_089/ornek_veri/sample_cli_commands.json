@@ -1,0 +1,20 @@
+{
+  "aciklama": "G089: Argparse ve CLI guvenlik motoru icin ornek gecerli ve gecersiz komut satiri senaryolari.",
+  "gecerli_komutlar": [
+    {
+      "senaryo": "Ağ Portu Taraması",
+      "args": ["scan", "--host", "192.168.1.1", "--port", "443", "--mode", "fast"],
+      "beklenen_altkomut": "scan"
+    },
+    {
+      "senaryo": "Dosya Güvenlik Denetimi",
+      "args": ["audit", "--file", "portfolio/hafta_13/gun_089/ornek_veri/sample_cli_commands.json", "--strict"],
+      "beklenen_altkomut": "audit"
+    },
+    {
+      "senaryo": "Kriptografik Özet Hesaplama (SHA256)",
+      "args": ["hash", "--file", "portfolio/hafta_13/gun_089/ornek_veri/sample_cli_commands.json", "--algo", "sha256"],
+      "beklenen_altkomut": "hash"
+    }
+  ]
+}

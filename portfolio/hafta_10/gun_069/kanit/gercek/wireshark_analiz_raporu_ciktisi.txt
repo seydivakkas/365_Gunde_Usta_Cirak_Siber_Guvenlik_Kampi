@@ -1,0 +1,87 @@
+================================================================================
+G069: MİNİ PROJE 9 - WİRESHARK AĞ ANALİZİ VE ADLİ SİBER TEHDİT RAPORU
+Tarih: 2026-10-31 | Üretici Motor: WiresharkAnalysisReportGenerator v1.0
+================================================================================
+
+1. YAKALAMA VE TRAFİK YÖNETİCİ ÖZETİ:
+  - İncelenen PCAP Dosyası       : incident_investigation_20261031.pcap
+  - Yakalama Süresi              : 5.500 saniye
+  - Toplam Paket Sayısı          : 15 adet
+  - Toplam Trafik Hacmi          : 5000 bayt (4.88 KB)
+  - Ortalama Bant Genişliği      : 7.27 kbps
+  - Kurumsal Güvenlik Skoru      : 15 / 100
+  - Genel Siber Risk Seviyesi    : KRITIK_TEHLIKE
+
+2. PROTOKOL HİYERARŞİSİ (PROTOCOL HIERARCHY):
+--------------------------------------------------------------------------------
+Protokol     | Paket Sayısı | Paket %    | Toplam Bayt  | Bayt %    
+--------------------------------------------------------------------------------
+TLS          | 2            | %13.33     | 1937         | %38.74    
+HTTP         | 3            | %20.00     | 1930         | %38.60    
+TCP          | 5            | %33.33     | 662          | %13.24    
+DNS          | 2            | %13.33     | 228          | %4.56     
+ICMP         | 2            | %13.33     | 168          | %3.36     
+FTP          | 1            | %6.67      | 75           | %1.50     
+
+3. EN AKTİF AĞ KONUŞMALARI (TOP TALKERS / CONVERSATIONS):
+--------------------------------------------------------------------------------
+Kaynak IP:Port           <---> Hedef IP:Port            | Proto  | Paket  | Bayt    
+--------------------------------------------------------------------------------
+10.0.0.443:443           <---> 192.168.1.105:54322      | TLS    | 2      | 1937    
+10.0.0.80:80             <---> 192.168.1.105:54321      | HTTP   | 3      | 1930    
+10.0.0.80:80             <---> 192.168.1.105:54321      | TCP    | 5      | 662     
+192.168.1.105:53333      <---> 8.8.8.8:53               | DNS    | 2      | 228     
+10.0.0.1:0               <---> 192.168.1.105:0          | ICMP   | 2      | 168     
+
+4. TCP PERFORMANS VE BAĞLANTI SAĞLIK METRİKLERİ:
+--------------------------------------------------------------------------------
+  - Toplam TCP/Uygulama Segmenti : 11
+  - 3-Way Handshake Başlatımları : SYN=1, SYN-ACK=1
+  - TCP Zero Window Tıkanıklığı  : 1 adet
+  - TCP Yeniden İletimleri (Ret) : 1 adet
+  - TCP Bağlantı Sağlık Durumu   : TIKANIKLIK_VE_PAKET_KAYBI_TESPIT_EDILDI
+
+5. TESPİT EDİLEN SİBER GÜVENLİK TEHDİTLERİ VE BULGULAR:
+--------------------------------------------------------------------------------
+[1] [KRITIK] SQL Enjeksiyonu ve Otomatik Saldırı Tarayıcısı (Kod: SEC_SQLI_SCANNER_PROBE)
+    Paket No : #4
+    Açıklama : Paket #4: sqlmap tarayıcısı ile SQLi sömürü denemesi tespit edildi: URI='/admin/login.php?user=admin%27%20OR%201=1--'
+    Adli Kanıt: User-Agent: sqlmap/1.7.11#stable (https://sqlmap.org) | URI: /admin/login.php?user=admin%27%20OR%201=1--
+
+[2] [KRITIK] DNS Tünelleme Üzerinden Veri Sızdırma (Kod: SEC_DNS_TUNNEL_EXFIL)
+    Paket No : #6
+    Açıklama : Paket #6: TXT sorgusu ile Base64 kodlu şüpheli DNS veri kaçırma girişimi: 'dGhpcyBpcyBhIHNhbXBsZSBzZWNyZXQ.t.exfil.org'
+    Adli Kanıt: Query: dGhpcyBpcyBhIHNhbXBsZSBzZWNyZXQ.t.exfil.org (Tip: TXT)
+
+[3] [ORTA] TCP Sıfır Pencere (Bufferbloat/Tıkanıklık) (Kod: PERF_TCP_ZERO_WINDOW)
+    Paket No : #8
+    Açıklama : Paket #8: Sunucu tampon belleği tükendi (Win=0), veri akışı durduruldu.
+    Adli Kanıt: TCP Window Size: 0 bytes
+
+[4] [YUKSEK] Ağ Üzerinden Açık Metin Parola İletimi (Kod: SEC_CLEARTEXT_AUTH_LEAK)
+    Paket No : #12
+    Açıklama : Paket #12: FTP/Telnet protokolü ile şifrelenmemiş yönetici kimlik bilgileri tespit edildi.
+    Adli Kanıt: USER admin | PASS SuperSecret2026!
+
+[5] [YUKSEK] HTTP CRLF Başlık Enjeksiyonu Denemesi (Kod: SEC_HTTP_CRLF_INJECTION)
+    Paket No : #15
+    Açıklama : Paket #15: URI parametresinde CRLF satır atlama ve çerez enjeksiyonu yakalandı.
+    Adli Kanıt: /upload?dest=docs%0d%0aSet-Cookie:%20admin_session=evil_injected
+
+6. ADLİ TEHDİT GÖSTERGELERİ (IoC - INDICATORS OF COMPROMISE):
+--------------------------------------------------------------------------------
+  - Şüpheli/Saldırgan IP'ler     : 192.168.1.105
+  - Tespit Edilen Zararlı FQDN   : dGhpcyBpcyBhIHNhbXBsZSBzZWNyZXQ.t.exfil.org
+  - İfşa Olan Kimlik Bilgileri   : USER admin | PASS SuperSecret2026!
+
+7. MÜDAHALE VE İYİLEŞTİRME EYLEM PLANI (REMEDIATION):
+--------------------------------------------------------------------------------
+  1. İstemci 192.168.1.105 derhal EDR üzerinden ağ izolasyonuna alınmalı ve adli imajı çıkarılmalıdır.
+  2. Hedef sunucu 10.0.0.80 üzerindeki web uygulamasında parametreli sorgulara geçilerek SQLi açığı kapatılmalıdır.
+  3. Kurum içi DNS sunucularında 'exfil.org' kök bölgesi derhal Sinkhole yönlendirmesine tabi tutulmalıdır.
+  4. Açık metin FTP/Telnet kullanımı tamamen yasaklanmalı, SSH/SFTP zorunlu kılınmalıdır.
+  5. TCP tampon belleği genişletilerek Zero Window tıkanıklığı için TCP Window Scaling aktif edilmelidir.
+
+================================================================================
+RAPOR SONU — ADLİ BİLİŞİM VE AĞ İNCELEME ONAYI VERİLMİŞTİR.
+================================================================================

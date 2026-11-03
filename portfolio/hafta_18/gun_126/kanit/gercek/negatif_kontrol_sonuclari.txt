@@ -1,0 +1,37 @@
+======================================================================
+GÜN 126: AŞAMA 5 NEGATİF KONTROL VE HATA ENJEKSİYON TESTLERİ
+Tarih/Saat: 2026-11-02T08:57:35.570979
+Toplam Senaryo: 9
+======================================================================
+
+[NEG-ST5-01] Kullanımdan Kaldırılmış MD5 Özeti Kullanımı (CWE-327) -> PASS
+   Ayrıntı: Beklenen CWE-327 zafiyeti başarıyla tespit edildi (Puan: 70.0/100). Bulgu: Yasaklı/Zayıf Kriptografik Algoritma (Eski Token Üretici): 'MD5' tespit edildi (CWE-327).
+
+[NEG-ST5-02] Kırık SHA-1 İmza Özeti Kullanımı (CWE-327) -> PASS
+   Ayrıntı: Beklenen CWE-327 zafiyeti başarıyla tespit edildi (Puan: 70.0/100). Bulgu: Yasaklı/Zayıf Kriptografik Algoritma (Sertifika İmzalayıcı): 'SHA-1' tespit edildi (CWE-327).
+
+[NEG-ST5-03] Güvensiz Blok Şifreleme Modu (AES-ECB) (CWE-327) -> PASS
+   Ayrıntı: Beklenen CWE-327 zafiyeti başarıyla tespit edildi (Puan: 75.0/100). Bulgu: Güvensiz Blok Şifreleme Modu (Görsel Şifreleme): ECB modu tespit edildi (CWE-327).
+
+[NEG-ST5-04] Yetersiz Asimetrik Anahtar Uzunluğu (RSA 1024-bit) (CWE-326) -> PASS
+   Ayrıntı: Beklenen CWE-326 zafiyeti başarıyla tespit edildi (Puan: 80.0/100). Bulgu: Yetersiz RSA Anahtar Boyutu (Eski Sunucu Sertifikası): 1024 bit < 2048 bit (CWE-326).
+
+[NEG-ST5-05] Kriptografik Olmayan Zayıf Rastgelelik (PRNG) (CWE-338) -> PASS
+   Ayrıntı: Beklenen CWE-338 zafiyeti başarıyla tespit edildi (Puan: 80.0/100). Bulgu: Zayıf Rastgelelik Kaynağı (Oturum Belirteci Üreteci): 'PRNG' CSPRNG değildir (CWE-338).
+
+[NEG-ST5-06] Varsayılan İzin (Default-Allow) Mimarisi (CWE-1188) -> PASS
+   Ayrıntı: Beklenen CWE-1188 mimari zafiyeti başarıyla tespit edildi. Bulgu: Mimari Kural İhlali: Varsayılan Ret (Default-Deny) devrede değil; sistem Default-Allow çalışıyor (CWE-1188)!
+
+[NEG-ST5-07] Altyapı Kesintisinde Fail-Open Davranışı (CWE-636) -> PASS
+   Ayrıntı: Beklenen CWE-636 mimari zafiyeti başarıyla tespit edildi. Bulgu: Kritik Arıza Güvenliği İhlali: Sistem kesintide Fail-Open çalışıyor; kapılar kilitlenmiyor (CWE-636)!
+
+[NEG-ST5-08] Statik Görevler Ayrılığı (SoD) Kısıtı Eksikliği (CWE-863) -> PASS
+   Ayrıntı: Beklenen CWE-863 mimari zafiyeti başarıyla tespit edildi. Bulgu: Görevler Ayrılığı (SoD) Eksikliği: Çatışan rol çiftleri (Maker-Checker) engellenmiyor (CWE-863).
+
+[NEG-ST5-09] Denetim Kütüklerinde Parola ve Sır İfşası (CWE-532) -> PASS
+   Ayrıntı: Beklenen CWE-532 mimari zafiyeti başarıyla tespit edildi. Bulgu: Eksik Savunma Katmanları: İnsan, Çevre, Fiziksel katmanlarında kontrol tanımlı değil.
+
+----------------------------------------------------------------------
+TOPLAM: 9 | BAŞARILI: 9 | BAŞARISIZ: 0
+SONUÇ: 100% PASS
+======================================================================

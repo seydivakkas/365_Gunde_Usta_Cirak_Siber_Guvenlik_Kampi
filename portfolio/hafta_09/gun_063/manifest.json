@@ -1,0 +1,86 @@
+{
+  "gun": 63,
+  "konu": "Mini proje 8: protokol zaman cizelgesi",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "67906793d007f2b2d1425a23a1111023ffef901f60cd42dfa8661c857a768516",
+      "boyut": 4479
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "4863dc43fef1aa844e8d8ee8b67c042feea639c72905824bc2921bc14770b267",
+      "boyut": 7766
+    },
+    {
+      "dosya": "kanit/gercek/komut_ve_cikis.txt",
+      "sha256": "1a0a2cd3326797c49e3fc630a85e9ce1f98611f241dbc5d739c0c047874fe252",
+      "boyut": 4458
+    },
+    {
+      "dosya": "kanit/gercek/negatif_kontrol_sonuclari.txt",
+      "sha256": "aa0370fc7af38cbd734fc902e2bdb869b632ea8148da2ead3709784735b3c133",
+      "boyut": 2883
+    },
+    {
+      "dosya": "kanit/gercek/protokol_zaman_cizelgesi_raporu.txt",
+      "sha256": "7bb8c3c7add5fdd1cc4f7c09798290a6241e97cf2d189cff613f33c27447c1f1",
+      "boyut": 3655
+    },
+    {
+      "dosya": "kanit/gercek/test_sonuclari.txt",
+      "sha256": "4ab1fb62474e52d5e8eca76b12f1a6ef681d946828e0ccd314aff8781586e224",
+      "boyut": 4145
+    },
+    {
+      "dosya": "kanit/temsili/protokol_zaman_cizelgesi_mimarisi.txt",
+      "sha256": "9f8733c61e068c39eba189cc3c427e06e0459e43d3af48d3b92eac6f31695a5f",
+      "boyut": 8124
+    },
+    {
+      "dosya": "ornek_veri/invalid_timeline_inputs.json",
+      "sha256": "8664dbcf48298f9b79eb12934774e0778410ef4e61feebe3b848cbc3e7321de9",
+      "boyut": 10461
+    },
+    {
+      "dosya": "ornek_veri/sample_network_trace.json",
+      "sha256": "7dfa344c08a4fcf733b9432424fd1c00f3281aa905a41505accfeda5077e60c5",
+      "boyut": 7733
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "a8b73aedf4ae0de71b89324dafad23d001c216efb347d5e1caac53164b0c3d96",
+      "boyut": 6037
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "7ac18688ac36e199bdd9dc9c254c79bd3ea8d0488e39c82cd52b91991cb5eda3",
+      "boyut": 413
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "6c9e360a201050e47eb770bb494d84e5e55368dce0a9f54c297dc2bf6d0d3338",
+      "boyut": 8363
+    },
+    {
+      "dosya": "tests/__init__.py",
+      "sha256": "53fa2e7bcea60c92eb630767b8d4fe2e5e4ffb21a73da27d6dd4d4c216875e9d",
+      "boyut": 686
+    },
+    {
+      "dosya": "tests/test_protocol_timeline_analyzer.py",
+      "sha256": "00b8e71ce4755fbed311d41fc751c32399c8a94708d2282593e2f273e0a399f5",
+      "boyut": 16898
+    },
+    {
+      "dosya": "uygulama/__init__.py",
+      "sha256": "799908fe6b97563e6621e3aeed710e6764166d7ab44192af8773196f50914b99",
+      "boyut": 750
+    },
+    {
+      "dosya": "uygulama/protocol_timeline_analyzer.py",
+      "sha256": "c679b7b104b6aa6efcee619e76d6dbe3cd105445125a1ea56d157de6337ce96e",
+      "boyut": 33817
+    }
+  ]
+}

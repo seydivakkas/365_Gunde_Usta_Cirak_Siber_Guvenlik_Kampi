@@ -1,0 +1,56 @@
+================================================================================
+G089: GERCEK TERMINAL KOMUTLARI VE CALISTIRMA CIKTILARI
+Zaman: 2026-11-01T20:13:05.464423+00:00
+================================================================================
+
+KOMUT 1: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest portfolio.hafta_13.gun_089.tests.test_security_cli_engine -v
+CIKIS 1:
+
+test_01_parse_valid_scan_subcommand (portfolio.hafta_13.gun_089.tests.test_security_cli_engine.TestSecurityCliEngine.test_01_parse_valid_scan_subcommand)
+scan alt komutunun gecerli host ve port parametreleriyle basariyla ayrastirildigini test eder. ... ok
+test_02_parse_valid_audit_subcommand (portfolio.hafta_13.gun_089.tests.test_security_cli_engine.TestSecurityCliEngine.test_02_parse_valid_audit_subcommand)
+audit alt komutunun var olan dosya ile basariyla calistigini dogrular. ... ok
+test_03_parse_valid_hash_subcommand (portfolio.hafta_13.gun_089.tests.test_security_cli_engine.TestSecurityCliEngine.test_03_parse_valid_hash_subcommand)
+hash alt komutunun SHA256 ozetini basariyla hesapladigini test eder. ... ok
+test_04_reject_missing_subcommand (portfolio.hafta_13.gun_089.tests.test_security_cli_engine.TestSecurityCliEngine.test_04_reject_missing_subcommand)
+Zorunlu alt komut girilmediginde CliMissingRequiredSubcommandException firlatildigini test eder. ... ok
+test_05_reject_mutually_exclusive_flags (portfolio.hafta_13.gun_089.tests.test_security_cli_engine.TestSecurityCliEngine.test_05_reject_mutually_exclusive_flags)
+--fast ve --deep bayraklari ayni anda girildiginde CliMutuallyExclusiveConflictException test eder. ... ok
+test_06_reject_path_traversal_in_file_arg (portfolio.hafta_13.gun_089.tests.test_security_cli_engine.TestSecurityCliEngine.test_06_reject_path_traversal_in_file_arg)
+--file parametresinde '..' dizin atlama girisiminin engellendigini dogrular. ... ok
+test_07_reject_nonexistent_file (portfolio.hafta_13.gun_089.tests.test_security_cli_engine.TestSecurityCliEngine.test_07_reject_nonexistent_file)
+Dosya sisteminde var olmayan dosya yolunda InvalidCliArgumentException firlatildigini test eder. ... ok
+test_08_reject_port_out_of_range (portfolio.hafta_13.gun_089.tests.test_security_cli_engine.TestSecurityCliEngine.test_08_reject_port_out_of_range)
+65535'ten buyuk port degerinde CliPortOutOfRangeException firlatildigini dogrular. ... ok
+test_09_reject_invalid_port_string (portfolio.hafta_13.gun_089.tests.test_security_cli_engine.TestSecurityCliEngine.test_09_reject_invalid_port_string)
+Sayisal olmayan port degerinde CliPortOutOfRangeException firlatildigini test eder. ... ok
+test_10_reject_host_command_injection (portfolio.hafta_13.gun_089.tests.test_security_cli_engine.TestSecurityCliEngine.test_10_reject_host_command_injection)
+Host adinda komut ayirici ozel karakterler oldugunda InvalidCliArgumentException test eder. ... ok
+test_11_reject_weak_hash_algorithm (portfolio.hafta_13.gun_089.tests.test_security_cli_engine.TestSecurityCliEngine.test_11_reject_weak_hash_algorithm)
+Desteklenmeyen zayif kriptografik algoritma (md5) girildiginde secim hatasi firlatildigini test eder. ... ok
+test_12_reject_null_byte_in_cli_argument (portfolio.hafta_13.gun_089.tests.test_security_cli_engine.TestSecurityCliEngine.test_12_reject_null_byte_in_cli_argument)
+Argumanda null-byte (0x00) tespit edildiginde CliNullByteException firlatildigini test eder. ... ok
+test_13_reject_oversized_argument_payload (portfolio.hafta_13.gun_089.tests.test_security_cli_engine.TestSecurityCliEngine.test_13_reject_oversized_argument_payload)
+4096 karakterden uzun tekil argumanda CliOversizedPayloadException firlatildigini test eder. ... ok
+test_14_reject_too_many_arguments_dos (portfolio.hafta_13.gun_089.tests.test_security_cli_engine.TestSecurityCliEngine.test_14_reject_too_many_arguments_dos)
+100'den fazla arguman ile DoS saldirisi girisiminde CliOversizedPayloadException test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.022s
+
+OK
+
+--------------------------------------------------------------------------------
+
+KOMUT 2: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m portfolio.hafta_13.gun_089.uygulama.cli_runner hash --file C:/Users/seydieryilmaz/Desktop/Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi/portfolio/hafta_13/gun_089/ornek_veri/sample_cli_commands.json --algo sha256 --json-output
+CIKIS 2:
+{
+  "action": "hash",
+  "file": "C:/Users/seydieryilmaz/Desktop/Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi/portfolio/hafta_13/gun_089/ornek_veri/sample_cli_commands.json",
+  "algorithm": "SHA256",
+  "digest": "0644d89bee75526c1e066591b6387761da7c1ebad08fdf88b3a4dcf7eef49ccd",
+  "status": "VERIFIED"
+}
+
+
+================================================================================

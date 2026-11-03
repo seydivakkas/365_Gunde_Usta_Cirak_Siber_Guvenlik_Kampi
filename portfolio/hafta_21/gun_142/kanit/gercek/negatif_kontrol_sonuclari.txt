@@ -1,0 +1,58 @@
+=== GÜN 142 / CVSS TEMEL METRİKLERİ: 9 NEGATİF VEKTÖR KONTROL RAPORU ===
+Tarih: 2026-11-02T15:32:09.570631
+Standart: FIRST CVSS v3.1 Specification Section 7.1
+
+Senaryo ID   : SCENARIO-CVSS-01
+Başlık        : Hatalı CVSS Sürüm Öneki (CVSS:2.0)
+Vektör Dizesi : 'CVSS:2.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H'
+Test Sonucu   : BAŞARILI — HATALI VEKTÖR YAKALANDI VE REDDEDİLDİ (PASS)
+Açıklama      : Doğru hata yakalandı: Hatalı CVSS sürüm öneki: 'CVSS:2.0'. Beklenen: 'CVSS:3.1'
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVSS-02
+Başlık        : Eksik Zorunlu Metrik (Kapsam - S Eksik)
+Vektör Dizesi : 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/C:H/I:H/A:H'
+Test Sonucu   : BAŞARILI — HATALI VEKTÖR YAKALANDI VE REDDEDİLDİ (PASS)
+Açıklama      : Doğru hata yakalandı: Eksik zorunlu CVSS metriği tespit edildi: 'S'
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVSS-03
+Başlık        : Geçersiz Saldırı Vektörü Değeri (AV:X)
+Vektör Dizesi : 'CVSS:3.1/AV:X/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H'
+Test Sonucu   : BAŞARILI — HATALI VEKTÖR YAKALANDI VE REDDEDİLDİ (PASS)
+Açıklama      : Doğru hata yakalandı: Geçersiz AV (Attack Vector) değeri: 'X'. İzin verilenler: N, A, L, P
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVSS-04
+Başlık        : Geçersiz Saldırı Karmaşıklığı Değeri (AC:Z)
+Vektör Dizesi : 'CVSS:3.1/AV:N/AC:Z/PR:N/UI:N/S:U/C:H/I:H/A:H'
+Test Sonucu   : BAŞARILI — HATALI VEKTÖR YAKALANDI VE REDDEDİLDİ (PASS)
+Açıklama      : Doğru hata yakalandı: Geçersiz AC (Attack Complexity) değeri: 'Z'. İzin verilenler: L, H
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVSS-05
+Başlık        : Geçersiz Gereken Yetki Değeri (PR:ROOT)
+Vektör Dizesi : 'CVSS:3.1/AV:N/AC:L/PR:ROOT/UI:N/S:U/C:H/I:H/A:H'
+Test Sonucu   : BAŞARILI — HATALI VEKTÖR YAKALANDI VE REDDEDİLDİ (PASS)
+Açıklama      : Doğru hata yakalandı: Geçersiz PR (Privileges Required) değeri: 'ROOT'. İzin verilenler: N, L, H
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVSS-06
+Başlık        : Geçersiz Kullanıcı Etkileşimi Değeri (UI:OPTIONAL)
+Vektör Dizesi : 'CVSS:3.1/AV:N/AC:L/PR:N/UI:OPTIONAL/S:U/C:H/I:H/A:H'
+Test Sonucu   : BAŞARILI — HATALI VEKTÖR YAKALANDI VE REDDEDİLDİ (PASS)
+Açıklama      : Doğru hata yakalandı: Geçersiz UI (User Interaction) değeri: 'OPTIONAL'. İzin verilenler: N, R
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVSS-07
+Başlık        : Geçersiz Kapsam Değeri (S:EXTENDED)
+Vektör Dizesi : 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:EXTENDED/C:H/I:H/A:H'
+Test Sonucu   : BAŞARILI — HATALI VEKTÖR YAKALANDI VE REDDEDİLDİ (PASS)
+Açıklama      : Doğru hata yakalandı: Geçersiz S (Scope) değeri: 'EXTENDED'. İzin verilenler: U, C
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVSS-08
+Başlık        : İki Nokta İçermeyen Bozuk Vektör Bileşeni (AV_N)
+Vektör Dizesi : 'CVSS:3.1/AV_N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H'
+Test Sonucu   : BAŞARILI — HATALI VEKTÖR YAKALANDI VE REDDEDİLDİ (PASS)
+Açıklama      : Doğru hata yakalandı: Bozuk vektör bileşeni: 'AV_N'. 'ANAHTAR:DEĞER' biçiminde olmalı.
+---------------------------------------------------------------------------
+Senaryo ID   : SCENARIO-CVSS-09
+Başlık        : Boş Vektör Girdisi
+Vektör Dizesi : ''
+Test Sonucu   : BAŞARILI — HATALI VEKTÖR YAKALANDI VE REDDEDİLDİ (PASS)
+Açıklama      : Doğru hata yakalandı: Geçersiz veya boş CVSS vektör dizesi.
+---------------------------------------------------------------------------

@@ -1,0 +1,101 @@
+==============================================================================
+G025: KULLANICI, GRUP VE OTURUM GÜVENLİK DENETLEYİCİSİ KOMUT VE ÇIKIŞ KANITI
+Çalıştırma Zamanı: 2026-10-27 07:00:24
+==============================================================================
+
+### 1. KULLANICI VE OTURUM GÜVENLİK DENETİMİ (--audit)
+$ python portfolio\hafta_04\gun_025\uygulama\user_group_session_auditor.py --audit --rules portfolio\hafta_04\gun_025\ornek_veri\system_users_groups_baseline.json --inventory portfolio\hafta_04\gun_025\ornek_veri\sample_active_sessions_and_users.json
+======================================================================
+KULLANICI, GRUP VE OTURUM G├£VENL─░K DENET─░M RAPORU
+======================================================================
+Denetim Zaman─▒        : 2026-10-27T04:00:24Z
+─░ncelenen Kullan─▒c─▒   : 7
+─░ncelenen Aktif Oturum: 3
+Toplam ─░hlal Say─▒s─▒   : 5
+Kritik ─░hlal Say─▒s─▒   : 2
+Uyumluluk Skoru       : %50.0
+----------------------------------------------------------------------
+TESP─░T ED─░LEN BULGULAR VE ─░Y─░LE┼ŞT─░RME REHBER─░:
+
+[ORTA] ATIL_HESAP_RISKI -> Hedef: eski_personel
+   A├ğ─▒klama   : Kullan─▒c─▒ 'eski_personel' 145 g├╝nd├╝r giri┼ş yapmam─▒┼ş fakat hesab─▒ hala aktif!
+   Standart   : CWE-262
+   ─░yile┼ştirme: usermod -L eski_personel (Hesab─▒ kilitle) veya pasifize et
+
+[KRITIK] KULLANICI_KABUK_IHLALI -> Hedef: www-data
+   A├ğ─▒klama   : Servis hesab─▒ 'www-data' (UID: 33) etkile┼şimli kabuk (/bin/bash) ile tan─▒mlanm─▒┼ş!
+   Standart   : CWE-250
+   ─░yile┼ştirme: usermod -s /usr/sbin/nologin www-data
+
+[YUKSEK] SERVIS_YETKI_ASIMI -> Hedef: backup_svc
+   A├ğ─▒klama   : Servis hesab─▒ 'backup_svc' idari grupta yer al─▒yor: ['sudo']
+   Standart   : CWE-250
+   ─░yile┼ştirme: gpasswd -d backup_svc sudo
+
+[ORTA] OTURUM_ZAMAN_ASIMI -> Hedef: admin_sec (SES-002)
+   A├ğ─▒klama   : Oturum 2400 saniyedir bo┼şta (Maksimum s─▒n─▒r: 900 sn).
+   Standart   : CWE-613
+   ─░yile┼ştirme: TMOUT=900 ortam de─şi┼şkenini zorunlu k─▒l veya a├ğ─▒k oturumu sonland─▒r
+
+[KRITIK] ORTAK_HESAP_VE_INKAR_EDILEMEZLIK_KAYBI -> Hedef: admin_sec
+   A├ğ─▒klama   : ─░dari hesap 'admin_sec' farkl─▒ kaynaklardan (['192.168.1.50', '10.0.20.88']) 2 e┼şzamanl─▒ aktif oturuma sahip! Ortak hesap kullan─▒m─▒ izlenebilirli─şi yok eder.
+   Standart   : CWE-306
+   ─░yile┼ştirme: Her y├Ânetici i├ğin ki┼şiselle┼ştirilmi┼ş hesap tan─▒mla ve 'maxlogins 1' kural─▒n─▒ uygula
+======================================================================
+
+### 2. GÜVENLİK DENETİM RAPORU JSON ÇIKTISI (--audit --json)
+$ python portfolio\hafta_04\gun_025\uygulama\user_group_session_auditor.py --audit --rules portfolio\hafta_04\gun_025\ornek_veri\system_users_groups_baseline.json --inventory portfolio\hafta_04\gun_025\ornek_veri\sample_active_sessions_and_users.json --json
+{
+  "denetim_zamani": "2026-10-27T04:00:24Z",
+  "toplam_kullanici_sayisi": 7,
+  "toplam_aktif_oturum_sayisi": 3,
+  "toplam_ihlal_sayisi": 5,
+  "kritik_ihlal_sayisi": 2,
+  "uyumluluk_skoru_yuzde": 50.0,
+  "bulgular": [
+    {
+      "kategori": "ATIL_HESAP_RISKI",
+      "hedef": "eski_personel",
+      "risk_seviyesi": "ORTA",
+      "cwe_id": "CWE-262",
+      "aciklama": "Kullan─▒c─▒ 'eski_personel' 145 g├╝nd├╝r giri┼ş yapmam─▒┼ş fakat hesab─▒ hala aktif!",
+      "iyilestirme": "usermod -L eski_personel (Hesab─▒ kilitle) veya pasifize et"
+    },
+    {
+      "kategori": "KULLANICI_KABUK_IHLALI",
+      "hedef": "www-data",
+      "risk_seviyesi": "KRITIK",
+      "cwe_id": "CWE-250",
+      "aciklama": "Servis hesab─▒ 'www-data' (UID: 33) etkile┼şimli kabuk (/bin/bash) ile tan─▒mlanm─▒┼ş!",
+      "iyilestirme": "usermod -s /usr/sbin/nologin www-data"
+    },
+    {
+      "kategori": "SERVIS_YETKI_ASIMI",
+      "hedef": "backup_svc",
+      "risk_seviyesi": "YUKSEK",
+      "cwe_id": "CWE-250",
+      "aciklama": "Servis hesab─▒ 'backup_svc' idari grupta yer al─▒yor: ['sudo']",
+      "iyilestirme": "gpasswd -d backup_svc sudo"
+    },
+    {
+      "kategori": "OTURUM_ZAMAN_ASIMI",
+      "hedef": "admin_sec (SES-002)",
+      "risk_seviyesi": "ORTA",
+      "cwe_id": "CWE-613",
+      "aciklama": "Oturum 2400 saniyedir bo┼şta (Maksimum s─▒n─▒r: 900 sn).",
+      "iyilestirme": "TMOUT=900 ortam de─şi┼şkenini zorunlu k─▒l veya a├ğ─▒k oturumu sonland─▒r"
+    },
+    {
+      "kategori": "ORTAK_HESAP_VE_INKAR_EDILEMEZLIK_KAYBI",
+      "hedef": "admin_sec",
+      "risk_seviyesi": "KRITIK",
+      "cwe_id": "CWE-306",
+      "aciklama": "─░dari hesap 'admin_sec' farkl─▒ kaynaklardan (['192.168.1.50', '10.0.20.88']) 2 e┼şzamanl─▒ aktif oturuma sahip! Ortak hesap kullan─▒m─▒ izlenebilirli─şi yok eder.",
+      "iyilestirme": "Her y├Ânetici i├ğin ki┼şiselle┼ştirilmi┼ş hesap tan─▒mla ve 'maxlogins 1' kural─▒n─▒ uygula"
+    }
+  ]
+}
+
+==============================================================================
+KOMUT VE ÇIKIŞ KANITLARI EKSİKSİZ DERLENDİ.
+==============================================================================

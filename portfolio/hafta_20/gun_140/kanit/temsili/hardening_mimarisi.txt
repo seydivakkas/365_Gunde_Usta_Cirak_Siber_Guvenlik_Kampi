@@ -1,0 +1,59 @@
+===============================================================================
+ TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+===============================================================================
+ HAFTA 20 / GÜN 140: BÜTÜNLEŞİK LINUX SERTLEŞTİRME VE DENETİM MİMARİSİ
+===============================================================================
+
+                              [ DIŞ TEHDİT / AĞ SALDIRGANI ]
+                                           │
+                                           ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ KATMAN 1: NETFILTER / NFTABLES / UFW GÜVENLİK DUVARI                    │
+  │  - Varsayılan Politika: DROP (Giriş & Yönlendirme)                      │
+  │  - Durumlu Takip (Conntrack): Established, Related -> ACCEPT            │
+  │  - Anti-Spoofing: Dışarıdan gelen 127.0.0.0/8 paketleri -> DROP         │
+  │  - Tehlikeli Portlar Engelli: 21 (FTP), 23 (Telnet), 69 (TFTP)          │
+  └────────────────────────────────────┬────────────────────────────────────┘
+                                       │ Yetkili Port (Örn: 22/SSH)
+                                       ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ KATMAN 2: SSH DAEMON VE KRİPTOGRAFİK KİMLİK DOĞRULAMA                   │
+  │  - PermitRootLogin no & PasswordAuthentication no                       │
+  │  - Ed25519 Kriptografik Anahtarlar (Dosya İzni: 0600)                   │
+  │  - MaxAuthTries 3 (Kaba kuvvet engelleme)                               │
+  └────────────────────────────────────┬────────────────────────────────────┘
+                                       │ Oturum Açılışı
+                                       ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ KATMAN 3: PAM VE KULLANICI OTURUM KISITLAMALARI                         │
+  │  - pam_pwquality (minlen=14, dcredit=-1, ucredit=-1, ocredit=-1)        │
+  │  - pam_faillock (deny=5, unlock_time=900s)                              │
+  │  - TMOUT=900 (15 dk boşta kalınca otomatik oturum sonlandırma)          │
+  └────────────────────────────────────┬────────────────────────────────────┘
+                                       │ Komut Yürütme
+                                       ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ KATMAN 4: SUDOERS VE EN DÜŞÜK AYRICALIK DEVRİ                           │
+  │  - İzin: 0440, env_reset, secure_path sabit yollar                      │
+  │  - GTFOBins Engeli: NOPASSWD ile /bin/bash, vim, find YASAK             │
+  └────────────────────────────────────┬────────────────────────────────────┘
+                                       │ Servis İcrası
+                                       ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ KATMAN 5: SYSTEMD KUM HAVUZU (SANDBOXING) VE İZOLASYON                  │
+  │  - NoNewPrivileges=yes (PR_SET_NO_NEW_PRIVS - SUID istismarı imkansız)  │
+  │  - ProtectSystem=strict & ProtectHome=yes                               │
+  │  - PrivateTmp=yes & PrivateDevices=yes                                  │
+  └────────────────────────────────────┬────────────────────────────────────┘
+                                       │ Olayların Kaydedilmesi
+                                       ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ KATMAN 6: ADLİ KANIT VE DENETİM BÜTÜNLÜĞÜ (AUDITD & JOURNALD)           │
+  │  - auditd -e 2: Çekirdek kilitleme (Root dahil kuralları silemez)       │
+  │  - Dosya İzleme: /etc/shadow, /etc/passwd, /etc/sudoers                 │
+  │  - Syscall Filtresi: init_module, delete_module, adjtimex               │
+  │  - systemd-journald: Forward Secure Sealing (FSS) ile mühürleme         │
+  └─────────────────────────────────────────────────────────────────────────┘
+===============================================================================
+ TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+===============================================================================

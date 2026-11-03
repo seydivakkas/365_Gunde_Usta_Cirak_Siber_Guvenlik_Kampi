@@ -1,0 +1,71 @@
+================================================================================
+G057 - HTTP ISTEK VE YANIT YAPISI: PROTOKOL VE GUVENLIK DENETIM RAPORU
+Tarih: 2026-10-29 19:30:50
+Standartlar: RFC 7230 (Message Syntax), RFC 7231 (Semantics), OWASP Secure Headers
+Isletim Modu: Yerel Calistirildi (Local Standalone Engine)
+================================================================================
+
+1. HTTP/1.1 ISTEK MESAJI COZUMLEMESI VE TEL FORMATI (WIRE FORMAT)
+--------------------------------------------------------------------------------
+[ORNEK ISTEK]: GET /api/v1/users?role=analyst HTTP/1.1
+- Metot: GET (Safe: Evet, Idempotent: Evet)
+- Hedef Yol: /api/v1/users?role=analyst
+- Surum: HTTP/1.1 (RFC 7230 Uyumlu)
+- Basliklar:
+    Host: api.kurum.local (RFC 7230 §5.4 Zorunlu Baslik: MEVCUT)
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+    Accept: application/json
+    Connection: keep-alive
+- Govde (Body): 0 bayt (GET istegi bos govde ile iletildi)
+- Tel Formati Dogrulamasi: Istek satiri ve basliklar CRLF (\r\n) ile ayrildi;
+  cift CRLF ile baslik blogu basariyla sonlandirildi.
+
+2. HTTP/1.1 YANIT MESAJI VE DURUM KODLARI
+--------------------------------------------------------------------------------
+- 200 OK:               Standart basarili yanit, JSON veri govdesi iletildi.
+- 201 Created:          Yeni kaynak basariyla uretildi, Location basligi eklendi.
+- 301 Moved Permanently: Kalici yonlendirme, HTTPS gecisi icin Location basligi saglandi.
+- 404 Not Found:        Istemcinin talep ettigi kaynak sunucuda bulunamadi.
+- 500 Internal Error:   Sunucu tarafinda beklenmeyen bir istisna olustu.
+
+3. OWASP GUVENLIK BASLIKLARI DENETIMI VE PUANLAMA
+--------------------------------------------------------------------------------
+[SENARYO A]: SIKILASTIRILMIS GUVENLI YANIT
+    - Guvenlik Skoru: 100 / 100 (DURUM: GUVENLI)
+    - Mevcut Basliklar:
+        * Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+        * Content-Security-Policy: default-src 'self'; script-src 'self'; object-src 'none'
+        * X-Frame-Options: DENY (Clickjacking Korumasi)
+        * X-Content-Type-Options: nosniff (MIME Sniffing Korumasi)
+        * Referrer-Policy: strict-origin-when-cross-origin
+        * Permissions-Policy: camera=(), microphone=(), geolocation=()
+    - Eksik Basliklar: YOK
+    - Bilgi Sizintisi: YOK
+
+[SENARYO B]: GUVENSIZ / VULNERABLE YANIT
+    - Guvenlik Skoru: 20 / 100 (DURUM: ZAYIF)
+    - Afis Bilgi Sizintisi (Information Disclosure):
+        * Server: Apache/2.4.41 (Ubuntu) mod_ssl/2.4.41 OpenSSL/1.1.1f
+        * X-Powered-By: PHP/7.4.3
+    - Eksik Kritik Basliklar (Eksiklik = Tehdit):
+        * Strict-Transport-Security eksik -> SSL Stripping MitM riski!
+        * Content-Security-Policy eksik -> XSS ve Veri Sizdirma riski!
+        * X-Frame-Options eksik -> Clickjacking UI Redress riski!
+        * X-Content-Type-Options eksik -> MIME Karisikligi / XSS riski!
+
+4. SALDIRI TESPITI VE ENGELLEME KAYITLARI
+--------------------------------------------------------------------------------
+[TEHDIT 1]: CRLF ENJEKSIYONU VE HTTP RESPONSE SPLITTING
+    - Tespit Edilen Istek: "GET /test%0d%0aSet-Cookie:%20session=saldirgan_cerez HTTP/1.1"
+    - Anomali: URL kodlu %0d (%0D = \r) ve %0a (%0A = \n) karakterleri istek yolunda yakalandi.
+    - Aksiyon: HTTPSecurityViolation firlatildi! Sunucunun sahte baslik uretmesi engellendi.
+
+[TEHDIT 2]: HTTP REQUEST SMUGGLING (CL.TE / TE.CL)
+    - Tespit Edilen Istek: Ayni mesajda hem "Content-Length: 13" hem de "Transfer-Encoding: chunked"
+    - Anomali: On-uc (Front-end proxy) ve arka-uc (Back-end) arasinda istek siniri belirsizligi olusturuldu.
+    - Aksiyon: RFC 7230 §3.3.3 kurali geregi talep derhal reddedildi (Smuggling onlendi).
+
+[TEHDIT 3]: GUVEKSIZ METOT RISKI (TRACE & XST)
+    - Tespit Edilen Istek: TRACE / HTTP/1.1
+    - Risk: Cross-Site Tracing (XST) saldirisi ile tarayicida saklanan HTTPOnly oturum cerezleri calinabilir.
+    - Aksiyon: TRACE metodu tespit edilerek devre disi birakilmasi tavsiye edildi.

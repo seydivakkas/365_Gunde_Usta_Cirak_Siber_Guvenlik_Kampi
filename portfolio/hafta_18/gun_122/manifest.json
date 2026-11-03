@@ -1,0 +1,98 @@
+{
+  "gun": 122,
+  "konu": "Savunma derinliği ve kontrol tipleri",
+  "uretildi": "2026-11-02T06:14:37.178916",
+  "toplam_dosya": 18,
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "003f5f78dbe0cb56735fe7f07554eb1506ada309de94f9bf988ef61bbb1b6715",
+      "boyut_byte": 4275
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "0d9e7ceac170fb168e517d5a961e9cdedafa8a7b740a7894cceca3ad33f4173b",
+      "boyut_byte": 6159
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "a99bc57459e24d167b89ad24a5009c7e9fb82d7d5e4d8a233c21b269bd8c1bcf",
+      "boyut_byte": 16876
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "a0e61c586d9c253a020ff6926e9a31c4e38c8f5ef7ef8802d98ac4b52cf40d03",
+      "boyut_byte": 5542
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "ddd1a2321f8f223f814cd5506a0fa8b8fb1a5d9901d443088ab1e005c03e7337",
+      "boyut_byte": 685
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "20b29567a0861b94326b4e2e88fa960f14c760d147f3aec9ddc91ab96168d39d",
+      "boyut_byte": 9642
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "36df900f6d700037b5852abcd02a8909fc54d2f101127124a89ac1a5fa55ce67",
+      "boyut_byte": 1952
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "fc4766d1271e98afaab5fb6a2bbc5abe49bae3186c3e35b17ab4b07bcb8b1748",
+      "boyut_byte": 5620
+    },
+    {
+      "dosya": "kanit\\gercek\\savunma_analiz_raporu.txt",
+      "sha256": "56e8541e64fb71d16240e047c5864f118dede9640b9ce998e686773bb6323132",
+      "boyut_byte": 3649
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "7a38a68f73c34a3b18ae986b9fc60c256ad9bad1291e4a1ffc1de08d3668a4c4",
+      "boyut_byte": 3973
+    },
+    {
+      "dosya": "kanit\\temsili\\savunma_mimarisi.txt",
+      "sha256": "d763a8132b75a965f45617ede1bc63630f4955ab913ee8f4ba75212a2a9e90bb",
+      "boyut_byte": 2730
+    },
+    {
+      "dosya": "ornek_veri\\defense_architecture_config.json",
+      "sha256": "db663b8f3d3268e6ef2671303cca847bac7784232a1bc6d8b9cb04ffe7a8ddd0",
+      "boyut_byte": 6632
+    },
+    {
+      "dosya": "ornek_veri\\invalid_defense_scenarios.json",
+      "sha256": "29142c97fb8d6e449315fc064f89b82444a18464dc6badc5fc489fc9732298c9",
+      "boyut_byte": 3213
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "459b608a43277020bbcb03e81744bf008e3322e8a6e26d1b3880f979b5b10c5a",
+      "boyut_byte": 578
+    },
+    {
+      "dosya": "tests\\test_defense_in_depth.py",
+      "sha256": "4b0ac145b167cc2680fa054bd5802037b7d2789541da587729af57617ae067fd",
+      "boyut_byte": 14181
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "10336973d4930d9035f249ab2e2d1fa4040a104d9a71f5f026ac33dc5a2dd77d",
+      "boyut_byte": 771
+    },
+    {
+      "dosya": "uygulama\\defense_cli.py",
+      "sha256": "0d2fb9a037669ba714ef2bffcb35f80ce4a0882df14cb97c88dadf4ee4cf4f23",
+      "boyut_byte": 7010
+    },
+    {
+      "dosya": "uygulama\\defense_in_depth_engine.py",
+      "sha256": "7ee16306f4a08514ddebae325e8156deda3606df66abcff00ae9fd5acc42214b",
+      "boyut_byte": 24254
+    }
+  ]
+}

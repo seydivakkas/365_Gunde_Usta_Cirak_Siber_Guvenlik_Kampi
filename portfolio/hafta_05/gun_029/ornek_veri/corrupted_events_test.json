@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "title": "Bozuk ve Eksik Windows Olay Kayıtları Test Veri Kümesi",
+    "description": "Negatif kontrol ve adli doğrulama için hazırlanmış hatalı olay kayıtları (G029-SC2)",
+    "created_at": "2026-10-27T08:00:00Z"
+  },
+  "corrupted_events": [
+    {
+      "test_case_id": "CORRUPT-01",
+      "issue": "Eksik ProviderName (Olay sağlayıcı adı boş)",
+      "data": {
+        "record_id": 9901,
+        "provider_name": "",
+        "event_id": 7045,
+        "time_created": "2026-10-27T08:00:00Z",
+        "raw_message": "Service installed without provider."
+      },
+      "expected_error": "MISSING_PROVIDER_NAME"
+    },
+    {
+      "test_case_id": "CORRUPT-02",
+      "issue": "Geçersiz EventID (Sayısal olmayan ID)",
+      "data": {
+        "record_id": 9902,
+        "provider_name": "Service Control Manager",
+        "event_id": "INVALID_ID_7045",
+        "time_created": "2026-10-27T08:00:00Z",
+        "raw_message": "Service event with non-integer ID."
+      },
+      "expected_error": "INVALID_EVENT_ID"
+    },
+    {
+      "test_case_id": "CORRUPT-03",
+      "issue": "Bozuk Zaman Damgası (Geçersiz ISO 8601 tarihi)",
+      "data": {
+        "record_id": 9903,
+        "provider_name": "USER32",
+        "event_id": 1074,
+        "time_created": "NOT_A_VALID_DATE_STRING",
+        "raw_message": "Shutdown event with invalid timestamp."
+      },
+      "expected_error": "MALFORMED_TIMESTAMP"
+    },
+    {
+      "test_case_id": "CORRUPT-04",
+      "issue": "Eksik Kanal ve Bilgisayar Üstverisi",
+      "data": {
+        "record_id": 9904,
+        "provider_name": "EventLog",
+        "event_id": 6005,
+        "time_created": "2026-10-27T08:00:00Z",
+        "channel": "",
+        "computer": ""
+      },
+      "expected_error": "MISSING_MANDATORY_METADATA"
+    }
+  ]
+}

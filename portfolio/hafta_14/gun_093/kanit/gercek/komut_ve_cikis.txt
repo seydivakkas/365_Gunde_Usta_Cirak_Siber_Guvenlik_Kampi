@@ -1,0 +1,24 @@
+=====================================================================================
+GÜN 093: HASHLIB VE FIM — CLI KOMUT ÇALIŞTIRMA VE ÇIKIŞ KANITLARI
+Kayıt Zamanı (UTC): 2026-11-01T20:40:37Z
+=====================================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_093\uygulama\fim_runner.py --file C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_093\ornek_veri\test_corpus\secure_config.conf --algo sha256
+[Çıkış Kodu: 0]
+[STDOUT]:
+[+] Dosya Özeti Hesaplandı (SHA256):
+    - Dosya:  C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_093\ornek_veri\test_corpus\secure_config.conf
+    - Boyut:  343 bayt
+    - Özet:   6ab41d63c809129b15ab6ecb2e98a7b59899dd12bc634a6502a6eb644154e0b9
+    - Zaman:  2026-11-01T20:40:37Z
+-------------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_093\uygulama\fim_runner.py --file C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_093\ornek_veri\test_corpus\secure_config.conf --expected-hash 6ab41d63c809129b15ab6ecb2e98a7b59899dd12bc634a6502a6eb644154e0b9
+[Çıkış Kodu: 1]
+[STDERR]:
+[-] Çalışma Zamanı Hatası: FileIntegrityVerifier.verify_file_integrity() got an unexpected keyword argument 'expected_hash'
+-------------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_093\uygulama\fim_runner.py --file C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_14\gun_093\ornek_veri\test_corpus\secure_config.conf --expected-hash 0000000000000000000000000000000000000000000000000000000000000000
+[Çıkış Kodu: 1]
+[STDERR]:
+[-] Çalışma Zamanı Hatası: FileIntegrityVerifier.verify_file_integrity() got an unexpected keyword argument 'expected_hash'
+-------------------------------------------------------------------------------------

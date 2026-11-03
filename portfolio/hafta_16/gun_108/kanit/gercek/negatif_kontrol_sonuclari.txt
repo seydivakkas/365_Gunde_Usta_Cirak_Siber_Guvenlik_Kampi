@@ -1,0 +1,33 @@
+=== GÜN 108 NEGATİF KONTROL VE ZAFİYET ENGELLEME RAPORU ===
+Tarih/Saat: 2026-11-02 03:52:46
+Hedef Standart: RFC 5280 (X.509 PKI) & RFC 6125 (TLS Hostname Verification)
+--------------------------------------------------------------------------------
+[ENGELENDİ (PASS)] NEG_01_UNTRUSTED_ROOT_CA (CWE-295): Güvenilen kök deposunda (trust store) bulunmayan sahte/yabancı kök sertifikaya bağlı zincir
+    Fırlatılan Hata: UntrustedRootCAError | Beklenen: UntrustedRootCAError
+
+[ENGELENDİ (PASS)] NEG_02_EXPIRED_CERTIFICATE (CWE-298): Son geçerlilik tarihi (NotAfter) geçmiş süresi dolmuş sertifika
+    Fırlatılan Hata: CertificateExpiredError | Beklenen: CertificateExpiredError
+
+[ENGELENDİ (PASS)] NEG_03_NOT_YET_VALID_CERTIFICATE (CWE-298): Başlangıç geçerlilik tarihinden (NotBefore) önce kullanılan sertifika
+    Fırlatılan Hata: CertificateNotYetValidError | Beklenen: CertificateNotYetValidError
+
+[ENGELENDİ (PASS)] NEG_04_HOSTNAME_MISMATCH (CWE-297): Sertifikadaki CN ve SAN alanlarının talep edilen alan adı ile eşleşmemesi
+    Fırlatılan Hata: HostnameMismatchError | Beklenen: HostnameMismatchError
+
+[ENGELENDİ (PASS)] NEG_05_TAMPERED_TBS_SIGNATURE (CWE-295): Sertifikanın TBS (To-Be-Signed) gövdesinde tek bir bayt tahrifat yapıldığında imza doğrulamasının çökmesi
+    Fırlatılan Hata: CertificateSignatureInvalidError | Beklenen: CertificateSignatureInvalidError
+
+[ENGELENDİ (PASS)] NEG_06_LEAF_ACTING_AS_CA (CWE-295): BasicConstraints is_ca=False olan bir uç sertifikanın yetkisiz alt sertifika imzalaması
+    Fırlatılan Hata: NonCACertificateUsedAsCAError | Beklenen: NonCACertificateUsedAsCAError
+
+[ENGELENDİ (PASS)] NEG_07_REVOKED_CERTIFICATE (CWE-295): İptal listesine (CRL / OCSP) alınmış seri numaralı sertifikanın tespiti
+    Fırlatılan Hata: RevokedCertificateError | Beklenen: RevokedCertificateError
+
+[ENGELENDİ (PASS)] NEG_08_PATH_LENGTH_EXCEEDED (CWE-295): BasicConstraints pathLenConstraint sınırını aşan zincir derinliği
+    Fırlatılan Hata: PathLengthExceededError | Beklenen: PathLengthExceededError
+
+[ENGELENDİ (PASS)] NEG_09_CORRUPTED_CERTIFICATE_FORMAT (CWE-20): Zorunlu alanları (serial, issuer, subject) eksik bozuk sertifika
+    Fırlatılan Hata: MalformedCertificateError | Beklenen: MalformedCertificateError
+
+--------------------------------------------------------------------------------
+SONUÇ: 9/9 Negatif Senaryo Başarıyla Engellendi.

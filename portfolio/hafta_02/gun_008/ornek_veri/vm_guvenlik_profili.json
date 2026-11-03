@@ -1,0 +1,133 @@
+{
+  "$sema_versiyonu": "1.0",
+  "aciklama": "Sanal Makine Güvenlik ve İzolasyon Profilleri Veri Tabanı",
+  "olusturan": "Seydi Eryılmaz (@seydivakkas)",
+  "tarih": "2026-10-26",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz. Açık kaynak lisans KULLANILMAZ.",
+  "profiller": [
+    {
+      "vm_id": "VM-SEC-01",
+      "vm_adi": "Sertlestirilmis_Zararli_Yazilim_Analiz_VM",
+      "hypervisor_turu": "Tip-2 Hosted (VirtualBox / VMware Karantina)",
+      "kullanim_amaci": "Zararlı Yazılım Dinamik Analizi ve Karantina Simülasyonu",
+      "guvenlik_seviyesi": "KRITIK_IZOLE",
+      "donanim_yapilandirmasi": {
+        "v_cpu": 2,
+        "ram_mb": 4096,
+        "nested_virtualization": false,
+        "hizlandirma_3d": false
+      },
+      "ag_yapilandirmasi": {
+        "adaptor_tipi": "Internal_Isolated",
+        "mac_adresi": "52:54:00:12:34:56",
+        "promiscuous_mode": "Deny",
+        "internet_erisim_izni": false,
+        "vlan_etiketi": 100
+      },
+      "entegrasyon_ozellikleri": {
+        "pano_paylasimi": "Disabled",
+        "surukle_birak": "Disabled",
+        "paylasilan_klasorler": [],
+        "misafir_araclari_servisi": "Hardened_Minimal",
+        "usb_filtresi_aktif": false
+      },
+      "dayaniklilik_ve_kurtarma": {
+        "anlik_goruntu_politikasi": "Her_Analiz_Sonrasi_Sifirla",
+        "disk_calisma_modu": "Non_Persistent",
+        "otomatik_rollback_aktif": true,
+        "bellek_dump_kaydi": true
+      },
+      "anti_vm_gizleme": {
+        "cpuid_hypervisor_flag_gizli": true,
+        "bios_seri_numarasi_ozellestirildi": true,
+        "donanim_uretici_adi_maskelendi": true,
+        "acpi_tablolari_temizlendi": true
+      }
+    },
+    {
+      "vm_id": "VM-RISK-99",
+      "vm_adi": "Tehlikeli_Guvenliksiz_Gelistirici_VM",
+      "hypervisor_turu": "Tip-2 Hosted",
+      "kullanim_amaci": "Yetkisiz Test ve Güvensiz Yazılım Çalıştırma",
+      "guvenlik_seviyesi": "YUKSEK_RISK",
+      "donanim_yapilandirmasi": {
+        "v_cpu": 4,
+        "ram_mb": 8192,
+        "nested_virtualization": true,
+        "hizlandirma_3d": true
+      },
+      "ag_yapilandirmasi": {
+        "adaptor_tipi": "Bridged",
+        "mac_adresi": "08:00:27:AB:CD:EF",
+        "promiscuous_mode": "Allow_All",
+        "internet_erisim_izni": true,
+        "vlan_etiketi": 0
+      },
+      "entegrasyon_ozellikleri": {
+        "pano_paylasimi": "Bidirectional",
+        "surukle_birak": "Bidirectional",
+        "paylasilan_klasorler": [
+          {
+            "klasor_adi": "Host_C_Drive",
+            "konak_yolu": "C:\\",
+            "erisim_yetkisi": "ReadWrite",
+            "otomatik_bagla": true
+          }
+        ],
+        "misafir_araclari_servisi": "Full_Active",
+        "usb_filtresi_aktif": true
+      },
+      "dayaniklilik_ve_kurtarma": {
+        "anlik_goruntu_politikasi": "Yok",
+        "disk_calisma_modu": "Persistent",
+        "otomatik_rollback_aktif": false,
+        "bellek_dump_kaydi": false
+      },
+      "anti_vm_gizleme": {
+        "cpuid_hypervisor_flag_gizli": false,
+        "bios_seri_numarasi_ozellestirildi": false,
+        "donanim_uretici_adi_maskelendi": false,
+        "acpi_tablolari_temizlendi": false
+      }
+    },
+    {
+      "vm_id": "VM-HONEY-03",
+      "vm_adi": "Kontrollu_Bal_Kupu_HoneyVM",
+      "hypervisor_turu": "Tip-1 Bare-Metal (KVM / Proxmox Korumali)",
+      "kullanim_amaci": "Saldırgan Hareketlerini İzleme ve Aldatma",
+      "guvenlik_seviyesi": "KONTROLLU_ALDATMA",
+      "donanim_yapilandirmasi": {
+        "v_cpu": 2,
+        "ram_mb": 4096,
+        "nested_virtualization": false,
+        "hizlandirma_3d": false
+      },
+      "ag_yapilandirmasi": {
+        "adaptor_tipi": "Host_Only",
+        "mac_adresi": "00:15:5D:88:99:AA",
+        "promiscuous_mode": "Deny",
+        "internet_erisim_izni": false,
+        "vlan_etiketi": 200
+      },
+      "entegrasyon_ozellikleri": {
+        "pano_paylasimi": "Disabled",
+        "surukle_birak": "Disabled",
+        "paylasilan_klasorler": [],
+        "misafir_araclari_servisi": "Disabled",
+        "usb_filtresi_aktif": false
+      },
+      "dayaniklilik_ve_kurtarma": {
+        "anlik_goruntu_politikasi": "Periyodik_Geri_Donus",
+        "disk_calisma_modu": "Non_Persistent",
+        "otomatik_rollback_aktif": true,
+        "bellek_dump_kaydi": true
+      },
+      "anti_vm_gizleme": {
+        "cpuid_hypervisor_flag_gizli": false,
+        "bios_seri_numarasi_ozellestirildi": false,
+        "donanim_uretici_adi_maskelendi": false,
+        "acpi_tablolari_temizlendi": false
+      }
+    }
+  ]
+}

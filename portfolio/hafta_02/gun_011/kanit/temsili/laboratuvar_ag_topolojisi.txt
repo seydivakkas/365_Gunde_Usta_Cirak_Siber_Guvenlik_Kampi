@@ -1,0 +1,58 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+Bu belge, Siber Güvenlik Laboratuvarı Mikro-Segmentasyon Ağ Sınırlarını,
+VLAN İzolasyonunu, DNS Sinkhole ve Güvenlik Duvarı Kural Yönlerini gösteren şemadır.
+================================================================================
+
+              +--------------------------------------------------------------+
+              |      MİKRO-SEGMENTE LABORATUVAR AĞ SINIRLARI MİMARİSİ        |
+              |       (VLAN Bölgeleri, Statefull Conntrack ve DNS Sinkhole)  |
+              +--------------------------------------------------------------+
+
+  [ DIŞ DÜNYA / GERÇEK ŞİRKET YEREL AĞI / İNTERNET (0.0.0.0/0) ]
+                 |
+                 x [TAM HAVA BOŞLUĞU - AIR-GAP / SIFIR İNTERNET ÇIKIŞI]
+                 |
+  +===============================================================================+
+  |              MERKEZİ AĞ GEÇİDİ & GÜVENLİK DUVARI (ROUTER / IPTABLES)          |
+  |              Varsayılan Politikalar: INPUT DROP | FORWARD DROP               |
+  +===============================================================================+
+        |                           |                           |
+        | (VLAN 10: 192.168.10.0/24)| (VLAN 66: 192.168.66.0/24)| (VLAN 20: 192.168.20.0/24)
+        v                           v                           v
+  +--------------------+      +--------------------+      +--------------------+
+  | KIRMIZI TAKIM BÖL. |      | KARANTİNA BÖLGESİ  |      |  MAVİ TAKIM BÖLG.  |
+  | (VLAN 10 - Kali)   |      | (VLAN 66 - Kurban) |      |  (VLAN 20 - SIEM)  |
+  +--------------------+      +--------------------+      +--------------------+
+  | - Saldırı Düğümü   |      | - Analiz Kurbanı   |      | - Wazuh SIEM       |
+  | - Nmap, Metasploit |      | - Windows 10 Lab   |      | - Zeek / Suricata  |
+  | - Exploit Araçları |      | - Flare-VM / Remnux|      | - Syslog Server    |
+  +--------------------+      +--------------------+      +--------------------+
+        |                           |                           ^
+        | [1. Test Trafiği (NEW)]   |                           | [3. Log Akışı]
+        +==========================>|                           | (UDP/514, 1514)
+        | (TCP 80,443,445,3389)     |                           |
+        |                           |---------------------------+
+        | [<-- 2. Yalnızca Yanıt]   |
+        |<--------------------------+
+        | (ESTABLISHED,RELATED)     |
+        |                           | [4. DNS Sorguları (Port 53)]
+        | [X] TERSİNE KABUK: BLOK   v (DNAT Sinkhole Yönlendirmesi)
+        | (NEW Paketler DÜŞÜRÜLÜR!) +------------------------------------+
+        |                           |      YEREL DNS SİNKHOLE SERVİSİ    |
+        |                           |    (INetSim / FakeNet: .66.2:53)   |
+        |                           +------------------------------------+
+        |                           | - Sahte DNS Çözümleme              |
+        |                           | - Sahte HTTP/HTTPS Yanıtı          |
+        |                           | - Sıfır Dış DNS Sızıntısı (8.8.8.8)|
+        |                           +------------------------------------+
+
+--------------------------------------------------------------------------------
+ZİHİNSEL MODEL VE GÜVENLİK SINIRLARI:
+1. Denizaltı Su Geçirmez Bölmeleri (Bulkheads): Ağ 4 ayrı VLAN'a bölünmüştür.
+   Kurban makinenin hacklenmesi veya fidye yazılımı ile şifrelenmesi diğer bölgelere sıçrayamaz.
+2. Statefull Conntrack (Durum Takibi): Saldırgan kurbana yeni bağlantı açabilir; fakat
+   kurban saldırgana doğru yeni (NEW) bir tersine kabuk (reverse shell) açamaz.
+3. DNS Sinkhole Kalkanı: Kurbandaki zararlının dış dünyaya açtığı tüm DNS sorguları
+   yerel sahte sunucuya hapsedilir; zararlı dışarıdaki canlı C2 sunucusuna asla ulaşamaz.
+================================================================================

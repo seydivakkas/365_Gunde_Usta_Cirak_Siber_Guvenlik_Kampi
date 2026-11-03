@@ -1,0 +1,43 @@
+======================================================================
+GÜN 117: RBAC VE ABAC GÜVENLİK MOTORU BİRİM TEST RAPORU
+Tarih / Saat: 2026-11-02T05:36:53.091960
+Standart: NIST ANSI/INCITS 359 & NIST SP 800-162
+======================================================================
+
+test_01_rbac_direct_role_permission (test_rbac_abac.TestRBACandABACSecurity.test_01_rbac_direct_role_permission)
+TEST 01: Doğrudan role sahip kullanıcının izni başarıyla onaylanmalıdır. ... ok
+test_02_rbac_hierarchical_inheritance (test_rbac_abac.TestRBACandABACSecurity.test_02_rbac_hierarchical_inheritance)
+TEST 02: Hiyerarşik mirasta üst rol (manager), alt rolün (user) yetkilerini miras almalıdır. ... ok
+test_03_rbac_wildcard_permission (test_rbac_abac.TestRBACandABACSecurity.test_03_rbac_wildcard_permission)
+TEST 03: Admin rolü wildcard (*:*) izni sayesinde her türlü işleme izin almalıdır. ... ok
+test_04_rbac_permission_denied (test_rbac_abac.TestRBACandABACSecurity.test_04_rbac_permission_denied)
+TEST 04: Rolünde izin bulunmayan işlem RBACPermissionDeniedError üretmelidir (CWE-862). ... ok
+test_05_rbac_sod_conflict_detection (test_rbac_abac.TestRBACandABACSecurity.test_05_rbac_sod_conflict_detection)
+TEST 05: Görevler Ayrılığı (SoD) çatışması yaşayan kullanıcı engellenmelidir (CWE-863). ... ok
+test_06_abac_tenant_isolation_breach (test_rbac_abac.TestRBACandABACSecurity.test_06_abac_tenant_isolation_breach)
+TEST 06: Farklı kiracıya ait kaynağa erişim MultiTenantIsolationBreachError vermelidir (CWE-284). ... ok
+test_07_abac_classification_clearance_insufficient (test_rbac_abac.TestRBACandABACSecurity.test_07_abac_classification_clearance_insufficient)
+TEST 07: Gizlilik derecesi kullanıcının yetki derecesinden yüksekse engellenmelidir (CWE-285). ... ok
+test_08_abac_department_isolation_idor (test_rbac_abac.TestRBACandABACSecurity.test_08_abac_department_isolation_idor)
+TEST 08: Başka departmana ait gizli belgeye erişim IDOR engeline takılmalıdır (CWE-639). ... ok
+test_09_abac_auditor_cross_department_exception (test_rbac_abac.TestRBACandABACSecurity.test_09_abac_auditor_cross_department_exception)
+TEST 09: Auditor rolü istisna olarak diğer departmanların gizli verilerini denetleyebilmelidir. ... ok
+test_10_abac_locked_resource_modification (test_rbac_abac.TestRBACandABACSecurity.test_10_abac_locked_resource_modification)
+TEST 10: Arşivlenmiş/kilitli kaynağı değiştirme veya silme engellenmelidir (CWE-863). ... ok
+test_11_abac_mfa_requirement_for_deletion (test_rbac_abac.TestRBACandABACSecurity.test_11_abac_mfa_requirement_for_deletion)
+TEST 11: Kritik silme (delete) işleminde MFA oturumu yoksa engellenmelidir (CWE-308). ... ok
+test_12_abac_mfa_requirement_success (test_rbac_abac.TestRBACandABACSecurity.test_12_abac_mfa_requirement_success)
+TEST 12: Kritik silme işleminde MFA doğrulanmışsa erişime izin verilmelidir. ... ok
+test_13_abac_after_hours_financial_write (test_rbac_abac.TestRBACandABACSecurity.test_13_abac_after_hours_financial_write)
+TEST 13: Mesai saati dışında finansal kayıtlarda yazma engellenmelidir (CWE-284). ... ok
+test_14_abac_untrusted_ip_high_risk (test_rbac_abac.TestRBACandABACSecurity.test_14_abac_untrusted_ip_high_risk)
+TEST 14: Dış/güvensiz ağdan gelen ve yüksek risk skoruna sahip istek engellenmelidir (CWE-284). ... ok
+test_15_hybrid_full_pass_and_audit_log (test_rbac_abac.TestRBACandABACSecurity.test_15_hybrid_full_pass_and_audit_log)
+TEST 15: Tüm RBAC ve ABAC ilkelerini sağlayan istek izin almalı ve audit log üretmelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+
+Çıkış Kodu (Return Code): 0

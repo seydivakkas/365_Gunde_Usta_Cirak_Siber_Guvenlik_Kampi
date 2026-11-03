@@ -1,0 +1,45 @@
+===========================================================================
+GÜN 093: HASHLIB İLE DOSYA DOĞRULAMA — BİRİM TEST KANITLARI
+Tarih (UTC): 2026-11-01T20:40:37Z
+===========================================================================
+
+test_01_compute_sha256_known_file (test_file_integrity_verifier.TestFileIntegrityVerifier.test_01_compute_sha256_known_file)
+1. Test: Bilinen konfigürasyon dosyasının SHA-256 özetinin doğruluğu. ... ok
+test_02_compute_sha512_known_file (test_file_integrity_verifier.TestFileIntegrityVerifier.test_02_compute_sha512_known_file)
+2. Test: Bilinen politika belgesinin SHA-512 özetinin doğruluğu. ... ok
+test_03_compute_blake2b (test_file_integrity_verifier.TestFileIntegrityVerifier.test_03_compute_blake2b)
+3. Test: İkili dosyanın modern BLAKE2b algoritmasıyla özetlenmesi. ... ok
+test_04_weak_algorithm_rejected_in_strict_mode (test_file_integrity_verifier.TestFileIntegrityVerifier.test_04_weak_algorithm_rejected_in_strict_mode)
+4. Test: Katı modda MD5 ve SHA-1'in reddedilmesi (CWE-328). ... ok
+test_05_weak_algorithm_allowed_in_non_strict_mode (test_file_integrity_verifier.TestFileIntegrityVerifier.test_05_weak_algorithm_allowed_in_non_strict_mode)
+5. Test: Katı mod kapalıyken eski uyumluluk için MD5 hesabına izin verilmesi. ... ok
+test_06_unsupported_algorithm_rejection (test_file_integrity_verifier.TestFileIntegrityVerifier.test_06_unsupported_algorithm_rejection)
+6. Test: Geçersiz veya desteklenmeyen algoritmanın reddedilmesi (CWE-20). ... ok
+test_07_file_not_found_handling (test_file_integrity_verifier.TestFileIntegrityVerifier.test_07_file_not_found_handling)
+7. Test: Bulunmayan dosya yolunun kontrollü olarak yakalanması. ... ok
+test_08_path_traversal_prevention (test_file_integrity_verifier.TestFileIntegrityVerifier.test_08_path_traversal_prevention)
+8. Test: Dosya yolunda dizin atlama ('..') girişimlerinin engellenmesi (CWE-22). ... ok
+test_09_null_byte_path_rejection (test_file_integrity_verifier.TestFileIntegrityVerifier.test_09_null_byte_path_rejection)
+9. Test: Dosya yolunda Null-Byte (\x00) zehirlemesinin engellenmesi (CWE-158). ... ok
+test_10_invalid_checksum_format (test_file_integrity_verifier.TestFileIntegrityVerifier.test_10_invalid_checksum_format)
+10. Test: Karşılaştırmada eksik veya hex dışı hash formatının reddedilmesi. ... ok
+test_11_verify_file_integrity_success (test_file_integrity_verifier.TestFileIntegrityVerifier.test_11_verify_file_integrity_success)
+11. Test: Sağlama toplamı eşleştiğinde bütünlüğün başarıyla onaylanması. ... ok
+test_12_verify_file_integrity_mismatch (test_file_integrity_verifier.TestFileIntegrityVerifier.test_12_verify_file_integrity_mismatch)
+12. Test: Kurcalanmış veya yanlış hash durumunda IntegrityMismatchError fırlatılması (CWE-353). ... ok
+test_13_constant_time_comparison (test_file_integrity_verifier.TestFileIntegrityVerifier.test_13_constant_time_comparison)
+13. Test: Zamanlama saldırılarını önlemek için hmac.compare_digest kullanılması (CWE-208). ... ok
+test_14_directory_baseline_and_tamper_detection (test_file_integrity_verifier.TestFileIntegrityVerifier.test_14_directory_baseline_and_tamper_detection)
+14. Test: Dizin taban çizgisi (baseline) oluşturma ve anomali tespiti (FIM). ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.011s
+
+OK
+
+===========================================================================
+Toplam Test: 14
+Başarılı: 14
+Hatalar: 0
+Başarısızlıklar: 0
+Genel Sonuç: PASS (BAŞARILI)

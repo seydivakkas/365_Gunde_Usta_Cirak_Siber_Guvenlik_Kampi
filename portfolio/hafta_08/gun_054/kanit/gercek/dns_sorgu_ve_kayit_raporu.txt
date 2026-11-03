@@ -1,0 +1,81 @@
+================================================================================
+G054: DNS SORGU VE KAYIT TURLERI GUVENLIK ANALIZ RAPORU
+Standart: RFC 1034 / RFC 1035 / RFC 3596 / RFC 7208 (SPF) / RFC 7489 (DMARC)
+Prensip : 'DNS Yanıtı Doğrulanmış Kimlik Değildir' (DNSSEC & Şifreleme)
+================================================================================
+
+Kayıt ID       : RR-A-01
+Açıklama       : Standart IPv4 adresi eşlemesi
+Alan Adı / Tür : example.com [A - Kod 1]
+TTL / Değer    : 3600 sn | RDATA: 93.184.216.34
+--------------------------------------------------------------------------------
+Kayıt ID       : RR-AAAA-01
+Açıklama       : Standart IPv6 adresi eşlemesi
+Alan Adı / Tür : example.com [AAAA - Kod 28]
+TTL / Değer    : 3600 sn | RDATA: 2606:2800:220:1:248:1893:25c8:1946
+--------------------------------------------------------------------------------
+Kayıt ID       : RR-CNAME-01
+Açıklama       : Meşru kurumsal web takma adı yönlendirmesi
+Alan Adı / Tür : www.example.com [CNAME - Kod 5]
+TTL / Değer    : 3600 sn | RDATA: example.com
+--------------------------------------------------------------------------------
+Kayıt ID       : RR-CNAME-TAKEOVER
+Açıklama       : KRİTİK RİSK: Silinmiş S3 deposuna işaret eden sahipsiz (dangling) CNAME / Subdomain Takeover
+Alan Adı / Tür : blog.example.com [CNAME - Kod 5]
+TTL / Değer    : 300 sn | RDATA: abandoned-customer-site.s3-website-us-east-1.amazonaws.com
+--------------------------------------------------------------------------------
+Kayıt ID       : RR-MX-01
+Açıklama       : Öncelik 10 ile kurumsal e-posta sunucusu adresi
+Alan Adı / Tür : example.com [MX - Kod 15]
+TTL / Değer    : 3600 sn | RDATA: mail.example.com (Öncelik: 10)
+--------------------------------------------------------------------------------
+Kayıt ID       : RR-TXT-SPF
+Açıklama       : Katı (-all) SPF e-posta sahteciliği önleme kaydı
+Alan Adı / Tür : example.com [TXT - Kod 16]
+TTL / Değer    : 3600 sn | RDATA: v=spf1 ip4:93.184.216.0/24 -all
+--------------------------------------------------------------------------------
+Kayıt ID       : RR-TXT-DMARC
+Açıklama       : Sahte mailleri reddeden (p=reject) DMARC güvenlik politikası
+Alan Adı / Tür : _dmarc.example.com [TXT - Kod 16]
+TTL / Değer    : 3600 sn | RDATA: v=DMARC1; p=reject; rua=mailto:dmarc-reports@example.com
+--------------------------------------------------------------------------------
+
+================================================================================
+E-POSTA GUVENLIGI DENETIMI (SPF VE DMARC ANALIZI)
+================================================================================
+SPF Kaydı Mevcut mu   : True
+DMARC Kaydı Mevcut mu : True
+Durum: GUCLU POLİTİKA (Katı -all ve p=reject ile sahte e-postalar engellenir).
+--------------------------------------------------------------------------------
+
+================================================================================
+SAHIPSIZ CNAME VE SUBDOMAIN TAKEOVER RISK ANALIZI
+================================================================================
+İncelenen CNAME Sayısı : 2
+Risk Tespit Edildi mi  : True
+[CRITICAL] SUBDOMAIN_TAKEOVER_RISK:
+  Kaynak CNAME: blog.example.com
+  Hedef Bulut : abandoned-customer-site.s3-website-us-east-1.amazonaws.com
+  Açıklama    : 'blog.example.com' alt alan adı 's3-website' bulut servisine işaret ediyor. Eğer bu bulut kaynağı silinmiş veya sahipsiz bırakılmışsa (Dangling CNAME), saldırgan aynı isimle depo açarak alan adını tamamen ele geçirebilir!
+  Öneri       : Hedef bulut kaynağının aktif sahipliğini doğrulayın; kullanılmıyorsa CNAME kaydını derhal silin.
+--------------------------------------------------------------------------------
+
+================================================================================
+DNS TUNELLEME VE VERI SIZINTISI (DATA EXFILTRATION) ANALIZI
+================================================================================
+Sorgu ID    : QRY-TUNNEL-01
+Açıklama    : Yüksek entropili ve hex kodlu veri sızdırma (DNS Tunneling) sorgusu
+Alan Adı    : 48656c6c6f576f726c64457866696c74726174696f6e.c2.attacker.com
+Alt Etiket  : 48656c6c6f576f726c64457866696c74726174696f6e (Uzunluk: 44 karakter)
+Entropi     : 2.977 bit
+Tünelleme mi: True
+Sonuç       : Yüksek entropi (2.98) ve olağandışı etiket uzunluğu (44) tespit edildi. Olası DNS Tünelleme (dnscat2/iodine) veya veri sızıntısı!
+--------------------------------------------------------------------------------
+Sorgu ID    : QRY-LEGIT-01
+Açıklama    : Meşru standart istemci API çözümleme sorgusu
+Alan Adı    : api.example.com
+Alt Etiket  : api (Uzunluk: 3 karakter)
+Entropi     : 1.585 bit
+Tünelleme mi: False
+Sonuç       : Sorgu standart bir alan adı yapısına sahiptir.
+--------------------------------------------------------------------------------

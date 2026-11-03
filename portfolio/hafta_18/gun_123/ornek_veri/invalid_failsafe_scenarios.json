@@ -1,0 +1,99 @@
+[
+  {
+    "senaryo_no": 1,
+    "senaryo_adi": "Geliştirme / Debug Modu Varsayılan Olarak Açık (CWE-1188)",
+    "aciklama": "Üretim ortamında debug modunun varsayılan olarak açık bırakılmasının engellenmesi.",
+    "kaynak_verisi": {
+      "resource_id": "RES-BAD-DEBUG",
+      "name": "Hatalı Debug Servisi",
+      "debug_mode": true
+    },
+    "beklenen_hata": "InsecureDefaultDetectedError"
+  },
+  {
+    "senaryo_no": 2,
+    "senaryo_adi": "Fabrika Çıkışlı Varsayılan Parola Aktif (CWE-1188)",
+    "aciklama": "Varsayılan yönetici parolasının (admin/admin vb.) değiştirilmediğinin tespiti.",
+    "kaynak_verisi": {
+      "resource_id": "RES-DEF-CRED",
+      "name": "Değiştirilmemiş Parolalı Cihaz",
+      "is_default_credential_changed": false
+    },
+    "beklenen_hata": "InsecureDefaultDetectedError"
+  },
+  {
+    "senaryo_no": 3,
+    "senaryo_adi": "Permissive CORS (*) Açık Bırakılmış (CWE-1188)",
+    "aciklama": "CORS başlığının tüm alan adlarına serbest bırakılmasının engellenmesi.",
+    "kaynak_verisi": {
+      "resource_id": "RES-OPEN-CORS",
+      "name": "Korumasız CORS API",
+      "cors_allow_all": true
+    },
+    "beklenen_hata": "InsecureDefaultDetectedError"
+  },
+  {
+    "senaryo_no": 4,
+    "senaryo_adi": "TLS Şifrelemesi Zorunlu Değil (CWE-1188)",
+    "aciklama": "Düz metin HTTP iletişimine izin verilmesinin tespiti ve engellenmesi.",
+    "kaynak_verisi": {
+      "resource_id": "RES-CLEARTEXT",
+      "name": "Düz Metin HTTP Ağ Geçidi",
+      "enforce_tls": false
+    },
+    "beklenen_hata": "InsecureDefaultDetectedError"
+  },
+  {
+    "senaryo_no": 5,
+    "senaryo_adi": "Durağan Depolama Şifresiz (CWE-1188)",
+    "aciklama": "Veritabanı veya disk depolamasının şifresiz bırakılmasının engellenmesi.",
+    "kaynak_verisi": {
+      "resource_id": "RES-NO-ENCRYPT",
+      "name": "Şifresiz Müşteri Dosyaları",
+      "storage_encrypted": false
+    },
+    "beklenen_hata": "InsecureDefaultDetectedError"
+  },
+  {
+    "senaryo_no": 6,
+    "senaryo_adi": "Varsayılan Erişim İZİN (ALLOW) Yapılmış (Saltzer-Schroeder İhlali)",
+    "aciklama": "Default-Deny yerine Default-Permit yapılandırmasının tespiti ve reddi.",
+    "kaynak_verisi": {
+      "resource_id": "RES-PERMIT-ALL",
+      "name": "Güvensiz Varsayılan Servis",
+      "default_access": "ALLOW"
+    },
+    "beklenen_hata": "InsecureDefaultDetectedError"
+  },
+  {
+    "senaryo_no": 7,
+    "senaryo_adi": "Yetkisiz Fail-Open Yapılandırması (CWE-636 İhlali)",
+    "aciklama": "Acil durum can güvenliği token'ı olmaksızın arıza anında kapıların açılmasının engellenmesi.",
+    "sistem_yapilandirmasi": {
+      "system_name": "Yetkisiz Fail-Open Test",
+      "failure_mode": "FAIL_OPEN",
+      "safety_override_token": null
+    },
+    "beklenen_hata": "InsecureFailOpenForbiddenError"
+  },
+  {
+    "senaryo_no": 8,
+    "senaryo_adi": "Boş Kaynak Adı ile Yapılandırma Girişi",
+    "aciklama": "Kaynak adı boş dize verildiğinde doğrulama hatası üretilmesi.",
+    "kaynak_verisi": {
+      "resource_id": "RES-EMPTY-NAME",
+      "name": "   "
+    },
+    "beklenen_hata": "InvalidResourceConfigurationError"
+  },
+  {
+    "senaryo_no": 9,
+    "senaryo_adi": "Mükerrer Kaynak ID Tanımlama",
+    "aciklama": "Aynı kimliğe sahip iki farklı kaynağın kaydedilmesinin engellenmesi.",
+    "kaynak_verisi": {
+      "resource_id": "RES-AUTH-API",
+      "name": "Çift Tanımlı Kimlik API"
+    },
+    "beklenen_hata": "DuplicateResourceError"
+  }
+]

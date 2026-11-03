@@ -1,0 +1,44 @@
+{
+  "aciklama": "Gün 115 OAuth 2.0 ve OIDC Örnek İstemci ve Konfigürasyon Verisi",
+  "versiyon": "1.0.0",
+  "idp_sunucusu": {
+    "issuer": "https://idp.siber.local",
+    "authorization_endpoint": "https://idp.siber.local/authorize",
+    "token_endpoint": "https://idp.siber.local/token",
+    "userinfo_endpoint": "https://idp.siber.local/userinfo",
+    "supported_grant_types": ["authorization_code"],
+    "supported_code_challenge_methods": ["S256"],
+    "supported_response_types": ["code"],
+    "supported_scopes": ["openid", "profile", "read:profile", "read:reports", "write:reports"]
+  },
+  "ornek_istemciler": [
+    {
+      "client_id": "finans_portal_app",
+      "client_name": "Kurumsal Finans Portalı (Web SPA)",
+      "client_type": "confidential",
+      "redirect_uris": [
+        "https://portal.siber.local/callback",
+        "https://portal.siber.local/oauth/redirect"
+      ],
+      "allowed_scopes": [
+        "openid",
+        "profile",
+        "read:profile",
+        "read:reports"
+      ]
+    },
+    {
+      "client_id": "mobil_siber_app",
+      "client_name": "Saha Mühendisleri Mobil Uygulaması",
+      "client_type": "public",
+      "redirect_uris": [
+        "com.siber.mobilapp://oauth-callback"
+      ],
+      "allowed_scopes": [
+        "openid",
+        "profile",
+        "read:profile"
+      ]
+    }
+  ]
+}

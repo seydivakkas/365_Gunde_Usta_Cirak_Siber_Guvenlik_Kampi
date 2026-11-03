@@ -1,0 +1,62 @@
+{
+  "aciklama": "GÜN 017 - İşletim Sistemi Çekirdek ve Kullanıcı Modu Güvenlik Taban Çizgisi",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "surum": "1.0.0",
+  "tarih": "2026-10-27",
+  "standartlar": [
+    {
+      "kod": "Microsoft WDAC & HVCI",
+      "baslik": "Hipervizör Korumalı Kod Bütünlüğü ve Savunmasız Sürücü Engelleme Listesi",
+      "kapsam": "Çekirdek modunda (Ring 0) yalnızca doğrulanmış ve Microsoft tarafından engellenmemiş sürücülerin çalışmasına izin verilir (BYOVD engelleme)."
+    },
+    {
+      "kod": "CIS Microsoft Windows Server / Client Benchmark",
+      "baslik": "Ayrıcalık Yönetimi ve Çekirdek İzolasyonu",
+      "onerilen_ayarlar": {
+        "VirtualizationBasedSecurity": 1,
+        "HypervisorEnforcedCodeIntegrity": 1,
+        "DriverSignatureEnforcement": "Zorunlu",
+        "VulnerableDriverBlocklist": "Etkin"
+      }
+    },
+    {
+      "kod": "NIST SP 800-53 Rev. 5",
+      "baslik": "Sistem ve İletişim Koruması",
+      "kontroller": [
+        "SC-3: Güvenlik Fonksiyonu İzolasyonu (Security Function Isolation - Ring 0 vs Ring 3)",
+        "SI-7: Yazılım, Donanım ve Bilgi Bütünlüğü Doğrulaması",
+        "AC-6: En Az Ayrıcalık İlkesi (Least Privilege)"
+      ]
+    }
+  ],
+  "guvenlik_kurallari": [
+    {
+      "kural_id": "RULE-KERN-001",
+      "kriter": "surucu_imza_zorunlulugu_dse",
+      "beklenen_deger": true,
+      "seviye": "KRITIK",
+      "hata_mesaji": "Sürücü İmza Zorunluluğu (Driver Signature Enforcement - DSE) devre dışı! İmzasız rootkit yüklenebilir."
+    },
+    {
+      "kural_id": "RULE-KERN-002",
+      "kriter": "savunmasiz_surucu_engelleme_listesi_etkin",
+      "beklenen_deger": true,
+      "seviye": "YUKSEK",
+      "hata_mesaji": "Microsoft Önerilen Savunmasız Sürücü Engelleme Listesi kapalı; BYOVD saldırılarına açık!"
+    },
+    {
+      "kural_id": "RULE-KERN-003",
+      "kriter": "hipervizor_korumali_kod_butunlugu_hvci",
+      "beklenen_deger": true,
+      "seviye": "KRITIK",
+      "hata_mesaji": "HVCI / Bellek Bütünlüğü devre dışı; çekirdek havuzunda keyfi kod yürütülebilir."
+    },
+    {
+      "kural_id": "RULE-KERN-004",
+      "kriter": "smep_smap_donanim_izolasyonu",
+      "beklenen_deger": true,
+      "seviye": "KRITIK",
+      "hata_mesaji": "SMEP/SMAP donanım izolasyonu etkin değil; çekirdek kullanıcı alanındaki zararlı kodu doğrudan çalıştırabilir."
+    }
+  ]
+}

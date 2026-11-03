@@ -1,0 +1,81 @@
+{
+  "gun": 130,
+  "hafta": 19,
+  "konu": "NTFS erişim kontrol listeleri",
+  "lisans": "OZEL LISANS - TUM HAKLAR SAKLIDIR (c) 2026 Seydi Eryilmaz",
+  "dosyalar": {
+    "README.md": {
+      "sha256": "211da47980e0ae52d30df7ffc66d3465e615e11fb777f7c1bf8e9b7cc47c289b",
+      "boyut_byte": 5075
+    },
+    "ders.md": {
+      "sha256": "ce8a2548a78df638646f60ae5cdaef3efebde5b310b00954d395ced3e4df874c",
+      "boyut_byte": 10913
+    },
+    "kanit_uretici.py": {
+      "sha256": "ad6adf398deb65a1df59867752afc72df491169b357dc2288cfc7e132e740063",
+      "boyut_byte": 12098
+    },
+    "rapor.md": {
+      "sha256": "5ada8c2b3d3d035474fa9bfe9dbff28adf9bbe7d1e256d14f2b6a00822c87884",
+      "boyut_byte": 5691
+    },
+    "sonuc.json": {
+      "sha256": "1d4fe14bd434c2c9bd5e1cdb531182a6209d0a7c93f1474f614a90f5fd386d2c",
+      "boyut_byte": 1111
+    },
+    "soru_cevap.md": {
+      "sha256": "31f4dc284f6b17e8ee4f9c3e36693d65d80c06a4438fa608c9e747d8f23ad997",
+      "boyut_byte": 10847
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "sha256": "769e853e80ee021607325b4ba718c1034e01a3ee625b23a6c98c22491bf9072e",
+      "boyut_byte": 7041
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "sha256": "40e899e20e525ce976877737b4d66d29c5d29e792d135cd0b0709129264a0e97",
+      "boyut_byte": 2836
+    },
+    "kanit/gercek/ntfs_denetim_raporu.md": {
+      "sha256": "29bb2486cb7cfd757184451d7a9e3b67bdd2a3fac14e5c38620e929bfb595b09",
+      "boyut_byte": 4228
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "sha256": "84b202644ce3b6f2978fa4f54ee8eaf689dac15c030c4607fab23d8baeac9ab0",
+      "boyut_byte": 3887
+    },
+    "kanit/temsili/ntfs_mimarisi.txt": {
+      "sha256": "bca8436373f4d6c3b48e855f473c9c9bba6481a3aa8c737b396dc34474c048b3",
+      "boyut_byte": 4076
+    },
+    "ornek_veri/invalid_ntfs_scenarios.json": {
+      "sha256": "c9065cd75e37c91a6912c96d5954b36d184fffa9db4d617029af3145ba3731a7",
+      "boyut_byte": 6206
+    },
+    "ornek_veri/ntfs_baseline_spec.json": {
+      "sha256": "af1f3d8bde5bd0baf23c13fa5286cd878d93d6c2d654c24b7dbb2905305d9867",
+      "boyut_byte": 2309
+    },
+    "tests/__init__.py": {
+      "sha256": "37032a8f50dbdc4bfc6c81d44395e6a1a13307eccb33a8d1570233739957c3e1",
+      "boyut_byte": 575
+    },
+    "tests/test_ntfs_acl.py": {
+      "sha256": "9d8b39a114592fd415769a5b40e426b723d259f8d61eee4a416538bd2c6eb126",
+      "boyut_byte": 14336
+    },
+    "uygulama/__init__.py": {
+      "sha256": "9e5edc7145b66cffa34a4394fdd0c6baec70d0ad665975340ed0faa0b0483526",
+      "boyut_byte": 586
+    },
+    "uygulama/ntfs_acl_engine.py": {
+      "sha256": "3218fb6f12d943d907edda07f03b0f80f02dddb3a7efa9786d2b5f99ab178993",
+      "boyut_byte": 22271
+    },
+    "uygulama/ntfs_cli.py": {
+      "sha256": "33daedf8247b89b394934f9cc4b2a0d3702b922958b9d35a7879961ae4be895f",
+      "boyut_byte": 8219
+    }
+  },
+  "toplam_dosya_sayisi": 18
+}

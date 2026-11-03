@@ -1,0 +1,33 @@
+test_01_command_safety_validator_accepts_safe_commands (test_command_line_notebook_engine.TestCommandLineNotebookEngine.test_01_command_safety_validator_accepts_safe_commands)
+Salt-okunur g�venli ke�if komutlar�n�n do�rulay�c�dan ba�ar�yla ge�mesini test eder. ... ok
+test_02_command_safety_validator_blocks_rm_rf (test_command_line_notebook_engine.TestCommandLineNotebookEngine.test_02_command_safety_validator_blocks_rm_rf)
+Y�k�c� dosya silme komutunun (rm -rf /) CWE-78 kapsam�nda engellenmesini test eder. ... ok
+test_03_command_safety_validator_blocks_windows_del (test_command_line_notebook_engine.TestCommandLineNotebookEngine.test_03_command_safety_validator_blocks_windows_del)
+Windows �zerinde y�k�c� silme komutunun (del /f /s /q) engellenmesini test eder. ... ok
+test_04_command_safety_validator_blocks_mkfs_and_dd (test_command_line_notebook_engine.TestCommandLineNotebookEngine.test_04_command_safety_validator_blocks_mkfs_and_dd)
+Disk bi�imlendirme ve do�rudan blok ezme komutlar�n�n engellenmesini test eder. ... ok
+test_05_command_safety_validator_blocks_kill_9_1 (test_command_line_notebook_engine.TestCommandLineNotebookEngine.test_05_command_safety_validator_blocks_kill_9_1)
+�ekirdek init s�recini (PID 1) �ld�rmeye �al��an y�k�c� komutun engellenmesini test eder. ... ok
+test_06_command_safety_validator_blocks_remote_piping (test_command_line_notebook_engine.TestCommandLineNotebookEngine.test_06_command_safety_validator_blocks_remote_piping)
+Uzak sunucudan indirilen beti�in do�rudan kabu�a borulanmas�n� (CWE-494) test eder. ... ok
+test_07_command_safety_validator_rejects_unlisted_command (test_command_line_notebook_engine.TestCommandLineNotebookEngine.test_07_command_safety_validator_rejects_unlisted_command)
+�zin verilen salt-okunur listede yer almayan rastgele komutlar�n reddedilmesini test eder. ... ok
+test_08_load_catalog_and_verify_minimum_ten_commands (test_command_line_notebook_engine.TestCommandLineNotebookEngine.test_08_load_catalog_and_verify_minimum_ten_commands)
+Ger�ek katalog dosyas�nda asgari 10 komut kural�n�n sa�land���n� test eder (G028-SC2). ... ok
+test_09_execute_command_entry_mock_mode (test_command_line_notebook_engine.TestCommandLineNotebookEngine.test_09_execute_command_entry_mock_mode)
+Deterministik mock modunda komutun �al��t�r�l�p d�zenli ifade deseninin do�rulanmas�n� test eder. ... ok
+test_10_execute_command_calculates_sha256_integrity (test_command_line_notebook_engine.TestCommandLineNotebookEngine.test_10_execute_command_calculates_sha256_integrity)
+Y�r�t�len komut ve ��kt�s� i�in 64 karakterlik SHA256 b�t�nl�k �zetinin hesaplanmas�n� test eder. ... ok
+test_11_execute_command_raises_exception_on_unsafe (test_command_line_notebook_engine.TestCommandLineNotebookEngine.test_11_execute_command_raises_exception_on_unsafe)
+G�vensiz bir komut y�r�t�lmek istendi�inde istisna f�rlat�l�p g�nl��e yaz�lmas�n� test eder. ... ok
+test_12_generate_markdown_notebook_structure (test_command_line_notebook_engine.TestCommandLineNotebookEngine.test_12_generate_markdown_notebook_structure)
+Markdown �al��ma defterinin ba�l�k, indeks, komut kartlar� ve feragatnameleri i�ermesini test eder. ... ok
+test_13_negative_control_pipeline_blocks_all_prohibited (test_command_line_notebook_engine.TestCommandLineNotebookEngine.test_13_negative_control_pipeline_blocks_all_prohibited)
+Yasakl� komutlar veri k�mesindeki t�m komutlar�n (%100) ba�ar�yla engellendi�ini test eder (G028-SC2). ... ok
+test_14_cli_subprocess_execution (test_command_line_notebook_engine.TestCommandLineNotebookEngine.test_14_cli_subprocess_execution)
+CLI �zerinden script �a�r�ld���nda --audit parametresinin 0 ��k�� koduyla �al��mas�n� test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.175s
+
+OK

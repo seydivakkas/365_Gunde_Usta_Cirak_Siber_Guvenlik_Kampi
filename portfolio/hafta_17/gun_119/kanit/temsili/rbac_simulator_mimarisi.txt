@@ -1,0 +1,36 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+======================================================================
+MİNİ PROJE 16: KURUMSAL RBAC SİMÜLATÖR VE POLİTİKA MİMARİSİ
+======================================================================
+
+   [İSTEMCİ / KULLANICI / TEST PAKETİ]
+                 │
+                 ▼ SimulationRequest(user_id, target, action, session_id)
+   ┌────────────────────────────────────────────────────────┐
+   │       RBAC SIMULATOR ENGINE (Giriş ve Doğrulama)       │
+   └───────────────────────────┬────────────────────────────┘
+                               │
+                               ▼
+   ┌────────────────────────────────────────────────────────┐
+   │ 1. Rol Hiyerarşisi Miras Çözümleyicisi (DAG Resolver)   │
+   │    - finance_director -> accountant -> employee        │
+   │    - Döngüsel Bağımlılık Denetimi (CWE-674)            │
+   ├────────────────────────────────────────────────────────┤
+   │ 2. Görevler Ayrılığı (SoD) Doğrulama Kapısı            │
+   │    - SSD: Kullanıcı Atama Düzeyi Çatışma Kontrolü     │
+   │    - DSD: Aktif Oturum Düzeyi Çatışma Kontrolü         │
+   ├────────────────────────────────────────────────────────┤
+   │ 3. Yetki Birikimi (Privilege Creep) Analizörü          │
+   │    - Azami Rol Sayısı Eşik Denetimi (CWE-250)          │
+   ├────────────────────────────────────────────────────────┤
+   │ 4. Dinamik Oturum Kapsamı (Session-Scoped Roles)       │
+   │    - En Az Ayrıcalık (PoLP) Uyarınca Rol Kısıtlama     │
+   └───────────────────────────┬────────────────────────────┘
+                               │
+                  ┌────────────┴────────────┐
+                  ▼ (Yetki Yok / İhlal)     ▼ (Tüm Şartlar PASS)
+           [ERİŞİM REDDEDİLDİ]      [ERİŞİM ONAYLANDI]
+           - CWE-862 / CWE-863      - SimulationResult(Permitted=True)
+           - Denetim Loguna Yaz     - Denetim Loguna Yaz
+
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

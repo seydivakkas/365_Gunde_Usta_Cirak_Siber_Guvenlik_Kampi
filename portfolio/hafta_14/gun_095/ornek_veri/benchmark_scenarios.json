@@ -1,0 +1,27 @@
+{
+  "aciklama": "G095: Güvenlik Algoritmaları ve Veri İşleme Karşılaştırma Senaryoları",
+  "versiyon": "1.0",
+  "senaryolar": [
+    {
+      "id": "SCN_HASH_COMPARISON",
+      "baslik": "Kriptografik Özetleme Algoritmaları Karşılaştırması",
+      "aciklama": "SHA-256 vs SHA-512 vs BLAKE2b algoritmalarının 1 MB veri üzerindeki mikrosaniye süresi ve throughput performansı",
+      "veri_boyutu_bayt": 1048576,
+      "varsayilan_iterasyon": 20
+    },
+    {
+      "id": "SCN_MEMORY_ALLOCATION",
+      "baslik": "Bellek Tahsisatı ve Optimizasyon",
+      "aciklama": "Büyük log satırlarını birleştirirken String Concatenation (+) vs List.join() bellek ve zaman farkı",
+      "veri_boyutu_bayt": 65536,
+      "varsayilan_iterasyon": 50
+    },
+    {
+      "id": "SCN_REGEX_MATCHING",
+      "baslik": "Güvenlik Desen Eşleştirme Gecikmesi",
+      "aciklama": "Önceden derlenmiş re.compile() ile dinamik re.search() arasındaki işlemci farkı",
+      "veri_boyutu_bayt": 4096,
+      "varsayilan_iterasyon": 100
+    }
+  ]
+}

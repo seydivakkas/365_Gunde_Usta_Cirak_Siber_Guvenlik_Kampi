@@ -1,0 +1,34 @@
+[
+  {
+    "islem_id": "TX-1793073358987",
+    "zaman_damgasi": "2026-10-27T03:55:58Z",
+    "dosya_yolu": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_04\\gun_024\\ornek_veri\\lab_test_dosyasi.txt",
+    "islem_yapan": "guvenlik-analisti",
+    "gerekce": "guclendirme",
+    "eski_izin_oktal": "0666",
+    "eski_izin_sembolik": "-rw-rw-rw-",
+    "yeni_izin_oktal": "0600",
+    "yeni_izin_sembolik": "-rw-------",
+    "durum": "UYGULANDI"
+  },
+  {
+    "islem_id": "TX-1793073359124",
+    "zaman_damgasi": "2026-10-27T03:55:59Z",
+    "dosya_yolu": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_04\\gun_024\\ornek_veri\\lab_test_dosyasi.txt",
+    "islem_yapan": "guvenlik-analisti",
+    "gerekce": "guclendirme",
+    "eski_izin_oktal": "0666",
+    "eski_izin_sembolik": "-rw-rw-rw-",
+    "yeni_izin_oktal": "0644",
+    "yeni_izin_sembolik": "-rw-r--r--",
+    "durum": "UYGULANDI"
+  },
+  {
+    "orijinal_islem_id": "TX-1793073359124",
+    "geri_alma_zamani": "2026-10-27T03:55:59Z",
+    "dosya_yolu": "C:\\Users\\seydieryilmaz\\Desktop\\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\\portfolio\\hafta_04\\gun_024\\ornek_veri\\lab_test_dosyasi.txt",
+    "geri_yuklenen_izin_oktal": "0666",
+    "geri_yuklenen_sembolik": "-rw-rw-rw-",
+    "durum": "BASARIYLA_GERI_ALINDI"
+  }
+]

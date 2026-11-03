@@ -1,0 +1,91 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+====================================================================================================
+G063 MINI PROJE 8: PROTOKOL ZAMAN CIZELGESI VE AKIS ADLI BILISIM MIMARISI
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR | Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+====================================================================================================
+
+Bu şema, çok protokollü ağ izlerinin (DNS, TCP, TLS 1.3, HTTP/2) zaman serisi olarak nasıl
+yeniden inşa edildiğini, paketler arası gecikme (delta) ve RTT metriklerinin nasıl hesaplandığını,
+ve zaman eksenindeki siber saldırı kalıplarının nasıl tespit edildiğini gösteren kavramsal bir tasarımdır.
+
++--------------------------------------------------------------------------------------------------+
+|                                    KAVRAMSAL AKIS VE MIMARI                                      |
++--------------------------------------------------------------------------------------------------+
+
+   [ Ham Ağ Paket İzi ] (PCAP / NetFlow / JSON Telemetri)
+           │
+           ▼
+   +───────────────────────────────────+
+   |  Zaman Damgası Doğrulama Motoru   | ──> [ NEG_02: TimestampFormatError ]
+   |  (ISO-8601 -> Monotonik Epoch)    | ──> [ NEG_01: TimelineOrderError / Clock Skew ]
+   +───────────────────────────────────+
+           │
+           ▼
+   +───────────────────────────────────+
+   |  Kronolojik Sıralama & Delta (Δt) |  Δt = t(i) - t(i-1)
+   |  Milisaniye Gecikme Hesaplama     |  Ortalama Paket Aralığı & Jitter
+   +───────────────────────────────────+
+           │
+           ▼
+   +───────────────────────────────────+
+   |  5-Demet (5-Tuple) Akış Ayrıştırıcı|  SrcIP:Port <───> DstIP:Port
+   |  (Flow Session Reconstructor)     |
+   +───────────────────────────────────+
+           │
+   ┌───────┴───────────────────────────────┬────────────────────────────────┐
+   ▼                                       ▼                                ▼
+[ TCP Durum Makinesi ]           [ TLS 1.3 Tünel Durumu ]         [ HTTP/2 Akım Havuzu ]
+- CLOSED                         - ClientHello                    - SETTINGS (Stream 0)
+- SYN_SENT  (t_syn)              - ServerHello                    - Stream 1 (GET /api/v1)
+- SYN_RCVD                       - EncryptedExtensions            - Stream 3 (GET /status)
+- ESTABLISHED (RTT = t_ack - t_syn)- Finished                      - Eşzamanlı Çoklama (Multiplexing)
+- FIN_WAIT_1 / FIN_WAIT_2        - Simetrik Kripto Aktif
+- TIME_WAIT -> CLOSED
+   │                                       │                                │
+   └───────────────────────┬───────────────┴────────────────────────────────┘
+                           ▼
+   +───────────────────────────────────────────────────────────────────────+
+   |                     ZAMANSAL ANOMALI KORELASYON MOTORU                |
+   +───────────────────────────────────────────────────────────────────────+
+   |  1. Hızlı Port Taraması (SYN Burst)   : Δt < 100ms içinde >= 4 port    | -> PortScanAnomalyError
+   |  2. Slowloris Başlık Damlatma         : HTTP başlıkları Δt >= 15.0s    | -> SlowlorisAnomalyError
+   |  3. TCP Sıra Numarası Sıçraması      : SEQ farkı > 1.000.000           | -> SequenceAnomalyError
+   |  4. Erken Veri Enjeksiyonu            : TCP ESTABLISHED olmadan HTTP   | -> HandshakeViolationError
+   |  5. DNS Tünelleme Patlaması           : Δt < 500ms içinde yüksek H(x)  | -> DnsTunnelingAnomalyError
+   |  6. Geçersiz Durum Geçişi             : Bağlantısız erken FIN          | -> IllegalStateTransitionError
+   +───────────────────────────────────────────────────────────────────────+
+                           │
+                           ▼
+   +───────────────────────────────────────────────────────────────────────+
+   |                     MERDIVEN (LADDER) ZAMAN CIZELGESI                 |
+   +───────────────────────────────────────────────────────────────────────+
+
+   İstemci (192.168.1.100)                     Sunucu (10.10.20.50)
+        │                                           │
+   t0   ├────────── DNS Query (api.kurumsal.local) ──> (1.1.1.1:53)
+   t1   │<───────── DNS Resp (10.10.20.50) ─────────┤ [Δt = 15.20ms]
+        │                                           │
+   t2   ├────────── TCP SYN (Seq=1000) ─────────────> [Δt = 9.80ms]
+   t3   │<───────── TCP SYN-ACK (Seq=5000,Ack=1001)─┤ [Δt = 20.00ms]
+   t4   ├────────── TCP ACK (Seq=1001,Ack=5001) ────> [Δt = 20.00ms, RTT = 40ms]
+        │                                           │
+   t5   ├────────── TLS 1.3 ClientHello ────────────> [Δt = 5.00ms]
+   t6   │<───────── TLS 1.3 ServerHello + Finished ─┤ [Δt = 25.00ms]
+        │                                           │
+   t7   ├────────── HTTP/2 SETTINGS ────────────────> [Δt = 20.00ms]
+   t8   ├────────── Stream 1: HEADERS GET /telemetry> [Δt = 5.00ms]
+   t9   ├────────── Stream 3: HEADERS GET /status ──> [Δt = 2.00ms]
+   t10  │<───────── Stream 3: DATA (200 OK) ────────┤ [Δt = 23.00ms]
+   t11  │<───────── Stream 1: DATA (200 OK) ────────┤ [Δt = 15.00ms]
+        │                                           │
+   t12  ├────────── TCP FIN-ACK ────────────────────> [Δt = 20.00ms]
+   t13  │<───────── TCP ACK ────────────────────────┤ [Δt = 20.00ms]
+   t14  │<───────── TCP FIN-ACK ────────────────────┤ [Δt = 5.00ms]
+   t15  ├────────── TCP ACK ────────────────────────> [Δt = 20.00ms, CLOSED]
+        ▼                                           ▼
+
+====================================================================================================
+SONUÇ: Zaman serisi rekonstrüksiyonu, modern katmanlı ağ mimarisinde hem performans darboğazlarını
+(RTT, gecikme) hem de sofistike zaman tabanlı siber saldırıları net olarak ortaya koyar.
+====================================================================================================

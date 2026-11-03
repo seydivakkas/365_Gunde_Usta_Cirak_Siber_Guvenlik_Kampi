@@ -1,0 +1,85 @@
+{
+  "aciklama": "Gün 074: Fonksiyonlar ve temiz kod için 9 adet negatif kontrol ve sınır durumu test senaryosu",
+  "negatif_testler": [
+    {
+      "id": "NEG_01_MUTABLE_DEFAULT_TRAP_ATTACK",
+      "tanim": "Varsayılan argüman zehirleme denemesi — ardışık çağrılarda önceki çağrının etiketlerinin sonraki çağrıya sızması engellenmelidir",
+      "girdi": {
+        "cagri_1": { "raw": "LOG_ENTRY_1", "tag": "secret_tenant_a" },
+        "cagri_2": { "raw": "LOG_ENTRY_2", "tag": null }
+      },
+      "beklenen_hata_veya_davranis": "cagri_2 çıktısında secret_tenant_a asla yer almamalıdır (izole liste üretilmelidir)"
+    },
+    {
+      "id": "NEG_02_IMPURE_MUTATION_OF_SHARED_RULE",
+      "tanim": "Fonksiyonun parametre olarak aldığı kural sözlüğünü yerinde (in-place) değiştirmesi denemesi",
+      "girdi": {
+        "orijinal_kural": { "kural_id": "RULE_SECURE", "aksiyon": "DENY" },
+        "mudahale_denemesi": { "aksiyon": "ALLOW" }
+      },
+      "beklenen_hata_veya_davranis": "Orijinal girdi nesnesi değişmeden (immutable/defensive copy) kalmalıdır"
+    },
+    {
+      "id": "NEG_03_UNSUPPORTED_HASH_ALGORITHM",
+      "tanim": "Desteklenmeyen veya geçersiz kriptografik hash algoritması enjeksiyonu",
+      "girdi": {
+        "hash_str": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "algoritma": "md6"
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Desteklenmeyen hash algoritması: md6"
+    },
+    {
+      "id": "NEG_04_MALFORMED_SHA256_LENGTH",
+      "tanim": "64 karakterden eksik (63 karakter) malforme SHA-256 hash dizesi",
+      "girdi": {
+        "hash_str": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b85",
+        "algoritma": "sha256"
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Geçersiz hash uzunluğu"
+    },
+    {
+      "id": "NEG_05_MALFORMED_MD5_NON_HEX_CHARS",
+      "tanim": "Onaltılık tabanda (hex) olmayan karakterler içeren MD5 dizesi",
+      "girdi": {
+        "hash_str": "d41d8cd98f00b204e9800998ecf842zz",
+        "algoritma": "md5"
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Geçersiz onaltılık (hex) karakterler tespit edildi"
+    },
+    {
+      "id": "NEG_06_THREAT_SCORE_INVALID_WEIGHT_OUT_OF_BOUNDS",
+      "tanim": "0.0 ile 1.0 aralığının dışında (1.5) tehdit faktörü ağırlığı",
+      "girdi": {
+        "faktorler": {
+          "c2_iletisim": 1.5,
+          "anomali_skoru": 0.5
+        }
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Tehdit faktörü katsayısı [0.0, 1.0] aralığında olmalıdır"
+    },
+    {
+      "id": "NEG_07_EMPTY_OR_NONE_RAW_LOG_PIPELINE",
+      "tanim": "Boru hattına boş veya None log dizesi gönderilerek sessiz hata oluşturma girişimi",
+      "girdi": {
+        "raw_log": ""
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Ham log girdisi boş veya geçersiz olamaz"
+    },
+    {
+      "id": "NEG_08_MALFORMED_IP_TOKEN_EXTRACTION",
+      "tanim": "IP alanı içermeyen veya geçersiz sözdizimli log satırı ayrıştırma denemesi",
+      "girdi": {
+        "raw_log": "2026-10-31 10:15:20 NO_IP_FOUND ACTION=ALLOW"
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Log satırında geçerli SRC IP ayrıştırılamadı"
+    },
+    {
+      "id": "NEG_09_CONTRACT_POSTCONDITION_VIOLATION",
+      "tanim": "Sözleşme son-koşul (postcondition) ihlali — fonksiyonun geçersiz bir güvenlik kararı üretmesi engellenmelidir",
+      "girdi": {
+        "gecersiz_aksiyon": "UNKNOWN_ACTION_CODE"
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Üretilen güvenlik kararı izin verilen değer kümesi dışındadır"
+    }
+  ]
+}

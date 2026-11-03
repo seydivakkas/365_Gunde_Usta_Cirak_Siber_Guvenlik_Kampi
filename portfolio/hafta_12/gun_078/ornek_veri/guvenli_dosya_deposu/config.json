@@ -1,0 +1,7 @@
+{
+  "depo_adi": "Kurumsal Guvenlik Sandbox Deposu",
+  "versiyon": "2026.11",
+  "izin_verilen_uzantilar": [".json", ".log", ".yaml", ".txt"],
+  "maksimum_dosya_boyutu_bayt": 1048576,
+  "sandbox_modu": "STRICT_PATHLIB"
+}

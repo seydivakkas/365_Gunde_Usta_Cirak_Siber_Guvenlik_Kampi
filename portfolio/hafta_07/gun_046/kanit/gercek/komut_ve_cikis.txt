@@ -1,0 +1,66 @@
+KOMUT: python portfolio/hafta_07/gun_046/uygulama/ipv6_analyzer.py
+
+ÇIKIŞ:
+================================================================================
+G046: IPv6 Temel Kavramlar, SÄ±kÄ±ÅŸtÄ±rma ve Adres GÃ¼venliÄŸi LaboratuvarÄ±
+================================================================================
+[*] Analiz Edilen: 2001:0db8:85a3:0000:0000:8a2e:0370:7334/64 (Genel Ä°nternet Tekil YayÄ±n (Global Unicast - GUA / Belgelendirme))
+    - Tam AÃ§Ä±k Adres (Expanded)  : 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+    - Kanonik SÄ±kÄ±ÅŸtÄ±rma (RFC5952): 2001:db8:85a3::8a2e:370:7334
+    - Adres TÃ¼rÃ¼ ve Kapsam       : Global Unicast (GUA) (Global)
+    - AÄŸ Ã–neki (Network Prefix)   : 2001:db8:85a3::/64
+    - ArayÃ¼z KimliÄŸi (IID)        : 0000:8a2e:0370:7334
+    - Solicited-Node Multicast   : ff02::1:ff70:7334
+--------------------------------------------------------------------------------
+[*] Analiz Edilen: fe80:0000:0000:0000:021a:2bff:fe3c:4d5e/64 (BaÄŸlantÄ± Yerel Adresi (Link-Local / EUI-64 ile TÃ¼retilmiÅŸ))
+    - Tam AÃ§Ä±k Adres (Expanded)  : fe80:0000:0000:0000:021a:2bff:fe3c:4d5e
+    - Kanonik SÄ±kÄ±ÅŸtÄ±rma (RFC5952): fe80::21a:2bff:fe3c:4d5e
+    - Adres TÃ¼rÃ¼ ve Kapsam       : Link-Local Unicast (Link-Local)
+    - AÄŸ Ã–neki (Network Prefix)   : fe80::/64
+    - ArayÃ¼z KimliÄŸi (IID)        : 021a:2bff:fe3c:4d5e
+    - Solicited-Node Multicast   : ff02::1:ff3c:4d5e
+--------------------------------------------------------------------------------
+[*] Analiz Edilen: fd00:0000:0000:0001:0000:0000:0000:0005/64 (Benzersiz Yerel Adres (Unique Local Address - ULA / RFC 4193))
+    - Tam AÃ§Ä±k Adres (Expanded)  : fd00:0000:0000:0001:0000:0000:0000:0005
+    - Kanonik SÄ±kÄ±ÅŸtÄ±rma (RFC5952): fd00:0:0:1::5
+    - Adres TÃ¼rÃ¼ ve Kapsam       : Unique Local Address (ULA) (Unique Local)
+    - AÄŸ Ã–neki (Network Prefix)   : fd00:0:0:1::/64
+    - ArayÃ¼z KimliÄŸi (IID)        : 0000:0000:0000:0005
+    - Solicited-Node Multicast   : ff02::1:ff00:0005
+--------------------------------------------------------------------------------
+[*] Analiz Edilen: 0000:0000:0000:0000:0000:0000:0000:0001/128 (Geri DÃ¶ngÃ¼ Adresi (Loopback - ::1))
+    - Tam AÃ§Ä±k Adres (Expanded)  : 0000:0000:0000:0000:0000:0000:0000:0001
+    - Kanonik SÄ±kÄ±ÅŸtÄ±rma (RFC5952): ::1
+    - Adres TÃ¼rÃ¼ ve Kapsam       : Loopback (Node-Local)
+    - AÄŸ Ã–neki (Network Prefix)   : ::1/128
+    - ArayÃ¼z KimliÄŸi (IID)        : 0000:0000:0000:0001
+    - Solicited-Node Multicast   : ff02::1:ff00:0001
+--------------------------------------------------------------------------------
+[*] Analiz Edilen: 0000:0000:0000:0000:0000:0000:0000:0000/128 (BelirtilmemiÅŸ Adres (Unspecified Address - ::))
+    - Tam AÃ§Ä±k Adres (Expanded)  : 0000:0000:0000:0000:0000:0000:0000:0000
+    - Kanonik SÄ±kÄ±ÅŸtÄ±rma (RFC5952): ::
+    - Adres TÃ¼rÃ¼ ve Kapsam       : Unspecified Address (Reserved)
+    - AÄŸ Ã–neki (Network Prefix)   : ::/128
+    - ArayÃ¼z KimliÄŸi (IID)        : 0000:0000:0000:0000
+    - Solicited-Node Multicast   : ff02::1:ff00:0000
+--------------------------------------------------------------------------------
+[*] Analiz Edilen: ff02:0000:0000:0000:0000:0000:0000:0001/16 (TÃ¼m DÃ¼ÄŸÃ¼mler Ã‡ok Noktaya YayÄ±n (All-Nodes Multicast))
+    - Tam AÃ§Ä±k Adres (Expanded)  : ff02:0000:0000:0000:0000:0000:0000:0001
+    - Kanonik SÄ±kÄ±ÅŸtÄ±rma (RFC5952): ff02::1
+    - Adres TÃ¼rÃ¼ ve Kapsam       : Multicast (All Nodes) (Link-Local Multicast)
+    - AÄŸ Ã–neki (Network Prefix)   : ff02::/16
+    - ArayÃ¼z KimliÄŸi (IID)        : 0000:0000:0000:0001
+    - Solicited-Node Multicast   : ff02::1:ff00:0001
+--------------------------------------------------------------------------------
+[*] Analiz Edilen: 0000:0000:0000:0000:0000:ffff:c000:0280/96 (IPv4 EÅŸlemeli IPv6 Adresi (IPv4-Mapped IPv6 - ::ffff:192.0.2.128))
+    - Tam AÃ§Ä±k Adres (Expanded)  : 0000:0000:0000:0000:0000:ffff:c000:0280
+    - Kanonik SÄ±kÄ±ÅŸtÄ±rma (RFC5952): ::ffff:c000:280
+    - Adres TÃ¼rÃ¼ ve Kapsam       : IPv4-Mapped IPv6 (Transition/Dual-Stack)
+    - AÄŸ Ã–neki (Network Prefix)   : ::ffff:0:0/96
+    - ArayÃ¼z KimliÄŸi (IID)        : 0000:ffff:c000:0280
+    - Solicited-Node Multicast   : ff02::1:ff00:0280
+--------------------------------------------------------------------------------
+
+[+] EUI-64 Ã–rnek TÃ¼retimi (MAC: 00:1A:2B:3C:4D:5E) -> fe80::21a:2bff:fe3c:4d5e/64
+[+] Ã–zet IPv6 Analiz Raporu BaÅŸarÄ±yla OluÅŸturuldu.
+

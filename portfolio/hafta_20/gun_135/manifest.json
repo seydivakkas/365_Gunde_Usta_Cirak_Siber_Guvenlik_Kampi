@@ -1,0 +1,84 @@
+{
+  "gun": 135,
+  "hafta": 20,
+  "konu": "Linux PAM ve oturum politikası",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "e8f333ad76b46e591ee0f1528e53939e62f6e0b407b2a2fa4630c3e6aabd2a6e",
+      "size": 4777
+    },
+    "ders.md": {
+      "sha256": "9a1a69aa37a2f01cdcb8bf23b9e7b25fcdc2513fe2782f389e50d47bf42e6c09",
+      "size": 8272
+    },
+    "kanit_uretici.py": {
+      "sha256": "9de9b9a609ffa6d301495a540bd2748cd07d6a87ccebff0549013f27fa274efb",
+      "size": 11475
+    },
+    "rapor.md": {
+      "sha256": "97b5231b10e2df90fd3e20be7dc146263435490babe20d331b0591b1421c943a",
+      "size": 4879
+    },
+    "sonuc.json": {
+      "sha256": "36f8eb765ed47637b1f6e5eec2c17dc0e05614891c9840d1767ad71c1e3190a8",
+      "size": 1109
+    },
+    "soru_cevap.md": {
+      "sha256": "8001a907db6fae2934c6d9a9f1b02906c31b1510b0f5113a45da2e8070f00842",
+      "size": 11267
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "sha256": "a1713e55bd1fa534a44a7cd24c6ef1d4efe64409e37c0c939f49bceb3da84ade",
+      "size": 6508
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "sha256": "e834293eb9eaa8d2e399452f3243814d9890594628e3dd3af4c635d6304b81e6",
+      "size": 2640
+    },
+    "kanit\\gercek\\otomatik_sikilastirma.sh": {
+      "sha256": "6c08fc2b4193bbefe67fbdc65ba04ee34b204fb8983f1f328149c87a3a901c29",
+      "size": 2582
+    },
+    "kanit\\gercek\\pam_guvenlik_analiz_raporu.json": {
+      "sha256": "a45b6edb7486df4c6aae26fed51862fea225b18f614c9cc57c32b0b7db103184",
+      "size": 3670
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "sha256": "a56fd1ddbf39cc64346db5156cd24f0bbf8aa4bfe57332f36fa7a84ce6475405",
+      "size": 467
+    },
+    "kanit\\temsili\\pam_mimarisi.txt": {
+      "sha256": "ba267e585b35dac9db4a1c3c0bfc2f8328cca429565e5dce042d088015d60e77",
+      "size": 3631
+    },
+    "ornek_veri\\invalid_pam_scenarios.json": {
+      "sha256": "9e8f9575f67dc425a4a7f6cee25a69734955749f27f8ec49169fe945195b4618",
+      "size": 4242
+    },
+    "ornek_veri\\pam_inventory_spec.json": {
+      "sha256": "93c1ff2fdfe283af64b31b2fe392ff474926dafab1813137f7cc8f9f945ea1c0",
+      "size": 1126
+    },
+    "tests\\__init__.py": {
+      "sha256": "2145e28dea2ba5a9d310e882c23f5a0ce4d2d5db89219950363ac442b66dfd6e",
+      "size": 579
+    },
+    "tests\\test_linux_pam_security.py": {
+      "sha256": "711ce512b221b505e68a334ebca72aed0f193fda071233c48d0616a7fc9350f6",
+      "size": 10639
+    },
+    "uygulama\\__init__.py": {
+      "sha256": "a19f7ce757ba881ab2571056047f6bb50bcce61403c54b292f1d17ed94072ab0",
+      "size": 829
+    },
+    "uygulama\\linux_pam_security_engine.py": {
+      "sha256": "b1b80f54d0e3922612834b3969cf3a3d12d3de50b31657ee1820d15525ff324e",
+      "size": 25164
+    },
+    "uygulama\\pam_security_cli.py": {
+      "sha256": "db1fb7ec4fd5abba1d8caebd1a1a2a802768e77d3917cee47c010b9736223f4e",
+      "size": 7104
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "aciklama": "G058 HTTP Yontemleri ve Idempotency - Metot Semantigi, Idempotency-Key Mekanizmasi ve Saldiri Ornekleri",
+  "versiyon": "1.0.0",
+  "senaryolar": {
+    "get_okuma": {
+      "method": "GET",
+      "path": "/api/v1/accounts/acc_9921/balance",
+      "headers": {"Host": "bank.kurum.local", "Authorization": "Bearer token_xyz"},
+      "body": "",
+      "guvenli": true,
+      "esguklu": true,
+      "aciklama": "Bakiye okuma istegi; sunucu durumunu degistirmez (Safe) ve tekrarlanabilir (Idempotent)."
+    },
+    "post_odeme_idempotency_anahtarsiz": {
+      "method": "POST",
+      "path": "/api/v1/payments",
+      "headers": {"Host": "bank.kurum.local", "Content-Type": "application/json"},
+      "body": "{\"account\": \"acc_9921\", \"amount\": 250.00, \"currency\": \"TRY\"}",
+      "guvenli": false,
+      "esguklu": false,
+      "aciklama": "Idempotency anahtari olmayan odeme istegi; ag zaman asiminda tekrar gonderilirse cift para cekme (double charge) riski tasir."
+    },
+    "post_odeme_idempotent_anahtarli": {
+      "method": "POST",
+      "path": "/api/v1/payments",
+      "headers": {
+        "Host": "bank.kurum.local",
+        "Content-Type": "application/json",
+        "Idempotency-Key": "e82b203c-7729-4d64-9418-2e0f4cb7331c"
+      },
+      "body": "{\"account\": \"acc_9921\", \"amount\": 250.00, \"currency\": \"TRY\"}",
+      "guvenli": false,
+      "esguklu_yonetimli": true,
+      "aciklama": "Idempotency-Key tasiyan odeme istegi; tekrar gonderildiginde sunucu onbellekteki yaniti doner ve cift islem engellenir."
+    },
+    "put_tam_guncelleme": {
+      "method": "PUT",
+      "path": "/api/v1/users/42/profile",
+      "headers": {"Host": "api.kurum.local", "Content-Type": "application/json"},
+      "body": "{\"fullname\": \"Seydi Eryilmaz\", \"role\": \"Lead Security Architect\", \"email\": \"seydi@kurum.local\"}",
+      "guvenli": false,
+      "esguklu": true,
+      "aciklama": "Kaynagin tam temsiliyetle guncellenmesi; 1 kez de 100 kez de calissa sunucudaki nihai durum ayni kalir (Idempotent)."
+    },
+    "patch_kismi_guncelleme": {
+      "method": "PATCH",
+      "path": "/api/v1/users/42/profile",
+      "headers": {"Host": "api.kurum.local", "Content-Type": "application/json"},
+      "body": "{\"role\": \"Principal Security Architect\"}",
+      "guvenli": false,
+      "esguklu": false,
+      "aciklama": "Kismi alan guncellemesi (Patch); operasyona bagli olarak (orn. sayac artirma) esguklu olmayabilir."
+    },
+    "delete_kaynak_silme": {
+      "method": "DELETE",
+      "path": "/api/v1/tokens/sess_7811",
+      "headers": {"Host": "auth.kurum.local"},
+      "body": "",
+      "guvenli": false,
+      "esguklu": true,
+      "aciklama": "Oturum tokenini silme; ilk cagrida 204 No Content, sonrakilerde 404/204 donse dahi sistem durumu ayni kalir (silinmis)."
+    },
+    "trace_xst_saldiri_girisimi": {
+      "method": "TRACE",
+      "path": "/protected",
+      "headers": {"Host": "victim.local", "Cookie": "session=gizli_http_only_cerez"},
+      "body": "",
+      "guvenli": true,
+      "tehlikeli": true,
+      "saldiri_tipi": "XST_CROSS_SITE_TRACING"
+    },
+    "verb_tampering_atlatma": {
+      "method": "HEAD",
+      "path": "/admin/delete_user?id=99",
+      "headers": {"Host": "victim.local"},
+      "body": "",
+      "saldiri_tipi": "HTTP_VERB_TAMPERING_AUTH_BYPASS",
+      "aciklama": "Yalnizca GET ve POST metotlarini denetleyen hatali guvenlik filtrelerini HEAD veya PUT ile atlatma girisimi."
+    }
+  }
+}

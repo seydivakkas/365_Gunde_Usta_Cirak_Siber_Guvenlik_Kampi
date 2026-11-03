@@ -1,0 +1,17 @@
+# ==============================================================================
+# GÜVENLİ SUDOERS YAPILANDIRMASI (CIS LEVEL 1)
+# Üretici: Linux Baseline Auditor | (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# ==============================================================================
+
+# Varsayılan Güvenlik Kuralları
+Defaults env_reset
+Defaults mail_badpass
+Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Defaults umask=027
+Defaults umask_override
+Defaults passwd_tries=3
+Defaults logfile="/var/log/sudo.log"
+
+# Parolasız Süper Yetki (NOPASSWD) KESİNLİKLE YASAKTIR!
+# Yalnızca sudo grubundaki yetkili kullanıcılar kendi parolalarıyla işlem yapabilir:
+%sudo ALL=(ALL:ALL) ALL

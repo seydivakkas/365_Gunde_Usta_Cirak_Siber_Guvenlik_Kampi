@@ -1,0 +1,20 @@
+================================================================================
+G035: NEGATIF KONTROL VE BOZUK TELEMETRI SEMA DOGRULAMA TEST RAPORU (MP-04)
+================================================================================
+Incelenen Bozuk Test Vakasi Sayisi: 5
+Beklenen Davranis: Butun bozuk kayitlar guvenle reddedilmeli, sistem cokmemelidir.
+--------------------------------------------------------------------------------
+[1] Reddetme Nedeni: EKSIK_BOLUM: Zorunlu telemetri bolumu 'processes' eksiktir.
+     Vaka Basligi   : Corrupted Snapshot: Missing required top-level keys
+[2] Reddetme Nedeni: EKSIK_BOLUM: Zorunlu telemetri bolumu 'file_integrity' eksiktir.
+     Vaka Basligi   : Corrupted Snapshot: Processes is not a list
+[3] Reddetme Nedeni: EKSIK_BOLUM: Zorunlu telemetri bolumu 'file_integrity' eksiktir.
+     Vaka Basligi   : Corrupted Snapshot: Services is not a list
+[4] Reddetme Nedeni: GECERSIZ_VERI_TIPI: Telemetri verisi bir JSON sozluk nesnesi olmalidir.
+     Vaka Basligi   : Corrupted Snapshot: Null payload
+[5] Reddetme Nedeni: GECERSIZ_VERI_TIPI (Sozluk olmayan veri)
+     Vaka Basligi   : Sozluk disi girdi
+--------------------------------------------------------------------------------
+Toplam Reddedilen Vaka Sayisi: 5 / 5
+SONUC: Butun negatif kontrol senaryolari %100 basariyla dogrulanmistir.
+================================================================================

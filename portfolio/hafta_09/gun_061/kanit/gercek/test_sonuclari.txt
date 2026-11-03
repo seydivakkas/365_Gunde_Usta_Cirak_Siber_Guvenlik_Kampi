@@ -1,0 +1,33 @@
+test_01_ipv4_validation_positive_and_negative (portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine.TestProxyNATFirewallEngine.test_01_ipv4_validation_positive_and_negative)
+Pozitif ve Negatif Test 1: IPv4 adres biimi do­rulamas². ... ok
+test_02_valid_tcp_flags_acceptance (portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine.TestProxyNATFirewallEngine.test_02_valid_tcp_flags_acceptance)
+Pozitif Test 2: Standart TCP bayrak kombinasyonlar²n²n onaylanmas². ... ok
+test_03_negative_null_scan_detection (portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine.TestProxyNATFirewallEngine.test_03_negative_null_scan_detection)
+Negatif Test 3: Bo■ bayrakl² Null Scan taramas²n²n tespiti ve engellenmesi. ... ok
+test_04_negative_syn_fin_scan_detection (portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine.TestProxyNATFirewallEngine.test_04_negative_syn_fin_scan_detection)
+Negatif Test 4: RFC 793 ihlali SYN+FIN sald²r² taramas²n²n tespiti. ... ok
+test_05_negative_xmas_scan_detection (portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine.TestProxyNATFirewallEngine.test_05_negative_xmas_scan_detection)
+Negatif Test 5: FIN+PSH+URG bayraklar²n² ieren Xmas Scan taramas²n²n tespiti. ... ok
+test_06_stateful_firewall_new_connection (portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine.TestProxyNATFirewallEngine.test_06_stateful_firewall_new_connection)
+Pozitif Test 6: ¦zin verilen porta gelen ilk SYN paketine NEW oturumu a²lmas². ... ok
+test_07_stateful_firewall_return_traffic_established (portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine.TestProxyNATFirewallEngine.test_07_stateful_firewall_return_traffic_established)
+Pozitif Test 7: Sunucunun d÷nd³­³ SYN-ACK yan²t²n²n conntrack ile onaylanmas². ... ok
+test_08_stateful_firewall_established_data_stream (portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine.TestProxyNATFirewallEngine.test_08_stateful_firewall_established_data_stream)
+Pozitif Test 8: Kurulmu■ oturum ³zerinden veri (ACK) paketlerinin kesintisiz ak²■². ... ok
+test_09_negative_unsolicited_out_of_state_packet (portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine.TestProxyNATFirewallEngine.test_09_negative_unsolicited_out_of_state_packet)
+Negatif Test 9: Durum tablosunda olmayan beklenmedik ACK paketinin engellenmesi. ... ok
+test_10_negative_blocked_inbound_port (portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine.TestProxyNATFirewallEngine.test_10_negative_blocked_inbound_port)
+Negatif Test 10: ¦zin verilmeyen port 23 (Telnet) ³zerine gelen SYN paketinin d³■³r³lmesi. ... ok
+test_11_negative_conntrack_table_overflow (portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine.TestProxyNATFirewallEngine.test_11_negative_conntrack_table_overflow)
+Negatif Test 11: Maksimum kapasite doldu­unda ConntrackOverflowError ³retilmesi. ... ok
+test_12_pat_outbound_and_inbound_translation (portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine.TestProxyNATFirewallEngine.test_12_pat_outbound_and_inbound_translation)
+Pozitif Test 12: PAT ile d²■a do­ru kaynak IP/port d÷n³■³m³ ve geri d÷n³■ evrimi. ... ok
+test_13_negative_nat_port_exhaustion (portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine.TestProxyNATFirewallEngine.test_13_negative_nat_port_exhaustion)
+Negatif Test 13: PAT port havuzu t³kendi­inde NATExhaustionError ³retilmesi. ... ok
+test_14_proxy_xff_spoofing_defense_and_connect_tunnel (portfolio.hafta_09.gun_061.tests.test_proxy_nat_firewall_engine.TestProxyNATFirewallEngine.test_14_proxy_xff_spoofing_defense_and_connect_tunnel)
+Pozitif ve Negatif Test 14: Ters vekil XFF sahtecilik engeli ve ileri vekil CONNECT kural². ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.002s
+
+OK

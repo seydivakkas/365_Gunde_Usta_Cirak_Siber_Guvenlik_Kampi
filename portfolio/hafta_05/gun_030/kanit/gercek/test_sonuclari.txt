@@ -1,0 +1,33 @@
+test_01_journal_validator_accepts_valid_entry (test_linux_journalctl_log_auditor.TestLinuxJournalctlAuditor.test_01_journal_validator_accepts_valid_entry)
+Kal�c� depolamadaki eksiksiz journal kayd�n�n do�rulay�c�dan ba�ar�yla ge�mesini test eder. ... ok
+test_02_journal_validator_rejects_missing_message (test_linux_journalctl_log_auditor.TestLinuxJournalctlAuditor.test_02_journal_validator_rejects_missing_message)
+Mesaj alan� bo� olan journal kayd�n�n MISSING_MESSAGE hatas� �retmesini test eder. ... ok
+test_03_journal_validator_rejects_invalid_priority (test_linux_journalctl_log_auditor.TestLinuxJournalctlAuditor.test_03_journal_validator_rejects_invalid_priority)
+0-7 aral��� d���ndaki �ncelik de�erinin INVALID_PRIORITY_LEVEL hatas� vermesini test eder. ... ok
+test_04_journal_validator_rejects_malformed_timestamp (test_linux_journalctl_log_auditor.TestLinuxJournalctlAuditor.test_04_journal_validator_rejects_malformed_timestamp)
+Ge�ersiz UTC zaman damgas�n�n MALFORMED_TIMESTAMP hatas� �retmesini test eder. ... ok
+test_05_journal_validator_flags_volatile_storage_risk (test_linux_journalctl_log_auditor.TestLinuxJournalctlAuditor.test_05_journal_validator_flags_volatile_storage_risk)
+Ge�ici RAM g�nl��� (/run/log/journal) kullan�m�n�n VOLATILE_STORAGE_RISK �retmesini test eder (G030-SC1). ... ok
+test_06_load_journal_logs_dataset (test_linux_journalctl_log_auditor.TestLinuxJournalctlAuditor.test_06_load_journal_logs_dataset)
+sample_journal_logs.json dosyas�ndan t�m ge�erli kay�tlar�n ba�ar�yla y�klenmesini test eder. ... ok
+test_07_sha256_integrity_hash_computation (test_linux_journalctl_log_auditor.TestLinuxJournalctlAuditor.test_07_sha256_integrity_hash_computation)
+Do�rulanan her journal girdisi i�in 64 karakterlik SHA-256 �zeti olu�turulmas�n� test eder. ... ok
+test_08_load_journald_conf_storage_persistence (test_linux_journalctl_log_auditor.TestLinuxJournalctlAuditor.test_08_load_journald_conf_storage_persistence)
+journald.conf yap�land�rmas�ndan Storage=persistent ayar�n�n okundu�unu test eder (G030-SC1). ... ok
+test_09_filter_entries_by_unit (test_linux_journalctl_log_auditor.TestLinuxJournalctlAuditor.test_09_filter_entries_by_unit)
+systemd birimine g�re filtreleme yap�ld���nda (�rn: sshd) yaln�zca o birimin d�nmesini test eder (G030-SC2). ... ok
+test_10_filter_entries_by_priority (test_linux_journalctl_log_auditor.TestLinuxJournalctlAuditor.test_10_filter_entries_by_priority)
+Maksimum �ncelik seviyesi 4 (warning ve alt�) verildi�inde sadece kritik/hata kay�tlar�n�n d�nmesini test eder. ... ok
+test_11_filter_entries_by_text_pattern (test_linux_journalctl_log_auditor.TestLinuxJournalctlAuditor.test_11_filter_entries_by_text_pattern)
+Mesaj i�inde d�zenli ifade aramas� ile parola hatas� i�eren kay�tlar�n filtrelenmesini test eder. ... ok
+test_12_timezone_correlation_utc_and_local (test_linux_journalctl_log_auditor.TestLinuxJournalctlAuditor.test_12_timezone_correlation_utc_and_local)
+Kay�tlarda UTC ve Yerel Saat bilgilerinin kar��la�t�rmal� olarak tutuldu�unu test eder (G030-SC1). ... ok
+test_13_negative_control_corrupted_dataset (test_linux_journalctl_log_auditor.TestLinuxJournalctlAuditor.test_13_negative_control_corrupted_dataset)
+Bozuk ve ge�ici bellek kullanan kay�tlar�n negatif kontrolde %100 reddedilmesini test eder (G030-SC2). ... ok
+test_14_cli_subprocess_execution (test_linux_journalctl_log_auditor.TestLinuxJournalctlAuditor.test_14_cli_subprocess_execution)
+CLI �zerinden --audit arg�man�yla script �a�r�ld���nda 0 ��k�� koduyla �al��mas�n� test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.154s
+
+OK

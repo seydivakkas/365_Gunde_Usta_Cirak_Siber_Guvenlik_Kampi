@@ -1,0 +1,47 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+==================================================================================================
+                 TLS 1.2 vs TLS 1.3 GÜVENLİK SINIRLARI VE EL SIKIŞMA MİMARİSİ
+==================================================================================================
+
+  [ İSTEMCİ (CLIENT) ]                                                     [ SUNUCU (SERVER) ]
+          |                                                                        |
+          |========================= 1. ClientHello ==============================>|
+          |  - Desteklenen Sürümler: [TLS 1.3, TLS 1.2]                            |
+          |  - Şifre Paketleri: [TLS_AES_256_GCM_SHA384, ...]                      |
+          |  - KeyShare (Ephemeral ECDHE Public Key) [TLS 1.3]                     |
+          |  - Fallback-SCSV (RFC 7507 / Downgrade Saldırı Kalkanı)                |
+          |                                                                        |
+          |<======================== 2. ServerHello ===============================|
+          |  - Seçilen Sürüm: TLS 1.3 (veya Sentinel Baytları ile TLS 1.2)         |
+          |  - Seçilen Şifre: TLS_AES_256_GCM_SHA384 (Zorunlu AEAD & PFS)          |
+          |  - Server KeyShare (Ephemeral ECDHE Public Key)                        |
+          |  - [RFC 8446 Sentinel: 444F574E47524401 (Downgrade Tespiti)]          |
+          |                                                                        |
+          +------------------------------------------------------------------------+
+          |            KRİPTOGRAFİK GÜVENLİK SINIRI: HKDF & TRANSCRIPT-HASH        |
+          |  - Ortak Ephemeral Anahtar (ECDHE): Shared Secret                      |
+          |  - HKDF-Extract / Expand -> Handshake Secret & Traffic Secret          |
+          |  - Transcript-Hash = SHA256(ClientHello || ServerHello || ...)         |
+          +------------------------------------------------------------------------+
+          |                                                                        |
+          |<==================== 3. EncryptedExtensions & Cert ===================|
+          |  - Sertifika ve Uzantılar TLS 1.3'te ŞİFRELİ iletilir (Gizlilik)       |
+          |                                                                        |
+          |<========================= 4. Finished =================================|
+          |  - VerifyData = HMAC(HandshakeKey, TranscriptHash)                     |
+          |  - CWE-353 Bütünlük Koruması: Araya girme/tahrifat anında bozulur!     |
+          |                                                                        |
+          |========================== 5. Finished ================================>|
+          |  - İstemci Finished doğrulaması tamamlanır                             |
+          |                                                                        |
+          +========================================================================+
+          |            GÜVENLİ VERİ AKIŞI: TLS RECORD PROTOKOLÜ (AEAD)             |
+          +========================================================================+
+          |  [Header: Type(23), Version(3.3), Length]                              |
+          |  [Payload: AES-GCM / ChaCha20-Poly1305 ile Şifreli Veri]               |
+          |  [Auth Tag: 16-Bayt Bütünlük ve Kimlik Doğrulama Etiketi (CWE-353)]    |
+          |  [Sequence Number: 64-bit Monotonik Sayaç (Replay & Paket Çalma Engel)]|
+          |  [Fragment Limit: Azami 16384 Bayt (CWE-20 Taşma Koruması)]            |
+          +========================================================================+
+
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

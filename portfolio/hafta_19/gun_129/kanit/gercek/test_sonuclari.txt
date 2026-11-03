@@ -1,0 +1,35 @@
+test_01_hardened_cis_baseline (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_01_hardened_cis_baseline)
+Test 01: Kusursuz CIS uyumlu yap�land�rma 100/100 tam puan ve s�f�r bulgu �retmelidir. ... ok
+test_02_disabled_uac_enable_lua_cwe_693 (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_02_disabled_uac_enable_lua_cwe_693)
+Test 02: EnableLUA=False olmas� kritik CWE-693 bulgusu ve 40 puan d����� olu�turmal�d�r. ... ok
+test_03_filter_administrator_token_disabled_cwe_250 (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_03_filter_administrator_token_disabled_cwe_250)
+Test 03: FilterAdministratorToken=False olmas� Y�netici Onay Modu a���� (CWE-250) �retmelidir. ... ok
+test_04_prompt_on_secure_desktop_disabled_cwe_284 (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_04_prompt_on_secure_desktop_disabled_cwe_284)
+Test 04: PromptOnSecureDesktop=False olmas� 15 puan ceza ve CWE-284 uyar�s� getirmelidir. ... ok
+test_05_insecure_consent_prompt_behavior_admin_cwe_250 (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_05_insecure_consent_prompt_behavior_admin_cwe_250)
+Test 05: Y�neticiler i�in sessiz y�kseltme (0) veya gev�ek mod (5) CWE-250 bulgusu olu�turmal�d�r. ... ok
+test_06_insecure_consent_prompt_behavior_user_cwe_284 (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_06_insecure_consent_prompt_behavior_user_cwe_284)
+Test 06: Standart kullan�c�lar i�in uygun olmayan y�kseltme davran��� puan d���rmelidir. ... ok
+test_07_enable_virtualization_disabled_cwe_1188 (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_07_enable_virtualization_disabled_cwe_1188)
+Test 07: Dosya ve kay�t defteri sanalla�t�rmas�n�n kapal� olmas� 5 puan k�rmal�d�r. ... ok
+test_08_guest_account_enabled_cwe_284 (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_08_guest_account_enabled_cwe_284)
+Test 08: Yerel Guest hesab�n�n a��k olmas� 20 puan k�r�lmas�n� ve kritik zaaf� tetiklemelidir. ... ok
+test_09_builtin_admin_default_name_and_enabled_cwe_1188 (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_09_builtin_admin_default_name_and_enabled_cwe_1188)
+Test 09: Yerle�ik Administrator hesab�n�n yeniden adland�r�lmamas� ve a��k olmas� zafiyettir. ... ok
+test_10_account_lockout_zero_or_excessive_cwe_307 (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_10_account_lockout_zero_or_excessive_cwe_307)
+Test 10: Hesap kilitleme e�i�inin 0 olmas� Brute Force uyar�s� (CWE-307) �retmelidir. ... ok
+test_11_laps_disabled_cwe_1188 (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_11_laps_disabled_cwe_1188)
+Test 11: Windows LAPS'�n kapal� olmas� 10 puan d����� ve CWE-1188 �retmelidir. ... ok
+test_12_unauthorized_admin_group_member_cwe_250 (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_12_unauthorized_admin_group_member_cwe_250)
+Test 12: 'Everyone' grubunun Administrators'a eklenmesi kritik CWE-250 bulgusu �retmelidir. ... ok
+test_13_unauthorized_rdp_group_member_cwe_284 (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_13_unauthorized_rdp_group_member_cwe_284)
+Test 13: 'Users' grubunun Uzak Masa�st� grubuna eklenmesi y�ksek riskli CWE-284 bulgusu �retmelidir. ... ok
+test_14_markdown_report_structure (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_14_markdown_report_structure)
+Test 14: Markdown denetim raporunun ba�l�k, bulgu tablosu ve PowerShell beti�ini i�erdi�i do�rulanmal�d�r. ... ok
+test_15_cli_spec_parsing_and_subcommands (tests.test_uac_account_security.TestUACAccountSecurityEngine.test_15_cli_spec_parsing_and_subcommands)
+Test 15: CLI veri s�zl��� d�n��t�rmesi ve arg�man ayr��t�r�c�s� beklenen formatta �al��mal�d�r. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.003s
+
+OK

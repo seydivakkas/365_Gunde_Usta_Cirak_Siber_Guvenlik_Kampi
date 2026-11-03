@@ -1,0 +1,22 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "rapor_tarihi": "2026-11-02T08:57:35.573015",
+  "audit_id": "AUD-STAGE5-0B1E89D7",
+  "asama": "Aşama 5 (Kriptografi ve Mimari Kalite Özeti)",
+  "hedef_sistem": "Kurumsal Finansal Güvenlik ve Kimlik Platformu (Aşama 5)",
+  "skorlar": {
+    "kriptografi_skoru": 100.0,
+    "mimari_skoru": 100.0,
+    "yonetisim_ve_kanit_skoru": 100.0,
+    "genel_kalite_skoru": 100.0
+  },
+  "karar": "STAGE_5_ACCEPTED (PASS)",
+  "bulgular": [],
+  "cwe_ihlalleri": [],
+  "standart_uyumluluklari": [
+    "NIST SP 800-131A (Transitions: Recommendation for Transitioning the Use of Cryptographic Algorithms and Key Lengths)",
+    "NIST SP 800-57 (Recommendation for Key Management)",
+    "NIST SP 800-160 (Systems Security Engineering: Trustworthy Secure by Design)",
+    "Saltzer-Schroeder (1975) The Protection of Information in Computer Systems"
+  ]
+}

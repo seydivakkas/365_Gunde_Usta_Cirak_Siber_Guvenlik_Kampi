@@ -1,0 +1,72 @@
+{
+  "matrix_metadata": {
+    "organization": "Siber Savunma ve Altyapı Güvenliği Direktörlüğü",
+    "matrix_name": "UZAKTAN_YONETIM_VE_ERISIM_KONTROL_MATRISI",
+    "timestamp": "2026-10-27T11:55:00Z"
+  },
+  "remote_services": [
+    {
+      "service_id": "SVC-BASTION-SSH",
+      "target_hostname": "bastion.corp.internal",
+      "protocol": "SSH",
+      "port": 2222,
+      "listening_scope": "INTERNAL_MANAGEMENT_VLAN",
+      "allowed_cidrs": [
+        "10.10.100.0/24"
+      ],
+      "requires_bastion_or_vpn": true,
+      "is_exposed_to_internet": false,
+      "permit_root_login": false,
+      "password_auth_allowed": false,
+      "public_key_auth_enforced": true,
+      "mfa_enforced": true,
+      "nla_enforced": null,
+      "brute_force_protection": true,
+      "protection_tool": "fail2ban_and_pam_tally2",
+      "session_logging_enabled": true,
+      "is_legacy_plaintext_protocol": false
+    },
+    {
+      "service_id": "SVC-LEGACY-TELNET",
+      "target_hostname": "db-legacy.internal",
+      "protocol": "TELNET",
+      "port": 23,
+      "listening_scope": "ANY_NETWORK",
+      "allowed_cidrs": [
+        "0.0.0.0/0"
+      ],
+      "requires_bastion_or_vpn": false,
+      "is_exposed_to_internet": true,
+      "permit_root_login": true,
+      "password_auth_allowed": true,
+      "public_key_auth_enforced": false,
+      "mfa_enforced": false,
+      "nla_enforced": null,
+      "brute_force_protection": false,
+      "protection_tool": "none",
+      "session_logging_enabled": false,
+      "is_legacy_plaintext_protocol": true
+    },
+    {
+      "service_id": "SVC-FINANCE-RDP",
+      "target_hostname": "fin-ws01.corp.internal",
+      "protocol": "RDP",
+      "port": 3389,
+      "listening_scope": "PUBLIC_INTERNET_DIRECT",
+      "allowed_cidrs": [
+        "0.0.0.0/0"
+      ],
+      "requires_bastion_or_vpn": false,
+      "is_exposed_to_internet": true,
+      "permit_root_login": false,
+      "password_auth_allowed": true,
+      "public_key_auth_enforced": false,
+      "mfa_enforced": false,
+      "nla_enforced": false,
+      "brute_force_protection": false,
+      "protection_tool": "none",
+      "session_logging_enabled": false,
+      "is_legacy_plaintext_protocol": false
+    }
+  ]
+}

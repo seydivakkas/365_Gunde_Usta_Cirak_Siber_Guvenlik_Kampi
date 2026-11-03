@@ -1,0 +1,32 @@
+{
+  "gun": 123,
+  "hafta": 18,
+  "konu": "Güvenli varsayılanlar ve fail-safe",
+  "tarih": "2026-11-02",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "degerlendirme_kriterleri": {
+    "kod_kalitesi_ve_mimari": 20,
+    "birim_testler": 40,
+    "negatif_kontroller": 25,
+    "dokumantasyon_ve_analiz": 15
+  },
+  "test_istatistikleri": {
+    "birim_test_sayisi": 15,
+    "birim_test_basarili": 15,
+    "birim_test_hata": 0,
+    "negatif_kontrol_sayisi": 9,
+    "negatif_kontrol_basarili": 9
+  },
+  "cwe_kapsami": [
+    "CWE-636",
+    "CWE-1188",
+    "CWE-276",
+    "CWE-367"
+  ],
+  "standartlar": [
+    "Saltzer & Schroeder (1975) Fail-Safe Defaults",
+    "CISA Secure by Design & Secure by Default",
+    "NIST SP 800-53 Rev 5"
+  ]
+}

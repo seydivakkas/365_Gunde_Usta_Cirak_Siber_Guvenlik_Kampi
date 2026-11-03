@@ -1,0 +1,112 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+Bu dosya yapay zekâ tarafından oluşturulmuş temsili bir sistem ve protokol
+mimarisi illüstrasyonudur. Gerçek test çıktıları ve gözlenebilir kanıtlar
+'kanit/gercek/' dizini altındaki dosyalarda yer almaktadır.
+================================================================================
+
+================================================================================
+BÖLÜM 1: RFC 768 UDP BAŞLIĞI VE İKİLİ (BINARY) SAHTE BAŞLIK YAPISI
+================================================================================
+
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|          Source Port          |       Destination Port        | (0-31 bit)
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|            Length             |           Checksum            | (32-63 bit)
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
+|          Data / Application Layer Payload (opsiyonel)         | (64+ bit)
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+SAHTE BAŞLIK (PSEUDO-HEADER) CHECKSUM BİLEŞENLERİ (12 BAYT):
++-------------------------------+-------------------------------+
+|                      Source IPv4 Address                      | (4 Bayt)
++-------------------------------+-------------------------------+
+|                    Destination IPv4 Address                   | (4 Bayt)
++---------------+---------------+-------------------------------+
+|     Zeros     | Protocol (17) |           UDP Length          | (4 Bayt)
++---------------+---------------+-------------------------------+
+* Checksum = One's Complement Sum of (Pseudo-Header + UDP Header + Data + Padding)
+* IPv4 Kuralı: Checksum = 0x0000 ise "Checksum Hesaplanmadı / Devre Dışı" demektir.
+* IPv6 Kuralı (RFC 8200): UDP Checksum ZORUNLUDUR (0x0000 geçersizdir).
+
+
+================================================================================
+BÖLÜM 2: UDP YANSITMA VE AMPLİFİKASYON (REFLECTION DDOS) SALDIRI ANATOMİSİ
+================================================================================
+
+                                    +------------------------------+
+                                    |     SAVUNMASIZ SUNUCU        |
+                                    | (Açık DNS / NTP / Memcached) |
+                                    +------------------------------+
+                                            ^              |
+    1. Sahte Kaynak IP ile                  |              | 2. Devasa Yanıt
+       Küçük İstek Gönderilir               |              |    (BAF: 30x - 50,000x)
+       [Src: KURBAN_IP, Dst: SUNUCU_IP]     |              |
+                                            |              v
++------------------------+                  |       +------------------------+
+|       SALDIRGAN        |------------------+       |         KURBAN         |
+|  (IP Spoofing Yapar)   |                          |    (Hattı Felç Olur)   |
++------------------------+                          +------------------------+
+
+AMPLİFİKASYON FAKTÖRLERİ (BAF - BANDWIDTH AMPLIFICATION FACTOR) KARŞILAŞTIRMASI:
++-----------------------+------------+--------------------+---------------------+
+| Protokol / Vektör     | UDP Portu  | Tipik BAF Katsayısı| Savunmasız Özellik   |
++-----------------------+------------+--------------------+---------------------+
+| NTP (monlist)         | 123        | ~550x - 1000x      | Mode 7 komutları    |
+| Memcached             | 11211      | ~10,000x - 51,000x | UDP desteği açık    |
+| DNS (ANY / EDNS0)     | 53         | ~28x - 54x         | Açık çözümleyiciler |
+| SNMPv2 (GetBulk)      | 161        | ~6x - 15x          | Public community    |
+| SSDP (UPnP)           | 1900       | ~30x               | M-SEARCH sorgusu    |
+| CharGEN               | 19         | ~350x              | Test servisi açık   |
++-----------------------+------------+--------------------+---------------------+
+
+
+================================================================================
+BÖLÜM 3: BCP 38 / RFC 2827 VE RESPONSE RATE LIMITING (RRL) SAVUNMA MİMARİSİ
+================================================================================
+
+AĞ GİRİŞ/ÇIKIŞ FİLTRELEMESİ (INGRESS FILTERING / uRPF):
+                                                    
++-----------------------------------+
+| İstemci / Saldırgan Ağı           |
+| İzinli Subnet: 198.51.100.0/24    |
++-----------------------------------+
+                  |
+                  | [Paket Çıkışı: Src=203.0.113.50 (Sahte!)]
+                  v
+       +--------------------+
+       |  UÇ YÖNLENDİRİCİ   |
+       |  (Edge Router)     |
+       |  BCP 38 / uRPF     |
+       +--------------------+
+                  |
+                  |-- Kaynak IP izinli subnet içinde DEĞİL! -> [DROP / LOG]
+                  v
+       (Paket internete çıkamadan yerinde imha edilir!)
+
+RESPONSE RATE LIMITING (RRL) ALGORİTMASI:
+- Sunucu, aynı hedef IP ve aynı sorgu tipi için saniye başına düşen yanıt adedini sınırlar (örn. 5 yanıt/sn).
+- Eşik aşıldığında kalan yanıtlar ya sessizce düşürülür (DROP) ya da "TC=1 (Truncated)" bayrağı ile TCP'ye zorlanır.
+- TCP'ye zorlama, saldırganın sahte IP ile üçlü el sıkışmayı tamamlayamaması nedeniyle amplifikasyonu anında çökertir.
+
+
+================================================================================
+BÖLÜM 4: KAMINSKY DNS CACHE POISONING VE PORT ENTROPİSİ SAVUNMASI
+================================================================================
+
+GÜVENSİZ MODEL (Sıralı / Tahmin Edilebilir Portlar):
+- İstemci Portu : 1050, 1051, 1052... (Kolayca tahmin edilir)
+- Transaction ID: 16 bit (65,536 olasılık)
+- Saldırgan binlerce sahte DNS yanıtı yağdırarak önbelleği ele geçirir (Kaminsky Saldırısı).
+
+GÜVENLİ MODEL (RFC 5452 - Source Port Randomization & Yüksek Entropi):
+- İstemci Portu : 49152 - 65535 arası Kriptografik Rastgele (16,384 olasılık)
+- Transaction ID: 16 bit Kriptografik Rastgele (65,536 olasılık)
+- Toplam Arama Uzayı: 16,384 x 65,536 = 1,073,741,824 (~1 Milyar Kombinasyon!)
+- Başarı İhtimali: Sıfıra yakın; brute-force denemeleri IDS/IPS tarafından engellenir.
+================================================================================

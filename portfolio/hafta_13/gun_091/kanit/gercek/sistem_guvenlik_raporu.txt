@@ -1,0 +1,71 @@
+=====================================================================================
+SİSTEM GÜVENLİK VE UYUMLULUK DENETİM RAPORU (WINDOWS)
+=====================================================================================
+Rapor Kimliği:        REP-WINDOWS-1793564838
+Ana Makine (Host):    WIN-SRV-SEC-01
+İşletim Sistemi:      Microsoft Windows Server 2022 Datacenter
+Rapor Zamanı (UTC):   2026-11-01T20:25:00Z
+Çalışma Süresi:       1080.5 saat
+Denetim Modu:         DEEP
+Güvenlik Skoru:       5 / 100
+Güvenlik Durumu:      KRİTİK
+-------------------------------------------------------------------------------------
+TESPİT EDİLEN GÜVENLİK BULGULARI (5 Adet):
+-------------------------------------------------------------------------------------
+[1] SMB Portu (445) Dış Dünyaya Açık (Önem: HIGH | Kesinti: -15)
+    CWE:        CWE-276: Incorrect Default Permissions / Risky Exposure
+    Açıklama:   Port 445 ağ üzerinde dinleme durumunda; fidye yazılımları (Ransomware) ve EternalBlue benzeri saldırılar için açık hedef oluşturabilir.
+    Çözüm:      SMB erişimini güvenlik duvarı kuralları ile yalnızca güvenli yönetim alt ağına sınırlayın.
+
+[2] Uzak Masaüstü (RDP - Port 3389) Dinlemede (Önem: MEDIUM | Kesinti: -10)
+    CWE:        CWE-306: Missing Authentication for Critical Function
+    Açıklama:   RDP servisinin açık olması kaba kuvvet (Brute Force) saldırılarına maruz kalma riskini artırır.
+    Çözüm:      RDP erişimini VPN veya Network Level Authentication (NLA) arkasına alın.
+
+[3] Windows Ortak Ağ Güvenlik Duvarı Devre Dışı (Önem: HIGH | Kesinti: -20)
+    CWE:        CWE-276: Incorrect Default Permissions
+    Açıklama:   PublicProfile kapalı olduğunda makine ortak ağlarda doğrudan gelen tüm bağlantılara savunmasız kalır.
+    Çözüm:      Set-NetFirewallProfile -Profile Public -Enabled True komutunu çalıştırın.
+
+[4] Zararlı / İstenmeyen Servis Tespit Edildi: CryptoMinerSvc (Önem: CRITICAL | Kesinti: -35)
+    CWE:        CWE-506: Embedded Malicious Code
+    Açıklama:   Sistemde kripto madencilik veya şüpheli arka kapı servisi çalışıyor.
+    Çözüm:      İlgili servisi derhal durdurun ve sistemde adli analiz başlatın.
+
+[5] Kritik Güvenlik Yaması Eksik: KB5034441 (CVE-2024-20666) (Önem: CRITICAL | Kesinti: -15)
+    CWE:        CWE-1395: Dependency on Vulnerable Third-Party Component
+    Açıklama:   Sistem bilinen güvenlik açığına karşı savunmasız durumda.
+    Çözüm:      Windows Update üzerinden ilgili KB güncellemesini derhal yükleyin.
+
+=====================================================================================
+
+=====================================================================================
+SİSTEM GÜVENLİK VE UYUMLULUK DENETİM RAPORU (LINUX)
+=====================================================================================
+Rapor Kimliği:        REP-LINUX-1793564838
+Ana Makine (Host):    LNX-PROD-WEB-02
+İşletim Sistemi:      Ubuntu 24.04 LTS (Linux 6.8.0-generic)
+Rapor Zamanı (UTC):   2026-11-01T20:25:30Z
+Çalışma Süresi:       288.0 saat
+Denetim Modu:         DEEP
+Güvenlik Skoru:       25 / 100
+Güvenlik Durumu:      KRİTİK
+-------------------------------------------------------------------------------------
+TESPİT EDİLEN GÜVENLİK BULGULARI (3 Adet):
+-------------------------------------------------------------------------------------
+[1] Redis Önbellek Sunucusu (Port 6379) Erişilebilir (Önem: HIGH | Kesinti: -15)
+    CWE:        CWE-306: Missing Authentication for Critical Function
+    Açıklama:   Varsayılan yapılandırmada şifresiz çalışan Redis, uzaktan yetkisiz komut çalıştırma (RCE) riski taşır.
+    Çözüm:      Redis bind ayarını 127.0.0.1 yapın ve requirepass parolasını etkinleştirin.
+
+[2] /etc/shadow Dosyası Herkese Açık Okunabilir (World-Readable) (Önem: CRITICAL | Kesinti: -40)
+    CWE:        CWE-732: Incorrect Permission Assignment for Critical Resource
+    Açıklama:   /etc/shadow izinleri 0644 olarak ayarlanmış. Yetkisiz kullanıcılar parola özetlerini (hashes) okuyabilir.
+    Çözüm:      chmod 0640 /etc/shadow veya chmod 0000 /etc/shadow uygulayın.
+
+[3] Parolasız Sudo Yetkisi Verilmiş: guest_temp (Önem: HIGH | Kesinti: -20)
+    CWE:        CWE-250: Execution with Unnecessary Privileges
+    Açıklama:   Parola girmeden root yetkisi çalıştırabilen kullanıcılar ele geçirildiğinde saldırgan anında tam sistem kontrolü sağlar.
+    Çözüm:      /etc/sudoers dosyasından NOPASSWD yönergesini kaldırın.
+
+=====================================================================================

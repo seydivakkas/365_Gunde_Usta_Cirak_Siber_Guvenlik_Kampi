@@ -1,0 +1,52 @@
+======================================================================
+GÜN 118: SIFIR GÜVEN & EN AZ AYRICALIK NEGATİF KONTROL RAPORU
+Tarih / Saat: 2026-11-02T05:42:34.126772
+======================================================================
+
+[NEG_01] Kalıcı / Sınırsız Yönetici Ayrıcalığı Talebi (CWE-250)
+  Beklenen Güvenlik Hatası : StandingPrivilegeForbiddenError
+  Yakalanan İstisna        : StandingPrivilegeForbiddenError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_02] Katalog Dışı Aşırı Yetki Kapsamı Talebi (CWE-272)
+  Beklenen Güvenlik Hatası : ExcessiveScopeRequestedError
+  Yakalanan İstisna        : ExcessiveScopeRequestedError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_03] Süresi Dolmuş Geçici JIT Belirteci ile Erişim (CWE-613)
+  Beklenen Güvenlik Hatası : JITElevationExpiredError
+  Yakalanan İstisna        : JITElevationExpiredError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_04] Yönetilmeyen (BYOD) Güvensiz Cihaz ile PEP İhlali (CWE-284)
+  Beklenen Güvenlik Hatası : DevicePostureUntrustedError
+  Yakalanan İstisna        : DevicePostureUntrustedError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_05] Ağ Mikro-Segmentasyon Yanal Hareket İhlali (CWE-284)
+  Beklenen Güvenlik Hatası : NetworkMicroSegmentationViolationError
+  Yakalanan İstisna        : NetworkMicroSegmentationViolationError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_06] Anomali Sonucu Dinamik Güven Skoru Düşüşü (CWE-284)
+  Beklenen Güvenlik Hatası : DynamicTrustScoreDegradedError
+  Yakalanan İstisna        : DynamicTrustScoreDegradedError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_07] Kritik Kaynakta Step-Up MFA Eksikliği (CWE-308)
+  Beklenen Güvenlik Hatası : StepUpAuthenticationRequiredError
+  Yakalanan İstisna        : StepUpAuthenticationRequiredError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_08] Gerekli JIT Belirteci Olmaksızın Yetkili Kaynağa Erişim (CWE-613)
+  Beklenen Güvenlik Hatası : JITElevationExpiredError
+  Yakalanan İstisna        : JITElevationExpiredError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_09] Şifrelenmemiş Disk ve Kapalı Antivirüs Cihaz Engeli (CWE-284)
+  Beklenen Güvenlik Hatası : DevicePostureUntrustedError
+  Yakalanan İstisna        : DevicePostureUntrustedError
+  Doğrulama Durumu         : PASS (Başarıyla Engellendi)
+----------------------------------------------------------------------
+
+TOPLAM TEST EDİLEN: 9, HEPSİ BAŞARILI MI: True

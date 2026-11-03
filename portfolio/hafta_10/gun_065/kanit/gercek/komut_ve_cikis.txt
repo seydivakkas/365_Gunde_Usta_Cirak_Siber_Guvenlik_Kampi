@@ -1,0 +1,39 @@
+# G065: Follow TCP Stream ve Yeniden Birleştirme - Komut ve Çıkış Kaydı
+# Çalıştırma Tarihi: 2026-10-31T01:27:00Z
+# Çalışma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+# Yürütücü: Seydi Eryılmaz (@seydivakkas)
+
+$ python -m unittest portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler -v
+test_01_load_valid_stream_and_handshake (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_01_load_valid_stream_and_handshake)
+TCP 3'lü el sıkışması ile istemci ve sunucu ISN değerlerinin kurulduğunu test eder. ... ok
+test_02_in_order_client_http_request_reassembly (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_02_in_order_client_http_request_reassembly)
+İstemciden gönderilen iki segmentin kesintisiz HTTP GET isteği olarak birleştiğini test eder. ... ok
+test_03_out_of_order_server_response_reassembly (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_03_out_of_order_server_response_reassembly)
+Gövdesi başlığından önce gelen sunucu segmentlerinin doğru sıralandığını test eder. ... ok
+test_04_duplicate_retransmission_handling (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_04_duplicate_retransmission_handling)
+Aynı sıra numarasına sahip kopya segmentin veriyi çoğaltmadan elendiğini test eder. ... ok
+test_05_clean_connection_teardown_fin_ack (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_05_clean_connection_teardown_fin_ack)
+FIN ve ACK paketleri ile akışın arabellekte parça kalmadan kapandığını test eder. ... ok
+test_06_render_follow_stream_format (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_06_render_follow_stream_format)
+Çift yönlü sohbet dökümünün Wireshark diyalog formatında basıldığını test eder. ... ok
+test_07_summary_report_metrics (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_07_summary_report_metrics)
+Bayt hacmi, paket sayıları ve anomali istatistiklerinin tam doğruluğunu test eder. ... ok
+test_08_neg01_sequence_gap_stall_error (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_08_neg01_sequence_gap_stall_error)
+Aradaki segment kaybolduğunda SequenceGapError fırlatıldığını test eder. ... ok
+test_09_neg02_overlapping_payload_conflict_ids_evasion (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_09_neg02_overlapping_payload_conflict_ids_evasion)
+Örtüşen parçada farklı veri geldiğinde OverlappingPayloadConflictError fırlatıldığını test eder. ... ok
+test_10_neg03_corrupted_segment_payload_size (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_10_neg03_corrupted_segment_payload_size)
+Bozuk segment boyutu durumunda CorruptedSegmentError fırlatıldığını test eder. ... ok
+test_11_neg04_reassembly_buffer_overflow (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_11_neg04_reassembly_buffer_overflow)
+Çok fazla dağınık segment arabelleğe dolduğunda ReassemblyBufferOverflowError fırlatıldığını test eder. ... ok
+test_12_neg05_unreassembled_data_loss_on_rst (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_12_neg05_unreassembled_data_loss_on_rst)
+Arabellekte kopuk parça varken RST geldiğinde UnreassembledDataLossError fırlatıldığını test eder. ... ok
+test_13_neg06_missing_handshake_syn_error (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_13_neg06_missing_handshake_syn_error)
+Strict modda SYN bulunmadığında MissingHandshakeError fırlatıldığını test eder. ... ok
+test_14_neg07_to_neg09_mismatch_empty_and_invalid_protocol (portfolio.hafta_10.gun_065.tests.test_tcp_stream_reassembler.TestTCPStreamReassembler.test_14_neg07_to_neg09_mismatch_empty_and_invalid_protocol)
+Yabancı soket enjeksiyonu, boş segment listesi ve TCP dışı protokol hatalarını test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.007s
+
+OK

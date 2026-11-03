@@ -1,0 +1,41 @@
+================================================================================
+GERÇEK KANIT — UNITTEST TEST SONUÇLARI
+Tarih: 2026-10-27
+Aşama 02: Sistem, Bellek ve Düşük Seviyeli Güvenlik
+Hafta 03, Gün 017: İşletim Sistemi Çekirdeği ve Kullanıcı Modu
+Komut: python -m unittest portfolio/hafta_03/gun_017/tests/test_kernel_user_mode_boundary_analyzer.py -v
+================================================================================
+
+test_01_init_ve_adres_sinirlari (portfolio.hafta_03.gun_017.tests.test_kernel_user_mode_boundary_analyzer.TestKernelUserModeBoundaryAnalyzer.test_01_init_ve_adres_sinirlari)
+Test 01: Sınıf başlatma ve 64-bit kanonik adres sınırları doğrulaması. ... ok
+test_02_canli_surec_baglami_sorgulama (portfolio.hafta_03.gun_017.tests.test_kernel_user_mode_boundary_analyzer.TestKernelUserModeBoundaryAnalyzer.test_02_canli_surec_baglami_sorgulama)
+Test 02: Canlı sistemden mevcut sürecin yetki ve bütünlük bağlamının sorgulanması. ... ok
+test_03_dosya_yukleme_gecerli_json (portfolio.hafta_03.gun_017.tests.test_kernel_user_mode_boundary_analyzer.TestKernelUserModeBoundaryAnalyzer.test_03_dosya_yukleme_gecerli_json)
+Test 03: Geçerli bir JSON dosyasının hatasız yüklenmesi. ... ok
+test_04_dosya_yukleme_bulunamadi_negatif_kontrol (portfolio.hafta_03.gun_017.tests.test_kernel_user_mode_boundary_analyzer.TestKernelUserModeBoundaryAnalyzer.test_04_dosya_yukleme_bulunamadi_negatif_kontrol)
+Test 04: Var olmayan dosya istendiğinde FileNotFoundError fırlatılması (Negatif Test). ... ok
+test_05_syscall_gecerli_kullanici_isaretcisi (portfolio.hafta_03.gun_017.tests.test_kernel_user_mode_boundary_analyzer.TestKernelUserModeBoundaryAnalyzer.test_05_syscall_gecerli_kullanici_isaretcisi)
+Test 05: Kullanıcı alanındaki meşru bir bellek göstericisinin onaylanması. ... ok
+test_06_syscall_null_pointer_engeli_negatif_kontrol (portfolio.hafta_03.gun_017.tests.test_kernel_user_mode_boundary_analyzer.TestKernelUserModeBoundaryAnalyzer.test_06_syscall_null_pointer_engeli_negatif_kontrol)
+Test 06: NULL Pointer (0x0) enjeksiyonunun engellenmesi (CWE-476 Negatif Kontrol). ... ok
+test_07_syscall_cekirdek_alani_ihlali_negatif_kontrol (portfolio.hafta_03.gun_017.tests.test_kernel_user_mode_boundary_analyzer.TestKernelUserModeBoundaryAnalyzer.test_07_syscall_cekirdek_alani_ihlali_negatif_kontrol)
+Test 07: Çekirdek adres alanını (Kernel Space) işaret eden sahte göstericinin engellenmesi. ... ok
+test_08_syscall_integer_overflow_engeli (portfolio.hafta_03.gun_017.tests.test_kernel_user_mode_boundary_analyzer.TestKernelUserModeBoundaryAnalyzer.test_08_syscall_integer_overflow_engeli)
+Test 08: İşaretçi ve boyut toplamında 64-bit tamsayı taşması engeli. ... ok
+test_09_syscall_gecersiz_hex_formati (portfolio.hafta_03.gun_017.tests.test_kernel_user_mode_boundary_analyzer.TestKernelUserModeBoundaryAnalyzer.test_09_syscall_gecersiz_hex_formati)
+Test 09: Geçersiz karakterler içeren adres formatında hata döndürülmesi. ... ok
+test_10_byovd_surucu_denetimi_tehdit_tespiti (portfolio.hafta_03.gun_017.tests.test_kernel_user_mode_boundary_analyzer.TestKernelUserModeBoundaryAnalyzer.test_10_byovd_surucu_denetimi_tehdit_tespiti)
+Test 10: Bilinen savunmasız sürücülerin (RTCore64, gdrv) BYOVD tehdidi olarak saptanması. ... ok
+test_11_byovd_surucu_denetimi_guvenli_surucu (portfolio.hafta_03.gun_017.tests.test_kernel_user_mode_boundary_analyzer.TestKernelUserModeBoundaryAnalyzer.test_11_byovd_surucu_denetimi_guvenli_surucu)
+Test 11: Meşru ve imzalı sürücünün güvenli kabul edilmesi. ... ok
+test_12_cekirdek_taban_cizgisi_ihlal_yakalama (portfolio.hafta_03.gun_017.tests.test_kernel_user_mode_boundary_analyzer.TestKernelUserModeBoundaryAnalyzer.test_12_cekirdek_taban_cizgisi_ihlal_yakalama)
+Test 12: Çekirdek koruma taban çizgisindeki eksik ayarların ihlal olarak raporlanması. ... ok
+test_13_tam_denetim_raporu_olusturma (portfolio.hafta_03.gun_017.tests.test_kernel_user_mode_boundary_analyzer.TestKernelUserModeBoundaryAnalyzer.test_13_tam_denetim_raporu_olusturma)
+Test 13: Bütünleşik tam denetim raporunun eksiksiz veri üretmesi. ... ok
+test_14_cli_alt_surec_yurutme_dogrulamasi (portfolio.hafta_03.gun_017.tests.test_kernel_user_mode_boundary_analyzer.TestKernelUserModeBoundaryAnalyzer.test_14_cli_alt_surec_yurutme_dogrulamasi)
+Test 14: Komut satırı (CLI) aracının harici alt süreç (subprocess) olarak icra edilmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.309s
+
+OK (14/14 PASS — %100 Başarı)

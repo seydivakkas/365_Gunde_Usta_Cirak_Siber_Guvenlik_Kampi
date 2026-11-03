@@ -1,0 +1,84 @@
+{
+  "aciklama": "G068 Ağ Günlükleri ve Kişisel Veri Arındırma Negatif Sınır ve İstisna Test Senaryoları",
+  "test_senaryolari": [
+    {
+      "test_kodu": "NEG_01",
+      "senaryo_adi": "Boş Günlük Akışı İstisnası",
+      "beklenen_hata": "EmptyLogStreamError",
+      "log_verisi": []
+    },
+    {
+      "test_kodu": "NEG_02",
+      "senaryo_adi": "Geçersiz Günlük Nesne Formatı İstisnası",
+      "beklenen_hata": "InvalidLogFormatError",
+      "log_verisi": "bu_bir_sozluk_veya_liste_degil_hatali_string"
+    },
+    {
+      "test_kodu": "NEG_03",
+      "senaryo_adi": "Geçersiz veya Bozuk IP Adresi Formatı İstisnası",
+      "beklenen_hata": "InvalidIPAddressFormatError",
+      "log_verisi": {
+        "kayit_id": "NEG-IP-01",
+        "zaman_damgasi": 1730340000.0,
+        "istemci_ip": "999.888.777.666",
+        "protokol": "HTTP"
+      }
+    },
+    {
+      "test_kodu": "NEG_04",
+      "senaryo_adi": "Yetersiz veya Boş Tuzlama (Salt) Anahtarı İstisnası",
+      "beklenen_hata": "InvalidSaltKeyError",
+      "tuz_anahtari": "kisa",
+      "log_verisi": {
+        "kayit_id": "NEG-SALT-01",
+        "zaman_damgasi": 1730340000.0,
+        "istemci_ip": "192.168.1.100",
+        "protokol": "HTTP"
+      }
+    },
+    {
+      "test_kodu": "NEG_05",
+      "senaryo_adi": "Arındırma Sonrası Açıkta Kalan PII İhlali Tespiti",
+      "beklenen_hata": "UnmaskedPIIDetectedError",
+      "denetlenecek_metin": "İşlem sonucu: kullanici=veli.oz@kurum.gov.tr tckn=98765432109 tamamlandi"
+    },
+    {
+      "test_kodu": "NEG_06",
+      "senaryo_adi": "Bozuk Zaman Damgası veya Eksik Zorunlu Kayıt Kimliği",
+      "beklenen_hata": "MalformedRecordDataError",
+      "log_verisi": {
+        "zaman_damgasi": -500.0,
+        "protokol": "HTTP"
+      }
+    },
+    {
+      "test_kodu": "NEG_07",
+      "senaryo_adi": "Kritik PCI-DSS / KVKK İhlali (Açık Kredi Kartı Loglama)",
+      "beklenen_hata": "PolicyViolationError",
+      "ham_metin": "Kredi karti onaylandi: 5412751234567890 CVV=123"
+    },
+    {
+      "test_kodu": "NEG_08",
+      "senaryo_adi": "Veri Saklama Süresi Aşımı (Data Retention Exceeded)",
+      "beklenen_hata": "DataRetentionPolicyError",
+      "log_verisi": {
+        "kayit_id": "NEG-RETENTION-01",
+        "zaman_damgasi": 1400000000.0,
+        "istemci_ip": "10.0.0.1",
+        "protokol": "HTTP"
+      }
+    },
+    {
+      "test_kodu": "NEG_09",
+      "senaryo_adi": "Bozuk veya Geçersiz MAC Adresi Biçimi İstisnası",
+      "beklenen_hata": "InvalidLogFormatError",
+      "log_verisi": {
+        "kayit_id": "NEG-MAC-01",
+        "zaman_damgasi": 1730340000.0,
+        "istemci_ip": "192.168.1.50",
+        "istemci_mac": "GE-CE-RS-IZ-MA-C-ADRESI",
+        "protokol": "HTTP"
+      }
+    }
+  ]
+}

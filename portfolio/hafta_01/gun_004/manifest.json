@@ -1,0 +1,18 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ.",
+  "gun": "G004",
+  "algoritma": "sha256",
+  "dosyalar": {
+    "README.md": "40c76e20e3d2611e96c93866b404f865323e46c88c27348d9a8ccae416263ab9",
+    "ders.md": "2308290df7097fcefed023c139b301fe4ef278b38f66ef2964b48936f1c8a6bf",
+    "rapor.md": "9b2c14c835d4b40f2d1a36fa3512c86247233a9e5991bde6c4baf475926828b4",
+    "sonuc.json": "7881b52e03290b0fa78f982ce74903db16a658f75c5162c5bcb5151bd0397da4",
+    "soru_cevap.md": "138b86902ee5b6249ab3082fa728d8b41743791ecad3bde54dccd09efd86b8bc",
+    "kanit/gercek/komut_ve_cikis.txt": "dc701e07596821302c0d4b8e0e92db17167c06dc826a278d111ced8687937f42",
+    "kanit/gercek/test_sonuclari.txt": "733987a3aa5b0b21c94b028d95827f1d06567e4dae7cedca1afda9be5ab8c936",
+    "kanit/temsili/nist_csf_dongusu.txt": "f3fd11e11b554f6c19cb12661fac34bf7d975bdede89ec600661bca84d0ed7db",
+    "ornek_veri/nist_csf_matrisi.json": "c702fbc2325d7391772e3cd4e8cc2f15a70c45d907035aa12e7baccf4077294e",
+    "tests/test_nist_csf_evaluator.py": "7a6af3f3f5a88c5a7a381eb32e8dd5fb1fead1b41cbf9261bcb796b9c34994f2",
+    "uygulama/nist_csf_evaluator.py": "bd62318954c8760e211a76bf4261c8ac11824dde88f1b160faa9656d09121bf5"
+  }
+}

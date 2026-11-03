@@ -1,0 +1,92 @@
+{
+  "gun": 138,
+  "hafta": 20,
+  "konu": "Linux firewall: nftables/ufw kavramı",
+  "toplam_dosya": 22,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "7096a755bc64382b618166db3677152f1fa6a3535f31bdec702248b46446ec5d",
+      "size": 5621
+    },
+    "ders.md": {
+      "sha256": "11d3c8f7b4a456dbe472b57a75d4906843ba52228eec8b4b92ac98402a858757",
+      "size": 10898
+    },
+    "kanit_uretici.py": {
+      "sha256": "0fca64d102bc81418d471f2badbfb0be272f3a1b4c2903b91b22bc453ba6d939",
+      "size": 11971
+    },
+    "rapor.md": {
+      "sha256": "256e7dfad5b111194922b7f73838265c72b97afd3d23dac0635bd7beb95067a1",
+      "size": 6174
+    },
+    "sonuc.json": {
+      "sha256": "603984881acbf9b06d204792ff8919eb6939bec6743024c8500a78779bcb2820",
+      "size": 1150
+    },
+    "soru_cevap.md": {
+      "sha256": "c9e02628e8729503bcb974a2643351ff81879b4d9e03e17de130041773c61d56",
+      "size": 12876
+    },
+    "kanit\\gercek\\firewall_guvenlik_analiz_raporu.json": {
+      "sha256": "33b2d988b1a995e5757d0ccff3605b6b9f4772f35722675a7c0ee1492f3b4c7f",
+      "size": 875
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "sha256": "efefbd795d43fec1e886c2e1697eabb130d6f97267a93d37ec02b8e0975145bd",
+      "size": 2055
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "sha256": "14fce9c183fbad971888387018484b7c81ebc5b6b196c12fad79f031e8647de5",
+      "size": 3759
+    },
+    "kanit\\gercek\\ornek_guvenli_nftables.conf": {
+      "sha256": "6552c5a653107278310e3bd4cdbbd1ad6fb76d9240a74253034a303d4346b1f7",
+      "size": 2002
+    },
+    "kanit\\gercek\\ornek_guvenli_ufw.sh": {
+      "sha256": "633b9052e00fbbdec36806c8e0ae8ed4c35d9741eda1bdba05a8e9c27e3c2d02",
+      "size": 1092
+    },
+    "kanit\\gercek\\otomatik_sikilastirma.sh": {
+      "sha256": "3ac7d7d0ea4943f7d5f20aa015c1969b10bb1d50b10e202191f562a1d4a170b2",
+      "size": 2857
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "sha256": "531d52d875b7b1ba8c9c1eefb1f893a66a742b279bec4f440ff5d9645e14b3b2",
+      "size": 4180
+    },
+    "kanit\\temsili\\firewall_mimarisi.txt": {
+      "sha256": "a962a296af2eaeadf085478d6404bbc9c47f122871966f421a51be26c41a606c",
+      "size": 3155
+    },
+    "ornek_veri\\firewall_inventory_spec.json": {
+      "sha256": "909be3c21e886121ccb7de448991dcdb2cf7a5b580fc232177520ac2cc1708e6",
+      "size": 1695
+    },
+    "ornek_veri\\invalid_firewall_scenarios.json": {
+      "sha256": "b3fe5b5be1f6ff6eaa2a2c11b088df7d9ecf77e094178e980ab0713c978a2f3f",
+      "size": 6313
+    },
+    "tests\\__init__.py": {
+      "sha256": "17f949030717a23e5677018cbc8981ef1a66712082dee32409beffec9a876b28",
+      "size": 859
+    },
+    "tests\\test_linux_firewall_security.py": {
+      "sha256": "4045472f3a35a58300de3a62149b88ff941cd4d85430dc748a1810da33070149",
+      "size": 9887
+    },
+    "uygulama\\__init__.py": {
+      "sha256": "bae89fda322551394e8c9e7038133cc3d171464111c8d118d33850303e95b132",
+      "size": 1011
+    },
+    "uygulama\\firewall_security_cli.py": {
+      "sha256": "9540e9a128f08d8b49e8d5491240e899a7ecf1a0a654e896331c0f811a764a62",
+      "size": 7698
+    },
+    "uygulama\\linux_firewall_engine.py": {
+      "sha256": "33f363913e7ef80217f356c491b4388acade8b081f41eea0603191879878d545",
+      "size": 23989
+    }
+  }
+}

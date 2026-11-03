@@ -1,0 +1,28 @@
+{
+  "hostname": "FIN-WORKSTATION-04",
+  "operating_system": "Windows 11 Enterprise 23H2",
+  "audit_profile": "CIS_Microsoft_Windows_11_Benchmark_v3.0.0",
+  "disable_realtime_monitoring": false,
+  "disable_behavior_monitoring": false,
+  "disable_ioav_protection": false,
+  "tamper_protection_active": true,
+  "cloud_protection_level": "Basic",
+  "submit_samples_consent": "SendSafeSamples",
+  "pua_protection": "Disabled",
+  "controlled_folder_access": "Disabled",
+  "network_protection": "Disabled",
+  "exclusion_paths": [
+    "C:\\AccountingApp\\cache"
+  ],
+  "exclusion_extensions": [],
+  "exclusion_processes": [],
+  "asr_rules_map": {
+    "D4F940AB-401B-4EFC-AADC-AD5F3C50688A": 1,
+    "9E6C4E1F-7D60-472F-BA1A-A39EF669E4B2": 1,
+    "BE9BA2D9-53EA-4CDC-84E5-9B1EEEE46550": 0,
+    "3B576C88-A8D9-4467-9781-CE450E586364": 0,
+    "5BEB8E28-82E8-4337-BCB8-D4CB72E45278": 1,
+    "D3E037E1-3EB8-44C8-A917-57927947596D": 0,
+    "C1DB55AB-C21A-4637-BB3F-A12568109D35": 1
+  }
+}

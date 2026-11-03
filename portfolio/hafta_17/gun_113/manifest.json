@@ -1,0 +1,97 @@
+{
+  "gun": 113,
+  "konu": "Kimlik doğrulama ile yetkilendirme",
+  "olusturma_tarihi": "2026-11-02T05:12:02.038634",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "763bdf280b63fbaf3d96c6558daff88faf793e0c9733bed9d36dd94fe119da74",
+      "boyut_bayt": 6084
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "e3ea164de3ae5d06dee72359e2dc8a414dd4e824aa6451e4c8d9effd156caa0c",
+      "boyut_bayt": 8045
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "08ee9a6629417b6d6593ac58e0cef9b898592c65490eeb75c80e4c5222b803b8",
+      "boyut_bayt": 18440
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "e2308246743aa837a521e9c14affdd97acae0b58b0546dbf668b0b3e6472acc7",
+      "boyut_bayt": 4018
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "0c24c2bf418ce89daee44fafb857bee36afb01d1f250b09b28649476291898e2",
+      "boyut_bayt": 823
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "8efdfcee362e7015b18e5b82e546ed1aab7e35310a750fd0f16030994068a898",
+      "boyut_bayt": 11716
+    },
+    {
+      "dosya": "kanit\\gercek\\iam_guvenlik_analiz_raporu.txt",
+      "sha256": "4bc02a329aea1f9dc16e9e6ea46b8a59da7e7b173863e61d56f160409faa018e",
+      "boyut_bayt": 4342
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "c7645d2403990a1ee6bc2ece280d42eed2fba686705c8e54c55b5a68ec5d0ef0",
+      "boyut_bayt": 1374
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "8ba4c4d0cb945b0abac46e5897bfc0db9079328b24b00101c705946788a86e51",
+      "boyut_bayt": 2215
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "b48ce68736c8829003efcd00c872239b5fd75dee710dce72b3f573e7dd5d2c84",
+      "boyut_bayt": 3910
+    },
+    {
+      "dosya": "kanit\\temsili\\iam_guvenlik_mimarisi.txt",
+      "sha256": "decbdc5ae15925d72cc0bac3755dcba34ab98e218ce316743d4c216f7f1c43b7",
+      "boyut_bayt": 3426
+    },
+    {
+      "dosya": "ornek_veri\\iam_sample_environment.json",
+      "sha256": "458a434c7681ec98a9cb057d490ef143c76ece4e22bf2db271daa5695882a5d9",
+      "boyut_bayt": 2008
+    },
+    {
+      "dosya": "ornek_veri\\invalid_iam_inputs.json",
+      "sha256": "0599feeb9e4c33a23998e955d3f38b93857d9b745b162507de4d2cf926f94acc",
+      "boyut_bayt": 4867
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "40b7a7276e7ce5cd5d6ed21f3978f570bb4df959dcf2ff778209b7065ab841e3",
+      "boyut_bayt": 602
+    },
+    {
+      "dosya": "tests\\test_authn_authz.py",
+      "sha256": "ebdf2161842214274bdd44dcdf59bb38520958d5f20814451aa48aa8c418f850",
+      "boyut_bayt": 12741
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "ee96e00b2e5c8c317af02f55a506b23b926e8c8037765ea3b0dc0ce74d6a1229",
+      "boyut_bayt": 877
+    },
+    {
+      "dosya": "uygulama\\authn_authz_engine.py",
+      "sha256": "e4995dfce68f62d281397a7684fb31dec174259753291a7aa1b68cdc456f582f",
+      "boyut_bayt": 35091
+    },
+    {
+      "dosya": "uygulama\\iam_cli.py",
+      "sha256": "a3d7be24daeb4ab8072bc259153f5b95c232386353270db110d20333c88d5cf2",
+      "boyut_bayt": 8108
+    }
+  ]
+}

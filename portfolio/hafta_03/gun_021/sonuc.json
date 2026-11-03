@@ -1,0 +1,61 @@
+{
+  "gun": 21,
+  "asama": 2,
+  "hafta": 3,
+  "konu": "Mini proje 2: işletim sistemi envanteri",
+  "durum": "TAMAMLANDI_PASS",
+  "tarih": "2026-10-27",
+  "puan": 100,
+  "puan_detay": {
+    "teorik_metodolojik_hakimiyet": 20,
+    "kodlama_uygulama_yetkinligi": 40,
+    "test_dogrulama_kapsami": 25,
+    "kanit_dokumantasyon_kalitesi": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "dosyalar": [
+    "uygulama/os_security_inventory_collector.py",
+    "tests/test_os_security_inventory_collector.py",
+    "ornek_veri/os_inventory_windows_sample.json",
+    "ornek_veri/os_inventory_linux_sample.json",
+    "ornek_veri/os_inventory_schema.json",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/karsilastirmali_os_envanter.csv",
+    "kanit/temsili/os_envanter_mimarisi.txt",
+    "ders.md",
+    "soru_cevap.md",
+    "rapor.md",
+    "README.md",
+    "sonuc.json"
+  ],
+  "kanitlar": [
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/karsilastirmali_os_envanter.csv",
+    "kanit/temsili/os_envanter_mimarisi.txt"
+  ],
+  "ogrenilen_standartlar": [
+    "CIS Control 1: Inventory and Control of Enterprise Assets",
+    "CIS Control 2: Inventory and Control of Software Assets",
+    "NIST SP 800-53 Rev. 5 CM-8: Information System Component Inventory",
+    "ISO/IEC 27001:2022 A.8.1: User Endpoint Devices & Inventory",
+    "CWE-732 (Incorrect Permission Assignment) & CWE-319 (Cleartext Transmission of Sensitive Information)"
+  ],
+  "karsilanan_gereksinimler": [
+    "Sürüm, donanım, hesap, servis ve güncelleme bilgilerini 5 bağımsız alanda tutan envanter mimarisi kuruldu (G021-SC1)",
+    "Windows ve Linux için 5 kolonlu karşılaştırmalı CSV envanter şablonu oluşturuldu (G021-SC2)",
+    "Gereksiz izin, güvensiz servis (Telnet) ve bekleyen yama riskleri analiz edilip kural motoruyla denetlendi (G021-SC3)",
+    "Canlı sistemden yerel envanter toplayabilen ve bağımsız JSON haritalarını denetleyen CLI geliştirildi",
+    "14 birim test (pozitif ve negatif) 0.250 saniyede başarıyla (%100 PASS) icra edildi",
+    "Tüm kod ve test satırları didaktik açıklamalarla zenginleştirildi",
+    "Özel Lisans (Tüm Hakları Saklıdır) tüm dosyalara uygulandı"
+  ],
+  "notlar": "Hafta 03 Mini Proje 2 eksiksiz tamamlanarak 14/14 test PASS ve 100/100 tam puanla sonuçlandırıldı."
+}

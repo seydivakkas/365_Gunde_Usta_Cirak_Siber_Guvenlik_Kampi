@@ -1,0 +1,136 @@
+{
+  "$sema_versiyonu": "1.0",
+  "aciklama": "Siber Güvenlik Laboratuvarı Ağ Sınırları, Bölümleme ve Güvenlik Duvarı Matrisi",
+  "olusturan": "Seydi Eryılmaz (@seydivakkas)",
+  "tarih": "2026-10-27",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz. Açık kaynak lisans KULLANILMAZ.",
+  "ag_topolojileri": [
+    {
+      "topoloji_id": "TOPOLOGY-SEC-01",
+      "topoloji_adi": "Sertlestirilmis_Mikro_Segmentasyon_Lab_Agi",
+      "mimari_tipi": "Mikro_Segmentasyon_4_Bolge",
+      "guvenlik_seviyesi": "KRITIK_IZOLE_AIRGAPPED",
+      "ag_bolgeleri": [
+        {
+          "bolge_id": "ZONE-DETONATION",
+          "bolge_adi": "Karantina_Patlatma_Bolgesi",
+          "vlan_id": 66,
+          "alt_ag_cidr": "192.168.66.0/24",
+          "rol": "Zararlı Yazılım Analizi ve Kurban Makineler",
+          "internet_cikis_izni": false,
+          "dns_sinkhole_etkin": true,
+          "sinkhole_dns_ip": "192.168.66.2",
+          "harici_genel_dns_engelli": true
+        },
+        {
+          "bolge_id": "ZONE-ATTACKER",
+          "bolge_adi": "Kirmizi_Takim_Saldiri_Bolgesi",
+          "vlan_id": 10,
+          "alt_ag_cidr": "192.168.10.0/24",
+          "rol": "Saldırı ve Sızma Testi Düğümleri (Kali Linux)",
+          "internet_cikis_izni": false,
+          "dns_sinkhole_etkin": false,
+          "sinkhole_dns_ip": null,
+          "harici_genel_dns_engelli": true
+        },
+        {
+          "bolge_id": "ZONE-SOC-SIEM",
+          "bolge_adi": "Mavi_Takim_Gozlem_Bolgesi",
+          "vlan_id": 20,
+          "alt_ag_cidr": "192.168.20.0/24",
+          "rol": "Log Toplama, SIEM ve Trafik İzleme (Wazuh, Zeek)",
+          "internet_cikis_izni": false,
+          "dns_sinkhole_etkin": false,
+          "sinkhole_dns_ip": null,
+          "harici_genel_dns_engelli": true
+        },
+        {
+          "bolge_id": "ZONE-MGMT",
+          "bolge_adi": "Yonetim_Out_of_Band_Bolgesi",
+          "vlan_id": 99,
+          "alt_ag_cidr": "192.168.99.0/24",
+          "rol": "Analist Yönetim Konsolu (Host-Only)",
+          "internet_cikis_izni": false,
+          "dns_sinkhole_etkin": false,
+          "sinkhole_dns_ip": null,
+          "harici_genel_dns_engelli": true
+        }
+      ],
+      "guvenlik_duvari_politikasi": {
+        "varsayilan_forward_eylemi": "DROP",
+        "varsayilan_input_eylemi": "DROP",
+        "statefull_conntrack_aktif": true,
+        "kurbandan_disariya_yeni_baglanti_engeli": true,
+        "bolgeler_arasi_kurallar": [
+          {
+            "kural_id": "FW-RULE-01",
+            "kaynak_bolge": "ZONE-ATTACKER",
+            "hedef_bolge": "ZONE-DETONATION",
+            "protokol": "tcp",
+            "hedef_portlar": [80, 443, 445, 3389],
+            "durum_takibi": "NEW,ESTABLISHED",
+            "eylem": "ACCEPT",
+            "aciklama": "Saldırgan kurbana yalnızca belirlenen test portlarından erişebilir"
+          },
+          {
+            "kural_id": "FW-RULE-02",
+            "kaynak_bolge": "ZONE-DETONATION",
+            "hedef_bolge": "ZONE-ATTACKER",
+            "protokol": "tcp",
+            "hedef_portlar": [],
+            "durum_takibi": "ESTABLISHED,RELATED",
+            "eylem": "ACCEPT",
+            "aciklama": "Kurban yalnızca başlatılan oturumlara yanıt dönebilir; YENİ (NEW) tersine kabuk başlatamaz"
+          },
+          {
+            "kural_id": "FW-RULE-03",
+            "kaynak_bolge": "ZONE-DETONATION",
+            "hedef_bolge": "ZONE-SOC-SIEM",
+            "protokol": "udp",
+            "hedef_portlar": [514, 1514],
+            "durum_takibi": "NEW",
+            "eylem": "ACCEPT",
+            "aciklama": "Kurban telemetri ve ajan loglarını SIEM düğümüne gönderebilir"
+          }
+        ]
+      }
+    },
+    {
+      "topoloji_id": "TOPOLOGY-RISK-99",
+      "topoloji_adi": "Guvenliksiz_Duz_Kacak_Lab_Agi",
+      "mimari_tipi": "Duz_Ag_Tek_Segment",
+      "guvenlik_seviyesi": "YUKSEK_RISK_SIZINTI",
+      "ag_bolgeleri": [
+        {
+          "bolge_id": "ZONE-FLAT",
+          "bolge_adi": "Tehlikeli_Duz_Karisik_Ag",
+          "vlan_id": 1,
+          "alt_ag_cidr": "192.168.1.0/24",
+          "rol": "Kurban, Saldırgan ve Ev Modemi Aynı Havuzda!",
+          "internet_cikis_izni": true,
+          "dns_sinkhole_etkin": false,
+          "sinkhole_dns_ip": null,
+          "harici_genel_dns_engelli": false
+        }
+      ],
+      "guvenlik_duvari_politikasi": {
+        "varsayilan_forward_eylemi": "ACCEPT",
+        "varsayilan_input_eylemi": "ACCEPT",
+        "statefull_conntrack_aktif": false,
+        "kurbandan_disariya_yeni_baglanti_engeli": false,
+        "bolgeler_arasi_kurallar": [
+          {
+            "kural_id": "FW-BAD-ALL",
+            "kaynak_bolge": "ZONE-FLAT",
+            "hedef_bolge": "INTERNET",
+            "protokol": "all",
+            "hedef_portlar": [],
+            "durum_takibi": "ANY",
+            "eylem": "ACCEPT",
+            "aciklama": "Tüm kurbanlar doğrudan internete ve dış C2 sunucularına açık!"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "dosyalar": {
+    "README.md": "ee871ac9678101281ff33fd1798ef16b073b4fe8e47096053d6b395d630171ff",
+    "ders.md": "ce2362b173d7ae2a6530e1c9adb658b62aa98dbb6c5b74d513b6ea7f2c1e3055",
+    "rapor.md": "cec4241cdd31a7595b7b5726b77feffa1a8df1c8645c3128e9578327fe374358",
+    "sonuc.json": "7bfd0b4c27d0001730d3f50cce7a4111efd376ef6e41e74f38e2316da89bbd7c",
+    "soru_cevap.md": "7e2030cb5879d525809e2fb0514fdfb33f20fc29604510a914a368b012241eac",
+    "kanit/gercek/komut_ve_cikis.txt": "3ce990573a3f1ee5fcfefaa06db99baaac6e753d6b8e5a36c85c1f9ff28daca3",
+    "kanit/gercek/test_sonuclari.txt": "7095b7e07ce7df03f9c6201148c56fe01d8b9acbf66b92809fe0aacd0c279888",
+    "kanit/temsili/kapsam_ve_yasal_yetki_sema.txt": "699fa20c787f839554e95623818d27b365032497d0adede9920a4b439b6a2708",
+    "ornek_veri/kapsam_belgesi.json": "3c98b8d03dbb6c3e83226181963de6165570c5a9fe0c92eebd6aa73492eda514",
+    "tests/test_scope_validator.py": "14d31bb5b67ff86c0cbb0cbead9486368deb660f5263ebb442ffc345ee929342",
+    "uygulama/scope_validator.py": "ed775a02fd8adc5e4060f849aba6336b05def5701f7d575406b3ed6c361371a3"
+  }
+}

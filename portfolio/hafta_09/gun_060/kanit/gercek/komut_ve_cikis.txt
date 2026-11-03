@@ -1,0 +1,38 @@
+==============================================================================
+G060: HTTP/2 VE HTTP/3 FARKLARI — KOMUT VE YURUTME KANITI
+==============================================================================
+Tarih: 2026-10-29 22:27:47 UTC+3
+Calisma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Python Surumu: Python 3.14.0 (Windows x64)
+Test Modulu: portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer
+
+Calistirilan Komut:
+$ python -m unittest portfolio.hafta_09.gun_060.tests.test_http2_http3_analyzer -v
+
+Cikis Kodu (Exit Code): 0 (Basarili)
+
+Test Sonuclari Ozeti:
+- Toplam Test: 14
+- Basarili: 14
+- Hatali (Error): 0
+- Basarisiz (Failure): 0
+- Calisma Suresi: 0.001 saniye
+- Durum: OK (PASS)
+
+Yurutulen Testlerin Kapsami:
+1.  test_01_valid_settings_frame_header_parsing              -> OK (Pozitif: SETTINGS 9 bayt baslik, Stream 0, Length 6 ayrıştırma)
+2.  test_02_valid_headers_frame_parsing                      -> OK (Pozitif: HEADERS akış seviyesi ayrıştırma, Stream 1)
+3.  test_03_negative_truncated_frame_header                 -> OK (Negatif: <9 bayt kesik başlıkta HTTP2MalformedFrameError)
+4.  test_04_negative_unknown_frame_type                     -> OK (Negatif: RFC 7540 tanımsız 0xFF tipinde HTTP2ValidationError)
+5.  test_05_negative_frame_length_overflow                  -> OK (Negatif: 16384 bayt sınır aşımı engelleme)
+6.  test_06_negative_payload_length_mismatch                -> OK (Negatif: Kesik gövde akışında HTTP2MalformedFrameError)
+7.  test_07_negative_data_frame_on_stream_zero              -> OK (Negatif: DATA çerçevesi Akış 0 ihlali engelleme)
+8.  test_08_negative_settings_frame_on_stream_positive      -> OK (Negatif: SETTINGS çerçevesi Akış > 0 ihlali engelleme)
+9.  test_09_rst_stream_payload_validation                   -> OK (Pozitif/Negatif: RST_STREAM 4 bayt hata kodu kuralı)
+10. test_10_ping_payload_validation                         -> OK (Pozitif/Negatif: PING 8 bayt yük kuralı)
+11. test_11_settings_payload_multiple_of_six                -> OK (Pozitif/Negatif: SETTINGS 6 bayt katı yük kuralı)
+12. test_12_rapid_reset_ddos_detection                      -> OK (Pozitif/Negatif: CVE-2023-44487 Rapid Reset saldırı tespiti)
+13. test_13_quic_anti_amplification_limit                   -> OK (Pozitif/Negatif: RFC 9000 3x UDP Anti-Amplification denetimi)
+14. test_14_hol_blocking_simulation_and_matrix_comparison   -> OK (Pozitif: HTTP/2 TCP HoL vs HTTP/3 QUIC HoL simülasyonu)
+
+Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Ozel Lisans — Tum Haklari Saklidir.

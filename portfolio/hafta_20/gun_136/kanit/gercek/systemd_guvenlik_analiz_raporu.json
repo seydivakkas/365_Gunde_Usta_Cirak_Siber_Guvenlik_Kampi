@@ -1,0 +1,290 @@
+{
+  "guvenlik_skoru": 0.0,
+  "durum": "KRİTİK RİSK (ACİL MÜDAHALE GEREKLİ)",
+  "toplam_servis": 5,
+  "toplam_bulgu": 19,
+  "kritik_bulgu_sayisi": 3,
+  "yuksek_bulgu_sayisi": 7,
+  "orta_bulgu_sayisi": 4,
+  "dusuk_bulgu_sayisi": 5,
+  "bulgular": [
+    {
+      "rule_id": "SYS-001",
+      "service_name": "telnet.socket",
+      "cwe": "CWE-250",
+      "mitre_attack": "T1059",
+      "severity": "HIGH",
+      "title": "Gereksiz ve Güvensiz Servis Aktif (CIS Benchmark)",
+      "description": "'telnet.socket' servisi kurumsal sunucularda aktif olmamalıdır: Telnet şifrelenmemiş metin protokolü (CIS 2.1.1).",
+      "remediation_advice": "Servisi durdurun, devre dışı bırakın ve maskeleyin: systemctl disable --now telnet.socket && systemctl mask telnet.socket",
+      "deduction_points": 15.0
+    },
+    {
+      "rule_id": "SYS-004",
+      "service_name": "telnet.socket",
+      "cwe": "CWE-250",
+      "mitre_attack": "T1068",
+      "severity": "HIGH",
+      "title": "Servis 'root' Kullanıcısıyla Çalıştırılıyor (Aşırı Yetki)",
+      "description": "'telnet.socket' servisinde 'User=' direktifi tanımlanmamış veya doğrudan 'root' olarak atanmıştır. Servis zafiyete uğradığında saldırgan doğrudan root hakları kazanır.",
+      "remediation_advice": "Servis için ayrılmış yetkisiz bir sistem kullanıcısı oluşturun ve unit dosyasına ekleyin (Örn: User=appuser, Group=appuser).",
+      "deduction_points": 15.0
+    },
+    {
+      "rule_id": "SYS-005",
+      "service_name": "telnet.socket",
+      "cwe": "CWE-250",
+      "mitre_attack": "T1548",
+      "severity": "HIGH",
+      "title": "NoNewPrivileges Sandboxing Direktifi Eksik",
+      "description": "'telnet.socket' servisinde 'NoNewPrivileges=yes' tanımlanmamış. Bu durum, servisin SUID/SGID ikili dosyaları kullanarak çekirdek seviyesinde yetki yükseltmesine izin verir.",
+      "remediation_advice": "Unit dosyasının [Service] bölümüne 'NoNewPrivileges=yes' satırını ekleyin.",
+      "deduction_points": 10.0
+    },
+    {
+      "rule_id": "SYS-006",
+      "service_name": "telnet.socket",
+      "cwe": "CWE-732",
+      "mitre_attack": "T1565.001",
+      "severity": "MEDIUM",
+      "title": "ProtectSystem Dosya Koruma Direktifi Eksik veya Yetersiz",
+      "description": "'telnet.socket' servisinde ProtectSystem değeri 'tanımsız'. Bu durum /usr, /boot ve /etc dizinlerinin değiştirilmesine yol açabilir.",
+      "remediation_advice": "Unit dosyasının [Service] bölümüne 'ProtectSystem=strict' veya 'ProtectSystem=full' direktifini ekleyin.",
+      "deduction_points": 8.0
+    },
+    {
+      "rule_id": "SYS-007",
+      "service_name": "telnet.socket",
+      "cwe": "CWE-200",
+      "mitre_attack": "T1005",
+      "severity": "MEDIUM",
+      "title": "ProtectHome Ev Dizini İzolasyonu Eksik",
+      "description": "'telnet.socket' servisinde ProtectHome değeri 'tanımsız'. Servis süreçleri /home, /root ve /run/user altındaki hassas verilere erişebilir.",
+      "remediation_advice": "Unit dosyasının [Service] bölümüne 'ProtectHome=yes' veya 'ProtectHome=read-only' ekleyin.",
+      "deduction_points": 8.0
+    },
+    {
+      "rule_id": "SYS-008",
+      "service_name": "telnet.socket",
+      "cwe": "CWE-377",
+      "mitre_attack": "T1059",
+      "severity": "LOW",
+      "title": "PrivateTmp Geçici Dizin İzolasyonu Eksik",
+      "description": "'telnet.socket' servisinde 'PrivateTmp=yes' aktif değil. Servis ortak /tmp alanını kullanmakta ve symlink/race condition saldırılarına açık kalmaktadır.",
+      "remediation_advice": "Unit dosyasının [Service] bölümüne 'PrivateTmp=yes' ekleyerek yalıtılmış geçici dosya alanı tanımlayın.",
+      "deduction_points": 4.0
+    },
+    {
+      "rule_id": "SYS-009",
+      "service_name": "telnet.socket",
+      "cwe": "CWE-250",
+      "mitre_attack": "T1059",
+      "severity": "LOW",
+      "title": "PrivateDevices Ham Donanım İzolasyonu Eksik",
+      "description": "'telnet.socket' servisinde 'PrivateDevices=yes' aktif değil. Servis süreçleri doğrudan disk ve bellek blok aygıtlarına erişim talep edebilir.",
+      "remediation_advice": "Unit dosyasının [Service] bölümüne 'PrivateDevices=yes' direktifini ekleyin.",
+      "deduction_points": 4.0
+    },
+    {
+      "rule_id": "SYS-002",
+      "service_name": "legacy-worker.service",
+      "cwe": "CWE-732",
+      "mitre_attack": "T1543.002",
+      "severity": "CRITICAL",
+      "title": "Gevşek Servis Unit Dosyası İzinleri / Sahipliği",
+      "description": "Unit dosyası '/etc/systemd/system/legacy-worker.service' izinleri (0666) veya sahipliği (developer:developer) güvensizdir. Yazma yetkisi olan kullanıcı ExecStart komutunu değiştirip root olabilir.",
+      "remediation_advice": "Dosya sahipliğini root yapın ve izinleri 0644 ile sınırlandırın: chown root:root /etc/systemd/system/legacy-worker.service && chmod 0644 /etc/systemd/system/legacy-worker.service",
+      "deduction_points": 20.0
+    },
+    {
+      "rule_id": "SYS-003",
+      "service_name": "legacy-worker.service",
+      "cwe": "CWE-732",
+      "mitre_attack": "T1548.001",
+      "severity": "CRITICAL",
+      "title": "Güvensiz Servis Binary İzinleri veya SUID Bayrağı",
+      "description": "Servisin çalıştırdığı ikili dosya gevşek izinlere (0777) sahiptir veya tehlikeli SUID bayrağı içermektedir (SUID: False).",
+      "remediation_advice": "İkili dosyanın yazma izinlerini yalnızca root ile sınırlandırın (chmod 0755) ve gereksiz SUID bitini kaldırın (chmod u-s).",
+      "deduction_points": 20.0
+    },
+    {
+      "rule_id": "SYS-004",
+      "service_name": "legacy-worker.service",
+      "cwe": "CWE-250",
+      "mitre_attack": "T1068",
+      "severity": "HIGH",
+      "title": "Servis 'root' Kullanıcısıyla Çalıştırılıyor (Aşırı Yetki)",
+      "description": "'legacy-worker.service' servisinde 'User=' direktifi tanımlanmamış veya doğrudan 'root' olarak atanmıştır. Servis zafiyete uğradığında saldırgan doğrudan root hakları kazanır.",
+      "remediation_advice": "Servis için ayrılmış yetkisiz bir sistem kullanıcısı oluşturun ve unit dosyasına ekleyin (Örn: User=appuser, Group=appuser).",
+      "deduction_points": 15.0
+    },
+    {
+      "rule_id": "SYS-005",
+      "service_name": "legacy-worker.service",
+      "cwe": "CWE-250",
+      "mitre_attack": "T1548",
+      "severity": "HIGH",
+      "title": "NoNewPrivileges Sandboxing Direktifi Eksik",
+      "description": "'legacy-worker.service' servisinde 'NoNewPrivileges=yes' tanımlanmamış. Bu durum, servisin SUID/SGID ikili dosyaları kullanarak çekirdek seviyesinde yetki yükseltmesine izin verir.",
+      "remediation_advice": "Unit dosyasının [Service] bölümüne 'NoNewPrivileges=yes' satırını ekleyin.",
+      "deduction_points": 10.0
+    },
+    {
+      "rule_id": "SYS-006",
+      "service_name": "legacy-worker.service",
+      "cwe": "CWE-732",
+      "mitre_attack": "T1565.001",
+      "severity": "MEDIUM",
+      "title": "ProtectSystem Dosya Koruma Direktifi Eksik veya Yetersiz",
+      "description": "'legacy-worker.service' servisinde ProtectSystem değeri 'no'. Bu durum /usr, /boot ve /etc dizinlerinin değiştirilmesine yol açabilir.",
+      "remediation_advice": "Unit dosyasının [Service] bölümüne 'ProtectSystem=strict' veya 'ProtectSystem=full' direktifini ekleyin.",
+      "deduction_points": 8.0
+    },
+    {
+      "rule_id": "SYS-007",
+      "service_name": "legacy-worker.service",
+      "cwe": "CWE-200",
+      "mitre_attack": "T1005",
+      "severity": "MEDIUM",
+      "title": "ProtectHome Ev Dizini İzolasyonu Eksik",
+      "description": "'legacy-worker.service' servisinde ProtectHome değeri 'no'. Servis süreçleri /home, /root ve /run/user altındaki hassas verilere erişebilir.",
+      "remediation_advice": "Unit dosyasının [Service] bölümüne 'ProtectHome=yes' veya 'ProtectHome=read-only' ekleyin.",
+      "deduction_points": 8.0
+    },
+    {
+      "rule_id": "SYS-008",
+      "service_name": "legacy-worker.service",
+      "cwe": "CWE-377",
+      "mitre_attack": "T1059",
+      "severity": "LOW",
+      "title": "PrivateTmp Geçici Dizin İzolasyonu Eksik",
+      "description": "'legacy-worker.service' servisinde 'PrivateTmp=yes' aktif değil. Servis ortak /tmp alanını kullanmakta ve symlink/race condition saldırılarına açık kalmaktadır.",
+      "remediation_advice": "Unit dosyasının [Service] bölümüne 'PrivateTmp=yes' ekleyerek yalıtılmış geçici dosya alanı tanımlayın.",
+      "deduction_points": 4.0
+    },
+    {
+      "rule_id": "SYS-009",
+      "service_name": "legacy-worker.service",
+      "cwe": "CWE-250",
+      "mitre_attack": "T1059",
+      "severity": "LOW",
+      "title": "PrivateDevices Ham Donanım İzolasyonu Eksik",
+      "description": "'legacy-worker.service' servisinde 'PrivateDevices=yes' aktif değil. Servis süreçleri doğrudan disk ve bellek blok aygıtlarına erişim talep edebilir.",
+      "remediation_advice": "Unit dosyasının [Service] bölümüne 'PrivateDevices=yes' direktifini ekleyin.",
+      "deduction_points": 4.0
+    },
+    {
+      "rule_id": "SYS-003",
+      "service_name": "debug-monitor.service",
+      "cwe": "CWE-732",
+      "mitre_attack": "T1548.001",
+      "severity": "CRITICAL",
+      "title": "Güvensiz Servis Binary İzinleri veya SUID Bayrağı",
+      "description": "Servisin çalıştırdığı ikili dosya gevşek izinlere (4755) sahiptir veya tehlikeli SUID bayrağı içermektedir (SUID: True).",
+      "remediation_advice": "İkili dosyanın yazma izinlerini yalnızca root ile sınırlandırın (chmod 0755) ve gereksiz SUID bitini kaldırın (chmod u-s).",
+      "deduction_points": 20.0
+    },
+    {
+      "rule_id": "SYS-005",
+      "service_name": "debug-monitor.service",
+      "cwe": "CWE-250",
+      "mitre_attack": "T1548",
+      "severity": "HIGH",
+      "title": "NoNewPrivileges Sandboxing Direktifi Eksik",
+      "description": "'debug-monitor.service' servisinde 'NoNewPrivileges=yes' tanımlanmamış. Bu durum, servisin SUID/SGID ikili dosyaları kullanarak çekirdek seviyesinde yetki yükseltmesine izin verir.",
+      "remediation_advice": "Unit dosyasının [Service] bölümüne 'NoNewPrivileges=yes' satırını ekleyin.",
+      "deduction_points": 10.0
+    },
+    {
+      "rule_id": "SYS-009",
+      "service_name": "debug-monitor.service",
+      "cwe": "CWE-250",
+      "mitre_attack": "T1059",
+      "severity": "LOW",
+      "title": "PrivateDevices Ham Donanım İzolasyonu Eksik",
+      "description": "'debug-monitor.service' servisinde 'PrivateDevices=yes' aktif değil. Servis süreçleri doğrudan disk ve bellek blok aygıtlarına erişim talep edebilir.",
+      "remediation_advice": "Unit dosyasının [Service] bölümüne 'PrivateDevices=yes' direktifini ekleyin.",
+      "deduction_points": 4.0
+    },
+    {
+      "rule_id": "SYS-010",
+      "service_name": "debug-monitor.service",
+      "cwe": "CWE-250",
+      "mitre_attack": "T1548",
+      "severity": "HIGH",
+      "title": "Tehlikeli Linux Çekirdek Yetenekleri (Capabilities) Tanımlı",
+      "description": "'debug-monitor.service' servisine tehlikeli çekirdek yetenekleri tahsis edilmiştir: CAP_SYS_ADMIN, CAP_SYS_PTRACE.",
+      "remediation_advice": "CapabilityBoundingSet direktifinden şu yetenekleri çıkarın: CAP_SYS_ADMIN, CAP_SYS_PTRACE.",
+      "deduction_points": 12.0
+    }
+  ],
+  "servis_detaylari": [
+    {
+      "name": "nginx.service",
+      "path": "/lib/systemd/system/nginx.service",
+      "user": "www-data",
+      "exposure_skoru": 0.0,
+      "exposure_seviyesi": "OK (DÜŞÜK RİSK)",
+      "bulgu_sayisi": 0,
+      "bulgular": []
+    },
+    {
+      "name": "api-backend.service",
+      "path": "/etc/systemd/system/api-backend.service",
+      "user": "apiuser",
+      "exposure_skoru": 0.0,
+      "exposure_seviyesi": "OK (DÜŞÜK RİSK)",
+      "bulgu_sayisi": 0,
+      "bulgular": []
+    },
+    {
+      "name": "telnet.socket",
+      "path": "/lib/systemd/system/telnet.socket",
+      "user": "root",
+      "exposure_skoru": 9.0,
+      "exposure_seviyesi": "UNSAFE (ÇOK TEHLİKELİ)",
+      "bulgu_sayisi": 7,
+      "bulgular": [
+        "Gereksiz ve Güvensiz Servis Aktif (CIS Benchmark)",
+        "Servis 'root' Kullanıcısıyla Çalıştırılıyor (Aşırı Yetki)",
+        "NoNewPrivileges Sandboxing Direktifi Eksik",
+        "ProtectSystem Dosya Koruma Direktifi Eksik veya Yetersiz",
+        "ProtectHome Ev Dizini İzolasyonu Eksik",
+        "PrivateTmp Geçici Dizin İzolasyonu Eksik",
+        "PrivateDevices Ham Donanım İzolasyonu Eksik"
+      ]
+    },
+    {
+      "name": "legacy-worker.service",
+      "path": "/etc/systemd/system/legacy-worker.service",
+      "user": "root",
+      "exposure_skoru": 10.0,
+      "exposure_seviyesi": "UNSAFE (ÇOK TEHLİKELİ)",
+      "bulgu_sayisi": 8,
+      "bulgular": [
+        "Gevşek Servis Unit Dosyası İzinleri / Sahipliği",
+        "Güvensiz Servis Binary İzinleri veya SUID Bayrağı",
+        "Servis 'root' Kullanıcısıyla Çalıştırılıyor (Aşırı Yetki)",
+        "NoNewPrivileges Sandboxing Direktifi Eksik",
+        "ProtectSystem Dosya Koruma Direktifi Eksik veya Yetersiz",
+        "ProtectHome Ev Dizini İzolasyonu Eksik",
+        "PrivateTmp Geçici Dizin İzolasyonu Eksik",
+        "PrivateDevices Ham Donanım İzolasyonu Eksik"
+      ]
+    },
+    {
+      "name": "debug-monitor.service",
+      "path": "/etc/systemd/system/debug-monitor.service",
+      "user": "monuser",
+      "exposure_skoru": 7.0,
+      "exposure_seviyesi": "HIGH (YÜKSEK RİSK)",
+      "bulgu_sayisi": 4,
+      "bulgular": [
+        "Güvensiz Servis Binary İzinleri veya SUID Bayrağı",
+        "NoNewPrivileges Sandboxing Direktifi Eksik",
+        "PrivateDevices Ham Donanım İzolasyonu Eksik",
+        "Tehlikeli Linux Çekirdek Yetenekleri (Capabilities) Tanımlı"
+      ]
+    }
+  ]
+}

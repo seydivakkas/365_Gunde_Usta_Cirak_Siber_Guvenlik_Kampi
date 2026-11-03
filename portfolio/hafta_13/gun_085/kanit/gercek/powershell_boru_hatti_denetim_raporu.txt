@@ -1,0 +1,36 @@
+================================================================================
+G085: POWERSHELL NESNE BORU HATTI - GERCEK DENETIM VE TEHDIT AVCILIGI CIKTISI
+Tarih: 2026-11-01T22:24:00+03:00
+Girdi Dosyasi: ornek_veri/sample_powershell_artifacts.json
+================================================================================
+
+1. BORU HATTI NESNE ISLEME METRIKLERI:
+  Toplam Islenen Nesne   : 5
+  Toplam Uretilen Tehdit : 2
+  Boru Hatti Guvenli Mi  : False
+
+2. TESPIT EDILEN SUPHELI SURECLER (PROCESS PIPELINE HUNTING):
+  - [PID: 9912] mimikatz (CPU: 12.8%, Bellek: 114.87 MB, Imzali: False)
+    Yol: C:\Users\Public\mimikatz.exe
+    Komut Satiri: mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" exit
+    Ebeveyn: powershell.exe (PPID: 4820)
+    Bayraklar: KNOWN_ATTACK_TOOL: mimikatz, UNSIGNED_BINARY_IN_WRITABLE_PATH: C:\Users\Public\mimikatz.exe
+
+3. TESPIT EDILEN SUPHELI AG SOKETLERI (NETWORK CORRELATION):
+  - Yerel: 0.0.0.0:4444 | Durum: Listen | Sahip PID: 9912
+
+4. BORU HATTI BULGU AYRINTILARI:
+  - [CRITICAL] FIND-PROC-001 | Kural: SUSPICIOUS_PROCESS_DETECTED | CWE: CWE-250: Execution with Unnecessary Privileges / LOLBins
+    Detay: Surec 'mimikatz' (PID: 9912) supheli: KNOWN_ATTACK_TOOL: mimikatz
+  - [HIGH] FIND-PROC-002 | Kural: SUSPICIOUS_PROCESS_DETECTED | CWE: CWE-250: Execution with Unnecessary Privileges / LOLBins
+    Detay: Surec 'mimikatz' (PID: 9912) supheli: UNSIGNED_BINARY_IN_WRITABLE_PATH: C:\Users\Public\mimikatz.exe
+  - [HIGH] FIND-NET-003 | Kural: SUSPICIOUS_NETWORK_SOCKET | CWE: CWE-200: Information Exposure Through Network Socket
+    Detay: Supheli ag soketi: 0.0.0.0:4444 (Durum: Listen, PID: 9912)
+
+5. ORNEK BETIK STATIK GUVENLIK DENETIMI (sample_pipeline_script.ps1):
+  Tespit Edilen Zafiyet Sayisi: 0
+  [ONAYLANDI] Betik hicbir IEX, Download Cradle, Base64 veya Unquoted Path icermemektedir.
+
+================================================================================
+SONUC: PowerShell nesne boru hatti uzerinden tehdit avciligi basariyla tamamlandi.
+================================================================================

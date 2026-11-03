@@ -1,0 +1,89 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+================================================================================
+G055 - DHCP DORA AKISI, SALDIRI MODELLERI VE KATMAN-2 SAVUNMA MIMARISI
+(Temsili Kavramsal Mimari ve Paket Akis Semasi)
+================================================================================
+
+1. MESRU DORA AKISI (NORMAL IP TAHSISI)
+================================================================================
+  [ ISTEMCI (Client) ]                                [ YETKILI DHCP SUNUCUSU ]
+  MAC: 00:0c:29:4f:8e:35                                IP: 192.168.1.1
+         |                                                       |
+         | -------- 1. DHCP DISCOVER (Broadcast) --------------> |
+         |   Src: 0.0.0.0:68  Dst: 255.255.255.255:67            |
+         |   XID: 0x3903f326, Opt 53=1 (Discover), Opt 55        |
+         |                                                       |
+         | <------- 2. DHCP OFFER (Unicast / Broadcast) -------- |
+         |   Src: 192.168.1.1:67  Dst: 255.255.255.255:68        |
+         |   yiaddr: 192.168.1.100, Opt 54=192.168.1.1           |
+         |   Opt 1=255.255.255.0, Opt 3=192.168.1.1, Opt 6=DNS   |
+         |                                                       |
+         | -------- 3. DHCP REQUEST (Broadcast) ---------------> |
+         |   Src: 0.0.0.0:68  Dst: 255.255.255.255:67            |
+         |   Opt 50=192.168.1.100, Opt 54=192.168.1.1            |
+         |                                                       |
+         | <------- 4. DHCP ACK (Unicast / Broadcast) ---------- |
+         |   Src: 192.168.1.1:67  Dst: 255.255.255.255:68        |
+         |   yiaddr: 192.168.1.100, Opt 51=7200s (Kiralandi!)    |
+         |                                                       |
+
+2. SALDIRI SENARYOLARI (THREAT MODELS)
+================================================================================
+
+[A] SAHTE (ROGUE) DHCP SUNUCUSU ILE ORTADAKI ADAM (MitM)
+--------------------------------------------------------------------------------
+   [ Kurban Istemci ]         [ L2 Switch ]            [ Saldirgan Rogue DHCP ]
+           |                       |                              |
+           | --- DHCP DISCOVER --> | ---------------------------> | (Sahte Sunucu)
+           |                       |                              |
+           | <==================== | <== SAHTE DHCP OFFER ======= | (Daha Hizli Yanit)
+           |                       |     yiaddr: 192.168.1.222    |
+           |                       |     Gateway: 192.168.1.199! <--- (Saldirgan IP)
+           |                       |     DNS: 192.168.1.199!     <--- (Trafik Saldirgana)
+           v                       |                              |
+     Trafik Artik Saldirgan Uzerinden Gecer (MitM Sniffing / DNS Hijacking)
+
+[B] DHCP STARVATION (HAVUZ TUKENME DOS SALDIRISI)
+--------------------------------------------------------------------------------
+   [ Saldirgan ]                                    [ Yetkili DHCP Sunucusu ]
+   MAC: Forged 02:00:00:00:00:01 -> DISCOVER ------> IP: 192.168.1.100 Tuketildi
+   MAC: Forged 02:00:00:00:00:02 -> DISCOVER ------> IP: 192.168.1.101 Tuketildi
+   MAC: Forged 02:00:00:00:00:03 -> DISCOVER ------> IP: 192.168.1.102 Tuketildi
+   ... (Binlerce Sahte MAC)
+   SONUC: IP Havuzu Biter -> Gercek Istemciler IP Alamaz (Denial of Service)
+
+3. KATMAN-2 SAVUNMA MIMARISI (DHCP SNOOPING)
+================================================================================
+                       +-------------------------------+
+                       |   L2 SWITCH (DHCP SNOOPING)   |
+                       +-------------------------------+
+                               /               \
+                 (UNTRUSTED)  /                 \  (TRUSTED)
+                             /                   \
+                   Port: Fa0/1                   Port: Gi0/1
+                        |                             |
+               [ Kurban Istemci ]            [ Yetkili DHCP Sunucusu ]
+               [ veya Saldirgan ]            (192.168.1.1)
+                        |
+    Fa0/1'den DHCP Sunucu Yaniti (OFFER/ACK) Gelirse?
+    ===> [ ANAHTAR DONANIMINDA BLOKE EDILIR (DROP) ]
+    ===> Guvenlik Alarmi / SNMP Trap uretilir.
+    ===> Yalnizca TRUSTED Port Gi0/1'den gelen sunucu paketleri gecer!
+
+4. DHCP SNOOPING BINDING DATABASE ILE ZINCIRLEME GUVENLIK
+================================================================================
+   Dinamik Olarak Olusan Tablo:
+   +-------------------+---------------+-------+-------+---------------+
+   | MAC Adresi        | IP Adresi     | VLAN  | Port  | Kalan Kira    |
+   +-------------------+---------------+-------+-------+---------------+
+   | 00:0c:29:4f:8e:35 | 192.168.1.100 | 10    | Fa0/1 | 7150 sn       |
+   +-------------------+---------------+-------+-------+---------------+
+            |
+            +---> DYNAMIC ARP INSPECTION (DAI):
+            |     Arp paketindeki IP/MAC eslesmesini bu tabloya bakarak dogrular.
+            |     Sahte ARP (ARP Poisoning / Spoofing) saldirilarini tamamen onler!
+            |
+            +---> IP SOURCE GUARD (IPSG):
+                  Istemcinin porttan cikardigi IP paketlerinin kaynak IP'sini
+                  bu tabloyla denetler. IP Spoofing saldirilarini donanimda keser!

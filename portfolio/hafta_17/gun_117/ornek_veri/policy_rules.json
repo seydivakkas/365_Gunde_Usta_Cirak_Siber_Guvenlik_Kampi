@@ -1,0 +1,62 @@
+{
+  "aciklama": "NIST RBAC & ABAC Kurumsal Politika ve Yapılandırma Kuralları",
+  "versiyon": "1.0.0",
+  "telif_hakki": "© 2026 Seydi Eryılmaz (@seydivakkas) — Tüm Hakları Saklıdır",
+  "roller_ve_hiyerarsi": {
+    "admin": {
+      "miras_aldigi_roller": ["manager", "auditor"],
+      "izinler": ["*:*"]
+    },
+    "manager": {
+      "miras_aldigi_roller": ["staff"],
+      "izinler": [
+        "financial_report:read",
+        "financial_report:write",
+        "financial_ledger:write",
+        "project_doc:delete"
+      ]
+    },
+    "auditor": {
+      "miras_aldigi_roller": [],
+      "izinler": [
+        "audit_log:read",
+        "financial_report:read",
+        "compliance:read"
+      ]
+    },
+    "staff": {
+      "miras_aldigi_roller": ["user"],
+      "izinler": [
+        "project_doc:read",
+        "project_doc:write"
+      ]
+    },
+    "user": {
+      "miras_aldigi_roller": [],
+      "izinler": [
+        "public_doc:read",
+        "profile:read",
+        "profile:write"
+      ]
+    }
+  },
+  "gorevler_ayriligi_sod_kurallari": [
+    {
+      "rol_a": "purchaser",
+      "rol_b": "approver",
+      "gerekce": "Satın alma emri açan personel kendi emrini onaylayamaz (CWE-863)."
+    },
+    {
+      "rol_a": "developer",
+      "rol_b": "live_deployer",
+      "gerekce": "Geliştirici doğrudan canlı üretim sistemine dağıtım yapamaz."
+    }
+  ],
+  "abac_baglamsal_parametreler": {
+    "guvenli_ag_bloklari": ["10.0.0.0/8", "192.168.1.0/24", "127.0.0.1/32"],
+    "mesai_saatleri": "08:00 - 18:00 Hafta İçi",
+    "mfa_zorunlu_eylemler": ["delete"],
+    "mfa_zorunlu_gizlilik_seviyesi": 4,
+    "maksimum_risk_toleransi_guvensiz_ag": 59
+  }
+}

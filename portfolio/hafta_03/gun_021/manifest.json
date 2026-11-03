@@ -1,0 +1,25 @@
+{
+  "dosyalar": {
+    "README.md": "902d0aecf1f4c5baa07a842de3e604b4d372e0e5a6f3eb31a9f46cd6311ceeb2",
+    "ders.md": "5afb23d1df31e15e671c02945e86d072a335e22cd60a6240103a909637c6f9d5",
+    "rapor.md": "063cdbec41001e6dc6f80b0bcce47ce7518f0e411c04a65a6d83e4efcd5ae66b",
+    "sonuc.json": "d0cb2bc3bafb9e83742a923b668880af23887834ed6658e74b3cf3f0f24d165a",
+    "soru_cevap.md": "42f46dafa8b3fdc0f92f6ca0e396a9af75274a63e64d47c77b113ee5abdaa41f",
+    "kanit/gercek/karsilastirmali_os_envanter.csv": "4de2ba2fe690f499f43055558f41bae18cb6f73c23f46ebf834fc02657aa235f",
+    "kanit/gercek/komut_ve_cikis.txt": "cf51b4eefa08526330877ddc6965146235534f94568632bde237db5ef5acb5a7",
+    "kanit/gercek/test_sonuclari.txt": "78f107040777694741260d4afb1e7c2ca2af3ebae69768ba60fd843b10b3c26a",
+    "kanit/temsili/os_envanter_mimarisi.txt": "853420b73b4f0d7cced5796aa701734065afb4e2048c80183be18260f4d52bef",
+    "ornek_veri/os_inventory_linux_sample.json": "4f514fe3581d35d29605ce452aba23f443f133a6284067d96da48db91b86b2d8",
+    "ornek_veri/os_inventory_schema.json": "3273da6474ddbfaafb4c35f4be77bd0817c5e0c8c36645939c8867f39721849b",
+    "ornek_veri/os_inventory_windows_sample.json": "18e8041197cc07c79aae55aad6f87361ef4b61b2ef0f967bd6d6b46e61e50f92",
+    "tests/__init__.py": "d7ada5e4bcc4200023980471e2d1731b7250273831ff596611969a6899035209",
+    "tests/test_os_security_inventory_collector.py": "0383cec277fd67d53fe6554dd83b8a13b3ad7be5cd7ce3893d3dfdd3a1f36961",
+    "uygulama/__init__.py": "1fd413b5e93b80246f96acadfc1541f34d0718d2f2c15db9736b3a57b4988014",
+    "uygulama/os_security_inventory_collector.py": "13e37054d7919a790c343a538ae06cc6576e3ce3c7b781777f474fb82a19ceaa"
+  },
+  "ozet": {
+    "toplam_dosya": 16,
+    "gun": 21,
+    "durum": "DOGRULANDI_PASS"
+  }
+}

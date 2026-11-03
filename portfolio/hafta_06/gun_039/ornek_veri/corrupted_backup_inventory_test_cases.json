@@ -1,0 +1,51 @@
+{
+  "test_cases": [
+    {
+      "test_name": "corrupted_negative_total_copies",
+      "expected_error": "ValidationError",
+      "payload": {
+        "backup_policies": [
+          {
+            "policy_id": "BAD-COPIES",
+            "workload_name": "Invalid Workload",
+            "total_copies": -1,
+            "media_types": ["Disk"],
+            "offsite_copies": 0
+          }
+        ]
+      }
+    },
+    {
+      "test_name": "corrupted_non_numeric_days_since_restore",
+      "expected_error": "ValidationError",
+      "payload": {
+        "backup_policies": [
+          {
+            "policy_id": "BAD-DAYS",
+            "workload_name": "Invalid Days",
+            "total_copies": 3,
+            "media_types": ["Disk", "Tape"],
+            "offsite_copies": 1,
+            "days_since_last_restore_test": "gecen_hafta"
+          }
+        ]
+      }
+    },
+    {
+      "test_name": "corrupted_missing_policies_key",
+      "expected_error": "ValidationError",
+      "payload": {
+        "inventory_metadata": {"org": "No Policies Enterprise"}
+      }
+    },
+    {
+      "test_name": "corrupted_policy_entry_non_dict",
+      "expected_error": "ValidationError",
+      "payload": {
+        "backup_policies": [
+          "invalid_string_entry_instead_of_object"
+        ]
+      }
+    }
+  ]
+}

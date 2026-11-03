@@ -1,0 +1,69 @@
+=== GÜN 101: HASH GÜVENLİĞİ NEGATİF KONTROL VE ZAFİYET RAPORU ===
+Tarih/Saat : 2026-11-02 01:57:28
+Toplam Vaka: 9
+=====================================================================================
+[1/9] Senaryo ID : NEG_01_DEPRECATED_MD5_USAGE
+      Tanım       : Kriptografik bütünlük kontrolünde güvensiz ve çakışmalı MD5 kullanımı
+      CWE         : CWE-328: Use of Weak Hash
+      Beklenen    : BrokenHashAlgorithmError
+      Yakalanan   : BrokenHashAlgorithmError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[2/9] Senaryo ID : NEG_02_DEPRECATED_SHA1_USAGE
+      Tanım       : Kriptografik dijital imza bağlamında çakışma zafiyeti olan SHA-1 kullanımı
+      CWE         : CWE-328: Use of Weak Hash
+      Beklenen    : BrokenHashAlgorithmError
+      Yakalanan   : BrokenHashAlgorithmError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[3/9] Senaryo ID : NEG_03_INSUFFICIENT_AVALANCHE_EFFECT
+      Tanım       : Çığ etkisi testinde %35'in altında kalan kusurlu/tahmin edilebilir özet fonksiyonu
+      CWE         : CWE-328: Use of Weak Hash
+      Beklenen    : AvalancheEffectFailureError
+      Yakalanan   : AvalancheEffectFailureError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[4/9] Senaryo ID : NEG_04_INSECURE_HASH_COMPARISON
+      Tanım       : Zamanlama saldırılarına açık, sabit zamanlı olmayan özet karşılaştırması denemesi
+      CWE         : CWE-208: Observable Timing Discrepancy
+      Beklenen    : HashVerificationError
+      Yakalanan   : HashVerificationError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[5/9] Senaryo ID : NEG_05_OVERSIZED_INPUT_DOS
+      Tanım       : 1 MB tavanını aşan aşırı büyük veri ile bellek tüketimi saldırısı (DoS)
+      CWE         : CWE-400: Uncontrolled Resource Consumption
+      Beklenen    : PayloadLimitExceededError
+      Yakalanan   : PayloadLimitExceededError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[6/9] Senaryo ID : NEG_06_NULL_BYTE_INJECTION
+      Tanım       : Algoritma adı veya dosya yolunda Null-Byte (0x00) zehirlemesi
+      CWE         : CWE-158: Improper Neutralization of Null Byte or Special Characters
+      Beklenen    : NullByteInjectionError
+      Yakalanan   : NullByteInjectionError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[7/9] Senaryo ID : NEG_07_INVALID_TRUNCATION_BITS
+      Tanım       : Doğum günü simülasyonunda geçersiz (negatif veya >32) kırpma bit uzunluğu
+      CWE         : CWE-1284: Improper Input Handling
+      Beklenen    : TypeValidationError
+      Yakalanan   : TypeValidationError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[8/9] Senaryo ID : NEG_08_EMPTY_DIGEST_COMPARISON
+      Tanım       : Boş özet değeri ile bütünlük doğrulama denemesi
+      CWE         : CWE-20: Improper Input Validation
+      Beklenen    : TypeValidationError
+      Yakalanan   : TypeValidationError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+[9/9] Senaryo ID : NEG_09_TYPE_CONFUSION
+      Tanım       : Metin/bayt beklenen özet motoruna liste veya tamsayı tipi gönderilmesi
+      CWE         : CWE-843: Access of Resource Using Incompatible Type
+      Beklenen    : TypeValidationError
+      Yakalanan   : TypeValidationError
+      Sonuç       : BAŞARILI (YAKALANDI)
+-------------------------------------------------------------------------------------
+ÖZET: 9/9 NEGATİF KONTROL SENARYOSU BAŞARIYLA YAKALANDI (100% GÜVENLİK GÜVENCESİ)
+=====================================================================================

@@ -1,0 +1,57 @@
+{
+  "gun": 19,
+  "asama": 2,
+  "hafta": 3,
+  "konu": "Windows dosya sistemi ve NTFS",
+  "durum": "TAMAMLANDI_PASS",
+  "tarih": "2026-10-27",
+  "puan": 100,
+  "puan_detay": {
+    "teorik_metodolojik_hakimiyet": 20,
+    "kodlama_uygulama_yetkinligi": 40,
+    "test_dogrulama_kapsami": 25,
+    "kanit_dokumantasyon_kalitesi": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "dosyalar": [
+    "uygulama/ntfs_security_and_acl_analyzer.py",
+    "tests/test_ntfs_security_and_acl_analyzer.py",
+    "ornek_veri/ntfs_file_samples.json",
+    "ornek_veri/ntfs_security_baseline.json",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/temsili/ntfs_ve_acl_mimarisi.txt",
+    "ders.md",
+    "soru_cevap.md",
+    "rapor.md",
+    "README.md",
+    "sonuc.json"
+  ],
+  "kanitlar": [
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/temsili/ntfs_ve_acl_mimarisi.txt"
+  ],
+  "ogrenilen_standartlar": [
+    "CIS Windows NTFS Permissions Hardening Guide",
+    "MITRE ATT&CK T1564.004 (Hide Artifacts: Alternate Data Streams)",
+    "MITRE ATT&CK T1036 (Masquerading / File Extension Spoofing)",
+    "NIST SP 800-53 Rev. 5 (AC-3 Access Enforcement, AU-2 Event Logging, SI-7 Software Integrity)"
+  ],
+  "karsilanan_gereksinimler": [
+    "NTFS mimarisi, $MFT kayıt nitelikleri ve dosya sistemi erişim denetimi analiz edildi",
+    "Dosya uzantısının tek başına bir güvenlik özelliği olmadığı sihirli baytlarla (Magic Bytes) kanıtlandı",
+    "Alternatif Veri Akışları (ADS) ve Mark-of-the-Web (Zone.Identifier) mekanizması incelendi",
+    "Kendi test klasöründe izinleri görüntüleme ve önce/sonra farkını kaydetme laboratuvarı tamamlandı (G019-SC2)",
+    "DACL değerlendirme sırası (Explicit Deny önceliği) ve En Az Ayrıcalık kuralı uygulandı",
+    "Tüm kod ve test satırları didaktik açıklamalarla zenginleştirildi",
+    "Özel Lisans (Tüm Hakları Saklıdır) tüm dosyalara uygulandı"
+  ],
+  "notlar": "Gün 019 eksiksiz tamamlanarak 14/14 test PASS ve 100/100 tam puanla sonuçlandırıldı."
+}

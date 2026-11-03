@@ -1,0 +1,58 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+==================================================================================================
+        NIST SP 800-57 UYUMLU ANAHTAR YAŞAM DÖNGÜSÜ VE ZARF ŞİFRELEME (ENVELOPE) MİMARİSİ
+==================================================================================================
+
+  +--------------------------------------------------------------------------------------------+
+  | 1. NIST SP 800-57 KRİPTOGRAFİK ANAHTAR YAŞAM DÖNGÜSÜ (KEY LIFECYCLE STATES)                |
+  +--------------------------------------------------------------------------------------------+
+  |                                                                                            |
+  |   [ PRE_ACTIVATION ] ======> [ ACTIVE ] ========> [ DEPRECATED ] =======> [ DESTROYED ]    |
+  |    (Üretildi/CSPRNG)       (Şifrele + Çöz)       (Yalnızca Deşifre)       (Zeroization)    |
+  |                                   |                       |                                |
+  |                                   +========> [ COMPROMISED ]                               |
+  |                                            (İhlal/Kilitlendi)                              |
+  +--------------------------------------------------------------------------------------------+
+                                                |
+                                                v
+  +--------------------------------------------------------------------------------------------+
+  | 2. ZARF ŞİFRELEME (ENVELOPE ENCRYPTION) VE RE-WRAPPING PRENSİBİ                            |
+  +--------------------------------------------------------------------------------------------+
+  |                                                                                            |
+  |   [ HSM / KMS Güvenli Bellek Alanı ]                                                       |
+  |   +-------------------------------------------------------------+                          |
+  |   | Master Anahtar: KEK (Key Encryption Key - 256 bit)          |                          |
+  |   +-------------------------------------------------------------+                          |
+  |                     |                                                                      |
+  |       (Sarmalama / Key Wrapping)                                                           |
+  |                     v                                                                      |
+  |        [ Wrapped DEK + Auth Tag ]                                                          |
+  |                     |                                                                      |
+  |   [ Veri Katmanı ]  +-----------------------------------+                                  |
+  |   +--------------------------------------------------+  |                                  |
+  |   | Geçici Veri Anahtarı: DEK (Data Encryption Key)  |  |                                  |
+  |   +--------------------------------------------------+  |                                  |
+  |                     | (Hızlı AES-256 Şifreleme)         |                                  |
+  |                     v                                   v                                  |
+  |        +--------------------------------------------------------------------+              |
+  |        | ZARF PAKETİ = [ Wrapped DEK ] + [ Ciphertext (Petabaytlarca Veri) ]|              |
+  |        +--------------------------------------------------------------------+              |
+  |                                                                                            |
+  |   >>> O(1) SÜREDE ROTASYON (RE-WRAPPING):                                                  |
+  |       Yeni KEK-2 aktif edildiğinde devasa Ciphertext'e ASLA dokunulmaz!                    |
+  |       Sadece küçük DEK paketi KEK-2 ile yeniden sarılır (Re-wrapped) -> Sıfır Kesinti!     |
+  +--------------------------------------------------------------------------------------------+
+                                                |
+                                                v
+  +--------------------------------------------------------------------------------------------+
+  | 3. ÇİFT KONTROL (DUAL CONTROL) VE KRİPTOGRAFİK SIFIRLAMA (ZEROIZATION)                     |
+  +--------------------------------------------------------------------------------------------+
+  |  - Dual Control (Split Knowledge / 2-of-2):                                                |
+  |    Master Sır = Parça 1 XOR Parça 2 (Hiçbir tek yönetici anahtara tek başına sahip olamaz) |
+  |                                                                                            |
+  |  - Zeroization / Crypto-Shredding (CWE-226 Koruması):                                      |
+  |    Geçersiz kılınan anahtarın üzerine 3 geçişli (0x00, 0xFF, CSPRNG) rastgele baytlar      |
+  |    yazılarak bellek ve disk kalıntıları kalıcı olarak imha edilir!                         |
+  +--------------------------------------------------------------------------------------------+
+
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

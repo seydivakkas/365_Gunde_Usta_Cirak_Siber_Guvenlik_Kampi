@@ -1,0 +1,20 @@
+{
+  "ders.md": "c3a71bbc7277b6ee85b75fbbee7038bdbb92d2dfdba84858ad76507e08f785b6",
+  "kanit/gercek/dosya_guvenlik_raporu.txt": "8facbf298c4b672d7e4cf0031ad566dc879ec636cd29b5fad14a1fed0c6d8b63",
+  "kanit/gercek/komut_ve_cikis.txt": "c0973c18579bd9970425e0561fb5fae92cc1a2e8577c93d724156429e7be8e40",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "abe898570e1904c8574b2d51efea96641a19e2283f9f76aa3d1e390cf988593f",
+  "kanit/gercek/test_sonuclari.txt": "4a31b430371a30168e7f1f82930b5e6a158feb7ec0f271422d7d0763c182ce23",
+  "kanit/temsili/pathlib_ve_dosya_guvenlik_mimarisi.txt": "889b13452212f87d92520edf56d244efed601ba88d70f7bd759ec4502f6fc619",
+  "ornek_veri/guvenli_dosya_deposu/config.json": "9369c8845d839cbb908fe92fe7d47144eb1a9063601bcd65e04125695e08a355",
+  "ornek_veri/guvenli_dosya_deposu/sample_policy.yaml": "8e7bfda9f1f50dda2c651a1b20ded65b832dcca5c9734398c7f423b18b8d8daa",
+  "ornek_veri/guvenli_dosya_deposu/security_audit.log": "e35e1dbeb72308b293915a0e4e557e782b381a924631bdcfd81e023f156788da",
+  "ornek_veri/invalid_file_and_path_inputs.json": "c5f03e30430e89ddf4e56cef2bb0a48621dd893d1be89ecfcc1ee70deb783186",
+  "rapor.md": "5c525d243dea16be89cabe4753e21c01d1c3709bad6d473ff9c40ebc4c73991c",
+  "README.md": "cc69bc8e1e4d371df85570f825e47fa3c25df14bf1071e4f45874f1daca540b6",
+  "sonuc.json": "626fbaf58b9b1bdc3bf8a45ab989731b30da41be8f6c12ce29b422d601b5dfa9",
+  "soru_cevap.md": "180c3c8a02cad314549f65b2e2f65f87731574020df22a4d8429c48e60c15578",
+  "tests/__init__.py": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+  "tests/test_secure_file_and_path_manager.py": "d58fa06b181775b7543ae930749a3e1033e01e5bb312b6e2292ca1fba1896840",
+  "uygulama/__init__.py": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+  "uygulama/secure_file_and_path_manager.py": "5ca58756881c62ab2d927bbaf79d0d6a4f5cf1d81ef2eb27b6a9ba94221e0a16"
+}

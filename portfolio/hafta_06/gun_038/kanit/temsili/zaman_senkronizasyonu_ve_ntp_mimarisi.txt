@@ -1,0 +1,83 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Bu yazılım ve ilgili tüm dosyalar ("Yazılım") yalnızca görüntüleme ve eğitim amaçlı olarak paylaşılmıştır.
+================================================================================
+
+ZAMAN SENKRONİZASYONU, NTP STRATUM HİYERARŞİSİ VE KERBEROS GÜVENLİK MİMARİSİ
+--------------------------------------------------------------------------------
+
+1. NTP STRATUM HİYERARŞİSİ (ZAMANIN KAYNAĞINDAN UÇ NOKTAYA AKIŞI)
+--------------------------------------------------------------------------------
+
+   [ STRATUM 0 ]  : Atomik Saatler (Cesium), GPS Uyduları, CDMA
+                          │
+                          ▼ (Doğrudan Donanım Bağlantısı - PPS / Seri Arayüz)
+   [ STRATUM 1 ]  : Birincil Zaman Sunucuları (time.nist.gov, time.google.com)
+                          │
+                          ▼ (NTPv4 / UDP 123 veya NTS - Şifreli İletişim)
+   [ STRATUM 2 ]  : Kurumsal Zaman Sunucuları / Domain Controller (dc01.corp.internal)
+                          │
+                          ▼ (LAN İçi NTP / W32Time / Chrony)
+   [ STRATUM 3 ]  : Kurumsal İstemciler ve Uygulama Sunucuları (app01, db01, user-pc)
+                          │
+                          ▼ (Senkronize Olmayan / Bağlantısı Kopan Sistemler)
+   [ STRATUM 16 ] : SENKRONİZASYONSUZ (Serbest Dönen Saat, Güvenlik Çöküşü!)
+
+--------------------------------------------------------------------------------
+2. NTP DÖRT ZAMAN DAMGASI (T1-T4) VE MATEMATİKSEL SAAT KAYMASI (OFFSET)
+--------------------------------------------------------------------------------
+
+      İstemci (Client)                                   NTP Sunucusu (Server)
+      ────────────────                                   ─────────────────────
+      [İstemci Saati: T1]
+            │
+            │── Paket Gönderimi (UDP 123) ───────────────►
+            │                                             [Sunucu Alış: T2]
+            │                                                    │
+            │◄── Yanıt Dönüşü (T1, T2, T3 damgaları) ──── [Sunucu Çıkış: T3]
+            │
+      [İstemci Alış: T4]
+
+      * Ağ Gecikmesi (Round-Trip Delay):
+        θ = (T4 - T1) - (T3 - T2)
+
+      * Saat Kayması / Farkı (Clock Offset):
+        Δ = [ (T2 - T1) + (T3 - T4) ] / 2
+
+--------------------------------------------------------------------------------
+3. KERBEROS KİMLİK DOĞRULAMA VE 5 DAKİKA (300 SANİYE) SAAT KAYMASI SINIRI
+--------------------------------------------------------------------------------
+
+   İstemci (Client)           KDC (Key Distribution Center)        Uygulama Sunucusu
+   ────────────────           ─────────────────────────────        ─────────────────
+   TGT İsteği (AS-REQ) ────► [Zaman Kontrolü: |T_client - T_kdc| <= 5 dk ?]
+                             ├── EVET: Bilet Üretilir (TGT verilir).
+                             └── HAYIR: KRB_AP_ERR_SKEW (Kimlik Doğrulama Reddi!)
+
+   * Güvenlik Amacı: Saldırgan ağdan dinlediği eski bir Kerberos biletini
+     tekrar göndererek yetki elde edemez (Replay Attack Koruması).
+   * Tehlike: İstemci veya sunucu saati 5 dakikadan fazla kayarsa,
+     yasal etki alanı kullanıcıları dahi oturum açamaz!
+
+--------------------------------------------------------------------------------
+4. NTP AMPLIFICATION DDOS VE MONLIST ZAAFI
+--------------------------------------------------------------------------------
+
+   [ Saldırgan (Attacker) ]
+        │
+        │ 1. Sahte Kaynak IP ile küçük UDP isteği (Mode 6 monlist) [~200 Bayt]
+        │    (Kaynak IP: Hedef Kurbanın IP'si olarak ayarlanır)
+        ▼
+   [ Zafiyetli NTP Sunucusu ] (monlist enabled)
+        │
+        │ 2. Son 600 istemcinin IP adreslerini içeren devasa yanıt [~48,000 Bayt!]
+        │    (Yükseltme Faktörü: ~200 Kat Büyütme!)
+        ▼
+   [ Hedef Kurban (Victim Server) ] ===> Bant genişliği çöker (DDoS Felaketi!)
+
+   * Savunma: `disable monitor` ve `noquery` kısıtlamaları, NTS (Network Time Security).
+
+--------------------------------------------------------------------------------
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

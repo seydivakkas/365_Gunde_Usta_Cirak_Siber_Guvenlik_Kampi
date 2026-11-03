@@ -1,0 +1,27 @@
+{
+  "gun": 37,
+  "gun_id": "G037",
+  "baslik": "Disk bölümleri ve dosya sistemleri",
+  "asama": 2,
+  "hafta": 6,
+  "tarih": "2026-10-27",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kod_tasarimi": 20,
+    "test_dogrulama": 40,
+    "guvenlik_derinligi": 25,
+    "belgelendirme_standart": 15
+  },
+  "test_toplam": 14,
+  "test_basarili": 14,
+  "test_basarisiz": 0,
+  "kanitlar": [
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/disk_ve_dosya_sistemi_denetim_raporu.txt",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "kanit/temsili/disk_bolumleri_ve_dosya_sistemi_mimarisi.txt"
+  ],
+  "ozet": "G037 kapsamında disk bölümleri, MBR vs GPT mimarisi, dosya sistemleri (ext4, NTFS, FAT32), bağlama bayrakları (noexec, nosuid, nodev), tam disk şifreleme ve kapasite tükenme riskleri incelendi. DiskPartitionFsAuditor motoru geliştirildi ve 14 birim test %100 başarıyla tamamlandı."
+}

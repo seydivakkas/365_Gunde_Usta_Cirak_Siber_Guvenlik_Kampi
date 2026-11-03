@@ -1,0 +1,59 @@
+{
+  "aciklama": "GÜN 018 - Süreç, İş Parçacığı ve Hizmet Güvenlik Taban Çizgisi",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "surum": "1.0.0",
+  "tarih": "2026-10-27",
+  "standartlar": [
+    {
+      "kod": "MITRE ATT&CK T1574.009",
+      "baslik": "Unquoted Service Path (Tırnaksız Servis Yolu ile Yetki Yükseltme)",
+      "kapsam": "Boşluk içeren servis yollarının çift tırnak içine alınmaması durumunda işletim sisteminin ara boşluklarda .exe araması istismar edilir."
+    },
+    {
+      "kod": "MITRE ATT&CK T1055",
+      "baslik": "Process Injection (Süreç İçi Kod Enjeksiyonu)",
+      "kapsam": "Bir sürecin başka bir sürecin sanal adres alanına VirtualAllocEx ve WriteProcessMemory ile zararlı kod enjekte etmesi."
+    },
+    {
+      "kod": "CIS Windows Benchmark - Service Hardening",
+      "baslik": "Hizmet Sertleştirme ve En Az Ayrıcalık Kılavuzu",
+      "onerilen_ayarlar": {
+        "EnforceQuotedServicePaths": "Zorunlu",
+        "RestrictServicePermissions": "Standart kullanıcılar servis dizinlerine veya konfigürasyonuna yazamaz",
+        "SessionZeroIsolation": "Hizmetler kullanıcı oturumundan (Session 1+) tamamen izole Session 0'da çalışır"
+      }
+    },
+    {
+      "kod": "NIST SP 800-53 Rev. 5",
+      "baslik": "Güvenlik ve Gizlilik Kontrolleri",
+      "kontroller": [
+        "AC-6: En Az Ayrıcalık İlkesi (Servislerin SYSTEM yerine Managed Service Account - gMSA ile çalışması)",
+        "SC-2: Sistem ve Kullanıcı Fonksiyonlarının Ayrımı (Session 0 İzolasyonu)",
+        "SI-16: Bellek ve Süreç İçi Korumalar"
+      ]
+    }
+  ],
+  "guvenlik_denetim_kurallari": [
+    {
+      "kural_id": "RULE-SVC-001",
+      "kriter": "unquoted_path_var_mi",
+      "beklenen_deger": false,
+      "seviye": "YUKSEK",
+      "hata_mesaji": "Hizmet yolu boşluk içeriyor ancak çift tırnak içine alınmamış! T1574.009 Yetki Yükseltme riski."
+    },
+    {
+      "kural_id": "RULE-SVC-002",
+      "kriter": "dizin_yazma_izni_kullanicilar",
+      "beklenen_deger": false,
+      "seviye": "KRITIK",
+      "hata_mesaji": "Standart kullanıcılar hizmet ikili dosya dizinine yazma hakkına sahip! İkili dosya değiştirilebilir."
+    },
+    {
+      "kural_id": "RULE-SVC-003",
+      "kriter": "asiri_ayricalikli_hesap_system",
+      "beklenen_deger": false,
+      "seviye": "ORTA",
+      "hata_mesaji": "Hizmet NT AUTHORITY\\SYSTEM ile çalışıyor; En az ayrıcalık (Least Privilege / gMSA) ilkesine aykırı."
+    }
+  ]
+}

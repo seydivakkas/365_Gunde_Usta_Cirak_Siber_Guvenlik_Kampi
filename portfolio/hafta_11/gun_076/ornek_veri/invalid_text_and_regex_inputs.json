@@ -1,0 +1,79 @@
+{
+  "aciklama": "Gün 076: Metin, regex ve karakter kodlaması için 9 adet negatif kontrol ve sınır durumu test senaryosu",
+  "negatif_testler": [
+    {
+      "id": "NEG_01_REDOS_CATASTROPHIC_BACKTRACKING_GUARD",
+      "tanim": "ReDoS felaket düzeyinde geri izleme (catastrophic backtracking) yükü — uzunluk tavanı ve güvenli regex ile engelleme",
+      "girdi": {
+        "payload": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+        "vulnerable_pattern": "^(a+)+$"
+      },
+      "beklenen_hata_veya_davranis": "Girdi uzunluğu veya savunmacı regex tavanı aşıldığında işlem reddedilmeli, CPU DoS engellenmelidir"
+    },
+    {
+      "id": "NEG_02_HOMOGLYPH_CYRILLIC_DOMAIN_SPOOFING",
+      "tanim": "Kiril 'а' (\u0430) karakteri ile latin 'a' taklit edilerek oluşturulan IDN Homograf oltalama saldırısı",
+      "girdi": {
+        "spoofed_domain": "p\u0430yp\u0430l.com",
+        "legitimate_target": "paypal.com"
+      },
+      "beklenen_hata_veya_davranis": "Homograf tespiti yapılmalı; Latin olmayan karakterler içeren alan adı şüpheli olarak işaretlenmelidir"
+    },
+    {
+      "id": "NEG_03_NULL_BYTE_INJECTION_IN_PATH",
+      "tanim": "Dosya yolu veya log parametresine Null-Byte (\\x00) enjeksiyonu yapılarak uzantı kontrolü atlatma girişimi",
+      "girdi": {
+        "malicious_path": "/var/log/auth.log\u0000.png"
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Null byte enjeksiyonu tespit edildi; girdi derhal reddedilmelidir"
+    },
+    {
+      "id": "NEG_04_MALFORMED_UTF8_BYTE_STREAM",
+      "tanim": "Geçersiz UTF-8 devam baytı içeren bozuk bayt dizisi (Overlong/Bozuk UTF-8)",
+      "girdi": {
+        "raw_bytes_hex": "c328"
+      },
+      "beklenen_hata_veya_davranis": "UnicodeDecodeError yakalanmalı ve güvenli hata modu veya reddetme uygulanmalıdır"
+    },
+    {
+      "id": "NEG_05_PARTIAL_MATCH_REGEX_BYPASS",
+      "tanim": "Başlangıç (^) ve bitiş ($) bağlaçları eksik olan regex ile zararlı yükün denetimi atlatması girişimi",
+      "girdi": {
+        "malicious_ip": "192.168.1.1; cat /etc/passwd"
+      },
+      "beklenen_hata_veya_davranis": "Katı bağlaçlı regex tam eşleşme arayarak komut enjeksiyonlu IP'yi reddetmelidir"
+    },
+    {
+      "id": "NEG_06_OVERSIZED_INPUT_BUFFER_THRESHOLD",
+      "tanim": "Regex motoruna gönderilen aşırı uzun (örn. > 4096 karakter) girdi ile bellek/CPU tükenmesi oluşturma",
+      "girdi": {
+        "length": 5000
+      },
+      "beklenen_hata_veya_davranis": "ValueError: Metin uzunluğu güvenlik sınırını (4096) aştı; analiz durduruldu"
+    },
+    {
+      "id": "NEG_07_INVALID_REGEX_SYNTAX_INJECTION",
+      "tanim": "Geçersiz sözdizimli veya kapatılmamış parantez içeren regex derleme girişimi",
+      "girdi": {
+        "bad_pattern": "^(?P<name>[a-z+"
+      },
+      "beklenen_hata_veya_davranis": "re.error yakalanmalı ve kontrollü ValueError olarak işlenmelidir"
+    },
+    {
+      "id": "NEG_08_NON_PRINTABLE_CONTROL_CHARS_LOG_INJECTION",
+      "tanim": "Log satırına terminal kaçış (escape) veya kontrol karakterleri (\\x1b, \\x07 vb.) enjeksiyonu",
+      "girdi": {
+        "tainted_log": "USER_LOGIN \u001b[2J\u001b[H ADMIN"
+      },
+      "beklenen_hata_veya_davranis": "Kontrol karakterleri tespit edilip temizlenmeli veya girdi bloke edilmelidir"
+    },
+    {
+      "id": "NEG_09_UNICODE_BIDI_TROJAN_SOURCE_ATTACK",
+      "tanim": "Unicode çift yönlü metin kontrol karakteri (Right-to-Left Override / \\u202E) ile görsel aldatmaca saldırısı",
+      "girdi": {
+        "trojan_filename": "payroll_\u202Ecod.exe"
+      },
+      "beklenen_hata_veya_davranis": "Bidi kontrol karakterleri (Trojan Source / CVE-2021-42574) tespit edilip reddedilmelidir"
+    }
+  ]
+}

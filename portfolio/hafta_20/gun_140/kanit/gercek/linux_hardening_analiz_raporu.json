@@ -1,0 +1,296 @@
+{
+  "target_host": "prod-sec-node01.corp.internal",
+  "scan_timestamp": "2026-11-02T15:05:18.244124",
+  "compliance_score": 100.0,
+  "overall_status": "COMPLIANT",
+  "domain_results": {
+    "SUDO": {
+      "domain_name": "SUDO_PRIVILEGE_MANAGEMENT",
+      "total_checks": 4,
+      "passed_checks": 4,
+      "failed_checks": 0,
+      "warning_checks": 0,
+      "score": 100.0,
+      "findings": [
+        {
+          "domain": "SUDO",
+          "rule_id": "CIS-1.3.1",
+          "title": "Sudoers Dosya İzinleri",
+          "severity": "HIGH",
+          "status": "PASS",
+          "current_value": "0440",
+          "expected_value": "0440/0400",
+          "remediation": "Dosya izinleri güvenli."
+        },
+        {
+          "domain": "SUDO",
+          "rule_id": "CIS-1.3.2",
+          "title": "Sudo Ortam Değişkeni Sıfırlama (env_reset)",
+          "severity": "MEDIUM",
+          "status": "PASS",
+          "current_value": "Var",
+          "expected_value": "Var",
+          "remediation": "Ortam değişkenleri güvenli şekilde sıfırlanıyor."
+        },
+        {
+          "domain": "SUDO",
+          "rule_id": "CIS-1.3.3",
+          "title": "Sudo Güvenli Yürütme Yolu (secure_path)",
+          "severity": "MEDIUM",
+          "status": "PASS",
+          "current_value": "Var",
+          "expected_value": "Var",
+          "remediation": "Güvenli PATH tanımlı."
+        },
+        {
+          "domain": "SUDO",
+          "rule_id": "CIS-1.3.4",
+          "title": "Sudo NOPASSWD / Shell Escape İncelemesi",
+          "severity": "CRITICAL",
+          "status": "PASS",
+          "current_value": "Güvenli Kısıtlamalar",
+          "expected_value": "Parolasız Kabuk Yok",
+          "remediation": "Kritik parolasız yetki saptanmadı."
+        }
+      ]
+    },
+    "PAM": {
+      "domain_name": "PAM_SESSION_SECURITY",
+      "total_checks": 4,
+      "passed_checks": 4,
+      "failed_checks": 0,
+      "warning_checks": 0,
+      "score": 100.0,
+      "findings": [
+        {
+          "domain": "PAM",
+          "rule_id": "CIS-5.4.1",
+          "title": "Parola Minimum Uzunluk Politikası",
+          "severity": "HIGH",
+          "status": "PASS",
+          "current_value": 14,
+          "expected_value": ">= 14",
+          "remediation": "Parola uzunluğu standarda uygun."
+        },
+        {
+          "domain": "PAM",
+          "rule_id": "CIS-5.4.2",
+          "title": "Parola Karakter Çeşitlilik Zorunluluğu",
+          "severity": "MEDIUM",
+          "status": "PASS",
+          "current_value": "Zorunlu",
+          "expected_value": "Tüm sınıflar <= -1",
+          "remediation": "Rakam, büyük harf, küçük harf ve özel karakter şartı etkin."
+        },
+        {
+          "domain": "PAM",
+          "rule_id": "CIS-5.4.3",
+          "title": "Hesap Kilitleme Politikası (pam_faillock)",
+          "severity": "HIGH",
+          "status": "PASS",
+          "current_value": "deny=5, unlock=900s",
+          "expected_value": "deny<=5, unlock>=900s",
+          "remediation": "Kaba kuvvet koruması etkin."
+        },
+        {
+          "domain": "PAM",
+          "rule_id": "CIS-5.5.1",
+          "title": "Kabuk Oturum Boşta Kalma Zaman Aşımı (TMOUT)",
+          "severity": "MEDIUM",
+          "status": "PASS",
+          "current_value": "900 saniye",
+          "expected_value": "<= 900 saniye",
+          "remediation": "Oturum zaman aşımı etkin."
+        }
+      ]
+    },
+    "SYSTEMD": {
+      "domain_name": "SYSTEMD_SANDBOXING_SECURITY",
+      "total_checks": 2,
+      "passed_checks": 2,
+      "failed_checks": 0,
+      "warning_checks": 0,
+      "score": 100.0,
+      "findings": [
+        {
+          "domain": "SYSTEMD",
+          "rule_id": "CIS-2.1.1",
+          "title": "Yasaklanmış Eski Servisler Kontrolü",
+          "severity": "CRITICAL",
+          "status": "PASS",
+          "current_value": "Yok",
+          "expected_value": "Hiçbiri çalışmamalı",
+          "remediation": "Sistemde güvensiz eski servis tespit edilmedi."
+        },
+        {
+          "domain": "SYSTEMD",
+          "rule_id": "CIS-2.2.1",
+          "title": "Systemd Kum Havuzu (Sandboxing) İzolasyonu",
+          "severity": "HIGH",
+          "status": "PASS",
+          "current_value": "Tüm birimler izole",
+          "expected_value": "NoNewPrivileges=yes, ProtectSystem=strict, PrivateTmp=yes",
+          "remediation": "Servis izolasyonu mükemmel seviyede."
+        }
+      ]
+    },
+    "SSH": {
+      "domain_name": "SSH_CRYPTOGRAPHY_SECURITY",
+      "total_checks": 4,
+      "passed_checks": 4,
+      "failed_checks": 0,
+      "warning_checks": 0,
+      "score": 100.0,
+      "findings": [
+        {
+          "domain": "SSH",
+          "rule_id": "CIS-5.2.1",
+          "title": "SSH Doğrudan Root Girişi Engelleme",
+          "severity": "CRITICAL",
+          "status": "PASS",
+          "current_value": "no",
+          "expected_value": "no",
+          "remediation": "Doğrudan root erişimi kapalı."
+        },
+        {
+          "domain": "SSH",
+          "rule_id": "CIS-5.2.2",
+          "title": "SSH Parola ile Kimlik Doğrulama Kısıtlaması",
+          "severity": "HIGH",
+          "status": "PASS",
+          "current_value": "no",
+          "expected_value": "no",
+          "remediation": "Parolalı oturum açma devre dışı."
+        },
+        {
+          "domain": "SSH",
+          "rule_id": "CIS-5.2.3",
+          "title": "SSH Maksimum Kimlik Doğrulama Denemesi",
+          "severity": "MEDIUM",
+          "status": "PASS",
+          "current_value": 3,
+          "expected_value": "<= 4",
+          "remediation": "Deneme sayısı sınırlandırılmış."
+        },
+        {
+          "domain": "SSH",
+          "rule_id": "CIS-5.2.4",
+          "title": "SSH Özel Anahtar Dosya İzinleri",
+          "severity": "HIGH",
+          "status": "PASS",
+          "current_value": "0600",
+          "expected_value": "0600",
+          "remediation": "Anahtar izinleri güvenli."
+        }
+      ]
+    },
+    "FIREWALL": {
+      "domain_name": "FIREWALL_NETWORK_SECURITY",
+      "total_checks": 4,
+      "passed_checks": 4,
+      "failed_checks": 0,
+      "warning_checks": 0,
+      "score": 100.0,
+      "findings": [
+        {
+          "domain": "FIREWALL",
+          "rule_id": "CIS-3.4.1",
+          "title": "Ağ Güvenlik Duvarı Durumu",
+          "severity": "CRITICAL",
+          "status": "PASS",
+          "current_value": "nftables aktif",
+          "expected_value": "Aktif",
+          "remediation": "Güvenlik duvarı servisi çalışıyor."
+        },
+        {
+          "domain": "FIREWALL",
+          "rule_id": "CIS-3.4.2",
+          "title": "Varsayılan Giriş Trafiği Politikası (Default Policy)",
+          "severity": "HIGH",
+          "status": "PASS",
+          "current_value": "DROP",
+          "expected_value": "DROP/REJECT",
+          "remediation": "Varsayılan engelleme politikası etkin."
+        },
+        {
+          "domain": "FIREWALL",
+          "rule_id": "CIS-3.4.3",
+          "title": "Durumlu Bağlantı Takibi (Conntrack)",
+          "severity": "HIGH",
+          "status": "PASS",
+          "current_value": "Aktif",
+          "expected_value": "Aktif",
+          "remediation": "Established/Related durumlu filtre devrede."
+        },
+        {
+          "domain": "FIREWALL",
+          "rule_id": "CIS-3.4.4",
+          "title": "Tehlikeli ve Düz Metin Açık Port Denetimi",
+          "severity": "HIGH",
+          "status": "PASS",
+          "current_value": "Temiz",
+          "expected_value": "Açık port yok",
+          "remediation": "Güvensiz iletişim portu tespit edilmedi."
+        }
+      ]
+    },
+    "LOGGING": {
+      "domain_name": "AUDIT_JOURNAL_INTEGRITY",
+      "total_checks": 4,
+      "passed_checks": 4,
+      "failed_checks": 0,
+      "warning_checks": 0,
+      "score": 100.0,
+      "findings": [
+        {
+          "domain": "AUDIT",
+          "rule_id": "CIS-4.1.18",
+          "title": "Audit Kuralları Değiştirilemezlik Modu (-e 2)",
+          "severity": "CRITICAL",
+          "status": "PASS",
+          "current_value": "-e 2 Aktif",
+          "expected_value": "-e 2 Aktif",
+          "remediation": "Çekirdek seviyesinde kurcalanamazlık devrede."
+        },
+        {
+          "domain": "AUDIT",
+          "rule_id": "CIS-4.1.4",
+          "title": "Kritik Kimlik ve Yetki Dosyaları İzleme Kuralları",
+          "severity": "HIGH",
+          "status": "PASS",
+          "current_value": "Tüm kritik dosyalar izleniyor",
+          "expected_value": "/etc/shadow, /etc/passwd, /etc/sudoers",
+          "remediation": "Dosya erişim denetimleri eksiksiz."
+        },
+        {
+          "domain": "AUDIT",
+          "rule_id": "CIS-4.1.16",
+          "title": "Çekirdek Modülü Sistem Çağrısı Denetimi (LKM Rootkit)",
+          "severity": "HIGH",
+          "status": "PASS",
+          "current_value": "init_module, delete_module izleniyor",
+          "expected_value": "İzlenmeli",
+          "remediation": "Rootkit yükleme denemeleri kaydediliyor."
+        },
+        {
+          "domain": "JOURNAL",
+          "rule_id": "CIS-4.2.1",
+          "title": "Journald Kalıcı Depolama ve Kriptografik Mühürleme (FSS)",
+          "severity": "HIGH",
+          "status": "PASS",
+          "current_value": "Storage=persistent, Seal=True",
+          "expected_value": "Storage=persistent, Seal=yes",
+          "remediation": "Log bütünlüğü FSS ile mühürleniyor."
+        }
+      ]
+    }
+  },
+  "summary_counts": {
+    "total_checks": 22,
+    "passed_checks": 22,
+    "failed_checks": 0,
+    "warning_checks": 0
+  },
+  "remediation_steps": [],
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)."
+}

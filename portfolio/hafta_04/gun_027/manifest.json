@@ -1,0 +1,17 @@
+{
+  "README.md": "937ae506007c4a45d8df29344faaba20812d27c6975ea3d8806ccfe55a8a0bae",
+  "ders.md": "a3402a204987cb55e2a49c6231be6b1ca6fabd603703fa9e3033b4059e4bd16c",
+  "rapor.md": "b6e964a6030d0bbf93597a259105a2f8c49222ab4d69daf65aefe5b1c4cc7614",
+  "sonuc.json": "3f8b27e86912941e3787ee8a567aa3818eb415692a287e2b8a1dc2bc5fc63880",
+  "soru_cevap.md": "686b9661cf412ef607828bba9f569deaf0b8821bfe74baf236fee97fb6789f44",
+  "kanit/gercek/guncelleme_ve_geri_alma_kaydi.txt": "faaa1c16d4af9afc621e4c18a8f2248046671bc065aef228254501062fa021c8",
+  "kanit/gercek/komut_ve_cikis.txt": "19757f19c583da531b59dda6293ba66df9e9ed6f3827ba357c9df38144d21383",
+  "kanit/gercek/test_sonuclari.txt": "adc9dbfc5d3b0b3ebd460f84260ac25c9b6d9802aa2896ed490b3d7e70f17914",
+  "kanit/temsili/paket_yonetimi_ve_guvenlik_mimarisi.txt": "142a19fb120cd505ecf6606f1f8fea21878c0797f68a9351351366a9c2f65628",
+  "ornek_veri/package_manager_policy_baseline.json": "c5ea119565d5d020f80c77f9d40510f2dc876a5eb57200da78889eed0904bfc2",
+  "ornek_veri/sample_package_inventory.json": "3412a05ec3ccca921db978be172ce3bbe9634631ab3eb61d241e25a9d8226c1d",
+  "tests/__init__.py": "5d2e3905b58ebbf75fff9a21a9fef7fe1d9b539979fb2197455b3bc5aca0acf2",
+  "tests/test_package_update_manager_auditor.py": "f38498506cf9038e8c0c76db308c4ee56863e65a56b9622d485cbb9f400c63c6",
+  "uygulama/__init__.py": "01d88d42c1bbc1113123014e9ce911cbbd7ce499f89530c21e6daa0016007c10",
+  "uygulama/package_update_manager_auditor.py": "7279ddc8c61245350108cc8b7f4944f701b5594b07ee603ac6a753eac8612ade"
+}

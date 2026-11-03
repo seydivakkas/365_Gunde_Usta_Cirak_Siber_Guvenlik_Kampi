@@ -1,0 +1,85 @@
+{
+  "test_cases": [
+    {
+      "test_name": "corrupted_negative_disk_size",
+      "expected_error": "ValidationError",
+      "payload": {
+        "system_info": {"hostname": "corrupt-host"},
+        "disks": [
+          {
+            "device": "/dev/sda",
+            "model": "Broken Disk",
+            "size_gb": -500.0,
+            "partition_table": "gpt",
+            "partitions": []
+          }
+        ]
+      }
+    },
+    {
+      "test_name": "corrupted_used_exceeds_total_partition",
+      "expected_error": "ValidationError",
+      "payload": {
+        "system_info": {"hostname": "overflow-host"},
+        "disks": [
+          {
+            "device": "/dev/sda",
+            "model": "Valid Disk",
+            "size_gb": 500.0,
+            "partition_table": "gpt",
+            "partitions": [
+              {
+                "partition_id": "/dev/sda1",
+                "label": "OVERFLOW",
+                "filesystem": "ext4",
+                "mount_point": "/",
+                "total_gb": 100.0,
+                "used_gb": 150.0,
+                "free_gb": -50.0,
+                "is_encrypted": false,
+                "encryption_type": "none",
+                "mount_options": ["rw"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "test_name": "corrupted_missing_disks_section",
+      "expected_error": "ValidationError",
+      "payload": {
+        "system_info": {"hostname": "empty-telemetry-host"}
+      }
+    },
+    {
+      "test_name": "corrupted_non_string_filesystem_type",
+      "expected_error": "ValidationError",
+      "payload": {
+        "system_info": {"hostname": "type-error-host"},
+        "disks": [
+          {
+            "device": "/dev/sda",
+            "model": "Bad FS Disk",
+            "size_gb": 250.0,
+            "partition_table": "gpt",
+            "partitions": [
+              {
+                "partition_id": "/dev/sda1",
+                "label": "BAD_TYPE",
+                "filesystem": 12345,
+                "mount_point": "/data",
+                "total_gb": 200.0,
+                "used_gb": 50.0,
+                "free_gb": 150.0,
+                "is_encrypted": false,
+                "encryption_type": "none",
+                "mount_options": ["rw"]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

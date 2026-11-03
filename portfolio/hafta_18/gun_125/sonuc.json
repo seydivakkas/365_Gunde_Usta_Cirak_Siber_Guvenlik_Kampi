@@ -1,0 +1,32 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "gun": 125,
+  "hafta": 18,
+  "konu": "Mini proje 17: güvenli kimlik/rol prototipi",
+  "tarih": "2026-11-02",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "kriterler": {
+    "kod_kalitesi_ve_didaktik_yorumlar": 20,
+    "birim_testler_ve_kapsam": 40,
+    "negatif_kontroller_ve_sinir_durumlari": 25,
+    "mimari_tasarim_guvenlik_belgeleme": 15
+  },
+  "test_sonuclari": {
+    "toplam_test": 15,
+    "basarili_test": 15,
+    "hatali_test": 0,
+    "test_suresi_saniye": 2.163
+  },
+  "negatif_senaryolar": {
+    "toplam_senaryo": 9,
+    "basarili_senaryo": 9,
+    "hatali_senaryo": 0
+  },
+  "guvenlik_standartlari": [
+    "NIST SP 800-63B (Digital Identity Guidelines)",
+    "NIST SP 800-53 (AC-2 Account Management, AC-6 Least Privilege)",
+    "ISO/IEC 27001:2022 Annex A.9 (Access Control)",
+    "Saltzer-Schroeder (1975) Fail-Safe Defaults Principle"
+  ]
+}

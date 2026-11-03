@@ -1,0 +1,52 @@
+========================================================================
+  MİNİ PROJE 15: NEGATİF GÜVENLİK KONTROL VE ZAFİYET SAVUNMA SONUÇLARI
+  Tarih: 2026-11-02T05:02:14.039515
+========================================================================
+
+Senaryo: NEG_01_PAYLOAD_TAHRIFATI - Yapılandırma Yükünde Tek Baytlık Tahrifat (Hash Uyuşmazlığı)
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    ConfigTamperingError
+Mesaj:   CWE-353: Yapılandırma yükünde tahrifat tespit edildi! Hesaplanan hash ile beyan edilen hash uyuşmuyor.
+------------------------------------------------------------------------
+Senaryo: NEG_02_SAHTE_IMZA - Geçersiz veya Sahte Asimetrik Dijital İmza
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    InvalidSignatureError
+Mesaj:   CWE-347: trusted_admin tarafından atılan dijital imza matematiksel olarak geçersiz!
+------------------------------------------------------------------------
+Senaryo: NEG_03_ROLLBACK_SALDIRISI - Eski Sürüm / Düşük Monotonik Epoch ile Geri Alma (Rollback) Saldırısı
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    RollbackAttackDetectedError
+Mesaj:   CWE-294: Rollback saldırısı engellendi! Sistem epoch: 5, sunulan epoch: 3
+------------------------------------------------------------------------
+Senaryo: NEG_04_SURESI_DOLMUS_YAPILANDIRMA - Geçerlilik Bitiş Tarihi (ExpiresAt) Aşılmış Yapılandırma
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    ConfigExpiredError
+Mesaj:   CWE-298: Yapılandırma dosyasının geçerlilik süresi dolmuştur! (2024-01-01T00:00:00Z)
+------------------------------------------------------------------------
+Senaryo: NEG_05_DUAL_SIGNING_EKSIK_IMZA - Çift İmza (Dual Signing) Politikasında Yetersiz İmza Sayısı
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    InsufficientSignaturesError
+Mesaj:   CWE-285: Asgari imza sayısı (2) sağlanamadı! Bulunan: 1
+------------------------------------------------------------------------
+Senaryo: NEG_06_YETKISIZ_IMZALAYICI - Güven Kökünde (Trust Store) Bulunmayan Yetkisiz İmzalayıcı
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    UntrustedSignerError
+Mesaj:   CWE-295: İmzalayıcı (saldirgan_yetkisiz_anahtar_99) güvenilen anahtarlar deposunda kayıtlı değil!
+------------------------------------------------------------------------
+Senaryo: NEG_07_BOZUK_KANONIK_JSON - Bozuk veya Kanonik Olmayan Yapılandırma Yükü
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    MalformedConfigError
+Mesaj:   CWE-20: Geçersiz veya desteklenmeyen yapılandırma formatı!
+------------------------------------------------------------------------
+Senaryo: NEG_08_GELECEGE_AIT_GECERSIZ_ZAMAN - Geleceğe Ait İmza Zaman Damgası (Aşırı Saat Kayması)
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    FutureTimestampError
+Mesaj:   CWE-298: İmza zaman damgası sistem saatinden ileride! (2029-01-01T00:00:00Z)
+------------------------------------------------------------------------
+Senaryo: NEG_09_ALGORITMA_DUSURME_SALDIRISI - İmza Algoritmasını 'none' veya Zayıf Algoritmaya Düşürme Girişimi
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    InsecureAlgorithmError
+Mesaj:   CWE-327: Desteklenmeyen veya güvensiz algoritma: none
+------------------------------------------------------------------------
+
+Özet: Toplam Senaryo: 9, Başarılı Engelleme: 9

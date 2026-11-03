@@ -1,0 +1,11 @@
+================================================================================
+G089: ARGPARSE VE CLI GU蕪ENLIK MOTORU BIRIM TEST RAPORU
+Zaman Damgasi (UTC): 2026-11-01T20:13:05.073331+00:00
+================================================================================
+
+Toplam Test Kosumu : 14
+Basarisizlik (Fail): 0
+Hata (Error)        : 0
+Sonuc Durumu        : 14/14 PASS
+
+[+] Tum 14 birim test basariyla tamamlandi (PASS).

@@ -1,0 +1,37 @@
+{
+  "politika_adi": "Kurumsal Sinir Guvenlik Politikasi v4",
+  "versiyon": "4.2.0",
+  "hedef_ortam": "production-dmz",
+  "varsayilan_eylem": "DROP",
+  "kurallar": [
+    {
+      "kural_no": 10,
+      "kaynak": "0.0.0.0/0",
+      "hedef_port": 443,
+      "protokol": "TCP",
+      "eylem": "ACCEPT",
+      "aciklama": "HTTPS Guvenli Web Trafigi"
+    },
+    {
+      "kural_no": 20,
+      "kaynak": "10.50.0.0/16",
+      "hedef_port": 22,
+      "protokol": "TCP",
+      "eylem": "ACCEPT",
+      "aciklama": "Yonetim Bastion Host SSH Erisimi"
+    },
+    {
+      "kural_no": 999,
+      "kaynak": "any",
+      "hedef_port": "any",
+      "protokol": "any",
+      "eylem": "DROP",
+      "aciklama": "Varsayilan Tum Trafik Engelleme"
+    }
+  ],
+  "tls_ayarlari": {
+    "min_tls_versiyon": "TLSv1.3",
+    "hsts_aktif": true,
+    "ocsp_stapling_zorunlu": true
+  }
+}

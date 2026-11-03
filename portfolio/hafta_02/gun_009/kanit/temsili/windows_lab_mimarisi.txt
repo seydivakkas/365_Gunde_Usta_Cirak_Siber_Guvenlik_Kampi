@@ -1,0 +1,64 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+Bu belge, Windows 11/10 Güvenlik Laboratuvarı Mimarisi, Windows Sandbox İzolasyonu,
+Hyper-V vSwitch Ağ Sınırları ve Defender Dışlama Mekanizmasını gösteren şemadır.
+================================================================================
+
+              +--------------------------------------------------------------+
+              |      WINDOWS GÜVENLİK LABORATUVARI MİMARİSİ VE BİLEŞENLERİ   |
+              |       (Windows Sandbox, Hyper-V vSwitch, WSL2 ve Defender)   |
+              +--------------------------------------------------------------+
+
+  +=======================================================================================+
+  |              WINDOWS 11 / 10 KONAK İŞLETİM SİSTEMİ (HOST OS - FİZİKSEL SİSTEM)        |
+  |                                                                                       |
+  |  +---------------------------+   +---------------------------+   +------------------+ |
+  |  | Windows Defender Antivirüs|   |  Konak Dosya Sistemi      |   |  Fiziksel Ağ     | |
+  |  | (Tam Tarama Kalkanı)      |   |  (C:\ - NTFS / BitLocker) |   |  (Wi-Fi / LAN)   | |
+  |  +---------------------------+   +---------------------------+   +------------------+ |
+  |                |                               |                          ^           |
+  |                v (Sıkı ACL Kontrolü)           v (Salt-Okunur Eşleme)     | (İZOLASYON|
+  |     [C:\Guvenli_Lab\Araclar]         [Incelenecek_Numuneler]              |  ENGELİ)  |
+  |     - Sadece SYSTEM/Admin yazabilir  - ReadOnly = true                    x           |
+  |     - Standart kullanıcı YAZAMAZ     - Konak diski ASLA BOZULMAZ          |           |
+  +===========================================================================|===========+
+         |                                                                    |
+         v                                                                    v
+  #########################################################################################
+  ###  HYPER-V SANALLAŞTIRMA VE ÇEKİRDEK YALITIM (VBS / HVCI) MİKRO-KORUMA KATMANI    ###
+  #########################################################################################
+         |                                           |                        |
+         v                                           v                        v
+  +-----------------------------+     +-----------------------------+     +---------------+
+  |   WINDOWS SANDBOX (.wsb)    |     |      WSL2 LİNUX LAB         |     | HYPER-V VM'LER|
+  |  (Tek Kullanımlık Mikro-VM) |     | (Hyper-V Linux Çekirdeği)   |     | (Flare-VM vb.)|
+  +-----------------------------+     +-----------------------------+     +---------------+
+  | - <Networking>Disable</...> |     | - Kali / Ubuntu Dağıtımı    |     | - Windows 10  |
+  | - <ReadOnly>true</ReadOnly> |     | - Bağımsız Linux Çekirdeği  |     | - Remnux      |
+  | - <VGpu>Disable</VGpu>      |     | - mnt/c salt-okunur bağlı   |     | - Kali Linux  |
+  | - Kapanınca her şey YOK OLUR|     | - Ağ: NAT / Host-Only       |     | - Anlık İmaj  |
+  +-----------------------------+     +-----------------------------+     +---------------+
+                 |                                   |                            |
+                 x [SIFIR AĞ ÇIKIŞI]                 |                            |
+                                                     v                            v
+                                    +-----------------------------------------------------+
+                                    |         HYPER-V İZOLASYONLU SANAL ANAHTAR           |
+                                    |       (Lab_Internal_vSwitch / Private_vSwitch)      |
+                                    +-----------------------------------------------------+
+                                    | - Anahtar Tipi: Internal / Private                  |
+                                    | - Fiziksel Ağ Kartına Bağlantı: YOK (FALSE)         |
+                                    | - Promiscuous Mode: DENY (Paket Koklama Yasak)      |
+                                    | - Güvenlik Duvarı: Gelen Tüm Trafik Bloklu         |
+                                    |  => ZARARLI DIŞ İNTERNETE VEYA ŞİRKET AĞINA SIZAMAZ |
+                                    +-----------------------------------------------------+
+
+--------------------------------------------------------------------------------
+ZİHİNSEL MODEL VE İSTİSMAR MEKANİZMASI:
+1. Windows Sandbox (WSB): BSL-4 seviyesinde sıfır kalıntılı ortamdır. <Networking>Disable
+   etiketi ile zararlı yazılımın dışarıya C2 sinyali göndermesi veya veri sızdırması engellenir.
+2. Defender Exclusion Hijacking (Dışlama İstismarı): Eğer yönetici "C:\" veya "C:\Users" gibi
+   geniş yolları Defender'dan dışlarsa; bir saldırgan zararlı dosyasını doğrudan buraya atarak
+   antivirüs taramasından kaçar. Güvenli labda yalnızca dar ve sıkı ACL'li yollar dışlanır.
+3. Hyper-V vSwitch: External yapıldığında zararlı fiziksel yerel ağdaki makinelere sıçrar.
+   Internal veya Private modunda ise sızıntı sıfırlanır.
+================================================================================

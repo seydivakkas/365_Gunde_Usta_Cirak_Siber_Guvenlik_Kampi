@@ -1,0 +1,51 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+====================================================================================================
+      G072: DEĞİŞKENLER, VERİ TİPLERİ VE GÜVENLİ GİRİŞ DOĞRULAMA MİMARİSİ
+====================================================================================================
+
+      +-----------------------------------------------------------------------------------+
+      |             GÜVENİLMEYEN KULLANICI / AĞ GİRDİSİ (UNTRUSTED RAW INPUT)             |
+      +-----------------------------------------------------------------------------------+
+                                                │
+                                                ▼
+      +-----------------------------------------------------------------------------------+
+      |  KATMAN 1: KANONİKLEŞTİRME VE TEMİZLEME (CANONICALIZATION & SANITIZATION)         |
+      +-----------------------------------------------------------------------------------+
+      |  - Null Byte Filtreleme     : `\x00` tespiti ve reddi                             |
+      |  - Unicode Normalizasyonu   : NFKC dönüşümü (Homograph / Fullwidth bypass engeli) |
+      |  - Boşluk Temizleme         : Trim (Leading/Trailing whitespace stripping)        |
+      +-----------------------------------------------------------------------------------+
+                                                │
+                                                ▼
+      +-----------------------------------------------------------------------------------+
+      |  KATMAN 2: KATI TİP GÜVENLİĞİ VE DÖNÜŞÜMÜ (STRONG TYPING & TYPE TRAPS)            |
+      +-----------------------------------------------------------------------------------+
+      |  - Boolean Trap Savunması   : isinstance(True, int) tuzağının engellenmesi        |
+      |  - Katı Boolean Sözlüğü     : Yalnızca True/False/1/0/yes/no (Belirsizlik Yok)    |
+      |  - Sayısal Tip Denetimi     : Sıkı regex `^[-+]?\d+$` ve int() ayrıştırması       |
+      +-----------------------------------------------------------------------------------+
+                                                │
+                                                ▼
+      +-----------------------------------------------------------------------------------+
+      |  KATMAN 3: SINIR VE SALDIRI ÖNLEME KONTROLLERİ (BOUNDS & INJECTION DEFENSE)       |
+      +-----------------------------------------------------------------------------------+
+      |  - Port Sınır Denetimi      : 1 <= port <= 65535 (TCP/UDP standart aralığı)       |
+      |  - IPv4 Oktet Doğrulaması   : ipaddress.IPv4Address (0-255 katı sınır kontrolü)   |
+      |  - Komut Enjeksiyonu Bloku  : Yasaklı kabuk metakarakterleri (`;|&$`><\n\r` vb.)  |
+      |  - Dizin Atlatma (Traversal): os.path.commonpath([target, base]) == base doğrulaması|
+      |  - DoS / Uzunluk Sınırı     : Azami 253 karakter (RFC 1123 Hostname tamponu)     |
+      +-----------------------------------------------------------------------------------+
+                                                │
+                                                ▼
+      +-----------------------------------------------------------------------------------+
+      |  KATMAN 4: DOĞRULANMIŞ VE GÜVENLİ ÇIKTI (VERIFIED SANITIZED PAYLOAD)             |
+      +-----------------------------------------------------------------------------------+
+      |  - Çıktı Formatı            : Tip garantili Python sözlüğü / Parametre nesnesi    |
+      |  - Adli Raporlama           : TEXT ve JSON formatlı doğrulama özeti               |
+      |  - Hata Yönetimi            : Açıklayıcı SecureInputValidationError istisnaları   |
+      +-----------------------------------------------------------------------------------+
+
+====================================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+====================================================================================================

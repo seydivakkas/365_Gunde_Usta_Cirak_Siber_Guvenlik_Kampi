@@ -1,0 +1,80 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "gun": 127,
+  "hafta": 19,
+  "konu": "Uç nokta tehdit modeli",
+  "dosyalar": {
+    "ders.md": {
+      "boyut_bayt": 6743,
+      "sha256": "1f13233163ca6577997ec6cf827e7b2d0895f9b7f47b5cb4036925fd17814368"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 19424,
+      "sha256": "f4b3151d25942c3bdc9767011fb0dcb2d85d87d7315890a627fcefb2bfd53fad"
+    },
+    "rapor.md": {
+      "boyut_bayt": 5040,
+      "sha256": "9e581c35127664df70f8f31dece441b73f645c9d0aa13b03e7313d65cce04306"
+    },
+    "README.md": {
+      "boyut_bayt": 5244,
+      "sha256": "d9b54357d1a7783d4d078328b6b9f1a7376175e48f94cb967fc72cb2146e129f"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1036,
+      "sha256": "f28362ed5582a0df889bc482a284617c09bc49fdcc33ae676fd73a9246cbdbf1"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 10494,
+      "sha256": "465dca9a0f3f140fc15a790bddf1a0d8704a0e2434cee87be75c92323c473ec7"
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "boyut_bayt": 3652,
+      "sha256": "9aa7ebe3aaa51b6b828c473246ee5679ad0bdeee826d666d98b2abf67c526cc0"
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 2314,
+      "sha256": "91848bb93f7ccf92a9eae9ccdca44779e164dcf257f44c2d6c973144b683e9c7"
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "boyut_bayt": 4512,
+      "sha256": "cf94160a8e9f66a8ef9d05676e5558f4a47c2758d4361047464768d375dc4ab5"
+    },
+    "kanit/gercek/uc_nokta_tehdit_analiz_raporu.json": {
+      "boyut_bayt": 927,
+      "sha256": "9f685e05a35d0c55b21ad0ec13412c72cc4ca463001a8ea2aaba1a7d192e5935"
+    },
+    "kanit/temsili/uc_nokta_tehdit_mimarisi.txt": {
+      "boyut_bayt": 2743,
+      "sha256": "6d896675b315a635746570927822eac9d09eef058b0f29f3fe92f754817a5d59"
+    },
+    "ornek_veri/endpoint_baseline_spec.json": {
+      "boyut_bayt": 763,
+      "sha256": "0b904f3db3aff69640d79fb56e37e56f33cce9206ac32bb0af77b35e0ce7b93f"
+    },
+    "ornek_veri/invalid_endpoint_scenarios.json": {
+      "boyut_bayt": 4287,
+      "sha256": "c7afa99ae64490b07d192cb3d0e55f782cb7ee3b000cb7a59ede897f20aca001"
+    },
+    "tests/test_endpoint_threat_model.py": {
+      "boyut_bayt": 14321,
+      "sha256": "70b0c1b2b5d0f5f9720922b3b82799a2a2ff976f14e3366a36643ce717294349"
+    },
+    "tests/__init__.py": {
+      "boyut_bayt": 508,
+      "sha256": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4"
+    },
+    "uygulama/endpoint_threat_cli.py": {
+      "boyut_bayt": 9529,
+      "sha256": "5efe3fcda9c6fc81f8b5dcf108355c329515c8afc6b0ab8a770f913dbf3451de"
+    },
+    "uygulama/endpoint_threat_model_engine.py": {
+      "boyut_bayt": 24975,
+      "sha256": "22ec2489203298bc914f98b9220328243d6ddf49b552d1a8a585a32e509ccaf8"
+    },
+    "uygulama/__init__.py": {
+      "boyut_bayt": 508,
+      "sha256": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4"
+    }
+  }
+}

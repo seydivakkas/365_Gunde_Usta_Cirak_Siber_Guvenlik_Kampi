@@ -1,0 +1,52 @@
+======================================================================
+GÜN 119: MİNİ PROJE 16 — NEGATİF KONTROL VE ZAFİYET ENGELLEME RAPORU
+Tarih / Saat: 2026-11-02T05:48:26.787530
+======================================================================
+
+[NEG_01] Rolde Bulunmayan Yetki ile İzinsiz Erişim Talebi (CWE-862)
+  Beklenen Güvenlik Sonucu : ACCESS_DENIED_CWE_862
+  Gerçekleşen Sonuç        : ACCESS_DENIED_CWE_862
+  Doğrulama Durumu         : PASS (Yetkisiz Erişim Doğru Şekilde Reddedildi)
+----------------------------------------------------------------------
+[NEG_02] Statik Görevler Ayrılığı (SSD) Toksik Rol Çatışması (CWE-863)
+  Beklenen Güvenlik Sonucu : StaticSoDViolationError
+  Gerçekleşen Sonuç        : StaticSoDViolationError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: StaticSoDViolationError)
+----------------------------------------------------------------------
+[NEG_03] Dinamik Görevler Ayrılığı (DSD) Oturum Çatışması (CWE-863)
+  Beklenen Güvenlik Sonucu : DynamicSoDViolationError
+  Gerçekleşen Sonuç        : DynamicSoDViolationError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: DynamicSoDViolationError)
+----------------------------------------------------------------------
+[NEG_04] Kullanıcıya Atanmamış Yetkisiz Rol Aktivasyonu (CWE-285)
+  Beklenen Güvenlik Sonucu : UnassignedRoleActivationError
+  Gerçekleşen Sonuç        : UnassignedRoleActivationError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: UnassignedRoleActivationError)
+----------------------------------------------------------------------
+[NEG_05] Döngüsel Rol Miras Ağacı (Circular Hierarchy) Enjeksiyonu (CWE-674)
+  Beklenen Güvenlik Sonucu : RoleHierarchyCycleDetectedError
+  Gerçekleşen Sonuç        : RoleHierarchyCycleDetectedError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: RoleHierarchyCycleDetectedError)
+----------------------------------------------------------------------
+[NEG_06] Aşırı Yetki Birikimi (Privilege Creep) Eşik Aşımı (CWE-250)
+  Beklenen Güvenlik Sonucu : PrivilegeCreepWarningError
+  Gerçekleşen Sonuç        : PrivilegeCreepWarningError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: PrivilegeCreepWarningError)
+----------------------------------------------------------------------
+[NEG_07] Geçersiz veya Sahte Oturum Kimliği ile Erişim (CWE-613)
+  Beklenen Güvenlik Sonucu : SessionInvalidOrExpiredError
+  Gerçekleşen Sonuç        : SessionInvalidOrExpiredError
+  Doğrulama Durumu         : PASS (Beklenen İstisna Başarıyla Yakalandı: SessionInvalidOrExpiredError)
+----------------------------------------------------------------------
+[NEG_08] Geri Alınan (Revoked) Rolün Sağladığı Yetkiye Erişim (CWE-862)
+  Beklenen Güvenlik Sonucu : ACCESS_DENIED_CWE_862
+  Gerçekleşen Sonuç        : ACCESS_DENIED_CWE_862
+  Doğrulama Durumu         : PASS (Geri Alınan Rolün Yetkisi Başarıyla Engellendi)
+----------------------------------------------------------------------
+[NEG_09] Sistemde Kayıtlı Olmayan Hayali Kullanıcı Erişimi (CWE-287)
+  Beklenen Güvenlik Sonucu : USER_NOT_FOUND
+  Gerçekleşen Sonuç        : USER_NOT_FOUND
+  Doğrulama Durumu         : PASS (Hayali Kullanıcı Erişimi Güvenle Reddedildi)
+----------------------------------------------------------------------
+
+TOPLAM TEST EDİLEN: 9, HEPSİ BAŞARILI MI: True

@@ -1,0 +1,88 @@
+{
+  "gun": 136,
+  "hafta": 20,
+  "konu": "Linux servisleri ve systemd",
+  "toplam_dosya": 21,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "56d1843a963f680325ccf58728fc6816d44460c560a9ab3a12f06b9505128280",
+      "size": 5379
+    },
+    "ders.md": {
+      "sha256": "4af8d48e18f4af192c16bd8b36c50331b161c3749890d446ef2abebd4b691e32",
+      "size": 9537
+    },
+    "kanit_uretici.py": {
+      "sha256": "be463af4ab63f436c1da60f7c73e0aeb335dee397759e3a58d79a61deda37eb7",
+      "size": 12072
+    },
+    "rapor.md": {
+      "sha256": "2399dfb7e3b2144731b50c37009fc4b5d16fb25c947d4cce5e33bad05bba3e13",
+      "size": 6373
+    },
+    "sonuc.json": {
+      "sha256": "400ebae1ddc3b181af80b3d131e9c0d06d6fa7cbedec57a711b09e8edddbb61e",
+      "size": 1175
+    },
+    "soru_cevap.md": {
+      "sha256": "52c82fda767b3ec1fe86329aad9895a059f672a0a497ba1569a0c9094683742f",
+      "size": 11383
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "sha256": "583e2a2983f03b39793ba905fa8167fe398e3322036e91ede46c0d25dfc146b1",
+      "size": 2165
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "sha256": "dbac96a5805feae491addf292e89e5ea08ad3ffe6172c92d6ab567f9da67cd06",
+      "size": 4041
+    },
+    "kanit\\gercek\\ornek_guvenli_servis.service": {
+      "sha256": "f927791aebab5cad99d0c57b0087fa3ba0a100fdc9178deecc4e37509ead56e7",
+      "size": 1712
+    },
+    "kanit\\gercek\\otomatik_sikilastirma.sh": {
+      "sha256": "01674f2399fdc88e2bc6bbc07454728a95642681fcbce7a0d3259f7f01801331",
+      "size": 3976
+    },
+    "kanit\\gercek\\systemd_guvenlik_analiz_raporu.json": {
+      "sha256": "6e28ddbe635b59cbd47847c5f5d1952436f4c80e449846290dd384ec5cfe9773",
+      "size": 14236
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "sha256": "b699f683803174a9afe3f6d0124c0e94b058b6e29f791fe06c00028fb55deece",
+      "size": 4285
+    },
+    "kanit\\temsili\\systemd_mimarisi.txt": {
+      "sha256": "557d387d237eb45b11363a298cd8dda522f6470c7e1eae0b52c00b46bf3559f4",
+      "size": 3318
+    },
+    "ornek_veri\\invalid_systemd_scenarios.json": {
+      "sha256": "a58b525dac410e5aad7b24983e95156bda1754c8ce5bd11d1e6b6467164ee216",
+      "size": 5803
+    },
+    "ornek_veri\\systemd_inventory_spec.json": {
+      "sha256": "9a1086664f7fcbca799e365fbd912f728f5eafec7c6ce03d50d565210868897b",
+      "size": 4176
+    },
+    "tests\\__init__.py": {
+      "sha256": "f607b7a5e11a5251af3ac983dbf00f448dac5966dc59e263732bc8296db3bf68",
+      "size": 759
+    },
+    "tests\\test_linux_systemd_security.py": {
+      "sha256": "11da17b7b850f6efcdbdd42447564878eb5a9371fb38746d77471e7864303232",
+      "size": 14180
+    },
+    "uygulama\\__init__.py": {
+      "sha256": "b0da872a9b5a935b736cb8c58186f1726a993a02d839326da01ea49b4ba1d7a0",
+      "size": 892
+    },
+    "uygulama\\linux_systemd_engine.py": {
+      "sha256": "492e3451f41a5732e327e3bde05eca360fc3885d1844e1e2ced1d7717bf4ac15",
+      "size": 37287
+    },
+    "uygulama\\systemd_security_cli.py": {
+      "sha256": "7e46f89a944b6de3653f64fc870339faeb517b67e32c51b749c39e521f5f6165",
+      "size": 7946
+    }
+  }
+}

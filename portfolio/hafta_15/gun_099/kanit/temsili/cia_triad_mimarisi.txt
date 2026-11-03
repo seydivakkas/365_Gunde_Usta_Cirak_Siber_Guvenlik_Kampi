@@ -1,0 +1,43 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+            CIA TRIAD VE TEMEL GÜVENLİK NİTELİKLERİ BÜTÜNCÜL MİMARİSİ
+========================================================================================
+
+                               [ BİLGİ GÜVENLİĞİ MERKEZİ ]
+                                            |
+         +----------------------------------+----------------------------------+
+         |                                  |                                  |
+         v                                  v                                  v
++-----------------------+        +-----------------------+        +-----------------------+
+|   GİZLİLİK (CONF.)    |        |   BÜTÜNLÜK (INTEG.)   |        |  ERİŞİLEBİLİRLİK (AVA.)|
+|       [25 Puan]       |        |       [25 Puan]       |        |       [25 Puan]       |
++-----------------------+        +-----------------------+        +-----------------------+
+| * Açık Metin Sızıntı  |        | * Kriptografik Özet   |        | * DoS / DDoS Koruması |
+|   Taraması (CWE-311)  |        |   (SHA-256 / BLAKE2)  |        |   (CWE-770 / CWE-400) |
+| * Kredi Kartı, Parola |        | * HMAC-SHA256 Dijital |        | * Token Bucket Hız    |
+|   ve PII Regex Tespiti|        |   Mühürleme (CWE-345) |        |   Limitleyici (50/sn) |
+| * Simetrik Akış       |        | * Sabit Zamanlı Eşlik |        | * 1 MB Bellek Tavanı  |
+|   Şifreleme (CTR Mode)|        |   hmac.compare_digest |        |   Tampon Koruması     |
+| * 256-bit Anahtar     |        | * 1 Bit Tahrifat      |        | * Servis Sürekliliği  |
+|   Derleme (CWE-326)   |        |   (Bit-Flip) Tespiti  |        |   ve SLA Güvencesi    |
++-----------------------+        +-----------------------+        +-----------------------+
+         |                                  |                                  |
+         +----------------------------------+----------------------------------+
+                                            |
+                                            v
++--------------------------------------------------------------------------------------+
+|                     İNKAR EDİLEMEZLİK VE HESAP VEREBİLİRLİK                          |
+|                       (NON-REPUDIATION & ACCOUNTABILITY)                             |
+|                                   [25 Puan]                                          |
++--------------------------------------------------------------------------------------+
+|  * Kriptografik Olarak Kilitlenmiş Denetim Zinciri (Hash-Chained Audit Trail)        |
+|  * Her Blokta: Önceki Hash + Zaman Damgası + Eylem + Aktör + Veri Özeti              |
+|  * Kriptografik İmzalanmış Mühür (HMAC-SHA256)                                       |
+|  * Geçmiş Kayıtların Değiştirilemezliği ve Adli Bilişim Bütünlüğü (CWE-778)          |
++--------------------------------------------------------------------------------------+
+                                            |
+                                            v
++--------------------------------------------------------------------------------------+
+|                           CIA DEĞERLENDİRME KARNESİ                                  |
+|                 TOPLAM SKOR: 100 / 100  -->  DURUM: PASS (GÜVENLİ)                   |
++--------------------------------------------------------------------------------------+

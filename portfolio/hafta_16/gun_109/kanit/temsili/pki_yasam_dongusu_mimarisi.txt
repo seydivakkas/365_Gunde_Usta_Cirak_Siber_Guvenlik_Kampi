@@ -1,0 +1,61 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+==================================================================================================
+              PKI VE SERTİFİKA YAŞAM DÖNGÜSÜ (CERTIFICATE LIFECYCLE) MİMARİSİ
+==================================================================================================
+
+     +----------------------------------------------------------------------------------+
+     | 1. TALEP & KİMLİK DOĞRULAMA (ENROLLMENT & CSR - RFC 2986 / PKCS#10)              |
+     +----------------------------------------------------------------------------------+
+     |  [İstemci / Sunucu]                                                              |
+     |         |                                                                        |
+     |         |-- 1. CSPRNG ile RSA/ECC Anahtar Çifti Üretimi                          |
+     |         |-- 2. CSR Gövdesi (Subject DN, SAN, Public Key)                         |
+     |         |-- 3. Kendi Özel Anahtarı ile İmzalama (Proof-of-Possession / CWE-347)  |
+     |         v                                                                        |
+     |  [ACME / RA (Kayıt Otoritesi)]                                                   |
+     |         |                                                                        |
+     |         |-- 4. ACME Challenge (HTTP-01 / DNS-01 ile Alan Adı Mülkiyet Doğrulaması|
+     |         v                                                                        |
+     |  [İhraççı CA (Issuing Certificate Authority)]                                    |
+     +----------------------------------------------------------------------------------+
+                                        |
+                                        v
+     +----------------------------------------------------------------------------------+
+     | 2. İHRAÇ & ŞEFFAFLIK TESCİLİ (ISSUANCE & CERTIFICATE TRANSPARENCY - RFC 6962)    |
+     +----------------------------------------------------------------------------------+
+     |  [İhraççı CA]                                                                    |
+     |         |-- CA Özel Anahtarıyla İmzalı X.509 v3 Sertifikası Basımı               |
+     |         |-- CT Log Kütüğüne Tescil (Pre-Certificate / Merkle Tree Leaf)          |
+     |         |-- SCT (Signed Certificate Timestamp) Sertifikaya Eklenmesi             |
+     |         v                                                                        |
+     |  [Üretim Ortamına Dağıtım & TLS Binding]                                         |
+     +----------------------------------------------------------------------------------+
+                                        |
+                                        v
+     +----------------------------------------------------------------------------------+
+     | 3. AKTİF İŞLETİM & İPTAL DENETİMİ (CRL / OCSP / STAPLING - RFC 5280 / RFC 6960)  |
+     +----------------------------------------------------------------------------------+
+     |                                                                                  |
+     |    A) CRL (Statik İptal Listesi)        B) OCSP (Gerçek Zamanlı Çevrimiçi Durum) |
+     |       - CA periyodik imzalar                - Client -> OCSP Responder (Nonce)   |
+     |       - Büyük dosya, gecikmeli              - CWE-294 Replay Saldırı Koruması    |
+     |                                                                                  |
+     |    C) OCSP STAPLING (RFC 6066 - En İyi Uygulama):                                |
+     |       [Web Sunucu] <--- Periyodik OCSP Yanıtı --- [OCSP Responder]               |
+     |            | (Önbellekler)                                                       |
+     |            +========= TLS Handshake + İmzalı OCSP Yanıtı ========> [Tarayıcı]    |
+     |                       (Sıfır İlave Gecikme & Gizlilik Koruması)                  |
+     +----------------------------------------------------------------------------------+
+                                        |
+                                        v
+     +----------------------------------------------------------------------------------+
+     | 4. YENİLEME, ROTASYON & İMHA (ACME RENEWAL & CRYPTO-SHREDDING)                   |
+     +----------------------------------------------------------------------------------+
+     |  - Otomasyon Eşiği: Bitişe 30 gün kala otomatik ACME tetikleme                   |
+     |  - Yeni Anahtar Çifti ve Sertifika Devreye Alma (Graceful Cutover)               |
+     |  - Eski Sertifikayı 'superseded' İle İptal Listesine İşleme                      |
+     |  - Eski Özel Anahtarın Kriptografik Olarak Parçalanması (Crypto-Shredding):      |
+     |    Bellekte ve diskte üzerine rastgele bitler yazılarak sıfırlanması (CWE-311)   |
+     +----------------------------------------------------------------------------------+
+
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

@@ -1,0 +1,95 @@
+{
+  "gun": 102,
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "boyut": 4483,
+      "sha256": "eaad91a408d2f3cf632ee85a034d9c49499291762f572cb524acc792b03a6e46"
+    },
+    {
+      "dosya": "ders.md",
+      "boyut": 8136,
+      "sha256": "4b4354d316818507ef07fb9e9a91539f664076f6485bb5057782c8eb623688e6"
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "boyut": 12524,
+      "sha256": "bec24c91a7d1388bfe5c848d0458c9affc23f06a09fe1f2e81dbc66d40cc2ce3"
+    },
+    {
+      "dosya": "rapor.md",
+      "boyut": 5736,
+      "sha256": "6408e459637b6f2960bdd614259f712bedc4d7d92c4efa585210c3a6cb0d0b8b"
+    },
+    {
+      "dosya": "sonuc.json",
+      "boyut": 1828,
+      "sha256": "1fe935ff0707e0df6f3614d138030e3e5703f667f02953c1f564a6e070709c0b"
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "boyut": 11412,
+      "sha256": "ead49f4265500c7ae4be28855584a861a2388fbcbeaaf58ccf6e5b527adc3e3f"
+    },
+    {
+      "dosya": "kanit/gercek/komut_ve_cikis.txt",
+      "boyut": 2842,
+      "sha256": "db3df18d468f30df4720e305ad19fc33d5eedcd6af3b44d366f82ba37c5ebf5f"
+    },
+    {
+      "dosya": "kanit/gercek/negatif_kontrol_sonuclari.txt",
+      "boyut": 3375,
+      "sha256": "b9e77df83959ad1501d100d93f11e06556ac0e409209b3be2a31942a8705d40f"
+    },
+    {
+      "dosya": "kanit/gercek/parola_guvenlik_analiz_raporu.txt",
+      "boyut": 2542,
+      "sha256": "8a1ec62ccf56866c721f2513a8834b7d4ee6c8a8b7be0254687b7955a71c83ef"
+    },
+    {
+      "dosya": "kanit/gercek/test_sonuclari.txt",
+      "boyut": 4073,
+      "sha256": "9c8dddd722e127d96f093276c788acd3e2eae0da05c64bbad58e9e42de64aa1a"
+    },
+    {
+      "dosya": "kanit/temsili/parola_saklama_mimarisi.txt",
+      "boyut": 5009,
+      "sha256": "51425ffdc6401a64f6f4fa02f82df09c155dc957d5aa93c0e25cd4a8f2433927"
+    },
+    {
+      "dosya": "ornek_veri/invalid_password_inputs.json",
+      "boyut": 2638,
+      "sha256": "3c910d3f87c097e0ad61acb4ad4952e04f19a59cf51a579849682c1ead73f537"
+    },
+    {
+      "dosya": "ornek_veri/password_store_samples.json",
+      "boyut": 1287,
+      "sha256": "6037932c6582397f9ece4b45aac2928684db9dd80bcfcb9266044726a2517691"
+    },
+    {
+      "dosya": "tests/__init__.py",
+      "boyut": 593,
+      "sha256": "b315a593e78e5a809e3e607bf1e6acb2165c070aedd1c5ea07956189211a4aea"
+    },
+    {
+      "dosya": "tests/test_secure_password_vault.py",
+      "boyut": 13423,
+      "sha256": "29e8c3801205ad97aae25b2a0c88f8fd18a803d3d7f238af185a5deb95131d21"
+    },
+    {
+      "dosya": "uygulama/__init__.py",
+      "boyut": 597,
+      "sha256": "027f534de1b0b8b07f2cba03226b5ddf6cf8be27db48d77720b6907d75903bbd"
+    },
+    {
+      "dosya": "uygulama/secure_password_vault.py",
+      "boyut": 13274,
+      "sha256": "27a11c8c362264549044111aa76ed2d28d23392d869d7cef5b1fb2598ce4d354"
+    },
+    {
+      "dosya": "uygulama/vault_cli.py",
+      "boyut": 12472,
+      "sha256": "8b3e95e01985524983273b83de16a6116eb0704051fc710430b43b1221f94254"
+    }
+  ]
+}

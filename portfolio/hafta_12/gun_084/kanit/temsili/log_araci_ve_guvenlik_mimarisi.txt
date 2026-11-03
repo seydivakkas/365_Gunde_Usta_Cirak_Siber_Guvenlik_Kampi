@@ -1,0 +1,70 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+================================================================================
+G084: MINI PROJE 11: TEST EDİLEN GÜVENLİK LOG ARACI MİMARİSİ
+================================================================================
+
+Bu şema, Hafta 12 Capstone projesi olan Test Edilen Güvenlik Log Aracının
+uçtan uca veri alım, temizleme, doğrulama, tehdit analizi ve raporlama boru hattını gösterir.
+
++-------------------------------------------------------------------------------+
+|                       HAM LOG KAYNAKLARI (GİRDİ KATMANI)                      |
+|                                                                               |
+|   raw_access_logs.jsonl           /var/log/nginx/access.log (CSV / TEXT)      |
++---------------------------------------+---------------------------------------+
+                                        |
+                                        v
++-------------------------------------------------------------------------------+
+| 1. GÜVENLİ DOSYA YOLU ÇÖZÜMLEME (SecureLogPathResolver)                       |
+|    - Pathlib.Path.resolve() ile güvenli temel dizin sınırlandırması           |
+|    - Path Traversal (../../etc/passwd) Engelleme (CWE-22)                     |
+|    - Symlink Arbitrary File Access Engelleme (CWE-59)                         |
+|    - Null Byte (0x00) Enjeksiyon Koruması (CWE-158)                           |
++---------------------------------------+---------------------------------------+
+                                        |
+                                        v
++-------------------------------------------------------------------------------+
+| 2. LOG ARINDIRMA VE MASKELEME KATMANI (LogContentSanitizer)                   |
+|    - Log Injection / CRLF (\r, \n) Nötralizasyonu (CWE-117)                   |
+|    - ANSI Terminal Kaçış Kodlarının Temizlenmesi                              |
+|    - DoS Koruması: Maks 4096 karakter uzunluk denetimi (CWE-400)              |
+|    - Hassas Veri Maskeleme (CWE-532 / CWE-359):                               |
+|        * Kredi Kartı PAN   : 4532-1122-3344-5566 -> ****-****-****-5566       |
+|        * Parola & Secret   : password=MySecret   -> password=***REDACTED***   |
+|        * AWS Access Key    : AKIAIOSFODNN7EX     -> AKIA***REDACTED***        |
+|        * Bearer JWT Token  : Bearer eyJ...       -> Bearer [REDACTED_JWT]     |
++---------------------------------------+---------------------------------------+
+                                        |
+                                        v
++-------------------------------------------------------------------------------+
+| 3. YAPILANDIRMA VE AĞ DOĞRULAMASI (NetworkValidator & JSON Parser)           |
+|    - Strict Schema Validation: timestamp, client_ip, method, endpoint, status |
+|    - IP Doğrulama: RFC uyumlu IPv4 / IPv6 ayrıştırma (CWE-20)                 |
+|    - Bozuk JSON Sentaksı ve DoS Engelleme (MalformedJsonLogException)         |
++---------------------------------------+---------------------------------------+
+                                        |
+                                        v
++-------------------------------------------------------------------------------+
+| 4. TEHDİT VE SALDIRI TESPİT MOTORU (ThreatDetectionEngine)                    |
+|    +--------------------------------------------------------------------+     |
+|    | A. Kaba Kuvvet (Brute Force) Tespiti (CWE-307)                     |     |
+|    |    - 401 / 403 ardışık başarısız oturum sayacı                     |     |
+|    |    - Eşik: >= 3 deneme -> [CRITICAL] AUTHENTICATION_BRUTE_FORCE    |     |
+|    +--------------------------------------------------------------------+     |
+|    | B. SQL Injection Tespiti (CWE-89)                                  |     |
+|    |    - UNION SELECT, OR 1=1, -- kalıp eşleştirme                     |     |
+|    |    - Sonuç: [CRITICAL] SQL_INJECTION_ATTEMPT                       |     |
+|    +--------------------------------------------------------------------+     |
+|    | C. Kötü Niyetli Tarayıcı Tespiti (CWE-200)                         |     |
+|    |    - sqlmap, nikto, nmap User-Agent imzaları                       |     |
+|    |    - Sonuç: [HIGH] MALICIOUS_SCANNER_DETECTED                      |     |
+|    +--------------------------------------------------------------------+     |
++---------------------------------------+---------------------------------------+
+                                        |
+                                        v
++-------------------------------------------------------------------------------+
+| 5. ÇIKTI VE ADLİ DENETİM RAPORU (AuditLogSummary)                             |
+|    - İşlenen: 8, Geçerli: 8, Reddedilen: 0, Alarm Sayısı: 4                   |
+|    - IP Dağılım Grafiği, HTTP Durum Kodu İstatistiği                          |
+|    - JSON & Konsol Raporu                                                     |
++-------------------------------------------------------------------------------+

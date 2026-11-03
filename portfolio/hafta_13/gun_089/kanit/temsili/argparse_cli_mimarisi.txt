@@ -1,0 +1,57 @@
+# ==============================================================================
+# TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+# ==============================================================================
+# Gün 089: Argparse ve CLI Tasarımı Mimari Görselleştirmesi
+# Konu: Modern, Güvenli ve POSIX Uyumlu Siber Güvenlik Komut Satırı Mimarisi
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) - Tüm Hakları Saklıdır.
+# ==============================================================================
+
++--------------------------------------------------------------------------------------------------+
+|                            GÜVENLİ VE POSIX UYUMLU CLI GİRİŞ BORU HATTI                           |
++--------------------------------------------------------------------------------------------------+
+                                                 |
+                                     [ sys.argv / CLI Girdi ]
+                                                 |
+                                                 v
+                      +-----------------------------------------------------+
+                      |             SecurityArgumentParser                  |
+                      |   - add_help=False miras yapılı parent parser        |
+                      |   - Hata durumunda stdout/stderr temizliği          |
+                      |   - exit_on_error=False / kontrollü istisna fırlatma|
+                      +-----------------------------------------------------+
+                                                 |
+                                                 v
+                      +-----------------------------------------------------+
+                      |           Girdi Boyutu ve DoS Kontrolü             |
+                      |   - Girdi uzunluğu > 8192 bayt -> REDDET           |
+                      |   - Argüman adedi > 64 adet -> REDDET              |
+                      +-----------------------------------------------------+
+                                                 |
+                                                 v
+                      +-----------------------------------------------------+
+                      |           Subparser Yönlendirme (Subcommands)       |
+                      |      ['scan', 'audit', 'hash', 'version', ...]     |
+                      +-----------------------------------------------------+
+                                 /               |               \
+                                /                |                \
+    +--------------------------+   +---------------------------+   +---------------------------+
+    |         'scan'           |   |          'audit'          |   |          'hash'           |
+    |--------------------------|   |---------------------------|   |---------------------------|
+    | - Hedef Host Doğrulama   |   | - Dosya Yolu Doğrulama    |   | - Algoritma Seçimi        |
+    |   (RFC-1123, No Traversal|   |   (Path Traversal / '..'  |   |   (sha256, sha512, md5)   |
+    |   No Special Chars)      |   |    CWE-22 Kontrolü)       |   | - Veri / Metin Doğrulama  |
+    | - Port Aralığı [1-65535] |   | - Mutually Exclusive Grup |   |   (Boş Olmama Kontrolü)   |
+    |   (CWE-20 Sınır Testi)   |   |   (--fast VS --deep)      |   | - Çıktı Formatlama        |
+    | - Timeout [1-300 sn]     |   |   (Cihazı Kilitlemeyen    |   |                           |
+    | - Ortak Bayraklar        |   |    Mantıksal Ayrıştırma)  |   |                           |
+    |   (--json-output, -v)    |   |                           |   |                           |
+    +--------------------------+   +---------------------------+   +---------------------------+
+                 \                               |                               /
+                  \                              |                              /
+                   v                             v                             v
++--------------------------------------------------------------------------------------------------+
+|                              JSON / POSIX STANDART ÇIKIŞ MOTORU                                  |
+|   - Return Code: 0 (Başarılı), 1 (Genel Hata), 2 (Argüman/Sözdizimi Hatası)                      |
+|   - Format: Semantik Renkli Konsol Metni veya Yapısal JSON Çıktısı                               |
+|   - Bilgi Sızıntısı Yok: Yetkisiz dosya yolları, stack trace veya kimlik bilgileri gizlenir      |
++--------------------------------------------------------------------------------------------------+

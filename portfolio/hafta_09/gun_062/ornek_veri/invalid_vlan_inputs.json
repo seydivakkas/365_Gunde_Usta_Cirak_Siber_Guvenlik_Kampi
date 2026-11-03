@@ -1,0 +1,81 @@
+{
+  "aciklama": "G062 - VLAN, Segmentasyon ve DMZ Negatif ve Saldiri Sinir Deger Senaryolari (9 Senaryo)",
+  "telif_hakki": "Telif Hakki (c) 2026 Seydi Eryilmaz (@seydivakkas). Tum Haklari Saklidir.",
+  "negatif_senaryolar": [
+    {
+      "senaryo_id": "NEG_01_INVALID_VLAN_ID_RANGE",
+      "aciklama": "IEEE 802.1Q 12-bit sinirini asan (ornek: VID 5000) veya rezerve 0/4095 VLAN ID kullanimi.",
+      "vlan_id": 5000,
+      "beklenen_hata": "VLANValidationError",
+      "hata_nedeni": "Gecersiz VLAN ID: 5000. IEEE 802.1Q standardina gore VLAN ID 1 ile 4094 arasinda olmalidir."
+    },
+    {
+      "senaryo_id": "NEG_02_DOUBLE_TAGGING_VLAN_HOPPING",
+      "aciklama": "Cift 802.1Q etiketli paketle (Outer VID=Native, Inner VID=Target) yapilan VLAN Hopping saldirisi.",
+      "outer_vlan_id": 99,
+      "inner_vlan_id": 30,
+      "port_modu": "ACCESS",
+      "beklenen_hata": "VLANHoppingAttackError",
+      "hata_nedeni": "Cift 802.1Q etiketleme (Double Tagging / QinQ) ile VLAN Hopping saldirisi tespit edildi ve engellendi!"
+    },
+    {
+      "senaryo_id": "NEG_03_SWITCH_SPOOFING_DTP_ON_ACCESS_PORT",
+      "aciklama": "Access porta DTP (Dynamic Trunking Protocol) paketi gonderilerek portun trunk yapilmaya zorlanmasi.",
+      "port_id": "Fa0/1",
+      "port_modu": "ACCESS",
+      "protokol": "DTP",
+      "beklenen_hata": "SwitchSpoofingError",
+      "hata_nedeni": "Access port uzerinde DTP muzakere paketi tespit edildi (Switch Spoofing Saldirisi). Port derhal err-disabled yapildi."
+    },
+    {
+      "senaryo_id": "NEG_04_UNAUTHORIZED_DMZ_LATERAL_MOVEMENT",
+      "aciklama": "DMZ bolgesinden (VLAN 20) ic kullanici agina (VLAN 10) dogru izinsiz yanal gecis (Lateral Movement) paketi.",
+      "kaynak_vlan": 20,
+      "hedef_vlan": 10,
+      "hedef_port": 445,
+      "protokol": "TCP",
+      "beklenen_hata": "InterVLANPolicyViolationError",
+      "hata_nedeni": "Inter-VLAN guvenlik duvari kurali ihlali: DMZ'den ic kullanici agina erisim engellendi (Default Deny)."
+    },
+    {
+      "senaryo_id": "NEG_05_TRUNCATED_8021Q_TAG",
+      "aciklama": "4 bayttan kisa kesilmis 802.1Q basligi (TPID + TCI alaninda eksik bayt).",
+      "raw_tag_hex": "8100",
+      "beklenen_hata": "MalformedVLANFrameError",
+      "hata_nedeni": "IEEE 802.1Q VLAN basligi tam 4 bayt olmalidir. Alinan: 2 bayt."
+    },
+    {
+      "senaryo_id": "NEG_06_NATIVE_VLAN_LEAKAGE",
+      "aciklama": "Access porta ait olmayan etiketli bir paketin access port uzerinden enjekte edilmeye calisilmasi.",
+      "port_vlan": 10,
+      "gelen_paket_vlan": 20,
+      "port_modu": "ACCESS",
+      "beklenen_hata": "VLANIngressViolationError",
+      "hata_nedeni": "Access port (VLAN 10) uzerine farkli bir VLAN ID (20) tasiyan etiketli paket kabul edilemez."
+    },
+    {
+      "senaryo_id": "NEG_07_DISALLOWED_VLAN_ON_TRUNK",
+      "aciklama": "Trunk portun izinli VLAN listesinde (Allowed VLANs: 10, 20, 30) yer almayan VLAN 50 paketi.",
+      "trunk_izinli_vlanlar": [10, 20, 30],
+      "gelen_vlan": 50,
+      "beklenen_hata": "TrunkVLANNotAllowedError",
+      "hata_nedeni": "VLAN 50, trunk portun izinli VLAN listesinde (Allowed VLANs) bulunmuyor. Paket dusuruldu."
+    },
+    {
+      "senaryo_id": "NEG_08_INVALID_MAC_ADDRESS_FORMAT",
+      "aciklama": "Gecersiz veya hatali MAC adresi formati tasiyan Ethernet cercevesi.",
+      "mac_adresi": "00:11:22:33:GG:ZZ",
+      "beklenen_hata": "VLANValidationError",
+      "hata_nedeni": "Gecersiz MAC adresi formati: '00:11:22:33:GG:ZZ'."
+    },
+    {
+      "senaryo_id": "NEG_09_BROADCAST_STORM_ACROSS_VLAN_BARRIER",
+      "aciklama": "VLAN 10 icindeki L2 yayin (Broadcast / FF:FF:FF:FF:FF:FF) paketinin diger VLAN'lara sizdirilmaya calisilmasi.",
+      "kaynak_vlan": 10,
+      "hedef_mac": "FF:FF:FF:FF:FF:FF",
+      "hedef_vlan": 20,
+      "beklenen_hata": "VLANLeakageError",
+      "hata_nedeni": "L2 Yayilim Kurali: Broadcast paketleri VLAN sinirini asamaz! Farkli VLAN'lara sizdirilamaz."
+    }
+  ]
+}

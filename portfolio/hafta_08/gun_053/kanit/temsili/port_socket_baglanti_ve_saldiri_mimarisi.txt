@@ -1,0 +1,114 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+Bu dosya yapay zekâ tarafından oluşturulmuş temsili bir mimari ve saldırı
+yüzeyi illüstrasyonudur. Gerçek test çıktıları ve gözlenebilir kanıtlar
+'kanit/gercek/' dizini altındaki dosyalarda yer almaktadır.
+================================================================================
+
+================================================================================
+BÖLÜM 1: IANA PORT ARALIKLARI VE AYRICALIK (PRIVILEGE) MİMARİSİ
+================================================================================
+
+Port Numarası (16-bit Tamsayı: 0 - 65,535)
++-----------------------+-----------------------+-----------------------+
+|  WELL-KNOWN PORTS     |   REGISTERED PORTS    | DYNAMIC / PRIVATE /   |
+|     (0 - 1023)        |   (1024 - 49151)      | EPHEMERAL (49152-65535)|
++-----------------------+-----------------------+-----------------------+
+| * Root / Admin İster  | * Normal Kullanıcı     | * Geçici giden        |
+| * Temel Sistem Servisi| * Veritabanları       |   istemci soketleri   |
+| * Örn: 22(SSH), 80,   | * Örn: 3306(MySQL),   | * İşletim sistemi     |
+|   443(HTTPS), 53(DNS) |   5432(PG), 6379(Redis|   tarafından atanır   |
++-----------------------+-----------------------+-----------------------+
+
+SOKETİN 5'Lİ DEMETİ (5-TUPLE SOKET MİMARİSİ):
+   +-------------+--------------+------------+--------------+-------------+
+   |  Protokol   |   Yerel IP   | Yerel Port |   Uzak IP    |  Uzak Port  |
+   | (TCP / UDP) | (192.168.1.5)|  (52140)   | (93.184.21.3)|    (443)    |
+   +-------------+--------------+------------+--------------+-------------+
+         \              \             \             /              /
+          +--------------+-------------+-----------+--------------+
+                                       |
+                           İŞLETİM SİSTEMİ ÇEKİRDEĞİ
+                     (Ağ Paketini Doğru Sürece Eşler)
+
+
+================================================================================
+BÖLÜM 2: "AÇIK PORT != ZAFİYET" VE 0.0.0.0 BAĞLAMA (BIND) İFŞASI
+================================================================================
+
+SENARYO A: GÜVENLİ MİMARİ (127.0.0.1 - SADECE LOOPBACK)
+  İnternet / LAN                   Uç Nokta (Sunucu)
+  +--------------+                 +-------------------------------+
+  | Dış Saldırgan| ---(Port 6379)--X [Güvenlik Duvarı / Çekirdek]   |
+  +--------------+    (Reddedilir) |                               |
+                                   | [127.0.0.1:6379 Redis]        |
+                                   |        ^                      |
+                                   |        | (Güvenli Yerel Erişim|
+                                   | [Web Uygulaması: 127.0.0.1]   |
+                                   +-------------------------------+
+
+SENARYO B: KRİTİK GÜVENLİK AÇIĞI (0.0.0.0 - TÜM ARAYÜZLER)
+  İnternet / LAN                   Uç Nokta (Sunucu)
+  +--------------+                 +-------------------------------+
+  | Dış Saldırgan| ===============>| [0.0.0.0:6379 Redis (PAROLASIZ|
+  | (Shodan/Nmap)|  (Tam Yetki ile |  Saldırgan doğrudan RCE yapar)|
+  +--------------+   Erişir!)      +-------------------------------+
+
+
+================================================================================
+BÖLÜM 3: RFC 793/9293 TCP BAĞLANTI DURUM MAKİNESİ (STATE MACHINE)
+================================================================================
+
+         [ CLOSED ] <----------------------------------+
+             |                                         |
+     (Pasif Açılış)                             (Aktif Açılış)
+             v                                         v
+         [ LISTEN ]                               [ SYN_SENT ]
+             |                                         |
+         (SYN Aldı)                                (SYN+ACK Aldı)
+             v                                         |
+      [ SYN_RECEIVED ] --------------------------------+
+             |
+         (ACK Geldi)
+             v
+       [ ESTABLISHED ] <--- (Çift Yönlü Veri İletimi)
+             |
+     +-------+-------+
+     | (Aktif FIN)   | (Pasif FIN Aldı)
+     v               v
+[ FIN_WAIT_1 ]  [ CLOSE_WAIT ]
+     |               |
+  (ACK Aldı)      (Uygulama FIN Attı)
+     v               v
+[ FIN_WAIT_2 ]  [ LAST_ACK ]
+     |               |
+ (FIN Aldı)       (ACK Aldı)
+     v               v
+[ TIME_WAIT ]   [ CLOSED ]
+     |
+(2*MSL Süresi Doldu)
+     v
+[ CLOSED ]
+
+
+================================================================================
+BÖLÜM 4: REVERSE SHELL VE C2 TEHDİT ANATOMİSİ
+================================================================================
+
+KLASİK BIND SHELL (Güvenlik Duvarı Engeller):
+  Saldırgan ----(Port 4444 Bağlan)----> [Firewall / NAT: INBOUND DROP] -> Sunucu
+
+TERS KABUK / REVERSE SHELL (İçeriden Dışarıya Sızar!):
+  +----------------------+            +-----------------------+
+  |  KURBAN MAKİNE       |            |   SALDIRGAN / C2      |
+  |                      |            |   (198.51.100.77)     |
+  | [powershell.exe]     |            |                       |
+  |     |                |            |                       |
+  |     v                |            |                       |
+  | Soket: OUTBOUND TCP  |===========>| [Netcat / Metasploit] |
+  | (Src: 49500 ->       |  (Giden    | Dinleyici: Port 4444  |
+  |  Dst: 198.51.100.77: |   Trafik   | (Saldırgana tam shell |
+  |       4444)          |   Geçer)   |  yetkisi verir!)      |
+  +----------------------+            +-----------------------+
+================================================================================

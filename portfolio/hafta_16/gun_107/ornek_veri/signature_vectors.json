@@ -1,0 +1,30 @@
+{
+  "aciklama": "Dijital İmza ve Doğrulama Standart Parametreleri ve Test Vektörleri",
+  "referans_standartlar": [
+    "RFC 8017 (PKCS#1 v2.2) - RSASSA-PSS & RSASSA-PKCS1-v1_5",
+    "FIPS 186-4 - Digital Signature Standard (DSS)",
+    "ANSI X9.62 - ECDSA Standardı",
+    "NIST SP 800-89 - Recommendation for Obtaining Assurances for Digital Signature Applications"
+  ],
+  "sha256_asn1_digest_info_prefix_hex": "3031300d060960864801650304020105000420",
+  "pss_varsayilan_parametreler": {
+    "hash_algoritmasi": "SHA-256",
+    "mgf": "MGF1-SHA256",
+    "salt_uzunlugu_bayt": 32,
+    "sonlandirici_bayt_hex": "bc"
+  },
+  "ornek_belgeler": [
+    {
+      "id": "DOC_01_ODEME_TALIMATI",
+      "icerik": "Alici: TR123456789, Tutar: 150000 TL, Aciklama: Guvenli Tedarikci Odemesi"
+    },
+    {
+      "id": "DOC_02_YAZILIM_GUNCELLEMESI",
+      "icerik": "Package: sec-core-v2.1.0.tar.gz, SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "DOC_03_SOZLESME_MUTABAKATI",
+      "icerik": "Taraflar arasindaki siber guvenlik SLA sartlari kabul edilmistir. 2026-11-02"
+    }
+  ]
+}

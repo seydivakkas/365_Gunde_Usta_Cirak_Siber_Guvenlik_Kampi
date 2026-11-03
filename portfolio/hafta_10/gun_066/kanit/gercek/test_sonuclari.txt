@@ -1,0 +1,33 @@
+test_01_ornek_trafik_veri_seti_yukleme_ve_dogrulama (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_01_ornek_trafik_veri_seti_yukleme_ve_dogrulama)
+Trafik veri setinin eksiksiz y³klendi­ini ve beklenen ■emaya uydu­unu do­rular. ... ok
+test_02_normal_dns_trafigi_temiz_analiz (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_02_normal_dns_trafigi_temiz_analiz)
+Standart kurumsal alan ad² sorgusunun anomali ³retmedi­ini teyit eder. ... ok
+test_03_normal_http_trafigi_temiz_analiz (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_03_normal_http_trafigi_temiz_analiz)
+Standart HTTP GET iste­inin temiz sonuland²­²n² ve anomali ³retmedi­ini do­rular. ... ok
+test_04_dga_alan_adi_entropi_ve_sessiz_harf_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_04_dga_alan_adi_entropi_ve_sessiz_harf_tespiti)
+Rastgele ³retilmi■ y³ksek entropili DGA alan ad²n²n ba■ar²yla yakaland²­²n² test eder. ... ok
+test_05_dns_tunelleme_veri_sizintisi_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_05_dns_tunelleme_veri_sizintisi_tespiti)
+A■²r² uzun alt alan etiketine sahip TXT t³nelleme sorgusunun yakaland²­²n² test eder. ... ok
+test_06_dns_amplification_yansitma_ve_buyutme_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_06_dns_amplification_yansitma_ve_buyutme_tespiti)
+Y³ksek yan²t/istek oran²na ve ANY sorgusuna sahip DoS paterninin tespitini do­rular. ... ok
+test_07_fast_flux_botnet_c2_mikro_ttl_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_07_fast_flux_botnet_c2_mikro_ttl_tespiti)
+K²sa TTL ve ok say²da dinamik IP adresi ieren Fast Flux C2 a­²n²n yakaland²­²n² test eder. ... ok
+test_08_http_request_smuggling_cl_te_catismasi_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_08_http_request_smuggling_cl_te_catismasi_tespiti)
+Hem Content-Length hem de Transfer-Encoding ieren s²zd²rma iste­inin yakaland²­²n² test eder. ... ok
+test_09_http_crlf_baslik_enjeksiyonu_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_09_http_crlf_baslik_enjeksiyonu_tespiti)
+URI iinde URL-encoded CRLF ve Set-Cookie enjeksiyon giri■iminin tespitini test eder. ... ok
+test_10_http_path_traversal_dizin_gecisi_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_10_http_path_traversal_dizin_gecisi_tespiti)
+URI iinde ../ dizin d²■²na ²kma ve /etc/passwd okuma denemesinin yakaland²­²n² test eder. ... ok
+test_11_otomatik_saldiri_tarayicisi_imza_tespiti (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_11_otomatik_saldiri_tarayicisi_imza_tespiti)
+sqlmap gibi otomatik taray²c²lar²n ba■l²k imzas²yla yakaland²­²n² test eder. ... ok
+test_12_toplu_trafik_analizi_ve_metrik_dagilimi (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_12_toplu_trafik_analizi_ve_metrik_dagilimi)
+T³m DNS ve HTTP paketlerinin toplu analizinde ³retilen g³venlik raporunu denetler. ... ok
+test_13_negatif_sinir_senaryolari_grup_1 (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_13_negatif_sinir_senaryolari_grup_1)
+NEG_01'den NEG_04'e kadar olan anomali istisnalar²n²n f²rlat²ld²­²n² teyit eder. ... ok
+test_14_negatif_sinir_senaryolari_grup_2 (portfolio.hafta_10.gun_066.tests.test_dns_http_anomaly_detector.TestDNSHTTPAnomalyDetector.test_14_negatif_sinir_senaryolari_grup_2)
+NEG_05'ten NEG_09'a kadar olan anomali ve bozuk veri istisnalar²n² test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.013s
+
+OK

@@ -1,0 +1,83 @@
+================================================================================
+G053: PORT, SOKET VE BAGLANTI DURUMU GUVENLIK DENETIM RAPORU
+Standart: RFC 793 / RFC 9293 / IANA Port Registry / BSI IT-Grundschutz
+Prensip : 'Acik Port != Zafiyet' (Saldiri Yuzeyi & Servis Guvenligi)
+================================================================================
+
+Soket ID      : SOCK-01
+Tanim         : Tüm ağ arayüzlerinde dinleyen meşru HTTPS web sunucusu
+Uç Noktalar   : TCP 0.0.0.0:443 -> 0.0.0.0:0 [LISTEN]
+Surec / PID   : nginx.exe (PID: 1120)
+Port Sinifi   : WELL_KNOWN (Servis: HTTPS)
+Dışa Açık mı  : True | Sadece Loopback: False
+--------------------------------------------------------------------------------
+Soket ID      : SOCK-02
+Tanim         : SSH yönetim servisi dinleme soketi
+Uç Noktalar   : TCP 0.0.0.0:22 -> 0.0.0.0:0 [LISTEN]
+Surec / PID   : sshd.exe (PID: 892)
+Port Sinifi   : WELL_KNOWN (Servis: SSH)
+Dışa Açık mı  : True | Sadece Loopback: False
+--------------------------------------------------------------------------------
+Soket ID      : SOCK-03
+Tanim         : Güvenli şekilde sadece localhost üzerinde dinleyen PostgreSQL veritabanı
+Uç Noktalar   : TCP 127.0.0.1:5432 -> 0.0.0.0:0 [LISTEN]
+Surec / PID   : postgres.exe (PID: 2450)
+Port Sinifi   : REGISTERED (Servis: POSTGRESQL)
+Dışa Açık mı  : False | Sadece Loopback: True
+--------------------------------------------------------------------------------
+Soket ID      : SOCK-04-EXPOSURE
+Tanim         : KRİTİK HATA: Parolasız Redis veritabanının 0.0.0.0 üzerinden tüm internete açılması
+Uç Noktalar   : TCP 0.0.0.0:6379 -> 0.0.0.0:0 [LISTEN]
+Surec / PID   : redis-server.exe (PID: 3310)
+Port Sinifi   : REGISTERED (Servis: REDIS)
+Dışa Açık mı  : True | Sadece Loopback: False
+--------------------------------------------------------------------------------
+Soket ID      : SOCK-05
+Tanim         : İstemcinin Google sunucusuna kurduğu meşru giden HTTPS oturumu
+Uç Noktalar   : TCP 192.168.1.100:52140 -> 142.250.190.46:443 [ESTABLISHED]
+Surec / PID   : chrome.exe (PID: 4120)
+Port Sinifi   : DYNAMIC_PRIVATE (Servis: UNKNOWN_SERVICE)
+Dışa Açık mı  : False | Sadece Loopback: False
+--------------------------------------------------------------------------------
+Soket ID      : SOCK-06-THREAT
+Tanim         : TEHDİT / ALARM: PowerShell sürecinden saldırganın C2 sunucusuna (port 4444 Metasploit) giden Reverse Shell
+Uç Noktalar   : TCP 192.168.1.100:49210 -> 198.51.100.77:4444 [ESTABLISHED]
+Surec / PID   : powershell.exe (PID: 5590)
+Port Sinifi   : DYNAMIC_PRIVATE (Servis: UNKNOWN_SERVICE)
+Dışa Açık mı  : False | Sadece Loopback: False
+--------------------------------------------------------------------------------
+Soket ID      : SOCK-07-TIMEWAIT
+Tanim         : Kapanış aşamasında 2*MSL süresince gecikmiş paketleri bekleyen TCP soketi
+Uç Noktalar   : TCP 192.168.1.100:51001 -> 93.184.216.34:80 [TIME_WAIT]
+Surec / PID   : SYSTEM (PID: 0)
+Port Sinifi   : DYNAMIC_PRIVATE (Servis: UNKNOWN_SERVICE)
+Dışa Açık mı  : False | Sadece Loopback: False
+--------------------------------------------------------------------------------
+Soket ID      : SOCK-08-UDP
+Tanim         : UDP üzerinden sorgu bekleyen DNS sunucusu soketi
+Uç Noktalar   : UDP 0.0.0.0:53 -> 0.0.0.0:0 [NONE]
+Surec / PID   : named.exe (PID: 1055)
+Port Sinifi   : WELL_KNOWN (Servis: DNS)
+Dışa Açık mı  : True | Sadece Loopback: False
+--------------------------------------------------------------------------------
+
+================================================================================
+GUVENLIK DENETIMI VE SALDIRI YUZEYI DEGERLENDIRMESI
+================================================================================
+Toplam Incelenen Soket : 8
+Dinleyen Soketler      : 4
+Aktif Baglantilar      : 2
+Yari Acik (SYN_RCVD)   : 0
+Kapanis (TIME_WAIT)    : 1
+Saldiri Yuzeyi Puani   : 80 / 100
+Genel Guvenlik Durumu  : CRITICAL_RISK
+
+TESPIT EDILEN KRITIK GUVENLIK BULGULARI:
+[CRITICAL] INSECURE_BIND_EXPOSURE:
+  Detay: Hassas iç servis 'REDIS' (Port 6379) '0.0.0.0' adresine bağlanarak tüm ağlara yetkisiz açılmıştır!
+  Oneri: Servisi yalnızca '127.0.0.1' üzerinde dinleyecek şekilde yapılandırın veya güvenlik duvarıyla dış erişimi engelleyin.
+--------------------------------------------------------------------------------
+[CRITICAL] REVERSE_SHELL_DETECTED:
+  Detay: KRİTİK GÜVENLİK İHLALİ: 'powershell.exe' kabuk süreci saldırgan IP'sine (198.51.100.77:4444) ters kabuk (Reverse Shell) açmıştır!
+  Oneri: PID 5590 sürecini derhal sonlandırın (kill), ağ kablosunu çekin ve uç nokta adli bilişim analizi başlatın.
+--------------------------------------------------------------------------------

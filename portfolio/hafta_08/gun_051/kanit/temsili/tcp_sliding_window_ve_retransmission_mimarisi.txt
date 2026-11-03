@@ -1,0 +1,79 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+Bu görsel şema ve mimari illüstrasyon, TCP Kayar Pencere (Sliding Window) mekanizmasını,
+sıra numarası (Seq/Ack) ilerleyişini, 3 Yinelenen Onay (Triple Duplicate ACK) ile 
+Hızlı Yeniden İletim (Fast Retransmit) sürecini ve Blind RST oturum koparma saldırısını
+göstermek amacıyla kavramsal olarak üretilmiştir. Gerçek donanım yakalaması veya 
+canlı test kanıtı yerine geçmez.
+================================================================================
+
+1. TCP KAYAR PENCERE (SLIDING WINDOW) TAMPON MODELİ
+================================================================================
+
+ Gönderici Tampon Belleği (Sender Buffer)
+ +-----------------------+-----------------------+-----------------------+
+ | 1. İletildi & Onaylandı| 2. İletildi, Onay     | 3. İletilebilir       | 4. Pencere Dışı
+ |    (Sent & Acked)     |    Bekleniyor (Unack) |    (Usable Window)    |    (İletilemez)
+ +-----------------------+-----------------------+-----------------------+
+                         ^                       ^                       ^
+                         |                       |                       |
+                     Kümülatif             Gönderilen Son        Pencere Üst Sınırı
+                     Onay (ACK)               Sıra (Seq)         (ACK + Window_Size)
+
+================================================================================
+2. PAKET KAYBI VE HIZLI YENİDEN İLETİM (FAST RETRANSMIT) AKIŞI
+================================================================================
+
+ İSTEMCİ (Gönderici)                                            SUNUCU (Alıcı)
+ [192.168.30.15:54321]                                         [172.16.20.10:80]
+         |                                                             |
+         |  Segment 1 (Seq: 1000, Boyut: 500)                          |
+         |------------------------------------------------------------>| [Alındı: 1000-1499]
+         |  ACK (Ack: 1500) [Kümülatif Onay]                           |
+         |<------------------------------------------------------------|
+         |                                                             |
+         |  Segment 2 (Seq: 1500, Boyut: 500)                          |
+         |------------------------------------------------------------>| [Alındı: 1500-1999]
+         |  ACK (Ack: 2000) [Kümülatif Onay]                           |
+         |<------------------------------------------------------------|
+         |                                                             |
+         |  Segment 3 (Seq: 2000, Boyut: 500) ────X (AĞDA KAYBOLDU!)   |
+         |                                                             |
+         |  Segment 4 (Seq: 2500, Boyut: 500) [Sıra Dışı!]             |
+         |------------------------------------------------------------>| [Boşluk! 2000 eksik!]
+         |  Dup ACK #1 (Ack: 2000)                                     |
+         |<------------------------------------------------------------|
+         |                                                             |
+         |  Segment 5 (Seq: 3000, Boyut: 500)                          |
+         |------------------------------------------------------------>| [Boşluk devam ediyor]
+         |  Dup ACK #2 (Ack: 2000)                                     |
+         |<------------------------------------------------------------|
+         |                                                             |
+         |  Segment 6 (Seq: 3500, Boyut: 500)                          |
+         |------------------------------------------------------------>| [Boşluk devam ediyor]
+         |  Dup ACK #3 (Ack: 2000) ────> [3 DUP ACK EŞİĞİ AŞILDI!]     |
+         |<------------------------------------------------------------|
+         |                                                             |
+         |  ⚡ HIZLI YENİDEN İLETİM (RTO Zaman Aşımı Beklenmez!)        |
+         |  Segment 3 (Seq: 2000, Boyut: 500) [Tekrar Gönderildi]       |
+         |------------------------------------------------------------>| [Boşluk Kapandı!]
+         |                                                             | [2000..3999 hazır]
+         |  Toplu Kümülatif Onay (Ack: 4000)                           |
+         |<------------------------------------------------------------|
+         v                                                             v
+
+================================================================================
+3. GÜVENLİK TEHDİDİ: BLIND TCP RST INJECTION VE SAVUNMA (RFC 5961)
+================================================================================
+
+ SALDIRGAN (Kör Enjeksiyon)                                    HEDEF SUNUCU
+ [Tahmin Edilen Seq: 4000]                                     [Aktif Oturum: Window=64K]
+         |                                                             |
+         |  Sahte RST (Seq: 4000)                                      |
+         |------------------------------------------------------------>|
+         |                                                             |
+ [Geleneksel TCP]: Seq numarası alıcının penceresi içindeyse oturum DERHAL KOPAR!
+ [RFC 5961 Savunması]: RST paketi tam beklenen Seq değilse sunucu oturumu koparmaz;
+                       istemciye bir "Challenge ACK" göndererek doğrular!
+================================================================================

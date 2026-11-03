@@ -1,0 +1,86 @@
+{
+  "gun": 65,
+  "konu": "Follow TCP Stream ve yeniden birlestirme",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "3a560a21e7e9161e58767e5467342a0389d5609b0c36ce05c71891188978550d",
+      "boyut": 4516
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "e4df1d0423d6f8e1819645633af01e168a393c3c7e9405ceef20d27f32b4ad9a",
+      "boyut": 5570
+    },
+    {
+      "dosya": "kanit/gercek/komut_ve_cikis.txt",
+      "sha256": "dd8a2c99b73e87ebc7f2890fd4fee6800223f85610159ae96386acf7a0c5e982",
+      "boyut": 4344
+    },
+    {
+      "dosya": "kanit/gercek/negatif_kontrol_sonuclari.txt",
+      "sha256": "b9b336e97f6f312488829499d215d7f292570651bd2c1ed313a1da6860d786b8",
+      "boyut": 2946
+    },
+    {
+      "dosya": "kanit/gercek/tcp_stream_birlestirme_raporu.txt",
+      "sha256": "749e102f5f2e224095633be8afd39fb37dcc60c33697d61e79919e150e014d69",
+      "boyut": 1699
+    },
+    {
+      "dosya": "kanit/gercek/test_sonuclari.txt",
+      "sha256": "30198da6abda32e143ebb7d2bd82e5b856fd19ee8e78c8f082e9fa01985361d3",
+      "boyut": 4028
+    },
+    {
+      "dosya": "kanit/temsili/tcp_stream_birlestirme_mimarisi.txt",
+      "sha256": "86752296877ddcab373a9d2638ea8390df343db72626d0f44d34fcf636ec3c39",
+      "boyut": 7714
+    },
+    {
+      "dosya": "ornek_veri/invalid_stream_inputs.json",
+      "sha256": "f263620c159db5063e4976fad0b48854a65710a7dacf98c40a1d502bf380ff10",
+      "boyut": 4869
+    },
+    {
+      "dosya": "ornek_veri/sample_tcp_stream.json",
+      "sha256": "aae5fbadb86fbfbf3ddfaef5d0f75a39db6dc011ecd7c63395ca235191bc4956",
+      "boyut": 4351
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "c5cef67f6e11c587c3e8e9de92156ca96aa3584d79bd9637d7f2b18da54a1a98",
+      "boyut": 5896
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "7f750fb98fcdec850d266989f1c3119f1dd6b5e5b864daf649be6333d752c91c",
+      "boyut": 416
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "bd4076d33e91320669cc2ad8fa4eee3c8ca98badde124737674f782a3e17ac49",
+      "boyut": 7757
+    },
+    {
+      "dosya": "tests/__init__.py",
+      "sha256": "f207bef6fd4245d7742170480f01dac0938273736f47181c4f59a4e2b2dcd0c8",
+      "boyut": 761
+    },
+    {
+      "dosya": "tests/test_tcp_stream_reassembler.py",
+      "sha256": "3387f5df6b4ef97c6b2ffbeed82e04f428ec7d7852693f3daef6e47ae9e14bd4",
+      "boyut": 14278
+    },
+    {
+      "dosya": "uygulama/__init__.py",
+      "sha256": "1eee6befeefd5fdb2c2498d2d67b7ea5672d5fe81008e80b88e49fec31535e54",
+      "boyut": 801
+    },
+    {
+      "dosya": "uygulama/tcp_stream_reassembler.py",
+      "sha256": "7824cfb7edc52978acaa6da1189cbed1a6204dc31508699ed01e8420cea8a4eb",
+      "boyut": 23678
+    }
+  ]
+}

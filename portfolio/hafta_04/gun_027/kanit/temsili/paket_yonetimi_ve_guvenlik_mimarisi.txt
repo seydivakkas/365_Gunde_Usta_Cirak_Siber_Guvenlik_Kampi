@@ -1,0 +1,101 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+KURUMSAL LINUX PAKET VE GÜNCELLEME YÖNETİMİ GÜVENLİK MİMARİSİ
+========================================================================================
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Özel Lisans — Tüm Hakları Saklıdır
+
+Bu şema, paket yöneticilerinin (APT, DNF, Pacman vb.) kurumsal sistemlerdeki güvenli
+mimarisini, kriptografik doğrulama zincirini, sürüm dondurma (pinning) kontrollerini
+ve felaket anında geri alma (rollback) işleyişini modellemektedir.
+
+----------------------------------------------------------------------------------------
+1. KRİPTOGRAFİK DOĞRULAMA VE DEPO ZİNCİRİ (GPG & HTTPS)
+----------------------------------------------------------------------------------------
+
+ +-----------------------------+
+ |  Resmi Dağıtım Aynası       |
+ |  (Debian/Ubuntu/RHEL vb.)   |
+ |  https://repo.security.org  |
+ +--------------+--------------+
+                |
+                |  1. Release & Release.gpg / repomd.xml (HTTPS + TLS 1.3)
+                v
+ +-----------------------------+
+ |  Yerel Paket Yöneticisi     |
+ |  (apt-get / dnf / pacman)   |
+ +--------------+--------------+
+                |
+                |-- [Kontrol 1: İletişim Protokolü]
+                |   - HTTP mi? -> ALARM! (CWE-319: MitM Paket Enjeksiyon Riski)
+                |   - HTTPS mi? -> GÜVENLİ (Şifreli ve bütünlüğü korunan aktarım)
+                |
+                |-- [Kontrol 2: Kriptografik GPG İmzası]
+                |   - trusted.gpg.d içindeki açık anahtarla Release.gpg doğrulanır.
+                |   - İmza geçersiz veya anahtar yok mu? -> REDDET! (CWE-347)
+                |   - İmza geçerli mi? -> Paket özetleri (SHA256 checksum) onaylandı.
+                |
+                v
+ +-----------------------------+
+ |  Paket İndirme ve Hash Testi|
+ |  (openssl_3.0.13.deb / .rpm)|
+ +--------------+--------------+
+                |
+                |  2. Paketin SHA256 özeti Release dosyasındaki özetle eşleşiyor mu?
+                |     - Eşleşmiyor -> Bozuk / Tahrif edilmiş paket, kurulum DURDURULUR!
+                |     - Eşleşiyor  -> Bütünlük doğrulandı.
+
+----------------------------------------------------------------------------------------
+2. SÜRÜM SABİTLEME (PINNING / HOLD) VE YAMA POLİTİKASI (G027-SC2)
+----------------------------------------------------------------------------------------
+
+        [Yeni Sürüm Bildirimi Geldi]
+                     |
+                     v
+         +-----------------------+
+         | Paket Sabitlenmiş mi? |
+         |   (apt-mark hold)?    |
+         +-----------+-----------+
+                     |
+         +-----------+-----------+
+         |                       |
+     [EVET]                    [HAYIR]
+         |                       |
+         v                       v
+ +-------------------+   +------------------------------------+
+ | GÜNCELLEME BLOKE! |   | Değişiklik Öncesi İşlem Günlüğü    |
+ | Üretim stabilitesi|   | (Transaction Journal) Yazılır:     |
+ | korunur.          |   | - Eski sürüm: 3.0.2                |
+ | (Force gerekebilir|   | - Hedef sürüm: 3.0.13              |
+ +-------------------+   +-----------------+------------------+
+                                           |
+                                           v
+                         +------------------------------------+
+                         | Güvenlik Yaması Uygulanır          |
+                         | (CVE-2024-0727 kapatılır)          |
+                         +-----------------+------------------+
+                                           |
+                         +-----------------+------------------+
+                         | Hizmet Sağlık & Entegrasyon Testi  |
+                         +-----------------+------------------+
+                                           |
+                         +-----------------+------------------+
+                         | Başarısızlık / Çökme Durumu:       |
+                         | OTOMATİK ROLLBACK ÇALIŞTIRILIR!    |
+                         | (Eski sürüm 3.0.2 geri yüklenir)   |
+                         +------------------------------------+
+
+----------------------------------------------------------------------------------------
+3. TEMEL KOMUTLAR VE SİSTEM EŞLEŞTİRMESİ
+----------------------------------------------------------------------------------------
+Mekanizma        | Debian / Ubuntu (APT)       | RHEL / Rocky / Fedora (DNF)
+-----------------+-----------------------------+----------------------------------------
+Depo Tanımı      | /etc/apt/sources.list.d/*.list| /etc/yum.repos.d/*.repo
+GPG Anahtarları  | /etc/apt/trusted.gpg.d/*.gpg| /etc/pki/rpm-gpg/RPM-GPG-KEY-*
+Sürüm Sabitleme  | apt-mark hold <paket>       | dnf versionlock add <paket>
+Sabitleme Çözme  | apt-mark unhold <paket>     | dnf versionlock delete <paket>
+Güvenlik Yaması  | unattended-upgrades         | dnf upgrade --security
+İşlem Geçmişi    | /var/log/dpkg.log           | dnf history
+Geri Alma        | apt-get install <paket>=<v> | dnf history undo <id>
+========================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

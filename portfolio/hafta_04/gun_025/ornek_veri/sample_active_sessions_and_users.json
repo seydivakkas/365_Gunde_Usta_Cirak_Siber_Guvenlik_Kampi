@@ -1,0 +1,119 @@
+{
+  "tarama_zamani": "2026-10-27T08:00:00Z",
+  "sunucu_adi": "srv-core-linux-01",
+  "kullanicilar": [
+    {
+      "kullanici_adi": "root",
+      "uid": 0,
+      "gid": 0,
+      "ana_dizin": "/root",
+      "kabuk": "/bin/bash",
+      "gruplar": ["root"],
+      "tur": "human",
+      "son_giris_gun_once": 0,
+      "durum": "aktif",
+      "aciklama": "Sistem super kullanicisi"
+    },
+    {
+      "kullanici_adi": "analist_ali",
+      "uid": 1001,
+      "gid": 1001,
+      "ana_dizin": "/home/analist_ali",
+      "kabuk": "/bin/bash",
+      "gruplar": ["analist_ali", "guvenlik"],
+      "tur": "human",
+      "son_giris_gun_once": 1,
+      "durum": "aktif",
+      "aciklama": "Standart SOC analisti hesabi - Uyumlu"
+    },
+    {
+      "kullanici_adi": "admin_sec",
+      "uid": 1002,
+      "gid": 1002,
+      "ana_dizin": "/home/admin_sec",
+      "kabuk": "/bin/bash",
+      "gruplar": ["admin_sec", "wheel", "sudo"],
+      "tur": "human",
+      "son_giris_gun_once": 0,
+      "durum": "aktif",
+      "aciklama": "Ortak kullanilan idari hesap - Risk!"
+    },
+    {
+      "kullanici_adi": "eski_personel",
+      "uid": 1005,
+      "gid": 1005,
+      "ana_dizin": "/home/eski_personel",
+      "kabuk": "/bin/bash",
+      "gruplar": ["eski_personel"],
+      "tur": "human",
+      "son_giris_gun_once": 145,
+      "durum": "aktif",
+      "aciklama": "145 gundur giris yapilmamis atil/yetim hesap - Risk!"
+    },
+    {
+      "kullanici_adi": "www-data",
+      "uid": 33,
+      "gid": 33,
+      "ana_dizin": "/var/www",
+      "kabuk": "/bin/bash",
+      "gruplar": ["www-data"],
+      "tur": "service",
+      "son_giris_gun_once": -1,
+      "durum": "aktif",
+      "aciklama": "Web servis hesabi etkilesimli kabuk almis - Kritik Risk!"
+    },
+    {
+      "kullanici_adi": "backup_svc",
+      "uid": 990,
+      "gid": 990,
+      "ana_dizin": "/var/backups",
+      "kabuk": "/usr/sbin/nologin",
+      "gruplar": ["backup_svc", "sudo"],
+      "tur": "service",
+      "son_giris_gun_once": -1,
+      "durum": "aktif",
+      "aciklama": "Servis hesabi yetkisiz sekilde sudo grubuna atanmis - Risk!"
+    },
+    {
+      "kullanici_adi": "sshd",
+      "uid": 110,
+      "gid": 65534,
+      "ana_dizin": "/run/sshd",
+      "kabuk": "/usr/sbin/nologin",
+      "gruplar": ["nogroup"],
+      "tur": "service",
+      "son_giris_gun_once": -1,
+      "durum": "aktif",
+      "aciklama": "SSH servisi ayrilmis kullanicisi - Uyumlu"
+    }
+  ],
+  "etkin_oturumlar": [
+    {
+      "oturum_id": "SES-001",
+      "kullanici_adi": "analist_ali",
+      "terminal": "pts/0",
+      "kaynak_ip": "10.0.10.15",
+      "giris_zamani": "2026-10-27T07:15:00Z",
+      "bosta_kalma_suresi_saniye": 120,
+      "etkin_surec": "python"
+    },
+    {
+      "oturum_id": "SES-002",
+      "kullanici_adi": "admin_sec",
+      "terminal": "pts/1",
+      "kaynak_ip": "192.168.1.50",
+      "giris_zamani": "2026-10-27T06:00:00Z",
+      "bosta_kalma_suresi_saniye": 2400,
+      "etkin_surec": "bash"
+    },
+    {
+      "oturum_id": "SES-003",
+      "kullanici_adi": "admin_sec",
+      "terminal": "pts/2",
+      "kaynak_ip": "10.0.20.88",
+      "giris_zamani": "2026-10-27T07:45:00Z",
+      "bosta_kalma_suresi_saniye": 60,
+      "etkin_surec": "htop"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "gun_no": 14,
+  "gun_kimligi": "G014",
+  "asama": "01",
+  "hafta": 2,
+  "konu": "Aşama 1 kalite özeti: güvenlik temelleri",
+  "tarih": "2026-10-27",
+  "durum": "PASS",
+  "puan": 100,
+  "degerlendirme_detayi": {
+    "teori": 20,
+    "uygulama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "kanit_durumu": "TAM",
+  "tamamlanan_gorevler": [
+    "Aşama 01 (Gün 001 - Gün 013) boyunca işlenen tüm güvenlik temelleri (CIA, Risk, RoE, NIST CSF 2.0, Varlık Envanteri, STRIDE, Sanallaştırma İzolasyonu, Ağ Sınırları, Snapshot/Yedekleme ve Kaynak Doğrulama) Usta-Çırak derinliğinde özetlendi.",
+    "Gökdelen temel denetimi analojisi ile parçaların toplamından daha büyük bir kanıt zinciri (chain of evidence) modeli kuruldu.",
+    "NIST CSF 2.0 altı temel fonksiyonunun (Govern, Identify, Protect, Detect, Respond, Recover) entegre çalıştığı denetim motoru geliştirildi.",
+    "'Bir güvenlik önlemini tek başına eksiksiz savunma sanma' (Single Measure Fallacy) ölümcül yanılgısı matematiksel ceza kuralıyla kodlandı.",
+    "Yazılı RoE izni, üretim temassızlığı ve hedef IP sınırlarını doğrulayan etik kalkan devreye alındı.",
+    "Aşama 1 kabul kararını SHA-256 ile özetleyen kriptografik kabul sertifikası üretildi.",
+    "Her kod satırı eğitsel açıklamalarla donatılmış stage1_security_auditor.py CLI aracı geliştirildi.",
+    "14 birim test ile altın kabul akışı, negatif güvenlik sınırları ve hata durumları 0.006 saniyede %100 başarıyla doğrulandı.",
+    "Gerçek CLI yürütme, unittest çıktısı ve temsilî ASCII kanıt zinciri mimari şeması kanıt olarak üretildi.",
+    "Soru bankasındaki 3 soru (G014-SC1, G014-SC2, G014-SC3) katı 4 bölümlü formatta cevaplandı."
+  ],
+  "pozitif_negatif_kontrol_sonuclari": {
+    "pozitif_kontrol_altin_kabul": "Altın laboratuvar projesi LAB-SEC-GOLDEN-01 100/100 tam puan alarak ASAMA_1_KABUL_PASS ile onaylandı",
+    "pozitif_kontrol_kanit_zinciri": "Kanıt zincirindeki 4 ana halkanın (RoE, Varlık, CSF, CRAAP) eksiksizliği doğrulandı",
+    "pozitif_kontrol_csf_alti_islev": "Govern, Identify, Protect, Detect, Respond, Recover işlevlerinin tamamı eksiksiz teyit edildi",
+    "pozitif_kontrol_sertifika_hash": "Kabul sertifikası için 64 karakterli deterministik SHA-256 kriptografik özeti üretildi",
+    "negatif_kontrol_etik_roe_ihlali": "Yazılı onaysız ve dış ağa temas eden projede CRIT-01-ETIK-ROE-IHLALI ile 40 puan ceza kesildi",
+    "negatif_kontrol_tek_onlem_yanilgisi": "Yalnızca firewall'a güvenip kurtarma/tespit yapmayan projede CRIT-04 felaket cezası tetiklendi",
+    "negatif_kontrol_eksik_varlik": "Varlık envanteri tutulmayan projede WARN-02-EKSIK-VARLIK-ENVANTERI cezası kesildi",
+    "negatif_kontrol_eksik_csf": "NIST CSF 2.0 işlevleri eksik olan projede WARN-03 ile işlev başına ceza uygulandı",
+    "negatif_kontrol_craap_yetersiz": "CRAAP skoru düşük projede WARN-05 cezası uygulandı",
+    "negatif_kontrol_kusurlu_ret": "Kusurlu proje LAB-SEC-DEFECTIVE-99 0.0 puanla REDDEDILDI_TEHLIKELI statüsünde elendi"
+  },
+  "onceki_gun_bagimliligi": "YOK (Tamamen bağımsız)",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Açık kaynak lisans KULLANILMAZ."
+}

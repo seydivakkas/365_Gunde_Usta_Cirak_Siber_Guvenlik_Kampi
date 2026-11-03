@@ -1,0 +1,43 @@
+=== GÜN 107 DİJİTAL İMZA VE DOĞRULAMA BİRİM TEST RAPORU ===
+Tarih/Saat: 2026-11-02 03:32:55
+Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_16\gun_107\tests\test_digital_signature.py -v
+Çıkış Kodu: 0
+
+--- TEST ÇIKTISI (STDERR / STDOUT) ---
+test_01_textbook_signature_roundtrip (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_01_textbook_signature_roundtrip)
+1. D�z (Textbook) RSA imza ve do�rulama d�ng�s� matematiksel olarak �al��mal�d�r. ... ok
+test_02_textbook_existential_forgery (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_02_textbook_existential_forgery)
+2. D�z RSA'da �zel anahtar olmadan varolu�sal imza sahtecili�i tespit edilmelidir (CWE-327). ... ok
+test_03_textbook_multiplicative_forgery (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_03_textbook_multiplicative_forgery)
+3. D�z RSA'da �ifreli imzalar�n �arp�m� mesajlar�n �arp�m�n� imzalamal�d�r (Malleability). ... ok
+test_04_pkcs1_v1_5_encode_format (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_04_pkcs1_v1_5_encode_format)
+4. PKCS#1 v1.5 kodlamas� standart 0x00 0x01 ... 0x00 T bi�imine uymal�d�r. ... ok
+test_05_pkcs1_v1_5_sign_and_verify_success (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_05_pkcs1_v1_5_sign_and_verify_success)
+5. RSASSA-PKCS1-v1_5 �emas� ile imzalama ve kat� do�rulama ba�ar�l� olmal�d�r. ... ok
+test_06_pkcs1_v1_5_tamper_detection (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_06_pkcs1_v1_5_tamper_detection)
+6. PKCS#1 v1.5 imzas�nda belge tahrif edildi�inde do�rulama ba�ar�s�z olmal�d�r. ... ok
+test_07_bleichenbacher_forgery_mitigation (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_07_bleichenbacher_forgery_mitigation)
+7. e=3 durumunda gev�ek do�rulay�c� zaaf� tespit edilip Bleichenbacher uyar�s� verilmelidir. ... ok
+test_08_pss_encode_verify_roundtrip (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_08_pss_encode_verify_roundtrip)
+8. EMSA-PSS kodlama ve do�rulama alt katman� kay�ps�z �al��mal�d�r. ... ok
+test_09_pss_sign_and_verify_success (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_09_pss_sign_and_verify_success)
+9. RSASSA-PSS imzalama ve do�rulama u�tan uca hatas�z �al��mal�d�r. ... ok
+test_10_pss_probabilistic_nature (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_10_pss_probabilistic_nature)
+10. PSS �emas� olas�l�ksal olmal�; ayn� mesaja her defas�nda farkl� imza �retmelidir. ... ok
+test_11_pss_tamper_detection_in_document (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_11_pss_tamper_detection_in_document)
+11. Belgede tek karakter de�i�ti�inde PSS do�rulamas� SignatureVerificationError f�rlatmal�d�r. ... ok
+test_12_pss_tamper_detection_in_signature (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_12_pss_tamper_detection_in_signature)
+12. �mza baytlar�nda tahrifat yap�ld���nda PSS do�rulamas� ba�ar�s�z olmal�d�r (CWE-347). ... ok
+test_13_ecdsa_nonce_reuse_private_key_recovery (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_13_ecdsa_nonce_reuse_private_key_recovery)
+13. ECDSA nonce yeniden kullan�m� durumunda �zel anahtar if�as� kan�tlanmal�d�r (CWE-323). ... ok
+test_14_weak_key_size_rejection (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_14_weak_key_size_rejection)
+14. 512 bitin alt�ndaki zay�f anahtar �retimi WeakKeySizeError ile engellenmelidir (CWE-326). ... ok
+test_15_invalid_signature_length_rejection (portfolio.hafta_16.gun_107.tests.test_digital_signature.TestDigitalSignature.test_15_invalid_signature_length_rejection)
+15. Mod�l boyutuna uymayan k�rp�lm�� imza InvalidSignatureFormatError f�rlatmal�d�r (CWE-20). ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 6.948s
+
+OK
+
+=== DEĞERLENDİRME: 15/15 TEST BAŞARILI (%100 PASS) ===

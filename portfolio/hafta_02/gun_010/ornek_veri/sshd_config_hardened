@@ -1,0 +1,33 @@
+# ==============================================================================
+# GÜVENLİ OPENSSH SUNUCU YAPILANDIRMASI (CIS BENCHMARK LEVEL 1)
+# Üretici: Linux Baseline Auditor | (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# ==============================================================================
+
+# Temel Ağ ve Port Ayarları
+Port 2222
+AddressFamily inet
+ListenAddress 0.0.0.0
+
+# Kimlik Doğrulama ve Yetki Kısıtları
+PermitRootLogin no
+MaxAuthTries 3
+MaxSessions 2
+PubkeyAuthentication yes
+PasswordAuthentication no
+PermitEmptyPasswords no
+
+# Güvenli Şifreleme Algoritmaları (Modern Kripto Standartları)
+KexAlgorithms curve25519-sha256,diffie-hellman-group16-sha512
+Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com
+MACs hmac-sha2-512-etm@openssh.com
+
+# Entegrasyon ve Yönlendirme İzolasyonu
+X11Forwarding no
+AllowAgentForwarding no
+AllowTcpForwarding no
+ClientAliveInterval 300
+ClientAliveCountMax 2
+
+# Loglama ve Denetim
+LogLevel VERBOSE
+SyslogFacility AUTH

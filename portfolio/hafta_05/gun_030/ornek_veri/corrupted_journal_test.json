@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "title": "Bozuk ve Eksik Linux Journal Kayıtları Test Veri Kümesi",
+    "description": "Negatif kontrol ve adli doğrulama için hazırlanmış hatalı journal kayıtları (G030-SC2)",
+    "created_at": "2026-10-27T08:00:00Z"
+  },
+  "corrupted_entries": [
+    {
+      "test_case_id": "JOURNAL-ERR-01",
+      "issue": "Eksik Mesaj (MESSAGE alanı boş)",
+      "data": {
+        "cursor": "s=err1",
+        "systemd_unit": "sshd.service",
+        "time_utc": "2026-10-27T08:00:00Z",
+        "priority": 6,
+        "message": ""
+      },
+      "expected_error": "MISSING_MESSAGE"
+    },
+    {
+      "test_case_id": "JOURNAL-ERR-02",
+      "issue": "Geçersiz Öncelik (Priority 0-7 aralığı dışında)",
+      "data": {
+        "cursor": "s=err2",
+        "systemd_unit": "sshd.service",
+        "time_utc": "2026-10-27T08:00:00Z",
+        "priority": 99,
+        "message": "Out of range syslog priority."
+      },
+      "expected_error": "INVALID_PRIORITY_LEVEL"
+    },
+    {
+      "test_case_id": "JOURNAL-ERR-03",
+      "issue": "Bozuk Zaman Damgası (Geçersiz UTC tarihi)",
+      "data": {
+        "cursor": "s=err3",
+        "systemd_unit": "sshd.service",
+        "time_utc": "INVALID_TIMESTAMP_2026",
+        "priority": 3,
+        "message": "Malformed timestamp in journal."
+      },
+      "expected_error": "MALFORMED_TIMESTAMP"
+    },
+    {
+      "test_case_id": "JOURNAL-ERR-04",
+      "issue": "Geçici Bellek Günlüğü Uyarısı (Volatile Storage CWE-778 Riski)",
+      "data": {
+        "cursor": "s=err4",
+        "systemd_unit": "kernel",
+        "time_utc": "2026-10-27T08:00:00Z",
+        "priority": 2,
+        "storage_location": "/run/log/journal",
+        "is_persistent": false,
+        "message": "Kernel error logged in volatile ram storage."
+      },
+      "expected_error": "VOLATILE_STORAGE_RISK"
+    }
+  ]
+}

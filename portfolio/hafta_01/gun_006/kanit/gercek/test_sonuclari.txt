@@ -1,0 +1,39 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Gerçek Birim Test Yürütme Kanıtı
+
+[METADATA]
+Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest portfolio\hafta_01\gun_006\tests\test_threat_modeler.py -v
+Çalışma Dizini: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Ortam: Python unittest / Python 3.14.3
+Zaman Damgası: 2026-10-26T19:10:00+03:00
+Çıkış Kodu: 0
+
+[TEST ÇIKTISI]
+test_ascii_dfd_semasi_ve_stride_dagilimi (portfolio.hafta_01.gun_006.tests.test_threat_modeler.TestThreatModeler.test_ascii_dfd_semasi_ve_stride_dagilimi)
+GÖRSEL ÇIKTI KONTROLÜ: ascii_dfd_ciz() metodunun akış diyagramını, ... ok
+test_esnek_mod_hata_toplama (portfolio.hafta_01.gun_006.tests.test_threat_modeler.TestThreatModeler.test_esnek_mod_hata_toplama)
+ESNEK MOD: katilik_modu=False iken program çökmeksizin hataların ... ok
+test_gecerli_dfd_pozitif_kontrol (portfolio.hafta_01.gun_006.tests.test_threat_modeler.TestThreatModeler.test_gecerli_dfd_pozitif_kontrol)
+POZİTİF KONTROL: Geçerli ve tüm kontrolleri tanımlı bir modelin ... ok
+test_gecersiz_stride_kategorisi_negatif_kontrol (portfolio.hafta_01.gun_006.tests.test_threat_modeler.TestThreatModeler.test_gecersiz_stride_kategorisi_negatif_kontrol)
+NEGATİF KONTROL: Standart STRIDE dışında uydurma bir kategori (örn: 'ALIEN_ATTACK') ... ok
+test_hayalet_hedef_negatif_kontrol (portfolio.hafta_01.gun_006.tests.test_threat_modeler.TestThreatModeler.test_hayalet_hedef_negatif_kontrol)
+NEGATİF KONTROL: Bir veri akışının hedefi bileşenler arasında tanımlı ... ok
+test_hayalet_kaynak_negatif_kontrol (portfolio.hafta_01.gun_006.tests.test_threat_modeler.TestThreatModeler.test_hayalet_kaynak_negatif_kontrol)
+NEGATİF KONTROL: Bir veri akışının kaynağı bileşenler arasında tanımlı ... ok
+test_korumasiz_guven_siniri_gecisi_negatif_kontrol (portfolio.hafta_01.gun_006.tests.test_threat_modeler.TestThreatModeler.test_korumasiz_guven_siniri_gecisi_negatif_kontrol)
+MİMARİ GÜVENLİK KURALI: İnternet veya Disk gibi yüksek riskli bir güven sınırını ... ok
+test_mitigasyonsuz_acik_tehdit_negatif_kontrol (portfolio.hafta_01.gun_006.tests.test_threat_modeler.TestThreatModeler.test_mitigasyonsuz_acik_tehdit_negatif_kontrol)
+TEHDİT YÖNETİMİ KURALI: Bir tehdit tanımlanmış ancak kontrolü boş bırakılmışsa ... ok
+test_mukerrer_bilesen_id_negatif_kontrol (portfolio.hafta_01.gun_006.tests.test_threat_modeler.TestThreatModeler.test_mukerrer_bilesen_id_negatif_kontrol)
+NEGATİF KONTROL: İki farklı bileşene aynı 'id' verilmesi durumunda ... ok
+test_tanimsiz_guven_siniri_negatif_kontrol (portfolio.hafta_01.gun_006.tests.test_threat_modeler.TestThreatModeler.test_tanimsiz_guven_siniri_negatif_kontrol)
+NEGATİF KONTROL: Veri akışı tanımlanmamış bir güven sınırından (örn: TB99) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK
+
+

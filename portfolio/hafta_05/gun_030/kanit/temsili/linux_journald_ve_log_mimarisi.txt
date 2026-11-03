@@ -1,0 +1,88 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+LINUX SYSTEMD-JOURNALD GÜNLÜK MİMARİSİ VE ADLİ ZAMAN DİLİMİ KORELASYONU
+========================================================================================
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Özel Lisans — Tüm Hakları Saklıdır
+
+Bu şema, modern Linux işletim sistemlerindeki systemd-journald günlük motorunu,
+kalıcı (persistent) ve geçici (volatile) depolama ayrımını, saat dilimi etkilerini
+ve adli filtreleme boru hattını temsilî olarak modeller.
+
+----------------------------------------------------------------------------------------
+1. GÜNLÜK TOPLAMA, DEPOLAMA VE KALICILIK MİMARİSİ
+----------------------------------------------------------------------------------------
+
+ +-----------------------------+  +---------------------------+  +----------------------+
+ | Çekirdek Günlükleri (/dev/kmsg)| | systemd Servisleri (stdout)| | Geleneksel Uygulamalar|
+ | (Kernel / Driver Events)    |  | (sshd, nginx, cron, vb.)  |  | (/dev/log Syslog)    |
+ +--------------+--------------+  +-------------+-------------+  +----------+-----------+
+                |                               |                           |
+                +-----------------------+-------+---------------------------+
+                                        | İkili Günlük Akışı
+                                        v
+                       +---------------------------------+
+                       | systemd-journald Servisi        |
+                       | (/etc/systemd/journald.conf)    |
+                       +----------------+----------------+
+                                        |
+                 +----------------------+----------------------+
+                 | [Kalıcılık Kontrolü: Storage=...?]          |
+                 |                                             |
+                 +----------------------+----------------------+
+                                        |
+            +---------------------------+---------------------------+
+            |                                                       |
+     [Storage=volatile]                                     [Storage=persistent]
+            |                                                       |
+            v                                                       v
+ +----------------------+                               +-----------------------+
+ | /run/log/journal/    |                               | /var/log/journal/     |
+ | (RAM / Geçici Bellek)|                               | (Kalıcı Disk Alanı)   |
+ |                      |                               |                       |
+ | * DİKKAT: Yeniden    |                               | * Güvenli ve adli     |
+ |   başlatmada silinir!|                               |   analiz için şarttır!|
+ |   (CWE-778 Riski)    |                               | * FSS Kriptografik    |
+ |                      |                               |   mühürleme (Seal=yes)|
+ +----------------------+                               +-----------+-----------+
+                                                                    |
+                                                                    v
+                                                +-------------------+-------------------+
+                                                | journalctl Komut Satırı Filtreleme    |
+                                                | -u sshd.service   (Birim filtresi)    |
+                                                | -p err..emerg     (Öncelik filtresi)  |
+                                                | --since "1h ago"  (Zaman filtresi)    |
+                                                +-------------------+-------------------+
+
+----------------------------------------------------------------------------------------
+2. SAAT DİLİMİ VE ÇOKLU SUNUCU KORELASYON TUZAĞI (G030-SC1)
+----------------------------------------------------------------------------------------
+
+  [Sunucu A - İstanbul (+03:00)]                 [Sunucu B - Londra (UTC / +00:00)]
+  Yerel Saat : 11:15:30                          Yerel Saat : 08:15:30
+  Log Kaydı  : sshd parola hatası (4625)         Log Kaydı  : Nginx web isteği
+         |                                              |
+         +----------------------+-----------------------+
+                                |
+                                v
+               [Merkezi SIEM / Adli Olay Analizi]
+               - Eğer yerel saatler doğrudan eşleştirilirse:
+                 İstanbul 3 saat ileri göründüğü için sebep-sonuç sırası TERSİNE DÖNER!
+               - ÇÖZÜM (G030-SC1):
+                 Daima `journalctl --utc` ile tüm kayıtlar UTC standardına normalize edilir:
+                 Sunucu A UTC : 08:15:30Z
+                 Sunucu B UTC : 08:15:30Z (Olayların aynı anda olduğu matematiksel ispatlanır)
+
+----------------------------------------------------------------------------------------
+3. TEMEL JOURNALCTL VE SYSLOG PARAMETRELERİ
+----------------------------------------------------------------------------------------
+Parametre             | İşlev                            | Güvenlik / Adli Önemi
+----------------------+----------------------------------+------------------------------
+journalctl -u <unit>  | Belirtilen systemd birimini döker| Servis bazlı şüpheli aktivite
+journalctl -p <0-7>   | Önceliğe göre filtreler (err vb.)| Kritik sistem hataları
+journalctl --utc      | Çıktıyı zorunlu UTC saatinde basar| Çoklu sunucu zaman korelasyonu
+journalctl -b 0       | Mevcut önyükleme kayıtlarını alır| Son açılıştan bu yana olaylar
+journalctl -k         | Çekirdek mesajlarını dökümler    | Rootkit / bellek çökmeleri
+journalctl -o json    | Yapılandırılmış JSON çıktısı     | SIEM ve otomasyona veri aktarımı
+========================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL

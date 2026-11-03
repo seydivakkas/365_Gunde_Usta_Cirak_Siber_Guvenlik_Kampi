@@ -1,0 +1,54 @@
+================================================================================
+G054: NEGATIF KONTROL VE HATA SINIR DENETIMI KANITLARI
+================================================================================
+
+Test No / Hata Kodu: NEG-DNS-01 / ERR_INVALID_QTYPE_STRING
+Beklenen Hata      : Bilinmeyen DNS kayıt türü.
+Firlatilan Hata     : DNSValidationError -> Bilinmeyen DNS kayıt türü: 'UNKNOWN_TYPE_XYZ'
+Sonuc               : BASARILI (Gecersiz DNS verisi guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-DNS-02 / ERR_LABEL_LENGTH_OVERFLOW
+Beklenen Hata      : DNS etiket uzunluğu 63 karakteri aşamaz.
+Sonuc               : HATALI (Hata firlatilmadi, gecersiz girdi kabul edildi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-DNS-03 / ERR_NEGATIVE_TTL
+Beklenen Hata      : DNS TTL değeri negatif olamaz.
+Firlatilan Hata     : DNSValidationError -> DNS TTL değeri negatif olamaz: -60
+Sonuc               : BASARILI (Gecersiz DNS verisi guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-DNS-04 / ERR_MALFORMED_A_RDATA
+Beklenen Hata      : A kaydı için geçersiz IPv4 adresi biçimi.
+Firlatilan Hata     : DNSValidationError -> A kaydı için geçersiz IPv4 adresi biçimi: '999.1.2.3'. Hata: Octet 999 (> 255) not permitted in '999.1.2.3'
+Sonuc               : BASARILI (Gecersiz DNS verisi guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-DNS-05 / ERR_MALFORMED_AAAA_RDATA
+Beklenen Hata      : AAAA kaydı için geçersiz IPv6 adresi biçimi.
+Firlatilan Hata     : DNSValidationError -> AAAA kaydı için geçersiz IPv6 adresi biçimi: 'gecersiz:ipv6:formati:12345'. Hata: Exactly 8 parts expected without '::' in 'gecersiz:ipv6:formati:12345'
+Sonuc               : BASARILI (Gecersiz DNS verisi guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-DNS-06 / ERR_EMPTY_DOMAIN_NAME
+Beklenen Hata      : Alan adı boş olamaz.
+Firlatilan Hata     : DNSValidationError -> Alan adı boş olamaz.
+Sonuc               : BASARILI (Gecersiz DNS verisi guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-DNS-07 / ERR_TRANSACTION_ID_OVERFLOW
+Beklenen Hata      : Transaction ID 0 ile 65535 arasında olmalıdır.
+Firlatilan Hata     : DNSValidationError -> Transaction ID 0 ile 65535 arasında olmalıdır: 70000
+Sonuc               : BASARILI (Gecersiz DNS verisi guvenle engellendi)
+
+--------------------------------------------------------------------------------
+Test No / Hata Kodu: NEG-DNS-08 / ERR_DOMAIN_TOTAL_LENGTH_OVERFLOW
+Beklenen Hata      : Toplam alan adı uzunluğu 253 karakteri aşamaz.
+Sonuc               : HATALI (Hata firlatilmadi, gecersiz girdi kabul edildi)
+
+--------------------------------------------------------------------------------
+
+TOPLAM NEGATIF TEST: 8
+BASARILI BLOKLAMA  : 6
+BASARI ORANI       : %75.0

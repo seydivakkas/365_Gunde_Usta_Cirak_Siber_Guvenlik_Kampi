@@ -1,0 +1,52 @@
+========================================================================
+  GÜN 109: NEGATİF GÜVENLİK KONTROL VE ZAFİYET SAVUNMA SONUÇLARI
+  Tarih: 2026-11-02T04:01:10.418930
+========================================================================
+
+Senaryo: NEG_01_CSR_GEÇERSİZ_POP - Geçersiz Proof-of-Possession (İmza Uyuşmazlığı)
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    CSRSignatureVerificationError
+Mesaj:   CWE-347: CSR mülkiyet ispatı (Proof-of-Possession) doğrulaması başarısız oldu!
+------------------------------------------------------------------------
+Senaryo: NEG_02_CSR_EKSIK_SUBJECT - Eksik Subject DN (Boş Common Name)
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    InvalidCSRError
+Mesaj:   CWE-20: CSR içinde geçerli bir Common Name (CN) veya SAN listesi bulunmalıdır.
+------------------------------------------------------------------------
+Senaryo: NEG_03_IPTAL_EDILMIS_SERTIFIKA - CRL/OCSP ile İptal Edilmiş Sertifikanın Kabulü
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    CertificateRevokedError
+Mesaj:   CWE-299: Sertifika iptal edilmiştir! Neden: {'revocation_time': '2026-11-02T01:01:10.295805+00:00', 'reason': 'keyCompromise'}
+------------------------------------------------------------------------
+Senaryo: NEG_04_SURESI_DOLMUS_SERTIFIKA - Süresi Dolmuş Sertifika ile Bağlantı Kurulması
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    CertificateExpiredError
+Mesaj:   CWE-298: Sertifikanın süresi dolmuştur! (Bitiş: 2024-01-01T00:00:00Z)
+------------------------------------------------------------------------
+Senaryo: NEG_05_HENUZ_GECERLI_OLMAYAN_SERTIFIKA - Henüz Başlangıç Tarihi Gelmemiş Sertifika
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    CertificateNotYetValidError
+Mesaj:   CWE-298: Sertifika henüz geçerli değil! (Başlangıç: 2027-01-01T00:00:00Z)
+------------------------------------------------------------------------
+Senaryo: NEG_06_OCSP_REPLAY_SALDIRISI - OCSP Yanıtında Nonce Uyuşmazlığı / Replay Saldırısı
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    OCSPNonceMismatchError
+Mesaj:   CWE-294: OCSP yanıt nonce değeri uyuşmuyor! Beklenen: a1b2c3d4e5f60718, Alınan: 9999999999999999
+------------------------------------------------------------------------
+Senaryo: NEG_07_FAIL_OPEN_REVOCATION_BYPASS - İptal Sunucusuna Erişilemediğinde Güvensiz Fail-Open Tutumu
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    RevocationStatusUnknownError
+Mesaj:   CWE-295: Sertifika durumu bilinmiyor (FAIL_CLOSED politikası aktif).
+------------------------------------------------------------------------
+Senaryo: NEG_08_ACME_GECERSIZ_CHALLENGE - ACME Alan Adı Doğrulama (Challenge) Hatası
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    ACMEChallengeFailedError
+Mesaj:   CWE-295: Sunulan ACME token geçersiz! Alan adı sahipliği kanıtlanamadı.
+------------------------------------------------------------------------
+Senaryo: NEG_09_GUVENSIZ_OZEL_ANAHTAR_IZNI - Özel Anahtar Dosyasında Güvensiz İzinler veya Bozuk Bütünlük
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    InsecureKeyStorageError
+Mesaj:   CWE-311: Özel anahtar dosyası aşırı geniş (0777) izinlere sahip!
+------------------------------------------------------------------------
+
+Özet: Toplam Senaryo: 9, Başarılı Engelleme: 9

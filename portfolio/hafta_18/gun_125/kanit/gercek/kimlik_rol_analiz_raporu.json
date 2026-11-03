@@ -1,0 +1,115 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "rapor_tarihi": "2026-11-02T08:49:13.353483",
+  "proje_adi": "Kurumsal Güvenli Kimlik ve Rol Prototipi (Week 18 Capstone)",
+  "durum": "YETERLİ / ÜRETİM DÜZEYİ",
+  "guvenlik_skoru": 100,
+  "mimari_özellikler": {
+    "kimlik_dogrulama": "PBKDF2-HMAC-SHA256 (100.000 iterasyon, 16-byte CSPRNG tuzlama) [CWE-521/307]",
+    "oturum_yonetimi": "Kriptografik URL-Safe Belirteç (32-byte), TTL Zaman Aşımı [CWE-613]",
+    "yetkilendirme_modeli": "Hiyerarşik RBAC (Rol Tabanlı Erişim Denetimi) + Default-Deny [Saltzer-Schroeder]",
+    "gorevler_ayriligi": "Statik SoD (Maker-Checker, Çıkar Çatışması Önleme) [CWE-863]",
+    "adim_yukseltme_dogrulamasi": "Step-Up MFA Kritik İşlem Koruması [CWE-308]",
+    "ariza_guvenligi": "Fail-Secure / Fail-Closed Kritik Kesinti İzolasyonu [CWE-636]",
+    "denetim_kayitlari": "Kişisel ve Gizli Veri Maskeleme (CWE-532 Uyumlu)"
+  },
+  "detaylar": {
+    "system_name": "Kurumsal Kimlik ve Rol Platformu",
+    "roles_count": 5,
+    "users_count": 4,
+    "active_sessions_count": 0,
+    "sod_rules_count": 1,
+    "roles": [
+      {
+        "name": "guest",
+        "permissions": [
+          "public:read",
+          "public_docs:read"
+        ],
+        "parents": [],
+        "requires_mfa": false
+      },
+      {
+        "name": "payment_maker",
+        "permissions": [
+          "payment:create",
+          "ledger:create"
+        ],
+        "parents": [
+          "guest"
+        ],
+        "requires_mfa": false
+      },
+      {
+        "name": "payment_checker",
+        "permissions": [
+          "payment:approve",
+          "ledger:approve"
+        ],
+        "parents": [
+          "guest"
+        ],
+        "requires_mfa": true
+      },
+      {
+        "name": "auditor",
+        "permissions": [
+          "audit_logs:read",
+          "reports:read"
+        ],
+        "parents": [
+          "guest"
+        ],
+        "requires_mfa": false
+      },
+      {
+        "name": "super_admin",
+        "permissions": [
+          "system:*"
+        ],
+        "parents": [
+          "guest"
+        ],
+        "requires_mfa": true
+      }
+    ],
+    "users": [
+      {
+        "user_id": "U-101",
+        "username": "denetci_merve",
+        "roles": [
+          "auditor"
+        ],
+        "department": "Engineering",
+        "is_locked": false
+      },
+      {
+        "user_id": "U-102",
+        "username": "finans_ali",
+        "roles": [
+          "payment_maker"
+        ],
+        "department": "Engineering",
+        "is_locked": false
+      },
+      {
+        "user_id": "U-103",
+        "username": "finans_ayse",
+        "roles": [
+          "payment_checker"
+        ],
+        "department": "Engineering",
+        "is_locked": false
+      },
+      {
+        "user_id": "U-104",
+        "username": "sistem_kemal",
+        "roles": [
+          "super_admin"
+        ],
+        "department": "Engineering",
+        "is_locked": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+===============================================================================
+GÜN 102: CLI KOMUT VE ÇIKIŞ KANITLARI
+Tarih/Saat: 2026-11-02 02:06:08
+===============================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_102\uygulama\vault_cli.py --hash --password SuperGuvenli2026! --pepper HSM_KMS_BIBER_ANAHTARI --iterations 100000
+Çıkış Kodu: 0
+=== GÜVENLİ PAROLA HASHLEME BAŞARILI ===
+Algoritma   : pbkdf2-sha256
+İterasyon   : 100,000
+Tuz (Salt)  : 2cc8c9e6117e9d7a9cb9138e380ae044
+Biber Var mı: Evet
+Özet (Hash) : b7d7b52c97cc425ef49fff1c18825d8082272ccdc642d5c2f4190f22aaf461f6
+Tam Kayıt   : $pbkdf2-sha256$i=100000$s=2cc8c9e6117e9d7a9cb9138e380ae044$p=1$b7d7b52c97cc425ef49fff1c18825d8082272ccdc642d5c2f4190f22aaf461f6
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_102\uygulama\vault_cli.py --verify --password SuperGuvenli2026! --record $pbkdf2-sha256$i=100000$s=2cc8c9e6117e9d7a9cb9138e380ae044$p=1$b7d7b52c97cc425ef49fff1c18825d8082272ccdc642d5c2f4190f22aaf461f6 --pepper HSM_KMS_BIBER_ANAHTARI
+Çıkış Kodu: 2
+=== PAROLA DOĞRULAMA RAPORU ===
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_102\uygulama\vault_cli.py --detect-legacy --hash-str 5d41402abc4b2a76b9719d911017c592
+Çıkış Kodu: 1
+=== PAROLA HASH GÜVENLİK DENETİMİ ===
+Tespit Edilen Tip: MD5 (Tuzsuz)
+Güvenlik Düzeyi  : KRİTİK GÜVENSİZ
+Zafiyet Açıklama : CWE-759 / CWE-916: Gökkuşağı tablolarıyla saniyede çözülebilir
+Önerilen Çözüm   : PBKDF2-HMAC-SHA256
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_15\gun_102\uygulama\vault_cli.py --leak-test
+Çıkış Kodu: 0
+=== VERİTABANI SIZINTISI SAVUNMA SİMÜLASYONU ===
+Senaryo               : Veritabanı Sızıntısı (SQL Injection / Veri İhlali)
+1. Bibersiz Kayıt     : Kısmi (Rainbow Table engellenir, ancak çevrimdışı GPU sözlük saldırısına açıktır)
+   Çevrimdışı Kırma   : Mümkün (Riskli)
+2. Biberli Kayıt      : Tam Korumalı (Biber veritabanında saklanmaz; HSM/KMS içindedir)
+   Çevrimdışı Kırma   : İMKANSIZ (Biber HSM içinde)
+Ustanın Dersi         : Tuz (salt) gökkuşağı tablolarını imkansız kılar; Biber (pepper) ise veritabanı sızıntısında çevrimdışı kaba kuvveti imkansız kılar.

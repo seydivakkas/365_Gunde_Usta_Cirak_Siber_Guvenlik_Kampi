@@ -1,0 +1,41 @@
+=== ADIM 1: KURUMSAL PAKET GUNCELLEME VE GERI ALMA POLITIKASI ===
+======================================================================
+KURUMSAL SÜRÜM SABİTLEME VE GERİ ALMA GÜVENLİK POLİTİKASI (G027-SC2)
+======================================================================
+1. Depo Kaynağı Doğrulama Prensibi:
+   - Yalnızca resmi, kurumsal ve HTTPS üzerinden sunulan depolar yapılandırılabilir.
+   - İmzasız veya doğrulanmamış GPG anahtarlı üçüncü taraf PPA depoları KESİNLİKLE yasaktır.
+
+2. Sürüm Sabitleme (Version Pinning) Kuralı:
+   - Veritabanı (PostgreSQL, MySQL), web sunucu (Nginx) ve kriptografik kütüphaneler (OpenSSL)
+     için 'apt-mark hold' veya 'dnf versionlock' ile sürüm dondurma ZORUNLUDUR.
+   - Üretim ortamlarında test edilmemiş ana sürüm yükseltmeleri engellenir.
+
+3. Güvenlik Yamaları ve Dağıtım Ayrımı:
+   - CVSS >= 7.0 olan güvenlik yamaları 48 saat içinde test ortamında doğrulanır.
+   - 'unattended-upgrades' yalnızca 'security' reposu için otomatikleştirilebilir.
+
+4. Atomik Geri Alma (Rollback) Güvencesi:
+   - Her paket güncellemesi öncesinde bir durum günlüğü (transaction journal) tutulur.
+   - Hata veya servis kesintisinde 'apt-get install pkg=old_ver' veya 'dnf history undo'
+     ile saniyeler içinde kararlı sürüme dönülür.
+======================================================================
+
+=== ADIM 2: KRITIK PAKETI SABITLEME (PINNING) ===
+[BAŞARILI] Paket 'nginx' sürümü 1.18.0 olarak sabitlendi (PINNED).
+
+=== ADIM 3: SABITLENMIS PAKETI GUNCELLEME DENEMESI (NEGATIF KONTROL) ===
+
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_04\gun_027\uygulama\package_update_manager_auditor.py", line 425, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_04\gun_027\uygulama\package_update_manager_auditor.py", line 379, in main
+    res = simulate_package_update(inv_data, pkg, ver)
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_04\gun_027\uygulama\package_update_manager_auditor.py", line 217, in simulate_package_update
+    raise PermissionError(f"Paket '{package_name}' s�r�m� sabitlenmi� (pinned: {secilen_paket.get('mevcut_surum')}). Do�rudan g�ncellenemez!")
+PermissionError: Paket 'nginx' s�r�m� sabitlenmi� (pinned: 1.18.0). Do�rudan g�ncellenemez!
+
+=== ADIM 4: YAMASIZ PAKETI GUVENLI GUNCELLEME (OPENSSL 3.0.2 -> 3.0.13) ===
+
+=== ADIM 5: GUNCELLEME SONRASI GERI ALMA (ROLLBACK TESTI) ===

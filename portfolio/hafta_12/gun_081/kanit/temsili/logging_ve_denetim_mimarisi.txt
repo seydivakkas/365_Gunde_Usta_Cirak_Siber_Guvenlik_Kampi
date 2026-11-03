@@ -1,0 +1,60 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
+Bu şema, G081 günü kapsamında geliştirilen güvenli Python logging ve kurumsal SIEM
+denetim boru hattının girdi temizleme, hassas veri maskeleme ve yapılandırılmış
+JSON formatlama adımlarını temsil eden kavramsal ASCII mimari diyagramıdır.
+
+                        +------------------------------------+
+                        |  UYGULAMA VE GÜVENLİK OLAY AKIŞI   |
+                        |   (LogRecord / Ham İleti & Bağlam) |
+                        +------------------------------------+
+                                          |
+                                          v
+              +------------------------------------------------------+
+              |          SECURITY LOG SANITIZATION FILTER            |
+              |                                                      |
+              |  1. CRLF Temizliği (\r, \n -> " ") [CWE-117]         |
+              |  2. ANSI Kaçış Kodu Temizliği (\x1b[...] -> "")      |
+              |  3. Null-Byte Temizliği (\x00 -> " ")                |
+              |  4. Parola ve Gizli Anahtar Maskeleme [CWE-532]      |
+              |     password=***, api_key=[REDACTED]                 |
+              |  5. Bearer JWT Belirteci Maskeleme [CWE-359]         |
+              |     Bearer [REDACTED_JWT]                            |
+              |  6. Kredi Kartı (PAN) Maskeleme [PCI-DSS]            |
+              |     ****-****-****-1234                              |
+              |  7. Tavan Uzunluk Sınırı (max_message_length=4096)   |
+              |     ...[TRUNCATED] [CWE-400 DoS Koruması]            |
+              +------------------------------------------------------+
+                                          |
+                                          v
+              +------------------------------------------------------+
+              |           JSON SECURITY LOG FORMATTER                |
+              |                                                      |
+              |  - UTC ISO-8601 Mikrosaniye Zaman Damgası            |
+              |  - Log Seviyesi (DEBUG, INFO, WARNING, ERROR, CRIT)  |
+              |  - Modül, Satır No, Süreç ve İş Parçacığı Bilgisi    |
+              |  - Sterilize Edilmiş Mesaj ve Ek Adli Bağlam         |
+              |  - Güvenli Serileştirme (Fallback Koruma)            |
+              +------------------------------------------------------+
+                                          |
+                     +--------------------+--------------------+
+                     |                                         |
+                     v                                         v
+       [ STREAM / MEMORY HANDLER ]               [ ROTATING FILE / SIEM HANDLER ]
+  +------------------------------------+   +------------------------------------+
+  | - Anlık Adli Bellek İncelemesi     |   | - maxBytes & backupCount Koruması  |
+  | - Birim Test ve Otomasyon Kanıtı   |   | - Disk Doygunluğu Engeli (DoS)     |
+  | - İzolasyon (propagate=False)      |   | - Splunk / Elastic / Sentinel      |
+  +------------------------------------+   +------------------------------------+
+                                          |
+                                          v
+                        +------------------------------------+
+                        |     KURUMSAL GÜVENLİ SIEM LOGLARI  |
+                        |   (Sıfır Sızıntı, Tahrif Edilemez) |
+                        +------------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

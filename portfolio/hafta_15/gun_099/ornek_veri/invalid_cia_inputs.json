@@ -1,0 +1,67 @@
+[
+  {
+    "id": "NEG_01_CONFIDENTIALITY_PLAINTEXT_LEAK",
+    "tanim": "Şifrelenmemiş hassas parola ve kart verisinin açık kanalda iletilmesi",
+    "veri": "HASSAS_KART: 5549-1234-5678-9012 | PAROLA: SuperGizli123",
+    "beklenen_hata": "ConfidentialityBreachError",
+    "cwe": "CWE-311: Missing Encryption of Sensitive Data"
+  },
+  {
+    "id": "NEG_02_INTEGRITY_TAMPERED_PAYLOAD",
+    "tanim": "İletim sırasında 1 baytı değiştirilmiş (bit-flip) sahte paket",
+    "orijinal_mesaj": "TRANSFER_TUTAR=1000_TL&ALICI=TR123456789",
+    "tahrif_edilmis_mesaj": "TRANSFER_TUTAR=9000_TL&ALICI=TR123456789",
+    "beklenen_hata": "IntegrityVerificationError",
+    "cwe": "CWE-353: Missing Support for Integrity Check"
+  },
+  {
+    "id": "NEG_03_INTEGRITY_INVALID_DIGEST",
+    "tanim": "Geçersiz veya sahte HMAC dijital mühür doğrulaması",
+    "sahte_hmac": "deadbeefcafebabe0123456789abcdef0123456789abcdef0123456789abcdef",
+    "beklenen_hata": "IntegrityVerificationError",
+    "cwe": "CWE-345: Insufficient Verification of Data Authenticity"
+  },
+  {
+    "id": "NEG_04_AVAILABILITY_FLOOD_DOS",
+    "tanim": "Hizmet engelleme (DoS) amacıyla saniyede izin verilen hız limitinin aşılması",
+    "istek_adedi": 150,
+    "limit": 50,
+    "beklenen_hata": "AvailabilityRateLimitExceededError",
+    "cwe": "CWE-770: Allocation of Resources Without Limits or Throttling"
+  },
+  {
+    "id": "NEG_05_AVAILABILITY_OVERSIZED_BUFFER",
+    "tanim": "Bellek tüketimi saldırısı için 1 MB tavanını aşan devasa veri gönderimi",
+    "boyut_bayt": 2000000,
+    "beklenen_hata": "PayloadLimitExceededError",
+    "cwe": "CWE-400: Uncontrolled Resource Consumption"
+  },
+  {
+    "id": "NEG_06_NON_REPUDIATION_CHAIN_BREAK",
+    "tanim": "Denetim günlüğünde geçmiş blok karmasının uyuşmaması (zincir kırılması)",
+    "sahte_onceki_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "beklenen_hata": "AuditChainCorruptedError",
+    "cwe": "CWE-778: Insufficient Logging"
+  },
+  {
+    "id": "NEG_07_NULL_BYTE_INJECTION",
+    "tanim": "Mesaj veya anahtar alanında Null-Byte (0x00) zehirlemesi denemesi",
+    "veri": "ADMIN_USER\u0000ROLE=ROOT",
+    "beklenen_hata": "NullByteInjectionError",
+    "cwe": "CWE-158: Improper Neutralization of Null Byte or Special Characters"
+  },
+  {
+    "id": "NEG_08_INVALID_KEY_LENGTH",
+    "tanim": "Kriptografik olarak güvensiz, 16 bayttan kısa anahtar kullanımı",
+    "anahtar": "kisa_key",
+    "beklenen_hata": "InsecureKeyLengthError",
+    "cwe": "CWE-326: Inadequate Encryption Strength"
+  },
+  {
+    "id": "NEG_09_TYPE_CONFUSION",
+    "tanim": "Metin beklenen fonksiyona int tipi iletilerek tip karmaşası üretilmesi",
+    "veri": 123456789,
+    "beklenen_hata": "TypeValidationError",
+    "cwe": "CWE-843: Access of Resource Using Incompatible Type"
+  }
+]

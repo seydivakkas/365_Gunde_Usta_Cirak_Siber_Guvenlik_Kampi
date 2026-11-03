@@ -1,0 +1,31 @@
+{
+  "gun": 61,
+  "gun_kimligi": "G061",
+  "konu": "Proxy, NAT ve güvenlik duvarı",
+  "asama": "03",
+  "hafta": 9,
+  "tarih": "2026-10-30T01:09:00+03:00",
+  "puan": 100,
+  "kabul": "Kabul",
+  "durum": "Tamamlandı",
+  "yurutme_kaniti_durumu": "Yerel çalıştırıldı",
+  "degerlendirme_rubrigi": {
+    "soru_cevap": 20,
+    "uygulama_simulasyon": 40,
+    "dogrulanabilir_kanit": 25,
+    "teknik_rapor": 15,
+    "toplam": 100
+  },
+  "test_ozeti": {
+    "toplam_test": 14,
+    "basarili": 14,
+    "hatali": 0,
+    "basarisiz": 0,
+    "sure_saniye": 0.002
+  },
+  "negatif_test_ozeti": {
+    "toplam_negatif": 9,
+    "basariyla_engellenen": 9
+  },
+  "telif_hakki": "Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Tüm Hakları Saklıdır."
+}

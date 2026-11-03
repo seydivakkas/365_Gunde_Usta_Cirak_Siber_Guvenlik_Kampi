@@ -1,0 +1,55 @@
+================================================================================
+GERÇEK KOMUT VE ÇALIŞTIRMA KANITI (GÜN 002)
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) | ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+================================================================================
+Komut: python portfolio/hafta_01/gun_002/uygulama/risk_matrix_evaluator.py --eval
+Çalışma Dizini: c:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Ortam: Windows 11 Enterprise (Physical / Localhost)
+Araç Sürümü: Python 3.14.0 (CPython, Standard Library)
+Tarih ve Saat: 2026-10-26 16:36:04 +03:00
+Çıkış Kodu (Exit Code): 0 (BAŞARILI)
+================================================================================
+STANDART ÇIKTI (STDOUT):
+================================================================================
+===============================================================================================
+SİBER GÜVENLİK 365: GÜN 002 — TEHDİT / ZAFİYET / OLAY / RİSK MATRİSİ
+===============================================================================================
+ID       | BAŞLIK                              | DOĞAL RİSK     | ARTIK RİSK     | AZALMA  
+-----------------------------------------------------------------------------------------------
+SCN-01   | Hastane Veritabanı ve Şifrelenmemiş | 20 (KRİTİK)    | 2 (DÜŞÜK)      | %90.0   
+SCN-02   | E-Ticaret Web Sunucusunda Yama Yapı | 25 (KRİTİK)    | 4 (DÜŞÜK)      | %84.0   
+SCN-03   | Muhasebe Departmanına Yönelik Hedef | 16 (YÜKSEK)    | 2 (DÜŞÜK)      | %87.5   
+-----------------------------------------------------------------------------------------------
+
+AYRINTILI SENARYO ANALİZLERİ:
+
+[SCN-01] Hastane Veritabanı ve Şifrelenmemiş Yedekleme Diski
+  * Varlık  : 50.000 hastanın tıbbi geçmişi ve T.C. kimlik numaraları
+  * Tehdit  : Fiziksel hırsızlık / Kötü niyetli taşeron personel veya hırsız
+  * Zafiyet : Harici yedekleme diskinin şifresiz (BitLocker kapalı) olması ve kilitli olmayan arşiv dolabında tutulması
+  * Olay    : Gece vardiyasında yedekleme diskinin dolaptan çalınması ve dark web forumlarında satışa çıkarılması
+  * Önlem   : Yedek disklerde AES-256 BitLocker şifreleme zorunluluğu, iki kilitli biyometrik kasa ve fiziksel erişim loglaması
+  * Risk Analizi: Doğal Risk = 20 (KRİTİK) -> Artık Risk = 2 (DÜŞÜK) [Risk Azalma: %90.0]
+
+[SCN-02] E-Ticaret Web Sunucusunda Yama Yapılmamış Kritik Zafiyet
+  * Varlık  : Canlı ödeme altyapısı ve web sipariş işleme sunucusu
+  * Tehdit  : Otomatik botnet tarayıcıları ve fidye yazılımı (ransomware) grupları
+  * Zafiyet : Web uygulamasında 6 aydır yamanmamış uzaktan kod yürütme (RCE / Log4j benzeri) zafiyetinin bulunması
+  * Olay    : Saldırganın web sunucusuna webshell yükleyip sistemde yetki yükseltmesi ve veritabanını kilitlemesi
+  * Önlem   : Otomatik haftalık yama döngüsü, Web Application Firewall (WAF) kural seti ve sunucu üzerinde EDR ajanı
+  * Risk Analizi: Doğal Risk = 25 (KRİTİK) -> Artık Risk = 4 (DÜŞÜK) [Risk Azalma: %84.0]
+
+[SCN-03] Muhasebe Departmanına Yönelik Hedefli Oltalama (Spear-Phishing)
+  * Varlık  : Şirket banka mevduat hesapları ve nakit transfer kanalı
+  * Tehdit  : CEO sahteciliği (Business Email Compromise - BEC) yapan organize dolandırıcılık çetesi
+  * Zafiyet : Muhasebe çalışanlarının güvenlik farkındalığı eksikliği ve yüksek tutarlı EFT'lerde tek onay yetkisinin bulunması
+  * Olay    : Sahte CEO e-postasına inanan personelin 250.000 TL parayı saldırganın offshore hesabına transfer etmesi
+  * Önlem   : DMARC/SPF e-posta doğrulama kuralları, çift imza (4-eyes) finansal onay protokolü ve aylık oltalama eğitimleri
+  * Risk Analizi: Doğal Risk = 16 (YÜKSEK) -> Artık Risk = 2 (DÜŞÜK) [Risk Azalma: %87.5]
+
+[BAŞARILI] 3 senaryonun tamamı eksiksiz doğrulandı ve risk matrisi hesaplandı.
+
+================================================================================
+STANDART HATA (STDERR):
+================================================================================
+(Hata çıktısı yoktur, işlem temiz şekilde 0 kodu ile tamamlanmıştır.)

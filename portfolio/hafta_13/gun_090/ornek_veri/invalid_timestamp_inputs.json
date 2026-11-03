@@ -1,0 +1,69 @@
+[
+  {
+    "id": "NEG_01",
+    "tanim": "Naive zaman damgası (saat dilimi veya UTC offset bilgisi içermez)",
+    "girdi": "2026-11-01 14:30:00",
+    "beklenen_hata": "NaiveTimestampError",
+    "cwe_kodu": "CWE-613: Insufficient Session Expiration / Ambiguous Timezone"
+  },
+  {
+    "id": "NEG_02",
+    "tanim": "Sözdizimsel olarak geçersiz saat/dakika/saniye sınır değerleri",
+    "girdi": "2026-11-01T25:70:99Z",
+    "beklenen_hata": "InvalidTimeRangeError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_03",
+    "tanim": "Takvimsel olarak var olmayan tarih (Şubat ayı 30 çekemez)",
+    "girdi": "2026-02-30T10:00:00Z",
+    "beklenen_hata": "InvalidCalendarDateError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_04",
+    "tanim": "Negatif veya sıfır Unix Epoch zaman damgası",
+    "girdi": -5000,
+    "beklenen_hata": "InvalidEpochValueError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_05",
+    "tanim": "Aşırı uç mantıksız tarih (Yıl 1970 öncesi veya Yıl 2100 ötesi)",
+    "girdi": "9999-12-31T23:59:59Z",
+    "beklenen_hata": "UnreasonableDateRangeError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_06",
+    "tanim": "Saat sapması (Clock Skew) güvenlik eşiği aşımı (>300 sn)",
+    "girdi": {
+      "istemci_zamani": "2026-11-01T14:40:00Z",
+      "referans_zamani": "2026-11-01T14:30:00Z",
+      "maks_sapma_saniye": 300
+    },
+    "beklenen_hata": "ClockSkewExceededError",
+    "cwe_kodu": "CWE-1385: Missing Origin Authentication / Replay Attack Risk"
+  },
+  {
+    "id": "NEG_07",
+    "tanim": "Tamamen bozuk ve alakasız metin girdisi",
+    "girdi": "gecersiz_ve_bozuk_tarih_dizgisi_12345",
+    "beklenen_hata": "MalformedTimestampError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  },
+  {
+    "id": "NEG_08",
+    "tanim": "Aşırı uzun DoS ve bellek tüketim saldırı yükü (>1024 karakter)",
+    "girdi": "2026-11-01T14:30:00ZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "beklenen_hata": "PayloadTooLargeError",
+    "cwe_kodu": "CWE-400: Uncontrolled Resource Consumption"
+  },
+  {
+    "id": "NEG_09",
+    "tanim": "Negatif veya taşmalı Windows FileTime tamsayısı",
+    "girdi": -10000000,
+    "beklenen_hata": "InvalidFileTimeError",
+    "cwe_kodu": "CWE-20: Improper Input Validation"
+  }
+]

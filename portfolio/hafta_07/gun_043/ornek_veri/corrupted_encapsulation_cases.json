@@ -1,0 +1,61 @@
+{
+  "corrupted_test_cases": [
+    {
+      "test_name": "invalid_ipv4_octet_overflow",
+      "description": "IPv4 adresinde oktet değerinin 255 sınırını aşması (Örn: 999.300.1.1)",
+      "network_sample": {
+        "source_ip": "999.300.1.1",
+        "destination_ip": "104.21.35.88",
+        "ttl": 64,
+        "protocol_number": 6
+      }
+    },
+    {
+      "test_name": "invalid_mac_address_format",
+      "description": "Ethernet MAC adresinin onaltılık olmayan karakterler içermesi (Örn: 00:1A:2B:3C:GG:ZZ)",
+      "data_link_sample": {
+        "source_mac": "00:1A:2B:3C:GG:ZZ",
+        "destination_mac": "A4:B2:39:C8:D1:F0",
+        "ethertype": "0x0800"
+      }
+    },
+    {
+      "test_name": "port_overflow",
+      "description": "Taşıma katmanı hedef portunun 65535 sınırını aşması (Örn: 70000)",
+      "transport_sample": {
+        "source_port": 50000,
+        "destination_port": 70000,
+        "protocol": "TCP"
+      }
+    },
+    {
+      "test_name": "negative_port",
+      "description": "Port numarasının negatif bir tam sayı olması (Örn: -443)",
+      "transport_sample": {
+        "source_port": -443,
+        "destination_port": 443,
+        "protocol": "TCP"
+      }
+    },
+    {
+      "test_name": "missing_transport_layer",
+      "description": "Kapsülleme hiyerarşisinde zorunlu layer_4_transport katmanının bulunmaması",
+      "omitted_layer": "layer_4_transport"
+    },
+    {
+      "test_name": "invalid_tcp_flag",
+      "description": "TCP bayrakları listesinde standart dışı veya geçersiz bayrak dizesi bulunması",
+      "transport_sample": {
+        "source_port": 52000,
+        "destination_port": 443,
+        "protocol": "TCP",
+        "flags": ["ACK", "INVALID_FLAG_XYZ"]
+      }
+    },
+    {
+      "test_name": "non_dict_layer_data",
+      "description": "Bir katman düğümünün sözlük yerine dize veya sayı olması",
+      "invalid_layer_value": "Bu bir katman sozlugu degildir"
+    }
+  ]
+}

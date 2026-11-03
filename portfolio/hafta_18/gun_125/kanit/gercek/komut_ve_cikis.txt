@@ -1,0 +1,52 @@
+======================================================================
+GÜN 125: CLI ETKİLEŞİM VE YÖNETİM KOMUTLARI KANITI
+Tarih/Saat: 2026-11-02T08:49:13.363554
+======================================================================
+
+--- KOMUT: python identity_cli.py report C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_125\ornek_veri\identity_prototype_config.json (Durum Raporu Alma) ---
+# Kurumsal Güvenli Kimlik ve Rol Prototipi (Week 18 Capstone) — Mini Proje 17 Bitirme Raporu
+**Tarih:** 2026-11-02 08:49:13
+
+## 1. Mimaride Tanımlı Roller ve İzin Hiyerarşisi
+| Rol Adı | Doğrudan İzinler | Üst Roller (Kalıtım) | MFA Zorunlu mu? |
+|---|---|---|---|
+| guest | public:read, public_docs:read | Yok (Kök) | Hayır |
+| employee | profile:read, profile:edit | guest | Hayır |
+| auditor | audit_logs:read, reports:read | guest | Hayır |
+| payment_maker | payment:create, ledger:create | employee | Hayır |
+| payment_checker | payment:approve, ledger:approve | employee | ✅ Evet |
+| super_admin | audit_logs:manage, database:*, system:* | auditor | ✅ Evet |
+
+## 2. Statik Görevler Ayrılığı (Static SoD) Kısıtları
+| Kural No | Çatışan Rol A | Çatışan Rol B | Zaafiyet Koruması |
+|---|---|---|---|
+| SoD-1 | `payment_maker` | `payment_checker` | CWE-863 (Privilege Conflict) |
+| SoD-2 | `auditor` | `super_admin` | CWE-863 (Privilege Conflict) |
+
+## 3. Güvenlik ve Tasarım Güvencesi
+> [!NOTE]
+> **ENTEGRE GÜVENLİK GÜVENCESİ:**
+> - **Saltzer-Schroeder:** Default-Deny prensibi işletilmektedir.
+> - **Fail-Secure (CWE-636):** Altyapı arızalarında erişimler otomatik kilitlenmektedir.
+> - **Step-Up MFA (CWE-308):** Kritik eylemlerde 2FA zorunludur.
+> - **CWE-532:** Oturum belirteçleri ve parolalar loglardan dinamik maskelenmektedir.
+
+
+----------------------------------------------------------------------
+
+--- KOMUT: python identity_cli.py auth C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_125\ornek_veri\identity_prototype_config.json --username denetci_merve --password MerveStrongPassword2026!# (Başarılı Kimlik Doğrulama) ---
+=== Kimlik Doğrulama Başarılı ===
+Kullanıcı ID: USR-101
+Roller: auditor
+Token: 8rC4l4QuklUqe_pUmkR7rdBuHkDXQdE0-KZq9j1Rs9E
+Son Geçerlilik: 2026-11-02 09:19:14
+MFA Doğrulandı mı?: HAYIR (Step-Up Gerekebilir)
+
+----------------------------------------------------------------------
+
+--- KOMUT: python identity_cli.py authorize C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_18\gun_125\ornek_veri\identity_prototype_config.json --username denetci_merve --password MerveStrongPassword2026!# --resource-id system --action reboot (Yetkisiz Kaynak Erişimi (Default-Deny)) ---
+=== Yetki Kararı: [DENY] ===
+Talep ID: REQ-A5A4AB81
+Gerekçe: Gerekli yetki bulunamadı ('system:reboot'). Saltzer-Schroeder 'Fail-Safe Defaults' prensibi gereği talep REDDEDİLDİ.
+
+----------------------------------------------------------------------

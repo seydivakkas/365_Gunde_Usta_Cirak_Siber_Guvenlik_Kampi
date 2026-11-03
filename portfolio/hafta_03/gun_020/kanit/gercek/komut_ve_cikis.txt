@@ -1,0 +1,84 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Bu dosya Siber Güvenlik 365 Gün Müfredatı kapsamında üretilmiştir.
+# Gün 020: Linux dosya ağacı ve FHS Gerçek Komut ve Çıktı Kanıtı
+
+================================================================================
+KOMUT 1: linux_fhs_hierarchy_auditor.py CLI Sample ve Baseline Denetimi
+================================================================================
+Çalıştırılan Komut:
+python portfolio/hafta_03/gun_020/uygulama/linux_fhs_hierarchy_auditor.py --sample portfolio/hafta_03/gun_020/ornek_veri/linux_fhs_sample_map.json --baseline portfolio/hafta_03/gun_020/ornek_veri/linux_fhs_security_baseline.json
+
+Çıktı:
+========================================================================
+GÜN 020: LİNUX DOSYA AĞACI VE FHS GÜVENLİK DENETİMİ
+========================================================================
+Denetim Zamanı : 2026-10-27T01:51:30.651838
+Genel Sonuç    : TEMIZ
+FHS Durumu     : 6/6 Zorunlu Dizin Doğrulandı
+Kritik İhlaller: 0 adet dosya ihlali
+------------------------------------------------------------------------
+FHS 3.0 ÇEKİRDEK DİZİN HARİTASI (G020-SC2):
+  /etc     [0755] Sahip: root:root    Amaç: Sistem genelindeki statik yapılandırma dosyaları (/etc/passwd, /etc/shadow, /etc/sudoers)
+  /var     [0755] Sahip: root:root    Amaç: Değişken çalışma verileri, loglar (/var/log), posta kuyrukları (/var/spool) ve web kökü (/var/www)
+  /home    [0755] Sahip: root:root    Amaç: Kullanıcıların kişisel ev dizinleri, belgeleri ve kabuk yapılandırmaları (~/.ssh, ~/.bashrc)
+  /tmp     [1777] Sahip: root:root    Amaç: Tüm kullanıcıların ve süreçlerin geçici dosya yazabildiği ortak tampon alanı
+  /dev     [0755] Sahip: root:root    Amaç: Donanım ve sanal aygıt özel düğümleri (/dev/sda disk, /dev/urandom rastgele sayı, /dev/null)
+  /proc    [0555] Sahip: root:root    Amaç: Çekirdek durumunu, donanım ayarlarını ve çalışan süreç belleklerini sunan sözde dosya sistemi (procfs)
+------------------------------------------------------------------------
+STICKY BIT VE MOUNT GÜVENLİK DENETİMLERİ:
+  /var     Sticky: False  Durum: STANDART_IZIN
+  /tmp     Sticky: True   Durum: GUVENLI
+  /home    Mount Güvenli mi: True (Mevcut: nodev, nosuid)
+  /tmp     Mount Güvenli mi: True (Mevcut: nodev, nosuid, noexec)
+========================================================================
+
+================================================================================
+KOMUT 2: linux_fhs_hierarchy_auditor.py JSON Çıktı Modu
+================================================================================
+Çalıştırılan Komut:
+python portfolio/hafta_03/gun_020/uygulama/linux_fhs_hierarchy_auditor.py --sample portfolio/hafta_03/gun_020/ornek_veri/linux_fhs_sample_map.json --baseline portfolio/hafta_03/gun_020/ornek_veri/linux_fhs_security_baseline.json --json
+
+Çıktı (Özet JSON):
+{
+  "denetim_zamani": "2026-10-27T01:51:33.685204",
+  "denetim_motoru_surumu": "1.0.0",
+  "canli_platform_baglami": {
+    "isletim_sistemi": "Windows",
+    "fhs_uyumluluk_modu": "Emüle Edilmiş Linux FHS Analizörü"
+  },
+  "fhs_temel_dizin_haritasi": {
+    "toplam_zorunlu_sayisi": 6,
+    "dogrulanan_sayisi": 6,
+    "fhs_karsilandi_mi": true
+  },
+  "sticky_bit_analizleri": [
+    {"dizin": "/var", "izin_oktal": "0755", "sticky_bit_var_mi": false, "durum": "STANDART_IZIN"},
+    {"dizin": "/tmp", "izin_oktal": "1777", "sticky_bit_var_mi": true, "durum": "GUVENLI"}
+  ],
+  "mount_sertlestirme_analizleri": [
+    {"dizin": "/home", "mevcut_mount_secenekleri": ["nodev", "nosuid"], "guvenli_mi": true},
+    {"dizin": "/tmp", "mevcut_mount_secenekleri": ["nodev", "nosuid", "noexec"], "guvenli_mi": true}
+  ],
+  "kritik_sistem_dosyalari_denetimi": {
+    "toplam_kritik_dosya_sayisi": 3,
+    "ihlal_sayisi": 0
+  },
+  "genel_sonuc": "TEMIZ"
+}
+
+================================================================================
+KOMUT 3: Canlı Ortam Bilgisi Sorgulama (--live)
+================================================================================
+Çalıştırılan Komut:
+python portfolio/hafta_03/gun_020/uygulama/linux_fhs_hierarchy_auditor.py --live
+
+Çıktı:
+{
+  "sorgu_zamani": "2026-10-27T01:51:37.551571",
+  "isletim_sistemi": "Windows",
+  "isletim_sistemi_surumu": "11",
+  "kok_dizin": "C:\\",
+  "fhs_uyumluluk_modu": "Emüle Edilmiş Linux FHS Analizörü",
+  "aciklama": "FHS denetimi platformlar arası olarak Linux sunucu ve imajlarını analiz edebilir."
+}

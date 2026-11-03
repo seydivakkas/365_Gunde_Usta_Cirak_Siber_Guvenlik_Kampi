@@ -1,0 +1,33 @@
+test_01_valid_matrix_loading (test_windows_linux_security_comparator.TestWindowsLinuxSecurityComparator.test_01_valid_matrix_loading)
+Geerli 10 g÷stergeli matris dosyas²n²n ba■ar²yla y³klendi­ini ve do­ruland²­²n² test eder. ... ok
+test_02_all_10_indicators_present (test_windows_linux_security_comparator.TestWindowsLinuxSecurityComparator.test_02_all_10_indicators_present)
+IND-01 ile IND-10 aras²ndaki t³m standart g÷stergelerin s²rayla mevcut oldu­unu do­rular. ... ok
+test_03_windows_metrics_calculation (test_windows_linux_security_comparator.TestWindowsLinuxSecurityComparator.test_03_windows_metrics_calculation)
+Windows Server iin toplam puan, y³zde ve risk seviyesi hesaplamalar²n² denetler. ... ok
+test_04_linux_metrics_calculation (test_windows_linux_security_comparator.TestWindowsLinuxSecurityComparator.test_04_linux_metrics_calculation)
+Linux (Ubuntu) iin toplam puan, y³zde ve risk seviyesi hesaplamalar²n² denetler. ... ok
+test_05_score_differential_calculation (test_windows_linux_security_comparator.TestWindowsLinuxSecurityComparator.test_05_score_differential_calculation)
+Kar■²la■t²rma motorunun iki i■letim sistemi aras²ndaki puan fark²n² do­ru hesaplad²­²n² test eder. ... ok
+test_06_markdown_report_generation (test_windows_linux_security_comparator.TestWindowsLinuxSecurityComparator.test_06_markdown_report_generation)
+▄retilen Markdown raporunun zorunlu ba■l²klar², tablolar² ve lisans bildirimini ierdi­ini do­rular. ... ok
+test_07_negative_missing_indicator_count (test_windows_linux_security_comparator.TestWindowsLinuxSecurityComparator.test_07_negative_missing_indicator_count)
+Negatif Kontrol: 10'dan az (÷rne­in 9) g÷sterge ieren matrisin reddedildi­ini do­rular. ... ok
+test_08_negative_score_overflow (test_windows_linux_security_comparator.TestWindowsLinuxSecurityComparator.test_08_negative_score_overflow)
+Negatif Kontrol: G÷sterge puan²n²n 10'u a■mas² durumunda SecurityIndicatorError f²rlat²ld²­²n² do­rular. ... ok
+test_09_negative_score_negative (test_windows_linux_security_comparator.TestWindowsLinuxSecurityComparator.test_09_negative_score_negative)
+Negatif Kontrol: G÷sterge puan²n²n negatif olmas² durumunda sistemin hata ³retti­ini do­rular. ... ok
+test_10_negative_score_non_numeric (test_windows_linux_security_comparator.TestWindowsLinuxSecurityComparator.test_10_negative_score_non_numeric)
+Negatif Kontrol: Puan²n dize (string) olarak verilmesi durumunda tip hatas² f²rlat²ld²­²n² do­rular. ... ok
+test_11_negative_score_boolean_rejection (test_windows_linux_security_comparator.TestWindowsLinuxSecurityComparator.test_11_negative_score_boolean_rejection)
+Negatif Kontrol: Python'da bool tipinin int alt s²n²f² olmas²ndan kaynaklanan s²z²nt²y² s²nar. ... ok
+test_12_negative_missing_os_node (test_windows_linux_security_comparator.TestWindowsLinuxSecurityComparator.test_12_negative_missing_os_node)
+Negatif Kontrol: Zorunlu i■letim sistemi d³­³m³n³n (windows veya linux) eksik olmas² durumunu s²nar. ... ok
+test_13_negative_non_dict_indicator (test_windows_linux_security_comparator.TestWindowsLinuxSecurityComparator.test_13_negative_non_dict_indicator)
+Negatif Kontrol: G÷sterge nesnesi yerine dize veya liste geirilmesi durumunu test eder. ... ok
+test_14_negative_corrupted_json_file (test_windows_linux_security_comparator.TestWindowsLinuxSecurityComparator.test_14_negative_corrupted_json_file)
+Negatif Kontrol: Sentaks² bozuk bir JSON dosyas² verildi­inde sistemin ÷kmeden hata verdi­ini do­rular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.008s
+
+OK

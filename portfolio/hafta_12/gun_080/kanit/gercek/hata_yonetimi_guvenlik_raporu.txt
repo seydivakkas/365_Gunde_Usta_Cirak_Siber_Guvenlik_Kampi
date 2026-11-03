@@ -1,0 +1,5 @@
+=== G080 HATA YÖNETİMİ VE ÖZEL DURUMLAR ADLİ DENETİM RAPORU ===
+Meşru İşlem Durumu: BASARILI
+Engellenen Yetkisiz İstek: HATA_ERISIM_ENGEL -> Güvenlik politikası ihlali tespit edildi. Olay Kodu: SEC-ERR-AF4001AB
+Kaydedilen Adli Olay Sayısı: 1
+Fail-Closed Prensibi: Doğrulandı (Tüm istisnalarda erişim engellendi, sızıntı sıfır)

@@ -1,0 +1,19 @@
+=====================================================================================
+GÜN 092: NEGATİF KONTROL VE TİP GÜVENLİĞİ ZAFİYET ENGELLEME KANITLARI
+Çalıştırma Zamanı (UTC): 2026-11-01T20:34:34Z
+=====================================================================================
+SENARYO ID | BEKLENEN HATA             | DURUM      | CWE KODU
+-------------------------------------------------------------------------------------
+NEG_01     | TypeValidationError       | ENGELLENDİ | CWE-843: Access of Resource Using Incompatible Type ('Type Confusion')
+NEG_02     | InvalidIpAddressError     | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_03     | PortRangeError            | ENGELLENDİ | CWE-1284: Improper Validation of Specified Quantity in Input
+NEG_04     | InvalidMacAddressError    | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_05     | InvalidHostnameError      | ENGELLENDİ | CWE-88: Improper Neutralization of Argument Delimiters in a Command
+NEG_06     | NullByteInjectionError    | ENGELLENDİ | CWE-158: Improper Neutralization of Null Byte or Special Characters
+NEG_07     | InvalidHashChecksumError  | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_08     | ValueRangeError           | ENGELLENDİ | CWE-20: Improper Input Validation
+NEG_09     | PayloadTooLargeError      | ENGELLENDİ | CWE-400: Uncontrolled Resource Consumption
+=====================================================================================
+Toplam Negatif Senaryo: 9
+Başarıyla Engellenen / Tespit Edilen: 9
+Negatif Başarı Oranı: %100.0

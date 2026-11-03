@@ -1,0 +1,12 @@
+======================================================================
+NEGATİF KONTROL VE DÖNGÜ DOĞRULAMA TESTİ (G031-SC2)
+======================================================================
+Toplam Test Edilen Hatalı Vaka : 4
+Başarıyla Reddedilen Vaka      : 4
+Sonuç                          : TAM BAŞARILI (PASS)
+----------------------------------------------------------------------
+[REJECTED_AS_EXPECTED] CYCLE-01 -> Döngüsel süreç ilişkisi tespit edildi! PID 5001 döngü oluşturuyor.
+[REJECTED_AS_EXPECTED] INVALID-PID-02 -> Geçersiz negatif PID tespit edildi: -99.
+[REJECTED_AS_EXPECTED] MISSING-NAME-03 -> PID 6010 için süreç adı boş olamaz!
+[REJECTED_AS_EXPECTED] DUPLICATE-PID-04 -> Mükerrer PID çakışması tespit edildi: PID 7001.
+======================================================================

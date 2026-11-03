@@ -1,0 +1,45 @@
+===========================================================================
+GÜN 091: MİNİ PROJE 12 — BİRİM TEST KANITLARI
+Tarih (UTC): 2026-11-01T20:27:18Z
+===========================================================================
+
+test_01_validate_valid_windows_telemetry (test_cross_platform_security_reporter.TestCrossPlatformSecurityReporter.test_01_validate_valid_windows_telemetry)
+1. Test: Geçerli Windows telemetri verisinin doğrulanması. ... ok
+test_02_validate_valid_linux_telemetry (test_cross_platform_security_reporter.TestCrossPlatformSecurityReporter.test_02_validate_valid_linux_telemetry)
+2. Test: Geçerli Linux telemetri verisinin doğrulanması. ... ok
+test_03_reject_unsupported_platform (test_cross_platform_security_reporter.TestCrossPlatformSecurityReporter.test_03_reject_unsupported_platform)
+3. Test: Desteklenmeyen işletim sistemi platformunun reddedilmesi (CWE-20). ... ok
+test_04_reject_empty_or_malformed_telemetry (test_cross_platform_security_reporter.TestCrossPlatformSecurityReporter.test_04_reject_empty_or_malformed_telemetry)
+4. Test: Boş veya bozuk JSON telemetrisinin reddedilmesi. ... ok
+test_05_reject_missing_required_fields (test_cross_platform_security_reporter.TestCrossPlatformSecurityReporter.test_05_reject_missing_required_fields)
+5. Test: Zorunlu alanları (hostname veya zaman) eksik telemetrinin engellenmesi. ... ok
+test_06_reject_naive_timestamp (test_cross_platform_security_reporter.TestCrossPlatformSecurityReporter.test_06_reject_naive_timestamp)
+6. Test: Saat dilimi içermeyen naive telemetri zaman damgasının engellenmesi (CWE-613). ... ok
+test_07_reject_sensitive_leak_in_stderr (test_cross_platform_security_reporter.TestCrossPlatformSecurityReporter.test_07_reject_sensitive_leak_in_stderr)
+7. Test: Stderr akışında açık şifre veya kimlik bilgisi sızıntısının tespiti (CWE-532). ... ok
+test_08_path_traversal_prevention (test_cross_platform_security_reporter.TestCrossPlatformSecurityReporter.test_08_path_traversal_prevention)
+8. Test: Çıktı dosya yolunda dizin atlama ('..') girişimlerinin engellenmesi (CWE-22). ... ok
+test_09_audit_windows_findings (test_cross_platform_security_reporter.TestCrossPlatformSecurityReporter.test_09_audit_windows_findings)
+9. Test: Windows telemetrisinde SMB (445), RDP (3389), Güvenlik Duvarı ve Madenci tespiti. ... ok
+test_10_audit_windows_deep_scan (test_cross_platform_security_reporter.TestCrossPlatformSecurityReporter.test_10_audit_windows_deep_scan)
+10. Test: Windows derin taramada eksik güvenlik yamalarının (KB5034441) tespiti. ... ok
+test_11_audit_linux_findings (test_cross_platform_security_reporter.TestCrossPlatformSecurityReporter.test_11_audit_linux_findings)
+11. Test: Linux telemetrisinde /etc/shadow 0644 izin ve NOPASSWD sudo açığının tespiti. ... ok
+test_12_format_text_output (test_cross_platform_security_reporter.TestCrossPlatformSecurityReporter.test_12_format_text_output)
+12. Test: Raporun yapısal metin (text) formatında üretilmesi. ... ok
+test_13_format_json_output (test_cross_platform_security_reporter.TestCrossPlatformSecurityReporter.test_13_format_json_output)
+13. Test: Raporun standart JSON formatında üretilmesi ve ayrıştırılması. ... ok
+test_14_format_html_output (test_cross_platform_security_reporter.TestCrossPlatformSecurityReporter.test_14_format_html_output)
+14. Test: Raporun geçerli HTML formatında üretilmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.004s
+
+OK
+
+===========================================================================
+Toplam Test: 14
+Başarılı: 14
+Hatalar: 0
+Başarısızlıklar: 0
+Genel Sonuç: PASS (BAŞARILI)

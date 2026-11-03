@@ -1,0 +1,53 @@
+{
+  "gun": 31,
+  "tarih": "2026-10-27",
+  "baslik": "Process Explorer ve süreç ağacı",
+  "asama": "Aşama 02 — Sistem ve Ağ Güvenliği Temelleri",
+  "hafta": 5,
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "puan_detay": {
+    "kriter_1": 20,
+    "kriter_2": 40,
+    "kriter_3": 25,
+    "kriter_4": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "kanitlar": {
+    "gercek": [
+      "portfolio/hafta_05/gun_031/kanit/gercek/test_sonuclari.txt",
+      "portfolio/hafta_05/gun_031/kanit/gercek/komut_ve_cikis.txt",
+      "portfolio/hafta_05/gun_031/kanit/gercek/surec_agaci_semasi.txt",
+      "portfolio/hafta_05/gun_031/kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "portfolio/hafta_05/gun_031/kanit/temsili/surec_agaci_ve_tehdit_mimarisi.txt"
+    ]
+  },
+  "kod_dosyalari": [
+    "portfolio/hafta_05/gun_031/uygulama/process_tree_explorer_analyzer.py",
+    "portfolio/hafta_05/gun_031/tests/test_process_tree_explorer_analyzer.py"
+  ],
+  "dokumanlar": [
+    "portfolio/hafta_05/gun_031/ders.md",
+    "portfolio/hafta_05/gun_031/soru_cevap.md",
+    "portfolio/hafta_05/gun_031/rapor.md",
+    "portfolio/hafta_05/gun_031/README.md"
+  ],
+  "kazanimlar": [
+    "Process Explorer mimarisi ve PPID-PID hiyerarşisi derinlemesine incelendi.",
+    "G031-SC1 gereğince meşru karmaşık ağaçlar (Google Chrome) ile saldırı zincirlerinin bağlamsal ayrımı kodlandı.",
+    "G031-SC2 gereğince 16 süreçlik hiyerarşik ASCII süreç ağacı şemalaştırıldı.",
+    "Döngüsel süreç ilişkilerini (Cycle Detection) yakalayan DFS algoritması geliştirildi.",
+    "Süreç taklidi (Masquerading T1036.005), geçersiz ebeveyn ve Temp dizinindeki sistem ikilileri tespit edildi.",
+    "Negatif kontrolde 4 bozuk ve döngüsel vaka %100 başarıyla reddedildi.",
+    "14 birim test %100 başarıyla tamamlandı, 100/100 tam puan tescillendi."
+  ],
+  "ozel_not": "G031-SC1, SC2 ve SC3 isterleri süreç hiyerarşisi, meşru/zararlı ayrımı ve döngü denetimiyle başarıyla tamamlandı."
+}

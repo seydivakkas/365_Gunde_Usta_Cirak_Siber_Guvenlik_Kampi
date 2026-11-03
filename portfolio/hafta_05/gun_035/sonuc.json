@@ -1,0 +1,53 @@
+{
+  "gun": 35,
+  "tarih": "2026-10-27",
+  "baslik": "Mini proje 4: sistem durum kontrolü",
+  "asama": "Aşama 02 — Sistem ve Ağ Güvenliği Temelleri",
+  "hafta": 5,
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "puan_detay": {
+    "kriter_1": 20,
+    "kriter_2": 40,
+    "kriter_3": 25,
+    "kriter_4": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "kanitlar": {
+    "gercek": [
+      "portfolio/hafta_05/gun_035/kanit/gercek/test_sonuclari.txt",
+      "portfolio/hafta_05/gun_035/kanit/gercek/komut_ve_cikis.txt",
+      "portfolio/hafta_05/gun_035/kanit/gercek/sistem_durum_panosu_raporu.txt",
+      "portfolio/hafta_05/gun_035/kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "portfolio/hafta_05/gun_035/kanit/temsili/sistem_durum_kontrolu_mimarisi.txt"
+    ]
+  },
+  "kod_dosyalari": [
+    "portfolio/hafta_05/gun_035/uygulama/system_posture_auditor.py",
+    "portfolio/hafta_05/gun_035/tests/test_system_posture_auditor.py"
+  ],
+  "dokumanlar": [
+    "portfolio/hafta_05/gun_035/ders.md",
+    "portfolio/hafta_05/gun_035/soru_cevap.md",
+    "portfolio/hafta_05/gun_035/rapor.md",
+    "portfolio/hafta_05/gun_035/README.md"
+  ],
+  "kazanimlar": [
+    "Hafta 05 boyunca öğrenilen süreç ağaçları, servis yapılandırması, FIM bütünlüğü ve sihirli baytlar tek çatıda birleştirildi.",
+    "G035-SC1 gereğince sistem durum taramasının yalnızca gözlemlerden anlamlı özet üretmesi ve ayrıcalık gerektirmemesi ilkesi uygulandı.",
+    "G035-SC2 gereğince bağımsız laboratuvarda kontrollü girdi, analiz süreci, beklenen çıktı ve negatif kontrol metodolojisi uygulandı.",
+    "G035-SC3 gereğince süreç, servis ve dosya anormallikleri tespit edilip iyileştirme kılavuzu oluşturuldu.",
+    "W05-SC1..3 gereğince haftalık sorun giderme adımları, etik/yasal izin şartları ve PASS kararı kanıtları belgelendi.",
+    "Bozuk telemetri veri setindeki 5 hatalı senaryo %100 güvenle reddedildi.",
+    "14 birim test 0.039 saniyede %100 başarıyla tamamlandı, Hafta 05 başarıyla kapandı."
+  ],
+  "ozel_not": "Hafta 05 Kapanış Projesi (Mini Proje 4) konsolide telemetri denetimi ve yönetici durum panosu ile 100/100 tam puanla tescillendi."
+}

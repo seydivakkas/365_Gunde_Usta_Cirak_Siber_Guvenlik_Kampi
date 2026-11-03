@@ -1,0 +1,47 @@
+=== G095 NEGATİF KONTROL VE HATA ENGELLEME KANITLARI (9 SENARYO) ===
+Tarih: 2026-11-02 01:01:09
+
+[BAŞARILI (ENGELLEDİ)] NEG_01_NEGATIVE_ITERATIONS
+  Tanım: Sıfır veya negatif iterasyon sayısı iletilmesi
+  CWE: CWE-20: Improper Input Validation
+  Beklenen: InvalidBenchmarkParameterError | Alınan: InvalidBenchmarkParameterError
+
+[BAŞARILI (ENGELLEDİ)] NEG_02_ZERO_THRESHOLD
+  Tanım: Sıfır veya negatif performans eşik değeri belirtilmesi
+  CWE: CWE-20: Improper Input Validation
+  Beklenen: InvalidBenchmarkParameterError | Alınan: InvalidBenchmarkParameterError
+
+[BAŞARILI (ENGELLEDİ)] NEG_03_UNKNOWN_BENCHMARK_TARGET
+  Tanım: Sistemde kayıtlı olmayan sahte hedef fonksiyon adı çağrılması
+  CWE: CWE-20: Improper Input Validation
+  Beklenen: TargetNotFoundError | Alınan: TargetNotFoundError
+
+[BAŞARILI (ENGELLEDİ)] NEG_04_THRESHOLD_BUDGET_EXCEEDED
+  Tanım: Güvenlik SLA bütçesini aşan yavaş fonksiyonun tespiti ve engellenmesi
+  CWE: CWE-400: Uncontrolled Resource Consumption
+  Beklenen: PerformanceBudgetExceededError | Alınan: PerformanceBudgetExceededError
+
+[BAŞARILI (ENGELLEDİ)] NEG_05_MEMORY_LEAK_DETECTED
+  Tanım: Bellek tavanını aşan kontrolsüz tahsisat simülasyonu
+  CWE: CWE-401: Missing Release of Memory after Effective Lifetime
+  Beklenen: MemoryLimitExceededError | Alınan: MemoryLimitExceededError
+
+[BAŞARILI (ENGELLEDİ)] NEG_06_NULL_BYTE_TARGET_NAME
+  Tanım: Fonksiyon veya hedef adında Null-Byte enjeksiyonu denemesi
+  CWE: CWE-158: Improper Neutralization of Null Byte or Special Characters
+  Beklenen: NullByteInjectionError | Alınan: NullByteInjectionError
+
+[BAŞARILI (ENGELLEDİ)] NEG_07_NON_CALLABLE_TARGET
+  Tanım: Çalıştırılamaz (non-callable) nesnenin profillemeye gönderilmesi
+  CWE: CWE-843: Access of Resource Using Incompatible Type
+  Beklenen: TypeValidationError | Alınan: TypeValidationError
+
+[BAŞARILI (ENGELLEDİ)] NEG_08_INVALID_PERCENTILE_VALUE
+  Tanım: 0-100 aralığı dışında geçersiz persentil metriği istenmesi
+  CWE: CWE-1284: Improper Validation of Specified Quantity in Input
+  Beklenen: InvalidBenchmarkParameterError | Alınan: InvalidBenchmarkParameterError
+
+[BAŞARILI (ENGELLEDİ)] NEG_09_WARMUP_EXCEEDS_ITERATIONS
+  Tanım: Isınma (warmup) döngü sayısının toplam iterasyon sayısına eşit veya büyük olması
+  CWE: CWE-20: Improper Input Validation
+  Beklenen: InvalidBenchmarkParameterError | Alınan: InvalidBenchmarkParameterError

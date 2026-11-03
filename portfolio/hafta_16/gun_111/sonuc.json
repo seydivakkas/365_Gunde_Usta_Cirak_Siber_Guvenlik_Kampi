@@ -1,0 +1,36 @@
+{
+  "gun": 111,
+  "hafta": 16,
+  "konu": "Anahtar yönetimi ve rotasyon",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "tamamlanma_tarihi": "2026-11-02",
+  "kategori": "Asimetrik Kriptografi ve PKI",
+  "puan_detaylari": {
+    "mimari": 20,
+    "kodlama": 40,
+    "test": 25,
+    "dokumantasyon": 15
+  },
+  "zafiyet_savunmalari": [
+    "CWE-320",
+    "CWE-326",
+    "CWE-329",
+    "CWE-353",
+    "CWE-226",
+    "CWE-321"
+  ],
+  "test_ozeti": {
+    "toplam_birim_test": 15,
+    "basarili_birim_test": 15,
+    "basarisiz_birim_test": 0,
+    "negatif_senaryolar": 9,
+    "basarili_negatif_senaryolar": 9
+  },
+  "yurutulen_araclar": [
+    "uygulama/key_management_engine.py",
+    "uygulama/keymgmt_cli.py",
+    "tests/test_key_management.py",
+    "kanit_uretici.py"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "README.md": "317fd5fc80f4403395013beb8e70001c4c9f69d8eee742680a68d8fe03a0540a",
+  "ders.md": "87d76ff528e5ececa7ca399397bf02f79e4f61037abccedcc6973c8eaabde7b3",
+  "rapor.md": "819da6f18a858d7a641f9acf427b46a534e30289daa52d5878cc25347be9856c",
+  "sonuc.json": "8757de425443c216e58a28466060ae8c74edc35ab0fddd298beeb9d09ded37d3",
+  "soru_cevap.md": "9042fab22ee6de1490ba3e08ccae9d5e52c4e14ac286d87394c79edfb86b53a6",
+  "kanit/gercek/icmp_teshis_raporu.txt": "1331865142a8a2a6e1e5ab4a2dfcd2c743676e8c980c956cf1b53fcf01051207",
+  "kanit/gercek/komut_ve_cikis.txt": "8528bd64c5003844d7f2ddfa584cde17810a53b564ecbfcb8d502fab4e50149e",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "c932bbf5c8d104ba895764a064c03a49622654c11980ef2c8dafbed2cd691fe5",
+  "kanit/gercek/test_sonuclari.txt": "aea6fc62c787504fe0f4f31543557f118ca870060c4bd6fb3bd68d24b5ea237a",
+  "kanit/temsili/icmp_traceroute_ve_covert_channel_mimarisi.txt": "785b23ae733a2c0bc2294cb8d38501762c40cc4f7017e91204f8e9f64b247e0d",
+  "ornek_veri/invalid_icmp_packets.json": "0ceadc0ab4ec4640e8a76afaeb3e9a23e1ce0f9af0d14f86c534045759688f32",
+  "ornek_veri/sample_icmp_packets.json": "42f1c34ce209d3622c8bb28e850e0a687639732f0035d2d9430d31355f781343",
+  "tests/__init__.py": "b19f49dc710f82ebbb4823ca6cf9f012139744a743bb478b9739ae4e65bacc63",
+  "tests/test_icmp_diagnostic_analyzer.py": "9a4ba0fe3b8ff2020f88013d5b4d106379b7f2b175fa0de448356ae3a1cbf72e",
+  "uygulama/__init__.py": "b19f49dc710f82ebbb4823ca6cf9f012139744a743bb478b9739ae4e65bacc63",
+  "uygulama/icmp_diagnostic_analyzer.py": "5836c9e8b848f7970d3e015e262ea2e10914d1f9f09aa302a76813d22ffd6cf9"
+}

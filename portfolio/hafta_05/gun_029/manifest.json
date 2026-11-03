@@ -1,0 +1,19 @@
+{
+  "README.md": "4a6a169322f7bd2b6008aae60b6a9200dc03a79699459a98e713894c5a5b8efc",
+  "ders.md": "603c8cc2ca59bc76e997f0fab1c9a0ce841b94774e6bca348531e80b5dfa1cca",
+  "rapor.md": "adbaf96bd886c245ea5e50c24ab16857b5dd9b06606ffbf4c8f82ff6249f7290",
+  "sonuc.json": "2f283340ffe89595955be3e0314d15a7236daf527a6a6033577f9d7e1ed0d185",
+  "soru_cevap.md": "3f33676df8b097dec14a67109969811f27cecde30fd3afe07258ea747546864c",
+  "kanit/gercek/komut_ve_cikis.txt": "eb54c6e7a28ef8cc9a4ef18931e1b10f6cab9cfe3367dd2e6d4af7857f1163d5",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "ec83697eec443a6ae45118c3e0400780f45dfc831a33e4bcdd2b7d87470c061f",
+  "kanit/gercek/sistem_olay_analiz_kaydi.txt": "eb54c6e7a28ef8cc9a4ef18931e1b10f6cab9cfe3367dd2e6d4af7857f1163d5",
+  "kanit/gercek/test_sonuclari.txt": "27ff154934c67bd4d19572f347d32b9a04e579a1cf97051304e1a33b8dc9b479",
+  "kanit/temsili/windows_event_log_mimarisi.txt": "82dd14335378960661e4dc602b6d730daf5003cb4cf5c321e63b24635a0cb5f6",
+  "ornek_veri/corrupted_events_test.json": "ed799544bca64ef92e93546c74a7675c8c073345323c485dec8ecfc93c0e5694",
+  "ornek_veri/sample_system_events.json": "b02b8f4e319f8bc6ef6df6a9c05d4fe57390f293fd690ebb42b37ca00652c236",
+  "ornek_veri/security_event_catalog.json": "900f2b7c335b3bf428c1d6122f6ca0ab0f9ce12ccd92cf690ef70d2564fb7ed6",
+  "tests/__init__.py": "56a904596d5f9048e1ce69df758970b554776dbd5afce0cb5cb62999b77b7727",
+  "tests/test_windows_event_viewer_analyzer.py": "aaebc5368e56c0a731c4830fddd77cd2857e1fd180310a96731713fd403b46b2",
+  "uygulama/__init__.py": "b5ec92c2b1af7863bc2b0542968bc750791854c816c4b7f85e56576b8e94a717",
+  "uygulama/windows_event_viewer_analyzer.py": "58c440770b2be6032992298ea07dbc7855831dde49096ed1f9133196eb08574d"
+}

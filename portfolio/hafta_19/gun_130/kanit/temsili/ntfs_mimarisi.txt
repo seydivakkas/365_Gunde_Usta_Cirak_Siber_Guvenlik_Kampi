@@ -1,0 +1,44 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================
+WINDOWS NTFS GÜVENLİK TANIMLAYICISI (SECURITY DESCRIPTOR) VE DACL MİMARİSİ
+========================================================================================
+
+                             [ DOSYA / DİZİN ERİŞİM TALEBİ ]
+                                            │
+                                            ▼
+              ┌─────────────────────────────────────────────────────────────┐
+              │           NTFS SECURITY DESCRIPTOR YAPISI                   │
+              │  - Owner SID (Sahiplik: BUILTIN\Administrators / SYSTEM)    │
+              │  - Group SID (Birincil Grup)                                │
+              │  - Control Flags (SE_DACL_PROTECTED / Miras Bloklama)       │
+              └─────────────────────────────┬───────────────────────────────┘
+                                            │
+                                            ▼
+              ┌─────────────────────────────────────────────────────────────┐
+              │           DACL (İSTEĞE BAĞLI ERİŞİM KONTROL LİSTESİ)        │
+              │                                                             │
+              │  [1. AÇIK REDDETME (Explicit Deny ACE)]                     │
+              │     └── İlk eşleşen hak derhal engellenir                   │
+              │                                                             │
+              │  [2. AÇIK İZİN VERME (Explicit Allow ACE)]                  │
+              │     └── SYSTEM / Administrators: Full Control (F)           │
+              │                                                             │
+              │  [3. MİRAS ALINAN REDDETME (Inherited Deny ACE)]            │
+              │     └── Üst dizinden devralınan kısıtlamalar                │
+              │                                                             │
+              │  [4. MİRAS ALINAN İZİN VERME (Inherited Allow ACE)]         │
+              │     └── BUILTIN\Users: Yalnızca ReadAndExecute (RX)         │
+              │                                                             │
+              │  * Varsayılan Davranış: Eşleşme yoksa -> ERİŞİM REDDEDİLİR │
+              └─────────────────────────────┬───────────────────────────────┘
+                                            │
+                                            ▼
+              ┌─────────────────────────────────────────────────────────────┐
+              │           SACL (SİSTEM DENETİM VE KÜTÜKLEME LİSTESİ)        │
+              │  - Başarısız Yetkisiz Erişim Denemeleri Kütüklenir          │
+              │  - Windows Security Event Log (Event ID 4663 / 4656)        │
+              └─────────────────────────────────────────────────────────────┘
+
+========================================================================================
+NOT: Bu diyagram konsept ve mimari akışı görselleştiren temsili bir şemadır.
+========================================================================================

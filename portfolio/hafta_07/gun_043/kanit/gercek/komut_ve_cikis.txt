@@ -1,0 +1,57 @@
+=== KOMUT SATIRI YÜRÜTME KAYDI ===
+Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe portfolio/hafta_07/gun_043/uygulama/osi_tcpip_packet_inspector.py --packet-input portfolio/hafta_07/gun_043/ornek_veri/sample_https_encapsulation.json --output portfolio/hafta_07/gun_043/kanit/gercek/katman_ve_paket_ayristirma_raporu.txt
+Çıkış Kodu: 0
+
+--- STDOUT ÇIKTISI ---
+# G043: OSI ve TCP/IP Katmanları Paket Denetim ve Kapsülleme Raporu
+
+> **ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR**  
+> **Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)**  
+> Bu yazılım ve eğitim içeriği yalnızca görüntüleme ve kişisel öğrenim amaçlıdır.
+
+---
+
+## 1. Paket Özeti ve Analiz Kapsamı
+- **Örnek Adı:** Standart HTTPS İsteği Katman Kapsülleme Modeli
+- **Açıklama:** Bir istemciden kurumsal web sunucusuna giden şifreli HTTP/TLS paketinin 7 katmanlı OSI ve 4 katmanlı TCP/IP karşılıkları
+- **İletişim Bağlamı:** İstemci (192.168.1.105) -> Güvenli Web Ağ Geçidi (104.21.35.88:443)
+- **Analiz Tarihi:** 2026-10-27T12:00:00Z
+
+## 2. 7 Katmanlı OSI ve TCP/IP Kapsülleme (Encapsulation) Eşleme Tablosu
+
+| OSI No | OSI Katman Adı | PDU (Protokol Veri Birimi) | Protokol / Alan | Anahtar Güvenlik Detayları | TCP/IP Katmanı |
+|---|---|---|---|---|---|
+| 7 | **Application (Uygulama)** | Data (Veri) | HTTP/2 | Metot: GET URI: /api/v1/auth/session | **Application** |
+| 6 | **Presentation (Sunum)** | Data (Veri / Şifreli Kayıt) | TLSv1.3 | Şifre Paketi: TLS_AES_256_GCM_SHA384 (ENCRYPTED) | **Application** |
+| 5 | **Session (Oturum)** | Data (Oturum Yönetimi) | TLS Session Management | Oturum ID: a849fbc21008d7e9... Durum: ESTABLISHED | **Application** |
+| 4 | **Transport (Taşıma)** | Segment (Bölüm) | TCP | Portlar: 52144 -> 443 Bayraklar: ['ACK', 'PSH'] | **Transport** |
+| 3 | **Network (Ağ)** | Packet (Paket) | IPv4 | IP: 192.168.1.105 -> 104.21.35.88 TTL: 64 | **Internet** |
+| 2 | **Data Link (Veri Bağlantısı)** | Frame (Çerçeve) | Ethernet II | MAC: 00:1A:2B:3C:4D:5E -> A4:B2:39:C8:D1:F0 EtherType: 0x0800 | **Network Access (Link)** |
+| 1 | **Physical (Fiziksel)** | Bit (Sinyal / Bit Akışı) | 1000BASE-T Twisted Pair | Fiziksel Ortam: 1000BASE-T Twisted Pair Hız: 1000 Mbps | **Network Access (Link)** |
+
+## 3. Katman Katman Güvenlik Mekanizması ve Kapsülleme Analizi
+### Katman 7-5 (OSI Üst Katmanları / TCP/IP Uygulama Katmanı):
+- **HTTP/2 & TLS 1.3:** İstemci kimlik doğrulama isteği (`GET /api/v1/auth/session`) uygulama katmanında oluşturulur. Ancak ağ kablosuna doğrudan metin olarak çıkmaz. Sunum katmanında `TLS_AES_256_GCM_SHA384` simetrik şifreleme algoritması ile `ApplicationData` tipinde şifrelenir. Böylece ortadaki adam (MitM) ve paket dinleme (sniffing) saldırılarına karşı gizlilik (confidentiality) sağlanır.
+
+### Katman 4 (Taşıma Katmanı - TCP):
+- **Port ve Durum Yönetimi:** İstemci geçici (ephemeral) port `52144` üzerinden hedef web sunucusunun standart `443` (HTTPS) portuna yönlenir. TCP başlığındaki `['ACK', 'PSH']` bayrakları ile bağlantının kurulmuş (established) olduğu ve verinin hemen uygulamaya iletilmesi gerektiği (PSH - Push) belirtilir.
+
+### Katman 3 (Ağ Katmanı - IPv4):
+- **Mantıksal Adresleme ve Yönlendirme:** Paket `192.168.1.105` kaynak IP adresinden `104.21.35.88` hedef IP adresine yönlendirilir. TTL değeri (64) yönlendirme döngülerini (routing loops) engeller; Protokol Numarası 6, paketin bir üst katmanda TCP'ye teslim edileceğini tanımlar.
+
+### Katman 2-1 (Veri Bağlantısı ve Fiziksel Katman - Ethernet & Sinyal):
+- **Fiziksel Teslimat:** Çerçeve, yerel ağ anahtarı (switch) ve varsayılan ağ geçidi (gateway) üzerinden taşınmak için `00:1A:2B:3C:4D:5E` -> `A4:B2:39:C8:D1:F0` adresleri ile çerçevelenir (Ethernet II). FCS (Frame Check Sequence - CRC32: 0x9F41B20A) ile aktarım sırasında bit bozulması yaşanıp yaşanmadığı donanımsal olarak kontrol edilir.
+
+## 4. Savunma ve Tespit Kılavuzu
+1. **Protokol Doğrulaması:** Ağ güvenlik duvarları (Next-Gen Firewall) yalnızca port numarasına (TCP 443) değil, katman 6/7 içeriğinin gerçekten geçerli bir TLS el sıkışması içerip içermediğine bakmalıdır (Deep Packet Inspection - DPI). Kötü niyetli yazılımlar 443 portunu tünelleme amacıyla suistimal edebilir.
+2. **Ağ Segmentasyonu:** Katman 3 seviyesinde VLAN ve IP erişim listeleri (ACL) kurularak, kritik sunuculara doğrudan erişim engellenmeli; trafik Bastion veya Web Application Firewall (WAF) üzerinden geçirilmelidir.
+3. **Şifreleme Standartları:** Zayıf şifre paketleri (RC4, DES, 3DES, CBC modlu AES) ve eski protokol sürümleri (SSLv3, TLS 1.0, TLS 1.1) sunucu tarafında tamamen devre dışı bırakılmalıdır.
+
+---
+*Rapor Antigravity Didaktik Paket Denetim Motoru tarafından otomatik üretilmiştir.*
+
+[+] Paket ayrıştırma raporu kaydedildi: portfolio/hafta_07/gun_043/kanit/gercek/katman_ve_paket_ayristirma_raporu.txt
+
+
+--- STDERR ÇIKTISI ---
+

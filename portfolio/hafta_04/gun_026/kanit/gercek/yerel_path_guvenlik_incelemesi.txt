@@ -1,0 +1,389 @@
+==============================================================================
+G026-SC2: YEREL SİSTEM PATH DEĞERİ SALT-OKUNUR İNCELEME VE GÜVENLİK NOTU
+Tarih / Saat : 2026-10-27 07:23:57
+Ortam        : Yerel Laboratuvar Calisma Alani (Etik Sinir & Bagimsiz Girdi)
+==============================================================================
+
+--- 1. UYGULAMA MOTORU ILE CANLI PATH İNCELEMESİ (--live-path) ---
+======================================================================
+G026-SC2: GE├çERL─░ S─░STEM PATH SALT-OKUNUR ─░NCELEME RAPORU
+======================================================================
+Tarama Zaman─▒   : 2026-10-27T04:23:57Z
+─░┼şletim Sistemi : win32
+----------------------------------------------------------------------
+AYRI┼ŞTIRILMI┼Ş PATH D─░Z─░NLER─░:
+ 01. [MEVCUT] C:\Users\seydieryilmaz\AppData\Local\Microsoft\WindowsApps\Microsoft.PowerShell_8wekyb3d8bbwe
+ 02. [MEVCUT] C:/Users/seydieryilmaz/.gemini/antigravity/bin
+ 03. [MEVCUT] C:\Users\seydieryilmaz\AppData\Roaming\Antigravity\bin
+ 04. [MEVCUT] C:\Users\Seydi Ery─▒lmaz\AppData\Local\Programs\Python\Python314\Scripts\
+ 05. [MEVCUT] C:\Users\Seydi Ery─▒lmaz\AppData\Local\Programs\Python\Python314\
+ 06. [MEVCUT] C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+ 07. [MEVCUT] C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\libnvvp
+ 08. [MEVCUT] C:\Program Files\Microsoft MPI\Bin\
+ 09. [MEVCUT] C:\Program Files\Common Files\Oracle\Java\javapath
+ 10. [MEVCUT] C:\WINDOWS\system32
+ 11. [MEVCUT] C:\WINDOWS
+ 12. [MEVCUT] C:\WINDOWS\System32\Wbem
+ 13. [MEVCUT] C:\WINDOWS\System32\WindowsPowerShell\v1.0\
+ 14. [MEVCUT] C:\WINDOWS\System32\OpenSSH\
+ 15. [MEVCUT] C:\Program Files\NVIDIA Corporation\Nsight Compute 2022.3.0\
+ 16. [MEVCUT] C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common
+ 17. [MEVCUT] C:\Program Files\nodejs\
+ 18. [MEVCUT] C:\ProgramData\chocolatey\bin
+ 19. [MEVCUT] C:\Program Files\Docker\Docker\resources\bin
+ 20. [MEVCUT] C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\
+ 21. [MEVCUT] C:\Program Files\GitHub CLI\
+ 22. [MEVCUT] C:\Program Files\Git\cmd
+ 23. [MEVCUT] C:\Users\seydieryilmaz\AppData\Local\Programs\Python\Python313\Scripts\
+ 24. [MEVCUT] C:\Users\seydieryilmaz\AppData\Local\Programs\Python\Python313\
+ 25. [MEVCUT] C:\Users\seydieryilmaz\AppData\Local\hermes\bin
+ 26. [MEVCUT] C:\Users\seydieryilmaz\.local\bin
+ 27. [MEVCUT] C:\Users\seydieryilmaz\AppData\Local\Microsoft\WindowsApps
+ 28. [MEVCUT] C:\Users\seydieryilmaz\AppData\Local\Programs\Antigravityy\bin
+ 29. [MEVCUT] C:\Users\seydieryilmaz\AppData\Local\Programs\Ollama
+ 30. [MEVCUT] C:\Users\seydieryilmaz\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin
+ 31. [MEVCUT] C:\Users\seydieryilmaz\AppData\Roaming\npm
+ 32. [MEVCUT] C:\Users\seydieryilmaz\AppData\Local\Programs\Antigravity IDE\bin
+ 33. [MEVCUT] C:\Users\seydieryilmaz\AppData\Local\Microsoft\WinGet\Links
+ 34. [MEVCUT] C:\Users\seydieryilmaz\AppData\Local\Programs\Microsoft VS Code\bin
+ 35. [MEVCUT] C:\Users\seydieryilmaz\AppData\Local\GitHubDesktop\bin
+ 36. [MEVCUT] C:\Users\seydieryilmaz\AppData\Local\Programs\codebase-memory-mcp
+ 37. [MEVCUT] C:\Program Files\JetBrains\JetBrains Rider 2026.2.1\bin
+ 38. [BULUNAMADI] C:\Users\seydieryilmaz\.dotnet\tools
+----------------------------------------------------------------------
+G├£VENL─░K DE─ŞERLEND─░RME NOTU:
+ * Toplam PATH Dizin Say─▒s─▒: 38
+ * [G├£VENL─░] PATH i├ğerisinde hi├ğbir ba─ş─▒l dizin ('.') bulunmuyor.
+ * [G├£VENL─░] Bo┼ş ayra├ğ ('::') anomalisi tespit edilmedi.
+ * [UYARI] Disk ├╝zerinde bulunmayan 1 adet dizin PATH i├ğinde tan─▒ml─▒.
+======================================================================
+
+--- 2. CANLI PATH İNCELEMESİ JSON ÇIKTISI (--live-path --json) ---
+{
+  "tarama_zamani": "2026-10-27T04:23:57Z",
+  "isletim_sistemi": "win32",
+  "ham_path": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe;C:/Users/seydieryilmaz/.gemini/antigravity/bin;C:\\Users\\seydieryilmaz\\AppData\\Roaming\\Antigravity\\bin;C:\\Users\\Seydi Ery─▒lmaz\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\;C:\\Users\\Seydi Ery─▒lmaz\\AppData\\Local\\Programs\\Python\\Python314\\;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.8\\bin;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.8\\libnvvp;C:\\Program Files\\Microsoft MPI\\Bin\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2022.3.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\nodejs\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\Program Files\\GitHub CLI\\;C:\\Program Files\\Git\\cmd;C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\seydieryilmaz\\AppData\\Local\\hermes\\bin;C:\\Users\\seydieryilmaz\\.local\\bin;C:\\Users\\seydieryilmaz\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Antigravityy\\bin;C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Ollama;C:\\Users\\seydieryilmaz\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin;C:\\Users\\seydieryilmaz\\AppData\\Roaming\\npm;C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Antigravity IDE\\bin;C:\\Users\\seydieryilmaz\\AppData\\Local\\Microsoft\\WinGet\\Links;C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\seydieryilmaz\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\codebase-memory-mcp;C:\\Program Files\\JetBrains\\JetBrains Rider 2026.2.1\\bin;C:\\Users\\seydieryilmaz\\.dotnet\\tools",
+  "ayristirilmis_dizinler": [
+    {
+      "sira": 1,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 2,
+      "ham_deger": "C:/Users/seydieryilmaz/.gemini/antigravity/bin",
+      "temiz_deger": "C:/Users/seydieryilmaz/.gemini/antigravity/bin",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 3,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Roaming\\Antigravity\\bin",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Roaming\\Antigravity\\bin",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 4,
+      "ham_deger": "C:\\Users\\Seydi Ery─▒lmaz\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\",
+      "temiz_deger": "C:\\Users\\Seydi Ery─▒lmaz\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 5,
+      "ham_deger": "C:\\Users\\Seydi Ery─▒lmaz\\AppData\\Local\\Programs\\Python\\Python314\\",
+      "temiz_deger": "C:\\Users\\Seydi Ery─▒lmaz\\AppData\\Local\\Programs\\Python\\Python314\\",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 6,
+      "ham_deger": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.8\\bin",
+      "temiz_deger": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.8\\bin",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 7,
+      "ham_deger": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.8\\libnvvp",
+      "temiz_deger": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.8\\libnvvp",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 8,
+      "ham_deger": "C:\\Program Files\\Microsoft MPI\\Bin\\",
+      "temiz_deger": "C:\\Program Files\\Microsoft MPI\\Bin\\",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 9,
+      "ham_deger": "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath",
+      "temiz_deger": "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 10,
+      "ham_deger": "C:\\WINDOWS\\system32",
+      "temiz_deger": "C:\\WINDOWS\\system32",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 11,
+      "ham_deger": "C:\\WINDOWS",
+      "temiz_deger": "C:\\WINDOWS",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 12,
+      "ham_deger": "C:\\WINDOWS\\System32\\Wbem",
+      "temiz_deger": "C:\\WINDOWS\\System32\\Wbem",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 13,
+      "ham_deger": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\",
+      "temiz_deger": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 14,
+      "ham_deger": "C:\\WINDOWS\\System32\\OpenSSH\\",
+      "temiz_deger": "C:\\WINDOWS\\System32\\OpenSSH\\",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 15,
+      "ham_deger": "C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2022.3.0\\",
+      "temiz_deger": "C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2022.3.0\\",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 16,
+      "ham_deger": "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common",
+      "temiz_deger": "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 17,
+      "ham_deger": "C:\\Program Files\\nodejs\\",
+      "temiz_deger": "C:\\Program Files\\nodejs\\",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 18,
+      "ham_deger": "C:\\ProgramData\\chocolatey\\bin",
+      "temiz_deger": "C:\\ProgramData\\chocolatey\\bin",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 19,
+      "ham_deger": "C:\\Program Files\\Docker\\Docker\\resources\\bin",
+      "temiz_deger": "C:\\Program Files\\Docker\\Docker\\resources\\bin",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 20,
+      "ham_deger": "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\",
+      "temiz_deger": "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 21,
+      "ham_deger": "C:\\Program Files\\GitHub CLI\\",
+      "temiz_deger": "C:\\Program Files\\GitHub CLI\\",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 22,
+      "ham_deger": "C:\\Program Files\\Git\\cmd",
+      "temiz_deger": "C:\\Program Files\\Git\\cmd",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 23,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 24,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Python\\Python313\\",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Python\\Python313\\",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 25,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\hermes\\bin",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\hermes\\bin",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 26,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\.local\\bin",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\.local\\bin",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 27,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Microsoft\\WindowsApps",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Microsoft\\WindowsApps",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 28,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Antigravityy\\bin",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Antigravityy\\bin",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 29,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Ollama",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Ollama",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 30,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 31,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Roaming\\npm",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Roaming\\npm",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 32,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Antigravity IDE\\bin",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Antigravity IDE\\bin",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 33,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Microsoft\\WinGet\\Links",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Microsoft\\WinGet\\Links",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 34,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Microsoft VS Code\\bin",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\Microsoft VS Code\\bin",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 35,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\GitHubDesktop\\bin",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\GitHubDesktop\\bin",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 36,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\codebase-memory-mcp",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\AppData\\Local\\Programs\\codebase-memory-mcp",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 37,
+      "ham_deger": "C:\\Program Files\\JetBrains\\JetBrains Rider 2026.2.1\\bin",
+      "temiz_deger": "C:\\Program Files\\JetBrains\\JetBrains Rider 2026.2.1\\bin",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": true
+    },
+    {
+      "sira": 38,
+      "ham_deger": "C:\\Users\\seydieryilmaz\\.dotnet\\tools",
+      "temiz_deger": "C:\\Users\\seydieryilmaz\\.dotnet\\tools",
+      "bos_mu": false,
+      "bagil_mi": false,
+      "mevcut_mu": false
+    }
+  ],
+  "bagil_yol_var_mi": false,
+  "bos_oge_var_mi": false,
+  "mevcut_olmayan_sayisi": 1,
+  "guvenlik_notu": [
+    "Toplam PATH Dizin Say─▒s─▒: 38",
+    "[G├£VENL─░] PATH i├ğerisinde hi├ğbir ba─ş─▒l dizin ('.') bulunmuyor.",
+    "[G├£VENL─░] Bo┼ş ayra├ğ ('::') anomalisi tespit edilmedi.",
+    "[UYARI] Disk ├╝zerinde bulunmayan 1 adet dizin PATH i├ğinde tan─▒ml─▒."
+  ]
+}
+
+--- 3. DOĞRULAMA VE METODOLOJİ BİLGİSİ ---
+Kontrollü Girdi  : Mevcut işletim sisteminin PATH ortam değişkeni salt-okunur olarak alındı.
+Gözlenebilir Çıktı: Ayrıştırılmış dizinler, varlık kontrolleri ve güvenlik değerlendirme notu.
+Olumlu Kontrol   : Sistem PATH dizinlerinin tam listesi ve risk değerlendirmesi eksiksiz üretildi.
+Negatif Kontrol  : Bağıl yol '.', boş ayraç '::' ve var olmayan dizin anomalileri başarıyla test edildi (test_03, test_04, test_12, test_13).
+Etik Sınır       : Değişken salt-okunur incelenmiş, sisteme hiçbir kalıcı veya zararlı ortam değişkeni yazılmamıştır.
+==============================================================================

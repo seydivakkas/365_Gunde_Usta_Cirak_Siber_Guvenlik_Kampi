@@ -1,0 +1,40 @@
+=== GÜN 074: BİRİM TEST SONUÇLARI ===
+Toplam Test: 14
+Başarılı: 14
+Başarısız: 0
+Hata: 0
+Durum: OK / PASS
+
+test_01_mutable_default_isolation (test_clean_functions_and_security_modularizer.TestCleanFunctionsAndSecurityModularizer.test_01_mutable_default_isolation)
+Test 01: Değiştirilebilir varsayılan argüman tuzağının (CWE-670) engellendiğini doğrular. ... ok
+test_02_validate_log_and_tag_valid (test_clean_functions_and_security_modularizer.TestCleanFunctionsAndSecurityModularizer.test_02_validate_log_and_tag_valid)
+Test 02: Dışarıdan sağlanan etiket listesinin güvenli kopyalandığını ve işlendiğini doğrular. ... ok
+test_03_validate_log_and_tag_empty_raises (test_clean_functions_and_security_modularizer.TestCleanFunctionsAndSecurityModularizer.test_03_validate_log_and_tag_empty_raises)
+Test 03: Boş veya yalnızca boşluktan oluşan ham log girdisinin ValueError fırlattığını doğrular. ... ok
+test_04_validate_log_and_tag_invalid_type_raises (test_clean_functions_and_security_modularizer.TestCleanFunctionsAndSecurityModularizer.test_04_validate_log_and_tag_invalid_type_raises)
+Test 04: String dışı bir tip (int, dict vb.) girildiğinde TypeError fırlatıldığını doğrular. ... ok
+test_05_pure_threat_score_deterministic (test_clean_functions_and_security_modularizer.TestCleanFunctionsAndSecurityModularizer.test_05_pure_threat_score_deterministic)
+Test 05: Saf fonksiyonun deterministik olduğunu, aynı girdiye her seferinde aynı çıktıyı verdiğini doğrular. ... ok
+test_06_pure_threat_score_empty_dict (test_clean_functions_and_security_modularizer.TestCleanFunctionsAndSecurityModularizer.test_06_pure_threat_score_empty_dict)
+Test 06: Boş faktör sözlüğü verildiğinde sonucun 0.0 olduğunu doğrular. ... ok
+test_07_pure_threat_score_out_of_bounds_weight (test_clean_functions_and_security_modularizer.TestCleanFunctionsAndSecurityModularizer.test_07_pure_threat_score_out_of_bounds_weight)
+Test 07: 1.0'dan büyük veya 0.0'dan küçük faktör ağırlıklarında ValueError fırlatıldığını doğrular. ... ok
+test_08_pure_threat_score_invalid_type (test_clean_functions_and_security_modularizer.TestCleanFunctionsAndSecurityModularizer.test_08_pure_threat_score_invalid_type)
+Test 08: Sayısal olmayan faktör ağırlığında TypeError fırlatıldığını doğrular. ... ok
+test_09_srp_pipeline_valid_private_ip (test_clean_functions_and_security_modularizer.TestCleanFunctionsAndSecurityModularizer.test_09_srp_pipeline_valid_private_ip)
+Test 09: SRP boru hattının özel ağ IP'sini (192.168.1.100) doğru ayrıştırdığını doğrular. ... ok
+test_10_srp_pipeline_loopback_and_public (test_clean_functions_and_security_modularizer.TestCleanFunctionsAndSecurityModularizer.test_10_srp_pipeline_loopback_and_public)
+Test 10: SRP boru hattının Loopback (127.0.0.1) ve Public (8.8.8.8) IP'leri doğru sınıflandırdığını doğrular. ... ok
+test_11_srp_pipeline_missing_src_raises (test_clean_functions_and_security_modularizer.TestCleanFunctionsAndSecurityModularizer.test_11_srp_pipeline_missing_src_raises)
+Test 11: SRC alanı içermeyen log satırında ayrıştırıcının ValueError fırlattığını doğrular. ... ok
+test_12_immutable_rule_sanitizer_defensive_copy (test_clean_functions_and_security_modularizer.TestCleanFunctionsAndSecurityModularizer.test_12_immutable_rule_sanitizer_defensive_copy)
+Test 12: Kural temizleyicinin derin kopya (deep copy) aldığını ve orijinal sözlüğü koruduğunu doğrular. ... ok
+test_13_contract_hash_lookup_valid_algorithms (test_clean_functions_and_security_modularizer.TestCleanFunctionsAndSecurityModularizer.test_13_contract_hash_lookup_valid_algorithms)
+Test 13: Sözleşmeye dayalı hash doğrulayıcının md5, sha1 ve sha256 algoritmalarını onayladığını test eder. ... ok
+test_14_contract_hash_lookup_violations (test_clean_functions_and_security_modularizer.TestCleanFunctionsAndSecurityModularizer.test_14_contract_hash_lookup_violations)
+Test 14: Desteklenmeyen algoritma, hatalı uzunluk ve hex dışı karakterlerde sözleşmenin bozulduğunu doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK

@@ -1,0 +1,57 @@
+=====================================================================================
+DOSYA T▄RLER¦, METADATA VE MIME G▄VENL¦K ANAL¦Z RAPORU
+=====================================================================================
+¦ncelenen Toplam Dosya  : 7
+Reddedilen Bozuk Kay²t : 0
+Uzant²/¦mza Uyu■mazl²­²: 3
+Kritik G³venlik Tehdidi: 2
+-------------------------------------------------------------------------------------
+
+(1) sample_document.pdf       | Risk: CLEAN    | [OK] TEMIZ
+    ¦ddia Edilen Uzant² : .pdf
+    Gerek Biim (Magic): PDF Document (application/pdf)
+    ¦lk 16 Bayt (Hex)   : 25 50 44 46 2D 31 2E 37 0D 0A 31 20 30 20 6F 62
+    Dosya Boyutu        : 97 bayt
+
+(2) sample_image.png          | Risk: CLEAN    | [OK] TEMIZ
+    ¦ddia Edilen Uzant² : .png
+    Gerek Biim (Magic): PNG Image (image/png)
+    ¦lk 16 Bayt (Hex)   : 89 50 4E 47 0D 0A 1A 0A 00 00 00 0D 49 48 44 52
+    Dosya Boyutu        : 66 bayt
+
+(3) sample_archive.zip        | Risk: CLEAN    | [OK] TEMIZ
+    ¦ddia Edilen Uzant² : .zip
+    Gerek Biim (Magic): ZIP Archive (application/zip)
+    ¦lk 16 Bayt (Hex)   : 50 4B 03 04 14 00 00 00 08 00 00 00 00 00 00 00
+    Dosya Boyutu        : 55 bayt
+
+(4) sample_text.txt           | Risk: CLEAN    | [OK] TEMIZ
+    ¦ddia Edilen Uzant² : .txt
+    Gerek Biim (Magic): Plain Text (text/plain)
+    ¦lk 16 Bayt (Hex)   : 42 75 20 6D 65 73 72 75 20 62 69 72 20 73 61 6C
+    Dosya Boyutu        : 60 bayt
+
+(5) fake_invoice.pdf          | Risk: CRITICAL | [!] UYUSMAZLIK
+    ¦ddia Edilen Uzant² : .pdf
+    Gerek Biim (Magic): Windows PE Executable (application/x-dosexec)
+    ¦lk 16 Bayt (Hex)   : 4D 5A 90 00 03 00 00 00 04 00 00 00 FF FF 00 00
+    Dosya Boyutu        : 75 bayt
+    G³venlik Analizi    : KRITIK TEHDIT: Dosya '.pdf' uzantisina sahip gorunmesine karsin, baslik baytlari 'Windows PE Executable' (4D 5A 90 00 03 00 00 00 04 00 00 00 FF FF 00 00) calistirilabilir ikili programdir! Bu yontem (Extension Spoofing) saldirganlar tarafindan kullanicilari aldatmak icin kullanilir.
+    Ínerilen Aksiyon    : Dosyayi derhal karantinaya alin. Dosya sisteminde ve web yukleme alanlarinda yalnizca dosya uzantisina guvenen filtreleri kaldirip 'Magic Bytes' dogrulamasini zorunlu kilin.
+
+(6) disguised_photo.jpg       | Risk: CRITICAL | [!] UYUSMAZLIK
+    ¦ddia Edilen Uzant² : .jpg
+    Gerek Biim (Magic): Linux ELF Executable (application/x-executable)
+    ¦lk 16 Bayt (Hex)   : 7F 45 4C 46 02 01 01 00 00 00 00 00 00 00 00 00
+    Dosya Boyutu        : 32 bayt
+    G³venlik Analizi    : KRITIK TEHDIT: Dosya '.jpg' uzantisina sahip gorunmesine karsin, baslik baytlari 'Linux ELF Executable' (7F 45 4C 46 02 01 01 00 00 00 00 00 00 00 00 00) calistirilabilir ikili programdir! Bu yontem (Extension Spoofing) saldirganlar tarafindan kullanicilari aldatmak icin kullanilir.
+    Ínerilen Aksiyon    : Dosyayi derhal karantinaya alin. Dosya sisteminde ve web yukleme alanlarinda yalnizca dosya uzantisina guvenen filtreleri kaldirip 'Magic Bytes' dogrulamasini zorunlu kilin.
+
+(7) urgent_bill.pdf.exe       | Risk: HIGH     | [!] UYUSMAZLIK
+    ¦ddia Edilen Uzant² : .pdf.exe
+    Gerek Biim (Magic): Windows PE Executable (application/x-dosexec)
+    ¦lk 16 Bayt (Hex)   : 4D 5A 90 00 03 00 00 00 04 00 00 00 FF FF 00 00
+    Dosya Boyutu        : 63 bayt
+    G³venlik Analizi    : CIFT_UZANTI_TESPITI: Dosya '.pdf.exe' seklinde gizlenmis calistirilabilir zararlidir.
+    Ínerilen Aksiyon    : Dosyayi sakin calistirmayin! EDR veya Sandbox ortaminda karantinaya aliniz.
+=====================================================================================

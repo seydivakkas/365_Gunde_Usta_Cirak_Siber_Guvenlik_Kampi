@@ -1,0 +1,83 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+G045: IPv4 Adresleme, Alt Ağ (Subnetting) ve CIDR Mimarisi Kavramsal Şeması
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) - Tüm Hakları Saklıdır
+================================================================================
+
+1. IPv4 32-BİT ADRES YAPISI VE BİLEŞEN AYRIŞTIRMASI
+--------------------------------------------------------------------------------
+Toplam: 32 Bit (4 Oktet x 8 Bit)
+
+ Oktet 1 (8 bit)      Oktet 2 (8 bit)      Oktet 3 (8 bit)      Oktet 4 (8 bit)
++--------------------+--------------------+--------------------+--------------------+
+| 1 1 0 0 0 0 0 0    | 1 0 1 0 1 0 0 0    | 0 0 0 0 0 0 0 1    | 0 0 0 0 1 0 1 0    |
++--------------------+--------------------+--------------------+--------------------+
+|       192          |       168          |         1          |        10          |
++--------------------+--------------------+--------------------+--------------------+
+|<----------------------- Ağ Kısmı (Network Bits) ------------->|<-- Konak (Host) ->|
+                       (Örnek: /24 CIDR Öneki = 24 Bit)             (8 Bit = 256 IP)
+
+
+2. MASK VE BİTSEL (BITWISE) İŞLEMLERİN MATEMATİĞİ
+--------------------------------------------------------------------------------
+Girdi IP:         192.168.001.010 -> 11000000.10101000.00000001.00001010
+Netmask (/24):    255.255.255.000 -> 11111111.11111111.11111111.00000000
+                                     ----------------------------------- (AND İşlemi)
+Ağ Adresi:        192.168.001.000 -> 11000000.10101000.00000001.00000000  (Net ID)
+
+Wildcard (Ters):  000.000.000.255 -> 00000000.00000000.00000000.11111111
+                                     ----------------------------------- (OR İşlemi)
+Yayın (Broadcast):192.168.001.255 -> 11000000.10101000.00000001.11111111  (Broadcast)
+
+Kullanılabilir Konaklar:
+İlk Konak : Ağ Adresi + 1     = 192.168.1.1
+Son Konak : Yayın Adresi - 1  = 192.168.1.254
+Toplam    : 2^(32-24) = 256 Adres
+Kapasite  : 256 - 2 = 254 Kullanılabilir Konak (Ağ ve Yayın adresleri rezerve)
+
+
+3. ÖZEL DURUMLAR VE UÇ SENARYOLAR (RFC 3021 VE /32)
+--------------------------------------------------------------------------------
+A) RFC 3021 (/31 - Noktadan Noktaya Linkler):
+   +-----------------------+              Point-to-Point Link             +-----------------------+
+   |  Yönlendirici A (R1)  |==============================================|  Yönlendirici B (R2)  |
+   |     192.0.2.0/31      |                                              |     192.0.2.1/31      |
+   +-----------------------+                                              +-----------------------+
+   * Yayın adresi YOKTUR (Yayın fırtınası riski sıfırdır).
+   * 2 IP'nin 2'si de konak olarak kullanılır (0 IP israfı).
+
+B) /32 Host Route (Tekil Cihaz / Loopback):
+   * Örnek: 198.51.100.5/32
+   * Ağ adresi, konak adresi ve hedef tamamen aynıdır.
+   * Alt ağ yayılımı yoktur; VPN tünel uç noktaları veya Loopback arayüzleri için kullanılır.
+
+
+4. KURUMSAL GÜVENLİK SINIRI: BOGON VE ANTI-SPOOFING (BCP 38) FİLTRELEME
+--------------------------------------------------------------------------------
+                                   GENEL İNTERNET (WAN)
+                                             |
+                                             v
+                      [ Güvenlik Duvarı / WAN Kenar Yönlendirici ]
+                                             |
+                   +-------------------------+-------------------------+
+                   | Ingress Filtresi: BCP 38 / RFC 2827 Denetimi       |
+                   |                                                   |
+                   | Gelen Paket Kaynak IP:                            |
+                   |  - 10.0.0.0/8         -> ⛔ AT (Bogon/Private)     |
+                   |  - 172.16.0.0/12      -> ⛔ AT (Bogon/Private)     |
+                   |  - 192.168.0.0/16     -> ⛔ AT (Bogon/Private)     |
+                   |  - 127.0.0.0/8        -> ⛔ AT (Loopback Sahteliği)|
+                   |  - 169.254.0.0/16     -> ⛔ AT (APIPA Sızıntısı)   |
+                   |  - 100.64.0.0/10      -> ⛔ AT (CGNAT Kaçağı)      |
+                   |  - 224.0.0.0/4        -> ⛔ AT (Multicast Kaynak)  |
+                   |  - Genel Routable IP  -> ✅ KABUL ET (Derin İncele)|
+                   +-------------------------+-------------------------+
+                                             |
+                                             v
+                          İÇ GÜVENLİ AĞ / MİKRO-SEGMENTASYON
+                               (VLAN / DMZ / Veritabanı)
+
+================================================================================
+NOT: Bu diyagram eğitim ve zihinsel modelleme amaçlı üretilmiş kavramsal bir şemadır.
+================================================================================

@@ -1,0 +1,40 @@
+{
+  "gun": 51,
+  "gun_id": "G051",
+  "asama": "03",
+  "hafta": "08",
+  "baslik": "TCP sıralama ve yeniden iletim",
+  "tarih": "2026-10-29",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kavramsal_derinlik": 20,
+    "uygulama_gelistirme": 40,
+    "test_kapsami": 25,
+    "savunma_sikilastirma": 15
+  },
+  "test_ozeti": {
+    "toplam": 14,
+    "basarili": 14,
+    "hatali": 0,
+    "sure_saniye": 0.03
+  },
+  "kod_aciklama_satirlari_tamamlandi": true,
+  "kanitlar": {
+    "gercek": [
+      "kanit/gercek/test_sonuclari.txt",
+      "kanit/gercek/komut_ve_cikis.txt",
+      "kanit/gercek/tcp_siralama_ve_retransmit_raporu.txt",
+      "kanit/gercek/negatif_kontrol_sonuclari.txt"
+    ],
+    "temsili": [
+      "kanit/temsili/tcp_sliding_window_ve_retransmission_mimarisi.txt"
+    ]
+  },
+  "soru_bankasi_eslesmesi": [
+    "G051-SC1",
+    "G051-SC2",
+    "G051-SC3"
+  ],
+  "notlar": "TCP bayt akışı, Sequence ve Acknowledgment mantığı, kayar pencere mekanizması, kümülatif onaylama, Triple Duplicate ACK ile Hızlı Yeniden İletim (Fast Retransmit), Sıfır Pencere Probu (Zero Window Probe) ve Blind RST Enjeksiyonu tespiti RFC 793/5681/5961 standartlarına uygun olarak analiz edildi; 14 birim testi eksiksiz PASS oldu."
+}

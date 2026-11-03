@@ -1,0 +1,18 @@
+=== G038 NEGAT¦F KONTROL VE HATA YAKALAMA SONUÃLARI ===
+
+Test 1: corrupted_negative_stratum
+  DURUM: BAÌARILI (Beklenen hata yakaland²)
+  HATA MESAJI: Sistem 'bad-stratum-host' iin 'stratum' 1 ile 16 aras²nda olmal²d²r: -2
+
+Test 2: corrupted_non_numeric_offset
+  DURUM: BAÌARILI (Beklenen hata yakaland²)
+  HATA MESAJI: Sistem 'bad-offset-host' iin 'offset_ms' say²sal olmal²d²r.
+
+Test 3: corrupted_missing_systems_key
+  DURUM: BAÌARILI (Beklenen hata yakaland²)
+  HATA MESAJI: Telemetri verisinde zorunlu 'systems' anahtar² bulunamad².
+
+Test 4: corrupted_system_entry_non_dict
+  DURUM: BAÌARILI (Beklenen hata yakaland²)
+  HATA MESAJI: Sistem indeksi 0 geerli bir JSON nesnesi de­il.
+

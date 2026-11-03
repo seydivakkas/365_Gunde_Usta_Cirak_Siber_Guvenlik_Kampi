@@ -1,0 +1,3 @@
+2026-11-01 03:00:01 [INFO] Guvenlik denetim servisi baslatildi.
+2026-11-01 03:05:12 [WARN] Yetkisiz dizin erisim denemesi engellendi: IP=198.51.100.22
+2026-11-01 03:10:44 [INFO] Sandbox dosya butunlugu SHA-256 ile dogrulandi.

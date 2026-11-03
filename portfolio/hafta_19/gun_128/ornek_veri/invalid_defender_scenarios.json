@@ -1,0 +1,104 @@
+[
+  {
+    "scenario_id": "NEG-DEF-01",
+    "name": "Tam Koruma Devre Dışı (DisableRealtimeMonitoring)",
+    "description": "Antivirüs gerçek zamanlı motoru kapatılmış, dosya sistemi korumasız bırakılmıştır.",
+    "expected_cwe": "CWE-693",
+    "expected_mitre": "T1562.001",
+    "expected_finding": "Gerçek Zamanlı Koruma",
+    "spec": {
+      "disable_realtime_monitoring": true,
+      "tamper_protection_active": true
+    }
+  },
+  {
+    "scenario_id": "NEG-DEF-02",
+    "name": "Kurcalama Koruması Devre Dışı (TamperProtection Off)",
+    "description": "Yönetici yetkisindeki zararlı yazılım Defender kayıt defteri ayarlarını serbestçe değiştirebilir.",
+    "expected_cwe": "CWE-693",
+    "expected_mitre": "T1562.001",
+    "expected_finding": "Kurcalama Koruması",
+    "spec": {
+      "tamper_protection_active": false
+    }
+  },
+  {
+    "scenario_id": "NEG-DEF-03",
+    "name": "Tehlikeli Hariç Tutma: Kök Dizin C:\\ Hariç Tutulmuş",
+    "description": "Tüm C sürücüsü antivirüs taramasından hariç tutulmuş, devasa kör nokta açılmıştır.",
+    "expected_cwe": "CWE-732",
+    "expected_mitre": "T1562.001",
+    "expected_finding": "Kritik Güvensiz Hariç Tutma Yolu",
+    "spec": {
+      "exclusion_paths": ["C:\\"]
+    }
+  },
+  {
+    "scenario_id": "NEG-DEF-04",
+    "name": "Tehlikeli Hariç Tutma: .exe Uzantısı Taramadan Çıkarılmış",
+    "description": "Tüm çalıştırılabilir ikili dosyalar Defender taramasından muaf tutulmuştur.",
+    "expected_cwe": "CWE-732",
+    "expected_mitre": "T1562.001",
+    "expected_finding": "Kritik Güvensiz Hariç Tutma Uzantısı",
+    "spec": {
+      "exclusion_extensions": [".exe"]
+    }
+  },
+  {
+    "scenario_id": "NEG-DEF-05",
+    "name": "Fidye Yazılımı Koruması (ControlledFolderAccess) Kapalı",
+    "description": "Belgeler ve kritik dizinler bilinmeyen şifreleme süreçlerine karşı savunmasızdır.",
+    "expected_cwe": "CWE-693",
+    "expected_mitre": "T1486",
+    "expected_finding": "Denetimli Klasör Erişimi",
+    "spec": {
+      "controlled_folder_access": "Disabled"
+    }
+  },
+  {
+    "scenario_id": "NEG-DEF-06",
+    "name": "Ağ Koruması (Network Protection) Kapalı",
+    "description": "Zararlı C2 sunucularına veya oltalama alan adlarına giden trafik engellenmemektedir.",
+    "expected_cwe": "CWE-319",
+    "expected_mitre": "T1071",
+    "expected_finding": "Ağ Koruması",
+    "spec": {
+      "network_protection": "Disabled"
+    }
+  },
+  {
+    "scenario_id": "NEG-DEF-07",
+    "name": "ASR Saldırı Yüzeyi Azaltma Kuralları Eksik",
+    "description": "LSASS koruması ve Office makro/alt süreç engelleme kuralları tanımlanmamıştır.",
+    "expected_cwe": "CWE-358",
+    "expected_mitre": "T1566 / T1059 / T1003",
+    "expected_finding": "ASR Kuralları Eksik",
+    "spec": {
+      "asr_rules_map": {}
+    }
+  },
+  {
+    "scenario_id": "NEG-DEF-08",
+    "name": "Davranışsal İzleme ve İndirme Koruması Kapalı",
+    "description": "Dosya indirme (IOAV) ve süreç davranış izleme kapatılmıştır.",
+    "expected_cwe": "CWE-693",
+    "expected_mitre": "T1562.001",
+    "expected_finding": "Davranışsal İzleme",
+    "spec": {
+      "disable_behavior_monitoring": true,
+      "disable_ioav_protection": true
+    }
+  },
+  {
+    "scenario_id": "NEG-DEF-09",
+    "name": "Bulut Koruması 'Disabled' ve PUA Koruması Kapalı",
+    "description": "Sıfır gün bulut istihbaratı ve potansiyel istenmeyen yazılım bloklaması devre dışıdır.",
+    "expected_cwe": "CWE-1188",
+    "expected_mitre": "T1027",
+    "expected_finding": "Bulut Teslimatlı Koruma Seviyesi Yetersiz",
+    "spec": {
+      "cloud_protection_level": "Disabled",
+      "pua_protection": "Disabled"
+    }
+  }
+]

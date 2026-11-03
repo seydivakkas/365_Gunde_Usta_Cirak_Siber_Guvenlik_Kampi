@@ -1,0 +1,57 @@
+{
+  "gun": 15,
+  "asama": 2,
+  "hafta": 3,
+  "konu": "İkili gösterim, byte ve karakter kodlaması",
+  "durum": "TAMAMLANDI_PASS",
+  "tarih": "2026-10-27",
+  "puan": 100,
+  "puan_detay": {
+    "teorik_metodolojik_hakimiyet": 20,
+    "kodlama_uygulama_yetkinligi": 40,
+    "test_dogrulama_kapsami": 25,
+    "kanit_dokumantasyon_kalitesi": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "dosyalar": [
+    "uygulama/binary_byte_encoding_inspector.py",
+    "tests/test_binary_byte_encoding_inspector.py",
+    "ornek_veri/karakter_kodlama_ornekleri.json",
+    "ornek_veri/encoding_security_baseline.json",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/temsili/ikili_ve_karakter_kodlama_mimarisi.txt",
+    "ders.md",
+    "soru_cevap.md",
+    "rapor.md",
+    "README.md",
+    "sonuc.json"
+  ],
+  "kanitlar": [
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/temsili/ikili_ve_karakter_kodlama_mimarisi.txt"
+  ],
+  "ogrenilen_standartlar": [
+    "RFC 3629 (UTF-8 Service Transformation Format)",
+    "Unicode Standard Version 15.0",
+    "OWASP WSTG-INPV-01 (Testing for Input Validation)",
+    "CWE-172 (Encoding Error)",
+    "CWE-626 (Detect Null Byte Injection)"
+  ],
+  "karsilanan_gereksinimler": [
+    "İkili, Hex, ASCII, UTF-8/16/32 kodlama mekanizmaları çözümlendi",
+    "Null byte enjeksiyonu ve dosya uzantısı bypass riskleri tespit edildi",
+    "Homoglyph ve IDN sahtecilik modelleri analiz edildi",
+    "Tampon kesilme ve bayt bölünme senaryoları simüle edildi",
+    "Tüm kod ve test satırları didaktik açıklamalarla zenginleştirildi",
+    "Özel Lisans (Tüm Hakları Saklıdır) tüm dosyalara uygulandı"
+  ],
+  "notlar": "Aşama 02 Hafta 03 ilk günü olan Gün 015 eksiksiz tamamlanarak PASS statüsüne geçirildi."
+}

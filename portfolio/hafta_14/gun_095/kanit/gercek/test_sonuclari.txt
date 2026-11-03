@@ -1,0 +1,38 @@
+=== G095 BİRİM TEST SONUÇLARI (14 SENARYO) ===
+Tarih: 2026-11-02 01:01:09
+
+test_01_run_benchmark_basic (test_security_benchmarker.TestSecurityBenchmarker.test_01_run_benchmark_basic)
+Test 01: Temel benchmark çalıştırmasının geçerli sonuç nesnesi döndürdüğünü doğrular. ... ok
+test_02_iterations_and_warmup (test_security_benchmarker.TestSecurityBenchmarker.test_02_iterations_and_warmup)
+Test 02: Isınma ve iterasyon sayılarının ölçüm dizisine doğru yansıdığını doğrular. ... ok
+test_03_wall_vs_cpu_time (test_security_benchmarker.TestSecurityBenchmarker.test_03_wall_vs_cpu_time)
+Test 03: Duvar saati ve CPU saati metriklerinin negatif olmadığını doğrular. ... ok
+test_04_peak_memory_tracking (test_security_benchmarker.TestSecurityBenchmarker.test_04_peak_memory_tracking)
+Test 04: tracemalloc ile bellek tahsisatının ölçüldüğünü doğrular. ... ok
+test_05_calculate_percentile (test_security_benchmarker.TestSecurityBenchmarker.test_05_calculate_percentile)
+Test 05: Persentil hesaplama fonksiyonunun matematiksel doğruluğunu test eder. ... ok
+test_06_profile_decorator (test_security_benchmarker.TestSecurityBenchmarker.test_06_profile_decorator)
+Test 06: @profile_security_func dekoratörünün fonksiyonu şeffaf şekilde yürüttüğünü doğrular. ... ok
+test_07_profile_decorator_threshold_exceeded (test_security_benchmarker.TestSecurityBenchmarker.test_07_profile_decorator_threshold_exceeded)
+Test 07: Süre eşiği aşıldığında PerformanceBudgetExceededError fırlatıldığını doğrular. ... ok
+test_08_profile_decorator_memory_exceeded (test_security_benchmarker.TestSecurityBenchmarker.test_08_profile_decorator_memory_exceeded)
+Test 08: Bellek tavanı aşıldığında MemoryLimitExceededError fırlatıldığını doğrular. ... ok
+test_09_crypto_targets (test_security_benchmarker.TestSecurityBenchmarker.test_09_crypto_targets)
+Test 09: Yerleşik kriptografik özet hedeflerinin doğru hash ürettiğini doğrular. ... ok
+test_10_string_vs_join_efficiency (test_security_benchmarker.TestSecurityBenchmarker.test_10_string_vs_join_efficiency)
+Test 10: bench_string_concat ve bench_list_join hedeflerinin çalıştığını doğrular. ... ok
+test_11_regex_compiled_vs_dynamic (test_security_benchmarker.TestSecurityBenchmarker.test_11_regex_compiled_vs_dynamic)
+Test 11: Regex benchmark hedeflerinin beklenen log kalıplarını eşleştirdiğini doğrular. ... ok
+test_12_null_byte_target_rejection (test_security_benchmarker.TestSecurityBenchmarker.test_12_null_byte_target_rejection)
+Test 12: Hedef adında Null-Byte tespit edildiğinde engellendiğini doğrular (CWE-158). ... ok
+test_13_non_callable_rejection (test_security_benchmarker.TestSecurityBenchmarker.test_13_non_callable_rejection)
+Test 13: Çağrılamayan bir nesne iletildiğinde TypeValidationError fırlatıldığını doğrular (CWE-843). ... ok
+test_14_invalid_parameters (test_security_benchmarker.TestSecurityBenchmarker.test_14_invalid_parameters)
+Test 14: Negatif iterasyon veya geçersiz ısınma parametrelerinin reddedildiğini doğrular (CWE-20). ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.009s
+
+OK
+
+Toplam: 14, Başarılı: 14, Hata: 0, Başarısız: 0

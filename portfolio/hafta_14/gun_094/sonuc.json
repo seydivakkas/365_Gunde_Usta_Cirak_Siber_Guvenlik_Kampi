@@ -1,0 +1,64 @@
+{
+  "gun": 94,
+  "baslik": "Regex ile kişisel veri maskeleme",
+  "hafta": 14,
+  "asama": 4,
+  "durum": "TAMAMLANDI",
+  "puan": 100,
+  "sonuc": "YETERLİ / PASS",
+  "rubrik": {
+    "kod_kalitesi": 20,
+    "guvenlik_ve_mimari": 40,
+    "kanit_ve_test": 25,
+    "dokumantasyon_ve_pedagoji": 15,
+    "toplam": 100
+  },
+  "test_metrikleri": {
+    "birim_testler": {
+      "toplam": 14,
+      "gecen": 14,
+      "kalan": 0,
+      "durum": "14/14 PASS",
+      "sure_saniye": 0.002
+    },
+    "negatif_kontroller": {
+      "toplam": 9,
+      "gecen": 9,
+      "kalan": 0,
+      "durum": "9/9 PASS (%100 Basari)"
+    }
+  },
+  "guvenlik_ve_zafiyet_metrikleri": {
+    "tespit_edilen_cwe_kodlari": [
+      "CWE-20: Improper Input Validation (Invalid checksums, rules and boundaries)",
+      "CWE-158: Improper Neutralization of Null Byte or Special Characters (Null-Byte Injection)",
+      "CWE-359: Exposure of Private Personal Information to an Unauthorized Actor",
+      "CWE-400: Uncontrolled Resource Consumption (Payload Limit Exceeded 1MB)",
+      "CWE-532: Insertion of Sensitive Information into Log File (DLP Redaction)",
+      "CWE-843: Access of Resource Using Incompatible Type ('Type Confusion')",
+      "CWE-1333: Inefficient Regular Expression Complexity (ReDoS Protection)"
+    ]
+  },
+  "uretilen_dosyalar": [
+    "uygulama/__init__.py",
+    "uygulama/pii_masker.py",
+    "uygulama/masker_cli.py",
+    "tests/__init__.py",
+    "tests/test_pii_masker.py",
+    "ornek_veri/raw_telemetry_logs.log",
+    "ornek_veri/sample_gdpr_records.json",
+    "ornek_veri/invalid_pii_inputs.json",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "kanit/gercek/kisisel_veri_maskeleme_raporu.txt",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/temsili/kisisel_veri_maskeleme_mimarisi.txt",
+    "kanit_uretici.py",
+    "ders.md",
+    "soru_cevap.md",
+    "rapor.md",
+    "README.md",
+    "sonuc.json",
+    "manifest.json"
+  ]
+}

@@ -1,0 +1,89 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Bu dosya Siber Güvenlik 365 Gün Müfredatı kapsamında üretilmiştir.
+# Gün 021: Mini Proje 2 - İşletim Sistemi Envanteri Gerçek Komut ve Çıktı Kanıtı
+
+================================================================================
+KOMUT 1: os_security_inventory_collector.py ile Karşılaştırmalı CSV ve Rapor Üretimi
+================================================================================
+Çalıştırılan Komut:
+python portfolio/hafta_03/gun_021/uygulama/os_security_inventory_collector.py \
+  --windows portfolio/hafta_03/gun_021/ornek_veri/os_inventory_windows_sample.json \
+  --linux portfolio/hafta_03/gun_021/ornek_veri/os_inventory_linux_sample.json \
+  --schema portfolio/hafta_03/gun_021/ornek_veri/os_inventory_schema.json \
+  --csv portfolio/hafta_03/gun_021/kanit/gercek/karsilastirmali_os_envanter.csv
+
+Çıktı:
+[+] Karşılaştırmalı Envanter CSV'si başarıyla oluşturuldu: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_03\gun_021\kanit\gercek\karsilastirmali_os_envanter.csv
+========================================================================
+GÜN 021: İŞLETİM SİSTEMİ GÜVENLİK ENVANTERİ VE KARŞILAŞTIRMA RAPORU
+========================================================================
+[WINDOWS] Sistem : Microsoft Windows Server 2022 Datacenter
+[WINDOWS] Durum  : GUVENLI (Bulgu: 0)
+[LINUX]   Sistem : Ubuntu Linux (Ubuntu 24.04 LTS (Noble Numbat))
+[LINUX]   Durum  : GUVENLI (Bulgu: 0)
+------------------------------------------------------------------------
+CIS Control 1 & NIST SP 800-53 CM-8 uyumluluğu doğrulanmıştır.
+========================================================================
+
+================================================================================
+KOMUT 2: Canlı Sistem Güvenlik Envanteri Sorgulama (--live)
+================================================================================
+Çalıştırılan Komut:
+python portfolio/hafta_03/gun_021/uygulama/os_security_inventory_collector.py --live
+
+Çıktı:
+{
+  "aciklama": "Canlı Sistem Yerel Güvenlik Envanteri (Windows)",
+  "toplayici_surumu": "1.0.0",
+  "toplama_zamani": "2026-10-26T22:56:07.111229+00:00",
+  "platform": "Windows",
+  "os_bilgisi": {
+    "isletim_sistemi": "Windows 11",
+    "surum": "11",
+    "is_derleme": "10.0.26300",
+    "mimari": "AMD64",
+    "bilgisayar_adi": "SeydiV",
+    "etki_alani": "YEREL_IS_GRUBU",
+    "kurulum_tarihi": "BILINMIYOR_CANLI_ORTAM"
+  },
+  "donanim": {
+    "islemci_modeli": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+    "cekirdek_sayisi": 28,
+    "toplam_ram_gb": 16.0,
+    "diskler": [
+      {
+        "surucu_veya_nokta": "C:\\",
+        "dosya_sistemi": "NTFS",
+        "toplam_gb": 952.86,
+        "bos_gb": 93.55,
+        "sifreleme": "Denetlenmeli"
+      }
+    ]
+  },
+  "hesaplar": [
+    {
+      "kullanici_adi": "seydieryilmaz",
+      "yonetici_mi": true,
+      "aktif_mi": true,
+      "parola_son_degisiklik": "2026-10-26T22:56:07.126568+00:00",
+      "aciklama": "Canlı oturum açmış birincil çalışma hesabı"
+    }
+  ],
+  "servisler": [
+    {
+      "servis_adi": "SecurityAuditorAgent",
+      "gorunen_ad": "Security Baseline Monitoring Service",
+      "durum": "Running",
+      "baslangic_turu": "Automatic",
+      "calistiran_hesap": "seydieryilmaz",
+      "guvenlik_durumu": "GUVENLI"
+    }
+  ],
+  "guncellemeler": {
+    "son_basarili_guncelleme": "2026-10-26T22:56:07.126587+00:00",
+    "yuklu_guncelleme_sayisi": 1,
+    "bekleyen_kritik_guncelleme_sayisi": 0,
+    "yeniden_baslatma_gerekli_mi": false
+  }
+}

@@ -1,0 +1,63 @@
+<!--
+├ûZEL L─░SANS ÔÇö T├£M HAKLAR SAKLIDIR
+Telif Hakk─▒ (c) 2026 Seydi Ery─▒lmaz (@seydivakkas)
+Bu yaz─▒l─▒m ve ilgili t├╝m dosyalar ('Yaz─▒l─▒m') yaln─▒zca g├Âr├╝nt├╝leme ve e─şitim ama├ğl─▒ olarak payla┼ş─▒lm─▒┼şt─▒r.
+-->
+
+# Zaman Senkronizasyonu ve NTP G├╝venlik Denetim Raporu
+
+**Denetim Tarihi:** `2026-10-27T08:50:32.481008+00:00`  
+**G├╝venlik Puan─▒:** `15 / 100`  
+**Genel Durum:** `CRITICAL`
+
+## ­şôè Denetim Metrikleri ├ûzeti
+
+| Metrik | De─şer |
+| :--- | :---: |
+| ─░ncelenen Sistem Say─▒s─▒ | 2 |
+| Kritik (CRITICAL) Bulgular | 3 |
+| Y├╝ksek (HIGH) Seviye Bulgular | 2 |
+| Orta (MEDIUM) Seviye Bulgular | 1 |
+| Uyar─▒ (WARNING) Bulgular | 0 |
+| **Toplam G├╝venlik Bulgusu** | **6** |
+
+## ­şöı G├╝venlik Bulgular─▒ ve ─░yile┼ştirme Re├ğetesi
+
+### 1. [CRITICAL] Kritik Saat Kaymas─▒ ÔÇö Kerberos Kimlik Do─şrulama ├ç├Âk├╝┼ş├╝ (KRB_AP_ERR_SKEW)
+- **Hedef:** `app01.dmz.internal`
+- **Kategori:** `KERBEROS_AUTHENTICATION_FAILURE`
+- **A├ğ─▒klama:** 'app01.dmz.internal' sisteminde saat kaymas─▒ 345.0 saniyedir (345000.0 ms). Active Directory ve Kerberos protokol├╝, yeniden oynatma sald─▒r─▒lar─▒n─▒ (replay attacks) ├Ânlemek i├ğin en fazla 5 dakikal─▒k (300 saniye) saat fark─▒na izin verir. Bu e┼şik a┼ş─▒ld─▒─ş─▒nda etki alan─▒ kullan─▒c─▒lar─▒ oturum a├ğamaz, bilet (TGT) alamaz ve t├╝m kimlik do─şrulama s├╝re├ğleri fel├ğ olur.
+- **­şøí´©Å ─░yile┼ştirme:** Sistem saatini acilen NTP sunucusuyla e┼şitleyin (`w32tm /resync` veya `chronyc makestep`).
+
+### 2. [CRITICAL] NTP Senkronizasyon Kayb─▒ ÔÇö Serbest D├Ânen Sistem Saati (Stratum 16)
+- **Hedef:** `app01.dmz.internal`
+- **Kategori:** `NTP_SYNCHRONIZATION_LOSS`
+- **A├ğ─▒klama:** 'app01.dmz.internal' sistemi ┼şu anda hi├ğbir zaman kayna─ş─▒na senkronize de─şildir (is_synchronized: false, stratum: 16, referans: 'unreachable'). Donan─▒m saati (RTC) zamanla sapacak ve sistem t├╝m g├╝venlik protokollerinde uyumsuz hale gelecektir.
+- **­şøí´©Å ─░yile┼ştirme:** NTP servis durumunu kontrol edin (`systemctl status chrony` veya `w32tm /query /status`), UDP 123 eri┼şimini a├ğ─▒n.
+
+### 3. [HIGH] Yetersiz NTP ├£st Sunucu Say─▒s─▒ ÔÇö Tek Hata Noktas─▒ (SPOF) Riski
+- **Hedef:** `app01.dmz.internal`
+- **Kategori:** `NTP_REDUNDANCY_AND_SPOF`
+- **A├ğ─▒klama:** 'app01.dmz.internal' yaln─▒zca 1 adet zaman sunucusuyla (['192.168.10.5']) yap─▒land─▒r─▒lm─▒┼şt─▒r. Marzullo algoritmas─▒ ve Bizans hata tolerans─▒ (Byzantine Fault Tolerance) gere─şi, hatal─▒ veya sald─▒r─▒ya u─şram─▒┼ş bir zaman sunucusunu (false-ticker) tespit edebilmek i├ğin en az 3, tercihen 4 ba─ş─▒ms─▒z zaman kayna─ş─▒ tan─▒mlanmal─▒d─▒r. Tek bir sunucuya ba─ş─▒ml─▒l─▒k, sald─▒rgan─▒n sahte zaman paketleriyle sistemi kolayca manip├╝le etmesine yol a├ğar.
+- **­şøí´©Å ─░yile┼ştirme:** Yap─▒land─▒rmaya en az 3-4 adet ba─ş─▒ms─▒z NTP sunucusu veya kurumsal havuz adresi ekleyin.
+
+### 4. [HIGH] NTP 'monlist' A├ğ─▒─ş─▒ Etkin ÔÇö DDoS Y├╝kseltme Sald─▒r─▒s─▒ Riski
+- **Hedef:** `app01.dmz.internal`
+- **Kategori:** `NTP_AMPLIFICATION_DDOS_RISK`
+- **A├ğ─▒klama:** 'app01.dmz.internal' ├╝zerindeki NTP servisinde 'monlist' (Mode 6) sorgular─▒ a├ğ─▒kt─▒r. Sald─▒rganlar IP sahtecili─şi (IP spoofing) ile k├╝├ğ├╝k bir UDP paketi g├Ândererek sunucudan y├╝zlerce kat b├╝y├╝k yan─▒tlar ├╝rettirebilir ve hedef hedeflere kar┼ş─▒ devasa NTP Y├╝kseltme (Amplification) DDoS sald─▒r─▒lar─▒ ger├ğekle┼ştirebilir.
+- **­şøí´©Å ─░yile┼ştirme:** NTP konfig├╝rasyonuna `disable monitor` ve `noquery` k─▒s─▒tlamalar─▒n─▒ ekleyin.
+
+### 5. [MEDIUM] ┼Şifresiz ve Do─şrulanmam─▒┼ş NTP ─░leti┼şimi (NTS Eksikli─şi)
+- **Hedef:** `app01.dmz.internal`
+- **Kategori:** `UNAUTHENTICATED_TIME_SYNC`
+- **A├ğ─▒klama:** 'app01.dmz.internal' zaman senkronizasyonunu d├╝z metin UDP 123 ├╝zerinden y├╝r├╝tmektedir. A─şda yerel sald─▒rgan (MitM) ARP zehirlemesi veya DNS sapt─▒rmas─▒yla zaman paketlerini de─şi┼ştirip sistemin saatini geriye veya ileriye alabilir.
+- **­şøí´©Å ─░yile┼ştirme:** Modern NTS (Network Time Security) protokol├╝ne veya simetrik anahtarl─▒ NTP kimlik do─şrulamas─▒na ge├ğin.
+
+### 6. [CRITICAL] Sistemler Aras─▒ Kritik Zaman Uyumsuzlu─şu
+- **Hedef:** `dc01.corp.internal <-> app01.dmz.internal`
+- **Kategori:** `DISTRIBUTED_TIMELINE_MISMATCH`
+- **A├ğ─▒klama:** 'dc01.corp.internal' ile 'app01.dmz.internal' sistemleri aras─▒nda 345.0 saniyelik (344997.9 ms) saat fark─▒ tespit edildi. Bu durum da─ş─▒t─▒k sistemlerde kimlik do─şrulama reddine, log analizinde olay s─▒ralamas─▒n─▒n ├ğ├Âkmesine ve adli bili┼şim zincirinin (chain of custody) bozulmas─▒na yol a├ğar.
+- **­şøí´©Å ─░yile┼ştirme:** T├╝m etki alan─▒ ve DMZ sunucular─▒n─▒ ortak bir kurumsal i├ğ NTP kayna─ş─▒na ba─şlay─▒n.
+
+
+Rapor ba┼şar─▒yla kaydedildi: portfolio/hafta_06/gun_038/kanit/gercek/zaman_ve_ntp_denetim_raporu.txt

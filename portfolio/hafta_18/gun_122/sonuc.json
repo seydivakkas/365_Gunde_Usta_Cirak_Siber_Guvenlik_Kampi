@@ -1,0 +1,32 @@
+{
+  "gun": 122,
+  "hafta": 18,
+  "konu": "Savunma derinliği ve kontrol tipleri",
+  "tarih": "2026-11-02",
+  "puan": 100,
+  "durum": "YETERLİ",
+  "degerlendirme_kriterleri": {
+    "kod_kalitesi_ve_mimari": 20,
+    "birim_testler": 40,
+    "negatif_kontroller": 25,
+    "dokumantasyon_ve_analiz": 15
+  },
+  "test_istatistikleri": {
+    "birim_test_sayisi": 15,
+    "birim_test_basarili": 15,
+    "birim_test_hata": 0,
+    "negatif_kontrol_sayisi": 9,
+    "negatif_kontrol_basarili": 9
+  },
+  "cwe_kapsami": [
+    "CWE-653",
+    "CWE-1008",
+    "CWE-200",
+    "CWE-319"
+  ],
+  "standartlar": [
+    "NIST SP 800-53 Rev 5",
+    "NSA Defense in Depth",
+    "Zero Trust Architecture"
+  ]
+}

@@ -1,0 +1,35 @@
+================================================================================
+G068: AĞ GÜNLÜKLERİ KİŞİSEL VERİ (PII) ARINDIRMA VE KVKK/GDPR UYUM RAPORU
+Tarih: 2026-10-31 | Arındırma Motoru: NetworkLogPIISanitizer v1.0
+================================================================================
+
+GENEL ARINDIRMA VE UYUM METRİKLERİ:
+  - Toplam İşlenen Günlük Sayısı       : 5
+  - Maskelenen İstemci IP Sayısı       : 5 (Subnet Truncation /24)
+  - Maskelenen İstemci MAC Sayısı      : 5 (OUI Preserving)
+  - Temizlenen Hassas Başlık Sayısı    : 2 (Auth/Cookie)
+  - KVKK ve GDPR Uyum Durumu           : TAM_UYUMLU
+
+ARINDIRILMIŞ GÜNLÜK DETAYLARI:
+--------------------------------------------------------------------------------
+[1] Kayıt Kimliği: LOG-WEB-01 | Protokol: HTTP
+    İstemci IP  : 192.168.1.0/24 | İstemci MAC: 00:1A:2B:XX:XX:XX
+    Arınmış URI : /api/v1/profile?email=a%2A%2A%2Az%40kurum.com.tr&tckn=12%2A%2A%2A%2A%2A%2A%2A01
+    Başlıklar   : {"Host": "api.kurum.local", "Authorization": "Bearer [REDACTED_TOKEN]", "Cookie": "[REDACTED_SESSION_COOKIE]", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+
+[2] Kayıt Kimliği: LOG-DNS-01 | Protokol: DNS
+    İstemci IP  : 172.16.20.0/24 | İstemci MAC: A4:83:E7:XX:XX:XX
+
+[3] Kayıt Kimliği: LOG-PAYMENT-01 | Protokol: HTTP
+    İstemci IP  : 203.0.113.0/24 | İstemci MAC: BC:5F:F4:XX:XX:XX
+    Arınmış URI : /checkout/process
+    Başlıklar   : {"Host": "odeme.kurum.local", "Content-Type": "application/json", "X-Forwarded-For": "198.51.100.99"}
+    Gövde       : {"kart_no": "4543 **** **** 9012", "ad_soyad": "Mehmet Demir", "telefon": "[REDACTED_PHONE]", "tutar": 250.0}
+
+[4] Kayıt Kimliği: LOG-AUTH-01 | Protokol: SYSLOG
+    İstemci IP  : 10.10.1.0/24 | İstemci MAC: E8:40:F2:XX:XX:XX
+    Mesaj       : Kullanici girisi basarili: kullanici=z***a@sirket.com ip=10.10.1.200 port=51420 rol=YONETICI
+
+[5] Kayıt Kimliği: LOG-CLEAN-01 | Protokol: NTP
+    İstemci IP  : 192.168.1.0/24 | İstemci MAC: 00:00:5E:XX:XX:XX
+    Mesaj       : NTP zaman senkronizasyonu tamamlandi. Stratum 2 ofset=0.0012s

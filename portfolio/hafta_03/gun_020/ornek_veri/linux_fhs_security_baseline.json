@@ -1,0 +1,64 @@
+{
+  "aciklama": "GÜN 020 - Linux FHS ve Dosya Sistemi Güvenlik Taban Çizgisi Kuralları",
+  "lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "surum": "1.0.0",
+  "tarih": "2026-10-27",
+  "standartlar": [
+    {
+      "kod": "CIS Linux Benchmark Section 1.1",
+      "baslik": "Dosya Sistemi Bölümleme ve Mount Sertleştirmesi",
+      "onerilen_ayarlar": {
+        "tmp_separate_partition": true,
+        "tmp_mount_options": ["nodev", "nosuid", "noexec"],
+        "var_separate_partition": true,
+        "var_log_separate_partition": true,
+        "home_mount_options": ["nodev", "nosuid"]
+      }
+    },
+    {
+      "kod": "CIS Linux Benchmark Section 6.1",
+      "baslik": "Sistem Dosya İzinleri ve Bütünlüğü",
+      "onerilen_dosya_izinleri": {
+        "/etc/passwd": {"max_izin": "0644", "sahip": "root:root"},
+        "/etc/shadow": {"max_izin": "0640", "sahip": "root:shadow"},
+        "/etc/group": {"max_izin": "0644", "sahip": "root:root"},
+        "/etc/sudoers": {"max_izin": "0440", "sahip": "root:root"}
+      }
+    },
+    {
+      "kod": "NIST SP 800-53 Rev. 5",
+      "baslik": "Erişim Kontrolü ve En Az Ayrıcalık",
+      "kontroller": [
+        "AC-3: Erişim Uygulaması (POSIX Dosya İzinleri)",
+        "AC-6: En Az Ayrıcalık (SUID Kısıtlamaları)",
+        "MP-2: Medya Erişimi (Mount Bayrakları)"
+      ]
+    }
+  ],
+  "guvenlik_denetim_kurallari": [
+    {
+      "kural_id": "RULE-FHS-001",
+      "hedef": "/tmp",
+      "kriter": "sticky_bit_etkin",
+      "beklenen_deger": true,
+      "seviye": "KRITIK",
+      "hata_mesaji": "/tmp dizininde Sticky Bit (+t) etkin değil! Dosya silme ve sembolik link (Symlink) saldırılarına açık."
+    },
+    {
+      "kural_id": "RULE-FHS-002",
+      "hedef": "/tmp",
+      "kriter": "noexec_mount_etkin",
+      "beklenen_deger": true,
+      "seviye": "YUKSEK",
+      "hata_mesaji": "/tmp dosya sisteminde 'noexec' mount seçeneği eksik; saldırganlar zararlı ikili dosyaları buradan çalıştırabilir."
+    },
+    {
+      "kural_id": "RULE-FHS-003",
+      "hedef": "/etc/shadow",
+      "kriter": "digerleri_okuma_izni_yok",
+      "beklenen_deger": true,
+      "seviye": "KRITIK",
+      "hata_mesaji": "/etc/shadow dosyası diğer kullanıcılar tarafından okunabilir durumda! Parola karmaları sızdırılabilir."
+    }
+  ]
+}

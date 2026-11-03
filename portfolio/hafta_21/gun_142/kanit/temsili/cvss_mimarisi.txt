@@ -1,0 +1,51 @@
+===============================================================================
+ TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+===============================================================================
+ GÜN 142: FIRST CVSS v3.1 TABAN METRİK VE SKORLAMA MİMARİSİ
+===============================================================================
+
+                  [ CVSS v3.1 VEKTÖR DİZESİ GİRDİSİ ]
+       'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H'
+                               │
+                               ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ VEKTÖR AYRIŞTIRICI VE GEÇERLİLİK MOTORU (CvssBaseEngine)               │
+  │  - Sürüm Öneki Doğrulama: 'CVSS:3.1'                                    │
+  │  - 8 Zorunlu Metrik Denetimi: AV, AC, PR, UI, S, C, I, A                 │
+  │  - Metrik Değer Kümesi Kontrolü                                         │
+  └────────────────────────────┬────────────────────────────────────────────┘
+                               │
+              ┌────────────────┴────────────────┐
+              ▼                                 ▼
+  ┌─────────────────────────┐       ┌─────────────────────────┐
+  │ İSTİSMAR EDİLEBİLİRLİK  │       │ ETKİ METRİKLERİ (CIA)   │
+  │ (Exploitability)        │       │ (Impact Metrics)        │
+  │  - AV (Attack Vector)   │       │  - C (Confidentiality)  │
+  │  - AC (Complexity)      │       │  - I (Integrity)        │
+  │  - PR (Privileges Req)  │       │  - A (Availability)     │
+  │  - UI (User Interaction)│       │                         │
+  │                         │       │ ISS = 1-[(1-C)(1-I)(1-A)│
+  │ Exploit = 8.22*AV*AC*PR*UI      │                         │
+  └───────────┬─────────────┘       └───────────┬─────────────┘
+              │                                 │
+              └────────────────┬────────────────┘
+                               │
+                               ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ KAPSAM (SCOPE) KARAR DÜĞÜMÜ                                             │
+  │  - Scope: Unchanged (S:U)  -> Impact = 6.42 * ISS                       │
+  │                               Base = min(Impact + Exploitability, 10.0) │
+  │  - Scope: Changed   (S:C)  -> Impact = 7.52*(ISS-0.029)-3.25*(ISS-0.02)^15
+  │                               Base = min(1.08*(Impact+Exploit), 10.0)   │
+  └────────────────────────────┬────────────────────────────────────────────┘
+                               │
+                               ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ FIRST ROUNDUP FONKSİYONU VE ŞİDDET DERECELENDİRMESİ                     │
+  │  - Roundup(BaseScore) -> 0.1 ondalık yukarı yuvarlama                   │
+  │  - 0.0: NONE | 0.1-3.9: LOW | 4.0-6.9: MEDIUM                           │
+  │  - 7.0-8.9: HIGH | 9.0-10.0: CRITICAL                                   │
+  └─────────────────────────────────────────────────────────────────────────┘
+===============================================================================
+ TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+===============================================================================

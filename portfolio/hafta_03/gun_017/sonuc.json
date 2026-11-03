@@ -1,0 +1,58 @@
+{
+  "gun": 17,
+  "asama": 2,
+  "hafta": 3,
+  "konu": "İşletim sistemi çekirdeği ve kullanıcı modu",
+  "durum": "TAMAMLANDI_PASS",
+  "tarih": "2026-10-27",
+  "puan": 100,
+  "puan_detay": {
+    "teorik_metodolojik_hakimiyet": 20,
+    "kodlama_uygulama_yetkinligi": 40,
+    "test_dogrulama_kapsami": 25,
+    "kanit_dokumantasyon_kalitesi": 15
+  },
+  "test_sonucu": {
+    "toplam": 14,
+    "basarili": 14,
+    "basarisiz": 0,
+    "hata": 0,
+    "oran": 1.0
+  },
+  "dosyalar": [
+    "uygulama/kernel_user_mode_boundary_analyzer.py",
+    "tests/test_kernel_user_mode_boundary_analyzer.py",
+    "ornek_veri/kernel_user_privilege_matrix.json",
+    "ornek_veri/kernel_security_baseline.json",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/temsili/cekirdek_ve_kullanici_modu_mimarisi.txt",
+    "ders.md",
+    "soru_cevap.md",
+    "rapor.md",
+    "README.md",
+    "sonuc.json"
+  ],
+  "kanitlar": [
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/temsili/cekirdek_ve_kullanici_modu_mimarisi.txt"
+  ],
+  "ogrenilen_standartlar": [
+    "Microsoft WDAC & HVCI (Driver Blocklist & Hypervisor-Protected Code Integrity)",
+    "CIS Microsoft Windows Benchmark (Kernel Hardening & Privilege Isolation)",
+    "NIST SP 800-53 Rev. 5 (SC-3 Security Function Isolation, SI-7, AC-6 Least Privilege)",
+    "CWE-476 (NULL Pointer Dereference in Kernel Space)",
+    "CWE-822 (Untrusted Pointer Dereference in System Calls)"
+  ],
+  "karsilanan_gereksinimler": [
+    "Çekirdek kipi (Ring 0) ve Kullanıcı kipi (Ring 3) mimari izolasyonu çözümlendi",
+    "Yönetici süreçlerinin de Ring 3'te kaldığı gerçeği canlı Win32 API ile kanıtlandı",
+    "Sistem çağrısı (syscall) işaretçi doğrulaması (ProbeForRead / ProbeForWrite) simüle edildi",
+    "BYOVD (Bring Your Own Vulnerable Driver) saldırı vektörü ve engelleme listeleri denetlendi",
+    "SMEP, SMAP, KASLR, KPTI ve HVCI donanımsal savunma kalkanları analiz edildi",
+    "Tüm kod ve test satırları didaktik açıklamalarla zenginleştirildi",
+    "Özel Lisans (Tüm Hakları Saklıdır) tüm dosyalara uygulandı"
+  ],
+  "notlar": "Gün 017 eksiksiz tamamlanarak 14/14 test PASS ve 100/100 tam puanla sonuçlandırıldı."
+}

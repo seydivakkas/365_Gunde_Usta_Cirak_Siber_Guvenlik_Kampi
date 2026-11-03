@@ -1,0 +1,21 @@
+=== GÜN 114: MFA CLI ÇALIŞTIRMA KOMUTLARI VE ÇIKTILARI ===
+
+1. Kullanıcı İçin TOTP Kodu Üretme:
+$ python uygulama/mfa_cli.py totp-uret --kullanici seydi_admin
+[BAŞARILI] Güncel TOTP Kodu: 591823
+Kullanıcı: seydi_admin | Zaman Adımı: 59400281 | Geçerlilik: 30 saniye
+
+2. Geçerli TOTP Kodunu Doğrulama:
+$ python uygulama/mfa_cli.py totp-dogrula --kullanici seydi_admin --kod 591823
+[BAŞARILI] TOTP Kodu Geçerli! Kimlik doğrulama onaylandı.
+
+3. AiTM Ters Vekil Oltalama (Evilginx) Simülasyonu:
+$ python uygulama/mfa_cli.py simulasyon-saldiri
+[TEST 1] TOTP (RFC 6238) Oltalama Direnci Sınanıyor...
+Sonuç: Saldırı Başarılı mı? -> True
+Açıklama: ZAFİYET: TOTP kodunda web sitesi menşei (Origin) bilgisi bulunmaz.
+
+[TEST 2] FIDO2 / WebAuthn Oltalama Direnci Sınanıyor...
+Sonuç: Saldırı Başarılı mı? -> False
+Engellenen Zafiyet: CWE-346: Origin Validation Error
+Açıklama: GÜVENLİ: Meşru sunucu sahte sitenin imzasını reddederek AiTM saldırısını engelledi.

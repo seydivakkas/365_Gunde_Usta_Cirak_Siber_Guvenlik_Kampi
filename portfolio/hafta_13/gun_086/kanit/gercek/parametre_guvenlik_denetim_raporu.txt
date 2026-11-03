@@ -1,0 +1,53 @@
+================================================================================
+G086: POWERSHELL BETIK PARAMETRELERI STATIK GU蕪ENLIK DENETIM RAPORU
+Uretim Tarihi: 2026-11-01T19:51:58.081665+00:00
+================================================================================
+
+--- 1. GUVENLI ORNEK BETIK DENETIMI (sample_secure_script.ps1) ---
+CmdletBinding Mevcut mu: True
+Ayrastirilan Parametre : 5
+Tespit Edilen Bulgu   : 0
+Guvenlik Durumu       : TAMAMEN GUVENLI (PASS)
+
+--- 2. ZAAFIYETLI ORNEK BETIK DENETIMI (sample_vulnerable_script.ps1) ---
+CmdletBinding Mevcut mu: False
+Ayrastirilan Parametre : 4
+Tespit Edilen Bulgu   : 5
+Guvenlik Durumu       : KRITIK BULGULAR MEVCUT (FAIL)
+
+DETAYLI BULGULAR LISTESI (sample_vulnerable_script.ps1):
+  [1] Kural     : MISSING_CMDLET_BINDING
+      Parametre : $GLOBAL
+      Seviye    : LOW
+      CWE       : CWE-20: Improper Input Validation
+      Detay     : Betikte parametre tanimlanmis ancak [CmdletBinding()] bildirimi yapilmamis.
+      Tavsiye   : Gelismis fonksiyon ozellikleri ve hata kontrolu icin betigin basina [CmdletBinding()] ekleyin.
+      ------------------------------------------------------------
+  [2] Kural     : PLAINTEXT_CREDENTIAL_PARAMETER
+      Parametre : $Password
+      Seviye    : CRITICAL
+      CWE       : CWE-312: Cleartext Storage of Sensitive Information in Parameter
+      Detay     : Hassas parametre '$Password' acik metin [string] olarak bildirilmis.
+      Tavsiye   : Parametreyi [System.Security.SecureString] veya [PSCredential] turune donusturun.
+      ------------------------------------------------------------
+  [3] Kural     : UNTYPED_PARAMETER_DECLARATION
+      Parametre : $TargetFile
+      Seviye    : MEDIUM
+      CWE       : CWE-20: Weak Typing in Parameter Declaration
+      Detay     : Parametre '$TargetFile' icin tip belirtilmemis (varsayilan [Object]).
+      Tavsiye   : Parametre basina [string], [int], [FileInfo] gibi kati tip tanimi ekleyin.
+      ------------------------------------------------------------
+  [4] Kural     : UNVALIDATED_PATH_PARAMETER
+      Parametre : $TargetFile
+      Seviye    : HIGH
+      CWE       : CWE-22: Unvalidated Path Parameter
+      Detay     : Yol parametresi '$TargetFile' [ValidateScript] ile sinirlandirilmamis.
+      Tavsiye   : [ValidateScript({ Test-Path $_ -PathType Leaf })] ekleyerek dizin atlamayi onleyin.
+      ------------------------------------------------------------
+  [5] Kural     : SUBPROCESS_ARGUMENT_INJECTION_RISK
+      Parametre : $SUBPROCESS_INVOCATION
+      Seviye    : CRITICAL
+      CWE       : CWE-88: Argument Injection via Subprocess
+      Detay     : Dis komut cagrilarinda dogrulanmamis parametreler tirnak veya dizi kullanilmadan birlestirilmis.
+      Tavsiye   : Start-Process cmdlet'ini -ArgumentList dizisiyle kullanin veya param splatting uygulayin.
+      ------------------------------------------------------------

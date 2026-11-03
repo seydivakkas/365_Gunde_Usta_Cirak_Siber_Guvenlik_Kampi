@@ -1,0 +1,97 @@
+================================================================================
+GERÇEK YÜRÜTME KANITI — KOMUT VE ÇIKIŞ
+================================================================================
+Tarih/Saat : 2026-10-27T00:04:35.243949
+İşletim Sis: Windows-11-10.0.26300-SP0
+Python     : 3.14.3
+Komut      : C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe portfolio/hafta_02/gun_010/uygulama/linux_baseline_auditor.py --profile portfolio/hafta_02/gun_010/ornek_veri/linux_vm_yapilandirmasi.json
+Çıkış Kodu : 2
+--------------------------------------------------------------------------------
+STDOUT:
+================================================================================
+   LINUX G�VENL�K TABAN ��ZG�S� DENET�M RAPORU (LINUX BASELINE AUDITOR)
+================================================================================
+�ncelenen Dosya: portfolio/hafta_02/gun_010/ornek_veri/linux_vm_yapilandirmasi.json
+Toplam Sistem Profili Say�s�: 2
+--------------------------------------------------------------------------------
+
+[+] S�STEM ID: LINUX-SEC-01 | Ad�: Sertlestirilmis_Debian_Security_Lab_VM
+    Da��t�m           : Debian 12 / Kali Hardened
+    G�venlik Seviyesi : CIS_SEVIYE_1_HARDENED
+    G�venlik Skoru    : 100/100
+    Risk Durumu       : G�VENL� (CIS SEV�YE 1 SERTLE�T�R�LM��)
+    Toplam Bulgu      : 0
+    -> TEBR�KLER: S�f�r g�venlik a����! CIS Benchmark Seviye 1 sertle�tirilmi� sistem.
+
+[+] S�STEM ID: LINUX-RISK-99 | Ad�: Guvenliksiz_Varsayilan_Kali_VM
+    Da��t�m           : Kali Linux (Varsay�lan Kurulum)
+    G�venlik Seviyesi : YUKSEK_RISK_GUVENSIZ
+    G�venlik Skoru    : 0/100
+    Risk Durumu       : KR�T�K FELAKET (AC�L M�DAHALE GEREKL�)
+    Toplam Bulgu      : 14
+    -> TESP�T ED�LEN R�SK VE ZAF�YETLER:
+       * [KRITIK] Root ile Do�rudan SSH Giri�i A��k (PermitRootLogin yes) (-35 Puan)
+         Kategori: SSH_GUVENLIGI
+         Risk    : Sald�rganlar do�rudan 'root' kullan�c� ad�n� hedef alarak parola kaba kuvvet (brute-force) sald�r�s� yapabilir.
+         ��z�m   : /etc/ssh/sshd_config dosyas�nda 'PermitRootLogin no' tan�mlay�n; oturumu standart kullan�c�yla a��p 'sudo' kullan�n.
+       * [YUKSEK] SSH Parola ile Giri� A��k (PasswordAuthentication yes) (-25 Puan)
+         Kategori: SSH_GUVENLIGI
+         Risk    : Zay�f veya varsay�lan parolalar (�r. kali:kali, toor) otomatik botlar taraf�ndan saniyeler i�inde k�r�labilir.
+         ��z�m   : 'PasswordAuthentication no' ve 'PubkeyAuthentication yes' yaparak yaln�zca SSH anahtar�yla giri�e izin verin.
+       * [DUSUK] Varsay�lan SSH Portu Kullan�l�yor (Port 22) (-10 Puan)
+         Kategori: SSH_GUVENLIGI
+         Risk    : Standart port kullan�m� otomatik tarama g�r�lt�s�n� ve kaba kuvvet denemelerini art�r�r.
+         ��z�m   : Port numaras�n� 1024 �zeri standart d��� bir porta (�r. 2222) ta��y�n.
+       * [DUSUK] Y�ksek Kimlik Do�rulama Deneme S�n�r�: 10 (-10 Puan)
+         Kategori: SSH_GUVENLIGI
+         Risk    : Tek oturumda �ok say�da parola denenmesine izin vermek kaba kuvvet sald�r�lar�n� kolayla�t�r�r.
+         ��z�m   : /etc/ssh/sshd_config i�inde 'MaxAuthTries 3' tan�mlay�n.
+       * [FELAKET] �l�mc�l Sudo Yap�land�rmas�: NOPASSWD �zni A��k (-50 Puan)
+         Kategori: YETKI_YONETIMI
+         Risk    : /etc/sudoers dosyas�nda kullan�c�lara parolas�z s�per yetki verilmi�. Sald�rgan 'sudo su' diyerek an�nda tam root olur.
+         ��z�m   : 'NOPASSWD' kural�n� kald�r�n; t�m ayr�cal�kl� komutlar i�in parola giri�ini zorunlu k�l�n.
+       * [YUKSEK] Root Hesab� Do�rudan Etkin ve Parolal� (-20 Puan)
+         Kategori: YETKI_YONETIMI
+         Risk    : Root kullan�c�s� do�rudan oturum a�maya a��kt�r; bu durum hesap denetim izini (audit trail) bozar.
+         ��z�m   : 'passwd -l root' komutuyla root parolas�n� kilitleyin; t�m i�lemleri sudo ile y�r�t�n.
+       * [YUKSEK] G�vensiz Dosya Olu�turma Maskesi: umask 000 (-20 Puan)
+         Kategori: YETKI_YONETIMI
+         Risk    : Umask 000 yeni olu�turulan dosyalara di�er kullan�c�lar�n eri�ebilmesine izin verir.
+         ��z�m   : /etc/profile veya /etc/login.defs i�inde 'umask 027' tan�mlay�n (Dosyalar 640, dizinler 750 olu�turulur).
+       * [FELAKET] Kritik G�venlik �hlali: /etc/shadow �zinleri G�vensiz (0644) (-50 Puan)
+         Kategori: DOSYA_IZINLERI
+         Risk    : Parola �zetlerini i�eren /etc/shadow dosyas� standart kullan�c�lar taraf�ndan okunabilir durumdad�r. T�m �ifreler �evrimd��� k�r�labilir.
+         ��z�m   : 'chmod 0640 /etc/shadow' ve 'chown root:shadow /etc/shadow' komutlar�n� �al��t�r�n.
+       * [FELAKET] Kritik G�venlik �hlali: /etc/passwd Yaz�labilir (0777) (-50 Puan)
+         Kategori: DOSYA_IZINLERI
+         Risk    : /etc/passwd dosyas� root d���ndaki kullan�c�lar taraf�ndan de�i�tirilebilir durumdad�r. Do�rudan yetki y�kseltme (LPE) a����d�r.
+         ��z�m   : 'chmod 0644 /etc/passwd' ve 'chown root:root /etc/passwd' komutlar�yla yazma iznini k�s�tlay�n.
+       * [KRITIK] UFW G�venlik Duvar� Devre D��� (-35 Puan)
+         Kategori: GUVENLIK_DUVARI
+         Risk    : Sanal makinenin t�m portlar� a�dan gelebilecek port taramalar�na ve sald�r�lara kar�� tamamen korumas�zd�r.
+         ��z�m   : 'ufw enable' komutuyla g�venlik duvar�n� derhal etkinle�tirin.
+       * [KRITIK] Varsay�lan Gelen A� Trafi�i 'ALLOW' (A��k) (-35 Puan)
+         Kategori: GUVENLIK_DUVARI
+         Risk    : G�venlik duvar� d��ar�dan gelen paketleri varsay�lan olarak engellememektedir.
+         ��z�m   : 'ufw default deny incoming' komutunu uygulay�n.
+       * [YUKSEK] G�vensiz Eski Servis Aktif: telnetd (-20 Puan)
+         Kategori: GUVENSIZ_SERVISLER
+         Risk    : Aktif servis 'telnetd' g�venlik riski ta��r: �ifresiz metin tabanl� uzaktan komut �al��t�rma servisi (Parolalar a�da a��k gider)
+         ��z�m   : 'systemctl stop telnetd' ve 'systemctl disable telnetd' komutlar�yla servisi kald�r�n.
+       * [YUKSEK] G�vensiz Eski Servis Aktif: vsftpd (-20 Puan)
+         Kategori: GUVENSIZ_SERVISLER
+         Risk    : Aktif servis 'vsftpd' g�venlik riski ta��r: �ifresiz FTP dosya transfer servisi (TLS olmadan veri ve parola a��ktad�r)
+         ��z�m   : 'systemctl stop vsftpd' ve 'systemctl disable vsftpd' komutlar�yla servisi kald�r�n.
+       * [YUKSEK] G�vensiz Eski Servis Aktif: rshd (-20 Puan)
+         Kategori: GUVENSIZ_SERVISLER
+         Risk    : Aktif servis 'rshd' g�venlik riski ta��r: Eski Berkeley r-komutlar� uzaktan kabuk servisi (Kimlik do�rulama zay�f)
+         ��z�m   : 'systemctl stop rshd' ve 'systemctl disable rshd' komutlar�yla servisi kald�r�n.
+
+================================================================================
+Denetim Bitti. T�m haklar� sakl�d�r (c) 2026 Seydi Ery�lmaz.
+================================================================================
+
+--------------------------------------------------------------------------------
+STDERR:
+
+================================================================================

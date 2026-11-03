@@ -1,0 +1,48 @@
+# ==============================================================================
+# TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+# ==============================================================================
+# Gün 093: Hashlib ile Dosya Doğrulama ve Bütünlük İzleme Mimari Görselleştirmesi
+# Konu: Akış Tabanlı Kriptografik Özetleme, FIM Taban Çizgisi ve Zamanlama Kalkanı
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas) - Tüm Hakları Saklıdır.
+# ==============================================================================
+
++--------------------------------------------------------------------------------------------------+
+|                    KRİPTOGRAFİK DOSYA BÜTÜNLÜĞÜ VE FIM BORU HATTI                                 |
++--------------------------------------------------------------------------------------------------+
+                                                 |
+                                     [ Hedef Dosya / Dizin ]
+                                                 |
+                                                 v
++--------------------------------------------------------------------------------------------------+
+|                    KATMAN 1: DOSYA YOLU VE GİRDİ GÜVENLİK KALKANI                                |
++--------------------------------------------------------------------------------------------------+
+| - Null-Byte Engeli: '\x00' karakterleri anında engellenir (CWE-158)                              |
+| - Dizin Atlama (Path Traversal) Engeli: '..' dizin referansları reddedilir (CWE-22)               |
+| - DoS Koruması: Dosya yolu uzunluğu <= 1024 bayt sınırı (CWE-400)                               |
++--------------------------------------------------------------------------------------------------+
+                                                 |
+                                                 v
++--------------------------------------------------------------------------------------------------+
+|                    KATMAN 2: AKIŞ TABANLI ÖZETLEME (CHUNK-BASED STREAMING)                       |
++--------------------------------------------------------------------------------------------------+
+| - 64 KB (65536 bayt) Sabit Bellek Tamponu: O(1) RAM Tüketimi (CWE-400 Bellek Taşması Savunması)  |
+| - Onaylı Kriptografik Algoritmalar: SHA-256, SHA-512, SHA3-256, BLAKE2b                         |
+| - Zayıf Algoritma Kalkanı: MD5 ve SHA-1 katı modda doğrudan engellenir (CWE-328 Çarpışma Riski)  |
++--------------------------------------------------------------------------------------------------+
+                                                 |
+                                                 v
++--------------------------------------------------------------------------------------------------+
+|                    KATMAN 3: SABİT ZAMANLI KARŞILAŞTIRMA (CWE-208 SAVUNMASI)                     |
++--------------------------------------------------------------------------------------------------+
+| - Doğrudan '==' karşılaştırması Zamanlama Saldırılarına (Timing Attacks) yol açar                |
+| - hmac.compare_digest(actual_hash, expected_hash) ile mikrosaniye düzeyinde sabit zamanlama      |
+| - Bütünlük İhlali Durumunda: IntegrityMismatchError (CWE-353) fırlatılır                        |
++--------------------------------------------------------------------------------------------------+
+                                                 |
+                                                 v
++--------------------------------------------------------------------------------------------------+
+|                    KATMAN 4: FIM TABAN ÇİZGİSİ VE ANOMALİ RAPORLAMA                              |
+|   - Baseline JSON Manifestosu İle Dizin Durumunun Kriptografik Olarak Mühürlenmesi              |
+|   - Anomali Tespiti: Değiştirilen, Yeni Eklenen ve Silinen Dosyaların Otomatik Ayrıştırılması    |
+|   - SIEM / SOAR Sistemleri İçin Yapısal JSON veya Güvenlik Operatörü İçin Metin Tablosu         |
++--------------------------------------------------------------------------------------------------+

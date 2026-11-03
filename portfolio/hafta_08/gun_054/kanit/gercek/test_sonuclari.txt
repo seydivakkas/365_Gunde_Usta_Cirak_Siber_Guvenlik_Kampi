@@ -1,0 +1,33 @@
+test_dns_header_binary_pack_and_unpack (portfolio.hafta_08.gun_054.tests.test_dns_query_record_analyzer.TestDNSQueryRecordAnalyzer.test_dns_header_binary_pack_and_unpack)
+Test 3: RFC 1035 12 baytl²k ikili ba■l²­²n paketlenmesi ve bayrak ²kar²m²n² do­rular. ... ok
+test_dns_question_binary_pack (portfolio.hafta_08.gun_054.tests.test_dns_query_record_analyzer.TestDNSQueryRecordAnalyzer.test_dns_question_binary_pack)
+Test 4: DNS Soru b÷l³m³n³n ikili a­ format²na d÷n³■t³r³ld³­³n³ do­rular. ... ok
+test_dns_record_a_valid_creation (portfolio.hafta_08.gun_054.tests.test_dns_query_record_analyzer.TestDNSQueryRecordAnalyzer.test_dns_record_a_valid_creation)
+Test 5: Geerli bir IPv4 A kayd²n²n do­ruland²­²n² ve s÷zl³k ³retildi­ini test eder. ... ok
+test_dns_record_aaaa_valid_creation (portfolio.hafta_08.gun_054.tests.test_dns_query_record_analyzer.TestDNSQueryRecordAnalyzer.test_dns_record_aaaa_valid_creation)
+Test 6: Geerli bir IPv6 AAAA kayd²n²n do­ruland²­²n² test eder. ... ok
+test_dns_record_cname_and_mx_creation (portfolio.hafta_08.gun_054.tests.test_dns_query_record_analyzer.TestDNSQueryRecordAnalyzer.test_dns_record_cname_and_mx_creation)
+Test 7: CNAME ve ÷ncelik de­erli MX kay²tlar²n²n olu■turulmas²n² do­rular. ... ok
+test_dns_record_txt_creation (portfolio.hafta_08.gun_054.tests.test_dns_query_record_analyzer.TestDNSQueryRecordAnalyzer.test_dns_record_txt_creation)
+Test 8: SPF ve DMARC ieren TXT kay²tlar²n²n do­ru sakland²­²n² do­rular. ... ok
+test_dns_type_mapping_codes_and_names (portfolio.hafta_08.gun_054.tests.test_dns_query_record_analyzer.TestDNSQueryRecordAnalyzer.test_dns_type_mapping_codes_and_names)
+Test 1: Standart DNS kay²t t³rlerinin say²sal kod ve isim e■le■melerini do­rular. ... ok
+test_domain_name_encoding_and_decoding (portfolio.hafta_08.gun_054.tests.test_dns_query_record_analyzer.TestDNSQueryRecordAnalyzer.test_domain_name_encoding_and_decoding)
+Test 2: RFC 1035 uzunluk ÷nekli etiket kodlama ve ÷z³mlemesini do­rular. ... ok
+test_negative_label_length_and_total_domain_overflow (portfolio.hafta_08.gun_054.tests.test_dns_query_record_analyzer.TestDNSQueryRecordAnalyzer.test_negative_label_length_and_total_domain_overflow)
+Test 13: Negatif kontrol: 63 karakter ³st³ etiket ve 253 karakter ³st³ alan ad²n²n reddedildi­ini test eder. ... ok
+test_negative_malformed_ips_negative_ttl_and_empty_domain (portfolio.hafta_08.gun_054.tests.test_dns_query_record_analyzer.TestDNSQueryRecordAnalyzer.test_negative_malformed_ips_negative_ttl_and_empty_domain)
+Test 14: Negatif kontrol: Hatal² IP adresleri, negatif TTL ve bo■ ad²n reddedildi­ini do­rular. ... ok
+test_security_audit_dns_tunneling_detection (portfolio.hafta_08.gun_054.tests.test_dns_query_record_analyzer.TestDNSQueryRecordAnalyzer.test_security_audit_dns_tunneling_detection)
+Test 12: Y³ksek entropili hex kodlu sorgular²n DNS T³nelleme olarak tespit edildi­ini do­rular. ... ok
+test_security_audit_spf_and_dmarc_hardened (portfolio.hafta_08.gun_054.tests.test_dns_query_record_analyzer.TestDNSQueryRecordAnalyzer.test_security_audit_spf_and_dmarc_hardened)
+Test 9: Kat² SPF (-all) ve DMARC (p=reject) kay²tlar²n²n g³venli onayland²­²n² do­rular. ... ok
+test_security_audit_subdomain_takeover_detection (portfolio.hafta_08.gun_054.tests.test_dns_query_record_analyzer.TestDNSQueryRecordAnalyzer.test_security_audit_subdomain_takeover_detection)
+Test 11: Sahipsiz ³³nc³ taraf S3 deposuna i■aret eden CNAME kayd²n²n yakaland²­²n² do­rular. ... ok
+test_security_audit_weak_or_missing_spf_and_dmarc (portfolio.hafta_08.gun_054.tests.test_dns_query_record_analyzer.TestDNSQueryRecordAnalyzer.test_security_audit_weak_or_missing_spf_and_dmarc)
+Test 10: Eksik SPF ve zay²f DMARC (p=none) durumlar²n²n g³venlik uyar²s² ³retti­ini do­rular. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK

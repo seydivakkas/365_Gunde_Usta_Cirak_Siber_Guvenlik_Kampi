@@ -1,0 +1,22 @@
+{
+  "aciklama": "RSA ve Asimetrik Kriptografi Test Vektörleri ve Referans Parametreleri",
+  "referans_standart": "PKCS#1 v2.2 (RFC 8017) ve FIPS 186-4",
+  "kucuk_anahtar_vektoru_512": {
+    "bit_length": 512,
+    "e": 65537,
+    "aciklama": "Birim testlerin anlık (<0.05s) ve deterministik koşturulması için güvenli test anahtarı",
+    "p_hex": "ec657a8288544cb4ca74c6e4e5e4fa8fbe90234b6b6ec060d402377a28f4ba6d",
+    "q_hex": "e7c4f14120ec05c48bbf8e41ebfc156d9ee70fb9258eb753b8fd72bb8fc6cb4b"
+  },
+  "standart_parametreler": {
+    "guvenli_genel_us": 65537,
+    "asgari_guvenli_bit": 2048,
+    "tavsiye_edilen_bit": 3072,
+    "guvensiz_kucuk_us": 3
+  },
+  "ornek_metinler": [
+    "Siber Güvenlik 365 Gün — Asimetrik Kriptografi Dersi",
+    "Gizli Mesaj: Kriptografik Anahtar Değişimi Başarılı!",
+    "Zero-Trust Architecture: Never Trust, Always Verify."
+  ]
+}

@@ -1,0 +1,21 @@
+=== GÜN 078: NEGATİF KONTROL VE GÜVENLİK DOĞRULAMA RAPORU ===
+Toplam Senaryo: 9, Başarılı: 9, Başarısız: 0
+
+[PASS] NEG_01_PATH_TRAVERSAL_RELATIVE_DOTS: Göreceli dizin atlama (../../) karakterleri ile sandbox deposundan dışarı sızma girişimi (CWE-22)
+  Detay: Path traversal engellendi: Dizin aşımı (Path Traversal) engellendi: ../../Windows/System32/cmd.exe
+[PASS] NEG_02_ABSOLUTE_PATH_WINDOWS_ESCAPE: Windows mutlak sürücü yolu (C:\Windows\System32\drivers\etc\hosts) verilerek sandbox dışına çıkma
+  Detay: Windows mutlak yol enjeksiyonu engellendi: Mutlak yol enjeksiyonu ile sandbox atlatması engellendi: C:\Windows\System32\drivers\etc\hosts
+[PASS] NEG_03_ABSOLUTE_PATH_POSIX_ESCAPE: POSIX kök dizin mutlak yolu (/etc/passwd) verilerek sandbox dışına çıkma girişimi
+  Detay: POSIX mutlak yol enjeksiyonu engellendi: Dizin aşımı (Path Traversal) engellendi: /etc/passwd
+[PASS] NEG_04_NULL_BYTE_PATH_POISONING: Dosya yolu dizesine Null-Byte (\x00) enjekte edilerek uzantı filtresini atlatma girişimi
+  Detay: Null-byte enjeksiyonu yakalandı: Dosya yolunda zararlı Null-Byte (\x00) tespit edildi.
+[PASS] NEG_05_FORBIDDEN_FILE_EXTENSION: İzin verilmeyen zararlı veya çalıştırılabilir dosya uzantısı (.sh, .exe, .py) talep edilmesi
+  Detay: İzin verilmeyen uzantı engellendi: İzin verilmeyen dosya uzantısı: .sh
+[PASS] NEG_06_EXCESSIVE_FILE_SIZE_LIMIT_EXCEEDED: Maksimum izin verilen dosya boyutu tavanını aşan dosyayı okumaya çalışarak bellek tüketimi (CWE-400)
+  Detay: Dosya boyutu tavanı aşıldığında okuma durduruldu: Dosya boyutu (226 bayt) izin verilen güvenlik tavanını (100 bayt) aştı.
+[PASS] NEG_07_OPENING_DIRECTORY_AS_FILE: Normal dosya yerine bir dizin yolunu okumaya çalışarak sistem hatası üretme girişimi
+  Detay: Dizin yolu dosya gibi açılmadı: Belirtilen yol bir dosya değil, dizindir: .
+[PASS] NEG_08_NON_EXISTENT_FILE_SAFE_HANDLING: Depo içinde yer almayan hayali bir dosya talep edildiğinde kontrollü hata yönetimi
+  Detay: Var olmayan dosya FileNotFoundError ile yakalandı: İstenen dosya sandbox içinde bulunamadı: non_existent_vault.json
+[PASS] NEG_09_ATOMIC_WRITE_DIRECTORY_TRAVERSAL: Atomik yazma fonksiyonu ile sandbox dışına dosya yazma veya zararlı dosya oluşturma girişimi
+  Detay: Sandbox dışına atomik yazma engellendi: Dizin aşımı (Path Traversal) engellendi: ../evil_backdoor.php

@@ -1,0 +1,48 @@
+{
+  "audit_metadata": {
+    "organization": "Siber Güvenlik Operasyon Merkezi (SOC)",
+    "audit_type": "NTP_AND_TIME_SYNCHRONIZATION_AUDIT",
+    "timestamp": "2026-10-27T11:45:00Z"
+  },
+  "systems": [
+    {
+      "hostname": "dc01.corp.internal",
+      "os_type": "Windows Server 2022",
+      "time_daemon": "w32time",
+      "timezone": "Europe/Istanbul",
+      "timezone_offset_minutes": 180,
+      "current_utc_iso": "2026-10-27T08:45:00.002Z",
+      "is_synchronized": true,
+      "stratum": 2,
+      "reference_peer": "time.nist.gov",
+      "offset_ms": 2.1,
+      "jitter_ms": 0.8,
+      "upstream_servers": [
+        "time.nist.gov",
+        "time.google.com",
+        "0.pool.ntp.org",
+        "1.pool.ntp.org"
+      ],
+      "monlist_enabled": false,
+      "nts_or_authenticated": true
+    },
+    {
+      "hostname": "app01.dmz.internal",
+      "os_type": "Ubuntu 22.04 LTS",
+      "time_daemon": "chrony",
+      "timezone": "UTC",
+      "timezone_offset_minutes": 0,
+      "current_utc_iso": "2026-10-27T08:39:15.000Z",
+      "is_synchronized": false,
+      "stratum": 16,
+      "reference_peer": "unreachable",
+      "offset_ms": 345000.0,
+      "jitter_ms": 125.4,
+      "upstream_servers": [
+        "192.168.10.5"
+      ],
+      "monlist_enabled": true,
+      "nts_or_authenticated": false
+    }
+  ]
+}

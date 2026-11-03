@@ -1,0 +1,12 @@
+=== MINI PROJE 18: BÜTÜNLEŞİK WINDOWS GÜVENLİK DENETİMİ BİRİM TEST SONUÇLARI ===
+Tarih / Saat : 2026-11-02T07:54:57.381118+00:00
+Komut        : C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest discover tests/
+Çıkış Kodu   : 0
+---------------------------------------------------------------------------
+
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+

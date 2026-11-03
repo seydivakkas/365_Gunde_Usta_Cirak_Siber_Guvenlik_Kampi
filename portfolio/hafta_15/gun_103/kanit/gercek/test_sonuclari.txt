@@ -1,0 +1,45 @@
+===============================================================================
+GÜN 103: BİRİM TEST SONUÇLARI RAPORU
+Tarih/Saat: 2026-11-02 02:13:21
+Konu: FIPS 197 Simetrik Şifreleme ve AES (Advanced Encryption Standard)
+Çalıştırılan Test Sayısı: 15
+Hata / Başarısızlık: 0 / 0
+Durum: 100/100 PASS (BAŞARILI)
+===============================================================================
+
+test_01_fips197_single_block_kat (tests.test_aes_cipher.TestAESCipherEngine.test_01_fips197_single_block_kat)
+Test 1: NIST FIPS 197 resmi tek blok Known Answer Test (KAT) doğrulaması. ... ok
+test_02_sp800_38a_cbc_vector (tests.test_aes_cipher.TestAESCipherEngine.test_02_sp800_38a_cbc_vector)
+Test 2: NIST SP 800-38A resmi CBC modu test vektörü doğrulaması. ... ok
+test_03_sp800_38a_ctr_vector (tests.test_aes_cipher.TestAESCipherEngine.test_03_sp800_38a_ctr_vector)
+Test 3: NIST SP 800-38A resmi CTR modu test vektörü doğrulaması. ... ok
+test_04_aes_256_roundtrip_cbc (tests.test_aes_cipher.TestAESCipherEngine.test_04_aes_256_roundtrip_cbc)
+Test 4: 256-bit anahtar (14 tur) ile CBC şifreleme ve geri çözme döngüsü. ... ok
+test_05_ecb_pattern_leakage_demonstration (tests.test_aes_cipher.TestAESCipherEngine.test_05_ecb_pattern_leakage_demonstration)
+Test 5: ECB modunda özdeş blokların aynı şifreli çıktıyı ürettiğinin kanıtı (CWE-327). ... ok
+test_06_ecb_strict_mode_raises_cwe327 (tests.test_aes_cipher.TestAESCipherEngine.test_06_ecb_strict_mode_raises_cwe327)
+Test 6: Katı güvenlik modunda güvensiz ECB modunun reddedilmesi (CWE-327). ... ok
+test_07_insufficient_key_length_raises_cwe326 (tests.test_aes_cipher.TestAESCipherEngine.test_07_insufficient_key_length_raises_cwe326)
+Test 7: 16 bayt (128 bit) altındaki yetersiz anahtar uzunluğunun reddi (CWE-326). ... ok
+test_08_invalid_key_length_raises_cwe326 (tests.test_aes_cipher.TestAESCipherEngine.test_08_invalid_key_length_raises_cwe326)
+Test 8: Standart dışı (20 bayt) anahtar uzunluğunun reddi (CWE-326). ... ok
+test_09_predictable_static_iv_raises_cwe329 (tests.test_aes_cipher.TestAESCipherEngine.test_09_predictable_static_iv_raises_cwe329)
+Test 9: Tamamı sıfır veya statik tahmin edilebilir IV kullanımının engellenmesi (CWE-329). ... ok
+test_10_invalid_iv_length_raises_cwe329 (tests.test_aes_cipher.TestAESCipherEngine.test_10_invalid_iv_length_raises_cwe329)
+Test 10: 16 bayttan farklı IV uzunluğu iletiminin engellenmesi (CWE-329). ... ok
+test_11_pkcs7_corrupt_padding_raises_cwe347 (tests.test_aes_cipher.TestAESCipherEngine.test_11_pkcs7_corrupt_padding_raises_cwe347)
+Test 11: Bozuk veya sahte PKCS#7 dolgu baytının deşifrede tespiti (CWE-347). ... ok
+test_12_aead_encrypt_then_mac_tampering_raises_cwe353 (tests.test_aes_cipher.TestAESCipherEngine.test_12_aead_encrypt_then_mac_tampering_raises_cwe353)
+Test 12: AEAD şifreli metin kurcalandığında etiket uyuşmazlığı tespiti (CWE-353). ... ok
+test_13_oversized_payload_raises_cwe400 (tests.test_aes_cipher.TestAESCipherEngine.test_13_oversized_payload_raises_cwe400)
+Test 13: 1 MB tavanını aşan büyük metin girdisinin DoS korumasıyla engellenmesi (CWE-400). ... ok
+test_14_type_confusion_raises_cwe843 (tests.test_aes_cipher.TestAESCipherEngine.test_14_type_confusion_raises_cwe843)
+Test 14: Anahtar veya veri yerine tamsayı iletildiğinde tip hatası fırlatılması (CWE-843). ... ok
+test_15_negative_json_cases_verification (tests.test_aes_cipher.TestAESCipherEngine.test_15_negative_json_cases_verification)
+Test 15: ornek_veri/invalid_aes_inputs.json dosyasındaki 9 negatif senaryonun yürütülmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.039s
+
+OK
+

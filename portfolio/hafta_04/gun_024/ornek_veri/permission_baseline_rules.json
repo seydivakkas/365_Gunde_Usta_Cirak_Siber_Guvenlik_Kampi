@@ -1,0 +1,101 @@
+{
+  "standart": "CIS Linux Benchmark & NIST SP 800-53 AC-6 (En Az Ayricalik)",
+  "surum": "2026.1",
+  "aciklama": "Linux kritik dosya ve dizin izinleri temel guvenlik kurallari",
+  "guvenli_umask_degerleri": [
+    "027",
+    "077"
+  ],
+  "kabul_edilebilir_varsayilan_umask": "022",
+  "tehlikeli_umask_degerleri": [
+    "000",
+    "002",
+    "006"
+  ],
+  "kurallar": [
+    {
+      "kural_id": "RULE-SEC-001",
+      "hedef_yol": "/etc/shadow",
+      "aciklama": "Kullanici sifre hashlerini barindiran kritik sistem dosyasi",
+      "beklenen_sahip": "root",
+      "beklenen_grup": "shadow",
+      "izin_verilen_en_fazla_oktal": "0640",
+      "onerilen_oktal": "0600",
+      "yasakli_bitler": ["o+r", "o+w", "o+x", "g+w", "u+s", "g+s"],
+      "cwe_id": "CWE-732",
+      "risk_seviyesi": "KRITIK"
+    },
+    {
+      "kural_id": "RULE-SEC-002",
+      "hedef_yol": "/etc/passwd",
+      "aciklama": "Kullanici hesap kimlik ve kabuk bilgileri (herkesce okunabilir olmali)",
+      "beklenen_sahip": "root",
+      "beklenen_grup": "root",
+      "izin_verilen_en_fazla_oktal": "0644",
+      "onerilen_oktal": "0644",
+      "yasakli_bitler": ["o+w", "g+w", "u+s", "g+s"],
+      "cwe_id": "CWE-732",
+      "risk_seviyesi": "YUKSEK"
+    },
+    {
+      "kural_id": "RULE-SEC-003",
+      "hedef_yol": "/etc/sudoers",
+      "aciklama": "Sudo yetkilendirme yapilandirma dosyasi",
+      "beklenen_sahip": "root",
+      "beklenen_grup": "root",
+      "izin_verilen_en_fazla_oktal": "0440",
+      "onerilen_oktal": "0440",
+      "yasakli_bitler": ["o+r", "o+w", "o+x", "g+w", "u+w"],
+      "cwe_id": "CWE-732",
+      "risk_seviyesi": "KRITIK"
+    },
+    {
+      "kural_id": "RULE-SEC-004",
+      "hedef_yol": "/home/*/.ssh/id_rsa",
+      "aciklama": "SSH ozel anahtar dosyasi yalnizca sahip tarafindan okunabilir olmalidir",
+      "beklenen_sahip": "kullanici",
+      "beklenen_grup": "kullanici",
+      "izin_verilen_en_fazla_oktal": "0600",
+      "onerilen_oktal": "0600",
+      "yasakli_bitler": ["o+r", "o+w", "o+x", "g+r", "g+w", "g+x"],
+      "cwe_id": "CWE-732",
+      "risk_seviyesi": "KRITIK"
+    },
+    {
+      "kural_id": "RULE-SEC-005",
+      "hedef_yol": "/home/*/.ssh/authorized_keys",
+      "aciklama": "SSH yetkili acik anahtarlar listesi",
+      "beklenen_sahip": "kullanici",
+      "beklenen_grup": "kullanici",
+      "izin_verilen_en_fazla_oktal": "0600",
+      "onerilen_oktal": "0600",
+      "yasakli_bitler": ["o+w", "g+w"],
+      "cwe_id": "CWE-732",
+      "risk_seviyesi": "YUKSEK"
+    },
+    {
+      "kural_id": "RULE-SEC-006",
+      "hedef_yol": "/var/log/syslog",
+      "aciklama": "Sistem ana denetim ve olay gunlugu",
+      "beklenen_sahip": "syslog",
+      "beklenen_grup": "adm",
+      "izin_verilen_en_fazla_oktal": "0640",
+      "onerilen_oktal": "0640",
+      "yasakli_bitler": ["o+r", "o+w", "o+x", "g+w"],
+      "cwe_id": "CWE-732",
+      "risk_seviyesi": "ORTA"
+    },
+    {
+      "kural_id": "RULE-SEC-007",
+      "hedef_yol": "/tmp",
+      "aciklama": "Gecici dizin sticky bit (1777) ile korunmalidir",
+      "beklenen_sahip": "root",
+      "beklenen_grup": "root",
+      "izin_verilen_en_fazla_oktal": "1777",
+      "onerilen_oktal": "1777",
+      "zorunlu_bitler": ["t"],
+      "cwe_id": "CWE-377",
+      "risk_seviyesi": "YUKSEK"
+    }
+  ]
+}

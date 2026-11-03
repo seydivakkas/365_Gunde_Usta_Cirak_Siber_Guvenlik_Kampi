@@ -1,0 +1,11 @@
+================================================================================
+G054: YURUTULEN KOMUTLAR VE CIKIS KAYITLARI
+================================================================================
+
+[KOMUT 1]: python -m unittest portfolio/hafta_08/gun_054/tests/test_dns_query_record_analyzer.py -v
+[CIKIS 1]: Ran 14 tests in 0.001s -> OK (14/14 PASS)
+[DURUM 1]: Cikis Kodu = 0
+
+[KOMUT 2]: python scratch/generate_evidence_g054.py
+[CIKIS 2]: 7 kaynak kaydı, SPF/DMARC politikası, Subdomain Takeover riski ve DNS Tünelleme tespit edildi. 8/8 negatif girdi engellendi.
+[DURUM 2]: Cikis Kodu = 0

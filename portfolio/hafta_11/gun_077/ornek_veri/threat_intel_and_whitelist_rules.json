@@ -1,0 +1,37 @@
+{
+  "aciklama": "Gün 077: Mini Proje 10 için Tehdit İstihbaratı ve Beyaz Liste Politikaları",
+  "bilinen_zararli_ioc_ipleri": [
+    "198.51.100.25",
+    "198.51.100.99",
+    "203.0.113.5",
+    "203.0.113.80",
+    "8.8.8.8"
+  ],
+  "kurumsal_beyaz_liste": [
+    "8.8.8.8",
+    "1.1.1.1",
+    "10.0.0.15",
+    "192.168.1.50"
+  ],
+  "saldiri_imzalari": [
+    {
+      "ad": "SQL_INJECTION",
+      "desen": "(?i)UNION\\s+SELECT",
+      "risk": "CRITICAL"
+    },
+    {
+      "ad": "DIRECTORY_TRAVERSAL",
+      "desen": "\\.\\./\\.\\.",
+      "risk": "HIGH"
+    },
+    {
+      "ad": "PASSWD_ACCESS",
+      "desen": "etc/passwd",
+      "risk": "CRITICAL"
+    }
+  ],
+  "brute_force_esigi": {
+    "maksimum_hatali_giris": 5,
+    "pencere_saniyesi": 60
+  }
+}

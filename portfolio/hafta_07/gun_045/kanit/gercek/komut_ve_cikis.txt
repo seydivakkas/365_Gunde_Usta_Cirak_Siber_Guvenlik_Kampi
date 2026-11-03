@@ -1,0 +1,89 @@
+KOMUT: python portfolio/hafta_07/gun_045/uygulama/ipv4_cidr_analyzer.py
+
+ÇIKIŞ:
+================================================================================
+G045: IPv4 Adresleme, Alt AÄŸ (Subnetting) ve CIDR Analiz LaboratuvarÄ±
+================================================================================
+[*] Analiz Edilen: 192.168.1.10/24 (Standart RFC 1918 Ev/Ofis C SÄ±nÄ±fÄ± Ã–zel Alt AÄŸÄ±)
+    - AÄŸ Adresi      : 192.168.1.0
+    - Alt AÄŸ Maskesi : 255.255.255.0 (11111111.11111111.11111111.00000000)
+    - Ters Maske     : 0.0.0.255
+    - YayÄ±n Adresi   : 192.168.1.255
+    - Konak AralÄ±ÄŸÄ±  : 192.168.1.1 - 192.168.1.254
+    - Konak Kapasite : 254 kullanÄ±labilir / 256 toplam
+    - Kategori       : RFC 1918 Private (Class C)
+    - Bogon / Filtre : EVET (Engelle)
+--------------------------------------------------------------------------------
+[*] Analiz Edilen: 10.50.0.1/16 (GeniÅŸ Ã–lÃ§ekli Kurumsal RFC 1918 A SÄ±nÄ±fÄ± Ã–zel Alt AÄŸÄ±)
+    - AÄŸ Adresi      : 10.50.0.0
+    - Alt AÄŸ Maskesi : 255.255.0.0 (11111111.11111111.00000000.00000000)
+    - Ters Maske     : 0.0.255.255
+    - YayÄ±n Adresi   : 10.50.255.255
+    - Konak AralÄ±ÄŸÄ±  : 10.50.0.1 - 10.50.255.254
+    - Konak Kapasite : 65534 kullanÄ±labilir / 65536 toplam
+    - Kategori       : RFC 1918 Private (Class A)
+    - Bogon / Filtre : EVET (Engelle)
+--------------------------------------------------------------------------------
+[*] Analiz Edilen: 172.16.100.45/28 (Mikro-Segmentasyon DMZ Alt AÄŸÄ± (16 IP, 14 KullanÄ±labilir Host))
+    - AÄŸ Adresi      : 172.16.100.32
+    - Alt AÄŸ Maskesi : 255.255.255.240 (11111111.11111111.11111111.11110000)
+    - Ters Maske     : 0.0.0.15
+    - YayÄ±n Adresi   : 172.16.100.47
+    - Konak AralÄ±ÄŸÄ±  : 172.16.100.33 - 172.16.100.46
+    - Konak Kapasite : 14 kullanÄ±labilir / 16 toplam
+    - Kategori       : RFC 1918 Private (Class B)
+    - Bogon / Filtre : EVET (Engelle)
+--------------------------------------------------------------------------------
+[*] Analiz Edilen: 10.0.0.1/30 (Geleneksel YÃ¶nlendirici Noktadan Noktaya (Point-to-Point) Link AÄŸÄ±)
+    - AÄŸ Adresi      : 10.0.0.0
+    - Alt AÄŸ Maskesi : 255.255.255.252 (11111111.11111111.11111111.11111100)
+    - Ters Maske     : 0.0.0.3
+    - YayÄ±n Adresi   : 10.0.0.3
+    - Konak AralÄ±ÄŸÄ±  : 10.0.0.1 - 10.0.0.2
+    - Konak Kapasite : 2 kullanÄ±labilir / 4 toplam
+    - Kategori       : RFC 1918 Private (Class A)
+    - Bogon / Filtre : EVET (Engelle)
+--------------------------------------------------------------------------------
+[*] Analiz Edilen: 192.0.2.1/31 (RFC 3021 Modern Noktadan Noktaya BaÄŸlantÄ± (2 Host, Broadcast Yok))
+    - AÄŸ Adresi      : 192.0.2.0
+    - Alt AÄŸ Maskesi : 255.255.255.254 (11111111.11111111.11111111.11111110)
+    - Ters Maske     : 0.0.0.1
+    - YayÄ±n Adresi   : Yok (RFC 3021)
+    - Konak AralÄ±ÄŸÄ±  : 192.0.2.0 - 192.0.2.1
+    - Konak Kapasite : 2 kullanÄ±labilir / 2 toplam
+    - Kategori       : RFC 5737 Documentation (TEST-NET-1)
+    - Bogon / Filtre : EVET (Engelle)
+--------------------------------------------------------------------------------
+[*] Analiz Edilen: 198.51.100.5/32 (Tekil Host RotasÄ± (Tekil Cihaz / Loopback IP, Alt AÄŸ Yok))
+    - AÄŸ Adresi      : 198.51.100.5
+    - Alt AÄŸ Maskesi : 255.255.255.255 (11111111.11111111.11111111.11111111)
+    - Ters Maske     : 0.0.0.0
+    - YayÄ±n Adresi   : Yok (/32 Tekil Host)
+    - Konak AralÄ±ÄŸÄ±  : 198.51.100.5 - 198.51.100.5
+    - Konak Kapasite : 1 kullanÄ±labilir / 1 toplam
+    - Kategori       : RFC 5737 Documentation (TEST-NET-2)
+    - Bogon / Filtre : EVET (Engelle)
+--------------------------------------------------------------------------------
+[*] Analiz Edilen: 100.64.10.50/20 (RFC 6598 OperatÃ¶r Seviyesi NAT (CGNAT) PaylaÅŸÄ±mlÄ± Adres AlanÄ±)
+    - AÄŸ Adresi      : 100.64.0.0
+    - Alt AÄŸ Maskesi : 255.255.240.0 (11111111.11111111.11110000.00000000)
+    - Ters Maske     : 0.0.15.255
+    - YayÄ±n Adresi   : 100.64.15.255
+    - Konak AralÄ±ÄŸÄ±  : 100.64.0.1 - 100.64.15.254
+    - Konak Kapasite : 4094 kullanÄ±labilir / 4096 toplam
+    - Kategori       : RFC 6598 Shared Address Space (CGNAT)
+    - Bogon / Filtre : EVET (Engelle)
+--------------------------------------------------------------------------------
+[*] Analiz Edilen: 8.8.8.8/24 (Genel Ä°nternet YÃ¶nlendirilebilir Genel (Public) IP Alt AÄŸÄ±)
+    - AÄŸ Adresi      : 8.8.8.0
+    - Alt AÄŸ Maskesi : 255.255.255.0 (11111111.11111111.11111111.00000000)
+    - Ters Maske     : 0.0.0.255
+    - YayÄ±n Adresi   : 8.8.8.255
+    - Konak AralÄ±ÄŸÄ±  : 8.8.8.1 - 8.8.8.254
+    - Konak Kapasite : 254 kullanÄ±labilir / 256 toplam
+    - Kategori       : Public Routable IP
+    - Bogon / Filtre : HAYIR (Genel)
+--------------------------------------------------------------------------------
+
+[+] Ã–zet Analiz Raporu BaÅŸarÄ±yla OluÅŸturuldu.
+

@@ -1,0 +1,39 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Gerçek Birim Test Yürütme Kanıtı
+
+[METADATA]
+Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest portfolio\hafta_01\gun_005\tests\test_asset_classifier.py -v
+Çalışma Dizini: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Ortam: Python unittest / Python 3.14.3
+Zaman Damgası: 2026-10-26T17:25:00+03:00
+Çıkış Kodu: 0
+
+[TEST ÇIKTISI]
+test_bos_envanter_negatif_kontrol (portfolio.hafta_01.gun_005.tests.test_asset_classifier.TestAssetClassifier.test_bos_envanter_negatif_kontrol)
+NEGATİF KONTROL: 'varliklar' listesi boş bir liste verildiğinde sistemin ... ok
+test_dmz_kritik_varlik_uyarisi (portfolio.hafta_01.gun_005.tests.test_asset_classifier.TestAssetClassifier.test_dmz_kritik_varlik_uyarisi)
+AĞ SEGMENTASYONU KURALI: Kamuya açık olmayan 'KRITIK' bir iç varlık ... ok
+test_esnek_mod_hata_toplama (portfolio.hafta_01.gun_005.tests.test_asset_classifier.TestAssetClassifier.test_esnek_mod_hata_toplama)
+ESNEK DENETİM MODU: katilik_modu=False iken istisna fırlatılmadan ... ok
+test_gecerli_envanter_pozitif_kontrol (portfolio.hafta_01.gun_005.tests.test_asset_classifier.TestAssetClassifier.test_gecerli_envanter_pozitif_kontrol)
+POZİTİF KONTROL: 5 varlığın eksiksiz doğrulandığı, toplam donanım maliyetinin ... ok
+test_gecersiz_varlik_turu_negatif_kontrol (portfolio.hafta_01.gun_005.tests.test_asset_classifier.TestAssetClassifier.test_gecersiz_varlik_turu_negatif_kontrol)
+NEGATİF KONTROL: Standart varlık türleri (VERI, UYGULAMA, CIHAZ, KIMLIK, AG) ... ok
+test_gecersiz_veri_sinifi_negatif_kontrol (portfolio.hafta_01.gun_005.tests.test_asset_classifier.TestAssetClassifier.test_gecersiz_veri_sinifi_negatif_kontrol)
+NEGATİF KONTROL: Standart dışı bir veri sınıfı (örn: 'TOP_SECRET_UNKNOWN') ... ok
+test_guvenlik_uyumsuzlugu_sifresiz_gizli_veri (portfolio.hafta_01.gun_005.tests.test_asset_classifier.TestAssetClassifier.test_guvenlik_uyumsuzlugu_sifresiz_gizli_veri)
+MİMARİ GÜVENLİK KURALI: 'COK_GIZLI_SIR' veya 'GIZLI' sınıfında veri taşıyan ... ok
+test_mukerrer_id_negatif_kontrol (portfolio.hafta_01.gun_005.tests.test_asset_classifier.TestAssetClassifier.test_mukerrer_id_negatif_kontrol)
+NEGATİF KONTROL: İki farklı varlığa aynı 'varlik_id' verilmesi durumunda ... ok
+test_sahipsiz_varlik_negatif_kontrol (portfolio.hafta_01.gun_005.tests.test_asset_classifier.TestAssetClassifier.test_sahipsiz_varlik_negatif_kontrol)
+NEGATİF KONTROL: Bir varlığın 'sahip' (Asset Owner) alanı boş bırakıldığında ... ok
+test_tablo_ve_crown_jewel_orani (portfolio.hafta_01.gun_005.tests.test_asset_classifier.TestAssetClassifier.test_tablo_ve_crown_jewel_orani)
+GÖRSEL ÇIKTI VE PARADOKS TESTİ: ASCII tablosunun doğru başlıklarla ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK
+
+

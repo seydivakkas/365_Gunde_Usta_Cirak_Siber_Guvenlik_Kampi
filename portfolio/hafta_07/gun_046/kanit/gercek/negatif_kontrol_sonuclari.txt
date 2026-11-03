@@ -1,0 +1,51 @@
+G046: IPv6 Negatif Kontrol ve Hata Yakalama Test Sonuclari
+======================================================================
+Test ID: IPV6-ERR-01
+Girdi  : 2001::db8::1
+Hata   : MultipleDoubleColonError
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Bir IPv6 adresinde en fazla bir adet '::' çift iki nokta bulunabilir
+----------------------------------------------------------------------
+Test ID: IPV6-ERR-02
+Girdi  : 2001:0db8:85g3::1
+Hata   : InvalidHexCharacter
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Geçersiz onaltılık (hex) karakter içeriyor: '85g3'
+----------------------------------------------------------------------
+Test ID: IPV6-ERR-03
+Girdi  : 2001:00db8::1
+Hata   : HextetTooLong
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : Hextet 1 ila 4 onaltılık karakterden oluşmalıdır: '00db8' (5 karakter)
+----------------------------------------------------------------------
+Test ID: IPV6-ERR-04
+Girdi  : 1:2:3:4:5:6:7:8:9
+Hata   : TooManyHextets
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : '::' içermeyen adres tam olarak 8 hextet içermelidir, bulunan: 9
+----------------------------------------------------------------------
+Test ID: IPV6-ERR-05
+Girdi  : 1:2:3:4:5:6:7
+Hata   : TooFewHextets
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : '::' içermeyen adres tam olarak 8 hextet içermelidir, bulunan: 7
+----------------------------------------------------------------------
+Test ID: IPV6-ERR-06
+Girdi  : 2001:db8::1/129
+Hata   : PrefixOutOfRange
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : IPv6 önek uzunluğu 0 ile 128 arasında olmalıdır: 129
+----------------------------------------------------------------------
+Test ID: IPV6-ERR-07
+Girdi  : 2001:db8::1/-1
+Hata   : PrefixOutOfRange
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : IPv6 önek uzunluğu 0 ile 128 arasında olmalıdır: -1
+----------------------------------------------------------------------
+Test ID: IPV6-ERR-08
+Girdi  : 2001:db8::1/abc
+Hata   : InvalidPrefixFormat
+SONUC  : BASARILI (Istisna yakalandi)
+MESAJ  : IPv6 önek uzunluğu sayısal bir tam sayı olmalıdır: abc
+----------------------------------------------------------------------
+Toplam Negatif Test: 8 | Basarili Engelleme: 8

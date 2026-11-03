@@ -1,0 +1,54 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Bu dosya Siber Güvenlik 365 Gün Müfredatı kapsamında üretilmiştir.
+# Gün 020: Linux dosya ağacı ve FHS Birim Test Sonuçları Kanıtı
+
+Test Komutu:
+python -m unittest discover -s portfolio/hafta_03/gun_020/tests -p "test_*.py" -v
+
+Test Çalışma Tarihi: 2026-10-27T01:51:24
+Python Sürümü: Python 3.12.9
+Test Ortamı: Windows 11 (Cross-platform Linux FHS Security Analyzer)
+
+======================================================================
+TEST DETAYLARI:
+======================================================================
+test_01_init_ve_zorunlu_dizin_listesi (test_linux_fhs_hierarchy_auditor.TestLinuxFhsHierarchyAuditor.test_01_init_ve_zorunlu_dizin_listesi)
+Test 01: Sınıf başlatma ve zorunlu FHS dizin listesi doğrulaması. ... ok
+test_02_canli_platform_baglami_sorgulama (test_linux_fhs_hierarchy_auditor.TestLinuxFhsHierarchyAuditor.test_02_canli_platform_baglami_sorgulama)
+Test 02: Canlı sistemden çalışma ortamı ve kök dosya sistemi bağlamının okunması. ... ok
+test_03_dosya_yukleme_gecerli_json (test_linux_fhs_hierarchy_auditor.TestLinuxFhsHierarchyAuditor.test_03_dosya_yukleme_gecerli_json)
+Test 03: Geçerli JSON dosyasının UTF-8 ile hatasız yüklenmesi. ... ok
+test_04_dosya_yukleme_bulunamadi_negatif_kontrol (test_linux_fhs_hierarchy_auditor.TestLinuxFhsHierarchyAuditor.test_04_dosya_yukleme_bulunamadi_negatif_kontrol)
+Test 04: Var olmayan dosya istendiğinde FileNotFoundError fırlatılması (Negatif Test). ... ok
+test_05_fhs_alti_dizin_haritasi_dogrulamasi (test_linux_fhs_hierarchy_auditor.TestLinuxFhsHierarchyAuditor.test_05_fhs_alti_dizin_haritasi_dogrulamasi)
+Test 05: FHS 3.0 standardındaki en az 6 çekirdek dizinin doğrulanması (G020-SC2). ... ok
+test_06_fhs_eksik_dizin_negatif_kontrol (test_linux_fhs_hierarchy_auditor.TestLinuxFhsHierarchyAuditor.test_06_fhs_eksik_dizin_negatif_kontrol)
+Test 06: Temel dizinlerden biri (/var) eksik olduğunda ihlal üretilmesi (Negatif Test). ... ok
+test_07_sticky_bit_etkin_tmp_dizini_dogrulamasi (test_linux_fhs_hierarchy_auditor.TestLinuxFhsHierarchyAuditor.test_07_sticky_bit_etkin_tmp_dizini_dogrulamasi)
+Test 07: 1777 izinli ve Sticky Bit etkin /tmp dizininin güvenli onaylanması. ... ok
+test_08_sticky_bit_eksik_tmp_zafiyet_tespiti (test_linux_fhs_hierarchy_auditor.TestLinuxFhsHierarchyAuditor.test_08_sticky_bit_eksik_tmp_zafiyet_tespiti)
+Test 08: 0777 izinli ancak Sticky Bit eksik geçici alanda KRİTİK risk tespiti (CWE-377). ... ok
+test_09_mount_secenekleri_tam_tmp_dogrulamasi (test_linux_fhs_hierarchy_auditor.TestLinuxFhsHierarchyAuditor.test_09_mount_secenekleri_tam_tmp_dogrulamasi)
+Test 09: /tmp üzerinde nodev, nosuid, noexec mount seçeneklerinin tam doğrulanması. ... ok
+test_10_mount_secenekleri_eksik_bayrak_tespiti (test_linux_fhs_hierarchy_auditor.TestLinuxFhsHierarchyAuditor.test_10_mount_secenekleri_eksik_bayrak_tespiti)
+Test 10: /tmp üzerinde noexec eksik olduğunda YÜKSEK risk tespiti. ... ok
+test_11_kritik_shadow_dosyasi_guvenli_izin_dogrulamasi (test_linux_fhs_hierarchy_auditor.TestLinuxFhsHierarchyAuditor.test_11_kritik_shadow_dosyasi_guvenli_izin_dogrulamasi)
+Test 11: /etc/shadow dosyasının 0640 izniyle güvenli onaylanması. ... ok
+test_12_kritik_shadow_dosyasi_gevsik_izin_ihlal_tespiti (test_linux_fhs_hierarchy_auditor.TestLinuxFhsHierarchyAuditor.test_12_kritik_shadow_dosyasi_gevsik_izin_ihlal_tespiti)
+Test 12: /etc/shadow dosyası 0644 (world-readable) olduğunda KRİTİK risk tespiti (CWE-732). ... ok
+test_13_tam_denetim_raporu_olusturma (test_linux_fhs_hierarchy_auditor.TestLinuxFhsHierarchyAuditor.test_13_tam_denetim_raporu_olusturma)
+Test 13: Bütünleştirilmiş tam denetim raporunun eksiksiz veri üretmesi. ... ok
+test_14_cli_alt_surec_yurutme_dogrulamasi (test_linux_fhs_hierarchy_auditor.TestLinuxFhsHierarchyAuditor.test_14_cli_alt_surec_yurutme_dogrulamasi)
+Test 14: Komut satırı (CLI) aracının harici alt süreç (subprocess) olarak yürütülmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.239s
+
+OK
+
+SONUÇ: 14/14 BAŞARILI (100% PASS)
+Eksik/Hatalı Test: 0
+Negatif Test Sayısı: 4 (test_04, test_06, test_08, test_12)
+Sınır Değer / Pozitif Test Sayısı: 10
+Doğrulama Durumu: TAM GEÇTİ

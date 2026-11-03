@@ -1,0 +1,53 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+# Gerçek Yürütme Kanıtı: DFD ve Tehdit Modelleme Doğrulaması
+
+[METADATA]
+Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe portfolio\hafta_01\gun_006\uygulama\threat_modeler.py --dfd portfolio\hafta_01\gun_006\ornek_veri\not_uygulamasi_dfd.json
+Çalışma Dizini: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi
+Ortam: Windows 11 / Python 3.14.3
+Zaman Damgası: 2026-10-26T19:10:00+03:00
+Çıkış Kodu: 0
+
+[STANDART ÇIKTI (STDOUT)]
+========================================================================================================
+  VERİ AKIŞ DİYAGRAMI (DFD) VE GÜVEN SINIRI ŞEMASI: KriptoNot Yerel Not ve Senkronizasyon Uygulaması
+  Gün: G006 | Bileşen: 4 | Sınır: 3 | Akış: 4
+========================================================================================================
+
+  [DIŞ VARLIK: E1]                 === GÜVEN SINIRI: TB1 (Kullanıcı Girdi Sınırı) ===
+  (Kullanıcı / İnsan)
+          |
+          |  [DF1: Not Girişi / Girdi Doğrulama & Sanitizasyon]
+          v
+  +--------------------------------------------------------------------------------+
+  | [SÜREÇ: P1] Not Defteri İstemci Süreci (Masaüstü Uygulaması)                   |
+  | - Kullanıcı Arayüzü Yönetimi                                                   |
+  | - Kriptografik Şifreleme / Çözme (AES-256-GCM)                                 |
+  +-----------------------+--------------------------------+-----------------------+
+                          |                                |
+   === GÜVEN SINIRI: TB2 (Disk/Depolama) ===       === GÜVEN SINIRI: TB3 (İnternet/Bulut) ===
+                          |                                |
+     [DF2/DF3: Şifreli Okuma/Yazma]                 [DF4: Sıfır Bilgi TLS 1.3 Sync]
+     - AES-256-GCM + Auth Tag                      - Certificate Pinning + JWT
+                          |                                |
+                          v                                v
+  [(VERİ DEPOSU: DS1)]                             [UZAK SÜREÇ: P2]
+  Şifreli Not Kasası (SQLite Dosyası)              Bulut Senkronizasyon Sunucusu (API)
+
+--------------------------------------------------------------------------------------------------------
+  STRIDE TEHDİT KAPSAMI VE DURUMU:
+    * SPOOFING                : 1 Tehdit Tanımlı ve Engellendi
+    * TAMPERING               : 1 Tehdit Tanımlı ve Engellendi
+    * REPUDIATION             : Tehdit Tanımlanmamış
+    * INFORMATION_DISCLOSURE  : 2 Tehdit Tanımlı ve Engellendi
+    * DENIAL_OF_SERVICE       : 1 Tehdit Tanımlı ve Engellendi
+    * ELEVATION_OF_PRIVILEGE  : Tehdit Tanımlanmamış
+--------------------------------------------------------------------------------------------------------
+  [+] MİMARİ DOĞRULAMA BAŞARILI: Güven sınırlarını geçen tüm akışlar kriptografik olarak korunmuştur.
+      Açıkta kalan (sahipsiz/mitigasyonsuz) hiçbir STRIDE tehdidi tespit edilmedi.
+========================================================================================================
+
+
+[HATA ÇIKTISI (STDERR)]
+(Temiz - Hata Yok)

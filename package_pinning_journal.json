@@ -1,0 +1,16 @@
+[
+  {
+    "islem_id": "PIN-1793088341917",
+    "zaman_damgasi": "2026-10-27T08:05:41Z",
+    "paket_adi": "nginx",
+    "sabitlenen_surum": "1.18.0",
+    "durum": "SABITLENDI"
+  },
+  {
+    "islem_id": "PIN-1793088347232",
+    "zaman_damgasi": "2026-10-27T08:05:47Z",
+    "paket_adi": "nginx",
+    "sabitlenen_surum": "1.18.0",
+    "durum": "SABITLENDI"
+  }
+]

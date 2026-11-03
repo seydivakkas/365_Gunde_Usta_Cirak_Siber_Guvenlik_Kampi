@@ -1,0 +1,64 @@
+======================================================================
+LINUX JOURNALCTL VE GÜNLÜK DİZİNLERİ ADLİ DENETİM RAPORU
+======================================================================
+Rapor Zamanı (UTC)     : 2026-10-27T08:15:36.214505+00:00
+Toplam Doğrulanan Kayıt: 6
+Filtrelenmiş Olay Sayısı: 6
+Reddedilen Hatalı Kayıt: 0
+----------------------------------------------------------------------
+YAPILANDIRMA DENETİMİ (/etc/systemd/journald.conf):
+   Kalıcılık Modu (Storage) : persistent [GÜVENLİ - DISKTE KALICI]
+   FSS Mühürleme (Seal)     : yes
+   Maksimum Kota (SystemMax): 4G
+----------------------------------------------------------------------
+G030-SC1 SAAT DİLİMİ VE KORELASYON İNCELEMESİ (UTC vs YEREL SAAT):
+----------------------------------------------------------------------
+
+[GÜNLÜK #1] Birim: systemd-journald.service (PID: 412) | Öncelik: 6 (INFO)
+   Zaman (UTC)         : 2026-10-27T08:15:30.124500Z
+   Zaman (Yerel Saat)  : 2026-10-27T11:15:30.124500+03:00 (Ofset: +03:00)
+   Depolama Yolu       : /var/log/journal (Kalıcı: True)
+   Kriptografik İzi    : 36a4ed527446ad72f3766e06...
+   Mesaj               : Runtime journal (/run/log/journal/...) opened and flushed to persistent storage (/var/log/journal/...).
+
+[GÜNLÜK #2] Birim: sshd.service (PID: 890) | Öncelik: 6 (INFO)
+   Zaman (UTC)         : 2026-10-27T08:15:35.450120Z
+   Zaman (Yerel Saat)  : 2026-10-27T11:15:35.450120+03:00 (Ofset: +03:00)
+   Depolama Yolu       : /var/log/journal (Kalıcı: True)
+   Kriptografik İzi    : d3096d7604a3bb9a8fd5ca8b...
+   Mesaj               : Accepted publickey for secops from 192.168.1.50 port 54220 ssh2: RSA SHA256:4U5xZ...
+
+[GÜNLÜK #3] Birim: sshd.service (PID: 894) | Öncelik: 4 (WARNING)
+   Zaman (UTC)         : 2026-10-27T08:15:42.780910Z
+   Zaman (Yerel Saat)  : 2026-10-27T11:15:42.780910+03:00 (Ofset: +03:00)
+   Depolama Yolu       : /var/log/journal (Kalıcı: True)
+   Kriptografik İzi    : dfbae6badfff1b2ca9609f4a...
+   Mesaj               : Failed password for invalid user admin from 10.0.4.99 port 41234 ssh2
+
+[GÜNLÜK #4] Birim: sudo.service (PID: 1024) | Öncelik: 5 (NOTICE)
+   Zaman (UTC)         : 2026-10-27T08:15:50.110220Z
+   Zaman (Yerel Saat)  : 2026-10-27T11:15:50.110220+03:00 (Ofset: +03:00)
+   Depolama Yolu       : /var/log/journal (Kalıcı: True)
+   Kriptografik İzi    : 6223b8185a451db1be433045...
+   Mesaj               : secops : TTY=pts/0 ; PWD=/home/secops ; USER=root ; COMMAND=/bin/systemctl restart nginx
+
+[GÜNLÜK #5] Birim: kernel (PID: 0) | Öncelik: 3 (ERR)
+   Zaman (UTC)         : 2026-10-27T08:16:00.890120Z
+   Zaman (Yerel Saat)  : 2026-10-27T11:16:00.890120+03:00 (Ofset: +03:00)
+   Depolama Yolu       : /var/log/journal (Kalıcı: True)
+   Kriptografik İzi    : 74b3d326d46fa6e87214e840...
+   Mesaj               : EXT4-fs (sda1): re-mounted. Opts: errors=remount-ro
+
+[GÜNLÜK #6] Birim: nginx.service (PID: 1150) | Öncelik: 6 (INFO)
+   Zaman (UTC)         : 2026-10-27T08:16:15.340110Z
+   Zaman (Yerel Saat)  : 2026-10-27T11:16:15.340110+03:00 (Ofset: +03:00)
+   Depolama Yolu       : /var/log/journal (Kalıcı: True)
+   Kriptografik İzi    : 0f6e82c564e8659312ad6d1e...
+   Mesaj               : nginx/1.24.0 worker process started, ready to serve traffic.
+
+======================================================================
+GÜVENLİK VE ADLİ ANALİZ DERSİ (G030-SC1 & G030-SC2):
+- Saat dilimi farkı (+03:00 vs UTC), çoklu sunucu olay korelasyonunda
+  olayların sırasının yanlış yorumlanmasına yol açabilir.
+- Adli araştırmalarda daima `journalctl --utc` parametresi kullanılmalıdır.
+======================================================================

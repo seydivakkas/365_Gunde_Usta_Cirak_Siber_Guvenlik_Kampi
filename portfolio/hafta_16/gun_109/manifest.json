@@ -1,0 +1,97 @@
+{
+  "gun": 109,
+  "konu": "PKI ve sertifika yaşam döngüsü",
+  "olusturma_tarihi": "2026-11-02T04:03:43.532237",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "ccf7f97f9ffad721e5c2b2a5381af9fd2ad733bf73c454b7447f0454e453bbd3",
+      "boyut_bayt": 5330
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "c59439f01f72c9f5a4c9f5a012569375837485235b6f184bc8f49326ea953244",
+      "boyut_bayt": 10692
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "45d86649210a8e7ca5b929d8eb84ff673236ce40dec71f1a8a9a16cd6504a83d",
+      "boyut_bayt": 12364
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "5c4e9c1f49c9f42872351f2e63dd0d746ff56027b546c9142a9d8defa43dd7de",
+      "boyut_bayt": 5125
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "4c2eea281845185d726d77aa379c7a648725504a21bc7b8fda028b58b7446b66",
+      "boyut_bayt": 775
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "c698f282665250628ff6e309d0541871c8a845734ecce3fcf555b2665956525e",
+      "boyut_bayt": 14348
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "1e05a3d4a33130a908435fa9caebac3ca0027d96c4c5759a8310e013d7783bd2",
+      "boyut_bayt": 3222
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "c7693f2f9742690d12957d9c33a3c5987d442aeeb4643d647797fc71245f0c15",
+      "boyut_bayt": 3344
+    },
+    {
+      "dosya": "kanit\\gercek\\pki_yasam_dongusu_analiz_raporu.txt",
+      "sha256": "e553ce4991c6b9a894f5265785c63b84147f0c0363aeb4d6196acdfff4b0e7b5",
+      "boyut_bayt": 1696
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "3408e9f86a451551d2e61ea8c1d02b421da6498e29090e7924e98caaafdf0351",
+      "boyut_bayt": 384
+    },
+    {
+      "dosya": "kanit\\temsili\\pki_yasam_dongusu_mimarisi.txt",
+      "sha256": "daba6fa3be331a0ec7533f73f0b597567648770740c7fd5fa7c757dcbb36209e",
+      "boyut_bayt": 5071
+    },
+    {
+      "dosya": "ornek_veri\\invalid_lifecycle_inputs.json",
+      "sha256": "5cb830fe9ec38d555ba4adf6a736f31b94b801b8953a99533df71875eab21fbf",
+      "boyut_bayt": 4312
+    },
+    {
+      "dosya": "ornek_veri\\pki_config_sample.json",
+      "sha256": "fd1f12ef59d0105c76db8a83cca85389474b7aa11cd4ef06f990d6d28782ebf0",
+      "boyut_bayt": 1009
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "c868367c8655c16fdb9aa1caae2559e871fc9dc00efc32576a5981b93d69c4ec",
+      "boyut_bayt": 588
+    },
+    {
+      "dosya": "tests\\test_pki_lifecycle.py",
+      "sha256": "2640e88fb3f020a641f6c4bb65d84e8b86c2f744b6c7f85c877eab79d79da4bf",
+      "boyut_bayt": 10783
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "9f8d45af1c64eb8499c69376e2990452e6057ba8ba5210f6a0b9177048deb237",
+      "boyut_bayt": 684
+    },
+    {
+      "dosya": "uygulama\\pki_cli.py",
+      "sha256": "dc778b37e67cf40e22c60faf31ed17d56f4db4abb22860436b8edda6ebbd6ba2",
+      "boyut_bayt": 10115
+    },
+    {
+      "dosya": "uygulama\\pki_lifecycle_engine.py",
+      "sha256": "6b689a84d9e79b0dd08e737b842b624ca7d6a591c7e91107104d6313809ce331",
+      "boyut_bayt": 28174
+    }
+  ]
+}

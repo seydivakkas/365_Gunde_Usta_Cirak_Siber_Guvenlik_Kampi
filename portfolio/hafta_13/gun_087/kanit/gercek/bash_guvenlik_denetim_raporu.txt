@@ -1,0 +1,86 @@
+================================================================================
+G087: BASH BETIK ISKELETI VE QUOTING STATIK GU蕪ENLIK DENETIM RAPORU
+Uretim Tarihi: 2026-11-01T20:00:43.868941+00:00
+================================================================================
+
+--- 1. GUVENLI ORNEK BETIK DENETIMI (sample_secure_script.sh) ---
+Shebang Mevcut mu     : True (#!/usr/bin/env bash)
+Strict Mode (set -euo): True
+Guvenli IFS Tanimi    : True
+Trap Yakalayicisi     : True
+Toplam Bulgu Sayisi   : 0
+Guvenlik Durumu       : TAMAMEN GUVENLI (PASS)
+
+--- 2. ZAAFIYETLI ORNEK BETIK DENETIMI (sample_vulnerable_script.sh) ---
+Shebang Mevcut mu     : False (#!/bin/sh)
+Strict Mode (set -euo): False
+Guvenli IFS Tanimi    : False
+Trap Yakalayicisi     : False
+Toplam Bulgu Sayisi   : 8
+Guvenlik Durumu       : KRITIK BULGULAR MEVCUT (FAIL)
+
+DETAYLI BULGULAR LISTESI (sample_vulnerable_script.sh):
+  [1] Kural     : MISSING_OR_INVALID_SHEBANG
+      Satir     : 1
+      Seviye    : MEDIUM
+      CWE       : CWE-20: Missing Script Interpreter Declaration
+      Kod       : #!/bin/sh
+      Detay     : Betiğin ilk satirinda standart bash shebang bildirimi (#!/usr/bin/env bash) bulunmuyor.
+      Tavsiye   : Betiğin ilk satirina '#!/usr/bin/env bash' ifadesini ekleyin.
+      ------------------------------------------------------------
+  [2] Kural     : MISSING_STRICT_MODE
+      Satir     : 2
+      Seviye    : HIGH
+      CWE       : CWE-754: Improper Check for Exceptional Conditions
+      Kod       : set -euo pipefail
+      Detay     : Betiğin basinda 'set -euo pipefail' katı modu tanimlanmamis. Hatalar yakalanmadan yurutme devam edebilir.
+      Tavsiye   : Betiğin basina 'set -euo pipefail' ekleyerek tanimsiz degisken ve boru hatti hatalarini engelleyin.
+      ------------------------------------------------------------
+  [3] Kural     : MISSING_SAFE_IFS
+      Satir     : 3
+      Seviye    : LOW
+      CWE       : CWE-20: Default Internal Field Separator
+      Kod       : IFS=$'\n\t'
+      Detay     : Betiğin basinda IFS=$'\n\t' guvenli alan ayiricisi ayarlanmamis.
+      Tavsiye   : Kelime bolunmesini (word splitting) sinirlandirmak icin 'IFS=$'\n\t'' tanimlayin.
+      ------------------------------------------------------------
+  [4] Kural     : MISSING_CLEANUP_TRAP
+      Satir     : 4
+      Seviye    : LOW
+      CWE       : CWE-754: Missing Error Cleanup Handler
+      Kod       : trap 'cleanup' EXIT
+      Detay     : Beklenmeyen cikis veya hata aninda kaynak temizligi yapacak bir trap yakalayicisi bulunmuyor.
+      Tavsiye   : trap 'cleanup' EXIT ERR ekleyerek gecici dosyalari ve kilitleri guvenle temizleyin.
+      ------------------------------------------------------------
+  [5] Kural     : CATASTROPHIC_UNQUOTED_VARIABLE
+      Satir     : 17
+      Seviye    : CRITICAL
+      CWE       : CWE-732: Incorrect Permission Assignment / Path Hijack
+      Kod       : rm -rf $TARGET_DIR/*
+      Detay     : rm, chmod veya dosya silme komutlarinda degisken tirnaksiz kullanilmis. Degisken bossa '/' silinebilir!
+      Tavsiye   : Degiskeni mutlaka cift tirnak icine alin: "${TARGET_DIR}" ve degisken boslugunu kontrol edin.
+      ------------------------------------------------------------
+  [6] Kural     : DANGEROUS_EVAL_USAGE
+      Satir     : 20
+      Seviye    : CRITICAL
+      CWE       : CWE-78: OS Command Injection via eval
+      Kod       : eval $USER_COMMAND
+      Detay     : eval komutu calisma zamaninda dinamik kod calistirarak keyfi komut enjeksiyonuna olanak tanir.
+      Tavsiye   : eval kullanimini kaldirin; dinamik komutlar yerine yerel fonksiyonlar veya diziler kullanin.
+      ------------------------------------------------------------
+  [7] Kural     : UNQUOTED_LS_COMMAND_SUBSTITUTION
+      Satir     : 23
+      Seviye    : HIGH
+      CWE       : CWE-88: Word Splitting on Command Output
+      Kod       : for f in $(ls $TARGET_DIR); do
+      Detay     : 'for f in $(ls)' kalibi bosluk iceren dosya adlarinda bozulur ve globbing zafiyetine aciktir.
+      Tavsiye   : ls yerine kabuk globbingi kullanin: 'for f in *; do' veya find -print0 ile while read dongusu kurun.
+      ------------------------------------------------------------
+  [8] Kural     : UNQUOTED_ARRAY_EXPANSION
+      Satir     : 28
+      Seviye    : HIGH
+      CWE       : CWE-20: Unquoted Parameter List Expansion
+      Kod       : echo Argumanlar: $*
+      Detay     : Tirnaksiz $* veya $@ kullanimi kelime bolunmesine (word splitting) yol acar.
+      Tavsiye   : Her zaman cift tirnak icinde "${@}" formatini kullanin.
+      ------------------------------------------------------------

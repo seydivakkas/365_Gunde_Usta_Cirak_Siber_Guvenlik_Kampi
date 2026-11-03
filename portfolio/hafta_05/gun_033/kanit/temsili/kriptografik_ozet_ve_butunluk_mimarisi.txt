@@ -1,0 +1,73 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+Konu: Gün 33 — Kriptografik Dosya Özeti (Hash), Çığ Etkisi ve Bütünlük (FIM) Mimarisi
+Amaç: Dosya içeriğindeki tek bitlik değişimin SHA-256 özetinde yol açtığı Çığ Etkisi
+      (Avalanche Effect) ve Dosya Bütünlüğü İzleme (FIM) doğrulama mimarisi.
+
++---------------------------------------------------------------------------------------+
+|                    KRİPTOGRAFİK ÖZET (HASH) VE ÇIĞ ETKİSİ MİMARİSİ                    |
++---------------------------------------------------------------------------------------+
+
+                      Girdi Dosyası A (Orijinal)
+                  +--------------------------------+
+                  |  "debug_mode": false (190 B)   |
+                  +---------------+----------------+
+                                  |
+                                  v
+                  +--------------------------------+
+                  |     SHA-256 HASH ALGORİTMASI   |
+                  +---------------+----------------+
+                                  |
+                                  v
+                  +--------------------------------+
+                  | 2cf886ce37d1c9fdf227bd875fc... | (Orijinal Özet - 256 bit)
+                  +---------------+----------------+
+                                  |
+               [ Hamming Distance Karşılaştırması ] <---+
+                                  |                     |
+                  +---------------+----------------+    |
+                  | 91a7743b52a28d0b1f2f9ac03d8... |    | (Tahrif Edilmiş Özet)
+                  +---------------+----------------+    |
+                                  ^                     |
+                                  |                     |
+                  +--------------------------------+    |
+                  |     SHA-256 HASH ALGORİTMASI   |    |
+                  +---------------+----------------+    |
+                                  ^                     |
+                                  |                     |
+                  +---------------+----------------+    |
+                  |  "debug_mode": true  (190 B)   |    |
+                  +--------------------------------+    |
+                     Girdi Dosyası B (1 Bit Değişiklik) |
+                                                        |
++-------------------------------------------------------+-------------------------------+
+| ÇIĞ ETKİSİ (AVALANCHE EFFECT) İSTATİSTİĞİ:                                           |
+|   - Toplam Bit Sayısı   : 256 bit                                                     |
+|   - Değişen Bit Sayısı  : 122 bit                                                     |
+|   - Değişim Oranı       : % 47.66 (~%50 Kriptografik İdeal)                           |
++---------------------------------------------------------------------------------------+
+
++---------------------------------------------------------------------------------------+
+| DOSYA BÜTÜNLÜĞÜ İZLEME (FILE INTEGRITY MONITORING - FIM) MEKANİZMASI                  |
++---------------------------------------------------------------------------------------+
+|                                                                                       |
+|  [TABAN ÇİZGİSİ] ---------> [DİSKTEKİ FİİLİ DOSYA] ---------> [DURUM VE AKSİYON]     |
+|                                                                                       |
+|  1. Hash: AAAAAAAA   ===>   Fiili Hash: AAAAAAAA   ===>  [VERIFIED_CLEAN] (Bütünlük Tam)
+|  2. Hash: BBBBBBBB   ===>   Fiili Hash: XXXXXXXX   ===>  [CRITICAL: INTEGRITY COMPROMISED]
+|  3. Hash: CCCCCCCC   ===>   Fiili Dosya: Yok       ===>  [HIGH: FILE_MISSING]        |
+|  4. Hash: Tanımsız   ===>   Fiili Dosya: Var       ===>  [MEDIUM: NEW_UNAUTHORIZED]  |
+|                                                                                       |
++---------------------------------------------------------------------------------------+
+| G033-SC1 KRİTİK GÜVENLİK İLKESİ:                                                      |
+| "Hash tek başına bir dosyanın güvenilir (trusted) olduğunu söylemez!"                 |
+|   - Bütünlük (Integrity) != Güvenilirlik (Trustworthiness)                            |
+|   - Zararlı bir Truva Atı veya Ransomware da mükemmel ve tutarlı bir SHA-256 özetine  |
+|     sahiptir. Hash yalnızca 'değişip değişmediğini' kanıtlar.                         |
+|   - Güven için: Dijital İmza (Authenticode), Kod İmzalama Sertifikası, EDR/VT İtibarı |
+|     ve Davranış Analizi zorunludur.                                                   |
++---------------------------------------------------------------------------------------+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

@@ -1,0 +1,52 @@
+========================================================================
+  GÜN 110: TLS GÜVENLİK SINIRI NEGATİF KONTROL VE ZAFİYET SAVUNMA SONUÇLARI
+  Tarih: 2026-11-02T04:07:58.337659
+========================================================================
+
+Senaryo: NEG_01_DOWNGRADE_ATTACK_SSL3 - Güvenlik Protokolünü SSL 3.0 / TLS 1.0'a Düşürme (Downgrade Dance)
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    TLSDowngradeDetectedError
+Mesaj:   CWE-757: TLS_FALLBACK_SCSV uyarınca downgrade saldırısı tespit edildi! Sunucu TLSv1.3 desteklerken istemci TLSv1.2 teklif etti.
+------------------------------------------------------------------------
+Senaryo: NEG_02_GUVENSIZ_SIFRE_PAKETI - Kırılmış/Güvensiz Şifre Paketi Talebi (RC4 / DES / NULL)
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    InsecureCipherSuiteError
+Mesaj:   CWE-327 / CWE-757: İstemcinin sunduğu paketlerin hiçbiri güvenlik politikasını sağlamıyor (RC4/DES/Statik RSA reddedildi)!
+------------------------------------------------------------------------
+Senaryo: NEG_03_HANDSHAKE_TRANSCRIPT_TAHRIFATI - El Sıkışma Mesajlarında Araya Girme ve Finished Hash Uyuşmazlığı
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    HandshakeTranscriptIntegrityError
+Mesaj:   CWE-353: Finished mesajı doğrulanamadı! El sıkışma transkripti aradaki saldırgan tarafından değiştirilmiştir.
+------------------------------------------------------------------------
+Senaryo: NEG_04_PFS_OLMAYAN_STATIK_RSA - İleriye Dönük Gizlilik (PFS) Bulunmayan Statik RSA Anahtar Değişimi
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    ForwardSecrecyRequiredError
+Mesaj:   CWE-327: Sunucu İleriye Dönük Gizlilik (PFS) gerektirmektedir; statik RSA anahtar değişimi reddedildi!
+------------------------------------------------------------------------
+Senaryo: NEG_05_GECERSIZ_RECORD_MAC_AEAD - TLS Record Katmanında Bozuk Bütünlük / Sahte Şifreli Paket
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    BadRecordMACError
+Mesaj:   CWE-353: Record katmanı AEAD kimlik doğrulama etiketi (MAC) uyuşmuyor!
+------------------------------------------------------------------------
+Senaryo: NEG_06_REPLAY_ATTACK_0RTT - TLS 1.3 0-RTT Erken Veri (Early Data) Replay Saldırısı
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    ZeroRTTReplayDetectedError
+Mesaj:   CWE-294: 0-RTT Erken Veri Replay saldırısı engellendi! Bilet ID (ticket_abc123) zaten kullanıldı.
+------------------------------------------------------------------------
+Senaryo: NEG_07_RECORD_SEQUENCE_NUMBER_ATLAMA - TLS Record Sıra Numarası (Sequence Number) Atlama veya Kaydırma
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    InvalidSequenceNumberError
+Mesaj:   CWE-353: Beklenen sıra numarası 0, gelen sıra numarası 7 ile uyuşmuyor!
+------------------------------------------------------------------------
+Senaryo: NEG_08_ASIRI_BUYUK_RECORD_FRAGMENT - Protokol Sınırını Aşan Aşırı Büyük TLS Record Fragment (Buffer Overflow Riski)
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    RecordOverflowError
+Mesaj:   CWE-20: Record boyutu (18432 bayt) izin verilen azami sınırı (16384) aşıyor!
+------------------------------------------------------------------------
+Senaryo: NEG_09_DOWNGRADE_SENTINEL_TESPITI - TLS 1.3 Destekleyen Sunucuda Rastgele Değere Downgrade Sentinel Gömülmesi
+Durum:   [BAŞARILI - ENGELLENDİ]
+Hata:    DowngradeSentinelMismatchError
+Mesaj:   CWE-757: ServerRandom içinde TLS 1.2 Downgrade Sentinel baytları tespit edildi! Araya girme (MitM) engellendi.
+------------------------------------------------------------------------
+
+Özet: Toplam Senaryo: 9, Başarılı Engelleme: 9

@@ -1,0 +1,106 @@
+{
+  "aciklama": "TLS Güvenlik Sınırları ve El Sıkışma Negatif Test Senaryoları (9 Adet)",
+  "senaryolar": [
+    {
+      "id": "NEG_01_DOWNGRADE_ATTACK_SSL3",
+      "baslik": "Güvenlik Protokolünü SSL 3.0 / TLS 1.0'a Düşürme (Downgrade Dance)",
+      "zafiyet_kodu": "CWE-757",
+      "hata_tipi": "TLSDowngradeDetectedError",
+      "veri": {
+        "istemci_desteklenen_surumler": ["TLSv1.3", "TLSv1.2"],
+        "saldirgan_zorlanan_surum": "SSLv3",
+        "fallback_scsv_aktif": true
+      },
+      "beklenen_sonuc": "Sunucu ve istemci modern sürümleri desteklediği halde eski sürüme zorlama tespit edilmeli ve el sıkışma iptal edilmelidir."
+    },
+    {
+      "id": "NEG_02_GUVENSIZ_SIFRE_PAKETI",
+      "baslik": "Kırılmış/Güvensiz Şifre Paketi Talebi (RC4 / DES / NULL)",
+      "zafiyet_kodu": "CWE-327",
+      "hata_tipi": "InsecureCipherSuiteError",
+      "veri": {
+        "talep_edilen_paketler": ["TLS_RSA_WITH_RC4_128_MD5", "TLS_RSA_WITH_NULL_SHA"]
+      },
+      "beklenen_sonuc": "Güvenlik sınırları gereği RFC 7465 uyarınca yasaklanan RC4 ve NULL şifreler derhal reddedilmelidir."
+    },
+    {
+      "id": "NEG_03_HANDSHAKE_TRANSCRIPT_TAHRIFATI",
+      "baslik": "El Sıkışma Mesajlarında Araya Girme ve Finished Hash Uyuşmazlığı",
+      "zafiyet_kodu": "CWE-353",
+      "hata_tipi": "HandshakeTranscriptIntegrityError",
+      "veri": {
+        "orijinal_client_hello": "ciphers: [TLS_AES_256_GCM_SHA384]",
+        "tahrif_edilmis_client_hello": "ciphers: [TLS_RSA_WITH_AES_128_CBC_SHA]"
+      },
+      "beklenen_sonuc": "Finished mesajı el sıkışma transkriptinin özetini doğrulamalı; aradaki tahrifat fark edilerek bağlantı kesilmelidir."
+    },
+    {
+      "id": "NEG_04_PFS_OLMAYAN_STATIK_RSA",
+      "baslik": "İleriye Dönük Gizlilik (PFS) Bulunmayan Statik RSA Anahtar Değişimi",
+      "zafiyet_kodu": "CWE-327",
+      "hata_tipi": "ForwardSecrecyRequiredError",
+      "veri": {
+        "politika": "REQUIRE_PFS",
+        "secilen_anahtar_degisimi": "RSA_STATIC"
+      },
+      "beklenen_sonuc": "Modern TLS politikası statik RSA anahtar değişimini reddetmeli ve Ephemeral Diffie-Hellman (ECDHE/DHE) zorunlu tutmalıdır."
+    },
+    {
+      "id": "NEG_05_GECERSIZ_RECORD_MAC_AEAD",
+      "baslik": "TLS Record Katmanında Bozuk Bütünlük / Sahte Şifreli Paket",
+      "zafiyet_kodu": "CWE-353",
+      "hata_tipi": "BadRecordMACError",
+      "veri": {
+        "record_payload_hex": "48656c6c6f",
+        "sahte_tag_hex": "00112233445566778899aabbccddeeff"
+      },
+      "beklenen_sonuc": "AEAD şifre çözme işlemi auth tag uyuşmazlığında BadRecordMAC fatal alert üretmelidir."
+    },
+    {
+      "id": "NEG_06_REPLAY_ATTACK_0RTT",
+      "baslik": "TLS 1.3 0-RTT Erken Veri (Early Data) Replay Saldırısı",
+      "zafiyet_kodu": "CWE-294",
+      "hata_tipi": "ZeroRTTReplayDetectedError",
+      "veri": {
+        "bilet_id": "ticket_abc123",
+        "istek_sayaci": 2,
+        "izin_verilen": 1
+      },
+      "beklenen_sonuc": "Aynı 0-RTT erken veri biletiyle mükerrer gelen finansal istek anti-replay önbelleği tarafından engellenmelidir."
+    },
+    {
+      "id": "NEG_07_RECORD_SEQUENCE_NUMBER_ATLAMA",
+      "baslik": "TLS Record Sıra Numarası (Sequence Number) Atlama veya Kaydırma",
+      "zafiyet_kodu": "CWE-353",
+      "hata_tipi": "InvalidSequenceNumberError",
+      "veri": {
+        "beklenen_seq": 4,
+        "gelen_seq": 7
+      },
+      "beklenen_sonuc": "Sırası kaydırılmış veya aradan paketi çalınmış TLS record akışı sıra numarası kontrolünde reddedilmelidir."
+    },
+    {
+      "id": "NEG_08_ASIRI_BUYUK_RECORD_FRAGMENT",
+      "baslik": "Protokol Sınırını Aşan Aşırı Büyük TLS Record Fragment (Buffer Overflow Riski)",
+      "zafiyet_kodu": "CWE-20",
+      "hata_tipi": "RecordOverflowError",
+      "veri": {
+        "fragment_boyutu": 18432,
+        "maksimum_izin_verilen": 16384
+      },
+      "beklenen_sonuc": "RFC 8446 standardı gereği 16384 (16KB) bayttan büyük fragment içeren recordlar derhal reddedilmelidir."
+    },
+    {
+      "id": "NEG_09_DOWNGRADE_SENTINEL_TESPITI",
+      "baslik": "TLS 1.3 Destekleyen Sunucuda Rastgele Değere Downgrade Sentinel Gömülmesi",
+      "zafiyet_kodu": "CWE-757",
+      "hata_tipi": "DowngradeSentinelMismatchError",
+      "veri": {
+        "server_random_son_8_bayt": "444F574E47524401",
+        "sunucu_surum_secimi": "TLSv1.2",
+        "istemci_yetkinligi": "TLSv1.3"
+      },
+      "beklenen_sonuc": "İstemci, TLS 1.3 desteklediği halde TLS 1.2 seçilmişse ve server_random içinde downgrade baytları varsa araya girildiğini anlayıp bağlantıyı kesmelidir."
+    }
+  ]
+}

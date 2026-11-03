@@ -1,0 +1,37 @@
+===============================================================================
+GÜN 104: AEAD VE NONCE TEKRARI GÜVENLİK ANALİZİ RAPORU
+Tarih/Saat: 2026-11-02 02:24:56
+Analist: Seydi Eryılmaz (@seydivakkas)
+===============================================================================
+
+1. AEAD (AUTHENTICATED ENCRYPTION) VE AAD MİMARİSİ:
+-------------------------------------------------------------------------------
+- AEAD, Gizlilik (Confidentiality), Bütünlük (Integrity) ve Orijinalliği (Authenticity)
+  tek bir atomik kriptografik işlemde birleştirir.
+- AAD (Associated Authenticated Data): Şifrelenmeyen ancak kimlik doğrulamasına
+  mühürlenen metaveridir (Paket başlıkları, kullanıcı kimlikleri, oturum numaraları).
+- Saldırgan şifreli metni veya AAD'yi değiştirdiğinde HMAC/GHASH etiketi tutmaz
+  ve veri çözülmeden anında reddedilir (CWE-353, CWE-345).
+
+2. TWO-TIME PAD FELAKETİ (CWE-323):
+-------------------------------------------------------------------------------
+- CTR veya akış şifresi tabanlı modlarda (AES-GCM, ChaCha20-Poly1305), aynı anahtar
+  ve aynı Nonce kullanıldığında aynı anahtar akışı (Keystream Ks) üretilir.
+- C1 = P1 ⊕ Ks  ve  C2 = P2 ⊕ Ks
+- C1 ⊕ C2 = (P1 ⊕ Ks) ⊕ (P2 ⊕ Ks) = P1 ⊕ P2 (Ks tamamen yok olur!)
+- İki şifreli metnin XOR'u doğrudan düz metinlerin XOR'unu verir.
+- Saldırgan dildeki yaygın kelimeleri (crib dragging) kaydırarak her iki metni
+  anahtara hiç ihtiyaç duymadan dakikalar içinde deşifre eder.
+
+3. NONCE YÖNETİMİ VE SAVUNMA STRATEJİLERİ:
+-------------------------------------------------------------------------------
+A. CSPRNG Rastgele Üretim (96-bit Nonce):
+   - 2^96 olasılık sunar. Ancak doğum günü paradoksu (Birthday Paradox) gereği,
+     aynı anahtarla ~2^48 mesaj şifrelendiğinde çakışma riski belirir. Bu nedenle anahtar rotasyonu şarttır.
+B. Durum Bilgili Takip (Stateful Nonce Tracking):
+   - StatefulNonceTracker mimarisi, bellekteki anahtar özeti altında kullanılan Nonce'ları
+     kaydeder. Tekrar denemelerinde anında NonceReuseDetectedError fırlatır (CWE-323).
+C. Deterministik SIV Modu (Synthetic IV - RFC 5297):
+   - Nonce = HMAC(Key, Düz Metin || AAD)[:12]
+   - Nonce rastgele üretilmez; verinin içeriğine bağlanır. Böylece Nonce asla kazara tekrar etmez;
+     aynı metin aynı şifreyi üretir ama farklı metinler tamamen farklı anahtar akışları kullanır.

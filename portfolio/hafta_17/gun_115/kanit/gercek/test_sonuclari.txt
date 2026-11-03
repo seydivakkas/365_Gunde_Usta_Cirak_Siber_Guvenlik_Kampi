@@ -1,0 +1,35 @@
+test_01_pkce_generation_and_verification (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_01_pkce_generation_and_verification)
+Test 1: PKCE code_verifier ve S256 code_challenge üretim/doğrulama testi. ... ok
+test_02_jwt_encode_and_decode_verification (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_02_jwt_encode_and_decode_verification)
+Test 2: HS256 JWT kodlama, çözme ve sahtecilik tespiti doğrulanır. ... ok
+test_03_successful_authorization_code_issuance (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_03_successful_authorization_code_issuance)
+Test 3: Meşru parametrelerle /authorize uç noktasından yönlendirme ve kod alınması denetlenir. ... ok
+test_04_open_redirector_prevention_cwe_601 (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_04_open_redirector_prevention_cwe_601)
+Test 4: Beyaz listede olmayan sahte redirect_uri sunulduğunda InvalidRedirectURIError (CWE-601) denetlenir. ... ok
+test_05_unknown_client_rejection_cwe_287 (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_05_unknown_client_rejection_cwe_287)
+Test 5: Kayıtlı olmayan bilinmeyen istemci kimliğinde InvalidClientError denetlenir. ... ok
+test_06_pkce_missing_challenge_rejection (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_06_pkce_missing_challenge_rejection)
+Test 6: PKCE code_challenge eksik veya S256 dışında bir yöntemle sunulduğunda red denetlenir. ... ok
+test_07_successful_token_exchange_with_pkce (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_07_successful_token_exchange_with_pkce)
+Test 7: Geçerli kod ve doğru code_verifier ile access_token ve id_token takası denetlenir. ... ok
+test_08_pkce_code_interception_attack_defense_cwe_287 (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_08_pkce_code_interception_attack_defense_cwe_287)
+Test 8: Saldırgan authorization_code'u çalsa dahi code_verifier olmadan token alamaz (CWE-287). ... ok
+test_09_authorization_code_replay_prevention_cwe_294 (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_09_authorization_code_replay_prevention_cwe_294)
+Test 9: Daha önce kullanılmış bir authorization_code'un tekrar sunulması (CWE-294) denetlenir. ... ok
+test_10_authorization_code_expiration_rejection (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_10_authorization_code_expiration_rejection)
+Test 10: 60 saniyelik geçerlilik süresi dolan kodun takasının reddedilmesi denetlenir. ... ok
+test_11_client_secret_mismatch_rejection_cwe_287 (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_11_client_secret_mismatch_rejection_cwe_287)
+Test 11: Gizli istemcinin yanlış client_secret sunması durumunda InvalidClientError denetlenir. ... ok
+test_12_csrf_state_parameter_mismatch_defense_cwe_352 (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_12_csrf_state_parameter_mismatch_defense_cwe_352)
+Test 12: İstemciye dönen callback'te state uyuşmadığında StateMismatchCSRFError (CWE-352) denetlenir. ... ok
+test_13_oidc_nonce_replay_mismatch_defense_cwe_294 (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_13_oidc_nonce_replay_mismatch_defense_cwe_294)
+Test 13: ID Token içindeki nonce istemcinin gönderdiği ile eşleşmediğinde OIDCNonceMismatchError denetlenir. ... ok
+test_14_scope_based_access_control_allowed_and_denied_cwe_285 (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_14_scope_based_access_control_allowed_and_denied_cwe_285)
+Test 14: Kapsam (Scope) tabanlı erişim kontrolünde yetkili ve yetkisiz kaynak erişimleri denetlenir. ... ok
+test_15_invalid_or_expired_access_token_rejection_cwe_287 (test_oauth2_oidc.TestOAuth2OIDCSecurityEngine.test_15_invalid_or_expired_access_token_rejection_cwe_287)
+Test 15: Sahte veya geçersiz erişim belirteci sunulduğunda InvalidAccessTokenError denetlenir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

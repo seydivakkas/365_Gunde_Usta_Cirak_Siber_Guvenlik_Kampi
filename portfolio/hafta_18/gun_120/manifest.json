@@ -1,0 +1,98 @@
+{
+  "gun": 120,
+  "konu": "Tehdit modellemede STRIDE",
+  "uretildi": "2026-11-02T06:00:26.531594",
+  "toplam_dosya": 18,
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "2f5d7f9d9156014c84240006343ab2ba5bd73d771c05ab1b53799bde3fb5c424",
+      "boyut_byte": 3858
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "16d2e07469bb16b137182a519bc44a0e5b44ca967f2d4c8fd7011a215017aa2f",
+      "boyut_byte": 7880
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "11934810855b12679fcc5fd7fab8d1f5247f99014dd392d67e154c16f0b70bc3",
+      "boyut_byte": 16495
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "45e7e9e7424f4d4b0c9ccc0114af0425d47113578c3ec6bcd9fba7f43e05ae8a",
+      "boyut_byte": 4997
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "8f0d65b48fe2e07f797128b612a2777a0ed4e931d68a25122708060fe2332936",
+      "boyut_byte": 637
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "ed240cec53bfdc4c2de8c99d009b92ff1b1e0972c7333f26bb0db05907ba2808",
+      "boyut_byte": 10886
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "716f02ad9f935e90abc9b9362ca56bba1f60482f53179bcf259ced2f33207aed",
+      "boyut_byte": 2028
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "fb6c142a97107214530c680ae9b561292686558c0a5cbd274ace1ef1417a15f9",
+      "boyut_byte": 3671
+    },
+    {
+      "dosya": "kanit\\gercek\\stride_analiz_raporu.txt",
+      "sha256": "600090bd075189883290aea4ac0c01d7242cff1eddcb71cf2f13d75c8327f523",
+      "boyut_byte": 1718
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "788fd9fb79768d155e52901a869e6e9fcb4cf8006f7a22ca83d85594c79a449c",
+      "boyut_byte": 3948
+    },
+    {
+      "dosya": "kanit\\temsili\\stride_mimarisi.txt",
+      "sha256": "b83e4df50364d6a2efb566ac880c630239d89e3e4a62d99cc72aeacb4ce359d5",
+      "boyut_byte": 2778
+    },
+    {
+      "dosya": "ornek_veri\\invalid_stride_scenarios.json",
+      "sha256": "66a9c1a9ac30305a01d0be0f7e0faad203f49019b26f309010ebca46b49c67cf",
+      "boyut_byte": 2378
+    },
+    {
+      "dosya": "ornek_veri\\stride_model_config.json",
+      "sha256": "7e6c12d26c3bd70b5b7c0e7c45fe55b229b27b407dbe45c963feb2c6c0b47bf1",
+      "boyut_byte": 1127
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+      "boyut_byte": 508
+    },
+    {
+      "dosya": "tests\\test_stride_threat_modeling.py",
+      "sha256": "e9e52f280a9544665b1ee62adc43c7accdfce1607984705c878ac6123fe4065d",
+      "boyut_byte": 9735
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "318e1bcba62f386afa9173b24354ab6df36bbeff589595bc6b32e4d9ebee64b4",
+      "boyut_byte": 508
+    },
+    {
+      "dosya": "uygulama\\stride_cli.py",
+      "sha256": "e228a81964f82bbec75a00c3ac6a75bd074969c64bdba610cdc80588b0003fdb",
+      "boyut_byte": 7031
+    },
+    {
+      "dosya": "uygulama\\stride_threat_engine.py",
+      "sha256": "6a64a70ef8dfef68614a469b6cd0c95a2528a5aafd714239d6c5cacba388e34e",
+      "boyut_byte": 19909
+    }
+  ]
+}

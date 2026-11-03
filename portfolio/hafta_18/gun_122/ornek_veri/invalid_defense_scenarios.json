@@ -1,0 +1,89 @@
+[
+  {
+    "senaryo_no": 1,
+    "senaryo_adi": "Sıfır Etkinlikli Kontrol Yapılandırması",
+    "aciklama": "Kontrol etkinliğinin yüzde 0 olarak verilmesi durumunda motorun bunu reddetmesi.",
+    "kontrol_verisi": {
+      "control_id": "CTRL-ZERO-EFF",
+      "name": "Sıfır Etkili Firewall",
+      "layer": "PERIMETER",
+      "control_type": "PREVENTIVE",
+      "effectiveness": 0.00
+    },
+    "beklenen_hata": "InvalidControlConfigurationError"
+  },
+  {
+    "senaryo_no": 2,
+    "senaryo_adi": "Yüzde Yüzü Aşan Kontrol Etkinliği",
+    "aciklama": "Mükemmel güvenlik iddiasıyla 1.05 etkinlik girilmesinin engellenmesi.",
+    "kontrol_verisi": {
+      "control_id": "CTRL-OVER-EFF",
+      "name": "Hayali Süper Kontrol",
+      "layer": "HOST",
+      "control_type": "PREVENTIVE",
+      "effectiveness": 1.05
+    },
+    "beklenen_hata": "InvalidControlConfigurationError"
+  },
+  {
+    "senaryo_no": 3,
+    "senaryo_adi": "Boş Kontrol Adı Tanımlama",
+    "aciklama": "Kontrol adı alanı boşluklardan veya boş dizeden oluştuğunda fırlatılan hata.",
+    "kontrol_verisi": {
+      "control_id": "CTRL-EMPTY-NAME",
+      "name": "   ",
+      "layer": "APPLICATION",
+      "control_type": "PREVENTIVE",
+      "effectiveness": 0.85
+    },
+    "beklenen_hata": "InvalidControlConfigurationError"
+  },
+  {
+    "senaryo_no": 4,
+    "senaryo_adi": "Mükerrer Kontrol ID Tanımlama",
+    "aciklama": "Aynı kimliğe sahip iki kontrolün mimariye eklenmesinin engellenmesi.",
+    "kontrol_verisi": {
+      "control_id": "CTRL-PERIM-01",
+      "name": "Çift Tanımlı NGFW",
+      "layer": "PERIMETER",
+      "control_type": "PREVENTIVE",
+      "effectiveness": 0.90
+    },
+    "beklenen_hata": "DuplicateControlError"
+  },
+  {
+    "senaryo_no": 5,
+    "senaryo_adi": "Katman Boşluğu İhlali (CWE-653)",
+    "aciklama": "Savunma katmanlarından birinde (örn: DATA) hiçbir aktif kontrol olmaması durumunda enforce_resilience hatası.",
+    "yonetisim_tipi": "DEFENSE_GAP",
+    "beklenen_hata": "DefenseGapError"
+  },
+  {
+    "senaryo_no": 6,
+    "senaryo_adi": "Tek Hata Noktası / SPoF İhlali (CWE-1008)",
+    "aciklama": "Kritik bir saldırı vektörüne (örn: SQL Injection) karşı tüm mimaride sadece 1 önleyici kontrol bulunması.",
+    "yonetisim_tipi": "SPOF",
+    "beklenen_hata": "SinglePointOfFailureError"
+  },
+  {
+    "senaryo_no": 7,
+    "senaryo_adi": "Gözetimsiz Katman / Kör Nokta İhlali",
+    "aciklama": "Bir katmanda önleyici kontrol varken loglama ve izleme (Detective) bulunmaması.",
+    "yonetisim_tipi": "UNMONITORED_LAYER",
+    "beklenen_hata": "UnmonitoredLayerError"
+  },
+  {
+    "senaryo_no": 8,
+    "senaryo_adi": "Tanımsız Senaryo Simülasyonu",
+    "aciklama": "Sistemde kayıtlı olmayan bir senaryo kimliğiyle simülasyon koşturulmaya çalışılması.",
+    "senaryo_id": "NON_EXISTENT_SCENARIO",
+    "beklenen_hata": "DefenseInDepthError"
+  },
+  {
+    "senaryo_no": 9,
+    "senaryo_adi": "Tam Katman Delinmesi ve Veri İhlali",
+    "aciklama": "Kontrollerin atlatma gücünün altında kaldığı senaryoda saldırganın veriye erişmesi ve ihlalin raporlanması.",
+    "yonetisim_tipi": "FULL_BREACH",
+    "beklenen_sonuc": "DATA_COMPROMISED"
+  }
+]

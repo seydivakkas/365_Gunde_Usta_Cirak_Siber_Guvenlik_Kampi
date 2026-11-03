@@ -1,0 +1,21 @@
+=== GÜN 076: NEGATİF KONTROL VE SINIR DURUMU DOĞRULAMA RAPORU ===
+Toplam Senaryo: 9, Başarılı: 9, Başarısız: 0
+
+[PASS] NEG_01_REDOS_CATASTROPHIC_BACKTRACKING_GUARD: ReDoS felaket düzeyinde geri izleme (catastrophic backtracking) yükü — uzunluk tavanı ve güvenli regex ile engelleme
+  Detay: ReDoS uzunluk tavanı aşıldığında engellendi: Log satırı izin verilen uzunluk sınırını (4096) aştı.
+[PASS] NEG_02_HOMOGLYPH_CYRILLIC_DOMAIN_SPOOFING: Kiril 'а' (а) karakteri ile latin 'a' taklit edilerek oluşturulan IDN Homograf oltalama saldırısı
+  Detay: Kiril karakterli sahte alan adı homograf saldırısı olarak tespit edildi.
+[PASS] NEG_03_NULL_BYTE_INJECTION_IN_PATH: Dosya yolu veya log parametresine Null-Byte (\x00) enjeksiyonu yapılarak uzantı kontrolü atlatma girişimi
+  Detay: Null byte enjeksiyonu yakalandı: Log satırında zararlı Null-Byte (\x00) tespit edildi.
+[PASS] NEG_04_MALFORMED_UTF8_BYTE_STREAM: Geçersiz UTF-8 devam baytı içeren bozuk bayt dizisi (Overlong/Bozuk UTF-8)
+  Detay: Bozuk UTF-8 bayt dizisi strict modda yakalandı: Karakter çözme (decode) hatası oluştu: 'utf-8' codec can't decode byte 0xc3 in position 0: invalid continuation byte
+[PASS] NEG_05_PARTIAL_MATCH_REGEX_BYPASS: Başlangıç (^) ve bitiş ($) bağlaçları eksik olan regex ile zararlı yükün denetimi atlatması girişimi
+  Detay: Kısmi eşleşme bağlaçları sayesinde komut enjeksiyonlu IP reddedildi.
+[PASS] NEG_06_OVERSIZED_INPUT_BUFFER_THRESHOLD: Regex motoruna gönderilen aşırı uzun (örn. > 4096 karakter) girdi ile bellek/CPU tükenmesi oluşturma
+  Detay: Tampon aşımı hatası fırlatıldı: Doğrulanacak metin uzunluk sınırını aştı.
+[PASS] NEG_07_INVALID_REGEX_SYNTAX_INJECTION: Geçersiz sözdizimli veya kapatılmamış parantez içeren regex derleme girişimi
+  Detay: Geçersiz regex sözdizimi yakalandı: Geçersiz düzenli ifade (regex) sözdizimi: unterminated character set at position 10
+[PASS] NEG_08_NON_PRINTABLE_CONTROL_CHARS_LOG_INJECTION: Log satırına terminal kaçış (escape) veya kontrol karakterleri (\x1b, \x07 vb.) enjeksiyonu
+  Detay: Kontrol karakterleri ve terminal kaçış dizileri temizlendi.
+[PASS] NEG_09_UNICODE_BIDI_TROJAN_SOURCE_ATTACK: Unicode çift yönlü metin kontrol karakteri (Right-to-Left Override / \u202E) ile görsel aldatmaca saldırısı
+  Detay: Unicode Bidi Trojan Source saldırısı engellendi: Log satırında Unicode Bidi (Trojan Source) karakteri tespit edildi.

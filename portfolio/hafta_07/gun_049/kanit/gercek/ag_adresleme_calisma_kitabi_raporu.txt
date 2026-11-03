@@ -1,0 +1,49 @@
+# 📊 Kurumsal Ağ Adresleme ve Segmentasyon Çalışma Kitabı — Kapsamlı Ağ ve Güvenlik Denetim Raporu
+
+**ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR**  
+*Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)*
+
+---
+
+## 1. Alt Ağ ve VLSM Adresleme Planı
+
+| Alt Ağ ID | VLAN | Ad | IPv4 CIDR | Ağ Maskesi | Ağ IP | Yayın IP | Kullanılabilir Aralık | Toplam / Kullanılabilir Host |
+|---|---|---|---|---|---|---|---|---|
+| `NET-01` | `10` | Yonetim_ve_Guvenlik_VLAN | `10.10.10.0/24` | `255.255.255.0` | `10.10.10.0` | `10.10.10.255` | `10.10.10.1` - `10.10.10.254` | 256 / **254** |
+| `NET-02` | `20` | Sunucu_Ciftligi_DMZ_VLAN | `172.16.20.0/24` | `255.255.255.0` | `172.16.20.0` | `172.16.20.255` | `172.16.20.1` - `172.16.20.254` | 256 / **254** |
+| `NET-03` | `30` | Kullanici_Istemcileri_VLAN | `192.168.30.0/23` | `255.255.254.0` | `192.168.30.0` | `192.168.31.255` | `192.168.30.1` - `192.168.31.254` | 512 / **510** |
+| `NET-04` | `40` | Misafir_Wifi_Izole_VLAN | `192.168.100.0/24` | `255.255.255.0` | `192.168.100.0` | `192.168.100.255` | `192.168.100.1` - `192.168.100.254` | 256 / **254** |
+| `NET-OVERLAP-01` | `35` | Cakisan_VLAN | `192.168.31.0/24` | `255.255.255.0` | `192.168.31.0` | `192.168.31.255` | `192.168.31.1` - `192.168.31.254` | 256 / **254** |
+
+## 2. Cihaz ve Uç Nokta Envanteri (Katman-2 & Katman-3)
+
+| Cihaz ID | Konak Adı | Rol | Alt Ağ ID | IPv4 Adresi | MAC Adresi | IPv6 Adresi |
+|---|---|---|---|---|---|---|
+| `DEV-01` | `fw-core-01` | Core Firewall & Gateway | `NET-01` | `10.10.10.1` | `00:50:56:A1:00:01` | `2001:db8:acad:10::1` |
+| `DEV-02` | `srv-dc01-dns` | Domain Controller & DNS | `NET-01` | `10.10.10.2` | `00:50:56:A1:00:02` | `2001:db8:acad:10::2` |
+| `DEV-03` | `srv-siem-log` | SIEM Log Collector | `NET-01` | `10.10.10.50` | `00:50:56:A1:00:50` | `2001:db8:acad:10::50` |
+| `DEV-04` | `srv-web-nginx` | Public Web Frontend | `NET-02` | `172.16.20.10` | `00:50:56:B2:00:10` | `2001:db8:acad:20::10` |
+| `DEV-05` | `srv-db-pgsql` | Core Database Backend | `NET-02` | `172.16.20.20` | `00:50:56:B2:00:20` | `2001:db8:acad:20::20` |
+| `DEV-06` | `pc-finance-01` | Finance Workstation | `NET-03` | `192.168.30.15` | `00:50:56:C3:00:15` | `2001:db8:acad:30::15` |
+| `DEV-07` | `pc-dev-02` | Developer Workstation | `NET-03` | `192.168.31.200` | `00:50:56:C3:02:00` | `2001:db8:acad:30::200` |
+| `DEV-08` | `guest-phone-88` | Guest Mobile Device | `NET-04` | `192.168.100.88` | `00:50:56:D4:00:88` | `2001:db8:acad:40::88` |
+| `DEV-ERR-01` | `pc-misconfigured-gw` | - | `NET-01` | `10.10.10.99` | `00:50:56:E5:00:01` | `-` |
+| `DEV-ERR-02` | `srv-invalid-netid` | - | `NET-02` | `172.16.20.0` | `00:50:56:E5:00:02` | `-` |
+| `DEV-ERR-03` | `srv-invalid-bcast` | - | `NET-02` | `172.16.20.255` | `00:50:56:E5:00:03` | `-` |
+| `DEV-ERR-04` | `srv-rogue-dc` | - | `NET-01` | `10.10.10.2` | `00:50:56:E5:00:04` | `-` |
+
+## 3. Güvenlik ve Yapılandırma Denetim Bulguları
+
+| No | Kategori | Seviye | Kaynak | Hedef / İlgili IP | Açıklama ve Güvenlik Riski |
+|---|---|---|---|---|---|
+| 1 | `CAKISAN_ALT_AG` | 🚨 **KRITIK** | `NET-03 (192.168.30.0/23)` | `NET-OVERLAP-01 (192.168.31.0/24)` | Alt ağlar arasında IP uzayı çakışması tespit edildi! Rota belirsizliği oluşur. |
+| 2 | `GECERSIZ_OZEL_AG_GECIDI` | 🚨 **KRITIK** | `DEV-ERR-01` | `192.168.1.1` | Cihaz özel ağ geçidi 192.168.1.1, alt ağ (10.10.10.0/24) dışındadır! |
+| 3 | `KULLANILAMAZ_IP_ATAMASI` | 🚨 **KRITIK** | `DEV-ERR-02` | `172.16.20.0` | Cihaza ağ adresi veya yayın adresi atanmış (172.16.20.0)! Konaklar bu IP'yi kullanamaz. |
+| 4 | `KULLANILAMAZ_IP_ATAMASI` | 🚨 **KRITIK** | `DEV-ERR-03` | `172.16.20.255` | Cihaza ağ adresi veya yayın adresi atanmış (172.16.20.255)! Konaklar bu IP'yi kullanamaz. |
+| 5 | `IP_CAKISMASI` | 🚨 **KRITIK** | `DEV-ERR-04` | `DEV-02` | IP adresi 10.10.10.2 hem DEV-02 hem de DEV-ERR-04 üzerinde tanımlıdır! |
+
+## 4. Ağ Sıkılaştırma ve Mimari İyileştirme İlkeleri
+
+1. **VLAN ve VRF Tabanlı İzolasyon:** Her güvenlik bölgesi (Internal, DMZ, Guest) bağımsız bir VLAN kimliğine sahip olmalı ve yönlendirici erişim kontrol listeleri (ACL) ile sınırlandırılmalıdır.
+2. **DHCP Snooping & Dynamic ARP Inspection (DAI):** Uç anahtarlarda IP ve MAC çakışmalarını, ARP zehirleme saldırılarını önlemek için güvenilir bağlama veritabanları zorunlu kılınmalıdır.
+3. **IPv6 Gizlilik Uzantıları (RFC 4941):** Donanım MAC adresinin IPv6 içinde ifşa edilerek cihaz hareketlerinin takip edilmesini önlemek adına EUI-64 yerine rastgele geçici adresler (Privacy Extensions) etkinleştirilmelidir.

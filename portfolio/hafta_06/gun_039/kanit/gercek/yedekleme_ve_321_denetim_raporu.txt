@@ -1,0 +1,120 @@
+<!--
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+Bu yazılım ve ilgili tüm dosyalar ('Yazılım') yalnızca görüntüleme ve eğitim amaçlı olarak paylaşılmıştır.
+-->
+
+# Yedekleme Stratejisi ve 3-2-1 Kuralı Güvenlik Denetim Raporu
+
+**Denetim Tarihi:** `2026-10-27T08:53:34.931242+00:00`  
+**Güvenlik Puanı:** `0 / 100`  
+**Genel Durum:** `CRITICAL`
+
+## 📊 Denetim Metrikleri Özeti
+
+| Metrik | Değer |
+| :--- | :---: |
+| İncelenen Politika Sayısı | 3 |
+| Kritik (CRITICAL) Bulgular | 6 |
+| Yüksek (HIGH) Seviye Bulgular | 6 |
+| Orta (MEDIUM) Seviye Bulgular | 4 |
+| Uyarı (WARNING) Bulgular | 0 |
+| **Toplam Güvenlik Bulgusu** | **16** |
+
+## 🔍 Güvenlik Bulguları ve İyileştirme Reçetesi
+
+### 1. [HIGH] Yetersiz Kopya Sayısı (1 / 3) — 3-2-1 İhlali
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `321_RULE_COPIES_INSUFFICIENT`
+- **Açıklama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' iş yükü için yalnızca 1 adet kopya bulunmaktadır. 3-2-1 kuralı gereği verinin 1 birincil üretim kopyası ve en az 2 adet bağımsız yedek kopyası (toplamda en az 3 kopya) bulunmalıdır.
+- **🛡️ İyileştirme:** Yedekleme stratejisine en az bir ikincil yedekleme hedefi ekleyerek toplam kopya sayısını 3'e çıkarın.
+
+### 2. [MEDIUM] Medya Çeşitliliği Yok — Ortak Arıza Alanı (Common Failure Domain) Riski
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `321_RULE_MEDIA_DIVERSITY_MISSING`
+- **Açıklama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' için kopyalar yalnızca ['Local_RAID5_DAS'] türünde tutulmaktadır. Aynı medya teknolojisine bağımlılık (örn. yalnızca yerel mekanik diskler veya tek bir depolama ünitesi), ortak bir kontrolcü veya donanım serisi arızasında tüm kopyaların aynı anda kaybedilmesine yol açar.
+- **🛡️ İyileştirme:** Yedek kopyalardan en az birini manyetik teyp (LTO), bulut nesne depolama (S3) veya farklı SAN mimarisine taşıyın.
+
+### 3. [CRITICAL] Tesis Dışı (Offsite) Kopya Yok — Fiziksel Felaket ve Yangın Riski
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `321_RULE_OFFSITE_MISSING`
+- **Açıklama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' iş yüküne ait hiçbir kopya ana veri merkezi/bina dışında tutulmamaktadır (offsite: 0). Yangın, su baskını, deprem veya fiziksel hırsızlık durumunda tüm kopyalar tek bir lokasyonda yok olur.
+- **🛡️ İyileştirme:** Kopyalardan en az birini coğrafi olarak farklı bir ikincil veri merkezine veya genel bulut sağlayıcısına aktarın.
+
+### 4. [CRITICAL] Fidye Yazılımlarına (Ransomware) Karşı Değiştirilemez/Hava Boşluklu (Air-gapped) Yedek Yok
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `RANSOMWARE_IMMUTABILITY_GAP`
+- **Açıklama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' iş yükü için değiştirilemez (immutable / WORM - Write Once Read Many) veya ağdan tamamen izole edilmiş (air-gapped) bir yedek kopyası tanımlanmamıştır. Etki alanı yöneticisi (Domain Admin) yetkisini ele geçiren modern fidye yazılımı çeteleri (LockBit, BlackCat vb.), şifreleme öncesinde erişebildikleri tüm standart yedekleri silmekte veya şifrelemektedir.
+- **🛡️ İyileştirme:** Yedekleme havuzlarında S3 Object Lock (Compliance Mode) veya çevrimdışı teyp (LTO tape air-gap) zorunlu kılınmalıdır.
+
+### 5. [HIGH] Yetersiz Kopya Sayısı (2 / 3) — 3-2-1 İhlali
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `321_RULE_COPIES_INSUFFICIENT`
+- **Açıklama:** 'VMware_Kurumsal_Sanal_Makineler' iş yükü için yalnızca 2 adet kopya bulunmaktadır. 3-2-1 kuralı gereği verinin 1 birincil üretim kopyası ve en az 2 adet bağımsız yedek kopyası (toplamda en az 3 kopya) bulunmalıdır.
+- **🛡️ İyileştirme:** Yedekleme stratejisine en az bir ikincil yedekleme hedefi ekleyerek toplam kopya sayısını 3'e çıkarın.
+
+### 6. [MEDIUM] Medya Çeşitliliği Yok — Ortak Arıza Alanı (Common Failure Domain) Riski
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `321_RULE_MEDIA_DIVERSITY_MISSING`
+- **Açıklama:** 'VMware_Kurumsal_Sanal_Makineler' için kopyalar yalnızca ['Primary_SAN_Storage'] türünde tutulmaktadır. Aynı medya teknolojisine bağımlılık (örn. yalnızca yerel mekanik diskler veya tek bir depolama ünitesi), ortak bir kontrolcü veya donanım serisi arızasında tüm kopyaların aynı anda kaybedilmesine yol açar.
+- **🛡️ İyileştirme:** Yedek kopyalardan en az birini manyetik teyp (LTO), bulut nesne depolama (S3) veya farklı SAN mimarisine taşıyın.
+
+### 7. [CRITICAL] Tesis Dışı (Offsite) Kopya Yok — Fiziksel Felaket ve Yangın Riski
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `321_RULE_OFFSITE_MISSING`
+- **Açıklama:** 'VMware_Kurumsal_Sanal_Makineler' iş yüküne ait hiçbir kopya ana veri merkezi/bina dışında tutulmamaktadır (offsite: 0). Yangın, su baskını, deprem veya fiziksel hırsızlık durumunda tüm kopyalar tek bir lokasyonda yok olur.
+- **🛡️ İyileştirme:** Kopyalardan en az birini coğrafi olarak farklı bir ikincil veri merkezine veya genel bulut sağlayıcısına aktarın.
+
+### 8. [CRITICAL] Fidye Yazılımlarına (Ransomware) Karşı Değiştirilemez/Hava Boşluklu (Air-gapped) Yedek Yok
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `RANSOMWARE_IMMUTABILITY_GAP`
+- **Açıklama:** 'VMware_Kurumsal_Sanal_Makineler' iş yükü için değiştirilemez (immutable / WORM - Write Once Read Many) veya ağdan tamamen izole edilmiş (air-gapped) bir yedek kopyası tanımlanmamıştır. Etki alanı yöneticisi (Domain Admin) yetkisini ele geçiren modern fidye yazılımı çeteleri (LockBit, BlackCat vb.), şifreleme öncesinde erişebildikleri tüm standart yedekleri silmekte veya şifrelemektedir.
+- **🛡️ İyileştirme:** Yedekleme havuzlarında S3 Object Lock (Compliance Mode) veya çevrimdışı teyp (LTO tape air-gap) zorunlu kılınmalıdır.
+
+### 9. [CRITICAL] Schrödinger'in Yedeği — Geri Yükleme Testi HİÇ Yapılmamış!
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `RESTORE_VERIFICATION_NEVER_TESTED`
+- **Açıklama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' için yedekleme alındığı varsayılmakta ancak bugüne kadar HİÇBİR geri yükleme testi (restore drill) gerçekleştirilmemiştir. Siber güvenlikte 'Geri yükleme testi başarıyla doğrulanmamış hiçbir yedek, gerçekte var sayılmaz.' Bozuk disk blokları, eksik veritabanı logları veya şifreleme anahtarı uyumsuzlukları ancak felaket anında anlaşılır.
+- **🛡️ İyileştirme:** İzole bir test ortamında acilen tam geri yükleme (Full Restore Drill) tatbikatı icra edin.
+
+### 10. [MEDIUM] Kriptografik Bütünlük Doğrulaması (Checksum) Eksik
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `BACKUP_INTEGRITY_CHECKSUM_MISSING`
+- **Açıklama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' yedekleme arşivlerinde SHA256 veya benzeri bir kriptografik sağlama toplamı doğrulaması bulunmamaktadır. Sessiz veri bozulmaları (Bit rot / Silent Data Corruption) fark edilemeyebilir.
+- **🛡️ İyileştirme:** Yedekleme yazılımında arşiv oluşturma ve aktarım sonrası SHA256 karma doğrulamasını etkinleştirin.
+
+### 11. [HIGH] Geri Yükleme Testi Güncelliğini Yitirmiş (120 Gün Önce)
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `RESTORE_VERIFICATION_OUTDATED`
+- **Açıklama:** 'VMware_Kurumsal_Sanal_Makineler' için son geri yükleme testi 120 gün önce yapılmıştır (Azami kabul edilebilir süre: 90 gün). Geçen süre zarfında değişen veritabanı şemaları, sistem güncellemeleri veya saklama politikaları yedeğin çalışabilirliğini bozmuş olabilir.
+- **🛡️ İyileştirme:** Çeyreklik (Quarterly) periyotlarla düzenli otomatik geri yükleme testleri planlayın.
+
+### 12. [MEDIUM] Kriptografik Bütünlük Doğrulaması (Checksum) Eksik
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `BACKUP_INTEGRITY_CHECKSUM_MISSING`
+- **Açıklama:** 'VMware_Kurumsal_Sanal_Makineler' yedekleme arşivlerinde SHA256 veya benzeri bir kriptografik sağlama toplamı doğrulaması bulunmamaktadır. Sessiz veri bozulmaları (Bit rot / Silent Data Corruption) fark edilemeyebilir.
+- **🛡️ İyileştirme:** Yedekleme yazılımında arşiv oluşturma ve aktarım sonrası SHA256 karma doğrulamasını etkinleştirin.
+
+### 13. [CRITICAL] Ölümcül Mimari Hata: RAID Bir Yedekleme Değildir!
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `ARCHITECTURAL_MISCONCEPTION_RAID`
+- **Açıklama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' iş yükünde yerel RAID dizisi tek koruma mekanizması olarak kullanılmaktadır. RAID yalnızca donanımsal disk arızalarına karşı iş sürekliliği (High Availability) sağlar. Kazara dosya silinmesi, fidye yazılımı şifrelemesi, bozuk yazılım güncellemesi veya kontrolcü arızası anında veriyi TÜM disklere aynı anda eşzamanlı siler veya şifreler. RAID geçmişe dönük koruma sağlamaz.
+- **🛡️ İyileştirme:** RAID'den bağımsız, harici ortamlara (NAS/Cloud/Tape) planlı yedekleme başlatın.
+
+### 14. [HIGH] Aynı Depolama Havuzundaki Anlık Görüntü (Snapshot) Yedek Sayılmaz
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `ARCHITECTURAL_MISCONCEPTION_SNAPSHOT`
+- **Açıklama:** 'VMware_Kurumsal_Sanal_Makineler' için alınan anlık görüntüler (snapshots) birincil verinin bulunduğu aynı fiziksel depolama havuzunda (SAN/LUN) tutulmaktadır. Depolama havuzunun meta verisi çöktüğünde veya fiziksel depolama ünitesi arızalandığında hem birincil veri hem de snapshot'lar aynı anda yok olur.
+- **🛡️ İyileştirme:** Snapshot'ları depolama seviyesinde replikasyonla farklı bir ikincil fiziksel üniteye kopyalayın.
+
+### 15. [HIGH] RPO Hedef Sapması — Kabul Edilemez Veri Kaybı Riski (72h > 24h)
+- **Hedef:** `POL-LEGACY-FS (Muhasebe_ve_IK_Dosya_Sunucusu)`
+- **Kategori:** `RPO_SLA_BREACH_RISK`
+- **Açıklama:** 'Muhasebe_ve_IK_Dosya_Sunucusu' iş yükü için taahhüt edilen azami veri kaybı süresi (RPO) 24.0 saat iken, fiili yedekleme aralığı 72.0 saattir. Olası bir felaket anında son yedekten bu yana geçen 72.0 saatlik kurumsal veri kalıcı olarak kaybolacaktır.
+- **🛡️ İyileştirme:** Yedekleme işinin zamanlama sıklığını (schedule) en fazla 24 saatte bir çalışacak şekilde artırın.
+
+### 16. [HIGH] RPO Hedef Sapması — Kabul Edilemez Veri Kaybı Riski (24h > 12h)
+- **Hedef:** `POL-VM-INFRA (VMware_Kurumsal_Sanal_Makineler)`
+- **Kategori:** `RPO_SLA_BREACH_RISK`
+- **Açıklama:** 'VMware_Kurumsal_Sanal_Makineler' iş yükü için taahhüt edilen azami veri kaybı süresi (RPO) 12.0 saat iken, fiili yedekleme aralığı 24.0 saattir. Olası bir felaket anında son yedekten bu yana geçen 24.0 saatlik kurumsal veri kalıcı olarak kaybolacaktır.
+- **🛡️ İyileştirme:** Yedekleme işinin zamanlama sıklığını (schedule) en fazla 12 saatte bir çalışacak şekilde artırın.

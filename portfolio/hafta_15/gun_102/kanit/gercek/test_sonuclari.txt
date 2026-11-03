@@ -1,0 +1,45 @@
+===============================================================================
+GÜN 102: BİRİM TEST SONUÇLARI RAPORU
+Tarih/Saat: 2026-11-02 02:06:08
+Konu: Salt, Pepper ve KDF Tabanlı Güvenli Parola Saklama
+Çalıştırılan Test Sayısı: 15
+Hata / Başarısızlık: 0 / 0
+Durum: 100/100 PASS (BAŞARILI)
+===============================================================================
+
+test_01_generate_salt_valid (tests.test_secure_password_vault.TestSecurePasswordVault.test_01_generate_salt_valid)
+Test 1: Kriptografik rastgele tuzun geçerli uzunlukta ve benzersiz üretilmesi. ... ok
+test_02_generate_salt_too_short_raises_cwe326 (tests.test_secure_password_vault.TestSecurePasswordVault.test_02_generate_salt_too_short_raises_cwe326)
+Test 2: 16 bayt (128 bit) altındaki yetersiz tuz uzunluğunun reddedilmesi (CWE-326). ... ok
+test_03_generate_salt_invalid_type_raises (tests.test_secure_password_vault.TestSecurePasswordVault.test_03_generate_salt_invalid_type_raises)
+Test 3: Tamsayı olmayan tuz uzunluğu argümanında tip hatası fırlatılması. ... ok
+test_04_hash_password_success_and_format (tests.test_secure_password_vault.TestSecurePasswordVault.test_04_hash_password_success_and_format)
+Test 4: Standart PBKDF2-HMAC-SHA256 parolasının kurumsal formatta kilitlenmesi. ... ok
+test_05_hash_password_with_pepper (tests.test_secure_password_vault.TestSecurePasswordVault.test_05_hash_password_with_pepper)
+Test 5: Biber (pepper) ile kilitlenen kaydın bibersiz kayıttan ayrışması. ... ok
+test_06_insufficient_iterations_raises_cwe916 (tests.test_secure_password_vault.TestSecurePasswordVault.test_06_insufficient_iterations_raises_cwe916)
+Test 6: 100.000 iterasyon altındaki yetersiz iş gücünün engellenmesi (CWE-916). ... ok
+test_07_predictable_salt_raises_cwe760 (tests.test_secure_password_vault.TestSecurePasswordVault.test_07_predictable_salt_raises_cwe760)
+Test 7: Tahmin edilebilir veya statik tuz kullanımının engellenmesi (CWE-760). ... ok
+test_08_null_byte_in_password_raises_cwe158 (tests.test_secure_password_vault.TestSecurePasswordVault.test_08_null_byte_in_password_raises_cwe158)
+Test 8: Parola içinde Null-Byte zehirlemesi denemesinin engellenmesi (CWE-158). ... ok
+test_09_oversized_payload_raises_cwe400 (tests.test_secure_password_vault.TestSecurePasswordVault.test_09_oversized_payload_raises_cwe400)
+Test 9: 1 MB tavanını aşan aşırı büyük parolanın bellek tüketimi (DoS) engeli (CWE-400). ... ok
+test_10_invalid_password_type_raises_cwe843 (tests.test_secure_password_vault.TestSecurePasswordVault.test_10_invalid_password_type_raises_cwe843)
+Test 10: Parola parametresi yerine int veya geçersiz tip iletilmesinin engellenmesi (CWE-843). ... ok
+test_11_verify_password_success (tests.test_secure_password_vault.TestSecurePasswordVault.test_11_verify_password_success)
+Test 11: Doğru parola ve doğru pepper ile sabit zamanlı doğrulamanın onaylanması. ... ok
+test_12_verify_password_mismatch_strict_raises_cwe208 (tests.test_secure_password_vault.TestSecurePasswordVault.test_12_verify_password_mismatch_strict_raises_cwe208)
+Test 12: Yanlış parola girişinde katı modda uyuşmazlık istisnasının fırlatılması. ... ok
+test_13_verify_password_wrong_pepper_strict_raises (tests.test_secure_password_vault.TestSecurePasswordVault.test_13_verify_password_wrong_pepper_strict_raises)
+Test 13: Yanlış biber (pepper) kullanımında doğrulamanın reddedilmesi. ... ok
+test_14_detect_legacy_unsalted_hashes_cwe759 (tests.test_secure_password_vault.TestSecurePasswordVault.test_14_detect_legacy_unsalted_hashes_cwe759)
+Test 14: Eski tuzsuz MD5, SHA-1 ve düz SHA-256 hashlerinin zafiyet olarak tespiti. ... ok
+test_15_negative_json_cases_verification (tests.test_secure_password_vault.TestSecurePasswordVault.test_15_negative_json_cases_verification)
+Test 15: ornek_veri/invalid_password_inputs.json içindeki 9 negatif kontrolün yürütülmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.605s
+
+OK
+

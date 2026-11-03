@@ -1,0 +1,63 @@
+{
+  "firewall_policy": {
+    "policy_id": "POL-2026-FW-01",
+    "policy_name": "Kurumsal DMZ ve Sunucu Erişim Politikası",
+    "default_action": "DENY",
+    "rules": [
+      {
+        "rule_id": 1,
+        "name": "Yönetim Ağından SSH Erişimi İzni",
+        "priority": 10,
+        "action": "ALLOW",
+        "conditions": {
+          "source_subnet": "10.100.0.0/24",
+          "dest_port": 22,
+          "protocol": "TCP"
+        }
+      },
+      {
+        "rule_id": 2,
+        "name": "Genel HTTPS Web Servisi İzni",
+        "priority": 20,
+        "action": "ALLOW",
+        "conditions": {
+          "dest_port": 443,
+          "protocol": "TCP"
+        }
+      },
+      {
+        "rule_id": 3,
+        "name": "Zararlı IP Bloğu Engelleme",
+        "priority": 5,
+        "action": "DENY",
+        "conditions": {
+          "source_ip": "198.51.100.44"
+        }
+      }
+    ]
+  },
+  "pointer_traversal_payload": {
+    "buffer_size": 128,
+    "start_offset": 0,
+    "pointer_map": {
+      "0": 16,
+      "16": 48,
+      "48": 80,
+      "80": -1
+    }
+  },
+  "authentication_events": [
+    {"timestamp": 1730370000, "source_ip": "203.0.113.5", "username": "admin", "status": "FAILURE"},
+    {"timestamp": 1730370010, "source_ip": "203.0.113.5", "username": "admin", "status": "FAILURE"},
+    {"timestamp": 1730370020, "source_ip": "203.0.113.5", "username": "admin", "status": "FAILURE"},
+    {"timestamp": 1730370030, "source_ip": "203.0.113.5", "username": "admin", "status": "FAILURE"},
+    {"timestamp": 1730370040, "source_ip": "203.0.113.5", "username": "admin", "status": "FAILURE"},
+    {"timestamp": 1730370050, "source_ip": "203.0.113.5", "username": "root", "status": "FAILURE"},
+    {"timestamp": 1730370100, "source_ip": "10.100.0.50", "username": "analist", "status": "SUCCESS"}
+  ],
+  "threat_ioc_stream": [
+    {"artifact_id": "ART_01", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "label": "clean"},
+    {"artifact_id": "ART_02", "sha256": "d41d8cd98f00b204e9800998ecf8427e00000000000000000000000000000000", "label": "clean"},
+    {"artifact_id": "ART_03", "sha256": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "label": "MALWARE_KNOWN_EMOTET"}
+  ]
+}

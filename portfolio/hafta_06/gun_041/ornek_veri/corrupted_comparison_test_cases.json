@@ -1,0 +1,108 @@
+{
+  "corrupted_test_cases": [
+    {
+      "test_name": "missing_indicator_count",
+      "description": "Zorunlu 10 gösterge yerine sadece 9 gösterge içeren eksik veri seti",
+      "indicators": [
+        {
+          "indicator_id": "IND-01",
+          "name": "Kimlik Doğrulama",
+          "windows": {"status": "COMPLIANT", "score": 9},
+          "linux": {"status": "COMPLIANT", "score": 9}
+        },
+        {
+          "indicator_id": "IND-02",
+          "name": "Erişim Kontrolü",
+          "windows": {"status": "COMPLIANT", "score": 8},
+          "linux": {"status": "COMPLIANT", "score": 8}
+        },
+        {
+          "indicator_id": "IND-03",
+          "name": "Ayrıcalık Yönetimi",
+          "windows": {"status": "COMPLIANT", "score": 7},
+          "linux": {"status": "COMPLIANT", "score": 9}
+        },
+        {
+          "indicator_id": "IND-04",
+          "name": "Çekirdek Koruması",
+          "windows": {"status": "COMPLIANT", "score": 9},
+          "linux": {"status": "COMPLIANT", "score": 8}
+        },
+        {
+          "indicator_id": "IND-05",
+          "name": "Servis İzolasyonu",
+          "windows": {"status": "COMPLIANT", "score": 7},
+          "linux": {"status": "COMPLIANT", "score": 9}
+        },
+        {
+          "indicator_id": "IND-06",
+          "name": "Güvenlik Duvarı",
+          "windows": {"status": "COMPLIANT", "score": 8},
+          "linux": {"status": "COMPLIANT", "score": 9}
+        },
+        {
+          "indicator_id": "IND-07",
+          "name": "Dosya Şifreleme",
+          "windows": {"status": "COMPLIANT", "score": 8},
+          "linux": {"status": "COMPLIANT", "score": 8}
+        },
+        {
+          "indicator_id": "IND-08",
+          "name": "Olay Günlükleme",
+          "windows": {"status": "COMPLIANT", "score": 9},
+          "linux": {"status": "COMPLIANT", "score": 8}
+        },
+        {
+          "indicator_id": "IND-09",
+          "name": "Yama Yönetimi",
+          "windows": {"status": "COMPLIANT", "score": 7},
+          "linux": {"status": "COMPLIANT", "score": 9}
+        }
+      ]
+    },
+    {
+      "test_name": "score_overflow",
+      "description": "Gösterge puanının izin verilen maksimum sınır olan 10 değerini aşması (Örn: 15)",
+      "indicator_sample": {
+        "indicator_id": "IND-01",
+        "name": "Kimlik Doğrulama",
+        "windows": {"status": "COMPLIANT", "score": 15},
+        "linux": {"status": "COMPLIANT", "score": 9}
+      }
+    },
+    {
+      "test_name": "score_negative",
+      "description": "Gösterge puanının negatif bir tam sayı olması (Örn: -4)",
+      "indicator_sample": {
+        "indicator_id": "IND-02",
+        "name": "Erişim Kontrolü",
+        "windows": {"status": "COMPLIANT", "score": 8},
+        "linux": {"status": "NON_COMPLIANT", "score": -4}
+      }
+    },
+    {
+      "test_name": "invalid_score_data_type",
+      "description": "Gösterge puanının sayı yerine string veya geçersiz tip içermesi",
+      "indicator_sample": {
+        "indicator_id": "IND-03",
+        "name": "Ayrıcalık Yönetimi",
+        "windows": {"status": "COMPLIANT", "score": "mukemmel"},
+        "linux": {"status": "COMPLIANT", "score": 9}
+      }
+    },
+    {
+      "test_name": "missing_os_node",
+      "description": "Gösterge nesnesinde zorunlu windows veya linux alanının bulunmaması",
+      "indicator_sample": {
+        "indicator_id": "IND-04",
+        "name": "Çekirdek Koruması",
+        "windows": {"status": "COMPLIANT", "score": 8}
+      }
+    },
+    {
+      "test_name": "non_dict_indicator_entry",
+      "description": "Göstergeler dizisinde sözlük yerine dize veya sayı bulunması",
+      "invalid_entry": "Bu bir gosterge nesnesi degil hatali dizedir"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+=== WINDOWS HİZMET GÜVENLİĞİ NEGATİF KONTROL VE SINIR DURUM SONUÇLARI ===
+Tarih / Saat       : 2026-11-02T07:46:55.437400+00:00
+Toplam Senaryo     : 9
+Genel Başarı Durumu: BAŞARILI (100% PASS)
+======================================================================
+
+[PASS] NEG-SVC-01: Tırnaksız Servis Yolu Boşluklu Dizin (CWE-428)
+    Beklenen CWE   : CWE-428 | Tespit: ['CWE-428']
+    Beklenen MITRE : T1574.009 | Tespit: ['T1574.009']
+----------------------------------------------------------------------
+[PASS] NEG-SVC-02: Zayıf SDDL DACL Everyone SERVICE_CHANGE_CONFIG (CWE-732)
+    Beklenen CWE   : CWE-732 | Tespit: ['CWE-732']
+    Beklenen MITRE : T1543.003 | Tespit: ['T1543.003']
+----------------------------------------------------------------------
+[PASS] NEG-SVC-03: Zayıf SDDL DACL BUILTIN\Users WRITE_DAC (CWE-732)
+    Beklenen CWE   : CWE-732 | Tespit: ['CWE-732']
+    Beklenen MITRE : T1543.003 | Tespit: ['T1543.003']
+----------------------------------------------------------------------
+[PASS] NEG-SVC-04: Zayıf İkili Dosya İzni Users Modify (CWE-732)
+    Beklenen CWE   : CWE-732 | Tespit: ['CWE-732']
+    Beklenen MITRE : T1574.010 | Tespit: ['T1574.010']
+----------------------------------------------------------------------
+[PASS] NEG-SVC-05: Zayıf İkili Dosya İzni Everyone Write (CWE-732)
+    Beklenen CWE   : CWE-732 | Tespit: ['CWE-732']
+    Beklenen MITRE : T1574.010 | Tespit: ['T1574.010']
+----------------------------------------------------------------------
+[PASS] NEG-SVC-06: CIS İhlali Aktif RemoteRegistry Servisi (CWE-16)
+    Beklenen CWE   : CWE-16 | Tespit: ['CWE-16']
+    Beklenen MITRE : T1003.002 | Tespit: ['T1003.002']
+----------------------------------------------------------------------
+[PASS] NEG-SVC-07: CIS İhlali Aktif Xbox Aksesuar Servisi (CWE-16)
+    Beklenen CWE   : CWE-16 | Tespit: ['CWE-16']
+    Beklenen MITRE : T1003.002 | Tespit: ['T1003.002']
+----------------------------------------------------------------------
+[PASS] NEG-SVC-08: Aşırı Yetkili Üçüncü Parti Servis LocalSystem (CWE-250)
+    Beklenen CWE   : CWE-250 | Tespit: ['CWE-250']
+    Beklenen MITRE : T1078.003 | Tespit: ['T1078.003']
+----------------------------------------------------------------------
+[PASS] NEG-SVC-09: Tehlikeli Özel Windows Ayrıcalık Talebi SeDebugPrivilege (CWE-250)
+    Beklenen CWE   : CWE-250 | Tespit: ['CWE-250']
+    Beklenen MITRE : T1134 | Tespit: ['T1134']
+----------------------------------------------------------------------

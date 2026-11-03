@@ -1,0 +1,265 @@
+{
+  "aciklama": "G063 Mini Proje 8 - Negatif Sınır ve Anomali Test Senaryoları",
+  "test_senaryolari": [
+    {
+      "test_kodu": "NEG_01",
+      "senaryo_adi": "Zaman Gerilemesi / Negatif Delta Manipulasyonu",
+      "beklenen_hata": "TimelineOrderError",
+      "beklenen_tespit": "NEGATIF_DELTA_ZAMAN_GERILEMESI",
+      "olaylar": [
+        {
+          "olay_id": "NEG1-EVT1",
+          "zaman_damgasi": "2026-10-31T01:00:00.100000Z",
+          "protokol": "TCP",
+          "kaynak_ip": "192.168.1.100",
+          "hedef_ip": "10.10.20.50",
+          "kaynak_port": 49152,
+          "hedef_port": 443,
+          "islem_tipi": "TCP_SYN"
+        },
+        {
+          "olay_id": "NEG1-EVT2",
+          "zaman_damgasi": "2026-10-31T01:00:00.050000Z",
+          "protokol": "TCP",
+          "kaynak_ip": "10.10.20.50",
+          "hedef_ip": "192.168.1.100",
+          "kaynak_port": 443,
+          "hedef_port": 49152,
+          "islem_tipi": "TCP_SYN_ACK"
+        }
+      ]
+    },
+    {
+      "test_kodu": "NEG_02",
+      "senaryo_adi": "Bozuk Zaman Damgası Formatı",
+      "beklenen_hata": "TimestampFormatError",
+      "beklenen_tespit": "GECERSIZ_ISO8601_FORMATI",
+      "olaylar": [
+        {
+          "olay_id": "NEG2-EVT1",
+          "zaman_damgasi": "gecersiz-tarih-zamani-31-10-2026",
+          "protokol": "TCP",
+          "kaynak_ip": "192.168.1.100",
+          "hedef_ip": "10.10.20.50",
+          "kaynak_port": 49152,
+          "hedef_port": 443,
+          "islem_tipi": "TCP_SYN"
+        }
+      ]
+    },
+    {
+      "test_kodu": "NEG_03",
+      "senaryo_adi": "El Sıkışma Tamamlanmadan Erken Veri Gönderimi",
+      "beklenen_hata": "HandshakeViolationError",
+      "beklenen_tespit": "ERKEN_VERI_ENJEKSIYONU",
+      "olaylar": [
+        {
+          "olay_id": "NEG3-EVT1",
+          "zaman_damgasi": "2026-10-31T01:00:00.000000Z",
+          "protokol": "TCP",
+          "kaynak_ip": "192.168.1.100",
+          "hedef_ip": "10.10.20.50",
+          "kaynak_port": 49152,
+          "hedef_port": 443,
+          "islem_tipi": "TCP_SYN",
+          "sira_no": 1000
+        },
+        {
+          "olay_id": "NEG3-EVT2",
+          "zaman_damgasi": "2026-10-31T01:00:00.010000Z",
+          "protokol": "HTTP2",
+          "kaynak_ip": "192.168.1.100",
+          "hedef_ip": "10.10.20.50",
+          "kaynak_port": 49152,
+          "hedef_port": 443,
+          "islem_tipi": "HTTP2_DATA",
+          "sira_no": 1001,
+          "detaylar": { "cerceve_tipi": "DATA", "akim_id": 1 }
+        }
+      ]
+    },
+    {
+      "test_kodu": "NEG_04",
+      "senaryo_adi": "TCP Sıra Numarası Sıçraması (Session Hijacking Şüphesi)",
+      "beklenen_hata": "SequenceAnomalyError",
+      "beklenen_tespit": "TCP_SIRA_NUMARASI_SICRAMASI",
+      "olaylar": [
+        {
+          "olay_id": "NEG4-EVT1",
+          "zaman_damgasi": "2026-10-31T01:00:00.000000Z",
+          "protokol": "TCP",
+          "kaynak_ip": "192.168.1.100",
+          "hedef_ip": "10.10.20.50",
+          "kaynak_port": 49152,
+          "hedef_port": 443,
+          "islem_tipi": "TCP_SYN",
+          "sira_no": 1000
+        },
+        {
+          "olay_id": "NEG4-EVT2",
+          "zaman_damgasi": "2026-10-31T01:00:00.020000Z",
+          "protokol": "TCP",
+          "kaynak_ip": "10.10.20.50",
+          "hedef_ip": "192.168.1.100",
+          "kaynak_port": 443,
+          "hedef_port": 49152,
+          "islem_tipi": "TCP_SYN_ACK",
+          "sira_no": 5000,
+          "onay_no": 1001
+        },
+        {
+          "olay_id": "NEG4-EVT3",
+          "zaman_damgasi": "2026-10-31T01:00:00.040000Z",
+          "protokol": "TCP",
+          "kaynak_ip": "192.168.1.100",
+          "hedef_ip": "10.10.20.50",
+          "kaynak_port": 49152,
+          "hedef_port": 443,
+          "islem_tipi": "TCP_ACK",
+          "sira_no": 1001,
+          "onay_no": 5001
+        },
+        {
+          "olay_id": "NEG4-EVT4",
+          "zaman_damgasi": "2026-10-31T01:00:00.060000Z",
+          "protokol": "TCP",
+          "kaynak_ip": "192.168.1.100",
+          "hedef_ip": "10.10.20.50",
+          "kaynak_port": 49152,
+          "hedef_port": 443,
+          "islem_tipi": "TCP_DATA",
+          "sira_no": 9999999,
+          "onay_no": 5001,
+          "paket_boyutu": 128
+        }
+      ]
+    },
+    {
+      "test_kodu": "NEG_05",
+      "senaryo_adi": "Slowloris Yavaş Başlık Damlatma Saldırısı",
+      "beklenen_hata": "SlowlorisAnomalyError",
+      "beklenen_tespit": "SLOWLORIS_YAVAS_BASLIK_DAMLATMA",
+      "olaylar": [
+        {
+          "olay_id": "NEG5-EVT1",
+          "zaman_damgasi": "2026-10-31T01:00:00.000000Z",
+          "protokol": "TCP",
+          "kaynak_ip": "192.168.1.100",
+          "hedef_ip": "10.10.20.50",
+          "kaynak_port": 49152,
+          "hedef_port": 80,
+          "islem_tipi": "TCP_SYN",
+          "sira_no": 100
+        },
+        {
+          "olay_id": "NEG5-EVT2",
+          "zaman_damgasi": "2026-10-31T01:00:00.020000Z",
+          "protokol": "TCP",
+          "kaynak_ip": "10.10.20.50",
+          "hedef_ip": "192.168.1.100",
+          "kaynak_port": 80,
+          "hedef_port": 49152,
+          "islem_tipi": "TCP_SYN_ACK",
+          "sira_no": 200,
+          "onay_no": 101
+        },
+        {
+          "olay_id": "NEG5-EVT3",
+          "zaman_damgasi": "2026-10-31T01:00:00.040000Z",
+          "protokol": "TCP",
+          "kaynak_ip": "192.168.1.100",
+          "hedef_ip": "10.10.20.50",
+          "kaynak_port": 49152,
+          "hedef_port": 80,
+          "islem_tipi": "TCP_ACK",
+          "sira_no": 101,
+          "onay_no": 201
+        },
+        {
+          "olay_id": "NEG5-EVT4",
+          "zaman_damgasi": "2026-10-31T01:00:00.060000Z",
+          "protokol": "HTTP",
+          "kaynak_ip": "192.168.1.100",
+          "hedef_ip": "10.10.20.50",
+          "kaynak_port": 49152,
+          "hedef_port": 80,
+          "islem_tipi": "HTTP_PARTIAL_HEADER",
+          "detaylar": { "baslik_parcasi": "X-Slow-Header: test1\r\n" },
+          "paket_boyutu": 25
+        },
+        {
+          "olay_id": "NEG5-EVT5",
+          "zaman_damgasi": "2026-10-31T01:00:25.000000Z",
+          "protokol": "HTTP",
+          "kaynak_ip": "192.168.1.100",
+          "hedef_ip": "10.10.20.50",
+          "kaynak_port": 49152,
+          "hedef_port": 80,
+          "islem_tipi": "HTTP_PARTIAL_HEADER",
+          "detaylar": { "baslik_parcasi": "X-Slow-Header: test2\r\n" },
+          "paket_boyutu": 25
+        }
+      ]
+    },
+    {
+      "test_kodu": "NEG_06",
+      "senaryo_adi": "Hızlı Port Taraması (SYN Burst)",
+      "beklenen_hata": "PortScanAnomalyError",
+      "beklenen_tespit": "HIZLI_PORT_TARAMA_BURST",
+      "olaylar": [
+        { "olay_id": "NEG6-EVT1", "zaman_damgasi": "2026-10-31T01:00:00.001000Z", "protokol": "TCP", "kaynak_ip": "192.168.1.150", "hedef_ip": "10.10.20.50", "kaynak_port": 40001, "hedef_port": 21, "islem_tipi": "TCP_SYN" },
+        { "olay_id": "NEG6-EVT2", "zaman_damgasi": "2026-10-31T01:00:00.005000Z", "protokol": "TCP", "kaynak_ip": "192.168.1.150", "hedef_ip": "10.10.20.50", "kaynak_port": 40002, "hedef_port": 22, "islem_tipi": "TCP_SYN" },
+        { "olay_id": "NEG6-EVT3", "zaman_damgasi": "2026-10-31T01:00:00.010000Z", "protokol": "TCP", "kaynak_ip": "192.168.1.150", "hedef_ip": "10.10.20.50", "kaynak_port": 40003, "hedef_port": 23, "islem_tipi": "TCP_SYN" },
+        { "olay_id": "NEG6-EVT4", "zaman_damgasi": "2026-10-31T01:00:00.015000Z", "protokol": "TCP", "kaynak_ip": "192.168.1.150", "hedef_ip": "10.10.20.50", "kaynak_port": 40004, "hedef_port": 80, "islem_tipi": "TCP_SYN" },
+        { "olay_id": "NEG6-EVT5", "zaman_damgasi": "2026-10-31T01:00:00.020000Z", "protokol": "TCP", "kaynak_ip": "192.168.1.150", "hedef_ip": "10.10.20.50", "kaynak_port": 40005, "hedef_port": 443, "islem_tipi": "TCP_SYN" },
+        { "olay_id": "NEG6-EVT6", "zaman_damgasi": "2026-10-31T01:00:00.025000Z", "protokol": "TCP", "kaynak_ip": "192.168.1.150", "hedef_ip": "10.10.20.50", "kaynak_port": 40006, "hedef_port": 3389, "islem_tipi": "TCP_SYN" }
+      ]
+    },
+    {
+      "test_kodu": "NEG_07",
+      "senaryo_adi": "DNS Tünelleme Patlaması (Yüksek Entropili Seri Sorgu)",
+      "beklenen_hata": "DnsTunnelingAnomalyError",
+      "beklenen_tespit": "DNS_TUNELLEME_PATLAMASI",
+      "olaylar": [
+        { "olay_id": "NEG7-EVT1", "zaman_damgasi": "2026-10-31T01:00:00.010000Z", "protokol": "DNS", "kaynak_ip": "192.168.1.180", "hedef_ip": "8.8.8.8", "kaynak_port": 51001, "hedef_port": 53, "islem_tipi": "DNS_QUERY", "detaylar": { "sorgu_adi": "a8f3c7e92b1049da821f00a9c.t.exfil.org" } },
+        { "olay_id": "NEG7-EVT2", "zaman_damgasi": "2026-10-31T01:00:00.030000Z", "protokol": "DNS", "kaynak_ip": "192.168.1.180", "hedef_ip": "8.8.8.8", "kaynak_port": 51002, "hedef_port": 53, "islem_tipi": "DNS_QUERY", "detaylar": { "sorgu_adi": "b7e21a9c4021ef390acde8194.t.exfil.org" } },
+        { "olay_id": "NEG7-EVT3", "zaman_damgasi": "2026-10-31T01:00:00.050000Z", "protokol": "DNS", "kaynak_ip": "192.168.1.180", "hedef_ip": "8.8.8.8", "kaynak_port": 51003, "hedef_port": 53, "islem_tipi": "DNS_QUERY", "detaylar": { "sorgu_adi": "cf0912ab8e47382d910284ab7.t.exfil.org" } },
+        { "olay_id": "NEG7-EVT4", "zaman_damgasi": "2026-10-31T01:00:00.070000Z", "protokol": "DNS", "kaynak_ip": "192.168.1.180", "hedef_ip": "8.8.8.8", "kaynak_port": 51004, "hedef_port": 53, "islem_tipi": "DNS_QUERY", "detaylar": { "sorgu_adi": "98124abef873c1094dae31902.t.exfil.org" } }
+      ]
+    },
+    {
+      "test_kodu": "NEG_08",
+      "senaryo_adi": "Eksik Zorunlu Olay Alanları",
+      "beklenen_hata": "MissingEventFieldError",
+      "beklenen_tespit": "EKSIK_ZORUNLU_ALAN",
+      "olaylar": [
+        {
+          "olay_id": "NEG8-EVT1",
+          "kaynak_ip": "192.168.1.100",
+          "hedef_ip": "10.10.20.50"
+        }
+      ]
+    },
+    {
+      "test_kodu": "NEG_09",
+      "senaryo_adi": "Geçersiz TCP Durum Geçişi (Tanımsız Akışta Erken FIN)",
+      "beklenen_hata": "IllegalStateTransitionError",
+      "beklenen_tespit": "GECERSIZ_DURUM_GECISI",
+      "olaylar": [
+        {
+          "olay_id": "NEG9-EVT1",
+          "zaman_damgasi": "2026-10-31T01:00:00.000000Z",
+          "protokol": "TCP",
+          "kaynak_ip": "192.168.1.100",
+          "hedef_ip": "10.10.20.50",
+          "kaynak_port": 49152,
+          "hedef_port": 443,
+          "islem_tipi": "TCP_FIN_ACK",
+          "bayraklar": ["FIN", "ACK"],
+          "sira_no": 9999,
+          "onay_no": 1111
+        }
+      ]
+    }
+  ]
+}

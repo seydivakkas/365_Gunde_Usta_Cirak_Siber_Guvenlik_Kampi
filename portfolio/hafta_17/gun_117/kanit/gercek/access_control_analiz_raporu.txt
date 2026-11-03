@@ -1,0 +1,24 @@
+======================================================================
+GÜN 117: RBAC VE ABAC ERİŞİM KONTROL GÜVENLİK VE MİMARİ ANALİZ RAPORU
+Mühendis: Seydi Eryılmaz (@seydivakkas)
+Tarih: 2026-11-02 05:36:53
+======================================================================
+
+1. MİMARİ İNCELEME (NIST ANSI 359 & NIST SP 800-162):
+   - Rol Tabanlı Erişim Kontrolü (RBAC): Kaba taneli yetkilendirme kapısı olarak
+     hiyerarşik miras (inheritance) ve Statik Görevler Ayrılığı (SSD) sağlar.
+   - Öznitelik Tabanlı Erişim Kontrolü (ABAC): İnce taneli yetkilendirme olarak
+     özne, kaynak, eylem ve çevre değişkenlerini 'Deny-Overrides' mantığıyla değerlendirir.
+   - Hibrit Model: Önce RBAC ile temel rol yetkisi sorgulanır; başarılı ise ABAC ile
+     bağlamsal sınırlamalar (kiracı, departman, gizlilik derecesi, IP, saat) denetlenir.
+
+2. KAPSAMLI ZAFİYET ENGELLEME PERFORMANSI:
+   - CWE-862 (Missing Authorization)       : Rol izin eksikliği anında tespit edildi.
+   - CWE-863 (Incorrect Authorization)     : SoD çatışmaları ve kilitli kaynaklar engellendi.
+   - CWE-284 (Improper Access Control)     : Çok kiracılı izolasyon ve mesai dışı engeli sağlandı.
+   - CWE-639 (IDOR)                        : Departmanlar arası veri sızıntısı önlendi.
+   - CWE-285 (Insufficient Clearance)      : Gizlilik seviyesi denetimi doğrulandı.
+   - CWE-308 (Missing Multi-Factor Auth)   : Silme işlemlerinde MFA şartı uygulandı.
+
+3. SONUÇ VE TAVSİYE:
+   Geliştirilen hibrit erişim motoru sıfır hata ve tam uyumlulukla test edilmiştir.

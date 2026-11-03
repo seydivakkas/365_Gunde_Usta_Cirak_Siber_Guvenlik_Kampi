@@ -1,0 +1,21 @@
+======================================================================
+KOMUT SATIRI ÇALIŞMA DEFTERİ (RUNBOOK) DENETİM RAPORU
+======================================================================
+Toplam Komut Sayısı     : 12
+Yürütme Modu            : DETERMINISTIK MOCK
+Güvenlik İlkesi Sınıfı  : SALT_OKUNUR_KESIF (READ_ONLY_DISCOVERY)
+----------------------------------------------------------------------
+[OK] CMD-01 | whoami          | SHA256: 3ad851a969f2... | kimlik_yonetimi
+[OK] CMD-02 | id              | SHA256: 189df040ee7c... | kimlik_yonetimi
+[OK] CMD-03 | hostname        | SHA256: c3e596efc4bb... | sistem_bilgisi
+[OK] CMD-04 | uname -a        | SHA256: 17751499ee4a... | sistem_bilgisi
+[OK] CMD-05 | uptime          | SHA256: c7ccc7c33818... | sistem_durumu
+[OK] CMD-06 | ps aux          | SHA256: 3e50c5dea7db... | surec_yonetimi
+[OK] CMD-07 | df -h           | SHA256: ec395002f6c7... | depolama_ve_dosya
+[OK] CMD-08 | free -m         | SHA256: 174d9f51d45c... | bellek_kaynaklari
+[OK] CMD-09 | ss -tulpn       | SHA256: c9ee57b60146... | ag_soketleri
+[OK] CMD-10 | ip addr         | SHA256: df06a506e2ae... | ag_yapilandirmasi
+[OK] CMD-11 | env             | SHA256: c52f18150b7c... | ortam_degiskenleri
+[OK] CMD-12 | ls -ld /tmp     | SHA256: 89689e3d824b... | dosya_izinleri
+======================================================================
+[BİLGİ] Çalışma defteri başarıyla oluşturuldu: portfolio/hafta_04/gun_028/kanit/gercek/calisma_defteri_ornek.md

@@ -1,0 +1,21 @@
+{
+  "dosyalar": {
+    "README.md": "21d59cdcb45232d2241e19ff566be700c2d4d166e88f62f3e6c39bdb1ca3f069",
+    "ders.md": "251d172813e977f3e2f7d9898f42b3445d4955bc34a0b531428ecfdf588cfe3d",
+    "rapor.md": "37807976daf317a6ef83b797b682799f8686e7317ebd5a8ba2ffd014eae19953",
+    "sonuc.json": "f8b75ebbcb6bf9ced23fc569bbf4138a25e85a248d0754a17afcb71918b5f891",
+    "soru_cevap.md": "2b40c1cc2190db82e53a978d3f322d7109053c32d4f74e83227efbd468865fd5",
+    "kanit/gercek/komut_ve_cikis.txt": "7b30b5543078285193300ac1e86a111539ece53bd9ee4a824f9b50648e32055e",
+    "kanit/gercek/test_sonuclari.txt": "7b2aa90a1a0ce81ec063f4d456f59b7b918b789bf83fd3d05d2339d71ac3fc2c",
+    "kanit/temsili/linux_fhs_mimarisi.txt": "77073d1ddb64801f60cde70d12ad29bdf60f2f949cad81db2c3095b16c2725cc",
+    "ornek_veri/linux_fhs_sample_map.json": "edc9b99bb66aa86ac651f1eb24e4adbde6a3201946084cc29dd404365c19441a",
+    "ornek_veri/linux_fhs_security_baseline.json": "9c0aae73b89b3b2185c9d51f478a2c93fa6f8adabe884b6054f443b66b5f9276",
+    "tests/test_linux_fhs_hierarchy_auditor.py": "7dcca802612ad098f6bba672256b3ae1d88509275cd630f3a533264ee946b8c6",
+    "uygulama/linux_fhs_hierarchy_auditor.py": "025cc02f45c70aa7b06cab48e60f1ddd2d8df222580e1c4f6d5299480fc2f094"
+  },
+  "ozet": {
+    "toplam_dosya": 12,
+    "gun": 20,
+    "durum": "DOGRULANDI_PASS"
+  }
+}

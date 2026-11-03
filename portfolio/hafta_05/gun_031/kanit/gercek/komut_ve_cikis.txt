@@ -1,0 +1,55 @@
+======================================================================
+PROCESS EXPLORER SÜREÇ AĞACI ŞEMASI (G031-SC2)
+======================================================================
+└── [PID: 4    ] System (User: NT AUTHORITY\SYSTEM) (Microsoft Windows Component Publisher)
+    └── [PID: 340  ] smss.exe (User: NT AUTHORITY\SYSTEM) (Microsoft Windows)
+        └── [PID: 520  ] wininit.exe (User: NT AUTHORITY\SYSTEM) (Microsoft Windows)
+            ├── [PID: 610  ] services.exe (User: NT AUTHORITY\SYSTEM) (Microsoft Windows)
+            │   ├── [PID: 780  ] svchost.exe (User: NT AUTHORITY\SYSTEM) (Microsoft Windows)
+            │   └── [PID: 790  ] svchost.exe (User: NT AUTHORITY\NETWORK SERVICE) (Microsoft Windows)
+            ├── [PID: 620  ] lsass.exe (User: NT AUTHORITY\SYSTEM) (Microsoft Windows)
+            └── [PID: 1040 ] explorer.exe (User: SEC-CORP\analyst) (Microsoft Windows)
+                ├── [PID: 2100 ] chrome.exe (User: SEC-CORP\analyst) (Google LLC)
+                │   ├── [PID: 2110 ] chrome.exe (User: SEC-CORP\analyst) (Google LLC)
+                │   ├── [PID: 2120 ] chrome.exe (User: SEC-CORP\analyst) (Google LLC)
+                │   └── [PID: 2130 ] chrome.exe (User: SEC-CORP\analyst) (Google LLC)
+                └── [PID: 3100 ] winword.exe (User: SEC-CORP\analyst) (Microsoft Corporation)
+                    └── [PID: 3150 ] cmd.exe (User: SEC-CORP\analyst) (Microsoft Windows) [! TEHDİT: 1 Anomali]
+                        └── [PID: 3160 ] powershell.exe (User: SEC-CORP\analyst) (Microsoft Windows) [! TEHDİT: 1 Anomali]
+                            └── [PID: 4050 ] svchost.exe (User: SEC-CORP\analyst) (Unsigned) [! TEHDİT: 3 Anomali]
+======================================================================
+======================================================================
+PROCESS EXPLORER SÜREÇ AĞACI GÜVENLİK DENETİM RAPORU
+======================================================================
+Denetim Zamanı (UTC) : 2026-10-27T08:18:14.686214+00:00
+Toplam İncelenen Süreç: 16
+Kök Süreç Sayısı     : 1
+Tespit Edilen Anomali: 5
+----------------------------------------------------------------------
+G031-SC1 PRENSİBİ:
+'Ebeveyn-çocuk süreç ilişkisi yürütme zincirine ipucu sağlar fakat
+meşru yazılımlar da karmaşık süreç ağacı üretir (Örn: Chrome çoklu süreçleri).'
+----------------------------------------------------------------------
+TESPİT EDİLEN ŞÜPHELİ YÜRÜTME ZİNCİRLERİ VE ANOMALİLER:
+
+[BULGU #1] [CRITICAL] OFFICE_SPAWNED_SHELL (PID: 3150 - cmd.exe)
+   MITRE ATT&CK : T1204.002 / T1059 - Command and Scripting Interpreter
+   Açıklama     : Ofis uygulaması ('winword.exe', PID 3100) komut kabuğu ('cmd.exe', PID 3150) başlattı!
+
+[BULGU #2] [HIGH] ENCODED_POWERSHELL_EXECUTION (PID: 3160 - powershell.exe)
+   MITRE ATT&CK : T1059.001 - PowerShell Obfuscation
+   Açıklama     : PowerShell Base64 kodlanmış gizlenmiş (obfuscated) komut satırı ile çalıştırıldı.
+
+[BULGU #3] [HIGH] INVALID_PARENT_FOR_SVCHOST (PID: 4050 - svchost.exe)
+   MITRE ATT&CK : T1036.005 - Masquerading: Match Legitimate Name or Location
+   Açıklama     : svchost.exe meşru ebeveyn 'services.exe' yerine 'powershell.exe' (PID 3160) tarafından başlatılmış!
+
+[BULGU #4] [CRITICAL] SUSPICIOUS_SYSTEM_BINARY_PATH (PID: 4050 - svchost.exe)
+   MITRE ATT&CK : T1036.005 - Masquerading
+   Açıklama     : Kritik sistem ikilisi şüpheli dizinden çalışıyor: 'C:\Users\analyst\AppData\Local\Temp\svchost.exe'.
+
+[BULGU #5] [HIGH] UNSIGNED_CRITICAL_PROCESS (PID: 4050 - svchost.exe)
+   MITRE ATT&CK : T1036 - Masquerading
+   Açıklama     : Kritik sistem süreci 'svchost.exe' geçerli dijital imzaya sahip değil!
+
+======================================================================

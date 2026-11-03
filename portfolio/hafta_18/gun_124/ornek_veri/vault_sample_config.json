@@ -1,0 +1,50 @@
+{
+  "vault_name": "Atlas Kurumsal Secrets Kasası (Production Vault)",
+  "secrets": [
+    {
+      "secret_id": "SEC-PROD-DB-01",
+      "name": "Ana PostgreSQL Müşteri Veritabanı Parolası",
+      "secret_type": "DATABASE_PASSWORD",
+      "value": "pg_prod_secure_pass_9921#*!@",
+      "allowed_roles": [
+        "dba",
+        "backend_prod_service"
+      ],
+      "ttl_seconds": 86400,
+      "rotation_interval_days": 30
+    },
+    {
+      "secret_id": "SEC-STRIPE-API-01",
+      "name": "Stripe Ödeme Ağ Geçidi Canlı API Anahtarı",
+      "secret_type": "API_KEY",
+      "value": "sk_test_51NyAbcDefGhiJklMnoPqrStuv",
+      "allowed_roles": [
+        "payment_service"
+      ],
+      "ttl_seconds": 2592000,
+      "rotation_interval_days": 90
+    },
+    {
+      "secret_id": "SEC-JWT-HMAC-01",
+      "name": "Merkezi Kimlik Doğrulama JWT İmza Sırrı",
+      "secret_type": "JWT_SECRET",
+      "value": "jwt_hmac_super_secret_signing_key_2026_xyz!",
+      "allowed_roles": [
+        "auth_service"
+      ],
+      "ttl_seconds": 604800,
+      "rotation_interval_days": 15
+    },
+    {
+      "secret_id": "SEC-AWS-S3-01",
+      "name": "Yedekleme S3 Bucket Erişim Anahtarı",
+      "secret_type": "API_KEY",
+      "value": "AKIAIOSFODNN7EXAMPLE",
+      "allowed_roles": [
+        "backup_worker"
+      ],
+      "ttl_seconds": 86400,
+      "rotation_interval_days": 30
+    }
+  ]
+}

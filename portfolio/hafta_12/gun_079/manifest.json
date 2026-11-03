@@ -1,0 +1,19 @@
+{
+  "ders.md": "85d3cb2f24c007b399073f86bc867202aa36c5206f4b01e6497389a1ad098079",
+  "kanit/gercek/guvenli_veri_isleme_raporu.txt": "f9432aa2afdd69c1bbe68c5d09023e353761334fb577f994863ebebcda757560",
+  "kanit/gercek/komut_ve_cikis.txt": "557d50760fb40426c67fc889e1508f1f6b3f9ee3436410ec162836bc5c267c1a",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "bf6c58d45db7d5b4eb2ba662db9d732e88db3b4b8d783ccabc5256a1af88e7ba",
+  "kanit/gercek/test_sonuclari.txt": "eec61f999506151aa05c3536a3aa6b9f9a9409fbcf665e4e8f8286a0109bd3ec",
+  "kanit/temsili/csv_json_guvenlik_mimarisi.txt": "8e00248ff762c0059c0022b45f1bad61118fed999809e781f848f8fb7252efad",
+  "ornek_veri/invalid_csv_json_inputs.json": "f515f59b5ea89ba8b4f424338c4f22cf033cf641bd6708c29ccfe20219aa5218",
+  "ornek_veri/sample_security_events.json": "7744d24f6007b3d3565ec55501677a88427256681c529462904c7e1f25ec3ec5",
+  "ornek_veri/sample_threat_feed.csv": "351ec3c0bbdc2385cf224264907309e0e628d0ca082cfddd741aeb63b730ddfa",
+  "rapor.md": "ef8f40ecfa5ee71ab9178f08e136fceccc752a426da5f883a026e9e4326693be",
+  "README.md": "15d1f9e5bbf48c7f982af4a13772019710a702eef52eb547ac3da66133e56fa8",
+  "sonuc.json": "32db710f577ee5c1b5d0d7752a9a19855d5f71c58e98c85269c2166af16efaa5",
+  "soru_cevap.md": "ffcfb9315a823598f91d06c14057e6e9fc53e2d9eb46522e4d2ee8b90e77db24",
+  "tests/__init__.py": "4e253cbe421ccd25663d9e50a8ca447eff8ee8bee15390c582fc508534d7b639",
+  "tests/test_secure_csv_json_processor.py": "255b5497f4552b2ab65fc6f5341d048f924e32722791e51b5319b950771c7265",
+  "uygulama/__init__.py": "61074baf2104a4353b480e03971956784aecb4cc7a92c6a72c4e9b24499d37d9",
+  "uygulama/secure_csv_json_processor.py": "3761d75a85cafed0b6cab2c6ea725281c2ec73d3398cae8f023e544958b1a00a"
+}

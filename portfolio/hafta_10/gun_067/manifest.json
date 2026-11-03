@@ -1,0 +1,18 @@
+{
+  "ders.md": "4c387ac2376ffe7113e014c43f8273cd141e0517ec560d38682f3b60ae753bbf",
+  "kanit/gercek/ag_performans_qos_raporu.txt": "0ad747304546cf33b56f086028d5d02f94824d3cef75897d744195b9bf2edff9",
+  "kanit/gercek/komut_ve_cikis.txt": "e9fc748cebe3a7011b7d7873bca69016b24641bd7ccd0d875167e6e27d5cda76",
+  "kanit/gercek/negatif_kontrol_sonuclari.txt": "9231deec6e6c5531bfc58a4af265218554334fe2fccd78f90c696582d75f0ff7",
+  "kanit/gercek/test_sonuclari.txt": "678005f83d354bada8b61ac6d4c075b34adfd4084e0f21026c83a618a6e649be",
+  "kanit/temsili/qos_jitter_kayip_mimarisi.txt": "21e6131114021f8f9208269d9eab4b53e355cd759845c9fc198841d76df0cc24",
+  "ornek_veri/invalid_qos_inputs.json": "8881fe89807dd312001d4ce18bbf33fc5cca6bac05af596f8616480d05463245",
+  "ornek_veri/sample_network_telemetry.json": "5938b8521c6188e3a9f5340ee8f7cee7bf24c0b679a6dfd2b4bb411cc11a4aca",
+  "rapor.md": "14abdd32dcb7d70ec16d62ef896bca881f73108599060fc74e5873aa8328c533",
+  "README.md": "af3e8ab96e70ac6ebe6d01cd43464f31dfd59a784cfdf18e492af27a096dae47",
+  "sonuc.json": "d60358b12c21d96950b5d5b5e90a705171a05cdd642b9ee89780656bfd70ecca",
+  "soru_cevap.md": "e13a05aca444c70b28c9458bde20aaf112a7408a9cfefe83379daa57b73a1752",
+  "tests/__init__.py": "ab440fec128b52f53a84af6a46a7b3e1b205a3e9046fb6f51111afca98711acd",
+  "tests/test_network_performance_qos_analyzer.py": "360b1fcdc73548b03b3bf77a701ca5f4295ca1cd4ba4afa74d1875bc45b1b069",
+  "uygulama/__init__.py": "8493194451ac82d5511791e59f0b62412f16ab5eef804ec3bace9d35770f8406",
+  "uygulama/network_performance_qos_analyzer.py": "5a5991b700dff0633b81cb9f4103c23c76d39728b216c1d3e24af0e6363dd562"
+}

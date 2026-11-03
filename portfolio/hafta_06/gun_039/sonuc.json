@@ -1,0 +1,27 @@
+{
+  "gun": 39,
+  "gun_id": "G039",
+  "baslik": "Yedekleme stratejisi ve 3-2-1",
+  "asama": 2,
+  "hafta": 6,
+  "tarih": "2026-10-27",
+  "durum": "PASS",
+  "puan": 100,
+  "rubrik_detay": {
+    "kod_tasarimi": 20,
+    "test_dogrulama": 40,
+    "guvenlik_derinligi": 25,
+    "belgelendirme_standart": 15
+  },
+  "test_toplam": 14,
+  "test_basarili": 14,
+  "test_basarisiz": 0,
+  "kanitlar": [
+    "kanit/gercek/test_sonuclari.txt",
+    "kanit/gercek/komut_ve_cikis.txt",
+    "kanit/gercek/yedekleme_ve_321_denetim_raporu.txt",
+    "kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "kanit/temsili/yedekleme_stratejisi_ve_321_mimarisi.txt"
+  ],
+  "ozet": "G039 kapsamında 3-2-1 yedekleme kuralı, fidye yazılımlarına (Ransomware) karşı değiştirilemezlik (WORM/Immutability), Schrödinger'in yedeği (geri yükleme testleri), RAID vs Snapshot mimari yanılgıları ve RPO/RTO hedefleri incelendi. BackupStrategy321Auditor motoru geliştirildi ve 14 birim test %100 başarıyla tamamlandı."
+}

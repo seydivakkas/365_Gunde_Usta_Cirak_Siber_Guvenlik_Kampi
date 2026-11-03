@@ -1,0 +1,77 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+
+================================================================================
+G083: GIT COMMIT VE DEĞİŞİKLİK İNCELEME (DIFF AUDIT) GÜVENLİK MİMARİSİ
+================================================================================
+
+Bu şema, Git commit nesnelerinin ve Unified Diff akışlarının sürekli entegrasyon (CI/CD)
+veya yerel Git pre-commit kancalarında (hooks) nasıl otomatik denetlendiğini,
+gizli anahtar, Trojan Source (Bidi) ve yüksek entropi tespit hatlarını modeller.
+
++-----------------------------------------------------------------------------------+
+|                           GELİŞTİRİCİ ÇALIŞMA ALANI                              |
+|                                                                                   |
+|  $ git add .                                                                      |
+|  $ git commit -m "feat: yeni kimlik doğrulama katmanı"                            |
++---------------------------------------------------------+-------------------------+
+                                                          |
+                                                          v
+                                        +----------------------------------+
+                                        |  PRE-COMMIT HOOK / CI PIPELINE   |
+                                        +----------------------------------+
+                                                          |
+                                      [ git diff --cached / git diff HEAD~1 ]
+                                                          |
+                                                          v
++-----------------------------------------------------------------------------------+
+|               GIT COMMIT VE DIFF GÜVENLİK DENETİM MOTORU                          |
+|                                                                                   |
+|  1. BOYUT VE DoS KORUMASI (UnifiedDiffParser)                                     |
+|     - Max Bayt Limiti: 1,048,576 B (1 MB) -> Aşılırsa: DiffSizeLimitExceeded      |
+|     - Max Satır Limiti: 10,000 satır     -> Aşılırsa: DiffSizeLimitExceeded      |
+|     - Null Byte Kontrolü: 0x00 (\x00)    -> Varsa: MalformedDiffException         |
+|                                                                                   |
+|  2. AYRIŞTIRMA VE YAPILANDIRMA                                                    |
+|     - CommitMetadata: hash, yazar, e-posta, tarih, mesaj                          |
+|     - FileDelta: eski/yeni yol, hunk listesi, +/- sayaçları                       |
+|     - DiffHunk: @@ -eski,sayı +yeni,sayı @@, eklenen (+), silinen (-) satırlar    |
+|                                                                                   |
+|  3. ÇOK KATMANLI GÜVENLİK ANALİZİ (Sadece Eklenen [+] Satırlar)                   |
+|     +-----------------------------------------------------------------------+     |
+|     | A. Trojan Source / Bidi Analizi (CVE-2021-42574)                      |     |
+|     |    - U+202E (RLO), U+2066 (LRI), U+2069 (PDI) karakter taraması       |     |
+|     |    - Sonuç: Kritik Güvenlik İhlali (Severity: CRITICAL)               |     |
+|     +-----------------------------------------------------------------------+     |
+|     | B. Gizli Veri & API Anahtarı Taraması (SecretPatternMatcher)          |     |
+|     |    - AWS (AKIA...), GitHub PAT (ghp_...), RSA Private Key             |     |
+|     |    - Maskeleme: AKIA***MPLE (CWE-798 Önlemi)                          |     |
+|     +-----------------------------------------------------------------------+     |
+|     | C. Shannon Entropi Hesaplayıcısı (ShannonEntropyCalculator)           |     |
+|     |    - Formül: H = - SUM( p_i * log2(p_i) )                             |     |
+|     |    - Eşik: >= 4.30 bit/karakter (Rastgele parola/salt tespiti)        |     |
+|     +-----------------------------------------------------------------------+     |
+|     | D. Tehlikeli Kod Çağrıları (DangerousPatternDetector)                 |     |
+|     |    - eval(), exec(), os.system(), subprocess(shell=True)              |     |
+|     +-----------------------------------------------------------------------+     |
++---------------------------------------------------------+-------------------------+
+                                                          |
+                                                          v
+                                        +----------------------------------+
+                                        |    GÜVENLİK DEĞERLENDİRMESİ      |
+                                        +----------------------------------+
+                                        | Puan = 100 - (Cezalar)           |
+                                        | Kritik: -40, Yüksek: -25         |
+                                        | Karar Matrisi:                   |
+                                        | - 100 - 90: APPROVE (Onay)       |
+                                        | - 89  - 60: WARN (Uyarı)         |
+                                        | - < 60 veya Kritik: REJECT (Ret) |
+                                        +-----------------+----------------+
+                                                          |
+                       +----------------------------------+----------------------------------+
+                       |                                                                     |
+                       v                                                                     v
+          +-------------------------+                                           +-------------------------+
+          |         APPROVE         |                                           |         REJECT          |
+          |  Commit kabul edilir    |                                           |  Commit reddedilir      |
+          |  Pipeline yeşil döner   |                                           |  İtme (push) engellenir |
+          +-------------------------+                                           +-------------------------+

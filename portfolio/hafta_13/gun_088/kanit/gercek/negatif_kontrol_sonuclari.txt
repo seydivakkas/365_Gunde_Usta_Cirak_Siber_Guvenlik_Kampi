@@ -1,0 +1,61 @@
+================================================================================
+G088: 9 ADET NEGATIF KONTROL VE HATA YONETIMI TESTLERI
+Zaman Damgasi (UTC): 2026-11-01T20:06:56.789348+00:00
+================================================================================
+
+[PASS] NEG_01_SILENT_ERROR_SUPPRESSION
+  Baslik          : Kritik Komutta 2> /dev/null ile Hatanin Sessizce Gizlenmesi
+  Zafiyet Sinifi  : CWE-390: Detection of Error Condition Without Action (Silent Error Swallowing)
+  Beklenen Istisna: SilentErrorSuppressionException
+  Yakalanan Hata  : SilentErrorSuppressionException
+--------------------------------------------------------------------------------
+[PASS] NEG_02_STDERR_PASSWORD_LEAKAGE
+  Baslik          : Standart Hata (stderr) Akisina Acik Metin Kimlik Bilgisi Sizdirilmasi
+  Zafiyet Sinifi  : CWE-209: Generation of Error Message Containing Sensitive Information
+  Beklenen Istisna: SensitiveDataInStderrException
+  Yakalanan Hata  : SensitiveDataInStderrException
+--------------------------------------------------------------------------------
+[PASS] NEG_03_COMMAND_NOT_FOUND_127
+  Baslik          : Sistemde Olmayan Komutun Calistirilmasi (Cikis Kodu 127)
+  Zafiyet Sinifi  : CWE-20: Missing Command / Path Execution Failure
+  Beklenen Istisna: CommandNotFoundSecurityException
+  Yakalanan Hata  : CommandNotFoundSecurityException
+--------------------------------------------------------------------------------
+[PASS] NEG_04_PERMISSION_DENIED_126
+  Baslik          : Yetkisiz veya Calistirma Izni Olmayan Komut (Cikis Kodu 126)
+  Zafiyet Sinifi  : CWE-276: Incorrect Default Permissions (Permission Denied 126)
+  Beklenen Istisna: CommandExecutionFailedException
+  Yakalanan Hata  : CommandExecutionFailedException
+--------------------------------------------------------------------------------
+[PASS] NEG_05_UNCHECKED_NONZERO_EXIT
+  Baslik          : Sifir Disi Cikis Koduna Ragmen Isleme Devam Edilmesi
+  Zafiyet Sinifi  : CWE-754: Improper Check for Exceptional Conditions
+  Beklenen Istisna: CommandExecutionFailedException
+  Yakalanan Hata  : CommandExecutionFailedException
+--------------------------------------------------------------------------------
+[PASS] NEG_06_NULL_BYTE_IN_STDERR
+  Baslik          : stderr Akisinda veya Komut Girdisinde Null Byte (0x00) Enjeksiyonu
+  Zafiyet Sinifi  : CWE-158: Improper Neutralization of Null Byte or Special Characters
+  Beklenen Istisna: NullByteForbiddenException
+  Yakalanan Hata  : NullByteForbiddenException
+--------------------------------------------------------------------------------
+[PASS] NEG_07_OVERSIZED_STDERR_DOS
+  Baslik          : Asiri Boyutlu stderr Mesaji ile Bellek Tukenmesi (DoS)
+  Zafiyet Sinifi  : CWE-400: Uncontrolled Resource Consumption in Error Stream
+  Beklenen Istisna: OversizedStderrPayloadException
+  Yakalanan Hata  : OversizedStderrPayloadException
+--------------------------------------------------------------------------------
+[PASS] NEG_08_PROCESS_TIMEOUT_HANG
+  Baslik          : Asili Kalan ve Zaman Asimina Ugrayan Surec Calismasi
+  Zafiyet Sinifi  : CWE-400: Process Unresponsiveness and Hang
+  Beklenen Istisna: ProcessExecutionTimeoutException
+  Yakalanan Hata  : ProcessExecutionTimeoutException
+--------------------------------------------------------------------------------
+[PASS] NEG_09_HARDCODED_FAKE_EXIT_ZERO
+  Baslik          : Hatalara Ragmen Betigin Sonunda Yaniltici 'exit 0' Donulmesi
+  Zafiyet Sinifi  : CWE-390: Fraudulent Success Status Code
+  Beklenen Istisna: SilentErrorSuppressionException
+  Yakalanan Hata  : SilentErrorSuppressionException
+--------------------------------------------------------------------------------
+
+TOPLAM NEGATIF TEST SONUCU: 9/9 PASS (100% Basari)

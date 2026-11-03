@@ -1,0 +1,33 @@
+test_01_init_state (portfolio.hafta_06.gun_036.tests.test_memory_virtual_swap_auditor.TestMemoryVirtualSwapAuditor.test_01_init_state)
+Denetleyicinin ba■lang² durumunun bo■ ve temiz oldu­unu do­rular. ... ok
+test_02_load_valid_telemetry (portfolio.hafta_06.gun_036.tests.test_memory_virtual_swap_auditor.TestMemoryVirtualSwapAuditor.test_02_load_valid_telemetry)
+Geerli bellek telemetri dosyas²n²n ba■ar²yla y³klendi­ini test eder. ... ok
+test_03_detect_unencrypted_swap (portfolio.hafta_06.gun_036.tests.test_memory_virtual_swap_auditor.TestMemoryVirtualSwapAuditor.test_03_detect_unencrypted_swap)
+Ìifrelenmemi■ swap alan²n²n (UNENCRYPTED_SWAP) HIGH olarak saptand²­²n² test eder. ... ok
+test_04_detect_pagefile_not_sanitized (portfolio.hafta_06.gun_036.tests.test_memory_virtual_swap_auditor.TestMemoryVirtualSwapAuditor.test_04_detect_pagefile_not_sanitized)
+Kapan²■ta sayfa dosyas² temizli­inin kapal² oldu­unu MEDIUM olarak saptar. ... ok
+test_05_detect_high_swap_usage (portfolio.hafta_06.gun_036.tests.test_memory_virtual_swap_auditor.TestMemoryVirtualSwapAuditor.test_05_detect_high_swap_usage)
+A■²r² swap kullan²m²n²n (>%70) HIGH_SWAP_USAGE olarak saptand²­²n² test eder. ... ok
+test_06_detect_memory_scraping_attempt (portfolio.hafta_06.gun_036.tests.test_memory_virtual_swap_auditor.TestMemoryVirtualSwapAuditor.test_06_detect_memory_scraping_attempt)
+mem_scraper.exe s³recinin LSASS bellek d÷k³m³ giri■imini CRITICAL olarak yakalar. ... ok
+test_07_detect_unlocked_sensitive_memory (portfolio.hafta_06.gun_036.tests.test_memory_virtual_swap_auditor.TestMemoryVirtualSwapAuditor.test_07_detect_unlocked_sensitive_memory)
+Kriptografik anahtar i■leyen s³recin mlock yapmamas²n² HIGH olarak yakalar. ... ok
+test_08_detect_high_page_faults (portfolio.hafta_06.gun_036.tests.test_memory_virtual_swap_auditor.TestMemoryVirtualSwapAuditor.test_08_detect_high_page_faults)
+Ola­an d²■² y³ksek sayfa hatas² (Page Fault) ³reten s³reci yakalar. ... ok
+test_09_detect_swap_credential_leak (portfolio.hafta_06.gun_036.tests.test_memory_virtual_swap_auditor.TestMemoryVirtualSwapAuditor.test_09_detect_swap_credential_leak)
+Swap dosyas²ndaki art²k verilerden ■ifresiz kimlik bilgisi s²z²nt²s²n² yakalar. ... ok
+test_10_calculate_memory_risk_score (portfolio.hafta_06.gun_036.tests.test_memory_virtual_swap_auditor.TestMemoryVirtualSwapAuditor.test_10_calculate_memory_risk_score)
+Risk puan²n²n ve duru■ derecelendirmesinin do­rulu­unu test eder. ... ok
+test_11_clean_memory_baseline (portfolio.hafta_06.gun_036.tests.test_memory_virtual_swap_auditor.TestMemoryVirtualSwapAuditor.test_11_clean_memory_baseline)
+Tamamen temiz ve ■ifreli bir bellek ortam²nda riskin 0 oldu­unu do­rular. ... ok
+test_12_negative_control_corrupted_telemetry (portfolio.hafta_06.gun_036.tests.test_memory_virtual_swap_auditor.TestMemoryVirtualSwapAuditor.test_12_negative_control_corrupted_telemetry)
+Negatif kontrol: Bozuk ■emal² ve negatif de­erli bellek telemetrilerini g³venle reddeder. ... ok
+test_13_ascii_report_generation (portfolio.hafta_06.gun_036.tests.test_memory_virtual_swap_auditor.TestMemoryVirtualSwapAuditor.test_13_ascii_report_generation)
+ASCII denetim raporunun format²n² ve bellek istatistiklerini eksiksiz ³retti­ini test eder. ... ok
+test_14_custom_license_presence (portfolio.hafta_06.gun_036.tests.test_memory_virtual_swap_auditor.TestMemoryVirtualSwapAuditor.test_14_custom_license_presence)
+Ízel lisans kural² gere­ince dosyalarda 'Ízel Lisans - T³m Haklar² Sakl²d²r' ibaresini denetler. ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.016s
+
+OK

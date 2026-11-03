@@ -1,0 +1,31 @@
+================================================================================
+G083: GIT COMMIT VE DEGISIKLIK INCELEMESI - CALISTIRILAN KOMUTLAR VE CIKTILAR
+Tarih: 2026-11-01T04:22:00+03:00
+Ortam: Windows 11 / PowerShell 7.5 / Python 3.14
+================================================================================
+
+1. Birim Test Paketi Calistirma Komutu:
+Komut: python -m unittest portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor -v
+
+Cikti:
+test_01_parse_valid_safe_commit_metadata (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_01_parse_valid_safe_commit_metadata) ... ok
+test_02_parse_file_deltas_and_hunks (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_02_parse_file_deltas_and_hunks) ... ok
+test_03_audit_clean_commit_approved (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_03_audit_clean_commit_approved) ... ok
+test_04_shannon_entropy_calculation_accuracy (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_04_shannon_entropy_calculation_accuracy) ... ok
+test_05_detect_hardcoded_aws_access_key (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_05_detect_hardcoded_aws_access_key) ... ok
+test_06_detect_rsa_private_key_block (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_06_detect_rsa_private_key_block) ... ok
+test_07_detect_github_personal_access_token (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_07_detect_github_personal_access_token) ... ok
+test_08_detect_trojan_source_bidi_character (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_08_detect_trojan_source_bidi_character) ... ok
+test_09_detect_trojan_source_in_commit_message (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_09_detect_trojan_source_in_commit_message) ... ok
+test_10_detect_dangerous_code_eval_and_exec (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_10_detect_dangerous_code_eval_and_exec) ... ok
+test_11_detect_high_entropy_secret_token (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_11_detect_high_entropy_secret_token) ... ok
+test_12_fail_fast_mode_raises_exception_immediately (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_12_fail_fast_mode_raises_exception_immediately) ... ok
+test_13_reject_null_byte_in_diff (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_13_reject_null_byte_in_diff) ... ok
+test_14_reject_oversized_diff_bomb (portfolio.hafta_12.gun_083.tests.test_git_commit_diff_auditor.TestGitCommitDiffAuditor.test_14_reject_oversized_diff_bomb) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.007s
+
+OK
+
+Sonuc: 14 test basariyla calisti (0 Hata, 0 Basarisizlik).

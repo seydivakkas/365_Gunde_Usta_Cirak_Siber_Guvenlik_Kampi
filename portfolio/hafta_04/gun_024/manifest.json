@@ -1,0 +1,26 @@
+{
+  "dosyalar": {
+    "README.md": "d7c4998c535b7951420f735a73b0574debd576d4215146de13122c6782b4fe6a",
+    "ders.md": "02c48050fd7e81dedc53fb541d4e36773c2c00f1c70abf586de847029ddd9575",
+    "rapor.md": "112de7bf091f3ae336be356492a806fd3bd2fddff160f9e839b6cf6c18aa5af1",
+    "sonuc.json": "c9a88be9a1fd47d92bcbce57273b63ccfa1ff8eb9448f4a48f43931917449070",
+    "soru_cevap.md": "d58dc0379448b85b9ada65fa6732ae81c9928b459c112c0fd82e5ac95e003372",
+    "kanit/gercek/chmod_degisiklik_ve_geri_alma_kaydi.txt": "f2e415380ba13195c7b80a687df235e5cdb30adae6d4278c12cb8045d0b7c1f2",
+    "kanit/gercek/komut_ve_cikis.txt": "96ed35f70b264cc87706803fbe5f398b76cbfba480b4df8230765b3f5f1ce7d9",
+    "kanit/gercek/test_sonuclari.txt": "8ee04d77ac55209db3c79e5c5be93d1754b44c47b1b9e32d3a95008d6976c68b",
+    "kanit/temsili/linux_izin_rwx_mimarisi.txt": "f792bff6dd4682d3818549325dbabf17afb7d2a5e853a97384669e1601805b17",
+    "ornek_veri/chmod_journal.json": "2fe57eaa21b0388a3cd107cc2c27c1315659ee1d8cee794cdae658c99d697d09",
+    "ornek_veri/lab_test_dosyasi.txt": "cd507a78770af15fd92c407871ef908f954da8511fd6052f74a49f2f4c6d0ce0",
+    "ornek_veri/permission_baseline_rules.json": "5801bdf21244c7472242c2aff35c109d6840aecee56f3628b6f1dc7897173cf3",
+    "ornek_veri/sample_files_permissions.json": "dda2c88831205c0cf89ec3c662c2f5bcf4c3f24b6ba4cdb82b7b4678528bfa55",
+    "tests/__init__.py": "d160a432611633d02179600f33d8b668c6aa59c1704813497e4bb2f4c05b7f1d",
+    "tests/test_linux_permission_rwx_auditor.py": "a0f77d183de6cd821369e80565a6dadd788091e6383956c03c80678a903a71aa",
+    "uygulama/__init__.py": "533dad51b332988f768d2eb794e05a4ea84dd6977e08fa95817364ed955e50c9",
+    "uygulama/linux_permission_rwx_auditor.py": "c43c0e8bd51b567fed53fe2f71ff04cd552a4c48487778ee896502489f105e7e"
+  },
+  "ozet": {
+    "toplam_dosya": 17,
+    "gun": 24,
+    "durum": "DOGRULANDI_PASS"
+  }
+}
