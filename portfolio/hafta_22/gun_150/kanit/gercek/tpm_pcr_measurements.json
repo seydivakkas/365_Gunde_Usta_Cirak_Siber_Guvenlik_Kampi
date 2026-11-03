@@ -1,0 +1,104 @@
+{
+  "tpm_id": "PROD_SECURE_PC_TPM",
+  "endorsement_key_sha256": "9a276dd2d1dbc318acb254ad5e616989aeb0c948aac78279bd3415e5327e9c80",
+  "storage_root_key_sha256": "5c6896d81415a38b3e0807f099164ac30326307b2cf3cf9a0a2b42b5598783cb",
+  "measurement_time_utc": "2026-11-03T22:44:03.858363+00:00",
+  "pcr_bank": {
+    "0": {
+      "description": "CRTM, BIOS/UEFI Anakart Üretici Bellenimi Kodu (Firmware Code)",
+      "digest_sha256": "b5b2bacaa13dd05177a2fa93c127ea603ff2bc327c4b9a52725d9f80c6927195"
+    },
+    "1": {
+      "description": "Anakart ve Platform Donanım Yapılandırması (Platform Settings)",
+      "digest_sha256": "2539a6401f7d1f3eecc733abd477854038fa5d483bdfe81aaf4bc68d09d9453d"
+    },
+    "2": {
+      "description": "Genişleme Kartları / Ek Donanım ROM Kodları (Option ROMs, GPU Firmware)",
+      "digest_sha256": "c20bbe9196dee3618ebe40ac9c0687745d249c2204c5050cf51538b855d4f7a1"
+    },
+    "3": {
+      "description": "Genişleme Kartı Yapılandırması ve Cihaz Parametreleri",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "4": {
+      "description": "MBR/GPT Önyükleyici Kodu ve Boot Manager (Bootloader Code)",
+      "digest_sha256": "c074d47952fe9888ebe2212ceb7541df296ebeb080deda5332ff0ea9a983a07b"
+    },
+    "5": {
+      "description": "Önyükleme Yapılandırma Verisi (BCD - Boot Configuration Data)",
+      "digest_sha256": "070710ed4f354985d88098e5111e737fc98875fb2200252524ada8fdc9a36198"
+    },
+    "6": {
+      "description": "Durum Sürdürme ve Uyku/Hazırda Bekletme Parametreleri (Resume State)",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "7": {
+      "description": "Güvenli Önyükleme Durumu ve Sertifikaları (Secure Boot State: PK, KEK, db, dbx)",
+      "digest_sha256": "b3d43ab91cce4c004254987fd912950478f105bbf2257a8f42811354d4f61d2a"
+    },
+    "8": {
+      "description": "Linux/GRUB Komut Satırı ve Çekirdek Ölçümleri",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "9": {
+      "description": "Linux Initramfs ve EFI İkili Görüntüleri",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "10": {
+      "description": "Bütünlük Ölçüm Mimarisi (IMA - Integrity Measurement Architecture)",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "11": {
+      "description": "BitLocker Erişim Kontrol Politikası ve İstemci Koruması",
+      "digest_sha256": "5223c2e0d015be60f8934fa56e62c13a342e2de550eed299b6b9ae23bb083e1b"
+    },
+    "12": {
+      "description": "İstemci / Veri Alanı Ölçümleri",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "13": {
+      "description": "Kullanıcı/Uygulama Alanı PCR 13",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "14": {
+      "description": "Kullanıcı/Uygulama Alanı PCR 14",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "15": {
+      "description": "Kullanıcı/Uygulama Alanı PCR 15",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "16": {
+      "description": "Kullanıcı/Uygulama Alanı PCR 16",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "17": {
+      "description": "Kullanıcı/Uygulama Alanı PCR 17",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "18": {
+      "description": "Kullanıcı/Uygulama Alanı PCR 18",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "19": {
+      "description": "Kullanıcı/Uygulama Alanı PCR 19",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "20": {
+      "description": "Kullanıcı/Uygulama Alanı PCR 20",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "21": {
+      "description": "Kullanıcı/Uygulama Alanı PCR 21",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "22": {
+      "description": "Kullanıcı/Uygulama Alanı PCR 22",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "23": {
+      "description": "Kullanıcı/Uygulama Alanı PCR 23",
+      "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  }
+}

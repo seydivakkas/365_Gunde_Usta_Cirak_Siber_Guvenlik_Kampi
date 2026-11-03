@@ -1,0 +1,87 @@
+{
+  "gun": 150,
+  "konu": "Disk şifreleme ve TPM kavramı",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "ders.md": {
+      "sha256": "30c1bc99bef8c073df0f389df3fccf18664c772c69e977fc8fb84613f2db743e",
+      "size_bytes": 9360
+    },
+    "kanit/gercek/bitlocker_hardening_remediation.ps1": {
+      "sha256": "84f43118fed9814e9bb3f5cebfb7cd3dadb09556dc596688d49052229158e7c1",
+      "size_bytes": 1666
+    },
+    "kanit/gercek/disk_encryption_audit_report.json": {
+      "sha256": "5bbfa31f3e9dcbfb92a114d0241fbf1545fdaa1caaee8f3526e3a9df64bebd82",
+      "size_bytes": 323
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "sha256": "f5a43cc7806ae99a37d08daf7b1dac8c2ef3b461178290a91920c59f9550671c",
+      "size_bytes": 4422
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "sha256": "0831098982d746f5bca1752c7b61381f1a53c0e02d659fd0a5ba33ad98580dc6",
+      "size_bytes": 4419
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "sha256": "2f8c9d5c47c83d9d73359df49392ea756f32d9b47d839fe046eb36cefef4e0c0",
+      "size_bytes": 4239
+    },
+    "kanit/gercek/tpm_pcr_measurements.json": {
+      "sha256": "61d789d122e78abeccbbb26a418150a6d22b295ba93e951d1d940a29f5fd7460",
+      "size_bytes": 4796
+    },
+    "kanit/temsili/tpm_fde_mimarisi.txt": {
+      "sha256": "256b54b6eda2e1a70e7a92e2f24d140f3b67398b5aab415f5acd942917436add",
+      "size_bytes": 3982
+    },
+    "kanit_uretici.py": {
+      "sha256": "b9408c0b5eb79c26ca898e4514bcb2eb9087a66775129ba68617917b767ac5ed",
+      "size_bytes": 15093
+    },
+    "ornek_veri/clean_disk_encryption_spec.json": {
+      "sha256": "aee40295c7aeb9caadf1145242595ae970d9b6777196aa1b1d70268a1aa3fc65",
+      "size_bytes": 657
+    },
+    "ornek_veri/invalid_encryption_scenarios.json": {
+      "sha256": "4d8d35a61fda7552ccee2a7d81fd76de67762245580e7c8ab901650db9901bc6",
+      "size_bytes": 3745
+    },
+    "rapor.md": {
+      "sha256": "33f3f25e2cbddc936abf1728ff50a5cb7433629032d07b75d67ebca48e197b2d",
+      "size_bytes": 4692
+    },
+    "README.md": {
+      "sha256": "4352f21df94522d0805bd6eca14711bb0df1e795228b80a158d58fbc5e9b880b",
+      "size_bytes": 5112
+    },
+    "sonuc.json": {
+      "sha256": "e2ad4f1cf2f2f2b76347ea6a8d9dc2e500e43049f4fb1e2854bc9fbe55a20c99",
+      "size_bytes": 1663
+    },
+    "soru_cevap.md": {
+      "sha256": "ae0e6b1a0c85b8b3ed29ddef75da48dda8a3f5d1846769322526b6634b5b7c28",
+      "size_bytes": 12586
+    },
+    "tests/__init__.py": {
+      "sha256": "0cde544fbee93d9c6b23c66693a4635f1266f2ffbf13c6eff7844b2ec1aa2685",
+      "size_bytes": 201
+    },
+    "tests/test_disk_encryption_tpm.py": {
+      "sha256": "e33b09bc977327b91cce52a9a769ef1b8bb1fff9ad6b452a2963014da2134b58",
+      "size_bytes": 10801
+    },
+    "uygulama/__init__.py": {
+      "sha256": "ffac222c993b26edde3bd594ae9dbe0bd07ffa102bb7d4e3b7e2b0de58de9371",
+      "size_bytes": 345
+    },
+    "uygulama/disk_encryption_cli.py": {
+      "sha256": "6bd6937ff4b741f863e6a793abeb3e3e5cf144d5d20e2dd47d96dc65ed397cd9",
+      "size_bytes": 7752
+    },
+    "uygulama/disk_encryption_tpm_engine.py": {
+      "sha256": "8da222274e4a8e318572088c3681e5c6d99f549766acc02bccb94728ea139ab1",
+      "size_bytes": 29386
+    }
+  }
+}

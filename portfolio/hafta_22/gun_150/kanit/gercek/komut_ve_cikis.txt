@@ -1,0 +1,45 @@
+==============================================================================
+GÜN 150: DİSK ŞİFRELEME VE TPM 2.0 CLI KONSOL GÜNLÜĞÜ
+Zaman Damgası (UTC): 2026-11-03T22:44:03.860573+00:00
+==============================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_150\uygulama\disk_encryption_cli.py audit --config C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_150\ornek_veri\clean_disk_encryption_spec.json
+==============================================================================
+[*] DİSK ŞİFRELEME VE TPM GÜVENLİK DENETİMİ: C:
+[*] İşletim Sistemi: WINDOWS | Algoritma: XTS-AES-256
+[*] Güvenli Önyükleme (Secure Boot): AKTİF
+[*] Çekirdek DMA Koruması (IOMMU): AKTİF
+==============================================================================
+[+] TEBRİKLER: Disk şifreleme ve TPM yapılandırması tam uyumlu (100/100).
+------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_150\uygulama\disk_encryption_cli.py simulate-attack --attack-type evil_maid --with-pin
+==============================================================================
+[*] TPM 2.0 VE BİTLOCKER EVIL MAID SALDIRI SİMÜLASYONU BAŞLATILIYOR...
+==============================================================================
+[+] Disk anahtarı (VMK) TPM 2.0 yongasına mühürlendi (PCR: 0, 2, 4, 7).
+[+] Meşru Önyükleme Doğrulaması: TPM_SUCCESS - Bütünlük doğrulandı: Platform konfigürasyonu güvenli, disk anahtarı başarıyla çözüldü.
+[!] Saldırgan cihaza fiziksel olarak ulaştı ve sahte bir bootloader yazdı (Evil Maid)!
+------------------------------------------------------------------------------
+Saldırı Sonrası TPM Durumu : TPM_RC_PCR_CHANGED
+Anahtar Çözüldü mü?         : HAYIR (BAŞARIYLA KİLİTLENDİ)
+TPM Yanıt Detayı           : Platform Bütünlük Hatası: PCR değerleri değişti! Değişen PCR'lar: [0, 2, 4, 7]. Saldırı şüphesi veya donanım değişikliği.
+Bozulan PCR Kaydedicileri  : [0, 2, 4, 7]
+==============================================================================
+------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_150\uygulama\disk_encryption_cli.py simulate-attack --attack-type disable_secure_boot --with-pin
+==============================================================================
+[*] TPM 2.0 VE BİTLOCKER EVIL MAID SALDIRI SİMÜLASYONU BAŞLATILIYOR...
+==============================================================================
+[+] Disk anahtarı (VMK) TPM 2.0 yongasına mühürlendi (PCR: 0, 2, 4, 7).
+[+] Meşru Önyükleme Doğrulaması: TPM_SUCCESS - Bütünlük doğrulandı: Platform konfigürasyonu güvenli, disk anahtarı başarıyla çözüldü.
+[!] Saldırgan BIOS'a girip Secure Boot korumasını kapattı!
+------------------------------------------------------------------------------
+Saldırı Sonrası TPM Durumu : TPM_RC_PCR_CHANGED
+Anahtar Çözüldü mü?         : HAYIR (BAŞARIYLA KİLİTLENDİ)
+TPM Yanıt Detayı           : Platform Bütünlük Hatası: PCR değerleri değişti! Değişen PCR'lar: [0, 2, 4, 7]. Saldırı şüphesi veya donanım değişikliği.
+Bozulan PCR Kaydedicileri  : [0, 2, 4, 7]
+==============================================================================
+------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_150\uygulama\disk_encryption_cli.py generate-remediation --os-type windows --drive C:
+[+] WINDOWS sertleştirme betiği başarıyla üretildi: disk_encryption_hardening.ps1
+------------------------------------------------------------------------------

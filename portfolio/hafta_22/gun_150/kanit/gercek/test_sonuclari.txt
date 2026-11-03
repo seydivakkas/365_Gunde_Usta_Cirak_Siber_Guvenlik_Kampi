@@ -1,0 +1,40 @@
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest discover -s C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_150\tests -p test_*.py -v
+Çıkış Kodu: 0
+Zaman Damgası (UTC): 2026-11-03T22:44:03.838801+00:00
+==============================================================================
+
+test_01_clean_hardened_config_no_findings (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_01_clean_hardened_config_no_findings)
+Test 1: Tam sertleştirilmiş BitLocker/TPM yapılandırması denetlendiğinde sıfır bulgu üretmelidir. ... ok
+test_02_detect_plaintext_unencrypted_storage (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_02_detect_plaintext_unencrypted_storage)
+Test 2: Şifrelenmemiş (PLAINTEXT) disk birimi CRITICAL seviyesinde tespit edilmelidir. ... ok
+test_03_detect_weak_cbc_mode_cipher (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_03_detect_weak_cbc_mode_cipher)
+Test 3: Zayıf CBC modu şifreleme (AES-CBC-256) kullanıldığında HIGH seviyesinde tespit edilmelidir. ... ok
+test_04_detect_tpm_only_without_pin (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_04_detect_tpm_only_without_pin)
+Test 4: PIN içermeyen yalnızca TPM (TPM_ONLY) koruyucu HIGH seviyesinde tespit edilmelidir. ... ok
+test_05_detect_missing_pcr_7_secure_boot (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_05_detect_missing_pcr_7_secure_boot)
+Test 5: PCR 7 (Güvenli Önyükleme) mühür politikasında olmadığında CRITICAL seviyesinde alarm verilmelidir. ... ok
+test_06_detect_missing_pcr_0_4_boot_integrity (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_06_detect_missing_pcr_0_4_boot_integrity)
+Test 6: Bellenim (PCR 0) ve önyükleyici (PCR 4) mühür listesinde olmadığında HIGH bulgu üretilmelidir. ... ok
+test_07_detect_secure_boot_disabled (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_07_detect_secure_boot_disabled)
+Test 7: UEFI Güvenli Önyükleme (Secure Boot) kapalı olduğunda CRITICAL bulgu tespit edilmelidir. ... ok
+test_08_detect_missing_kernel_dma_protection (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_08_detect_missing_kernel_dma_protection)
+Test 8: Çekirdek DMA Koruması (IOMMU) devre dışı olduğunda HIGH bulgu üretilmelidir. ... ok
+test_09_detect_luks_weak_pbkdf2_kdf (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_09_detect_luks_weak_pbkdf2_kdf)
+Test 9: Linux LUKS2 biriminde PBKDF2 kullanıldığında MEDIUM seviyesinde sapma bildirilmelidir. ... ok
+test_10_detect_plaintext_recovery_key_on_disk (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_10_detect_plaintext_recovery_key_on_disk)
+Test 10: Kurtarma parolası yerel diskte düz metin saklandığında CRITICAL tespit edilmelidir. ... ok
+test_11_detect_unbacked_up_recovery_key (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_11_detect_unbacked_up_recovery_key)
+Test 11: Kurtarma anahtarı merkezi kasaya yedeklenmediğinde HIGH seviyesinde tespit edilmelidir. ... ok
+test_12_tpm_pcr_extend_and_hash_chain (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_12_tpm_pcr_extend_and_hash_chain)
+Test 12: TPM PCR genişletme zinciri (Extend) matematiksel formüle göre doğrulanmalıdır. ... ok
+test_13_tpm_sealing_and_legitimate_unsealing (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_13_tpm_sealing_and_legitimate_unsealing)
+Test 13: Meşru PCR durumunda ve doğru PIN ile mühürlenmiş disk anahtarı başarıyla çözülmelidir. ... ok
+test_14_evil_maid_bootloader_tampering_blocks_unseal (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_14_evil_maid_bootloader_tampering_blocks_unseal)
+Test 14: Evil Maid saldırısında önyükleyici kurcalandığında (PCR 4) TPM kilidi devreye girmelidir. ... ok
+test_15_tpm_pin_auth_failure_and_secure_boot_tampering (test_disk_encryption_tpm.TestDiskEncryptionAndTpm.test_15_tpm_pin_auth_failure_and_secure_boot_tampering)
+Test 15: Yanlış PIN girildiğinde ve Secure Boot (PCR 7) kurcalandığında anahtar çözülmemelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

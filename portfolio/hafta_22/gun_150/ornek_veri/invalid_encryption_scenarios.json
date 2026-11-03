@@ -1,0 +1,93 @@
+[
+  {
+    "scenario_id": "NEG-ENC-01",
+    "name": "Birim Tamamen Şifrelenmemiş (Plaintext Storage Riski)",
+    "description": "Birim üzerinde herhangi bir disk şifreleme etkinleştirilmemiş, cihaz çalındığında veriler doğrudan okunabilir.",
+    "profile_patch": {
+      "cipher_algorithm": "PLAINTEXT"
+    },
+    "expected_finding": "ENC-ALGO-PLAINTEXT",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-ENC-02",
+    "name": "Zayıf CBC Modu Şifreleme Kullanımı (Bit-Flipping Riski)",
+    "description": "XTS modu yerine eski AES-CBC-256 modu kullanılmış, blok manipülasyonu ataklarına karşı savunmasız.",
+    "profile_patch": {
+      "cipher_algorithm": "AES-CBC-256"
+    },
+    "expected_finding": "ENC-ALGO-CBC-MODE",
+    "expected_severity": "HIGH"
+  },
+  {
+    "scenario_id": "NEG-ENC-03",
+    "name": "PIN Koruması Olmayan Yalnızca TPM Kullanımı (SPI Bus Sniffing)",
+    "description": "TPM+PIN yerine yalnızca TPM kullanılarak açılış yapılması; anakart üzerindeki SPI veri yolunu dinleyen donanım probları anahtarı çalabilir.",
+    "profile_patch": {
+      "protectors": ["TPM_ONLY", "RECOVERY_PASSWORD"]
+    },
+    "expected_finding": "ENC-PROT-TPM-NO-PIN",
+    "expected_severity": "HIGH"
+  },
+  {
+    "scenario_id": "NEG-ENC-04",
+    "name": "PCR 7 (Güvenli Önyükleme) Mühür Politikasından Çıkarılmış",
+    "description": "Anahtar PCR 7'ye mühürlenmemiş; saldırgan UEFI'ye sahte imza eklese bile TPM anahtarı serbest bırakır.",
+    "profile_patch": {
+      "sealed_pcr_indices": [0, 2, 4, 11]
+    },
+    "expected_finding": "ENC-PCR-NO-SECUREBOOT",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-ENC-05",
+    "name": "Bellenim ve Önyükleyici PCR'larının Eksik Olması (Evil Maid Riski)",
+    "description": "PCR 0 ve PCR 4 kaydedicileri mühür dışı bırakılmış; önyükleyici kurcalansa dahi fark edilmez.",
+    "profile_patch": {
+      "sealed_pcr_indices": [7, 11]
+    },
+    "expected_finding": "ENC-PCR-MISSING-BOOT-INTEGRITY",
+    "expected_severity": "HIGH"
+  },
+  {
+    "scenario_id": "NEG-ENC-06",
+    "name": "UEFI Güvenli Önyükleme (Secure Boot) Devre Dışı Bırakılmış",
+    "description": "Anakart BIOS ayarlarında Secure Boot kapatılmış; önyükleme aşamasında imzasız bootkit yüklenebilir.",
+    "profile_patch": {
+      "secure_boot_enabled": false
+    },
+    "expected_finding": "ENC-HW-SECUREBOOT-DISABLED",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-ENC-07",
+    "name": "Çekirdek DMA Koruması / IOMMU Devre Dışı (Thunderbolt DMA Saldırısı)",
+    "description": "IOMMU ve Kernel DMA Protection kapatılmış; harici Thunderbolt portundan RAM'deki anahtarlar doğrudan okunabilir.",
+    "profile_patch": {
+      "kernel_dma_protection": false
+    },
+    "expected_finding": "ENC-HW-NO-DMA-PROTECTION",
+    "expected_severity": "HIGH"
+  },
+  {
+    "scenario_id": "NEG-ENC-08",
+    "name": "Linux LUKS2'de Zayıf PBKDF2 Anahtar Türetme Fonksiyonu",
+    "description": "Modern bellek zorluklu Argon2id yerine GPU ile kırılabilen eski PBKDF2 kullanılması.",
+    "profile_patch": {
+      "os_type": "linux",
+      "luks_kdf": "PBKDF2"
+    },
+    "expected_finding": "ENC-LUKS-WEAK-KDF",
+    "expected_severity": "MEDIUM"
+  },
+  {
+    "scenario_id": "NEG-ENC-09",
+    "name": "Kurtarma Parolasının Yerel Diskte Düz Metin Saklanması",
+    "description": "48 haneli BitLocker sayısal kurtarma anahtarı diske TXT olarak kaydedilmiş; fiziksel sızmada doğrudan disk çözülebilir.",
+    "profile_patch": {
+      "plaintext_recovery_key_on_disk": true
+    },
+    "expected_finding": "ENC-KEY-PLAINTEXT-ON-DISK",
+    "expected_severity": "CRITICAL"
+  }
+]

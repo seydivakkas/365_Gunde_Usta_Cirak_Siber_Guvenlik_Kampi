@@ -1,0 +1,28 @@
+{
+  "volume_identifier": "C:",
+  "os_type": "windows",
+  "cipher_algorithm": "XTS-AES-256",
+  "protectors": [
+    "TPM_AND_PIN",
+    "RECOVERY_PASSWORD"
+  ],
+  "sealed_pcr_indices": [
+    0,
+    2,
+    4,
+    7,
+    11
+  ],
+  "secure_boot_enabled": true,
+  "kernel_dma_protection": true,
+  "luks_kdf": "Argon2id",
+  "recovery_key_backed_up": true,
+  "plaintext_recovery_key_on_disk": false,
+  "pin_length": 8,
+  "metadata": {
+    "organization": "Enterprise Financial Infrastructure",
+    "compliance": "NIST SP 800-111 / CIS Windows Benchmark",
+    "author": "Seydi Eryılmaz (@seydivakkas)",
+    "license": "Özel Lisans - Tüm Hakları Saklıdır"
+  }
+}

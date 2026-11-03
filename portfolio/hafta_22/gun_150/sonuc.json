@@ -1,0 +1,38 @@
+{
+  "gun": 150,
+  "hafta": 22,
+  "asama": "06",
+  "konu": "Disk şifreleme ve TPM kavramı",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-04",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_22/gun_150/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_22/gun_150/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "denetim_raporu": "portfolio/hafta_22/gun_150/kanit/gercek/disk_encryption_audit_report.json",
+    "tpm_olcum_tablosu": "portfolio/hafta_22/gun_150/kanit/gercek/tpm_pcr_measurements.json",
+    "remediation_betigi": "portfolio/hafta_22/gun_150/kanit/gercek/bitlocker_hardening_remediation.ps1",
+    "komut_ve_cikis": "portfolio/hafta_22/gun_150/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_22/gun_150/kanit/temsili/tpm_fde_mimarisi.txt"
+  },
+  "ozet": "Tam Disk Şifreleme (BitLocker XTS-AES-256 ve LUKS2 dm-crypt Argon2id), TPM 2.0 PCR ölçüm zinciri, donanım mühürleme (Sealing/Unsealing), Secure Boot ve fiziksel saldırı simülasyonları (Evil Maid, SPI Bus Sniffing, Thunderbolt DMA) eksiksiz modellenmiş; 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla doğrulanmıştır."
+}

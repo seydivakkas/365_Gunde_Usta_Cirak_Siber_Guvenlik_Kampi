@@ -1,0 +1,53 @@
+==============================================================================
+GÜN 150: DİSK ŞİFRELEME VE TPM 2.0 NEGATİF KONTROL VE SALDIRI TESTLERİ
+Tarih/Saat (UTC): 2026-11-03T22:44:03.856448+00:00
+Toplam İncelenen Senaryo Sayısı: 9
+==============================================================================
+
+Senaryo NEG-ENC-01: Birim Tamamen Şifrelenmemiş (Plaintext Storage Riski)
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: ENC-ALGO-PLAINTEXT [CRITICAL] - Birim Tamamen Şifresiz (Plaintext Storage)
+  Açıklama: Birim üzerinde herhangi bir disk şifreleme etkinleştirilmemiş, cihaz çalındığında veriler doğrudan okunabilir.
+------------------------------------------------------------------------------
+Senaryo NEG-ENC-02: Zayıf CBC Modu Şifreleme Kullanımı (Bit-Flipping Riski)
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: ENC-ALGO-CBC-MODE [HIGH] - Zayıf Şifreleme Modu: CBC Kullanımı
+  Açıklama: XTS modu yerine eski AES-CBC-256 modu kullanılmış, blok manipülasyonu ataklarına karşı savunmasız.
+------------------------------------------------------------------------------
+Senaryo NEG-ENC-03: PIN Koruması Olmayan Yalnızca TPM Kullanımı (SPI Bus Sniffing)
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: ENC-PROT-TPM-NO-PIN [HIGH] - PIN Koruması Olmayan Yalnızca TPM Yapılandırması
+  Açıklama: TPM+PIN yerine yalnızca TPM kullanılarak açılış yapılması; anakart üzerindeki SPI veri yolunu dinleyen donanım probları anahtarı çalabilir.
+------------------------------------------------------------------------------
+Senaryo NEG-ENC-04: PCR 7 (Güvenli Önyükleme) Mühür Politikasından Çıkarılmış
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: ENC-PCR-NO-SECUREBOOT [CRITICAL] - PCR 7 (Güvenli Önyükleme Durumu) Mühür Politikasına Dahil Edilmemiş
+  Açıklama: Anahtar PCR 7'ye mühürlenmemiş; saldırgan UEFI'ye sahte imza eklese bile TPM anahtarı serbest bırakır.
+------------------------------------------------------------------------------
+Senaryo NEG-ENC-05: Bellenim ve Önyükleyici PCR'larının Eksik Olması (Evil Maid Riski)
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: ENC-PCR-MISSING-BOOT-INTEGRITY [HIGH] - Bellenim veya Önyükleyici PCR Kaydedicileri Eksik
+  Açıklama: PCR 0 ve PCR 4 kaydedicileri mühür dışı bırakılmış; önyükleyici kurcalansa dahi fark edilmez.
+------------------------------------------------------------------------------
+Senaryo NEG-ENC-06: UEFI Güvenli Önyükleme (Secure Boot) Devre Dışı Bırakılmış
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: ENC-HW-SECUREBOOT-DISABLED [CRITICAL] - UEFI Güvenli Önyükleme (Secure Boot) Devre Dışı
+  Açıklama: Anakart BIOS ayarlarında Secure Boot kapatılmış; önyükleme aşamasında imzasız bootkit yüklenebilir.
+------------------------------------------------------------------------------
+Senaryo NEG-ENC-07: Çekirdek DMA Koruması / IOMMU Devre Dışı (Thunderbolt DMA Saldırısı)
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: ENC-HW-NO-DMA-PROTECTION [HIGH] - Çekirdek DMA Koruması (IOMMU) Devre Dışı
+  Açıklama: IOMMU ve Kernel DMA Protection kapatılmış; harici Thunderbolt portundan RAM'deki anahtarlar doğrudan okunabilir.
+------------------------------------------------------------------------------
+Senaryo NEG-ENC-08: Linux LUKS2'de Zayıf PBKDF2 Anahtar Türetme Fonksiyonu
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: ENC-LUKS-WEAK-KDF [MEDIUM] - LUKS Başlığında Zayıf KDF: PBKDF2 Kullanımı
+  Açıklama: Modern bellek zorluklu Argon2id yerine GPU ile kırılabilen eski PBKDF2 kullanılması.
+------------------------------------------------------------------------------
+Senaryo NEG-ENC-09: Kurtarma Parolasının Yerel Diskte Düz Metin Saklanması
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: ENC-KEY-PLAINTEXT-ON-DISK [CRITICAL] - Kurtarma Parolası Yerel Diskte Düz Metin Saklanıyor
+  Açıklama: 48 haneli BitLocker sayısal kurtarma anahtarı diske TXT olarak kaydedilmiş; fiziksel sızmada doğrudan disk çözülebilir.
+------------------------------------------------------------------------------
+
+Toplam Başarılı Tespit: 9/9 (%100 Başarı)

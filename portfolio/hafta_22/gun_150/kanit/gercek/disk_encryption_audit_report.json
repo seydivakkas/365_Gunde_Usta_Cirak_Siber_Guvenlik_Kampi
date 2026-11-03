@@ -1,0 +1,12 @@
+{
+  "report_id": "ENC-AUDIT-20261104-001",
+  "timestamp_utc": "2026-11-03T22:44:03.857826+00:00",
+  "volume": "C:",
+  "os_type": "windows",
+  "cipher": "XTS-AES-256",
+  "secure_boot": true,
+  "kernel_dma_protection": true,
+  "total_findings": 0,
+  "compliance_status": "COMPLIANT_100_PERCENT",
+  "findings": []
+}
