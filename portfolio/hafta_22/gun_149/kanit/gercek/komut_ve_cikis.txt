@@ -1,0 +1,52 @@
+==============================================================================
+GÜN 149: UYGULAMA İZİNLERİ VE SANDBOX CLI KONSOL GÜNLÜĞÜ
+Zaman Damgası (UTC): 2026-11-03T21:02:54.214124+00:00
+==============================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_149\uygulama\app_sandbox_cli.py audit --config C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_149\ornek_veri\clean_sandbox_specs.json
+==============================================================================
+[*] SANDBOX GÜVENLİK DENETİM RAPORU: enterprise_hardened_runner
+[*] İşletim Sistemi: LINUX | Ağ Modu: DISCONNECTED
+==============================================================================
+[+] TEBRİKLER: Profil tam uyumlu, hiçbir güvenlik zafiyeti tespit edilmedi (100/100).
+------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_149\uygulama\app_sandbox_cli.py simulate --config C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_149\ornek_veri\clean_sandbox_specs.json --action syscall --target ptrace
+==============================================================================
+[*] SANDBOX İŞLEM SİMÜLASYONU: syscall:ptrace
+==============================================================================
+Durum           : ENGELLENDİ (BLOCKED)
+Denetleyen Katman: Linux Seccomp-BPF
+Karar Kodu      : SCMP_ACT_KILL
+Detay           : Sistem çağrısı 'ptrace' seccomp filtresi tarafından kural gereği engellendi (SCMP_ACT_KILL).
+==============================================================================
+------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_149\uygulama\app_sandbox_cli.py simulate --config C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_149\ornek_veri\clean_sandbox_specs.json --action filesystem --target /etc/shadow --fs-mode read
+==============================================================================
+[*] SANDBOX İŞLEM SİMÜLASYONU: fs:read:/etc/shadow
+==============================================================================
+Durum           : ENGELLENDİ (BLOCKED)
+Denetleyen Katman: Linux VFS Mount Masking
+Karar Kodu      : ENOENT_OR_EACCES
+Detay           : Hedef yol '/etc/shadow' sandbox izolasyonu gereği maskelenmiştir; erişim reddedildi.
+==============================================================================
+------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_149\uygulama\app_sandbox_cli.py simulate --config C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_149\ornek_veri\clean_sandbox_specs.json --action network --target 192.168.1.100
+==============================================================================
+[*] SANDBOX İŞLEM SİMÜLASYONU: network:connect:192.168.1.100
+==============================================================================
+Durum           : ENGELLENDİ (BLOCKED)
+Denetleyen Katman: Network Namespace (Loopback-Only/None)
+Karar Kodu      : ENETUNREACH_NETWORK_UNREACHABLE
+Detay           : Sandbox ağ arabiriminden yoksundur (--net=none); harici soket çağrıları reddedildi.
+==============================================================================
+------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_149\uygulama\app_sandbox_cli.py simulate --config C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_149\ornek_veri\clean_sandbox_specs.json --action process_fork --target worker --current-pids 32
+==============================================================================
+[*] SANDBOX İŞLEM SİMÜLASYONU: process_fork
+==============================================================================
+Durum           : ENGELLENDİ (BLOCKED)
+Denetleyen Katman: Linux cgroups v2 (pids.max) / Job Objects
+Karar Kodu      : EAGAIN_RESOURCE_TEMPORARILY_UNAVAILABLE
+Detay           : Maksimum süreç sınırına (32) ulaşıldı; yeni süreç çatallama engellendi.
+==============================================================================
+------------------------------------------------------------------------------

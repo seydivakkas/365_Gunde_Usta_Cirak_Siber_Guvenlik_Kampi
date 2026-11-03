@@ -1,0 +1,61 @@
++-----------------------------------------------------------------------------+
+|                 TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL              |
++-----------------------------------------------------------------------------+
+|              UYGULAMA İZİNLERİ VE SANDBOX GÜVENLİK MİMARİSİ                 |
++-----------------------------------------------------------------------------+
+
+   +-----------------------------------------------------------------------+
+   |                     KULLANICI ALANI (USER SPACE)                      |
+   |                                                                       |
+   |  [ GÜVENİLMEYEN / RİSKLİ UYGULAMA VEYA KOD KOŞTURUCU ]                 |
+   |  (Untrusted Code / Chromium Renderer / Worker Container)              |
+   |                                                                       |
+   |  Windows: Düşük Bütünlük (LOW MIC) & AppContainer Token Sınırı        |
+   |  Linux: Sınırlı Yetenekler (Drop ALL Capabilities, no-new-privs)      |
+   +-----------------------------------------------------------------------+
+                                      |                                     
+                                      | Sistem Çağrısı (Syscall İstekleri) 
+                                      v                                     
+   +-----------------------------------------------------------------------+
+   |         1. KATMAN: SECCOMP-BPF SİSTEM ÇAĞRISI FİLTRESİ                |
+   |                                                                       |
+   |  * İzin Verilenler (Allowlist): read, write, openat, close, mmap...   |
+   |  * Engellenenler (Default Deny / Kill):                               |
+   |    - ptrace         -> [BLOCKED: SCMP_ACT_KILL] (Bellek Enjeksiyonu) |
+   |    - bpf            -> [BLOCKED: SCMP_ACT_KILL] (eBPF Kernel Exploit) |
+   |    - mount/chroot   -> [BLOCKED: SCMP_ACT_ERRNO] (Escape Riski)       |
+   |    - reboot/kexec   -> [BLOCKED: SCMP_ACT_KILL] (DoS & Ring-0 Hijack) |
+   +-----------------------------------------------------------------------+
+                                      |                                     
+                                      | Filtreden Geçen Güvenli Çağrılar   
+                                      v                                     
+   +-----------------------------------------------------------------------+
+   |         2. KATMAN: LİNUX NAMESPACES & VFS DOSYA SİSTEMİ İZOLASYONU    |
+   |                                                                       |
+   |  * PID Namespace: Ana makine süreçlerinden tamamen izole              |
+   |  * Mount Namespace:                                                   |
+   |    - Root FS: Salt-Okunur (--read-only) [EROFS_READ_ONLY_FILESYSTEM]  |
+   |    - Tmpfs: /tmp (noexec, nosuid, nodev)                              |
+   |    - Maskeli Yollar: /proc/kcore, /var/run/docker.sock, /etc/shadow   |
+   |  * Network Namespace: --net=none (DISCONNECTED / No Sockets)          |
+   +-----------------------------------------------------------------------+
+                                      |                                     
+                                      | Kaynak Kullanım Talebi             
+                                      v                                     
+   +-----------------------------------------------------------------------+
+   |         3. KATMAN: CGROUPS v2 / WINDOWS JOB OBJECTS KONTROLÜ          |
+   |                                                                       |
+   |  * pids.max = 32         -> Fork Bomb Ataklarını Önleme (EAGAIN)      |
+   |  * memory.max = 256MB    -> Bellek Taşması / Bellek Tüketim Sınırı    |
+   |  * cpu.weight / quota    -> CPU Boğulması Önleme (%25 Max)            |
+   +-----------------------------------------------------------------------+
+                                      |                                     
+                                      v                                     
+   =========================================================================
+                     İŞLETİM SİSTEMİ ÇEKİRDEĞİ (RING 0 / KERNEL)            
+          (Çekirdek tamamen koruma altında, sandbox delinmesi imkansız)     
+   =========================================================================
+
++-----------------------------------------------------------------------------+
+|                 TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL              |
++-----------------------------------------------------------------------------+

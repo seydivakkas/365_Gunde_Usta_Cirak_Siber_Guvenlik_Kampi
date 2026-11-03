@@ -1,0 +1,40 @@
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest discover -s C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_149\tests -p test_*.py -v
+Çıkış Kodu: 0
+Zaman Damgası (UTC): 2026-11-03T21:02:54.209033+00:00
+==============================================================================
+
+test_01_clean_profile_audit_no_findings (test_app_sandbox.TestAppSandboxSecurity.test_01_clean_profile_audit_no_findings)
+Test 1: Tam sertleştirilmiş profil denetlendiğinde hiçbir zafiyet veya sapma bulunmamalıdır. ... ok
+test_02_detect_dangerous_cap_sys_admin (test_app_sandbox.TestAppSandboxSecurity.test_02_detect_dangerous_cap_sys_admin)
+Test 2: CAP_SYS_ADMIN yeteneği verildiğinde CRITICAL seviyesinde tespit edilmelidir. ... ok
+test_03_detect_dangerous_cap_net_raw (test_app_sandbox.TestAppSandboxSecurity.test_03_detect_dangerous_cap_net_raw)
+Test 3: CAP_NET_RAW yeteneği verildiğinde HIGH seviyesinde tespit edilmelidir. ... ok
+test_04_detect_seccomp_default_allow (test_app_sandbox.TestAppSandboxSecurity.test_04_detect_seccomp_default_allow)
+Test 4: Varsayılan Seccomp eylemi ALLOW olduğunda CRITICAL bulgu üretilmelidir. ... ok
+test_05_detect_unfiltered_ptrace_syscall (test_app_sandbox.TestAppSandboxSecurity.test_05_detect_unfiltered_ptrace_syscall)
+Test 5: ptrace sistem çağrısı engellenmediğinde veya allowlist'e eklendiğinde CRITICAL tespit edilmelidir. ... ok
+test_06_detect_unfiltered_bpf_syscall (test_app_sandbox.TestAppSandboxSecurity.test_06_detect_unfiltered_bpf_syscall)
+Test 6: bpf sistem çağrısı filtrelenmediğinde CRITICAL seviyesinde alarm verilmelidir. ... ok
+test_07_detect_writable_root_filesystem (test_app_sandbox.TestAppSandboxSecurity.test_07_detect_writable_root_filesystem)
+Test 7: Kök dosya sistemi yazılabilir olduğunda HIGH seviyesinde bulgu oluşmalıdır. ... ok
+test_08_detect_unmasked_docker_socket (test_app_sandbox.TestAppSandboxSecurity.test_08_detect_unmasked_docker_socket)
+Test 8: Kritik /var/run/docker.sock yolu maskelenmediğinde CRITICAL bulgu üretilmelidir. ... ok
+test_09_detect_unrestricted_network (test_app_sandbox.TestAppSandboxSecurity.test_09_detect_unrestricted_network)
+Test 9: Ağ modu UNRESTRICTED olarak ayarlandığında HIGH seviyesinde tespit edilmelidir. ... ok
+test_10_detect_windows_high_integrity_level (test_app_sandbox.TestAppSandboxSecurity.test_10_detect_windows_high_integrity_level)
+Test 10: Windows ortamında HIGH bütünlük seviyesi ayarlandığında CRITICAL tespit edilmelidir. ... ok
+test_11_detect_windows_missing_appcontainer (test_app_sandbox.TestAppSandboxSecurity.test_11_detect_windows_missing_appcontainer)
+Test 11: Windows ortamında AppContainer devre dışı bırakıldığında HIGH bulgu üretilmelidir. ... ok
+test_12_simulation_blocks_ptrace_syscall (test_app_sandbox.TestAppSandboxSecurity.test_12_simulation_blocks_ptrace_syscall)
+Test 12: Simülasyonda ptrace sistem çağrısı seccomp filtresi tarafından engellenmelidir. ... ok
+test_13_simulation_blocks_unauthorized_capability (test_app_sandbox.TestAppSandboxSecurity.test_13_simulation_blocks_unauthorized_capability)
+Test 13: Sürece tahsis edilmemiş bir Linux yeteneği (CAP_SYS_ADMIN) istendiğinde EPERM ile reddedilmelidir. ... ok
+test_14_simulation_blocks_writable_root_and_masked_file (test_app_sandbox.TestAppSandboxSecurity.test_14_simulation_blocks_writable_root_and_masked_file)
+Test 14: Salt-okunur kök sisteme yazma ve maskelenmiş yola (/proc/kcore) erişim engellenmelidir. ... ok
+test_15_simulation_cgroups_fork_bomb_and_oci_generation (test_app_sandbox.TestAppSandboxSecurity.test_15_simulation_cgroups_fork_bomb_and_oci_generation)
+Test 15: pids.max sınırını aşan fork bomb simülasyonu engellenmeli ve geçerli OCI Seccomp JSON üretilmelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

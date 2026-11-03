@@ -1,0 +1,68 @@
+{
+  "$schema": "http://opencontainers.org/schema/image/seccomp.json",
+  "profileName": "enterprise_hardened_runner",
+  "defaultAction": "SCMP_ACT_ERRNO",
+  "architectures": [
+    "SCMP_ARCH_X86_64",
+    "SCMP_ARCH_AARCH64"
+  ],
+  "syscalls": [
+    {
+      "names": [
+        "brk",
+        "close",
+        "exit_group",
+        "fstat",
+        "getpid",
+        "ioctl",
+        "mmap",
+        "mprotect",
+        "munmap",
+        "nanosleep",
+        "openat",
+        "read",
+        "rt_sigaction",
+        "rt_sigprocmask",
+        "write"
+      ],
+      "action": "SCMP_ACT_ALLOW",
+      "args": [],
+      "comment": "Uygulama çalışması için zorunlu temel güvenli çağrılar"
+    },
+    {
+      "names": [
+        "bpf",
+        "kexec_file_load",
+        "kexec_load",
+        "process_vm_readv",
+        "process_vm_writev",
+        "ptrace",
+        "reboot",
+        "setns"
+      ],
+      "action": "SCMP_ACT_KILL",
+      "args": [],
+      "comment": "Güvenlik gereği engellenen veya filtrelenen sistem çağrıları (SCMP_ACT_KILL)"
+    },
+    {
+      "names": [
+        "acct",
+        "keyctl",
+        "mount",
+        "open_by_handle_at",
+        "pivot_root",
+        "sys_chroot",
+        "umount2",
+        "userfaultfd"
+      ],
+      "action": "SCMP_ACT_ERRNO",
+      "args": [],
+      "comment": "Güvenlik gereği engellenen veya filtrelenen sistem çağrıları (SCMP_ACT_ERRNO)"
+    }
+  ],
+  "metadata": {
+    "author": "Seydi Eryılmaz (@seydivakkas)",
+    "license": "Özel Lisans - Tüm Hakları Saklıdır",
+    "complianceStandard": "NIST SP 800-190 / CIS Docker Benchmark"
+  }
+}

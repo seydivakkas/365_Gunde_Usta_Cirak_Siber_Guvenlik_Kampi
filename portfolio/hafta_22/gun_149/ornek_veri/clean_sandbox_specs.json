@@ -1,0 +1,69 @@
+{
+  "profile_name": "enterprise_hardened_runner",
+  "os_family": "linux",
+  "default_seccomp_action": "SCMP_ACT_ERRNO",
+  "allowed_syscalls": [
+    "read",
+    "write",
+    "openat",
+    "close",
+    "fstat",
+    "mmap",
+    "mprotect",
+    "munmap",
+    "brk",
+    "rt_sigaction",
+    "rt_sigprocmask",
+    "ioctl",
+    "nanosleep",
+    "getpid",
+    "exit_group"
+  ],
+  "blocked_syscalls": {
+    "ptrace": "SCMP_ACT_KILL",
+    "bpf": "SCMP_ACT_KILL",
+    "mount": "SCMP_ACT_ERRNO",
+    "umount2": "SCMP_ACT_ERRNO",
+    "pivot_root": "SCMP_ACT_ERRNO",
+    "reboot": "SCMP_ACT_KILL",
+    "kexec_load": "SCMP_ACT_KILL",
+    "kexec_file_load": "SCMP_ACT_KILL",
+    "sys_chroot": "SCMP_ACT_ERRNO",
+    "open_by_handle_at": "SCMP_ACT_ERRNO",
+    "process_vm_readv": "SCMP_ACT_KILL",
+    "process_vm_writev": "SCMP_ACT_KILL",
+    "keyctl": "SCMP_ACT_ERRNO",
+    "userfaultfd": "SCMP_ACT_ERRNO",
+    "acct": "SCMP_ACT_ERRNO",
+    "setns": "SCMP_ACT_KILL"
+  },
+  "granted_capabilities": [],
+  "read_only_root_fs": true,
+  "masked_paths": [
+    "/proc/kcore",
+    "/proc/latency_stats",
+    "/proc/timer_list",
+    "/proc/sched_debug",
+    "/sys/firmware",
+    "/etc/shadow",
+    "/etc/sudoers",
+    "/var/run/docker.sock",
+    "/run/containerd/containerd.sock"
+  ],
+  "network_mode": "DISCONNECTED",
+  "resource_limits": {
+    "max_memory_mb": 256,
+    "max_pids": 32,
+    "cpu_quota_pct": 25,
+    "max_file_size_mb": 50
+  },
+  "windows_integrity_level": "LOW",
+  "windows_app_container": true,
+  "disabled_windows_privileges": [
+    "SeDebugPrivilege",
+    "SeTcbPrivilege",
+    "SeImpersonatePrivilege",
+    "SeShutdownPrivilege",
+    "SeAssignPrimaryTokenPrivilege"
+  ]
+}

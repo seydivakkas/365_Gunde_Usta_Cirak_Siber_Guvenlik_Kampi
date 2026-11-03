@@ -1,0 +1,102 @@
+[
+  {
+    "scenario_id": "NEG-SBX-01",
+    "name": "Konteynere Tehlikeli CAP_SYS_ADMIN Yeteneği Verilmesi (Root Breakout)",
+    "description": "Konteynere --cap-add=SYS_ADMIN verilerek fiili ana makine root yetkisi sağlanması ve namespace bariyerlerinin delinmesi.",
+    "profile_patch": {
+      "granted_capabilities": ["CAP_SYS_ADMIN"]
+    },
+    "expected_finding": "SBX-CAP-SYS_ADMIN",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-SBX-02",
+    "name": "ptrace Sistem Çağrısının İzin Listesine Eklenmesi (Kod Enjeksiyonu)",
+    "description": "Seccomp filtresinde ptrace çağrısına izin verilerek diğer süreçlerin bellek adreslerine kod enjeksiyonu yapılması riski.",
+    "profile_patch": {
+      "allowed_syscalls": ["read", "write", "ptrace"],
+      "blocked_syscalls": {}
+    },
+    "expected_finding": "SBX-SYSCALL-PTRACE",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-SBX-03",
+    "name": "bpf Sistem Çağrısının Filtrelenmemesi (eBPF Kernel Exploitation)",
+    "description": "eBPF çekirdek program yükleme çağrısının filtrelenmeyerek çekirdek bellek sızıntısına veya ring-0 zafiyetlerine zemin hazırlanması.",
+    "profile_patch": {
+      "allowed_syscalls": ["read", "write", "bpf"],
+      "blocked_syscalls": {}
+    },
+    "expected_finding": "SBX-SYSCALL-BPF",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-SBX-04",
+    "name": "Varsayılan Seccomp Politikasının ALLOW Olarak Yapılandırılması",
+    "description": "Varsayılan seccomp filtresinin ALLOW yapılması ve bilinmeyen tehlikeli sistem çağrılarının denetimsiz çalışmasına olanak tanınması.",
+    "profile_patch": {
+      "default_seccomp_action": "SCMP_ACT_ALLOW",
+      "blocked_syscalls": {}
+    },
+    "expected_finding": "SBX-SECCOMP-DEFAULT-ALLOW",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-SBX-05",
+    "name": "Yazılabilir Kök Dosya Sistemi (Writable Root Filesystem)",
+    "description": "read_only_root_fs bayrağının false bırakılarak saldırganın ikili dosyalara, kütüphanelere veya cron dosyalarına yazabilmesi.",
+    "profile_patch": {
+      "read_only_root_fs": false
+    },
+    "expected_finding": "SBX-FS-WRITABLE-ROOT",
+    "expected_severity": "HIGH"
+  },
+  {
+    "scenario_id": "NEG-SBX-06",
+    "name": "Host Docker Soketinin Sandbox İçine Açılması (Container Takeover)",
+    "description": "/var/run/docker.sock dosyasının maskelenmeyerek sandbox içinden host Docker daemon'ının ele geçirilmesi.",
+    "profile_patch": {
+      "masked_paths": [
+        "/proc/kcore",
+        "/proc/latency_stats",
+        "/sys/firmware",
+        "/etc/shadow"
+      ]
+    },
+    "expected_finding": "SBX-FS-UNMASKED-var_run_docker.sock",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-SBX-07",
+    "name": "Kısıtlanmamış Tam Ağ Erişimi (Unrestricted Network C2 Egress)",
+    "description": "Ağ modunun UNRESTRICTED bırakılarak kötü amaçlı yazılımın C2 sunucularına veri sızdırmasına olanak tanınması.",
+    "profile_patch": {
+      "network_mode": "UNRESTRICTED"
+    },
+    "expected_finding": "SBX-NET-UNRESTRICTED",
+    "expected_severity": "HIGH"
+  },
+  {
+    "scenario_id": "NEG-SBX-08",
+    "name": "Windows Sandbox'ın Yüksek Bütünlük Seviyesinde (High Integrity) Çalışması",
+    "description": "Windows sürecinin LOW/UNTRUSTED yerine HIGH bütünlük seviyesinde başlatılarak UAC ve MIC korumalarının baypas edilmesi.",
+    "profile_patch": {
+      "os_family": "windows",
+      "windows_integrity_level": "HIGH"
+    },
+    "expected_finding": "SBX-WIN-HIGH-INTEGRITY",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-SBX-09",
+    "name": "Windows AppContainer İzolasyonunun Devre Dışı Bırakılması",
+    "description": "Windows uygulamasının AppContainer güvenlik duvarı ve nesne sınırlandırması olmadan standart süreç olarak çalıştırılması.",
+    "profile_patch": {
+      "os_family": "windows",
+      "windows_app_container": false
+    },
+    "expected_finding": "SBX-WIN-NO-APPCONTAINER",
+    "expected_severity": "HIGH"
+  }
+]

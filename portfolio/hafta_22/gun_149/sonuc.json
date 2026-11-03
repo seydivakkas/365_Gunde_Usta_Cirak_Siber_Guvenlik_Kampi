@@ -1,0 +1,38 @@
+{
+  "gun": 149,
+  "hafta": 22,
+  "asama": "06",
+  "konu": "Uygulama izinleri ve sandbox",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-04",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_22/gun_149/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_22/gun_149/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "denetim_raporu": "portfolio/hafta_22/gun_149/kanit/gercek/app_sandbox_audit_report.json",
+    "oci_seccomp_profili": "portfolio/hafta_22/gun_149/kanit/gercek/oci_seccomp_profile.json",
+    "remediation_betigi": "portfolio/hafta_22/gun_149/kanit/gercek/app_sandbox_remediation.ps1",
+    "komut_ve_cikis": "portfolio/hafta_22/gun_149/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_22/gun_149/kanit/temsili/sandbox_mimarisi.txt"
+  },
+  "ozet": "Linux Seccomp-BPF sistem çağrısı filtrelemesi, Linux Capabilities sınırlandırması, Namespaces ve VFS kök dosya sistemi izolasyonu ile Windows MIC (Zorunlu Bütünlük Kontrolü) ve AppContainer standartları eksiksiz uygulanmış; 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla doğrulanmıştır."
+}

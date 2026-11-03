@@ -1,0 +1,53 @@
+==============================================================================
+GÜN 149: UYGULAMA İZİNLERİ VE SANDBOX NEGATİF KONTROL VE SALDIRI TESTLERİ
+Tarih/Saat (UTC): 2026-11-03T21:02:54.210597+00:00
+Toplam İncelenen Senaryo Sayısı: 9
+==============================================================================
+
+Senaryo NEG-SBX-01: Konteynere Tehlikeli CAP_SYS_ADMIN Yeteneği Verilmesi (Root Breakout)
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: SBX-CAP-SYS_ADMIN [CRITICAL] - Tehlikeli Linux Yeteneği Verilmiş: CAP_SYS_ADMIN
+  Açıklama: Konteynere --cap-add=SYS_ADMIN verilerek fiili ana makine root yetkisi sağlanması ve namespace bariyerlerinin delinmesi.
+------------------------------------------------------------------------------
+Senaryo NEG-SBX-02: ptrace Sistem Çağrısının İzin Listesine Eklenmesi (Kod Enjeksiyonu)
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: SBX-SYSCALL-PTRACE [CRITICAL] - Kritik Sistem Çağrısı Filtrelenmemiş: ptrace
+  Açıklama: Seccomp filtresinde ptrace çağrısına izin verilerek diğer süreçlerin bellek adreslerine kod enjeksiyonu yapılması riski.
+------------------------------------------------------------------------------
+Senaryo NEG-SBX-03: bpf Sistem Çağrısının Filtrelenmemesi (eBPF Kernel Exploitation)
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: SBX-SYSCALL-BPF [CRITICAL] - Kritik Sistem Çağrısı Filtrelenmemiş: bpf
+  Açıklama: eBPF çekirdek program yükleme çağrısının filtrelenmeyerek çekirdek bellek sızıntısına veya ring-0 zafiyetlerine zemin hazırlanması.
+------------------------------------------------------------------------------
+Senaryo NEG-SBX-04: Varsayılan Seccomp Politikasının ALLOW Olarak Yapılandırılması
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: SBX-SECCOMP-DEFAULT-ALLOW [CRITICAL] - Seccomp Varsayılan Eylemi İzin Verici (Default ALLOW)
+  Açıklama: Varsayılan seccomp filtresinin ALLOW yapılması ve bilinmeyen tehlikeli sistem çağrılarının denetimsiz çalışmasına olanak tanınması.
+------------------------------------------------------------------------------
+Senaryo NEG-SBX-05: Yazılabilir Kök Dosya Sistemi (Writable Root Filesystem)
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: SBX-FS-WRITABLE-ROOT [HIGH] - Kök Dosya Sistemi Yazılabilir Durumda (Writable Root FS)
+  Açıklama: read_only_root_fs bayrağının false bırakılarak saldırganın ikili dosyalara, kütüphanelere veya cron dosyalarına yazabilmesi.
+------------------------------------------------------------------------------
+Senaryo NEG-SBX-06: Host Docker Soketinin Sandbox İçine Açılması (Container Takeover)
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: SBX-FS-UNMASKED-var_run_docker.sock [CRITICAL] - Hassas Sistem Yolu Maskelenmemiş: /var/run/docker.sock
+  Açıklama: /var/run/docker.sock dosyasının maskelenmeyerek sandbox içinden host Docker daemon'ının ele geçirilmesi.
+------------------------------------------------------------------------------
+Senaryo NEG-SBX-07: Kısıtlanmamış Tam Ağ Erişimi (Unrestricted Network C2 Egress)
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: SBX-NET-UNRESTRICTED [HIGH] - Ağ Erişimi Tamamen Kısıtlanmamış (Unrestricted Network)
+  Açıklama: Ağ modunun UNRESTRICTED bırakılarak kötü amaçlı yazılımın C2 sunucularına veri sızdırmasına olanak tanınması.
+------------------------------------------------------------------------------
+Senaryo NEG-SBX-08: Windows Sandbox'ın Yüksek Bütünlük Seviyesinde (High Integrity) Çalışması
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: SBX-WIN-HIGH-INTEGRITY [CRITICAL] - Yetersiz Windows Bütünlük Seviyesi (High/Medium Integrity)
+  Açıklama: Windows sürecinin LOW/UNTRUSTED yerine HIGH bütünlük seviyesinde başlatılarak UAC ve MIC korumalarının baypas edilmesi.
+------------------------------------------------------------------------------
+Senaryo NEG-SBX-09: Windows AppContainer İzolasyonunun Devre Dışı Bırakılması
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: SBX-WIN-NO-APPCONTAINER [HIGH] - Windows AppContainer İzolasyonu Etkin Değil
+  Açıklama: Windows uygulamasının AppContainer güvenlik duvarı ve nesne sınırlandırması olmadan standart süreç olarak çalıştırılması.
+------------------------------------------------------------------------------
+
+Toplam Başarılı Tespit: 9/9 (%100 Başarı)

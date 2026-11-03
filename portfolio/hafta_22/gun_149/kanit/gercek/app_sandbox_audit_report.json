@@ -1,0 +1,10 @@
+{
+  "report_id": "SBX-AUDIT-20261104-001",
+  "timestamp_utc": "2026-11-03T21:02:54.212137+00:00",
+  "profile_name": "enterprise_hardened_runner",
+  "os_family": "linux",
+  "network_mode": "DISCONNECTED",
+  "total_findings": 0,
+  "compliance_status": "COMPLIANT_100_PERCENT",
+  "findings": []
+}

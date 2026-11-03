@@ -1,0 +1,87 @@
+{
+  "gun": 149,
+  "konu": "Uygulama izinleri ve sandbox",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "ders.md": {
+      "sha256": "381c81ccdcb254e426f0b2684b92b26b80208c54936fe98e91b379ec33a3200f",
+      "size_bytes": 11365
+    },
+    "kanit/gercek/app_sandbox_audit_report.json": {
+      "sha256": "dfd5b15f6f1c137af69d6a5eb5e576f6e80deaf3166cf4d6f7d4fce26fe88771",
+      "size_bytes": 302
+    },
+    "kanit/gercek/app_sandbox_remediation.ps1": {
+      "sha256": "d8f673d2e55fc221321f7d3db8d50711c1f51a2bb1e1bae69ff37ee069a379cc",
+      "size_bytes": 1217
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "sha256": "53465c4a34ae1afabce47788de1f1dcd51e404f53ab1e6315c673196bf81a8a1",
+      "size_bytes": 5295
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "sha256": "5f668ea3dafdc39701fa650c5365617fb8b5ac5453ebafec08c7f8b2fae29c63",
+      "size_bytes": 4632
+    },
+    "kanit/gercek/oci_seccomp_profile.json": {
+      "sha256": "a7a0f0161cab2befd30151236112b73ab81eca44fe458d752ba2e97afda57051",
+      "size_bytes": 1688
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "sha256": "317cf22b8b1f2d149396d5e38a7b19536637e4e912456b3a30dcf1b716da21a9",
+      "size_bytes": 4013
+    },
+    "kanit/temsili/sandbox_mimarisi.txt": {
+      "sha256": "416fd1bc6e219d1fb959386e64f7b3195b7cbd749c4ecd4b131adcf90aad1ecc",
+      "size_bytes": 4722
+    },
+    "kanit_uretici.py": {
+      "sha256": "c8c44d27fa07eec83af3169413e96fc13b221d35ee84e367984c22588cd77e93",
+      "size_bytes": 16322
+    },
+    "ornek_veri/clean_sandbox_specs.json": {
+      "sha256": "f7b63bfc86d91989c038b4ba9e34cd64cbae0b980bfaa8a22fd44254df6efa5f",
+      "size_bytes": 1668
+    },
+    "ornek_veri/invalid_sandbox_scenarios.json": {
+      "sha256": "3fb088d08c987d60b4b3261b09358dec94e3ee89f8dda3be367e66a350914b26",
+      "size_bytes": 4189
+    },
+    "rapor.md": {
+      "sha256": "9362ecf2316189495ed04bb966b1183b8db4a11e91bb6d0d745afb5d7ac3dc3e",
+      "size_bytes": 4868
+    },
+    "README.md": {
+      "sha256": "ff5881a1b88a6c9ba5bbaf059afa0dd55ef81d0f06056304b34a70ecc94d5f9d",
+      "size_bytes": 5126
+    },
+    "sonuc.json": {
+      "sha256": "d41bd16bbd014d269b79fd45d0fd5636684314d0c21db5d0a7b15ee2106bf6aa",
+      "size_bytes": 1624
+    },
+    "soru_cevap.md": {
+      "sha256": "49cde4383f22e19efa328ebf854ef1de4858d81a77e3febcad05e4c16f41499b",
+      "size_bytes": 12526
+    },
+    "tests/__init__.py": {
+      "sha256": "0cde544fbee93d9c6b23c66693a4635f1266f2ffbf13c6eff7844b2ec1aa2685",
+      "size_bytes": 201
+    },
+    "tests/test_app_sandbox.py": {
+      "sha256": "626ebfd6ac69ed2c79fcbf129e9d545454cc2649bedd46cb58024fae363b7bfc",
+      "size_bytes": 9922
+    },
+    "uygulama/__init__.py": {
+      "sha256": "ffac222c993b26edde3bd594ae9dbe0bd07ffa102bb7d4e3b7e2b0de58de9371",
+      "size_bytes": 345
+    },
+    "uygulama/app_sandbox_cli.py": {
+      "sha256": "44196abba16c35363044c51cd8bd1f4d3149351809003ed1e8a4163cbb9f24ef",
+      "size_bytes": 9517
+    },
+    "uygulama/app_sandbox_engine.py": {
+      "sha256": "cd4209edf3dbac60bcfb86bf486c4ed2402d2315e5e99a94f98dcfe084ec557b",
+      "size_bytes": 37270
+    }
+  }
+}
