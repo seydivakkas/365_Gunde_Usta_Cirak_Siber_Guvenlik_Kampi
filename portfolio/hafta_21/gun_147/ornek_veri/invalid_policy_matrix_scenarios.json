@@ -1,0 +1,146 @@
+{
+  "_aciklama": "Gün 147: Mini Proje 20 — IAM Politika Matrisi 9 Negatif Kontrol ve Zafiyet Senaryosu",
+  "_lisans": "Özel Lisans — Tüm Hakları Saklıdır. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "senaryolar": [
+    {
+      "senaryo_id": "NS-MAT-01",
+      "ad": "Kısıtlamasız Kerberos Yetki Devri (Unconstrained Delegation Zafiyeti)",
+      "kategori": "Kerberos Güvenliği",
+      "beklenen_kural": "MAT-KERB-01",
+      "beklenen_onem": "CRITICAL",
+      "veri": {
+        "resources": [
+          {
+            "resource_id": "RES-UNCON-99",
+            "name": "IIS-LEGACY-PORTAL.kurum.local",
+            "target_tier": "TIER_1",
+            "service_type": "WEB_PORTAL",
+            "spn": "http/iis-legacy.kurum.local",
+            "delegation_type": "UNCONSTRAINED"
+          }
+        ],
+        "subjects": []
+      }
+    },
+    {
+      "senaryo_id": "NS-MAT-02",
+      "ad": "İlişiği Kesilmiş Personele Ait Kapatılmamış Yetim Hesap (Orphan Account)",
+      "kategori": "JML Yaşam Döngüsü",
+      "beklenen_kural": "MAT-JML-01",
+      "beklenen_onem": "CRITICAL",
+      "veri": {
+        "resources": [],
+        "subjects": [
+          {
+            "user_id": "USR-ORPHAN-01",
+            "username": "ayrilmis.personel",
+            "roles": ["ROLE_FINANCE_USER"],
+            "tier_level": "TIER_2",
+            "department": "FINANS",
+            "is_employee_active": false,
+            "mfa_authenticated": true,
+            "device_compliant": true
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "NS-MAT-03",
+      "ad": "Finansal Görevler Ayrılığı (SoD) Zehirli Kombinasyonu: Fatura Giriş + Ödeme Onay",
+      "kategori": "SoD İhlali",
+      "beklenen_kural": "MAT-SOD-01",
+      "beklenen_onem": "CRITICAL",
+      "veri": {
+        "resources": [],
+        "subjects": [
+          {
+            "user_id": "USR-SOD-01",
+            "username": "toxic.muhasebe",
+            "roles": ["ROLE_FIN_INVOICE_CREATE", "ROLE_FIN_PAYMENT_APPROVE"],
+            "tier_level": "TIER_2",
+            "department": "FINANS",
+            "is_employee_active": true,
+            "mfa_authenticated": true,
+            "device_compliant": true
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "NS-MAT-04",
+      "ad": "Tier-0 Ayrıcalıklı Domain Admin Hesabında MFA Eksikliği",
+      "kategori": "Tiering Sertleştirmesi",
+      "beklenen_kural": "MAT-TIER-01",
+      "beklenen_onem": "CRITICAL",
+      "veri": {
+        "resources": [],
+        "subjects": [
+          {
+            "user_id": "USR-T0-NOMFA",
+            "username": "da_guvensiz_admin",
+            "roles": ["ROLE_DOMAIN_ADMIN"],
+            "tier_level": "TIER_0",
+            "department": "BT_GUVENLIK",
+            "is_employee_active": true,
+            "mfa_authenticated": false,
+            "device_compliant": true
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "NS-MAT-05",
+      "ad": "Alt Katman (Tier-2) İş İstasyonu Kullanıcısına Tier-0 Rolü Atanması (Aşırı Yetki)",
+      "kategori": "En Az Yetki / Katman Atlama",
+      "beklenen_kural": "MAT-PRIV-01",
+      "beklenen_onem": "HIGH",
+      "veri": {
+        "resources": [],
+        "subjects": [
+          {
+            "user_id": "USR-OVERPRIV-01",
+            "username": "stajyer.superadmin",
+            "roles": ["ROLE_TIER0_ADMIN", "ROLE_FINANCE_USER"],
+            "tier_level": "TIER_2",
+            "department": "FINANS",
+            "is_employee_active": true,
+            "mfa_authenticated": true,
+            "device_compliant": true
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "NS-MAT-06",
+      "ad": "Tier-0 Domain Admin Hesabının Tier-2 İş İstasyonunda Oturum Açma Girişimi",
+      "kategori": "Dinamik Erişim / Katman İzolasyonu",
+      "islem_tipi": "DYNAMIC_ACCESS",
+      "beklenen_karar": "DENY",
+      "beklenen_kural": "RULE-TIER0-DOWNWARD-LOGON-DENIED"
+    },
+    {
+      "senaryo_id": "NS-MAT-07",
+      "ad": "Standart Tier-2 Kullanıcısının Doğrudan Tier-0 DC'ye RDP / LDAP Girişiminde Bulunması",
+      "kategori": "Dinamik Erişim / PAW İzolasyonu",
+      "islem_tipi": "DYNAMIC_ACCESS",
+      "beklenen_karar": "DENY",
+      "beklenen_kural": "RULE-TIER2-UPWARD-ACCESS-DENIED"
+    },
+    {
+      "senaryo_id": "NS-MAT-08",
+      "ad": "Yüksek Riskli Oturum (İmkansız Seyahat / Tor Ağı - Risk Skoru 0.85) ile Erişim Girişimi",
+      "kategori": "Sıfır Güven (Zero Trust) ABAC",
+      "islem_tipi": "DYNAMIC_ACCESS",
+      "beklenen_karar": "DENY",
+      "beklenen_kural": "RULE-ABAC-HIGH-RISK-SESSION"
+    },
+    {
+      "senaryo_id": "NS-MAT-09",
+      "ad": "Kurumsal Güvenlik Şartlarını Karşılamayan (Non-Compliant) Cihazdan Erişim Girişimi",
+      "kategori": "Cihaz Uyumluluğu / Sıfır Güven",
+      "islem_tipi": "DYNAMIC_ACCESS",
+      "beklenen_karar": "DENY",
+      "beklenen_kural": "RULE-ABAC-DEVICE-NON-COMPLIANT"
+    }
+  ]
+}

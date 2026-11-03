@@ -1,0 +1,64 @@
+======================================================================
+GÜN 147: MİNİ PROJE 20 — IAM POLİTİKA MATRİSİ NEGATİF KONTROL RAPORU
+Tarih/Saat: 2026-11-03T23:29:36.516238
+Bu rapor; Tiering ihlalleri, Unconstrained Delegation zafiyeti,
+SoD çatışmaları, yetim hesaplar ve Sıfır Güven ABAC engellemelerini kanıtlar.
+======================================================================
+
+Senaryo 1/9: [NS-MAT-01] Kısıtlamasız Kerberos Yetki Devri (Unconstrained Delegation Zafiyeti)
+  Kategori       : Kerberos Güvenliği
+  Beklenen Kural : MAT-KERB-01 (CRITICAL)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Kısıtlamasız Kerberos Yetki Devri (Unconstrained Delegation) Tespit Edildi
+  Etkilenen      : IIS-LEGACY-PORTAL.kurum.local
+  Ayrıntı        : Kaynak 'IIS-LEGACY-PORTAL.kurum.local' (http/iis-legacy.kurum.local) unconstrained delegation kullanıyor. Sunucu ele geçirilirse gelen tüm yöneticilerin TGT biletleri belleğe düşer.
+----------------------------------------------------------------------
+Senaryo 2/9: [NS-MAT-02] İlişiği Kesilmiş Personele Ait Kapatılmamış Yetim Hesap (Orphan Account)
+  Kategori       : JML Yaşam Döngüsü
+  Beklenen Kural : MAT-JML-01 (CRITICAL)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] İlişiği Kesilmiş Personele Ait Kapatılmamış Hesap (Orphan Account)
+  Etkilenen      : ayrilmis.personel
+  Ayrıntı        : Kullanıcı 'ayrilmis.personel' İK sisteminde aktif görünmüyor ancak IAM matrisinde hesap kaydı açık.
+----------------------------------------------------------------------
+Senaryo 3/9: [NS-MAT-03] Finansal Görevler Ayrılığı (SoD) Zehirli Kombinasyonu: Fatura Giriş + Ödeme Onay
+  Kategori       : SoD İhlali
+  Beklenen Kural : MAT-SOD-01 (CRITICAL)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Görevler Ayrılığı (SoD) Zehirli Kombinasyonu: SOD-FIN-001
+  Etkilenen      : toxic.muhasebe
+  Ayrıntı        : 'toxic.muhasebe' kullanıcısı birbiriyle çatışan rollere sahip: 'ROLE_FIN_INVOICE_CREATE' ve 'ROLE_FIN_PAYMENT_APPROVE'. Fatura kesen personel kendi faturasının ödemesini onaylayamaz (Dolandırıcılık Önleme).
+----------------------------------------------------------------------
+Senaryo 4/9: [NS-MAT-04] Tier-0 Ayrıcalıklı Domain Admin Hesabında MFA Eksikliği
+  Kategori       : Tiering Sertleştirmesi
+  Beklenen Kural : MAT-TIER-01 (CRITICAL)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Tier-0 Ayrıcalıklı Yönetici Hesabında MFA Eksikliği
+  Etkilenen      : da_guvensiz_admin
+  Ayrıntı        : Tier-0 yöneticisi 'da_guvensiz_admin' Çok Faktörlü Kimlik Doğrulama (MFA) olmaksızın yetkilendirilmiş.
+----------------------------------------------------------------------
+Senaryo 5/9: [NS-MAT-05] Alt Katman (Tier-2) İş İstasyonu Kullanıcısına Tier-0 Rolü Atanması (Aşırı Yetki)
+  Kategori       : En Az Yetki / Katman Atlama
+  Beklenen Kural : MAT-PRIV-01 (HIGH)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Aşırı Yetkilendirme (Over-Privileged / Katman Atlama)
+  Etkilenen      : stajyer.superadmin
+  Ayrıntı        : Alt katmandaki 'stajyer.superadmin' (TIER_2) kullanıcısına Tier-0 yönetici rolleri atanmış.
+----------------------------------------------------------------------
+Senaryo 6/9: [NS-MAT-06] Tier-0 Domain Admin Hesabının Tier-2 İş İstasyonunda Oturum Açma Girişimi
+  Kategori       : Dinamik Erişim / Katman İzolasyonu
+  Beklenen Kural : RULE-TIER0-DOWNWARD-LOGON-DENIED (DENY)
+  Sonuç          : [BAŞARILI - ENGELLENDİ] Tiering İhlali Engellendi: Tier-0 yöneticisi 'seydi.admin', alt katmandaki 'WS-FIN-101.kurum.local' (TIER_2) kaynağında oturum açamaz (Credential Dumping Koruması).
+----------------------------------------------------------------------
+Senaryo 7/9: [NS-MAT-07] Standart Tier-2 Kullanıcısının Doğrudan Tier-0 DC'ye RDP / LDAP Girişiminde Bulunması
+  Kategori       : Dinamik Erişim / PAW İzolasyonu
+  Beklenen Kural : RULE-TIER2-UPWARD-ACCESS-DENIED (DENY)
+  Sonuç          : [BAŞARILI - ENGELLENDİ] Tiering İhlali Engellendi: Standart Tier-2 kullanıcısı 'ayse.finans', kritik Tier-0 kaynağına 'DC01.kurum.local' doğrudan erişemez (Yalnızca PAW ve Tier-0 hesapları erişebilir).
+----------------------------------------------------------------------
+Senaryo 8/9: [NS-MAT-08] Yüksek Riskli Oturum (İmkansız Seyahat / Tor Ağı - Risk Skoru 0.85) ile Erişim Girişimi
+  Kategori       : Sıfır Güven (Zero Trust) ABAC
+  Beklenen Kural : RULE-ABAC-HIGH-RISK-SESSION (DENY)
+  Sonuç          : [BAŞARILI - ENGELLENDİ] Risk Tabanlı Erişim Engeli: Kullanıcının oturum risk puanı (0.85) kabul edilebilir eşik değerin (0.70) üzerindedir (Olası Ele Geçirilmiş Hesap / İmkansız Seyahat).
+----------------------------------------------------------------------
+Senaryo 9/9: [NS-MAT-09] Kurumsal Güvenlik Şartlarını Karşılamayan (Non-Compliant) Cihazdan Erişim Girişimi
+  Kategori       : Cihaz Uyumluluğu / Sıfır Güven
+  Beklenen Kural : RULE-ABAC-DEVICE-NON-COMPLIANT (DENY)
+  Sonuç          : [BAŞARILI - ENGELLENDİ] Cihaz Güvenliği Engeli: 'uyumsuz.cihaz' kullanıcısının bağlandığı cihaz kurumsal güvenlik uyumluluk şartlarını sağlamıyor (Non-compliant Device).
+----------------------------------------------------------------------
+
+TOPLAM NEGATİF KONTROL: 9 / 9 BAŞARILI (%100)

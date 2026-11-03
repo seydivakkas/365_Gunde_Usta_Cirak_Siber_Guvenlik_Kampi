@@ -1,0 +1,35 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 147: MİNİ PROJE 20 — KURUMSAL IAM POLİTİKA MATRİSİ VE KATMAN (TIER) MİMARİSİ
+================================================================================
+
+                               [SIFIR GÜVEN / ZERO TRUST DENETİM DÜZLEMİ]
+                               (MFA + Cihaz Sağlığı + IP/Risk + SoD Matrisi)
+                                                    │
+         +------------------------------------------+------------------------------------------+
+         │                                          │                                          │
+         ▼                                          ▼                                          ▼
++--------------------------------+     +--------------------------------+     +--------------------------------+
+|            TIER 0              |     |            TIER 1              |     |            TIER 2              |
+|       [KİMLİK DÜZLEMİ]         |     |      [SUNUCU VE UYGULAMA]      |     |     [KULLANICI UÇ NOKTALARI]   |
+|--------------------------------|     |--------------------------------|     |--------------------------------|
+| - Domain Controllers (DC)      |     | - Kurumsal SQL Veritabanları   |     | - Kullanıcı İş İstasyonları    |
+| - PKI / Kurumsal CA            |     | - ERP / CRM Web Portalları     |     | - Ofis Dizüstü Bilgisayarları  |
+| - Entra ID Connect / ADFS      |     | - Bulut İş Yükleri (AWS / AZ)  |     | - Ağ Yazıcıları / IoT          |
+| - Tier-0 PAW (Yönetim İstasyonu|     | - Dosya Paylaşım Sunucuları    |     |                                |
+|--------------------------------|     |--------------------------------|     |--------------------------------|
+| KRİTİK GÜVENLİK KURALI:        |     | KRİTİK GÜVENLİK KURALI:        |     | KRİTİK GÜVENLİK KURALI:        |
+| * Asla Tier-1/2'ye LOGON OLMAZ!|     | * LAPS ve PAM zorunludur.      |     | * LAPS ile benzersiz yerel     |
+| * FIDO2 MFA ve PAW şarttır.    |     | * RBCD Kısıtlı Delegasyon      |     |   yönetici parolası şarttır.   |
+| * RBCD (Yetki Devri Kısıtlı)   |     | * Unconstrained ASLA OLAMAZ!   |     | * Tier-0'a direkt erişim YASAK!|
++--------------------------------+     +--------------------------------+     +--------------------------------+
+         ▲                                          │                                          │
+         │                                          │                                          │
+         +---[YALNIZCA PAW VE TIER-0 HESAPLARI]-----+                                          │
+         │                                                                                     │
+         +---[TIER-2 DOĞRUDAN ERİŞİMİ ENGELİ: Credential Dumping / PtH Koruması]---------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

@@ -1,0 +1,43 @@
+======================================================================
+GÜN 147: MİNİ PROJE 20 — IAM POLİTİKA MATRİSİ BİRİM TEST SONUÇLARI
+Tarih/Saat      : 2026-11-03T23:29:36.515178
+Toplam Test     : 15
+Başarılı        : 15
+Hatalı/Kırık    : 0
+Koşum Süresi    : 0.0010 saniye
+======================================================================
+test_01_clean_matrix_full_audit_pass (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_01_clean_matrix_full_audit_pass)
+1. Test: Kusursuz yapılandırılmış kurumsal matrisin 100 tam puan almasını doğrular. ... ok
+test_02_tier0_access_to_tier0_permit (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_02_tier0_access_to_tier0_permit)
+2. Test: Şartları sağlayan Tier-0 yöneticisinin Tier-0 DC'ye erişebilmesini (PERMIT) doğrular. ... ok
+test_03_tier0_downward_logon_denied (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_03_tier0_downward_logon_denied)
+3. Test: Tier-0 yöneticisinin alt katman (Tier-2) iş istasyonunda oturum açmasının engellenmesini doğrular. ... ok
+test_04_tier2_upward_access_to_tier0_denied (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_04_tier2_upward_access_to_tier0_denied)
+4. Test: Standart Tier-2 kullanıcısının doğrudan Tier-0 DC'ye erişiminin engellenmesini doğrular. ... ok
+test_05_rbac_role_mismatch_denied (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_05_rbac_role_mismatch_denied)
+5. Test: Kaynağın izin verilen rolüne sahip olmayan kullanıcının engellenmesini (RBAC) doğrular. ... ok
+test_06_abac_missing_mfa_denied (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_06_abac_missing_mfa_denied)
+6. Test: MFA gerektiren kaynağa MFA doğrulaması olmadan erişimin engellenmesini (ABAC) doğrular. ... ok
+test_07_abac_non_compliant_device_denied (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_07_abac_non_compliant_device_denied)
+7. Test: Uyumsuz (güvensiz / yamalanmamış) cihaz üzerinden gelen erişimin engellenmesini doğrular. ... ok
+test_08_abac_high_risk_session_denied (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_08_abac_high_risk_session_denied)
+8. Test: Yüksek riskli (imkansız seyahat / risk skoru >= 0.70) oturumların engellenmesini doğrular. ... ok
+test_09_sod_toxic_combination_denied (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_09_sod_toxic_combination_denied)
+9. Test: SoD zehirli rol kombinasyonuna sahip kullanıcının erişiminin durdurulmasını doğrular. ... ok
+test_10_leaver_orphan_account_denied (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_10_leaver_orphan_account_denied)
+10. Test: İK ilişiği kesilmiş personelin hesabından yapılan erişimin engellenmesini doğrular. ... ok
+test_11_unconstrained_delegation_audit_finding (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_11_unconstrained_delegation_audit_finding)
+11. Test: Kısıtlamasız yetki devri kullanan sunucunun CRITICAL zafiyet olarak yakalanmasını doğrular. ... ok
+test_12_orphan_account_audit_finding (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_12_orphan_account_audit_finding)
+12. Test: İK ilişiği kesilmiş aktif hesapların denetimde CRITICAL olarak raporlanmasını doğrular. ... ok
+test_13_overprivileged_tier2_user_audit_finding (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_13_overprivileged_tier2_user_audit_finding)
+13. Test: Alt katmandaki kullanıcıya Tier-0 admin yetkisi verilmesinin HIGH zafiyet olarak yakalanmasını doğrular. ... ok
+test_14_tier0_without_mfa_audit_finding (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_14_tier0_without_mfa_audit_finding)
+14. Test: Tier-0 yöneticisinin MFA'sız olmasının CRITICAL olarak yakalanmasını doğrular. ... ok
+test_15_remediation_powershell_and_summary_json (test_iam_policy_matrix.TestIAMPolicyMatrixEngine.test_15_remediation_powershell_and_summary_json)
+15. Test: PowerShell sertleştirme betiğinin ve matris özet JSON çıktısının geçerliliğini doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

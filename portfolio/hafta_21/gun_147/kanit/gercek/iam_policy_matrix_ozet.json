@@ -1,0 +1,42 @@
+{
+  "proje": "Mini Proje 20: Kurumsal IAM Politika Matrisi",
+  "mimari": "Microsoft Enterprise Access Model & Zero Trust ABAC",
+  "katmanlar": {
+    "TIER_0": {
+      "tanim": "Kimlik Düzlemi ve Kritik Güvenlik Çekirdeği",
+      "varliklar": [
+        "Domain Controllers",
+        "AD FS",
+        "PKI/CA",
+        "AAD Connect",
+        "Tier-0 PAW"
+      ],
+      "guvenlik_kurali": "Asla alt katmanlarda oturum açamaz. FIDO2 MFA ve PAW zorunludur."
+    },
+    "TIER_1": {
+      "tanim": "Kurumsal Uygulama ve Sunucu Düzlemi",
+      "varliklar": [
+        "Uygulama Sunucuları",
+        "SQL Veritabanları",
+        "Bulut İş Yükleri"
+      ],
+      "guvenlik_kurali": "Yalnızca LAPS ve PAM ile yönetilir. Tier-2 doğrudan erişemez."
+    },
+    "TIER_2": {
+      "tanim": "Kullanıcı ve Uç Nokta Düzlemi",
+      "varliklar": [
+        "İş İstasyonları",
+        "Yazıcılar",
+        "Mobil Cihazlar"
+      ],
+      "guvenlik_kurali": "Yatay geçiş (Pass-the-Hash) engellenmeli, LAPS aktif olmalıdır."
+    }
+  },
+  "standartlar": [
+    "NIST SP 800-207 Zero Trust Architecture",
+    "Microsoft Enterprise Access Model (Privileged Access Tiering)",
+    "CIS Microsoft Windows Server Benchmark (Tiering & Kerberos)",
+    "SOX 404 Separation of Duties (SoD) Framework",
+    "RFC 4120 Kerberos V5 & RFC 7644 SCIM 2.0"
+  ]
+}

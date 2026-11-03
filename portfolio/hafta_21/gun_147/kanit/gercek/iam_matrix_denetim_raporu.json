@@ -1,0 +1,20 @@
+{
+  "proje": "Mini Proje 20: IAM Politika Matrisi",
+  "toplam_ozne": 4,
+  "toplam_kaynak": 5,
+  "unconstrained_delegation": 0,
+  "yetim_hesaplar": 0,
+  "sod_ihlal_sayisi": 0,
+  "asiri_yetkili_sayisi": 1,
+  "guvenlik_puani": 85.0,
+  "uyumlu": false,
+  "bulgular": [
+    {
+      "kural_id": "MAT-PRIV-01",
+      "baslik": "Aşırı Yetkilendirme (Over-Privileged / Katman Atlama)",
+      "onem": "HIGH",
+      "etkilenen": "kemal.dba",
+      "detay": "Alt katmandaki 'kemal.dba' (TIER_1) kullanıcısına Tier-0 yönetici rolleri atanmış."
+    }
+  ]
+}

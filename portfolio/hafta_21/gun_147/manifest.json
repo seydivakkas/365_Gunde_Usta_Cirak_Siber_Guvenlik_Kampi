@@ -1,0 +1,89 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas).",
+  "gun": 147,
+  "hafta": 21,
+  "konu": "Mini proje 20: IAM politika matrisi",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "a2cc6e73f043699299e5bd1a7596470d2cbdb97d068e3f5c56cbb278ff16e157",
+      "size_bytes": 5253
+    },
+    "ders.md": {
+      "sha256": "18a322614500c37355cff86ac364714ab50a5fedddcc943fa806a50101d77870",
+      "size_bytes": 7602
+    },
+    "kanit_uretici.py": {
+      "sha256": "5104dd2c9317801b444a079ac26b3cc884e4e0e4fd269181a73aa55dc14ef8eb",
+      "size_bytes": 15936
+    },
+    "rapor.md": {
+      "sha256": "d37ffdf7872227b7959e6528d65e4ed1de76a4df14614de07a489d2f890e86d4",
+      "size_bytes": 6010
+    },
+    "sonuc.json": {
+      "sha256": "83c0d536b289cadeb49fddbfbb6c7626f2cab91f06dea814e77596c3ed269ddf",
+      "size_bytes": 1160
+    },
+    "soru_cevap.md": {
+      "sha256": "05359c9db29bfe34a1f20bdef3a3e2413de3871d009f57b76a43697f0935be9e",
+      "size_bytes": 13266
+    },
+    "kanit\\gercek\\iam_matrix_denetim_raporu.json": {
+      "sha256": "fc018875035726f0cc2b1b0ca1d0a98c111bb3b940ea9a468522216cb55b572e",
+      "size_bytes": 570
+    },
+    "kanit\\gercek\\iam_matrix_sertlestirme.ps1": {
+      "sha256": "a9b85eac17ce6cc8f3eb4ddb0513dbcd35ebac9e3372b9f93303743ae9a8c64a",
+      "size_bytes": 634
+    },
+    "kanit\\gercek\\iam_policy_matrix_ozet.json": {
+      "sha256": "ea2f36500a76eb445c26f5e2bd20213e9e29bc8857139ffba211fcc91d3b6342",
+      "size_bytes": 1389
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "sha256": "a649d7e19fa4b91bdddceaed845984ef5e89e9f1b20233a189d1a103771d3c4a",
+      "size_bytes": 1259
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "sha256": "c03c4cc10cc49ce32854c7a68629a83bce4129a6eb536ca34ac881fddbdbb779",
+      "size_bytes": 5482
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "sha256": "d613772a098f08c438a9350e6e28df4529c6c93ef7c8f6c465b44e64454fd3b6",
+      "size_bytes": 4137
+    },
+    "kanit\\temsili\\iam_politika_matrisi_mimarisi.txt": {
+      "sha256": "d0ec2e04138f43a06524cf15c7e3b73f1679826471ee20aa906d16a4cbf78a1e",
+      "size_bytes": 3312
+    },
+    "ornek_veri\\enterprise_iam_policy_matrix.json": {
+      "sha256": "afb3e43080a7ea89d217d4c62df50b1f625e588cd13b68c038c0cbe200e186f8",
+      "size_bytes": 4323
+    },
+    "ornek_veri\\invalid_policy_matrix_scenarios.json": {
+      "sha256": "71486682a5ce6217e96f14226f2e88937deb34ec9f5f69e0fc43babc3bf7e5b9",
+      "size_bytes": 4976
+    },
+    "tests\\__init__.py": {
+      "sha256": "6c706ac805318b8eb38ae8d847b7f22a4a5868c11f3f24b0eb8f18a3165e5140",
+      "size_bytes": 145
+    },
+    "tests\\test_iam_policy_matrix.py": {
+      "sha256": "cf62ba633c5354e8f1fac486c90d0b6d3ce7b3aa2cddaa980d5d6b1537800a54",
+      "size_bytes": 16545
+    },
+    "uygulama\\__init__.py": {
+      "sha256": "330bea569133d8a3091acae1742e1fd4142370c2a35020112f487d26f65f2a25",
+      "size_bytes": 716
+    },
+    "uygulama\\iam_matrix_cli.py": {
+      "sha256": "2e097e0cbb8313f2bf2be308cd76d06c58a2939e990fd796adffea0ee05c668d",
+      "size_bytes": 6968
+    },
+    "uygulama\\iam_policy_matrix_engine.py": {
+      "sha256": "543eae5fe2f4e1a1bf926365222eea1d0512035165ba38336b07a952d41bce58",
+      "size_bytes": 27164
+    }
+  }
+}

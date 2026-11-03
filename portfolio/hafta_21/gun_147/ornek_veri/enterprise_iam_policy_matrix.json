@@ -1,0 +1,136 @@
+{
+  "_aciklama": "Gün 147: Mini Proje 20 — Kurumsal Sertleştirilmiş IAM Politika Matrisi",
+  "_lisans": "Özel Lisans — Tüm Hakları Saklıdır. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "sod_rules": [
+    {
+      "rule_id": "SOD-FIN-001",
+      "role_a": "ROLE_FIN_INVOICE_CREATE",
+      "role_b": "ROLE_FIN_PAYMENT_APPROVE",
+      "description": "Fatura kesen personel kendi faturasının ödemesini onaylayamaz (Dolandırıcılık Önleme).",
+      "severity": "CRITICAL"
+    },
+    {
+      "rule_id": "SOD-DEV-001",
+      "role_a": "ROLE_DEVELOPER",
+      "role_b": "ROLE_PROD_DEPLOYER",
+      "description": "Kodu geliştiren yazılımcı canlı ortama doğrudan dağıtım yapamaz (Dört Göz Kuralı).",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "SOD-SEC-001",
+      "role_a": "ROLE_SECURITY_AUDITOR",
+      "role_b": "ROLE_DOMAIN_ADMIN",
+      "description": "Güvenlik denetçisi kendi denetlediği sistemin etki alanı yöneticisi olamaz (Bağımsız Denetim).",
+      "severity": "CRITICAL"
+    }
+  ],
+  "resources": [
+    {
+      "resource_id": "RES-DC01",
+      "name": "DC01.kurum.local",
+      "target_tier": "TIER_0",
+      "service_type": "AD_DC",
+      "spn": "ldap/dc01.kurum.local",
+      "delegation_type": "RBCD",
+      "requires_mfa": true,
+      "allowed_roles": ["ROLE_DOMAIN_ADMIN"]
+    },
+    {
+      "resource_id": "RES-PKI01",
+      "name": "CA01.kurum.local",
+      "target_tier": "TIER_0",
+      "service_type": "ENTERPRISE_CA",
+      "spn": "rpcss/ca01.kurum.local",
+      "delegation_type": "RBCD",
+      "requires_mfa": true,
+      "allowed_roles": ["ROLE_ENTERPRISE_ADMIN", "ROLE_DOMAIN_ADMIN"]
+    },
+    {
+      "resource_id": "RES-SQL01",
+      "name": "SQL-PROD01.kurum.local",
+      "target_tier": "TIER_1",
+      "service_type": "SQL_DATABASE",
+      "spn": "MSSQLSvc/sql-prod01.kurum.local:1433",
+      "delegation_type": "CONSTRAINED_S4U",
+      "requires_mfa": true,
+      "allowed_roles": ["ROLE_DBA_ADMIN", "ROLE_FIN_SERVICE"]
+    },
+    {
+      "resource_id": "RES-APP01",
+      "name": "ERP-WEB01.kurum.local",
+      "target_tier": "TIER_1",
+      "service_type": "WEB_PORTAL",
+      "spn": "http/erp-web01.kurum.local",
+      "delegation_type": "CONSTRAINED_S4U",
+      "requires_mfa": true,
+      "allowed_roles": ["ROLE_FINANCE_USER", "ROLE_HR_USER"]
+    },
+    {
+      "resource_id": "RES-WS101",
+      "name": "WS-FIN-101.kurum.local",
+      "target_tier": "TIER_2",
+      "service_type": "WORKSTATION",
+      "delegation_type": "NONE",
+      "requires_mfa": false,
+      "allowed_roles": ["ROLE_FINANCE_USER"]
+    }
+  ],
+  "subjects": [
+    {
+      "user_id": "USR-T0-SEYYID",
+      "username": "seydi.admin",
+      "roles": ["ROLE_DOMAIN_ADMIN", "ROLE_ENTERPRISE_ADMIN"],
+      "tier_level": "TIER_0",
+      "department": "BT_GUVENLIK",
+      "is_employee_active": true,
+      "mfa_authenticated": true,
+      "device_compliant": true,
+      "source_ip": "10.0.0.10",
+      "is_trusted_network": true,
+      "risk_score": 0.05,
+      "last_logon_date": "2026-11-03T10:00:00Z"
+    },
+    {
+      "user_id": "USR-T1-KEMAL",
+      "username": "kemal.dba",
+      "roles": ["ROLE_DBA_ADMIN"],
+      "tier_level": "TIER_1",
+      "department": "VERITABANI",
+      "is_employee_active": true,
+      "mfa_authenticated": true,
+      "device_compliant": true,
+      "source_ip": "10.0.1.20",
+      "is_trusted_network": true,
+      "risk_score": 0.08,
+      "last_logon_date": "2026-11-03T09:30:00Z"
+    },
+    {
+      "user_id": "USR-T2-AYSE",
+      "username": "ayse.finans",
+      "roles": ["ROLE_FINANCE_USER"],
+      "tier_level": "TIER_2",
+      "department": "FINANS",
+      "is_employee_active": true,
+      "mfa_authenticated": true,
+      "device_compliant": true,
+      "source_ip": "10.0.2.15",
+      "is_trusted_network": true,
+      "risk_score": 0.05,
+      "last_logon_date": "2026-11-03T08:45:00Z"
+    },
+    {
+      "user_id": "USR-T1-DEV",
+      "username": "ahmet.yazilim",
+      "roles": ["ROLE_DEVELOPER"],
+      "tier_level": "TIER_1",
+      "department": "YAZILIM",
+      "is_employee_active": true,
+      "mfa_authenticated": true,
+      "device_compliant": true,
+      "source_ip": "10.0.1.50",
+      "is_trusted_network": true,
+      "risk_score": 0.04,
+      "last_logon_date": "2026-11-03T09:15:00Z"
+    }
+  ]
+}
