@@ -1,0 +1,68 @@
+======================================================================
+GÜN 145: GROUP POLICY NEGATİF KONTROL VE ZAFİYET SENARYO DENETİMİ
+Tarih/Saat: 2026-11-03T10:03:16.690923
+======================================================================
+
+Senaryo ID   : NEG-GPO-01
+Başlık        : SYSVOL cpassword Parola Sızıntısı (MS14-025)
+Kategori      : SYSVOL_SECURITY
+Hedef Kural   : GPO-SYSVOL-01
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : SYSVOL Tercih Dosyalarında Şifreli Parola (cpassword) Sızıntısı (Önem: CRITICAL)
+----------------------------------------------------------------------
+Senaryo ID   : NEG-GPO-02
+Başlık        : Standart Kullanıcılara GPO WriteDacl İzni (GPO Hijacking)
+Kategori      : ACL_DELEGATION
+Hedef Kural   : GPO-ACL-01
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : GPO Üzerinde Standart Kullanıcılara Tehlikeli Yazma/Sahiplik İzni (Önem: CRITICAL)
+----------------------------------------------------------------------
+Senaryo ID   : NEG-GPO-03
+Başlık        : Domain Users Grubuna GenericAll Sahiplik İzni
+Kategori      : ACL_DELEGATION
+Hedef Kural   : GPO-ACL-01
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : GPO Üzerinde Standart Kullanıcılara Tehlikeli Yazma/Sahiplik İzni (Önem: CRITICAL)
+----------------------------------------------------------------------
+Senaryo ID   : NEG-GPO-04
+Başlık        : LAPS İlkesinin Tamamen Eksik Olması (Pass-the-Hash Açığı)
+Kategori      : LAPS
+Hedef Kural   : GPO-LAPS-01
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : Yerel Yönetici Parola Çözümü (LAPS) İlkesi Bulunamadı (Önem: HIGH)
+----------------------------------------------------------------------
+Senaryo ID   : NEG-GPO-05
+Başlık        : SeDebugPrivilege Hakkının Domain Users Grubuna Verilmesi
+Kategori      : RIGHTS
+Hedef Kural   : GPO-URA-01
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : Ayrıcalıklı Sistem Hakları Standart Gruplara Atanmış (Önem: HIGH)
+----------------------------------------------------------------------
+Senaryo ID   : NEG-GPO-06
+Başlık        : SeTakeOwnershipPrivilege Hakkının Everyone Grubuna Verilmesi
+Kategori      : RIGHTS
+Hedef Kural   : GPO-URA-01
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : Ayrıcalıklı Sistem Hakları Standart Gruplara Atanmış (Önem: HIGH)
+----------------------------------------------------------------------
+Senaryo ID   : NEG-GPO-07
+Başlık        : Başlangıç Betiğinde Güvensiz HTTP URL Kullanımı
+Kategori      : SCRIPTS
+Hedef Kural   : GPO-SCRIPT-01
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : GPO Betiklerinde Güvensiz Yol veya Protokol Kullanımı (Önem: MEDIUM)
+----------------------------------------------------------------------
+Senaryo ID   : NEG-GPO-08
+Başlık        : Doğrulanmamış Harici Ağ Paylaşımından Betik Çağrılması
+Kategori      : SCRIPTS
+Hedef Kural   : GPO-SCRIPT-01
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : GPO Betiklerinde Güvensiz Yol veya Protokol Kullanımı (Önem: MEDIUM)
+----------------------------------------------------------------------
+Senaryo ID   : NEG-GPO-09
+Başlık        : Authenticated Users Grubuna WriteProperty İzni Verilmesi
+Kategori      : ACL_DELEGATION
+Hedef Kural   : GPO-ACL-01
+Sonuç         : BAŞARILI — ZAFİYET YAKALANDI VE RAPORLANDI (PASS)
+Açıklama      : GPO Üzerinde Standart Kullanıcılara Tehlikeli Yazma/Sahiplik İzni (Önem: CRITICAL)
+----------------------------------------------------------------------

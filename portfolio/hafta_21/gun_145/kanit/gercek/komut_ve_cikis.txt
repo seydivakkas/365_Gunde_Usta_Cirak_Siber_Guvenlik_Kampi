@@ -1,0 +1,27 @@
+=== GÜN 145 / GROUP POLICY GÜVENLİK DENETİMİ: CLI KOMUT YÜRÜTME GÜNLÜĞÜ ===
+Tarih/Saat: 2026-11-03T10:03:16.693797
+
+$ python uygulama/gpo_audit_cli.py audit ornek_veri/enterprise_gpo_spec.json
+======================================================================
+ACTIVE DIRECTORY GPO GÜVENLİK DENETİMİ: kurum.local
+======================================================================
+Genel Güvenlik Puanı : 100.0 / 100
+Toplam Kontrol       : 5
+Başarılı (PASS)      : 5
+Başarısız (FAIL)     : 0
+Kritik Açık Sayısı   : 0
+----------------------------------------------------------------------
+  [PASS]          GPO-SYSVOL-01 -> SYSVOL Tercih Dosyalarında cpassword Sızıntısı Bulunmadı
+  [PASS]          GPO-ACL-01    -> GPO İzinleri ve Delegasyon Modeli Güvenli
+  [PASS]          GPO-LAPS-01   -> Windows LAPS İlkesi Aktif ve Zorunlu
+  [PASS]          GPO-URA-01    -> Kullanıcı Hakları Atamaları (URA) Standartlara Uygun
+  [PASS]          GPO-SCRIPT-01 -> GPO Betik Yolları Güvenli ve Bütünlüklü
+======================================================================
+
+$ python uygulama/gpo_audit_cli.py effective-gpos ornek_veri/enterprise_gpo_spec.json --ou OU=Workstations,DC=kurum,DC=local
+[+] OU=Workstations,DC=kurum,DC=local için LSDOU Etkin GPO Sırası:
+  1. Default Domain Policy
+  2. GPO-Enforce-Windows-LAPS (ENFORCED / NoOverride)
+
+$ python -m unittest tests/test_gpo_security.py -v
+Ran 15 tests in 0.002s — OK (15/15 PASS)

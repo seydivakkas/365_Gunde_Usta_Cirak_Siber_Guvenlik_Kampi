@@ -1,0 +1,57 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas).",
+  "domain": "kurum.local",
+  "tarih": "2026-11-03T10:03:16.692292",
+  "guvenlik_skoru": 100.0,
+  "toplam_kontrol": 5,
+  "basarili": 5,
+  "basarisiz": 0,
+  "kritik_bulgular": 0,
+  "denetim_bulgulari": [
+    {
+      "rule_id": "GPO-SYSVOL-01",
+      "title": "SYSVOL Tercih Dosyalarında cpassword Sızıntısı Bulunmadı",
+      "severity": "INFO",
+      "status": "PASS",
+      "description": "Tüm GPO XML dosyaları temiz. Sabit kodlanmış cpassword anahtarı tespit edilmedi.",
+      "affected_target": "SYSVOL",
+      "remediation": "Mevcut temiz durumu koruyunuz ve GPP ile asla yerel parola dağıtmayınız."
+    },
+    {
+      "rule_id": "GPO-ACL-01",
+      "title": "GPO İzinleri ve Delegasyon Modeli Güvenli",
+      "severity": "INFO",
+      "status": "PASS",
+      "description": "Standart gruplara tehlikeli GPO değiştirme izni verilmemiş. Yetkiler yönetici gruplarıyla sınırlı.",
+      "affected_target": "GPO ACL Delegasyonu",
+      "remediation": "Mevcut sıkı ACL yapısını periyodik olarak denetlemeye devam ediniz."
+    },
+    {
+      "rule_id": "GPO-LAPS-01",
+      "title": "Windows LAPS İlkesi Aktif ve Zorunlu",
+      "severity": "INFO",
+      "status": "PASS",
+      "description": "Etki alanında LAPS ilkesi uygulanıyor. Yerel yönetici parolaları rastgele ve merkezi olarak yönetiliyor.",
+      "affected_target": "LAPS GPO",
+      "remediation": "LAPS parola okuma yetkisini yalnızca Tier 1 / Tier 2 yetkili destek gruplarına veriniz."
+    },
+    {
+      "rule_id": "GPO-URA-01",
+      "title": "Kullanıcı Hakları Atamaları (URA) Standartlara Uygun",
+      "severity": "INFO",
+      "status": "PASS",
+      "description": "Tehlikeli işletim sistemi hakları standart kullanıcılardan arındırılmış.",
+      "affected_target": "User Rights Assignment",
+      "remediation": "CIS Windows Server Benchmark standartlarına uygun kısıtlamaları koruyunuz."
+    },
+    {
+      "rule_id": "GPO-SCRIPT-01",
+      "title": "GPO Betik Yolları Güvenli ve Bütünlüklü",
+      "severity": "INFO",
+      "status": "PASS",
+      "description": "Tüm betikler güvenli SYSVOL/NETLOGON dizinlerinde barındırılıyor veya harici güvensiz yol kullanılmıyor.",
+      "affected_target": "GPO Scripts",
+      "remediation": "Betik dosyalarının dijital imzalarını düzenli olarak doğrulayınız."
+    }
+  ]
+}

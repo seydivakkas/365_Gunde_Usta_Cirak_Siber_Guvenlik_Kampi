@@ -1,0 +1,83 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "domain": "kurum.local",
+  "aciklama": "Kurumsal Active Directory Group Policy (GPO) ve Güvenlik Sertleştirme Spesifikasyonu",
+  "gpo_list": [
+    {
+      "guid": "{31B2F340-016D-11D2-945F-00C04FB984F9}",
+      "display_name": "Default Domain Policy",
+      "scope": "DOMAIN",
+      "target_path": "DC=kurum,DC=local",
+      "is_enforced": false,
+      "is_enabled": true,
+      "acl_permissions": {
+        "Domain Admins": ["GenericAll"],
+        "Enterprise Admins": ["GenericAll"],
+        "Authenticated Users": ["Read", "ApplyGroupPolicy"]
+      },
+      "has_cpassword_leak": false,
+      "enforces_laps": false,
+      "user_rights": {},
+      "scripts": []
+    },
+    {
+      "guid": "{6AC1786C-016F-11D2-945F-00C04FB984F9}",
+      "display_name": "GPO-Enforce-Windows-LAPS",
+      "scope": "OU",
+      "target_path": "OU=Workstations,DC=kurum,DC=local",
+      "is_enforced": true,
+      "is_enabled": true,
+      "acl_permissions": {
+        "Domain Admins": ["GenericAll"],
+        "Enterprise Admins": ["GenericAll"],
+        "Authenticated Users": ["Read", "ApplyGroupPolicy"]
+      },
+      "has_cpassword_leak": false,
+      "enforces_laps": true,
+      "user_rights": {
+        "SeDebugPrivilege": ["Administrators"],
+        "SeTakeOwnershipPrivilege": ["Administrators"],
+        "SeLoadDriverPrivilege": ["Administrators"]
+      },
+      "scripts": [
+        {
+          "name": "host_inventory.ps1",
+          "path": "\\\\kurum.local\\sysvol\\kurum.local\\Policies\\{6AC1786C-016F-11D2-945F-00C04FB984F9}\\Machine\\Scripts\\Startup\\host_inventory.ps1"
+        }
+      ]
+    },
+    {
+      "guid": "{8B73901A-98C1-4A1B-8231-A10928392110}",
+      "display_name": "CIS-Server-Hardening-Baseline",
+      "scope": "OU",
+      "target_path": "OU=MemberServers,DC=kurum,DC=local",
+      "is_enforced": true,
+      "is_enabled": true,
+      "acl_permissions": {
+        "Domain Admins": ["GenericAll"],
+        "Authenticated Users": ["Read", "ApplyGroupPolicy"]
+      },
+      "has_cpassword_leak": false,
+      "enforces_laps": true,
+      "user_rights": {
+        "SeDenyNetworkLogon": ["Guests"],
+        "SeDenyRemoteInteractiveLogon": ["Guests", "Local Account"]
+      },
+      "scripts": []
+    }
+  ],
+  "organizational_units": {
+    "OU=Workstations,DC=kurum,DC=local": {
+      "name": "Workstations",
+      "block_inheritance": false
+    },
+    "OU=MemberServers,DC=kurum,DC=local": {
+      "name": "MemberServers",
+      "block_inheritance": false
+    },
+    "OU=Tier0-DomainControllers,DC=kurum,DC=local": {
+      "name": "Tier0-DomainControllers",
+      "block_inheritance": true
+    }
+  }
+}

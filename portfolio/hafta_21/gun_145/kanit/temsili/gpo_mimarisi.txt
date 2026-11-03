@@ -1,0 +1,34 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+ACTIVE DIRECTORY GROUP POLICY (GPO) MİRAS VE LSDOU HİYERARŞİSİ
+================================================================================
+
+   [L] LOCAL POLICY  (En düşük öncelik, yerel bilgisayar ilkesi)
+           |
+           v
+   [S] SITE POLICY   (Active Directory Site düzeyinde bağlanan GPO)
+           |
+           v
+   [D] DOMAIN POLICY (Etki alanı kökü: Default Domain Policy)
+           |
+           +------------------------------------------+
+           |                                          |
+           v                                          v
+   [OU-1] Workstations OU                      [OU-2] Isolated OU
+   (Miras Açık: Domain + OU ilkeleri)          (Block Inheritance: AÇIK)
+           |                                          |
+           |---> GPO-Enforce-Windows-LAPS             |---> Yalnızca 'ENFORCED'
+           |---> CIS-Workstations-Baseline            |     Domain GPO'ları uygulanır!
+           v                                          v
+   [İş İstasyonları]                          [İzole Özel Sunucular]
+
+--------------------------------------------------------------------------------
+GPO GÜVENLİK DENETİM NOKTALARI VE KRİTİK ZAFİYETLER:
+--------------------------------------------------------------------------------
+ [1] SYSVOL cpassword : GPP Groups.xml içindeki AES anahtarlı parola sızıntısı (MS14-025)
+ [2] GPO ACL Abuse    : WriteDacl / GenericAll izinleriyle GPO Hijacking saldırısı
+ [3] LAPS Politikası  : Her uç noktada benzersiz yerel yönetici parolası zorlaması
+ [4] User Rights (URA): SeDebugPrivilege ve SeTakeOwnership haklarının kısıtlanması
+ [5] Script Yolları   : Yalnızca imzalı ve SYSVOL/NETLOGON içindeki betiklerin çalıştırılması
+================================================================================

@@ -1,0 +1,26 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas).",
+  "standart": "Microsoft Active Directory GPO Security & CIS Windows Server Benchmark",
+  "saldiri_vektorleri_ve_savunmalar": {
+    "GPO Hijacking / WriteDacl (T1484.001)": {
+      "zafiyet": "GPO nesnesi üzerinde standart kullanıcıya WriteDacl veya GenericAll verilmesi",
+      "etki": "Saldırgan GPO içine kötü amaçlı startup script ekleyerek tüm makinelerde SYSTEM olur",
+      "savunma": "Yalnızca Domain Admins ve Enterprise Admins gruplarına Full Control verilmeli"
+    },
+    "cpassword Credential Dump (T1552.006)": {
+      "zafiyet": "GPP Groups.xml dosyasında cpassword özniteliği ile şifrelenmiş yerel parola",
+      "etki": "Microsoft'un genel AES anahtarıyla şifre anında çözülür (MS14-025)",
+      "savunma": "GPP ile parola dağıtımı yasaklanmalı, Windows LAPS ilkesine geçilmeli"
+    },
+    "Lateral Movement via Local Admin (T1021.002)": {
+      "zafiyet": "Tüm uç noktalarda aynı yerel yönetici parolasının kullanılması",
+      "etki": "Bir makineyi ele geçiren saldırgan NTLM hash'i ile tüm ağa sıçrar (Pass-the-Hash)",
+      "savunma": "Windows LAPS ilkesi ile her makineye 30 günde bir rastgele parola üretilmeli"
+    },
+    "Insecure Startup Scripts (T1059.001)": {
+      "zafiyet": "GPO startup script yolunun korumasız HTTP veya harici SMB paylaşımı olması",
+      "etki": "Ağ içi saldırgan paylaşımı manipüle ederek zararlı komut çalıştırır",
+      "savunma": "Tüm betikler dijital olarak imzalanmalı ve SYSVOL/NETLOGON içinde barındırılmalı"
+    }
+  }
+}

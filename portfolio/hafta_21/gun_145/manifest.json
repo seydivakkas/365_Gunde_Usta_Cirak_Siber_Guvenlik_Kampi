@@ -1,0 +1,89 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas).",
+  "gun": 145,
+  "hafta": 21,
+  "konu": "Group Policy güvenlik etkileri",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "7f9547ebe487fa0cf0f503e25ff613994b71a927c232ccb9b5077683a194bd4b",
+      "size_bytes": 5040
+    },
+    "ders.md": {
+      "sha256": "7157537963c38ffc8ddfaa7240323724284cdb9e9245af2fd02780018c1c413f",
+      "size_bytes": 7015
+    },
+    "kanit_uretici.py": {
+      "sha256": "c6086f525013bf5c6cd737c0e849018bad204324a6cbb83855195a697396e81c",
+      "size_bytes": 19149
+    },
+    "rapor.md": {
+      "sha256": "4ff8eeec810667f18583efa00835595d309807d6bad88a5a86439410c2e3d81d",
+      "size_bytes": 6214
+    },
+    "sonuc.json": {
+      "sha256": "82d14887bf2f200472d9b1c95be85f27b0077a860b137a951eb27e3d57274977",
+      "size_bytes": 1266
+    },
+    "soru_cevap.md": {
+      "sha256": "597b54e54108ea995ef3a81265e70b13b1ad433c793c015c53b025853ece412e",
+      "size_bytes": 11521
+    },
+    "kanit\\gercek\\gpo_guvenlik_raporu.json": {
+      "sha256": "01371f7887271a18c675d0535c61abf1c291d7aada6c91334f7472fffe490720",
+      "size_bytes": 2528
+    },
+    "kanit\\gercek\\gpo_hardening_matrix.json": {
+      "sha256": "b90f77759b580f132b183415056df4482e27dec064bf7739540705bf565a67e3",
+      "size_bytes": 1686
+    },
+    "kanit\\gercek\\gpo_sertlestirme_betigi.ps1": {
+      "sha256": "85fc6dcc363a70e3b448b49bf16c03efbc9291a7f30a8af3f39e2f8573c668c5",
+      "size_bytes": 1630
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "sha256": "106fd5c45503610b2dfdc005750a322ae49451498f50ce5ac6d3b52650d27cdb",
+      "size_bytes": 1511
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "sha256": "5a974e555b53ce6b728ee23594fca971671d155c65b8d63ffdc4c0e36f4e4b08",
+      "size_bytes": 3889
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "sha256": "a57bf91692f2c1e4de119c48153c4cb6745e48438b4f9ec0e36a1d1c371d3ded",
+      "size_bytes": 3853
+    },
+    "kanit\\temsili\\gpo_mimarisi.txt": {
+      "sha256": "f91d4971596b103fff5d6f067887dde01825ba061ffd799c34c169f4e835868c",
+      "size_bytes": 2104
+    },
+    "ornek_veri\\enterprise_gpo_spec.json": {
+      "sha256": "3747abdf24def343176333bb6a0c2abee2d8e269fc57df804b54f49e51ada860",
+      "size_bytes": 2773
+    },
+    "ornek_veri\\invalid_gpo_scenarios.json": {
+      "sha256": "ff1a50a081595f3aade7e5cc014f0185cab7267f355de76b6bfc9608c334a1fd",
+      "size_bytes": 3928
+    },
+    "tests\\__init__.py": {
+      "sha256": "81756319cc291c7c6d26a4f38dc81cd30cf4d9df11150a0646cef1eda08e3999",
+      "size_bytes": 594
+    },
+    "tests\\test_gpo_security.py": {
+      "sha256": "af39930e5628b30d91068af5c2baaa23131f2a98ab36c9decf198775ee7191d1",
+      "size_bytes": 10792
+    },
+    "uygulama\\__init__.py": {
+      "sha256": "4af88f197842edbfe89bbed7c8c1777e1daab00bdf6e1783233b9493872955eb",
+      "size_bytes": 1028
+    },
+    "uygulama\\gpo_audit_cli.py": {
+      "sha256": "7569e8dafabbba8d0b91b3ee7922029eaa116e789adeba6ee9e2d393f583d50c",
+      "size_bytes": 8283
+    },
+    "uygulama\\gpo_security_engine.py": {
+      "sha256": "55d91b5d877a2143ae52b502ad3d8c198bb3ebce9e2380b46bf528befff7054d",
+      "size_bytes": 20611
+    }
+  }
+}

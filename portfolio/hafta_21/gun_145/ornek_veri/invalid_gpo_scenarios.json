@@ -1,0 +1,109 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas). Görüntüleme ve eğitim amaçlıdır.",
+  "senaryolar": [
+    {
+      "senaryo_id": "NEG-GPO-01",
+      "baslik": "SYSVOL cpassword Parola Sızıntısı (MS14-025)",
+      "kategori": "SYSVOL_SECURITY",
+      "beklenen_kural": "GPO-SYSVOL-01",
+      "aciklama": "GPP Groups.xml dosyasında açık AES anahtarıyla çözülebilir cpassword alanının bulunması.",
+      "yamasi": {
+        "has_cpassword_leak": true
+      }
+    },
+    {
+      "senaryo_id": "NEG-GPO-02",
+      "baslik": "Standart Kullanıcılara GPO WriteDacl İzni (GPO Hijacking)",
+      "kategori": "ACL_DELEGATION",
+      "beklenen_kural": "GPO-ACL-01",
+      "aciklama": "Authenticated Users grubuna GPO nesnesi üzerinde WriteDacl yetkisi verilmesi.",
+      "yamasi": {
+        "acl_permissions": {
+          "Authenticated Users": ["Read", "WriteDacl"]
+        }
+      }
+    },
+    {
+      "senaryo_id": "NEG-GPO-03",
+      "baslik": "Domain Users Grubuna GenericAll Sahiplik İzni",
+      "kategori": "ACL_DELEGATION",
+      "beklenen_kural": "GPO-ACL-01",
+      "aciklama": "Standart kullanıcı grubuna GPO üzerinde GenericAll tam kontrol yetkisi verilmesi.",
+      "yamasi": {
+        "acl_permissions": {
+          "Domain Users": ["GenericAll"]
+        }
+      }
+    },
+    {
+      "senaryo_id": "NEG-GPO-04",
+      "baslik": "LAPS İlkesinin Tamamen Eksik Olması (Pass-the-Hash Açığı)",
+      "kategori": "LAPS",
+      "beklenen_kural": "GPO-LAPS-01",
+      "aciklama": "Etki alanında hiçbir GPO'da LAPS veya Windows LAPS ilkesinin etkinleştirilmemiş olması.",
+      "yamasi": {
+        "enforces_laps": false
+      }
+    },
+    {
+      "senaryo_id": "NEG-GPO-05",
+      "baslik": "SeDebugPrivilege Hakkının Domain Users Grubuna Verilmesi",
+      "kategori": "RIGHTS",
+      "beklenen_kural": "GPO-URA-01",
+      "aciklama": "LSASS bellek dökümü almaya yarayan SeDebugPrivilege hakkının standart kullanıcılara açılması.",
+      "yamasi": {
+        "user_rights": {
+          "SeDebugPrivilege": ["Domain Users"]
+        }
+      }
+    },
+    {
+      "senaryo_id": "NEG-GPO-06",
+      "baslik": "SeTakeOwnershipPrivilege Hakkının Everyone Grubuna Verilmesi",
+      "kategori": "RIGHTS",
+      "beklenen_kural": "GPO-URA-01",
+      "aciklama": "Dosya ve nesne sahipliğini ele geçirme hakkının Everyone grubuna atanması.",
+      "yamasi": {
+        "user_rights": {
+          "SeTakeOwnershipPrivilege": ["Everyone"]
+        }
+      }
+    },
+    {
+      "senaryo_id": "NEG-GPO-07",
+      "baslik": "Başlangıç Betiğinde Güvensiz HTTP URL Kullanımı",
+      "kategori": "SCRIPTS",
+      "beklenen_kural": "GPO-SCRIPT-01",
+      "aciklama": "GPO startup script yolunda şifresiz ve imzasız HTTP URL tanımlanması.",
+      "yamasi": {
+        "scripts": [
+          {"name": "insecure_setup.bat", "path": "http://updater.local/insecure_setup.bat"}
+        ]
+      }
+    },
+    {
+      "senaryo_id": "NEG-GPO-08",
+      "baslik": "Doğrulanmamış Harici Ağ Paylaşımından Betik Çağrılması",
+      "kategori": "SCRIPTS",
+      "beklenen_kural": "GPO-SCRIPT-01",
+      "aciklama": "SYSVOL veya NETLOGON dışındaki rastgele bir SMB paylaşımından betik çalıştırılması.",
+      "yamasi": {
+        "scripts": [
+          {"name": "install.ps1", "path": "\\\\publicshare.kurum.local\\apps\\install.ps1"}
+        ]
+      }
+    },
+    {
+      "senaryo_id": "NEG-GPO-09",
+      "baslik": "Authenticated Users Grubuna WriteProperty İzni Verilmesi",
+      "kategori": "ACL_DELEGATION",
+      "beklenen_kural": "GPO-ACL-01",
+      "aciklama": "GPO özniteliklerini düzenleme (WriteProperty) yetkisinin tüm kimliği doğrulanmış kullanıcılara verilmesi.",
+      "yamasi": {
+        "acl_permissions": {
+          "Authenticated Users": ["Read", "WriteProperty"]
+        }
+      }
+    }
+  ]
+}

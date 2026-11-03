@@ -1,0 +1,44 @@
+======================================================================
+GÜN 145: GROUP POLICY GÜVENLİK ETKİLERİ BİRİM TEST SONUÇLARI
+Tarih/Saat      : 2026-11-03T10:03:16.690258
+Toplam Test     : 15
+Başarılı        : 15
+Hatalı/Kırık    : 0
+Koşum Süresi    : 0.0012 saniye
+======================================================================
+
+test_01_clean_spec_full_audit_pass (test_gpo_security.TestGpoSecurityEngine.test_01_clean_spec_full_audit_pass)
+1. Test: Temiz ve sertleştirilmiş bir GPO ortamının 100 tam puan almasını doğrular. ... ok
+test_02_sysvol_cpassword_leak_detected (test_gpo_security.TestGpoSecurityEngine.test_02_sysvol_cpassword_leak_detected)
+2. Test: SYSVOL tercih dosyasında cpassword sızıntısı olduğunda CRITICAL açık verilmelidir. ... ok
+test_03_sysvol_clean_cpassword_pass (test_gpo_security.TestGpoSecurityEngine.test_03_sysvol_clean_cpassword_pass)
+3. Test: cpassword içermeyen temiz GPO dosyalarının PASS almasını doğrular. ... ok
+test_04_gpo_acl_writedacl_delegation_abuse (test_gpo_security.TestGpoSecurityEngine.test_04_gpo_acl_writedacl_delegation_abuse)
+4. Test: Authenticated Users grubuna WriteDacl izni verildiğinde CRITICAL açık raporlanmalıdır. ... ok
+test_05_gpo_acl_genericall_abuse (test_gpo_security.TestGpoSecurityEngine.test_05_gpo_acl_genericall_abuse)
+5. Test: Domain Users grubuna GenericAll izni verildiğinde GPO Hijacking riski yakalanmalıdır. ... ok
+test_06_gpo_acl_admin_only_pass (test_gpo_security.TestGpoSecurityEngine.test_06_gpo_acl_admin_only_pass)
+6. Test: Yalnızca Domain Admins grubunun yazma yetkisine sahip olduğu temiz ACL'in PASS almasını doğrular. ... ok
+test_07_laps_enforcement_detected_pass (test_gpo_security.TestGpoSecurityEngine.test_07_laps_enforcement_detected_pass)
+7. Test: Etki alanında aktif LAPS ilkesi tanımlı olduğunda PASS verilmelidir. ... ok
+test_08_laps_missing_fail (test_gpo_security.TestGpoSecurityEngine.test_08_laps_missing_fail)
+8. Test: LAPS ilkesi tanımlanmadığında HIGH önem derecesinde FAIL verilmelidir. ... ok
+test_09_user_rights_sedebugprivilege_abuse (test_gpo_security.TestGpoSecurityEngine.test_09_user_rights_sedebugprivilege_abuse)
+9. Test: SeDebugPrivilege yetkisi Domain Users grubuna verildiğinde açık yakalanmalıdır. ... ok
+test_10_user_rights_clean_assignment_pass (test_gpo_security.TestGpoSecurityEngine.test_10_user_rights_clean_assignment_pass)
+10. Test: Tehlikeli hakların yalnızca Administrators grubunda olması durumunda PASS alınmalıdır. ... ok
+test_11_insecure_http_startup_script_fail (test_gpo_security.TestGpoSecurityEngine.test_11_insecure_http_startup_script_fail)
+11. Test: Başlangıç betiği güvensiz HTTP üzerinden çağrıldığında MEDIUM zafiyet raporlanmalıdır. ... ok
+test_12_secure_sysvol_startup_script_pass (test_gpo_security.TestGpoSecurityEngine.test_12_secure_sysvol_startup_script_pass)
+12. Test: SYSVOL içindeki güvenli betik yollarının PASS almasını doğrular. ... ok
+test_13_lsdou_inheritance_precedence (test_gpo_security.TestGpoSecurityEngine.test_13_lsdou_inheritance_precedence)
+13. Test: Normal bir OU'da LSDOU önceliğine göre Domain GPO'sunun OU GPO'sundan önce gelmesini doğrular. ... ok
+test_14_lsdou_block_inheritance_filtered (test_gpo_security.TestGpoSecurityEngine.test_14_lsdou_block_inheritance_filtered)
+14. Test: Block Inheritance olan bir OU'da Enforced olmayan Domain GPO'sunun elenmesini test eder. ... ok
+test_15_lsdou_enforced_gpo_overrides_block (test_gpo_security.TestGpoSecurityEngine.test_15_lsdou_enforced_gpo_overrides_block)
+15. Test: Enforced (NoOverride) olan bir Domain GPO'sunun Block Inheritance engelini aşarak uygulanmasını doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
