@@ -1,0 +1,59 @@
+======================================================================
+GÜN 146: IAM JML NEGATİF KONTROL VE ZAFİYET YAKALAMA RAPORU
+Tarih/Saat: 2026-11-03T23:16:23.249305
+Bu rapor; yetim hesaplar, yetki birikimi (Privilege Creep),
+SoD ihlalleri ve izinsiz geçiş senaryolarının yakalandığını kanıtlar.
+======================================================================
+
+Senaryo 1/9: [NS-JML-01] İlişiği Kesilmiş Personele Ait Kapatılmamış Yetim Hesap (Orphan Account)
+  Kategori       : Leaver Zafiyeti
+  Beklenen Kural : JML-ORPHAN-02 (CRITICAL)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] İlişiği Kesilmiş Personele Ait Aktif Yetim Hesap (Orphan Account)
+  Ayrıntı        : Personel 'Eski Personel' (EMP-LEAVER-01) işten ayrılmış ancak 'eski.personel' hesabı hala AKTİF.
+----------------------------------------------------------------------
+Senaryo 2/9: [NS-JML-02] İK Kaydı Olmayan Sahipsiz Hayalet Hesap (Ghost / Shadow IT Account)
+  Kategori       : Joiner / Envanter Zafiyeti
+  Beklenen Kural : JML-ORPHAN-01 (CRITICAL)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Sahipsiz Hayalet Hesap (Ghost Account) Tespit Edildi
+  Ayrıntı        : Hesap 'shadow_admin_backdoor' (ActiveDirectory) İK veri tabanında bulunmayan bir çalışan kimliğine bağlı.
+----------------------------------------------------------------------
+Senaryo 3/9: [NS-JML-03] Departman Değişimi Sonrası Eski Yetkilerin Silinmemesi (Privilege Creep)
+  Kategori       : Mover Zafiyeti
+  Beklenen Kural : JML-CREEP-01 (HIGH)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Yetki Birikimi (Privilege Creep) Tespit Edildi
+  Ayrıntı        : Personel 'Selim Arslan' (INSAN_KAYNAKLARI departmanı) başka departmanlara ait rollere sahip: ['ROLE_FIN_INVOICE_CREATE']
+----------------------------------------------------------------------
+Senaryo 4/9: [NS-JML-04] Finansal Süreçte Görevler Ayrılığı (SoD) Çatışması: Fatura Giriş + Ödeme Onay
+  Kategori       : SoD İhlali
+  Beklenen Kural : JML-SOD-01 (CRITICAL)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Görevler Ayrılığı (SoD) Çatışması: SOD-FIN-001
+  Ayrıntı        : Personel 'Murat Vural' birbiriyle çatışan rollere sahip: 'ROLE_FIN_INVOICE_CREATE' ve 'ROLE_FIN_PAYMENT_APPROVE'. Açıklama: Fatura oluşturan personel kendi faturasının ödemesini onaylayamaz (Dolandırıcılık Önleme).
+----------------------------------------------------------------------
+Senaryo 5/9: [NS-JML-05] Yazılım ve DevOps Sürecinde SoD Çatışması: Geliştirici + Canlı Dağıtımcı
+  Kategori       : SoD İhlali
+  Beklenen Kural : JML-SOD-01 (HIGH)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Görevler Ayrılığı (SoD) Çatışması: SOD-DEV-001
+  Ayrıntı        : Personel 'Kaan Yurt' birbiriyle çatışan rollere sahip: 'ROLE_DEV_ENGINEER' ve 'ROLE_PROD_DEPLOYER'. Açıklama: Kodu geliştiren yazılımcı canlı ortama doğrudan dağıtım yapamaz (Dört Göz Kuralı).
+----------------------------------------------------------------------
+Senaryo 6/9: [NS-JML-06] 180 Gündür Oturum Açılmamış Unutulmuş Atıl Hesap (Dormant Account)
+  Kategori       : Hesap Yaşam Döngüsü
+  Beklenen Kural : JML-DORMANT-01 (MEDIUM)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Atıl Hesap (Dormant Account) - 671 Gündür Oturum Açılmadı
+  Ayrıntı        : 'banu.aydin' (ActiveDirectory) hesabı 671 gündür hareketsiz.
+----------------------------------------------------------------------
+Senaryo 7/9: [NS-JML-07] Ayrıcalıklı BT Yöneticisi Hesabında MFA'nın Kapatılmış Olması
+  Kategori       : Kimlik Sertleştirme Zafiyeti
+  Beklenen Kural : JML-MFA-01 (CRITICAL)
+  Sonuç          : [BAŞARILI - İZOLE EDİLDİ] Ayrıcalıklı Hesapta MFA Devre Dışı
+  Ayrıntı        : Ayrıcalıklı 'cem.sen' hesabı üzerinde Çok Faktörlü Kimlik Doğrulama (MFA) etkin değil.
+----------------------------------------------------------------------
+Senaryo 8/9: [NS-JML-08] Onaylanmamış / İK Bilgisi Olmayan Yetkisiz Mover Talebi
+  Kategori       : Yetki ve Süreç İhlali
+  Sonuç          : [BAŞARILI] Beklenen ValueError yakalandı -> Mover işlemi için yetkili onaylayıcı (approver) gereklidir.
+----------------------------------------------------------------------
+Senaryo 9/9: [NS-JML-09] Yeni İşe Alımda SoD Çatışması İçeren Rollerin Doğrudan Verilme Girişimi
+  Kategori       : Onboarding / SoD İhlali
+  Sonuç          : [BAŞARILI] Beklenen PermissionError yakalandı -> Joiner iptal edildi: Başlangıç rolleri SoD çatışması içeriyor (SOD-FIN-001).
+----------------------------------------------------------------------
+
+TOPLAM NEGATİF KONTROL: 9 / 9 BAŞARILI (%100)

@@ -1,0 +1,238 @@
+{
+  "_aciklama": "Gün 146: IAM Yaşam Döngüsü (JML) 9 Negatif Kontrol ve Zafiyet Senaryosu",
+  "_lisans": "Özel Lisans — Tüm Hakları Saklıdır. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "senaryolar": [
+    {
+      "senaryo_id": "NS-JML-01",
+      "ad": "İlişiği Kesilmiş Personele Ait Kapatılmamış Yetim Hesap (Orphan Account)",
+      "kategori": "Leaver Zafiyeti",
+      "beklenen_kural": "JML-ORPHAN-02",
+      "beklenen_onem": "CRITICAL",
+      "veri": {
+        "employees": [
+          {
+            "employee_id": "EMP-LEAVER-01",
+            "name": "Eski Personel",
+            "department": "FINANS",
+            "job_title": "Muhasebeci",
+            "manager_id": "MGR-001",
+            "status": "TERMINATED",
+            "start_date": "2023-01-01",
+            "end_date": "2026-01-15",
+            "assigned_roles": []
+          }
+        ],
+        "accounts": [
+          {
+            "account_id": "ACC-ORPHAN-91",
+            "username": "eski.personel",
+            "target_system": "ActiveDirectory",
+            "owner_employee_id": "EMP-LEAVER-01",
+            "status": "ACTIVE",
+            "roles": ["ROLE_FIN_INVOICE_CREATE"],
+            "mfa_enabled": true
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "NS-JML-02",
+      "ad": "İK Kaydı Olmayan Sahipsiz Hayalet Hesap (Ghost / Shadow IT Account)",
+      "kategori": "Joiner / Envanter Zafiyeti",
+      "beklenen_kural": "JML-ORPHAN-01",
+      "beklenen_onem": "CRITICAL",
+      "veri": {
+        "employees": [],
+        "accounts": [
+          {
+            "account_id": "ACC-GHOST-92",
+            "username": "shadow_admin_backdoor",
+            "target_system": "ActiveDirectory",
+            "owner_employee_id": "EMP-NONEXISTENT-999",
+            "status": "ACTIVE",
+            "roles": ["ROLE_IT_ADMIN"],
+            "mfa_enabled": false
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "NS-JML-03",
+      "ad": "Departman Değişimi Sonrası Eski Yetkilerin Silinmemesi (Privilege Creep)",
+      "kategori": "Mover Zafiyeti",
+      "beklenen_kural": "JML-CREEP-01",
+      "beklenen_onem": "HIGH",
+      "veri": {
+        "employees": [
+          {
+            "employee_id": "EMP-CREEP-01",
+            "name": "Selim Arslan",
+            "department": "INSAN_KAYNAKLARI",
+            "job_title": "İK Uzmanı",
+            "manager_id": "MGR-002",
+            "status": "ACTIVE",
+            "start_date": "2024-01-01",
+            "assigned_roles": ["ROLE_HR_SPECIALIST", "ROLE_FIN_INVOICE_CREATE"]
+          }
+        ],
+        "accounts": [
+          {
+            "account_id": "ACC-CREEP-93",
+            "username": "selim.arslan",
+            "target_system": "ActiveDirectory",
+            "owner_employee_id": "EMP-CREEP-01",
+            "status": "ACTIVE",
+            "roles": ["ROLE_HR_SPECIALIST", "ROLE_FIN_INVOICE_CREATE"],
+            "mfa_enabled": true
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "NS-JML-04",
+      "ad": "Finansal Süreçte Görevler Ayrılığı (SoD) Çatışması: Fatura Giriş + Ödeme Onay",
+      "kategori": "SoD İhlali",
+      "beklenen_kural": "JML-SOD-01",
+      "beklenen_onem": "CRITICAL",
+      "veri": {
+        "employees": [
+          {
+            "employee_id": "EMP-SOD-01",
+            "name": "Murat Vural",
+            "department": "FINANS",
+            "job_title": "Mali Sorumlu",
+            "manager_id": "MGR-003",
+            "status": "ACTIVE",
+            "start_date": "2024-01-01",
+            "assigned_roles": ["ROLE_FIN_INVOICE_CREATE", "ROLE_FIN_PAYMENT_APPROVE"]
+          }
+        ],
+        "accounts": [
+          {
+            "account_id": "ACC-SOD-94",
+            "username": "murat.vural",
+            "target_system": "SAP",
+            "owner_employee_id": "EMP-SOD-01",
+            "status": "ACTIVE",
+            "roles": ["ROLE_FIN_INVOICE_CREATE", "ROLE_FIN_PAYMENT_APPROVE"],
+            "mfa_enabled": true
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "NS-JML-05",
+      "ad": "Yazılım ve DevOps Sürecinde SoD Çatışması: Geliştirici + Canlı Dağıtımcı",
+      "kategori": "SoD İhlali",
+      "beklenen_kural": "JML-SOD-01",
+      "beklenen_onem": "HIGH",
+      "veri": {
+        "employees": [
+          {
+            "employee_id": "EMP-SOD-02",
+            "name": "Kaan Yurt",
+            "department": "YAZILIM",
+            "job_title": "Full Stack Geliştirici",
+            "manager_id": "MGR-001",
+            "status": "ACTIVE",
+            "start_date": "2024-05-01",
+            "assigned_roles": ["ROLE_DEV_ENGINEER", "ROLE_PROD_DEPLOYER"]
+          }
+        ],
+        "accounts": [
+          {
+            "account_id": "ACC-SOD-95",
+            "username": "kaan.yurt",
+            "target_system": "AWS",
+            "owner_employee_id": "EMP-SOD-02",
+            "status": "ACTIVE",
+            "roles": ["ROLE_DEV_ENGINEER", "ROLE_PROD_DEPLOYER"],
+            "mfa_enabled": true
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "NS-JML-06",
+      "ad": "180 Gündür Oturum Açılmamış Unutulmuş Atıl Hesap (Dormant Account)",
+      "kategori": "Hesap Yaşam Döngüsü",
+      "beklenen_kural": "JML-DORMANT-01",
+      "beklenen_onem": "MEDIUM",
+      "veri": {
+        "employees": [
+          {
+            "employee_id": "EMP-DORM-01",
+            "name": "Banu Aydın",
+            "department": "INSAN_KAYNAKLARI",
+            "job_title": "İK Danışmanı",
+            "manager_id": "MGR-002",
+            "status": "ACTIVE",
+            "start_date": "2024-01-01",
+            "assigned_roles": ["ROLE_HR_SPECIALIST"]
+          }
+        ],
+        "accounts": [
+          {
+            "account_id": "ACC-DORM-96",
+            "username": "banu.aydin",
+            "target_system": "ActiveDirectory",
+            "owner_employee_id": "EMP-DORM-01",
+            "status": "ACTIVE",
+            "roles": ["ROLE_HR_SPECIALIST"],
+            "last_logon_date": "2025-01-01T00:00:00Z",
+            "mfa_enabled": true
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "NS-JML-07",
+      "ad": "Ayrıcalıklı BT Yöneticisi Hesabında MFA'nın Kapatılmış Olması",
+      "kategori": "Kimlik Sertleştirme Zafiyeti",
+      "beklenen_kural": "JML-MFA-01",
+      "beklenen_onem": "CRITICAL",
+      "veri": {
+        "employees": [
+          {
+            "employee_id": "EMP-MFA-01",
+            "name": "Cem Şen",
+            "department": "BILGI_ISLEM",
+            "job_title": "Etki Alanı Yöneticisi",
+            "manager_id": "MGR-001",
+            "status": "ACTIVE",
+            "start_date": "2024-01-01",
+            "assigned_roles": ["ROLE_IT_ADMIN"]
+          }
+        ],
+        "accounts": [
+          {
+            "account_id": "ACC-MFA-97",
+            "username": "cem.sen",
+            "target_system": "ActiveDirectory",
+            "owner_employee_id": "EMP-MFA-01",
+            "status": "ACTIVE",
+            "roles": ["ROLE_IT_ADMIN"],
+            "last_logon_date": "2026-11-03T10:00:00Z",
+            "mfa_enabled": false
+          }
+        ]
+      }
+    },
+    {
+      "senaryo_id": "NS-JML-08",
+      "ad": "Onaylanmamış / İK Bilgisi Olmayan Yetkisiz Mover Talebi",
+      "kategori": "Yetki ve Süreç İhlali",
+      "beklenen_hata": "ValueError",
+      "beklenen_onem": "HIGH",
+      "islem_tipi": "MOVER_WITHOUT_APPROVER"
+    },
+    {
+      "senaryo_id": "NS-JML-09",
+      "ad": "Yeni İşe Alımda SoD Çatışması İçeren Rollerin Doğrudan Verilme Girişimi",
+      "kategori": "Onboarding / SoD İhlali",
+      "beklenen_hata": "PermissionError",
+      "beklenen_onem": "CRITICAL",
+      "islem_tipi": "JOINER_WITH_SOD_CONFLICT"
+    }
+  ]
+}

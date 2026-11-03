@@ -1,0 +1,21 @@
+=== GÜN 146 / IAM YAŞAM DÖNGÜSÜ (JML) DENETİMİ: CLI KOMUT YÜRÜTME GÜNLÜĞÜ ===
+Tarih/Saat: 2026-11-03T23:16:23.251762
+
+$ python uygulama/iam_jml_cli.py audit ornek_veri/iam_organization_directory.json
+======================================================================
+KURUMSAL IAM YAŞAM DÖNGÜSÜ (JML) DENETİM RAPORU
+======================================================================
+Toplam Personel (İK)     : 6
+Toplam Sistem Hesabı     : 6
+Yetim Hesap (Orphan)     : 0
+Yetki Birikimi (Creep)   : 0
+Görevler Ayrılığı (SoD)  : 0
+Atıl Hesap (> 90 Gün)    : 0
+----------------------------------------------------------------------
+Genel IAM Güvenlik Puanı : 100.0 / 100
+Uyumluluk Durumu         : UYUMLU (COMPLIANT)
+======================================================================
+[+] Harika! Kurumsal dizinde yetim hesap, yetki birikimi veya SoD ihlali bulunmadı.
+
+$ python -m unittest tests/test_iam_jml_lifecycle.py -v
+Ran 15 tests in 0.002s - OK (15/15 PASS)

@@ -1,0 +1,89 @@
+{
+  "_lisans": "ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas).",
+  "gun": 146,
+  "hafta": 21,
+  "konu": "IAM yaşam döngüsü JML",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "fd4dabe39f188c7382784e22ad50899e11ac5446eead65f3e6a7c96e0371e5cd",
+      "size_bytes": 5087
+    },
+    "ders.md": {
+      "sha256": "8e44f530585427acb80192e108f48429c2d7e5280dcc663732e3c43aa67c7761",
+      "size_bytes": 8337
+    },
+    "kanit_uretici.py": {
+      "sha256": "2156ea4a8b89770f421a40e7fcdfe3415aa8bb3f653676f9a43a3b8e00dfe293",
+      "size_bytes": 16021
+    },
+    "rapor.md": {
+      "sha256": "c6faeef74242b605fa69b75930bf0ffdb107074ac2b8f847359e9ac31a11c854",
+      "size_bytes": 5742
+    },
+    "sonuc.json": {
+      "sha256": "557039993228612d063ebe7919614aec7329c0960487837f67a47dd82c0491ae",
+      "size_bytes": 1228
+    },
+    "soru_cevap.md": {
+      "sha256": "a1cfeaabfc24ac52e0f112c052a762b36d6b1dfb69ab5edbd99abb991642ea94",
+      "size_bytes": 12375
+    },
+    "kanit\\gercek\\iam_jml_audit_report.json": {
+      "sha256": "a60e60271ef782abab7263461d617d8f0c998441f712da23f01ff6e759b62d8b",
+      "size_bytes": 231
+    },
+    "kanit\\gercek\\iam_jml_matrix.json": {
+      "sha256": "aab7096a365a4653d3a508497c9deb22a330cdf7a53a259261edaa891a2545fd",
+      "size_bytes": 2131
+    },
+    "kanit\\gercek\\iam_jml_remediation.ps1": {
+      "sha256": "271d491f0b1ada1a833746a5e78c681763f5b43c99825001fc57bdcda3e028b6",
+      "size_bytes": 653
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "sha256": "af3d5e2ee0eaa44d9565c6d03a44c1657724c0e2fd7553538687778f85373df6",
+      "size_bytes": 1022
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "sha256": "436877d547b345770c3def4bd2d152d2e18873514edd90fd7c9276bd4538eb46",
+      "size_bytes": 4802
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "sha256": "3813114e23c8b2da133040996074c5f549586123dc9cade8b6f539f9985c8a35",
+      "size_bytes": 4063
+    },
+    "kanit\\temsili\\iam_jml_mimarisi.txt": {
+      "sha256": "dc5261c2de3bd69cb66a50cfa2f203d7d56fd2d33cc5267870e3e5c2501e74c5",
+      "size_bytes": 3807
+    },
+    "ornek_veri\\iam_organization_directory.json": {
+      "sha256": "a84a6fa236e0219bf5c1849bedcde00f2ebcff112c43768e44026a8c36b5e141",
+      "size_bytes": 6258
+    },
+    "ornek_veri\\invalid_jml_scenarios.json": {
+      "sha256": "68c00918558ac543fd1ac3f5dd6dc3fece3a649b94c2b1814a246a1cdf38a8b0",
+      "size_bytes": 7746
+    },
+    "tests\\__init__.py": {
+      "sha256": "48c99261ec3045b57d749cba2b1177b4890a30d6371177b256e481f64ce5efa1",
+      "size_bytes": 145
+    },
+    "tests\\test_iam_jml_lifecycle.py": {
+      "sha256": "31a11ff4a9f3fd4b26b01c9905da51d2394990926b851b282fa21ed63a3de22b",
+      "size_bytes": 20463
+    },
+    "uygulama\\__init__.py": {
+      "sha256": "1e7890183310818d7652a15c1bb4eed56038bf60eac4f8f53295498c65fdc657",
+      "size_bytes": 746
+    },
+    "uygulama\\iam_jml_cli.py": {
+      "sha256": "570897e8911c3b2f5cde21d55b7ab114e7f9bf54ee746d732d66664598d57a8f",
+      "size_bytes": 11355
+    },
+    "uygulama\\iam_jml_lifecycle_engine.py": {
+      "sha256": "361966f6820555652e9b6e75212f6bb3598e4f0fd673419a337544dba50e3ec7",
+      "size_bytes": 28879
+    }
+  }
+}

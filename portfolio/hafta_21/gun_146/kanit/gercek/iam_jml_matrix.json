@@ -1,0 +1,52 @@
+{
+  "standartlar": {
+    "NIST_SP_800_63B": "Dijital Kimlik Kılavuzu: Kimlik Doğrulama ve Yaşam Döngüsü Yönetimi",
+    "CIS_Controls_v8": "Kontrol 5: Hesap Yönetimi ve Kontrol 6: Erişim Kontrolü Yönetimi",
+    "ISO_27001_A9": "Madde A.9.2: Kullanıcı Erişim Yönetimi (JML Süreçleri)",
+    "SOX_404": "Görevler Ayrılığı (SoD) ve Yetki Denetimi Zorunlulukları"
+  },
+  "kontrol_maddeleri": [
+    {
+      "asama": "Joiner",
+      "kural": "Yetkili İK Kaynağı Doğrulaması",
+      "aciklama": "Hesap açılışları yalnızca İK otoriter veri kaynağından otomatik tetiklenmelidir.",
+      "onem": "CRITICAL"
+    },
+    {
+      "asama": "Joiner",
+      "kural": "En Az Yetki ve Doğum Hakkı (Birthright) Rolleri",
+      "aciklama": "Yeni personele ilk gün yalnızca pozisyonu için zorunlu temel roller atanır.",
+      "onem": "HIGH"
+    },
+    {
+      "asama": "Mover",
+      "kural": "Yetki Birikimi Önleme (Privilege Creep Prevention)",
+      "aciklama": "Departman değiştiren personelin eski departmanına ait yetkileri anında iptal edilir.",
+      "onem": "CRITICAL"
+    },
+    {
+      "asama": "Mover / Her Zaman",
+      "kural": "Görevler Ayrılığı (SoD) Denetimi",
+      "aciklama": "Hassas iş süreçlerinde (fatura oluşturan / ödeme onaylayan) rolleri aynı kişiye verilemez.",
+      "onem": "CRITICAL"
+    },
+    {
+      "asama": "Leaver",
+      "kural": "Anında Hesap Kapatma ve Jeton İptali",
+      "aciklama": "İşten ayrılan personelin hesapları azami 1 saat içinde kapatılır, oturumları sonlandırılır.",
+      "onem": "CRITICAL"
+    },
+    {
+      "asama": "Denetim",
+      "kural": "Yetim Hesap Taraması (Orphan Account Detection)",
+      "aciklama": "Hedef sistemlerde sahibi bulunmayan veya ayrılmış personele ait hesaplar taranıp kapatılır.",
+      "onem": "HIGH"
+    },
+    {
+      "asama": "Denetim",
+      "kural": "Atıl Hesap Yönetimi (Dormant Account Management)",
+      "aciklama": "90 günden uzun süredir kullanılmayan aktif hesaplar otomatik dondurulur.",
+      "onem": "MEDIUM"
+    }
+  ]
+}

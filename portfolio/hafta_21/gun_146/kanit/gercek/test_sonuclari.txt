@@ -1,0 +1,43 @@
+======================================================================
+GÜN 146: IAM YAŞAM DÖNGÜSÜ (JML) BİRİM TEST SONUÇLARI
+Tarih/Saat      : 2026-11-03T23:16:23.248219
+Toplam Test     : 15
+Başarılı        : 15
+Hatalı/Kırık    : 0
+Koşum Süresi    : 0.0013 saniye
+======================================================================
+test_01_clean_directory_audit_pass (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_01_clean_directory_audit_pass)
+1. Test: Temiz ve kurallara tam uyumlu bir dizinin 100 tam puan almasını doğrular. ... ok
+test_02_joiner_success_with_mfa_and_pwd_reset (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_02_joiner_success_with_mfa_and_pwd_reset)
+2. Test: Joiner akışının MFA aktif ve parola değişimi zorunlu hesap açtığını doğrular. ... ok
+test_03_joiner_missing_approver_rejected (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_03_joiner_missing_approver_rejected)
+3. Test: Onaylayıcı bilgisi bulunmayan Joiner talebinin reddedilmesini doğrular. ... ok
+test_04_joiner_sod_conflict_blocked (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_04_joiner_sod_conflict_blocked)
+4. Test: Başlangıç rolleri SoD çatışması içeren Joiner işleminin engellenmesini doğrular. ... ok
+test_05_mover_clean_transfer_revokes_old_roles (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_05_mover_clean_transfer_revokes_old_roles)
+5. Test: Mover sürecinde eski departman rollerinin başarıyla iptal edildiğini doğrular. ... ok
+test_06_mover_privilege_creep_detection (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_06_mover_privilege_creep_detection)
+6. Test: Eski rolleri silinmeyen personelde Yetki Birikiminin (Privilege Creep) yakalanmasını doğrular. ... ok
+test_07_mover_sod_conflict_blocked (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_07_mover_sod_conflict_blocked)
+7. Test: Mover sırasında personelin çatışan ikinci rolü almasının engellenmesini doğrular. ... ok
+test_08_mover_missing_approver_rejected (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_08_mover_missing_approver_rejected)
+8. Test: Onaylayıcı girilmeyen Mover talebinin hata fırlatmasını doğrular. ... ok
+test_09_leaver_deprovisions_all_accounts_immediately (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_09_leaver_deprovisions_all_accounts_immediately)
+9. Test: Leaver sürecinde tüm bağlı hesapların anında kapatıldığını ve rollerin silindiğini doğrular. ... ok
+test_10_leaver_orphan_account_detected_if_not_deprovisioned (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_10_leaver_orphan_account_detected_if_not_deprovisioned)
+10. Test: İK'dan ayrılmış ama hedef sistemde kapatılmamış Yetim Hesabın (Orphan Account) yakalanmasını doğrular. ... ok
+test_11_ghost_account_without_employee_detected (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_11_ghost_account_without_employee_detected)
+11. Test: İK veri tabanında hiç kaydı olmayan sahipsiz hayalet hesabın yakalanmasını doğrular. ... ok
+test_12_dormant_account_detected (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_12_dormant_account_detected)
+12. Test: 90 günden uzun süredir oturum açılmamış atıl (dormant) hesabın tespitini doğrular. ... ok
+test_13_privileged_account_without_mfa_flagged (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_13_privileged_account_without_mfa_flagged)
+13. Test: Ayrıcalıklı role sahip ancak MFA aktif olmayan hesabın yakalanmasını doğrular. ... ok
+test_14_remediation_powershell_generation (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_14_remediation_powershell_generation)
+14. Test: Yetim hesaplar için üretilen PowerShell betiğinin Disable-ADAccount komutu içerdiğini doğrular. ... ok
+test_15_hardening_matrix_integrity (test_iam_jml_lifecycle.TestIAMJMLLifecycle.test_15_hardening_matrix_integrity)
+15. Test: CIS, NIST ve ISO standartlarına referans veren sertleştirme matrisinin bütünlüğünü doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

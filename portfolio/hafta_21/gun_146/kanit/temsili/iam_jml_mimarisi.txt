@@ -1,0 +1,52 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 146: KURUMSAL IAM YAŞAM DÖNGÜSÜ (JML) VE GÜVENLİK KONTROL MİMARİSİ
+================================================================================
+
+  +--------------------------------------------------------------------------+
+  |             OTORİTER VERİ KAYNAĞI (HR / İNSAN KAYNAKLARI SİSTEMİ)        |
+  |        [Workday / SAP SuccessFactors] (Tek Gerçeklik Kaynağı)             |
+  +-------------------------------------+------------------------------------+
+                                        |
+                    JML Olay Tetikleyici (SCIM / REST API)
+                                        |
+     +----------------------------------+----------------------------------+
+     |                                  |                                  |
+     v                                  v                                  v
++-------------------+         +-------------------+         +-------------------+
+|  1. JOINER (GİRİŞ)|         | 2. MOVER (TRANSFER|         | 3. LEAVER (AYRILIŞ|
+|-------------------|         |-------------------|         |-------------------|
+| - İK Kaydı Doğrula|         | - Yeni Bölüm Rolü |         | - İK Durumu Term. |
+| - Birthright Rol  |         | - ESKİ ROL İPTAL! |         | - Derhal Kapat    |
+| - SoD Çatışma Yok |         |   (Privilege Creep|         |   (Active Directory|
+| - MFA Zorunlu     |         |    Engelleme)     |         |    Entra ID, AWS) |
+| - İlk Oturumda    |         | - SoD Kontrolü    |         | - Refresh Token   |
+|   Parola Reset    |         | - Yönetici Onayı  |         |   İptali (Revoke) |
++---------+---------+         +---------+---------+         +---------+---------+
+          |                             |                             |
+          +-----------------------------+-----------------------------+
+                                        |
+                                        v
+  +--------------------------------------------------------------------------+
+  |               IAM GÜVENLİK DENETİM VE KONTROL MERKEZİ                    |
+  |--------------------------------------------------------------------------|
+  |  [DENETİM 1] Yetim Hesap (Orphan Account) Taraması:                      |
+  |              Sahibi İK'da bulunmayan veya TERMINATED olanları kapat.     |
+  |  [DENETİM 2] Yetki Birikimi (Privilege Creep) Taraması:                  |
+  |              Eski departman yetkilerini taşıyan kullanıcıları tespit et. |
+  |  [DENETİM 3] Görevler Ayrılığı (SoD) Matrisi:                            |
+  |              Fatura Oluşturan != Fatura Onaylayan (Dört Göz İlkesi).     |
+  |  [DENETİM 4] Atıl Hesap (Dormant Account) Karantinası:                   |
+  |              >90 gün oturum açılmamış hesapları otomatik pasife al.      |
+  +--------------------------------------------------------------------------+
+                                        |
+                                        v
+  +--------------------------------------------------------------------------+
+  |                   HEDEF HESAP VE UYGULAMA HAVUZU                         |
+  |  [Active Directory Domain] [Entra ID Cloud] [SAP ERP] [AWS Infrastructure]|
+  +--------------------------------------------------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

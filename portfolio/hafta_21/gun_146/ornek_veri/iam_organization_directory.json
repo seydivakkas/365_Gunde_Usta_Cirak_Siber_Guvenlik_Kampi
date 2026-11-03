@@ -1,0 +1,200 @@
+{
+  "_aciklama": "Gün 146: Kurumsal Sertleştirilmiş IAM Dizin ve Yaşam Döngüsü Örnek Verisi",
+  "_lisans": "Özel Lisans — Tüm Hakları Saklıdır. Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)",
+  "roles": [
+    {
+      "role_id": "ROLE_IT_ADMIN",
+      "name": "BT Sistem Yöneticisi",
+      "department": "BILGI_ISLEM",
+      "allowed_entitlements": ["AD_Domain_Admins", "Server_SSH_Root"],
+      "is_privileged": true
+    },
+    {
+      "role_id": "ROLE_DEV_ENGINEER",
+      "name": "Yazılım Geliştirici",
+      "department": "YAZILIM",
+      "allowed_entitlements": ["Git_Repo_Write", "Dev_Cluster_Deploy"],
+      "is_privileged": false
+    },
+    {
+      "role_id": "ROLE_PROD_DEPLOYER",
+      "name": "Canlı Dağıtım Yetkilisi",
+      "department": "DEVOPS",
+      "allowed_entitlements": ["K8s_Prod_Deploy", "AWS_Prod_Admin"],
+      "is_privileged": true
+    },
+    {
+      "role_id": "ROLE_FIN_INVOICE_CREATE",
+      "name": "Fatura Giriş Yetkilisi",
+      "department": "FINANS",
+      "allowed_entitlements": ["SAP_Invoice_Create", "Bank_Draft_Entry"],
+      "is_privileged": false
+    },
+    {
+      "role_id": "ROLE_FIN_PAYMENT_APPROVE",
+      "name": "Ödeme Onay Yetkilisi",
+      "department": "FINANS",
+      "allowed_entitlements": ["SAP_Payment_Approve", "Bank_Wire_Release"],
+      "is_privileged": true
+    },
+    {
+      "role_id": "ROLE_HR_SPECIALIST",
+      "name": "İK Uzmanı",
+      "department": "INSAN_KAYNAKLARI",
+      "allowed_entitlements": ["Workday_Employee_Read", "Workday_Employee_Edit"],
+      "is_privileged": false
+    }
+  ],
+  "sod_rules": [
+    {
+      "conflict_id": "SOD-FIN-001",
+      "role_a": "ROLE_FIN_INVOICE_CREATE",
+      "role_b": "ROLE_FIN_PAYMENT_APPROVE",
+      "description": "Fatura oluşturan personel kendi faturasının ödemesini onaylayamaz (Dolandırıcılık Önleme).",
+      "severity": "CRITICAL"
+    },
+    {
+      "conflict_id": "SOD-DEV-001",
+      "role_a": "ROLE_DEV_ENGINEER",
+      "role_b": "ROLE_PROD_DEPLOYER",
+      "description": "Kodu geliştiren yazılımcı canlı ortama doğrudan dağıtım yapamaz (Dört Göz Kuralı).",
+      "severity": "HIGH"
+    }
+  ],
+  "employees": [
+    {
+      "employee_id": "EMP-001",
+      "name": "Seydi Eryılmaz",
+      "department": "BILGI_ISLEM",
+      "job_title": "Kıdemli Güvenlik Mimarı",
+      "manager_id": "MGR-000",
+      "status": "ACTIVE",
+      "start_date": "2024-01-01",
+      "assigned_roles": ["ROLE_IT_ADMIN"]
+    },
+    {
+      "employee_id": "EMP-002",
+      "name": "Ahmet Yılmaz",
+      "department": "YAZILIM",
+      "job_title": "Kıdemli Backend Geliştirici",
+      "manager_id": "EMP-001",
+      "status": "ACTIVE",
+      "start_date": "2024-06-01",
+      "assigned_roles": ["ROLE_DEV_ENGINEER"]
+    },
+    {
+      "employee_id": "EMP-003",
+      "name": "Ayşe Kaya",
+      "department": "DEVOPS",
+      "job_title": "SRE ve Canlı Dağıtım Mühendisi",
+      "manager_id": "EMP-001",
+      "status": "ACTIVE",
+      "start_date": "2024-08-15",
+      "assigned_roles": ["ROLE_PROD_DEPLOYER"]
+    },
+    {
+      "employee_id": "EMP-004",
+      "name": "Fatma Şahin",
+      "department": "FINANS",
+      "job_title": "Finansal Muhasebe Uzmanı",
+      "manager_id": "MGR-FIN",
+      "status": "ACTIVE",
+      "start_date": "2025-01-10",
+      "assigned_roles": ["ROLE_FIN_INVOICE_CREATE"]
+    },
+    {
+      "employee_id": "EMP-005",
+      "name": "Kemal Demir",
+      "department": "FINANS",
+      "job_title": "Mali İşler Direktörü",
+      "manager_id": "MGR-EXEC",
+      "status": "ACTIVE",
+      "start_date": "2024-03-01",
+      "assigned_roles": ["ROLE_FIN_PAYMENT_APPROVE"]
+    },
+    {
+      "employee_id": "EMP-006",
+      "name": "Elif Çelik",
+      "department": "INSAN_KAYNAKLARI",
+      "job_title": "İK Operasyon Uzmanı",
+      "manager_id": "MGR-HR",
+      "status": "ACTIVE",
+      "start_date": "2025-02-01",
+      "assigned_roles": ["ROLE_HR_SPECIALIST"]
+    }
+  ],
+  "accounts": [
+    {
+      "account_id": "ACC-AD-001",
+      "username": "seydi.eryilmaz",
+      "target_system": "ActiveDirectory",
+      "owner_employee_id": "EMP-001",
+      "status": "ACTIVE",
+      "roles": ["ROLE_IT_ADMIN"],
+      "entitlements": ["AD_Domain_Admins"],
+      "last_logon_date": "2026-11-03T10:00:00Z",
+      "mfa_enabled": true,
+      "password_must_change": false
+    },
+    {
+      "account_id": "ACC-AD-002",
+      "username": "ahmet.yilmaz",
+      "target_system": "ActiveDirectory",
+      "owner_employee_id": "EMP-002",
+      "status": "ACTIVE",
+      "roles": ["ROLE_DEV_ENGINEER"],
+      "entitlements": ["Git_Repo_Write"],
+      "last_logon_date": "2026-11-03T09:30:00Z",
+      "mfa_enabled": true,
+      "password_must_change": false
+    },
+    {
+      "account_id": "ACC-AD-003",
+      "username": "ayse.kaya",
+      "target_system": "ActiveDirectory",
+      "owner_employee_id": "EMP-003",
+      "status": "ACTIVE",
+      "roles": ["ROLE_PROD_DEPLOYER"],
+      "entitlements": ["K8s_Prod_Deploy"],
+      "last_logon_date": "2026-11-03T08:45:00Z",
+      "mfa_enabled": true,
+      "password_must_change": false
+    },
+    {
+      "account_id": "ACC-SAP-004",
+      "username": "fatma.sahin",
+      "target_system": "SAP",
+      "owner_employee_id": "EMP-004",
+      "status": "ACTIVE",
+      "roles": ["ROLE_FIN_INVOICE_CREATE"],
+      "entitlements": ["SAP_Invoice_Create"],
+      "last_logon_date": "2026-11-02T16:00:00Z",
+      "mfa_enabled": true,
+      "password_must_change": false
+    },
+    {
+      "account_id": "ACC-SAP-005",
+      "username": "kemal.demir",
+      "target_system": "SAP",
+      "owner_employee_id": "EMP-005",
+      "status": "ACTIVE",
+      "roles": ["ROLE_FIN_PAYMENT_APPROVE"],
+      "entitlements": ["SAP_Payment_Approve"],
+      "last_logon_date": "2026-11-03T07:15:00Z",
+      "mfa_enabled": true,
+      "password_must_change": false
+    },
+    {
+      "account_id": "ACC-WD-006",
+      "username": "elif.celik",
+      "target_system": "Workday",
+      "owner_employee_id": "EMP-006",
+      "status": "ACTIVE",
+      "roles": ["ROLE_HR_SPECIALIST"],
+      "entitlements": ["Workday_Employee_Read"],
+      "last_logon_date": "2026-11-03T09:00:00Z",
+      "mfa_enabled": true,
+      "password_must_change": false
+    }
+  ]
+}

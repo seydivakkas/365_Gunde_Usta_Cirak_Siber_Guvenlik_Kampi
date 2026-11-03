@@ -1,0 +1,11 @@
+{
+  "toplam_personel": 6,
+  "toplam_hesap": 6,
+  "yetim_hesaplar": 0,
+  "yetki_birikimi_kullanicilari": 0,
+  "sod_ihlal_sayisi": 0,
+  "atil_hesap_sayisi": 0,
+  "guvenlik_puani": 100.0,
+  "uyumlu": true,
+  "bulgular": []
+}
