@@ -1,0 +1,48 @@
++-----------------------------------------------------------------------------+
+|                 TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL              |
++-----------------------------------------------------------------------------+
+|         GÜVENLİ YAPILANDIRMA SAPMASI (CONFIGURATION DRIFT) MİMARİSİ         |
++-----------------------------------------------------------------------------+
+
+   +-----------------------------------------------------------------------+
+   |            GÜVENLİ TEMEL HAT DEPOSU (SECURITY BASELINE / DSC)         |
+   |                                                                       |
+   |  * CIS Benchmarks v3.0 / DISA STIG Standartları                       |
+   |  * UAC: EnableLUA = 1 | Defender Real-Time: Enabled                   |
+   |  * LSA RunAsPPL = 1 (LSASS Koruması) | ASLR = 2                       |
+   |  * Yerel Administrators: Yalnızca Yetkili Hesaplar                    |
+   +-----------------------------------------------------------------------+
+                                      |                                     
+                                      | Karşılaştırma / Denetim Motoru      
+                                      v                                     
+   +-----------------------------------------------------------------------+
+   |         UÇ NOKTA CANLI TELEMETRİSİ (ACTUAL ENDPOINT STATE)            |
+   |                                                                       |
+   |  Zaman İçindeki Sapmalar (Drift Faktörleri):                          |
+   |  [!] Manuel Acil Müdahale: UAC kapatılmış (EnableLUA = 0)             |
+   |  [!] Saldırgan Faaliyeti : Administrators grubuna 'backdoor' eklenmiş |
+   |  [!] Hata Ayıklama       : Windows Defender gerçek zamanlı kapatılmış |
+   +-----------------------------------------------------------------------+
+                                      |                                     
+                   +------------------+------------------+                  
+                   |                                     |                  
+       [ DRIFT TESPİT EDİLDİ ]                 [ TAM UYUMLULUK ]            
+       (Skor: %72.7 -> 3 Sapma)                (Skor: %100 -> Sıfır Sapma)  
+                   |                                     |                  
+                   v                                     v                  
+   +--------------------------------+   +--------------------------------+  
+   |  OTOMATİK İYİLEŞTİRME ENGINE   |   |   GÜVENLİ TEMEL HAT KORUNDU    |  
+   |  (Self-Healing / Desired State)|   |   * EDR / SIEM Onaylı          |  
+   |  -> PowerShell DSC / GPO Revert|   |   * Zafiyet Penceresi Kapalı   |  
+   |  -> Yetkisiz Admin Silindi     |   +--------------------------------+  
+   |  -> UAC & Defender Yeniden Açık|                                       
+   +--------------------------------+                                       
+                   |                                                        
+                   v                                                        
+   =========================================================================
+        UÇ NOKTA YENİDEN %100 GÜVENLİ TEMEL HATTA GERİ DÖNDÜRÜLDÜ           
+   =========================================================================
+
++-----------------------------------------------------------------------------+
+|                 TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL              |
++-----------------------------------------------------------------------------+

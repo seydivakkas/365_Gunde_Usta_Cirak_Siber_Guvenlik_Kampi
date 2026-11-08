@@ -1,0 +1,40 @@
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest discover -s C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_152\tests -p test_*.py -v
+Çıkış Kodu: 0
+Zaman Damgası (UTC): 2026-11-08T15:35:28.999337+00:00
+==============================================================================
+
+test_01_clean_baseline_audit_100_percent_compliance (test_config_drift.TestConfigDriftEngine.test_01_clean_baseline_audit_100_percent_compliance)
+Test 1: Temel hat ile birebir eşleşen uç nokta %100 uyumluluk ve sıfır sapma üretmelidir. ... ok
+test_02_detect_uac_disabled_drift (test_config_drift.TestConfigDriftEngine.test_02_detect_uac_disabled_drift)
+Test 2: UAC devre dışı bırakıldığında (EnableLUA = 0) CRITICAL sapma tespit edilmelidir. ... ok
+test_03_detect_windows_defender_realtime_disabled (test_config_drift.TestConfigDriftEngine.test_03_detect_windows_defender_realtime_disabled)
+Test 3: Windows Defender gerçek zamanlı koruma kapatıldığında CRITICAL tespit edilmelidir. ... ok
+test_04_detect_lsa_protection_disabled (test_config_drift.TestConfigDriftEngine.test_04_detect_lsa_protection_disabled)
+Test 4: LSA RunAsPPL koruması kapatıldığında HIGH seviyesinde tespit edilmelidir. ... ok
+test_05_detect_unauthorized_local_admin (test_config_drift.TestConfigDriftEngine.test_05_detect_unauthorized_local_admin)
+Test 5: Administrators grubuna yetkisiz kullanıcı eklendiğinde CRITICAL tespit edilmelidir. ... ok
+test_06_detect_firewall_domain_profile_disabled (test_config_drift.TestConfigDriftEngine.test_06_detect_firewall_domain_profile_disabled)
+Test 6: Güvenlik duvarı etki alanı profili kapatıldığında HIGH seviyesinde tespit edilmelidir. ... ok
+test_07_detect_insecure_guest_account_enabled (test_config_drift.TestConfigDriftEngine.test_07_detect_insecure_guest_account_enabled)
+Test 7: Guest hesabı aktifleştirildiğinde MEDIUM seviyesinde tespit edilmelidir. ... ok
+test_08_detect_weak_password_length_relaxed (test_config_drift.TestConfigDriftEngine.test_08_detect_weak_password_length_relaxed)
+Test 8: Minimum parola uzunluğu 14'ten 6'ya düşürüldüğünde HIGH tespit edilmelidir. ... ok
+test_09_detect_account_lockout_threshold_disabled (test_config_drift.TestConfigDriftEngine.test_09_detect_account_lockout_threshold_disabled)
+Test 9: Hesap kilitleme eşiği 0 yapıldığında (kilitlenme kapalı) HIGH tespit edilmelidir. ... ok
+test_10_detect_remote_registry_service_enabled (test_config_drift.TestConfigDriftEngine.test_10_detect_remote_registry_service_enabled)
+Test 10: RemoteRegistry servisi çalışır duruma getirildiğinde MEDIUM tespit edilmelidir. ... ok
+test_11_detect_linux_ip_forwarding_enabled (test_config_drift.TestConfigDriftEngine.test_11_detect_linux_ip_forwarding_enabled)
+Test 11: Linux sistemde net.ipv4.ip_forward = 1 yapıldığında HIGH tespit edilmelidir. ... ok
+test_12_detect_linux_aslr_disabled (test_config_drift.TestConfigDriftEngine.test_12_detect_linux_aslr_disabled)
+Test 12: Linux sistemde ASLR kapatıldığında (randomize_va_space = 0) CRITICAL tespit edilmelidir. ... ok
+test_13_auto_remediation_engine_fixes_drift (test_config_drift.TestConfigDriftEngine.test_13_auto_remediation_engine_fixes_drift)
+Test 13: AutoRemediationEngine sapmış değerleri temel hata döndürerek %100 uyumluluk sağlamalıdır. ... ok
+test_14_compliance_score_calculation_accuracy (test_config_drift.TestConfigDriftEngine.test_14_compliance_score_calculation_accuracy)
+Test 14: Kısmi sapmalarda uyumluluk skoru yüzdesi matematiksel olarak doğru hesaplanmalıdır. ... ok
+test_15_remediation_script_content_verification (test_config_drift.TestConfigDriftEngine.test_15_remediation_script_content_verification)
+Test 15: Üretilen PowerShell ve Bash betikleri ilgili düzeltme komutlarını içermelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

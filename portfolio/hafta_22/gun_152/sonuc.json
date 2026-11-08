@@ -1,0 +1,38 @@
+{
+  "gun": 152,
+  "hafta": 22,
+  "asama": "06",
+  "konu": "Güvenli yapılandırma sapması",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-08",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_22/gun_152/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_22/gun_152/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "denetim_raporu": "portfolio/hafta_22/gun_152/kanit/gercek/config_drift_audit_report.json",
+    "iyilestirilmis_durum": "portfolio/hafta_22/gun_152/kanit/gercek/remediated_endpoint_state.json",
+    "remediation_betigi": "portfolio/hafta_22/gun_152/kanit/gercek/config_drift_auto_remediation.ps1",
+    "komut_ve_cikis": "portfolio/hafta_22/gun_152/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_22/gun_152/kanit/temsili/yapilandirma_sapmasi_mimarisi.txt"
+  },
+  "ozet": "CIS Benchmarks ve DISA STIG standartlarına dayalı uç nokta yapılandırma sapması (Configuration Drift) ve otomatik iyileştirme (Auto-Remediation) motoru geliştirildi. Kayıt Defteri (UAC, Defender, RunAsPPL), servis durumları (RemoteRegistry), güvenlik duvarı profilleri, yerel Administrators grup üyeliği ve Linux sysctl (ASLR, ip_forward) kontrolleri üzerinden 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla doğrulandı."
+}

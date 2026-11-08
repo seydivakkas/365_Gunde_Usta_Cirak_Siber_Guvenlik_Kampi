@@ -1,0 +1,11 @@
+{
+  "report_id": "DRIFT-REP-20261108153529",
+  "timestamp_utc": "2026-11-08T15:35:29.002042+00:00",
+  "endpoint_identifier": "ENDPOINT-WIN11-CORP-01",
+  "total_evaluated": 11,
+  "total_compliant": 11,
+  "total_drifted": 0,
+  "compliance_score_pct": 100.0,
+  "compliance_status": "COMPLIANT_100_PERCENT",
+  "findings": []
+}

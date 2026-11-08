@@ -1,0 +1,145 @@
+{
+  "endpoint_id": "ENDPOINT-WIN11-CORP-01",
+  "baseline_rules": [
+    {
+      "rule_id": "CIS-WIN-1.1",
+      "setting_type": "REGISTRY",
+      "target_key": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\EnableLUA",
+      "expected_value": 1,
+      "severity": "CRITICAL",
+      "title": "Kullanıcı Hesabı Denetimi (UAC) Etkin Olmalıdır",
+      "compliance_ref": "CIS Windows 11 Benchmark 2.3.17.1",
+      "description": "UAC kapatıldığında zararlı yazılımlar yönetici haklarını sessizce ele geçirebilir.",
+      "remediation_cmd_ps1": "Set-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System' -Name 'EnableLUA' -Value 1 -Type DWord"
+    },
+    {
+      "rule_id": "CIS-WIN-1.2",
+      "setting_type": "REGISTRY",
+      "target_key": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection\\DisableRealtimeMonitoring",
+      "expected_value": 0,
+      "severity": "CRITICAL",
+      "title": "Microsoft Defender Gerçek Zamanlı Koruma Açık Olmalıdır",
+      "compliance_ref": "CIS Windows 11 Benchmark 18.9.46.1",
+      "description": "Gerçek zamanlı koruma kapatıldığında kötü amaçlı yazılımlar diskte serbestçe çalışır.",
+      "remediation_cmd_ps1": "Set-ItemProperty -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection' -Name 'DisableRealtimeMonitoring' -Value 0 -Type DWord"
+    },
+    {
+      "rule_id": "CIS-WIN-1.3",
+      "setting_type": "REGISTRY",
+      "target_key": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\RunAsPPL",
+      "expected_value": 1,
+      "severity": "HIGH",
+      "title": "LSA Koruma Modu (RunAsPPL) Açık Olmalıdır",
+      "compliance_ref": "Microsoft Security Baseline / Credential Guard",
+      "description": "LSA koruması kapalıyken Mimikatz gibi araçlar LSASS belleğinden NTLM/Kerberos biletlerini çalabilir.",
+      "remediation_cmd_ps1": "Set-ItemProperty -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa' -Name 'RunAsPPL' -Value 1 -Type DWord"
+    },
+    {
+      "rule_id": "CIS-WIN-1.4",
+      "setting_type": "LOCAL_USER_GROUP",
+      "target_key": "Administrators_Members",
+      "expected_value": ["Administrator", "Domain Admins"],
+      "severity": "CRITICAL",
+      "title": "Yerel Yöneticiler Grubunda Yalnızca Onaylı Hesaplar Bulunmalıdır",
+      "compliance_ref": "CIS Controls v8 5.4 / Least Privilege",
+      "description": "Yetkisiz bir hesabın local admin yapılması doğrudan kalıcılık (persistence) veya yetki yükseltme göstergesidir.",
+      "remediation_cmd_ps1": "Remove-LocalGroupMember -Group 'Administrators' -Member 'backdoor_admin'"
+    },
+    {
+      "rule_id": "CIS-WIN-1.5",
+      "setting_type": "FIREWALL_RULE",
+      "target_key": "DomainProfile_Enabled",
+      "expected_value": true,
+      "severity": "HIGH",
+      "title": "Windows Güvenlik Duvarı Etki Alanı Profili Açık Olmalıdır",
+      "compliance_ref": "CIS Benchmark 9.1.1",
+      "description": "Güvenlik duvarı kapalıyken gelen yetkisiz ağ bağlantıları filtrelenemez.",
+      "remediation_cmd_ps1": "Set-NetFirewallProfile -Profile Domain -Enabled True"
+    },
+    {
+      "rule_id": "CIS-WIN-1.6",
+      "setting_type": "SECURITY_POLICY",
+      "target_key": "MinimumPasswordLength",
+      "expected_value": 14,
+      "severity": "HIGH",
+      "title": "Minimum Parola Uzunluğu En Az 14 Karakter Olmalıdır",
+      "compliance_ref": "DISA STIG WN11-AC-000010",
+      "description": "Kısa parolalar kaba kuvvet (brute-force) ve gökkuşağı tablosu ataklarıyla kolayca kırılabilir.",
+      "remediation_cmd_ps1": "net accounts /minpwlen:14"
+    },
+    {
+      "rule_id": "CIS-WIN-1.7",
+      "setting_type": "SECURITY_POLICY",
+      "target_key": "AccountLockoutThreshold",
+      "expected_value": 5,
+      "severity": "HIGH",
+      "title": "Hesap Kilitleme Eşiği 5 Deneme Olarak Ayarlanmalıdır",
+      "compliance_ref": "CIS Benchmark 1.1.1",
+      "description": "Hesap kilitleme kapalıyken saldırganlar sınırsız parola denemesi yapabilir.",
+      "remediation_cmd_ps1": "net accounts /lockoutthreshold:5"
+    },
+    {
+      "rule_id": "CIS-WIN-1.8",
+      "setting_type": "SECURITY_POLICY",
+      "target_key": "GuestAccountStatus",
+      "expected_value": "Disabled",
+      "severity": "MEDIUM",
+      "title": "Konuk (Guest) Hesabı Devre Dışı Bırakılmalıdır",
+      "compliance_ref": "CIS Benchmark 2.3.1.1",
+      "description": "Konuk hesabı aktif bırakıldığında parolasız anonim erişime izin verilebilir.",
+      "remediation_cmd_ps1": "net user Guest /active:no"
+    },
+    {
+      "rule_id": "CIS-WIN-1.9",
+      "setting_type": "SERVICE_STATE",
+      "target_key": "RemoteRegistry_Service",
+      "expected_value": "Stopped",
+      "severity": "MEDIUM",
+      "title": "RemoteRegistry Servisi Durdurulmuş Olmalıdır",
+      "compliance_ref": "CIS Benchmark 5.18",
+      "description": "Uzak kayıt defteri servisi ağ üzerinden kayıt defteri kurcalamalarına zemin hazırlar.",
+      "remediation_cmd_ps1": "Stop-Service -Name RemoteRegistry; Set-Service -Name RemoteRegistry -StartupType Disabled"
+    },
+    {
+      "rule_id": "CIS-LNX-2.1",
+      "setting_type": "LINUX_SYSCTL",
+      "target_key": "net.ipv4.ip_forward",
+      "expected_value": 0,
+      "severity": "HIGH",
+      "title": "IP Yönlendirme (IP Forwarding) Devre Dışı Olmalıdır",
+      "compliance_ref": "CIS Linux Benchmark 3.1.1",
+      "description": "Yönlendirici olmayan bir uç noktada IP yönlendirmenin açık olması ağ atlama riskine yol açar.",
+      "remediation_cmd_bash": "sysctl -w net.ipv4.ip_forward=0"
+    },
+    {
+      "rule_id": "CIS-LNX-2.2",
+      "setting_type": "LINUX_SYSCTL",
+      "target_key": "kernel.randomize_va_space",
+      "expected_value": 2,
+      "severity": "CRITICAL",
+      "title": "Adres Alanı Düzeni Rastgeleleştirme (ASLR) Tam Açık Olmalıdır",
+      "compliance_ref": "CIS Linux Benchmark 1.5.3",
+      "description": "ASLR kapalı olduğunda bellek taşması istismarları deterministik hale gelir.",
+      "remediation_cmd_bash": "sysctl -w kernel.randomize_va_space=2"
+    }
+  ],
+  "actual_state": {
+    "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\EnableLUA": 1,
+    "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection\\DisableRealtimeMonitoring": 0,
+    "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\RunAsPPL": 1,
+    "Administrators_Members": ["Administrator", "Domain Admins"],
+    "DomainProfile_Enabled": true,
+    "MinimumPasswordLength": 14,
+    "AccountLockoutThreshold": 5,
+    "GuestAccountStatus": "Disabled",
+    "RemoteRegistry_Service": "Stopped",
+    "net.ipv4.ip_forward": 0,
+    "kernel.randomize_va_space": 2
+  },
+  "metadata": {
+    "organization": "Enterprise Financial Infrastructure",
+    "compliance_standard": "CIS Benchmarks v3.0 / DISA STIG",
+    "author": "Seydi Eryılmaz (@seydivakkas)",
+    "license": "Özel Lisans - Tüm Hakları Saklıdır"
+  }
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "scenario_id": "NEG-DFT-01",
+    "name": "Kullanıcı Hesabı Denetimi (UAC) Devre Dışı Bırakılmış (EnableLUA = 0)",
+    "description": "Kullanıcı veya zararlı yazılım tarafından UAC devre dışı bırakılmış; süreçlerin sessizce elevated admin hakları kazanmasına yol açar.",
+    "profile_patch": {
+      "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\EnableLUA": 0
+    },
+    "expected_finding": "CIS-WIN-1.1",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-DFT-02",
+    "name": "Windows Defender Gerçek Zamanlı Koruma Kapatılmış (Tamper Saldırısı)",
+    "description": "DisableRealtimeMonitoring = 1 yapılarak antivirüs koruması susturulmuş; malware yürütülmesine zemin hazırlanır.",
+    "profile_patch": {
+      "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection\\DisableRealtimeMonitoring": 1
+    },
+    "expected_finding": "CIS-WIN-1.2",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-DFT-03",
+    "name": "LSA RunAsPPL Koruma Modu Kapatılmış (Credential Dumping Riski)",
+    "description": "RunAsPPL = 0 yapılarak LSASS sürecinin bellek koruması kaldırılmış; Mimikatz ile parola çalınabilir.",
+    "profile_patch": {
+      "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\RunAsPPL": 0
+    },
+    "expected_finding": "CIS-WIN-1.3",
+    "expected_severity": "HIGH"
+  },
+  {
+    "scenario_id": "NEG-DFT-04",
+    "name": "Yerel Administrators Grubuna Yetkisiz Arka Kapı Hesabı Eklenmiş",
+    "description": "Local admin grubuna 'backdoor_admin' hesabı eklenmiş; kalıcılık ve yetki yükseltme tehdidi.",
+    "profile_patch": {
+      "Administrators_Members": ["Administrator", "Domain Admins", "backdoor_admin"]
+    },
+    "expected_finding": "CIS-WIN-1.4",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-DFT-05",
+    "name": "Windows Güvenlik Duvarı Etki Alanı Profili Kapatılmış",
+    "description": "DomainProfile_Enabled = false yapılmış; ağ üzerinden gelen saldırılara karşı filtreleme devre dışı.",
+    "profile_patch": {
+      "DomainProfile_Enabled": false
+    },
+    "expected_finding": "CIS-WIN-1.5",
+    "expected_severity": "HIGH"
+  },
+  {
+    "scenario_id": "NEG-DFT-06",
+    "name": "Minimum Parola Uzunluğu 14'ten 6 Karaktere Düşürülmüş",
+    "description": "Parola politikası zayıflatılmış; kaba kuvvet saldırılarına açık hale getirilmiş.",
+    "profile_patch": {
+      "MinimumPasswordLength": 6
+    },
+    "expected_finding": "CIS-WIN-1.6",
+    "expected_severity": "HIGH"
+  },
+  {
+    "scenario_id": "NEG-DFT-07",
+    "name": "Hesap Kilitleme Eşiği Sıfırlanmış (Sınırsız Parola Denemesi)",
+    "description": "AccountLockoutThreshold = 0 yapılarak parola kilitlenmesi kapatılmış; sınırsız brute-force mümkün kılınmış.",
+    "profile_patch": {
+      "AccountLockoutThreshold": 0
+    },
+    "expected_finding": "CIS-WIN-1.7",
+    "expected_severity": "HIGH"
+  },
+  {
+    "scenario_id": "NEG-DFT-08",
+    "name": "RemoteRegistry Servisi Başlatılmış (Yetkisiz Uzak Kayıt Erişimi)",
+    "description": "RemoteRegistry_Service = 'Running' durumuna getirilmiş; ağ üzerinden kayıt defteri sorgulanabilir/değiştirilebilir.",
+    "profile_patch": {
+      "RemoteRegistry_Service": "Running"
+    },
+    "expected_finding": "CIS-WIN-1.9",
+    "expected_severity": "MEDIUM"
+  },
+  {
+    "scenario_id": "NEG-DFT-09",
+    "name": "Linux Bellek Rastgeleleştirme (ASLR) Devre Dışı Bırakılmış",
+    "description": "kernel.randomize_va_space = 0 yapılarak ASLR kapatılmış; bellek taşması saldırıları kolaylaştırılmış.",
+    "profile_patch": {
+      "kernel.randomize_va_space": 0
+    },
+    "expected_finding": "CIS-LNX-2.2",
+    "expected_severity": "CRITICAL"
+  }
+]

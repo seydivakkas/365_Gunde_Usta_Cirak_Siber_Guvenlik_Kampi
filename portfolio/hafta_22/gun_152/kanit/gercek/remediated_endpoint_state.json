@@ -1,0 +1,16 @@
+{
+  "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\EnableLUA": 1,
+  "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection\\DisableRealtimeMonitoring": 0,
+  "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\RunAsPPL": 1,
+  "Administrators_Members": [
+    "Administrator",
+    "Domain Admins"
+  ],
+  "DomainProfile_Enabled": true,
+  "MinimumPasswordLength": 14,
+  "AccountLockoutThreshold": 5,
+  "GuestAccountStatus": "Disabled",
+  "RemoteRegistry_Service": "Stopped",
+  "net.ipv4.ip_forward": 0,
+  "kernel.randomize_va_space": 2
+}

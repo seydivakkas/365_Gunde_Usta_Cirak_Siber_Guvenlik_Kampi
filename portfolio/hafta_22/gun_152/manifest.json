@@ -1,0 +1,87 @@
+{
+  "gun": 152,
+  "konu": "Güvenli yapılandırma sapması",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "c6d2adf6166640d40ace0d301d15898e1de04b80d86c2eba407e0c4f10bdc4d1",
+      "size_bytes": 5321
+    },
+    "ders.md": {
+      "sha256": "5a0b92f01239e1848f5405ec98971e54662fdbb2fc1dc173f90b38a617f878a6",
+      "size_bytes": 8088
+    },
+    "kanit_uretici.py": {
+      "sha256": "50d23d916072113e57d404a59a24a9494487b9f55e2f163f2293c381ac1f5fff",
+      "size_bytes": 13733
+    },
+    "rapor.md": {
+      "sha256": "810842dde2b0ed33268d1eb464ff15c9d3ed5be3cdef07ae5312b87052d61d50",
+      "size_bytes": 5927
+    },
+    "sonuc.json": {
+      "sha256": "98e37836af6dce3ffd32d8eec7b9f1f50f53e4bb6ec3dd9aec57bd17ca073ed2",
+      "size_bytes": 1785
+    },
+    "soru_cevap.md": {
+      "sha256": "7d1d4a8c71ac9840b92a6ddac5e03712af1799596187059212b3eb84fad51630",
+      "size_bytes": 12403
+    },
+    "kanit/gercek/config_drift_audit_report.json": {
+      "sha256": "562c4876d666b634f898fc1227702f3ad88a94f78b3a2fd2ca904db0b8d2d019",
+      "size_bytes": 332
+    },
+    "kanit/gercek/config_drift_auto_remediation.ps1": {
+      "sha256": "01b02a6200797c78af53711f1ca7c0d0835946b916a992db7c99e2335ff0555b",
+      "size_bytes": 1261
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "sha256": "25bd729f4addef637cd48de13f5c40aa31f8460602d43bf95f9b9d251cc5eb19",
+      "size_bytes": 2941
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "sha256": "b418ac3ce3ba703b98efb4080015a0cdca6a57682c5f0b4307bbe37e3d6c1a75",
+      "size_bytes": 5588
+    },
+    "kanit/gercek/remediated_endpoint_state.json": {
+      "sha256": "60e732613743e920fde1eeef2ff66b0561c730f9dfdd293b96405618053ba8d7",
+      "size_bytes": 592
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "sha256": "fd31b92f5d4c5f9769586d81d63a4ee0b90dcf15048d74b27d04e70f0315a1d7",
+      "size_bytes": 4046
+    },
+    "kanit/temsili/yapilandirma_sapmasi_mimarisi.txt": {
+      "sha256": "d0cbbea2182b96f565c5ad89d87ac0b54389eae3fa0a44b5902a6035a1106980",
+      "size_bytes": 3695
+    },
+    "ornek_veri/clean_endpoint_baseline.json": {
+      "sha256": "d0adf0ec0cb01ab433b8067359dacb0cdd0fa405bdf9566bbf84b4f80e7ada8d",
+      "size_bytes": 7047
+    },
+    "ornek_veri/invalid_drift_scenarios.json": {
+      "sha256": "6f0044df29d45f7c80cdc49b9ddbf76eee4b1469f18d3095fda5325471775129",
+      "size_bytes": 3848
+    },
+    "tests/__init__.py": {
+      "sha256": "0cde544fbee93d9c6b23c66693a4635f1266f2ffbf13c6eff7844b2ec1aa2685",
+      "size_bytes": 201
+    },
+    "tests/test_config_drift.py": {
+      "sha256": "abc7737ad678d5b4e1c3efc02fab0b479c26ade7a38d49feaecf9ed3f9449b46",
+      "size_bytes": 18246
+    },
+    "uygulama/__init__.py": {
+      "sha256": "ffac222c993b26edde3bd594ae9dbe0bd07ffa102bb7d4e3b7e2b0de58de9371",
+      "size_bytes": 345
+    },
+    "uygulama/config_drift_cli.py": {
+      "sha256": "dbc698d9efc5e4b2e61e061f6a12c56059823c04f796d749aecef52fc309f822",
+      "size_bytes": 6393
+    },
+    "uygulama/config_drift_engine.py": {
+      "sha256": "0086533b4fe2de231b047d12a212105841aa12250ff329f0bcc1448cab6dde39",
+      "size_bytes": 11052
+    }
+  }
+}

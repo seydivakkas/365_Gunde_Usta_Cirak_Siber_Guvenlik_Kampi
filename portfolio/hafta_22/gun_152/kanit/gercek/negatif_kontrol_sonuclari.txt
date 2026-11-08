@@ -1,0 +1,53 @@
+==============================================================================
+GÜN 152: GÜVENLİ YAPILANDIRMA SAPMASI (DRIFT) NEGATİF KONTROL VE TESTLERİ
+Tarih/Saat (UTC): 2026-11-08T15:35:29.000463+00:00
+Toplam İncelenen Senaryo Sayısı: 9
+==============================================================================
+
+Senaryo NEG-DFT-01: Kullanıcı Hesabı Denetimi (UAC) Devre Dışı Bırakılmış (EnableLUA = 0)
+  Sonuç: [BAŞARILI - SAPMA TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: CIS-WIN-1.1 [CRITICAL] - Kullanıcı Hesabı Denetimi (UAC) Etkin Olmalıdır -> UAC kapatıldığında zararlı yazılımlar yönetici haklarını sessizce ele geçirebilir. (Beklenen: 1, Mevcut: 0)
+  Açıklama: Kullanıcı veya zararlı yazılım tarafından UAC devre dışı bırakılmış; süreçlerin sessizce elevated admin hakları kazanmasına yol açar.
+------------------------------------------------------------------------------
+Senaryo NEG-DFT-02: Windows Defender Gerçek Zamanlı Koruma Kapatılmış (Tamper Saldırısı)
+  Sonuç: [BAŞARILI - SAPMA TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: CIS-WIN-1.2 [CRITICAL] - Microsoft Defender Gerçek Zamanlı Koruma Açık Olmalıdır -> Gerçek zamanlı koruma kapatıldığında kötü amaçlı yazılımlar diskte serbestçe çalışır. (Beklenen: 0, Mevcut: 1)
+  Açıklama: DisableRealtimeMonitoring = 1 yapılarak antivirüs koruması susturulmuş; malware yürütülmesine zemin hazırlanır.
+------------------------------------------------------------------------------
+Senaryo NEG-DFT-03: LSA RunAsPPL Koruma Modu Kapatılmış (Credential Dumping Riski)
+  Sonuç: [BAŞARILI - SAPMA TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: CIS-WIN-1.3 [HIGH] - LSA Koruma Modu (RunAsPPL) Açık Olmalıdır -> LSA koruması kapalıyken Mimikatz gibi araçlar LSASS belleğinden NTLM/Kerberos biletlerini çalabilir. (Beklenen: 1, Mevcut: 0)
+  Açıklama: RunAsPPL = 0 yapılarak LSASS sürecinin bellek koruması kaldırılmış; Mimikatz ile parola çalınabilir.
+------------------------------------------------------------------------------
+Senaryo NEG-DFT-04: Yerel Administrators Grubuna Yetkisiz Arka Kapı Hesabı Eklenmiş
+  Sonuç: [BAŞARILI - SAPMA TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: CIS-WIN-1.4 [CRITICAL] - Yerel Yöneticiler Grubunda Yalnızca Onaylı Hesaplar Bulunmalıdır -> Yerel Administrators grubunda yetkisiz hesaplar tespit edildi: ['backdoor_admin']. Kalıcılık (persistence) veya arka kapı riski.
+  Açıklama: Local admin grubuna 'backdoor_admin' hesabı eklenmiş; kalıcılık ve yetki yükseltme tehdidi.
+------------------------------------------------------------------------------
+Senaryo NEG-DFT-05: Windows Güvenlik Duvarı Etki Alanı Profili Kapatılmış
+  Sonuç: [BAŞARILI - SAPMA TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: CIS-WIN-1.5 [HIGH] - Windows Güvenlik Duvarı Etki Alanı Profili Açık Olmalıdır -> Güvenlik duvarı kapalıyken gelen yetkisiz ağ bağlantıları filtrelenemez. (Beklenen: True, Mevcut: False)
+  Açıklama: DomainProfile_Enabled = false yapılmış; ağ üzerinden gelen saldırılara karşı filtreleme devre dışı.
+------------------------------------------------------------------------------
+Senaryo NEG-DFT-06: Minimum Parola Uzunluğu 14'ten 6 Karaktere Düşürülmüş
+  Sonuç: [BAŞARILI - SAPMA TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: CIS-WIN-1.6 [HIGH] - Minimum Parola Uzunluğu En Az 14 Karakter Olmalıdır -> Kısa parolalar kaba kuvvet (brute-force) ve gökkuşağı tablosu ataklarıyla kolayca kırılabilir. (Beklenen: 14, Mevcut: 6)
+  Açıklama: Parola politikası zayıflatılmış; kaba kuvvet saldırılarına açık hale getirilmiş.
+------------------------------------------------------------------------------
+Senaryo NEG-DFT-07: Hesap Kilitleme Eşiği Sıfırlanmış (Sınırsız Parola Denemesi)
+  Sonuç: [BAŞARILI - SAPMA TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: CIS-WIN-1.7 [HIGH] - Hesap Kilitleme Eşiği 5 Deneme Olarak Ayarlanmalıdır -> Hesap kilitleme kapalıyken saldırganlar sınırsız parola denemesi yapabilir. (Beklenen: 5, Mevcut: 0)
+  Açıklama: AccountLockoutThreshold = 0 yapılarak parola kilitlenmesi kapatılmış; sınırsız brute-force mümkün kılınmış.
+------------------------------------------------------------------------------
+Senaryo NEG-DFT-08: RemoteRegistry Servisi Başlatılmış (Yetkisiz Uzak Kayıt Erişimi)
+  Sonuç: [BAŞARILI - SAPMA TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: CIS-WIN-1.9 [MEDIUM] - RemoteRegistry Servisi Durdurulmuş Olmalıdır -> Uzak kayıt defteri servisi ağ üzerinden kayıt defteri kurcalamalarına zemin hazırlar. (Beklenen: Stopped, Mevcut: Running)
+  Açıklama: RemoteRegistry_Service = 'Running' durumuna getirilmiş; ağ üzerinden kayıt defteri sorgulanabilir/değiştirilebilir.
+------------------------------------------------------------------------------
+Senaryo NEG-DFT-09: Linux Bellek Rastgeleleştirme (ASLR) Devre Dışı Bırakılmış
+  Sonuç: [BAŞARILI - SAPMA TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: CIS-LNX-2.2 [CRITICAL] - Adres Alanı Düzeni Rastgeleleştirme (ASLR) Tam Açık Olmalıdır -> ASLR kapalı olduğunda bellek taşması istismarları deterministik hale gelir. (Beklenen: 2, Mevcut: 0)
+  Açıklama: kernel.randomize_va_space = 0 yapılarak ASLR kapatılmış; bellek taşması saldırıları kolaylaştırılmış.
+------------------------------------------------------------------------------
+
+Toplam Başarılı Tespit: 9/9 (%100 Başarı)

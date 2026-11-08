@@ -1,0 +1,22 @@
+==============================================================================
+GÜN 152: GÜVENLİ YAPILANDIRMA SAPMASI CLI KONSOL GÜNLÜĞÜ
+Zaman Damgası (UTC): 2026-11-08T15:35:29.003869+00:00
+==============================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_152\uygulama\config_drift_cli.py audit --config C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_152\ornek_veri\clean_endpoint_baseline.json
+==============================================================================
+[*] GÜVENLİ YAPILANDIRMA SAPMA DENETİMİ: ENDPOINT-WIN11-CORP-01
+[*] Zaman: 2026-11-08T15:35:29.132029+00:00
+[*] Toplam Değerlendirilen Kural : 11
+[*] Uyumlu Kural Sayısı         : 11
+[*] Sapma Tespit Edilen Kural   : 0
+[*] UYUMLULUK SKORU             : %100.0
+==============================================================================
+[+] TEBRİKLER: Sistem temel hat ile %100 uyumludur. Hiçbir sapma tespit edilmedi.
+------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_152\uygulama\config_drift_cli.py remediate --config C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_152\ornek_veri\clean_endpoint_baseline.json --output C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_152\kanit\gercek\cli_temp_remediated.json
+[+] Uç nokta durumu başarıyla temel hata döndürüldü ve kaydedildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_152\kanit\gercek\cli_temp_remediated.json
+------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_152\uygulama\config_drift_cli.py generate-remediation --config C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_152\ornek_veri\clean_endpoint_baseline.json --os-type windows --output C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_152\kanit\gercek\cli_temp_script.ps1
+[+] WINDOWS otomatik düzeltme betiği üretildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_152\kanit\gercek\cli_temp_script.ps1
+------------------------------------------------------------------------------
