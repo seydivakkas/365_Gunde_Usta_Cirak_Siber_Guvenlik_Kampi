@@ -1,0 +1,173 @@
+[
+  {
+    "scenario_id": "SCN-COOKIE-01",
+    "name": "Eksik_Secure_Bayragi_Oturum_Cerezi",
+    "target_issue_code": "MISSING_SECURE_FLAG",
+    "description": "Oturum cerezinde Secure bayragi eksik; duz metin HTTP uzerinden MITM dinlemesine acik.",
+    "cookie": {
+      "name": "legacy_session_id",
+      "value": "sec_token_99812",
+      "secure": false,
+      "http_only": true,
+      "same_site": "Lax",
+      "domain": null,
+      "path": "/",
+      "max_age": 86400,
+      "cookie_type": "SessionAuth",
+      "is_encrypted_or_opaque": true
+    },
+    "expected_result": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-COOKIE-02",
+    "name": "Eksik_HttpOnly_Bayragi_Oturum_Cerezi",
+    "target_issue_code": "MISSING_HTTPONLY_FLAG",
+    "description": "Oturum cerezi JavaScript document.cookie tarafindan okunabilir; XSS ile oturum calinabilir.",
+    "cookie": {
+      "name": "auth_token_js",
+      "value": "token_abc123",
+      "secure": true,
+      "http_only": false,
+      "same_site": "Strict",
+      "domain": null,
+      "path": "/",
+      "max_age": 86400,
+      "cookie_type": "SessionAuth",
+      "is_encrypted_or_opaque": true
+    },
+    "expected_result": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-COOKIE-03",
+    "name": "Eksik_SameSite_Politikasi",
+    "target_issue_code": "MISSING_SAMESITE_FLAG",
+    "description": "Cerezde SameSite ozniteligi tanimlanmamis; siteler arasi CSRF isteklerine karsi savunmasiz.",
+    "cookie": {
+      "name": "user_pref_theme",
+      "value": "blue_ocean",
+      "secure": true,
+      "http_only": false,
+      "same_site": "Missing",
+      "domain": null,
+      "path": "/",
+      "max_age": 86400,
+      "cookie_type": "Preference",
+      "is_encrypted_or_opaque": true
+    },
+    "expected_result": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-COOKIE-04",
+    "name": "Guvensiz_SameSite_None_Secure_Yok",
+    "target_issue_code": "SAMESITE_NONE_WITHOUT_SECURE",
+    "description": "SameSite=None politikasinda Secure bayragi eksik; modern tarayicilar tarafindan aninda reddedilir.",
+    "cookie": {
+      "name": "third_party_sync",
+      "value": "sync_token_441",
+      "secure": false,
+      "http_only": false,
+      "same_site": "None",
+      "domain": null,
+      "path": "/",
+      "max_age": 86400,
+      "cookie_type": "Tracking",
+      "is_encrypted_or_opaque": true
+    },
+    "expected_result": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-COOKIE-05",
+    "name": "Hatali_Host_Oneki_Domain_Tanimlanmis",
+    "target_issue_code": "INVALID_HOST_PREFIX_USAGE",
+    "description": "__Host- cerezinde Domain ozniteligi belirtilmis; RFC 6265bis alt alan izolasyon kuralini ihlal ediyor.",
+    "cookie": {
+      "name": "__Host-user_session",
+      "value": "host_token_552",
+      "secure": true,
+      "http_only": true,
+      "same_site": "Strict",
+      "domain": "portal.bank.com",
+      "path": "/",
+      "max_age": 86400,
+      "cookie_type": "SessionAuth",
+      "is_encrypted_or_opaque": true
+    },
+    "expected_result": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-COOKIE-06",
+    "name": "Hatali_Host_Oneki_Path_Kok_Degil",
+    "target_issue_code": "INVALID_HOST_PREFIX_USAGE",
+    "description": "__Host- cerezinde Path=/ yerine /api/v2 tanimlanmis; tarayici kurali geregi Path=/ olmak zorundadir.",
+    "cookie": {
+      "name": "__Host-api_token",
+      "value": "api_tok_110",
+      "secure": true,
+      "http_only": true,
+      "same_site": "Strict",
+      "domain": null,
+      "path": "/api/v2",
+      "max_age": 86400,
+      "cookie_type": "SessionAuth",
+      "is_encrypted_or_opaque": true
+    },
+    "expected_result": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-COOKIE-07",
+    "name": "Hatali_Secure_Oneki_Secure_Yok",
+    "target_issue_code": "INVALID_SECURE_PREFIX_USAGE",
+    "description": "__Secure- cerezinde Secure bayragi tanimlanmamis; tarayici bu cerezi kesinlikle kabul etmez.",
+    "cookie": {
+      "name": "__Secure-pref_lang",
+      "value": "tr_TR",
+      "secure": false,
+      "http_only": false,
+      "same_site": "Lax",
+      "domain": null,
+      "path": "/",
+      "max_age": 86400,
+      "cookie_type": "Preference",
+      "is_encrypted_or_opaque": true
+    },
+    "expected_result": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-COOKIE-08",
+    "name": "Genis_Kapsamli_Wildcard_Domain",
+    "target_issue_code": "BROAD_DOMAIN_SCOPE",
+    "description": "Cerez domaini .corpbank.com olarak tanimlanmis; ele gecirilen herhangi bir alt alan cerezi ezebilir.",
+    "cookie": {
+      "name": "sso_auth_ticket",
+      "value": "ticket_7721",
+      "secure": true,
+      "http_only": true,
+      "same_site": "Lax",
+      "domain": ".corpbank.com",
+      "path": "/",
+      "max_age": 86400,
+      "cookie_type": "SessionAuth",
+      "is_encrypted_or_opaque": true
+    },
+    "expected_result": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-COOKIE-09",
+    "name": "Duz_Metin_Hassas_Veri_Ve_Asiri_Omur",
+    "target_issue_code": "PLAINTEXT_SENSITIVE_DATA",
+    "description": "Cerez degerinde sifrelenmemis duz metin rol bilgisi (role=admin&user=102) ve 1 yillik asiri omur var.",
+    "cookie": {
+      "name": "profile_cookie",
+      "value": "user_id=102&role=admin&access=full",
+      "secure": true,
+      "http_only": true,
+      "same_site": "Strict",
+      "domain": null,
+      "path": "/",
+      "max_age": 31536000,
+      "cookie_type": "SessionAuth",
+      "is_encrypted_or_opaque": false
+    },
+    "expected_result": "KALDI"
+  }
+]

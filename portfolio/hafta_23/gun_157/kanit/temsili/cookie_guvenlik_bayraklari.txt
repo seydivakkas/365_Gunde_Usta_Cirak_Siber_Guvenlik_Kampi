@@ -1,0 +1,51 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================================
+                      HTTP ÇEREZLERİ VE GÜVENLİK BAYRAKLARI MİMARİSİ
+========================================================================================================
+
+  +----------------------------------------------------------------------------------------------------+
+  |                                 HTTP YANIT BAŞLIĞI: Set-Cookie                                     |
+  |  Set-Cookie: __Host-auth=e8d7a6; Path=/; Secure; HttpOnly; SameSite=Strict; Max-Age=86400         |
+  +----------------------------------------------------------------------------------------------------+
+                                      |
+         +----------------------------+----------------------------+
+         |                            |                            |
+         v                            v                            v
+  +--------------------+       +--------------------+       +--------------------+
+  |   Secure Bayrağı   |       |  HttpOnly Bayrağı  |       |  SameSite Bayrağı  |
+  +--------------------+       +--------------------+       +--------------------+
+  | * Yalnızca TLS 1.3 |       | * JS document.cook |       | * Strict: Tam izole|
+  |   üzerinden iletim |       |   erişimi engeller |       | * Lax: GET navigas.|
+  | * Düz metin HTTP   |       | * XSS Session      |       | * None: 3. taraf   |
+  |   ve MITM dinleme  |       |   Hijacking saldırı|       |   (Secure zorunlu) |
+  |   sızıntısı ÖNLENİR|       |   larını SIFIRLAR  |       | * CSRF'i ENGELLER  |
+  +--------------------+       +--------------------+       +--------------------+
+         |                            |                            |
+         +----------------------------+----------------------------+
+                                      |
+                                      v
+  +----------------------------------------------------------------------------------------------------+
+  |                             RFC 6265bis GÜVENLİK ÖNEKLERİ                                          |
+  |                                                                                                    |
+  |  1. __Secure- Öneki:                                                                               |
+  |     - Yalnızca HTTPS üzerinden gönderilir.                                                         |
+  |     - 'Secure' bayrağı İÇERMEK ZORUNDADIR.                                                         |
+  |                                                                                                    |
+  |  2. __Host- Öneki (EN YÜKSEK İZOLASYON):                                                           |
+  |     - 'Secure' bayrağı İÇERMEK ZORUNDADIR.                                                         |
+  |     - 'Path=/' KÖK DİZİN OLMAK ZORUNDADIR.                                                         |
+  |     - 'Domain' ÖZNİTELİĞİ KESİNLİKLE BULUNMAMALIDIR (Host-only cookie).                            |
+  |     - Alt alan adlarının (subdomain takeover) çerezi ezmesini veya sabitlemesini (fixation) ÖNLER!  |
+  +----------------------------------------------------------------------------------------------------+
+
+========================================================================================================
+                                   GÜVENLİK KONTROL MATRİSİ
+========================================================================================================
+  Çerez Türü       Önek      Secure    HttpOnly    SameSite    Path    Domain      Max-Age Sınırı
+  ------------     -------   ------    --------    --------    ----    ------      --------------
+  Oturum (Auth)    __Host-    EVET       EVET       Strict       /      YASAK       <= 14 Gün
+  CSRF Belirteci   __Host-    EVET       HAYIR*     Strict       /      YASAK       <= 1 Gün
+  Tercih/Tema      __Secure-  EVET       HAYIR        Lax        /      Opsiyonel   <= 30 Gün
+========================================================================================================
+  * Not: Double-Submit CSRF modellerinde istemci JS token'ı okuyacağı için HttpOnly kapatılabilir.
+========================================================================================================

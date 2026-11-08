@@ -1,0 +1,82 @@
+=== HTTP COOKIES VE GÜVENLİK BAYRAKLARI CLI YÜRÜTME LOGLARI ===
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_157\uygulama\cookie_security_cli.py audit-header --header session_id=tok123; Path=/; Secure; HttpOnly; SameSite=Strict
+===========================================================================
+ TEK�L �EREZ G�VENL�K DENET�M� RAPORU
+===========================================================================
+ �erez Ad�           : session_id
+ �erez T�r�          : SessionAuth
+ G�venlik Skoru      : %100.0 / 100
+ Denetim Durumu      : [GECTI]
+ Orijinal Ba�l�k     : session_id=tok123; Path=/; Secure; HttpOnly; SameSite=Strict
+ Sertle�tirilmi� �neri: __Host-session_id=tok123; Path=/; Secure; HttpOnly; SameSite=Strict
+---------------------------------------------------------------------------
+ [BA�ARILI] Herhangi bir g�venlik a���� tespit edilmedi; �erez tam uyumludur.
+===========================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_157\uygulama\cookie_security_cli.py audit-header --header bad_session=abc; Path=/; SameSite=None
+===========================================================================
+ TEK�L �EREZ G�VENL�K DENET�M� RAPORU
+===========================================================================
+ �erez Ad�           : bad_session
+ �erez T�r�          : SessionAuth
+ G�venlik Skoru      : %0.0 / 100
+ Denetim Durumu      : [KALDI]
+ Orijinal Ba�l�k     : bad_session=abc; Path=/; SameSite=None
+ Sertle�tirilmi� �neri: __Host-bad_session=abc; Path=/; Secure; HttpOnly; SameSite=Strict
+---------------------------------------------------------------------------
+ TESP�T ED�LEN G�VENL�K A�IKLARI:
+   1. [CRITICAL] MISSING_SECURE_FLAG: Eksik Secure Bayra�� (Kritik)
+      A��klama  : Oturum veya CSRF �erezinde Secure bayra�� yok. �erez d�z metin HTTP �zerinden iletilebilir ve dinlenebilir (MITM).
+      �yile�tirme: Set-Cookie ba�l���na 'Secure' bayra��n� ekleyerek �erezin yaln�zca HTTPS �zerinden ta��nmas�n� zorunlu k�l�n.
+   2. [HIGH] MISSING_HTTPONLY_FLAG: Eksik HttpOnly Bayra�� (Y�ksek Risk)
+      A��klama  : Oturum �erezi JavaScript (document.cookie) taraf�ndan okunabilir durumdad�r. Olas� bir XSS zafiyetinde sald�rgan oturumu do�rudan �alabilir.
+      �yile�tirme: Oturum �erezine 'HttpOnly' bayra�� ekleyerek taray�c� betiklerinin �ereze eri�imini tamamen engelleyin.
+   3. [CRITICAL] SAMESITE_NONE_WITHOUT_SECURE: G�vensiz SameSite=None Yap�land�rmas�
+      A��klama  : SameSite=None politikas�nda Secure bayra�� eksik. Modern taray�c�lar (Chrome, Firefox, Safari) bu �erezi derhal reddeder.
+      �yile�tirme: SameSite=None kullan�l�yorsa mutlaka 'Secure' bayra��n� da ekleyin.
+===========================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_157\uygulama\cookie_security_cli.py audit-spec --spec C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_157\ornek_veri\enterprise_cookie_spec.json
+======================================================================================
+ HTTP �EREZLER� VE G�VENL�K BAYRAKLARI DENET�M RAPORU (G�N 157)
+======================================================================================
+ Toplam �erez Say�s�   : 4
+ Uyumlu �erez Say�s�   : 4 / 4
+ Riskli �erez Say�s�   : 0
+ Ortalama G�venlik Puan�: %100.0 / 100
+ Kurumsal Kabul Durumu : [GECTI]
+--------------------------------------------------------------------------------------
+ �EREZ ADI                T�R            PUAN     DURUM    BULGU SAYISI
+--------------------------------------------------------------------------------------
+ __Host-auth_session      SessionAuth    100.0   [GECTI]   0           
+ __Host-csrf_token        CsrfToken      100.0   [GECTI]   0           
+ __Secure-ui_theme        Preference     100.0   [GECTI]   0           
+ __Secure-preferred_lang  Preference     100.0   [GECTI]   0           
+======================================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_157\uygulama\cookie_security_cli.py harden --header user_auth=9928; Path=/; Domain=.example.com
+===========================================================================
+ OR�J�NAL �EREZ BA�LI�I:
+   user_auth=9928; Path=/; Domain=.example.com
+---------------------------------------------------------------------------
+ SERTLE�T�R�LM�� (G�VENL�) �EREZ BA�LI�I:
+   __Host-user_auth=9928; Path=/; Secure; HttpOnly; SameSite=Strict
+===========================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_157\uygulama\cookie_security_cli.py generate-set-cookie --name secure_session --value crypto_opaque_uuid --max-age 86400
+===========================================================================
+ STANDARTLARA TAM UYUMLU �RET�LEN SET-COOKIE BA�LI�I:
+   __Host-secure_session=crypto_opaque_uuid; Path=/; Max-Age=86400; Secure; HttpOnly; SameSite=Strict
+===========================================================================
+
+======================================================================
+

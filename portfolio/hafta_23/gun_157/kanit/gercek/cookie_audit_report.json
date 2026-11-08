@@ -1,0 +1,45 @@
+{
+  "total_cookies": 4,
+  "compliant_cookies_count": 4,
+  "vulnerable_cookies_count": 0,
+  "average_security_score": 100.0,
+  "overall_status": "GECTI",
+  "cookie_reports": {
+    "__Host-auth_session": {
+      "cookie_name": "__Host-auth_session",
+      "cookie_type": "SessionAuth",
+      "security_score": 100.0,
+      "status": "GECTI",
+      "issues": [],
+      "hardened_header": "__Host-auth_session=e8d7a6b5c4f3e2d1a0b9c8d7e6f5a4b3; Path=/; Max-Age=86400; Secure; HttpOnly; SameSite=Strict",
+      "recommendations": []
+    },
+    "__Host-csrf_token": {
+      "cookie_name": "__Host-csrf_token",
+      "cookie_type": "CsrfToken",
+      "security_score": 100.0,
+      "status": "GECTI",
+      "issues": [],
+      "hardened_header": "__Host-csrf_token=7f8e9d0a1b2c3d4e5f6a7b8c9d0e1f2a; Path=/; Max-Age=86400; Secure; SameSite=Strict",
+      "recommendations": []
+    },
+    "__Secure-ui_theme": {
+      "cookie_name": "__Secure-ui_theme",
+      "cookie_type": "Preference",
+      "security_score": 100.0,
+      "status": "GECTI",
+      "issues": [],
+      "hardened_header": "__Secure-ui_theme=dark_mode_v2; Path=/; Max-Age=86400; Secure; SameSite=Lax",
+      "recommendations": []
+    },
+    "__Secure-preferred_lang": {
+      "cookie_name": "__Secure-preferred_lang",
+      "cookie_type": "Preference",
+      "security_score": 100.0,
+      "status": "GECTI",
+      "issues": [],
+      "hardened_header": "__Secure-preferred_lang=tr_TR; Path=/; Max-Age=86400; Secure; SameSite=Lax",
+      "recommendations": []
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "gun": 157,
+  "hafta": 23,
+  "asama": "07",
+  "konu": "HTTP cookies ve güvenlik bayrakları",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "boyut_bayt": 5658,
+      "sha256": "1770ea9a3d4f186579f533c75b002b2a4d585a991e86298d62903e99f0862359"
+    },
+    "ders.md": {
+      "boyut_bayt": 7195,
+      "sha256": "7530a88cfa99f6414eaeeb08b3b8b5dbe9a31775e05995a0a8cad89e78f3d1fa"
+    },
+    "kanit/gercek/cookie_audit_report.json": {
+      "boyut_bayt": 1572,
+      "sha256": "97d835d2478322c46ca0f9fa496950eb3b7d2b9ee1a44f23c17ca88d7e984260"
+    },
+    "kanit/gercek/hardened_cookies.txt": {
+      "boyut_bayt": 2903,
+      "sha256": "ef87ab0d23f9f02b4862982dc0cc621e175179a54606004a09ae2db64702c133"
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "boyut_bayt": 6556,
+      "sha256": "86f4db91da0d283662e612c91fe7dcaa3bed3bb3a19ccbd2ee81b1d7cb3e2b0a"
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 2316,
+      "sha256": "601460914230f4bdb4b7fcb109e42964d80d01d36cc9f57b51c52cb3f2c161dd"
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "boyut_bayt": 4249,
+      "sha256": "60174ef58b08f0cd0ebf064f5f7ce8fdbf52bd386625ce4446013e88a6ca12cc"
+    },
+    "kanit/temsili/cookie_guvenlik_bayraklari.txt": {
+      "boyut_bayt": 4524,
+      "sha256": "d07555d311c72af231be8d5a5b479f7a7f287721581815232b894bca6846f59f"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 13682,
+      "sha256": "33d880433e2470133d6934cfbfcc856863037b5b3bf7c8a567e435b2ac16178b"
+    },
+    "ornek_veri/enterprise_cookie_spec.json": {
+      "boyut_bayt": 1479,
+      "sha256": "bf8209b4a457c7cb6c54dce42739612e488460863c35d05878e5ce661441845e"
+    },
+    "ornek_veri/invalid_cookie_scenarios.json": {
+      "boyut_bayt": 5420,
+      "sha256": "39ed534dc395e8382eb7660841d4fc630264ab4590bc1eeb42c68f137061c596"
+    },
+    "rapor.md": {
+      "boyut_bayt": 4923,
+      "sha256": "6586aefb9916b7349d36dd4d000acf36d6e761d1631835b65c1800e1a68ac901"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1681,
+      "sha256": "192d67cd7fd4f407cbad3bbe5d66b7fcdad104ec671974f01af1b59f7d73b599"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 11303,
+      "sha256": "dfbc6c8a3fb3b661b0cff13296da75be59e21bb2045f01c007570ec201508d76"
+    },
+    "tests/__init__.py": {
+      "boyut_bayt": 103,
+      "sha256": "9638e8ce2d34d12b42854c4b7f1d0e9fcdfcfce7846bfbd6aaf0a79ea19923d9"
+    },
+    "tests/test_cookie_security.py": {
+      "boyut_bayt": 11142,
+      "sha256": "74cccc4775045342f3c75c8cdb705d3ebe186e62b11fceebcf37e0a9790a35ce"
+    },
+    "uygulama/__init__.py": {
+      "boyut_bayt": 107,
+      "sha256": "12cda8eb1fb8a2e934f5158a56fea21461632a88714d63fcea887fe352e36a31"
+    },
+    "uygulama/cookie_security_cli.py": {
+      "boyut_bayt": 7642,
+      "sha256": "d2e391f8302fd283520feabe458e87493e7e74d1c648294032d96e930b7b785e"
+    },
+    "uygulama/cookie_security_engine.py": {
+      "boyut_bayt": 23904,
+      "sha256": "11c03b85ae6e791a9ec4e0b75c22a1b66328d1f0c786c5c6b3430cedf03dee19"
+    }
+  }
+}

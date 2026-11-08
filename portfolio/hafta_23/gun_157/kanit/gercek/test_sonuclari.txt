@@ -1,0 +1,38 @@
+=== HTTP COOKIES VE GÜVENLİK BAYRAKLARI BİRİM TESTLERİ (15/15) ===
+test_01_fully_compliant_host_session_cookie (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_01_fully_compliant_host_session_cookie)
+Kusursuz __Host- �nekli oturum �erezinin 100 tam puanla ge�ti�ini do�rular. ... ok
+test_02_missing_secure_flag_session_cookie (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_02_missing_secure_flag_session_cookie)
+Oturum �erezinde Secure bayra�� eksikli�inin kritik ceza ald���n� test eder. ... ok
+test_03_missing_httponly_flag_session_cookie (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_03_missing_httponly_flag_session_cookie)
+Oturum �erezinde HttpOnly eksikli�inin y�ksek risk cezas� ald���n� do�rular. ... ok
+test_04_missing_samesite_policy (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_04_missing_samesite_policy)
+SameSite bayra�� tan�mlanmam�� �erezin ceza ald���n� do�rular. ... ok
+test_05_samesite_none_without_secure (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_05_samesite_none_without_secure)
+SameSite=None politikas�n�n Secure olmadan kullan�lmas�n�n kritik hata oldu�unu do�rular. ... ok
+test_06_samesite_none_with_secure_valid (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_06_samesite_none_with_secure_valid)
+SameSite=None ile Secure birlikte kullan�ld���nda taray�c� reddi olu�mad���n� test eder. ... ok
+test_07_invalid_host_prefix_with_domain (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_07_invalid_host_prefix_with_domain)
+__Host- �erezinde Domain �zniteli�i bulunmas�n�n ihlal oldu�unu test eder. ... ok
+test_08_invalid_host_prefix_non_root_path (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_08_invalid_host_prefix_non_root_path)
+__Host- �erezinde Path='/' d���nda bir yol bulunmas�n�n ihlal oldu�unu test eder. ... ok
+test_09_invalid_secure_prefix_without_secure (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_09_invalid_secure_prefix_without_secure)
+__Secure- �erezinde Secure=False olmas�n�n ihlal olu�turdu�unu test eder. ... ok
+test_10_broad_domain_wildcard_penalty (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_10_broad_domain_wildcard_penalty)
+Geni� etki alan� (�rn: .example.com) tan�mlamas�n�n ceza ald���n� do�rular. ... ok
+test_11_excessive_max_age_penalty (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_11_excessive_max_age_penalty)
+Oturum �erezinde 1 y�ll�k a��r� Max-Age de�erinin ceza ald���n� test eder. ... ok
+test_12_plaintext_sensitive_data_in_cookie (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_12_plaintext_sensitive_data_in_cookie)
+�erez de�eri i�erisinde 'role=admin' veya 'password=' bulunmas�n�n ceza ald���n� do�rular. ... ok
+test_13_auto_hardening_fixes_all_vulnerabilities (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_13_auto_hardening_fixes_all_vulnerabilities)
+Sertle�tirme fonksiyonunun zafiyetli �erezi tam uyumlu hale getirdi�ini do�rular. ... ok
+test_14_parse_set_cookie_header_roundtrip (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_14_parse_set_cookie_header_roundtrip)
+Set-Cookie ba�l�k metninin do�ru ayr��t�r�ld���n� ve yeniden �retildi�ini do�rular. ... ok
+test_15_fleet_audit_and_ascii_generation (portfolio.hafta_23.gun_157.tests.test_cookie_security.TestCookieSecurityEngine.test_15_fleet_audit_and_ascii_generation)
+�oklu �erez envanteri denetiminin ve ASCII pano ��kt�s�n�n do�rulanmas�. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+
+Durum Kodu: 0

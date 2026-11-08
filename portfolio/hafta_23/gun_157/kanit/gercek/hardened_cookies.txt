@@ -1,0 +1,38 @@
+=== ZAFİYETLİ ÇEREZLERİN OTOMATİK SERTLEŞTİRİLMİŞ BAŞLIKLARI ===
+
+Senaryo: SCN-COOKIE-01 (Eksik_Secure_Bayragi_Oturum_Cerezi)
+  Orijinal Başlık     : Set-Cookie: legacy_session_id=sec_token_99812; Path=/; Max-Age=86400; HttpOnly; SameSite=Lax
+  Sertleştirilmiş Hal : Set-Cookie: __Host-legacy_session_id=sec_token_99812; Path=/; Max-Age=86400; Secure; HttpOnly; SameSite=Strict
+
+Senaryo: SCN-COOKIE-02 (Eksik_HttpOnly_Bayragi_Oturum_Cerezi)
+  Orijinal Başlık     : Set-Cookie: auth_token_js=token_abc123; Path=/; Max-Age=86400; Secure; SameSite=Strict
+  Sertleştirilmiş Hal : Set-Cookie: __Host-auth_token_js=token_abc123; Path=/; Max-Age=86400; Secure; HttpOnly; SameSite=Strict
+
+Senaryo: SCN-COOKIE-03 (Eksik_SameSite_Politikasi)
+  Orijinal Başlık     : Set-Cookie: user_pref_theme=blue_ocean; Path=/; Max-Age=86400; Secure
+  Sertleştirilmiş Hal : Set-Cookie: user_pref_theme=blue_ocean; Path=/; Max-Age=86400; Secure; SameSite=Lax
+
+Senaryo: SCN-COOKIE-04 (Guvensiz_SameSite_None_Secure_Yok)
+  Orijinal Başlık     : Set-Cookie: third_party_sync=sync_token_441; Path=/; Max-Age=86400; SameSite=None
+  Sertleştirilmiş Hal : Set-Cookie: third_party_sync=sync_token_441; Path=/; Max-Age=86400; Secure; SameSite=Lax
+
+Senaryo: SCN-COOKIE-05 (Hatali_Host_Oneki_Domain_Tanimlanmis)
+  Orijinal Başlık     : Set-Cookie: __Host-user_session=host_token_552; Path=/; Domain=portal.bank.com; Max-Age=86400; Secure; HttpOnly; SameSite=Strict
+  Sertleştirilmiş Hal : Set-Cookie: __Host-user_session=host_token_552; Path=/; Max-Age=86400; Secure; HttpOnly; SameSite=Strict
+
+Senaryo: SCN-COOKIE-06 (Hatali_Host_Oneki_Path_Kok_Degil)
+  Orijinal Başlık     : Set-Cookie: __Host-api_token=api_tok_110; Path=/api/v2; Max-Age=86400; Secure; HttpOnly; SameSite=Strict
+  Sertleştirilmiş Hal : Set-Cookie: __Host-api_token=api_tok_110; Path=/; Max-Age=86400; Secure; HttpOnly; SameSite=Strict
+
+Senaryo: SCN-COOKIE-07 (Hatali_Secure_Oneki_Secure_Yok)
+  Orijinal Başlık     : Set-Cookie: __Secure-pref_lang=tr_TR; Path=/; Max-Age=86400; SameSite=Lax
+  Sertleştirilmiş Hal : Set-Cookie: __Secure-pref_lang=tr_TR; Path=/; Max-Age=86400; Secure; SameSite=Lax
+
+Senaryo: SCN-COOKIE-08 (Genis_Kapsamli_Wildcard_Domain)
+  Orijinal Başlık     : Set-Cookie: sso_auth_ticket=ticket_7721; Path=/; Domain=.corpbank.com; Max-Age=86400; Secure; HttpOnly; SameSite=Lax
+  Sertleştirilmiş Hal : Set-Cookie: __Host-sso_auth_ticket=ticket_7721; Path=/; Max-Age=86400; Secure; HttpOnly; SameSite=Strict
+
+Senaryo: SCN-COOKIE-09 (Duz_Metin_Hassas_Veri_Ve_Asiri_Omur)
+  Orijinal Başlık     : Set-Cookie: profile_cookie=user_id=102&role=admin&access=full; Path=/; Max-Age=31536000; Secure; HttpOnly; SameSite=Strict
+  Sertleştirilmiş Hal : Set-Cookie: __Host-profile_cookie=user_id=102&role=admin&access=full; Path=/; Max-Age=86400; Secure; HttpOnly; SameSite=Strict
+

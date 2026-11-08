@@ -1,0 +1,57 @@
+=== 9 ADET ÇEREZ GÜVENLİK VE BAYRAK NEGATİF KONTROL SENARYOSU ===
+
+Senaryo: SCN-COOKIE-01 - Eksik_Secure_Bayragi_Oturum_Cerezi
+  Hedef Zafiyet Kodu: MISSING_SECURE_FLAG
+  Hesaplanan Skor   : %60.0 / 100 (Durum: KALDI)
+  Tespit Edilen Açık : 1
+  Negatif Doğrulama  : BAŞARILI (Açık Yakalandı)
+
+Senaryo: SCN-COOKIE-02 - Eksik_HttpOnly_Bayragi_Oturum_Cerezi
+  Hedef Zafiyet Kodu: MISSING_HTTPONLY_FLAG
+  Hesaplanan Skor   : %65.0 / 100 (Durum: KALDI)
+  Tespit Edilen Açık : 1
+  Negatif Doğrulama  : BAŞARILI (Açık Yakalandı)
+
+Senaryo: SCN-COOKIE-03 - Eksik_SameSite_Politikasi
+  Hedef Zafiyet Kodu: MISSING_SAMESITE_FLAG
+  Hesaplanan Skor   : %75.0 / 100 (Durum: KALDI)
+  Tespit Edilen Açık : 1
+  Negatif Doğrulama  : BAŞARILI (Açık Yakalandı)
+
+Senaryo: SCN-COOKIE-04 - Guvensiz_SameSite_None_Secure_Yok
+  Hedef Zafiyet Kodu: SAMESITE_NONE_WITHOUT_SECURE
+  Hesaplanan Skor   : %45.0 / 100 (Durum: KALDI)
+  Tespit Edilen Açık : 2
+  Negatif Doğrulama  : BAŞARILI (Açık Yakalandı)
+
+Senaryo: SCN-COOKIE-05 - Hatali_Host_Oneki_Domain_Tanimlanmis
+  Hedef Zafiyet Kodu: INVALID_HOST_PREFIX_USAGE
+  Hesaplanan Skor   : %70.0 / 100 (Durum: KALDI)
+  Tespit Edilen Açık : 1
+  Negatif Doğrulama  : BAŞARILI (Açık Yakalandı)
+
+Senaryo: SCN-COOKIE-06 - Hatali_Host_Oneki_Path_Kok_Degil
+  Hedef Zafiyet Kodu: INVALID_HOST_PREFIX_USAGE
+  Hesaplanan Skor   : %70.0 / 100 (Durum: KALDI)
+  Tespit Edilen Açık : 1
+  Negatif Doğrulama  : BAŞARILI (Açık Yakalandı)
+
+Senaryo: SCN-COOKIE-07 - Hatali_Secure_Oneki_Secure_Yok
+  Hedef Zafiyet Kodu: INVALID_SECURE_PREFIX_USAGE
+  Hesaplanan Skor   : %60.0 / 100 (Durum: KALDI)
+  Tespit Edilen Açık : 2
+  Negatif Doğrulama  : BAŞARILI (Açık Yakalandı)
+
+Senaryo: SCN-COOKIE-08 - Genis_Kapsamli_Wildcard_Domain
+  Hedef Zafiyet Kodu: BROAD_DOMAIN_SCOPE
+  Hesaplanan Skor   : %75.0 / 100 (Durum: KALDI)
+  Tespit Edilen Açık : 1
+  Negatif Doğrulama  : BAŞARILI (Açık Yakalandı)
+
+Senaryo: SCN-COOKIE-09 - Duz_Metin_Hassas_Veri_Ve_Asiri_Omur
+  Hedef Zafiyet Kodu: PLAINTEXT_SENSITIVE_DATA
+  Hesaplanan Skor   : %55.0 / 100 (Durum: KALDI)
+  Tespit Edilen Açık : 2
+  Negatif Doğrulama  : BAŞARILI (Açık Yakalandı)
+
+ÖZET: Toplam 9 senaryonun 9 tanesi doğrulandı. (Genel: 100% PASS)

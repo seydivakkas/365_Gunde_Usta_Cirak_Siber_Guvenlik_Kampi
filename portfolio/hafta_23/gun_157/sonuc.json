@@ -1,0 +1,37 @@
+{
+  "gun": 157,
+  "hafta": 23,
+  "asama": "07",
+  "konu": "HTTP cookies ve güvenlik bayrakları",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-08",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_23/gun_157/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_23/gun_157/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "cookie_audit_report_json": "portfolio/hafta_23/gun_157/kanit/gercek/cookie_audit_report.json",
+    "hardened_cookies_txt": "portfolio/hafta_23/gun_157/kanit/gercek/hardened_cookies.txt",
+    "komut_ve_cikis": "portfolio/hafta_23/gun_157/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_23/gun_157/kanit/temsili/cookie_guvenlik_bayraklari.txt"
+  },
+  "ozet": "HTTP çerezleri ve güvenlik bayrakları (Secure, HttpOnly, SameSite=Strict/Lax/None), RFC 6265bis çerez önekleri (__Host-, __Secure-), etki alanı sınırlandırması ve ömür denetimi eksiksiz modellendi. Zafiyetli Set-Cookie başlıklarını otomatik olarak __Host- önekli tam korumalı başlığa dönüştüren sertleştirme motoru ve CLI yönetim aracı geliştirildi. 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla doğrulandı."
+}
