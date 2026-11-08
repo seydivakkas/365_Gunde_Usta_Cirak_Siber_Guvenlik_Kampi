@@ -1,0 +1,174 @@
+================================================================================
+ GÜN 153: UÇ NOKTA RİSK PANOSU CLI YÜRÜTME VE KONSOL GÜNLÜĞÜ
+================================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_153\uygulama\endpoint_risk_cli.py scan-fleet --fleet C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_153\ornek_veri\enterprise_fleet_inventory.json
+
+==================================================================================
+ KURUMSAL UÇ NOKTA RİSK PANOSU VE GÜVENLİK DURUŞ RAPORU (MINI PROJE 21)
+==================================================================================
+ Toplam Uç Nokta   : 10     | Filo Ortalama Risk Skoru  :  24.5 / 100
+ Filo Duruş Puanı  :  75.5 / 100 | Kritik Varlık Risk Skoru :   2.7 / 100
+----------------------------------------------------------------------------------
+ RISK DAĞILIMI:
+   [DUSUK]     7 cihaz (70.0%)
+   [ORTA]      1 cihaz (10.0%)
+   [YUKSEK]    0 cihaz (0.0%)
+   [KRITIK]    2 cihaz (20.0%)
+----------------------------------------------------------------------------------
+ DEPARTMAN BAZLI ORTALAMA RİSK SKORLARI (Yüksekten Düşüğe):
+   - External Contractors   :  91.8 | ##################
+   - Engineering            :  30.1 | ######
+   - Finance                :  20.0 | ####
+   - Facilities             :  15.0 | ###
+   - Executive              :   7.6 | #
+   - Human Resources        :   0.7 | 
+   - IT Operations          :   0.2 | 
+----------------------------------------------------------------------------------
+ EN YÜKSEK RİSKLİ UÇ NOKTALAR (TOP 5):
+   HOSTNAME         IP ADRESİ       DEPARTMAN       RİSK     KRİTİK 
+   CONTR-LAP-09     10.0.50.88      External Contractors 91.8     HAYIR  
+   ENG-DEV-002      10.0.30.22      Engineering     84.8     HAYIR  
+   FIN-WKS-002      10.0.20.44      Finance         37.7     HAYIR  
+   FAC-KIOSK-01     10.0.40.100     Facilities      15.0     HAYIR  
+   EXEC-LAP-01      10.0.10.5       Executive       7.6      EVET   
+----------------------------------------------------------------------------------
+ EN YAYGIN SİSTEMİK GÜVENLİK ZAYIFLIKLARI:
+   * Yedekten geri yükleme (Restore Drill) periyodik olarak doğrulanmamış. (5 cihazda tespit edildi)
+   * 1 adet YÜKSEK seviye CVE zafiyeti mevcut. (4 cihazda tespit edildi)
+   * Yedek depolama birimi değiştirilemez (WORM/Immutable) değil; fidye yazılımı imhasına açık. (4 cihazda tespit edildi)
+   * EDR Kurcalamaya Karşı Koruma (Tamper Protection) devre dışı. (2 cihazda tespit edildi)
+==================================================================================
+
+
+--------------------------------------------------------------------------------
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_153\uygulama\endpoint_risk_cli.py host-detail --fleet C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_153\ornek_veri\enterprise_fleet_inventory.json --host CONTR-LAP-09
+
+======================================================================
+ UÇ NOKTA DERİN GÜVENLİK ANALİZİ: CONTR-LAP-09
+======================================================================
+ IP Adresi         : 10.0.50.88
+ İşletim Sistemi   : Windows 11 Pro
+ Departman         : External Contractors
+ Kritik Varlık     : HAYIR
+ Risk Skoru        : 91.8 / 100 (KRITIK)
+ Güvenlik Duruşu   : 8.2 / 100
+----------------------------------------------------------------------
+ VEKTÖR CEZA PUANI DAĞILIMI:
+   * EDR & Telemetri Cezası     :  85.0 / 100
+   * Disk Şifreleme & TPM       :  70.0 / 100
+   * Yedekleme Güvenliği        : 100.0 / 100
+   * CIS Sıkılaştırma & Sapma   : 100.0 / 100
+   * Zafiyet & Yama Durumu      : 100.0 / 100
+   * Uygulama Kontrolü          : 100.0 / 100
+----------------------------------------------------------------------
+ TESPİT EDİLEN BULGULAR:
+   [-] EDR ajanı yüklü değil (Uç nokta telemetrisi tamamen kör).
+   [-] Zararlı yazılım imza veri tabanı 200 saat eski (>72 saat).
+   [-] Sistem diski şifrelenmemiş (BitLocker / LUKS kapalı).
+   [-] Son başarılı yedekleme 500 saat önce alınmış (>168 saat).
+   [-] Yedek depolama birimi değiştirilemez (WORM/Immutable) değil; fidye yazılımı imhasına açık.
+   [-] Yedekten geri yükleme (Restore Drill) periyodik olarak doğrulanmamış.
+   [-] Yerel Administrators grubunda 3 yetkisiz hesap tespit edildi.
+   [-] Kritik çekirdek savunması (UAC / ASLR) devre dışı bırakılmış.
+   [-] 3 adet çözülmemiş KRİTİK CVE zafiyeti mevcut.
+   [-] 6 adet YÜKSEK seviye CVE zafiyeti mevcut.
+   [-] İşletim sistemi güncellemesi 120 gündür yapılmamış (>60 gün).
+   [-] Uygulama beyaz listesi (AppLocker/WDAC) devre dışı.
+   [-] 4 adet onaylanmamış/engellenmesi gereken çalıştırılabilir dosya saptandı.
+----------------------------------------------------------------------
+ ÖNERİLEN İYİLEŞTİRME ADIMLARI:
+   [!] Merkezi dağıtım ile kurumsal EDR ajanını derhal yükleyin.
+   [!] İmza güncelleme sunucusu bağlantısını kontrol edin ve anlık güncelleme tetikleyin.
+   [!] Sistem biriminde XTS-AES-256 disk şifrelemeyi derhal etkinleştirin.
+   [!] Yedekleme ajanını kontrol ederek tam/artımlı yedekleme görevini tetikleyin.
+   [!] S3 Object Lock COMPLIANCE modu veya WORM yedek deposunu devreye alın.
+   [!] Yetkisiz yerel yönetici hesaplarını tespit edip Administrators grubundan çıkarın.
+   [!] UAC (EnableLUA=1) veya ASLR (randomize_va_space=2) zorlamasını yeniden açın.
+   [!] Kritik CVE güvenlik yamalarını acil bakım döngüsünde uygulayın.
+   [!] İşletim sistemi kümülatif güvenlik güncelleştirmelerini yükleyin.
+   [!] AppLocker veya WDAC politikasını en azından 'Denetim' modunda başlatın.
+   [!] Onaysız ikili dosyaları karantinaya alın ve hash kurallarını güncelleyin.
+======================================================================
+
+
+--------------------------------------------------------------------------------
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_153\uygulama\endpoint_risk_cli.py host-detail --fleet C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_153\ornek_veri\enterprise_fleet_inventory.json --host CORP-DC-01
+
+======================================================================
+ UÇ NOKTA DERİN GÜVENLİK ANALİZİ: CORP-DC-01
+======================================================================
+ IP Adresi         : 10.0.1.10
+ İşletim Sistemi   : Windows Server 2022 Datacenter
+ Departman         : IT Operations
+ Kritik Varlık     : EVET
+ Risk Skoru        : 0.2 / 100 (DUSUK)
+ Güvenlik Duruşu   : 99.8 / 100
+----------------------------------------------------------------------
+ VEKTÖR CEZA PUANI DAĞILIMI:
+   * EDR & Telemetri Cezası     :   0.0 / 100
+   * Disk Şifreleme & TPM       :   0.0 / 100
+   * Yedekleme Güvenliği        :   0.0 / 100
+   * CIS Sıkılaştırma & Sapma   :   0.8 / 100
+   * Zafiyet & Yama Durumu      :   0.0 / 100
+   * Uygulama Kontrolü          :   0.0 / 100
+----------------------------------------------------------------------
+ TESPİT EDİLEN BULGULAR:
+   [+] Herhangi bir güvenlik açığı tespit edilmedi.
+----------------------------------------------------------------------
+ ÖNERİLEN İYİLEŞTİRME ADIMLARI:
+   [+] Sistem en iyi güvenlik uygulamalarıyla tam uyumlu.
+======================================================================
+
+
+--------------------------------------------------------------------------------
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_153\uygulama\endpoint_risk_cli.py export-remediation --fleet C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_153\ornek_veri\enterprise_fleet_inventory.json
+
+# PowerShell Otomatik İyileştirme Betiği - Kurumsal Uç Nokta Risk Panosu
+# Hedef: Yüksek ve Kritik Riskli Uç Noktaların Güvenlik Açıklarını Giderme
+# Üretim Zamanı: Filo Ortalama Risk: 24.5/100
+$ErrorActionPreference = 'Stop'
+
+Write-Host '[*] Kurumsal Uç Nokta İyileştirme Başlatılıyor...' -ForegroundColor Cyan
+
+# -------------------------------------------------------------
+# Uç Nokta: ENG-DEV-002 (10.0.30.22) - Risk Skoru: 84.8 (KRITIK)
+# -------------------------------------------------------------
+Write-Host '[!] ENG-DEV-002: EDR servisi başlatılıyor...' -ForegroundColor Yellow
+Invoke-Command -ComputerName 'ENG-DEV-002' -ScriptBlock {
+    Start-Service -Name 'Sense' -ErrorAction SilentlyContinue
+    Set-Service -Name 'Sense' -StartupType Automatic
+}
+Write-Host '[!] ENG-DEV-002: BitLocker şifrelemesi tetikleniyor...' -ForegroundColor Yellow
+Invoke-Command -ComputerName 'ENG-DEV-002' -ScriptBlock {
+    Enable-BitLocker -MountPoint 'C:' -EncryptionMethod XtsAes256 -UsedSpaceOnly -TpmProtector
+}
+Write-Host '[!] ENG-DEV-002: UAC ve Güvenli Yapılandırma zorlanıyor...' -ForegroundColor Yellow
+Invoke-Command -ComputerName 'ENG-DEV-002' -ScriptBlock {
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'EnableLUA' -Value 1
+}
+
+# -------------------------------------------------------------
+# Uç Nokta: CONTR-LAP-09 (10.0.50.88) - Risk Skoru: 91.8 (KRITIK)
+# -------------------------------------------------------------
+Write-Host '[!] CONTR-LAP-09: EDR servisi başlatılıyor...' -ForegroundColor Yellow
+Invoke-Command -ComputerName 'CONTR-LAP-09' -ScriptBlock {
+    Start-Service -Name 'Sense' -ErrorAction SilentlyContinue
+    Set-Service -Name 'Sense' -StartupType Automatic
+}
+Write-Host '[!] CONTR-LAP-09: BitLocker şifrelemesi tetikleniyor...' -ForegroundColor Yellow
+Invoke-Command -ComputerName 'CONTR-LAP-09' -ScriptBlock {
+    Enable-BitLocker -MountPoint 'C:' -EncryptionMethod XtsAes256 -UsedSpaceOnly -TpmProtector
+}
+Write-Host '[!] CONTR-LAP-09: UAC ve Güvenli Yapılandırma zorlanıyor...' -ForegroundColor Yellow
+Invoke-Command -ComputerName 'CONTR-LAP-09' -ScriptBlock {
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'EnableLUA' -Value 1
+}
+
+Write-Host '[+] Tüm kritik uç noktalar için iyileştirme komutları tamamlandı.' -ForegroundColor Green
+
+
+--------------------------------------------------------------------------------

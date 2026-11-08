@@ -1,0 +1,375 @@
+{
+  "total_endpoints": 10,
+  "low_risk_count": 7,
+  "medium_risk_count": 1,
+  "high_risk_count": 0,
+  "critical_risk_count": 2,
+  "fleet_average_risk": 24.5,
+  "fleet_average_posture": 75.5,
+  "critical_assets_average_risk": 2.7,
+  "department_risk_summary": {
+    "IT Operations": 0.2,
+    "Finance": 20.0,
+    "Engineering": 30.1,
+    "Executive": 7.6,
+    "Human Resources": 0.7,
+    "Facilities": 15.0,
+    "External Contractors": 91.8
+  },
+  "top_riskiest_hosts": [
+    {
+      "hostname": "CONTR-LAP-09",
+      "ip_address": "10.0.50.88",
+      "department": "External Contractors",
+      "risk_score": 91.8,
+      "risk_band": "KRITIK",
+      "is_critical": false,
+      "primary_findings": [
+        "EDR ajanı yüklü değil (Uç nokta telemetrisi tamamen kör).",
+        "Zararlı yazılım imza veri tabanı 200 saat eski (>72 saat)."
+      ]
+    },
+    {
+      "hostname": "ENG-DEV-002",
+      "ip_address": "10.0.30.22",
+      "department": "Engineering",
+      "risk_score": 84.8,
+      "risk_band": "KRITIK",
+      "is_critical": false,
+      "primary_findings": [
+        "EDR servisi çalışmıyor veya durdurulmuş.",
+        "EDR Kurcalamaya Karşı Koruma (Tamper Protection) devre dışı."
+      ]
+    },
+    {
+      "hostname": "FIN-WKS-002",
+      "ip_address": "10.0.20.44",
+      "department": "Finance",
+      "risk_score": 37.7,
+      "risk_band": "ORTA",
+      "is_critical": false,
+      "primary_findings": [
+        "EDR Kurcalamaya Karşı Koruma (Tamper Protection) devre dışı.",
+        "TPM PCR 0,2,4,7 ölçüm zinciri doğrulanmamış (Önyükleme kurcalanma riski)."
+      ]
+    },
+    {
+      "hostname": "FAC-KIOSK-01",
+      "ip_address": "10.0.40.100",
+      "department": "Facilities",
+      "risk_score": 15.0,
+      "risk_band": "DUSUK",
+      "is_critical": false,
+      "primary_findings": [
+        "Son yedekleme 24 saati aşmış (72 saat önce).",
+        "Yedek depolama birimi değiştirilemez (WORM/Immutable) değil; fidye yazılımı imhasına açık."
+      ]
+    },
+    {
+      "hostname": "EXEC-LAP-01",
+      "ip_address": "10.0.10.5",
+      "department": "Executive",
+      "risk_score": 7.6,
+      "risk_band": "DUSUK",
+      "is_critical": true,
+      "primary_findings": [
+        "Yedekten geri yükleme (Restore Drill) periyodik olarak doğrulanmamış.",
+        "1 adet YÜKSEK seviye CVE zafiyeti mevcut."
+      ]
+    }
+  ],
+  "systemic_weaknesses": [
+    "Yedekten geri yükleme (Restore Drill) periyodik olarak doğrulanmamış. (5 cihazda tespit edildi)",
+    "1 adet YÜKSEK seviye CVE zafiyeti mevcut. (4 cihazda tespit edildi)",
+    "Yedek depolama birimi değiştirilemez (WORM/Immutable) değil; fidye yazılımı imhasına açık. (4 cihazda tespit edildi)",
+    "EDR Kurcalamaya Karşı Koruma (Tamper Protection) devre dışı. (2 cihazda tespit edildi)"
+  ],
+  "host_assessments": [
+    {
+      "hostname": "CORP-DC-01",
+      "ip_address": "10.0.1.10",
+      "department": "IT Operations",
+      "operating_system": "Windows Server 2022 Datacenter",
+      "is_critical": true,
+      "risk_score": 0.2,
+      "risk_band": "DUSUK",
+      "posture_score": 99.8,
+      "vector_scores": {
+        "edr_penalty": 0.0,
+        "disk_encryption_penalty": 0.0,
+        "backup_penalty": 0.0,
+        "hardening_penalty": 0.8,
+        "vulnerability_penalty": 0.0,
+        "app_control_penalty": 0.0
+      },
+      "findings": [],
+      "remediations": []
+    },
+    {
+      "hostname": "FIN-SQL-01",
+      "ip_address": "10.0.2.25",
+      "department": "Finance",
+      "operating_system": "Windows Server 2022 Datacenter",
+      "is_critical": true,
+      "risk_score": 2.2,
+      "risk_band": "DUSUK",
+      "posture_score": 97.8,
+      "vector_scores": {
+        "edr_penalty": 0.0,
+        "disk_encryption_penalty": 0.0,
+        "backup_penalty": 0.0,
+        "hardening_penalty": 2.0,
+        "vulnerability_penalty": 10.0,
+        "app_control_penalty": 0.0
+      },
+      "findings": [
+        "1 adet YÜKSEK seviye CVE zafiyeti mevcut."
+      ],
+      "remediations": []
+    },
+    {
+      "hostname": "PROD-APP-01",
+      "ip_address": "10.0.3.50",
+      "department": "Engineering",
+      "operating_system": "Ubuntu 22.04 LTS Server",
+      "is_critical": true,
+      "risk_score": 0.7,
+      "risk_band": "DUSUK",
+      "posture_score": 99.3,
+      "vector_scores": {
+        "edr_penalty": 0.0,
+        "disk_encryption_penalty": 0.0,
+        "backup_penalty": 0.0,
+        "hardening_penalty": 3.0,
+        "vulnerability_penalty": 0.0,
+        "app_control_penalty": 0.0
+      },
+      "findings": [],
+      "remediations": []
+    },
+    {
+      "hostname": "EXEC-LAP-01",
+      "ip_address": "10.0.10.5",
+      "department": "Executive",
+      "operating_system": "Windows 11 Enterprise",
+      "is_critical": true,
+      "risk_score": 7.6,
+      "risk_band": "DUSUK",
+      "posture_score": 92.4,
+      "vector_scores": {
+        "edr_penalty": 0.0,
+        "disk_encryption_penalty": 0.0,
+        "backup_penalty": 15.0,
+        "hardening_penalty": 4.5,
+        "vulnerability_penalty": 10.0,
+        "app_control_penalty": 20.0
+      },
+      "findings": [
+        "Yedekten geri yükleme (Restore Drill) periyodik olarak doğrulanmamış.",
+        "1 adet YÜKSEK seviye CVE zafiyeti mevcut."
+      ],
+      "remediations": []
+    },
+    {
+      "hostname": "HR-WKS-001",
+      "ip_address": "10.0.20.12",
+      "department": "Human Resources",
+      "operating_system": "Windows 11 Enterprise",
+      "is_critical": false,
+      "risk_score": 0.7,
+      "risk_band": "DUSUK",
+      "posture_score": 99.3,
+      "vector_scores": {
+        "edr_penalty": 0.0,
+        "disk_encryption_penalty": 0.0,
+        "backup_penalty": 0.0,
+        "hardening_penalty": 3.5,
+        "vulnerability_penalty": 0.0,
+        "app_control_penalty": 0.0
+      },
+      "findings": [],
+      "remediations": []
+    },
+    {
+      "hostname": "FIN-WKS-002",
+      "ip_address": "10.0.20.44",
+      "department": "Finance",
+      "operating_system": "Windows 11 Enterprise",
+      "is_critical": false,
+      "risk_score": 37.7,
+      "risk_band": "ORTA",
+      "posture_score": 62.3,
+      "vector_scores": {
+        "edr_penalty": 30.0,
+        "disk_encryption_penalty": 15.0,
+        "backup_penalty": 70.0,
+        "hardening_penalty": 31.0,
+        "vulnerability_penalty": 55.0,
+        "app_control_penalty": 30.0
+      },
+      "findings": [
+        "EDR Kurcalamaya Karşı Koruma (Tamper Protection) devre dışı.",
+        "TPM PCR 0,2,4,7 ölçüm zinciri doğrulanmamış (Önyükleme kurcalanma riski).",
+        "Son yedekleme 24 saati aşmış (48 saat önce).",
+        "Yedek depolama birimi değiştirilemez (WORM/Immutable) değil; fidye yazılımı imhasına açık.",
+        "Yedekten geri yükleme (Restore Drill) periyodik olarak doğrulanmamış.",
+        "Yerel Administrators grubunda 1 yetkisiz hesap tespit edildi.",
+        "1 adet çözülmemiş KRİTİK CVE zafiyeti mevcut.",
+        "2 adet YÜKSEK seviye CVE zafiyeti mevcut.",
+        "İşletim sistemi güvenlik güncellemesi 30 günü aşmış (45 gün).",
+        "1 adet onaylanmamış/engellenmesi gereken çalıştırılabilir dosya saptandı."
+      ],
+      "remediations": [
+        "GPO veya EDR konsolundan Tamper Protection politikasını zorlayın.",
+        "S3 Object Lock COMPLIANCE modu veya WORM yedek deposunu devreye alın.",
+        "Yetkisiz yerel yönetici hesaplarını tespit edip Administrators grubundan çıkarın.",
+        "Kritik CVE güvenlik yamalarını acil bakım döngüsünde uygulayın.",
+        "Onaysız ikili dosyaları karantinaya alın ve hash kurallarını güncelleyin."
+      ]
+    },
+    {
+      "hostname": "ENG-MAC-001",
+      "ip_address": "10.0.30.15",
+      "department": "Engineering",
+      "operating_system": "macOS Sonoma 14.5",
+      "is_critical": false,
+      "risk_score": 4.7,
+      "risk_band": "DUSUK",
+      "posture_score": 95.3,
+      "vector_scores": {
+        "edr_penalty": 0.0,
+        "disk_encryption_penalty": 0.0,
+        "backup_penalty": 0.0,
+        "hardening_penalty": 6.0,
+        "vulnerability_penalty": 10.0,
+        "app_control_penalty": 20.0
+      },
+      "findings": [
+        "1 adet YÜKSEK seviye CVE zafiyeti mevcut."
+      ],
+      "remediations": []
+    },
+    {
+      "hostname": "ENG-DEV-002",
+      "ip_address": "10.0.30.22",
+      "department": "Engineering",
+      "operating_system": "Ubuntu 22.04 LTS Workstation",
+      "is_critical": false,
+      "risk_score": 84.8,
+      "risk_band": "KRITIK",
+      "posture_score": 15.2,
+      "vector_scores": {
+        "edr_penalty": 90.0,
+        "disk_encryption_penalty": 70.0,
+        "backup_penalty": 100.0,
+        "hardening_penalty": 69.0,
+        "vulnerability_penalty": 100.0,
+        "app_control_penalty": 80.0
+      },
+      "findings": [
+        "EDR servisi çalışmıyor veya durdurulmuş.",
+        "EDR Kurcalamaya Karşı Koruma (Tamper Protection) devre dışı.",
+        "Zararlı yazılım imza veri tabanı 96 saat eski (>72 saat).",
+        "Sistem diski şifrelenmemiş (BitLocker / LUKS kapalı).",
+        "Son başarılı yedekleme 240 saat önce alınmış (>168 saat).",
+        "Yedek depolama birimi değiştirilemez (WORM/Immutable) değil; fidye yazılımı imhasına açık.",
+        "Yedekten geri yükleme (Restore Drill) periyodik olarak doğrulanmamış.",
+        "Yerel Administrators grubunda 1 yetkisiz hesap tespit edildi.",
+        "Kritik çekirdek savunması (UAC / ASLR) devre dışı bırakılmış.",
+        "2 adet çözülmemiş KRİTİK CVE zafiyeti mevcut.",
+        "4 adet YÜKSEK seviye CVE zafiyeti mevcut.",
+        "İşletim sistemi güncellemesi 95 gündür yapılmamış (>60 gün).",
+        "Uygulama beyaz listesi (AppLocker/WDAC) devre dışı.",
+        "2 adet onaylanmamış/engellenmesi gereken çalıştırılabilir dosya saptandı."
+      ],
+      "remediations": [
+        "EDR servisini 'Otomatik (Gecikmeli Başlatma)' moduna alıp başlatın.",
+        "GPO veya EDR konsolundan Tamper Protection politikasını zorlayın.",
+        "İmza güncelleme sunucusu bağlantısını kontrol edin ve anlık güncelleme tetikleyin.",
+        "Sistem biriminde XTS-AES-256 disk şifrelemeyi derhal etkinleştirin.",
+        "Yedekleme ajanını kontrol ederek tam/artımlı yedekleme görevini tetikleyin.",
+        "S3 Object Lock COMPLIANCE modu veya WORM yedek deposunu devreye alın.",
+        "Yetkisiz yerel yönetici hesaplarını tespit edip Administrators grubundan çıkarın.",
+        "UAC (EnableLUA=1) veya ASLR (randomize_va_space=2) zorlamasını yeniden açın.",
+        "Kritik CVE güvenlik yamalarını acil bakım döngüsünde uygulayın.",
+        "İşletim sistemi kümülatif güvenlik güncelleştirmelerini yükleyin.",
+        "AppLocker veya WDAC politikasını en azından 'Denetim' modunda başlatın.",
+        "Onaysız ikili dosyaları karantinaya alın ve hash kurallarını güncelleyin."
+      ]
+    },
+    {
+      "hostname": "FAC-KIOSK-01",
+      "ip_address": "10.0.40.100",
+      "department": "Facilities",
+      "operating_system": "Windows 10 IoT Enterprise",
+      "is_critical": false,
+      "risk_score": 15.0,
+      "risk_band": "DUSUK",
+      "posture_score": 85.0,
+      "vector_scores": {
+        "edr_penalty": 0.0,
+        "disk_encryption_penalty": 0.0,
+        "backup_penalty": 70.0,
+        "hardening_penalty": 7.5,
+        "vulnerability_penalty": 20.0,
+        "app_control_penalty": 0.0
+      },
+      "findings": [
+        "Son yedekleme 24 saati aşmış (72 saat önce).",
+        "Yedek depolama birimi değiştirilemez (WORM/Immutable) değil; fidye yazılımı imhasına açık.",
+        "Yedekten geri yükleme (Restore Drill) periyodik olarak doğrulanmamış.",
+        "1 adet YÜKSEK seviye CVE zafiyeti mevcut.",
+        "İşletim sistemi güvenlik güncellemesi 30 günü aşmış (35 gün)."
+      ],
+      "remediations": [
+        "S3 Object Lock COMPLIANCE modu veya WORM yedek deposunu devreye alın."
+      ]
+    },
+    {
+      "hostname": "CONTR-LAP-09",
+      "ip_address": "10.0.50.88",
+      "department": "External Contractors",
+      "operating_system": "Windows 11 Pro",
+      "is_critical": false,
+      "risk_score": 91.8,
+      "risk_band": "KRITIK",
+      "posture_score": 8.2,
+      "vector_scores": {
+        "edr_penalty": 85.0,
+        "disk_encryption_penalty": 70.0,
+        "backup_penalty": 100.0,
+        "hardening_penalty": 100.0,
+        "vulnerability_penalty": 100.0,
+        "app_control_penalty": 100.0
+      },
+      "findings": [
+        "EDR ajanı yüklü değil (Uç nokta telemetrisi tamamen kör).",
+        "Zararlı yazılım imza veri tabanı 200 saat eski (>72 saat).",
+        "Sistem diski şifrelenmemiş (BitLocker / LUKS kapalı).",
+        "Son başarılı yedekleme 500 saat önce alınmış (>168 saat).",
+        "Yedek depolama birimi değiştirilemez (WORM/Immutable) değil; fidye yazılımı imhasına açık.",
+        "Yedekten geri yükleme (Restore Drill) periyodik olarak doğrulanmamış.",
+        "Yerel Administrators grubunda 3 yetkisiz hesap tespit edildi.",
+        "Kritik çekirdek savunması (UAC / ASLR) devre dışı bırakılmış.",
+        "3 adet çözülmemiş KRİTİK CVE zafiyeti mevcut.",
+        "6 adet YÜKSEK seviye CVE zafiyeti mevcut.",
+        "İşletim sistemi güncellemesi 120 gündür yapılmamış (>60 gün).",
+        "Uygulama beyaz listesi (AppLocker/WDAC) devre dışı.",
+        "4 adet onaylanmamış/engellenmesi gereken çalıştırılabilir dosya saptandı."
+      ],
+      "remediations": [
+        "Merkezi dağıtım ile kurumsal EDR ajanını derhal yükleyin.",
+        "İmza güncelleme sunucusu bağlantısını kontrol edin ve anlık güncelleme tetikleyin.",
+        "Sistem biriminde XTS-AES-256 disk şifrelemeyi derhal etkinleştirin.",
+        "Yedekleme ajanını kontrol ederek tam/artımlı yedekleme görevini tetikleyin.",
+        "S3 Object Lock COMPLIANCE modu veya WORM yedek deposunu devreye alın.",
+        "Yetkisiz yerel yönetici hesaplarını tespit edip Administrators grubundan çıkarın.",
+        "UAC (EnableLUA=1) veya ASLR (randomize_va_space=2) zorlamasını yeniden açın.",
+        "Kritik CVE güvenlik yamalarını acil bakım döngüsünde uygulayın.",
+        "İşletim sistemi kümülatif güvenlik güncelleştirmelerini yükleyin.",
+        "AppLocker veya WDAC politikasını en azından 'Denetim' modunda başlatın.",
+        "Onaysız ikili dosyaları karantinaya alın ve hash kurallarını güncelleyin."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
+             KURUMSAL UÇ NOKTA GÜVENLİK DURUŞU VE RİSK PANOSU MİMARİSİ
+                           (MINI PROJE 21 - HAFTA 22)
+
+   +-------------------------------------------------------------------------+
+   |          UÇ NOKTA HİBRİT TELEMETRİ KAYNAKLARI (FLEET TELEMETRY)         |
+   |                                                                         |
+   |  [Windows 11 / Server]     [Linux Ubuntu / RHEL]     [macOS Sonoma]    |
+   |  - Defender / EDR Ajanı    - Auditd / Wazuh / EDR   - Endpoint Security|
+   |  - BitLocker / TPM 2.0     - LUKS2 / TPM Cryptsetup - FileVault / Secure|
+   |  - AppLocker / WDAC        - Seccomp / AppArmor     - Gatekeeper / SIP  |
+   |  - VSS / Backup Ajanı      - Borg / Restic WORM     - Time Machine / APFS|
+   |  - CIS Registry Baseline   - CIS Sysctl Baseline    - CIS Benchmarks    |
+   +-------------------------------------------------------------------------+
+                                      |
+                                      v (JSON Telemetri Akışı)
+   +-------------------------------------------------------------------------+
+   |             ÇOK VEKTÖRLÜ UÇ NOKTA RİSK ANALİZ MOTORU                     |
+   |                 (EndpointRiskEngine.assess_host)                        |
+   |                                                                         |
+   |   [Vektör 1: EDR & Telemetri Sağlığı]      -> Ağırlık: %25             |
+   |   [Vektör 2: Sıkılaştırma & Sapma (CIS)]   -> Ağırlık: %20             |
+   |   [Vektör 3: Disk Şifreleme & TPM Donanımı] -> Ağırlık: %15             |
+   |   [Vektör 4: Yedek Doğrulama & İmmutability]-> Ağırlık: %15             |
+   |   [Vektör 5: Zafiyet & Yama Gecikmesi]     -> Ağırlık: %15             |
+   |   [Vektör 6: Uygulama Beyaz Listesi/Sandbox]-> Ağırlık: %10             |
+   |                                                                         |
+   |   KRİTİK VARLIK ÇARPANI: is_critical_asset == True -> Risk x 1.15       |
+   +-------------------------------------------------------------------------+
+                                      |
+                                      v
+   +-------------------------------------------------------------------------+
+   |              FİLO TOPLULAŞTIRMA VE DERECELENDİRME PANELİ                |
+   |                 (EndpointRiskEngine.assess_fleet)                       |
+   |                                                                         |
+   |   [DUSUK: 0-19.9]     [ORTA: 20-44.9]    [YUKSEK: 45-69.9]  [KRITIK: 70+]
+   |      (Sağlam)          (İzleme)          (Müdahale)        (İzolasyon)  |
+   |                                                                         |
+   |   - Filo Ortalama Risk & Duruş Puanı                                    |
+   |   - Departman Risk Isı Haritası (Finance, Engineering, Executive, HR)   |
+   |   - En Yüksek Riskli İlk 5 Uç Nokta Sıralaması                          |
+   |   - Sistemik Zayıflık Frekans Analizi                                   |
+   +-------------------------------------------------------------------------+
+                                      |
+                   +------------------+------------------+
+                   |                                     |
+                   v                                     v
+   +---------------------------------+   +---------------------------------+
+   |      YÖNETİCİ ASCII PANOSU      |   |  OTOMATİK POWERSHELL İYİLEŞTİRME|
+   |   (Executive Risk Report)       |   |       (Auto-Remediation)        |
+   | - CISO / SOC Yönetici Görünümü  |   | - EDR Servislerini Başlat       |
+   | - Departman Risk Çubukları      |   | - BitLocker XTS-AES-256 Aç      |
+   | - Sistemik Güvenlik Alarmları   |   | - UAC / ASLR Ayarlarını Onar    |
+   +---------------------------------+   +---------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

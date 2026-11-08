@@ -1,0 +1,35 @@
+==================================================================================
+ KURUMSAL UÇ NOKTA RİSK PANOSU VE GÜVENLİK DURUŞ RAPORU (MINI PROJE 21)
+==================================================================================
+ Toplam Uç Nokta   : 10     | Filo Ortalama Risk Skoru  :  24.5 / 100
+ Filo Duruş Puanı  :  75.5 / 100 | Kritik Varlık Risk Skoru :   2.7 / 100
+----------------------------------------------------------------------------------
+ RISK DAĞILIMI:
+   [DUSUK]     7 cihaz (70.0%)
+   [ORTA]      1 cihaz (10.0%)
+   [YUKSEK]    0 cihaz (0.0%)
+   [KRITIK]    2 cihaz (20.0%)
+----------------------------------------------------------------------------------
+ DEPARTMAN BAZLI ORTALAMA RİSK SKORLARI (Yüksekten Düşüğe):
+   - External Contractors   :  91.8 | ##################
+   - Engineering            :  30.1 | ######
+   - Finance                :  20.0 | ####
+   - Facilities             :  15.0 | ###
+   - Executive              :   7.6 | #
+   - Human Resources        :   0.7 | 
+   - IT Operations          :   0.2 | 
+----------------------------------------------------------------------------------
+ EN YÜKSEK RİSKLİ UÇ NOKTALAR (TOP 5):
+   HOSTNAME         IP ADRESİ       DEPARTMAN       RİSK     KRİTİK 
+   CONTR-LAP-09     10.0.50.88      External Contractors 91.8     HAYIR  
+   ENG-DEV-002      10.0.30.22      Engineering     84.8     HAYIR  
+   FIN-WKS-002      10.0.20.44      Finance         37.7     HAYIR  
+   FAC-KIOSK-01     10.0.40.100     Facilities      15.0     HAYIR  
+   EXEC-LAP-01      10.0.10.5       Executive       7.6      EVET   
+----------------------------------------------------------------------------------
+ EN YAYGIN SİSTEMİK GÜVENLİK ZAYIFLIKLARI:
+   * Yedekten geri yükleme (Restore Drill) periyodik olarak doğrulanmamış. (5 cihazda tespit edildi)
+   * 1 adet YÜKSEK seviye CVE zafiyeti mevcut. (4 cihazda tespit edildi)
+   * Yedek depolama birimi değiştirilemez (WORM/Immutable) değil; fidye yazılımı imhasına açık. (4 cihazda tespit edildi)
+   * EDR Kurcalamaya Karşı Koruma (Tamper Protection) devre dışı. (2 cihazda tespit edildi)
+==================================================================================

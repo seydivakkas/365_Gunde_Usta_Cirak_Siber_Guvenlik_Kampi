@@ -1,0 +1,82 @@
+================================================================================
+ GÜN 153: NEGATİF KONTROL VE HATA SENARYOLARI RAPORU (9/9 PASS)
+================================================================================
+
+[*] Senaryo: SCN-FLEET-01 - Kritik Domain Controller Tamamen Kör ve Savunmasız
+    Açıklama: Etki alanı denetleyicisinde EDR ajanı kaldırılmış, tamper protection kapalı ve imza tabanı 300 saat eski. Kritik varlık olmasına rağmen telemetri sıfırdır.
+    Hesaplanan Risk Skoru : 33.6 / 100
+    Risk Seviyesi Bandı   : ORTA (Beklenen: YUKSEK)
+    Tespit Edilen Bulgular : 4 adet
+      - EDR ajanı yüklü değil (Uç nokta telemetrisi tamamen kör).
+      - Zararlı yazılım imza veri tabanı 300 saat eski (>72 saat).
+    [+] DURUM: BAŞARILI (Risk ve zafiyet doğru tespit edildi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-FLEET-02 - Yönetici Dizüstü Bilgisayarında Şifresiz Disk ve TPM Yokluğu
+    Açıklama: Gizli şirket verilerini barındıran CEO/CFO dizüstü bilgisayarında BitLocker kapalı ve donanım TPM kökü mevcut değil. Fiziksel çalınma halinde veri sızıntısı kaçınılmazdır.
+    Hesaplanan Risk Skoru : 15.3 / 100
+    Risk Seviyesi Bandı   : DUSUK (Beklenen: ORTA)
+    Tespit Edilen Bulgular : 1 adet
+      - Sistem diski şifrelenmemiş (BitLocker / LUKS kapalı).
+    [+] DURUM: BAŞARILI (Risk ve zafiyet doğru tespit edildi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-FLEET-03 - Üretim Veritabanında Değiştirilebilir ve 30 Günlük Eski Yedek
+    Açıklama: Finans veri tabanı 720 saattir yedeklenmemiş ve yedek depolama alanı WORM/S3 Object Lock ile korunmuyor; fidye saldırısında yedek imhası riski mevcuttur.
+    Hesaplanan Risk Skoru : 17.8 / 100
+    Risk Seviyesi Bandı   : DUSUK (Beklenen: ORTA)
+    Tespit Edilen Bulgular : 3 adet
+      - Son başarılı yedekleme 720 saat önce alınmış (>168 saat).
+      - Yedek depolama birimi değiştirilemez (WORM/Immutable) değil; fidye yazılımı imhasına açık.
+    [+] DURUM: BAŞARILI (Risk ve zafiyet doğru tespit edildi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-FLEET-04 - Yerel Administrators Grubuna Gizlice 3 Hesap Eklenmiş (Arka Kapı)
+    Açıklama: Sistemde yerel yönetici grubuna saldırgan tarafından kalıcılık amacıyla 3 yetkisiz hesap eklenmiş, UAC ve ASLR bilerek kapatılmıştır.
+    Hesaplanan Risk Skoru : 23.0 / 100
+    Risk Seviyesi Bandı   : ORTA (Beklenen: ORTA)
+    Tespit Edilen Bulgular : 3 adet
+      - Yerel Administrators grubunda 3 yetkisiz hesap tespit edildi.
+      - Kritik çekirdek savunması (UAC / ASLR) devre dışı bırakılmış.
+    [+] DURUM: BAŞARILI (Risk ve zafiyet doğru tespit edildi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-FLEET-05 - Yüksek Zafiyetli ve 180 Gündür Yamalanmayan Kritik Sunucu
+    Açıklama: Sistem üzerinde 4 adet çözülmemiş kritik uzaktan kod çalıştırma (RCE) zafiyeti bulunmakta ve 180 gündür kümülatif yama yüklenmemiştir.
+    Hesaplanan Risk Skoru : 21.3 / 100
+    Risk Seviyesi Bandı   : ORTA (Beklenen: ORTA)
+    Tespit Edilen Bulgular : 3 adet
+      - 4 adet çözülmemiş KRİTİK CVE zafiyeti mevcut.
+      - 5 adet YÜKSEK seviye CVE zafiyeti mevcut.
+    [+] DURUM: BAŞARILI (Risk ve zafiyet doğru tespit edildi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-FLEET-06 - Uygulama Kontrolü Devre Dışı ve Onaysız Madencilik/Araç Tespiti
+    Açıklama: AppLocker kapalı ve sistemde 5 adet onaylanmamış şüpheli ikili dosya (kripto madenci / hacktool) aktif olarak saptanmıştır.
+    Hesaplanan Risk Skoru : 12.0 / 100
+    Risk Seviyesi Bandı   : DUSUK (Beklenen: ORTA)
+    Tespit Edilen Bulgular : 2 adet
+      - Uygulama beyaz listesi (AppLocker/WDAC) devre dışı.
+      - 5 adet onaylanmamış/engellenmesi gereken çalıştırılabilir dosya saptandı.
+    [+] DURUM: BAŞARILI (Risk ve zafiyet doğru tespit edildi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-FLEET-07 - Linux Pivot Noktası: ASLR Kapalı ve Yetkisiz Paket Yönlendirme
+    Açıklama: Linux sunucusunda bellek koruması ASLR bilerek kapatılmış, CIS uyumluluğu %50'nin altına düşmüş ve sistem ağ sıçrama (pivot) noktasına dönüştürülmüştür.
+    Hesaplanan Risk Skoru : 66.0 / 100
+    Risk Seviyesi Bandı   : YUKSEK (Beklenen: YUKSEK)
+    Tespit Edilen Bulgular : 12 adet
+      - EDR Kurcalamaya Karşı Koruma (Tamper Protection) devre dışı.
+      - Sistem diski şifrelenmemiş (BitLocker / LUKS kapalı).
+    [+] DURUM: BAŞARILI (Risk ve zafiyet doğru tespit edildi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-FLEET-08 - Boş Filo veya Geçersiz Telemetri İstisna Yönetimi
+    Açıklama: Boş filo veya eksik veri sağlandığında motorun çökmeden kontrollü ValueError istisnası fırlatması ve sistem bütünlüğünü koruması doğrulanır.
+    [+] Başarılı: Beklenen ValueError istisnası yakalandı: Filo telemetri listesi boş olamaz.
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-FLEET-09 - Tüm Vektörlerde Tam İhlal (Critical Host Disaster Scenario)
+    Açıklama: EDR kapalı, disk şifresiz, yedek yok, 4 yetkisiz admin, 5 kritik CVE, uygulama kontrolü kapalı ve kritik varlık statüsünde tam felaket senaryosu.
+    Hesaplanan Risk Skoru : 100.0 / 100
+    Risk Seviyesi Bandı   : KRITIK (Beklenen: KRITIK)
+    Tespit Edilen Bulgular : 13 adet
+      - EDR ajanı yüklü değil (Uç nokta telemetrisi tamamen kör).
+      - Zararlı yazılım imza veri tabanı 500 saat eski (>72 saat).
+    [+] DURUM: BAŞARILI (Risk ve zafiyet doğru tespit edildi).
+--------------------------------------------------------------------------------
+
+TOPLAM SENARYO: 9 | BAŞARILI DOĞRULAMA: 9/9
+SONUÇ: %100 NEGATİF KONTROL VE ZAFİYET TESPİT BAŞARISI (PASS)

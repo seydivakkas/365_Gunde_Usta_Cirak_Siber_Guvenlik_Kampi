@@ -1,0 +1,38 @@
+{
+  "gun": 153,
+  "hafta": 22,
+  "asama": "06",
+  "konu": "Mini proje 21: uç nokta risk panosu",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-08",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_22/gun_153/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_22/gun_153/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "pano_raporu_json": "portfolio/hafta_22/gun_153/kanit/gercek/fleet_risk_dashboard.json",
+    "yonetici_raporu_txt": "portfolio/hafta_22/gun_153/kanit/gercek/executive_risk_report.txt",
+    "iyilestirme_betigi": "portfolio/hafta_22/gun_153/kanit/gercek/top_priority_remediation.ps1",
+    "komut_ve_cikis": "portfolio/hafta_22/gun_153/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_22/gun_153/kanit/temsili/uc_nokta_risk_panosu_mimarisi.txt"
+  },
+  "ozet": "Aşama 6'nın tüm uç nokta güvenlik bileşenlerini (EDR, AppLocker, BitLocker, İmmutable Yedekleme, CIS Sapması ve Zafiyetler) entegre eden Mini Proje 21: Kurumsal Uç Nokta Risk Panosu ve Güvenlik Duruşu Yönetimi (ESPM) motoru başarıyla inşa edildi. 10 heterojen uç nokta üzerinden filo risk analizi, departman ısı haritası ve PowerShell otomatik iyileştirme çıktıları üretildi; 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla doğrulandı."
+}

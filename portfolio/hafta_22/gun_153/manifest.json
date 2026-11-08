@@ -1,0 +1,87 @@
+{
+  "gun": 153,
+  "konu": "Mini proje 21: uç nokta risk panosu",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "007b15daad368283adf34d610db0cee6a71e4548abc19c96a3b949010f2d5e64",
+      "size_bytes": 5248
+    },
+    "ders.md": {
+      "sha256": "3655b1b408b36dc524b1e432716c60031ed0b3e64c20c46b8bce41345e9027a1",
+      "size_bytes": 7273
+    },
+    "kanit_uretici.py": {
+      "sha256": "3620b19e3dc45cc1122315cb8847ce16c42b596ff2bd6cd1fc8e5c60ed058707",
+      "size_bytes": 13501
+    },
+    "rapor.md": {
+      "sha256": "700ef287173ee67d5dbc6db809d8c420052709ebd1a6c8aa38b25b6b3641ab40",
+      "size_bytes": 6072
+    },
+    "sonuc.json": {
+      "sha256": "653ac8a06a3e9381d90834b9fb8779f683c2f669b9a9eb85ad7f7dc06f4a7c3e",
+      "size_bytes": 1801
+    },
+    "soru_cevap.md": {
+      "sha256": "3bc24a86b8c470fb17cc8696606d7e50f0340cab01015cb333fe8328a54e4453",
+      "size_bytes": 11895
+    },
+    "kanit/gercek/executive_risk_report.txt": {
+      "sha256": "bb051325e6d65252d37eaf12757c90e2cb02526f73e11141b785c8cf578bb7de",
+      "size_bytes": 2270
+    },
+    "kanit/gercek/fleet_risk_dashboard.json": {
+      "sha256": "3b22d8f998aa67526c793886116b9a2d1057dfc52617d2b2dc24820b5389ad4d",
+      "size_bytes": 15035
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "sha256": "39126e96148da46cacdb114de6d55b1ca45a9350495d7f212cbf52664068b5af",
+      "size_bytes": 11142
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "sha256": "930af66be8da83605f33a95d51d78e6b01b9a907e316a18f786b0ac444d25ebc",
+      "size_bytes": 6289
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "sha256": "327314cda998481d6749bede118cbd3be2de201d994fa6069256c81bacb207fe",
+      "size_bytes": 3931
+    },
+    "kanit/gercek/top_priority_remediation.ps1": {
+      "sha256": "348200874307d124ae2c1df3269643e21d69201d8f438f919737131c26abb20c",
+      "size_bytes": 2454
+    },
+    "kanit/temsili/uc_nokta_risk_panosu_mimarisi.txt": {
+      "sha256": "eabab5c3a61b62343a0e8dc1b7de911260dee62841bfb5e4408e5b42a0a93d7c",
+      "size_bytes": 4433
+    },
+    "ornek_veri/enterprise_fleet_inventory.json": {
+      "sha256": "1f0773d1222d290c3e7be8474a5021ae7e91c0236bcd39a36205e2b56ce709f2",
+      "size_bytes": 7789
+    },
+    "ornek_veri/invalid_fleet_scenarios.json": {
+      "sha256": "6dc4029b53e75461d222ac9584c923c77906b38b9f08d5c7cbd43601aed4d455",
+      "size_bytes": 10376
+    },
+    "tests/__init__.py": {
+      "sha256": "4a8dabab5a0bde34e5a97cd8729303ce2cb4f8c59fe9ed1b5bf0da870ea333cb",
+      "size_bytes": 155
+    },
+    "tests/test_endpoint_risk_dashboard.py": {
+      "sha256": "86d5702ce31a4b4ec5a8e308c5fa1a4937743d5faf1c2f85b19a9a541cd8ed69",
+      "size_bytes": 12621
+    },
+    "uygulama/__init__.py": {
+      "sha256": "833af94647615c1c160b4e4b2b5a3d0e78e73f36ce513741d73ca6ff61e3c1d6",
+      "size_bytes": 518
+    },
+    "uygulama/endpoint_risk_cli.py": {
+      "sha256": "1d0017105ed7c0769c2b129700e5a80a0b589e6b8d36547939292dd560e44935",
+      "size_bytes": 9364
+    },
+    "uygulama/endpoint_risk_dashboard.py": {
+      "sha256": "ce4c3398ff871d6aa2384342c8fd998d7669a6308e0c8195cac8bde52bd80f68",
+      "size_bytes": 31469
+    }
+  }
+}

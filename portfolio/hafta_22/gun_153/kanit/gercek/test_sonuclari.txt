@@ -1,0 +1,44 @@
+================================================================================
+ GÜN 153: BİRİM TEST SONUÇLARI (15/15 PASS) - UÇ NOKTA RİSK PANOSU
+================================================================================
+
+test_01_pristine_hardened_host_low_risk (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_01_pristine_hardened_host_low_risk)
+Kusursuz sıkılaştırılmış uç noktanın düşük risk (LOW) skoru ürettiğini doğrular. ... ok
+test_02_missing_edr_penalty (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_02_missing_edr_penalty)
+EDR ajanı eksik veya durdurulmuş bir sistemin ağır ceza aldığını doğrular. ... ok
+test_03_unencrypted_disk_penalty (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_03_unencrypted_disk_penalty)
+Diski şifresiz uç noktanın disk güvenliği ceza puanını doğrular. ... ok
+test_04_stale_backup_and_mutable_penalty (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_04_stale_backup_and_mutable_penalty)
+Yedekleme süresi geçmiş ve değiştirilemez olmayan depolama cezasını test eder. ... ok
+test_05_unauthorized_local_admins_penalty (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_05_unauthorized_local_admins_penalty)
+Administrators grubunda yetkisiz hesapların sapma cezasını test eder. ... ok
+test_06_critical_cves_and_patch_delay (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_06_critical_cves_and_patch_delay)
+Kritik CVE zafiyetleri ve yama gecikmesinin risk cezasını doğrular. ... ok
+test_07_critical_asset_multiplier (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_07_critical_asset_multiplier)
+Kritik varlık çarpanının (Domain Controller / DB) risk skorunu artırdığını doğrular. ... ok
+test_08_app_control_disabled_and_unapproved (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_08_app_control_disabled_and_unapproved)
+Uygulama kontrolü kapalı ve onaysız dosya tespit edilen cihaz cezasını test eder. ... ok
+test_09_fleet_aggregation_accuracy (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_09_fleet_aggregation_accuracy)
+Filo seviyesinde cihaz sayısı, risk bandı dağılımı ve ortalamaların doğruluğunu test eder. ... ok
+test_10_top_riskiest_hosts_ranking (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_10_top_riskiest_hosts_ranking)
+En riskli cihazların azalan sırada sıralandığını doğrular. ... ok
+test_11_department_risk_averages (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_11_department_risk_averages)
+Departman bazlı ortalama risk skorlarının doğru hesaplandığını kontrol eder. ... ok
+test_12_empty_fleet_raises_value_error (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_12_empty_fleet_raises_value_error)
+Boş telemetri listesi gönderildiğinde ValueError fırlatıldığını doğrular. ... ok
+test_13_ascii_dashboard_generation (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_13_ascii_dashboard_generation)
+Üretilen ASCII pano metninin anahtar bölümleri içerdiğini test eder. ... ok
+test_14_remediation_script_generation (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_14_remediation_script_generation)
+Riskli uç noktalar için PowerShell düzeltme betiğinin oluşturulduğunu test eder. ... ok
+test_15_cli_roundtrip_execution (test_endpoint_risk_dashboard.TestEndpointRiskDashboard.test_15_cli_roundtrip_execution)
+Dashboard sözlük çıktısının serileştirilebilir ve eksiksiz olduğunu doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+
+================================================================================
+ TOPLAM TEST: 15 | BAŞARILI: 15 | HATA: 0 | BAŞARISIZ: 0
+ DURUM: BAŞARILI (PASS)
+================================================================================
