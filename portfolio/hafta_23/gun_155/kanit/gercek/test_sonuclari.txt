@@ -1,0 +1,44 @@
+================================================================================
+ GÜN 155: BİRİM TEST SONUÇLARI (15/15 PASS) - WEB MİMARİSİ VE GÜVEN SINIRI
+================================================================================
+
+test_01_clean_https_request_and_hardened_response (test_web_architecture.TestWebArchitectureEngine.test_01_clean_https_request_and_hardened_response)
+Kusursuz güvenli akışın 100 tam puan aldığını ve güvenli onaylandığını doğrular. ... ok
+test_02_insecure_http_transport_violation (test_web_architecture.TestWebArchitectureEngine.test_02_insecure_http_transport_violation)
+Şifresiz HTTP isteğinde kritik InsecureTransport ihlali üretildiğini doğrular. ... ok
+test_03_invalid_http_method_tampering (test_web_architecture.TestWebArchitectureEngine.test_03_invalid_http_method_tampering)
+Standart dışı veya küçük harfli HTTP yöntemlerinin tespit edildiğini test eder. ... ok
+test_04_path_traversal_in_url (test_web_architecture.TestWebArchitectureEngine.test_04_path_traversal_in_url)
+İstek yolunda dizin geçiş kalıplarının tespit edildiğini doğrular. ... ok
+test_05_sensitive_data_in_query_parameters (test_web_architecture.TestWebArchitectureEngine.test_05_sensitive_data_in_query_parameters)
+URL parametrelerinde parola veya token taşınmasının engellendiğini test eder. ... ok
+test_06_client_side_trust_role_manipulation (test_web_architecture.TestWebArchitectureEngine.test_06_client_side_trust_role_manipulation)
+İstemciden rol (role=admin) gönderilmesinin kritik ihlal sayıldığını test eder. ... ok
+test_07_client_side_trust_price_manipulation (test_web_architecture.TestWebArchitectureEngine.test_07_client_side_trust_price_manipulation)
+İstemciden fiyat veya indirim gönderilmesinin güven sınırı ihlali olduğunu doğrular. ... ok
+test_08_hsts_missing_and_invalid_detection (test_web_architecture.TestWebArchitectureEngine.test_08_hsts_missing_and_invalid_detection)
+HSTS başlığı eksik olduğunda veya yetersiz sürede başlık puanının düştüğünü test eder. ... ok
+test_09_csp_missing_or_unsafe_inline (test_web_architecture.TestWebArchitectureEngine.test_09_csp_missing_or_unsafe_inline)
+CSP başlığında unsafe-inline kullanılmasının ceza puanı aldığını doğrular. ... ok
+test_10_clickjacking_and_mime_sniffing_headers (test_web_architecture.TestWebArchitectureEngine.test_10_clickjacking_and_mime_sniffing_headers)
+X-Frame-Options ve X-Content-Type-Options başlıklarının varlığının denetlendiğini kontrol eder. ... ok
+test_11_server_information_disclosure (test_web_architecture.TestWebArchitectureEngine.test_11_server_information_disclosure)
+Server ve X-Powered-By başlıklarının bilgi ifşası olarak işaretlendiğini doğrular. ... ok
+test_12_cookie_missing_secure_flag (test_web_architecture.TestWebArchitectureEngine.test_12_cookie_missing_secure_flag)
+Secure bayrağı olmayan çerezin ceza aldığını doğrular. ... ok
+test_13_cookie_missing_httponly_and_samesite (test_web_architecture.TestWebArchitectureEngine.test_13_cookie_missing_httponly_and_samesite)
+HttpOnly ve SameSite bayraklarının eksikliğinin tespit edildiğini test eder. ... ok
+test_14_harden_response_cleans_and_injects_headers (test_web_architecture.TestWebArchitectureEngine.test_14_harden_response_cleans_and_injects_headers)
+harden_response fonksiyonunun başlıkları ve çerezleri eksiksiz düzelttiğini doğrular. ... ok
+test_15_nginx_config_generation (test_web_architecture.TestWebArchitectureEngine.test_15_nginx_config_generation)
+Nginx güvenlik yapılandırma çıktısının anahtar direktifleri içerdiğini test eder. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+
+================================================================================
+ TOPLAM TEST: 15 | BAŞARILI: 15 | HATA: 0 | BAŞARISIZ: 0
+ DURUM: BAŞARILI (PASS)
+================================================================================

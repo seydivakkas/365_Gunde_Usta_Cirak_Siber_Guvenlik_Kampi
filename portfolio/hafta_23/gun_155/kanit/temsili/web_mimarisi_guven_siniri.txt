@@ -1,0 +1,50 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
+             WEB UYGULAMA MİMARİSİ VE GÜVEN SINIRLARI (TRUST BOUNDARIES)
+                                (HAFTA 23 - GÜN 155)
+
+   [GÜVENİLMEYEN BÖLGE (UNTRUSTED)]          [GÜVENİLİR BÖLGE (TRUSTED INTRANET)]
+  +--------------------------------+       +------------------------------------+
+  |      İSTEMCİ / WEB TARAYICI    |       |        EDGE / REVERSE PROXY        |
+  |  - HTML5 / React / Vue SPA     |       |       (Nginx / Cloudflare / WAF)   |
+  |  - LocalStorage / JS Memory    |       |  - TLS 1.3 Sonlandırma (HSTS)      |
+  |  - DOM Manipülasyonu Mümkün    |       |  - Güvenlik Başlıkları Enjeksiyonu |
+  |  - Client Validasyon: GÜVENSİZ!|       |  - HTTP Method & Rate Limiting     |
+  +--------------------------------+       +------------------------------------+
+                  |                                           |
+                  | (HTTPS / Şifreli İletim)                  | (Reverse Proxy Pass)
+                  v                                           v
+  ================ GÜVEN SINIRI 1 (İSTEMCİ -> SUNUCU) ===========================
+  * Asla İstemci Verisine Güvenme! (No Client Trust)
+  * role, is_admin, price, discount -> Sunucu Tarafında Hesaplanmalı
+  * URL Sorgusunda Token/Parola İfşası Yasak
+  ===============================================================================
+                  |                                           |
+                  v                                           v
+  +--------------------------------+       +------------------------------------+
+  |       UYGULAMA SUNUCUSU        |       |       VERİTABANI / BACKEND         |
+  |    (API Gateway / Backend)     |       |       (PostgreSQL / Redis Cache)   |
+  |  - Kimlik Doğrulama (Session)  |       |  - Rol & Yetki Yetkili Kaynağı     |
+  |  - Yetkilendirme (RBAC Matrisi)|<----->|  - Ürün & Fiyat Kataloğu Kaynağı   |
+  |  - Giriş Sanitizasyonu         |       |  - Şifreli Veri Depolama           |
+  |  - Set-Cookie (HttpOnly,Secure)|       |  - En Az Ayrıcalıklı DB Kullanıcısı|
+  +--------------------------------+       +------------------------------------+
+                  |
+  ================ GÜVEN SINIRI 2 (UYGULAMA -> VERİTABANI) ======================
+  * Parametreli Sorgular (Prepared Statements / ORM) -> SQLi Engelleme
+  * Veritabanı Kimlik Bilgileri Asla İstemciye İfşa Edilemez
+  ===============================================================================
+
+   YANIT SERTLEŞTİRME BAŞLIKLARI (SECURITY HEADERS DEFENSE):
+   1. Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+   2. Content-Security-Policy: default-src 'self'; script-src 'self'; object-src 'none'
+   3. X-Frame-Options: DENY (Clickjacking Koruması)
+   4. X-Content-Type-Options: nosniff (MIME Sniffing Koruması)
+   5. Referrer-Policy: strict-origin-when-cross-origin
+   6. Çerez Bayrakları: Secure; HttpOnly; SameSite=Strict/Lax
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

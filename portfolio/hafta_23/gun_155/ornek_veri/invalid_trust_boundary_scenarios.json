@@ -1,0 +1,209 @@
+[
+  {
+    "scenario_id": "SCN-WEB-01",
+    "name": "Şifresiz Düz Metin HTTP İletimi (Insecure Transport)",
+    "description": "Kullanıcı giriş isteği şifresiz HTTP protokolü üzerinden gönderilmiş; ağ trafiğini dinleyen bir saldırgan (MitM) parolaları ve oturum çerezlerini düz metin yakalayabilir.",
+    "flow": {
+      "request": {
+        "method": "POST",
+        "path": "/login",
+        "headers": {"Host": "insecure.example.com"},
+        "query_params": {},
+        "body": {"username": "user", "password": "UserPass123!"},
+        "is_https": false
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {},
+        "cookies": []
+      }
+    },
+    "expected_violation": "InsecureTransport",
+    "expected_severity": "KRITIK"
+  },
+  {
+    "scenario_id": "SCN-WEB-02",
+    "name": "İstemci Tarafı Rol ve Yetki Manipülasyonu (Privilege Escalation)",
+    "description": "İstemci kayıt veya profil güncelleme isteği gövdesinde sunucuya 'role: admin' parametresi enjekte etmiştir. Sunucu bu parametreyi doğrulamadan veritabanına yazarsa dikey yetki yükselme gerçekleşir.",
+    "flow": {
+      "request": {
+        "method": "POST",
+        "path": "/api/user/profile",
+        "headers": {"Host": "app.example.com"},
+        "query_params": {},
+        "body": {"email": "attacker@evil.com", "role": "admin", "is_admin": true},
+        "is_https": true
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {},
+        "cookies": []
+      }
+    },
+    "expected_violation": "ClientSideTrustAssumption",
+    "expected_severity": "KRITIK"
+  },
+  {
+    "scenario_id": "SCN-WEB-03",
+    "name": "İstemci Tarafı Fiyat ve Tutar Manipülasyonu (Price Tampering)",
+    "description": "E-ticaret sepet onayında ürün fiyatı sunucu kataloğundan çekilmek yerine istemcinin gönderdiği 'price: 0.01' parametresine güvenilmiştir.",
+    "flow": {
+      "request": {
+        "method": "POST",
+        "path": "/checkout/order",
+        "headers": {"Host": "shop.example.com"},
+        "query_params": {},
+        "body": {"product_id": 901, "price": 0.01, "discount": 99.9},
+        "is_https": true
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {},
+        "cookies": []
+      }
+    },
+    "expected_violation": "ClientSideTrustAssumption",
+    "expected_severity": "KRITIK"
+  },
+  {
+    "scenario_id": "SCN-WEB-04",
+    "name": "URI Yolu Üzerinde Dizin Atlama (Path Traversal Attempt)",
+    "description": "İstemci dosya indirme veya statik dosya çağrısında '../' ve '%2e%2e%2f' kalıplarıyla web kök dizini dışına çıkmaya çalışmıştır.",
+    "flow": {
+      "request": {
+        "method": "GET",
+        "path": "/download/../../../../etc/shadow",
+        "headers": {"Host": "app.example.com"},
+        "query_params": {},
+        "body": {},
+        "is_https": true
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {},
+        "cookies": []
+      }
+    },
+    "expected_violation": "PathTraversalAttempt",
+    "expected_severity": "KRITIK"
+  },
+  {
+    "scenario_id": "SCN-WEB-05",
+    "name": "URL Sorgu Parametrelerinde Gizli Anahtar ve Parola İfşası",
+    "description": "İstemci API isteklerinde API anahtarını veya oturum parolasını GET URL sorgu dizesinde (?api_key=...&password=...) taşımaktadır; bu parametreler web sunucu erişim günlüklerine ve üçüncü taraf Referrer başlıklarına sızar.",
+    "flow": {
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/data",
+        "headers": {"Host": "api.example.com"},
+        "query_params": {"api_key": "sk_test_demo_9842109842", "secret": "client_secret_998"},
+        "body": {},
+        "is_https": true
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {},
+        "cookies": []
+      }
+    },
+    "expected_violation": "SensitiveDataInQueryString",
+    "expected_severity": "YUKSEK"
+  },
+  {
+    "scenario_id": "SCN-WEB-06",
+    "name": "HSTS Başlığı Eksikliği (Strict-Transport-Security Missing)",
+    "description": "Sunucu HTTPS kullansa dahi Strict-Transport-Security başlığı göndermemektedir; bu durum SSL Strip saldırılarına ve ilk bağlantıda şifresiz HTTP'ye düşme riskine yol açar.",
+    "flow": {
+      "request": {
+        "method": "GET",
+        "path": "/dashboard",
+        "headers": {"Host": "bank.example.com"},
+        "is_https": true
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "X-Frame-Options": "DENY"
+        },
+        "cookies": []
+      }
+    },
+    "expected_violation": "hsts_missing",
+    "expected_severity": "ORTA"
+  },
+  {
+    "scenario_id": "SCN-WEB-07",
+    "name": "CSP Başlığında 'unsafe-inline' ile XSS Savunmasızlığı",
+    "description": "Content-Security-Policy başlığı tanımlanmış ancak 'unsafe-inline' direktifi nonce olmaksızın kullanılarak saldırganların DOM veya yansıtılmış XSS enjekte etmesine izin verilmiştir.",
+    "flow": {
+      "request": {
+        "method": "GET",
+        "path": "/search",
+        "headers": {"Host": "app.example.com"},
+        "is_https": true
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Content-Security-Policy": "default-src 'self' 'unsafe-inline' *;"
+        },
+        "cookies": []
+      }
+    },
+    "expected_violation": "csp_unsafe_inline",
+    "expected_severity": "ORTA"
+  },
+  {
+    "scenario_id": "SCN-WEB-08",
+    "name": "Oturum Çerezinde Secure, HttpOnly ve SameSite Bayraklarının Eksikliği",
+    "description": "Kritik oturum çerezi 'session_id', Secure bayrağı olmadan (HTTP ile iletilebilir), HttpOnly olmadan (XSS ile çalınabilir) ve SameSite=None olarak ayarlanmıştır.",
+    "flow": {
+      "request": {
+        "method": "POST",
+        "path": "/api/auth/login",
+        "headers": {"Host": "portal.example.com"},
+        "is_https": true
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {},
+        "cookies": [
+          {
+            "name": "session_id",
+            "value": "insecure_sess_99812",
+            "secure": false,
+            "httponly": false,
+            "samesite": "None"
+          }
+        ]
+      }
+    },
+    "expected_violation": "insecure_cookie_flags",
+    "expected_severity": "YUKSEK"
+  },
+  {
+    "scenario_id": "SCN-WEB-09",
+    "name": "Sunucu ve Çatı Sürümü Bilgi İfşası (Information Disclosure)",
+    "description": "Sunucu yanıt başlıklarında 'Server: Apache/2.4.41 (Ubuntu)' ve 'X-Powered-By: PHP/7.4.3' gibi net sürüm bilgileri ifşa etmekte; saldırganların hedefli CVE exploit araştırmasını kolaylaştırmaktadır.",
+    "flow": {
+      "request": {
+        "method": "GET",
+        "path": "/",
+        "headers": {"Host": "legacy.example.com"},
+        "is_https": true
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Server": "Apache/2.4.41 (Ubuntu)",
+          "X-Powered-By": "PHP/7.4.3",
+          "X-AspNet-Version": "4.0.30319"
+        },
+        "cookies": []
+      }
+    },
+    "expected_violation": "server_information_disclosure",
+    "expected_severity": "ORTA"
+  }
+]

@@ -1,0 +1,87 @@
+{
+  "gun": 155,
+  "konu": "Web uygulama mimarisi ve güven sınırı",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "24f64e17475918452ae3fc99b3047c577209bc19f0d232472c89bdfcd30a0b8c",
+      "size_bytes": 5307
+    },
+    "ders.md": {
+      "sha256": "7fa2a427f6425808450e84ed12c6c4cfb31319989c6c2cd0db0b99a99a4a4af0",
+      "size_bytes": 7517
+    },
+    "kanit_uretici.py": {
+      "sha256": "060887bd9913045397456c88a0b37e15248f3c5626052443848c345dd9e916b0",
+      "size_bytes": 15065
+    },
+    "rapor.md": {
+      "sha256": "2491642be4a0866d59b53b8ec35a282b1fed656d1809d9df1d4962bdc8d87619",
+      "size_bytes": 6159
+    },
+    "sonuc.json": {
+      "sha256": "76e83d14d1aaeb84caa5e2ec550ff33c371fea3c108bc90613a39168470cb84d",
+      "size_bytes": 1833
+    },
+    "soru_cevap.md": {
+      "sha256": "bac52324fb7e56d9a9321782ab952d4ea5dc25f90dc24ccbae780d81fbabf965",
+      "size_bytes": 13008
+    },
+    "kanit/gercek/hardened_web_response.json": {
+      "sha256": "f8adfee4a05ba8abca7bab414767f4d504ae069f2ec50fe7c82fe5ba6f277228",
+      "size_bytes": 839
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "sha256": "9f899c103eadf557b42aca55cdc1a7f78479e93f406585c6464609e685c69475",
+      "size_bytes": 4935
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "sha256": "a604f54c7c052bfa45ded49c6f5df3eb068a5b5e40d603c7a7589735460724eb",
+      "size_bytes": 6564
+    },
+    "kanit/gercek/nginx_security_headers.conf": {
+      "sha256": "b73a16923422dce37fca1f02e21fa0f36c570bc871164a99a32946f8138cafac",
+      "size_bytes": 1203
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "sha256": "04097924eb231a68d5de79f06b6778ddf6e1d9095b234a55b56374a74a52fbad",
+      "size_bytes": 4053
+    },
+    "kanit/gercek/web_trust_boundary_audit.json": {
+      "sha256": "459b177f4e766a42c8007d74fdb89212e12f25527fe367195d7e8a323f481b7f",
+      "size_bytes": 576
+    },
+    "kanit/temsili/web_mimarisi_guven_siniri.txt": {
+      "sha256": "80fb500f97349325e037521cca6e77dfafbbecfeab6c3024e9729b45c7f42861",
+      "size_bytes": 3445
+    },
+    "ornek_veri/clean_web_architecture_flow.json": {
+      "sha256": "0b7764bbf82637bbdb08df2ce50130ab5f423c08acb2c0679a48b246bbbda81a",
+      "size_bytes": 2017
+    },
+    "ornek_veri/invalid_trust_boundary_scenarios.json": {
+      "sha256": "6326d1cb0522fa62519e7d35d7dd6f34557759ab971de315188bbcb04cc74a40",
+      "size_bytes": 7281
+    },
+    "tests/__init__.py": {
+      "sha256": "b6ca53dca7f2c8d42ea133ba8164b233395b4725b0ab2b1e98037d861bea7a1a",
+      "size_bytes": 168
+    },
+    "tests/test_web_architecture.py": {
+      "sha256": "2975f24455e3eab63fe1ea4203afb20dc1acda161ca050e0718b0543de00e31a",
+      "size_bytes": 10959
+    },
+    "uygulama/__init__.py": {
+      "sha256": "63a44dee02b11f881e04bd7a5b191f8e9c803027098f090c95400690d6216e1b",
+      "size_bytes": 662
+    },
+    "uygulama/web_architecture_cli.py": {
+      "sha256": "ae9e9a417bf7c4be8883682ef74c4cf68bf474c955063e123c19569884e3844b",
+      "size_bytes": 9667
+    },
+    "uygulama/web_architecture_engine.py": {
+      "sha256": "4f0ee33ebe190f11187e4bb5d77610d000dc39464f77073f6cefa2420c0d0637",
+      "size_bytes": 22535
+    }
+  }
+}

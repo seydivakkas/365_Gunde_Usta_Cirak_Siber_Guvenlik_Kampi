@@ -1,0 +1,38 @@
+{
+  "gun": 155,
+  "hafta": 23,
+  "asama": "07",
+  "konu": "Web uygulama mimarisi ve güven sınırı",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-08",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_23/gun_155/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_23/gun_155/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "denetim_raporu_json": "portfolio/hafta_23/gun_155/kanit/gercek/web_trust_boundary_audit.json",
+    "sertlestirilmis_yanit_json": "portfolio/hafta_23/gun_155/kanit/gercek/hardened_web_response.json",
+    "nginx_konfigurasyonu": "portfolio/hafta_23/gun_155/kanit/gercek/nginx_security_headers.conf",
+    "komut_ve_cikis": "portfolio/hafta_23/gun_155/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_23/gun_155/kanit/temsili/web_mimarisi_guven_siniri.txt"
+  },
+  "ozet": "Aşama 7: Web Güvenliği başlangıcında çok katmanlı web mimarisi (Sunum, Reverse Proxy, Uygulama, Veri), istemci-sunucu güven sınırları (Trust Boundaries), HTTP protokol güvenliği, zorunlu güvenlik başlıkları (HSTS, CSP, XFO, nosniff, Referrer, Permissions) ve çerez bayrakları (Secure, HttpOnly, SameSite) eksiksiz modellendi. Otomatik sertleştirme ve Nginx güvenlik konfigürasyonu üretimi ile 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla doğrulandı."
+}

@@ -1,0 +1,88 @@
+================================================================================
+ GÜN 155: WEB MİMARİSİ VE GÜVEN SINIRI CLI YÜRÜTME GÜNLÜĞÜ
+================================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_155\uygulama\web_architecture_cli.py audit-flow --flow C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_155\ornek_veri\clean_web_architecture_flow.json
+
+================================================================================
+ WEB UYGULAMA MİMARİSİ VE GÜVEN SINIRI DENETİM RAPORU (GÜN 155)
+================================================================================
+ Genel Mimari Güvenlik Skoru : 100.0 / 100
+ Güvenlik Durumu             : GÜVENLİ (PASS)
+ Özet                        : Web mimarisi ve güven sınırları kurumsal güvenlik standartlarına uygundur (PASS).
+--------------------------------------------------------------------------------
+ 1. İSTEMCİ-SUNUCU GÜVEN SINIRI İHLALLERİ (0 Adet):
+   [+] İstemci tarafında herhangi bir güven sınırı ihlali saptanmadı.
+--------------------------------------------------------------------------------
+ 2. GÜVENLİK BAŞLIKLARI PUANI: 100.0 / 100
+   * HSTS Geçerli           : EVET
+   * CSP Mevcut             : EVET
+   * X-Frame-Options        : EVET
+   * X-Content-Type-Options : EVET
+--------------------------------------------------------------------------------
+ 3. ÇEREZ VE OTURUM GÜVENLİĞİ DENETİMİ (1 Çerez):
+   * session_id (Skor: 100.0/100) -> Secure: True, HttpOnly: True, SameSite: True
+================================================================================
+
+
+--------------------------------------------------------------------------------
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_155\uygulama\web_architecture_cli.py harden-response --flow C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_155\ornek_veri\clean_web_architecture_flow.json
+
+======================================================================
+ SERTLEŞTİRİLMİŞ (HARDENED) HTTP YANITI
+======================================================================
+ Durum Kodu: 200
+
+ Başlıklar:
+   Content-Type: application/json; charset=utf-8
+   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+   Content-Security-Policy: default-src 'self'; script-src 'self'; object-src 'none'; frame-ancestors 'none';
+   X-Frame-Options: DENY
+   X-Content-Type-Options: nosniff
+   Referrer-Policy: strict-origin-when-cross-origin
+   Permissions-Policy: camera=(), microphone=(), geolocation=()
+   Cache-Control: no-store, no-cache, must-revalidate
+   Pragma: no-cache
+
+ Çerezler (Set-Cookie):
+   Set-Cookie: session_id=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855; Secure; HttpOnly; SameSite=Lax; Path=/api
+======================================================================
+
+
+--------------------------------------------------------------------------------
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_155\uygulama\web_architecture_cli.py export-nginx
+
+# ==============================================================================
+# KURUMSAL GÜVENLİ NGINX YAPILANDIRMASI (HAFTA 23 - GÜN 155)
+# ==============================================================================
+
+# 1. Bilgi İfşasını Engelle
+server_tokens off;
+more_clear_headers 'Server' 'X-Powered-By';
+
+# 2. Zorunlu Güvenlik Başlıkları
+add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload' always;
+add_header Content-Security-Policy "default-src 'self'; script-src 'self'; object-src 'none'; frame-ancestors 'none';" always;
+add_header X-Frame-Options 'DENY' always;
+add_header X-Content-Type-Options 'nosniff' always;
+add_header Referrer-Policy 'strict-origin-when-cross-origin' always;
+add_header Permissions-Policy 'camera=(), microphone=(), geolocation=()' always;
+
+# 3. İzin Verilmeyen HTTP Yöntemlerini Engelle
+if ($request_method !~ ^(GET|POST|PUT|DELETE|HEAD|OPTIONS)$ ) {
+    return 405;
+}
+
+# 4. Hassas Dizin ve Dosyalara Erişimi Kapat
+location ~ /\.(?!well-known).* {
+    deny all;
+    access_log off;
+    log_not_found off;
+}
+
+# ==============================================================================
+
+
+--------------------------------------------------------------------------------

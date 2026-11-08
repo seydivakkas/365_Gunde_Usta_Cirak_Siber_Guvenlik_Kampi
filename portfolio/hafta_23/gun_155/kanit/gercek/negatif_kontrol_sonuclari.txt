@@ -1,0 +1,70 @@
+================================================================================
+ GÜN 155: NEGATİF KONTROL VE HATA SENARYOLARI RAPORU (9/9 PASS)
+================================================================================
+
+[*] Senaryo: SCN-WEB-01 - Şifresiz Düz Metin HTTP İletimi (Insecure Transport)
+    Açıklama: Kullanıcı giriş isteği şifresiz HTTP protokolü üzerinden gönderilmiş; ağ trafiğini dinleyen bir saldırgan (MitM) parolaları ve oturum çerezlerini düz metin yakalayabilir.
+    Hesaplanan Güvenlik Skoru : 52.0 / 100
+    Güvenlik Kararı           : UYGUNSUZ / TEHLİKELİ
+    [+] Tespit Edilen İhlal: InsecureTransport (KRITIK) - İstek şifresiz HTTP protokolü üzerinden iletilmiş; ortadaki adam (MitM) saldırılarına açıktır.
+    [+] DURUM: BAŞARILI (Güven sınırı ihlali tam isabetle yakalandı).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-WEB-02 - İstemci Tarafı Rol ve Yetki Manipülasyonu (Privilege Escalation)
+    Açıklama: İstemci kayıt veya profil güncelleme isteği gövdesinde sunucuya 'role: admin' parametresi enjekte etmiştir. Sunucu bu parametreyi doğrulamadan veritabanına yazarsa dikey yetki yükselme gerçekleşir.
+    Hesaplanan Güvenlik Skoru : 40.0 / 100
+    Güvenlik Kararı           : UYGUNSUZ / TEHLİKELİ
+    [+] Tespit Edilen İhlal: ClientSideTrustAssumption (KRITIK) - İstemcinin sunucuya doğrudan güvenilmeyen yetki/fiyat verisi gönderdiği tespit edildi: 'role=admin'.
+    [+] DURUM: BAŞARILI (Güven sınırı ihlali tam isabetle yakalandı).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-WEB-03 - İstemci Tarafı Fiyat ve Tutar Manipülasyonu (Price Tampering)
+    Açıklama: E-ticaret sepet onayında ürün fiyatı sunucu kataloğundan çekilmek yerine istemcinin gönderdiği 'price: 0.01' parametresine güvenilmiştir.
+    Hesaplanan Güvenlik Skoru : 40.0 / 100
+    Güvenlik Kararı           : UYGUNSUZ / TEHLİKELİ
+    [+] Tespit Edilen İhlal: ClientSideTrustAssumption (KRITIK) - İstemcinin sunucuya doğrudan güvenilmeyen yetki/fiyat verisi gönderdiği tespit edildi: 'price=0.01'.
+    [+] DURUM: BAŞARILI (Güven sınırı ihlali tam isabetle yakalandı).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-WEB-04 - URI Yolu Üzerinde Dizin Atlama (Path Traversal Attempt)
+    Açıklama: İstemci dosya indirme veya statik dosya çağrısında '../' ve '%2e%2e%2f' kalıplarıyla web kök dizini dışına çıkmaya çalışmıştır.
+    Hesaplanan Güvenlik Skoru : 52.0 / 100
+    Güvenlik Kararı           : UYGUNSUZ / TEHLİKELİ
+    [+] Tespit Edilen İhlal: PathTraversalAttempt (KRITIK) - İstek yolunda potansiyel dizin atlama (Path Traversal) kalıbı saptandı: '/download/../../../../etc/shadow'.
+    [+] DURUM: BAŞARILI (Güven sınırı ihlali tam isabetle yakalandı).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-WEB-05 - URL Sorgu Parametrelerinde Gizli Anahtar ve Parola İfşası
+    Açıklama: İstemci API isteklerinde API anahtarını veya oturum parolasını GET URL sorgu dizesinde (?api_key=...&password=...) taşımaktadır; bu parametreler web sunucu erişim günlüklerine ve üçüncü taraf Referrer başlıklarına sızar.
+    Hesaplanan Güvenlik Skoru : 52.0 / 100
+    Güvenlik Kararı           : UYGUNSUZ / TEHLİKELİ
+    [+] Tespit Edilen İhlal: SensitiveDataInQueryString (YUKSEK) - URL sorgu parametrelerinde hassas kimlik bilgisi tespit edildi: 'api_key' (Erişim günlüklerine ve Referrer başlıklarına sızar).
+    [+] DURUM: BAŞARILI (Güven sınırı ihlali tam isabetle yakalandı).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-WEB-06 - HSTS Başlığı Eksikliği (Strict-Transport-Security Missing)
+    Açıklama: Sunucu HTTPS kullansa dahi Strict-Transport-Security başlığı göndermemektedir; bu durum SSL Strip saldırılarına ve ilk bağlantıda şifresiz HTTP'ye düşme riskine yol açar.
+    Hesaplanan Güvenlik Skoru : 70.0 / 100
+    Güvenlik Kararı           : UYGUNSUZ / TEHLİKELİ
+    [+] HSTS Eksikliği Doğrulandı.
+    [+] DURUM: BAŞARILI (Güven sınırı ihlali tam isabetle yakalandı).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-WEB-07 - CSP Başlığında 'unsafe-inline' ile XSS Savunmasızlığı
+    Açıklama: Content-Security-Policy başlığı tanımlanmış ancak 'unsafe-inline' direktifi nonce olmaksızın kullanılarak saldırganların DOM veya yansıtılmış XSS enjekte etmesine izin verilmiştir.
+    Hesaplanan Güvenlik Skoru : 68.0 / 100
+    Güvenlik Kararı           : UYGUNSUZ / TEHLİKELİ
+    [+] CSP unsafe-inline Açığı Doğrulandı.
+    [+] DURUM: BAŞARILI (Güven sınırı ihlali tam isabetle yakalandı).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-WEB-08 - Oturum Çerezinde Secure, HttpOnly ve SameSite Bayraklarının Eksikliği
+    Açıklama: Kritik oturum çerezi 'session_id', Secure bayrağı olmadan (HTTP ile iletilebilir), HttpOnly olmadan (XSS ile çalınabilir) ve SameSite=None olarak ayarlanmıştır.
+    Hesaplanan Güvenlik Skoru : 46.0 / 100
+    Güvenlik Kararı           : UYGUNSUZ / TEHLİKELİ
+    [+] Güvensiz Çerez Bayrakları Doğrulandı.
+    [+] DURUM: BAŞARILI (Güven sınırı ihlali tam isabetle yakalandı).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-WEB-09 - Sunucu ve Çatı Sürümü Bilgi İfşası (Information Disclosure)
+    Açıklama: Sunucu yanıt başlıklarında 'Server: Apache/2.4.41 (Ubuntu)' ve 'X-Powered-By: PHP/7.4.3' gibi net sürüm bilgileri ifşa etmekte; saldırganların hedefli CVE exploit araştırmasını kolaylaştırmaktadır.
+    Hesaplanan Güvenlik Skoru : 60.0 / 100
+    Güvenlik Kararı           : UYGUNSUZ / TEHLİKELİ
+    [+] Sunucu Bilgi İfşası Doğrulandı: ['server: Apache/2.4.41 (Ubuntu)', 'x-powered-by: PHP/7.4.3', 'x-aspnet-version: 4.0.30319']
+    [+] DURUM: BAŞARILI (Güven sınırı ihlali tam isabetle yakalandı).
+--------------------------------------------------------------------------------
+
+TOPLAM SENARYO: 9 | BAŞARILI DOĞRULAMA: 9/9
+SONUÇ: %100 NEGATİF KONTROL VE GÜVEN SINIRI İHLALİ YAKALAMA BAŞARISI (PASS)

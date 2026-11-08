@@ -1,0 +1,23 @@
+{
+  "overall_score": 100.0,
+  "is_secure": true,
+  "summary": "Web mimarisi ve güven sınırları kurumsal güvenlik standartlarına uygundur (PASS).",
+  "request_violations": [],
+  "header_audit": {
+    "score": 100.0,
+    "hsts_valid": true,
+    "csp_present": true,
+    "x_frame_options_present": true,
+    "x_content_type_options_present": true,
+    "disclosed_server_tokens": []
+  },
+  "cookie_audits": [
+    {
+      "cookie_name": "session_id",
+      "score": 100.0,
+      "secure": true,
+      "httponly": true,
+      "samesite": true
+    }
+  ]
+}
