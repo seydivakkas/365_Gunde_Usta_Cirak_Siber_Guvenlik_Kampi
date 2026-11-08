@@ -1,0 +1,43 @@
+==============================================================================
+GÜN 151: YEDEK DOĞRULAMA VE KURTARMA CLI KONSOL GÜNLÜĞÜ
+Zaman Damgası (UTC): 2026-11-08T15:24:47.865472+00:00
+==============================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_151\uygulama\backup_recovery_cli.py audit --config C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_151\ornek_veri\clean_backup_recovery_spec.json
+==============================================================================
+[*] YEDEK DOĞRULAMA VE KURTARMA DENETİMİ: Enterprise_Production_Tier1_Backup_Policy
+[*] Hedef RPO: 60 dk | Hedef RTO: 120 dk
+[*] Toplam Mevcut Yedek Kopyası Sayısı: 3
+==============================================================================
+[+] TEBRİKLER: Yedekleme mimarisi 3-2-1 ve WORM standartlarıyla tam uyumlu (100/100).
+------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_151\uygulama\backup_recovery_cli.py simulate-restore --config C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_151\ornek_veri\clean_backup_recovery_spec.json
+==============================================================================
+[*] YEDEK GERİ YÜKLEME SİMÜLASYONU (SIM-REC-BCK-PROD-NVME-001)
+==============================================================================
+Durum              : RECOVERY_SUCCESS
+Başarılı mı?       : EVET (BAŞARILI)
+Gerçekleşen RPO    : 0.0 dakika (Hedef: 60 dk -> UYUMLU)
+Gerçekleşen RTO    : 10.1 dakika (Hedef: 120 dk -> UYUMLU)
+Sağlama Toplamı    : DOĞRULANDI (SHA-256 GEÇERLİ)
+Detay              : Yedek noktası 'BCK-PROD-NVME-001' (LOCAL_NVME) üzerinden geri yükleme başarıyla simüle edildi.
+==============================================================================
+------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_151\uygulama\backup_recovery_cli.py simulate-ransomware --config C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_151\ornek_veri\clean_backup_recovery_spec.json
+==============================================================================
+[*] FİDYE YAZILIMI (RANSOMWARE) YEDEK İMHA SİMÜLASYONU
+==============================================================================
+Saldırı Öncesi Toplam Yedek : 3
+İmha Edilen / Silinen Yedek : 2
+Hayatta Kalan (WORM/Airgap) : 1
+Saldırıya Karşı Direnildi mi: EVET (WORM KORUDU)
+------------------------------------------------------------------------------
+Saldırı Olay Günlüğü:
+  [-] BCK-PROD-NVME-001 (LOCAL_NVME): WORM koruması yok; fidye yazılımı tarafından şifrelendi/silindi.
+  [-] BCK-PROD-SAN-002 (ENTERPRISE_SAN): WORM koruması yok; fidye yazılımı tarafından şifrelendi/silindi.
+  [+] BCK-PROD-S3-WORM-003: S3 Object Lock COMPLIANCE modunda; fidye yazılımı silme isteği 403 Access Denied ile engellendi!
+==============================================================================
+------------------------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_151\uygulama\backup_recovery_cli.py generate-remediation --os-type windows --output C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_151\kanit\gercek\cli_remediation_output.ps1
+[+] WINDOWS sertleştirme betiği başarıyla üretildi: C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_151\kanit\gercek\cli_remediation_output.ps1
+------------------------------------------------------------------------------

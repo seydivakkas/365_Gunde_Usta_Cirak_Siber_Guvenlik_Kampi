@@ -1,0 +1,43 @@
++-----------------------------------------------------------------------------+
+|                 TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL              |
++-----------------------------------------------------------------------------+
+|           YEDEK DOĞRULAMA, 3-2-1 VE DEĞİŞTİRİLEMEZLİK (WORM) MİMARİSİ       |
++-----------------------------------------------------------------------------+
+
+   +-----------------------------------------------------------------------+
+   |                     BİRİNCİL ÜRETİM ORTAMI (TIER 0 / 1)               |
+   |                                                                       |
+   |  * Canlı Veritabanı ve Kritik Dosya Sistemleri                        |
+   |  * VSS (Volume Shadow Copy) Koruma Katmanı (vssadmin ACL kilitli)     |
+   |  * RPO Hedefi: <= 60 Dakika | RTO Hedefi: <= 120 Dakika              |
+   +-----------------------------------------------------------------------+
+                                      |                                     
+                                      | Otomatik Yedekleme İşi (SHA-256)    
+                                      v                                     
+   +-----------------------------------------------------------------------+
+   |          3-2-1-1-0 STANDARDI VE DEPOLAMA MEDYASI DAĞILIMI             |
+   +-----------------------------------------------------------------------+
+       |                                 |                               |  
+       v                                 v                               v  
+   [ 1. KOPYA: YEREL NVMe ]    [ 2. KOPYA: AĞ SAN/NAS ]    [ 3. KOPYA: BULUT S3 ]
+   * Hızlı Geri Yükleme        * Kurumsal Veri Depolama    * Saha Dışı (Off-Site)
+   * Kısa Süreli Retention     * Governance Modu           * WORM Compliance Mode
+   * SHA-256 Doğrulamalı       * Güvenli VLAN İzolasyonu   * 30 Gün Kilitli       
+                                                                 |          
+                                                                 v          
+   =========================================================================
+         FİDYE YAZILIMI (RANSOMWARE) SALDIRISI ANINDAKİ SAVUNMA HATTI       
+   =========================================================================
+   Saldırgan: Domain Admin ele geçirdi -> 'vssadmin delete shadows' koşturdu
+   -> 1. Kopya (Yerel NVMe): Saldırgan tarafından şifrelendi / imha edildi. 
+   -> 2. Kopya (Ağ SAN/NAS): Saldırgan tarafından şifrelendi / silindi.     
+   -> 3. Kopya (S3 WORM)   : ROOT DAHİL KİMSE SİLEMEZ! (Access Denied 403)  
+   -------------------------------------------------------------------------
+   SONUÇ: Felaket Anında S3 WORM Kopyasından Geri Yükleme Başlatılır:       
+   * RPO: 20 Dakika (Hedef <= 60 dk sağlandı!)                              
+   * RTO: 35 Dakika (Hedef <= 120 dk sağlandı!)                             
+   * Bütünlük: SHA-256 Sağlama Toplamı Eşleşti (%100 Temiz Kurtarma)        
+
++-----------------------------------------------------------------------------+
+|                 TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL              |
++-----------------------------------------------------------------------------+

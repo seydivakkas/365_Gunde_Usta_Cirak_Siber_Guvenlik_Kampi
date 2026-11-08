@@ -1,0 +1,14 @@
+{
+  "simulation_id": "SIM-REC-BCK-PROD-NVME-001",
+  "timestamp_utc": "2026-11-08T15:24:47.863745+00:00",
+  "status": "RECOVERY_SUCCESS",
+  "success": true,
+  "target_rpo_minutes": 60,
+  "actual_rpo_minutes": 0.0,
+  "rpo_compliant": true,
+  "target_rto_minutes": 120,
+  "actual_rto_minutes": 10.1,
+  "rto_compliant": true,
+  "checksum_verified": true,
+  "detail": "Yedek noktası 'BCK-PROD-NVME-001' (LOCAL_NVME) üzerinden geri yükleme başarıyla simüle edildi."
+}

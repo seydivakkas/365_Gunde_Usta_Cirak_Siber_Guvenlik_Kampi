@@ -1,0 +1,53 @@
+==============================================================================
+GÜN 151: YEDEK DOĞRULAMA VE KURTARMA NEGATİF KONTROL VE FELAKET TESTLERİ
+Tarih/Saat (UTC): 2026-11-08T15:24:47.860733+00:00
+Toplam İncelenen Senaryo Sayısı: 9
+==============================================================================
+
+Senaryo NEG-BCK-01: 3-2-1 Kuralı İhlali: Yetersiz Yedek Kopyası Sayısı (2 Kopya)
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: BCK-321-TOTAL-COPIES [CRITICAL] - Yetersiz Yedek Kopyası Sayısı (2/3)
+  Açıklama: Yalnızca 2 kopya tutulması, tek bir kopyanın bozulması durumunda veri kaybı riskini katlar.
+------------------------------------------------------------------------------
+Senaryo NEG-BCK-02: 3-2-1 Kuralı İhlali: Tek Bir Depolama Medyası Türü Kullanımı
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: BCK-321-MEDIA-TYPES [HIGH] - Yetersiz Depolama Medyası Çeşitliliği (1 Tür)
+  Açıklama: Tüm yedeklerin yalnızca yerel NVMe diskte saklanması; disk denetleyicisi veya NVMe donanım arızasında tüm kopyalar yok olur.
+------------------------------------------------------------------------------
+Senaryo NEG-BCK-03: 3-2-1 Kuralı İhlali: Saha Dışı (Off-site / Cloud) Kopyanın Olmaması
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: BCK-321-NO-OFFSITE [CRITICAL] - Saha Dışı (Off-site / Cloud) Yedek Kopyası Bulunmuyor
+  Açıklama: Tüm yedek kopyalarının aynı veri merkezinde tutulması; yangın, sel veya bina felaketinde tüm yedekler kaybolur.
+------------------------------------------------------------------------------
+Senaryo NEG-BCK-04: Fidye Yazılımı Savunmasızlığı: Değiştirilemez (WORM) Kopyanın Bulunmaması
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: BCK-IMMUTABLE-COMPLIANCE [CRITICAL] - Değiştirilemez (WORM / Immutable) Yedek Koruması Bulunmuyor
+  Açıklama: Hiçbir yedeğin WORM / Object Lock Compliance modunda olmaması; Domain Admin yetkisi alan fidye yazılımının tüm yedekleri silmesine yol açar.
+------------------------------------------------------------------------------
+Senaryo NEG-BCK-05: RPO SLA İhlali: Son Yedekten Bu Yana Geçen Sürenin Hedefi Aşması
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: BCK-RPO-BREACH [HIGH] - RPO Hedefi İhlal Edildi (360.0 dk > 60 dk)
+  Açıklama: Son başarılı yedeklemenin 6 saat önce yapılmış olması; kurumun 60 dakikalık RPO hedefini aşması ve kabul edilemez veri kaybı riski.
+------------------------------------------------------------------------------
+Senaryo NEG-BCK-06: Doğrulanmamış Yedekler: Geri Yükleme Testinin 30 Günü Aşması
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: BCK-UNVERIFIED-TESTS [HIGH] - Doğrulanmamış Yedek Noktaları Bulunuyor (3 Adet)
+  Açıklama: Yedek arşivlerinin periyodik geri yükleme doğrulamasının yapılmaması; felaket anında yedeğin açılamaması riski.
+------------------------------------------------------------------------------
+Senaryo NEG-BCK-07: Sessiz Veri Bozulması (Bit Rot) / Checksum Uyuşmazlığı
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: BCK-CHECKSUM-CORRUPTED [CRITICAL] - Bozuk Sağlama Toplamı / Bit Çürümesi (Bit Rot) Tespit Edildi (1 Adet)
+  Açıklama: Yedek arşivindeki sektör bozulması sebebiyle SHA-256 sağlama toplamının tutmaması; arşivin hasarlı olması.
+------------------------------------------------------------------------------
+Senaryo NEG-BCK-08: Gölge Kopyaların (VSS) Fidye Yazılımı Tarafından Silinebilmesi
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: BCK-VSS-UNPROTECTED [HIGH] - Gölge Kopyalar (VSS) Yetkisiz Silinmeye Karşı Savunmasız
+  Açıklama: Uç noktada VSS korumasının olmaması; fidye yazılımının 'vssadmin delete shadows' komutuyla anlık görüntüleri yok edebilmesi.
+------------------------------------------------------------------------------
+Senaryo NEG-BCK-09: WORM Olmayan Ortamda Tam Fidye Yazılımı Felaketi (Complete Wipeout)
+  Sonuç: [BAŞARILI - TESPİT EDİLDİ (PASS)]
+  Detay: Bulgu: BCK-IMMUTABLE-COMPLIANCE [CRITICAL] - Değiştirilemez (WORM / Immutable) Yedek Koruması Bulunmuyor
+  Açıklama: Değiştirilemez depolama bulunmadığı için fidye yazılımının tüm yerel ve ağ yedeklerini silerek sıfır kurtarma noktası bırakması.
+------------------------------------------------------------------------------
+
+Toplam Başarılı Tespit: 9/9 (%100 Başarı)

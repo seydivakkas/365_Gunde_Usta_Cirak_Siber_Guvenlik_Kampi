@@ -1,0 +1,38 @@
+{
+  "gun": 151,
+  "hafta": 22,
+  "asama": "06",
+  "konu": "Yedek doğrulama ve kurtarma noktası",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-08",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_22/gun_151/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_22/gun_151/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "denetim_raporu": "portfolio/hafta_22/gun_151/kanit/gercek/backup_recovery_audit_report.json",
+    "geri_yukleme_dogrulama": "portfolio/hafta_22/gun_151/kanit/gercek/simulated_restore_verification.json",
+    "remediation_betigi": "portfolio/hafta_22/gun_151/kanit/gercek/immutable_backup_remediation.ps1",
+    "komut_ve_cikis": "portfolio/hafta_22/gun_151/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_22/gun_151/kanit/temsili/yedekleme_kurtarma_mimarisi.txt"
+  },
+  "ozet": "3-2-1-1-0 yedekleme kuralı, Değiştirilemez Depolama (S3 Object Lock COMPLIANCE / WORM), RPO ve RTO SLA hesaplamaları, SHA-256 sağlama toplamı ile sessiz veri bozulması (Bit rot) tespiti ve fidye yazılımlarının VSS/yerel yedek imha ataklarına karşı direnci eksiksiz modellenmiş; 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla doğrulanmıştır."
+}

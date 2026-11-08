@@ -1,0 +1,11 @@
+{
+  "report_id": "BCK-AUDIT-20261108-001",
+  "timestamp_utc": "2026-11-08T15:24:47.863170+00:00",
+  "policy_name": "Enterprise_Production_Tier1_Backup_Policy",
+  "target_rpo_minutes": 60,
+  "target_rto_minutes": 120,
+  "total_artifacts": 3,
+  "total_findings": 0,
+  "compliance_status": "COMPLIANT_100_PERCENT",
+  "findings": []
+}

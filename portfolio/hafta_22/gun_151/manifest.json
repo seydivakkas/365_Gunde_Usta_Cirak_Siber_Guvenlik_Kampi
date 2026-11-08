@@ -1,0 +1,87 @@
+{
+  "gun": 151,
+  "konu": "Yedek doğrulama ve kurtarma noktası",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "ders.md": {
+      "sha256": "3cff838ba29fd256e200d5b5477b7d97346f899587f3710ed668cbe786378410",
+      "size_bytes": 8958
+    },
+    "kanit/gercek/backup_recovery_audit_report.json": {
+      "sha256": "9264c2364ea4810d6267a77cf9b79603bafe7b9e6d9cfdaf5470c981ff5affb1",
+      "size_bytes": 340
+    },
+    "kanit/gercek/immutable_backup_remediation.ps1": {
+      "sha256": "992e640ef3230a7069743ab5e515ab602366068ecf4f5bb2f9140cfb95befda3",
+      "size_bytes": 1420
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "sha256": "7de1c207e66c79ee135a263455b07b51863134395066954dbcf83c1d25f4dd75",
+      "size_bytes": 4444
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "sha256": "16fe034e891876fc0d08d12b8c9b538892e5c5c65653b3b4bc5f8964a8634f39",
+      "size_bytes": 4613
+    },
+    "kanit/gercek/simulated_restore_verification.json": {
+      "sha256": "acea49a5611c09e6fd6de886400ba24d0b93479d28b12a014fc75b4fdb4e4acc",
+      "size_bytes": 480
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "sha256": "6ff356750c4ea8b4a53f9c75f9a8b1bec2c79269165fa9b6f1b0c5dc4ffbe4ec",
+      "size_bytes": 4393
+    },
+    "kanit/temsili/yedekleme_kurtarma_mimarisi.txt": {
+      "sha256": "2bd6fc4850129dcdd235a1a0dd45d175a9532d9993abe09b3b91b18165f9653e",
+      "size_bytes": 3336
+    },
+    "kanit_uretici.py": {
+      "sha256": "6a2379368bb2893dadf4fcdd9c6bb8db903507123a73eb11d025f08c3e00d617",
+      "size_bytes": 14504
+    },
+    "ornek_veri/clean_backup_recovery_spec.json": {
+      "sha256": "6a88e141a8f97cb1c97e7d928ba5b9044470a59492049adcee24461f0b7907b9",
+      "size_bytes": 2297
+    },
+    "ornek_veri/invalid_backup_scenarios.json": {
+      "sha256": "8b1eaddb40a12eaa6254d0d5fd15cf2669fcdbe68351036899c20704371e2738",
+      "size_bytes": 3842
+    },
+    "rapor.md": {
+      "sha256": "add0d3596d57fc950b4b9185de3170afcb75f81a8cea384e6a9740b36d98c879",
+      "size_bytes": 4898
+    },
+    "README.md": {
+      "sha256": "d14f995afa87b4aead2c6ffb5da6b3858515ed531ff5da62efb167bd0d03ea08",
+      "size_bytes": 5050
+    },
+    "sonuc.json": {
+      "sha256": "3e1d4effedb237d643e9c8d144a6924e9fdfb0d43ecec21f9b0a184d59b4a3ea",
+      "size_bytes": 1720
+    },
+    "soru_cevap.md": {
+      "sha256": "aac74533a2b6dd57f2c72cc637d1cfc0f681045903d749291df6a2b85e687a3a",
+      "size_bytes": 12071
+    },
+    "tests/__init__.py": {
+      "sha256": "0cde544fbee93d9c6b23c66693a4635f1266f2ffbf13c6eff7844b2ec1aa2685",
+      "size_bytes": 201
+    },
+    "tests/test_backup_recovery.py": {
+      "sha256": "c780bb22288ed8a3d24c0db05def583a1608d2b4ea698bba41c94e865209e543",
+      "size_bytes": 13041
+    },
+    "uygulama/__init__.py": {
+      "sha256": "ffac222c993b26edde3bd594ae9dbe0bd07ffa102bb7d4e3b7e2b0de58de9371",
+      "size_bytes": 345
+    },
+    "uygulama/backup_recovery_cli.py": {
+      "sha256": "7d15a5fb25d862a42a0dbedd3bef718f4c6d9ad1516161411d90459155acfba3",
+      "size_bytes": 8866
+    },
+    "uygulama/backup_recovery_engine.py": {
+      "sha256": "d1d7eb4c05034ef021f3c23db5862497aef9c9ebeb596ab8c7ea37bf420bad75",
+      "size_bytes": 25070
+    }
+  }
+}

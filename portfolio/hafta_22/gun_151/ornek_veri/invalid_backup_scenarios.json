@@ -1,0 +1,93 @@
+[
+  {
+    "scenario_id": "NEG-BCK-01",
+    "name": "3-2-1 Kuralı İhlali: Yetersiz Yedek Kopyası Sayısı (2 Kopya)",
+    "description": "Yalnızca 2 kopya tutulması, tek bir kopyanın bozulması durumunda veri kaybı riskini katlar.",
+    "profile_patch": {
+      "artifacts_filter": [0, 1]
+    },
+    "expected_finding": "BCK-321-TOTAL-COPIES",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-BCK-02",
+    "name": "3-2-1 Kuralı İhlali: Tek Bir Depolama Medyası Türü Kullanımı",
+    "description": "Tüm yedeklerin yalnızca yerel NVMe diskte saklanması; disk denetleyicisi veya NVMe donanım arızasında tüm kopyalar yok olur.",
+    "profile_patch": {
+      "force_media_type": "LOCAL_NVME"
+    },
+    "expected_finding": "BCK-321-MEDIA-TYPES",
+    "expected_severity": "HIGH"
+  },
+  {
+    "scenario_id": "NEG-BCK-03",
+    "name": "3-2-1 Kuralı İhlali: Saha Dışı (Off-site / Cloud) Kopyanın Olmaması",
+    "description": "Tüm yedek kopyalarının aynı veri merkezinde tutulması; yangın, sel veya bina felaketinde tüm yedekler kaybolur.",
+    "profile_patch": {
+      "disable_offsite": true
+    },
+    "expected_finding": "BCK-321-NO-OFFSITE",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-BCK-04",
+    "name": "Fidye Yazılımı Savunmasızlığı: Değiştirilemez (WORM) Kopyanın Bulunmaması",
+    "description": "Hiçbir yedeğin WORM / Object Lock Compliance modunda olmaması; Domain Admin yetkisi alan fidye yazılımının tüm yedekleri silmesine yol açar.",
+    "profile_patch": {
+      "disable_immutability": true
+    },
+    "expected_finding": "BCK-IMMUTABLE-COMPLIANCE",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-BCK-05",
+    "name": "RPO SLA İhlali: Son Yedekten Bu Yana Geçen Sürenin Hedefi Aşması",
+    "description": "Son başarılı yedeklemenin 6 saat önce yapılmış olması; kurumun 60 dakikalık RPO hedefini aşması ve kabul edilemez veri kaybı riski.",
+    "profile_patch": {
+      "age_hours": 6
+    },
+    "expected_finding": "BCK-RPO-BREACH",
+    "expected_severity": "HIGH"
+  },
+  {
+    "scenario_id": "NEG-BCK-06",
+    "name": "Doğrulanmamış Yedekler: Geri Yükleme Testinin 30 Günü Aşması",
+    "description": "Yedek arşivlerinin periyodik geri yükleme doğrulamasının yapılmaması; felaket anında yedeğin açılamaması riski.",
+    "profile_patch": {
+      "verification_stale_days": 60
+    },
+    "expected_finding": "BCK-UNVERIFIED-TESTS",
+    "expected_severity": "HIGH"
+  },
+  {
+    "scenario_id": "NEG-BCK-07",
+    "name": "Sessiz Veri Bozulması (Bit Rot) / Checksum Uyuşmazlığı",
+    "description": "Yedek arşivindeki sektör bozulması sebebiyle SHA-256 sağlama toplamının tutmaması; arşivin hasarlı olması.",
+    "profile_patch": {
+      "corrupt_primary": true
+    },
+    "expected_finding": "BCK-CHECKSUM-CORRUPTED",
+    "expected_severity": "CRITICAL"
+  },
+  {
+    "scenario_id": "NEG-BCK-08",
+    "name": "Gölge Kopyaların (VSS) Fidye Yazılımı Tarafından Silinebilmesi",
+    "description": "Uç noktada VSS korumasının olmaması; fidye yazılımının 'vssadmin delete shadows' komutuyla anlık görüntüleri yok edebilmesi.",
+    "profile_patch": {
+      "unprotect_vss": true
+    },
+    "expected_finding": "BCK-VSS-UNPROTECTED",
+    "expected_severity": "HIGH"
+  },
+  {
+    "scenario_id": "NEG-BCK-09",
+    "name": "WORM Olmayan Ortamda Tam Fidye Yazılımı Felaketi (Complete Wipeout)",
+    "description": "Değiştirilemez depolama bulunmadığı için fidye yazılımının tüm yerel ve ağ yedeklerini silerek sıfır kurtarma noktası bırakması.",
+    "profile_patch": {
+      "disable_immutability": true,
+      "simulate_wipeout": true
+    },
+    "expected_finding": "BCK-IMMUTABLE-COMPLIANCE",
+    "expected_severity": "CRITICAL"
+  }
+]

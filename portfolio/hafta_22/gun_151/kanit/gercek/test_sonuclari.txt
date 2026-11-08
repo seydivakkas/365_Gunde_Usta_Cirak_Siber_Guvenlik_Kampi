@@ -1,0 +1,40 @@
+Çalıştırılan Komut: C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe -m unittest discover -s C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_151\tests -p test_*.py -v
+Çıkış Kodu: 0
+Zaman Damgası (UTC): 2026-11-08T15:24:47.859957+00:00
+==============================================================================
+
+test_01_clean_hardened_backup_audit_no_findings (test_backup_recovery.TestBackupRecoverySecurity.test_01_clean_hardened_backup_audit_no_findings)
+Test 1: Tam sertleştirilmiş 3-2-1 ve WORM yedekleme mimarisi denetlendiğinde sıfır bulgu üretmelidir. ... ok
+test_02_detect_insufficient_total_copies (test_backup_recovery.TestBackupRecoverySecurity.test_02_detect_insufficient_total_copies)
+Test 2: Toplam kopya sayısı 3'ün altına düştüğünde CRITICAL seviyesinde tespit edilmelidir. ... ok
+test_03_detect_insufficient_media_diversity (test_backup_recovery.TestBackupRecoverySecurity.test_03_detect_insufficient_media_diversity)
+Test 3: Tüm kopyalar tek bir depolama medyasına (örn: sadece NVMe) yazıldığında HIGH tespit edilmelidir. ... ok
+test_04_detect_missing_offsite_copy (test_backup_recovery.TestBackupRecoverySecurity.test_04_detect_missing_offsite_copy)
+Test 4: Saha dışı (Off-site / Cloud) kopya bulunmadığında CRITICAL seviyesinde tespit edilmelidir. ... ok
+test_05_detect_missing_immutable_worm (test_backup_recovery.TestBackupRecoverySecurity.test_05_detect_missing_immutable_worm)
+Test 5: Değiştirilemez (WORM / Compliance) modda kopya olmadığında CRITICAL seviyesinde alarm verilmelidir. ... ok
+test_06_detect_rpo_sla_breach (test_backup_recovery.TestBackupRecoverySecurity.test_06_detect_rpo_sla_breach)
+Test 6: Son yedekten bu yana geçen süre RPO SLA hedefini (60 dk) aştığında HIGH tespit edilmelidir. ... ok
+test_07_detect_unverified_backups_staleness (test_backup_recovery.TestBackupRecoverySecurity.test_07_detect_unverified_backups_staleness)
+Test 7: Son geri yükleme doğrulama testi 30 günü geçtiğinde HIGH seviyesinde bulgu üretilmelidir. ... ok
+test_08_detect_checksum_bit_rot_corruption (test_backup_recovery.TestBackupRecoverySecurity.test_08_detect_checksum_bit_rot_corruption)
+Test 8: Sessiz veri bozulması (Bit rot) veya hash uyumsuzluğu tespit edildiğinde CRITICAL alarm verilmelidir. ... ok
+test_09_detect_unprotected_vss_shadows (test_backup_recovery.TestBackupRecoverySecurity.test_09_detect_unprotected_vss_shadows)
+Test 9: Gölge kopyalar (VSS) fidye yazılımı silmelerine karşı korunmadığında HIGH bulgu üretilmelidir. ... ok
+test_10_restore_simulation_success_and_sla_compliance (test_backup_recovery.TestBackupRecoverySecurity.test_10_restore_simulation_success_and_sla_compliance)
+Test 10: Taze ve geçerli yedekten geri yükleme simülasyonu RPO ve RTO şartlarını sağlamalıdır. ... ok
+test_11_restore_simulation_fails_when_all_corrupted (test_backup_recovery.TestBackupRecoverySecurity.test_11_restore_simulation_fails_when_all_corrupted)
+Test 11: Mevcut tüm yedek arşivleri bozulduğunda geri yükleme simülasyonu başarısız olmalıdır. ... ok
+test_12_ransomware_simulation_wipes_unprotected_and_retains_worm (test_backup_recovery.TestBackupRecoverySecurity.test_12_ransomware_simulation_wipes_unprotected_and_retains_worm)
+Test 12: Fidye yazılımı saldırısında WORM Compliance yedek silinememeli, felaketten kurtuluş sağlanmalıdır. ... ok
+test_13_ransomware_simulation_complete_wipeout_when_no_worm (test_backup_recovery.TestBackupRecoverySecurity.test_13_ransomware_simulation_complete_wipeout_when_no_worm)
+Test 13: Değiştirilemez WORM koruması yoksa fidye yazılımı tüm yedekleri silmeli ve sistem çökmelidir. ... ok
+test_14_sha256_checksum_verification_math (test_backup_recovery.TestBackupRecoverySecurity.test_14_sha256_checksum_verification_math)
+Test 14: Sentetik veri akışında SHA-256 sağlama toplamı doğrulaması ve bit bozulması tespiti yapılmalıdır. ... ok
+test_15_remediation_scripts_generation (test_backup_recovery.TestBackupRecoverySecurity.test_15_remediation_scripts_generation)
+Test 15: Otomatik oluşturulan PowerShell ve Bash sertleştirme betikleri zorunlu komutları içermelidir. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

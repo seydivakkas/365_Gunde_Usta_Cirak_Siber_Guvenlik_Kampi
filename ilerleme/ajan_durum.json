@@ -1,9 +1,9 @@
 {
-  "son_islenen_gun": 150,
-  "son_kapanan_pass_gun": 150,
-  "sonraki_aday_gun": 151,
-  "son_durum": "G150_TAMAMLANDI_PASS",
-  "sonuc_dosyasi": "portfolio/hafta_22/gun_150/sonuc.json",
+  "son_islenen_gun": 151,
+  "son_kapanan_pass_gun": 151,
+  "sonraki_aday_gun": 152,
+  "son_durum": "G151_TAMAMLANDI_PASS",
+  "sonuc_dosyasi": "portfolio/hafta_22/gun_151/sonuc.json",
   "excel_dogrulandi": true,
   "mod": "OTOMATIK_ZINCIR",
   "tamamlanan_gunler": [
@@ -71,12 +71,13 @@
     147,
     148,
     149,
-    150
+    150,
+    151
   ],
-  "guncelleme_tarihi": "2026-11-04T01:47:38.074521",
-  "durum_notu": "Gün 150: Disk şifreleme ve TPM kavramı (Hafta 22 / Aşama 6) 100/100 PASS ile tamamlandı. Gün 151: Yedek doğrulama ve kurtarma noktası konusuna hazır.",
-  "durum": "G150_TAMAMLANDI_PASS",
-  "son_islem_tarihi": "2026-11-04T01:47:38.074521",
-  "son_guncelleme": "2026-11-04T01:47:38.074521",
-  "guncelleme_zamani": "2026-11-04T01:47:38.074521"
+  "guncelleme_tarihi": "2026-11-08T18:27:40.971715",
+  "durum_notu": "Gün 151: Yedek doğrulama ve kurtarma noktası (Hafta 22 / Aşama 6) 100/100 PASS ile tamamlandı. Gün 152: Güvenli yapılandırma sapması konusuna hazır.",
+  "durum": "G151_TAMAMLANDI_PASS",
+  "son_islem_tarihi": "2026-11-08T18:27:40.971715",
+  "son_guncelleme": "2026-11-08T18:27:40.971715",
+  "guncelleme_zamani": "2026-11-08T18:27:40.971715"
 }
