@@ -1,0 +1,177 @@
+[
+  {
+    "scenario_id": "SCN-SESSION-01",
+    "name": "Bosta_Kalma_Zaman_Asimi_Idle_Timeout",
+    "test_type": "idle_timeout",
+    "description": "Kullanici 901 saniye boyunca herhangi bir istek yapmadi; bos kalma zaman asimi tetiklendi.",
+    "session_data": {
+      "user_id": "usr_idle_1",
+      "username": "mehmet_finans",
+      "role": "User",
+      "ip": "10.0.0.10",
+      "user_agent": "Mozilla/5.0 Chrome/130.0"
+    },
+    "simulation": {
+      "time_offset_seconds": 901,
+      "request_ip": "10.0.0.10",
+      "request_ua": "Mozilla/5.0 Chrome/130.0"
+    },
+    "expected_status": "ZamanAsimi_Bosta",
+    "expected_valid": false
+  },
+  {
+    "scenario_id": "SCN-SESSION-02",
+    "name": "Mutlak_Omur_Zaman_Asimi_Absolute_Timeout",
+    "test_type": "absolute_timeout",
+    "description": "Kullanici 8 saat (28801 saniye) once oturum acti; aktif olsa bile mutlak sure bitti.",
+    "session_data": {
+      "user_id": "usr_abs_2",
+      "username": "ahmet_surekli_aktif",
+      "role": "Operator",
+      "ip": "10.0.0.11",
+      "user_agent": "Mozilla/5.0 Firefox/128.0"
+    },
+    "simulation": {
+      "time_offset_seconds": 28801,
+      "last_activity_recent": true,
+      "request_ip": "10.0.0.11",
+      "request_ua": "Mozilla/5.0 Firefox/128.0"
+    },
+    "expected_status": "ZamanAsimi_Mutlak",
+    "expected_valid": false
+  },
+  {
+    "scenario_id": "SCN-SESSION-03",
+    "name": "User_Agent_Degisikligi_Oturum_Hirsizligi",
+    "test_type": "user_agent_mismatch",
+    "description": "Oturum belirteci calindi; Windows Chrome yerine Python betigi tarafindan kullanildi.",
+    "session_data": {
+      "user_id": "usr_hijack_3",
+      "username": "selin_ik",
+      "role": "User",
+      "ip": "10.0.0.12",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/130.0"
+    },
+    "simulation": {
+      "time_offset_seconds": 120,
+      "request_ip": "10.0.0.12",
+      "request_ua": "python-requests/2.31.0"
+    },
+    "expected_status": "Askida_HirsizlikSuphesi",
+    "expected_valid": false
+  },
+  {
+    "scenario_id": "SCN-SESSION-04",
+    "name": "IP_Adresi_Degisikligi_Supheli_Erisim",
+    "test_type": "ip_mismatch",
+    "description": "Oturum yerel ofis IP'sinden baslatildi, yabanci bir genel IP'den ayni belirtecle istek geldi.",
+    "session_data": {
+      "user_id": "usr_ip_4",
+      "username": "can_muhasebe",
+      "role": "User",
+      "ip": "192.168.1.44",
+      "user_agent": "Mozilla/5.0 Chrome/130.0"
+    },
+    "simulation": {
+      "time_offset_seconds": 60,
+      "request_ip": "198.51.100.88",
+      "request_ua": "Mozilla/5.0 Chrome/130.0"
+    },
+    "expected_status": "Askida_HirsizlikSuphesi",
+    "expected_valid": false
+  },
+  {
+    "scenario_id": "SCN-SESSION-05",
+    "name": "Bilinmeyen_Sahte_Oturum_ID_Enjeksiyonu",
+    "test_type": "unknown_session",
+    "description": "Saldirgan rastgele urettigi oturum kimligi ile API'ye istek yapti; sunucuda bulunamadi.",
+    "session_data": null,
+    "simulation": {
+      "fake_id": "deadbeefcafebabe0123456789abcdefdeadbeefcafebabe0123456789abcdef",
+      "request_ip": "10.0.0.99",
+      "request_ua": "curl/7.88.1"
+    },
+    "expected_status": "IptalEdildi",
+    "expected_valid": false
+  },
+  {
+    "scenario_id": "SCN-SESSION-06",
+    "name": "Eszamanli_Oturum_Limiti_Asimi_FIFO_Iptali",
+    "test_type": "concurrent_limit",
+    "description": "Kullanici 4. aktif oturumu acti; limit (3) asildigi icin ilk oturum iptal edildi.",
+    "session_data": {
+      "user_id": "usr_multi_6",
+      "username": "ali_yonetici",
+      "role": "Admin",
+      "ip": "10.0.0.20",
+      "user_agent": "Mozilla/5.0 Chrome/130.0"
+    },
+    "simulation": {
+      "create_sessions_count": 4
+    },
+    "expected_status": "IptalEdildi",
+    "expected_valid": false
+  },
+  {
+    "scenario_id": "SCN-SESSION-07",
+    "name": "Guvenli_Cikis_Sonrasi_Erisim_Engeli",
+    "test_type": "post_logout",
+    "description": "Kullanici guvenli cikis yapti; sunucu tarafindan iptal edilen oturumla tekrar istek atildi.",
+    "session_data": {
+      "user_id": "usr_logout_7",
+      "username": "burak_analist",
+      "role": "User",
+      "ip": "10.0.0.30",
+      "user_agent": "Mozilla/5.0 Safari/17.0"
+    },
+    "simulation": {
+      "terminate_before_request": true,
+      "request_ip": "10.0.0.30",
+      "request_ua": "Mozilla/5.0 Safari/17.0"
+    },
+    "expected_status": "IptalEdildi",
+    "expected_valid": false
+  },
+  {
+    "scenario_id": "SCN-SESSION-08",
+    "name": "Yetki_Yukseltme_Sonrasi_Eski_ID_Kullanimi",
+    "test_type": "privilege_fixation",
+    "description": "Kullanici User'dan Admin'e yukseldi; saldirgan elindeki eski ID ile erismeye calisti.",
+    "session_data": {
+      "user_id": "usr_fix_8",
+      "username": "kerem_uzman",
+      "role": "User",
+      "ip": "10.0.0.40",
+      "user_agent": "Mozilla/5.0 Edge/120.0"
+    },
+    "simulation": {
+      "elevate_to": "Admin",
+      "use_old_id": true,
+      "request_ip": "10.0.0.40",
+      "request_ua": "Mozilla/5.0 Edge/120.0"
+    },
+    "expected_status": "IptalEdildi",
+    "expected_valid": false
+  },
+  {
+    "scenario_id": "SCN-SESSION-09",
+    "name": "Sifre_Degisimi_Tum_Oturumlari_Kapatma",
+    "test_type": "global_revocation",
+    "description": "Kullanici parolasini degistirdi; eski acik oturumlarin tamami aninda gecersiz kilindi.",
+    "session_data": {
+      "user_id": "usr_pwd_9",
+      "username": "deniz_direktor",
+      "role": "User",
+      "ip": "10.0.0.50",
+      "user_agent": "Mozilla/5.0 Chrome/130.0"
+    },
+    "simulation": {
+      "create_multiple": 2,
+      "trigger_password_reset": true,
+      "request_ip": "10.0.0.50",
+      "request_ua": "Mozilla/5.0 Chrome/130.0"
+    },
+    "expected_status": "IptalEdildi",
+    "expected_valid": false
+  }
+]

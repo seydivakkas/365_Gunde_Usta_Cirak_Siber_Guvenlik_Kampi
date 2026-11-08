@@ -1,9 +1,9 @@
 {
-  "son_islenen_gun": 157,
-  "son_kapanan_pass_gun": 157,
-  "sonraki_aday_gun": 158,
-  "son_durum": "G157_TAMAMLANDI_PASS",
-  "sonuc_dosyasi": "portfolio/hafta_23/gun_157/sonuc.json",
+  "son_islenen_gun": 158,
+  "son_kapanan_pass_gun": 158,
+  "sonraki_aday_gun": 159,
+  "son_durum": "G158_TAMAMLANDI_PASS",
+  "sonuc_dosyasi": "portfolio/hafta_23/gun_158/sonuc.json",
   "excel_dogrulandi": true,
   "mod": "OTOMATIK_ZINCIR",
   "tamamlanan_gunler": [
@@ -78,12 +78,13 @@
     154,
     155,
     156,
-    157
+    157,
+    158
   ],
-  "guncelleme_tarihi": "2026-11-08T19:55:03.359019",
-  "durum_notu": "Gün 157: HTTP cookies ve güvenlik bayrakları 100/100 PASS ile tamamlandı. Gün 158: Oturum yönetimi ve süresi konusuna hazır.",
-  "durum": "G157_TAMAMLANDI_PASS",
-  "son_islem_tarihi": "2026-11-08T19:55:03.359019",
-  "son_guncelleme": "2026-11-08T19:55:03.359019",
-  "guncelleme_zamani": "2026-11-08T19:55:03.359019"
+  "guncelleme_tarihi": "2026-11-08T20:01:36.290277",
+  "durum_notu": "Gün 158: Oturum yönetimi ve süresi 100/100 PASS ile tamamlandı. Gün 159: Girdi doğrulama ve çıktı kodlama konusuna hazır.",
+  "durum": "G158_TAMAMLANDI_PASS",
+  "son_islem_tarihi": "2026-11-08T20:01:36.290277",
+  "son_guncelleme": "2026-11-08T20:01:36.290277",
+  "guncelleme_zamani": "2026-11-08T20:01:36.290277"
 }

@@ -1,0 +1,66 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================================
+                      GÜVENLİ HTTP OTURUMU YAŞAM DÖNGÜSÜ MİMARİSİ
+========================================================================================================
+
+                 [ 1. KİMLİK DOĞRULAMA (Login) ]
+                                |
+                                v
+     +------------------------------------------------------+
+     | 256-Bit Yüksek Entropili Yeni Oturum Kimliği Üretimi |  --> secrets.token_hex(32)
+     | Eşzamanlı Oturum Limiti (Maks: 3) & FIFO Tasfiyesi   |  --> Eski oturum sonlandırılır
+     +------------------------------------------------------+
+                                |
+                                v
+     +------------------------------------------------------+
+     | Set-Cookie ile Tarayıcıya Gönderim:                  |
+     | __Host-session=xyz; Path=/; Secure; HttpOnly; Strict |
+     +------------------------------------------------------+
+                                |
+                                v
+                 [ 2. İSTEK DOĞRULAMA KATMANI ]
+                                |
+        +-----------------------+-----------------------+
+        |                       |                       |
+        v                       v                       v
+ +---------------+      +---------------+      +-----------------+
+ | Boşta Kalma   |      | Mutlak Ömür   |      | Bağlam Uyuşması |
+ | (Inactivity)  |      | (Absolute)    |      | (UA & IP Check) |
+ | Limit: 15 dk  |      | Limit: 8 saat |      | Session Hijack? |
+ +---------------+      +---------------+      +-----------------+
+        |                       |                       |
+        | Aşılırsa:             | Aşılırsa:             | Uyuşmazsa:
+        v                       v                       v
+ [ EXPIRED_IDLE ]       [ EXPIRED_ABSOLUTE ]    [ SUSPENDED_HIJACK ]
+   Oturum Kapanır         Zorla Yeniden Giriş     Güvenlik Tarafından Askıya Alınır
+        |                       |                       |
+        +-----------------------+-----------------------+
+                                |
+                          Hepsi Geçtiyse:
+                                |
+                                v
+     +------------------------------------------------------+
+     | 3. OTURUM SABİTLEME & ROTASYON KALKANI               |
+     | - Yetki Yükseldi mi (Admin)?  --> ID Derhal Yenilenir|
+     | - 30 Dakika Geçti mi?         --> ID Periyodik Döner |
+     +------------------------------------------------------+
+                                |
+                                v
+     +------------------------------------------------------+
+     | 4. GÜVENLİ ÇIKIŞ (Logout)                            |
+     | - Sunucu tarafında kalıcı iptal (REVOCATION)         |
+     | - Bellek temizliği (Garbage Collection)              |
+     +------------------------------------------------------+
+
+========================================================================================================
+                                   GÜVENLİK SÖZLEŞMESİ MATRİSİ
+========================================================================================================
+  Parametre                  Standart Değer   Zafiyet / Risk          Savunma Mekanizması
+  ------------------------   --------------   ---------------------   ---------------------------------
+  Boşta Kalma Zaman Aşımı    15 Dakika (900s) Unutulan Bilgisayar     Sunucu Tarafı İnaktivite İptali
+  Mutlak Oturum Süresi       8 Saat (28800s)  Sonsuz Oturum Belirteci Zorunlu Yeniden Kimlik Doğrulama
+  Eşzamanlı Oturum Sayısı    Maksimum 3       Hesap Paylaşımı         En Eski Oturumu İptal Etme (FIFO)
+  Oturum Rotasyonu           30 Dakika        Uzun Ömürlü Sniffing    Periyodik Kriptografik ID Rotasyonu
+  Yetki Değişimi             Anında Yenileme  Session Fixation        Eski ID İptali + Yeni ID Tahsisi
+  Sunucu Taraflı İptal       Çıkışta Anında   Replay / Token Tekrarı  In-Memory / Redis Revocation
+========================================================================================================

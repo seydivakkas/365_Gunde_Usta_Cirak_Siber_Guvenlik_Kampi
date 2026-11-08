@@ -1,0 +1,71 @@
+=== KURUMSAL OTURUM YÖNETİMİ VE SÜRESİ CLI YÜRÜTME LOGLARI ===
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_158\uygulama\session_manager_cli.py create --user-id usr_cli_01 --username kemal_sistem --role SysAdmin
+===========================================================================
+ YEN� KURUMSAL G�VENL� OTURUM OLU�TURULDU
+===========================================================================
+ Oturum Kimli�i (ID)   : d484e3a2a983a81ff44e98284bacbe03ddb3289c0afa0268fd78564b41a80bba
+ Kullan�c� Ad�         : kemal_sistem (ID: usr_cli_01)
+ Yetki Rol�            : SysAdmin
+ �stemci IP            : 192.168.1.100
+ Taray�c� (User-Agent) : Mozilla/5.0 Chrome/130.0
+ Durum                 : Aktif
+===========================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_158\uygulama\session_manager_cli.py validate --ip 192.168.1.100 --user-agent Mozilla/5.0 Chrome/130.0 --elapsed-seconds 120
+===========================================================================
+ OTURUM DO�RULAMA SONUCU
+===========================================================================
+ Oturum Kimli�i   : 403eb0787fee76379cba22c265942235ec10787b926574a2aa6c849dba548d4d
+ Ge�erli mi?      : EVET (Ge�erli)
+ Durum            : Aktif
+ Gerek�e          : Oturum ge�erli ve aktif.
+ Rotasyon Gerekli : HAYIR
+===========================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_158\uygulama\session_manager_cli.py validate --ip 192.168.1.100 --user-agent Mozilla/5.0 Chrome/130.0 --elapsed-seconds 1000
+===========================================================================
+ OTURUM DO�RULAMA SONUCU
+===========================================================================
+ Oturum Kimli�i   : b7c969fcb0b6472e50c17e2a27eefd46421d05e5f38f73d314435290c88c6a76
+ Ge�erli mi?      : HAYIR (Ge�ersiz)
+ Durum            : ZamanAsimi_Bosta
+ Gerek�e          : Oturum hareketsizlik nedeniyle zaman a��m�na u�rad�.
+ Rotasyon Gerekli : HAYIR
+===========================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_158\uygulama\session_manager_cli.py elevate --new-role SuperAdmin
+===========================================================================
+ AYRICALIK Y�KSELTME VE OTURUM SAB�TLEME (FIXATION) KALKANI
+===========================================================================
+ Eski Oturum Kimli�i  : a469055360a25c350243924ad5a15a21213057a88034637ba29f0c51573984ba (�PTAL ED�LD�)
+ Yeni Oturum Kimli�i  : ffc452e6207a0f9e0ab0c0ca8ef9138ef795305023f7906d3c33e6b4a68a9bc3 (AKT�F)
+ Yeni Rol             : SuperAdmin
+ Rotasyon Say�s�      : 1
+ OWASP Kural�         : Yetki de�i�ti�inde oturum kimli�i zorla yenilendi!
+===========================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_158\uygulama\session_manager_cli.py audit --policy-file C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_158\ornek_veri\enterprise_session_policy.json
+
+[STDERR]
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_158\uygulama\session_manager_cli.py", line 179, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_158\uygulama\session_manager_cli.py", line 173, in main
+    handle_audit(args)
+    ~~~~~~~~~~~~^^^^^^
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_158\uygulama\session_manager_cli.py", line 111, in handle_audit
+    policy = SessionPolicy(**p_data)
+TypeError: SessionPolicy.__init__() got an unexpected keyword argument 'policy_name'
+
+======================================================================
+

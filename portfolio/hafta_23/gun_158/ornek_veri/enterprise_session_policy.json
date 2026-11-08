@@ -1,0 +1,28 @@
+{
+  "policy_name": "Kurumsal_Kritik_Bankacilik_Oturum_Politikasi",
+  "version": "3.1.0",
+  "environment": "Production",
+  "idle_timeout_seconds": 900,
+  "absolute_timeout_seconds": 28800,
+  "max_concurrent_sessions": 3,
+  "bind_user_agent": true,
+  "bind_ip": true,
+  "min_session_id_entropy_bits": 128,
+  "rotation_interval_seconds": 1800,
+  "sessions_sample": [
+    {
+      "user_id": "usr_991",
+      "username": "ahmet_operasyon",
+      "role": "Operator",
+      "client_ip": "10.20.30.40",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130.0.0.0"
+    },
+    {
+      "user_id": "usr_992",
+      "username": "zeynep_guvenlik",
+      "role": "SecurityAnalyst",
+      "client_ip": "10.20.30.41",
+      "user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+    }
+  ]
+}

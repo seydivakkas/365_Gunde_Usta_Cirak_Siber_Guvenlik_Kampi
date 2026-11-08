@@ -1,0 +1,38 @@
+=== KURUMSAL OTURUM YÖNETİMİ VE SÜRESİ BİRİM TESTLERİ (15/15) ===
+test_01_create_secure_session_high_entropy (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_01_create_secure_session_high_entropy)
+Yeni �retilen oturum kimli�inin y�ksek Shannon entropisine sahip oldu�unu do�rular. ... ok
+test_02_validate_active_session_success (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_02_validate_active_session_success)
+Aktif oturumun ba�ar�yla do�ruland���n� ve son etkinlik damgas�n�n g�ncellendi�ini test eder. ... ok
+test_03_idle_timeout_expiration (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_03_idle_timeout_expiration)
+Bo�ta kalma s�resi (900 sn) a��ld���nda oturumun EXPIRED_IDLE durumuna ge�ti�ini test eder. ... ok
+test_04_absolute_timeout_expiration (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_04_absolute_timeout_expiration)
+Kullan�c� s�rekli aktif olsa bile mutlak s�re (28800 sn / 8 saat) bitince oturumun kapand���n� test eder. ... ok
+test_05_session_fixation_privilege_elevation (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_05_session_fixation_privilege_elevation)
+Yetki y�kseltildi�inde oturum sabitlemeyi �nlemek i�in eski ID'nin iptal edilip yenilendi�ini test eder. ... ok
+test_06_concurrent_session_limit_fifo_eviction (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_06_concurrent_session_limit_fifo_eviction)
+E�zamanl� oturum limiti (3) a��ld���nda en eski oturumun iptal edildi�ini (FIFO) test eder. ... ok
+test_07_user_agent_mismatch_hijacking_detection (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_07_user_agent_mismatch_hijacking_detection)
+User-Agent parmak izi de�i�ti�inde potansiyel h�rs�zl�k nedeniyle oturumun ask�ya al�nd���n� test eder. ... ok
+test_08_ip_mismatch_hijacking_detection (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_08_ip_mismatch_hijacking_detection)
+�stemci IP adresi de�i�ti�inde oturumun ask�ya al�nd���n� do�rular. ... ok
+test_09_manual_session_termination (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_09_manual_session_termination)
+Kullan�c� ��k�� yapt���nda sunucu taraf�nda oturumun kal�c� iptal edildi�ini test eder. ... ok
+test_10_terminate_all_user_sessions_password_change (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_10_terminate_all_user_sessions_password_change)
+�ifre de�i�iminde kullan�c�n�n t�m a��k oturumlar�n�n ayn� anda kapat�ld���n� test eder. ... ok
+test_11_periodic_session_rotation (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_11_periodic_session_rotation)
+30 dakikal�k rotasyon periyodu a��ld���nda oturum kimli�inin yenilendi�ini test eder. ... ok
+test_12_clean_expired_sessions_garbage_collection (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_12_clean_expired_sessions_garbage_collection)
+S�resi dolmu� veya iptal edilmi� oturumlar�n bellekten temizlendi�ini test eder. ... ok
+test_13_unknown_session_id_rejection (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_13_unknown_session_id_rejection)
+Hi� var olmam�� rastgele bir oturum kimli�inin reddedildi�ini test eder. ... ok
+test_14_audit_lifecycle_metrics (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_14_audit_lifecycle_metrics)
+Oturum ya�am d�ng�s� istatistiklerinin do�ru hesapland���n� do�rular. ... ok
+test_15_ascii_dashboard_rendering (portfolio.hafta_23.gun_158.tests.test_session_manager.TestSessionManagerEngine.test_15_ascii_dashboard_rendering)
+ASCII denetim panosunun ba�l�klar� ve oturum saya�lar�n� i�erdi�ini do�rular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+
+Durum Kodu: 0

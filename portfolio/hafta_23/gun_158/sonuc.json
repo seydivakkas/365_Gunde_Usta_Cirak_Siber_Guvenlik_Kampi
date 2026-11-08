@@ -1,0 +1,37 @@
+{
+  "gun": 158,
+  "hafta": 23,
+  "asama": "07",
+  "konu": "Oturum yönetimi ve süresi",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-08",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_23/gun_158/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_23/gun_158/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "session_lifecycle_report_json": "portfolio/hafta_23/gun_158/kanit/gercek/session_lifecycle_report.json",
+    "active_sessions_dump_json": "portfolio/hafta_23/gun_158/kanit/gercek/active_sessions_dump.json",
+    "komut_ve_cikis": "portfolio/hafta_23/gun_158/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_23/gun_158/kanit/temsili/oturum_yasam_dongusu.txt"
+  },
+  "ozet": "Kurumsal web oturum yönetimi ve süresi sistemi (CSPRNG yüksek entropi, 15 dk boşta kalma ve 8 saat mutlak zaman aşımı, yetki değişiminde otomatik oturum sabitleme/fixation koruması, FIFO eşzamanlı oturum sınırlandırması, User-Agent/IP bağlama ve sunucu taraflı oturum iptali) eksiksiz uygulandı. 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla doğrulandı."
+}

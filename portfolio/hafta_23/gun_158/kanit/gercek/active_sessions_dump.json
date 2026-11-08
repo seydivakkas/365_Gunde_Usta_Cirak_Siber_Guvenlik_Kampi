@@ -1,0 +1,24 @@
+{
+  "054a1d184925ec25d126e5c872396a38275fa378f145ea30360ec7c888b2517f": {
+    "user_id": "usr_991",
+    "username": "ahmet_operasyon",
+    "role": "Operator",
+    "client_ip": "10.20.30.40",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130.0.0.0",
+    "created_at_epoch": 1794157155.4537532,
+    "last_activity_epoch": 1794157155.4537532,
+    "state": "Aktif",
+    "rotation_count": 0
+  },
+  "8c4c6be0f51f43f34e838025a8f7e7a5ae896d7cb71918bed63aec25dd13a4c8": {
+    "user_id": "usr_992",
+    "username": "zeynep_guvenlik",
+    "role": "SecurityAnalyst",
+    "client_ip": "10.20.30.41",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "created_at_epoch": 1794157155.4537532,
+    "last_activity_epoch": 1794157155.4537532,
+    "state": "Aktif",
+    "rotation_count": 0
+  }
+}

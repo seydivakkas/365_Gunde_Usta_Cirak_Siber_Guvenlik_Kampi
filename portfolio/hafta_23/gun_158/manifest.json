@@ -1,0 +1,85 @@
+{
+  "gun": 158,
+  "hafta": 23,
+  "asama": "07",
+  "konu": "Oturum yönetimi ve süresi",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "boyut_bayt": 5758,
+      "sha256": "944035b5e0be67278c4a708527d289852f2151751eedf030d5a258e296589a43"
+    },
+    "ders.md": {
+      "boyut_bayt": 7558,
+      "sha256": "ccef3a4cc515e73aeb0e2f867c1dfb09d472749d9c61e458da3c290c9ef53894"
+    },
+    "kanit/gercek/active_sessions_dump.json": {
+      "boyut_bayt": 885,
+      "sha256": "89217fa2d730e3e9fb2dbafc3bc28e6985445fbb0903fa3e2120e7df30fdeb3e"
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "boyut_bayt": 5110,
+      "sha256": "94a5282e889ac2d3e7870769f7eaf2834e3387d92b5997d10b5fb80108e62ddd"
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 2370,
+      "sha256": "98a77b0fd5fff8caf62106a1a3d6fcffeee693375431c9af3462ddb233dbc092"
+    },
+    "kanit/gercek/session_lifecycle_report.json": {
+      "boyut_bayt": 482,
+      "sha256": "eeb1fdd1a498e2758fb4650d606565591e01fbb0bd32a7347e066de9030d3650"
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "boyut_bayt": 4373,
+      "sha256": "267ae692e89f212561a757ef5cc0c61341841c0673fffd65cdd5a65bc2cefbca"
+    },
+    "kanit/temsili/oturum_yasam_dongusu.txt": {
+      "boyut_bayt": 4374,
+      "sha256": "8dc1623cdf49ac8e1eae4b993e1a6d5de457cc73d39cc021649ddde41769e2db"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 17094,
+      "sha256": "133de232eae95ba9cff074362c64591bf64d75ab10553b0674aeaac61eff203c"
+    },
+    "ornek_veri/enterprise_session_policy.json": {
+      "boyut_bayt": 845,
+      "sha256": "45131da8803f0df99cfc838d649a09018c743328f9a5b8fa39969375a5fdd959"
+    },
+    "ornek_veri/invalid_session_scenarios.json": {
+      "boyut_bayt": 5740,
+      "sha256": "64cc17adf74510439dfe07acae1059f1a8f410e2da86c1f1c5df9a2157eaaeb6"
+    },
+    "rapor.md": {
+      "boyut_bayt": 5193,
+      "sha256": "ed54a9f39413a1a73c1c59bcdba0693505ec420a5dc22dc912b95046a0015f32"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1621,
+      "sha256": "21da35bcf065f717bb24e3c8b81418050c70fb5fecf3e22caf028f63ad3ff032"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 10931,
+      "sha256": "b248d62c1c9e126c03354b3bd7a01bf8bc556e07728c0ffded018bfe6a416adc"
+    },
+    "tests/__init__.py": {
+      "boyut_bayt": 93,
+      "sha256": "eb2417e301e2b1d82c3b5abe79eabe9e1222ac4614f1d750fd25a65c229cecb4"
+    },
+    "tests/test_session_manager.py": {
+      "boyut_bayt": 10723,
+      "sha256": "063538318f55e7984c9f75c47d16f977623728bcb7878a10f84ed56ff5142e6f"
+    },
+    "uygulama/__init__.py": {
+      "boyut_bayt": 97,
+      "sha256": "ef5e7e0a119ba105332b1db48a5d0c45a6e88684309505f2a26d7d21f25cdc5b"
+    },
+    "uygulama/session_manager_cli.py": {
+      "boyut_bayt": 6924,
+      "sha256": "c702f0b75d4c858c345c79d0135476f16c0b86932619bd315ce861f2fbbec78e"
+    },
+    "uygulama/session_manager_engine.py": {
+      "boyut_bayt": 20461,
+      "sha256": "a679abed77e5817414f034f22ababbc022dde66a5135df765b248d71503560b4"
+    }
+  }
+}

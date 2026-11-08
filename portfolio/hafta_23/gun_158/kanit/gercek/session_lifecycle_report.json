@@ -1,0 +1,18 @@
+{
+  "total_tracked_sessions": 2,
+  "active_sessions_count": 2,
+  "revoked_sessions_count": 0,
+  "suspended_sessions_count": 0,
+  "expired_idle_count": 0,
+  "expired_absolute_count": 0,
+  "total_audit_events": 2,
+  "policy": {
+    "idle_timeout_seconds": 900,
+    "absolute_timeout_seconds": 28800,
+    "max_concurrent_sessions": 3,
+    "bind_user_agent": true,
+    "bind_ip": true,
+    "min_session_id_entropy_bits": 128,
+    "rotation_interval_seconds": 1800
+  }
+}

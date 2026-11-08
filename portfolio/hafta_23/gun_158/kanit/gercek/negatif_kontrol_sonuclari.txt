@@ -1,0 +1,57 @@
+=== 9 ADET OTURUM YÖNETİMİ VE SÜRESİ NEGATİF KONTROL SENARYOSU ===
+
+Senaryo: SCN-SESSION-01 - Bosta_Kalma_Zaman_Asimi_Idle_Timeout
+  Test Türü           : idle_timeout
+  Nihai Oturum Durumu : ZamanAsimi_Bosta
+  Oturum Geçerli mi?  : False
+  Negatif Doğrulama   : BAŞARILI (Açık/İhlal Yakalandı)
+
+Senaryo: SCN-SESSION-02 - Mutlak_Omur_Zaman_Asimi_Absolute_Timeout
+  Test Türü           : absolute_timeout
+  Nihai Oturum Durumu : ZamanAsimi_Mutlak
+  Oturum Geçerli mi?  : False
+  Negatif Doğrulama   : BAŞARILI (Açık/İhlal Yakalandı)
+
+Senaryo: SCN-SESSION-03 - User_Agent_Degisikligi_Oturum_Hirsizligi
+  Test Türü           : user_agent_mismatch
+  Nihai Oturum Durumu : Askida_HirsizlikSuphesi
+  Oturum Geçerli mi?  : False
+  Negatif Doğrulama   : BAŞARILI (Açık/İhlal Yakalandı)
+
+Senaryo: SCN-SESSION-04 - IP_Adresi_Degisikligi_Supheli_Erisim
+  Test Türü           : ip_mismatch
+  Nihai Oturum Durumu : Askida_HirsizlikSuphesi
+  Oturum Geçerli mi?  : False
+  Negatif Doğrulama   : BAŞARILI (Açık/İhlal Yakalandı)
+
+Senaryo: SCN-SESSION-05 - Bilinmeyen_Sahte_Oturum_ID_Enjeksiyonu
+  Test Türü           : unknown_session
+  Nihai Oturum Durumu : IptalEdildi
+  Oturum Geçerli mi?  : False
+  Negatif Doğrulama   : BAŞARILI (Açık/İhlal Yakalandı)
+
+Senaryo: SCN-SESSION-06 - Eszamanli_Oturum_Limiti_Asimi_FIFO_Iptali
+  Test Türü           : concurrent_limit
+  Nihai Oturum Durumu : IptalEdildi
+  Oturum Geçerli mi?  : False
+  Negatif Doğrulama   : BAŞARILI (Açık/İhlal Yakalandı)
+
+Senaryo: SCN-SESSION-07 - Guvenli_Cikis_Sonrasi_Erisim_Engeli
+  Test Türü           : post_logout
+  Nihai Oturum Durumu : IptalEdildi
+  Oturum Geçerli mi?  : False
+  Negatif Doğrulama   : BAŞARILI (Açık/İhlal Yakalandı)
+
+Senaryo: SCN-SESSION-08 - Yetki_Yukseltme_Sonrasi_Eski_ID_Kullanimi
+  Test Türü           : privilege_fixation
+  Nihai Oturum Durumu : IptalEdildi
+  Oturum Geçerli mi?  : False
+  Negatif Doğrulama   : BAŞARILI (Açık/İhlal Yakalandı)
+
+Senaryo: SCN-SESSION-09 - Sifre_Degisimi_Tum_Oturumlari_Kapatma
+  Test Türü           : global_revocation
+  Nihai Oturum Durumu : IptalEdildi
+  Oturum Geçerli mi?  : False
+  Negatif Doğrulama   : BAŞARILI (Açık/İhlal Yakalandı)
+
+ÖZET: Toplam 9 senaryonun 9 tanesi doğrulandı. (Genel: 100% PASS)
