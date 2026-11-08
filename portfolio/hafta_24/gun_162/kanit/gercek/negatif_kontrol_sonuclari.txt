@@ -1,0 +1,62 @@
+================================================================================
+GÜN 162: SQL INJECTION KÖK NEDEN VE SALDIRI SAVUNMA RAPORU
+================================================================================
+Tarih/Saat: 2026-11-08T21:33:11.688029
+
+[*] Senaryo: SCN-SQLI-01 - Klasik Mantıksal Totoloji (' OR '1'='1) ile Kimlik Doğrulama Bypassı
+    Saldırı Türü: TAUTOLOGY_BOOLEAN | Yük: admin' OR '1'='1
+    Sonuç: [BAŞARILI] -> Tehdit tespit edildi ve Prepared Statement ile etkisiz kılındı.
+    Tespit Edilen İmzalar: ['TAUTOLOGY_BOOLEAN_BYPASS']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-SQLI-02 - Yorum Satırı Kesmeli Totoloji (' OR 1=1 --)
+    Saldırı Türü: TAUTOLOGY_BOOLEAN | Yük: admin' OR 1=1 --
+    Sonuç: [BAŞARILI] -> Tehdit tespit edildi ve Prepared Statement ile etkisiz kılındı.
+    Tespit Edilen İmzalar: ['TAUTOLOGY_BOOLEAN_BYPASS', 'SQL_COMMENT_DELIMITER']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-SQLI-03 - UNION SELECT Tabanlı Yetkisiz Veri Çıkarma Saldırısı
+    Saldırı Türü: UNION_BASED | Yük: ' UNION SELECT 1, username, password_hash, role, balance FROM users --
+    Sonuç: [BAŞARILI] -> Tehdit tespit edildi ve Prepared Statement ile etkisiz kılındı.
+    Tespit Edilen İmzalar: ['UNION_SELECT_INJECTION', 'SQL_COMMENT_DELIMITER']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-SQLI-04 - Zaman Tabanlı Kör Enjeksiyon (Time-based Blind Sleep)
+    Saldırı Türü: TIME_BASED_BLIND | Yük: admin' AND SLEEP(5) --
+    Sonuç: [BAŞARILI] -> Tehdit tespit edildi ve Prepared Statement ile etkisiz kılındı.
+    Tespit Edilen İmzalar: ['TIME_BASED_SLEEP_INJECTION', 'SQL_COMMENT_DELIMITER']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-SQLI-05 - Yığılmış Sorgular (Stacked Query) ile Tablo Düşürme Denemesi
+    Saldırı Türü: STACKED_QUERIES | Yük: admin'; DROP TABLE users; --
+    Sonuç: [BAŞARILI] -> Tehdit tespit edildi ve Prepared Statement ile etkisiz kılındı.
+    Tespit Edilen İmzalar: ['STACKED_QUERY_ATTEMPT', 'SQL_COMMENT_DELIMITER']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-SQLI-06 - Hata Tabanlı Fonksiyon ile Veritabanı Bilgi Sızıntısı
+    Saldırı Türü: ERROR_BASED | Yük: admin' AND EXTRACTVALUE(1, CONCAT(0x7e, (SELECT version()))) --
+    Sonuç: [BAŞARILI] -> Tehdit tespit edildi ve Prepared Statement ile etkisiz kılındı.
+    Tespit Edilen İmzalar: ['ERROR_BASED_FUNCTION', 'SQL_COMMENT_DELIMITER']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-SQLI-07 - Bant Dışı (Out-of-band) Dosya Okuma Denemesi (LOAD_FILE)
+    Saldırı Türü: OUT_OF_BAND | Yük: ' UNION SELECT 1, LOAD_FILE('/etc/shadow'), 3, 4, 5 --
+    Sonuç: [BAŞARILI] -> Tehdit tespit edildi ve Prepared Statement ile etkisiz kılındı.
+    Tespit Edilen İmzalar: ['UNION_SELECT_INJECTION', 'SQL_COMMENT_DELIMITER', 'OUT_OF_BAND_EXFILTRATION']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-SQLI-08 - Dinamik Sıralama Kolonuna SQL Enjeksiyonu Denemesi
+    Saldırı Türü: STACKED_QUERIES | Yük: balance; DROP TABLE users;
+    Sonuç: [BAŞARILI] -> Tehdit tespit edildi ve Prepared Statement ile etkisiz kılındı.
+    Tespit Edilen İmzalar: ['STACKED_QUERY_ATTEMPT']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-SQLI-09 - Mantıksal Sayısal Totoloji (' OR 5=5 --)
+    Saldırı Türü: TAUTOLOGY_BOOLEAN | Yük: ' OR 5=5 --
+    Sonuç: [BAŞARILI] -> Tehdit tespit edildi ve Prepared Statement ile etkisiz kılındı.
+    Tespit Edilen İmzalar: ['TAUTOLOGY_BOOLEAN_BYPASS', 'SQL_COMMENT_DELIMITER']
+    Savunma Başarısı: True
+
+--------------------------------------------------------------------------------
+ÖZET: Toplam 9 senaryodan 9 tanesi başarıyla savunuldu.
+================================================================================

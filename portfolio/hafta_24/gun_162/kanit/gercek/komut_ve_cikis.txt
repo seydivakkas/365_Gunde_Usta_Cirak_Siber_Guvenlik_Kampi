@@ -1,0 +1,124 @@
+================================================================================
+GÜN 162: SQL INJECTION CLI YÜRÜTME VE ÇIKTI GÜNLÜĞÜ
+================================================================================
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_162\uygulama\sql_injection_cli.py scan --input admin' OR '1'='1
+{
+  "input_text": "admin' OR '1'='1",
+  "is_threat_detected": true,
+  "findings_count": 1,
+  "findings": [
+    {
+      "sqli_type": "TAUTOLOGY_BOOLEAN",
+      "severity": "CRITICAL",
+      "pattern_name": "TAUTOLOGY_BOOLEAN_BYPASS",
+      "description": "Mant�ksal totoloji (' OR '1'='1) ile kimlik do�rulama bypass� tespit edildi.",
+      "matched_text": "OR '1'='1"
+    }
+  ]
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_162\uygulama\sql_injection_cli.py scan --input ' UNION SELECT 1,2,3,4,5 --
+{
+  "input_text": "' UNION SELECT 1,2,3,4,5 --",
+  "is_threat_detected": true,
+  "findings_count": 2,
+  "findings": [
+    {
+      "sqli_type": "UNION_BASED",
+      "severity": "CRITICAL",
+      "pattern_name": "UNION_SELECT_INJECTION",
+      "description": "Ek veri �ekmek amac�yla UNION SELECT sorgu birle�tirmesi saptand�.",
+      "matched_text": "UNION SELECT"
+    },
+    {
+      "sqli_type": "TAUTOLOGY_BOOLEAN",
+      "severity": "MEDIUM",
+      "pattern_name": "SQL_COMMENT_DELIMITER",
+      "description": "Sorgunun kalan k�sm�n� etkisiz k�lmak i�in SQL yorum ayrac� kullan�lm��.",
+      "matched_text": "--"
+    }
+  ]
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_162\uygulama\sql_injection_cli.py simulate --username admin' OR 1=1 -- --password xyz
+{
+  "is_attack_detected": true,
+  "findings_count": 2,
+  "findings": [
+    {
+      "sqli_type": "TAUTOLOGY_BOOLEAN",
+      "severity": "CRITICAL",
+      "pattern_name": "TAUTOLOGY_BOOLEAN_BYPASS",
+      "description": "Mant�ksal totoloji (' OR '1'='1) ile kimlik do�rulama bypass� tespit edildi.",
+      "matched_text": "OR 1=1"
+    },
+    {
+      "sqli_type": "TAUTOLOGY_BOOLEAN",
+      "severity": "MEDIUM",
+      "pattern_name": "SQL_COMMENT_DELIMITER",
+      "description": "Sorgunun kalan k�sm�n� etkisiz k�lmak i�in SQL yorum ayrac� kullan�lm��.",
+      "matched_text": "--"
+    }
+  ],
+  "vulnerable_execution": {
+    "executed_sql": "SELECT id, username, full_name, role, balance FROM users WHERE username = 'admin' OR 1=1 --' AND password_hash = 'xyz'",
+    "bypassed_authentication": true,
+    "records_leaked_count": 4,
+    "database_error": null
+  },
+  "secure_parameterized_execution": {
+    "parameterized_template": "SELECT id, username, full_name, role, balance FROM users WHERE username = ? AND password_hash = ?",
+    "bypassed_authentication": false,
+    "records_returned_count": 0
+  },
+  "root_cause_analysis": "SQL Injection'�n temel k�k nedeni, kullan�c�dan gelen verinin (Data) SQL s�zdizimi yorumlay�c�s� (Code) taraf�ndan derleme a�amas�nda sorgu yap�s�n� de�i�tirecek bi�imde do�rudan dinamik dize olarak birle�tirilmesidir (Code vs. Data Ambiguity). Prepared Statement (Parametrik Sorgu) kullan�ld���nda, veritaban� motoru sorgu yap�s�n� (AST) �nceden derler; kullan�c� girdisini hi�bir ko�ulda y�r�t�lebilir kod olarak yorumlamaz, yaln�zca d�z veri literali olarak e�le�tirir."
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_162\uygulama\sql_injection_cli.py simulate --username ahmet_kaya --password KayaHash9988!
+{
+  "is_attack_detected": false,
+  "findings_count": 0,
+  "findings": [],
+  "vulnerable_execution": {
+    "executed_sql": "SELECT id, username, full_name, role, balance FROM users WHERE username = 'ahmet_kaya' AND password_hash = 'KayaHash9988!'",
+    "bypassed_authentication": true,
+    "records_leaked_count": 1,
+    "database_error": null
+  },
+  "secure_parameterized_execution": {
+    "parameterized_template": "SELECT id, username, full_name, role, balance FROM users WHERE username = ? AND password_hash = ?",
+    "bypassed_authentication": true,
+    "records_returned_count": 1
+  },
+  "root_cause_analysis": "SQL Injection'�n temel k�k nedeni, kullan�c�dan gelen verinin (Data) SQL s�zdizimi yorumlay�c�s� (Code) taraf�ndan derleme a�amas�nda sorgu yap�s�n� de�i�tirecek bi�imde do�rudan dinamik dize olarak birle�tirilmesidir (Code vs. Data Ambiguity). Prepared Statement (Parametrik Sorgu) kullan�ld���nda, veritaban� motoru sorgu yap�s�n� (AST) �nceden derler; kullan�c� girdisini hi�bir ko�ulda y�r�t�lebilir kod olarak yorumlamaz, yaln�zca d�z veri literali olarak e�le�tirir."
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_162\uygulama\sql_injection_cli.py dynamic-identifier --table users --sort-by balance
+{
+  "success": true,
+  "executed_sql": "SELECT id, username, full_name, role, balance FROM users ORDER BY balance ASC",
+  "rows_returned": 4,
+  "data_preview": [
+    {
+      "id": 4,
+      "username": "mehmet_oz",
+      "full_name": "Mehmet �z",
+      "role": "USER",
+      "balance": 1240.25
+    },
+    {
+      "id": 2,
+      "username": "ahmet_kaya",
+      "full_name": "Ahmet Kaya",
+      "role": "USER",
+      "balance": 3450.5
+    }
+  ]
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_162\uygulama\sql_injection_cli.py dynamic-identifier --table users --sort-by id; DROP TABLE users;
+{
+  "success": false,
+  "error": "Ge�ersiz s�ralama kolonu: id; DROP TABLE users;"
+}
+------------------------------------------------------------

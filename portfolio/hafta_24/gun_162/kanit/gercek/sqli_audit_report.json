@@ -1,0 +1,115 @@
+{
+  "gun": 162,
+  "konu": "SQL injection neden oluşur?",
+  "tarih": "2026-11-08T21:33:11.689329",
+  "birim_testler": {
+    "toplam": 15,
+    "basarili": 15,
+    "oran": 1.0
+  },
+  "negatif_kontroller": {
+    "toplam": 9,
+    "savunulan": 9,
+    "oran": 1.0
+  },
+  "senaryolar": [
+    {
+      "senaryo_id": "SCN-SQLI-01",
+      "baslik": "Klasik Mantıksal Totoloji (' OR '1'='1) ile Kimlik Doğrulama Bypassı",
+      "tur": "TAUTOLOGY_BOOLEAN",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "TAUTOLOGY_BOOLEAN_BYPASS"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-SQLI-02",
+      "baslik": "Yorum Satırı Kesmeli Totoloji (' OR 1=1 --)",
+      "tur": "TAUTOLOGY_BOOLEAN",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "TAUTOLOGY_BOOLEAN_BYPASS",
+        "SQL_COMMENT_DELIMITER"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-SQLI-03",
+      "baslik": "UNION SELECT Tabanlı Yetkisiz Veri Çıkarma Saldırısı",
+      "tur": "UNION_BASED",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "UNION_SELECT_INJECTION",
+        "SQL_COMMENT_DELIMITER"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-SQLI-04",
+      "baslik": "Zaman Tabanlı Kör Enjeksiyon (Time-based Blind Sleep)",
+      "tur": "TIME_BASED_BLIND",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "TIME_BASED_SLEEP_INJECTION",
+        "SQL_COMMENT_DELIMITER"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-SQLI-05",
+      "baslik": "Yığılmış Sorgular (Stacked Query) ile Tablo Düşürme Denemesi",
+      "tur": "STACKED_QUERIES",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "STACKED_QUERY_ATTEMPT",
+        "SQL_COMMENT_DELIMITER"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-SQLI-06",
+      "baslik": "Hata Tabanlı Fonksiyon ile Veritabanı Bilgi Sızıntısı",
+      "tur": "ERROR_BASED",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "ERROR_BASED_FUNCTION",
+        "SQL_COMMENT_DELIMITER"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-SQLI-07",
+      "baslik": "Bant Dışı (Out-of-band) Dosya Okuma Denemesi (LOAD_FILE)",
+      "tur": "OUT_OF_BAND",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "UNION_SELECT_INJECTION",
+        "SQL_COMMENT_DELIMITER",
+        "OUT_OF_BAND_EXFILTRATION"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-SQLI-08",
+      "baslik": "Dinamik Sıralama Kolonuna SQL Enjeksiyonu Denemesi",
+      "tur": "STACKED_QUERIES",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "STACKED_QUERY_ATTEMPT"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-SQLI-09",
+      "baslik": "Mantıksal Sayısal Totoloji (' OR 5=5 --)",
+      "tur": "TAUTOLOGY_BOOLEAN",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "TAUTOLOGY_BOOLEAN_BYPASS",
+        "SQL_COMMENT_DELIMITER"
+      ],
+      "savunma_basarisi": true
+    }
+  ]
+}

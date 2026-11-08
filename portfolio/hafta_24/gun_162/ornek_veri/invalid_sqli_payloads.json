@@ -1,0 +1,77 @@
+{
+  "aciklama": "Gün 162: SQL Injection Neden Oluşur - 9 Negatif Kontrol ve Saldırı Vektörü Senaryosu",
+  "senaryolar": [
+    {
+      "senaryo_id": "SCN-SQLI-01",
+      "baslik": "Klasik Mantıksal Totoloji (' OR '1'='1) ile Kimlik Doğrulama Bypassı",
+      "tur": "TAUTOLOGY_BOOLEAN",
+      "beklenen_imza": "TAUTOLOGY_BOOLEAN_BYPASS",
+      "payload": "admin' OR '1'='1",
+      "savunma_aksiyonu": "Prepared Statement kullanımı ile tırnak işaretlerinin veri literali olarak işlenmesi ve bypassın engellenmesi"
+    },
+    {
+      "senaryo_id": "SCN-SQLI-02",
+      "baslik": "Yorum Satırı Kesmeli Totoloji (' OR 1=1 --)",
+      "tur": "TAUTOLOGY_BOOLEAN",
+      "beklenen_imza": "TAUTOLOGY_BOOLEAN_BYPASS",
+      "payload": "admin' OR 1=1 --",
+      "savunma_aksiyonu": "Tire işaretlerinin ve OR şartının SQL motoru tarafından kod olarak ayrıştırılmasının parametrik bağlama ile engellenmesi"
+    },
+    {
+      "senaryo_id": "SCN-SQLI-03",
+      "baslik": "UNION SELECT Tabanlı Yetkisiz Veri Çıkarma Saldırısı",
+      "tur": "UNION_BASED",
+      "beklenen_imza": "UNION_SELECT_INJECTION",
+      "payload": "' UNION SELECT 1, username, password_hash, role, balance FROM users --",
+      "savunma_aksiyonu": "UNION komutunun parametrik yer tutucu (?) içine veri olarak hapsedilmesi ve ikinci sorgunun çalıştırılmaması"
+    },
+    {
+      "senaryo_id": "SCN-SQLI-04",
+      "baslik": "Zaman Tabanlı Kör Enjeksiyon (Time-based Blind Sleep)",
+      "tur": "TIME_BASED_BLIND",
+      "beklenen_imza": "TIME_BASED_SLEEP_INJECTION",
+      "payload": "admin' AND SLEEP(5) --",
+      "savunma_aksiyonu": "SLEEP fonksiyon çağrısının parametre sınırları içinde dize olarak kalması ve veritabanının uyutulmasının önlenmesi"
+    },
+    {
+      "senaryo_id": "SCN-SQLI-05",
+      "baslik": "Yığılmış Sorgular (Stacked Query) ile Tablo Düşürme Denemesi",
+      "tur": "STACKED_QUERIES",
+      "beklenen_imza": "STACKED_QUERY_ATTEMPT",
+      "payload": "admin'; DROP TABLE users; --",
+      "savunma_aksiyonu": "Noktalı virgülün ayrık komut sonlandırıcı olarak çalışmasının önlenmesi ve en az yetki ilkesi ile DROP izninin kısıtlanması"
+    },
+    {
+      "senaryo_id": "SCN-SQLI-06",
+      "baslik": "Hata Tabanlı Fonksiyon ile Veritabanı Bilgi Sızıntısı",
+      "tur": "ERROR_BASED",
+      "beklenen_imza": "ERROR_BASED_FUNCTION",
+      "payload": "admin' AND EXTRACTVALUE(1, CONCAT(0x7e, (SELECT version()))) --",
+      "savunma_aksiyonu": "Hata fonksiyonunun derlenmemesi ve genel hata sayfalarının veritabanı detaylarını gizlemesi"
+    },
+    {
+      "senaryo_id": "SCN-SQLI-07",
+      "baslik": "Bant Dışı (Out-of-band) Dosya Okuma Denemesi (LOAD_FILE)",
+      "tur": "OUT_OF_BAND",
+      "beklenen_imza": "OUT_OF_BAND_EXFILTRATION",
+      "payload": "' UNION SELECT 1, LOAD_FILE('/etc/shadow'), 3, 4, 5 --",
+      "savunma_aksiyonu": "LOAD_FILE çağrısının parametrik motor tarafından dize olarak yutulması ve dosya sistemi erişiminin engellenmesi"
+    },
+    {
+      "senaryo_id": "SCN-SQLI-08",
+      "baslik": "Dinamik Sıralama Kolonuna SQL Enjeksiyonu Denemesi",
+      "tur": "STACKED_QUERIES",
+      "beklenen_imza": "STACKED_QUERY_ATTEMPT",
+      "payload": "balance; DROP TABLE users;",
+      "savunma_aksiyonu": "Kolon belirtecinin katı allowlist (beyaz liste) eşleşmesinden geçirilerek enjeksiyonlu ifadenin reddedilmesi"
+    },
+    {
+      "senaryo_id": "SCN-SQLI-09",
+      "baslik": "Mantıksal Sayısal Totoloji (' OR 5=5 --)",
+      "tur": "TAUTOLOGY_BOOLEAN",
+      "beklenen_imza": "TAUTOLOGY_BOOLEAN_BYPASS",
+      "payload": "' OR 5=5 --",
+      "savunma_aksiyonu": "Sayısal eşitliğin SQL ayrıştırıcı tarafından mantıksal koşul olarak değerlendirilmesinin parametrik mimariyle engellenmesi"
+    }
+  ]
+}

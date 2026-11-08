@@ -1,0 +1,36 @@
+
+test_01_tautology_boolean_bypass_detection (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_01_tautology_boolean_bypass_detection)
+1. Test: Mant�ksal totoloji (' OR '1'='1) kal�b�n�n tespitini do�rular. ... ok
+test_02_union_select_detection (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_02_union_select_detection)
+2. Test: UNION SELECT veri s�zd�rma kal�b�n�n tespitini do�rular. ... ok
+test_03_time_based_sleep_detection (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_03_time_based_sleep_detection)
+3. Test: Zaman tabanl� k�r enjeksiyon (SLEEP / pg_sleep) tespitini do�rular. ... ok
+test_04_stacked_queries_detection (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_04_stacked_queries_detection)
+4. Test: Noktal� virg�l ile zincirlenen y�k�c� sorgular�n (Stacked Queries) tespitini do�rular. ... ok
+test_05_error_based_detection (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_05_error_based_detection)
+5. Test: Hata tabanl� veri ��karma fonksiyonlar�n�n (EXTRACTVALUE vb.) tespitini do�rular. ... ok
+test_06_out_of_band_detection (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_06_out_of_band_detection)
+6. Test: Bant d��� dosya eri�im fonksiyonunun (LOAD_FILE) tespitini do�rular. ... ok
+test_07_clean_benign_input_evaluation (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_07_clean_benign_input_evaluation)
+7. Test: Masum ve zarars�z alfan�merik girdinin tehdit �retmedi�ini do�rular. ... ok
+test_08_vulnerable_execution_tautology_bypass_success (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_08_vulnerable_execution_tautology_bypass_success)
+8. Test: Zafiyetli dize birle�tirme ile ' OR '1'='1 y�k�n�n kimlik do�rulamas�n� a�t���n� do�rular. ... ok
+test_09_secure_parameterized_query_blocks_tautology (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_09_secure_parameterized_query_blocks_tautology)
+9. Test: Parametrik sorgunun (Prepared Statement) ' OR '1'='1 y�k�n� d�z dize sayarak engelledi�ini do�rular. ... ok
+test_10_vulnerable_execution_syntax_error_handling (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_10_vulnerable_execution_syntax_error_handling)
+10. Test: Kapanmam�� t�rnak i�eren bozuk SQL enjeksiyonunun veritaban� hatas� �retti�ini do�rular. ... ok
+test_11_secure_parameterized_query_valid_credentials (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_11_secure_parameterized_query_valid_credentials)
+11. Test: Ge�erli kimlik bilgilerinin parametrik sorgu ile do�ru kullan�c� kayd�n� getirdi�ini do�rular. ... ok
+test_12_secure_dynamic_identifier_valid_table_and_column (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_12_secure_dynamic_identifier_valid_table_and_column)
+12. Test: �zinli (allowlist) tablo ve kolon belirte�lerinin g�venle �al��t�r�ld���n� do�rular. ... ok
+test_13_secure_dynamic_identifier_rejects_unwhitelisted_table (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_13_secure_dynamic_identifier_rejects_unwhitelisted_table)
+13. Test: �zinli olmayan yabanc� tablo ad�n�n ValueError ile engellendi�ini do�rular. ... ok
+test_14_secure_dynamic_identifier_rejects_sql_injection_in_sort (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_14_secure_dynamic_identifier_rejects_sql_injection_in_sort)
+14. Test: S�ralama kolonuna SQLi enjekte edilmeye �al���ld���nda allowlist ile engellendi�ini do�rular. ... ok
+test_15_engine_analyze_and_compare_output_structure (portfolio.hafta_24.gun_162.tests.test_sql_injection.TestSQLInjectionEngine.test_15_engine_analyze_and_compare_output_structure)
+15. Test: Motorun kar��la�t�rmal� analiz raporunun t�m anahtarlar� eksiksiz i�erdi�ini do�rular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.006s
+
+OK

@@ -1,0 +1,32 @@
+{
+  "kurum": "Kurumsal Finansal Veri ve Bankacılık Sistemleri A.Ş.",
+  "veritabani_adi": "core_banking_db",
+  "versiyon": "2026.3",
+  "standart": "OWASP A03:2021 / 2025 Injection Önleme ve Güvenli Veritabanı Mimarisi",
+  "ilkeler": {
+    "kok_neden_onleme": "Kod ile Veri Ayrımı (Separation of Code and Data)",
+    "birincil_savunma": "Zorunlu Parametrik Sorgular (Prepared Statements / Parameterized Queries)",
+    "dinamik_belirtec_yonetimi": {
+      "kural": "Tablo ve kolon adları asla Prepared Statement parametresi olamaz; katı beyaz liste (Allowlist) şarttır.",
+      "izinli_tablolar": ["users", "accounts", "transactions", "audit_logs"],
+      "izinli_kolonlar": ["id", "username", "full_name", "role", "balance", "created_at"]
+    },
+    "en_az_yetki_ilkesi": {
+      "uygulama_kullanicisi": "Yalnızca SELECT, INSERT, UPDATE yetkileri (DROP, ALTER, CREATE yasak)",
+      "yonetim_kullanicisi": "Ayrık ve şifreli bağlantı, IP kısıtlı"
+    },
+    "guvenli_orm_kullanimi": "Ham (raw) sorgulardan kaçınılmalı, ORM sorgu derleyicisi parametrik bağlanmalıdır."
+  },
+  "tablo_tanimlari": {
+    "users": {
+      "kolonlar": {
+        "id": "INTEGER PRIMARY KEY AUTOINCREMENT",
+        "username": "TEXT UNIQUE NOT NULL",
+        "password_hash": "TEXT NOT NULL",
+        "full_name": "TEXT NOT NULL",
+        "role": "TEXT NOT NULL CHECK(role IN ('ADMIN', 'USER', 'AUDITOR'))",
+        "balance": "REAL DEFAULT 0.0"
+      }
+    }
+  }
+}

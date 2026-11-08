@@ -1,0 +1,85 @@
+{
+  "gun": 162,
+  "hafta": 24,
+  "asama": "07",
+  "konu": "SQL injection neden oluşur?",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "boyut_bayt": 4046,
+      "sha256": "8c62f6a9cba9b00ebb68e7a77838b021562f7f7319a13dc551cad1b1857fb49c"
+    },
+    "ders.md": {
+      "boyut_bayt": 8403,
+      "sha256": "cfdacf1bb723b9979b59ec7971c8fb5784b93de9b2b973719f8c75d9017506b7"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 16280,
+      "sha256": "95d7d0f08682f9107c4f0439fbef3f77f9978c6ff06fbfab5db9e24ad6970364"
+    },
+    "rapor.md": {
+      "boyut_bayt": 6404,
+      "sha256": "45c669138b1097d040fb77c44f9ced11c2656c0642c16bc4344917042efde87d"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1845,
+      "sha256": "98d105d1de5739c61da08639ad0a25ff747b7b7486c8356edeeb8ad0a4275507"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 9761,
+      "sha256": "ec155584c8b455e4f4b01eabc4c72ad1ea7def2a6fba0717731466dfa57a1cdd"
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "boyut_bayt": 6452,
+      "sha256": "2894ea9d59c85fbd8a5972f78f3b299dc2af8f9c96919f1405b7a9c579549dc9"
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 3857,
+      "sha256": "fa443e4b2ce64ccac924238ecab170537f7e971384e69c8e8c464f1573f6f724"
+    },
+    "kanit\\gercek\\sanitized_query_samples.txt": {
+      "boyut_bayt": 3154,
+      "sha256": "20b912dece853a0e29a960df5de0dbe3635853a82a1d9c1e4fb30ff7c8363a7e"
+    },
+    "kanit\\gercek\\sqli_audit_report.json": {
+      "boyut_bayt": 3281,
+      "sha256": "5c4f50bfe6c10d1a0089ab4906b87c17ce7b6ea355c2ff47ba7442a93a8bebfb"
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "boyut_bayt": 4381,
+      "sha256": "fbe1ae45b972a48962451d7367fdcf4d16cdeae4c5972f9160e0b93e0b61c9b1"
+    },
+    "kanit\\temsili\\sqli_savunma_mimarisi.txt": {
+      "boyut_bayt": 3257,
+      "sha256": "0eb8c8d021fd410e4c8c50711b534e0b6983a5f1fac240df7ab6c9b914d8dd97"
+    },
+    "ornek_veri\\enterprise_db_schema.json": {
+      "boyut_bayt": 1465,
+      "sha256": "35a13f66501dd1b7db35a884092f23d9b165f27e663e8539e5bf7243d6a716da"
+    },
+    "ornek_veri\\invalid_sqli_payloads.json": {
+      "boyut_bayt": 3832,
+      "sha256": "c8ddafa1e6397a2eb6b015dc33b2f9a074ed8a67c77a5a50c36be74d8cbf50d8"
+    },
+    "tests\\__init__.py": {
+      "boyut_bayt": 81,
+      "sha256": "54b7d075a750183b7c20d2e67a948baa0c9a4a63854cd92c5259fcf11bcadd87"
+    },
+    "tests\\test_sql_injection.py": {
+      "boyut_bayt": 10190,
+      "sha256": "abd420e29b1eaa8c5d9c0467cfea4dab767f695ba08a601194bf4a2e5637c3ec"
+    },
+    "uygulama\\__init__.py": {
+      "boyut_bayt": 87,
+      "sha256": "7e3c3ddbaa14ffa944847038579b5c612158ef6b3c8afc9d825de70178240e7a"
+    },
+    "uygulama\\sql_injection_cli.py": {
+      "boyut_bayt": 5407,
+      "sha256": "e19fa13d4f5d3e06e71fd906acf09227e63fc975ad4719572b8e16aa50fcf48a"
+    },
+    "uygulama\\sql_injection_engine.py": {
+      "boyut_bayt": 17792,
+      "sha256": "fc9f82b4a52f767dbfbc8c3158282361792e97f1c65aaf8f1fc3cbcf9707527b"
+    }
+  }
+}

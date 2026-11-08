@@ -1,0 +1,43 @@
+================================================================================
+GÜN 162: ZAFİYETLİ DİZE BİRLEŞTİRME VS GÜVENLİ PARAMETRİK SORGU KARŞILAŞTIRMASI
+================================================================================
+[*] Kullanıcı Adı Girdisi: admin' OR '1'='1
+    Parola Girdisi       : nopassword
+    Saldırı Tespiti      : True (1 bulgu)
+    Zafiyetli SQL        : SELECT id, username, full_name, role, balance FROM users WHERE username = 'admin' OR '1'='1' AND password_hash = 'nopassword'
+    Zafiyetli Giriş Durumu: BAŞARILI (BYPASS EDİLDİ)
+    Parametrik Şablon    : SELECT id, username, full_name, role, balance FROM users WHERE username = ? AND password_hash = ?
+    Parametrik Giriş     : ENGELLENDİ / GEÇERSİZ
+------------------------------------------------------------
+[*] Kullanıcı Adı Girdisi: admin' OR 1=1 --
+    Parola Girdisi       : 
+    Saldırı Tespiti      : True (2 bulgu)
+    Zafiyetli SQL        : SELECT id, username, full_name, role, balance FROM users WHERE username = 'admin' OR 1=1 --' AND password_hash = ''
+    Zafiyetli Giriş Durumu: BAŞARILI (BYPASS EDİLDİ)
+    Parametrik Şablon    : SELECT id, username, full_name, role, balance FROM users WHERE username = ? AND password_hash = ?
+    Parametrik Giriş     : ENGELLENDİ / GEÇERSİZ
+------------------------------------------------------------
+[*] Kullanıcı Adı Girdisi: ahmet_kaya
+    Parola Girdisi       : KayaHash9988!
+    Saldırı Tespiti      : False (0 bulgu)
+    Zafiyetli SQL        : SELECT id, username, full_name, role, balance FROM users WHERE username = 'ahmet_kaya' AND password_hash = 'KayaHash9988!'
+    Zafiyetli Giriş Durumu: BAŞARILI (BYPASS EDİLDİ)
+    Parametrik Şablon    : SELECT id, username, full_name, role, balance FROM users WHERE username = ? AND password_hash = ?
+    Parametrik Giriş     : BAŞARILI (MEŞRU)
+------------------------------------------------------------
+[*] Kullanıcı Adı Girdisi: '; DROP TABLE users; --
+    Parola Girdisi       : pass
+    Saldırı Tespiti      : True (2 bulgu)
+    Zafiyetli SQL        : SELECT id, username, full_name, role, balance FROM users WHERE username = ''; DROP TABLE users; --' AND password_hash = 'pass'
+    Zafiyetli Giriş Durumu: BAŞARISIZ
+    Parametrik Şablon    : SELECT id, username, full_name, role, balance FROM users WHERE username = ? AND password_hash = ?
+    Parametrik Giriş     : ENGELLENDİ / GEÇERSİZ
+------------------------------------------------------------
+[*] Kullanıcı Adı Girdisi: ' UNION SELECT 1,2,3,4,5 --
+    Parola Girdisi       : pass
+    Saldırı Tespiti      : True (2 bulgu)
+    Zafiyetli SQL        : SELECT id, username, full_name, role, balance FROM users WHERE username = '' UNION SELECT 1,2,3,4,5 --' AND password_hash = 'pass'
+    Zafiyetli Giriş Durumu: BAŞARILI (BYPASS EDİLDİ)
+    Parametrik Şablon    : SELECT id, username, full_name, role, balance FROM users WHERE username = ? AND password_hash = ?
+    Parametrik Giriş     : ENGELLENDİ / GEÇERSİZ
+------------------------------------------------------------

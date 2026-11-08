@@ -1,0 +1,41 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 162: SQL INJECTION KÖK NEDENİ VE PARAMETRİK SAVUNMA MİMARİSİ
+================================================================================
+
+      [ GÜVENSİZ DİZE BİRLEŞTİRME ]              [ GÜVENLİ PARAMETRİK SORGU ]
+     (Code vs. Data Karışımı / ZAFİYET)        (Prepared Statement / KORUMA)
++------------------------------------------+ +------------------------------------------+
+|  Girdi: "admin' OR '1'='1"               | |  Girdi: "admin' OR '1'='1"               |
+|                                          | |                                          |
+|  SQL = "SELECT * FROM users              | |  SQL = "SELECT * FROM users              |
+|         WHERE user = '" + input + "'"    | |         WHERE user = ?"                  |
+|                                          | |                                          |
+|  [ SQL Yorumlayıcı / Parser ]            | |  [ SQL Yorumlayıcı / Parser ]            |
+|       |                                  | |       |                                  |
+|       v                                  | |       v                                  |
+|  Ayrıştırma Ağacı (AST) Tahrif Edilir:   | |  Sorgu Mantık Ağacı (AST) Önceden        |
+|  - SELECT (Komut)                        | |  Sabitlenir ve Derlenir:                 |
+|  - FROM users                            | |  - SELECT (Komut)                        |
+|  - WHERE user = 'admin'                  | |  - FROM users                            |
+|    OR                                    | |  - WHERE user = [DATA_LITERAL]           |
+|    '1'='1' (HER ZAMAN DOĞRU!)            | |                                          |
+|                                          | |  Parametre Ayrık Olarak Bağlanır:        |
+|  -> Mantık değişti! Giriş Aşıldı.        | |  DATA_LITERAL = "admin' OR '1'='1"       |
+|  -> Sonuç: TÜM KULLANICILAR SIZDIRILDI   | |                                          |
+|                                          | |  -> Tırnaklar kod değil, veri karakteri!|
+|                                          | |  -> Veritabanında eşleşen kullanıcı yok!|
+|                                          | |  -> Sonuç: SALDIRI %100 ENGELLENDİ       |
++------------------------------------------+ +------------------------------------------+
+                                     |
+                                     v
+                  +--------------------------------------+
+                  | DİNAMİK BELİRTEÇ (TABLO/KOLON) KURALI |
+                  | ORDER BY ?, LIMIT ? parametre olmaz! |
+                  | Mutlaka Katı Allowlist (Beyaz Liste) |
+                  | İle Eşleştirilmelidir.              |
+                  +--------------------------------------+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
