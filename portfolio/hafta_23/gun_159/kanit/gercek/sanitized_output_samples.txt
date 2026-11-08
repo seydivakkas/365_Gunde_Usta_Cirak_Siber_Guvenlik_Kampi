@@ -1,0 +1,19 @@
+=== BAĞLAMA DUYARLI ÇIKTI KODLAMA (CONTEXT-AWARE ENCODING) ÖRNEKLERİ ===
+
+Ham Güvenilmeyen Veri: <script>alert('XSS & Breakout')</script>
+
+1. Bağlam: HtmlBody
+   Güvenli Çıktı: &lt;script&gt;alert(&#x27;XSS &amp; Breakout&#x27;)&lt;/script&gt;
+
+1. Bağlam: HtmlAttribute
+   Güvenli Çıktı: &#x3C;script&#x3E;alert&#x28;&#x27;XSS &#x26; Breakout&#x27;&#x29;&#x3C;&#x2F;script&#x3E;
+
+1. Bağlam: JavaScript
+   Güvenli Çıktı: \u003Cscript\u003Ealert\u0028\u0027XSS \u0026 Breakout\u0027\u0029\u003C\u002Fscript\u003E
+
+1. Bağlam: UrlParam
+   Güvenli Çıktı: %3Cscript%3Ealert%28%27XSS+%26+Breakout%27%29%3C%2Fscript%3E
+
+1. Bağlam: CssString
+   Güvenli Çıktı: \3C script\3E alert\28 \27 XSS\20 \26 \20 Breakout\27 \29 \3C \2F script\3E 
+

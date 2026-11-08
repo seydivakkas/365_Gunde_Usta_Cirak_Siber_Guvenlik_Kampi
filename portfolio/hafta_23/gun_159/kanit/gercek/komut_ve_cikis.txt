@@ -1,0 +1,106 @@
+=== GİRDİ DOĞRULAMA VE ÇIKTI KODLAMA CLI YÜRÜTME LOGLARI ===
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_159\uygulama\input_validation_cli.py validate-field --name username --value Seydi_Eryilmaz --type TextAlphanumeric
+===========================================================================
+ TEK�L ALAN G�RD� DO�RULAMA RAPORU
+===========================================================================
+ Alan Ad�            : username
+ Orijinal Girdi      : Seydi_Eryilmaz
+ Kanonikle�tirilmi�  : Seydi_Eryilmaz
+ Hedef Veri Tipi     : TextAlphanumeric
+ Do�rulama Durumu    : [GE�ERL� - GECTI]
+===========================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_159\uygulama\input_validation_cli.py validate-field --name query --value ' OR 1=1 -- --type TextAlphanumeric
+===========================================================================
+ TEK�L ALAN G�RD� DO�RULAMA RAPORU
+===========================================================================
+ Alan Ad�            : query
+ Orijinal Girdi      : ' OR 1=1 --
+ Kanonikle�tirilmi�  : ' OR 1=1 --
+ Hedef Veri Tipi     : TextAlphanumeric
+ Do�rulama Durumu    : [GE�ERS�Z - KALDI]
+ Hata A��klamas�     : G�venlik �hlali: 'query' alan�nda zararl� enjeksiyon imzas� tespit edildi: SQL_INJECTION
+ TESP�T ED�LEN TEHD�T: SQL_INJECTION
+===========================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_159\uygulama\input_validation_cli.py encode-output --value <script>alert('test')</script> --context HtmlBody
+===========================================================================
+ BA�LAMA DUYARLI �IKTI KODLAMA (CONTEXT-AWARE ENCODING)
+===========================================================================
+ Hedef Ba�lam        : HtmlBody
+ Orijinal Ham Metin  : <script>alert('test')</script>
+ G�venli ��kt� Metni : &lt;script&gt;alert(&#x27;test&#x27;)&lt;/script&gt;
+===========================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_159\uygulama\input_validation_cli.py encode-output --value "><script>alert(1)</script> --context HtmlAttribute
+===========================================================================
+ BA�LAMA DUYARLI �IKTI KODLAMA (CONTEXT-AWARE ENCODING)
+===========================================================================
+ Hedef Ba�lam        : HtmlAttribute
+ Orijinal Ham Metin  : "><script>alert(1)</script>
+ G�venli ��kt� Metni : &#x22;&#x3E;&#x3C;script&#x3E;alert&#x28;1&#x29;&#x3C;&#x2F;script&#x3E;
+===========================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_159\uygulama\input_validation_cli.py encode-output --value '; alert('xss'); // --context JavaScript
+===========================================================================
+ BA�LAMA DUYARLI �IKTI KODLAMA (CONTEXT-AWARE ENCODING)
+===========================================================================
+ Hedef Ba�lam        : JavaScript
+ Orijinal Ham Metin  : '; alert('xss'); //
+ G�venli ��kt� Metni : \u0027\u003B alert\u0028\u0027xss\u0027\u0029\u003B \u002F\u002F
+===========================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_159\uygulama\input_validation_cli.py pipeline
+======================================================================================
+ G�RD� DO�RULAMA VE BA�LAMA DUYARLI �IKTI KODLAMA BORU HATTI (G�N 159)
+======================================================================================
+ [ DI� D�NYA / G�VEN�LMEYEN G�RD� ] (HTTP �stek Parametreleri, JSON G�vdesi, Ba�l�klar)
+                     |
+                     v
+  +----------------------------------------------------------------------------------+
+  | 1. KANON�KLE�T�RME (Canonicalization)                                            |
+  |    - �ift URL Kodlamalar�n� ��zme (%252e%252e%252f -> ../)                      |
+  |    - Unicode NFKC Normalizasyonu (Homoglyph & G�rsel Karakter ��z�m�)            |
+  |    - Null Byte (\x00, %00) Temizli�i                                            |
+  +----------------------------------------------------------------------------------+
+                     |
+                     v
+  +----------------------------------------------------------------------------------+
+  | 2. G�RD� DO�RULAMA (Input Validation - Pozitif �zin Listesi / Allowlist)         |
+  |    - Veri Tipi Kontrol� (TextAlpha, Email, NumericInt, UuidV4 vb.)               |
+  |    - Uzunluk ve Aral�k S�n�rland�rmas� (Min / Max Length)                        |
+  |    - Enjeksiyon �mzas� Taramas� (SQLi, XSS, Path Traversal, Command Injection)   |
+  +----------------------------------------------------------------------------------+
+                     |
+                     v
+  +----------------------------------------------------------------------------------+
+  | 3. G�VENL� �� ��LEME & PARAMETREL� DEPOLAMA (Prepared Statements / ORM)          |
+  +----------------------------------------------------------------------------------+
+                     |
+                     v
+  +----------------------------------------------------------------------------------+
+  | 4. BA�LAMA DUYARLI �IKTI KODLAMA (Context-Aware Output Encoding - OWASP C-03)     |
+  |    - HTML Body Ba�lam�        --> &amp;, &lt;, &gt;, &quot;, &#x27;              |
+  |    - HTML Attribute Ba�lam�   --> &#xHH; Hex Kodlama                             |
+  |    - JavaScript De�i�keni     --> \u00XX Unicode Ka����                         |
+  |    - URL Parametresi          --> RFC 3986 Percent-Encoding                      |
+  |    - CSS Stili                --> \HH CSS Ka����                                |
+  +----------------------------------------------------------------------------------+
+                     |
+                     v
+ [ HEDEF YORUMLAYICI / TARAYICI ] (Kod Olarak �al��t�r�lamaz, Yaln�zca Veri G�r�n�r)
+======================================================================================
+
+======================================================================
+

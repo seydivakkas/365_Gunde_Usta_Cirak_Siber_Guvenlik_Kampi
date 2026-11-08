@@ -1,0 +1,85 @@
+{
+  "gun": 159,
+  "hafta": 23,
+  "asama": "07",
+  "konu": "Girdi doğrulama ve çıktı kodlama",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "boyut_bayt": 6018,
+      "sha256": "d05a19086c31b06fbf4836620f179dad22fc705366400426d3866c9dd7ff14f5"
+    },
+    "ders.md": {
+      "boyut_bayt": 8039,
+      "sha256": "ff0a15aa47ccfc5511250b7dd0e03fb370fb9c4c3d5137418d7c1b68fa0adf15"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 13359,
+      "sha256": "0bdb669021d4ed5677f3c0a811301d3f9f16a14dc77d37aa28a592e8eb9d3cfe"
+    },
+    "rapor.md": {
+      "boyut_bayt": 4931,
+      "sha256": "2d483bad272489c34bdc42385bb44dae84eef9cc7ef476f71b57d23543053567"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1782,
+      "sha256": "1489f19a5b72b320372702c66cb77879c752c6562fdec44e27b1e7b736afb8fe"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 11213,
+      "sha256": "abe4c444845c9abfcda99fd21ff59ea5863b9a95bab21d75b22e4c6a60e8939a"
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "boyut_bayt": 7775,
+      "sha256": "d16566f657eff8607f2ff57a6b9fc68d387f0b29d7347ea026943b0a3e03fcda"
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 3438,
+      "sha256": "7058325970ee62dc937278b368c8efc358b7962784dbb3d684e4849b253a8f59"
+    },
+    "kanit\\gercek\\sanitized_output_samples.txt": {
+      "boyut_bayt": 778,
+      "sha256": "073a0d91c283c69cf59d1a5f534439ed6f3625869f5a0b3d22a6b00fac5873f3"
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "boyut_bayt": 4480,
+      "sha256": "e6023b5a8dc23120001cb8f3902eabb91cbd0072301af23e2f7c462bb40eb39a"
+    },
+    "kanit\\gercek\\validation_encoding_report.json": {
+      "boyut_bayt": 2529,
+      "sha256": "0b3293dd1420f819f9a082f9d674c06f84378aca5ed0dd0eec141a3a20730303"
+    },
+    "kanit\\temsili\\girdi_cikti_guvenlik_borusu.txt": {
+      "boyut_bayt": 5061,
+      "sha256": "4bbdd4b30a554cb1ee1fd87a2071218fd40752ed1d3ee317487f716e7e01f539"
+    },
+    "ornek_veri\\enterprise_input_schemas.json": {
+      "boyut_bayt": 1326,
+      "sha256": "e602b76a4718a3cdc54e527e04c72ebd7766bc1c62c0ba2268b590314b56879b"
+    },
+    "ornek_veri\\invalid_input_payloads.json": {
+      "boyut_bayt": 3430,
+      "sha256": "3ce54707a6df35bd18b8192c2362816615e815ef5647740375d52a65fd166467"
+    },
+    "tests\\__init__.py": {
+      "boyut_bayt": 102,
+      "sha256": "4b37380b37c70b570bf410bdc0d2463af311701fc88ee96649d41af652535a03"
+    },
+    "tests\\test_input_validator_encoder.py": {
+      "boyut_bayt": 7677,
+      "sha256": "80a517c588152e3db6dc113e54f0a82c674eaa9ba647dd2465294a87e9cfede9"
+    },
+    "uygulama\\__init__.py": {
+      "boyut_bayt": 106,
+      "sha256": "78839661f872d29f33659e5382dec6c9511778e7509f4ea622396ec076cac3ed"
+    },
+    "uygulama\\input_validation_cli.py": {
+      "boyut_bayt": 5997,
+      "sha256": "c8694308c36214b5619d29d94182aff061d3b66c17e1a0bd87daff1daaa64668"
+    },
+    "uygulama\\input_validator_encoder_engine.py": {
+      "boyut_bayt": 16176,
+      "sha256": "4bb7b46ccf43dcfa7e3eba132fa97cb834cd5d034d7f553bbe318fff8fd833a6"
+    }
+  }
+}

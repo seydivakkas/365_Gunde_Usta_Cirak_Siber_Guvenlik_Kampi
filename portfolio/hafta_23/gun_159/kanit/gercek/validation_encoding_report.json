@@ -1,0 +1,81 @@
+{
+  "all_valid": true,
+  "sanitized_data": {
+    "username": "seydi_eryilmaz",
+    "full_name": "Seydi Eryılmaz",
+    "email": "seydi@kurumsalbank.com",
+    "user_id": "10042",
+    "profile_uuid": "c0a80101-0000-4000-8000-000000000001",
+    "homepage_url": "https://guvenlik.kurumsalbank.com/profil",
+    "birth_date": "1994-05-15",
+    "bio_comment": "Kıdemli Siber Güvenlik Mimarı ve Sistem Güvenliği Uzmanı."
+  },
+  "errors": {},
+  "detected_threats": [],
+  "field_results": {
+    "username": {
+      "field_name": "username",
+      "raw_value": "seydi_eryilmaz",
+      "canonical_value": "seydi_eryilmaz",
+      "is_valid": true,
+      "error_message": null,
+      "detected_threats": []
+    },
+    "full_name": {
+      "field_name": "full_name",
+      "raw_value": "Seydi Eryılmaz",
+      "canonical_value": "Seydi Eryılmaz",
+      "is_valid": true,
+      "error_message": null,
+      "detected_threats": []
+    },
+    "email": {
+      "field_name": "email",
+      "raw_value": "seydi@kurumsalbank.com",
+      "canonical_value": "seydi@kurumsalbank.com",
+      "is_valid": true,
+      "error_message": null,
+      "detected_threats": []
+    },
+    "user_id": {
+      "field_name": "user_id",
+      "raw_value": "10042",
+      "canonical_value": "10042",
+      "is_valid": true,
+      "error_message": null,
+      "detected_threats": []
+    },
+    "profile_uuid": {
+      "field_name": "profile_uuid",
+      "raw_value": "c0a80101-0000-4000-8000-000000000001",
+      "canonical_value": "c0a80101-0000-4000-8000-000000000001",
+      "is_valid": true,
+      "error_message": null,
+      "detected_threats": []
+    },
+    "homepage_url": {
+      "field_name": "homepage_url",
+      "raw_value": "https://guvenlik.kurumsalbank.com/profil",
+      "canonical_value": "https://guvenlik.kurumsalbank.com/profil",
+      "is_valid": true,
+      "error_message": null,
+      "detected_threats": []
+    },
+    "birth_date": {
+      "field_name": "birth_date",
+      "raw_value": "1994-05-15",
+      "canonical_value": "1994-05-15",
+      "is_valid": true,
+      "error_message": null,
+      "detected_threats": []
+    },
+    "bio_comment": {
+      "field_name": "bio_comment",
+      "raw_value": "Kıdemli Siber Güvenlik Mimarı ve Sistem Güvenliği Uzmanı.",
+      "canonical_value": "Kıdemli Siber Güvenlik Mimarı ve Sistem Güvenliği Uzmanı.",
+      "is_valid": true,
+      "error_message": null,
+      "detected_threats": []
+    }
+  }
+}

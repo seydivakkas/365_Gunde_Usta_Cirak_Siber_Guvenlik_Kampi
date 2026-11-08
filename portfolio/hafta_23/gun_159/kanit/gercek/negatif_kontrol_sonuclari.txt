@@ -1,0 +1,66 @@
+=== 9 ADET GİRDİ DOĞRULAMA VE ENJEKSİYON NEGATİF KONTROL SENARYOSU ===
+
+Senaryo: SCN-INPUT-01 - SQL_Enjeksiyonu_Union_Saldirisi
+  Hedef Alan         : username
+  Geçerlilik Durumu  : GEÇERSİZ (Reddedildi)
+  Tespit Edilen Tehdit: SQL_INJECTION
+  Hata Açıklaması    : 'username' alanı en fazla 30 karakter olmalıdır (Mevcut: 58).
+  Negatif Doğrulama  : BAŞARILI (Zararlı Girdi Engellendi)
+
+Senaryo: SCN-INPUT-02 - Reflected_XSS_Zararli_Script_Etiketi
+  Hedef Alan         : bio_comment
+  Geçerlilik Durumu  : GEÇERSİZ (Reddedildi)
+  Tespit Edilen Tehdit: XSS_SCRIPT
+  Hata Açıklaması    : Güvenlik İhlali: 'bio_comment' alanında zararlı enjeksiyon imzası tespit edildi: XSS_SCRIPT
+  Negatif Doğrulama  : BAŞARILI (Zararlı Girdi Engellendi)
+
+Senaryo: SCN-INPUT-03 - Isletim_Sistemi_Komut_Enjeksiyonu
+  Hedef Alan         : username
+  Geçerlilik Durumu  : GEÇERSİZ (Reddedildi)
+  Tespit Edilen Tehdit: PATH_TRAVERSAL, COMMAND_INJECTION
+  Hata Açıklaması    : Güvenlik İhlali: 'username' alanında zararlı enjeksiyon imzası tespit edildi: PATH_TRAVERSAL, COMMAND_INJECTION
+  Negatif Doğrulama  : BAŞARILI (Zararlı Girdi Engellendi)
+
+Senaryo: SCN-INPUT-04 - Dizin_Gecisi_Cift_URL_Kodlamasi
+  Hedef Alan         : bio_comment
+  Geçerlilik Durumu  : GEÇERSİZ (Reddedildi)
+  Tespit Edilen Tehdit: PATH_TRAVERSAL
+  Hata Açıklaması    : Güvenlik İhlali: 'bio_comment' alanında zararlı enjeksiyon imzası tespit edildi: PATH_TRAVERSAL
+  Negatif Doğrulama  : BAŞARILI (Zararlı Girdi Engellendi)
+
+Senaryo: SCN-INPUT-05 - Null_Byte_Enjeksiyonu
+  Hedef Alan         : username
+  Geçerlilik Durumu  : GEÇERSİZ (Reddedildi)
+  Tespit Edilen Tehdit: Format / Sınır İhlali
+  Hata Açıklaması    : 'username' alanı beklenen format kurallarına uymuyor (TextAlphanumeric).
+  Negatif Doğrulama  : BAŞARILI (Zararlı Girdi Engellendi)
+
+Senaryo: SCN-INPUT-06 - Asiri_Uzunluk_Buffer_Sinir_Asimi
+  Hedef Alan         : username
+  Geçerlilik Durumu  : GEÇERSİZ (Reddedildi)
+  Tespit Edilen Tehdit: Format / Sınır İhlali
+  Hata Açıklaması    : 'username' alanı en fazla 30 karakter olmalıdır (Mevcut: 500).
+  Negatif Doğrulama  : BAŞARILI (Zararlı Girdi Engellendi)
+
+Senaryo: SCN-INPUT-07 - HTML_Attribute_Breakout_Tirnak_Kirilmasi
+  Hedef Alan         : full_name
+  Geçerlilik Durumu  : GEÇERSİZ (Reddedildi)
+  Tespit Edilen Tehdit: XSS_SCRIPT
+  Hata Açıklaması    : Güvenlik İhlali: 'full_name' alanında zararlı enjeksiyon imzası tespit edildi: XSS_SCRIPT
+  Negatif Doğrulama  : BAŞARILI (Zararlı Girdi Engellendi)
+
+Senaryo: SCN-INPUT-08 - JavaScript_Baglami_Kacis_Saldirisi
+  Hedef Alan         : username
+  Geçerlilik Durumu  : GEÇERSİZ (Reddedildi)
+  Tespit Edilen Tehdit: XSS_SCRIPT
+  Hata Açıklaması    : Güvenlik İhlali: 'username' alanında zararlı enjeksiyon imzası tespit edildi: XSS_SCRIPT
+  Negatif Doğrulama  : BAŞARILI (Zararlı Girdi Engellendi)
+
+Senaryo: SCN-INPUT-09 - Guvensiz_Protokol_Javascript_URL
+  Hedef Alan         : homepage_url
+  Geçerlilik Durumu  : GEÇERSİZ (Reddedildi)
+  Tespit Edilen Tehdit: XSS_SCRIPT
+  Hata Açıklaması    : Güvenlik İhlali: 'homepage_url' alanında zararlı enjeksiyon imzası tespit edildi: XSS_SCRIPT
+  Negatif Doğrulama  : BAŞARILI (Zararlı Girdi Engellendi)
+
+ÖZET: Toplam 9 senaryonun 9 tanesi engellendi. (Genel: 100% PASS)

@@ -1,0 +1,37 @@
+{
+  "gun": 159,
+  "hafta": 23,
+  "asama": "07",
+  "konu": "Girdi doğrulama ve çıktı kodlama",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-08",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.003
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_23/gun_159/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_23/gun_159/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "validation_encoding_report_json": "portfolio/hafta_23/gun_159/kanit/gercek/validation_encoding_report.json",
+    "sanitized_output_samples_txt": "portfolio/hafta_23/gun_159/kanit/gercek/sanitized_output_samples.txt",
+    "komut_ve_cikis": "portfolio/hafta_23/gun_159/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_23/gun_159/kanit/temsili/girdi_cikti_guvenlik_borusu.txt"
+  },
+  "ozet": "Girdi doğrulama ve bağlama duyarlı çıktı kodlama (Context-Aware Output Encoding - OWASP C-03) çift savunma hattı eksiksiz inşa edildi. Kanonikleştirme (Unicode NFKC, recursive URL unquoting, Null byte temizliği), pozitif izin listesi (Allowlist) sözleşmeleri, enjeksiyon (SQLi, XSS, Komut Enjeksiyonu, Path Traversal) imza taraması ve 5 farklı hedef yorumlayıcı bağlamı (HTML Body, Attribute, JS, URL, CSS) başarıyla modellendi. 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla doğrulandı."
+}

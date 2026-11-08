@@ -1,0 +1,56 @@
+{
+  "schema_name": "Kurumsal_Musteri_Kayit_Ve_Iletisim_Semasi",
+  "version": "1.0.0",
+  "schema": {
+    "username": {
+      "type": "TextAlphanumeric",
+      "min_length": 3,
+      "max_length": 30
+    },
+    "full_name": {
+      "type": "TextAlpha",
+      "min_length": 2,
+      "max_length": 60
+    },
+    "email": {
+      "type": "Email",
+      "min_length": 5,
+      "max_length": 100
+    },
+    "user_id": {
+      "type": "NumericInt",
+      "min_length": 1,
+      "max_length": 10
+    },
+    "profile_uuid": {
+      "type": "UuidV4",
+      "min_length": 36,
+      "max_length": 36
+    },
+    "homepage_url": {
+      "type": "UrlHttpHttps",
+      "min_length": 10,
+      "max_length": 200
+    },
+    "birth_date": {
+      "type": "DateIso8601",
+      "min_length": 10,
+      "max_length": 10
+    },
+    "bio_comment": {
+      "type": "SafeTextMultiline",
+      "min_length": 0,
+      "max_length": 500
+    }
+  },
+  "valid_sample_payload": {
+    "username": "seydi_eryilmaz",
+    "full_name": "Seydi Eryılmaz",
+    "email": "seydi@kurumsalbank.com",
+    "user_id": "10042",
+    "profile_uuid": "c0a80101-0000-4000-8000-000000000001",
+    "homepage_url": "https://guvenlik.kurumsalbank.com/profil",
+    "birth_date": "1994-05-15",
+    "bio_comment": "Kıdemli Siber Güvenlik Mimarı ve Sistem Güvenliği Uzmanı."
+  }
+}

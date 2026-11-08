@@ -1,0 +1,59 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================================
+                      GİRDİ DOĞRULAMA VE ÇIKTI KODLAMA ÇİFT SAVUNMA HATTI
+========================================================================================================
+
+  [ DIŞ İSTEKLER / GÜVENİLMEYEN GİRDİ ] (HTTP GET/POST, JSON Payload, Query Parameters)
+                          |
+                          v
+  +----------------------------------------------------------------------------------------------------+
+  | 1. KANONİKLEŞTİRME VE TEMİZLİK (Boundary Sanitization)                                             |
+  |    - Çift URL Decoding (%252e%252e%252f -> ../)                                                   |
+  |    - Unicode NFKC Normalizasyonu (Homoglyph & Görsel Karakter Çözümü)                              |
+  |    - Null Byte (\x00, %00) Temizliği                                                              |
+  +----------------------------------------------------------------------------------------------------+
+                          |
+                          v
+  +----------------------------------------------------------------------------------------------------+
+  | 2. GİRDİ DOĞRULAMA (Pozitif İzin Listesi / Allowlist)                                              |
+  |    - Veri Tipi Sözleşmesi (TextAlpha, Email, NumericInt, UuidV4 vb.)                               |
+  |    - Uzunluk ve Sınır Kontrolü (Min/Max Length)                                                    |
+  |    - Enjeksiyon İmzası Taraması (SQLi, XSS, Path Traversal, Command Injection)                     |
+  +----------------------------------------------------------------------------------------------------+
+                          |
+                          +---> Geçersizse: [ HTTP 400 Bad Request - Reddedildi ]
+                          |
+                          v (Geçerliyse)
+  +----------------------------------------------------------------------------------------------------+
+  | 3. GÜVENLİ İÇ İŞLEME & SORGULAMA                                                                   |
+  |    - Parametreli Veritabanı Sorguları (Prepared Statements / ORM)                                  |
+  |    - Sistem Komutlarında execFile / Argüman Dizisi (Shell yok!)                                    |
+  +----------------------------------------------------------------------------------------------------+
+                          |
+                          v
+  +----------------------------------------------------------------------------------------------------+
+  | 4. BAĞLAMA DUYARLI ÇIKTI KODLAMA (Context-Aware Output Encoding - OWASP C-03)                      |
+  |    +-------------------------+-----------------------------------+-------------------------------+ |
+  |    | Hedef Bağlam            | Güvenlik Kaçış Yöntemi            | Örnek Dönüşüm                 | |
+  |    +-------------------------+-----------------------------------+-------------------------------+ |
+  |    | HTML Body               | HTML Varlık Kodlama               | <script> -> &lt;script&gt;    | |
+  |    | HTML Attribute          | Hex Entity Kodlama (&#xHH;)       | " -> &#x22;                   | |
+  |    | JavaScript Değişkeni    | Unicode Escape (\u00XX)          | ' -> \u0027                   | |
+  |    | URL Parametresi         | RFC 3986 Percent-Encoding         | boşluk -> %20, & -> %26       | |
+  |    | CSS Stili               | Hex CSS Escape (\HH )            | " -> \22                     | |
+  |    +-------------------------+-----------------------------------+-------------------------------+ |
+  +----------------------------------------------------------------------------------------------------+
+                          |
+                          v
+  [ İSTEMCİ YORUMLAYICISI / TARAYICI ] (Kod Olarak Çalıştırılamaz, Yalnızca Güvenli Metin Görünür)
+
+========================================================================================================
+                                   GÜVENLİK SÖZLEŞMESİ MATRİSİ
+========================================================================================================
+  Alan Adı     İzin Verilen Format       Sınırlar    Zafiyet Kalkanı         Kaçış Bağlamı
+  ----------   -----------------------   ---------   ---------------------   -----------------
+  username     Alfanümerik + Türkçe      3-30 Kar.   SQLi & Path Traversal   HTML Attribute
+  full_name    Yalnızca Harfler          2-60 Kar.   XSS & Komut Enjeksiyonu HTML Body
+  email        RFC 5322 Regex            5-100 Kar.  Header Injection        HTML Body
+  comment      Çok Satırlı Güvenli Metin 0-500 Kar.  XSS & Script Injection  HTML Body / JS Var
+========================================================================================================
