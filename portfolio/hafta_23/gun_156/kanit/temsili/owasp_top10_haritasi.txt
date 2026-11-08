@@ -1,0 +1,55 @@
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+========================================================================================================
+                      OWASP TOP 10 (2025/2026) VE CWE ÇOK KATMANLI HARİTASI
+========================================================================================================
+
+  [ DIŞ İSTEKLER / WEB İSTEMCİSİ ] (Tarayıcı, Mobil API İstemcisi, B2B Webhook)
+                 |
+                 v
+  +----------------------------------------------------------------------------------------------------+
+  | GÜVENLİK SINIRI & REVERSE PROXY (WAF / TLS Terminatörü / Gateway)                                  |
+  |  - Kriptografik Koruma: [A02: Cryptographic Failures] (CWE-327 / TLSv1.3 HSTS Zorunlu)            |
+  |  - Hizmet Reddi & DoS Savunması: [A04: Insecure Design] (CWE-799 / Rate Limiting)                  |
+  |  - Başlık ve Sunucu Sıkılaştırma: [A05: Security Misconfiguration] (CWE-16 / CSP, X-Frame)        |
+  +----------------------------------------------------------------------------------------------------+
+                 |
+                 v
+  +----------------------------------------------------------------------------------------------------+
+  | KİMLİK VE ERİŞİM YÖNETİMİ KATMANI (IAM / Auth Middleware)                                          |
+  |  - Kimlik Doğrulama: [A07: Identification & Auth Failures] (CWE-287 / MFA + Brute-force Lockout)   |
+  |  - Yetkilendirme & IDOR Kalkanı: [A01: Broken Access Control] (CWE-639, 862 / RBAC Enforcer)      |
+  +----------------------------------------------------------------------------------------------------+
+                 |
+                 v
+  +----------------------------------------------------------------------------------------------------+
+  | UYGULAMA İŞ MANTIĞI & GİRDİ/ÇIKTI DENETİMİ (Application Core)                                      |
+  |  - Girdi Enjeksiyon Kalkanı: [A03: Injection] (CWE-89 SQLi, CWE-79 XSS / Parametreli Sorgular)    |
+  |  - Dış Bağlantı ve URL Filtresi: [A10: Server-Side Request Forgery] (CWE-918 / Metadata Bloklama) |
+  |  - Bütünlük & Deserialization: [A08: Software/Data Integrity] (CWE-502 / İmzalı Pipeline)          |
+  +----------------------------------------------------------------------------------------------------+
+                 |
+                 v
+  +----------------------------------------------------------------------------------------------------+
+  | ALTYAPI, BAĞIMLILIKLAR VE GÖZLEMLENEBİLİRLİK (Infra & Supply Chain)                                |
+  |  - Yazılım Tedarik Zinciri: [A06: Vulnerable & Outdated Components] (CWE-1104 / SBOM & SCA Tarama) |
+  |  - Denetim İzi & Olay Müdahalesi: [A09: Logging & Monitoring] (CWE-778 / SIEM & <15dk Alerting)    |
+  +----------------------------------------------------------------------------------------------------+
+
+========================================================================================================
+                                     KATEGORİ UYUMLULUK MATRİSİ
+========================================================================================================
+  Kod   Kategori Adı                               Ağırlık   Geçme Eşiği   Kurumsal Durum
+  ---   ----------------------------------------   -------   -----------   --------------
+  A01   Broken Access Control                        15%        80.0%         TAM UYUMLU (100.0)
+  A02   Cryptographic Failures                       12%        80.0%         TAM UYUMLU (100.0)
+  A03   Injection                                    15%        80.0%         TAM UYUMLU (100.0)
+  A04   Insecure Design                              10%        80.0%         TAM UYUMLU (100.0)
+  A05   Security Misconfiguration                    10%        80.0%         TAM UYUMLU (100.0)
+  A06   Vulnerable & Outdated Components             10%        80.0%         TAM UYUMLU (100.0)
+  A07   Identification & Auth Failures               10%        80.0%         TAM UYUMLU (100.0)
+  A08   Software & Data Integrity Failures            6%        80.0%         TAM UYUMLU (100.0)
+  A09   Security Logging & Monitoring Failures        6%        80.0%         TAM UYUMLU (100.0)
+  A10   Server-Side Request Forgery (SSRF)            6%        80.0%         TAM UYUMLU (100.0)
+========================================================================================================
+  GENEL KURUMSAL GÜVENLİK SKORU: 100.0 / 100.0 (ONAYLANDI - ÜRETİME UYGUN)
+========================================================================================================

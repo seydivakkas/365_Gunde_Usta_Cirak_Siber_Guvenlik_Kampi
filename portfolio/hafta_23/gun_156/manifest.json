@@ -1,0 +1,85 @@
+{
+  "gun": 156,
+  "hafta": 23,
+  "asama": "07",
+  "konu": "OWASP Top 10:2025 haritası",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "boyut_bayt": 6117,
+      "sha256": "dac14767027f350318318b2813dfa084597c777c08e4234f78cf8c2ef06ba5b0"
+    },
+    "ders.md": {
+      "boyut_bayt": 10222,
+      "sha256": "c7ab8b3bee494cd0ea98e530e82f2bc59643f140cfeeef0878e9a00042abca17"
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "boyut_bayt": 5736,
+      "sha256": "e068b98a347e34f486b05f892ba28423556781202a14bd280607b68f35e3d56e"
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 2777,
+      "sha256": "8539ce3892d0552ff2a55243c65ff5136551af18fc3ae37a374df5e4f91a11b0"
+    },
+    "kanit/gercek/owasp_remediation_roadmap.md": {
+      "boyut_bayt": 1438,
+      "sha256": "dc04c57625c95b6635ada846c5ec4fcb0da2683d3075701fc4d5efdce565b15d"
+    },
+    "kanit/gercek/owasp_top10_mapping_report.json": {
+      "boyut_bayt": 1899,
+      "sha256": "4177ba147c331eb6e5b4c39acdedd39f6da85d4334f76a006158e58b7da6d7a5"
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "boyut_bayt": 4163,
+      "sha256": "93fe447c4b4e2be36951a1b3b3e098454c1aea7dcb3a8bc4523f34fcedc21041"
+    },
+    "kanit/temsili/owasp_top10_haritasi.txt": {
+      "boyut_bayt": 4719,
+      "sha256": "d775194e4dcd6c89d447fd4024167787a10ce97b735886695206428b50ecaf10"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 14139,
+      "sha256": "28c9c1d74747233f9b0fc49310b16d08fffbfb117d6da553d0652b59fd206de1"
+    },
+    "ornek_veri/enterprise_web_app_spec.json": {
+      "boyut_bayt": 954,
+      "sha256": "1a175255f2e3328afc38595623264415d4a1a0fd194ccd2aea8b401c512b1d81"
+    },
+    "ornek_veri/invalid_owasp_scenarios.json": {
+      "boyut_bayt": 13029,
+      "sha256": "6241b56519666bf3acd97dc3e3672be6a65da0a0bbbbc1010d935cb6346c5e82"
+    },
+    "rapor.md": {
+      "boyut_bayt": 4902,
+      "sha256": "f4202c3e21ad0a40a915ff2b35279ebc8d4a084cac40e5a24dbecfb0eb89bf36"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1663,
+      "sha256": "cb5123e2a7a386ca626c7552787916137c79e4a5c778bf505ca6add7ea6f6bf5"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 10739,
+      "sha256": "bb09104ef0cec4ea7fb9dfe59dacc35ff097a5004c18a4c71c232f9e78970a43"
+    },
+    "tests/__init__.py": {
+      "boyut_bayt": 145,
+      "sha256": "75c197667eddf0ce2a8aac68c5e156ed451235d035b495c40f5943db7fc3e11d"
+    },
+    "tests/test_owasp_mapper.py": {
+      "boyut_bayt": 8939,
+      "sha256": "23d29376ca2b73ea71a6c25b8a7b97095ae41ba7666c8360c5a1414c420ef8ab"
+    },
+    "uygulama/__init__.py": {
+      "boyut_bayt": 551,
+      "sha256": "c7e4f3d75e3c45a957174a3bb5e651ddcade308dd2fce126e6815e7e5bebc2f1"
+    },
+    "uygulama/owasp_mapper_cli.py": {
+      "boyut_bayt": 7609,
+      "sha256": "1700f26654dfb09175c6495f632c17ff49c78bdda6fb7a8f25636d363a88bd7b"
+    },
+    "uygulama/owasp_mapper_engine.py": {
+      "boyut_bayt": 25118,
+      "sha256": "c10ac18297034bc0f6e0554f2af157b6536d0990419e97bb433e3e4c580be037"
+    }
+  }
+}

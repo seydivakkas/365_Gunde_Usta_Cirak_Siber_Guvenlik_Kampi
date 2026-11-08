@@ -1,0 +1,86 @@
+=== OWASP TOP 10 HARİTALAMA VE DEĞERLENDİRME CLI YÜRÜTME LOGLARI ===
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_156\uygulama\owasp_mapper_cli.py map-app --spec C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_156\ornek_veri\enterprise_web_app_spec.json
+==================================================================================
+ OWASP TOP 10:2025 WEB G�VENL�K HAR�TASI VE UYUMLULUK RAPORU (G�N 156)
+==================================================================================
+ Uygulama Ad�          : Kurumsal_Bankacilik_Core_Web_Portal
+ Genel Uyumluluk Skoru : %100.0 / 100 (E�ik: %85.0)
+ Nihai De�erlendirme   : [UYUMLU - GECTI]
+----------------------------------------------------------------------------------
+ KOD   KATEGOR� TANIMI                                  PUAN     DURUM   
+----------------------------------------------------------------------------------
+ A01   A01:2025-Broken Access Control                   100.0   [GECTI]
+ A02   A02:2025-Cryptographic Failures                  100.0   [GECTI]
+ A03   A03:2025-Injection                               100.0   [GECTI]
+ A04   A04:2025-Insecure Design                         100.0   [GECTI]
+ A05   A05:2025-Security Misconfiguration               100.0   [GECTI]
+ A06   A06:2025-Vulnerable and Outdated Components      100.0   [GECTI]
+ A07   A07:2025-Identification and Authentication Failures 100.0   [GECTI]
+ A08   A08:2025-Software and Data Integrity Failures    100.0   [GECTI]
+ A09   A09:2025-Security Logging and Monitoring Failures 100.0   [GECTI]
+ A10   A10:2025-Server-Side Request Forgery             100.0   [GECTI]
+==================================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_156\uygulama\owasp_mapper_cli.py map-cwe --cwe 89
+======================================================================
+ CWE -> OWASP E�LE�T�RME: CWE-89
+======================================================================
+ Zafiyet Ad�         : SQL Injection
+ OWASP Kategorisi    : A03:2025-Injection
+ Risk Seviyesi       : KRITIK
+ A��klama            : CWE-89 zafiyeti: SQL Injection
+ Standart �yile�tirme : Daima parametreli sorgular (Prepared Statements) veya ORM soyutlamas� kullan�n.
+======================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_156\uygulama\owasp_mapper_cli.py map-cwe --cwe 918
+======================================================================
+ CWE -> OWASP E�LE�T�RME: CWE-918
+======================================================================
+ Zafiyet Ad�         : Server-Side Request Forgery (SSRF)
+ OWASP Kategorisi    : A10:2025-Server-Side Request Forgery
+ Risk Seviyesi       : YUKSEK
+ A��klama            : CWE-918 zafiyeti: Server-Side Request Forgery (SSRF)
+ Standart �yile�tirme : D��ar�ya yap�lan HTTP isteklerinde kat� alan ad� beyaz listesi uygulay�n ve 169.254.169.254 IP'sini engelleyin.
+======================================================================
+
+======================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_156\uygulama\owasp_mapper_cli.py generate-roadmap --spec C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_156\ornek_veri\enterprise_web_app_spec.json
+# OWASP Top 10 Zafiyet �yile�tirme Yol Haritas�: Kurumsal_Bankacilik_Core_Web_Portal
+
+**Genel Uyumluluk Puan�:** %100.0 / 100
+**Durum:** UYUMLU (GECTI)
+
+---
+## 1. Y�netici �zeti
+'Kurumsal_Bankacilik_Core_Web_Portal' uygulamas� OWASP Top 10:2025 standartlar�na %100.0 puan ile tam uyumludur. 10 kategorinin tamam� ba�ar�yla ge�ilmi�tir.
+
+---
+## 2. Kategori Bazl� Risk Durumu
+| Kategori | Tan�m | Skor | Durum |
+| :--- | :--- | :---: | :---: |
+| A01 | A01:2025-Broken Access Control | %100.0 | GECTI |
+| A02 | A02:2025-Cryptographic Failures | %100.0 | GECTI |
+| A03 | A03:2025-Injection | %100.0 | GECTI |
+| A04 | A04:2025-Insecure Design | %100.0 | GECTI |
+| A05 | A05:2025-Security Misconfiguration | %100.0 | GECTI |
+| A06 | A06:2025-Vulnerable and Outdated Components | %100.0 | GECTI |
+| A07 | A07:2025-Identification and Authentication Failures | %100.0 | GECTI |
+| A08 | A08:2025-Software and Data Integrity Failures | %100.0 | GECTI |
+| A09 | A09:2025-Security Logging and Monitoring Failures | %100.0 | GECTI |
+| A10 | A10:2025-Server-Side Request Forgery | %100.0 | GECTI |
+
+---
+## 3. �ncelikli �yile�tirme Eylemleri
+*Tebrikler! Y�ksek �ncelikli herhangi bir g�venlik a���� bulunmamaktad�r.*
+
+---
+*Rapor Olu�turulma: OWASP Top 10:2025 G�venlik Standartlar� Referans Al�nm��t�r.*
+
+======================================================================
+

@@ -1,0 +1,69 @@
+{
+  "app_name": "Kurumsal_Bankacilik_Core_Web_Portal",
+  "overall_compliance_score": 100.0,
+  "is_compliant": true,
+  "category_scores": {
+    "A01": {
+      "category": "A01:2025-Broken Access Control",
+      "score": 100.0,
+      "status": "GECTI",
+      "findings": []
+    },
+    "A02": {
+      "category": "A02:2025-Cryptographic Failures",
+      "score": 100.0,
+      "status": "GECTI",
+      "findings": []
+    },
+    "A03": {
+      "category": "A03:2025-Injection",
+      "score": 100.0,
+      "status": "GECTI",
+      "findings": []
+    },
+    "A04": {
+      "category": "A04:2025-Insecure Design",
+      "score": 100.0,
+      "status": "GECTI",
+      "findings": []
+    },
+    "A05": {
+      "category": "A05:2025-Security Misconfiguration",
+      "score": 100.0,
+      "status": "GECTI",
+      "findings": []
+    },
+    "A06": {
+      "category": "A06:2025-Vulnerable and Outdated Components",
+      "score": 100.0,
+      "status": "GECTI",
+      "findings": []
+    },
+    "A07": {
+      "category": "A07:2025-Identification and Authentication Failures",
+      "score": 100.0,
+      "status": "GECTI",
+      "findings": []
+    },
+    "A08": {
+      "category": "A08:2025-Software and Data Integrity Failures",
+      "score": 100.0,
+      "status": "GECTI",
+      "findings": []
+    },
+    "A09": {
+      "category": "A09:2025-Security Logging and Monitoring Failures",
+      "score": 100.0,
+      "status": "GECTI",
+      "findings": []
+    },
+    "A10": {
+      "category": "A10:2025-Server-Side Request Forgery",
+      "score": 100.0,
+      "status": "GECTI",
+      "findings": []
+    }
+  },
+  "high_priority_remediations": [],
+  "executive_summary": "'Kurumsal_Bankacilik_Core_Web_Portal' uygulaması OWASP Top 10:2025 standartlarına %100.0 puan ile tam uyumludur. 10 kategorinin tamamı başarıyla geçilmiştir."
+}

@@ -1,9 +1,9 @@
 {
-  "son_islenen_gun": 155,
-  "son_kapanan_pass_gun": 155,
-  "sonraki_aday_gun": 156,
-  "son_durum": "G155_TAMAMLANDI_PASS",
-  "sonuc_dosyasi": "portfolio/hafta_23/gun_155/sonuc.json",
+  "son_islenen_gun": 156,
+  "son_kapanan_pass_gun": 156,
+  "sonraki_aday_gun": 157,
+  "son_durum": "G156_TAMAMLANDI_PASS",
+  "sonuc_dosyasi": "portfolio/hafta_23/gun_156/sonuc.json",
   "excel_dogrulandi": true,
   "mod": "OTOMATIK_ZINCIR",
   "tamamlanan_gunler": [
@@ -76,12 +76,13 @@
     152,
     153,
     154,
-    155
+    155,
+    156
   ],
-  "guncelleme_tarihi": "2026-11-08T19:38:05.893597",
-  "durum_notu": "Gün 155: Web uygulama mimarisi ve güven sınırı (Hafta 23 / Aşama 7 Başlangıcı) 100/100 PASS ile tamamlandı. Gün 156: SOP, CORS ve güvenlik başlıkları konusuna hazır.",
-  "durum": "G155_TAMAMLANDI_PASS",
-  "son_islem_tarihi": "2026-11-08T19:38:05.893597",
-  "son_guncelleme": "2026-11-08T19:38:05.893597",
-  "guncelleme_zamani": "2026-11-08T19:38:05.893597"
+  "guncelleme_tarihi": "2026-11-08T19:47:58.991438",
+  "durum_notu": "Gün 156: OWASP Top 10:2025 haritası 100/100 PASS ile tamamlandı. Gün 157: HTTP cookies ve güvenlik bayrakları konusuna hazır.",
+  "durum": "G156_TAMAMLANDI_PASS",
+  "son_islem_tarihi": "2026-11-08T19:47:58.991438",
+  "son_guncelleme": "2026-11-08T19:47:58.991438",
+  "guncelleme_zamani": "2026-11-08T19:47:58.991438"
 }

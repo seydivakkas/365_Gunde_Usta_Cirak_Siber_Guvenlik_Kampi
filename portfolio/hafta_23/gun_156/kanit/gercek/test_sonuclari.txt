@@ -1,0 +1,38 @@
+=== OWASP TOP 10 HARİTASI VE DEĞERLENDİRME BİRİM TESTLERİ (15/15) ===
+test_01_fully_compliant_profile_passes_all_10_categories (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_01_fully_compliant_profile_passes_all_10_categories)
+Kusursuz uygulaman�n 10 kategoride de tam puan ald���n� ve uyumlu oldu�unu do�rular. ... ok
+test_02_a01_broken_access_control_failure (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_02_a01_broken_access_control_failure)
+RBAC ve IDOR korumas� kapal�yken A01 kategorisinin kald���n� do�rular. ... ok
+test_03_a02_cryptographic_failures (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_03_a02_cryptographic_failures)
+Zay�f TLS ve zay�f parola hashlemenin A02 kategorisini d���rd���n� test eder. ... ok
+test_04_a03_injection_vulnerability (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_04_a03_injection_vulnerability)
+Parametresiz dinamik SQL kullan�m�n�n A03 enjeksiyon a���� olu�turdu�unu do�rular. ... ok
+test_05_a04_insecure_design_rate_limit (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_05_a04_insecure_design_rate_limit)
+H�z s�n�rlama (Rate Limiting) eksikli�inin A04 kategorisinde puan d���rd���n� test eder. ... ok
+test_06_a05_security_misconfiguration_debug_mode (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_06_a05_security_misconfiguration_debug_mode)
+�retimde Debug Mode a��k olmas�n�n A05 kategorisini ba�ar�s�z k�ld���n� test eder. ... ok
+test_07_a06_vulnerable_components_outdated_pkgs (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_07_a06_vulnerable_components_outdated_pkgs)
+Eski ve yamalanmam�� ba��ml�l�klar�n A06 kategorisinde ceza ald���n� do�rular. ... ok
+test_08_a07_auth_failures_mfa_and_lockout (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_08_a07_auth_failures_mfa_and_lockout)
+MFA zorunlulu�u ve hesap kilitleme yoklu�unun A07'yi ba�ar�s�z k�ld���n� test eder. ... ok
+test_09_a08_integrity_failures_deserialization (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_09_a08_integrity_failures_deserialization)
+G�vensiz nesne serile�tirmenin A08 kategorisinde kritik ihlal oldu�unu do�rular. ... ok
+test_10_a09_logging_failures_no_audit (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_10_a09_logging_failures_no_audit)
+Merkezi denetim g�nl��� eksikli�inin A09 kategorisini d���rd���n� test eder. ... ok
+test_11_a10_ssrf_vulnerability_metadata_access (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_11_a10_ssrf_vulnerability_metadata_access)
+SSRF beyaz listesi ve bulut meta veri engeli yoklu�unun A10'u d���rd���n� test eder. ... ok
+test_12_cwe_mapping_sql_injection (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_12_cwe_mapping_sql_injection)
+CWE-89'un do�ru bi�imde A03 Injection ve CRITICAL olarak e�le�tirildi�ini test eder. ... ok
+test_13_cwe_mapping_ssrf (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_13_cwe_mapping_ssrf)
+CWE-918'in A10 SSRF kategorisiyle e�le�ti�ini do�rular. ... ok
+test_14_ascii_dashboard_generation (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_14_ascii_dashboard_generation)
+ASCII pano ��kt�s�n�n ba�l�klar� ve kategorileri i�erdi�ini test eder. ... ok
+test_15_cli_roundtrip_export_dict (portfolio.hafta_23.gun_156.tests.test_owasp_mapper.TestOwaspMapperEngine.test_15_cli_roundtrip_export_dict)
+Rapor s�zl�k ��kt�s�n�n serile�tirilebilir ve 10 kategoriyi i�erdi�ini do�rular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+
+Durum Kodu: 0

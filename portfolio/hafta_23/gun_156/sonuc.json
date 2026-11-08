@@ -1,0 +1,37 @@
+{
+  "gun": 156,
+  "hafta": 23,
+  "asama": "07",
+  "konu": "OWASP Top 10:2025 haritası",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-08",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_23/gun_156/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_23/gun_156/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "owasp_mapping_report_json": "portfolio/hafta_23/gun_156/kanit/gercek/owasp_top10_mapping_report.json",
+    "owasp_remediation_roadmap_md": "portfolio/hafta_23/gun_156/kanit/gercek/owasp_remediation_roadmap.md",
+    "komut_ve_cikis": "portfolio/hafta_23/gun_156/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_23/gun_156/kanit/temsili/owasp_top10_haritasi.txt"
+  },
+  "ozet": "OWASP Top 10:2025 güvenlik standartları A01'den A10'a kadar eksiksiz modellendi; CWE-89, CWE-79, CWE-639, CWE-327, CWE-918, CWE-287, CWE-502, CWE-16, CWE-778 ve CWE-1104 ile çift yönlü eşleştirildi. Çok kriterli ağırlıklı puanlama ve önceliklendirilmiş zafiyet iyileştirme yol haritası (Remediation Roadmap) üretimi gerçekleştirildi. 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla doğrulandı."
+}

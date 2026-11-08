@@ -1,0 +1,66 @@
+=== 9 ADET OWASP TOP 10 NEGATİF KONTROL VE HATA ENJEKSİYON SENARYOLARI ===
+
+Senaryo: SCN-OWASP-01 - Kirik_Erisim_Denetimi_IDOR_Ve_Eksik_RBAC
+  Hedef Kategori: A01:2025-Broken Access Control
+  Kategori Puanı: 10.0/100.0 (Durum: KALDI)
+  Genel Uyumluluk Puanı: 91.0/100.0
+  Bulgu Sayısı: 2
+  Negatif Doğrulama: BAŞARILI (Zafiyet Yakalandı)
+
+Senaryo: SCN-OWASP-02 - Kriptografik_Hatalar_Eski_TLS_Ve_MD5_Hash
+  Hedef Kategori: A02:2025-Cryptographic Failures
+  Kategori Puanı: 0.0/100.0 (Durum: KALDI)
+  Genel Uyumluluk Puanı: 90.0/100.0
+  Bulgu Sayısı: 3
+  Negatif Doğrulama: BAŞARILI (Zafiyet Yakalandı)
+
+Senaryo: SCN-OWASP-03 - Enjeksiyon_Acigi_SQLi_Ve_Reflected_XSS
+  Hedef Kategori: A03:2025-Injection
+  Kategori Puanı: 0.0/100.0 (Durum: KALDI)
+  Genel Uyumluluk Puanı: 90.0/100.0
+  Bulgu Sayısı: 2
+  Negatif Doğrulama: BAŞARILI (Zafiyet Yakalandı)
+
+Senaryo: SCN-OWASP-04 - Guvensiz_Tasarim_Eksik_Hiz_Sinirlama_Ve_Tehdit_Modeli
+  Hedef Kategori: A04:2025-Insecure Design
+  Kategori Puanı: 30.0/100.0 (Durum: KALDI)
+  Genel Uyumluluk Puanı: 93.0/100.0
+  Bulgu Sayısı: 2
+  Negatif Doğrulama: BAŞARILI (Zafiyet Yakalandı)
+
+Senaryo: SCN-OWASP-05 - Guvenlik_Yanlis_Yapilandirmasi_Acik_Debug_Ve_Eksik_Basliklar
+  Hedef Kategori: A05:2025-Security Misconfiguration
+  Kategori Puanı: 0.0/100.0 (Durum: KALDI)
+  Genel Uyumluluk Puanı: 90.0/100.0
+  Bulgu Sayısı: 3
+  Negatif Doğrulama: BAŞARILI (Zafiyet Yakalandı)
+
+Senaryo: SCN-OWASP-06 - Savunmasiz_Ve_Guncel_Olmayan_Bilesenler
+  Hedef Kategori: A06:2025-Vulnerable and Outdated Components
+  Kategori Puanı: 15.0/100.0 (Durum: KALDI)
+  Genel Uyumluluk Puanı: 91.5/100.0
+  Bulgu Sayısı: 2
+  Negatif Doğrulama: BAŞARILI (Zafiyet Yakalandı)
+
+Senaryo: SCN-OWASP-07 - Kimlik_Dogrulama_Hatalari_Eksik_MFA_Ve_Hesap_Kilitleme_Yok
+  Hedef Kategori: A07:2025-Identification and Authentication Failures
+  Kategori Puanı: 25.0/100.0 (Durum: KALDI)
+  Genel Uyumluluk Puanı: 92.5/100.0
+  Bulgu Sayısı: 2
+  Negatif Doğrulama: BAŞARILI (Zafiyet Yakalandı)
+
+Senaryo: SCN-OWASP-08 - Butunluk_Hatalari_Guvensiz_Deserialization_Ve_Imzasiz_CI_CD
+  Hedef Kategori: A08:2025-Software and Data Integrity Failures
+  Kategori Puanı: 25.0/100.0 (Durum: KALDI)
+  Genel Uyumluluk Puanı: 92.5/100.0
+  Bulgu Sayısı: 2
+  Negatif Doğrulama: BAŞARILI (Zafiyet Yakalandı)
+
+Senaryo: SCN-OWASP-09 - Sunucu_Taraflı_Istek_Sahteciligi_SSRF_Metadata_Erisimi
+  Hedef Kategori: A10:2025-Server-Side Request Forgery
+  Kategori Puanı: 10.0/100.0 (Durum: KALDI)
+  Genel Uyumluluk Puanı: 91.0/100.0
+  Bulgu Sayısı: 2
+  Negatif Doğrulama: BAŞARILI (Zafiyet Yakalandı)
+
+ÖZET: Toplam 9 senaryonun 9 tanesi başarıyla doğrulandı. (Genel: 100% PASS)
