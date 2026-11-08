@@ -1,0 +1,52 @@
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_164\uygulama\csrf_cli.py --help
+usage: csrf_cli.py [-h] {generate-token,simulate-attack,generate-cookie} ...
+
+Gün 164: Anti-CSRF ve Oturum Bağlamı Denetim Aracı
+
+positional arguments:
+  {generate-token,simulate-attack,generate-cookie}
+                        Kullanılabilir alt komutlar
+    generate-token      Oturum için Anti-CSRF belirteci üretir
+    simulate-attack     CSRF saldırısı simülasyonu yürütür
+    generate-cookie     SameSite çerez başlığı üretir
+
+options:
+  -h, --help            show this help message and exit
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_164\uygulama\csrf_cli.py generate-token --user-id 2 --username ahmet_kaya
+{
+  "user_id": 2,
+  "username": "ahmet_kaya",
+  "session_id": "sess_00bb514db81a11162a0f92810d6f4966",
+  "csrf_token": "sess_00bb514db81a11162a0f92810d6f4966.1794166995.caa44295bd9577df4f70506d0e3a587e.65cc12d3adcfa27a0df3c8bd55e9430ffca09df281c8cff3a0ab8b95913ae084",
+  "ttl_seconds": 1800,
+  "format": "<session_id>.<timestamp>.<nonce>.<hmac_signature>"
+}
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_164\uygulama\csrf_cli.py simulate-attack --method POST --origin https://evil-phishing.com --amount 2500
+{
+  "victim_initial_balance": 15000.0,
+  "transfer_amount": 2500.0,
+  "simulated_origin": "https://evil-phishing.com",
+  "http_method": "POST",
+  "vulnerable_endpoint_result": {
+    "status_code": 200,
+    "success": true,
+    "outcome": "FONLAR ÇALINDI (CSRF BAŞARILI)",
+    "victim_remaining_balance": 12500.0
+  },
+  "secure_endpoint_result": {
+    "status_code": 403,
+    "success": false,
+    "error_detail": "CSRF Koruması - Köken Doğrulama Hatası: İzin verilmeyen yabancı köken (Cross-Origin): 'https://evil-phishing.com'",
+    "outcome": "SALDIRI ENGELLENDİ (CSRF SAVUNULDU)"
+  }
+}
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_164\uygulama\csrf_cli.py generate-cookie --session-id sess_prod_9988 --samesite Strict
+Set-Cookie: session_id=sess_prod_9988; Path=/; HttpOnly; Secure; SameSite=Strict
+
+------------------------------------------------------------

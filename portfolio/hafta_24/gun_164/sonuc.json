@@ -1,0 +1,37 @@
+{
+  "gun": 164,
+  "hafta": 24,
+  "asama": "07",
+  "konu": "CSRF ve oturum bağlamı",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-08",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_24/gun_164/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_24/gun_164/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "csrf_audit_report_json": "portfolio/hafta_24/gun_164/kanit/gercek/csrf_audit_report.json",
+    "sanitized_http_transactions_txt": "portfolio/hafta_24/gun_164/kanit/gercek/sanitized_http_transactions.txt",
+    "komut_ve_cikis": "portfolio/hafta_24/gun_164/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_24/gun_164/kanit/temsili/csrf_savunma_mimarisi.txt"
+  },
+  "ozet": "Siteler Arası İstek Sahteciliği (CSRF / CWE-352) ve tarayıcıların Ortam Yetkisi (Ambient Authority) mekanizmasını derinlemesine ele alan savunma motoru ve CLI aracı geliştirildi. Synchronizer Token Pattern (STP), HMAC-SHA256 imzası, tek kullanımlık nonce, katı Origin/Referer doğrulaması, SameSite çerez öznitelikleri ve kritik işlemler için Step-Up Re-Authentication mimarisi uygulandı. 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla sonuçlandı (100/100 PASS)."
+}

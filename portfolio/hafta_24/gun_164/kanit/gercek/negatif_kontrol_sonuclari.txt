@@ -1,0 +1,53 @@
+================================================================================
+GÜN 164: CSRF VE OTURUM BAĞLAMI SALDIRI SAVUNMA RAPORU
+================================================================================
+Tarih/Saat: 2026-11-08T22:43:15.459649
+
+[*] Senaryo: SCN-CSRF-01 - Belirteçsiz Siteler Arası POST İsteği (Klasik CSRF)
+    Saldırı Türü: CLASSIC_CROSS_SITE_REQUEST | Hedef Yol: /api/transfer
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Savunma Mesajı: CSRF Koruması - Köken Doğrulama Hatası: İzin verilmeyen yabancı köken (Cross-Origin): 'https://evil-attacker.site'
+
+[*] Senaryo: SCN-CSRF-02 - Durum Değiştiren GET İsteği (Görsel / Bağlantı Saldırısı)
+    Saldırı Türü: STATE_MUTATING_GET | Hedef Yol: /api/transfer?target_account=3&amount=1500.0
+    Sonuç: [SAVUNULDU] -> HTTP 405 ile başarıyla engellendi.
+    Savunma Mesajı: Metot İzin Verilmiyor: 'GET'. Durum değiştiren işlemler GET ile yürütülemez.
+
+[*] Senaryo: SCN-CSRF-03 - Tahrif Edilmiş HMAC İmzalı Anti-CSRF Belirteci
+    Saldırı Türü: TAMPERED_TOKEN_SIGNATURE | Hedef Yol: /api/transfer
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Savunma Mesajı: CSRF Koruması - Belirteç Doğrulama Hatası: Geçersiz CSRF belirteç imzası. (Veri tahrifatı algılandı)
+
+[*] Senaryo: SCN-CSRF-04 - Başka Bir Oturuma Ait Belirtecin Kullanılması
+    Saldırı Türü: CROSS_SESSION_TOKEN_REUSE | Hedef Yol: /api/transfer
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Savunma Mesajı: CSRF Koruması - Belirteç Doğrulama Hatası: Belirteç oturum kimliği ile mevcut oturum kimliği uyuşmuyor.
+
+[*] Senaryo: SCN-CSRF-05 - Süresi Dolmuş Belirteç ile Yeniden Oynatma (TTL Expiry)
+    Saldırı Türü: EXPIRED_TOKEN_REPLAY | Hedef Yol: /api/transfer
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Savunma Mesajı: CSRF Koruması - Belirteç Doğrulama Hatası: CSRF belirtecinin süresi dolmuş. (7200s > 1800s)
+
+[*] Senaryo: SCN-CSRF-06 - Kullanılmış Tek Kullanımlık Nonce Yeniden Oynatılması
+    Saldırı Türü: CONSUMED_NONCE_REPLAY | Hedef Yol: /api/transfer
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Savunma Mesajı: CSRF Koruması - Belirteç Doğrulama Hatası: CSRF belirteci daha önce kullanılmış. (Yeniden oynatma saldırısı)
+
+[*] Senaryo: SCN-CSRF-07 - Sandbox İframe / Data URI Kaynaklı 'null' Origin Başlığı
+    Saldırı Türü: NULL_ORIGIN_BYPASS | Hedef Yol: /api/transfer
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Savunma Mesajı: CSRF Koruması - Köken Doğrulama Hatası: Güvensiz 'null' Origin başlığı reddedildi.
+
+[*] Senaryo: SCN-CSRF-08 - Alt Alan Adı Aldatması (Subdomain Spoofing)
+    Saldırı Türü: SUBDOMAIN_SPOOFING | Hedef Yol: /api/transfer
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Savunma Mesajı: CSRF Koruması - Köken Doğrulama Hatası: İzin verilmeyen yabancı köken (Cross-Origin): 'https://banka.kurum.internal.evil-attacker.com'
+
+[*] Senaryo: SCN-CSRF-09 - Yeniden Kimlik Doğrulama Olmadan Kritik Transfer (Step-Up Auth Bypass)
+    Saldırı Türü: STEP_UP_REAUTH_BYPASS | Hedef Yol: /api/transfer
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Savunma Mesajı: Kritik işlem için son 5 dakika içinde parola doğrulaması (Step-Up Re-auth) gereklidir.
+
+--------------------------------------------------------------------------------
+ÖZET: Toplam 9 senaryodan 9 tanesi başarıyla savunuldu.
+================================================================================

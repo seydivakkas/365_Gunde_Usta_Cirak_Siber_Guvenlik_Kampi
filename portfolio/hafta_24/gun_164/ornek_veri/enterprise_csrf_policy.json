@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "policy_name": "Kurumsal Anti-CSRF ve Oturum Bağlamı Güvenlik Standardı",
+  "version": "2.4.0",
+  "institution": "T.C. Siber Güvenlik ve Bankacılık Altyapısı",
+  "effective_date": "2026-11-08",
+  "threat_model": {
+    "cwe_id": "CWE-352: Cross-Site Request Forgery (CSRF)",
+    "owasp_top_10": "A01:2025 - Broken Access Control & Session Integrity",
+    "risk_level": "CRITICAL"
+  },
+  "defense_requirements": {
+    "synchronizer_token_pattern": {
+      "mandatory": true,
+      "token_entropy_bits": 128,
+      "signature_algorithm": "HMAC-SHA256",
+      "ttl_seconds": 1800,
+      "single_use_enforcement": true,
+      "header_names": ["X-CSRF-Token", "x-csrf-token"],
+      "form_field_name": "csrf_token"
+    },
+    "samesite_cookie_policy": {
+      "default_mode": "Strict",
+      "allowed_modes": ["Strict", "Lax"],
+      "http_only": true,
+      "secure_only": true,
+      "domain_isolation": true
+    },
+    "origin_referer_verification": {
+      "mandatory_for_mutating_requests": true,
+      "disallowed_origins": ["null", "*"],
+      "match_scheme_host_port": true,
+      "allowed_enterprise_origins": [
+        "https://banka.kurum.internal",
+        "https://api.banka.kurum.internal"
+      ]
+    },
+    "step_up_reauthentication": {
+      "mandatory_threshold_amount_tl": 5000.0,
+      "reauth_validity_window_seconds": 300,
+      "critical_endpoints": [
+        "/api/transfer",
+        "/api/user/password",
+        "/api/user/email",
+        "/api/admin/roles"
+      ]
+    },
+    "http_method_restrictions": {
+      "safe_methods_cannot_mutate_state": ["GET", "HEAD", "OPTIONS"],
+      "mutating_methods_must_use": ["POST", "PUT", "DELETE", "PATCH"]
+    }
+  }
+}

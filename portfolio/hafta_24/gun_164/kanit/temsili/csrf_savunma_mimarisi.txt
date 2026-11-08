@@ -1,0 +1,54 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 164: CSRF VE OTURUM BAĞLAMI ÇOK KATMANLI SAVUNMA MİMARİSİ
+================================================================================
+
+                           +--------------------------------------+
+                           |     SİTELER ARASI DIŞ İSTEK          |
+                           |  (evil-attacker.site -> Form/Image)  |
+                           +--------------------------------------+
+                                               |
+                                               | (Tarayıcı Ambient Cookie ekler)
+                                               v
+    [ KATMAN 1: HTTP METOT KISITLAMASI (Safe Method Enforcement) ]
+    +--------------------------------------------------------------------+
+    | - Kural: GET, HEAD, OPTIONS metotları asla durum DEĞİŞTİREMEZ.     |
+    | - Saldırı: <img src="banka.kurum.internal/transfer?amount=1000">   |
+    | - Savunma: GET durum değişimi anında HTTP 405 Method Not Allowed.   |
+    +--------------------------------------------------------------------+
+                                               | (Yalnızca POST/PUT geçer)
+                                               v
+    [ KATMAN 2: KÖKEN DOĞRULAMA (Origin / Referer Header Validation) ]
+    +--------------------------------------------------------------------+
+    | - Gelen Origin: "https://evil-attacker.site"                       |
+    | - Kurumsal Beyaz Liste: ["https://banka.kurum.internal"]           |
+    | - Karar: Uyuşmazlık veya 'null' Origin anında HTTP 403 Forbidden.  |
+    +--------------------------------------------------------------------+
+                                               | (Origin meşru ise)
+                                               v
+    [ KATMAN 3: KRİPTOGRAFİK BELİRTEÇ (Synchronizer Token Pattern - STP) ]
+    +--------------------------------------------------------------------+
+    | - Token: <session_id>.<timestamp>.<nonce>.<HMAC-SHA256>            |
+    | - Başlık: X-CSRF-Token veya Form: csrf_token                       |
+    | - Denetimler:                                                      |
+    |     1. Oturum kimliği uyuşuyor mu?                                 |
+    |     2. 1800s TTL süresi dolmuş mu?                                 |
+    |     3. Nonce daha önce kullanıldı mı? (Replay Engeli)              |
+    |     4. HMAC imzası geçerli mi?                                     |
+    +--------------------------------------------------------------------+
+                                               | (Token %100 geçerli ise)
+                                               v
+    [ KATMAN 4: KRİTİK İŞLEMLER İÇİN ADIM YÜKSELTME (Step-Up Re-Auth) ]
+    +--------------------------------------------------------------------+
+    | - Bakiye transferi >= 5.000 TL veya Parola/E-posta değişimi        |
+    | - Şart: Son 300 saniye içinde şifreli yeniden doğrulama yapıldı mı?|
+    | - Karar: Süre aşılmışsa işlem durdurulur ve parola tekrar istenir. |
+    +--------------------------------------------------------------------+
+                                               |
+                                               v
+                             +-----------------------------------+
+                             |     GÜVENLİ BANKACILIK İŞLEMİ     |
+                             |    (Transfer Başarıyla Yürütülür) |
+                             +-----------------------------------+
+================================================================================

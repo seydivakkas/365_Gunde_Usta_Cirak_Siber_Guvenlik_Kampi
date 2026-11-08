@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "aciklama": "Gün 164: Anti-CSRF ve Oturum Bağlamı Negatif Kontrol ve Saldırı Senaryoları",
+  "senaryolar": [
+    {
+      "senaryo_id": "SCN-CSRF-01",
+      "baslik": "Belirteçsiz Siteler Arası POST İsteği (Klasik CSRF)",
+      "tur": "CLASSIC_CROSS_SITE_REQUEST",
+      "istek": {
+        "method": "POST",
+        "path": "/api/transfer",
+        "headers": {
+          "Origin": "https://evil-attacker.site"
+        },
+        "form_data": {
+          "target_account": 3,
+          "amount": 2500.0
+        }
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "CSRF_ORIGIN_MISMATCH_OR_MISSING_TOKEN"
+    },
+    {
+      "senaryo_id": "SCN-CSRF-02",
+      "baslik": "Durum Değiştiren GET İsteği (Görsel / Bağlantı Saldırısı)",
+      "tur": "STATE_MUTATING_GET",
+      "istek": {
+        "method": "GET",
+        "path": "/api/transfer?target_account=3&amount=1500.0",
+        "headers": {
+          "Origin": "https://banka.kurum.internal"
+        }
+      },
+      "beklenen_hata_kodu": 405,
+      "beklenen_imza": "METHOD_NOT_ALLOWED_GET_MUTATION"
+    },
+    {
+      "senaryo_id": "SCN-CSRF-03",
+      "baslik": "Tahrif Edilmiş HMAC İmzalı Anti-CSRF Belirteci",
+      "tur": "TAMPERED_TOKEN_SIGNATURE",
+      "istek": {
+        "method": "POST",
+        "path": "/api/transfer",
+        "headers": {
+          "Origin": "https://banka.kurum.internal",
+          "X-CSRF-Token": "TAMPERED_TOKEN_PLACEHOLDER"
+        },
+        "form_data": {
+          "target_account": 3,
+          "amount": 1000.0
+        }
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "INVALID_TOKEN_SIGNATURE"
+    },
+    {
+      "senaryo_id": "SCN-CSRF-04",
+      "baslik": "Başka Bir Oturuma Ait Belirtecin Kullanılması",
+      "tur": "CROSS_SESSION_TOKEN_REUSE",
+      "istek": {
+        "method": "POST",
+        "path": "/api/transfer",
+        "headers": {
+          "Origin": "https://banka.kurum.internal",
+          "X-CSRF-Token": "OTHER_SESSION_TOKEN_PLACEHOLDER"
+        },
+        "form_data": {
+          "target_account": 3,
+          "amount": 1000.0
+        }
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "TOKEN_SESSION_MISMATCH"
+    },
+    {
+      "senaryo_id": "SCN-CSRF-05",
+      "baslik": "Süresi Dolmuş Belirteç ile Yeniden Oynatma (TTL Expiry)",
+      "tur": "EXPIRED_TOKEN_REPLAY",
+      "istek": {
+        "method": "POST",
+        "path": "/api/transfer",
+        "headers": {
+          "Origin": "https://banka.kurum.internal",
+          "X-CSRF-Token": "EXPIRED_TOKEN_PLACEHOLDER"
+        },
+        "form_data": {
+          "target_account": 3,
+          "amount": 1000.0
+        }
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "TOKEN_TTL_EXPIRED"
+    },
+    {
+      "senaryo_id": "SCN-CSRF-06",
+      "baslik": "Kullanılmış Tek Kullanımlık Nonce Yeniden Oynatılması",
+      "tur": "CONSUMED_NONCE_REPLAY",
+      "istek": {
+        "method": "POST",
+        "path": "/api/transfer",
+        "headers": {
+          "Origin": "https://banka.kurum.internal",
+          "X-CSRF-Token": "CONSUMED_NONCE_PLACEHOLDER"
+        },
+        "form_data": {
+          "target_account": 3,
+          "amount": 500.0
+        }
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "TOKEN_REPLAY_ATTACK"
+    },
+    {
+      "senaryo_id": "SCN-CSRF-07",
+      "baslik": "Sandbox İframe / Data URI Kaynaklı 'null' Origin Başlığı",
+      "tur": "NULL_ORIGIN_BYPASS",
+      "istek": {
+        "method": "POST",
+        "path": "/api/transfer",
+        "headers": {
+          "Origin": "null"
+        },
+        "form_data": {
+          "target_account": 3,
+          "amount": 2000.0
+        }
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "UNSAFE_NULL_ORIGIN"
+    },
+    {
+      "senaryo_id": "SCN-CSRF-08",
+      "baslik": "Alt Alan Adı Aldatması (Subdomain Spoofing)",
+      "tur": "SUBDOMAIN_SPOOFING",
+      "istek": {
+        "method": "POST",
+        "path": "/api/transfer",
+        "headers": {
+          "Origin": "https://banka.kurum.internal.evil-attacker.com"
+        },
+        "form_data": {
+          "target_account": 3,
+          "amount": 1000.0
+        }
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "DISALLOWED_FOREIGN_ORIGIN"
+    },
+    {
+      "senaryo_id": "SCN-CSRF-09",
+      "baslik": "Yeniden Kimlik Doğrulama Olmadan Kritik Transfer (Step-Up Auth Bypass)",
+      "tur": "STEP_UP_REAUTH_BYPASS",
+      "istek": {
+        "method": "POST",
+        "path": "/api/transfer",
+        "headers": {
+          "Origin": "https://banka.kurum.internal",
+          "X-CSRF-Token": "VALID_TOKEN_PLACEHOLDER"
+        },
+        "form_data": {
+          "target_account": 3,
+          "amount": 12000.0
+        }
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "STEP_UP_REAUTH_REQUIRED"
+    }
+  ]
+}

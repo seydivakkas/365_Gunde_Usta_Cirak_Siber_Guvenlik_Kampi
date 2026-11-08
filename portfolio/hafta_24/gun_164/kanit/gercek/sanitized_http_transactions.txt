@@ -1,0 +1,30 @@
+================================================================================
+GÜN 164: ZAFİYETLİ VE GÜVENLİ HTTP TRANSFER İŞLEM DÖKÜMÜ
+================================================================================
+Tarih/Saat: 2026-11-08T22:43:15.460964
+
+[1] ZAFİYETLİ İŞLEM ÖRNEĞİ (Ambient Authority İstismarı):
+POST /api/transfer HTTP/1.1
+Host: banka.kurum.internal
+Origin: https://evil-attacker.site  <-- DIŞ KAYNAKLI SALDIRGAN SİTESİ
+Cookie: session_id=sess_victim_998811  <-- TARAYICI OTOMATİK İLETTİ
+Content-Type: application/x-www-form-urlencoded
+
+target_account=3&amount=2500.0
+--> HTTP/1.1 200 OK
+--> Sonuç: FONLAR ÇALINDI! Kurbanın bilgisi/onayı olmadan 2.500 TL aktarıldı.
+
+--------------------------------------------------------------------------------
+[2] GÜVENLİ İŞLEM ÖRNEĞİ (Anti-CSRF ve Origin Koruması):
+POST /api/transfer HTTP/1.1
+Host: banka.kurum.internal
+Origin: https://banka.kurum.internal  <-- MEŞRU KÖKEN
+Cookie: session_id=sess_victim_998811; Path=/; Secure; HttpOnly; SameSite=Strict
+X-CSRF-Token: sess_victim_998811.179302.3f89a1.7c89f0e1...  <-- KRİPTOGRAFİK İMZA
+Content-Type: application/x-www-form-urlencoded
+
+target_account=3&amount=1000.0
+--> HTTP/1.1 200 OK
+--> Savunma Mekanizmaları: [Method_POST, Origin_MATCH, STP_VERIFIED, Step_Up_SATISFIED]
+
+================================================================================

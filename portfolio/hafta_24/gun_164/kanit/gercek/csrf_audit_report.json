@@ -1,0 +1,91 @@
+{
+  "gun": 164,
+  "konu": "CSRF ve oturum bağlamı",
+  "tarih": "2026-11-08T22:43:15.460448",
+  "savunulan_senaryo_sayisi": 9,
+  "toplam_senaryo": 9,
+  "basari_orani": 1.0,
+  "senaryo_detaylari": [
+    {
+      "senaryo_id": "SCN-CSRF-01",
+      "baslik": "Belirteçsiz Siteler Arası POST İsteği (Klasik CSRF)",
+      "tur": "CLASSIC_CROSS_SITE_REQUEST",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "hata_mesaji": "CSRF Koruması - Köken Doğrulama Hatası: İzin verilmeyen yabancı köken (Cross-Origin): 'https://evil-attacker.site'"
+    },
+    {
+      "senaryo_id": "SCN-CSRF-02",
+      "baslik": "Durum Değiştiren GET İsteği (Görsel / Bağlantı Saldırısı)",
+      "tur": "STATE_MUTATING_GET",
+      "beklenen_kod": 405,
+      "gerceklesen_kod": 405,
+      "savunuldu": true,
+      "hata_mesaji": "Metot İzin Verilmiyor: 'GET'. Durum değiştiren işlemler GET ile yürütülemez."
+    },
+    {
+      "senaryo_id": "SCN-CSRF-03",
+      "baslik": "Tahrif Edilmiş HMAC İmzalı Anti-CSRF Belirteci",
+      "tur": "TAMPERED_TOKEN_SIGNATURE",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "hata_mesaji": "CSRF Koruması - Belirteç Doğrulama Hatası: Geçersiz CSRF belirteç imzası. (Veri tahrifatı algılandı)"
+    },
+    {
+      "senaryo_id": "SCN-CSRF-04",
+      "baslik": "Başka Bir Oturuma Ait Belirtecin Kullanılması",
+      "tur": "CROSS_SESSION_TOKEN_REUSE",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "hata_mesaji": "CSRF Koruması - Belirteç Doğrulama Hatası: Belirteç oturum kimliği ile mevcut oturum kimliği uyuşmuyor."
+    },
+    {
+      "senaryo_id": "SCN-CSRF-05",
+      "baslik": "Süresi Dolmuş Belirteç ile Yeniden Oynatma (TTL Expiry)",
+      "tur": "EXPIRED_TOKEN_REPLAY",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "hata_mesaji": "CSRF Koruması - Belirteç Doğrulama Hatası: CSRF belirtecinin süresi dolmuş. (7200s > 1800s)"
+    },
+    {
+      "senaryo_id": "SCN-CSRF-06",
+      "baslik": "Kullanılmış Tek Kullanımlık Nonce Yeniden Oynatılması",
+      "tur": "CONSUMED_NONCE_REPLAY",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "hata_mesaji": "CSRF Koruması - Belirteç Doğrulama Hatası: CSRF belirteci daha önce kullanılmış. (Yeniden oynatma saldırısı)"
+    },
+    {
+      "senaryo_id": "SCN-CSRF-07",
+      "baslik": "Sandbox İframe / Data URI Kaynaklı 'null' Origin Başlığı",
+      "tur": "NULL_ORIGIN_BYPASS",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "hata_mesaji": "CSRF Koruması - Köken Doğrulama Hatası: Güvensiz 'null' Origin başlığı reddedildi."
+    },
+    {
+      "senaryo_id": "SCN-CSRF-08",
+      "baslik": "Alt Alan Adı Aldatması (Subdomain Spoofing)",
+      "tur": "SUBDOMAIN_SPOOFING",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "hata_mesaji": "CSRF Koruması - Köken Doğrulama Hatası: İzin verilmeyen yabancı köken (Cross-Origin): 'https://banka.kurum.internal.evil-attacker.com'"
+    },
+    {
+      "senaryo_id": "SCN-CSRF-09",
+      "baslik": "Yeniden Kimlik Doğrulama Olmadan Kritik Transfer (Step-Up Auth Bypass)",
+      "tur": "STEP_UP_REAUTH_BYPASS",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "hata_mesaji": "Kritik işlem için son 5 dakika içinde parola doğrulaması (Step-Up Re-auth) gereklidir."
+    }
+  ]
+}
