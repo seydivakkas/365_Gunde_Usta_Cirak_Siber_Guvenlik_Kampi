@@ -1,0 +1,31 @@
+{
+  "kurum": "Kurumsal Finansal Teknoloji A.Ş.",
+  "politika_adi": "Kurumsal XSS ve İstemci Güvenliği Politikası",
+  "versiyon": "2026.1",
+  "kapsam": "Tüm Web ve Mobil Web Arayüzleri",
+  "ilkeler": {
+    "savunma_derinligi": "Çok Katmanlı Savunma (Girdi Doğrulama + Çıktı Kodlama + Katı Sanitization + CSP Seviye 3)",
+    "kabul_edilebilir_html": {
+      "izinli_etiketler": ["p", "b", "i", "u", "em", "strong", "a", "ul", "ol", "li", "code", "pre", "span", "br", "hr"],
+      "izinli_nitelikler": ["href", "title", "class", "target", "rel"],
+      "izinli_url_semalari": ["http", "https", "mailto"]
+    },
+    "cikti_kodlama_standardi": {
+      "html_govde": "RFC tabanlı standart HTML entity escaping (&, <, >, \", ')",
+      "html_nitelik": "Alfanümerik olmayan tüm karakterlerin onaltılık (&#xHH;) kodlanması",
+      "javascript_baglami": "Unicode 4 haneli kaçış formatı (\\uXXXX)",
+      "url_parametreleri": "RFC 3986 percent encoding"
+    },
+    "csp_seviye_3": {
+      "script_src": "'nonce-{CSPRNG_128BIT}' 'strict-dynamic'",
+      "object_src": "'none'",
+      "base_uri": "'none'",
+      "frame_ancestors": "'none'",
+      "require_trusted_types_for": "'script'"
+    },
+    "dom_guvenligi": {
+      "yasakli_sinkler": ["innerHTML", "outerHTML", "document.write", "document.writeln", "eval", "setTimeout(string)"],
+      "onerilen_alternatifler": ["textContent", "DOMPurify.sanitize()", "TrustedTypes.createPolicy()"]
+    }
+  }
+}

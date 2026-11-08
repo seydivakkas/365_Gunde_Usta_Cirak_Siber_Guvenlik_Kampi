@@ -1,0 +1,103 @@
+================================================================================
+GÜN 160: XSS SAVUNMA MOTORU CLI YÜRÜTME VE ÇIKTI GÜNLÜĞÜ
+================================================================================
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_160\uygulama\xss_defense_cli.py inspect --payload <script>alert('Test XSS')</script> --context html_body
+{
+  "input_length": 34,
+  "is_safe": false,
+  "security_score": 60.0,
+  "findings_count": 1,
+  "findings": [
+    {
+      "xss_type": "REFLECTED_XSS",
+      "severity": "CRITICAL",
+      "pattern": "SCRIPT_TAG_INJECTION",
+      "description": "Do�rudan <script> etiketi enjeksiyonu tespit edildi.",
+      "matched_text": "<script>"
+    }
+  ],
+  "sanitized_html": "alert('Test XSS')",
+  "encoded_output": "&lt;script&gt;alert(&#x27;Test XSS&#x27;)&lt;/script&gt;",
+  "context_used": "html_body",
+  "stripped_tags": 1,
+  "stripped_attrs": 0
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_160\uygulama\xss_defense_cli.py inspect --payload " onfocus="alert(1)" autofocus=" --context html_attribute
+{
+  "input_length": 32,
+  "is_safe": false,
+  "security_score": 75.0,
+  "findings_count": 1,
+  "findings": [
+    {
+      "xss_type": "STORED_XSS",
+      "severity": "HIGH",
+      "pattern": "INLINE_EVENT_HANDLER",
+      "description": "HTML inline olay dinleyicisi bulundu: onfocus=\"alert(1)\"",
+      "matched_text": "onfocus=\"alert(1)\""
+    }
+  ],
+  "sanitized_html": "\" onfocus=\"alert(1)\" autofocus=\"",
+  "encoded_output": "&#x22;&#x20;onfocus&#x3D;&#x22;alert&#x28;1&#x29;&#x22;&#x20;autofocus&#x3D;&#x22;",
+  "context_used": "html_attribute",
+  "stripped_tags": 0,
+  "stripped_attrs": 0
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_160\uygulama\xss_defense_cli.py analyze-dom --script let q = location.search;
+document.body.innerHTML = q;
+{
+  "script_length": 53,
+  "flows_detected": 1,
+  "flows": [
+    {
+      "line_number": 2,
+      "source": [
+        "location.search"
+      ],
+      "sink": [
+        "innerHTML"
+      ],
+      "code_snippet": "document.body.innerHTML = q;",
+      "is_direct_flow": true,
+      "risk": "CRITICAL_DOM_XSS"
+    }
+  ]
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_160\uygulama\xss_defense_cli.py sanitize --html-input <p>Metin <b onclick='alert(1)'>Kalın</b> ve <script>zararli();</script></p>
+{
+  "raw_input": "<p>Metin <b onclick='alert(1)'>Kal�n</b> ve <script>zararli();</script></p>",
+  "sanitized_html": "<p>Metin <b>Kal�n</b> ve zararli();</p>",
+  "stripped_tags": 1,
+  "stripped_attrs": 1
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_160\uygulama\xss_defense_cli.py csp --generate
+{
+  "nonce": "t3oCvEfaUw1LHOl8gQR4XA",
+  "content_security_policy": "default-src 'self'; script-src 'nonce-t3oCvEfaUw1LHOl8gQR4XA' 'strict-dynamic'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; require-trusted-types-for 'script'"
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_160\uygulama\xss_defense_cli.py csp --audit default-src * 'unsafe-inline' 'unsafe-eval'
+{
+  "policy": "default-src * 'unsafe-inline' 'unsafe-eval'",
+  "is_secure": false,
+  "weaknesses_count": 5,
+  "weaknesses": [
+    "Y�KSEK R�SK: 'unsafe-inline' kullan�lm�� ve nonce korumas� yok.",
+    "Y�KSEK R�SK: 'unsafe-eval' aktif, dinamik kod �al��t�rmaya izin veriyor.",
+    "KR�T�K R�SK: Joker karakter (*) kullan�larak t�m kaynaklara izin verilmi�.",
+    "ORTA R�SK: 'object-src 'none'' eksik, Flash/Plugin enjeksiyonuna a��k.",
+    "ORTA R�SK: 'base-uri' tan�mlanmam��, <base> tag hijacking riski var."
+  ]
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_160\uygulama\xss_defense_cli.py encode --value '; alert('xss'); // --target-context javascript
+{
+  "input": "'; alert('xss'); //",
+  "context": "javascript",
+  "encoded": "\\u0027\\u003b alert\\u0028\\u0027xss\\u0027\\u0029\\u003b \\u002f\\u002f"
+}
+------------------------------------------------------------

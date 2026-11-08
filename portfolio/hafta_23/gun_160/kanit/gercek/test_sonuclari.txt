@@ -1,0 +1,36 @@
+
+test_01_reflected_script_tag_detection (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_01_reflected_script_tag_detection)
+1. Test: Klasik <script> etiketi enjeksiyonunun tespitini do�rular. ... ok
+test_02_stored_inline_event_handler_detection (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_02_stored_inline_event_handler_detection)
+2. Test: Kal�c� saklanan inline olay dinleyicisi (onerror) tespitini do�rular. ... ok
+test_03_pseudo_protocol_javascript_detection (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_03_pseudo_protocol_javascript_detection)
+3. Test: javascript: s�zde protokol� ile zararl� link enjeksiyonunu do�rular. ... ok
+test_04_svg_onload_mutation_detection (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_04_svg_onload_mutation_detection)
+4. Test: SVG/MathML tabanl� mutasyon ve kod y�r�tme vekt�r�n� do�rular. ... ok
+test_05_dangerous_tag_iframe_object (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_05_dangerous_tag_iframe_object)
+5. Test: iframe ve object gibi g�mme etiketlerinin tespitini do�rular. ... ok
+test_06_dom_clobbering_attempt_detection (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_06_dom_clobbering_attempt_detection)
+6. Test: DOM Clobbering ile document.cookie/window �zelliklerini g�lgeleme denemesini do�rular. ... ok
+test_07_clean_input_evaluation (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_07_clean_input_evaluation)
+7. Test: Zarars�z metin girdisinin tam puan (100) almas�n� ve g�venli i�aretlenmesini do�rular. ... ok
+test_08_strict_html_sanitizer_allowed_tags (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_08_strict_html_sanitizer_allowed_tags)
+8. Test: �zinli etiketlerin (b, i, p) korunurken yasakl� etiketlerin (script) ay�kland���n� do�rular. ... ok
+test_09_strict_html_sanitizer_event_stripping (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_09_strict_html_sanitizer_event_stripping)
+9. Test: �zin verilen etiketlerdeki zararl� onclick/onmouseover niteliklerinin yok edildi�ini do�rular. ... ok
+test_10_strict_html_sanitizer_javascript_href_blocked (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_10_strict_html_sanitizer_javascript_href_blocked)
+10. Test: Link etiketindeki javascript: protokol�n�n ar�nd�r�c� taraf�ndan engellendi�ini do�rular. ... ok
+test_11_context_encoder_html_body (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_11_context_encoder_html_body)
+11. Test: HTML g�vde ba�lam�nda �zel karakterlerin ka����n� do�rular. ... ok
+test_12_context_encoder_html_attribute (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_12_context_encoder_html_attribute)
+12. Test: HTML nitelik ba�lam�nda alfan�merik olmayan karakterlerin onalt�l�k varl��a d�n��t���n� do�rular. ... ok
+test_13_context_encoder_javascript_unicode (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_13_context_encoder_javascript_unicode)
+13. Test: JavaScript dize ba�lam�nda Unicode ka��� kodlamas�n� (\uXXXX) do�rular. ... ok
+test_14_csp_policy_builder_and_nonce (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_14_csp_policy_builder_and_nonce)
+14. Test: CSP Seviye 3 ba�l���n�n do�ru nonce ve kat� y�nergelerle derlendi�ini do�rular. ... ok
+test_15_dom_xss_taint_flow_detection (portfolio.hafta_23.gun_160.tests.test_xss_defense.TestXSSDefenseEngine.test_15_dom_xss_taint_flow_detection)
+15. Test: JavaScript beti�inde Source -> Sink do�rudan ak���n�n tespitini do�rular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

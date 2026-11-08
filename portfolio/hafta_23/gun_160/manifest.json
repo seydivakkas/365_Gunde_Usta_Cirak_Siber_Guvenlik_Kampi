@@ -1,0 +1,85 @@
+{
+  "gun": 160,
+  "hafta": 23,
+  "asama": "07",
+  "konu": "XSS türleri ve savunma",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "boyut_bayt": 3874,
+      "sha256": "ef528ed65b01fbeaaa1d5e70b53f3a822f27a79a413885d75863e4d93028eeb0"
+    },
+    "ders.md": {
+      "boyut_bayt": 8861,
+      "sha256": "4aae25e9ce502700150fbe4d53cf9af947be3ad27da074ed5546a612a8b2bd03"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 18161,
+      "sha256": "0e60c6343900cb94a602d7dcf251032b51fcf29028af4996815ce9cad14e8691"
+    },
+    "rapor.md": {
+      "boyut_bayt": 6134,
+      "sha256": "bdccc6c18b1255d6d2fc7d2c89dedbe1d1d073b7680f8a2d54df38c99906fd3c"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1749,
+      "sha256": "fb0a1c7b402c325de375d57d55fb87b13652cdf21f587e6303f042bbb394fb2e"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 11039,
+      "sha256": "95421582bb10880c8b9fd32b9272cd92f539842ddcfac641f6fb3fd68a932fdd"
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "boyut_bayt": 4951,
+      "sha256": "09accd1c4f5d70833d93bf2d28776fa5b8d1aa8cd3c724b5924c05c4f80e9723"
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 5122,
+      "sha256": "bfad2d76c0e2a260fdbf1aa65f68270c273e3347098b4815c8cca343338b69cf"
+    },
+    "kanit\\gercek\\sanitized_xss_samples.txt": {
+      "boyut_bayt": 2336,
+      "sha256": "a82913f0d9df4f30aec115fe5af8ea841a289c30a04b9473c7a549acb77c4775"
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "boyut_bayt": 4083,
+      "sha256": "788fda2c1d0c4e63c34834d7ff5db2e64819c5706a42c3efbb2c0c3b7e0331bf"
+    },
+    "kanit\\gercek\\xss_defense_audit_report.json": {
+      "boyut_bayt": 4114,
+      "sha256": "9e146b61e5257b1ed6e80793169e31437ecaac588cf36eceda3841c20658a23a"
+    },
+    "kanit\\temsili\\xss_savunma_mimarisi.txt": {
+      "boyut_bayt": 4002,
+      "sha256": "1d33318af8ee93789cf161a205384659194f69282083aa80bb690438fd864081"
+    },
+    "ornek_veri\\enterprise_xss_policy.json": {
+      "boyut_bayt": 1465,
+      "sha256": "c2da8da2d8415b96df36db1aa87485a56e447bb76454bd888decbab33f8565a0"
+    },
+    "ornek_veri\\invalid_xss_payloads.json": {
+      "boyut_bayt": 4126,
+      "sha256": "257a84bd5ef83d96e203412b506ce976ffdb0c28d63c33d1753a9674a17def3a"
+    },
+    "tests\\__init__.py": {
+      "boyut_bayt": 77,
+      "sha256": "9778599036966fe69f5eeaeda905af84a784ac276014fe4547b74452db09e9d5"
+    },
+    "tests\\test_xss_defense.py": {
+      "boyut_bayt": 10933,
+      "sha256": "c53355bebb683d01d1c5132254d72cfb1f99a0fcba00ff58beb949329e544388"
+    },
+    "uygulama\\__init__.py": {
+      "boyut_bayt": 72,
+      "sha256": "e6a17aed03b525135cd9c28f034efa6a013a71a78c7e2304f19492ba4cd84eaf"
+    },
+    "uygulama\\xss_defense_cli.py": {
+      "boyut_bayt": 8679,
+      "sha256": "cfa959672f563d417dad626c64ac737aae7604009be781f801973ce1fd044f14"
+    },
+    "uygulama\\xss_defense_engine.py": {
+      "boyut_bayt": 26530,
+      "sha256": "9f9346db5d98709e93e729b6a2d7bbea4e3d733567bb582df3a119a64c2ae699"
+    }
+  }
+}

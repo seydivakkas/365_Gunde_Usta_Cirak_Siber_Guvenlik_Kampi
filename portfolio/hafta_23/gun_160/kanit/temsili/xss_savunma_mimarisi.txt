@@ -1,0 +1,57 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 160: XSS TÜRLERİ VE ÇOK KATMANLI SAVUNMA DERİNLİĞİ MİMARİSİ
+================================================================================
+
+                               +-------------------------------------+
+                               |         GÜVENSİZ DIŞ DÜNYA          |
+                               | (Kullanıcı Girdisi, URL, Çerez, vb) |
+                               +-------------------------------------+
+                                                  |
+                                                  v
+     [ KATMAN 1: GİRDİ DOĞRULAMA VE TEHDİT SENSÖRÜ (XSSPayloadDetector) ]
+     +------------------------------------------------------------------+
+     | - Reflected XSS İmzaları: <script>, <iframe>, <object>, <base>   |
+     | - Stored XSS İmzaları: onerror=, onload=, onclick=, onfocus=     |
+     | - Pseudo-Protokoller: javascript:, vbscript:, data:text/html     |
+     | - Mutasyon & SVG/MathML: <svg onload=...>, <math> vektörleri     |
+     | - DOM Clobbering: <form id="document">, <input name="cookie">    |
+     +------------------------------------------------------------------+
+                                                  |
+                                                  v
+     [ KATMAN 2: KATI ALLOWLIST HTML ARINDIRMA (StrictHTMLSanitizer) ]
+     +------------------------------------------------------------------+
+     | - İzinli Etiketler: <p>, <b>, <i>, <u>, <a>, <ul>, <ol>, <code> |
+     | - İzinli Nitelikler: href, title, class, rel, target             |
+     | - Protokol Denetimi: Yalnızca http://, https://, mailto:         |
+     | - Tehlikeli Olay Dinleyicileri (on*): BÜTÜNÜYLE İMHA EDİLİR      |
+     +------------------------------------------------------------------+
+                                                  |
+                                                  v
+     [ KATMAN 3: BAĞLAMA DUYARLI ÇIKTI KODLAMA (ContextAwareEncoder) ]
+     +------------------------------------------------------------------+
+     | 1. HTML Gövde:        &lt;, &gt;, &amp;, &quot;, &#x27;          |
+     | 2. HTML Nitelik:      Alfanümerik dışı &#xHH; onaltılık kaçış    |
+     | 3. JavaScript Dize:   \uXXXX 4 haneli Unicode kaçış kodlama      |
+     | 4. URL Parametresi:   RFC 3986 percent-encoding (%XX)            |
+     +------------------------------------------------------------------+
+                                                  |
+                                                  v
+     [ KATMAN 4: İSTEMCİ KORUMASI VE CSP SEVİYE 3 (CSPPolicyBuilder) ]
+     +------------------------------------------------------------------+
+     | - CSP Başlığı: script-src 'nonce-DDQimLdf5gwc25Wn5WoMeg'    |
+     | - object-src 'none' | base-uri 'none' | frame-ancestors 'none'   |
+     | - Trusted Types Zorunluluğu: require-trusted-types-for 'script'  |
+     | - DOM XSS Taint Analizi: Source (location.search) ->             |
+     |                          Sink (innerHTML) Akış Engelleme        |
+     +------------------------------------------------------------------+
+                                                  |
+                                                  v
+                               +-------------------------------------+
+                               |   GÜVENLİ VE ZARARSIZLAŞTIRILMIŞ    |
+                               |         TARAYICI EKRANI             |
+                               +-------------------------------------+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

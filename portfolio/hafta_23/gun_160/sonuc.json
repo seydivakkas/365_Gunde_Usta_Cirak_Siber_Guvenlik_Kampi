@@ -1,0 +1,37 @@
+{
+  "gun": 160,
+  "hafta": 23,
+  "asama": "07",
+  "konu": "XSS türleri ve savunma",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-08",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_23/gun_160/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_23/gun_160/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "xss_defense_audit_report_json": "portfolio/hafta_23/gun_160/kanit/gercek/xss_defense_audit_report.json",
+    "sanitized_xss_samples_txt": "portfolio/hafta_23/gun_160/kanit/gercek/sanitized_xss_samples.txt",
+    "komut_ve_cikis": "portfolio/hafta_23/gun_160/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_23/gun_160/kanit/temsili/xss_savunma_mimarisi.txt"
+  },
+  "ozet": "Reflected, Stored, DOM-based ve Mutation XSS vektörlerine karşı çok katmanlı savunma motoru ve CLI yönetim aracı eksiksiz geliştirildi. Katı allowlist tabanlı HTML arındırma (StrictHTMLSanitizer), bağlama duyarlı çıktı kodlama (ContextAwareEncoder), CSP Seviye 3 (CSPRNG 128-bit nonce, strict-dynamic, trusted-types) politikası üretimi ve JavaScript kaynak-havuz (Source-Sink) taint analizi başarıyla modellendi. 15 birim test ve 9 negatif kontrol senaryosu %100 başarıyla tamamlandı (100/100 PASS)."
+}
