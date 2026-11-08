@@ -1,0 +1,52 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
+            AŞAMA 6 KALİTE GÜVENCE VE KABUL MİMARİSİ (ENDPOINT VE IAM)
+                       (GÜN 127 - 154 / HAFTA 19 - 22)
+
+   +-------------------------------------------------------------------------+
+   |            SÜTUN A: KİMLİK VE ERİŞİM GÜVENLİĞİ (IAM & PAM)              |
+   |                                                                         |
+   |   [KAPI 1: Kimlik Doğrulama]  -> MFA (FIDO2/TOTP), Argon2id, NTLMv1 Kapalı|
+   |   [KAPI 2: En Az Ayrıcalık]   -> RBAC/ABAC, JML Leaver (<24h), gMSA     |
+   |   [KAPI 3: Ayrıcalıklı Erişim]-> Kalıcı Admin: 0, JIT (<4h), PAM Video  |
+   +-------------------------------------------------------------------------+
+                                      |
+                                      +--------------------+
+                                                           |
+   +-------------------------------------------------------------------------+
+   |            SÜTUN B: UÇ NOKTA SAVUNMA DERİNLİĞİ (ENDPOINT HARDENING)     |
+   |                                                                         |
+   |   [KAPI 4: Görünürlük & Telemetri] -> EDR %100, Tamper Protection Açık  |
+   |   [KAPI 5: Donanım Kökü & Sandbox] -> TPM 2.0 PCR, BitLocker, WDAC, PPL |
+   |   [KAPI 6: Dayanıklılık & Kurtarma]-> 3-2-1-1-0 WORM Yedek, Auto-Remediate|
+   +-------------------------------------------------------------------------+
+                                      |
+                                      v
+   +-------------------------------------------------------------------------+
+   |               AŞAMA 6 KALİTE KABUL MOTORU (QUALITY GATE ENGINE)          |
+   |                     (Stage6QualityEngine.audit_stage_6)                 |
+   |                                                                         |
+   |   KAPI 1 Skoru: 100/100 (GECTI)   |   KAPI 4 Skoru: 100/100 (GECTI)     |
+   |   KAPI 2 Skoru: 100/100 (GECTI)   |   KAPI 5 Skoru: 100/100 (GECTI)     |
+   |   KAPI 3 Skoru: 100/100 (GECTI)   |   KAPI 6 Skoru: 100/100 (GECTI)     |
+   |                                                                         |
+   |   GENEL AŞAMA 6 PUANI: 100.0 / 100.0 (Kabul Eşiği: 90.0)                |
+   |   NİHAİ KARAR         : GECTI (RESMİ AŞAMA 6 KABUL SERTİFİKASI VERİLDİ) |
+   +-------------------------------------------------------------------------+
+                                      |
+                   +------------------+------------------+
+                   |                                     |
+                   v                                     v
+   +---------------------------------+   +---------------------------------+
+   |    AŞAMA 6 KABUL SERTİFİKASI    |   |    OTOMATİK POWERSHELL İYİLEŞTİRME|
+   |  (asama6_kabul_sertifikasi.txt) |   |        (asama6_remediation.ps1) |
+   | - CISO & Yönetim Onay Belgesi   |   | - NTLMv1 Kapat, PPL Aç          |
+   | - 6 Kapının Eksiksiz Denetimi   |   | - Tamper Protection Aktifleştir |
+   | - Aşama 7 (Web Güvenliği) Geçiş |   | - Kalıcı Domain Adminleri Sil   |
+   +---------------------------------+   +---------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

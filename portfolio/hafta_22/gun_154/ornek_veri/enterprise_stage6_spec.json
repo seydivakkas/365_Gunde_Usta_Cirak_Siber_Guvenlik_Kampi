@@ -1,0 +1,31 @@
+{
+  "organization_name": "SiberSavunma Kurumsal A.Ş.",
+  "mfa_enforced": true,
+  "allowed_mfa_methods": [
+    "FIDO2",
+    "WebAuthn",
+    "TOTP"
+  ],
+  "password_hashing_algorithm": "Argon2id",
+  "ntlmv1_disabled": true,
+  "kerberos_rc4_disabled": true,
+  "access_control_model": "RBAC_ABAC_HYBRID",
+  "stale_accounts_deprovisioning_hours": 8,
+  "orphaned_accounts_count": 0,
+  "gmsa_used_for_services": true,
+  "standing_domain_admin_accounts": 0,
+  "jit_elevation_enabled": true,
+  "max_elevation_duration_hours": 2,
+  "session_recording_active": true,
+  "edr_fleet_coverage_percent": 100.0,
+  "tamper_protection_enforced": true,
+  "edr_signatures_max_age_hours": 6,
+  "full_disk_encryption_percent": 100.0,
+  "tpm2_pcr_binding_verified": true,
+  "app_whitelisting_mode": "Enforce",
+  "lsa_protection_ppl_enabled": true,
+  "backup_rule_32110_compliant": true,
+  "worm_immutable_storage_active": true,
+  "last_restore_drill_days_ago": 14,
+  "auto_remediation_drift_active": true
+}

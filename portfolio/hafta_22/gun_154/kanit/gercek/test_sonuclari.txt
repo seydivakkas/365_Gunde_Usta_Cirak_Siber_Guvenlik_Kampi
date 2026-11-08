@@ -1,0 +1,44 @@
+================================================================================
+ GÜN 154: BİRİM TEST SONUÇLARI (15/15 PASS) - AŞAMA 6 KALİTE ÖZETİ
+================================================================================
+
+test_01_fully_compliant_spec_passes_stage_6 (test_stage6_quality.TestStage6QualityEngine.test_01_fully_compliant_spec_passes_stage_6)
+Kusursuz kurumsal şartnamenin Aşama 6'yı 100 puan ve PASS ile geçtiğini doğrular. ... ok
+test_02_gate_1_fails_when_mfa_disabled (test_stage6_quality.TestStage6QualityEngine.test_02_gate_1_fails_when_mfa_disabled)
+MFA zorunlu olmadığında Kapı 1'in başarısız olduğunu test eder. ... ok
+test_03_gate_1_penalizes_weak_password_hash (test_stage6_quality.TestStage6QualityEngine.test_03_gate_1_penalizes_weak_password_hash)
+Zayıf parola hash algoritmasının (MD5) ceza aldığını doğrular. ... ok
+test_04_gate_1_penalizes_ntlmv1_and_rc4 (test_stage6_quality.TestStage6QualityEngine.test_04_gate_1_penalizes_ntlmv1_and_rc4)
+NTLMv1 ve Kerberos RC4 açık bırakıldığında ceza puanı uygulandığını kontrol eder. ... ok
+test_05_gate_2_penalizes_orphaned_accounts (test_stage6_quality.TestStage6QualityEngine.test_05_gate_2_penalizes_orphaned_accounts)
+Yetim hesapların (ayrılan çalışanlar) Kapı 2'de ceza aldığını test eder. ... ok
+test_06_gate_2_penalizes_missing_gmsa (test_stage6_quality.TestStage6QualityEngine.test_06_gate_2_penalizes_missing_gmsa)
+Servis hesaplarında gMSA kullanılmamasının ceza aldığını kontrol eder. ... ok
+test_07_gate_3_fails_on_standing_domain_admins (test_stage6_quality.TestStage6QualityEngine.test_07_gate_3_fails_on_standing_domain_admins)
+Kalıcı Domain Admin hesaplarının Kapı 3'ü doğrudan başarısız kıldığını test eder. ... ok
+test_08_gate_3_penalizes_missing_jit_elevation (test_stage6_quality.TestStage6QualityEngine.test_08_gate_3_penalizes_missing_jit_elevation)
+JIT yetki yükseltme kapalı olduğunda ceza puanı uygulandığını doğrular. ... ok
+test_09_gate_4_fails_on_low_edr_coverage (test_stage6_quality.TestStage6QualityEngine.test_09_gate_4_fails_on_low_edr_coverage)
+EDR kapsama oranı düşük olduğunda Kapı 4'ün kaldığını test eder. ... ok
+test_10_gate_4_penalizes_disabled_tamper_protection (test_stage6_quality.TestStage6QualityEngine.test_10_gate_4_penalizes_disabled_tamper_protection)
+EDR kurcalamaya karşı koruma kapalıysa ceza puanı kesildiğini doğrular. ... ok
+test_11_gate_5_fails_on_low_disk_encryption (test_stage6_quality.TestStage6QualityEngine.test_11_gate_5_fails_on_low_disk_encryption)
+Disk şifreleme oranı düşük ve TPM PCR doğrulanmamışsa Kapı 5'in kaldığını doğrular. ... ok
+test_12_gate_5_penalizes_disabled_app_control_and_lsa (test_stage6_quality.TestStage6QualityEngine.test_12_gate_5_penalizes_disabled_app_control_and_lsa)
+Uygulama kontrolü ve LSA koruması kapalıyken uygulanan cezayı test eder. ... ok
+test_13_gate_6_fails_on_missing_worm_storage (test_stage6_quality.TestStage6QualityEngine.test_13_gate_6_fails_on_missing_worm_storage)
+Yedekleme deposu WORM/değiştirilemez olmadığında Kapı 6'nın kaldığını doğrular. ... ok
+test_14_audit_report_summary_and_certificate (test_stage6_quality.TestStage6QualityEngine.test_14_audit_report_summary_and_certificate)
+Rapor özet metinlerinin ve ASCII sertifikanın doğru üretildiğini doğrular. ... ok
+test_15_cli_roundtrip_execution (test_stage6_quality.TestStage6QualityEngine.test_15_cli_roundtrip_execution)
+Rapor sözlük çıktısının serileştirilebilir ve anahtarların eksiksiz olduğunu doğrular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+
+================================================================================
+ TOPLAM TEST: 15 | BAŞARILI: 15 | HATA: 0 | BAŞARISIZ: 0
+ DURUM: BAŞARILI (PASS)
+================================================================================

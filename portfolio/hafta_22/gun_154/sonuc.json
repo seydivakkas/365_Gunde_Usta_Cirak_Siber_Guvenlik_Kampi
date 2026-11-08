@@ -1,0 +1,38 @@
+{
+  "gun": 154,
+  "hafta": 22,
+  "asama": "06",
+  "konu": "Aşama 6 kalite özeti: endpoint ve IAM",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-08",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_22/gun_154/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_22/gun_154/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "denetim_raporu_json": "portfolio/hafta_22/gun_154/kanit/gercek/asama6_kalite_denetim_raporu.json",
+    "kabul_sertifikasi_txt": "portfolio/hafta_22/gun_154/kanit/gercek/asama6_kabul_sertifikasi.txt",
+    "iyilestirme_betigi": "portfolio/hafta_22/gun_154/kanit/gercek/asama6_remediation.ps1",
+    "komut_ve_cikis": "portfolio/hafta_22/gun_154/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_22/gun_154/kanit/temsili/asama6_kalite_mimarisi.txt"
+  },
+  "ozet": "Aşama 6: Uç Nokta ve Kimlik Güvenliği (Gün 127 - 154 / Hafta 19 - 22) resmi Kalite Güvence ve Kabul Motoru ile başarıyla denetlendi. 6 resmi Kalite Kapısı (MFA/Kimlik, RBAC/JML, PAM/JIT, EDR/Telemetri, TPM/Sandbox, WORM/Sapma) üzerinden 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla doğrulandı; kurumsal kabul sertifikası üretildi."
+}

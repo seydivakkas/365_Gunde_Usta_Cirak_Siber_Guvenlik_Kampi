@@ -1,0 +1,70 @@
+================================================================================
+ GÜN 154: NEGATİF KONTROL VE HATA SENARYOLARI RAPORU (9/9 PASS)
+================================================================================
+
+[*] Senaryo: SCN-STG6-01 - MFA Kapalı ve Güvensiz MD5 Parola Hashleme
+    Açıklama: Organizasyonda MFA zorunlu değil, SMS tabanlı zayıf yöntemler kullanılıyor ve kullanıcı parolaları veritabanında MD5 ile saklanıyor.
+    Hesaplanan Aşama 6 Skoru: 85.0 / 100
+    Nihai Karar            : KALDI (Beklenen: KALDI)
+    Başarısız Kapı Sayısı   : 1
+    [+] DURUM: BAŞARILI (Uygunsuzluk doğru yakalandı ve kabul engellendi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-STG6-02 - Eski NTLMv1 ve RC4 Şifreleme Açık Bırakılmış
+    Açıklama: Eski sistem uyumluluğu bahanesiyle NTLMv1 ve Kerberos RC4 kapatılmamış; Pass-the-Hash ve Kerberoasting saldırılarına kapı aralanmıştır.
+    Hesaplanan Aşama 6 Skoru: 94.2 / 100
+    Nihai Karar            : KALDI (Beklenen: KALDI)
+    Başarısız Kapı Sayısı   : 1
+    [+] DURUM: BAŞARILI (Uygunsuzluk doğru yakalandı ve kabul engellendi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-STG6-03 - Ayrılan Personel Hesapları Açık ve Yetim Hesap Kirliliği
+    Açıklama: İşten ayrılan çalışanların hesapları 168 saattir kapatılmamış (Leaver SLA ihlali) ve Active Directory'de 10 adet sahipsiz yetim hesap tespit edilmiştir.
+    Hesaplanan Aşama 6 Skoru: 83.3 / 100
+    Nihai Karar            : KALDI (Beklenen: KALDI)
+    Başarısız Kapı Sayısı   : 1
+    [+] DURUM: BAŞARILI (Uygunsuzluk doğru yakalandı ve kabul engellendi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-STG6-04 - Kalıcı Domain Adminler ve JIT Yokluğu
+    Açıklama: Etki alanında 4 adet kalıcı (Standing) Domain Admin hesabı mevcut, JIT geçici yetkilendirme kapalı ve oturum kaydı tutulmuyor.
+    Hesaplanan Aşama 6 Skoru: 83.3 / 100
+    Nihai Karar            : KALDI (Beklenen: KALDI)
+    Başarısız Kapı Sayısı   : 1
+    [+] DURUM: BAŞARILI (Uygunsuzluk doğru yakalandı ve kabul engellendi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-STG6-05 - EDR Kapsaması Yetersiz ve Tamper Protection Devre Dışı
+    Açıklama: Uç noktaların yalnızca %75'inde EDR kurulu, kurcalamaya karşı koruma (Tamper Protection) kapatılmış ve imzalar 96 saat eskidir.
+    Hesaplanan Aşama 6 Skoru: 83.3 / 100
+    Nihai Karar            : KALDI (Beklenen: KALDI)
+    Başarısız Kapı Sayısı   : 1
+    [+] DURUM: BAŞARILI (Uygunsuzluk doğru yakalandı ve kabul engellendi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-STG6-06 - Şifresiz Diskler, TPM Yokluğu ve LSA Korumasızlığı
+    Açıklama: Dizüstü bilgisayarların %40'ı şifresiz, TPM 2.0 PCR doğrulaması yapılmamış ve LSASS belleğini koruyan RunAsPPL bayrağı kapalıdır.
+    Hesaplanan Aşama 6 Skoru: 83.3 / 100
+    Nihai Karar            : KALDI (Beklenen: KALDI)
+    Başarısız Kapı Sayısı   : 1
+    [+] DURUM: BAŞARILI (Uygunsuzluk doğru yakalandı ve kabul engellendi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-STG6-07 - Değiştirilebilir Yedek Deposu ve 1 Yıldır Yapılmayan Kurtarma Tatbikatı
+    Açıklama: Yedekler WORM/S3 Object Lock ile korunmuyor, 3-2-1-1-0 kuralı ihlal edilmiş ve son 365 gündür hiçbir geri yükleme testi yapılmamıştır.
+    Hesaplanan Aşama 6 Skoru: 83.3 / 100
+    Nihai Karar            : KALDI (Beklenen: KALDI)
+    Başarısız Kapı Sayısı   : 1
+    [+] DURUM: BAŞARILI (Uygunsuzluk doğru yakalandı ve kabul engellendi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-STG6-08 - Geçici Ayrıcalık Süresi Aşırı Uzun (24 Saatlik JIT)
+    Açıklama: JIT yetkilendirmesi var ancak personele 24 saat boyunca kesintisiz Enterprise Admin hakkı veriliyor (Least Privilege ve zaman sınırlama ihlali).
+    Hesaplanan Aşama 6 Skoru: 96.7 / 100
+    Nihai Karar            : KALDI (Beklenen: KALDI)
+    Başarısız Kapı Sayısı   : 1
+    [+] DURUM: BAŞARILI (Uygunsuzluk doğru yakalandı ve kabul engellendi).
+--------------------------------------------------------------------------------
+[*] Senaryo: SCN-STG6-09 - Tam Aşama 6 Felaketi (Tüm Kapılarda Kritik İhlal)
+    Açıklama: MFA yok, kalıcı adminler, sıfır EDR, şifresiz diskler, WORM olmayan yedekler ve sahipsiz hesaplar ile tüm kapıların çöktüğü toplam felaket senaryosu.
+    Hesaplanan Aşama 6 Skoru: 35.0 / 100
+    Nihai Karar            : KALDI (Beklenen: KALDI)
+    Başarısız Kapı Sayısı   : 6
+    [+] DURUM: BAŞARILI (Uygunsuzluk doğru yakalandı ve kabul engellendi).
+--------------------------------------------------------------------------------
+
+TOPLAM SENARYO: 9 | BAŞARILI DOĞRULAMA: 9/9
+SONUÇ: %100 NEGATİF KONTROL VE KALİTE KAPISI KABUL ENGELEME BAŞARISI (PASS)

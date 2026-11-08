@@ -1,0 +1,87 @@
+{
+  "gun": 154,
+  "konu": "Aşama 6 kalite özeti: endpoint ve IAM",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "sha256": "ad92688c2c7838bb933bc704f9986d1533487f7a9ec75429121ca4b546eee7a6",
+      "size_bytes": 5241
+    },
+    "ders.md": {
+      "sha256": "5ebca331ca54503dcda3a4b740bd8ad8db2db17b5e36b318c33548be9ee1f176",
+      "size_bytes": 6098
+    },
+    "kanit_uretici.py": {
+      "sha256": "3418b8538374402770ea62f2014b42d9fda93f98c68b033047b376c36b544222",
+      "size_bytes": 13352
+    },
+    "rapor.md": {
+      "sha256": "68831e791415d77b182e7f29ae9877ae3c6b082c317876ea4701eae03a9b8de3",
+      "size_bytes": 6194
+    },
+    "sonuc.json": {
+      "sha256": "ee2e4c3e0f744adf3a1c3d143f44a0043e333f1d520a523e458af88722a7be23",
+      "size_bytes": 1692
+    },
+    "soru_cevap.md": {
+      "sha256": "02a60c0706dc5d35a6ab84894d1fa3458b5944db307071e0636a24a3178ccc9f",
+      "size_bytes": 12680
+    },
+    "kanit/gercek/asama6_kabul_sertifikasi.txt": {
+      "sha256": "8e767e1b78c233f8fbcd832cca12807d6d3a10e580d77283f7ca1e74084e3356",
+      "size_bytes": 1936
+    },
+    "kanit/gercek/asama6_kalite_denetim_raporu.json": {
+      "sha256": "49567a69deb98bfa187cb7b5d5d6c9e5c663635e47e75b8f7d3b2624d30f0aab",
+      "size_bytes": 3845
+    },
+    "kanit/gercek/asama6_remediation.ps1": {
+      "sha256": "d4469c63884c3b8113415967472311bd9e98f35818eb13c0bcce778a2553605f",
+      "size_bytes": 1003
+    },
+    "kanit/gercek/komut_ve_cikis.txt": {
+      "sha256": "3bcf5321c6a4530bde4be88c1c8825a29ab7f20365366922313cb48ea09ffedd",
+      "size_bytes": 7601
+    },
+    "kanit/gercek/negatif_kontrol_sonuclari.txt": {
+      "sha256": "bcd0c94f1ffa83ee6329f3e79b0ef2642f9347b87ecf1338a42ddfcb3df41ac8",
+      "size_bytes": 5275
+    },
+    "kanit/gercek/test_sonuclari.txt": {
+      "sha256": "bb24d21441e9988b6aa2b91f477003b838d4a20be4f750c1b37d0d10266e2679",
+      "size_bytes": 3998
+    },
+    "kanit/temsili/asama6_kalite_mimarisi.txt": {
+      "sha256": "957e3a53e0fcd332157a50cd898442bcfb9724cff5b140d7248aae108dedf5b0",
+      "size_bytes": 3679
+    },
+    "ornek_veri/enterprise_stage6_spec.json": {
+      "sha256": "370618e20318ba949325b5ad4f3bebf8786c5ded2dae3a8f879ec821b70f1135",
+      "size_bytes": 984
+    },
+    "ornek_veri/invalid_stage6_scenarios.json": {
+      "sha256": "8467d8ab427ff908ab3fef7070efa60b0b0e9c98dc52cd454165cdce5c9a53ee",
+      "size_bytes": 4697
+    },
+    "tests/__init__.py": {
+      "sha256": "778eabf4ed53f9860e3097ba581d0afaedacf37ad3cdfc021a44eec5748d40a8",
+      "size_bytes": 147
+    },
+    "tests/test_stage6_quality.py": {
+      "sha256": "00ba9dc64f88090f2326af1f3d3036c62594617d1e1761df30d8bc735a231f4e",
+      "size_bytes": 8965
+    },
+    "uygulama/__init__.py": {
+      "sha256": "c116d4bf357a5d2a661a1c4b5516437713df1aa8ae166ec47e6a95e4449079b3",
+      "size_bytes": 507
+    },
+    "uygulama/stage6_cli.py": {
+      "sha256": "228a03679eb823cc558b06a7cdf4381926e136de4f312999580417eeaa5de56b",
+      "size_bytes": 9041
+    },
+    "uygulama/stage6_quality_engine.py": {
+      "sha256": "e5c4f745f7aef4888a9d452b3306a62fd595cd8d728e482bb94d2e09ab83c4e0",
+      "size_bytes": 22430
+    }
+  }
+}

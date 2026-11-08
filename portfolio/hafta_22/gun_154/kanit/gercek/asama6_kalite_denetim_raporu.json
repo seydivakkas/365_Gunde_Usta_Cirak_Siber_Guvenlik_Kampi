@@ -1,0 +1,94 @@
+{
+  "organization": "SiberSavunma Kurumsal A.Ş.",
+  "overall_score": 100.0,
+  "final_verdict": "GECTI",
+  "passed_gates_count": 6,
+  "failed_gates_count": 0,
+  "gate_results": [
+    {
+      "gate_id": 1,
+      "name": "Kimlik Doğrulama ve Kimlik Bilgisi Hijyeni",
+      "score": 100.0,
+      "threshold": 85.0,
+      "status": "GECTI",
+      "violations": [],
+      "passed_checks": [
+        "Çok faktörlü kimlik doğrulama (MFA) kurum genelinde zorunludur.",
+        "MFA yöntemleri güçlü kriptografik standartlara uygundur (FIDO2/WebAuthn/TOTP).",
+        "Parola hashleme algoritması NIST standartlarına uygun: Argon2id.",
+        "NTLMv1 protokolü kapatılmış; SMB relay ve hash yakalama önlenmiştir.",
+        "Kerberos RC4-HMAC şifreleme kapatılmış; AES-256 zorunludur."
+      ]
+    },
+    {
+      "gate_id": 2,
+      "name": "En Az Ayrıcalık ve JML Yaşam Döngüsü",
+      "score": 100.0,
+      "threshold": 85.0,
+      "status": "GECTI",
+      "violations": [],
+      "passed_checks": [
+        "Erişim kontrol modeli kurumsal matrisle yönetiliyor: RBAC_ABAC_HYBRID.",
+        "Sistemde sıfır yetim (orphaned) hesap; JML döngüsü tam işliyor.",
+        "Ayrılan personel hesap kapatma SLA'sı 24 saat altında: 8h.",
+        "Servis hesaplarında Group Managed Service Accounts (gMSA) ile otomatik parola rotasyonu aktif."
+      ]
+    },
+    {
+      "gate_id": 3,
+      "name": "Ayrıcalıklı Erişim Yönetimi (PAM / JIT)",
+      "score": 100.0,
+      "threshold": 85.0,
+      "status": "GECTI",
+      "violations": [],
+      "passed_checks": [
+        "Kalıcı (Standing) Domain Admin üyeliği sıfırdır; kalıcı ayrıcalık riski yoktur.",
+        "Just-In-Time (JIT) onay tabanlı geçici yetkilendirme devrededir.",
+        "Yetki yükseltme süre sınırı en fazla 2 saattir (<=4h).",
+        "Ayrıcalıklı oturumlar (PAM Session Recording) adli kanıt amacıyla kaydedilmektedir."
+      ]
+    },
+    {
+      "gate_id": 4,
+      "name": "Uç Nokta Görünürlüğü ve Telemetri (EDR)",
+      "score": 100.0,
+      "threshold": 85.0,
+      "status": "GECTI",
+      "violations": [],
+      "passed_checks": [
+        "Filo genelinde EDR kapsaması tamdır: %100.0.",
+        "EDR Tamper Protection zorunludur; yerel adminler dahi telemetriyi kapatamaz.",
+        "Zararlı imza ve kural tabanı günceldir: 6h."
+      ]
+    },
+    {
+      "gate_id": 5,
+      "name": "Donanım Kökü ve Uygulama İzolasyonu",
+      "score": 100.0,
+      "threshold": 85.0,
+      "status": "GECTI",
+      "violations": [],
+      "passed_checks": [
+        "Tam disk şifreleme oranı mükemmel: %100.0.",
+        "TPM 2.0 PCR 0,2,4,7 önyükleme ölçüm zinciri mühürlüdür (Evil Maid korumalı).",
+        "Uygulama kontrolü zorlama (Enforce) modundadır; onaysız ikili dosyalar engellenir.",
+        "LSA Koruması (RunAsPPL) aktiftir; LSASS bellek dökümü (Mimikatz) çekirdekten engellenir."
+      ]
+    },
+    {
+      "gate_id": 6,
+      "name": "Dayanıklılık, İmmutable Yedek ve Sapma Onarımı",
+      "score": 100.0,
+      "threshold": 85.0,
+      "status": "GECTI",
+      "violations": [],
+      "passed_checks": [
+        "3-2-1-1-0 yedekleme mimarisine tam uyum sağlanmıştır.",
+        "S3 Object Lock COMPLIANCE / WORM değiştirilemez yedek deposu aktiftir.",
+        "Geri yükleme tatbikatı son 30 gün içinde doğrulanmıştır: 14 gün.",
+        "Yapılandırma sapması anlık denetlenmekte ve otomatik iyileştirilmektedir (Self-Healing)."
+      ]
+    }
+  ],
+  "executive_summary": "SiberSavunma Kurumsal A.Ş. için Aşama 6 (Uç Nokta ve IAM) Kalite Denetimi %100.0 puan ile EKSİKSİZ KABUL EDİLMİŞTİR (PASS). 6 Kalite Kapısının tamamı başarıyla geçilmiştir."
+}

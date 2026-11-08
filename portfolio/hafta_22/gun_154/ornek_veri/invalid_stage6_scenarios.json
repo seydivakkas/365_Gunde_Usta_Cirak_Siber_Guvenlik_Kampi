@@ -1,0 +1,116 @@
+[
+  {
+    "scenario_id": "SCN-STG6-01",
+    "name": "MFA Kapalı ve Güvensiz MD5 Parola Hashleme",
+    "description": "Organizasyonda MFA zorunlu değil, SMS tabanlı zayıf yöntemler kullanılıyor ve kullanıcı parolaları veritabanında MD5 ile saklanıyor.",
+    "spec_overrides": {
+      "mfa_enforced": false,
+      "allowed_mfa_methods": ["SMS"],
+      "password_hashing_algorithm": "MD5"
+    },
+    "failing_gate_id": 1,
+    "expected_verdict": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-STG6-02",
+    "name": "Eski NTLMv1 ve RC4 Şifreleme Açık Bırakılmış",
+    "description": "Eski sistem uyumluluğu bahanesiyle NTLMv1 ve Kerberos RC4 kapatılmamış; Pass-the-Hash ve Kerberoasting saldırılarına kapı aralanmıştır.",
+    "spec_overrides": {
+      "ntlmv1_disabled": false,
+      "kerberos_rc4_disabled": false
+    },
+    "failing_gate_id": 1,
+    "expected_verdict": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-STG6-03",
+    "name": "Ayrılan Personel Hesapları Açık ve Yetim Hesap Kirliliği",
+    "description": "İşten ayrılan çalışanların hesapları 168 saattir kapatılmamış (Leaver SLA ihlali) ve Active Directory'de 10 adet sahipsiz yetim hesap tespit edilmiştir.",
+    "spec_overrides": {
+      "orphaned_accounts_count": 10,
+      "stale_accounts_deprovisioning_hours": 168,
+      "access_control_model": "DAC"
+    },
+    "failing_gate_id": 2,
+    "expected_verdict": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-STG6-04",
+    "name": "Kalıcı Domain Adminler ve JIT Yokluğu",
+    "description": "Etki alanında 4 adet kalıcı (Standing) Domain Admin hesabı mevcut, JIT geçici yetkilendirme kapalı ve oturum kaydı tutulmuyor.",
+    "spec_overrides": {
+      "standing_domain_admin_accounts": 4,
+      "jit_elevation_enabled": false,
+      "session_recording_active": false
+    },
+    "failing_gate_id": 3,
+    "expected_verdict": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-STG6-05",
+    "name": "EDR Kapsaması Yetersiz ve Tamper Protection Devre Dışı",
+    "description": "Uç noktaların yalnızca %75'inde EDR kurulu, kurcalamaya karşı koruma (Tamper Protection) kapatılmış ve imzalar 96 saat eskidir.",
+    "spec_overrides": {
+      "edr_fleet_coverage_percent": 75.0,
+      "tamper_protection_enforced": false,
+      "edr_signatures_max_age_hours": 96
+    },
+    "failing_gate_id": 4,
+    "expected_verdict": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-STG6-06",
+    "name": "Şifresiz Diskler, TPM Yokluğu ve LSA Korumasızlığı",
+    "description": "Dizüstü bilgisayarların %40'ı şifresiz, TPM 2.0 PCR doğrulaması yapılmamış ve LSASS belleğini koruyan RunAsPPL bayrağı kapalıdır.",
+    "spec_overrides": {
+      "full_disk_encryption_percent": 60.0,
+      "tpm2_pcr_binding_verified": false,
+      "lsa_protection_ppl_enabled": false,
+      "app_whitelisting_mode": "Disabled"
+    },
+    "failing_gate_id": 5,
+    "expected_verdict": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-STG6-07",
+    "name": "Değiştirilebilir Yedek Deposu ve 1 Yıldır Yapılmayan Kurtarma Tatbikatı",
+    "description": "Yedekler WORM/S3 Object Lock ile korunmuyor, 3-2-1-1-0 kuralı ihlal edilmiş ve son 365 gündür hiçbir geri yükleme testi yapılmamıştır.",
+    "spec_overrides": {
+      "backup_rule_32110_compliant": false,
+      "worm_immutable_storage_active": false,
+      "last_restore_drill_days_ago": 365,
+      "auto_remediation_drift_active": false
+    },
+    "failing_gate_id": 6,
+    "expected_verdict": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-STG6-08",
+    "name": "Geçici Ayrıcalık Süresi Aşırı Uzun (24 Saatlik JIT)",
+    "description": "JIT yetkilendirmesi var ancak personele 24 saat boyunca kesintisiz Enterprise Admin hakkı veriliyor (Least Privilege ve zaman sınırlama ihlali).",
+    "spec_overrides": {
+      "max_elevation_duration_hours": 24
+    },
+    "failing_gate_id": 3,
+    "expected_verdict": "KALDI"
+  },
+  {
+    "scenario_id": "SCN-STG6-09",
+    "name": "Tam Aşama 6 Felaketi (Tüm Kapılarda Kritik İhlal)",
+    "description": "MFA yok, kalıcı adminler, sıfır EDR, şifresiz diskler, WORM olmayan yedekler ve sahipsiz hesaplar ile tüm kapıların çöktüğü toplam felaket senaryosu.",
+    "spec_overrides": {
+      "mfa_enforced": false,
+      "ntlmv1_disabled": false,
+      "orphaned_accounts_count": 25,
+      "standing_domain_admin_accounts": 8,
+      "edr_fleet_coverage_percent": 30.0,
+      "tamper_protection_enforced": false,
+      "full_disk_encryption_percent": 20.0,
+      "lsa_protection_ppl_enabled": false,
+      "backup_rule_32110_compliant": false,
+      "worm_immutable_storage_active": false
+    },
+    "failing_gate_id": 0,
+    "expected_verdict": "KALDI"
+  }
+]

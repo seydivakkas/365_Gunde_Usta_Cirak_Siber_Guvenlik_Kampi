@@ -1,0 +1,113 @@
+================================================================================
+ GÜN 154: AŞAMA 6 KALİTE ÖZETİ CLI YÜRÜTME VE KONSOL GÜNLÜĞÜ
+================================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_154\uygulama\stage6_cli.py audit --spec C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_154\ornek_veri\enterprise_stage6_spec.json
+
+************************************************************************************
+*                                                                                  *
+*           AŞAMA 6 KALİTE GÜVENCE VE KABUL SERTİFİKASI (ENDPOINT & IAM)           *
+*       365 GÜNDE USTA-ÇIRAK SİBER GÜVENLİK KAMPI - HAFTA 22 KİLOMETRE TAŞI        *
+*                                                                                  *
+************************************************************************************
+
+ Kurum / Organizasyon : SiberSavunma Kurumsal A.Ş.
+ Genel Kalite Puanı   : 100.0 / 100.0 (Kabul Eşiği: 90.0)
+ Nihai Kabul Kararı   : [BAŞARILI - RESMİ ONAY VERİLDİ]
+ Kapı Başarı Oranı    : 6 / 6 Kapı Geçti
+
+====================================================================================
+ NO   KALİTE KAPISI                                PUAN     EŞİK     DURUM     
+------------------------------------------------------------------------------------
+ 1    Kimlik Doğrulama ve Kimlik Bilgisi Hijyeni   100.0    85.0     [GECTI]   
+ 2    En Az Ayrıcalık ve JML Yaşam Döngüsü         100.0    85.0     [GECTI]   
+ 3    Ayrıcalıklı Erişim Yönetimi (PAM / JIT)      100.0    85.0     [GECTI]   
+ 4    Uç Nokta Görünürlüğü ve Telemetri (EDR)      100.0    85.0     [GECTI]   
+ 5    Donanım Kökü ve Uygulama İzolasyonu          100.0    85.0     [GECTI]   
+ 6    Dayanıklılık, İmmutable Yedek ve Sapma Onarımı 100.0    85.0     [GECTI]   
+====================================================================================
+
+ YÖNETİCİ DEĞERLENDİRME ÖZETİ:
+ SiberSavunma Kurumsal A.Ş. için Aşama 6 (Uç Nokta ve IAM) Kalite Denetimi %100.0 puan ile EKSİKSİZ KABUL EDİLMİŞTİR (PASS). 6 Kalite Kapısının tamamı başarıyla geçilmiştir.
+
+************************************************************************************
+
+
+--------------------------------------------------------------------------------
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_154\uygulama\stage6_cli.py verify-gate --spec C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_154\ornek_veri\enterprise_stage6_spec.json --gate 1
+
+======================================================================
+ KALİTE KAPISI 1: Kimlik Doğrulama ve Kimlik Bilgisi Hijyeni
+======================================================================
+ Puan / Eşik : 100.0 / 85.0
+ Durum       : GECTI
+----------------------------------------------------------------------
+ BAŞARILI KONTROLLER:
+   [+] Çok faktörlü kimlik doğrulama (MFA) kurum genelinde zorunludur.
+   [+] MFA yöntemleri güçlü kriptografik standartlara uygundur (FIDO2/WebAuthn/TOTP).
+   [+] Parola hashleme algoritması NIST standartlarına uygun: Argon2id.
+   [+] NTLMv1 protokolü kapatılmış; SMB relay ve hash yakalama önlenmiştir.
+   [+] Kerberos RC4-HMAC şifreleme kapatılmış; AES-256 zorunludur.
+----------------------------------------------------------------------
+ TESPİT EDİLEN UYGUNSUZLUKLAR:
+   [+] Bu kapıda hiçbir uygunsuzluk bulunamadı.
+======================================================================
+
+
+--------------------------------------------------------------------------------
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_154\uygulama\stage6_cli.py verify-gate --spec C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_154\ornek_veri\enterprise_stage6_spec.json --gate 3
+
+======================================================================
+ KALİTE KAPISI 3: Ayrıcalıklı Erişim Yönetimi (PAM / JIT)
+======================================================================
+ Puan / Eşik : 100.0 / 85.0
+ Durum       : GECTI
+----------------------------------------------------------------------
+ BAŞARILI KONTROLLER:
+   [+] Kalıcı (Standing) Domain Admin üyeliği sıfırdır; kalıcı ayrıcalık riski yoktur.
+   [+] Just-In-Time (JIT) onay tabanlı geçici yetkilendirme devrededir.
+   [+] Yetki yükseltme süre sınırı en fazla 2 saattir (<=4h).
+   [+] Ayrıcalıklı oturumlar (PAM Session Recording) adli kanıt amacıyla kaydedilmektedir.
+----------------------------------------------------------------------
+ TESPİT EDİLEN UYGUNSUZLUKLAR:
+   [+] Bu kapıda hiçbir uygunsuzluk bulunamadı.
+======================================================================
+
+
+--------------------------------------------------------------------------------
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_154\uygulama\stage6_cli.py verify-gate --spec C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_154\ornek_veri\enterprise_stage6_spec.json --gate 4
+
+======================================================================
+ KALİTE KAPISI 4: Uç Nokta Görünürlüğü ve Telemetri (EDR)
+======================================================================
+ Puan / Eşik : 100.0 / 85.0
+ Durum       : GECTI
+----------------------------------------------------------------------
+ BAŞARILI KONTROLLER:
+   [+] Filo genelinde EDR kapsaması tamdır: %100.0.
+   [+] EDR Tamper Protection zorunludur; yerel adminler dahi telemetriyi kapatamaz.
+   [+] Zararlı imza ve kural tabanı günceldir: 6h.
+----------------------------------------------------------------------
+ TESPİT EDİLEN UYGUNSUZLUKLAR:
+   [+] Bu kapıda hiçbir uygunsuzluk bulunamadı.
+======================================================================
+
+
+--------------------------------------------------------------------------------
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_154\uygulama\stage6_cli.py remediation --spec C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_22\gun_154\ornek_veri\enterprise_stage6_spec.json
+
+# PowerShell Aşama 6 Kalite İyileştirme Betiği
+# Hedef Organizasyon: SiberSavunma Kurumsal A.Ş.
+# Genel Kalite Skoru: 100.0/100
+$ErrorActionPreference = 'Stop'
+
+Write-Host '[*] Aşama 6 Uç Nokta ve IAM İyileştirmeleri Başlatılıyor...' -ForegroundColor Cyan
+
+Write-Host '[+] Aşama 6 kurumsal iyileştirme komutları tamamlandı.' -ForegroundColor Green
+
+
+--------------------------------------------------------------------------------
