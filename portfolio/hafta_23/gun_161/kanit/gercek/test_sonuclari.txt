@@ -1,0 +1,36 @@
+
+test_01_csrf_token_generation_and_structure (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_01_csrf_token_generation_and_structure)
+1. Test: CSRF token�n�n beklenen 4 par�al� HMAC yap�s�n� do�rular. ... ok
+test_02_csrf_token_valid_validation (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_02_csrf_token_valid_validation)
+2. Test: Yeni �retilen ge�erli bir CSRF token�n�n do�ruland���n� do�rular. ... ok
+test_03_csrf_token_session_mismatch (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_03_csrf_token_session_mismatch)
+3. Test: Farkl� bir oturuma ait CSRF token�n�n reddedildi�ini do�rular. ... ok
+test_04_csrf_token_tampered_signature (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_04_csrf_token_tampered_signature)
+4. Test: �mzas� tahrif edilmi� CSRF token�n�n yakaland���n� do�rular. ... ok
+test_05_csrf_token_replay_attack_prevention (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_05_csrf_token_replay_attack_prevention)
+5. Test: Ayn� CSRF token�n�n iki kez kullan�lmas� durumunda (Replay) engellendi�ini do�rular. ... ok
+test_06_csrf_token_expiration (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_06_csrf_token_expiration)
+6. Test: S�resi dolmu� CSRF token�n�n reddedildi�ini do�rular. ... ok
+test_07_valid_username_and_sqli_xss_blocking (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_07_valid_username_and_sqli_xss_blocking)
+7. Test: Ge�erli kullan�c� ad�n�n onayland���n�, SQLi/XSS i�erenlerin engellendi�ini do�rular. ... ok
+test_08_valid_email_and_format_enforcement (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_08_valid_email_and_format_enforcement)
+8. Test: RFC standartlar�nda e-posta do�rulamas�n� ve ge�ersizlerin reddini do�rular. ... ok
+test_09_password_complexity_and_entropy (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_09_password_complexity_and_entropy)
+9. Test: G��l� parolan�n kabul edildi�ini, zay�f/d���k entropili parolan�n reddedildi�ini do�rular. ... ok
+test_10_amount_boundary_and_type_check (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_10_amount_boundary_and_type_check)
+10. Test: Finansal i�lem tutar� s�n�rlar�n� ve negatif de�er engellemesini do�rular. ... ok
+test_11_comment_field_html_escaping (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_11_comment_field_html_escaping)
+11. Test: A��klama alan�ndaki HTML/XSS karakterlerinin ka���a u�rad���n� do�rular. ... ok
+test_12_rate_limiter_allows_under_limit (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_12_rate_limiter_allows_under_limit)
+12. Test: �stek s�n�rland�r�c�n�n limit alt�ndaki 5 iste�e izin verdi�ini do�rular. ... ok
+test_13_rate_limiter_blocks_on_excess (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_13_rate_limiter_blocks_on_excess)
+13. Test: �zin verilen 5 iste�in ard�ndan 6. iste�in engellendi�ini do�rular. ... ok
+test_14_origin_header_validation (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_14_origin_header_validation)
+14. Test: Farkl� k�kenden (Origin) gelen sahte isteklerin 403 ile engellendi�ini do�rular. ... ok
+test_15_end_to_end_successful_form_submission (portfolio.hafta_23.gun_161.tests.test_secure_form.TestSecureFormEngine.test_15_end_to_end_successful_form_submission)
+15. Test: T�m kriterleri kar��layan eksiksiz form g�nderiminin 200 OK ile i�lendi�ini do�rular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

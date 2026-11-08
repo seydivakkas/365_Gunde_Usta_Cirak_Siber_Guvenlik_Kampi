@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kurumsal Güvenli Transfer Formu</title>
+</head>
+<body>
+    <h2>Güvenli Havale / EFT İşlem Formu</h2>
+    <form action="/api/v1/transfer" method="POST" autocomplete="off">
+        <input type="hidden" name="csrf_token" value="sess_production_demo_001:1794158425:6346321d75bf341f:564080e54e3f0ccd14f1e40cfa13862e1edb6408fef83b147b196215cfb5ed69">
+        
+        <div>
+            <label for="username">Alıcı Kullanıcı Adı:</label>
+            <input type="text" id="username" name="username" required maxlength="32">
+        </div>
+        
+        <div>
+            <label for="email">Alıcı E-posta:</label>
+            <input type="email" id="email" name="email" required maxlength="254">
+        </div>
+        
+        <div>
+            <label for="amount">Gönderilecek Tutar (TL):</label>
+            <input type="number" id="amount" name="amount" step="0.01" min="0.01" max="100000" required>
+        </div>
+        
+        <div>
+            <label for="password">İşlem Onay Parolası:</label>
+            <input type="password" id="password" name="password" required maxlength="128">
+        </div>
+        
+        <div>
+            <label for="comment">Açıklama (İsteğe Bağlı):</label>
+            <textarea id="comment" name="comment" maxlength="1000"></textarea>
+        </div>
+        
+        <button type="submit">Güvenli Gönder</button>
+    </form>
+    <script nonce="d4DnkvWbvG5lai1XREQ2OQ">
+        // İstemci tarafı zararsız form telemetry betiği
+        console.log("Güvenli form başarıyla yüklendi.");
+    </script>
+</body>
+</html>

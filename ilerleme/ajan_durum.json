@@ -1,9 +1,9 @@
 {
-  "son_islenen_gun": 160,
-  "son_kapanan_pass_gun": 160,
-  "sonraki_aday_gun": 161,
-  "son_durum": "G160_TAMAMLANDI_PASS",
-  "sonuc_dosyasi": "portfolio/hafta_23/gun_160/sonuc.json",
+  "son_islenen_gun": 161,
+  "son_kapanan_pass_gun": 161,
+  "sonraki_aday_gun": 162,
+  "son_durum": "G161_TAMAMLANDI_PASS",
+  "sonuc_dosyasi": "portfolio/hafta_23/gun_161/sonuc.json",
   "excel_dogrulandi": true,
   "mod": "OTOMATIK_ZINCIR",
   "tamamlanan_gunler": [
@@ -81,12 +81,13 @@
     157,
     158,
     159,
-    160
+    160,
+    161
   ],
-  "guncelleme_tarihi": "2026-11-08T20:15:36.036522",
-  "durum_notu": "Gün 160: XSS türleri ve savunma 100/100 PASS ile tamamlandı. Gün 161: Mini proje 22: güvenli form arayüzü konusuna hazır.",
-  "durum": "G160_TAMAMLANDI_PASS",
-  "son_islem_tarihi": "2026-11-08T20:15:36.036522",
-  "son_guncelleme": "2026-11-08T20:15:36.036522",
-  "guncelleme_zamani": "2026-11-08T20:15:36.036522"
+  "guncelleme_tarihi": "2026-11-08T20:22:29.270386",
+  "durum_notu": "Gün 161: Mini proje 22: güvenli form arayüzü 100/100 PASS ile tamamlandı. Hafta 23 başarıyla kapandı.",
+  "durum": "G161_TAMAMLANDI_PASS",
+  "son_islem_tarihi": "2026-11-08T20:22:29.270386",
+  "son_guncelleme": "2026-11-08T20:22:29.270386",
+  "guncelleme_zamani": "2026-11-08T20:22:29.270386"
 }

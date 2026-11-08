@@ -1,0 +1,151 @@
+{
+  "aciklama": "Gün 161 Mini Proje 22 - Güvenli Form Arayüzü 9 Negatif Kontrol ve Saldırı Senaryosu",
+  "senaryolar": [
+    {
+      "senaryo_id": "SCN-FORM-01",
+      "baslik": "CSRF Token Eksik Gönderim Saldırısı",
+      "tur": "CSRF_MISSING",
+      "beklenen_kod": 403,
+      "beklenen_hata": "CSRF tokenı eksik veya boş",
+      "session_id": "sess_victim_01",
+      "client_ip": "192.168.10.11",
+      "origin": "https://banka.kurum.internal",
+      "post_data": {
+        "username": "alici_hesap",
+        "email": "alici@kurum.com",
+        "amount": "1000.00",
+        "password": "ValidPassword!123"
+      }
+    },
+    {
+      "senaryo_id": "SCN-FORM-02",
+      "baslik": "CSRF Token Tahrifatı ve Sahte İmza",
+      "tur": "CSRF_TAMPERED",
+      "beklenen_kod": 403,
+      "beklenen_hata": "imzası geçersiz",
+      "session_id": "sess_victim_02",
+      "client_ip": "192.168.10.12",
+      "origin": "https://banka.kurum.internal",
+      "post_data": {
+        "csrf_token": "sess_victim_02:1760000000:aabbccdd:00112233445566778899aabbccddeeff00112233445566778899aabbccddeeff",
+        "username": "alici_hesap",
+        "email": "alici@kurum.com",
+        "amount": "2500.00",
+        "password": "ValidPassword!123"
+      }
+    },
+    {
+      "senaryo_id": "SCN-FORM-03",
+      "baslik": "Çapraz Site İstek Sahteciliği (Cross-Origin CSRF / Forged Origin)",
+      "tur": "CROSS_ORIGIN_FORGE",
+      "beklenen_kod": 403,
+      "beklenen_hata": "Geçersiz kaynak kökeni",
+      "session_id": "sess_victim_03",
+      "client_ip": "192.168.10.13",
+      "origin": "https://attacker.evil-bank.com",
+      "post_data": {
+        "csrf_token": "sess_victim_03:1760000000:nonce:signature",
+        "username": "saldirgan_hesap",
+        "email": "saldirgan@evil.com",
+        "amount": "50000.00",
+        "password": "ValidPassword!123"
+      }
+    },
+    {
+      "senaryo_id": "SCN-FORM-04",
+      "baslik": "Kullanıcı Adı Alanında SQL Enjeksiyonu Denemesi",
+      "tur": "SQL_INJECTION",
+      "beklenen_kod": 400,
+      "beklenen_hata": "zararlı enjeksiyon karakterleri tespit edildi",
+      "session_id": "sess_sqli_04",
+      "client_ip": "192.168.10.14",
+      "origin": "https://banka.kurum.internal",
+      "post_data": {
+        "username": "admin' OR 1=1 --",
+        "email": "admin@kurum.com",
+        "amount": "100.00",
+        "password": "ValidPassword!123"
+      }
+    },
+    {
+      "senaryo_id": "SCN-FORM-05",
+      "baslik": "Kullanıcı Adı Alanında XSS Script Enjeksiyonu",
+      "tur": "XSS_INJECTION",
+      "beklenen_kod": 400,
+      "beklenen_hata": "zararlı enjeksiyon karakterleri tespit edildi",
+      "session_id": "sess_xss_05",
+      "client_ip": "192.168.10.15",
+      "origin": "https://banka.kurum.internal",
+      "post_data": {
+        "username": "<script>alert(1)</script>",
+        "email": "user@kurum.com",
+        "amount": "200.00",
+        "password": "ValidPassword!123"
+      }
+    },
+    {
+      "senaryo_id": "SCN-FORM-06",
+      "baslik": "Bozuk ve Geçersiz E-posta Biçimi",
+      "tur": "INVALID_EMAIL",
+      "beklenen_kod": 400,
+      "beklenen_hata": "Geçerli bir e-posta biçimi",
+      "session_id": "sess_mail_06",
+      "client_ip": "192.168.10.16",
+      "origin": "https://banka.kurum.internal",
+      "post_data": {
+        "username": "alici_hesap",
+        "email": "hatali..adres@@kurum",
+        "amount": "300.00",
+        "password": "ValidPassword!123"
+      }
+    },
+    {
+      "senaryo_id": "SCN-FORM-07",
+      "baslik": "Zayıf ve Düşük Entropili Parola Denemesi",
+      "tur": "WEAK_PASSWORD",
+      "beklenen_kod": 400,
+      "beklenen_hata": "Parola en az 10 karakter",
+      "session_id": "sess_pass_07",
+      "client_ip": "192.168.10.17",
+      "origin": "https://banka.kurum.internal",
+      "post_data": {
+        "username": "alici_hesap",
+        "email": "alici@kurum.com",
+        "amount": "400.00",
+        "password": "12345"
+      }
+    },
+    {
+      "senaryo_id": "SCN-FORM-08",
+      "baslik": "Negatif Tutar ile Bakiye Manipülasyonu",
+      "tur": "AMOUNT_BOUNDARY_VIOLATION",
+      "beklenen_kod": 400,
+      "beklenen_hata": "İşlem tutarı en az 0.01 olmalıdır",
+      "session_id": "sess_amt_08",
+      "client_ip": "192.168.10.18",
+      "origin": "https://banka.kurum.internal",
+      "post_data": {
+        "username": "alici_hesap",
+        "email": "alici@kurum.com",
+        "amount": "-5000.00",
+        "password": "ValidPassword!123"
+      }
+    },
+    {
+      "senaryo_id": "SCN-FORM-09",
+      "baslik": "İstek Hızı Sınırı Aşımı (Rate Limit Exhaustion - 429)",
+      "tur": "RATE_LIMIT_EXHAUSTION",
+      "beklenen_kod": 429,
+      "beklenen_hata": "İstek limitiniz aşıldı",
+      "session_id": "sess_flood_09",
+      "client_ip": "192.168.10.19",
+      "origin": "https://banka.kurum.internal",
+      "post_data": {
+        "username": "alici_hesap",
+        "email": "alici@kurum.com",
+        "amount": "100.00",
+        "password": "ValidPassword!123"
+      }
+    }
+  ]
+}

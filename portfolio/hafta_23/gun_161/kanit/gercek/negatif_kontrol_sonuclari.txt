@@ -1,0 +1,62 @@
+================================================================================
+GÜN 161: MİNİ PROJE 22 - GÜVENLİ FORM ARAYÜZÜ NEGATİF KONTROL RAPORU
+================================================================================
+Tarih/Saat: 2026-11-08T20:20:25.479140
+
+[*] Senaryo: SCN-FORM-01 - CSRF Token Eksik Gönderim Saldırısı
+    Saldırı Türü: CSRF_MISSING | İstemci IP: 192.168.10.11 | Köken: https://banka.kurum.internal
+    Sonuç: [BAŞARILI] -> Tehdit 403 koduyla engellendi.
+    Hata Mesajı: CSRF Güvenlik İhlali: CSRF tokenı eksik veya boş.
+    Detaylar: {"success": false, "status_code": 403, "error": "CSRF Güvenlik İhlali: CSRF tokenı eksik veya boş."}
+
+[*] Senaryo: SCN-FORM-02 - CSRF Token Tahrifatı ve Sahte İmza
+    Saldırı Türü: CSRF_TAMPERED | İstemci IP: 192.168.10.12 | Köken: https://banka.kurum.internal
+    Sonuç: [BAŞARILI] -> Tehdit 403 koduyla engellendi.
+    Hata Mesajı: CSRF Güvenlik İhlali: CSRF token kriptografik imzası geçersiz.
+    Detaylar: {"success": false, "status_code": 403, "error": "CSRF Güvenlik İhlali: CSRF token kriptografik imzası geçersiz."}
+
+[*] Senaryo: SCN-FORM-03 - Çapraz Site İstek Sahteciliği (Cross-Origin CSRF / Forged Origin)
+    Saldırı Türü: CROSS_ORIGIN_FORGE | İstemci IP: 192.168.10.13 | Köken: https://attacker.evil-bank.com
+    Sonuç: [BAŞARILI] -> Tehdit 403 koduyla engellendi.
+    Hata Mesajı: Geçersiz kaynak kökeni: 'https://attacker.evil-bank.com'. Çapraz site sahteciliği engellendi.
+    Detaylar: {"success": false, "status_code": 403, "error": "Geçersiz kaynak kökeni: 'https://attacker.evil-bank.com'. Çapraz site sahteciliği engellendi."}
+
+[*] Senaryo: SCN-FORM-04 - Kullanıcı Adı Alanında SQL Enjeksiyonu Denemesi
+    Saldırı Türü: SQL_INJECTION | İstemci IP: 192.168.10.14 | Köken: https://banka.kurum.internal
+    Sonuç: [BAŞARILI] -> Tehdit 400 koduyla engellendi.
+    Hata Mesajı: Kullanıcı Adı Hatası: Kullanıcı adında zararlı enjeksiyon karakterleri tespit edildi.
+    Detaylar: {"success": false, "status_code": 400, "error": "Kullanıcı Adı Hatası: Kullanıcı adında zararlı enjeksiyon karakterleri tespit edildi."}
+
+[*] Senaryo: SCN-FORM-05 - Kullanıcı Adı Alanında XSS Script Enjeksiyonu
+    Saldırı Türü: XSS_INJECTION | İstemci IP: 192.168.10.15 | Köken: https://banka.kurum.internal
+    Sonuç: [BAŞARILI] -> Tehdit 400 koduyla engellendi.
+    Hata Mesajı: Kullanıcı Adı Hatası: Kullanıcı adında zararlı enjeksiyon karakterleri tespit edildi.
+    Detaylar: {"success": false, "status_code": 400, "error": "Kullanıcı Adı Hatası: Kullanıcı adında zararlı enjeksiyon karakterleri tespit edildi."}
+
+[*] Senaryo: SCN-FORM-06 - Bozuk ve Geçersiz E-posta Biçimi
+    Saldırı Türü: INVALID_EMAIL | İstemci IP: 192.168.10.16 | Köken: https://banka.kurum.internal
+    Sonuç: [BAŞARILI] -> Tehdit 400 koduyla engellendi.
+    Hata Mesajı: E-posta Hatası: Geçerli bir e-posta biçimi girilmelidir (ör: kullanici@kurum.com).
+    Detaylar: {"success": false, "status_code": 400, "error": "E-posta Hatası: Geçerli bir e-posta biçimi girilmelidir (ör: kullanici@kurum.com)."}
+
+[*] Senaryo: SCN-FORM-07 - Zayıf ve Düşük Entropili Parola Denemesi
+    Saldırı Türü: WEAK_PASSWORD | İstemci IP: 192.168.10.17 | Köken: https://banka.kurum.internal
+    Sonuç: [BAŞARILI] -> Tehdit 400 koduyla engellendi.
+    Hata Mesajı: Parola Hatası: Parola en az 10 karakter uzunluğunda olmalıdır.
+    Detaylar: {"success": false, "status_code": 400, "error": "Parola Hatası: Parola en az 10 karakter uzunluğunda olmalıdır."}
+
+[*] Senaryo: SCN-FORM-08 - Negatif Tutar ile Bakiye Manipülasyonu
+    Saldırı Türü: AMOUNT_BOUNDARY_VIOLATION | İstemci IP: 192.168.10.18 | Köken: https://banka.kurum.internal
+    Sonuç: [BAŞARILI] -> Tehdit 400 koduyla engellendi.
+    Hata Mesajı: Tutar Hatası: İşlem tutarı en az 0.01 olmalıdır.
+    Detaylar: {"success": false, "status_code": 400, "error": "Tutar Hatası: İşlem tutarı en az 0.01 olmalıdır."}
+
+[*] Senaryo: SCN-FORM-09 - İstek Hızı Sınırı Aşımı (Rate Limit Exhaustion - 429)
+    Saldırı Türü: RATE_LIMIT_EXHAUSTION | İstemci IP: 192.168.10.19 | Köken: https://banka.kurum.internal
+    Sonuç: [BAŞARILI] -> Tehdit 429 koduyla engellendi.
+    Hata Mesajı: İstek limitiniz aşıldı. Lütfen bir süre sonra tekrar deneyiniz.
+    Detaylar: {"success": false, "status_code": 429, "error": "İstek limitiniz aşıldı. Lütfen bir süre sonra tekrar deneyiniz."}
+
+--------------------------------------------------------------------------------
+ÖZET: Toplam 9 senaryodan 9 tanesi başarıyla savunuldu.
+================================================================================

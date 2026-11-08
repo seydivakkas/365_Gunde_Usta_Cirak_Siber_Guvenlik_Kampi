@@ -1,0 +1,37 @@
+{
+  "gun": 161,
+  "hafta": 23,
+  "asama": "07",
+  "konu": "Mini proje 22: güvenli form arayüzü",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-08",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_23/gun_161/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_23/gun_161/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "secure_form_audit_report_json": "portfolio/hafta_23/gun_161/kanit/gercek/secure_form_audit_report.json",
+    "rendered_form_samples_html": "portfolio/hafta_23/gun_161/kanit/gercek/rendered_form_samples.html",
+    "komut_ve_cikis": "portfolio/hafta_23/gun_161/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_23/gun_161/kanit/temsili/guvenli_form_mimarisi.txt"
+  },
+  "ozet": "Hafta 23 (Aşama 07: Web Güvenliği) kapanış projesi olan 'Mini Proje 22: Güvenli Form Arayüzü' başarıyla tamamlandı. HMAC-SHA256 tabanlı tek kullanımlık CSRF koruması, SameSite=Strict/HttpOnly/Secure çerez yapılandırması, katı şema girdi doğrulama, Shannon bilgi entropisi (>=3.0 bit) parola denetimi, kayan zaman pencereli hız sınırlandırması (Rate Limiting), Origin denetimi ve CSP Seviye 3 başlık mimarisi eksiksiz entegre edildi. 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla sonuçlandı (100/100 PASS)."
+}

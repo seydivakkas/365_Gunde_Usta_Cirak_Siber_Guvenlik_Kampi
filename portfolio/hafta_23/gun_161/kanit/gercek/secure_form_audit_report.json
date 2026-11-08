@@ -1,0 +1,89 @@
+{
+  "gun": 161,
+  "konu": "Mini proje 22: güvenli form arayüzü",
+  "tarih": "2026-11-08T20:20:25.480104",
+  "birim_testler": {
+    "toplam": 15,
+    "basarili": 15,
+    "oran": 1.0
+  },
+  "negatif_kontroller": {
+    "toplam": 9,
+    "savunulan": 9,
+    "oran": 1.0
+  },
+  "senaryolar": [
+    {
+      "senaryo_id": "SCN-FORM-01",
+      "baslik": "CSRF Token Eksik Gönderim Saldırısı",
+      "tur": "CSRF_MISSING",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "status_code": 403,
+      "error_returned": "CSRF Güvenlik İhlali: CSRF tokenı eksik veya boş."
+    },
+    {
+      "senaryo_id": "SCN-FORM-02",
+      "baslik": "CSRF Token Tahrifatı ve Sahte İmza",
+      "tur": "CSRF_TAMPERED",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "status_code": 403,
+      "error_returned": "CSRF Güvenlik İhlali: CSRF token kriptografik imzası geçersiz."
+    },
+    {
+      "senaryo_id": "SCN-FORM-03",
+      "baslik": "Çapraz Site İstek Sahteciliği (Cross-Origin CSRF / Forged Origin)",
+      "tur": "CROSS_ORIGIN_FORGE",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "status_code": 403,
+      "error_returned": "Geçersiz kaynak kökeni: 'https://attacker.evil-bank.com'. Çapraz site sahteciliği engellendi."
+    },
+    {
+      "senaryo_id": "SCN-FORM-04",
+      "baslik": "Kullanıcı Adı Alanında SQL Enjeksiyonu Denemesi",
+      "tur": "SQL_INJECTION",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "status_code": 400,
+      "error_returned": "Kullanıcı Adı Hatası: Kullanıcı adında zararlı enjeksiyon karakterleri tespit edildi."
+    },
+    {
+      "senaryo_id": "SCN-FORM-05",
+      "baslik": "Kullanıcı Adı Alanında XSS Script Enjeksiyonu",
+      "tur": "XSS_INJECTION",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "status_code": 400,
+      "error_returned": "Kullanıcı Adı Hatası: Kullanıcı adında zararlı enjeksiyon karakterleri tespit edildi."
+    },
+    {
+      "senaryo_id": "SCN-FORM-06",
+      "baslik": "Bozuk ve Geçersiz E-posta Biçimi",
+      "tur": "INVALID_EMAIL",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "status_code": 400,
+      "error_returned": "E-posta Hatası: Geçerli bir e-posta biçimi girilmelidir (ör: kullanici@kurum.com)."
+    },
+    {
+      "senaryo_id": "SCN-FORM-07",
+      "baslik": "Zayıf ve Düşük Entropili Parola Denemesi",
+      "tur": "WEAK_PASSWORD",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "status_code": 400,
+      "error_returned": "Parola Hatası: Parola en az 10 karakter uzunluğunda olmalıdır."
+    },
+    {
+      "senaryo_id": "SCN-FORM-08",
+      "baslik": "Negatif Tutar ile Bakiye Manipülasyonu",
+      "tur": "AMOUNT_BOUNDARY_VIOLATION",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "status_code": 400,
+      "error_returned": "Tutar Hatası: İşlem tutarı en az 0.01 olmalıdır."
+    },
+    {
+      "senaryo_id": "SCN-FORM-09",
+      "baslik": "İstek Hızı Sınırı Aşımı (Rate Limit Exhaustion - 429)",
+      "tur": "RATE_LIMIT_EXHAUSTION",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "status_code": 429,
+      "error_returned": "İstek limitiniz aşıldı. Lütfen bir süre sonra tekrar deneyiniz."
+    }
+  ]
+}

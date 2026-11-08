@@ -1,0 +1,56 @@
+{
+  "kurum": "Kurumsal Bankacılık ve Finansal Hizmetler A.Ş.",
+  "form_adi": "Kurumsal Para Transferi ve Havale Arayüzü",
+  "versiyon": "2026.2",
+  "guvenlik_standartlari": {
+    "csrf_korumasi": {
+      "algoritma": "HMAC-SHA256",
+      "format": "session_id:timestamp:nonce:signature",
+      "gecerlilik_suresi_saniye": 1800,
+      "tekrar_oynatma_engeli": "Tek kullanımlık nonce (Single-use Nonce)"
+    },
+    "rate_limiting": {
+      "kayan_pencere_saniye": 60,
+      "azami_istek_sayisi": 5,
+      "ceza_kodu": 429
+    },
+    "alan_kurallari": {
+      "username": {
+        "tip": "string",
+        "min_uzunluk": 3,
+        "max_uzunluk": 32,
+        "izinli_karakterler": "Alfanümerik ve alt çizgi",
+        "enjeksiyon_engeli": "SQLi ve XSS desenleri yasak"
+      },
+      "email": {
+        "tip": "email",
+        "standart": "RFC 5322",
+        "max_uzunluk": 254
+      },
+      "password": {
+        "tip": "password",
+        "min_uzunluk": 10,
+        "max_uzunluk": 128,
+        "karmasiklik": "Büyük harf, küçük harf, rakam, özel karakter",
+        "asgari_shannon_entropisi": 3.0
+      },
+      "amount": {
+        "tip": "float",
+        "min_deger": 0.01,
+        "max_deger": 100000.00,
+        "para_birimi": "TRY"
+      },
+      "comment": {
+        "tip": "string",
+        "max_uzunluk": 1000,
+        "arindirma": "HTML Entity Kaçışı (html.escape)"
+      }
+    },
+    "guvenlik_basliklari": {
+      "csp_seviye_3": "script-src 'nonce-{RANDOM}' 'strict-dynamic'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
+      "x_content_type_options": "nosniff",
+      "x_frame_options": "DENY",
+      "cerez_bayraklari": "__Host-SessionID; Secure; HttpOnly; SameSite=Strict; Path=/"
+    }
+  }
+}

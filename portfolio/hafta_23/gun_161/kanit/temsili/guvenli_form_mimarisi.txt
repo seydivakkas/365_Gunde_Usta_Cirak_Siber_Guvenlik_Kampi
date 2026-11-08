@@ -1,0 +1,65 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 161: MİNİ PROJE 22 - GÜVENLİ FORM ARAYÜZÜ ÇOK KATMANLI BORU HATTI
+================================================================================
+
+                           +----------------------------------------+
+                           |           İSTEMCİ TARAYICISI           |
+                           |  (Kullanıcı / Saldırgan / Çapraz Site)  |
+                           +----------------------------------------+
+                                                |
+                                                | HTTP POST /api/v1/transfer
+                                                v
+     [ KATMAN 1: RATE LIMITING & BRUTE FORCE ENGELİ (RateLimiter) ]
+     +--------------------------------------------------------------------------+
+     | - İstemci IP ve Oturum bazlı Token Bucket / Kayan Pencere (Sliding Window)|
+     | - Kural: Azami 5 istek / 60 saniye. İhlal halinde HTTP 429 Too Many Req   |
+     +--------------------------------------------------------------------------+
+                                                |
+                                                | Geçerli Hız Limitinde
+                                                v
+     [ KATMAN 2: ORİGİN & REFERRER ÇAPRAZ İSTEK DOĞRULAMA ]
+     +--------------------------------------------------------------------------+
+     | - Origin Başlığı: Beklenen alan adı (https://banka.kurum.internal) kontrolü|
+     | - Yabancı kökenden gelen sahte form gönderimlerine HTTP 403 Forbidden    |
+     +--------------------------------------------------------------------------+
+                                                |
+                                                | Doğrulanmış Köken
+                                                v
+     [ KATMAN 3: KRİPTOGRAFİK CSRF TOKEN KORUMASI (CSRFProtectionManager) ]
+     +--------------------------------------------------------------------------+
+     | - Format: session_id : timestamp : nonce : HMAC-SHA256(secret, payload) |
+     | - Oturum Bağlama: Token'daki session_id ile aktif oturum birebir uyuşmalı|
+     | - Süre Aşımı (TTL): 1800 saniye sonra kendiliğinden geçersizleşir        |
+     | - Replay Engeli: Kullanılan tekil nonce harcanır, ikinci kullanım 403   |
+     +--------------------------------------------------------------------------+
+                                                |
+                                                | Geçerli & İmzalı Token
+                                                v
+     [ KATMAN 4: KATI ŞEMA DOĞRULAMA & ENJEKSİYON FİLTRESİ (FormFieldValidator)]
+     +--------------------------------------------------------------------------+
+     | - username : ^[a-zA-Z0-9_]{3,32}$ (SQLi & XSS desen taraması)           |
+     | - email    : RFC 5322 regex formatı, azami 254 karakter                  |
+     | - password : >=10 karakter, Büyük/Küçük harf, rakam, sembol, Entropi>=3.0|
+     | - amount   : 0.01 - 100.000,00 TL sınır kontrolü                         |
+     | - comment  : HTML Entity kaçışı (html.escape(quote=True))                |
+     +--------------------------------------------------------------------------+
+                                                |
+                                                | Arındırılmış Veri
+                                                v
+     [ KATMAN 5: GÜVENLİK BAŞLIKLARI VE GÜVENLİ ÇEREZ MİMARİSİ ]
+     +--------------------------------------------------------------------------+
+     | - CSP Seviye 3: script-src 'nonce-RANDOM' 'strict-dynamic'; object-src none|
+     | - Çerez: __Host-SessionID; Secure; HttpOnly; SameSite=Strict; Path=/    |
+     | - X-Content-Type-Options: nosniff | X-Frame-Options: DENY                |
+     +--------------------------------------------------------------------------+
+                                                |
+                                                v
+                           +----------------------------------------+
+                           |          GÜVENLİ İŞLEM BAŞARILI        |
+                           |          (HTTP 200 OK Response)        |
+                           +----------------------------------------+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

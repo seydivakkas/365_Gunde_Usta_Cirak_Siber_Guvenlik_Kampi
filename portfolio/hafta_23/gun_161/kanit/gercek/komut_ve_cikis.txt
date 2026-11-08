@@ -1,0 +1,43 @@
+================================================================================
+GÜN 161: MİNİ PROJE 22 - GÜVENLİ FORM CLI YÜRÜTME VE ÇIKTI GÜNLÜĞÜ
+================================================================================
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_161\uygulama\secure_form_cli.py render --session-id sess_cli_demo
+{
+  "session_id": "sess_cli_demo",
+  "csrf_token": "sess_cli_demo:1794158425:e0c644f858ba6a07:09be025b14fa5e3d1de70b6d71eaf682302b25db3c20c2cbec0b6a78fb9608a8",
+  "security_headers": {
+    "Content-Security-Policy": "default-src 'self'; script-src 'nonce-Y0PgET85VxQ1tqQpwy0wFA' 'strict-dynamic'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; require-trusted-types-for 'script';",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Set-Cookie": "__Host-SessionID=dummy_val; Secure; HttpOnly; SameSite=Strict; Path=/"
+  },
+  "html_preview": "<!DOCTYPE html>\n<html lang=\"tr\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Kurumsal G�venli Transfer Formu</title>\n</head>\n<body>\n    <h2>G�venli Havale / EFT ��lem Formu</h2>\n    <form action=\"/api/v1/transfer\" method=\"POST\" autocomplete=\"off\">\n        <input type=\"hidden\" name=\"csrf_token\" valu... [KIRPILDI]"
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_161\uygulama\secure_form_cli.py generate-csrf --session-id sess_cli_demo
+{
+  "session_id": "sess_cli_demo",
+  "csrf_token": "sess_cli_demo:1794158425:16474aae6e1be44e:a9a6c44049d959c7daaa965326812123c2af18a4f2f125dd590068e9d56a7c1b"
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_161\uygulama\secure_form_cli.py validate-csrf --token sess_cli_demo:1794158425:dc6568c72619c169:74f57b51b234d0f47a2865a401b1376eb87ad9e0ed1c94981b742ad83a75acb5 --session-id sess_cli_demo
+{
+  "is_valid": false,
+  "message": "CSRF token kriptografik imzas� ge�ersiz."
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_161\uygulama\secure_form_cli.py submit --json-data {"csrf_token": "sess_cli_demo:1794158425:dc6568c72619c169:74f57b51b234d0f47a2865a401b1376eb87ad9e0ed1c94981b742ad83a75acb5", "username": "ahmet_yildiz", "email": "ahmet.yildiz@kurum.com", "password": "Ahm3tSecure!2026", "amount": "1500.00", "comment": "Nisan ay\u0131 aidat \u00f6demesi."} --session-id sess_cli_demo --client-ip 10.0.0.5
+{
+  "success": false,
+  "status_code": 403,
+  "error": "CSRF G�venlik �hlali: CSRF token kriptografik imzas� ge�ersiz."
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_23\gun_161\uygulama\secure_form_cli.py submit --json-data {"csrf_token": "gecersiz_token", "username": "admin' OR 1=1 --", "email": "invalid_email", "password": "123", "amount": "-50.00"} --session-id sess_cli_demo --client-ip 10.0.0.6
+{
+  "success": false,
+  "status_code": 403,
+  "error": "CSRF G�venlik �hlali: CSRF token bi�imi ge�ersiz."
+}
+------------------------------------------------------------

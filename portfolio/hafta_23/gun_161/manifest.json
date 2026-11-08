@@ -1,0 +1,85 @@
+{
+  "gun": 161,
+  "hafta": 23,
+  "asama": "07",
+  "konu": "Mini proje 22: güvenli form arayüzü",
+  "toplam_dosya": 20,
+  "dosyalar": {
+    "README.md": {
+      "boyut_bayt": 3910,
+      "sha256": "2688de68abacc4ed4224b3bbf7c451e09056460fafeeb5cf246a4c193b0fb50b"
+    },
+    "ders.md": {
+      "boyut_bayt": 7054,
+      "sha256": "805489e4513d7e08b1c8d6648f2848f83e2c3d9775a7f8d80045d2e16bdcbaaf"
+    },
+    "kanit_uretici.py": {
+      "boyut_bayt": 17131,
+      "sha256": "77ca1feb3a5762f1fd2783a09d75e03a4a4297d6a43ccaa0ab43c94188601a28"
+    },
+    "rapor.md": {
+      "boyut_bayt": 6502,
+      "sha256": "8cdde0aa9b7ffddc5bdd8608260a4a502697b2c7cba696d48e01d23d11efdfaf"
+    },
+    "sonuc.json": {
+      "boyut_bayt": 1797,
+      "sha256": "12a84bea5fcc7d14625fb10b9c3dd871e2fefa258b8ce625a98d354319923cc5"
+    },
+    "soru_cevap.md": {
+      "boyut_bayt": 10340,
+      "sha256": "b16006417521e5be1ac1490b94959abcdf06914c62608adfc622d6bcf6d0dd34"
+    },
+    "kanit\\gercek\\komut_ve_cikis.txt": {
+      "boyut_bayt": 3609,
+      "sha256": "acbea441c6fd5995fc66a5c513cc0e629e98ca72ca46771d5d960c6570d8430f"
+    },
+    "kanit\\gercek\\negatif_kontrol_sonuclari.txt": {
+      "boyut_bayt": 4846,
+      "sha256": "52831d0aafcaed6e79ebe0caaa03d4c08f0c366c1ed096572f95494656629517"
+    },
+    "kanit\\gercek\\rendered_form_samples.html": {
+      "boyut_bayt": 1703,
+      "sha256": "39f284c1ccbd117b109e380a86d87e14284458b4cbf0af72adda15ba597be422"
+    },
+    "kanit\\gercek\\secure_form_audit_report.json": {
+      "boyut_bayt": 3243,
+      "sha256": "6db0be1ebd0c5289ec27efcbf083e13bdf97acbe9a5eb45e2cdb07b418f79bb8"
+    },
+    "kanit\\gercek\\test_sonuclari.txt": {
+      "boyut_bayt": 4034,
+      "sha256": "d0bda1f87eebca3a6849658a107e942946b9f4c55c75437d2e62c14fb931797e"
+    },
+    "kanit\\temsili\\guvenli_form_mimarisi.txt": {
+      "boyut_bayt": 4755,
+      "sha256": "44335abd5dcc43314670ce6eb3a72f148009e839f981d9361881cfe5298fc440"
+    },
+    "ornek_veri\\enterprise_form_schema.json": {
+      "boyut_bayt": 1743,
+      "sha256": "cabac5cad1bda5783000a7a27464cd5c476b2b08542749b0339145b76b0e1abe"
+    },
+    "ornek_veri\\invalid_form_payloads.json": {
+      "boyut_bayt": 5038,
+      "sha256": "cf7905b42762f9ba4baf5e0c1284f353283ab6e1ab027797af2e46a77321b4a2"
+    },
+    "tests\\__init__.py": {
+      "boyut_bayt": 93,
+      "sha256": "ffe2c227f3ba01508e95263491643cde6b07f92460aea5b52e8948bc56099394"
+    },
+    "tests\\test_secure_form.py": {
+      "boyut_bayt": 12091,
+      "sha256": "1c0cdf21f4b8045e433a6a1ea501a9c3135920d9048267fd76cb85e36f31afb1"
+    },
+    "uygulama\\__init__.py": {
+      "boyut_bayt": 97,
+      "sha256": "7fc9a90d54a805fb9f72546b82a83eb3434c5226f849853f48c54f006c4c2b70"
+    },
+    "uygulama\\secure_form_cli.py": {
+      "boyut_bayt": 6112,
+      "sha256": "0f400f12f2fd0f1a7ca2d8798080702934c0c2417e18797e03b8e3294d7a3909"
+    },
+    "uygulama\\secure_form_engine.py": {
+      "boyut_bayt": 20534,
+      "sha256": "c3b816d97fe9aac8afc70f671b07adeecb0d33e9a67d20af98146b8e53c64bb0"
+    }
+  }
+}
