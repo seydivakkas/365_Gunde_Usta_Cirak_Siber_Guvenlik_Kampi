@@ -1,0 +1,23 @@
+{
+  "kurum": "Kurumsal Bulut ve Dağıtık Veri Sistemleri A.Ş.",
+  "politika_adi": "NoSQL ve ORM Güvenlik Politikası",
+  "versiyon": "2026.1",
+  "kapsam": "Tüm Doküman Veritabanları (MongoDB, CouchDB) ve ORM/ODM Çerçeveleri",
+  "standartlar": {
+    "nosql_operator_engeli": {
+      "yasakli_operatorler": ["$ne", "$gt", "$gte", "$lt", "$lte", "$in", "$nin", "$regex", "$where", "$exists", "$or", "$and"],
+      "bson_sanitization": "Gelen JSON/BSON gövdelerinde $ ile başlayan tüm anahtarlar sunucu girişinde reddedilir veya soyulur (mongo-sanitize).",
+      "javascript_calistirma": "Veritabanı seviyesinde server-side JS yürütme (javascriptEnabled: false) zorunludur; $where ve mapReduce yasaktır."
+    },
+    "orm_mass_assignment_korumasi": {
+      "dto_zorunlulugu": "HTTP istek gövdesi doğrudan veritabanı veya ORM modeline bağlanamaz (Over-posting engeli).",
+      "beyaz_liste_alanlari": {
+        "kullanici_profil_guncelleme": ["full_name", "email", "avatar_url", "bio"],
+        "yasakli_sistem_alanlari": ["is_admin", "is_superuser", "role", "roles", "balance", "permissions", "id"]
+      }
+    },
+    "tip_guvenligi": {
+      "skaler_zorunlulugu": "Kimlik doğrulama ve arama alanları yalnızca ilkel (string, int) skaler tipleri kabul eder; sözlük (dict) tipi reddedilir."
+    }
+  }
+}

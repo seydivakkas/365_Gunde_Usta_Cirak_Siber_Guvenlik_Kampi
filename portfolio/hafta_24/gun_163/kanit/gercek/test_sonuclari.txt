@@ -1,0 +1,36 @@
+
+test_01_nosql_operator_ne_detection (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_01_nosql_operator_ne_detection)
+1. Test: $ne (not equal) operat�r enjeksiyonunun tespitini do�rular. ... ok
+test_02_nosql_operator_gt_detection (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_02_nosql_operator_gt_detection)
+2. Test: $gt (greater than) operat�r enjeksiyonunun tespitini do�rular. ... ok
+test_03_nosql_regex_blind_detection (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_03_nosql_regex_blind_detection)
+3. Test: $regex k�r karakter s�zd�rma operat�r�n�n tespitini do�rular. ... ok
+test_04_nosql_where_javascript_eval_detection (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_04_nosql_where_javascript_eval_detection)
+4. Test: $where sunucu tarafl� JavaScript �al��t�rma operat�r�n�n tespitini do�rular. ... ok
+test_05_nosql_object_path_pollution_detection (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_05_nosql_object_path_pollution_detection)
+5. Test: Nokta notasyonu i�eren nesne yolu kirlili�inin (Path Pollution) tespitini do�rular. ... ok
+test_06_mass_assignment_is_admin_detection (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_06_mass_assignment_is_admin_detection)
+6. Test: G�ncelleme g�vdesindeki is_admin korumal� alan�n�n (Mass Assignment) tespitini do�rular. ... ok
+test_07_mass_assignment_role_escalation_detection (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_07_mass_assignment_role_escalation_detection)
+7. Test: G�ncelleme g�vdesindeki role: ADMIN ayr�cal�k y�kseltme giri�iminin tespitini do�rular. ... ok
+test_08_clean_benign_query_evaluation (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_08_clean_benign_query_evaluation)
+8. Test: Masum skaler de�erler i�eren sorgunun hi�bir tehdit �retmedi�ini do�rular. ... ok
+test_09_vulnerable_find_auth_bypass_with_ne (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_09_vulnerable_find_auth_bypass_with_ne)
+9. Test: Zafiyetli find() metodunun $ne ile parola bilmeden admin oturumunu a�t���n� do�rular. ... ok
+test_10_secure_find_blocks_operator_injection (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_10_secure_find_blocks_operator_injection)
+10. Test: G�venli find() metodunun s�zl�k/operat�r i�eren alan� ValueError ile reddetti�ini do�rular. ... ok
+test_11_secure_find_blocks_top_level_dollar_operator (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_11_secure_find_blocks_top_level_dollar_operator)
+11. Test: G�venli find() metodunun tepe seviyedeki $ operat�r�n� ($where) engelledi�ini do�rular. ... ok
+test_12_secure_find_valid_scalar_credentials (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_12_secure_find_valid_scalar_credentials)
+12. Test: Ge�erli skaler dize kimlik bilgilerinin g�venli find() ile do�ru kayd� getirdi�ini do�rular. ... ok
+test_13_vulnerable_update_allows_mass_assignment (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_13_vulnerable_update_allows_mass_assignment)
+13. Test: Zafiyetli g�ncellemenin normal kullan�c�n�n is_admin alan�n� True yapt���n� do�rular. ... ok
+test_14_secure_update_enforces_dto_allowlist (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_14_secure_update_enforces_dto_allowlist)
+14. Test: G�venli g�ncellemenin DTO allowlist ile is_admin alan�n� budayarak korudu�unu do�rular. ... ok
+test_15_engine_inspect_and_test_nosqli_structure (portfolio.hafta_24.gun_163.tests.test_nosql_orm.TestNoSQLORMEngine.test_15_engine_inspect_and_test_nosqli_structure)
+15. Test: Motorun kar��la�t�rmal� NoSQL analiz ��kt�s�n�n t�m beklenen alanlar� i�erdi�ini do�rular. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

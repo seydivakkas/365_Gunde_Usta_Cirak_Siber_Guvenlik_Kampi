@@ -1,0 +1,117 @@
+{
+  "gun": 163,
+  "konu": "NoSQL ve ORM sınırları",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "boyut_bayt": 4024,
+      "sha256": "8749bfce42667d72867ea65c3cd88a343da828b1861b649d3ade6a7e5e9b0f21"
+    },
+    {
+      "dosya": "ders.md",
+      "boyut_bayt": 7690,
+      "sha256": "1022cbcdfb5c08062fed4e1a279bb817db2315ed4d5d28daf0fa481c6e1fa108"
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "boyut_bayt": 17255,
+      "sha256": "9228f52e45bf2681283208f5500a0967faa8ceeff48b09bf02c4d7f2e36f4704"
+    },
+    {
+      "dosya": "rapor.md",
+      "boyut_bayt": 4964,
+      "sha256": "689a2ee2e2d4a8e5386106204d9de428775fa60f3a3c76c611952f56c46a71ae"
+    },
+    {
+      "dosya": "sonuc.json",
+      "boyut_bayt": 1703,
+      "sha256": "6e9cf319b6b5b6874dd073531228ad19bdf793e9c20531b9c3fd7e4305b2cdbc"
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "boyut_bayt": 7628,
+      "sha256": "1f66550d732252ecee2a11c4b83a6a779b9b4527bab35a7c0c92a81dea478c54"
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "boyut_bayt": 4576,
+      "sha256": "3fd1956c58c74b527b0e907c22e699d4d25fe828d16f37a58b9112d8e21ca3f1"
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "boyut_bayt": 4122,
+      "sha256": "22d53b4c921accd7407fe8d875042bcaa41280616080d35c172ff73be7962523"
+    },
+    {
+      "dosya": "kanit\\gercek\\nosql_orm_audit_report.json",
+      "boyut_bayt": 3190,
+      "sha256": "39e73d7242bf6979d827e0ea1b64465d52c3a8d143a0eef2887ea55b1189207e"
+    },
+    {
+      "dosya": "kanit\\gercek\\sanitized_orm_samples.txt",
+      "boyut_bayt": 1014,
+      "sha256": "b0f092cbae1ce995d4188da1b75933f95289f962c7dc48553978a46e2edecd0f"
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "boyut_bayt": 4198,
+      "sha256": "3800b0f9b0b6f897c7d4a981559ad49cf335808285b7ebfd37bdc84ad03b9a87"
+    },
+    {
+      "dosya": "kanit\\temsili\\nosql_orm_savunma_mimarisi.txt",
+      "boyut_bayt": 3601,
+      "sha256": "ab5ce5d5e961e00aadf7fb4311cf044f83e0d7c7bfdf0136912268771e3400e2"
+    },
+    {
+      "dosya": "ornek_veri\\enterprise_nosql_policy.json",
+      "boyut_bayt": 1322,
+      "sha256": "3385775719b3fe583871a33e78fc6aa07b2f7365ab7f0db28ba961320589ee87"
+    },
+    {
+      "dosya": "ornek_veri\\invalid_nosql_orm_payloads.json",
+      "boyut_bayt": 4153,
+      "sha256": "80b150711eb6f7b0eb7ab44b83b68fc1bcf85f8ca820ec6bb35420ba4fcf1637"
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "boyut_bayt": 79,
+      "sha256": "922c1e867723f6c2e4f55af3498fe9ed89c6072dabd957fe206ec2f6ed30c44b"
+    },
+    {
+      "dosya": "tests\\test_nosql_orm.py",
+      "boyut_bayt": 10443,
+      "sha256": "161a0290265a154402650dfe19ca8da85650489fa78849d4d981779e427aaa7c"
+    },
+    {
+      "dosya": "tests\\__pycache__\\__init__.cpython-314.pyc",
+      "boyut_bayt": 291,
+      "sha256": "ebe18f78cba0cc66a22296904d3fe6539b2235bfc872fc0b5b60d95388fa61f0"
+    },
+    {
+      "dosya": "tests\\__pycache__\\test_nosql_orm.cpython-314.pyc",
+      "boyut_bayt": 13051,
+      "sha256": "e08f34ec881eb0a15492604ff2c00d5c5c64870bb00b1bf960a3c6a7d5a5009d"
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "boyut_bayt": 83,
+      "sha256": "95d92ec9dac97b6cf136e6fbc83b4df0d4b6a93f35bae9f8e2f017944f03632d"
+    },
+    {
+      "dosya": "uygulama\\nosql_orm_cli.py",
+      "boyut_bayt": 5554,
+      "sha256": "e4c3925ed945af29f282d77259f702bca879999174229153a0f1d4c7e9174073"
+    },
+    {
+      "dosya": "uygulama\\nosql_orm_engine.py",
+      "boyut_bayt": 19676,
+      "sha256": "68f30688583221804e92a87b10efc60e9d82692982ab6fcbcfb8ace33f1e7cd0"
+    },
+    {
+      "dosya": "uygulama\\__pycache__\\nosql_orm_engine.cpython-314.pyc",
+      "boyut_bayt": 18239,
+      "sha256": "512eb6ca84570217f6d816672f25eb41ccbc3ce0801da35c6289fb27305e0201"
+    }
+  ],
+  "toplam_dosya": 22
+}

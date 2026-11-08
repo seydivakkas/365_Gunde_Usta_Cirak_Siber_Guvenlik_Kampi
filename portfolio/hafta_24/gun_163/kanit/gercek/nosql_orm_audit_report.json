@@ -1,0 +1,109 @@
+{
+  "gun": 163,
+  "konu": "NoSQL ve ORM sınırları",
+  "tarih": "2026-11-08T22:36:33.238379",
+  "birim_testler": {
+    "toplam": 15,
+    "basarili": 15,
+    "oran": 1.0
+  },
+  "negatif_kontroller": {
+    "toplam": 9,
+    "savunulan": 9,
+    "oran": 1.0
+  },
+  "senaryolar": [
+    {
+      "senaryo_id": "SCN-NOSQL-01",
+      "baslik": "$ne (Not Equal) Operatörü ile Kimlik Doğrulama Bypassı",
+      "tur": "OPERATOR_INJECTION",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "NOSQL_RESERVED_OPERATOR_INJECTION"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-02",
+      "baslik": "$gt (Greater Than) Boş Dize ile Toplu Kullanıcı Sızdırma",
+      "tur": "OPERATOR_INJECTION",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "NOSQL_RESERVED_OPERATOR_INJECTION",
+        "NOSQL_RESERVED_OPERATOR_INJECTION"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-03",
+      "baslik": "$regex ile Kör (Blind) Parola Karakter Sızdırma",
+      "tur": "REGEX_BLIND_INJECTION",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "NOSQL_REGEX_BLIND_OPERATOR"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-04",
+      "baslik": "$where ile Sunucu Taraflı JavaScript Yürütme Saldırısı",
+      "tur": "JAVASCRIPT_EVAL",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "NOSQL_JAVASCRIPT_WHERE_CLAUSE"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-05",
+      "baslik": "$in Dizi Operatörü ile Çoklu Hesap Yoklama",
+      "tur": "OPERATOR_INJECTION",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "NOSQL_RESERVED_OPERATOR_INJECTION"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-06",
+      "baslik": "Nokta Notasyonu ile İç İçe Nesne Yolu Manipülasyonu",
+      "tur": "OBJECT_PATH_POLLUTION",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "OBJECT_PATH_DOT_NOTATION"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-07",
+      "baslik": "ORM Mass Assignment ile is_admin Ayrıcalık Yükseltme",
+      "tur": "MASS_ASSIGNMENT",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "ORM_MASS_ASSIGNMENT_VULNERABILITY",
+        "ORM_MASS_ASSIGNMENT_VULNERABILITY"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-08",
+      "baslik": "ORM Mass Assignment ile Hesap Bakiyesi Tahrifatı",
+      "tur": "MASS_ASSIGNMENT",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "ORM_MASS_ASSIGNMENT_VULNERABILITY"
+      ],
+      "savunma_basarisi": true
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-09",
+      "baslik": "$exists Operatörü ile Gizli Alan Varlık Numaralandırma",
+      "tur": "OPERATOR_INJECTION",
+      "durum": "SAVUNULDU / ENGELLENDİ",
+      "imzalar": [
+        "NOSQL_RESERVED_OPERATOR_INJECTION"
+      ],
+      "savunma_basarisi": true
+    }
+  ]
+}

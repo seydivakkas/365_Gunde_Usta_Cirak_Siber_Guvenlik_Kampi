@@ -1,0 +1,13 @@
+================================================================================
+GÜN 163: ZAFİYETLİ VE GÜVENLİ NOSQL / ORM YÜRÜTME KARŞILAŞTIRMASI
+================================================================================
+[ÖRNEK 1: NoSQL $ne Operatör Bypass Karşılaştırması]
+Girdi Sorgusu : {"username": "admin", "password_hash": {"$ne": ""}}
+Zafiyetli Mod : Giriş Aşıldı=True, Dönen Kayıt=1
+Güvenli Mod   : Engellendi=True, Hata=Sorgu alanında geçersiz karmaşık nesne/operatör tipi tespit edildi: 'password_hash'
+------------------------------------------------------------
+[ÖRNEK 2: ORM Mass Assignment (is_admin Yetki Yükseltme) Karşılaştırması]
+Gönderilen Payload : {"full_name": "Ahmet Kaya (Sald\u0131rgan)", "is_admin": true, "role": "ADMIN", "balance": 9999999.0}
+Zafiyetli Sonuç    : is_admin=True, role=ADMIN (YETKİ YÜKSELDİ!)
+Güvenli DTO Sonucu : is_admin=False, role=USER (KORUNDU!)
+------------------------------------------------------------

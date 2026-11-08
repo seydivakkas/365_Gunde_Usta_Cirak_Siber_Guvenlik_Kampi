@@ -1,0 +1,52 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 163: NOSQL VE ORM GÜVENLİK SINIRLARI ÇOK KATMANLI MİMARİSİ
+================================================================================
+
+                           +--------------------------------------+
+                           |       DIŞ DÜNYA İSTEK GÖVDESİ        |
+                           |    (JSON, Query Params, BSON, Form)  |
+                           +--------------------------------------+
+                                               |
+                                               v
+     [ KATMAN 1: NOSQL OPERATÖR VE BSON FİLTRESİ (BSON Sanitizer) ]
+     +--------------------------------------------------------------------+
+     | - Yasaklı Operatörler: $ne, $gt, $regex, $where, $in, $exists      |
+     | - Nesne Yolu Filtresi: Anahtarlarda nokta (.) notasyonu engeli     |
+     | - Kural: Operatör tespit edildiği an istek 400 Bad Request ile     |
+     |          reddedilir veya $ önekleri soyulur (mongo-sanitize).      |
+     +--------------------------------------------------------------------+
+                                               |
+                                               v
+     [ KATMAN 2: KATI TİP GÜVENLİĞİ VE SKALER DENETİMİ (Type Enforcement) ]
+     +--------------------------------------------------------------------+
+     | - Kimlik doğrulama girdileri (username, password) KESİNLİKLE dize  |
+     |   (primitive string) veya sayı olmak zorundadır.                   |
+     | - Girdi sözlük (dict/object) tipinde gelirse derhal engellenir.    |
+     +--------------------------------------------------------------------+
+                                               |
+                                               v
+     [ KATMAN 3: ORM MASS ASSIGNMENT BEYAZ LİSTESİ (DTO Mapping) ]
+     +--------------------------------------------------------------------+
+     | - İstek gövdesi doğrudan ORM modeline (User.update(data)) BAĞLANMAZ|
+     | - DTO (Data Transfer Object) Tanımlı Alanlar: full_name, email     |
+     | - Korumalı Alanlar: is_admin, role, balance, permissions, id       |
+     |   -> Bu alanlar saldırgan tarafından gönderilse bile modele YAZILMAZ|
+     +--------------------------------------------------------------------+
+                                               |
+                                               v
+     [ KATMAN 4: SUNUCU VE MOTOR SERTLEŞTİRMESİ ]
+     +--------------------------------------------------------------------+
+     | - MongoDB javascriptEnabled: false (Sunucu taraflı JS kapalı)     |
+     | - ORM'de raw(), text(), extra() gibi ham sorgulardan kaçınma       |
+     | - Dinamik sıralamalarda (ORDER BY) katı allowlist zorunluluğu      |
+     +--------------------------------------------------------------------+
+                                               |
+                                               v
+                           +--------------------------------------+
+                           |   GÜVENLİ VE İZOLE VERİTABANI ERİŞİMİ |
+                           +--------------------------------------+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

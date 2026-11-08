@@ -1,0 +1,71 @@
+================================================================================
+GÜN 163: NOSQL INJECTION VE ORM SINIRLARI SALDIRI SAVUNMA RAPORU
+================================================================================
+Tarih/Saat: 2026-11-08T22:36:33.237801
+
+[*] Senaryo: SCN-NOSQL-01 - $ne (Not Equal) Operatörü ile Kimlik Doğrulama Bypassı
+    Saldırı Türü: OPERATOR_INJECTION | Hedef Alan: sorgu
+    Yük: {"username": "admin", "password_hash": {"$ne": ""}}
+    Sonuç: [BAŞARILI] -> Tehdit algılandı ve katı kontrollerle etkisiz kılındı.
+    Tespit Edilen İmzalar: ['NOSQL_RESERVED_OPERATOR_INJECTION']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-NOSQL-02 - $gt (Greater Than) Boş Dize ile Toplu Kullanıcı Sızdırma
+    Saldırı Türü: OPERATOR_INJECTION | Hedef Alan: sorgu
+    Yük: {"username": {"$gt": ""}, "password_hash": {"$gt": ""}}
+    Sonuç: [BAŞARILI] -> Tehdit algılandı ve katı kontrollerle etkisiz kılındı.
+    Tespit Edilen İmzalar: ['NOSQL_RESERVED_OPERATOR_INJECTION', 'NOSQL_RESERVED_OPERATOR_INJECTION']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-NOSQL-03 - $regex ile Kör (Blind) Parola Karakter Sızdırma
+    Saldırı Türü: REGEX_BLIND_INJECTION | Hedef Alan: sorgu
+    Yük: {"username": "admin", "password_hash": {"$regex": "^AdminSecret.*"}}
+    Sonuç: [BAŞARILI] -> Tehdit algılandı ve katı kontrollerle etkisiz kılındı.
+    Tespit Edilen İmzalar: ['NOSQL_REGEX_BLIND_OPERATOR']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-NOSQL-04 - $where ile Sunucu Taraflı JavaScript Yürütme Saldırısı
+    Saldırı Türü: JAVASCRIPT_EVAL | Hedef Alan: sorgu
+    Yük: {"$where": "this.balance > 10000"}
+    Sonuç: [BAŞARILI] -> Tehdit algılandı ve katı kontrollerle etkisiz kılındı.
+    Tespit Edilen İmzalar: ['NOSQL_JAVASCRIPT_WHERE_CLAUSE']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-NOSQL-05 - $in Dizi Operatörü ile Çoklu Hesap Yoklama
+    Saldırı Türü: OPERATOR_INJECTION | Hedef Alan: sorgu
+    Yük: {"username": {"$in": ["admin", "root", "superuser"]}}
+    Sonuç: [BAŞARILI] -> Tehdit algılandı ve katı kontrollerle etkisiz kılındı.
+    Tespit Edilen İmzalar: ['NOSQL_RESERVED_OPERATOR_INJECTION']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-NOSQL-06 - Nokta Notasyonu ile İç İçe Nesne Yolu Manipülasyonu
+    Saldırı Türü: OBJECT_PATH_POLLUTION | Hedef Alan: sorgu
+    Yük: {"profile.is_admin": true}
+    Sonuç: [BAŞARILI] -> Tehdit algılandı ve katı kontrollerle etkisiz kılındı.
+    Tespit Edilen İmzalar: ['OBJECT_PATH_DOT_NOTATION']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-NOSQL-07 - ORM Mass Assignment ile is_admin Ayrıcalık Yükseltme
+    Saldırı Türü: MASS_ASSIGNMENT | Hedef Alan: guncelleme
+    Yük: {"full_name": "Ahmet Kaya (Hacked)", "is_admin": true, "role": "ADMIN"}
+    Sonuç: [BAŞARILI] -> Tehdit algılandı ve katı kontrollerle etkisiz kılındı.
+    Tespit Edilen İmzalar: ['ORM_MASS_ASSIGNMENT_VULNERABILITY', 'ORM_MASS_ASSIGNMENT_VULNERABILITY']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-NOSQL-08 - ORM Mass Assignment ile Hesap Bakiyesi Tahrifatı
+    Saldırı Türü: MASS_ASSIGNMENT | Hedef Alan: guncelleme
+    Yük: {"email": "ahmet@hacked.com", "balance": 9999999.0}
+    Sonuç: [BAŞARILI] -> Tehdit algılandı ve katı kontrollerle etkisiz kılındı.
+    Tespit Edilen İmzalar: ['ORM_MASS_ASSIGNMENT_VULNERABILITY']
+    Savunma Başarısı: True
+
+[*] Senaryo: SCN-NOSQL-09 - $exists Operatörü ile Gizli Alan Varlık Numaralandırma
+    Saldırı Türü: OPERATOR_INJECTION | Hedef Alan: sorgu
+    Yük: {"token": {"$exists": true}}
+    Sonuç: [BAŞARILI] -> Tehdit algılandı ve katı kontrollerle etkisiz kılındı.
+    Tespit Edilen İmzalar: ['NOSQL_RESERVED_OPERATOR_INJECTION']
+    Savunma Başarısı: True
+
+--------------------------------------------------------------------------------
+ÖZET: Toplam 9 senaryodan 9 tanesi başarıyla savunuldu.
+================================================================================

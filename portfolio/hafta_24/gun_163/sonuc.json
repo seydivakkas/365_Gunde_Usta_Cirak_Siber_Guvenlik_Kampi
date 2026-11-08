@@ -1,0 +1,37 @@
+{
+  "gun": 163,
+  "hafta": 24,
+  "asama": "07",
+  "konu": "NoSQL ve ORM sınırları",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-08",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_24/gun_163/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_24/gun_163/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "nosql_orm_audit_report_json": "portfolio/hafta_24/gun_163/kanit/gercek/nosql_orm_audit_report.json",
+    "sanitized_orm_samples_txt": "portfolio/hafta_24/gun_163/kanit/gercek/sanitized_orm_samples.txt",
+    "komut_ve_cikis": "portfolio/hafta_24/gun_163/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_24/gun_163/kanit/temsili/nosql_orm_savunma_mimarisi.txt"
+  },
+  "ozet": "NoSQL operatör enjeksiyonları ($ne, $gt, $regex, $where, $in, $exists), nokta notasyonu manipülasyonu (Path Pollution) ve ORM Mass Assignment (Over-Posting) zafiyetlerini derinlemesine ele alan savunma motoru ve CLI aracı geliştirildi. Katı tip denetimi (Type Enforcement) ve DTO (Data Transfer Object) beyaz liste filtrelemesi ile tüm saldırı vektörleri bertaraf edildi. 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla sonuçlandı (100/100 PASS)."
+}

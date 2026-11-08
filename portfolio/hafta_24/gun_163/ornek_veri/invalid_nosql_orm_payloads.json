@@ -1,0 +1,110 @@
+{
+  "aciklama": "Gün 163 NoSQL ve ORM Sınırları - 9 Negatif Kontrol ve Saldırı Vektörü Senaryosu",
+  "senaryolar": [
+    {
+      "senaryo_id": "SCN-NOSQL-01",
+      "baslik": "$ne (Not Equal) Operatörü ile Kimlik Doğrulama Bypassı",
+      "tur": "OPERATOR_INJECTION",
+      "beklenen_imza": "NOSQL_RESERVED_OPERATOR_INJECTION",
+      "hedef_alan": "sorgu",
+      "payload": {
+        "username": "admin",
+        "password_hash": {"$ne": ""}
+      },
+      "savunma_aksiyonu": "Parola alanında sözlük/operatör tipinin reddedilerek yalnızca ilkel dize tipinin zorunlu kılınması"
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-02",
+      "baslik": "$gt (Greater Than) Boş Dize ile Toplu Kullanıcı Sızdırma",
+      "tur": "OPERATOR_INJECTION",
+      "beklenen_imza": "NOSQL_RESERVED_OPERATOR_INJECTION",
+      "hedef_alan": "sorgu",
+      "payload": {
+        "username": {"$gt": ""},
+        "password_hash": {"$gt": ""}
+      },
+      "savunma_aksiyonu": "$gt operatörünün BSON temizleyici tarafından tespit edilip engellenmesi"
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-03",
+      "baslik": "$regex ile Kör (Blind) Parola Karakter Sızdırma",
+      "tur": "REGEX_BLIND_INJECTION",
+      "beklenen_imza": "NOSQL_REGEX_BLIND_OPERATOR",
+      "hedef_alan": "sorgu",
+      "payload": {
+        "username": "admin",
+        "password_hash": {"$regex": "^AdminSecret.*"}
+      },
+      "savunma_aksiyonu": "Düzenli ifade operatörünün kimlik doğrulama arayüzünde yasaklanması"
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-04",
+      "baslik": "$where ile Sunucu Taraflı JavaScript Yürütme Saldırısı",
+      "tur": "JAVASCRIPT_EVAL",
+      "beklenen_imza": "NOSQL_JAVASCRIPT_WHERE_CLAUSE",
+      "hedef_alan": "sorgu",
+      "payload": {
+        "$where": "this.balance > 10000"
+      },
+      "savunma_aksiyonu": "$where anahtarının ve sunucu taraflı JS motorunun devre dışı bırakılması"
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-05",
+      "baslik": "$in Dizi Operatörü ile Çoklu Hesap Yoklama",
+      "tur": "OPERATOR_INJECTION",
+      "beklenen_imza": "NOSQL_RESERVED_OPERATOR_INJECTION",
+      "hedef_alan": "sorgu",
+      "payload": {
+        "username": {"$in": ["admin", "root", "superuser"]}
+      },
+      "savunma_aksiyonu": "Kullanıcı adı alanında dizi/operatör yerine tekil skaler değer zorunluluğu"
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-06",
+      "baslik": "Nokta Notasyonu ile İç İçe Nesne Yolu Manipülasyonu",
+      "tur": "OBJECT_PATH_POLLUTION",
+      "beklenen_imza": "OBJECT_PATH_DOT_NOTATION",
+      "hedef_alan": "sorgu",
+      "payload": {
+        "profile.is_admin": true
+      },
+      "savunma_aksiyonu": "Sorgu anahtarlarında nokta karakterinin yasaklanarak nesne hiyerarşisinin korunması"
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-07",
+      "baslik": "ORM Mass Assignment ile is_admin Ayrıcalık Yükseltme",
+      "tur": "MASS_ASSIGNMENT",
+      "beklenen_imza": "ORM_MASS_ASSIGNMENT_VULNERABILITY",
+      "hedef_alan": "guncelleme",
+      "payload": {
+        "full_name": "Ahmet Kaya (Hacked)",
+        "is_admin": true,
+        "role": "ADMIN"
+      },
+      "savunma_aksiyonu": "DTO beyaz liste filtresi ile is_admin ve role alanlarının sessizce ayıklanması"
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-08",
+      "baslik": "ORM Mass Assignment ile Hesap Bakiyesi Tahrifatı",
+      "tur": "MASS_ASSIGNMENT",
+      "beklenen_imza": "ORM_MASS_ASSIGNMENT_VULNERABILITY",
+      "hedef_alan": "guncelleme",
+      "payload": {
+        "email": "ahmet@hacked.com",
+        "balance": 9999999.0
+      },
+      "savunma_aksiyonu": "Finansal bakiye alanının salt okunur (read-only) yapılarak istemci güncellemesine kapatılması"
+    },
+    {
+      "senaryo_id": "SCN-NOSQL-09",
+      "baslik": "$exists Operatörü ile Gizli Alan Varlık Numaralandırma",
+      "tur": "OPERATOR_INJECTION",
+      "beklenen_imza": "NOSQL_RESERVED_OPERATOR_INJECTION",
+      "hedef_alan": "sorgu",
+      "payload": {
+        "token": {"$exists": true}
+      },
+      "savunma_aksiyonu": "$exists anahtarının engellenerek şema keşfinin önlenmesi"
+    }
+  ]
+}

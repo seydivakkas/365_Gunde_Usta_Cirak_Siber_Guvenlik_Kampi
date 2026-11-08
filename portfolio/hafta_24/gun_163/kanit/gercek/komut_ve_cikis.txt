@@ -1,0 +1,119 @@
+================================================================================
+GÜN 163: NOSQL VE ORM SINIRLARI CLI YÜRÜTME VE ÇIKTI GÜNLÜĞÜ
+================================================================================
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_163\uygulama\nosql_orm_cli.py scan-query --query-json {"username": "admin", "password_hash": {"$ne": ""}}
+{
+  "query_analyzed": {
+    "username": "admin",
+    "password_hash": {
+      "$ne": ""
+    }
+  },
+  "threat_detected": true,
+  "findings_count": 1,
+  "findings": [
+    {
+      "threat_type": "OPERATOR_INJECTION",
+      "severity": "CRITICAL",
+      "pattern_name": "NOSQL_RESERVED_OPERATOR_INJECTION",
+      "description": "Yasakl� NoSQL BSON operat�r� enjeksiyonu tespit edildi: '$ne'",
+      "matched_element": "{'$ne': ''}"
+    }
+  ]
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_163\uygulama\nosql_orm_cli.py scan-query --query-json {"$where": "this.balance > 1000"}
+{
+  "query_analyzed": {
+    "$where": "this.balance > 1000"
+  },
+  "threat_detected": true,
+  "findings_count": 1,
+  "findings": [
+    {
+      "threat_type": "JAVASCRIPT_EVAL",
+      "severity": "CRITICAL",
+      "pattern_name": "NOSQL_JAVASCRIPT_WHERE_CLAUSE",
+      "description": "Tehlikeli $where sunucu tarafl� JavaScript �al��t�rma operat�r� tespit edildi.",
+      "matched_element": "{'$where': 'this.balance > 1000'}"
+    }
+  ]
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_163\uygulama\nosql_orm_cli.py simulate-nosqli --query-json {"username": "admin", "password_hash": {"$ne": ""}}
+{
+  "is_threat_detected": true,
+  "findings_count": 1,
+  "findings": [
+    {
+      "threat_type": "OPERATOR_INJECTION",
+      "severity": "CRITICAL",
+      "pattern_name": "NOSQL_RESERVED_OPERATOR_INJECTION",
+      "description": "Yasakl� NoSQL BSON operat�r� enjeksiyonu tespit edildi: '$ne'",
+      "matched_element": "{'$ne': ''}"
+    }
+  ],
+  "vulnerable_execution": {
+    "records_matched": 1,
+    "authentication_bypassed": true,
+    "data_preview": [
+      {
+        "id": 1,
+        "username": "admin",
+        "password_hash": "AdminSecretHash2026!",
+        "role": "ADMIN",
+        "is_admin": true,
+        "balance": 150000.0,
+        "full_name": "Sistem Y�neticisi",
+        "email": "admin@kurum.internal"
+      }
+    ]
+  },
+  "secure_execution": {
+    "blocked_by_sanitizer": true,
+    "sanitizer_error": "Sorgu alan�nda ge�ersiz karma��k nesne/operat�r tipi tespit edildi: 'password_hash'",
+    "records_matched": 0
+  }
+}
+------------------------------------------------------------
+$ python C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_163\uygulama\nosql_orm_cli.py simulate-mass-assignment --user-id 2 --payload-json {"full_name": "Ahmet K.", "is_admin": true, "role": "ADMIN"}
+{
+  "mass_assignment_detected": true,
+  "findings": [
+    {
+      "threat_type": "MASS_ASSIGNMENT",
+      "severity": "HIGH",
+      "pattern_name": "ORM_MASS_ASSIGNMENT_VULNERABILITY",
+      "description": "Korumal� ve yetkisiz model alan�na yazma giri�imi (Mass Assignment): 'is_admin'",
+      "matched_element": "is_admin"
+    },
+    {
+      "threat_type": "MASS_ASSIGNMENT",
+      "severity": "HIGH",
+      "pattern_name": "ORM_MASS_ASSIGNMENT_VULNERABILITY",
+      "description": "Korumal� ve yetkisiz model alan�na yazma giri�imi (Mass Assignment): 'role'",
+      "matched_element": "role"
+    }
+  ],
+  "vulnerable_doc_after_update": {
+    "id": 2,
+    "username": "ahmet_kaya",
+    "password_hash": "KayaHash9988!",
+    "role": "ADMIN",
+    "is_admin": true,
+    "balance": 3450.5,
+    "full_name": "Ahmet K.",
+    "email": "ahmet@kurum.internal"
+  },
+  "secure_doc_after_update": {
+    "id": 2,
+    "username": "ahmet_kaya",
+    "password_hash": "KayaHash9988!",
+    "role": "USER",
+    "is_admin": false,
+    "balance": 3450.5,
+    "full_name": "Ahmet K.",
+    "email": "ahmet@kurum.internal"
+  }
+}
+------------------------------------------------------------

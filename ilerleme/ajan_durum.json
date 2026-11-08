@@ -1,9 +1,9 @@
 {
-  "son_islenen_gun": 162,
-  "son_kapanan_pass_gun": 162,
-  "sonraki_aday_gun": 163,
-  "son_durum": "G162_TAMAMLANDI_PASS",
-  "sonuc_dosyasi": "portfolio/hafta_24/gun_162/sonuc.json",
+  "son_islenen_gun": 163,
+  "son_kapanan_pass_gun": 163,
+  "sonraki_aday_gun": 164,
+  "son_durum": "G163_TAMAMLANDI_PASS",
+  "sonuc_dosyasi": "portfolio/hafta_24/gun_163/sonuc.json",
   "excel_dogrulandi": true,
   "mod": "OTOMATIK_ZINCIR",
   "tamamlanan_gunler": [
@@ -83,12 +83,13 @@
     159,
     160,
     161,
-    162
+    162,
+    163
   ],
-  "guncelleme_tarihi": "2026-11-08T21:35:28.072700",
-  "durum_notu": "Gün 162: SQL injection neden oluşur? 100/100 PASS ile tamamlandı. Gün 163: NoSQL ve ORM sınırları konusuna hazır.",
-  "durum": "G162_TAMAMLANDI_PASS",
-  "son_islem_tarihi": "2026-11-08T21:35:28.072700",
-  "son_guncelleme": "2026-11-08T21:35:28.072700",
-  "guncelleme_zamani": "2026-11-08T21:35:28.072700"
+  "guncelleme_tarihi": "2026-11-08T22:39:22.785115",
+  "durum_notu": "Gün 163: NoSQL ve ORM sınırları 100/100 PASS ile tamamlandı. Gün 164: CSRF ve oturum bağlamı konusuna hazır.",
+  "durum": "G163_TAMAMLANDI_PASS",
+  "son_islem_tarihi": "2026-11-08T22:39:22.785115",
+  "son_guncelleme": "2026-11-08T22:39:22.785115",
+  "guncelleme_zamani": "2026-11-08T22:39:22.785115"
 }
