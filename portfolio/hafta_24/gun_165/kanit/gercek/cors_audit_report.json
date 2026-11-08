@@ -1,0 +1,91 @@
+{
+  "gun": 165,
+  "konu": "CORS ile güvenlik sınırı",
+  "tarih": "2026-11-08T22:48:34.174283",
+  "savunulan_senaryo_sayisi": 9,
+  "toplam_senaryo": 9,
+  "basari_orani": 1.0,
+  "senaryo_detaylari": [
+    {
+      "senaryo_id": "SCN-CORS-01",
+      "baslik": "Yetkisiz Üçüncü Taraf Yabancı Köken (Untrusted Foreign Origin)",
+      "tur": "UNAUTHORIZED_FOREIGN_ORIGIN",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "cors_onaylandi": false
+    },
+    {
+      "senaryo_id": "SCN-CORS-02",
+      "baslik": "Sandbox İframe veya Data URL Kaynaklı 'null' Origin İsteği",
+      "tur": "NULL_ORIGIN_ALLOWED",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "cors_onaylandi": false
+    },
+    {
+      "senaryo_id": "SCN-CORS-03",
+      "baslik": "Alt Alan Adı Ön Ek Regex Atlatması (Subdomain Prefix Bypass)",
+      "tur": "LOOSE_REGEX_SUBDOMAIN",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "cors_onaylandi": false
+    },
+    {
+      "senaryo_id": "SCN-CORS-04",
+      "baslik": "Alt Alan Adı Son Ek Regex Atlatması (Subdomain Suffix Bypass)",
+      "tur": "LOOSE_REGEX_SUBDOMAIN",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "cors_onaylandi": false
+    },
+    {
+      "senaryo_id": "SCN-CORS-05",
+      "baslik": "Kaçılmamış Nokta Regex Karakter Değiştirme İstismarı (Unescaped Dot)",
+      "tur": "UNESCAPED_DOT_REGEX",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "cors_onaylandi": false
+    },
+    {
+      "senaryo_id": "SCN-CORS-06",
+      "baslik": "Güvensiz Düz Metin HTTP Protokolü İstismarı (Insecure HTTP Scheme)",
+      "tur": "INSECURE_HTTP_SCHEME",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "cors_onaylandi": false
+    },
+    {
+      "senaryo_id": "SCN-CORS-07",
+      "baslik": "Port İzolasyonu İhlali (Farklı Port Numarası İstismarı)",
+      "tur": "PORT_ISOLATION_VIOLATION",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "cors_onaylandi": false
+    },
+    {
+      "senaryo_id": "SCN-CORS-08",
+      "baslik": "Preflight OPTIONS ile Yasaklı Tehlikeli Metot Talebi (TRACE)",
+      "tur": "PREFLIGHT_DISALLOWED_METHOD",
+      "beklenen_kod": 405,
+      "gerceklesen_kod": 405,
+      "savunuldu": true,
+      "cors_onaylandi": false
+    },
+    {
+      "senaryo_id": "SCN-CORS-09",
+      "baslik": "Preflight OPTIONS ile İzin Verilmeyen Özel Başlık Talebi",
+      "tur": "PREFLIGHT_DISALLOWED_HEADER",
+      "beklenen_kod": 403,
+      "gerceklesen_kod": 403,
+      "savunuldu": true,
+      "cors_onaylandi": false
+    }
+  ]
+}

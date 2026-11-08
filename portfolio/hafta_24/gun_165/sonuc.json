@@ -1,0 +1,37 @@
+{
+  "gun": 165,
+  "hafta": 24,
+  "asama": "07",
+  "konu": "CORS ile güvenlik sınırı",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-08",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.001
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_24/gun_165/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_24/gun_165/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "cors_audit_report_json": "portfolio/hafta_24/gun_165/kanit/gercek/cors_audit_report.json",
+    "sanitized_cors_exchanges_txt": "portfolio/hafta_24/gun_165/kanit/gercek/sanitized_cors_exchanges.txt",
+    "komut_ve_cikis": "portfolio/hafta_24/gun_165/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_24/gun_165/kanit/temsili/cors_guvenlik_siniri_mimarisi.txt"
+  },
+  "ozet": "Aynı Köken İlkesi (SOP) ve Siteler Arası Kaynak Paylaşımı (CORS / CWE-942) mekanizmasını derinlemesine ele alan savunma motoru ve CLI aracı geliştirildi. Arbitrary Origin Reflection, null origin kabulü, gevşek regex alt alan adı atlatmaları ve önbellek zehirlenmesi zafiyetleri simüle edildi. Kurumsal katı beyaz liste (Allowlist), Preflight (OPTIONS) doğrulaması, Vary: Origin başlığı ve şema/port izolasyonu uygulandı. 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla sonuçlandı (100/100 PASS)."
+}

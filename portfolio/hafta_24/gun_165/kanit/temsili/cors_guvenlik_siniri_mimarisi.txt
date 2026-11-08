@@ -1,0 +1,56 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 165: CORS (CROSS-ORIGIN RESOURCE SHARING) GÜVENLİK SINIRI MİMARİSİ
+================================================================================
+
+                           +--------------------------------------+
+                           |   İSTEMCİ TARAYICISI (Browser XHR)   |
+                           |   (JavaScript fetch() / axios / XHR) |
+                           +--------------------------------------+
+                                               |
+                                               v
+    [ KATMAN 1: AYNI KÖKEN İLKESİ (Same-Origin Policy - SOP Varsayılanı) ]
+    +--------------------------------------------------------------------+
+    | - Varsayılan: Tarayıcı, yabancı bir kökenden (Cross-Origin) dönen  |
+    |   HTTP yanıt gövdesini JavaScript kodunun okumasına İZİN VERMEZ.   |
+    | - CORS Rolü: Güvenlik duvarı DEĞİLDİR; SOP kısıtlamasını seçici ve |
+    |   kontrollü olarak esnetmek için sunucu tarafından sunulan anahtar!|
+    +--------------------------------------------------------------------+
+                                               |
+                                               v
+    [ KATMAN 2: PREFLIGHT KONTROLÜ (HTTP OPTIONS Uç Noktası) ]
+    +--------------------------------------------------------------------+
+    | - Tetikleyiciler: JSON (application/json), PUT, DELETE, Authorization|
+    | - İstek Başlıkları:                                                |
+    |     Origin: https://portal.kurum.internal                          |
+    |     Access-Control-Request-Method: POST                            |
+    |     Access-Control-Request-Headers: content-type, authorization    |
+    | - Karar: Sunucu 204 No Content ve izinli liste ile onay verir.     |
+    +--------------------------------------------------------------------+
+                                               | (Preflight Onaylandı)
+                                               v
+    [ KATMAN 3: KATI KÖKEN BEYAZ LİSTESİ (Enterprise Allowlist Engine) ]
+    +--------------------------------------------------------------------+
+    | - İzinli Liste: ["https://portal.kurum.internal", ...]             |
+    | - Tehlikeli Hatalar (Yasaklandı!):                                 |
+    |     1. Arbitrary Reflection (Gelen Origin'i körlemesine yansıtma)  |
+    |     2. 'null' Origin'e güvenme (Sandbox iframe / data URI saldırısı)|
+    |     3. ACAO: * ile ACAC: true çelişkisi                            |
+    |     4. Gevşek Regex (evil-portal.kurum.internal veya unescaped dot)|
+    +--------------------------------------------------------------------+
+                                               |
+                                               v
+    [ KATMAN 4: ÖNBELLEK ZEHİRLENMESİ KORUMASI (Cache Poisoning Defense) ]
+    +--------------------------------------------------------------------+
+    | - Başlık: Vary: Origin                                             |
+    | - Görev: CDN/Proxy önbelleklerinin bir saldırganın Origin yanıtını  |
+    |   meşru kullanıcılara sunmasını engeller.                           |
+    +--------------------------------------------------------------------+
+                                               |
+                                               v
+                             +-----------------------------------+
+                             |     GÜVENLİ VERİ TESLİMATI        |
+                             | (Yalnızca Beyaz Listedeki Köken)  |
+                             +-----------------------------------+
+================================================================================

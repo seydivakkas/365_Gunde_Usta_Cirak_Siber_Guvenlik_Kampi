@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "policy_name": "Kurumsal CORS (Cross-Origin Resource Sharing) Güvenlik Standardı",
+  "version": "3.1.0",
+  "institution": "T.C. Siber Güvenlik ve Kamu Bilişim Standartları",
+  "effective_date": "2026-11-08",
+  "threat_model": {
+    "cwe_id": "CWE-942: Permissive Cross-Origin Resource Sharing Policy with Untrusted Domains",
+    "owasp_top_10": "A05:2025 - Security Misconfiguration",
+    "risk_level": "HIGH"
+  },
+  "rules": {
+    "allowed_origins": [
+      "https://portal.kurum.internal",
+      "https://mobil.kurum.internal",
+      "https://yonetim.kurum.internal:8443"
+    ],
+    "disallowed_origins": [
+      "null",
+      "*",
+      "file://*",
+      "http://*"
+    ],
+    "allowed_methods": [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE",
+      "OPTIONS"
+    ],
+    "allowed_headers": [
+      "content-type",
+      "authorization",
+      "x-csrf-token",
+      "x-requested-with"
+    ],
+    "allow_credentials": true,
+    "max_age_seconds": 86400,
+    "enforce_vary_origin": true,
+    "ban_arbitrary_reflection": true,
+    "strict_origin_matching": {
+      "match_scheme": true,
+      "match_host": true,
+      "match_port": true,
+      "disallow_regex_wildcards": true
+    }
+  }
+}

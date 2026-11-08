@@ -1,0 +1,117 @@
+{
+  "gun": 165,
+  "konu": "CORS ile güvenlik sınırı",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "boyut_bayt": 4331,
+      "sha256": "494caf59a8868a67e08a70ec85cdeaa8f9494f17381e3d2ce334e0ce8762e3b6"
+    },
+    {
+      "dosya": "ders.md",
+      "boyut_bayt": 8379,
+      "sha256": "c12587a8648af8906a89a9e3a8d7cf3975579e4d367e75db31a2fc6c95ae8502"
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "boyut_bayt": 14786,
+      "sha256": "015fab73287b14c9d342d5085e257dc3ada675584b82d399541f2a74d5c44467"
+    },
+    {
+      "dosya": "rapor.md",
+      "boyut_bayt": 5310,
+      "sha256": "1da8a99906141e91372a6cfe93d2c577233e73e0faf74563de985c732abf0623"
+    },
+    {
+      "dosya": "sonuc.json",
+      "boyut_bayt": 1770,
+      "sha256": "2b3fa646e78434a24969fd1e367f135a54e9d4a78d687ef7d7c0557165d053cc"
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "boyut_bayt": 8020,
+      "sha256": "7b7d1fff3c95ec6e221c3e27d5a31869401a1590958f12c272ca9507eda242e1"
+    },
+    {
+      "dosya": "kanit\\gercek\\cors_audit_report.json",
+      "boyut_bayt": 2860,
+      "sha256": "da52efcd94cbcf9f86c57bdbb7e553f7fa95235b3524809052e201005cb1420c"
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "boyut_bayt": 4295,
+      "sha256": "052dd18058facaa6129fafd1c650335f5cf2c8c1fae098c404ced1a6973b855b"
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "boyut_bayt": 3514,
+      "sha256": "19a92ca195d0f0187710d7ff18d77e1839ddec593044a3f1b3d18ac7e3ce0bc2"
+    },
+    {
+      "dosya": "kanit\\gercek\\sanitized_cors_exchanges.txt",
+      "boyut_bayt": 1814,
+      "sha256": "35fcf89bbf6f2faad2a74e5c2287e6bcd3283899870b2e5a9f7452e4afd7ea58"
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "boyut_bayt": 117,
+      "sha256": "f4129080b937da92153de1c8e69953e43ee93726a16d9a5b02d2e44c04bb40ce"
+    },
+    {
+      "dosya": "kanit\\temsili\\cors_guvenlik_siniri_mimarisi.txt",
+      "boyut_bayt": 3961,
+      "sha256": "58372cf43ed6e659dfc3338fac55ad526ebaa0c306abe8d43a741ed65c9afebb"
+    },
+    {
+      "dosya": "ornek_veri\\enterprise_cors_policy.json",
+      "boyut_bayt": 1269,
+      "sha256": "995c66c3ce4d0a29370cbe9375466b129b0d8da7496c4945f5854a2bbadf7f8f"
+    },
+    {
+      "dosya": "ornek_veri\\invalid_cors_payloads.json",
+      "boyut_bayt": 3913,
+      "sha256": "5ac1e693a9b43c9b46e3a7307bf5e027769583c2b7764f80090c59c4f36a5186"
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "boyut_bayt": 208,
+      "sha256": "2c80aca47e669fa0a5523d87f8dbc837284a751105072b3c3a9849454b08789b"
+    },
+    {
+      "dosya": "tests\\test_cors_engine.py",
+      "boyut_bayt": 11299,
+      "sha256": "ec6ab70c7ed0bcc283eaf1dca08cbde00f0fff90270cea908d1748c0cf39d2ff"
+    },
+    {
+      "dosya": "tests\\__pycache__\\__init__.cpython-314.pyc",
+      "boyut_bayt": 422,
+      "sha256": "1f1823f81ab0e3a22167b0f62dc3cc7f04e003397d30138b92397e354fe570ba"
+    },
+    {
+      "dosya": "tests\\__pycache__\\test_cors_engine.cpython-314.pyc",
+      "boyut_bayt": 13813,
+      "sha256": "647f05014986745608fd4de54a0852b3d114b8c1e67fe6967fc3d9ecaf70299c"
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "boyut_bayt": 206,
+      "sha256": "838ccd74c91fee3806becc8de5b0b64c0aa585e2f7e8bd53c6d0113ce4c62f60"
+    },
+    {
+      "dosya": "uygulama\\cors_cli.py",
+      "boyut_bayt": 6499,
+      "sha256": "48a7f9f120e6f2a0013694cbadd03eec53576460fe950521385c77adc107dfc8"
+    },
+    {
+      "dosya": "uygulama\\cors_engine.py",
+      "boyut_bayt": 13680,
+      "sha256": "616df1294b354dfc51c4e6285822f841bb7431e7be23d2938943e6c3819185d7"
+    },
+    {
+      "dosya": "uygulama\\__pycache__\\cors_engine.cpython-314.pyc",
+      "boyut_bayt": 13758,
+      "sha256": "fbd0a93ef40ab0aebdbe9d1bfb91e28d8a3d5ddc206b17b76d2a3a2aa4062f38"
+    }
+  ],
+  "toplam_dosya": 22
+}

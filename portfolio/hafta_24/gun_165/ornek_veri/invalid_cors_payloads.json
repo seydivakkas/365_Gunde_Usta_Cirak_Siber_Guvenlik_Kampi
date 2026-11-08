@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "aciklama": "Gün 165: CORS ile Güvenlik Sınırı Negatif Kontrol ve Saldırı Senaryoları",
+  "senaryolar": [
+    {
+      "senaryo_id": "SCN-CORS-01",
+      "baslik": "Yetkisiz Üçüncü Taraf Yabancı Köken (Untrusted Foreign Origin)",
+      "tur": "UNAUTHORIZED_FOREIGN_ORIGIN",
+      "istek": {
+        "method": "GET",
+        "path": "/api/finansal-rapor",
+        "origin": "https://evil-attacker.com"
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "UNAUTHORIZED_FOREIGN_ORIGIN"
+    },
+    {
+      "senaryo_id": "SCN-CORS-02",
+      "baslik": "Sandbox İframe veya Data URL Kaynaklı 'null' Origin İsteği",
+      "tur": "NULL_ORIGIN_ALLOWED",
+      "istek": {
+        "method": "GET",
+        "path": "/api/kullanici/bakiye",
+        "origin": "null"
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "NULL_ORIGIN_ALLOWED"
+    },
+    {
+      "senaryo_id": "SCN-CORS-03",
+      "baslik": "Alt Alan Adı Ön Ek Regex Atlatması (Subdomain Prefix Bypass)",
+      "tur": "LOOSE_REGEX_SUBDOMAIN",
+      "istek": {
+        "method": "GET",
+        "path": "/api/gizli-veriler",
+        "origin": "https://evil-portal.kurum.internal"
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "UNAUTHORIZED_FOREIGN_ORIGIN"
+    },
+    {
+      "senaryo_id": "SCN-CORS-04",
+      "baslik": "Alt Alan Adı Son Ek Regex Atlatması (Subdomain Suffix Bypass)",
+      "tur": "LOOSE_REGEX_SUBDOMAIN",
+      "istek": {
+        "method": "GET",
+        "path": "/api/gizli-veriler",
+        "origin": "https://portal.kurum.internal.evil-attacker.com"
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "UNAUTHORIZED_FOREIGN_ORIGIN"
+    },
+    {
+      "senaryo_id": "SCN-CORS-05",
+      "baslik": "Kaçılmamış Nokta Regex Karakter Değiştirme İstismarı (Unescaped Dot)",
+      "tur": "UNESCAPED_DOT_REGEX",
+      "istek": {
+        "method": "GET",
+        "path": "/api/gizli-veriler",
+        "origin": "https://portalxkurumxinternal"
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "UNAUTHORIZED_FOREIGN_ORIGIN"
+    },
+    {
+      "senaryo_id": "SCN-CORS-06",
+      "baslik": "Güvensiz Düz Metin HTTP Protokolü İstismarı (Insecure HTTP Scheme)",
+      "tur": "INSECURE_HTTP_SCHEME",
+      "istek": {
+        "method": "GET",
+        "path": "/api/kullanici/profil",
+        "origin": "http://portal.kurum.internal"
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "UNAUTHORIZED_FOREIGN_ORIGIN"
+    },
+    {
+      "senaryo_id": "SCN-CORS-07",
+      "baslik": "Port İzolasyonu İhlali (Farklı Port Numarası İstismarı)",
+      "tur": "PORT_ISOLATION_VIOLATION",
+      "istek": {
+        "method": "GET",
+        "path": "/api/kullanici/profil",
+        "origin": "https://portal.kurum.internal:8080"
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "UNAUTHORIZED_FOREIGN_ORIGIN"
+    },
+    {
+      "senaryo_id": "SCN-CORS-08",
+      "baslik": "Preflight OPTIONS ile Yasaklı Tehlikeli Metot Talebi (TRACE)",
+      "tur": "PREFLIGHT_DISALLOWED_METHOD",
+      "istek": {
+        "method": "OPTIONS",
+        "path": "/api/transfer",
+        "origin": "https://portal.kurum.internal",
+        "access_control_request_method": "TRACE"
+      },
+      "beklenen_hata_kodu": 405,
+      "beklenen_imza": "METHOD_NOT_ALLOWED"
+    },
+    {
+      "senaryo_id": "SCN-CORS-09",
+      "baslik": "Preflight OPTIONS ile İzin Verilmeyen Özel Başlık Talebi",
+      "tur": "PREFLIGHT_DISALLOWED_HEADER",
+      "istek": {
+        "method": "OPTIONS",
+        "path": "/api/transfer",
+        "origin": "https://portal.kurum.internal",
+        "access_control_request_method": "POST",
+        "access_control_request_headers": "x-malicious-exploit-header"
+      },
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "FORBIDDEN_HEADER"
+    }
+  ]
+}

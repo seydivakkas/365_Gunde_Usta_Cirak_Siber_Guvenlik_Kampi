@@ -1,0 +1,91 @@
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_165\uygulama\cors_cli.py --help
+usage: cors_cli.py [-h]
+                   {evaluate-origin,test-preflight,simulate-misconfig} ...
+
+Gün 165: CORS ile Güvenlik Sınırı Denetim ve Simülasyon Aracı
+
+positional arguments:
+  {evaluate-origin,test-preflight,simulate-misconfig}
+                        Kullanılabilir alt komutlar
+    evaluate-origin     Bir kökeni kurumsal CORS politikasına göre
+                        değerlendirir
+    test-preflight      CORS Preflight OPTIONS isteğini simüle eder
+    simulate-misconfig  Zafiyetli ve güvenli sunucuları karşılaştırır
+
+options:
+  -h, --help            show this help message and exit
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_165\uygulama\cors_cli.py evaluate-origin --origin https://portal.kurum.internal
+{
+  "candidate_origin": "https://portal.kurum.internal",
+  "normalized_origin": "https://portal.kurum.internal",
+  "status_code": 200,
+  "is_cross_origin_allowed": true,
+  "returned_headers": {
+    "Access-Control-Allow-Origin": "https://portal.kurum.internal",
+    "Access-Control-Allow-Credentials": "true",
+    "Vary": "Origin"
+  },
+  "verdict": "ERİŞİM ONAYLANDI (ALLOW)"
+}
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_165\uygulama\cors_cli.py evaluate-origin --origin https://evil-attacker.com
+{
+  "candidate_origin": "https://evil-attacker.com",
+  "normalized_origin": "https://evil-attacker.com",
+  "status_code": 403,
+  "is_cross_origin_allowed": false,
+  "returned_headers": {},
+  "verdict": "ERİŞİM ENGELLENDİ (DENY)"
+}
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_165\uygulama\cors_cli.py test-preflight --origin https://portal.kurum.internal --request-method POST --request-headers content-type,authorization
+{
+  "origin": "https://portal.kurum.internal",
+  "preflight_method": "POST",
+  "preflight_headers": "content-type,authorization",
+  "status_code": 204,
+  "preflight_approved": true,
+  "returned_cors_headers": {
+    "Access-Control-Allow-Origin": "https://portal.kurum.internal",
+    "Access-Control-Allow-Credentials": "true",
+    "Vary": "Origin",
+    "Access-Control-Allow-Methods": "DELETE, GET, OPTIONS, POST, PUT",
+    "Access-Control-Allow-Headers": "authorization, content-type, x-csrf-token, x-requested-with",
+    "Access-Control-Max-Age": "3600"
+  }
+}
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_165\uygulama\cors_cli.py simulate-misconfig --attacker-origin https://evil-hacker.com
+{
+  "attacker_origin": "https://evil-hacker.com",
+  "target_endpoint": "/api/gizli-finansal-rapor",
+  "vulnerable_server_response": {
+    "status_code": 200,
+    "headers": {
+      "Access-Control-Allow-Origin": "https://evil-hacker.com",
+      "Access-Control-Allow-Credentials": "true"
+    },
+    "data_leaked": true,
+    "risks_detected": [
+      "ARBITRARY_ORIGIN_REFLECTION",
+      "CACHE_POISONING_MISSING_VARY"
+    ],
+    "outcome": "VERİ SALDIRGANA SIZDIRILDI! (CORS Misconfiguration)"
+  },
+  "secure_server_response": {
+    "status_code": 403,
+    "headers": {},
+    "data_leaked": false,
+    "risks_detected": [
+      "UNAUTHORIZED_FOREIGN_ORIGIN"
+    ],
+    "outcome": "ERİŞİM ENGELLENDİ (403 Forbidden - CORS Güvenlik Sınırı Korundu)"
+  }
+}
+
+------------------------------------------------------------

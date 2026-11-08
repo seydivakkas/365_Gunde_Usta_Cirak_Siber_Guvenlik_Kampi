@@ -1,9 +1,9 @@
 {
-  "son_islenen_gun": 164,
-  "son_kapanan_pass_gun": 164,
-  "sonraki_aday_gun": 165,
-  "son_durum": "G164_TAMAMLANDI_PASS",
-  "sonuc_dosyasi": "portfolio/hafta_24/gun_164/sonuc.json",
+  "son_islenen_gun": 165,
+  "son_kapanan_pass_gun": 165,
+  "sonraki_aday_gun": 166,
+  "son_durum": "G165_TAMAMLANDI_PASS",
+  "sonuc_dosyasi": "portfolio/hafta_24/gun_165/sonuc.json",
   "excel_dogrulandi": true,
   "mod": "OTOMATIK_ZINCIR",
   "tamamlanan_gunler": [
@@ -85,12 +85,13 @@
     161,
     162,
     163,
-    164
+    164,
+    165
   ],
-  "guncelleme_tarihi": "2026-11-08T22:45:15.495017",
-  "durum_notu": "Gün 164: CSRF ve oturum bağlamı 100/100 PASS ile tamamlandı. Gün 165: CORS ile güvenlik sınırı konusuna hazır.",
-  "durum": "G164_TAMAMLANDI_PASS",
-  "son_islem_tarihi": "2026-11-08T22:45:15.495017",
-  "son_guncelleme": "2026-11-08T22:45:15.495017",
-  "guncelleme_zamani": "2026-11-08T22:45:15.495017"
+  "guncelleme_tarihi": "2026-11-08T22:50:43.133733",
+  "durum_notu": "Gün 165: CORS ile güvenlik sınırı 100/100 PASS ile tamamlandı. Gün 166: SSRF kavramı ve savunma konusuna hazır.",
+  "durum": "G165_TAMAMLANDI_PASS",
+  "son_islem_tarihi": "2026-11-08T22:50:43.133733",
+  "son_guncelleme": "2026-11-08T22:50:43.133733",
+  "guncelleme_zamani": "2026-11-08T22:50:43.133733"
 }

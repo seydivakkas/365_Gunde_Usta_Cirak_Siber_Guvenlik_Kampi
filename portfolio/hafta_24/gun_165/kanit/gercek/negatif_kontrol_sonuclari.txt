@@ -1,0 +1,53 @@
+================================================================================
+GÜN 165: CORS İLE GÜVENLİK SINIRI SALDIRI SAVUNMA RAPORU
+================================================================================
+Tarih/Saat: 2026-11-08T22:48:34.173610
+
+[*] Senaryo: SCN-CORS-01 - Yetkisiz Üçüncü Taraf Yabancı Köken (Untrusted Foreign Origin)
+    Saldırı Türü: UNAUTHORIZED_FOREIGN_ORIGIN | Origin: https://evil-attacker.com | Metot: GET
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    CORS Başlıkları: {} (ACAO dönülmedi)
+
+[*] Senaryo: SCN-CORS-02 - Sandbox İframe veya Data URL Kaynaklı 'null' Origin İsteği
+    Saldırı Türü: NULL_ORIGIN_ALLOWED | Origin: null | Metot: GET
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    CORS Başlıkları: {} (ACAO dönülmedi)
+
+[*] Senaryo: SCN-CORS-03 - Alt Alan Adı Ön Ek Regex Atlatması (Subdomain Prefix Bypass)
+    Saldırı Türü: LOOSE_REGEX_SUBDOMAIN | Origin: https://evil-portal.kurum.internal | Metot: GET
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    CORS Başlıkları: {} (ACAO dönülmedi)
+
+[*] Senaryo: SCN-CORS-04 - Alt Alan Adı Son Ek Regex Atlatması (Subdomain Suffix Bypass)
+    Saldırı Türü: LOOSE_REGEX_SUBDOMAIN | Origin: https://portal.kurum.internal.evil-attacker.com | Metot: GET
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    CORS Başlıkları: {} (ACAO dönülmedi)
+
+[*] Senaryo: SCN-CORS-05 - Kaçılmamış Nokta Regex Karakter Değiştirme İstismarı (Unescaped Dot)
+    Saldırı Türü: UNESCAPED_DOT_REGEX | Origin: https://portalxkurumxinternal | Metot: GET
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    CORS Başlıkları: {} (ACAO dönülmedi)
+
+[*] Senaryo: SCN-CORS-06 - Güvensiz Düz Metin HTTP Protokolü İstismarı (Insecure HTTP Scheme)
+    Saldırı Türü: INSECURE_HTTP_SCHEME | Origin: http://portal.kurum.internal | Metot: GET
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    CORS Başlıkları: {} (ACAO dönülmedi)
+
+[*] Senaryo: SCN-CORS-07 - Port İzolasyonu İhlali (Farklı Port Numarası İstismarı)
+    Saldırı Türü: PORT_ISOLATION_VIOLATION | Origin: https://portal.kurum.internal:8080 | Metot: GET
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    CORS Başlıkları: {} (ACAO dönülmedi)
+
+[*] Senaryo: SCN-CORS-08 - Preflight OPTIONS ile Yasaklı Tehlikeli Metot Talebi (TRACE)
+    Saldırı Türü: PREFLIGHT_DISALLOWED_METHOD | Origin: https://portal.kurum.internal | Metot: OPTIONS
+    Sonuç: [SAVUNULDU] -> HTTP 405 ile başarıyla engellendi.
+    CORS Başlıkları: {'Access-Control-Allow-Origin': 'https://portal.kurum.internal', 'Access-Control-Allow-Credentials': 'true', 'Vary': 'Origin'} (ACAO dönülmedi)
+
+[*] Senaryo: SCN-CORS-09 - Preflight OPTIONS ile İzin Verilmeyen Özel Başlık Talebi
+    Saldırı Türü: PREFLIGHT_DISALLOWED_HEADER | Origin: https://portal.kurum.internal | Metot: OPTIONS
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    CORS Başlıkları: {'Access-Control-Allow-Origin': 'https://portal.kurum.internal', 'Access-Control-Allow-Credentials': 'true', 'Vary': 'Origin'} (ACAO dönülmedi)
+
+--------------------------------------------------------------------------------
+ÖZET: Toplam 9 senaryodan 9 tanesi başarıyla savunuldu.
+================================================================================

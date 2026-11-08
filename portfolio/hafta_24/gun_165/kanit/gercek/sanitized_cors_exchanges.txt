@@ -1,0 +1,34 @@
+================================================================================
+GÜN 165: ZAFİYETLİ VE GÜVENLİ CORS HTTP ALIŞVERİŞ DÖKÜMÜ
+================================================================================
+Tarih/Saat: 2026-11-08T22:48:34.175011
+
+[1] ZAFİYETLİ CORS ÖRNEĞİ (Arbitrary Origin Reflection & Credentials):
+--- İSTEMCİ İSTEĞİ (evil-attacker.com üzerinden fetch): ---
+GET /api/kullanici/finansal-rapor HTTP/1.1
+Host: api.kurum.internal
+Origin: https://evil-attacker.com  <-- SALDIRGAN DOMAINI
+Cookie: session_id=sess_victim_1234  <-- TARAYICI OTOMATİK İLETTİ
+
+--- ZAFİYETLİ SUNUCU YANITI: ---
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: https://evil-attacker.com  <-- ZAFİYET: KÖRLEMESİNE YANSITILDI!
+Access-Control-Allow-Credentials: true  <-- ZAFİYET: SALDIRGAN JS İLE YANITI OKUYABİLİR!
+(Vary: Origin başlığı EKSİK! -> Önbellek zehirlenmesine açık)
+{"bakiye": 45000.0, "gizli_not": "Gizli Kurumsal Finansal Veri"}
+--> Sonuç: SALDIRGAN KURBANIN TÜM VERİLERİNİ ÇALDI!
+
+--------------------------------------------------------------------------------
+[2] GÜVENLİ KURUMSAL CORS ÖRNEĞİ (Katı Allowlist & Vary Header):
+--- İSTEMCİ İSTEĞİ (evil-attacker.com üzerinden fetch): ---
+GET /api/kullanici/finansal-rapor HTTP/1.1
+Host: api.kurum.internal
+Origin: https://evil-attacker.com  <-- SALDIRGAN DOMAINI
+
+--- GÜVENLİ SUNUCU YANITI: ---
+HTTP/1.1 403 Forbidden
+(Access-Control-Allow-Origin BAŞLIĞI DÖNÜLMEDİ!)
+{"hata": "Yetkisiz yabancı köken (Cross-Origin): https://evil-attacker.com. Erişim engellendi."}
+--> Sonuç: Tarayıcı SOP kuralını işletir, JS yanıtı okuyamaz, saldırı tamamen bertaraf edildi!
+
+================================================================================
