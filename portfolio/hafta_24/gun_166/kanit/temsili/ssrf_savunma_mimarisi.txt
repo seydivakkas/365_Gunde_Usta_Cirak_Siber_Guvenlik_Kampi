@@ -1,0 +1,61 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 166: SSRF (SERVER-SIDE REQUEST FORGERY) ÇOK KATMANLI SAVUNMA MİMARİSİ
+================================================================================
+
+                           +--------------------------------------+
+                           |       KULLANICI GİRDİSİ URL'Sİ       |
+                           |   (Webhook, Avatar, PDF, API Fetch)  |
+                           +--------------------------------------+
+                                               |
+                                               v
+    [ KATMAN 1: PROTOKOL VE ŞEMA KISITLAMASI (Scheme Whitelisting) ]
+    +--------------------------------------------------------------------+
+    | - İzin Verilen: Yalnızca 'http' ve 'https'                         |
+    | - Yasaklanan: file:// (yerel dosya), gopher:// (TCP payload),      |
+    |               dict://, ftp://, ldap://, netdoc://                  |
+    | - Karar: Uygunsuz şema derhal HTTP 403 ile reddedilir.             |
+    +--------------------------------------------------------------------+
+                                               | (HTTP/HTTPS Onaylandı)
+                                               v
+    [ KATMAN 2: URL AYRIŞTIRMA VE GİZLENMİŞ IP TESPİTİ (IP Normalization) ]
+    +--------------------------------------------------------------------+
+    | - Tespit Edilenler: DWORD (2130706433), Hex (0x7f.1), Octal (0177) |
+    | - IPv6 Çözümlemesi: [::1], [::ffff:127.0.0.1] (IPv4-mapped)        |
+    | - Kullanıcı Adı/Şifre Hilesi Temizliği (http://google.com@127.0.0.1)|
+    +--------------------------------------------------------------------+
+                                               |
+                                               v
+    [ KATMAN 3: DNS ÇÖZÜMLEME VE IP FİLTRELEME (Pre-Request IP Inspection) ]
+    +--------------------------------------------------------------------+
+    | - socket.getaddrinfo ile host adının TÜM A/AAAA IP'leri çözülür.   |
+    | - Kara Listedeki IP Blokları:                                      |
+    |     1. Yerel Döngü (Loopback): 127.0.0.0/8, ::1                    |
+    |     2. Bulut Metaverisi: 169.254.169.254 (AWS/Azure/GCP)           |
+    |     3. Özel Kurumsal Ağlar: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16|
+    |     4. Taşıyıcı NAT ve Bağlantı Yerel: 100.64.0.0/10, 169.254.0.0/16|
+    | - Karar: Çözümlenen IP'lerden BİRİ bile iç ağdaysa 403 verilir.    |
+    +--------------------------------------------------------------------+
+                                               |
+                                               v
+    [ KATMAN 4: DNS REBINDING KORUMASI VE IP SABİTLEME (IP Pinning) ]
+    +--------------------------------------------------------------------+
+    | - TOCTOU (Time-of-Check to Time-of-Use) saldırılarına karşı:       |
+    |   Soket bağlantısı doğrudan Katman 3'te doğrulanan IP'ye açılır.   |
+    | - Host başlığı korunur, fakat DNS tekrar sorgulanmaz.              |
+    +--------------------------------------------------------------------+
+                                               |
+                                               v
+    [ KATMAN 5: GÜVENLİ YÖNLENDİRME DENETİMİ (Redirect Re-validation) ]
+    +--------------------------------------------------------------------+
+    | - 301/302 yönlendirmeleri KÖKLEMESİNE TAKİP EDİLMEZ!               |
+    | - 'Location' başlığındaki yeni hedef sıfırdan Katman 1'e sokulur.  |
+    +--------------------------------------------------------------------+
+                                               |
+                                               v
+                             +-----------------------------------+
+                             |     GÜVENLİ DIŞ AĞ İSTEĞİ         |
+                             |   (Kamu API'si / Webhook Başarılı)|
+                             +-----------------------------------+
+================================================================================

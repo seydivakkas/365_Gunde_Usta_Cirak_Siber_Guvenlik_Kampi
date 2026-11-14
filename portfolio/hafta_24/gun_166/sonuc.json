@@ -1,0 +1,37 @@
+{
+  "gun": 166,
+  "hafta": 24,
+  "asama": "07",
+  "konu": "SSRF kavramı ve savunma",
+  "durum": "TAMAMLANDI_PASS",
+  "puan": 100,
+  "tarih": "2026-11-14",
+  "puan_kirilimi": {
+    "teori_ve_kavramsal_dogruluk": 20,
+    "kodlama_ve_motor_mimarisi": 40,
+    "test_ve_kanit_butunlugu": 25,
+    "belgelendirme_ve_standartlar": 15
+  },
+  "test_sonuclari": {
+    "toplam_birim_test": 15,
+    "basarili_test": 15,
+    "basarisiz_test": 0,
+    "basari_orani": 1.0,
+    "calisma_suresi_saniye": 0.002
+  },
+  "negatif_kontrol": {
+    "toplam_senaryo": 9,
+    "tespit_edilen": 9,
+    "kacirilan": 0,
+    "basari_orani": 1.0
+  },
+  "kanitlar": {
+    "test_kaniti": "portfolio/hafta_24/gun_166/kanit/gercek/test_sonuclari.txt",
+    "negatif_kontrol_kaniti": "portfolio/hafta_24/gun_166/kanit/gercek/negatif_kontrol_sonuclari.txt",
+    "ssrf_audit_report_json": "portfolio/hafta_24/gun_166/kanit/gercek/ssrf_audit_report.json",
+    "sanitized_fetch_logs_txt": "portfolio/hafta_24/gun_166/kanit/gercek/sanitized_fetch_logs.txt",
+    "komut_ve_cikis": "portfolio/hafta_24/gun_166/kanit/gercek/komut_ve_cikis.txt",
+    "temsili_diyagram": "portfolio/hafta_24/gun_166/kanit/temsili/ssrf_savunma_mimarisi.txt"
+  },
+  "ozet": "Sunucu Taraflı İstek Sahteciliği (SSRF / CWE-918) tehdidini, bulut metaveri servisi (169.254.169.254) sızıntılarını, RFC 1918 ve Loopback erişimlerini derinlemesine ele alan savunma motoru ve CLI aracı geliştirildi. Gizlenmiş IP formatları (Integer/DWORD, Hex, Octal, IPv4-mapped IPv6) normalize edildi; Pre-Request DNS çözümlemesi, IP Sabitleme (IP Pinning), güvenli HTTP yönlendirme (Redirect Re-Validation) ve protokol kısıtlaması uygulandı. 15 birim testi ve 9 negatif kontrol senaryosu %100 başarıyla sonuçlandı (100/100 PASS)."
+}

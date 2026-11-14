@@ -1,0 +1,34 @@
+================================================================================
+GÜN 166: ZAFİYETLİ VE GÜVENLİ SSRF İSTEK VE YANIT DÖKÜMÜ
+================================================================================
+Tarih/Saat: 2026-11-14T14:17:43.567488
+
+[1] ZAFİYETLİ İSTEMCİ ÇAĞRISI (Bulut Metaveri Sızıntısı):
+İstek URL: http://169.254.169.254/latest/meta-data/iam/security-credentials/admin-role
+--> HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "Code": "Success",
+  "AccessKeyId": "AKIA_FAKE_METADATA_KEY",
+  "SecretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+}
+--> Sonuç: ZAFİYET! Sunucu AWS IAM geçici kimlik bilgilerini saldırgana teslim etti!
+
+--------------------------------------------------------------------------------
+[2] GÜVENLİ İSTEMCİ ÇAĞRISI (SSRF Kalkanı Devrede):
+İstek URL: http://169.254.169.254/latest/meta-data/iam/security-credentials/admin-role
+--> IP Doğrulama: 169.254.169.254 -> CLOUD_METADATA_ACCESS saptandı!
+--> HTTP/1.1 403 Forbidden
+{"error": "SSRF_BLOCKED", "reason": "Bulut Metaveri Servisi (169.254.169.254) erişimi engellendi!"}
+--> Sonuç: SAVUNULDU! Ağ bağlantısı başlatılmadan istek yerel düzeyde kesildi!
+
+--------------------------------------------------------------------------------
+[3] 302 OPEN REDIRECT İLE METAVERİYE GEÇİŞ DENEMESİ:
+Başlangıç URL: https://public-service.com/redirect-to-metadata (Genel IP: 93.184.216.34 -> Geçerli)
+--> HTTP/1.1 302 Found
+--> Location: http://169.254.169.254/latest/meta-data/iam/security-credentials/admin-role
+--> Yeni Hedef İnceleniyor: 169.254.169.254
+--> HTTP/1.1 403 Forbidden (Yönlendirme hedefi iç ağ IP'si olduğu için engellendi!)
+--> Sonuç: SAVUNULDU! Yönlendirme zinciri üzerinden yapılan atlatma bertaraf edildi!
+
+================================================================================

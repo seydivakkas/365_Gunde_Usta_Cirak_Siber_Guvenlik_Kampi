@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "policy_name": "Kurumsal SSRF (Server-Side Request Forgery) ve Egress Filtreleme Standardı",
+  "version": "3.5.0",
+  "institution": "T.C. Siber Güvenlik ve Bulut Altyapı Güvenliği Standartları",
+  "effective_date": "2026-11-08",
+  "threat_model": {
+    "cwe_id": "CWE-918: Server-Side Request Forgery (SSRF)",
+    "owasp_top_10": "A10:2025 - Server-Side Request Forgery",
+    "risk_level": "CRITICAL"
+  },
+  "egress_rules": {
+    "allowed_protocols": [
+      "http",
+      "https"
+    ],
+    "disallowed_protocols": [
+      "file",
+      "gopher",
+      "dict",
+      "ftp",
+      "sftp",
+      "tftp",
+      "ldap",
+      "netdoc"
+    ],
+    "blacklisted_ip_ranges": [
+      "127.0.0.0/8",
+      "10.0.0.0/8",
+      "172.16.0.0/12",
+      "192.168.0.0/16",
+      "169.254.0.0/16",
+      "100.64.0.0/10",
+      "0.0.0.0/8",
+      "224.0.0.0/4",
+      "240.0.0.0/4",
+      "::1/128",
+      "fc00::/7",
+      "fe80::/10",
+      "::ffff:0:0/96"
+    ],
+    "cloud_metadata_protection": {
+      "imds_ip": "169.254.169.254",
+      "google_metadata_domain": "metadata.google.internal",
+      "enforce_imdsv2_tokens": true,
+      "hop_limit_enforcement": 1
+    },
+    "dns_rebinding_defense": {
+      "pre_request_dns_resolution": true,
+      "ip_pinning_enabled": true,
+      "validate_all_resolved_ips": true
+    },
+    "redirect_handling": {
+      "follow_redirects": true,
+      "max_redirect_depth": 3,
+      "revalidate_every_redirect_target": true,
+      "allow_cross_protocol_redirects": false
+    }
+  }
+}

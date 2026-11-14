@@ -1,0 +1,117 @@
+{
+  "gun": 166,
+  "konu": "SSRF kavramı ve savunma",
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "boyut_bayt": 4423,
+      "sha256": "81adbce04f54f95b6ebbfa236fd1f9dd6058d86bba63787d8bd1292771978930"
+    },
+    {
+      "dosya": "ders.md",
+      "boyut_bayt": 7517,
+      "sha256": "a4bf87501dc6c1e879f7ab7cb12767fe7f0adf89e817376581f1a05661f6b07f"
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "boyut_bayt": 14862,
+      "sha256": "f8beef7ae0d4708d0af925baae1955ead397b644459e24104e997cacc8c66acb"
+    },
+    {
+      "dosya": "rapor.md",
+      "boyut_bayt": 5418,
+      "sha256": "acd297018c567eff3c729c452720915558aad05fd92c9130b7ec0ae3cb893266"
+    },
+    {
+      "dosya": "sonuc.json",
+      "boyut_bayt": 1770,
+      "sha256": "9dfacd79ff558639ca1b4149928d80a14fd82842164f7ce52acf3244b0a82a51"
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "boyut_bayt": 7677,
+      "sha256": "ee91152bb5cbcbc944f0bfd7c39b3b7dd012a23a94d326f9e0f96d1954b7d7eb"
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "boyut_bayt": 4180,
+      "sha256": "a02fa2b37306923babd3c55d1d255878df6d74321b4312fc15419046a773aa9f"
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "boyut_bayt": 4051,
+      "sha256": "065d9349e3ec54771bd2ffba8c6c77b78557b25b5180dad6009ac6c2c54bc908"
+    },
+    {
+      "dosya": "kanit\\gercek\\sanitized_fetch_logs.txt",
+      "boyut_bayt": 1906,
+      "sha256": "be747cf27389f08950a7e1d11bdc65b37c0ada1ef7bcac990cf230ec097d661e"
+    },
+    {
+      "dosya": "kanit\\gercek\\ssrf_audit_report.json",
+      "boyut_bayt": 3989,
+      "sha256": "c328cb84b89c96acefdf284f240c74cf30e291957cb03aaebf30dd4301cef295"
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "boyut_bayt": 117,
+      "sha256": "c11a4f2f23a510f4f1d47d1f8d46fb5b1acce962f0a8c7ecbd9a83b4593c0f42"
+    },
+    {
+      "dosya": "kanit\\temsili\\ssrf_savunma_mimarisi.txt",
+      "boyut_bayt": 4314,
+      "sha256": "084a5dbbf47b2e55b3071468ac5f27e5d39f79db0c5924c063d8eda76d2b4dce"
+    },
+    {
+      "dosya": "ornek_veri\\enterprise_ssrf_policy.json",
+      "boyut_bayt": 1578,
+      "sha256": "3b88eb9a523f94f11924cc92629c812ac1de1dae212c86a81963d2ec5d2766c4"
+    },
+    {
+      "dosya": "ornek_veri\\invalid_ssrf_payloads.json",
+      "boyut_bayt": 2944,
+      "sha256": "10048f8f2d8aaeaa1a05070985a3bef845b507b5fc3b58c437e6bb091a29342b"
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "boyut_bayt": 192,
+      "sha256": "add2eabc8eb27d7845cd0ff14127929d08e5910845096697dc3b2a60acaa402f"
+    },
+    {
+      "dosya": "tests\\test_ssrf_defense.py",
+      "boyut_bayt": 9613,
+      "sha256": "ca393b0c8306c0604a9b2c8971cab0823d6a3394b8e6fbb981791f6a36e78248"
+    },
+    {
+      "dosya": "tests\\__pycache__\\__init__.cpython-314.pyc",
+      "boyut_bayt": 406,
+      "sha256": "7fb506567fc9a511ade9e1a10ea51de50704d60d7e117863972ab05cf13cbad2"
+    },
+    {
+      "dosya": "tests\\__pycache__\\test_ssrf_defense.cpython-314.pyc",
+      "boyut_bayt": 13731,
+      "sha256": "0caa261a74f28afbc415cb289163eaa37d105572722f299268513e14c6a51ca6"
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "boyut_bayt": 202,
+      "sha256": "b886ed695b3abff05367a97293074ff5412fed0367050ffeaaa2c1a17ae906d8"
+    },
+    {
+      "dosya": "uygulama\\ssrf_defense_cli.py",
+      "boyut_bayt": 6102,
+      "sha256": "622c89119ec9ed31b4f6add1111b062fd9c018ae37d051714c8048db932c375a"
+    },
+    {
+      "dosya": "uygulama\\ssrf_defense_engine.py",
+      "boyut_bayt": 23031,
+      "sha256": "229e25f67fb94af8ae284f6e5f7c5f70c65387b24a2b70e5afd1a078eeb6c1ea"
+    },
+    {
+      "dosya": "uygulama\\__pycache__\\ssrf_defense_engine.cpython-314.pyc",
+      "boyut_bayt": 24185,
+      "sha256": "60849e4e8628acd0c9fa861aa829fbea2ed18879695154344d0e24e0ebf0921e"
+    }
+  ],
+  "toplam_dosya": 22
+}

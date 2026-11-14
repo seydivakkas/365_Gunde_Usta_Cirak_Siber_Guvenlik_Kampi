@@ -1,0 +1,80 @@
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_166\uygulama\ssrf_defense_cli.py --help
+usage: ssrf_defense_cli.py [-h]
+                           {validate-url,safe-fetch,simulate-attack,parse-ip} ...
+
+Gün 166: SSRF Savunma ve Ağ Güvenliği Denetim Aracı
+
+positional arguments:
+  {validate-url,safe-fetch,simulate-attack,parse-ip}
+                        Kullanılabilir alt komutlar
+    validate-url        Bir URL'yi SSRF risklerine karşı inceler
+    safe-fetch          Güvenli HTTP getirme işlemini simüle eder
+    simulate-attack     Zafiyetli ve güvenli motorları karşılaştırır
+    parse-ip            Gizlenmiş IP biçimlerini çözümler
+
+options:
+  -h, --help            show this help message and exit
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_166\uygulama\ssrf_defense_cli.py validate-url --url http://127.0.0.1:8080/admin
+{
+  "target_url": "http://127.0.0.1:8080/admin",
+  "is_safe": false,
+  "scheme": "http",
+  "resolved_ips": [
+    "127.0.0.1"
+  ],
+  "risk_type": "LOOPBACK_ACCESS",
+  "rejection_reason": "Gizlenmiş IP formatı (127.0.0.1 -> 127.0.0.1) tespit edildi: Yerel döngü (Loopback) erişimi engellendi: '127.0.0.1'",
+  "details": {
+    "obfuscated_host": "127.0.0.1",
+    "normalized_ip": "127.0.0.1"
+  },
+  "verdict": "TEHDİT ENGELLENDİ (SSRF_BLOCKED)"
+}
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_166\uygulama\ssrf_defense_cli.py validate-url --url http://169.254.169.254/latest/meta-data/
+{
+  "target_url": "http://169.254.169.254/latest/meta-data/",
+  "is_safe": false,
+  "scheme": "http",
+  "resolved_ips": [
+    "169.254.169.254"
+  ],
+  "risk_type": "CLOUD_METADATA_ACCESS",
+  "rejection_reason": "Gizlenmiş IP formatı (169.254.169.254 -> 169.254.169.254) tespit edildi: Bulut Metaveri Servisi (169.254.169.254) erişimi engellendi!",
+  "details": {
+    "obfuscated_host": "169.254.169.254",
+    "normalized_ip": "169.254.169.254"
+  },
+  "verdict": "TEHDİT ENGELLENDİ (SSRF_BLOCKED)"
+}
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_166\uygulama\ssrf_defense_cli.py parse-ip --host 2130706433
+{
+  "input_host": "2130706433",
+  "is_obfuscated_ip": true,
+  "normalized_ip": "127.0.0.1"
+}
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_166\uygulama\ssrf_defense_cli.py simulate-attack --target-url http://169.254.169.254/latest/meta-data/iam/security-credentials/admin-role
+{
+  "attacker_target_url": "http://169.254.169.254/latest/meta-data/iam/security-credentials/admin-role",
+  "vulnerable_client_outcome": {
+    "status_code": 200,
+    "data_leaked": true,
+    "response_snippet": "{\"Code\": \"Success\", \"AccessKeyId\": \"AKIA_FAKE_METADATA_KEY\", \"SecretAccessKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\", \"Token\": \"SESSION_TOKEN_SA",
+    "verdict": "İÇ AĞ VERİSİ SIZDIRILDI (SSRF BAŞARILI!)"
+  },
+  "secure_client_outcome": {
+    "status_code": 403,
+    "is_blocked": true,
+    "block_reason": "Gizlenmiş IP formatı (169.254.169.254 -> 169.254.169.254) tespit edildi: Bulut Metaveri Servisi (169.254.169.254) erişimi engellendi!",
+    "verdict": "SALDIRI ENGELLENDİ (403 Forbidden - SSRF Önleme Katmanı Aktif)"
+  }
+}
+
+------------------------------------------------------------

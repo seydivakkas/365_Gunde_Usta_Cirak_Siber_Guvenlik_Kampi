@@ -1,0 +1,53 @@
+================================================================================
+GÜN 166: SSRF (SERVER-SIDE REQUEST FORGERY) SALDIRI SAVUNMA RAPORU
+================================================================================
+Tarih/Saat: 2026-11-14T14:17:43.566042
+
+[*] Senaryo: SCN-SSRF-01 - Yerel Döngü (Loopback 127.0.0.1) Yönetim Paneli Hedefleme
+    Saldırı Türü: LOOPBACK_ACCESS | Hedef URL: http://127.0.0.1:8080/admin
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Gizlenmiş IP formatı (127.0.0.1 -> 127.0.0.1) tespit edildi: Yerel döngü (Loopback) erişimi engellendi: '127.0.0.1'
+
+[*] Senaryo: SCN-SSRF-02 - AWS/Azure Bulut Metaveri Servisi (169.254.169.254) IAM Anahtarı Çalma
+    Saldırı Türü: CLOUD_METADATA_ACCESS | Hedef URL: http://169.254.169.254/latest/meta-data/iam/security-credentials/admin-role
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Gizlenmiş IP formatı (169.254.169.254 -> 169.254.169.254) tespit edildi: Bulut Metaveri Servisi (169.254.169.254) erişimi engellendi!
+
+[*] Senaryo: SCN-SSRF-03 - RFC 1918 Sınıf A (10.0.0.0/8) İç Veritabanı Port Taraması
+    Saldırı Türü: PRIVATE_NETWORK_ACCESS | Hedef URL: http://10.0.0.5:5432/status
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Gizlenmiş IP formatı (10.0.0.5 -> 10.0.0.5) tespit edildi: Özel kurumsal iç ağ IP erişimi (RFC 1918) engellendi: '10.0.0.5'
+
+[*] Senaryo: SCN-SSRF-04 - RFC 1918 Sınıf B (172.16.0.0/12) Konteyner İç Ağı Yoklama
+    Saldırı Türü: PRIVATE_NETWORK_ACCESS | Hedef URL: http://172.16.1.100:8000/api
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Gizlenmiş IP formatı (172.16.1.100 -> 172.16.1.100) tespit edildi: Özel kurumsal iç ağ IP erişimi (RFC 1918) engellendi: '172.16.1.100'
+
+[*] Senaryo: SCN-SSRF-05 - RFC 1918 Sınıf C (192.168.0.0/16) Ağ Geçidi Yönlendirici Arayüzü
+    Saldırı Türü: PRIVATE_NETWORK_ACCESS | Hedef URL: http://192.168.1.1/router-login
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Gizlenmiş IP formatı (192.168.1.1 -> 192.168.1.1) tespit edildi: Özel kurumsal iç ağ IP erişimi (RFC 1918) engellendi: '192.168.1.1'
+
+[*] Senaryo: SCN-SSRF-06 - Yasaklı Şema ile Yerel Sistem Dosyası Okuma (file:///etc/passwd)
+    Saldırı Türü: DISALLOWED_SCHEME | Hedef URL: file:///etc/passwd
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: İzin verilmeyen protokol şeması: 'file://'. Yalnızca HTTP/HTTPS kabul edilir.
+
+[*] Senaryo: SCN-SSRF-07 - Tamsayı (DWORD 2130706433) Biçiminde Gizlenmiş Loopback İstismarı
+    Saldırı Türü: OBFUSCATED_IP_FORMAT | Hedef URL: http://2130706433/admin
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Gizlenmiş IP formatı (2130706433 -> 127.0.0.1) tespit edildi: Yerel döngü (Loopback) erişimi engellendi: '127.0.0.1'
+
+[*] Senaryo: SCN-SSRF-08 - Onaltılık (Hex 0x7f000001) Biçiminde Gizlenmiş Loopback İstismarı
+    Saldırı Türü: OBFUSCATED_IP_FORMAT | Hedef URL: http://0x7f000001/admin
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Gizlenmiş IP formatı (0x7f000001 -> 127.0.0.1) tespit edildi: Yerel döngü (Loopback) erişimi engellendi: '127.0.0.1'
+
+[*] Senaryo: SCN-SSRF-09 - Açık HTTP Yönlendirme (302 Redirect) ile Bulut Metaverisine Sızma
+    Saldırı Türü: OPEN_REDIRECT_SSRF | Hedef URL: https://public-service.com/redirect-to-metadata
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Gizlenmiş IP formatı (169.254.169.254 -> 169.254.169.254) tespit edildi: Bulut Metaveri Servisi (169.254.169.254) erişimi engellendi!
+
+--------------------------------------------------------------------------------
+ÖZET: Toplam 9 senaryodan 9 tanesi başarıyla savunuldu.
+================================================================================

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "aciklama": "Gün 166: SSRF (Server-Side Request Forgery) Negatif Kontrol ve Saldırı Senaryoları",
+  "senaryolar": [
+    {
+      "senaryo_id": "SCN-SSRF-01",
+      "baslik": "Yerel Döngü (Loopback 127.0.0.1) Yönetim Paneli Hedefleme",
+      "tur": "LOOPBACK_ACCESS",
+      "hedef_url": "http://127.0.0.1:8080/admin",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "LOOPBACK_ACCESS"
+    },
+    {
+      "senaryo_id": "SCN-SSRF-02",
+      "baslik": "AWS/Azure Bulut Metaveri Servisi (169.254.169.254) IAM Anahtarı Çalma",
+      "tur": "CLOUD_METADATA_ACCESS",
+      "hedef_url": "http://169.254.169.254/latest/meta-data/iam/security-credentials/admin-role",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "CLOUD_METADATA_ACCESS"
+    },
+    {
+      "senaryo_id": "SCN-SSRF-03",
+      "baslik": "RFC 1918 Sınıf A (10.0.0.0/8) İç Veritabanı Port Taraması",
+      "tur": "PRIVATE_NETWORK_ACCESS",
+      "hedef_url": "http://10.0.0.5:5432/status",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "PRIVATE_NETWORK_ACCESS"
+    },
+    {
+      "senaryo_id": "SCN-SSRF-04",
+      "baslik": "RFC 1918 Sınıf B (172.16.0.0/12) Konteyner İç Ağı Yoklama",
+      "tur": "PRIVATE_NETWORK_ACCESS",
+      "hedef_url": "http://172.16.1.100:8000/api",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "PRIVATE_NETWORK_ACCESS"
+    },
+    {
+      "senaryo_id": "SCN-SSRF-05",
+      "baslik": "RFC 1918 Sınıf C (192.168.0.0/16) Ağ Geçidi Yönlendirici Arayüzü",
+      "tur": "PRIVATE_NETWORK_ACCESS",
+      "hedef_url": "http://192.168.1.1/router-login",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "PRIVATE_NETWORK_ACCESS"
+    },
+    {
+      "senaryo_id": "SCN-SSRF-06",
+      "baslik": "Yasaklı Şema ile Yerel Sistem Dosyası Okuma (file:///etc/passwd)",
+      "tur": "DISALLOWED_SCHEME",
+      "hedef_url": "file:///etc/passwd",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "DISALLOWED_SCHEME"
+    },
+    {
+      "senaryo_id": "SCN-SSRF-07",
+      "baslik": "Tamsayı (DWORD 2130706433) Biçiminde Gizlenmiş Loopback İstismarı",
+      "tur": "OBFUSCATED_IP_FORMAT",
+      "hedef_url": "http://2130706433/admin",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "LOOPBACK_ACCESS"
+    },
+    {
+      "senaryo_id": "SCN-SSRF-08",
+      "baslik": "Onaltılık (Hex 0x7f000001) Biçiminde Gizlenmiş Loopback İstismarı",
+      "tur": "OBFUSCATED_IP_FORMAT",
+      "hedef_url": "http://0x7f000001/admin",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "LOOPBACK_ACCESS"
+    },
+    {
+      "senaryo_id": "SCN-SSRF-09",
+      "baslik": "Açık HTTP Yönlendirme (302 Redirect) ile Bulut Metaverisine Sızma",
+      "tur": "OPEN_REDIRECT_SSRF",
+      "hedef_url": "https://public-service.com/redirect-to-metadata",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "CLOUD_METADATA_ACCESS"
+    }
+  ]
+}
