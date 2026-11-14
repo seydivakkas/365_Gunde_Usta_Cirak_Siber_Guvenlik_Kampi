@@ -1,0 +1,51 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+GÜN 167: PATH TRAVERSAL VE GÜVENLİ DOSYA ERİŞİMİ ÇOK KATMANLI MİMARİSİ
+================================================================================
+
+                           +--------------------------------------+
+                           |      İSTEMCİ DOSYA TALEP GİRDİSİ     |
+                           |  (../etc/passwd, %2e%2e%2f, .env)    |
+                           +--------------------------------------+
+                                               |
+                                               v
+    [ KATMAN 1: ÇOK GEÇİŞLİ URL KODLAMA ÇÖZÜMLEME (Multi-Pass Unquote) ]
+    +--------------------------------------------------------------------+
+    | - Tek Geçişli (%2e%2e%2f) ve Çift Geçişli (%252e%252e%252f)        |
+    |   gizlemeler çözümlenerek ham metne dönüştürülür.                  |
+    | - Karar: Çift kodlama tespit edildiği an talep 403 ile reddedilir. |
+    +--------------------------------------------------------------------+
+                                               |
+                                               v
+    [ KATMAN 2: NULL BYTE VE İÇ İÇE FİLTRE ENGELİ (Null Byte & Nested Dots) ]
+    +--------------------------------------------------------------------+
+    | - Null Byte Tespiti: %00 veya \x00 karakteri varsa derhal iptal!   |
+    | - Özyinelemeli Kalıp: ....// veya ..././ kalıpları derhal iptal!   |
+    +--------------------------------------------------------------------+
+                                               |
+                                               v
+    [ KATMAN 3: KATI DOSYA ADI VE UZANTI BEYAZ LİSTESİ (Filename Whitelist) ]
+    +--------------------------------------------------------------------+
+    | - Dosya Adı Karakterleri: ^[a-zA-Z0-9_\-\.]+$ (Dizin ayraçları / \ |
+    |   kesinlikle yasaklanmıştır; alt dizin atlama yapılamaz).          |
+    | - İzinli Uzantılar: .pdf, .png, .jpg, .docx, .txt                  |
+    | - Yasaklı Uzantılar: .env, .sh, .exe, .php, .config                |
+    +--------------------------------------------------------------------+
+                                               |
+                                               v
+    [ KATMAN 4: KANONİK YOL ÇÖZÜMLEME VE HAPİS (Canonical Jail / Chroot) ]
+    +--------------------------------------------------------------------+
+    | - os.path.realpath / Path.resolve ile sembolik bağlar çözülür.     |
+    | - Kural: os.path.commonpath([base_canonical, target_canonical])    |
+    |   kesinlikle base_canonical olmak zorundadır!                      |
+    | - Karar: Temel depo dizini (/var/www/kurumsal_depo) dışına taşma   |
+    |   girişimi saptandığı an HTTP 403 Forbidden ile engellenir.        |
+    +--------------------------------------------------------------------+
+                                               |
+                                               v
+                             +-----------------------------------+
+                             |     GÜVENLİ DOSYA TESLİMATI       |
+                             |   (Yalnızca İzinli Depo Dosyası)  |
+                             +-----------------------------------+
+================================================================================

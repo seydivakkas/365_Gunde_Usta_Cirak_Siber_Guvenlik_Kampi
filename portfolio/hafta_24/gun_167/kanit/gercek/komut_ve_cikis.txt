@@ -1,0 +1,135 @@
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py --help
+Traceback (most recent call last):
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1744, in _check_help
+    formatter._expand_help(action)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 672, in _expand_help
+    return help_string % params
+           ~~~~~~~~~~~~^~~~~~~~
+TypeError: must be real number, not dict
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py", line 149, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py", line 131, in main
+    p_dec.add_argument("--encoded-string", type=str, required=True, help="URL kodlu metin (örn: %252e%252e%252f)")
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1558, in add_argument
+    self._check_help(action)
+    ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1746, in _check_help
+    raise ValueError('badly formed help string') from exc
+ValueError: badly formed help string
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py validate-path --path ../../../../etc/passwd
+Traceback (most recent call last):
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1744, in _check_help
+    formatter._expand_help(action)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 672, in _expand_help
+    return help_string % params
+           ~~~~~~~~~~~~^~~~~~~~
+TypeError: must be real number, not dict
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py", line 149, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py", line 131, in main
+    p_dec.add_argument("--encoded-string", type=str, required=True, help="URL kodlu metin (örn: %252e%252e%252f)")
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1558, in add_argument
+    self._check_help(action)
+    ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1746, in _check_help
+    raise ValueError('badly formed help string') from exc
+ValueError: badly formed help string
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py validate-path --path fatura_2026.pdf
+Traceback (most recent call last):
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1744, in _check_help
+    formatter._expand_help(action)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 672, in _expand_help
+    return help_string % params
+           ~~~~~~~~~~~~^~~~~~~~
+TypeError: must be real number, not dict
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py", line 149, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py", line 131, in main
+    p_dec.add_argument("--encoded-string", type=str, required=True, help="URL kodlu metin (örn: %252e%252e%252f)")
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1558, in add_argument
+    self._check_help(action)
+    ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1746, in _check_help
+    raise ValueError('badly formed help string') from exc
+ValueError: badly formed help string
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py decode-path --encoded-string %252e%252e%252f
+Traceback (most recent call last):
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1744, in _check_help
+    formatter._expand_help(action)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 672, in _expand_help
+    return help_string % params
+           ~~~~~~~~~~~~^~~~~~~~
+TypeError: must be real number, not dict
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py", line 149, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py", line 131, in main
+    p_dec.add_argument("--encoded-string", type=str, required=True, help="URL kodlu metin (örn: %252e%252e%252f)")
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1558, in add_argument
+    self._check_help(action)
+    ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1746, in _check_help
+    raise ValueError('badly formed help string') from exc
+ValueError: badly formed help string
+
+------------------------------------------------------------
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py simulate-attack --payload ../../../../etc/passwd
+Traceback (most recent call last):
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1744, in _check_help
+    formatter._expand_help(action)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 672, in _expand_help
+    return help_string % params
+           ~~~~~~~~~~~~^~~~~~~~
+TypeError: must be real number, not dict
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py", line 149, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_167\uygulama\path_traversal_cli.py", line 131, in main
+    p_dec.add_argument("--encoded-string", type=str, required=True, help="URL kodlu metin (örn: %252e%252e%252f)")
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1558, in add_argument
+    self._check_help(action)
+    ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\Lib\argparse.py", line 1746, in _check_help
+    raise ValueError('badly formed help string') from exc
+ValueError: badly formed help string
+
+------------------------------------------------------------

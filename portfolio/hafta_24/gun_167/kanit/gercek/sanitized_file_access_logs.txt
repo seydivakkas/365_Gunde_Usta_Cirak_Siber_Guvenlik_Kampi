@@ -1,0 +1,24 @@
+================================================================================
+GÜN 167: ZAFİYETLİ VE GÜVENLİ DOSYA ERİŞİM İŞLEM DÖKÜMÜ
+================================================================================
+Tarih/Saat: 2026-11-14T14:29:06.123047
+
+[1] ZAFİYETLİ DOSYA OKUMA ÖRNEĞİ (os.path.join ve Dizin Atlama İstismarı):
+Talep Edilen Girdi: ../../../../etc/passwd
+Çalıştırılan Kod: os.path.join('/var/www/kurumsal_depo', '../../../../etc/passwd')
+Erişilen Yol: /etc/passwd  <-- SİSTEM PAROLA DOSYASI
+--> HTTP/1.1 200 OK
+root:x:0:0:root:/root:/bin/bash
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+--> Sonuç: ZAFİYET! Kurumsal sunucunun kritik kimlik ve sistem bilgileri çalındı!
+
+--------------------------------------------------------------------------------
+[2] GÜVENLİ DOSYA OKUMA ÖRNEĞİ (Kanonik Hapis ve Girdi Filtresi):
+Talep Edilen Girdi: ../../../../etc/passwd
+--> Katman 1 & 5 İncelemesi: Göreli dizin atlama ('..') tespit edildi.
+--> Kanonik Hapis Denetimi: Depo sınırları dışına taşma engellendi.
+--> HTTP/1.1 403 Forbidden
+{"error": "ACCESS_DENIED_PATH_TRAVERSAL", "reason": "Göreli dizin atlama ('..') kalıbı tespit edildi: '../../../../etc/passwd'"}
+--> Sonuç: SAVUNULDU! Dosya sistemi sınırları aşılamadı, yetkisiz okuma engellendi!
+
+================================================================================

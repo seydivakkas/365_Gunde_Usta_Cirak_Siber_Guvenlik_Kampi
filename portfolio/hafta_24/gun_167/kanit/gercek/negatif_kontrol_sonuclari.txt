@@ -1,0 +1,53 @@
+================================================================================
+GÜN 167: PATH TRAVERSAL VE DOSYA ERİŞİMİ SALDIRI SAVUNMA RAPORU
+================================================================================
+Tarih/Saat: 2026-11-14T14:29:06.121718
+
+[*] Senaryo: SCN-TRAV-01 - Standart Göreli Unix Dizin Atlama (../../../../etc/passwd)
+    Saldırı Türü: DOT_DOT_SLASH | Girdi Yolu: ../../../../etc/passwd
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Göreli dizin atlama ('..') kalıbı tespit edildi: '../../../../etc/passwd'
+
+[*] Senaryo: SCN-TRAV-02 - Windows Ters Eğik Çizgi Dizin Atlama (..\..\Windows\win.ini)
+    Saldırı Türü: DOT_DOT_SLASH | Girdi Yolu: ..\..\Windows\win.ini
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Göreli dizin atlama ('..') kalıbı tespit edildi: '..\..\Windows\win.ini'
+
+[*] Senaryo: SCN-TRAV-03 - Mutlak Unix Yolu ile Doğrudan Kök Dizin Okuma (/etc/passwd)
+    Saldırı Türü: ABSOLUTE_PATH_INJECTION | Girdi Yolu: /etc/passwd
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Kök dizini ezmeye çalışan Mutlak Yol (Absolute Path) enjeksiyonu tespit edildi: '/etc/passwd'
+
+[*] Senaryo: SCN-TRAV-04 - Mutlak Windows Sürücü Yolu ile Hosts Dosyası Okuma (C:\...)
+    Saldırı Türü: ABSOLUTE_PATH_INJECTION | Girdi Yolu: C:\Windows\System32\drivers\etc\hosts
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Kök dizini ezmeye çalışan Mutlak Yol (Absolute Path) enjeksiyonu tespit edildi: 'C:\Windows\System32\drivers\etc\hosts'
+
+[*] Senaryo: SCN-TRAV-05 - Tek Geçişli URL Kodlamalı Dizin Atlama (%2e%2e%2f...)
+    Saldırı Türü: URL_ENCODED_TRAVERSAL | Girdi Yolu: %2e%2e%2f%2e%2e%2ffatura.pdf
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Göreli dizin atlama ('..') kalıbı tespit edildi: '../../fatura.pdf'
+
+[*] Senaryo: SCN-TRAV-06 - Çift URL Kodlamalı (Double Encoded) Dizin Atlama (%252e%252e%252f...)
+    Saldırı Türü: DOUBLE_URL_ENCODED | Girdi Yolu: %252e%252e%252f%252e%252e%252fetc/passwd
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Çift URL kodlamalı (Double Encoded) Dizin Atlama saldırısı saptandı: '%252e%252e%252f%252e%252e%252fetc/passwd' -> '../../etc/passwd'
+
+[*] Senaryo: SCN-TRAV-07 - İç İçe Özyinelemeli Filtre Atlatma (....//....//etc/passwd)
+    Saldırı Türü: NESTED_FILTER_BYPASS | Girdi Yolu: ....//....//etc/passwd
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: İç içe özyinelemeli filtre atlatma kalıbı (....//) tespit edildi!
+
+[*] Senaryo: SCN-TRAV-08 - Null Byte (%00) Sonlandırma ile Uzantı Filtresi Aldatması
+    Saldırı Türü: NULL_BYTE_INJECTION | Girdi Yolu: fatura_2026.pdf%00.exe
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: Zararlı Null Byte (%00) sonlandırma karakteri tespit edildi!
+
+[*] Senaryo: SCN-TRAV-09 - İzin Verilmeyen Sistem Uzantısı ile Ortam Dosyası Okuma (.env)
+    Saldırı Türü: UNAPPROVED_EXTENSION | Girdi Yolu: sistem_ayarlari.env
+    Sonuç: [SAVUNULDU] -> HTTP 403 ile başarıyla engellendi.
+    Gerekçe: İzin verilmeyen dosya uzantısı: '.env'. İzin verilenler: ['.docx', '.jpg', '.pdf', '.png', '.txt']
+
+--------------------------------------------------------------------------------
+ÖZET: Toplam 9 senaryodan 9 tanesi başarıyla savunuldu.
+================================================================================

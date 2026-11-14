@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "policy_name": "Kurumsal Dosya Depolama ve Dizin İzolasyonu Standardı",
+  "version": "4.2.0",
+  "institution": "T.C. Siber Güvenlik ve Veri Depolama Standartları",
+  "effective_date": "2026-11-08",
+  "threat_model": {
+    "cwe_id": "CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+    "owasp_top_10": "A01:2025 - Broken Access Control",
+    "risk_level": "HIGH"
+  },
+  "storage_rules": {
+    "base_directory": "/var/www/kurumsal_depo",
+    "canonical_jail_enforcement": true,
+    "allowed_extensions": [
+      ".pdf",
+      ".png",
+      ".jpg",
+      ".docx",
+      ".txt"
+    ],
+    "disallowed_extensions": [
+      ".env",
+      ".sh",
+      ".bash",
+      ".exe",
+      ".dll",
+      ".bat",
+      ".cmd",
+      ".php",
+      ".jsp",
+      ".asp",
+      ".aspx",
+      ".py",
+      ".db",
+      ".sqlite",
+      ".conf",
+      ".ini"
+    ],
+    "filename_constraints": {
+      "strict_basename_only": true,
+      "allow_slashes_in_filename": false,
+      "max_length": 128,
+      "regex_whitelist": "^[a-zA-Z0-9_\\-\\.]+$"
+    },
+    "encoding_rules": {
+      "multi_pass_url_decode": true,
+      "ban_null_bytes": true,
+      "ban_nested_dots": true
+    }
+  }
+}

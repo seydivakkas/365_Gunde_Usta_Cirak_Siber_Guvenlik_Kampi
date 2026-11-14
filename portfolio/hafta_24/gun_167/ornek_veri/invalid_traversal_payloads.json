@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "aciklama": "Gün 167: Path Traversal ve Dosya Erişimi Negatif Kontrol ve Saldırı Senaryoları",
+  "senaryolar": [
+    {
+      "senaryo_id": "SCN-TRAV-01",
+      "baslik": "Standart Göreli Unix Dizin Atlama (../../../../etc/passwd)",
+      "tur": "DOT_DOT_SLASH",
+      "payload": "../../../../etc/passwd",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "DOT_DOT_SLASH"
+    },
+    {
+      "senaryo_id": "SCN-TRAV-02",
+      "baslik": "Windows Ters Eğik Çizgi Dizin Atlama (..\\..\\Windows\\win.ini)",
+      "tur": "DOT_DOT_SLASH",
+      "payload": "..\\..\\Windows\\win.ini",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "DOT_DOT_SLASH"
+    },
+    {
+      "senaryo_id": "SCN-TRAV-03",
+      "baslik": "Mutlak Unix Yolu ile Doğrudan Kök Dizin Okuma (/etc/passwd)",
+      "tur": "ABSOLUTE_PATH_INJECTION",
+      "payload": "/etc/passwd",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "ABSOLUTE_PATH_INJECTION"
+    },
+    {
+      "senaryo_id": "SCN-TRAV-04",
+      "baslik": "Mutlak Windows Sürücü Yolu ile Hosts Dosyası Okuma (C:\\...)",
+      "tur": "ABSOLUTE_PATH_INJECTION",
+      "payload": "C:\\Windows\\System32\\drivers\\etc\\hosts",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "ABSOLUTE_PATH_INJECTION"
+    },
+    {
+      "senaryo_id": "SCN-TRAV-05",
+      "baslik": "Tek Geçişli URL Kodlamalı Dizin Atlama (%2e%2e%2f...)",
+      "tur": "URL_ENCODED_TRAVERSAL",
+      "payload": "%2e%2e%2f%2e%2e%2ffatura.pdf",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "URL_ENCODED_TRAVERSAL"
+    },
+    {
+      "senaryo_id": "SCN-TRAV-06",
+      "baslik": "Çift URL Kodlamalı (Double Encoded) Dizin Atlama (%252e%252e%252f...)",
+      "tur": "DOUBLE_URL_ENCODED",
+      "payload": "%252e%252e%252f%252e%252e%252fetc/passwd",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "DOUBLE_URL_ENCODED"
+    },
+    {
+      "senaryo_id": "SCN-TRAV-07",
+      "baslik": "İç İçe Özyinelemeli Filtre Atlatma (....//....//etc/passwd)",
+      "tur": "NESTED_FILTER_BYPASS",
+      "payload": "....//....//etc/passwd",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "NESTED_FILTER_BYPASS"
+    },
+    {
+      "senaryo_id": "SCN-TRAV-08",
+      "baslik": "Null Byte (%00) Sonlandırma ile Uzantı Filtresi Aldatması",
+      "tur": "NULL_BYTE_INJECTION",
+      "payload": "fatura_2026.pdf%00.exe",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "NULL_BYTE_INJECTION"
+    },
+    {
+      "senaryo_id": "SCN-TRAV-09",
+      "baslik": "İzin Verilmeyen Sistem Uzantısı ile Ortam Dosyası Okuma (.env)",
+      "tur": "UNAPPROVED_EXTENSION",
+      "payload": "sistem_ayarlari.env",
+      "beklenen_hata_kodu": 403,
+      "beklenen_imza": "UNAPPROVED_EXTENSION"
+    }
+  ]
+}
