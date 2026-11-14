@@ -1,0 +1,88 @@
+=== GÜVENLİ DOSYA SERVİSİ CLI ÇALIŞTIRMA VE KONSOL GÜNLÜĞÜ ===
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_168\uygulama\secure_file_service_cli.py --help
+usage: secure_file_service_cli [-h]
+                               {upload,download,scan,fetch-remote,audit-report} ...
+
+Kurumsal Güvenli Dosya Servisi ve İndirme Ağ Geçidi Yönetim Aracı
+
+positional arguments:
+  {upload,download,scan,fetch-remote,audit-report}
+                        Çalıştırılacak alt komut
+    upload              Güvenli depoya yeni bir dosya yükler
+    download            UUID ile güvenli depodan dosya indirir
+    scan                Dosya adını ve içeriğini zararlı kalıplara karşı tarar
+    fetch-remote        Uzak adresten SSRF-güvenli dosya indirir
+    audit-report        Güvenlik denetim ve olay raporunu görüntüler
+
+options:
+  -h, --help            show this help message and exit
+
+[Çıkış Kodu: 0]
+================================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_168\uygulama\secure_file_service_cli.py scan --filename safe_contract.pdf --content %PDF-1.4 Test
+{
+  "durum": "TEMIZ",
+  "temizlenmis_ad": "safe_contract.pdf",
+  "analiz": "Dosya adı ve içeriği güvenlik denetimlerinden başarıyla geçti."
+}
+
+[Çıkış Kodu: 0]
+================================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_168\uygulama\secure_file_service_cli.py scan --filename ../../../etc/passwd.pdf --content %PDF-1.4 Test
+{
+  "durum": "ENGELLENDI",
+  "hata_kodu": "TRAVERSAL_DETECTED",
+  "hata_mesaji": "Dosya adında dizin atlama (Path Traversal) karakterleri tespit edildi."
+}
+
+[Çıkış Kodu: 1]
+================================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_168\uygulama\secure_file_service_cli.py upload --filename q3_results.pdf --content %PDF-1.4 Financials %%EOF --user-id auditor_9 --tenant-id audit_corp
+{
+  "durum": "BASARILI",
+  "mesaj": "Dosya güvenle yüklendi ve UUID atandı.",
+  "dosya": {
+    "file_id": "da50c9b7-4a51-4b7b-a05a-98ac3e2bdbee",
+    "original_name": "q3_results.pdf",
+    "sanitized_name": "q3_results.pdf",
+    "extension": ".pdf",
+    "mime_type": "application/pdf",
+    "size_bytes": 25,
+    "sha256_hash": "f79e7a8c4fd4dd44aabdc6451e732974180ee1f7b7c9e4e9e8e5b4c6e22391f1",
+    "owner_id": "auditor_9",
+    "tenant_id": "audit_corp",
+    "status": "ACTIVE",
+    "created_at": "2026-11-14T11:38:34.448481+00:00"
+  }
+}
+
+[Çıkış Kodu: 0]
+================================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_168\uygulama\secure_file_service_cli.py fetch-remote --url http://169.254.169.254/latest/meta-data/
+{
+  "durum": "ENGELLENDI",
+  "hata_kodu": "METADATA_IP_BLOCKED",
+  "hata_mesaji": "Bulut metaveri (Link-Local) adreslerine erişim engellendi: 169.254.169.254"
+}
+
+[Çıkış Kodu: 1]
+================================================================================
+
+$ C:\Users\Seydi Eryılmaz\AppData\Local\Programs\Python\Python314\python.exe C:\Users\seydieryilmaz\Desktop\Siber_Guvenlik_365_Gun_Standart_ve_Mufredat_Paketi\portfolio\hafta_24\gun_168\uygulama\secure_file_service_cli.py audit-report
+{
+  "total_audit_events": 0,
+  "blocked_attacks": 0,
+  "successful_uploads": 0,
+  "successful_downloads": 0,
+  "quarantined_files": 0,
+  "events": []
+}
+
+[Çıkış Kodu: 0]
+================================================================================
+

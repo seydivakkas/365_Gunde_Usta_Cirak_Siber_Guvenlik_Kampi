@@ -1,0 +1,51 @@
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================
+
++-------------------------------------------------------------------------------+
+|       MINI PROJE 23: GÜVENLİ DOSYA SERVİSİ VE İNDİRME AĞ GEÇİDİ MİMARİSİ      |
++-------------------------------------------------------------------------------+
+
+                       +-----------------------------+
+                       |    İSTEMCİ / TARAYICI       |
+                       | (Kullanıcı / Saldırgan)     |
+                       +--------------+--------------+
+                                      |
+                     [HTTP POST Yükleme / GET İndirme]
+                                      v
+  =================== 1. GÜVENLİK VE GİRİŞ DOĞRULAMA HATTI ===================
+  |  [Dosya Adı Temizleme]  --> Null Byte (%00) ve URL Kodlama Çözümleme       |
+  |                             (Multi-Pass Unquote: %252e%252e%252f -> ../)   |
+  |  [Traversal Kontrolü]   --> ".." ve Eğik Çizgi Engeli (CWE-22)             |
+  |  [Uzantı Beyaz Listesi] --> Yalnızca .pdf, .png, .jpg, .docx, .txt         |
+  |  [Çift Uzantı Kalkanı]  --> invoice.pdf.php tespit ve derhal 403 ret       |
+  |  [Boyut Kotası]         --> Max 5 MB Sınırı                                |
+  ====================================+=========================================
+                                      |
+                                      v
+  =================== 2. İÇERİK VE İMZA DERİN DENETİMİ =======================
+  |  [Magic Bytes Doğrulama]--> %PDF-, PNG, ÿØÿ Kontrolü          |
+  |  [Antivirüs & Webshell] --> <?php, eval(), system(), <script> Taraması    |
+  |  [SSRF Güvenli Getirme] --> Remote URL DNS & IP Filtresi                   |
+  |                             (127.0.0.1, 169.254.169.254 engeli)           |
+  ====================================+=========================================
+                                      |
+                                      v
+  =================== 3. İNDİREKT NESNE REFERANSI & İZOLASYON ==================
+  |  [UUIDv4 Atama]         --> Orijinal dosya adı yerine UUID.dat saklanır    |
+  |  [Kanonik Jail]         --> os.path.realpath & commonpath kontrolü        |
+  |  [Tenant İzolasyonu]    --> /storage/tenants/<tenant_id>/<UUID>.dat        |
+  |  [BOLA / IDOR Savunması]--> Çapraz kurum ve yetkisiz kullanıcı engeli      |
+  ====================================+=========================================
+                                      |
+                                      v
+  =================== 4. GÜVENLİ İNDİRME AĞ GEÇİDİ (HTTP HEADERS) ==============
+  |  Content-Disposition: attachment; filename="sanitized_name.pdf"            |
+  |  X-Content-Type-Options: nosniff  (MIME sniffing XSS engeli)               |
+  |  Content-Security-Policy: default-src 'none'; sandbox                      |
+  |  Cache-Control: no-store, no-cache, must-revalidate                        |
+  +----------------------------------------------------------------------------+
+
+================================================================================
+TEMSİLÎ — AI İLLÜSTRASYONU — GERÇEK TEST DEĞİL
+================================================================================

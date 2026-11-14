@@ -1,0 +1,81 @@
+{
+  "total_audit_events": 6,
+  "blocked_attacks": 3,
+  "successful_uploads": 2,
+  "successful_downloads": 1,
+  "quarantined_files": 0,
+  "events": [
+    {
+      "timestamp": "2026-11-14T11:38:33.797154+00:00",
+      "action": "UPLOAD_SUCCESS",
+      "tenant_id": "tenant_finance",
+      "user_id": "cfo_user",
+      "status": "SUCCESS",
+      "details": {
+        "file_id": "195cc9ec-d8dd-4c15-a5a2-91d145c78dbc",
+        "sanitized_name": "annual_report_2026.pdf",
+        "size_bytes": 29,
+        "sha256": "20a78cfa975baa85f8fbfe196713dad1642893f6f72ea98846701f2f8825781f"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T11:38:33.797683+00:00",
+      "action": "UPLOAD_SUCCESS",
+      "tenant_id": "tenant_engineering",
+      "user_id": "dev_lead",
+      "status": "SUCCESS",
+      "details": {
+        "file_id": "b2d80721-14cd-4fbd-a381-382d1381b74f",
+        "sanitized_name": "architecture.png",
+        "size_bytes": 16,
+        "sha256": "02a3e298f1533f62558c58e4c70edcab9af5a50d62d925fd5390942020fb0fb8"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T11:38:33.797697+00:00",
+      "action": "UPLOAD_BLOCKED",
+      "tenant_id": "tenant_engineering",
+      "user_id": "hacker",
+      "status": "BLOCKED",
+      "details": {
+        "raw_filename": "../../etc/shadow.pdf",
+        "error_code": "TRAVERSAL_DETECTED",
+        "error_message": "Dosya adında dizin atlama (Path Traversal) karakterleri tespit edildi."
+      }
+    },
+    {
+      "timestamp": "2026-11-14T11:38:33.797719+00:00",
+      "action": "UPLOAD_BLOCKED",
+      "tenant_id": "tenant_engineering",
+      "user_id": "hacker",
+      "status": "BLOCKED",
+      "details": {
+        "raw_filename": "shell.pdf",
+        "error_code": "MALICIOUS_CONTENT_DETECTED",
+        "error_message": "Dosya içeriğinde zararlı betik veya webshell imzası tespit edildi."
+      }
+    },
+    {
+      "timestamp": "2026-11-14T11:38:33.797725+00:00",
+      "action": "CROSS_TENANT_BLOCKED",
+      "tenant_id": "tenant_engineering",
+      "user_id": "dev_lead",
+      "status": "FORBIDDEN",
+      "details": {
+        "target_file_id": "195cc9ec-d8dd-4c15-a5a2-91d145c78dbc",
+        "target_tenant": "tenant_finance"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T11:38:33.797731+00:00",
+      "action": "DOWNLOAD_SUCCESS",
+      "tenant_id": "tenant_finance",
+      "user_id": "cfo_user",
+      "status": "SUCCESS",
+      "details": {
+        "file_id": "195cc9ec-d8dd-4c15-a5a2-91d145c78dbc",
+        "filename": "annual_report_2026.pdf"
+      }
+    }
+  ]
+}

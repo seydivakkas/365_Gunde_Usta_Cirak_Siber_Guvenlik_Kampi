@@ -1,0 +1,21 @@
+=== GÜVENLİ DOSYA SERVİSİ İŞLEM VE ERİŞİM GÜNLÜĞÜ (ARINDIRILMIŞ) ===
+Tarih: 2026-11-14 | Gizlilik: Maskelenmiş Kurumsal İşlem Kayıtları
+
+[2026-11-14T11:38:33.797154+00:00] ACTION=UPLOAD_SUCCESS            TENANT=tenant_finance     USER=cfo_user     STATUS=SUCCESS
+    Detay: {"file_id": "195cc9ec-d8dd-4c15-a5a2-91d145c78dbc", "sanitized_name": "annual_report_2026.pdf", "size_bytes": 29, "sha256": "20a78cfa975baa85f8fbfe196713dad1642893f6f72ea98846701f2f8825781f"}
+
+[2026-11-14T11:38:33.797683+00:00] ACTION=UPLOAD_SUCCESS            TENANT=tenant_engineering USER=dev_lead     STATUS=SUCCESS
+    Detay: {"file_id": "b2d80721-14cd-4fbd-a381-382d1381b74f", "sanitized_name": "architecture.png", "size_bytes": 16, "sha256": "02a3e298f1533f62558c58e4c70edcab9af5a50d62d925fd5390942020fb0fb8"}
+
+[2026-11-14T11:38:33.797697+00:00] ACTION=UPLOAD_BLOCKED            TENANT=tenant_engineering USER=hacker       STATUS=BLOCKED
+    Detay: {"raw_filename": "../../etc/shadow.pdf", "error_code": "TRAVERSAL_DETECTED", "error_message": "Dosya adında dizin atlama (Path Traversal) karakterleri tespit edildi."}
+
+[2026-11-14T11:38:33.797719+00:00] ACTION=UPLOAD_BLOCKED            TENANT=tenant_engineering USER=hacker       STATUS=BLOCKED
+    Detay: {"raw_filename": "shell.pdf", "error_code": "MALICIOUS_CONTENT_DETECTED", "error_message": "Dosya içeriğinde zararlı betik veya webshell imzası tespit edildi."}
+
+[2026-11-14T11:38:33.797725+00:00] ACTION=CROSS_TENANT_BLOCKED      TENANT=tenant_engineering USER=dev_lead     STATUS=FORBIDDEN
+    Detay: {"target_file_id": "195cc9ec-d8dd-4c15-a5a2-91d145c78dbc", "target_tenant": "tenant_finance"}
+
+[2026-11-14T11:38:33.797731+00:00] ACTION=DOWNLOAD_SUCCESS          TENANT=tenant_finance     USER=cfo_user     STATUS=SUCCESS
+    Detay: {"file_id": "195cc9ec-d8dd-4c15-a5a2-91d145c78dbc", "filename": "annual_report_2026.pdf"}
+

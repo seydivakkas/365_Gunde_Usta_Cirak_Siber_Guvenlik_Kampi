@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Enterprise Secure File Storage and Gateway Policy",
+  "description": "Kurumsal güvenli dosya saklama, yükleme, indirme ve erişim ağ geçidi güvenlik standartları ve politikası",
+  "version": "2.4.0",
+  "effective_date": "2026-11-14",
+  "classification": "CONFIDENTIAL - INTERNAL SECURITY POLICY",
+  "author": "Seydi Eryılmaz (@seydivakkas)",
+  "storage_architecture": {
+    "model": "INDIRECT_OBJECT_REFERENCE_UUID",
+    "storage_backend": "POSIX_CHROOT_JAIL",
+    "tenant_isolation": "STRICT_DIRECTORY_HIERARCHY",
+    "quarantine_enabled": true,
+    "immutable_audit_logs": true
+  },
+  "upload_constraints": {
+    "max_file_size_bytes": 5242880,
+    "max_file_size_human": "5 MB",
+    "allowed_extensions": [
+      ".pdf",
+      ".png",
+      ".jpg",
+      ".jpeg",
+      ".txt",
+      ".docx"
+    ],
+    "allowed_mime_types": [
+      "application/pdf",
+      "image/png",
+      "image/jpeg",
+      "text/plain",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    ],
+    "magic_bytes_enforcement": true,
+    "antivirus_webshell_scan": true
+  },
+  "download_security_headers": {
+    "Content-Disposition": "attachment; filename=\"<sanitized_name>\"",
+    "X-Content-Type-Options": "nosniff",
+    "Content-Security-Policy": "default-src 'none'; sandbox",
+    "X-Frame-Options": "DENY",
+    "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"
+  },
+  "access_control": {
+    "model": "RBAC_TENANT_ISOLATION",
+    "roles": ["user", "auditor", "admin"],
+    "cross_tenant_access": "STRICTLY_FORBIDDEN_403",
+    "unauthorized_download": "FORBIDDEN_403"
+  },
+  "remote_fetch_ssrf_protection": {
+    "allowed_schemes": ["http", "https"],
+    "block_loopback": true,
+    "block_rfc1918": true,
+    "block_cloud_metadata_169_254": true,
+    "pre_request_dns_inspection": true
+  }
+}

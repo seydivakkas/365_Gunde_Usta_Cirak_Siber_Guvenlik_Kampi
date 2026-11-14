@@ -1,0 +1,85 @@
+{
+  "scenarios": [
+    {
+      "id": "SCN-SRV-01",
+      "attack_type": "PATH_TRAVERSAL_FILENAME",
+      "description": "Dosya adında göreceli dizin atlama karakterleri ile sistem dosyalarını hedef alma",
+      "filename": "../../../../etc/shadow.pdf",
+      "content_hex": "255044462d312e340a546573740a2525454f46",
+      "expected_code": "TRAVERSAL_DETECTED",
+      "expected_status": 403
+    },
+    {
+      "id": "SCN-SRV-02",
+      "attack_type": "DOUBLE_ENCODED_TRAVERSAL",
+      "description": "Çift URL kodlamalı traversal ile filtre atlatma girişimi",
+      "filename": "%252e%252e%252f%252e%252e%252fetc%2fpasswd.pdf",
+      "content_hex": "255044462d312e340a546573740a2525454f46",
+      "expected_code": "TRAVERSAL_DETECTED",
+      "expected_status": 403
+    },
+    {
+      "id": "SCN-SRV-03",
+      "attack_type": "NULL_BYTE_INJECTION",
+      "description": "Null byte (%00) ile uzantı sonlandırma ve filtre aldatma girişimi",
+      "filename": "annual_report.pdf%00.exe",
+      "content_hex": "255044462d312e340a546573740a2525454f46",
+      "expected_code": "NULL_BYTE_DETECTED",
+      "expected_status": 400
+    },
+    {
+      "id": "SCN-SRV-04",
+      "attack_type": "DOUBLE_EXTENSION_SHELL",
+      "description": "Çoklu uzantı manipülasyonu ile çalıştırılabilir PHP betiği yükleme girişimi",
+      "filename": "invoice.pdf.php",
+      "content_hex": "3c3f70687020706870696e666f28293b203f3e",
+      "expected_code": "DOUBLE_EXTENSION_DETECTED",
+      "expected_status": 403
+    },
+    {
+      "id": "SCN-SRV-05",
+      "attack_type": "DISALLOWED_EXTENSION",
+      "description": "Beyaz listede yer almayan doğrudan çalıştırılabilir (.exe) dosya yükleme",
+      "filename": "ransomware_payload.exe",
+      "content_hex": "4d5a90000300000004000000ffff0000",
+      "expected_code": "EXTENSION_NOT_ALLOWED",
+      "expected_status": 403
+    },
+    {
+      "id": "SCN-SRV-06",
+      "attack_type": "MAGIC_BYTES_MISMATCH",
+      "description": "PNG uzantısı verilmiş fakat dosya sihirli baytları geçersiz olan sahte resim",
+      "filename": "corrupted_or_fake_image.png",
+      "content_hex": "544849535f49535f46414b455f44415441",
+      "expected_code": "MAGIC_BYTES_MISMATCH",
+      "expected_status": 403
+    },
+    {
+      "id": "SCN-SRV-07",
+      "attack_type": "POLYGLOT_WEBSHELL",
+      "description": "PDF sihirli baytı ile başlayan fakat içinde gömülü PHP webshell komutu içeren dosya",
+      "filename": "polyglot_exploit.pdf",
+      "content_hex": "255044462d312e340a3c3f7068702073797374656d28245f4745545b2763275d293b203f3e0a2525454f46",
+      "expected_code": "MALICIOUS_CONTENT_DETECTED",
+      "expected_status": 403
+    },
+    {
+      "id": "SCN-SRV-08",
+      "attack_type": "OVERSIZED_PAYLOAD",
+      "description": "Maksimum izin verilen depolama kotasını (5 MB) aşan devasa dosya yükleme denemesi",
+      "filename": "huge_backup_archive.pdf",
+      "content_hex": "255044462d",
+      "size_bytes": 6291456,
+      "expected_code": "FILE_TOO_LARGE",
+      "expected_status": 413
+    },
+    {
+      "id": "SCN-SRV-09",
+      "attack_type": "SSRF_CLOUD_METADATA",
+      "description": "Uzak dosya getirme özelliği üzerinden bulut metaveri servisine (169.254.169.254) erişim",
+      "target_url": "http://169.254.169.254/latest/meta-data/iam/security-credentials/admin",
+      "expected_code": "METADATA_IP_BLOCKED",
+      "expected_status": 403
+    }
+  ]
+}

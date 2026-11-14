@@ -1,0 +1,42 @@
+=== MINI PROJE 23: GÜVENLI DOSYA SERVISI BIRIM TEST SONUÇLARI ===
+Tarih: 2026-11-14
+Koşulan Test: 15
+Hata: 0
+Başarısızlık: 0
+Durum: 100% BAŞARILI (PASS)
+
+test_01_valid_pdf_upload (tests.test_secure_file_service.TestSecureFileService.test_01_valid_pdf_upload)
+Geçerli bir PDF dosyasının başarıyla yüklenmesi ve UUID atanması. ... ok
+test_02_valid_png_upload (tests.test_secure_file_service.TestSecureFileService.test_02_valid_png_upload)
+Geçerli bir PNG resminin sihirli baytlarıyla doğrulanıp yüklenmesi. ... ok
+test_03_path_traversal_in_filename_blocked (tests.test_secure_file_service.TestSecureFileService.test_03_path_traversal_in_filename_blocked)
+Dosya adında dizin atlama (../) karakterleri bulunduğunda engellenmesi. ... ok
+test_04_url_encoded_traversal_blocked (tests.test_secure_file_service.TestSecureFileService.test_04_url_encoded_traversal_blocked)
+URL kodlu dizin atlama (%2e%2e%2f) girişiminin çözülüp engellenmesi. ... ok
+test_05_null_byte_in_filename_blocked (tests.test_secure_file_service.TestSecureFileService.test_05_null_byte_in_filename_blocked)
+Dosya adında Null Byte (%00 veya \x00) tespit edildiğinde engellenmesi. ... ok
+test_06_double_extension_blocked (tests.test_secure_file_service.TestSecureFileService.test_06_double_extension_blocked)
+Zararlı çoklu/çift uzantı manipülasyonunun (örn: invoice.pdf.php) engellenmesi. ... ok
+test_07_disallowed_extension_blocked (tests.test_secure_file_service.TestSecureFileService.test_07_disallowed_extension_blocked)
+Beyaz listede yer almayan (.exe) uzantılı dosyanın reddedilmesi. ... ok
+test_08_magic_bytes_mismatch_blocked (tests.test_secure_file_service.TestSecureFileService.test_08_magic_bytes_mismatch_blocked)
+Beyan edilen uzantı ile dosya sihirli baytları uyuşmadığında engellenmesi. ... ok
+test_09_webshell_content_blocked (tests.test_secure_file_service.TestSecureFileService.test_09_webshell_content_blocked)
+Görünüşte geçerli PDF içerisine gömülmüş webshell betiğinin yakalanması. ... ok
+test_10_file_size_limit_exceeded_blocked (tests.test_secure_file_service.TestSecureFileService.test_10_file_size_limit_exceeded_blocked)
+Belirlenen maksimum boyutu (1 MB) aşan dosyanın reddedilmesi. ... ok
+test_11_secure_retrieve_and_headers (tests.test_secure_file_service.TestSecureFileService.test_11_secure_retrieve_and_headers)
+Güvenli indirme sırasında Content-Disposition, nosniff ve CSP başlıklarının üretilmesi. ... ok
+test_12_cross_tenant_access_blocked (tests.test_secure_file_service.TestSecureFileService.test_12_cross_tenant_access_blocked)
+Tenant A'ya ait bir dosyaya Tenant B kullanıcısının erişiminin engellenmesi (BOLA/IDOR). ... ok
+test_13_unauthorized_user_in_same_tenant_blocked (tests.test_secure_file_service.TestSecureFileService.test_13_unauthorized_user_in_same_tenant_blocked)
+Aynı kurum içinde başkasının özel dosyasına yetkisiz erişimin engellenmesi. ... ok
+test_14_admin_can_retrieve_any_tenant_file (tests.test_secure_file_service.TestSecureFileService.test_14_admin_can_retrieve_any_tenant_file)
+Admin rolündeki kullanıcının kendi kurumu içerisindeki tüm dosyaları indirebilmesi. ... ok
+test_15_ssrf_safe_remote_fetch (tests.test_secure_file_service.TestSecureFileService.test_15_ssrf_safe_remote_fetch)
+SSRF koruması: Uzak dosya getirmede Loopback ve Cloud Metadata IP'lerinin engellenmesi. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.032s
+
+OK

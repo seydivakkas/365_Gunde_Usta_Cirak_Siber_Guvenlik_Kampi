@@ -1,0 +1,124 @@
+{
+  "gun": 168,
+  "hafta": 24,
+  "asama": "07",
+  "konu": "Mini proje 23: güvenli dosya servisi",
+  "toplam_dosya": 23,
+  "dosyalar": [
+    {
+      "dosya": "README.md",
+      "sha256": "0ac2a56b59f24bfcd9a5828bd02139c5892222793d9468a4928c974f3c0fedcf",
+      "boyut_bayt": 5646
+    },
+    {
+      "dosya": "ders.md",
+      "sha256": "8bc32b72e6f89ab42a9bf7de14d08f7e91ddcb0002f26c3e03b3a0b3cadd3b14",
+      "boyut_bayt": 8734
+    },
+    {
+      "dosya": "kanit_uretici.py",
+      "sha256": "b1200462e1c7ec81e003b825ce9611ce997f972de6f367f9802cfde897588bc1",
+      "boyut_bayt": 13181
+    },
+    {
+      "dosya": "rapor.md",
+      "sha256": "2fe67f726c4e721cfca1048c589a5f51c78df13f284d1c152d367bd6d754c35e",
+      "boyut_bayt": 7069
+    },
+    {
+      "dosya": "sonuc.json",
+      "sha256": "44ae713ad2ea2f1af522d76e79a024a7555254ee564f4bb006efde1b8a09bbd9",
+      "boyut_bayt": 1963
+    },
+    {
+      "dosya": "soru_cevap.md",
+      "sha256": "91083e5186039dfe1cb256da7330c348467fecab15c759175084b05b965fd5a8",
+      "boyut_bayt": 8649
+    },
+    {
+      "dosya": "kanit\\gercek\\file_service_audit_report.json",
+      "sha256": "799509586365f696fcf4a96effd9f795a823334013c61672b3e5aa41abac93fd",
+      "boyut_bayt": 2615
+    },
+    {
+      "dosya": "kanit\\gercek\\komut_ve_cikis.txt",
+      "sha256": "ee69a8f8f7bdbd2b3f9b9de76224e4dec349d20d8508c7f7d802429b8ecc36c5",
+      "boyut_bayt": 4333
+    },
+    {
+      "dosya": "kanit\\gercek\\negatif_kontrol_sonuclari.txt",
+      "sha256": "c1f97f8bcc617ccd02d1374d14b8a63e0efa0b7ba55e59fd1f219a4230f73d84",
+      "boyut_bayt": 1498
+    },
+    {
+      "dosya": "kanit\\gercek\\sanitized_service_transactions.txt",
+      "sha256": "e578ca0e28c5cc5e7f3d1fc1e73ac11cb8eea01e24cb45d34f504228d559fcc1",
+      "boyut_bayt": 1909
+    },
+    {
+      "dosya": "kanit\\gercek\\test_sonuclari.txt",
+      "sha256": "77aa06a0d970027293b3db7729af78a78c780af777fa112223b4475ced311826",
+      "boyut_bayt": 3529
+    },
+    {
+      "dosya": "kanit\\temsili\\guvenli_dosya_servisi_mimarisi.txt",
+      "sha256": "ab2f966f0bb33b454814e92e592cd0b5e588e087d9c372a58191054406b38691",
+      "boyut_bayt": 3499
+    },
+    {
+      "dosya": "ornek_veri\\enterprise_file_service_policy.json",
+      "sha256": "6df03d1d6bfe6379e1ed11e9aa706dd465de36306cca6fef683d0993b93f504f",
+      "boyut_bayt": 1902
+    },
+    {
+      "dosya": "ornek_veri\\invalid_service_payloads.json",
+      "sha256": "cc4047d09578fe015b8e06f079e9dafdf509e87518ae0d7f6f837377eca9ac5f",
+      "boyut_bayt": 3429
+    },
+    {
+      "dosya": "tests\\__init__.py",
+      "sha256": "e0417495dca75fab4a2271d4b169be5ecab1bd50ef04f95b9723e3a7fc8216c3",
+      "boyut_bayt": 182
+    },
+    {
+      "dosya": "tests\\test_secure_file_service.py",
+      "sha256": "c7f70ad11fd9599a0e1aa9b6c76011d4b574842b995024589e8dedb22f7ca84a",
+      "boyut_bayt": 10786
+    },
+    {
+      "dosya": "tests\\__pycache__\\__init__.cpython-314.pyc",
+      "sha256": "5bc8e6ce673862a278e3aec16c84117f6ec5142f552219e9379f31661a0494f4",
+      "boyut_bayt": 225
+    },
+    {
+      "dosya": "tests\\__pycache__\\test_secure_file_service.cpython-314.pyc",
+      "sha256": "b5a2907a9f42adbe767d0dc18e5da36d5301e1d2c5a638803456dfcec03dd8b6",
+      "boyut_bayt": 14149
+    },
+    {
+      "dosya": "uygulama\\__init__.py",
+      "sha256": "0832c478c9b688839bc764916619eca00ba068cd7a4f5d268f446ba0cb38bd68",
+      "boyut_bayt": 191
+    },
+    {
+      "dosya": "uygulama\\secure_file_service_cli.py",
+      "sha256": "4815d8406036966a4055b2fb35513926b2a9a5c10be3974b6e0d8a70af051bc3",
+      "boyut_bayt": 7573
+    },
+    {
+      "dosya": "uygulama\\secure_file_service_engine.py",
+      "sha256": "53030adf07adb41726a51d1e076826a377198764c79294d06afd5c99f6b0e5db",
+      "boyut_bayt": 23898
+    },
+    {
+      "dosya": "uygulama\\__pycache__\\__init__.cpython-314.pyc",
+      "sha256": "d92d07a5b311847ba3282809cef2a5777da0eb76074ae0b457f0ac07b0904a05",
+      "boyut_bayt": 228
+    },
+    {
+      "dosya": "uygulama\\__pycache__\\secure_file_service_engine.cpython-314.pyc",
+      "sha256": "2a38c19b6e077266acf218432d5128b4f2d202e5c995d8531ada017bbab9ce63",
+      "boyut_bayt": 24275
+    }
+  ]
+}

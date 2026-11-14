@@ -1,9 +1,9 @@
 {
-  "son_islenen_gun": 167,
-  "son_kapanan_pass_gun": 167,
-  "sonraki_aday_gun": 168,
-  "son_durum": "G167_TAMAMLANDI_PASS",
-  "sonuc_dosyasi": "portfolio/hafta_24/gun_167/sonuc.json",
+  "son_islenen_gun": 168,
+  "son_kapanan_pass_gun": 168,
+  "sonraki_aday_gun": 169,
+  "son_durum": "G168_TAMAMLANDI_PASS",
+  "sonuc_dosyasi": "portfolio/hafta_24/gun_168/sonuc.json",
   "excel_dogrulandi": true,
   "mod": "OTOMATIK_ZINCIR",
   "tamamlanan_gunler": [
@@ -88,12 +88,13 @@
     164,
     165,
     166,
-    167
+    167,
+    168
   ],
-  "guncelleme_tarihi": "2026-11-14T14:32:30.395688",
-  "durum_notu": "Gün 167: Path traversal ve dosya erişimi 100/100 PASS ile tamamlandı. Gün 168: Mini proje 23: enjeksiyon ve istek güvenliği konusuna hazır.",
-  "durum": "G167_TAMAMLANDI_PASS",
-  "son_islem_tarihi": "2026-11-14T14:32:30.395688",
-  "son_guncelleme": "2026-11-14T14:32:30.395688",
-  "guncelleme_zamani": "2026-11-14T14:32:30.395688"
+  "guncelleme_tarihi": "2026-11-14T14:41:23.228473",
+  "durum_notu": "Gün 168: Mini proje 23: güvenli dosya servisi 100/100 PASS ile tamamlandı. Hafta 24 başarıyla kapandı. Gün 169: Kimlik doğrulama hataları (Hafta 25) konusuna hazır.",
+  "durum": "G168_TAMAMLANDI_PASS",
+  "son_islem_tarihi": "2026-11-14T14:41:23.228473",
+  "son_guncelleme": "2026-11-14T14:41:23.228473",
+  "guncelleme_zamani": "2026-11-14T14:41:23.228473"
 }
